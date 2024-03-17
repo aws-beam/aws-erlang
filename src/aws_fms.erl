@@ -2540,7 +2540,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = aws_client:set_service(Client, <<"fms">>),
+    Client1 = Client#{service => <<"fms">>},
     Host = build_host(<<"fms">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

@@ -8553,7 +8553,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = aws_client:set_service(Client, <<"s3">>),
+    Client1 = Client#{service => <<"s3">>},
     AccountId = proplists:get_value(<<"x-amz-account-id">>, Headers0),
     Host = build_host(AccountId, <<"s3-control">>, Client1),
     URL0 = build_url(Host, Path, Client1),

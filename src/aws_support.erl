@@ -1341,7 +1341,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = aws_client:set_service(Client, <<"support">>),
+    Client1 = Client#{service => <<"support">>},
     Host = build_host(<<"support">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

@@ -1391,7 +1391,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = aws_client:set_service(Client, <<"ecr-public">>),
+    Client1 = Client#{service => <<"ecr-public">>},
     Host = build_host(<<"api.ecr-public">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

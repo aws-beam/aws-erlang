@@ -1699,7 +1699,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = aws_client:set_service(Client, <<"machinelearning">>),
+    Client1 = Client#{service => <<"machinelearning">>},
     Host = build_host(<<"machinelearning">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

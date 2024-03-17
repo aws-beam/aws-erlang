@@ -6202,8 +6202,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client0 = aws_client:set_service(Client, <<"networkmanager">>),
-    Client1 = aws_client:set_region(Client0, <<"us-west-2">>),
+    Client1 = Client#{service => <<"networkmanager">>,
+                      region => <<"us-west-2">>},
     Host = build_host(<<"networkmanager">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

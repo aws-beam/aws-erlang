@@ -133,7 +133,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = aws_client:set_service(Client, <<"freetier">>),
+    Client1 = Client#{service => <<"freetier">>},
     Host = build_host(<<"freetier">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

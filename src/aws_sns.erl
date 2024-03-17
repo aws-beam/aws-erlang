@@ -2433,7 +2433,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = aws_client:set_service(Client, <<"sns">>),
+    Client1 = Client#{service => <<"sns">>},
     Host = build_host(<<"sns">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

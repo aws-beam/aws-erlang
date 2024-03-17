@@ -2104,7 +2104,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = aws_client:set_service(Client, <<"compute-optimizer">>),
+    Client1 = Client#{service => <<"compute-optimizer">>},
     Host = build_host(<<"compute-optimizer">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

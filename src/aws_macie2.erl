@@ -6246,7 +6246,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = aws_client:set_service(Client, <<"macie2">>),
+    Client1 = Client#{service => <<"macie2">>},
     Host = build_host(<<"macie2">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

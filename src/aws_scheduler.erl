@@ -1039,7 +1039,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = aws_client:set_service(Client, <<"scheduler">>),
+    Client1 = Client#{service => <<"scheduler">>},
     Host = build_host(<<"scheduler">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

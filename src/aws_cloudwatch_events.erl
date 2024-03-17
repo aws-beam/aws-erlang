@@ -3170,7 +3170,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = aws_client:set_service(Client, <<"events">>),
+    Client1 = Client#{service => <<"events">>},
     Host = build_host(<<"events">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

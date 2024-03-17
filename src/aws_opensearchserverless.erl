@@ -2009,7 +2009,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = aws_client:set_service(Client, <<"aoss">>),
+    Client1 = Client#{service => <<"aoss">>},
     Host = build_host(<<"aoss">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [
