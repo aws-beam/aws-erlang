@@ -2752,9 +2752,7 @@ get_public_key(Client, Input, Options)
 %% expired or key material
 %% that you deleted. You might also reimport key material to change the
 %% expiration model or
-%% expiration date of the key material. Before reimporting key material, if
-%% necessary, call `DeleteImportedKeyMaterial' to delete the current
-%% imported key material.
+%% expiration date of the key material.
 %%
 %% Each time you import key material into KMS, you can determine whether
 %% (`ExpirationModel') and when (`ValidTo') the key material expires.
@@ -3522,7 +3520,7 @@ retire_grant(Client, Input, Options)
 %%
 %% You revoke a grant to terminate the permissions that the
 %% grant allows. For more information, see Retiring and revoking grants:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/managing-grants.html#grant-delete
+%% https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete
 %% in
 %% the
 %% Key Management Service Developer Guide

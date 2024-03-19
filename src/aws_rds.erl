@@ -320,6 +320,8 @@
          modify_event_subscription/3,
          modify_global_cluster/2,
          modify_global_cluster/3,
+         modify_integration/2,
+         modify_integration/3,
          modify_option_group/2,
          modify_option_group/3,
          modify_tenant_database/2,
@@ -2726,6 +2728,18 @@ modify_global_cluster(Client, Input)
 modify_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyGlobalCluster">>, Input, Options).
+
+%% @doc Modifies a zero-ETL integration with Amazon Redshift.
+%%
+%% Currently, you can only modify integrations that have Aurora MySQL source
+%% DB clusters. Integrations with Aurora PostgreSQL and RDS sources currently
+%% don't support modifying the integration.
+modify_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_integration(Client, Input, []).
+modify_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyIntegration">>, Input, Options).
 
 %% @doc Modifies an existing option group.
 modify_option_group(Client, Input)

@@ -759,6 +759,7 @@ get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"audience">>, maps:get(<<"audience">>, QueryMap, undefined)},
         {<<"durationMinutes">>, maps:get(<<"durationMinutes">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}

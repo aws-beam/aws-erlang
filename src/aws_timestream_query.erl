@@ -152,8 +152,8 @@ list_tags_for_resource(Client, Input, Options)
 %% parameters to be stored
 %% by Timestream for later running.
 %%
-%% Timestream only supports using this operation with the
-%% `PrepareQueryRequest$ValidateOnly' set to `true'.
+%% Timestream only supports using this operation with
+%% `ValidateOnly' set to `true'.
 prepare_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     prepare_query(Client, Input, []).

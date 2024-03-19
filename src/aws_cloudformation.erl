@@ -143,6 +143,8 @@
          list_stack_instances/3,
          list_stack_resources/2,
          list_stack_resources/3,
+         list_stack_set_auto_deployment_targets/2,
+         list_stack_set_auto_deployment_targets/3,
          list_stack_set_operation_results/2,
          list_stack_set_operation_results/3,
          list_stack_set_operations/2,
@@ -228,7 +230,8 @@ activate_organizations_access(Client, Input, Options)
 %% :
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetTypeConfiguration.html
 %% to specify configuration properties for the extension. For more
-%% information, see Configuring extensions at the account level:
+%% information, see Configuring extensions at
+%% the account level:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
 %% in the CloudFormation User Guide.
 activate_type(Client, Input)
@@ -1171,6 +1174,14 @@ list_stack_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStackResources">>, Input, Options).
 
+%% @doc Returns summary information about deployment targets for a stack set.
+list_stack_set_auto_deployment_targets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_stack_set_auto_deployment_targets(Client, Input, []).
+list_stack_set_auto_deployment_targets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStackSetAutoDeploymentTargets">>, Input, Options).
+
 %% @doc Returns summary information about the results of a stack set
 %% operation.
 list_stack_set_operation_results(Client, Input)
@@ -1347,9 +1358,8 @@ register_publisher(Client, Input, Options)
 %% `SetTypeConfiguration'
 %% :
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetTypeConfiguration.html
-%% to specify
-%% configuration properties for the extension. For more information, see
-%% Configuring extensions at
+%% to specify configuration properties for the extension. For more
+%% information, see Configuring extensions at
 %% the account level:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
 %% in the CloudFormation User Guide.
@@ -1511,8 +1521,8 @@ stop_stack_set_operation(Client, Input, Options)
 %% `DescribeType'
 %% :
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html
-%% to monitor the current test
-%% status and test status description for the extension.
+%% to monitor the
+%% current test status and test status description for the extension.
 %%
 %% An extension must have a test status of `PASSED' before it can be
 %% published. For more information,
@@ -1586,18 +1596,18 @@ update_stack(Client, Input, Options)
 %% `UpdateStackSet'
 %% :
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html
-%% to update the stack set
-%% template. If you add a parameter to a template, before you can override
-%% the parameter value specified in the stack
-%% set you must first use
+%% to update the
+%% stack set template. If you add a parameter to a template, before you can
+%% override the parameter value specified in
+%% the stack set you must first use
 %% `UpdateStackSet'
 %% :
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html
-%% to update all stack
-%% instances with the updated template and parameter value specified in the
-%% stack set. Once a stack instance has been
-%% updated with the new parameter, you can then override the parameter value
-%% using
+%% to update all
+%% stack instances with the updated template and parameter value specified in
+%% the stack set. Once a stack instance has
+%% been updated with the new parameter, you can then override the parameter
+%% value using
 %% `UpdateStackInstances'.
 update_stack_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
