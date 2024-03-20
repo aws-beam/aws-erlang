@@ -225,12 +225,11 @@ activate_organizations_access(Client, Input, Options)
 %% in the CloudFormation User Guide.
 %%
 %% Once you have activated a public third-party extension in your account and
-%% Region, use
-%% `SetTypeConfiguration'
-%% :
+%% Region, use SetTypeConfiguration:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetTypeConfiguration.html
 %% to specify configuration properties for the extension. For more
-%% information, see Configuring extensions at
+%% information, see
+%% Configuring extensions at
 %% the account level:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
 %% in the CloudFormation User Guide.
@@ -495,8 +494,7 @@ delete_stack_set(Client, Input, Options)
 %% as deprecated.
 %%
 %% To view the deprecation status of an extension or extension version, use
-%% `DescribeType'
-%% :
+%% DescribeType:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html.
 deregister_type(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -581,8 +579,7 @@ describe_organizations_access(Client, Input, Options)
 %%
 %% For more information about registering as a publisher, see:
 %%
-%% `RegisterPublisher'
-%% :
+%% RegisterPublisher:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterPublisher.html
 %%
 %% Publishing
@@ -1279,9 +1276,7 @@ list_types(Client, Input, Options)
 %% in the CloudFormation CLI User Guide.
 %%
 %% To publish an extension, you must be registered as a publisher with
-%% CloudFormation. For more information, see
-%% `RegisterPublisher'
-%% :
+%% CloudFormation. For more information, see RegisterPublisher:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterPublisher.html.
 publish_type(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1343,9 +1338,7 @@ register_publisher(Client, Input, Options)
 %%
 %% You can have a maximum of 50 resource extension versions registered at a
 %% time. This maximum is per account and
-%% per Region. Use
-%% `DeregisterType'
-%% :
+%% per Region. Use DeregisterType:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeregisterType.html
 %% to deregister specific extension versions if necessary.
 %%
@@ -1354,12 +1347,11 @@ register_publisher(Client, Input, Options)
 %% registration request.
 %%
 %% Once you have registered a private extension in your account and Region,
-%% use
-%% `SetTypeConfiguration'
-%% :
+%% use SetTypeConfiguration:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetTypeConfiguration.html
-%% to specify configuration properties for the extension. For more
-%% information, see Configuring extensions at
+%% to specify
+%% configuration properties for the extension. For more information, see
+%% Configuring extensions at
 %% the account level:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
 %% in the CloudFormation User Guide.
@@ -1415,9 +1407,7 @@ set_stack_policy(Client, Input, Options)
 %%
 %% To view the current configuration data for an extension, refer to the
 %% `ConfigurationSchema' element
-%% of
-%% `DescribeType'
-%% :
+%% of DescribeType:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html.
 %% For more information, see Configuring extensions at
 %% the account level:
@@ -1510,19 +1500,15 @@ stop_stack_set_operation(Client, Input, Options)
 %%
 %% To perform testing, CloudFormation assumes the execution role specified
 %% when the type was registered. For more
-%% information, see
-%% `RegisterType'
-%% :
+%% information, see RegisterType:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html.
 %%
 %% Once you've initiated testing on an extension using `TestType',
 %% you can pass the returned
-%% `TypeVersionArn' into
-%% `DescribeType'
-%% :
+%% `TypeVersionArn' into DescribeType:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html
-%% to monitor the
-%% current test status and test status description for the extension.
+%% to monitor the current test
+%% status and test status description for the extension.
 %%
 %% An extension must have a test status of `PASSED' before it can be
 %% published. For more information,
@@ -1581,9 +1567,7 @@ update_stack(Client, Input, Options)
 %%
 %% You can only update stack instances in Amazon Web Services Regions and
 %% accounts where they already exist; to
-%% create additional stack instances, use
-%% `CreateStackInstances'
-%% :
+%% create additional stack instances, use CreateStackInstances:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html.
 %%
 %% During stack set updates, any parameters overridden for a stack instance
@@ -1592,22 +1576,18 @@ update_stack(Client, Input, Options)
 %%
 %% You can only update the parameter values that are specified in the stack
 %% set; to add or
-%% delete a parameter itself, use
-%% `UpdateStackSet'
-%% :
+%% delete a parameter itself, use UpdateStackSet:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html
-%% to update the
-%% stack set template. If you add a parameter to a template, before you can
-%% override the parameter value specified in
-%% the stack set you must first use
-%% `UpdateStackSet'
-%% :
+%% to update the stack set
+%% template. If you add a parameter to a template, before you can override
+%% the parameter value specified in the stack
+%% set you must first use UpdateStackSet:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html
-%% to update all
-%% stack instances with the updated template and parameter value specified in
-%% the stack set. Once a stack instance has
-%% been updated with the new parameter, you can then override the parameter
-%% value using
+%% to update all stack
+%% instances with the updated template and parameter value specified in the
+%% stack set. Once a stack instance has been
+%% updated with the new parameter, you can then override the parameter value
+%% using
 %% `UpdateStackInstances'.
 update_stack_instances(Client, Input)
   when is_map(Client), is_map(Input) ->

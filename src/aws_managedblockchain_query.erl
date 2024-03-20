@@ -28,6 +28,8 @@
          get_transaction/3,
          list_asset_contracts/2,
          list_asset_contracts/3,
+         list_filtered_transaction_events/2,
+         list_filtered_transaction_events/3,
          list_token_balances/2,
          list_token_balances/3,
          list_transaction_events/2,
@@ -192,6 +194,33 @@ list_asset_contracts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all the transaction events for an address on the blockchain.
+%%
+%% This operation is only supported on the Bitcoin networks.
+list_filtered_transaction_events(Client, Input) ->
+    list_filtered_transaction_events(Client, Input, []).
+list_filtered_transaction_events(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-filtered-transaction-events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This action returns the following for a given blockchain network:
 %%
 %% Lists all token balances owned by an address (either a contract
@@ -227,10 +256,7 @@ list_token_balances(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc An array of `TransactionEvent' objects.
-%%
-%% Each object contains details
-%% about the transaction event.
+%% @doc Lists all the transaction events for a transaction
 %%
 %% This action will return transaction details for all transactions
 %% that are confirmed on the blockchain, even if they have not reached
@@ -260,8 +286,7 @@ list_transaction_events(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all of the transactions on a given wallet address or to a
-%% specific contract.
+%% @doc Lists all the transaction events for a transaction.
 list_transactions(Client, Input) ->
     list_transactions(Client, Input, []).
 list_transactions(Client, Input0, Options0) ->

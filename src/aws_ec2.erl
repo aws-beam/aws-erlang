@@ -595,6 +595,8 @@
          describe_local_gateways/3,
          describe_locked_snapshots/2,
          describe_locked_snapshots/3,
+         describe_mac_hosts/2,
+         describe_mac_hosts/3,
          describe_managed_prefix_lists/2,
          describe_managed_prefix_lists/3,
          describe_moving_addresses/2,
@@ -6154,6 +6156,15 @@ describe_locked_snapshots(Client, Input)
 describe_locked_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLockedSnapshots">>, Input, Options).
+
+%% @doc Describes the specified EC2 Mac Dedicated Host or all of your EC2 Mac
+%% Dedicated Hosts.
+describe_mac_hosts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_mac_hosts(Client, Input, []).
+describe_mac_hosts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMacHosts">>, Input, Options).
 
 %% @doc Describes your managed prefix lists and any Amazon Web
 %% Services-managed prefix lists.
