@@ -2,13 +2,14 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Savings Plans are a pricing model that offer significant savings on
-%% AWS usage (for
-%% example, on Amazon EC2 instances).
+%% Amazon Web Services usage (for example, on Amazon EC2 instances).
 %%
-%% You commit to a consistent amount of usage, in USD
-%% per hour, for a term of 1 or 3 years, and receive a lower price for that
-%% usage. For
-%% more information, see the AWS Savings Plans User Guide:
+%% You commit to a consistent
+%% amount of usage per hour, in the specified currency, for a term of one or
+%% three years, and
+%% receive a lower price for that usage. For more information, see the Amazon
+%% Web Services
+%% Savings Plans User Guide:
 %% https://docs.aws.amazon.com/savingsplans/latest/userguide/.
 -module(aws_savingsplans).
 
@@ -26,6 +27,8 @@
          describe_savings_plans_offerings/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         return_savings_plan/2,
+         return_savings_plan/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -87,7 +90,7 @@ delete_queued_savings_plan(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes the specified Savings Plans rates.
+%% @doc Describes the rates for the specified Savings Plan.
 describe_savings_plan_rates(Client, Input) ->
     describe_savings_plan_rates(Client, Input, []).
 describe_savings_plan_rates(Client, Input0, Options0) ->
@@ -137,7 +140,7 @@ describe_savings_plans(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes the specified Savings Plans offering rates.
+%% @doc Describes the offering rates for the specified Savings Plans.
 describe_savings_plans_offering_rates(Client, Input) ->
     describe_savings_plans_offering_rates(Client, Input, []).
 describe_savings_plans_offering_rates(Client, Input0, Options0) ->
@@ -162,7 +165,7 @@ describe_savings_plans_offering_rates(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes the specified Savings Plans offerings.
+%% @doc Describes the offerings for the specified Savings Plans.
 describe_savings_plans_offerings(Client, Input) ->
     describe_savings_plans_offerings(Client, Input, []).
 describe_savings_plans_offerings(Client, Input0, Options0) ->
@@ -193,6 +196,31 @@ list_tags_for_resource(Client, Input) ->
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTagsForResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the specified Savings Plan.
+return_savings_plan(Client, Input) ->
+    return_savings_plan(Client, Input, []).
+return_savings_plan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ReturnSavingsPlan"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

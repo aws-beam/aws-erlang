@@ -50,6 +50,8 @@
          delete_backup/3,
          delete_item/2,
          delete_item/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          delete_table/2,
          delete_table/3,
          describe_backup/2,
@@ -90,6 +92,8 @@
          export_table_to_point_in_time/3,
          get_item/2,
          get_item/3,
+         get_resource_policy/2,
+         get_resource_policy/3,
          import_table/2,
          import_table/3,
          list_backups/2,
@@ -108,6 +112,8 @@
          list_tags_of_resource/3,
          put_item/2,
          put_item/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          query/2,
          query/3,
          restore_table_from_backup/2,
@@ -568,6 +574,32 @@ delete_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteItem">>, Input, Options).
 
+%% @doc Deletes the resource-based policy attached to the resource, which can
+%% be a table or stream.
+%%
+%% `DeleteResourcePolicy' is an idempotent operation; running it multiple
+%% times on the same resource doesn't result in an error response, unless
+%% you specify an `ExpectedRevisionId', which will then return a
+%% `PolicyNotFoundException'.
+%%
+%% To make sure that you don't inadvertently lock yourself out of your
+%% own resources, the root principal in your Amazon Web Services account can
+%% perform `DeleteResourcePolicy' requests, even if your resource-based
+%% policy explicitly denies the root principal's access.
+%%
+%% `DeleteResourcePolicy' is an asynchronous operation. If you issue a
+%% `GetResourcePolicy' request immediately after running the
+%% `DeleteResourcePolicy' request, DynamoDB might still return the
+%% deleted policy. This is because the policy for your resource might not
+%% have been deleted yet. Wait for a few seconds, and then try the
+%% `GetResourcePolicy' request again.
+delete_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_policy(Client, Input, []).
+delete_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcePolicy">>, Input, Options).
+
 %% @doc The `DeleteTable' operation deletes a table and all of its items.
 %%
 %% After a
@@ -983,6 +1015,48 @@ get_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetItem">>, Input, Options).
 
+%% @doc Returns the resource-based policy document attached to the resource,
+%% which can be a table or stream, in JSON format.
+%%
+%% `GetResourcePolicy' follows an
+%% eventually consistent
+%% :
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html
+%% model. The following list describes the outcomes when you issue the
+%% `GetResourcePolicy' request immediately after issuing another request:
+%%
+%% If you issue a `GetResourcePolicy' request immediately after a
+%% `PutResourcePolicy' request, DynamoDB might return a
+%% `PolicyNotFoundException'.
+%%
+%% If you issue a `GetResourcePolicy'request immediately after a
+%% `DeleteResourcePolicy' request, DynamoDB might return the policy that
+%% was present before the deletion request.
+%%
+%% If you issue a `GetResourcePolicy' request immediately after a
+%% `CreateTable' request, which includes a resource-based policy,
+%% DynamoDB might return a `ResourceNotFoundException' or a
+%% `PolicyNotFoundException'.
+%%
+%% Because `GetResourcePolicy' uses an eventually consistent query, the
+%% metadata for your policy or table might not be available at that moment.
+%% Wait for a few seconds, and then retry the `GetResourcePolicy'
+%% request.
+%%
+%% After a `GetResourcePolicy' request returns a policy created using the
+%% `PutResourcePolicy' request, you can assume the policy will start
+%% getting applied in the authorization of requests to the resource. Because
+%% this process is eventually consistent, it will take some time to apply the
+%% policy to all requests to a resource. Policies that you attach while
+%% creating a table using the `CreateTable' request will always be
+%% applied to all requests for that table.
+get_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_policy(Client, Input, []).
+get_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourcePolicy">>, Input, Options).
+
 %% @doc Imports table data from an S3 bucket.
 import_table(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1140,6 +1214,36 @@ put_item(Client, Input)
 put_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutItem">>, Input, Options).
+
+%% @doc Attaches a resource-based policy document to the resource, which can
+%% be a table or stream.
+%%
+%% When you attach a resource-based policy using this API, the policy
+%% application is
+%% eventually consistent
+%% :
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html.
+%%
+%% `PutResourcePolicy' is an idempotent operation; running it multiple
+%% times on the same resource using the same policy document will return the
+%% same revision ID. If you specify an `ExpectedRevisionId' which
+%% doesn't match the current policy's `RevisionId', the
+%% `PolicyNotFoundException' will be returned.
+%%
+%% `PutResourcePolicy' is an asynchronous operation. If you issue a
+%% `GetResourcePolicy' request immediately after a
+%% `PutResourcePolicy' request, DynamoDB might return your previous
+%% policy, if there was one, or return the `PolicyNotFoundException'.
+%% This is because `GetResourcePolicy' uses an eventually consistent
+%% query, and the metadata for your policy or table might not be available at
+%% that moment. Wait for a few seconds, and then try the
+%% `GetResourcePolicy' request again.
+put_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_policy(Client, Input, []).
+put_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourcePolicy">>, Input, Options).
 
 %% @doc You must provide the name of the partition key attribute and a single
 %% value for that
@@ -1717,15 +1821,12 @@ update_kinesis_streaming_destination(Client, Input, Options)
 %% backfilling, you can use `UpdateTable' to perform other
 %% operations.
 %%
-%% `UpdateTable' is an asynchronous operation; while
-%% it's
-%% executing, the table status changes from `ACTIVE' to `UPDATING'.
-%% While it's `UPDATING', you can't issue another
-%% `UpdateTable'
-%% request on the
-%% base table nor any replicas. When the table returns to the
-%% `ACTIVE' state, the `UpdateTable' operation is
-%% complete.
+%% `UpdateTable' is an asynchronous operation; while it's executing,
+%% the table
+%% status changes from `ACTIVE' to `UPDATING'. While it's
+%% `UPDATING', you can't issue another `UpdateTable' request.
+%% When the table returns to the `ACTIVE' state, the `UpdateTable'
+%% operation is complete.
 update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
