@@ -15,10 +15,7 @@
 %% from the point of
 %% view of a package manager client.
 %%
-%% CodeArtifact Components
-%%
-%% Use the information in this guide to help you work with the following
-%% CodeArtifact components:
+%% CodeArtifact concepts
 %%
 %% Repository: A CodeArtifact repository contains a set of package
 %% versions:
@@ -34,7 +31,10 @@
 %% `mvn'
 %% ), Python CLIs (
 %% `pip'
-%% and `twine'), and NuGet CLIs (`nuget' and `dotnet').
+%% and `twine'), NuGet CLIs (`nuget' and `dotnet'), and
+%% the Swift package manager (
+%% `swift'
+%% ).
 %%
 %% Domain: Repositories are aggregated into a higher-level entity known as a
 %% domain. All package assets and metadata are stored in the domain,
@@ -64,8 +64,10 @@
 %% resolve dependencies and install the software. CodeArtifact supports npm:
 %% https://docs.aws.amazon.com/codeartifact/latest/ug/using-npm.html, PyPI:
 %% https://docs.aws.amazon.com/codeartifact/latest/ug/using-python.html,
-%% Maven: https://docs.aws.amazon.com/codeartifact/latest/ug/using-maven, and
-%% NuGet: https://docs.aws.amazon.com/codeartifact/latest/ug/using-nuget
+%% Maven: https://docs.aws.amazon.com/codeartifact/latest/ug/using-maven,
+%% NuGet: https://docs.aws.amazon.com/codeartifact/latest/ug/using-nuget,
+%% Swift: https://docs.aws.amazon.com/codeartifact/latest/ug/using-swift, and
+%% generic: https://docs.aws.amazon.com/codeartifact/latest/ug/using-generic
 %% package formats.
 %%
 %% In CodeArtifact, a package consists of:
@@ -79,6 +81,17 @@
 %% `1.0.2', etc.)
 %%
 %% Package-level metadata (for example, npm tags)
+%%
+%% Package group: A group of packages that match a specified definition.
+%% Package
+%% groups can be used to apply configuration to multiple packages that match
+%% a defined pattern using
+%% package format, package namespace, and package name. You can use package
+%% groups to more conveniently
+%% configure package origin controls for multiple packages. Package origin
+%% controls are used to block or allow ingestion or publishing
+%% of new package versions, which protects users from malicious actions known
+%% as dependency substitution attacks.
 %%
 %% Package version: A version of a package, such as `@types/node 12.6.9'.
 %% The version number
@@ -101,7 +114,7 @@
 %% version, such as an npm
 %% `.tgz' file or Maven POM and JAR files.
 %%
-%% CodeArtifact supports these operations:
+%% CodeArtifact supported API operations
 %%
 %% `AssociateExternalConnection': Adds an existing external
 %% connection to a repository.
@@ -109,7 +122,9 @@
 %% `CopyPackageVersions': Copies package versions from one
 %% repository to another repository in the same domain.
 %%
-%% `CreateDomain': Creates a domain
+%% `CreateDomain': Creates a domain.
+%%
+%% `CreatePackageGroup': Creates a package group.
 %%
 %% `CreateRepository': Creates a CodeArtifact repository in a domain.
 %%
@@ -122,6 +137,9 @@
 %%
 %% `DeletePackage': Deletes a package and all associated package
 %% versions.
+%%
+%% `DeletePackageGroup': Deletes a package group. Does not delete
+%% packages or package versions that are associated with a package group.
 %%
 %% `DeletePackageVersions': Deletes versions of a package. After a
 %% package has
@@ -141,6 +159,10 @@
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDescription.html
 %% object that contains details about a package.
 %%
+%% `DescribePackageGroup': Returns a PackageGroup:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageGroup.html
+%% object that contains details about a package group.
+%%
 %% `DescribePackageVersion': Returns a PackageVersionDescription:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html
 %% object that contains details about a package version.
@@ -155,6 +177,9 @@
 %%
 %% `DisassociateExternalConnection': Removes an existing external
 %% connection from a repository.
+%%
+%% `GetAssociatedPackageGroup': Returns the most closely associated
+%% package group to the specified package.
 %%
 %% `GetAuthorizationToken': Generates a temporary authorization token for
 %% accessing repositories in the domain. The token expires the authorization
@@ -175,6 +200,8 @@
 %% specific package format. A repository has one endpoint for each
 %% package format:
 %%
+%% `generic'
+%%
 %% `maven'
 %%
 %% `npm'
@@ -183,13 +210,25 @@
 %%
 %% `pypi'
 %%
+%% `swift'
+%%
 %% `GetRepositoryPermissionsPolicy': Returns the resource policy that is
 %% set on a repository.
+%%
+%% `ListAllowedRepositoriesForGroup': Lists the allowed repositories for
+%% a package group that has origin configuration set to
+%% `ALLOW_SPECIFIC_REPOSITORIES'.
+%%
+%% `ListAssociatedPackages': Returns a list of packages associated with
+%% the requested package group.
 %%
 %% `ListDomains': Returns a list of `DomainSummary' objects. Each
 %% returned `DomainSummary' object contains information about a domain.
 %%
 %% `ListPackages': Lists the packages in a repository.
+%%
+%% `ListPackageGroups': Returns a list of package groups in the requested
+%% domain.
 %%
 %% `ListPackageVersionAssets': Lists the assets for a given package
 %% version.
@@ -208,6 +247,9 @@
 %% `ListRepositoriesInDomain': Returns a list of the repositories in a
 %% domain.
 %%
+%% `ListSubPackageGroups': Returns a list of direct children of the
+%% specified package group.
+%%
 %% `PublishPackageVersion': Creates a new package version containing one
 %% or more assets.
 %%
@@ -221,6 +263,12 @@
 %% repository
 %% that specifies permissions to access it.
 %%
+%% `UpdatePackageGroup': Updates a package group. This API cannot be used
+%% to update a package group's origin configuration or pattern.
+%%
+%% `UpdatePackageGroupOriginConfiguration': Updates the package origin
+%% configuration for a package group.
+%%
 %% `UpdatePackageVersionsStatus': Updates the status of one or more
 %% versions of a package.
 %%
@@ -233,6 +281,8 @@
          copy_package_versions/3,
          create_domain/2,
          create_domain/3,
+         create_package_group/2,
+         create_package_group/3,
          create_repository/2,
          create_repository/3,
          delete_domain/2,
@@ -241,6 +291,8 @@
          delete_domain_permissions_policy/3,
          delete_package/2,
          delete_package/3,
+         delete_package_group/2,
+         delete_package_group/3,
          delete_package_versions/2,
          delete_package_versions/3,
          delete_repository/2,
@@ -253,6 +305,9 @@
          describe_package/5,
          describe_package/7,
          describe_package/8,
+         describe_package_group/3,
+         describe_package_group/5,
+         describe_package_group/6,
          describe_package_version/6,
          describe_package_version/8,
          describe_package_version/9,
@@ -263,6 +318,9 @@
          disassociate_external_connection/3,
          dispose_package_versions/2,
          dispose_package_versions/3,
+         get_associated_package_group/4,
+         get_associated_package_group/6,
+         get_associated_package_group/7,
          get_authorization_token/2,
          get_authorization_token/3,
          get_domain_permissions_policy/2,
@@ -280,8 +338,16 @@
          get_repository_permissions_policy/3,
          get_repository_permissions_policy/5,
          get_repository_permissions_policy/6,
+         list_allowed_repositories_for_group/4,
+         list_allowed_repositories_for_group/6,
+         list_allowed_repositories_for_group/7,
+         list_associated_packages/3,
+         list_associated_packages/5,
+         list_associated_packages/6,
          list_domains/2,
          list_domains/3,
+         list_package_groups/2,
+         list_package_groups/3,
          list_package_version_assets/2,
          list_package_version_assets/3,
          list_package_version_dependencies/2,
@@ -294,6 +360,8 @@
          list_repositories/3,
          list_repositories_in_domain/2,
          list_repositories_in_domain/3,
+         list_sub_package_groups/2,
+         list_sub_package_groups/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          publish_package_version/2,
@@ -308,6 +376,10 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_package_group/2,
+         update_package_group/3,
+         update_package_group_origin_configuration/2,
+         update_package_group_origin_configuration/3,
          update_package_versions_status/2,
          update_package_versions_status/3,
          update_repository/2,
@@ -428,6 +500,39 @@ create_domain(Client, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"domain">>, <<"domain">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% Creates a package group.
+%%
+%% For more information about creating package groups, including example CLI
+%% commands, see Create a package group:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/create-package-group.html
+%% in the CodeArtifact User Guide.
+create_package_group(Client, Input) ->
+    create_package_group(Client, Input, []).
+create_package_group(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/package-group"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domain">>, <<"domain">>},
+                     {<<"domain-owner">>, <<"domainOwner">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -555,6 +660,42 @@ delete_package(Client, Input0, Options0) ->
                      {<<"namespace">>, <<"namespace">>},
                      {<<"package">>, <<"package">>},
                      {<<"repository">>, <<"repository">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a package group.
+%%
+%% Deleting a package group does not delete packages or package versions
+%% associated with the package group.
+%% When a package group is deleted, the direct child package groups will
+%% become children of the package
+%% group's direct parent package group. Therefore, if any of the child
+%% groups are inheriting any settings
+%% from the parent, those settings could change.
+delete_package_group(Client, Input) ->
+    delete_package_group(Client, Input, []).
+delete_package_group(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/package-group"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domain">>, <<"domain">>},
+                     {<<"domain-owner">>, <<"domainOwner">>},
+                     {<<"package-group">>, <<"packageGroup">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -741,6 +882,40 @@ describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a PackageGroupDescription:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageGroupDescription.html
+%% object that
+%% contains information about the requested package group.
+describe_package_group(Client, Domain, PackageGroup)
+  when is_map(Client) ->
+    describe_package_group(Client, Domain, PackageGroup, #{}, #{}).
+
+describe_package_group(Client, Domain, PackageGroup, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_package_group(Client, Domain, PackageGroup, QueryMap, HeadersMap, []).
+
+describe_package_group(Client, Domain, PackageGroup, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/package-group"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"domain">>, Domain},
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
+        {<<"package-group">>, PackageGroup}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc
 %% Returns a
 %% PackageVersionDescription:
@@ -892,6 +1067,52 @@ dispose_package_versions(Client, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the most closely associated package group to the specified
+%% package.
+%%
+%% This API does not require that the package exist
+%% in any repository in the domain. As such, `GetAssociatedPackageGroup'
+%% can be used to see which package group's origin configuration
+%% applies to a package before that package is in a repository. This can be
+%% helpful to check if public packages are blocked without ingesting them.
+%%
+%% For information package group association and matching, see
+%% Package group
+%% definition syntax and matching behavior:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/package-group-definition-syntax-matching-behavior.html
+%% in the CodeArtifact User Guide.
+get_associated_package_group(Client, Domain, Format, Package)
+  when is_map(Client) ->
+    get_associated_package_group(Client, Domain, Format, Package, #{}, #{}).
+
+get_associated_package_group(Client, Domain, Format, Package, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_associated_package_group(Client, Domain, Format, Package, QueryMap, HeadersMap, []).
+
+get_associated_package_group(Client, Domain, Format, Package, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/get-associated-package-group"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"domain">>, Domain},
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
+        {<<"format">>, Format},
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
+        {<<"package">>, Package}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
 %% Generates a temporary authorization token for accessing repositories in
@@ -1096,6 +1317,8 @@ get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repo
 %% A repository has one endpoint for each
 %% package format:
 %%
+%% `generic'
+%%
 %% `maven'
 %%
 %% `npm'
@@ -1103,6 +1326,8 @@ get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repo
 %% `nuget'
 %%
 %% `pypi'
+%%
+%% `swift'
 get_repository_endpoint(Client, Domain, Format, Repository)
   when is_map(Client) ->
     get_repository_endpoint(Client, Domain, Format, Repository, #{}, #{}).
@@ -1166,6 +1391,87 @@ get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the repositories in the added repositories list of the
+%% specified restriction type for a package group.
+%%
+%% For more information about restriction types
+%% and added repository lists, see Package group origin controls:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/package-group-origin-controls.html
+%% in the CodeArtifact User Guide.
+list_allowed_repositories_for_group(Client, Domain, OriginRestrictionType, PackageGroup)
+  when is_map(Client) ->
+    list_allowed_repositories_for_group(Client, Domain, OriginRestrictionType, PackageGroup, #{}, #{}).
+
+list_allowed_repositories_for_group(Client, Domain, OriginRestrictionType, PackageGroup, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_allowed_repositories_for_group(Client, Domain, OriginRestrictionType, PackageGroup, QueryMap, HeadersMap, []).
+
+list_allowed_repositories_for_group(Client, Domain, OriginRestrictionType, PackageGroup, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/package-group-allowed-repositories"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"domain">>, Domain},
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"originRestrictionType">>, OriginRestrictionType},
+        {<<"package-group">>, PackageGroup}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of packages associated with the requested package
+%% group.
+%%
+%% For information package group association and matching, see
+%% Package group
+%% definition syntax and matching behavior:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/package-group-definition-syntax-matching-behavior.html
+%% in the CodeArtifact User Guide.
+list_associated_packages(Client, Domain, PackageGroup)
+  when is_map(Client) ->
+    list_associated_packages(Client, Domain, PackageGroup, #{}, #{}).
+
+list_associated_packages(Client, Domain, PackageGroup, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_associated_packages(Client, Domain, PackageGroup, QueryMap, HeadersMap, []).
+
+list_associated_packages(Client, Domain, PackageGroup, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/list-associated-packages"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"domain">>, Domain},
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"package-group">>, PackageGroup},
+        {<<"preview">>, maps:get(<<"preview">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of DomainSummary:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html
 %% objects for all domains owned by the Amazon Web Services account that
@@ -1196,6 +1502,36 @@ list_domains(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of package groups in the requested domain.
+list_package_groups(Client, Input) ->
+    list_package_groups(Client, Input, []).
+list_package_groups(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/package-groups"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domain">>, <<"domain">>},
+                     {<<"domain-owner">>, <<"domainOwner">>},
+                     {<<"max-results">>, <<"maxResults">>},
+                     {<<"next-token">>, <<"nextToken">>},
+                     {<<"prefix">>, <<"prefix">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
@@ -1434,6 +1770,42 @@ list_repositories_in_domain(Client, Input0, Options0) ->
                      {<<"max-results">>, <<"maxResults">>},
                      {<<"next-token">>, <<"nextToken">>},
                      {<<"repository-prefix">>, <<"repositoryPrefix">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of direct children of the specified package group.
+%%
+%% For information package group hierarchy, see
+%% Package group
+%% definition syntax and matching behavior:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/package-group-definition-syntax-matching-behavior.html
+%% in the CodeArtifact User Guide.
+list_sub_package_groups(Client, Input) ->
+    list_sub_package_groups(Client, Input, []).
+list_sub_package_groups(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/package-groups/sub-groups"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domain">>, <<"domain">>},
+                     {<<"domain-owner">>, <<"domainOwner">>},
+                     {<<"max-results">>, <<"maxResults">>},
+                     {<<"next-token">>, <<"nextToken">>},
+                     {<<"package-group">>, <<"packageGroup">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -1687,6 +2059,77 @@ untag_resource(Client, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"resourceArn">>, <<"resourceArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a package group.
+%%
+%% This API cannot be used to update a package group's origin
+%% configuration or pattern. To update a
+%% package group's origin configuration, use
+%% UpdatePackageGroupOriginConfiguration:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_UpdatePackageGroupOriginConfiguration.html.
+update_package_group(Client, Input) ->
+    update_package_group(Client, Input, []).
+update_package_group(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/package-group"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domain">>, <<"domain">>},
+                     {<<"domain-owner">>, <<"domainOwner">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the package origin configuration for a package group.
+%%
+%% The package origin configuration determines how new versions of a package
+%% can be added to a repository. You can allow or block direct
+%% publishing of new package versions, or ingestion and retaining of new
+%% package versions from an external connection or upstream source.
+%% For more information about package group origin controls and
+%% configuration, see
+%% Package group origin controls:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/package-group-origin-controls.html
+%% in the CodeArtifact User Guide.
+update_package_group_origin_configuration(Client, Input) ->
+    update_package_group_origin_configuration(Client, Input, []).
+update_package_group_origin_configuration(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/package-group-origin-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domain">>, <<"domain">>},
+                     {<<"domain-owner">>, <<"domainOwner">>},
+                     {<<"package-group">>, <<"packageGroup">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
