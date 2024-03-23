@@ -543,7 +543,7 @@ delete_faq(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFaq">>, Input, Options).
 
-%% @doc Deletes an existing Amazon Kendra index.
+%% @doc Deletes an Amazon Kendra index.
 %%
 %% An exception is not thrown if the index is
 %% already being deleted. While the index is being deleted, the `Status'
@@ -601,7 +601,7 @@ delete_query_suggestions_block_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteQuerySuggestionsBlockList">>, Input, Options).
 
-%% @doc Deletes an existing Amazon Kendra thesaurus.
+%% @doc Deletes an Amazon Kendra thesaurus.
 delete_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_thesaurus(Client, Input, []).
@@ -667,7 +667,7 @@ describe_featured_results_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFeaturedResultsSet">>, Input, Options).
 
-%% @doc Gets information about an existing Amazon Kendra index.
+%% @doc Gets information about an Amazon Kendra index.
 describe_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_index(Client, Input, []).
@@ -725,7 +725,7 @@ describe_query_suggestions_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeQuerySuggestionsConfig">>, Input, Options).
 
-%% @doc Gets information about an existing Amazon Kendra thesaurus.
+%% @doc Gets information about an Amazon Kendra thesaurus.
 describe_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_thesaurus(Client, Input, []).
@@ -1173,7 +1173,7 @@ update_access_control_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccessControlConfiguration">>, Input, Options).
 
-%% @doc Updates an existing Amazon Kendra data source connector.
+%% @doc Updates an Amazon Kendra data source connector.
 update_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_source(Client, Input, []).
@@ -1210,7 +1210,7 @@ update_featured_results_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFeaturedResultsSet">>, Input, Options).
 
-%% @doc Updates an existing Amazon Kendra index.
+%% @doc Updates an Amazon Kendra index.
 update_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_index(Client, Input, []).
