@@ -116,12 +116,6 @@ retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
 %%
 %% The response cites up to five sources but only selects the ones that are
 %% relevant to the query.
-%%
-%% The `numberOfResults' field is currently unsupported for
-%% `RetrieveAndGenerate'. Don't include it in the
-%% vectorSearchConfiguration:
-%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_KnowledgeBaseVectorSearchConfiguration.html
-%% object.
 retrieve_and_generate(Client, Input) ->
     retrieve_and_generate(Client, Input, []).
 retrieve_and_generate(Client, Input0, Options0) ->

@@ -27,6 +27,8 @@
          delete_environment/4,
          delete_kx_cluster/4,
          delete_kx_cluster/5,
+         delete_kx_cluster_node/5,
+         delete_kx_cluster_node/6,
          delete_kx_database/4,
          delete_kx_database/5,
          delete_kx_dataview/5,
@@ -417,6 +419,31 @@ delete_kx_cluster(Client, ClusterName, EnvironmentId, Input0, Options0) ->
                      {<<"clientToken">>, <<"clientToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified nodes from a cluster.
+delete_kx_cluster_node(Client, ClusterName, EnvironmentId, NodeId, Input) ->
+    delete_kx_cluster_node(Client, ClusterName, EnvironmentId, NodeId, Input, []).
+delete_kx_cluster_node(Client, ClusterName, EnvironmentId, NodeId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), "/nodes/", aws_util:encode_uri(NodeId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified database and all of its associated data.

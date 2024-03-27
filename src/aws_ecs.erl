@@ -206,14 +206,10 @@ create_cluster(Client, Input, Options)
 %% update an existing
 %% service, see the `UpdateService' action.
 %%
-%% Starting April 15, 2023, Amazon Web Services will not onboard new
-%% customers to Amazon Elastic Inference (EI), and will help current
-%% customers migrate their workloads to options that offer better price and
-%% performance. After April 15, 2023, new customers will not be able to
-%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-%% once during the past 30-day period are considered current customers and
-%% will be able to continue using the service.
+%% On March 21, 2024, a change was made to resolve the task definition
+%% revision before authorization. When a task definition revision is not
+%% specified, authorization will occur using the latest revision of a task
+%% definition.
 %%
 %% In addition to maintaining the desired count of tasks in your service, you
 %% can
@@ -349,12 +345,20 @@ create_cluster(Client, Input, Options)
 %% in the Amazon Elastic Container Service Developer Guide.
 %%
 %% When the service scheduler launches new tasks, it determines task
-%% placement. For
-%% information about task placement and task placement strategies, see Amazon
-%% ECS
+%% placement. For information
+%% about task placement and task placement strategies, see Amazon ECS
 %% task placement:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container Service Developer Guide
+%%
+%% Starting April 15, 2023, Amazon Web Services will not onboard new
+%% customers to Amazon Elastic Inference (EI), and will help current
+%% customers migrate their workloads to options that offer better price and
+%% performance. After April 15, 2023, new customers will not be able to
+%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
+%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
+%% once during the past 30-day period are considered current customers and
+%% will be able to continue using the service.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
@@ -371,6 +375,11 @@ create_service(Client, Input, Options)
 %% types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
 %% in the Amazon Elastic Container Service Developer Guide.
+%%
+%% On March 21, 2024, a change was made to resolve the task definition
+%% revision before authorization. When a task definition revision is not
+%% specified, authorization will occur using the latest revision of a task
+%% definition.
 %%
 %% For information about the maximum number of task sets and otther quotas,
 %% see Amazon ECS
@@ -1020,6 +1029,11 @@ register_task_definition(Client, Input, Options)
 
 %% @doc Starts a new task using the specified task definition.
 %%
+%% On March 21, 2024, a change was made to resolve the task definition
+%% revision before authorization. When a task definition revision is not
+%% specified, authorization will occur using the latest revision of a task
+%% definition.
+%%
 %% You can allow Amazon ECS to place tasks for you, or you can customize how
 %% Amazon ECS places
 %% tasks using placement constraints and placement strategies. For more
@@ -1086,6 +1100,11 @@ run_task(Client, Input, Options)
 %% @doc Starts a new task from the specified task definition on the specified
 %% container
 %% instance or instances.
+%%
+%% On March 21, 2024, a change was made to resolve the task definition
+%% revision before authorization. When a task definition revision is not
+%% specified, authorization will occur using the latest revision of a task
+%% definition.
 %%
 %% Starting April 15, 2023, Amazon Web Services will not onboard new
 %% customers to Amazon Elastic Inference (EI), and will help current
@@ -1343,6 +1362,11 @@ update_container_instances_state(Client, Input, Options)
     request(Client, <<"UpdateContainerInstancesState">>, Input, Options).
 
 %% @doc Modifies the parameters of a service.
+%%
+%% On March 21, 2024, a change was made to resolve the task definition
+%% revision before authorization. When a task definition revision is not
+%% specified, authorization will occur using the latest revision of a task
+%% definition.
 %%
 %% For services using the rolling update (`ECS') you can update the
 %% desired

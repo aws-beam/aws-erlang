@@ -76,6 +76,8 @@
          get_tags/3,
          get_usage_forecast/2,
          get_usage_forecast/3,
+         list_cost_allocation_tag_backfill_history/2,
+         list_cost_allocation_tag_backfill_history/3,
          list_cost_allocation_tags/2,
          list_cost_allocation_tags/3,
          list_cost_category_definitions/2,
@@ -86,6 +88,8 @@
          list_tags_for_resource/3,
          provide_anomaly_feedback/2,
          provide_anomaly_feedback/3,
+         start_cost_allocation_tag_backfill/2,
+         start_cost_allocation_tag_backfill/3,
          start_savings_plans_purchase_recommendation_generation/2,
          start_savings_plans_purchase_recommendation_generation/3,
          tag_resource/2,
@@ -552,6 +556,15 @@ get_usage_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUsageForecast">>, Input, Options).
 
+%% @doc
+%% Retrieves a list of your historical cost allocation tag backfill requests.
+list_cost_allocation_tag_backfill_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cost_allocation_tag_backfill_history(Client, Input, []).
+list_cost_allocation_tag_backfill_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCostAllocationTagBackfillHistory">>, Input, Options).
+
 %% @doc Get a list of cost allocation tags.
 %%
 %% All inputs in the API are optional and serve as
@@ -611,6 +624,21 @@ provide_anomaly_feedback(Client, Input)
 provide_anomaly_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ProvideAnomalyFeedback">>, Input, Options).
+
+%% @doc
+%% Request a cost allocation tag backfill.
+%%
+%% This will backfill the activation status (either `active' or
+%% `inactive') for all tag keys from `para:BackfillFrom' up to the
+%% when this request is made.
+%%
+%% You can request a backfill once every 24 hours.
+start_cost_allocation_tag_backfill(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_cost_allocation_tag_backfill(Client, Input, []).
+start_cost_allocation_tag_backfill(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartCostAllocationTagBackfill">>, Input, Options).
 
 %% @doc Requests a Savings Plans recommendation generation.
 %%
