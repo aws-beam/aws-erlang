@@ -86,6 +86,914 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% lambda_endpoint_summary() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type lambda_endpoint_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_vpc() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CidrBlocks">> => list(string()()),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"VpcId">> => string(),
+%%   <<"VpcName">> => string()
+%% }
+-type environment_vpc() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{}
+-type delete_resource_policy_response() :: #{}.
+
+
+%% Example:
+%% default_route_input() :: #{
+%%   <<"ActivationState">> => string()
+%% }
+-type default_route_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_gateway_proxy_input() :: #{
+%%   <<"EndpointType">> => string(),
+%%   <<"StageName">> => string()
+%% }
+-type api_gateway_proxy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_route_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"RouteId">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"State">> => string()
+%% }
+-type update_route_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"LambdaEndpoint">> => lambda_endpoint_config(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UrlEndpoint">> => url_endpoint_config(),
+%%   <<"VpcId">> => string()
+%% }
+-type get_service_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_endpoint_config() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type lambda_endpoint_config() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% route_summary() :: #{
+%%   <<"AppendSourcePath">> => boolean(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"IncludeChildPaths">> => boolean(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Methods">> => list(string()()),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"PathResourceToId">> => map(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteType">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"SourcePath">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type route_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkFabricType">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TransitGatewayId">> => string()
+%% }
+-type environment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_request() :: #{}
+-type get_environment_request() :: #{}.
+
+
+%% Example:
+%% lambda_endpoint_input() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type lambda_endpoint_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_environment_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkFabricType">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TransitGatewayId">> => string()
+%% }
+-type get_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_request() :: #{}
+-type get_service_request() :: #{}.
+
+
+%% Example:
+%% list_services_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_services_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_services_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceSummaryList">> => list(service_summary()())
+%% }
+-type list_services_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_summary() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"LambdaEndpoint">> => lambda_endpoint_summary(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UrlEndpoint">> => url_endpoint_summary(),
+%%   <<"VpcId">> => string()
+%% }
+-type service_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointType">> := string(),
+%%   <<"LambdaEndpoint">> => lambda_endpoint_input(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"UrlEndpoint">> => url_endpoint_input(),
+%%   <<"VpcId">> => string()
+%% }
+-type create_service_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AdditionalDetails">> => map(),
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type error_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"ApiGatewayProxy">> => api_gateway_proxy_input(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"ProxyType">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcId">> := string()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"ApiGatewayProxy">> => api_gateway_proxy_input(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ProxyType">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcId">> => string()
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% update_route_request() :: #{
+%%   <<"ActivationState">> := string()
+%% }
+-type update_route_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_application_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string()
+%% }
+-type delete_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% url_endpoint_config() :: #{
+%%   <<"HealthUrl">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type url_endpoint_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkFabricType">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% uri_path_route_input() :: #{
+%%   <<"ActivationState">> => string(),
+%%   <<"AppendSourcePath">> => boolean(),
+%%   <<"IncludeChildPaths">> => boolean(),
+%%   <<"Methods">> => list(string()()),
+%%   <<"SourcePath">> => string()
+%% }
+-type uri_path_route_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_request() :: #{}
+-type delete_environment_request() :: #{}.
+
+
+%% Example:
+%% list_routes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_routes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_application_response() :: #{
+%%   <<"ApiGatewayProxy">> => api_gateway_proxy_config(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ProxyType">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcId">> => string()
+%% }
+-type get_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_route_response() :: #{
+%%   <<"AppendSourcePath">> => boolean(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"IncludeChildPaths">> => boolean(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Methods">> => list(string()()),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"PathResourceToId">> => map(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteType">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"SourcePath">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_route_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_gateway_proxy_config() :: #{
+%%   <<"ApiGatewayId">> => string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"NlbArn">> => string(),
+%%   <<"NlbName">> => string(),
+%%   <<"ProxyUrl">> => string(),
+%%   <<"StageName">> => string(),
+%%   <<"VpcLinkId">> => string()
+%% }
+-type api_gateway_proxy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% list_routes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RouteSummaryList">> => list(route_summary()())
+%% }
+-type list_routes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_vpcs_response() :: #{
+%%   <<"EnvironmentVpcList">> => list(environment_vpc()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environment_vpcs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% url_endpoint_input() :: #{
+%%   <<"HealthUrl">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type url_endpoint_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_route_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"RouteId">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"State">> => string()
+%% }
+-type delete_route_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_resource_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_resource_policy_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_route_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteType">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UriPathRoute">> => uri_path_route_input()
+%% }
+-type create_route_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+%% Example:
+%% delete_service_request() :: #{}
+-type delete_service_request() :: #{}.
+
+%% Example:
+%% delete_route_request() :: #{}
+-type delete_route_request() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"RetryAfterSeconds">> => integer(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_response() :: #{
+%%   <<"EnvironmentSummaryList">> => list(environment_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_summary() :: #{
+%%   <<"ApiGatewayProxy">> => api_gateway_proxy_summary(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ProxyType">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcId">> => string()
+%% }
+-type application_summary() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{}
+-type put_resource_policy_response() :: #{}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"ApplicationSummaryList">> => list(application_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{}
+-type delete_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% api_gateway_proxy_summary() :: #{
+%%   <<"ApiGatewayId">> => string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"NlbArn">> => string(),
+%%   <<"NlbName">> => string(),
+%%   <<"ProxyUrl">> => string(),
+%%   <<"StageName">> => string(),
+%%   <<"VpcLinkId">> => string()
+%% }
+-type api_gateway_proxy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_service_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"State">> => string()
+%% }
+-type delete_service_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_route_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DefaultRoute">> => default_route_input(),
+%%   <<"RouteType">> := string(),
+%%   <<"ServiceIdentifier">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"UriPathRoute">> => uri_path_route_input()
+%% }
+-type create_route_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"NetworkFabricType">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_vpcs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environment_vpcs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LambdaEndpoint">> => lambda_endpoint_input(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UrlEndpoint">> => url_endpoint_input(),
+%%   <<"VpcId">> => string()
+%% }
+-type create_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
+
+
+%% Example:
+%% delete_environment_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string()
+%% }
+-type delete_environment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_route_request() :: #{}
+-type get_route_request() :: #{}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
+
+%% Example:
+%% url_endpoint_summary() :: #{
+%%   <<"HealthUrl">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type url_endpoint_summary() :: #{binary() => any()}.
+
+-type create_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_route_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_route_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_route_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_applications_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_environment_vpcs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_environments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_routes_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_services_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_resource_policy_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_route_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -112,8 +1020,17 @@
 %% Create an application:
 %% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/userguide/getting-started-create-application.html
 %% in the Refactor Spaces User Guide.
+-spec create_application(aws_client:aws_client(), binary() | list(), create_application_request()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
 create_application(Client, EnvironmentIdentifier, Input) ->
     create_application(Client, EnvironmentIdentifier, Input, []).
+
+-spec create_application(aws_client:aws_client(), binary() | list(), create_application_request(), proplists:proplist()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
 create_application(Client, EnvironmentIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications"],
@@ -158,8 +1075,17 @@ create_application(Client, EnvironmentIdentifier, Input0, Options0) ->
 %% a transit gateway and you must use your network infrastructure to route
 %% traffic to services
 %% with private URL endpoints.
+-spec create_environment(aws_client:aws_client(), create_environment_request()) ->
+    {ok, create_environment_response(), tuple()} |
+    {error, any()} |
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
+
+-spec create_environment(aws_client:aws_client(), create_environment_request(), proplists:proplist()) ->
+    {ok, create_environment_response(), tuple()} |
+    {error, any()} |
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/environments"],
@@ -296,8 +1222,17 @@ create_environment(Client, Input0, Options0) ->
 %% a route:
 %% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/userguide/getting-started-create-role.html
 %% in the Refactor Spaces User Guide.
+-spec create_route(aws_client:aws_client(), binary() | list(), binary() | list(), create_route_request()) ->
+    {ok, create_route_response(), tuple()} |
+    {error, any()} |
+    {error, create_route_errors(), tuple()}.
 create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
+
+-spec create_route(aws_client:aws_client(), binary() | list(), binary() | list(), create_route_request(), proplists:proplist()) ->
+    {ok, create_route_response(), tuple()} |
+    {error, any()} |
+    {error, create_route_errors(), tuple()}.
 create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/routes"],
@@ -336,8 +1271,17 @@ create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Optio
 %% `RefactorSpacesSecurityGroup' to the resource. Alternatively, to add
 %% more
 %% cross-account constraints, apply your own security group.
+-spec create_service(aws_client:aws_client(), binary() | list(), binary() | list(), create_service_request()) ->
+    {ok, create_service_response(), tuple()} |
+    {error, any()} |
+    {error, create_service_errors(), tuple()}.
 create_service(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     create_service(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
+
+-spec create_service(aws_client:aws_client(), binary() | list(), binary() | list(), create_service_request(), proplists:proplist()) ->
+    {ok, create_service_response(), tuple()} |
+    {error, any()} |
+    {error, create_service_errors(), tuple()}.
 create_service(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/services"],
@@ -365,8 +1309,17 @@ create_service(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Opt
 %%
 %% Before you can delete an application, you must first
 %% delete any services or routes within the application.
+-spec delete_application(aws_client:aws_client(), binary() | list(), binary() | list(), delete_application_request()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     delete_application(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
+
+-spec delete_application(aws_client:aws_client(), binary() | list(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), ""],
@@ -394,8 +1347,17 @@ delete_application(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0,
 %%
 %% Before you can delete an environment, you must first
 %% delete any applications and services within the environment.
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request()) ->
+    {ok, delete_environment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, EnvironmentIdentifier, Input) ->
     delete_environment(Client, EnvironmentIdentifier, Input, []).
+
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
+    {ok, delete_environment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, EnvironmentIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), ""],
@@ -419,8 +1381,17 @@ delete_environment(Client, EnvironmentIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the resource policy set for the environment.
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Identifier, Input) ->
     delete_resource_policy(Client, Identifier, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/resourcepolicy/", aws_util:encode_uri(Identifier), ""],
@@ -444,8 +1415,17 @@ delete_resource_policy(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Web Services Migration Hub Refactor Spaces route.
+-spec delete_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_route_request()) ->
+    {ok, delete_route_response(), tuple()} |
+    {error, any()} |
+    {error, delete_route_errors(), tuple()}.
 delete_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input) ->
     delete_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input, []).
+
+-spec delete_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_route_request(), proplists:proplist()) ->
+    {ok, delete_route_response(), tuple()} |
+    {error, any()} |
+    {error, delete_route_errors(), tuple()}.
 delete_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/routes/", aws_util:encode_uri(RouteIdentifier), ""],
@@ -469,8 +1449,17 @@ delete_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifi
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Web Services Migration Hub Refactor Spaces service.
+-spec delete_service(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_service_request()) ->
+    {ok, delete_service_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier, Input) ->
     delete_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier, Input, []).
+
+-spec delete_service(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_service_request(), proplists:proplist()) ->
+    {ok, delete_service_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/services/", aws_util:encode_uri(ServiceIdentifier), ""],
@@ -495,14 +1484,26 @@ delete_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIden
 
 %% @doc Gets an Amazon Web Services Migration Hub Refactor Spaces
 %% application.
+-spec get_application(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationIdentifier, EnvironmentIdentifier)
   when is_map(Client) ->
     get_application(Client, ApplicationIdentifier, EnvironmentIdentifier, #{}, #{}).
 
+-spec get_application(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_application(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), ""],
@@ -521,14 +1522,26 @@ get_application(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, 
 
 %% @doc Gets an Amazon Web Services Migration Hub Refactor Spaces
 %% environment.
+-spec get_environment(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_environment_response(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, EnvironmentIdentifier)
   when is_map(Client) ->
     get_environment(Client, EnvironmentIdentifier, #{}, #{}).
 
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_environment_response(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, EnvironmentIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_environment_response(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), ""],
@@ -547,14 +1560,26 @@ get_environment(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the resource-based permission policy that is set for the given
 %% environment.
+-spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Identifier)
   when is_map(Client) ->
     get_resource_policy(Client, Identifier, #{}, #{}).
 
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_policy(Client, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resourcepolicy/", aws_util:encode_uri(Identifier), ""],
@@ -572,14 +1597,26 @@ get_resource_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon Web Services Migration Hub Refactor Spaces route.
+-spec get_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_route_response(), tuple()} |
+    {error, any()} |
+    {error, get_route_errors(), tuple()}.
 get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier)
   when is_map(Client) ->
     get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, #{}, #{}).
 
+-spec get_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_route_response(), tuple()} |
+    {error, any()} |
+    {error, get_route_errors(), tuple()}.
 get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_route_response(), tuple()} |
+    {error, any()} |
+    {error, get_route_errors(), tuple()}.
 get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/routes/", aws_util:encode_uri(RouteIdentifier), ""],
@@ -597,14 +1634,26 @@ get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon Web Services Migration Hub Refactor Spaces service.
+-spec get_service(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_service_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_errors(), tuple()}.
 get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier)
   when is_map(Client) ->
     get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier, #{}, #{}).
 
+-spec get_service(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_service_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_errors(), tuple()}.
 get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_service(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_service_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_errors(), tuple()}.
 get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/services/", aws_util:encode_uri(ServiceIdentifier), ""],
@@ -623,14 +1672,26 @@ get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentif
 
 %% @doc Lists all the Amazon Web Services Migration Hub Refactor Spaces
 %% applications within an environment.
+-spec list_applications(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, EnvironmentIdentifier)
   when is_map(Client) ->
     list_applications(Client, EnvironmentIdentifier, #{}, #{}).
 
+-spec list_applications(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, EnvironmentIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_applications(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications"],
@@ -655,14 +1716,26 @@ list_applications(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
 %% @doc Lists all Amazon Web Services Migration Hub Refactor Spaces service
 %% virtual private clouds (VPCs) that are part of the
 %% environment.
+-spec list_environment_vpcs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_environment_vpcs_response(), tuple()} |
+    {error, any()} |
+    {error, list_environment_vpcs_errors(), tuple()}.
 list_environment_vpcs(Client, EnvironmentIdentifier)
   when is_map(Client) ->
     list_environment_vpcs(Client, EnvironmentIdentifier, #{}, #{}).
 
+-spec list_environment_vpcs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_environment_vpcs_response(), tuple()} |
+    {error, any()} |
+    {error, list_environment_vpcs_errors(), tuple()}.
 list_environment_vpcs(Client, EnvironmentIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environment_vpcs(Client, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_environment_vpcs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_environment_vpcs_response(), tuple()} |
+    {error, any()} |
+    {error, list_environment_vpcs_errors(), tuple()}.
 list_environment_vpcs(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/vpcs"],
@@ -687,14 +1760,26 @@ list_environment_vpcs(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Optio
 %% @doc Lists Amazon Web Services Migration Hub Refactor Spaces environments
 %% owned by a caller account or shared with the caller
 %% account.
+-spec list_environments(aws_client:aws_client()) ->
+    {ok, list_environments_response(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
 
+-spec list_environments(aws_client:aws_client(), map(), map()) ->
+    {ok, list_environments_response(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, QueryMap, HeadersMap, []).
 
+-spec list_environments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_environments_response(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments"],
@@ -718,14 +1803,26 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all the Amazon Web Services Migration Hub Refactor Spaces
 %% routes within an application.
+-spec list_routes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_routes_response(), tuple()} |
+    {error, any()} |
+    {error, list_routes_errors(), tuple()}.
 list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier)
   when is_map(Client) ->
     list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier, #{}, #{}).
 
+-spec list_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_routes_response(), tuple()} |
+    {error, any()} |
+    {error, list_routes_errors(), tuple()}.
 list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_routes_response(), tuple()} |
+    {error, any()} |
+    {error, list_routes_errors(), tuple()}.
 list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/routes"],
@@ -749,14 +1846,26 @@ list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, Head
 
 %% @doc Lists all the Amazon Web Services Migration Hub Refactor Spaces
 %% services within an application.
+-spec list_services(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_services_response(), tuple()} |
+    {error, any()} |
+    {error, list_services_errors(), tuple()}.
 list_services(Client, ApplicationIdentifier, EnvironmentIdentifier)
   when is_map(Client) ->
     list_services(Client, ApplicationIdentifier, EnvironmentIdentifier, #{}, #{}).
 
+-spec list_services(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_services_response(), tuple()} |
+    {error, any()} |
+    {error, list_services_errors(), tuple()}.
 list_services(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_services(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_services(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_services_response(), tuple()} |
+    {error, any()} |
+    {error, list_services_errors(), tuple()}.
 list_services(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/services"],
@@ -782,14 +1891,26 @@ list_services(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, He
 %%
 %% The caller account must be the same as the resource’s
 %% `OwnerAccountId'. Listing tags in other accounts is not supported.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -815,8 +1936,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% permission in Resource Access Manager. The policy must not contain new
 %% lines or blank lines.
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/resourcepolicy"],
@@ -850,8 +1980,17 @@ put_resource_policy(Client, Input0, Options0) ->
 %% Amazon Web Services Migration Hub Refactor Spaces does not propagate tags
 %% to orchestrated resources, such as an
 %% environment’s transit gateway.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -881,8 +2020,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% same as the resource’s
 %% `OwnerAccountId'. Untagging resources across accounts is not
 %% supported.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -907,8 +2055,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon Web Services Migration Hub Refactor Spaces route.
+-spec update_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_route_request()) ->
+    {ok, update_route_response(), tuple()} |
+    {error, any()} |
+    {error, update_route_errors(), tuple()}.
 update_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input) ->
     update_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input, []).
+
+-spec update_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_route_request(), proplists:proplist()) ->
+    {ok, update_route_response(), tuple()} |
+    {error, any()} |
+    {error, update_route_errors(), tuple()}.
 update_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/routes/", aws_util:encode_uri(RouteIdentifier), ""],
@@ -935,7 +2092,7 @@ update_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifi
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -11,6 +11,55 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% generate_data_set_request() :: #{
+%%   <<"customerDefinedValues">> => map(),
+%%   <<"dataSetPublicationDate">> := non_neg_integer(),
+%%   <<"dataSetType">> := list(any()),
+%%   <<"destinationS3BucketName">> := string(),
+%%   <<"destinationS3Prefix">> => string(),
+%%   <<"roleNameArn">> := string(),
+%%   <<"snsTopicArn">> := string()
+%% }
+-type generate_data_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_set_result() :: #{
+%%   <<"dataSetRequestId">> => string()
+%% }
+-type generate_data_set_result() :: #{binary() => any()}.
+
+%% Example:
+%% marketplace_commerce_analytics_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type marketplace_commerce_analytics_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_support_data_export_request() :: #{
+%%   <<"customerDefinedValues">> => map(),
+%%   <<"dataSetType">> := list(any()),
+%%   <<"destinationS3BucketName">> := string(),
+%%   <<"destinationS3Prefix">> => string(),
+%%   <<"fromDate">> := non_neg_integer(),
+%%   <<"roleNameArn">> := string(),
+%%   <<"snsTopicArn">> := string()
+%% }
+-type start_support_data_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_support_data_export_result() :: #{
+%%   <<"dataSetRequestId">> => string()
+%% }
+-type start_support_data_export_result() :: #{binary() => any()}.
+
+-type generate_data_set_errors() ::
+    marketplace_commerce_analytics_exception().
+
+-type start_support_data_export_errors() ::
+    marketplace_commerce_analytics_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -30,9 +79,18 @@
 %% permissions for the following actions:
 %% s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
 %% iam:GetRolePolicy.
+-spec generate_data_set(aws_client:aws_client(), generate_data_set_request()) ->
+    {ok, generate_data_set_result(), tuple()} |
+    {error, any()} |
+    {error, generate_data_set_errors(), tuple()}.
 generate_data_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_set(Client, Input, []).
+
+-spec generate_data_set(aws_client:aws_client(), generate_data_set_request(), proplists:proplist()) ->
+    {ok, generate_data_set_result(), tuple()} |
+    {error, any()} |
+    {error, generate_data_set_errors(), tuple()}.
 generate_data_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateDataSet">>, Input, Options).
@@ -55,9 +113,18 @@ generate_data_set(Client, Input, Options)
 %% permissions for the following actions:
 %% s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
 %% iam:GetRolePolicy.
+-spec start_support_data_export(aws_client:aws_client(), start_support_data_export_request()) ->
+    {ok, start_support_data_export_result(), tuple()} |
+    {error, any()} |
+    {error, start_support_data_export_errors(), tuple()}.
 start_support_data_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_support_data_export(Client, Input, []).
+
+-spec start_support_data_export(aws_client:aws_client(), start_support_data_export_request(), proplists:proplist()) ->
+    {ok, start_support_data_export_result(), tuple()} |
+    {error, any()} |
+    {error, start_support_data_export_errors(), tuple()}.
 start_support_data_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSupportDataExport">>, Input, Options).

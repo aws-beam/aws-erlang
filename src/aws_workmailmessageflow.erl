@@ -17,20 +17,108 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% get_raw_message_content_request() :: #{}
+-type get_raw_message_content_request() :: #{}.
+
+
+%% Example:
+%% get_raw_message_content_response() :: #{
+%%   <<"messageContent">> => binary()
+%% }
+-type get_raw_message_content_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_content_location() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_content_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_frozen() :: #{
+%%   <<"message">> => string()
+%% }
+-type message_frozen() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_rejected() :: #{
+%%   <<"message">> => string()
+%% }
+-type message_rejected() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_raw_message_content_request() :: #{
+%%   <<"content">> := raw_message_content()
+%% }
+-type put_raw_message_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_raw_message_content_response() :: #{}
+-type put_raw_message_content_response() :: #{}.
+
+
+%% Example:
+%% raw_message_content() :: #{
+%%   <<"s3Reference">> => s3_reference()
+%% }
+-type raw_message_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_reference() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string(),
+%%   <<"objectVersion">> => string()
+%% }
+-type s3_reference() :: #{binary() => any()}.
+
+-type get_raw_message_content_errors() ::
+    resource_not_found_exception().
+
+-type put_raw_message_content_errors() ::
+    resource_not_found_exception() | 
+    message_rejected() | 
+    message_frozen() | 
+    invalid_content_location().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Retrieves the raw content of an in-transit email message, in MIME
 %% format.
+-spec get_raw_message_content(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_raw_message_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_raw_message_content_errors(), tuple()}.
 get_raw_message_content(Client, MessageId)
   when is_map(Client) ->
     get_raw_message_content(Client, MessageId, #{}, #{}).
 
+-spec get_raw_message_content(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_raw_message_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_raw_message_content_errors(), tuple()}.
 get_raw_message_content(Client, MessageId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, []).
 
+-spec get_raw_message_content(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_raw_message_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_raw_message_content_errors(), tuple()}.
 get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/messages/", aws_util:encode_uri(MessageId), ""],
@@ -67,8 +155,17 @@ get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/workmail/latest/APIReference/API_messageflow_GetRawMessageContent.html
 %% returns an updated
 %% message.
+-spec put_raw_message_content(aws_client:aws_client(), binary() | list(), put_raw_message_content_request()) ->
+    {ok, put_raw_message_content_response(), tuple()} |
+    {error, any()} |
+    {error, put_raw_message_content_errors(), tuple()}.
 put_raw_message_content(Client, MessageId, Input) ->
     put_raw_message_content(Client, MessageId, Input, []).
+
+-spec put_raw_message_content(aws_client:aws_client(), binary() | list(), put_raw_message_content_request(), proplists:proplist()) ->
+    {ok, put_raw_message_content_response(), tuple()} |
+    {error, any()} |
+    {error, put_raw_message_content_errors(), tuple()}.
 put_raw_message_content(Client, MessageId, Input0, Options0) ->
     Method = post,
     Path = ["/messages/", aws_util:encode_uri(MessageId), ""],
@@ -95,7 +192,7 @@ put_raw_message_content(Client, MessageId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -43,6 +43,644 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% session_key_amex() :: #{
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type session_key_amex() :: #{binary() => any()}.
+
+
+%% Example:
+%% amex_card_security_code_version1() :: #{
+%%   <<"CardExpiryDate">> => string()
+%% }
+-type amex_card_security_code_version1() :: #{binary() => any()}.
+
+
+%% Example:
+%% asymmetric_encryption_attributes() :: #{
+%%   <<"PaddingType">> => string()
+%% }
+-type asymmetric_encryption_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% discover_dynamic_card_verification_code() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"CardExpiryDate">> => string(),
+%%   <<"UnpredictableNumber">> => string()
+%% }
+-type discover_dynamic_card_verification_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% visa_pin_verification_value() :: #{
+%%   <<"EncryptedPinBlock">> => string(),
+%%   <<"PinVerificationKeyIndex">> => integer()
+%% }
+-type visa_pin_verification_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% ibm3624_pin_offset() :: #{
+%%   <<"DecimalizationTable">> => string(),
+%%   <<"EncryptedPinBlock">> => string(),
+%%   <<"PinValidationData">> => string(),
+%%   <<"PinValidationDataPadCharacter">> => string()
+%% }
+-type ibm3624_pin_offset() :: #{binary() => any()}.
+
+
+%% Example:
+%% translation_pin_data_iso_format034() :: #{
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type translation_pin_data_iso_format034() :: #{binary() => any()}.
+
+
+%% Example:
+%% translate_pin_data_input() :: #{
+%%   <<"EncryptedPinBlock">> := string(),
+%%   <<"IncomingDukptAttributes">> => dukpt_derivation_attributes(),
+%%   <<"IncomingKeyIdentifier">> := string(),
+%%   <<"IncomingTranslationAttributes">> := list(),
+%%   <<"OutgoingDukptAttributes">> => dukpt_derivation_attributes(),
+%%   <<"OutgoingKeyIdentifier">> := string(),
+%%   <<"OutgoingTranslationAttributes">> := list()
+%% }
+-type translate_pin_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% encrypt_data_output() :: #{
+%%   <<"CipherText">> => string(),
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type encrypt_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_mac_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type verify_mac_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% cryptogram_verification_arpc_method1() :: #{
+%%   <<"AuthResponseCode">> => string()
+%% }
+-type cryptogram_verification_arpc_method1() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamic_card_verification_value() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"CardExpiryDate">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type dynamic_card_verification_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% card_holder_verification_value() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"UnpredictableNumber">> => string()
+%% }
+-type card_holder_verification_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% mac_algorithm_dukpt() :: #{
+%%   <<"DukptDerivationType">> => string(),
+%%   <<"DukptKeyVariant">> => string(),
+%%   <<"KeySerialNumber">> => string()
+%% }
+-type mac_algorithm_dukpt() :: #{binary() => any()}.
+
+
+%% Example:
+%% cryptogram_verification_arpc_method2() :: #{
+%%   <<"CardStatusUpdate">> => string(),
+%%   <<"ProprietaryAuthenticationData">> => string()
+%% }
+-type cryptogram_verification_arpc_method2() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_card_validation_data_input() :: #{
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"PrimaryAccountNumber">> := string(),
+%%   <<"ValidationData">> := string(),
+%%   <<"VerificationAttributes">> := list()
+%% }
+-type verify_card_validation_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% amex_card_security_code_version2() :: #{
+%%   <<"CardExpiryDate">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type amex_card_security_code_version2() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"ResourceId">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% encrypt_data_input() :: #{
+%%   <<"EncryptionAttributes">> := list(),
+%%   <<"PlainText">> := string()
+%% }
+-type encrypt_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamic_card_verification_code() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"TrackData">> => string(),
+%%   <<"UnpredictableNumber">> => string()
+%% }
+-type dynamic_card_verification_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% dukpt_attributes() :: #{
+%%   <<"DukptDerivationType">> => string(),
+%%   <<"KeySerialNumber">> => string()
+%% }
+-type dukpt_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% emv_encryption_attributes() :: #{
+%%   <<"InitializationVector">> => string(),
+%%   <<"MajorKeyDerivationMode">> => string(),
+%%   <<"Mode">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string(),
+%%   <<"SessionDerivationData">> => string()
+%% }
+-type emv_encryption_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_mac_input() :: #{
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"Mac">> := string(),
+%%   <<"MacLength">> => integer(),
+%%   <<"MessageData">> := string(),
+%%   <<"VerificationAttributes">> := list()
+%% }
+-type verify_mac_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_pin_data_input() :: #{
+%%   <<"EncryptionKeyIdentifier">> := string(),
+%%   <<"GenerationAttributes">> := list(),
+%%   <<"GenerationKeyIdentifier">> := string(),
+%%   <<"PinBlockFormat">> := string(),
+%%   <<"PinDataLength">> => integer(),
+%%   <<"PrimaryAccountNumber">> := string()
+%% }
+-type generate_pin_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_mac_input() :: #{
+%%   <<"GenerationAttributes">> := list(),
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"MacLength">> => integer(),
+%%   <<"MessageData">> := string()
+%% }
+-type generate_mac_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% card_verification_value2() :: #{
+%%   <<"CardExpiryDate">> => string()
+%% }
+-type card_verification_value2() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_auth_request_cryptogram_output() :: #{
+%%   <<"AuthResponseValue">> => string(),
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type verify_auth_request_cryptogram_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% visa_pin() :: #{
+%%   <<"PinVerificationKeyIndex">> => integer()
+%% }
+-type visa_pin() :: #{binary() => any()}.
+
+
+%% Example:
+%% mac_algorithm_emv() :: #{
+%%   <<"MajorKeyDerivationMode">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string(),
+%%   <<"SessionKeyDerivationMode">> => string(),
+%%   <<"SessionKeyDerivationValue">> => list()
+%% }
+-type mac_algorithm_emv() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"path">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% ibm3624_pin_verification() :: #{
+%%   <<"DecimalizationTable">> => string(),
+%%   <<"PinOffset">> => string(),
+%%   <<"PinValidationData">> => string(),
+%%   <<"PinValidationDataPadCharacter">> => string()
+%% }
+-type ibm3624_pin_verification() :: #{binary() => any()}.
+
+
+%% Example:
+%% visa_pin_verification() :: #{
+%%   <<"PinVerificationKeyIndex">> => integer(),
+%%   <<"VerificationValue">> => string()
+%% }
+-type visa_pin_verification() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_key_emv_common() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type session_key_emv_common() :: #{binary() => any()}.
+
+
+%% Example:
+%% ibm3624_natural_pin() :: #{
+%%   <<"DecimalizationTable">> => string(),
+%%   <<"PinValidationData">> => string(),
+%%   <<"PinValidationDataPadCharacter">> => string()
+%% }
+-type ibm3624_natural_pin() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_key_emv2000() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type session_key_emv2000() :: #{binary() => any()}.
+
+
+%% Example:
+%% symmetric_encryption_attributes() :: #{
+%%   <<"InitializationVector">> => string(),
+%%   <<"Mode">> => string(),
+%%   <<"PaddingType">> => string()
+%% }
+-type symmetric_encryption_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_card_validation_data_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type verify_card_validation_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% verification_failed_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => string()
+%% }
+-type verification_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_pin_data_input() :: #{
+%%   <<"DukptAttributes">> => dukpt_attributes(),
+%%   <<"EncryptedPinBlock">> := string(),
+%%   <<"EncryptionKeyIdentifier">> := string(),
+%%   <<"PinBlockFormat">> := string(),
+%%   <<"PinDataLength">> => integer(),
+%%   <<"PrimaryAccountNumber">> := string(),
+%%   <<"VerificationAttributes">> := list(),
+%%   <<"VerificationKeyIdentifier">> := string()
+%% }
+-type verify_pin_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_key_mastercard() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string(),
+%%   <<"UnpredictableNumber">> => string()
+%% }
+-type session_key_mastercard() :: #{binary() => any()}.
+
+
+%% Example:
+%% decrypt_data_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"PlainText">> => string()
+%% }
+-type decrypt_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% re_encrypt_data_input() :: #{
+%%   <<"CipherText">> := string(),
+%%   <<"IncomingEncryptionAttributes">> := list(),
+%%   <<"OutgoingEncryptionAttributes">> := list(),
+%%   <<"OutgoingKeyIdentifier">> := string()
+%% }
+-type re_encrypt_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_card_validation_data_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"ValidationData">> => string()
+%% }
+-type generate_card_validation_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% re_encrypt_data_output() :: #{
+%%   <<"CipherText">> => string(),
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type re_encrypt_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_pin_data_output() :: #{
+%%   <<"EncryptedPinBlock">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionKeyCheckValue">> => string(),
+%%   <<"GenerationKeyArn">> => string(),
+%%   <<"GenerationKeyCheckValue">> => string(),
+%%   <<"PinData">> => list()
+%% }
+-type generate_pin_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% card_verification_value1() :: #{
+%%   <<"CardExpiryDate">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type card_verification_value1() :: #{binary() => any()}.
+
+
+%% Example:
+%% decrypt_data_input() :: #{
+%%   <<"CipherText">> := string(),
+%%   <<"DecryptionAttributes">> := list()
+%% }
+-type decrypt_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_auth_request_cryptogram_input() :: #{
+%%   <<"AuthRequestCryptogram">> := string(),
+%%   <<"AuthResponseAttributes">> => list(),
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"MajorKeyDerivationMode">> := string(),
+%%   <<"SessionKeyDerivationAttributes">> := list(),
+%%   <<"TransactionData">> := string()
+%% }
+-type verify_auth_request_cryptogram_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_card_validation_data_input() :: #{
+%%   <<"GenerationAttributes">> := list(),
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"PrimaryAccountNumber">> := string(),
+%%   <<"ValidationDataLength">> => integer()
+%% }
+-type generate_card_validation_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% ibm3624_random_pin() :: #{
+%%   <<"DecimalizationTable">> => string(),
+%%   <<"PinValidationData">> => string(),
+%%   <<"PinValidationDataPadCharacter">> => string()
+%% }
+-type ibm3624_random_pin() :: #{binary() => any()}.
+
+
+%% Example:
+%% translate_pin_data_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"PinBlock">> => string()
+%% }
+-type translate_pin_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_key_visa() :: #{
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type session_key_visa() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_pin_data_output() :: #{
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionKeyCheckValue">> => string(),
+%%   <<"VerificationKeyArn">> => string(),
+%%   <<"VerificationKeyCheckValue">> => string()
+%% }
+-type verify_pin_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% ibm3624_pin_from_offset() :: #{
+%%   <<"DecimalizationTable">> => string(),
+%%   <<"PinOffset">> => string(),
+%%   <<"PinValidationData">> => string(),
+%%   <<"PinValidationDataPadCharacter">> => string()
+%% }
+-type ibm3624_pin_from_offset() :: #{binary() => any()}.
+
+%% Example:
+%% translation_pin_data_iso_format1() :: #{}
+-type translation_pin_data_iso_format1() :: #{}.
+
+
+%% Example:
+%% generate_mac_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"Mac">> => string()
+%% }
+-type generate_mac_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% dukpt_derivation_attributes() :: #{
+%%   <<"DukptKeyDerivationType">> => string(),
+%%   <<"DukptKeyVariant">> => string(),
+%%   <<"KeySerialNumber">> => string()
+%% }
+-type dukpt_derivation_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% dukpt_encryption_attributes() :: #{
+%%   <<"DukptKeyDerivationType">> => string(),
+%%   <<"DukptKeyVariant">> => string(),
+%%   <<"InitializationVector">> => string(),
+%%   <<"KeySerialNumber">> => string(),
+%%   <<"Mode">> => string()
+%% }
+-type dukpt_encryption_attributes() :: #{binary() => any()}.
+
+-type decrypt_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type encrypt_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type generate_card_validation_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type generate_mac_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type generate_pin_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type re_encrypt_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type translate_pin_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type verify_auth_request_cryptogram_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    verification_failed_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type verify_card_validation_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    verification_failed_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type verify_mac_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    verification_failed_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type verify_pin_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    verification_failed_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -96,8 +734,17 @@
 %%
 %% ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
+-spec decrypt_data(aws_client:aws_client(), binary() | list(), decrypt_data_input()) ->
+    {ok, decrypt_data_output(), tuple()} |
+    {error, any()} |
+    {error, decrypt_data_errors(), tuple()}.
 decrypt_data(Client, KeyIdentifier, Input) ->
     decrypt_data(Client, KeyIdentifier, Input, []).
+
+-spec decrypt_data(aws_client:aws_client(), binary() | list(), decrypt_data_input(), proplists:proplist()) ->
+    {ok, decrypt_data_output(), tuple()} |
+    {error, any()} |
+    {error, decrypt_data_errors(), tuple()}.
 decrypt_data(Client, KeyIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/keys/", aws_util:encode_uri(KeyIdentifier), "/decrypt"],
@@ -178,8 +825,17 @@ decrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 %%
 %% `ReEncryptData'
+-spec encrypt_data(aws_client:aws_client(), binary() | list(), encrypt_data_input()) ->
+    {ok, encrypt_data_output(), tuple()} |
+    {error, any()} |
+    {error, encrypt_data_errors(), tuple()}.
 encrypt_data(Client, KeyIdentifier, Input) ->
     encrypt_data(Client, KeyIdentifier, Input, []).
+
+-spec encrypt_data(aws_client:aws_client(), binary() | list(), encrypt_data_input(), proplists:proplist()) ->
+    {ok, encrypt_data_output(), tuple()} |
+    {error, any()} |
+    {error, encrypt_data_errors(), tuple()}.
 encrypt_data(Client, KeyIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/keys/", aws_util:encode_uri(KeyIdentifier), "/encrypt"],
@@ -238,8 +894,17 @@ encrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 %%
 %% `VerifyCardValidationData'
+-spec generate_card_validation_data(aws_client:aws_client(), generate_card_validation_data_input()) ->
+    {ok, generate_card_validation_data_output(), tuple()} |
+    {error, any()} |
+    {error, generate_card_validation_data_errors(), tuple()}.
 generate_card_validation_data(Client, Input) ->
     generate_card_validation_data(Client, Input, []).
+
+-spec generate_card_validation_data(aws_client:aws_client(), generate_card_validation_data_input(), proplists:proplist()) ->
+    {ok, generate_card_validation_data_output(), tuple()} |
+    {error, any()} |
+    {error, generate_card_validation_data_errors(), tuple()}.
 generate_card_validation_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cardvalidationdata/generate"],
@@ -292,8 +957,17 @@ generate_card_validation_data(Client, Input0, Options0) ->
 %% Related operations:
 %%
 %% `VerifyMac'
+-spec generate_mac(aws_client:aws_client(), generate_mac_input()) ->
+    {ok, generate_mac_output(), tuple()} |
+    {error, any()} |
+    {error, generate_mac_errors(), tuple()}.
 generate_mac(Client, Input) ->
     generate_mac(Client, Input, []).
+
+-spec generate_mac(aws_client:aws_client(), generate_mac_input(), proplists:proplist()) ->
+    {ok, generate_mac_output(), tuple()} |
+    {error, any()} |
+    {error, generate_mac_errors(), tuple()}.
 generate_mac(Client, Input0, Options0) ->
     Method = post,
     Path = ["/mac/generate"],
@@ -347,8 +1021,17 @@ generate_mac(Client, Input0, Options0) ->
 %% `TranslatePinData'
 %%
 %% `VerifyPinData'
+-spec generate_pin_data(aws_client:aws_client(), generate_pin_data_input()) ->
+    {ok, generate_pin_data_output(), tuple()} |
+    {error, any()} |
+    {error, generate_pin_data_errors(), tuple()}.
 generate_pin_data(Client, Input) ->
     generate_pin_data(Client, Input, []).
+
+-spec generate_pin_data(aws_client:aws_client(), generate_pin_data_input(), proplists:proplist()) ->
+    {ok, generate_pin_data_output(), tuple()} |
+    {error, any()} |
+    {error, generate_pin_data_errors(), tuple()}.
 generate_pin_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/pindata/generate"],
@@ -416,8 +1099,17 @@ generate_pin_data(Client, Input0, Options0) ->
 %%
 %% ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
+-spec re_encrypt_data(aws_client:aws_client(), binary() | list(), re_encrypt_data_input()) ->
+    {ok, re_encrypt_data_output(), tuple()} |
+    {error, any()} |
+    {error, re_encrypt_data_errors(), tuple()}.
 re_encrypt_data(Client, IncomingKeyIdentifier, Input) ->
     re_encrypt_data(Client, IncomingKeyIdentifier, Input, []).
+
+-spec re_encrypt_data(aws_client:aws_client(), binary() | list(), re_encrypt_data_input(), proplists:proplist()) ->
+    {ok, re_encrypt_data_output(), tuple()} |
+    {error, any()} |
+    {error, re_encrypt_data_errors(), tuple()}.
 re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/keys/", aws_util:encode_uri(IncomingKeyIdentifier), "/reencrypt"],
@@ -480,8 +1172,17 @@ re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
 %% `GeneratePinData'
 %%
 %% `VerifyPinData'
+-spec translate_pin_data(aws_client:aws_client(), translate_pin_data_input()) ->
+    {ok, translate_pin_data_output(), tuple()} |
+    {error, any()} |
+    {error, translate_pin_data_errors(), tuple()}.
 translate_pin_data(Client, Input) ->
     translate_pin_data(Client, Input, []).
+
+-spec translate_pin_data(aws_client:aws_client(), translate_pin_data_input(), proplists:proplist()) ->
+    {ok, translate_pin_data_output(), tuple()} |
+    {error, any()} |
+    {error, translate_pin_data_errors(), tuple()}.
 translate_pin_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/pindata/translate"],
@@ -540,8 +1241,17 @@ translate_pin_data(Client, Input0, Options0) ->
 %% `VerifyCardValidationData'
 %%
 %% `VerifyPinData'
+-spec verify_auth_request_cryptogram(aws_client:aws_client(), verify_auth_request_cryptogram_input()) ->
+    {ok, verify_auth_request_cryptogram_output(), tuple()} |
+    {error, any()} |
+    {error, verify_auth_request_cryptogram_errors(), tuple()}.
 verify_auth_request_cryptogram(Client, Input) ->
     verify_auth_request_cryptogram(Client, Input, []).
+
+-spec verify_auth_request_cryptogram(aws_client:aws_client(), verify_auth_request_cryptogram_input(), proplists:proplist()) ->
+    {ok, verify_auth_request_cryptogram_output(), tuple()} |
+    {error, any()} |
+    {error, verify_auth_request_cryptogram_errors(), tuple()}.
 verify_auth_request_cryptogram(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cryptogram/verify"],
@@ -599,8 +1309,17 @@ verify_auth_request_cryptogram(Client, Input0, Options0) ->
 %% `VerifyAuthRequestCryptogram'
 %%
 %% `VerifyPinData'
+-spec verify_card_validation_data(aws_client:aws_client(), verify_card_validation_data_input()) ->
+    {ok, verify_card_validation_data_output(), tuple()} |
+    {error, any()} |
+    {error, verify_card_validation_data_errors(), tuple()}.
 verify_card_validation_data(Client, Input) ->
     verify_card_validation_data(Client, Input, []).
+
+-spec verify_card_validation_data(aws_client:aws_client(), verify_card_validation_data_input(), proplists:proplist()) ->
+    {ok, verify_card_validation_data_output(), tuple()} |
+    {error, any()} |
+    {error, verify_card_validation_data_errors(), tuple()}.
 verify_card_validation_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cardvalidationdata/verify"],
@@ -644,8 +1363,17 @@ verify_card_validation_data(Client, Input0, Options0) ->
 %% Related operations:
 %%
 %% `GenerateMac'
+-spec verify_mac(aws_client:aws_client(), verify_mac_input()) ->
+    {ok, verify_mac_output(), tuple()} |
+    {error, any()} |
+    {error, verify_mac_errors(), tuple()}.
 verify_mac(Client, Input) ->
     verify_mac(Client, Input, []).
+
+-spec verify_mac(aws_client:aws_client(), verify_mac_input(), proplists:proplist()) ->
+    {ok, verify_mac_output(), tuple()} |
+    {error, any()} |
+    {error, verify_mac_errors(), tuple()}.
 verify_mac(Client, Input0, Options0) ->
     Method = post,
     Path = ["/mac/verify"],
@@ -697,8 +1425,17 @@ verify_mac(Client, Input0, Options0) ->
 %% `GeneratePinData'
 %%
 %% `TranslatePinData'
+-spec verify_pin_data(aws_client:aws_client(), verify_pin_data_input()) ->
+    {ok, verify_pin_data_output(), tuple()} |
+    {error, any()} |
+    {error, verify_pin_data_errors(), tuple()}.
 verify_pin_data(Client, Input) ->
     verify_pin_data(Client, Input, []).
+
+-spec verify_pin_data(aws_client:aws_client(), verify_pin_data_input(), proplists:proplist()) ->
+    {ok, verify_pin_data_output(), tuple()} |
+    {error, any()} |
+    {error, verify_pin_data_errors(), tuple()}.
 verify_pin_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/pindata/verify"],
@@ -725,7 +1462,7 @@ verify_pin_data(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -225,6 +225,3152 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% delete_asset_model_response() :: #{
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type delete_asset_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_request() :: #{
+%%   <<"gatewayName">> := string()
+%% }
+-type update_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% execute_query_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryStatement">> := string()
+%% }
+-type execute_query_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_summary() :: #{
+%%   <<"actionDefinitionId">> => string(),
+%%   <<"actionId">> => string(),
+%%   <<"targetResource">> => target_resource()
+%% }
+-type action_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dashboards_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectId">> := string()
+%% }
+-type list_dashboards_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_response() :: #{
+%%   <<"errorEntries">> => list(batch_get_asset_property_aggregates_error_entry()()),
+%%   <<"nextToken">> => string(),
+%%   <<"skippedEntries">> => list(batch_get_asset_property_aggregates_skipped_entry()()),
+%%   <<"successEntries">> => list(batch_get_asset_property_aggregates_success_entry()())
+%% }
+-type batch_get_asset_property_aggregates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_project_response() :: #{
+%%   <<"portalId">> => string(),
+%%   <<"projectArn">> => string(),
+%%   <<"projectCreationDate">> => non_neg_integer(),
+%%   <<"projectDescription">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"projectLastUpdateDate">> => non_neg_integer(),
+%%   <<"projectName">> => string()
+%% }
+-type describe_project_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_default_encryption_configuration_response() :: #{
+%%   <<"configurationStatus">> => configuration_status(),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type put_default_encryption_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_composition_relationships_response() :: #{
+%%   <<"compositionRelationshipSummaries">> => list(composition_relationship_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_composition_relationships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_policies_response() :: #{
+%%   <<"accessPolicySummaries">> => list(access_policy_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_dashboard_response() :: #{}
+-type update_dashboard_response() :: #{}.
+
+
+%% Example:
+%% portal_resource() :: #{
+%%   <<"id">> => string()
+%% }
+-type portal_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_model_composite_model_response() :: #{
+%%   <<"actionDefinitions">> => list(action_definition()()),
+%%   <<"assetModelCompositeModelDescription">> => string(),
+%%   <<"assetModelCompositeModelExternalId">> => string(),
+%%   <<"assetModelCompositeModelId">> => string(),
+%%   <<"assetModelCompositeModelName">> => string(),
+%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()()),
+%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property()()),
+%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()()),
+%%   <<"assetModelCompositeModelType">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"compositionDetails">> => composition_details()
+%% }
+-type describe_asset_model_composite_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dashboard_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"dashboardDefinition">> := string(),
+%%   <<"dashboardDescription">> => string(),
+%%   <<"dashboardName">> := string()
+%% }
+-type update_dashboard_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_project_assets_response() :: #{
+%%   <<"errors">> => list(asset_error_details()())
+%% }
+-type batch_associate_project_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_property() :: #{
+%%   <<"alias">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"dataTypeSpec">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"notification">> => property_notification(),
+%%   <<"path">> => list(asset_property_path_segment()()),
+%%   <<"unit">> => string()
+%% }
+-type asset_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflicting_operation_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string()
+%% }
+-type conflicting_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_asset_model_composite_model_request() :: #{}
+-type describe_asset_model_composite_model_request() :: #{}.
+
+
+%% Example:
+%% get_asset_property_aggregates_response() :: #{
+%%   <<"aggregatedValues">> => list(aggregated_value()()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_asset_property_aggregates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_project_assets_response() :: #{
+%%   <<"assetIds">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_project_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% interpolated_asset_property_value() :: #{
+%%   <<"timestamp">> => time_in_nanos(),
+%%   <<"value">> => variant()
+%% }
+-type interpolated_asset_property_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% greengrass() :: #{
+%%   <<"groupArn">> => string()
+%% }
+-type greengrass() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type project_summary() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% detailed_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type detailed_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_hierarchy() :: #{
+%%   <<"childAssetModelId">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type asset_model_hierarchy() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_response() :: #{
+%%   <<"gatewayArn">> => string(),
+%%   <<"gatewayId">> => string()
+%% }
+-type create_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric() :: #{
+%%   <<"expression">> => string(),
+%%   <<"processingConfig">> => metric_processing_config(),
+%%   <<"variables">> => list(expression_variable()()),
+%%   <<"window">> => metric_window()
+%% }
+-type metric() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_policy_response() :: #{}
+-type delete_access_policy_response() :: #{}.
+
+
+%% Example:
+%% list_gateways_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateways_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% expression_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => variable_value()
+%% }
+-type expression_variable() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_model_composite_models_response() :: #{
+%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_model_composite_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bulk_import_job_request() :: #{
+%%   <<"adaptiveIngestion">> => boolean(),
+%%   <<"deleteFilesAfterImport">> => boolean(),
+%%   <<"errorReportLocation">> := error_report_location(),
+%%   <<"files">> := list(file()()),
+%%   <<"jobConfiguration">> := job_configuration(),
+%%   <<"jobName">> := string(),
+%%   <<"jobRoleArn">> := string()
+%% }
+-type create_bulk_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_property_value_response() :: #{
+%%   <<"propertyValue">> => asset_property_value()
+%% }
+-type get_asset_property_value_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_property_value() :: #{
+%%   <<"quality">> => list(any()),
+%%   <<"timestamp">> => time_in_nanos(),
+%%   <<"value">> => variant()
+%% }
+-type asset_property_value() :: #{binary() => any()}.
+
+%% Example:
+%% put_logging_options_response() :: #{}
+-type put_logging_options_response() :: #{}.
+
+
+%% Example:
+%% identity() :: #{
+%%   <<"group">> => group_identity(),
+%%   <<"iamRole">> => iam_role_identity(),
+%%   <<"iamUser">> => iam_user_identity(),
+%%   <<"user">> => user_identity()
+%% }
+-type identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_format() :: #{
+%%   <<"csv">> => csv(),
+%%   <<"parquet">> => parquet()
+%% }
+-type file_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bulk_import_jobs_request() :: #{
+%%   <<"filter">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bulk_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_default_encryption_configuration_response() :: #{
+%%   <<"configurationStatus">> => configuration_status(),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type describe_default_encryption_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_project_request() :: #{}
+-type describe_project_request() :: #{}.
+
+
+%% Example:
+%% describe_action_response() :: #{
+%%   <<"actionDefinitionId">> => string(),
+%%   <<"actionId">> => string(),
+%%   <<"actionPayload">> => action_payload(),
+%%   <<"executionTime">> => non_neg_integer(),
+%%   <<"targetResource">> => target_resource()
+%% }
+-type describe_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bulk_import_job_request() :: #{}
+-type describe_bulk_import_job_request() :: #{}.
+
+
+%% Example:
+%% describe_asset_response() :: #{
+%%   <<"assetArn">> => string(),
+%%   <<"assetCompositeModelSummaries">> => list(asset_composite_model_summary()()),
+%%   <<"assetCompositeModels">> => list(asset_composite_model()()),
+%%   <<"assetCreationDate">> => non_neg_integer(),
+%%   <<"assetDescription">> => string(),
+%%   <<"assetExternalId">> => string(),
+%%   <<"assetHierarchies">> => list(asset_hierarchy()()),
+%%   <<"assetId">> => string(),
+%%   <<"assetLastUpdateDate">> => non_neg_integer(),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetName">> => string(),
+%%   <<"assetProperties">> => list(asset_property()()),
+%%   <<"assetStatus">> => asset_status()
+%% }
+-type describe_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_asset_property_value_entry() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"entryId">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"propertyValues">> => list(asset_property_value()())
+%% }
+-type put_asset_property_value_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% retention_period() :: #{
+%%   <<"numberOfDays">> => integer(),
+%%   <<"unlimited">> => boolean()
+%% }
+-type retention_period() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_skipped_entry() :: #{
+%%   <<"completionStatus">> => list(any()),
+%%   <<"entryId">> => string(),
+%%   <<"errorInfo">> => batch_get_asset_property_value_error_info()
+%% }
+-type batch_get_asset_property_value_skipped_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_policy_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_access_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_property() :: #{
+%%   <<"dataType">> => list(any()),
+%%   <<"dataTypeSpec">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"path">> => list(asset_model_property_path_segment()()),
+%%   <<"type">> => property_type(),
+%%   <<"unit">> => string()
+%% }
+-type asset_model_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% datum() :: #{
+%%   <<"arrayValue">> => list(datum()()),
+%%   <<"nullValue">> => boolean(),
+%%   <<"rowValue">> => row(),
+%%   <<"scalarValue">> => string()
+%% }
+-type datum() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_resource() :: #{
+%%   <<"id">> => string()
+%% }
+-type project_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_portal_response() :: #{
+%%   <<"portalArn">> => string(),
+%%   <<"portalId">> => string(),
+%%   <<"portalStartUrl">> => string(),
+%%   <<"portalStatus">> => portal_status(),
+%%   <<"ssoApplicationId">> => string()
+%% }
+-type create_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_property_response() :: #{
+%%   <<"assetExternalId">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetName">> => string(),
+%%   <<"assetProperty">> => property(),
+%%   <<"compositeModel">> => composite_model_property()
+%% }
+-type describe_asset_property_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_property_value_request() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string()
+%% }
+-type get_asset_property_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_composite_model() :: #{
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"properties">> => list(asset_model_property()()),
+%%   <<"type">> => string()
+%% }
+-type asset_model_composite_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_policies_request() :: #{
+%%   <<"iamArn">> => string(),
+%%   <<"identityId">> => string(),
+%%   <<"identityType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type list_access_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_policy_response() :: #{
+%%   <<"accessPolicyArn">> => string(),
+%%   <<"accessPolicyId">> => string()
+%% }
+-type create_access_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_report_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type error_report_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_history_skipped_entry() :: #{
+%%   <<"completionStatus">> => list(any()),
+%%   <<"entryId">> => string(),
+%%   <<"errorInfo">> => batch_get_asset_property_value_history_error_info()
+%% }
+-type batch_get_asset_property_value_history_skipped_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_policy_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"identity">> => identity(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"permission">> => list(any()),
+%%   <<"resource">> => resource()
+%% }
+-type access_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_asset_model_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_asset_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_request() :: #{
+%%   <<"entries">> := list(batch_get_asset_property_aggregates_entry()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type batch_get_asset_property_aggregates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_logging_options_response() :: #{
+%%   <<"loggingOptions">> => logging_options()
+%% }
+-type describe_logging_options_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% composite_model_property() :: #{
+%%   <<"assetProperty">> => property(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type composite_model_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_identity() :: #{
+%%   <<"id">> => string()
+%% }
+-type user_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_processing_config() :: #{
+%%   <<"computeLocation">> => list(any())
+%% }
+-type metric_processing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_identity() :: #{
+%%   <<"id">> => string()
+%% }
+-type group_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_request() :: #{
+%%   <<"assetDescription">> => string(),
+%%   <<"assetExternalId">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"assetModelId">> := string(),
+%%   <<"assetName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_window() :: #{
+%%   <<"tumbling">> => tumbling_window()
+%% }
+-type metric_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% file() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string(),
+%%   <<"versionId">> => string()
+%% }
+-type file() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => list(any())
+%% }
+-type asset_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"hierarchies">> => list(asset_hierarchy()()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => asset_status()
+%% }
+-type asset_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_skipped_entry() :: #{
+%%   <<"completionStatus">> => list(any()),
+%%   <<"entryId">> => string(),
+%%   <<"errorInfo">> => batch_get_asset_property_aggregates_error_info()
+%% }
+-type batch_get_asset_property_aggregates_skipped_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_response() :: #{}
+-type update_project_response() :: #{}.
+
+
+%% Example:
+%% portal_status() :: #{
+%%   <<"error">> => monitor_error_details(),
+%%   <<"state">> => list(any())
+%% }
+-type portal_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"assetModelType">> => list(any()),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => asset_model_status()
+%% }
+-type asset_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_time_series_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"propertyId">> => string()
+%% }
+-type describe_time_series_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% alarms() :: #{
+%%   <<"alarmRoleArn">> => string(),
+%%   <<"notificationLambdaArn">> => string()
+%% }
+-type alarms() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_assets_request() :: #{
+%%   <<"hierarchyId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"traversalDirection">> => list(any())
+%% }
+-type list_associated_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_status() :: #{
+%%   <<"error">> => configuration_error_details(),
+%%   <<"state">> => list(any())
+%% }
+-type configuration_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_history_response() :: #{
+%%   <<"errorEntries">> => list(batch_get_asset_property_value_history_error_entry()()),
+%%   <<"nextToken">> => string(),
+%%   <<"skippedEntries">> => list(batch_get_asset_property_value_history_skipped_entry()()),
+%%   <<"successEntries">> => list(batch_get_asset_property_value_history_success_entry()())
+%% }
+-type batch_get_asset_property_value_history_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_layer_storage() :: #{
+%%   <<"customerManagedS3Storage">> => customer_managed_s3_storage()
+%% }
+-type multi_layer_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_resource() :: #{
+%%   <<"assetId">> => string()
+%% }
+-type target_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_project_assets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_project_assets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_action_request() :: #{}
+-type describe_action_request() :: #{}.
+
+
+%% Example:
+%% describe_bulk_import_job_response() :: #{
+%%   <<"adaptiveIngestion">> => boolean(),
+%%   <<"deleteFilesAfterImport">> => boolean(),
+%%   <<"errorReportLocation">> => error_report_location(),
+%%   <<"files">> => list(file()()),
+%%   <<"jobConfiguration">> => job_configuration(),
+%%   <<"jobCreationDate">> => non_neg_integer(),
+%%   <<"jobId">> => string(),
+%%   <<"jobLastUpdateDate">> => non_neg_integer(),
+%%   <<"jobName">> => string(),
+%%   <<"jobRoleArn">> => string(),
+%%   <<"jobStatus">> => list(any())
+%% }
+-type describe_bulk_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_project_assets_request() :: #{
+%%   <<"assetIds">> := list(string()()),
+%%   <<"clientToken">> => string()
+%% }
+-type batch_associate_project_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_model_response() :: #{
+%%   <<"assetModelArn">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type create_asset_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_response() :: #{
+%%   <<"assetStatus">> => asset_status()
+%% }
+-type update_asset_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_access_policy_response() :: #{}
+-type update_access_policy_response() :: #{}.
+
+
+%% Example:
+%% batch_get_asset_property_value_error_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_get_asset_property_value_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% execute_action_response() :: #{
+%%   <<"actionId">> => string()
+%% }
+-type execute_action_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"gatewayCapabilitySummaries">> => list(gateway_capability_summary()()),
+%%   <<"gatewayId">> => string(),
+%%   <<"gatewayName">> => string(),
+%%   <<"gatewayPlatform">> => gateway_platform(),
+%%   <<"lastUpdateDate">> => non_neg_integer()
+%% }
+-type gateway_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_time_series_response() :: #{
+%%   <<"TimeSeriesSummaries">> => list(time_series_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_time_series_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portals_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_portals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_summary() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_composite_model() :: #{
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"properties">> => list(asset_property()()),
+%%   <<"type">> => string()
+%% }
+-type asset_composite_model() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_capability_configuration_request() :: #{}
+-type describe_gateway_capability_configuration_request() :: #{}.
+
+
+%% Example:
+%% update_gateway_capability_configuration_request() :: #{
+%%   <<"capabilityConfiguration">> := string(),
+%%   <<"capabilityNamespace">> := string()
+%% }
+-type update_gateway_capability_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_portal_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_time_series_response() :: #{
+%%   <<"alias">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"dataTypeSpec">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"timeSeriesArn">> => string(),
+%%   <<"timeSeriesCreationDate">> => non_neg_integer(),
+%%   <<"timeSeriesId">> => string(),
+%%   <<"timeSeriesLastUpdateDate">> => non_neg_integer()
+%% }
+-type describe_time_series_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_success_entry() :: #{
+%%   <<"aggregatedValues">> => list(aggregated_value()()),
+%%   <<"entryId">> => string()
+%% }
+-type batch_get_asset_property_aggregates_success_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_interpolated_asset_property_values_request() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"endTimeInSeconds">> := float(),
+%%   <<"endTimeOffsetInNanos">> => integer(),
+%%   <<"intervalInSeconds">> := float(),
+%%   <<"intervalWindowInSeconds">> => float(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"quality">> := list(any()),
+%%   <<"startTimeInSeconds">> := float(),
+%%   <<"startTimeOffsetInNanos">> => integer(),
+%%   <<"type">> := string()
+%% }
+-type get_interpolated_asset_property_values_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_response() :: #{
+%%   <<"projectArn">> => string(),
+%%   <<"projectId">> => string()
+%% }
+-type create_project_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitor_error_details() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type monitor_error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_error_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_get_asset_property_aggregates_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% warm_tier_retention_period() :: #{
+%%   <<"numberOfDays">> => integer(),
+%%   <<"unlimited">> => boolean()
+%% }
+-type warm_tier_retention_period() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_error_info() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorTimestamp">> => non_neg_integer()
+%% }
+-type batch_get_asset_property_value_error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_composite_model_path_segment() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type asset_composite_model_path_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregated_value() :: #{
+%%   <<"quality">> => list(any()),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"value">> => aggregates()
+%% }
+-type aggregated_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% row() :: #{
+%%   <<"data">> => list(datum()())
+%% }
+-type row() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_time_series_from_asset_property_request() :: #{
+%%   <<"alias">> := string(),
+%%   <<"assetId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"propertyId">> := string()
+%% }
+-type disassociate_time_series_from_asset_property_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_portal_response() :: #{
+%%   <<"portalStatus">> => portal_status()
+%% }
+-type delete_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_model_request() :: #{
+%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model()()),
+%%   <<"assetModelDescription">> => string(),
+%%   <<"assetModelExternalId">> => string(),
+%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy()()),
+%%   <<"assetModelName">> := string(),
+%%   <<"assetModelProperties">> => list(asset_model_property()()),
+%%   <<"clientToken">> => string()
+%% }
+-type update_asset_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_portal_request() :: #{
+%%   <<"alarms">> => alarms(),
+%%   <<"clientToken">> => string(),
+%%   <<"notificationSenderEmail">> => string(),
+%%   <<"portalAuthMode">> => list(any()),
+%%   <<"portalContactEmail">> := string(),
+%%   <<"portalDescription">> => string(),
+%%   <<"portalLogoImageFile">> => image_file(),
+%%   <<"portalName">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_assets_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"hierarchies">> => list(asset_hierarchy()()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => asset_status()
+%% }
+-type associated_assets_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_capability_summary() :: #{
+%%   <<"capabilityNamespace">> => string(),
+%%   <<"capabilitySyncStatus">> => list(any())
+%% }
+-type gateway_capability_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_error_details() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type configuration_error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_portal_response() :: #{
+%%   <<"portalStatus">> => portal_status()
+%% }
+-type update_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_gateway_capability_configuration_response() :: #{
+%%   <<"capabilityConfiguration">> => string(),
+%%   <<"capabilityNamespace">> => string(),
+%%   <<"capabilitySyncStatus">> => list(any()),
+%%   <<"gatewayId">> => string()
+%% }
+-type describe_gateway_capability_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_property_summary() :: #{
+%%   <<"alias">> => string(),
+%%   <<"assetCompositeModelId">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"notification">> => property_notification(),
+%%   <<"path">> => list(asset_property_path_segment()()),
+%%   <<"unit">> => string()
+%% }
+-type asset_property_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_composite_model_definition() :: #{
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"properties">> => list(asset_model_property_definition()()),
+%%   <<"type">> => string()
+%% }
+-type asset_model_composite_model_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% csv() :: #{
+%%   <<"columnNames">> => list(list(any())())
+%% }
+-type csv() :: #{binary() => any()}.
+
+%% Example:
+%% describe_default_encryption_configuration_request() :: #{}
+-type describe_default_encryption_configuration_request() :: #{}.
+
+
+%% Example:
+%% list_asset_relationships_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"traversalType">> := list(any())
+%% }
+-type list_asset_relationships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dashboard_response() :: #{
+%%   <<"dashboardArn">> => string(),
+%%   <<"dashboardCreationDate">> => non_neg_integer(),
+%%   <<"dashboardDefinition">> => string(),
+%%   <<"dashboardDescription">> => string(),
+%%   <<"dashboardId">> => string(),
+%%   <<"dashboardLastUpdateDate">> => non_neg_integer(),
+%%   <<"dashboardName">> => string(),
+%%   <<"projectId">> => string()
+%% }
+-type describe_dashboard_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_portal_response() :: #{
+%%   <<"alarms">> => alarms(),
+%%   <<"notificationSenderEmail">> => string(),
+%%   <<"portalArn">> => string(),
+%%   <<"portalAuthMode">> => list(any()),
+%%   <<"portalClientId">> => string(),
+%%   <<"portalContactEmail">> => string(),
+%%   <<"portalCreationDate">> => non_neg_integer(),
+%%   <<"portalDescription">> => string(),
+%%   <<"portalId">> => string(),
+%%   <<"portalLastUpdateDate">> => non_neg_integer(),
+%%   <<"portalLogoImageLocation">> => image_location(),
+%%   <<"portalName">> => string(),
+%%   <<"portalStartUrl">> => string(),
+%%   <<"portalStatus">> => portal_status(),
+%%   <<"roleArn">> => string()
+%% }
+-type describe_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_property_path_segment() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type asset_model_property_path_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_projects_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"projectSummaries">> => list(project_summary()())
+%% }
+-type list_projects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_asset_response() :: #{
+%%   <<"assetStatus">> => asset_status()
+%% }
+-type delete_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_configuration() :: #{
+%%   <<"fileFormat">> => file_format()
+%% }
+-type job_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_details() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"details">> => list(detailed_error()()),
+%%   <<"message">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_notification() :: #{
+%%   <<"state">> => list(any()),
+%%   <<"topic">> => string()
+%% }
+-type property_notification() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_property_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyNotificationState">> => list(any()),
+%%   <<"propertyUnit">> => string()
+%% }
+-type update_asset_property_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_capability_configuration_response() :: #{
+%%   <<"capabilityNamespace">> => string(),
+%%   <<"capabilitySyncStatus">> => list(any())
+%% }
+-type update_gateway_capability_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_payload() :: #{
+%%   <<"stringValue">> => string()
+%% }
+-type action_payload() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actions_response() :: #{
+%%   <<"actionSummaries">> => list(action_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% customer_managed_s3_storage() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"s3ResourceArn">> => string()
+%% }
+-type customer_managed_s3_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_location() :: #{
+%%   <<"id">> => string(),
+%%   <<"url">> => string()
+%% }
+-type image_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition_relationship_summary() :: #{
+%%   <<"assetModelCompositeModelId">> => string(),
+%%   <<"assetModelCompositeModelType">> => string(),
+%%   <<"assetModelId">> => string()
+%% }
+-type composition_relationship_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"targetResourceId">> := string(),
+%%   <<"targetResourceType">> := list(any())
+%% }
+-type list_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_role_identity() :: #{
+%%   <<"arn">> => string()
+%% }
+-type iam_role_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% transform_processing_config() :: #{
+%%   <<"computeLocation">> => list(any()),
+%%   <<"forwardingConfig">> => forwarding_config()
+%% }
+-type transform_processing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_model_composite_model_request() :: #{
+%%   <<"assetModelCompositeModelDescription">> => string(),
+%%   <<"assetModelCompositeModelExternalId">> => string(),
+%%   <<"assetModelCompositeModelId">> => string(),
+%%   <<"assetModelCompositeModelName">> := string(),
+%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property_definition()()),
+%%   <<"assetModelCompositeModelType">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"composedAssetModelId">> => string(),
+%%   <<"parentAssetModelCompositeModelId">> => string()
+%% }
+-type create_asset_model_composite_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_file() :: #{
+%%   <<"data">> => binary(),
+%%   <<"type">> => list(any())
+%% }
+-type image_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_model_request() :: #{
+%%   <<"excludeProperties">> => boolean()
+%% }
+-type describe_asset_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_storage_configuration_response() :: #{
+%%   <<"configurationStatus">> => configuration_status(),
+%%   <<"disassociatedDataStorage">> => list(any()),
+%%   <<"multiLayerStorage">> => multi_layer_storage(),
+%%   <<"retentionPeriod">> => retention_period(),
+%%   <<"storageType">> => list(any()),
+%%   <<"warmTier">> => list(any()),
+%%   <<"warmTierRetentionPeriod">> => warm_tier_retention_period()
+%% }
+-type put_storage_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_history_request() :: #{
+%%   <<"entries">> := list(batch_get_asset_property_value_history_entry()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type batch_get_asset_property_value_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_logging_options_request() :: #{}
+-type describe_logging_options_request() :: #{}.
+
+
+%% Example:
+%% iam_user_identity() :: #{
+%%   <<"arn">> => string()
+%% }
+-type iam_user_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_history_error_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_get_asset_property_value_history_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_model_composite_model_response() :: #{
+%%   <<"assetModelCompositeModelId">> => string(),
+%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()()),
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type create_asset_model_composite_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dashboard_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_dashboard_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_asset_model_composite_model_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_asset_model_composite_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_models_response() :: #{
+%%   <<"assetModelSummaries">> => list(asset_model_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_models_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_asset_property_request() :: #{}
+-type describe_asset_property_request() :: #{}.
+
+
+%% Example:
+%% asset_model_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => list(any())
+%% }
+-type asset_model_status() :: #{binary() => any()}.
+
+%% Example:
+%% describe_access_policy_request() :: #{}
+-type describe_access_policy_request() :: #{}.
+
+
+%% Example:
+%% list_asset_model_composite_models_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_model_composite_models_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_asset_composite_model_request() :: #{}
+-type describe_asset_composite_model_request() :: #{}.
+
+%% Example:
+%% delete_dashboard_response() :: #{}
+-type delete_dashboard_response() :: #{}.
+
+
+%% Example:
+%% batch_put_asset_property_value_request() :: #{
+%%   <<"entries">> := list(put_asset_property_value_entry()())
+%% }
+-type batch_put_asset_property_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_hierarchy_definition() :: #{
+%%   <<"childAssetModelId">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type asset_model_hierarchy_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_model_response() :: #{
+%%   <<"assetModelArn">> => string(),
+%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()()),
+%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model()()),
+%%   <<"assetModelCreationDate">> => non_neg_integer(),
+%%   <<"assetModelDescription">> => string(),
+%%   <<"assetModelExternalId">> => string(),
+%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy()()),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelLastUpdateDate">> => non_neg_integer(),
+%%   <<"assetModelName">> => string(),
+%%   <<"assetModelProperties">> => list(asset_model_property()()),
+%%   <<"assetModelStatus">> => asset_model_status(),
+%%   <<"assetModelType">> => list(any())
+%% }
+-type describe_asset_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_success_entry() :: #{
+%%   <<"assetPropertyValue">> => asset_property_value(),
+%%   <<"entryId">> => string()
+%% }
+-type batch_get_asset_property_value_success_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portals_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"portalSummaries">> => list(portal_summary()())
+%% }
+-type list_portals_response() :: #{binary() => any()}.
+
+%% Example:
+%% parquet() :: #{}
+-type parquet() :: #{}.
+
+
+%% Example:
+%% put_storage_configuration_request() :: #{
+%%   <<"disassociatedDataStorage">> => list(any()),
+%%   <<"multiLayerStorage">> => multi_layer_storage(),
+%%   <<"retentionPeriod">> => retention_period(),
+%%   <<"storageType">> := list(any()),
+%%   <<"warmTier">> => list(any()),
+%%   <<"warmTierRetentionPeriod">> => warm_tier_retention_period()
+%% }
+-type put_storage_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_response() :: #{}
+-type delete_project_response() :: #{}.
+
+
+%% Example:
+%% forwarding_config() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type forwarding_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_platform() :: #{
+%%   <<"greengrass">> => greengrass(),
+%%   <<"greengrassV2">> => greengrass_v2()
+%% }
+-type gateway_platform() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dashboard_response() :: #{
+%%   <<"dashboardArn">> => string(),
+%%   <<"dashboardId">> => string()
+%% }
+-type create_dashboard_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_project_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"projectDescription">> => string(),
+%%   <<"projectName">> := string()
+%% }
+-type update_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_request() :: #{
+%%   <<"gatewayName">> := string(),
+%%   <<"gatewayPlatform">> := gateway_platform(),
+%%   <<"tags">> => map()
+%% }
+-type create_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bulk_import_job_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobStatus">> => list(any())
+%% }
+-type create_bulk_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_model_properties_request() :: #{
+%%   <<"filter">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_model_properties_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_access_policy_response() :: #{
+%%   <<"accessPolicyArn">> => string(),
+%%   <<"accessPolicyCreationDate">> => non_neg_integer(),
+%%   <<"accessPolicyId">> => string(),
+%%   <<"accessPolicyIdentity">> => identity(),
+%%   <<"accessPolicyLastUpdateDate">> => non_neg_integer(),
+%%   <<"accessPolicyPermission">> => list(any()),
+%%   <<"accessPolicyResource">> => resource()
+%% }
+-type describe_access_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_composite_model_path_segment() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type asset_model_composite_model_path_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_interpolated_asset_property_values_response() :: #{
+%%   <<"interpolatedAssetPropertyValues">> => list(interpolated_asset_property_value()()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_interpolated_asset_property_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_asset_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% image() :: #{
+%%   <<"file">> => image_file(),
+%%   <<"id">> => string()
+%% }
+-type image() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_assets_request() :: #{
+%%   <<"childAssetId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"hierarchyId">> := string()
+%% }
+-type associate_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_entry() :: #{
+%%   <<"aggregateTypes">> => list(list(any())()),
+%%   <<"assetId">> => string(),
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"entryId">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"qualities">> => list(list(any())()),
+%%   <<"resolution">> => string(),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"timeOrdering">> => list(any())
+%% }
+-type batch_get_asset_property_aggregates_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_response() :: #{
+%%   <<"errorEntries">> => list(batch_get_asset_property_value_error_entry()()),
+%%   <<"nextToken">> => string(),
+%%   <<"skippedEntries">> => list(batch_get_asset_property_value_skipped_entry()()),
+%%   <<"successEntries">> => list(batch_get_asset_property_value_success_entry()())
+%% }
+-type batch_get_asset_property_value_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% transform() :: #{
+%%   <<"expression">> => string(),
+%%   <<"processingConfig">> => transform_processing_config(),
+%%   <<"variables">> => list(expression_variable()())
+%% }
+-type transform() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_property_value_history_request() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"qualities">> => list(list(any())()),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"timeOrdering">> => list(any())
+%% }
+-type get_asset_property_value_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_relationship_summary() :: #{
+%%   <<"hierarchyInfo">> => asset_hierarchy_info(),
+%%   <<"relationshipType">> => list(any())
+%% }
+-type asset_relationship_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_composite_model_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"path">> => list(asset_composite_model_path_segment()()),
+%%   <<"type">> => string()
+%% }
+-type asset_composite_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_response() :: #{
+%%   <<"assetArn">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"assetStatus">> => asset_status()
+%% }
+-type create_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_policy_request() :: #{
+%%   <<"accessPolicyIdentity">> := identity(),
+%%   <<"accessPolicyPermission">> := list(any()),
+%%   <<"accessPolicyResource">> := resource(),
+%%   <<"clientToken">> => string()
+%% }
+-type update_access_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_request() :: #{
+%%   <<"assetDescription">> => string(),
+%%   <<"assetExternalId">> => string(),
+%%   <<"assetName">> := string(),
+%%   <<"clientToken">> => string()
+%% }
+-type update_asset_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% dashboard_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type dashboard_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_logging_options_request() :: #{
+%%   <<"loggingOptions">> := logging_options()
+%% }
+-type put_logging_options_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% measurement_processing_config() :: #{
+%%   <<"forwardingConfig">> => forwarding_config()
+%% }
+-type measurement_processing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_type() :: #{
+%%   <<"attribute">> => attribute(),
+%%   <<"measurement">> => measurement(),
+%%   <<"metric">> => metric(),
+%%   <<"transform">> => transform()
+%% }
+-type property_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_time_series_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"propertyId">> => string()
+%% }
+-type delete_time_series_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_request() :: #{}
+-type delete_gateway_request() :: #{}.
+
+%% Example:
+%% describe_gateway_request() :: #{}
+-type describe_gateway_request() :: #{}.
+
+
+%% Example:
+%% batch_disassociate_project_assets_response() :: #{
+%%   <<"errors">> => list(asset_error_details()())
+%% }
+-type batch_disassociate_project_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_portal_request() :: #{
+%%   <<"alarms">> => alarms(),
+%%   <<"clientToken">> => string(),
+%%   <<"notificationSenderEmail">> => string(),
+%%   <<"portalContactEmail">> := string(),
+%%   <<"portalDescription">> => string(),
+%%   <<"portalLogoImage">> => image(),
+%%   <<"portalName">> := string(),
+%%   <<"roleArn">> := string()
+%% }
+-type update_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_storage_configuration_response() :: #{
+%%   <<"configurationStatus">> => configuration_status(),
+%%   <<"disassociatedDataStorage">> => list(any()),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"multiLayerStorage">> => multi_layer_storage(),
+%%   <<"retentionPeriod">> => retention_period(),
+%%   <<"storageType">> => list(any()),
+%%   <<"warmTier">> => list(any()),
+%%   <<"warmTierRetentionPeriod">> => warm_tier_retention_period()
+%% }
+-type describe_storage_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_error_details() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type asset_error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_in_nanos() :: #{
+%%   <<"offsetInNanos">> => integer(),
+%%   <<"timeInSeconds">> => float()
+%% }
+-type time_in_nanos() :: #{binary() => any()}.
+
+
+%% Example:
+%% tumbling_window() :: #{
+%%   <<"interval">> => string(),
+%%   <<"offset">> => string()
+%% }
+-type tumbling_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% measurement() :: #{
+%%   <<"processingConfig">> => measurement_processing_config()
+%% }
+-type measurement() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_history_error_info() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorTimestamp">> => non_neg_integer()
+%% }
+-type batch_get_asset_property_value_history_error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_asset_model_composite_model_response() :: #{
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type delete_asset_model_composite_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% property() :: #{
+%%   <<"alias">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"notification">> => property_notification(),
+%%   <<"path">> => list(asset_property_path_segment()()),
+%%   <<"type">> => property_type(),
+%%   <<"unit">> => string()
+%% }
+-type property() :: #{binary() => any()}.
+
+
+%% Example:
+%% execute_query_response() :: #{
+%%   <<"columns">> => list(column_info()()),
+%%   <<"nextToken">> => string(),
+%%   <<"rows">> => list(row()())
+%% }
+-type execute_query_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type query_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_property_value_history_response() :: #{
+%%   <<"assetPropertyValueHistory">> => list(asset_property_value()()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_asset_property_value_history_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_composite_model_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"path">> => list(asset_model_composite_model_path_segment()()),
+%%   <<"type">> => string()
+%% }
+-type asset_model_composite_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_composition_relationships_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_composition_relationships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition_details() :: #{
+%%   <<"compositionRelationship">> => list(composition_relationship_item()())
+%% }
+-type composition_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"portalId">> := string(),
+%%   <<"projectDescription">> => string(),
+%%   <<"projectName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_gateway_response() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"gatewayCapabilitySummaries">> => list(gateway_capability_summary()()),
+%%   <<"gatewayId">> => string(),
+%%   <<"gatewayName">> => string(),
+%%   <<"gatewayPlatform">> => gateway_platform(),
+%%   <<"lastUpdateDate">> => non_neg_integer()
+%% }
+-type describe_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_request() :: #{
+%%   <<"entries">> := list(batch_get_asset_property_value_entry()()),
+%%   <<"nextToken">> => string()
+%% }
+-type batch_get_asset_property_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_assets_request() :: #{
+%%   <<"childAssetId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"hierarchyId">> := string()
+%% }
+-type disassociate_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_history_success_entry() :: #{
+%%   <<"assetPropertyValueHistory">> => list(asset_property_value()()),
+%%   <<"entryId">> => string()
+%% }
+-type batch_get_asset_property_value_history_success_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_property_path_segment() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type asset_property_path_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_time_series_request() :: #{
+%%   <<"aliasPrefix">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"timeSeriesType">> => list(any())
+%% }
+-type list_time_series_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_projects_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"portalId">> := string()
+%% }
+-type list_projects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dashboard_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"dashboardDefinition">> := string(),
+%%   <<"dashboardDescription">> => string(),
+%%   <<"dashboardName">> := string(),
+%%   <<"projectId">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_dashboard_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_model_composite_model_request() :: #{
+%%   <<"assetModelCompositeModelDescription">> => string(),
+%%   <<"assetModelCompositeModelExternalId">> => string(),
+%%   <<"assetModelCompositeModelName">> := string(),
+%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property()()),
+%%   <<"clientToken">> => string()
+%% }
+-type update_asset_model_composite_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_relationships_response() :: #{
+%%   <<"assetRelationshipSummaries">> => list(asset_relationship_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_relationships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregates() :: #{
+%%   <<"average">> => float(),
+%%   <<"count">> => float(),
+%%   <<"maximum">> => float(),
+%%   <<"minimum">> => float(),
+%%   <<"standardDeviation">> => float(),
+%%   <<"sum">> => float()
+%% }
+-type aggregates() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_model_properties_response() :: #{
+%%   <<"assetModelPropertySummaries">> => list(asset_model_property_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_model_properties_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute() :: #{
+%%   <<"defaultValue">> => string()
+%% }
+-type attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"startUrl">> => string(),
+%%   <<"status">> => portal_status()
+%% }
+-type portal_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assets_request() :: #{
+%%   <<"assetModelId">> => string(),
+%%   <<"filter">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_project_assets_request() :: #{
+%%   <<"assetIds">> := list(string()()),
+%%   <<"clientToken">> => string()
+%% }
+-type batch_disassociate_project_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_asset_property_value_response() :: #{
+%%   <<"errorEntries">> => list(batch_put_asset_property_error_entry()())
+%% }
+-type batch_put_asset_property_value_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_composite_model_response() :: #{
+%%   <<"actionDefinitions">> => list(action_definition()()),
+%%   <<"assetCompositeModelDescription">> => string(),
+%%   <<"assetCompositeModelExternalId">> => string(),
+%%   <<"assetCompositeModelId">> => string(),
+%%   <<"assetCompositeModelName">> => string(),
+%%   <<"assetCompositeModelPath">> => list(asset_composite_model_path_segment()()),
+%%   <<"assetCompositeModelProperties">> => list(asset_property()()),
+%%   <<"assetCompositeModelSummaries">> => list(asset_composite_model_summary()()),
+%%   <<"assetCompositeModelType">> => string(),
+%%   <<"assetId">> => string()
+%% }
+-type describe_asset_composite_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition_relationship_item() :: #{
+%%   <<"id">> => string()
+%% }
+-type composition_relationship_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_options() :: #{
+%%   <<"level">> => list(any())
+%% }
+-type logging_options() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dashboard_request() :: #{}
+-type describe_dashboard_request() :: #{}.
+
+
+%% Example:
+%% list_asset_properties_response() :: #{
+%%   <<"assetPropertySummaries">> => list(asset_property_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_properties_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_hierarchy() :: #{
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type asset_hierarchy() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_property_definition() :: #{
+%%   <<"dataType">> => list(any()),
+%%   <<"dataTypeSpec">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => property_type(),
+%%   <<"unit">> => string()
+%% }
+-type asset_model_property_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_hierarchy_info() :: #{
+%%   <<"childAssetId">> => string(),
+%%   <<"parentAssetId">> => string()
+%% }
+-type asset_hierarchy_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_asset_property_error_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"errors">> => list(batch_put_asset_property_error()())
+%% }
+-type batch_put_asset_property_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_properties_request() :: #{
+%%   <<"filter">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_properties_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% variable_value() :: #{
+%%   <<"hierarchyId">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"propertyPath">> => list(asset_model_property_path_segment()())
+%% }
+-type variable_value() :: #{binary() => any()}.
+
+%% Example:
+%% describe_portal_request() :: #{}
+-type describe_portal_request() :: #{}.
+
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_info() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => column_type()
+%% }
+-type column_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_series_summary() :: #{
+%%   <<"alias">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"dataTypeSpec">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"timeSeriesArn">> => string(),
+%%   <<"timeSeriesCreationDate">> => non_neg_integer(),
+%%   <<"timeSeriesId">> => string(),
+%%   <<"timeSeriesLastUpdateDate">> => non_neg_integer()
+%% }
+-type time_series_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_project_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_model_request() :: #{
+%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model_definition()()),
+%%   <<"assetModelDescription">> => string(),
+%%   <<"assetModelExternalId">> => string(),
+%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy_definition()()),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelName">> := string(),
+%%   <<"assetModelProperties">> => list(asset_model_property_definition()()),
+%%   <<"assetModelType">> => list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_asset_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% execute_action_request() :: #{
+%%   <<"actionDefinitionId">> := string(),
+%%   <<"actionPayload">> := action_payload(),
+%%   <<"clientToken">> => string(),
+%%   <<"targetResource">> := target_resource()
+%% }
+-type execute_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_asset_property_error() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"timestamps">> => list(time_in_nanos()())
+%% }
+-type batch_put_asset_property_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assets_response() :: #{
+%%   <<"assetSummaries">> => list(asset_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_model_response() :: #{
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type update_asset_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_request() :: #{
+%%   <<"excludeProperties">> => boolean()
+%% }
+-type describe_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dashboards_response() :: #{
+%%   <<"dashboardSummaries">> => list(dashboard_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dashboards_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_entry() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"entryId">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string()
+%% }
+-type batch_get_asset_property_value_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateways_response() :: #{
+%%   <<"gatewaySummaries">> => list(gateway_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateways_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_error_info() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorTimestamp">> => non_neg_integer()
+%% }
+-type batch_get_asset_property_aggregates_error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_policy_request() :: #{
+%%   <<"accessPolicyIdentity">> := identity(),
+%%   <<"accessPolicyPermission">> := list(any()),
+%%   <<"accessPolicyResource">> := resource(),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_access_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_default_encryption_configuration_request() :: #{
+%%   <<"encryptionType">> := list(any()),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type put_default_encryption_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% greengrass_v2() :: #{
+%%   <<"coreDeviceThingName">> => string()
+%% }
+-type greengrass_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_history_entry() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"entryId">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"qualities">> => list(list(any())()),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"timeOrdering">> => list(any())
+%% }
+-type batch_get_asset_property_value_history_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_property_aggregates_request() :: #{
+%%   <<"aggregateTypes">> := list(list(any())()),
+%%   <<"assetId">> => string(),
+%%   <<"endDate">> := non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"qualities">> => list(list(any())()),
+%%   <<"resolution">> := string(),
+%%   <<"startDate">> := non_neg_integer(),
+%%   <<"timeOrdering">> => list(any())
+%% }
+-type get_asset_property_aggregates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% variant() :: #{
+%%   <<"booleanValue">> => boolean(),
+%%   <<"doubleValue">> => float(),
+%%   <<"integerValue">> => integer(),
+%%   <<"stringValue">> => string()
+%% }
+-type variant() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_models_request() :: #{
+%%   <<"assetModelTypes">> => list(list(any())()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_assets_response() :: #{
+%%   <<"assetSummaries">> => list(associated_assets_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_associated_assets_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_storage_configuration_request() :: #{}
+-type describe_storage_configuration_request() :: #{}.
+
+
+%% Example:
+%% update_asset_model_composite_model_response() :: #{
+%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()()),
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type update_asset_model_composite_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_definition() :: #{
+%%   <<"actionDefinitionId">> => string(),
+%%   <<"actionName">> => string(),
+%%   <<"actionType">> => string()
+%% }
+-type action_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_property_summary() :: #{
+%%   <<"assetModelCompositeModelId">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"dataTypeSpec">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"path">> => list(asset_model_property_path_segment()()),
+%%   <<"type">> => property_type(),
+%%   <<"unit">> => string()
+%% }
+-type asset_model_property_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_type() :: #{
+%%   <<"scalarType">> => list(any())
+%% }
+-type column_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_time_series_to_asset_property_request() :: #{
+%%   <<"alias">> := string(),
+%%   <<"assetId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"propertyId">> := string()
+%% }
+-type associate_time_series_to_asset_property_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"portal">> => portal_resource(),
+%%   <<"project">> => project_resource()
+%% }
+-type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bulk_import_jobs_response() :: #{
+%%   <<"jobSummaries">> => list(job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bulk_import_jobs_response() :: #{binary() => any()}.
+
+-type associate_assets_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type associate_time_series_to_asset_property_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type batch_associate_project_assets_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type batch_disassociate_project_assets_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type batch_get_asset_property_aggregates_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_get_asset_property_value_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_get_asset_property_value_history_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_put_asset_property_value_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type create_access_policy_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_asset_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type create_asset_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type create_asset_model_composite_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type create_bulk_import_job_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type create_dashboard_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_gateway_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_portal_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_project_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_access_policy_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_asset_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type delete_asset_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type delete_asset_model_composite_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type delete_dashboard_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_gateway_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_portal_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type delete_project_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_time_series_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type describe_access_policy_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_action_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_composite_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_model_composite_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_property_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_bulk_import_job_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_dashboard_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_default_encryption_configuration_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type describe_gateway_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_gateway_capability_configuration_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_logging_options_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_portal_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_project_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_storage_configuration_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type describe_time_series_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type disassociate_assets_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type disassociate_time_series_from_asset_property_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type execute_action_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type execute_query_errors() ::
+    throttling_exception() | 
+    query_timeout_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type get_asset_property_aggregates_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_asset_property_value_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_asset_property_value_history_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_interpolated_asset_property_values_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_access_policies_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_actions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_asset_model_composite_models_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_asset_model_properties_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_asset_models_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_asset_properties_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_asset_relationships_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_assets_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_associated_assets_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_bulk_import_jobs_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_composition_relationships_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_dashboards_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_gateways_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_portals_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_project_assets_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_projects_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type list_time_series_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type put_default_encryption_configuration_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type put_logging_options_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type put_storage_configuration_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_access_policy_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_asset_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_asset_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_asset_model_composite_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_asset_property_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_dashboard_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_gateway_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_gateway_capability_configuration_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_portal_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_project_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -237,8 +3383,17 @@
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/add-associated-assets.html
 %% in the
 %% IoT SiteWise User Guide.
+-spec associate_assets(aws_client:aws_client(), binary() | list(), associate_assets_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_assets_errors(), tuple()}.
 associate_assets(Client, AssetId, Input) ->
     associate_assets(Client, AssetId, Input, []).
+
+-spec associate_assets(aws_client:aws_client(), binary() | list(), associate_assets_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_assets_errors(), tuple()}.
 associate_assets(Client, AssetId, Input0, Options0) ->
     Method = post,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/associate"],
@@ -262,8 +3417,17 @@ associate_assets(Client, AssetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a time series (data stream) with an asset property.
+-spec associate_time_series_to_asset_property(aws_client:aws_client(), associate_time_series_to_asset_property_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_time_series_to_asset_property_errors(), tuple()}.
 associate_time_series_to_asset_property(Client, Input) ->
     associate_time_series_to_asset_property(Client, Input, []).
+
+-spec associate_time_series_to_asset_property(aws_client:aws_client(), associate_time_series_to_asset_property_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_time_series_to_asset_property_errors(), tuple()}.
 associate_time_series_to_asset_property(Client, Input0, Options0) ->
     Method = post,
     Path = ["/timeseries/associate"],
@@ -291,8 +3455,17 @@ associate_time_series_to_asset_property(Client, Input0, Options0) ->
 
 %% @doc Associates a group (batch) of assets with an IoT SiteWise Monitor
 %% project.
+-spec batch_associate_project_assets(aws_client:aws_client(), binary() | list(), batch_associate_project_assets_request()) ->
+    {ok, batch_associate_project_assets_response(), tuple()} |
+    {error, any()} |
+    {error, batch_associate_project_assets_errors(), tuple()}.
 batch_associate_project_assets(Client, ProjectId, Input) ->
     batch_associate_project_assets(Client, ProjectId, Input, []).
+
+-spec batch_associate_project_assets(aws_client:aws_client(), binary() | list(), batch_associate_project_assets_request(), proplists:proplist()) ->
+    {ok, batch_associate_project_assets_response(), tuple()} |
+    {error, any()} |
+    {error, batch_associate_project_assets_errors(), tuple()}.
 batch_associate_project_assets(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/associate"],
@@ -317,8 +3490,17 @@ batch_associate_project_assets(Client, ProjectId, Input0, Options0) ->
 
 %% @doc Disassociates a group (batch) of assets from an IoT SiteWise Monitor
 %% project.
+-spec batch_disassociate_project_assets(aws_client:aws_client(), binary() | list(), batch_disassociate_project_assets_request()) ->
+    {ok, batch_disassociate_project_assets_response(), tuple()} |
+    {error, any()} |
+    {error, batch_disassociate_project_assets_errors(), tuple()}.
 batch_disassociate_project_assets(Client, ProjectId, Input) ->
     batch_disassociate_project_assets(Client, ProjectId, Input, []).
+
+-spec batch_disassociate_project_assets(aws_client:aws_client(), binary() | list(), batch_disassociate_project_assets_request(), proplists:proplist()) ->
+    {ok, batch_disassociate_project_assets_response(), tuple()} |
+    {error, any()} |
+    {error, batch_disassociate_project_assets_errors(), tuple()}.
 batch_disassociate_project_assets(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/disassociate"],
@@ -349,8 +3531,17 @@ batch_disassociate_project_assets(Client, ProjectId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates
 %% in the
 %% IoT SiteWise User Guide.
+-spec batch_get_asset_property_aggregates(aws_client:aws_client(), batch_get_asset_property_aggregates_request()) ->
+    {ok, batch_get_asset_property_aggregates_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_asset_property_aggregates_errors(), tuple()}.
 batch_get_asset_property_aggregates(Client, Input) ->
     batch_get_asset_property_aggregates(Client, Input, []).
+
+-spec batch_get_asset_property_aggregates(aws_client:aws_client(), batch_get_asset_property_aggregates_request(), proplists:proplist()) ->
+    {ok, batch_get_asset_property_aggregates_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_asset_property_aggregates_errors(), tuple()}.
 batch_get_asset_property_aggregates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties/batch/aggregates"],
@@ -379,8 +3570,17 @@ batch_get_asset_property_aggregates(Client, Input0, Options0) ->
 %% current values:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values
 %% in the IoT SiteWise User Guide.
+-spec batch_get_asset_property_value(aws_client:aws_client(), batch_get_asset_property_value_request()) ->
+    {ok, batch_get_asset_property_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_asset_property_value_errors(), tuple()}.
 batch_get_asset_property_value(Client, Input) ->
     batch_get_asset_property_value(Client, Input, []).
+
+-spec batch_get_asset_property_value(aws_client:aws_client(), batch_get_asset_property_value_request(), proplists:proplist()) ->
+    {ok, batch_get_asset_property_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_asset_property_value_errors(), tuple()}.
 batch_get_asset_property_value(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties/batch/latest"],
@@ -409,8 +3609,17 @@ batch_get_asset_property_value(Client, Input0, Options0) ->
 %% Querying historical values:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values
 %% in the IoT SiteWise User Guide.
+-spec batch_get_asset_property_value_history(aws_client:aws_client(), batch_get_asset_property_value_history_request()) ->
+    {ok, batch_get_asset_property_value_history_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_asset_property_value_history_errors(), tuple()}.
 batch_get_asset_property_value_history(Client, Input) ->
     batch_get_asset_property_value_history(Client, Input, []).
+
+-spec batch_get_asset_property_value_history(aws_client:aws_client(), batch_get_asset_property_value_history_request(), proplists:proplist()) ->
+    {ok, batch_get_asset_property_value_history_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_asset_property_value_history_errors(), tuple()}.
 batch_get_asset_property_value_history(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties/batch/history"],
@@ -469,8 +3678,17 @@ batch_get_asset_property_value_history(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-batchputassetpropertyvalue-action
 %% in the
 %% IoT SiteWise User Guide.
+-spec batch_put_asset_property_value(aws_client:aws_client(), batch_put_asset_property_value_request()) ->
+    {ok, batch_put_asset_property_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_asset_property_value_errors(), tuple()}.
 batch_put_asset_property_value(Client, Input) ->
     batch_put_asset_property_value(Client, Input, []).
+
+-spec batch_put_asset_property_value(aws_client:aws_client(), batch_put_asset_property_value_request(), proplists:proplist()) ->
+    {ok, batch_put_asset_property_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_asset_property_value_errors(), tuple()}.
 batch_put_asset_property_value(Client, Input0, Options0) ->
     Method = post,
     Path = ["/properties"],
@@ -497,8 +3715,17 @@ batch_put_asset_property_value(Client, Input0, Options0) ->
 %% Identity Center user, IAM Identity Center group, or
 %% IAM user) access to the specified IoT SiteWise Monitor portal or project
 %% resource.
+-spec create_access_policy(aws_client:aws_client(), create_access_policy_request()) ->
+    {ok, create_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_access_policy_errors(), tuple()}.
 create_access_policy(Client, Input) ->
     create_access_policy(Client, Input, []).
+
+-spec create_access_policy(aws_client:aws_client(), create_access_policy_request(), proplists:proplist()) ->
+    {ok, create_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_access_policy_errors(), tuple()}.
 create_access_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/access-policies"],
@@ -527,8 +3754,17 @@ create_access_policy(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-assets.html
 %% in the
 %% IoT SiteWise User Guide.
+-spec create_asset(aws_client:aws_client(), create_asset_request()) ->
+    {ok, create_asset_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_errors(), tuple()}.
 create_asset(Client, Input) ->
     create_asset(Client, Input, []).
+
+-spec create_asset(aws_client:aws_client(), create_asset_request(), proplists:proplist()) ->
+    {ok, create_asset_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_errors(), tuple()}.
 create_asset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assets"],
@@ -575,8 +3811,17 @@ create_asset(Client, Input0, Options0) ->
 %% composite
 %% models of other asset models. You can't create assets directly from
 %% this type of asset model.
+-spec create_asset_model(aws_client:aws_client(), create_asset_model_request()) ->
+    {ok, create_asset_model_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_model_errors(), tuple()}.
 create_asset_model(Client, Input) ->
     create_asset_model(Client, Input, []).
+
+-spec create_asset_model(aws_client:aws_client(), create_asset_model_request(), proplists:proplist()) ->
+    {ok, create_asset_model_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_model_errors(), tuple()}.
 create_asset_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/asset-models"],
@@ -630,8 +3875,17 @@ create_asset_model(Client, Input0, Options0) ->
 %% To create an inline model, specify the
 %% `assetModelCompositeModelProperties' and don't include an
 %% `composedAssetModelId'.
+-spec create_asset_model_composite_model(aws_client:aws_client(), binary() | list(), create_asset_model_composite_model_request()) ->
+    {ok, create_asset_model_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_model_composite_model_errors(), tuple()}.
 create_asset_model_composite_model(Client, AssetModelId, Input) ->
     create_asset_model_composite_model(Client, AssetModelId, Input, []).
+
+-spec create_asset_model_composite_model(aws_client:aws_client(), binary() | list(), create_asset_model_composite_model_request(), proplists:proplist()) ->
+    {ok, create_asset_model_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_model_composite_model_errors(), tuple()}.
 create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
     Method = post,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models"],
@@ -670,8 +3924,17 @@ create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
 %% Bulk import is designed to store historical data to IoT SiteWise. It does
 %% not trigger computations or notifications on
 %% IoT SiteWise warm or cold tier storage.
+-spec create_bulk_import_job(aws_client:aws_client(), create_bulk_import_job_request()) ->
+    {ok, create_bulk_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_bulk_import_job_errors(), tuple()}.
 create_bulk_import_job(Client, Input) ->
     create_bulk_import_job(Client, Input, []).
+
+-spec create_bulk_import_job(aws_client:aws_client(), create_bulk_import_job_request(), proplists:proplist()) ->
+    {ok, create_bulk_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_bulk_import_job_errors(), tuple()}.
 create_bulk_import_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobs"],
@@ -695,8 +3958,17 @@ create_bulk_import_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a dashboard in an IoT SiteWise Monitor project.
+-spec create_dashboard(aws_client:aws_client(), create_dashboard_request()) ->
+    {ok, create_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, create_dashboard_errors(), tuple()}.
 create_dashboard(Client, Input) ->
     create_dashboard(Client, Input, []).
+
+-spec create_dashboard(aws_client:aws_client(), create_dashboard_request(), proplists:proplist()) ->
+    {ok, create_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, create_dashboard_errors(), tuple()}.
 create_dashboard(Client, Input0, Options0) ->
     Method = post,
     Path = ["/dashboards"],
@@ -727,8 +3999,17 @@ create_dashboard(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateway-connector.html
 %% in the
 %% IoT SiteWise User Guide.
+-spec create_gateway(aws_client:aws_client(), create_gateway_request()) ->
+    {ok, create_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, create_gateway_errors(), tuple()}.
 create_gateway(Client, Input) ->
     create_gateway(Client, Input, []).
+
+-spec create_gateway(aws_client:aws_client(), create_gateway_request(), proplists:proplist()) ->
+    {ok, create_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, create_gateway_errors(), tuple()}.
 create_gateway(Client, Input0, Options0) ->
     Method = post,
     Path = ["/20200301/gateways"],
@@ -762,8 +4043,17 @@ create_gateway(Client, Input0, Options0) ->
 %% administrators:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/administer-portals.html#portal-change-admins
 %% in the IoT SiteWise User Guide.
+-spec create_portal(aws_client:aws_client(), create_portal_request()) ->
+    {ok, create_portal_response(), tuple()} |
+    {error, any()} |
+    {error, create_portal_errors(), tuple()}.
 create_portal(Client, Input) ->
     create_portal(Client, Input, []).
+
+-spec create_portal(aws_client:aws_client(), create_portal_request(), proplists:proplist()) ->
+    {ok, create_portal_response(), tuple()} |
+    {error, any()} |
+    {error, create_portal_errors(), tuple()}.
 create_portal(Client, Input0, Options0) ->
     Method = post,
     Path = ["/portals"],
@@ -791,8 +4081,17 @@ create_portal(Client, Input0, Options0) ->
 %% Make sure that the project name and description don't contain
 %% confidential
 %% information.
+-spec create_project(aws_client:aws_client(), create_project_request()) ->
+    {ok, create_project_response(), tuple()} |
+    {error, any()} |
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
+
+-spec create_project(aws_client:aws_client(), create_project_request(), proplists:proplist()) ->
+    {ok, create_project_response(), tuple()} |
+    {error, any()} |
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
@@ -821,8 +4120,17 @@ create_project(Client, Input0, Options0) ->
 %%
 %% You can use this operation to revoke access to an IoT SiteWise Monitor
 %% resource.
+-spec delete_access_policy(aws_client:aws_client(), binary() | list(), delete_access_policy_request()) ->
+    {ok, delete_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_access_policy_errors(), tuple()}.
 delete_access_policy(Client, AccessPolicyId, Input) ->
     delete_access_policy(Client, AccessPolicyId, Input, []).
+
+-spec delete_access_policy(aws_client:aws_client(), binary() | list(), delete_access_policy_request(), proplists:proplist()) ->
+    {ok, delete_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_access_policy_errors(), tuple()}.
 delete_access_policy(Client, AccessPolicyId, Input0, Options0) ->
     Method = delete,
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
@@ -858,8 +4166,17 @@ delete_access_policy(Client, AccessPolicyId, Input0, Options0) ->
 %% more information, see
 %% DisassociateAssets:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DisassociateAssets.html.
+-spec delete_asset(aws_client:aws_client(), binary() | list(), delete_asset_request()) ->
+    {ok, delete_asset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, AssetId, Input) ->
     delete_asset(Client, AssetId, Input, []).
+
+-spec delete_asset(aws_client:aws_client(), binary() | list(), delete_asset_request(), proplists:proplist()) ->
+    {ok, delete_asset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, AssetId, Input0, Options0) ->
     Method = delete,
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
@@ -895,8 +4212,17 @@ delete_asset(Client, AssetId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html
 %% in the
 %% IoT SiteWise User Guide.
+-spec delete_asset_model(aws_client:aws_client(), binary() | list(), delete_asset_model_request()) ->
+    {ok, delete_asset_model_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_model_errors(), tuple()}.
 delete_asset_model(Client, AssetModelId, Input) ->
     delete_asset_model(Client, AssetModelId, Input, []).
+
+-spec delete_asset_model(aws_client:aws_client(), binary() | list(), delete_asset_model_request(), proplists:proplist()) ->
+    {ok, delete_asset_model_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_model_errors(), tuple()}.
 delete_asset_model(Client, AssetModelId, Input0, Options0) ->
     Method = delete,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
@@ -932,8 +4258,17 @@ delete_asset_model(Client, AssetModelId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html
 %% in the
 %% IoT SiteWise User Guide.
+-spec delete_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_model_composite_model_request()) ->
+    {ok, delete_asset_model_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_model_composite_model_errors(), tuple()}.
 delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input) ->
     delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input, []).
+
+-spec delete_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_model_composite_model_request(), proplists:proplist()) ->
+    {ok, delete_asset_model_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_model_composite_model_errors(), tuple()}.
 delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input0, Options0) ->
     Method = delete,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
@@ -958,8 +4293,17 @@ delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a dashboard from IoT SiteWise Monitor.
+-spec delete_dashboard(aws_client:aws_client(), binary() | list(), delete_dashboard_request()) ->
+    {ok, delete_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dashboard_errors(), tuple()}.
 delete_dashboard(Client, DashboardId, Input) ->
     delete_dashboard(Client, DashboardId, Input, []).
+
+-spec delete_dashboard(aws_client:aws_client(), binary() | list(), delete_dashboard_request(), proplists:proplist()) ->
+    {ok, delete_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dashboard_errors(), tuple()}.
 delete_dashboard(Client, DashboardId, Input0, Options0) ->
     Method = delete,
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -987,8 +4331,17 @@ delete_dashboard(Client, DashboardId, Input0, Options0) ->
 %%
 %% When you delete a gateway, some of the gateway's files remain
 %% in your gateway's file system.
+-spec delete_gateway(aws_client:aws_client(), binary() | list(), delete_gateway_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, GatewayId, Input) ->
     delete_gateway(Client, GatewayId, Input, []).
+
+-spec delete_gateway(aws_client:aws_client(), binary() | list(), delete_gateway_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, GatewayId, Input0, Options0) ->
     Method = delete,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
@@ -1012,8 +4365,17 @@ delete_gateway(Client, GatewayId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a portal from IoT SiteWise Monitor.
+-spec delete_portal(aws_client:aws_client(), binary() | list(), delete_portal_request()) ->
+    {ok, delete_portal_response(), tuple()} |
+    {error, any()} |
+    {error, delete_portal_errors(), tuple()}.
 delete_portal(Client, PortalId, Input) ->
     delete_portal(Client, PortalId, Input, []).
+
+-spec delete_portal(aws_client:aws_client(), binary() | list(), delete_portal_request(), proplists:proplist()) ->
+    {ok, delete_portal_response(), tuple()} |
+    {error, any()} |
+    {error, delete_portal_errors(), tuple()}.
 delete_portal(Client, PortalId, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
@@ -1038,8 +4400,17 @@ delete_portal(Client, PortalId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a project from IoT SiteWise Monitor.
+-spec delete_project(aws_client:aws_client(), binary() | list(), delete_project_request()) ->
+    {ok, delete_project_response(), tuple()} |
+    {error, any()} |
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectId, Input) ->
     delete_project(Client, ProjectId, Input, []).
+
+-spec delete_project(aws_client:aws_client(), binary() | list(), delete_project_request(), proplists:proplist()) ->
+    {ok, delete_project_response(), tuple()} |
+    {error, any()} |
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectId, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
@@ -1081,8 +4452,17 @@ delete_project(Client, ProjectId, Input0, Options0) ->
 %% The `alias' of the time series.
 %%
 %% The `assetId' and `propertyId' that identifies the asset property.
+-spec delete_time_series(aws_client:aws_client(), delete_time_series_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_time_series_errors(), tuple()}.
 delete_time_series(Client, Input) ->
     delete_time_series(Client, Input, []).
+
+-spec delete_time_series(aws_client:aws_client(), delete_time_series_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_time_series_errors(), tuple()}.
 delete_time_series(Client, Input0, Options0) ->
     Method = post,
     Path = ["/timeseries/delete"],
@@ -1111,14 +4491,26 @@ delete_time_series(Client, Input0, Options0) ->
 %% @doc Describes an access policy, which specifies an identity's access
 %% to an IoT SiteWise Monitor portal or
 %% project.
+-spec describe_access_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_access_policy_errors(), tuple()}.
 describe_access_policy(Client, AccessPolicyId)
   when is_map(Client) ->
     describe_access_policy(Client, AccessPolicyId, #{}, #{}).
 
+-spec describe_access_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_access_policy_errors(), tuple()}.
 describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, []).
 
+-spec describe_access_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_access_policy_errors(), tuple()}.
 describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
@@ -1136,14 +4528,26 @@ describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an action.
+-spec describe_action(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_action_response(), tuple()} |
+    {error, any()} |
+    {error, describe_action_errors(), tuple()}.
 describe_action(Client, ActionId)
   when is_map(Client) ->
     describe_action(Client, ActionId, #{}, #{}).
 
+-spec describe_action(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_action_response(), tuple()} |
+    {error, any()} |
+    {error, describe_action_errors(), tuple()}.
 describe_action(Client, ActionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_action(Client, ActionId, QueryMap, HeadersMap, []).
 
+-spec describe_action(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_action_response(), tuple()} |
+    {error, any()} |
+    {error, describe_action_errors(), tuple()}.
 describe_action(Client, ActionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/actions/", aws_util:encode_uri(ActionId), ""],
@@ -1161,14 +4565,26 @@ describe_action(Client, ActionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an asset.
+-spec describe_asset(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_asset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_errors(), tuple()}.
 describe_asset(Client, AssetId)
   when is_map(Client) ->
     describe_asset(Client, AssetId, #{}, #{}).
 
+-spec describe_asset(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_asset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_errors(), tuple()}.
 describe_asset(Client, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset(Client, AssetId, QueryMap, HeadersMap, []).
 
+-spec describe_asset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_asset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_errors(), tuple()}.
 describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
@@ -1197,14 +4613,26 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
 %% model this is based on, call
 %% DescribeAssetModelCompositeModel:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModelCompositeModel.html.
+-spec describe_asset_composite_model(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_asset_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_composite_model_errors(), tuple()}.
 describe_asset_composite_model(Client, AssetCompositeModelId, AssetId)
   when is_map(Client) ->
     describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, #{}, #{}).
 
+-spec describe_asset_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_asset_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_composite_model_errors(), tuple()}.
 describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap, HeadersMap, []).
 
+-spec describe_asset_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_asset_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_composite_model_errors(), tuple()}.
 describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/composite-models/", aws_util:encode_uri(AssetCompositeModelId), ""],
@@ -1222,14 +4650,26 @@ describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an asset model.
+-spec describe_asset_model(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_asset_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_model_errors(), tuple()}.
 describe_asset_model(Client, AssetModelId)
   when is_map(Client) ->
     describe_asset_model(Client, AssetModelId, #{}, #{}).
 
+-spec describe_asset_model(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_asset_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_model_errors(), tuple()}.
 describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, []).
 
+-spec describe_asset_model(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_asset_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_model_errors(), tuple()}.
 describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
@@ -1256,14 +4696,26 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
 %% For more information, see Custom composite models (Components):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/custom-composite-models.html
 %% in the IoT SiteWise User Guide.
+-spec describe_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_asset_model_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_model_composite_model_errors(), tuple()}.
 describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId)
   when is_map(Client) ->
     describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, #{}, #{}).
 
+-spec describe_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_asset_model_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_model_composite_model_errors(), tuple()}.
 describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, QueryMap, HeadersMap, []).
 
+-spec describe_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_asset_model_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_model_composite_model_errors(), tuple()}.
 describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
@@ -1293,14 +4745,26 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
 %% the value of an
 %% asset property, use GetAssetPropertyValue:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_GetAssetPropertyValue.html.
+-spec describe_asset_property(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_asset_property_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_property_errors(), tuple()}.
 describe_asset_property(Client, AssetId, PropertyId)
   when is_map(Client) ->
     describe_asset_property(Client, AssetId, PropertyId, #{}, #{}).
 
+-spec describe_asset_property(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_asset_property_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_property_errors(), tuple()}.
 describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, []).
 
+-spec describe_asset_property(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_asset_property_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_property_errors(), tuple()}.
 describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
@@ -1323,14 +4787,26 @@ describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Optio
 %% a bulk import job (CLI):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/DescribeBulkImportJob.html
 %% in the Amazon Simple Storage Service User Guide.
+-spec describe_bulk_import_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_bulk_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_bulk_import_job_errors(), tuple()}.
 describe_bulk_import_job(Client, JobId)
   when is_map(Client) ->
     describe_bulk_import_job(Client, JobId, #{}, #{}).
 
+-spec describe_bulk_import_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_bulk_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_bulk_import_job_errors(), tuple()}.
 describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, []).
 
+-spec describe_bulk_import_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_bulk_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_bulk_import_job_errors(), tuple()}.
 describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
@@ -1348,14 +4824,26 @@ describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a dashboard.
+-spec describe_dashboard(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, DashboardId)
   when is_map(Client) ->
     describe_dashboard(Client, DashboardId, #{}, #{}).
 
+-spec describe_dashboard(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, []).
 
+-spec describe_dashboard(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -1380,14 +4868,26 @@ describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html
 %% in the
 %% IoT SiteWise User Guide.
+-spec describe_default_encryption_configuration(aws_client:aws_client()) ->
+    {ok, describe_default_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_default_encryption_configuration_errors(), tuple()}.
 describe_default_encryption_configuration(Client)
   when is_map(Client) ->
     describe_default_encryption_configuration(Client, #{}, #{}).
 
+-spec describe_default_encryption_configuration(aws_client:aws_client(), map(), map()) ->
+    {ok, describe_default_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_default_encryption_configuration_errors(), tuple()}.
 describe_default_encryption_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_default_encryption_configuration(Client, QueryMap, HeadersMap, []).
 
+-spec describe_default_encryption_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, describe_default_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_default_encryption_configuration_errors(), tuple()}.
 describe_default_encryption_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration/account/encryption"],
@@ -1405,14 +4905,26 @@ describe_default_encryption_configuration(Client, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a gateway.
+-spec describe_gateway(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_errors(), tuple()}.
 describe_gateway(Client, GatewayId)
   when is_map(Client) ->
     describe_gateway(Client, GatewayId, #{}, #{}).
 
+-spec describe_gateway(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_errors(), tuple()}.
 describe_gateway(Client, GatewayId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway(Client, GatewayId, QueryMap, HeadersMap, []).
 
+-spec describe_gateway(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_errors(), tuple()}.
 describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
@@ -1439,14 +4951,26 @@ describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
 %% capability configuration. To
 %% list all capability configurations for a gateway, use DescribeGateway:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html.
+-spec describe_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_gateway_capability_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_capability_configuration_errors(), tuple()}.
 describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId)
   when is_map(Client) ->
     describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, #{}, #{}).
 
+-spec describe_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_gateway_capability_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_capability_configuration_errors(), tuple()}.
 describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap, []).
 
+-spec describe_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_gateway_capability_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_capability_configuration_errors(), tuple()}.
 describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), "/capability/", aws_util:encode_uri(CapabilityNamespace), ""],
@@ -1464,14 +4988,26 @@ describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the current IoT SiteWise logging options.
+-spec describe_logging_options(aws_client:aws_client()) ->
+    {ok, describe_logging_options_response(), tuple()} |
+    {error, any()} |
+    {error, describe_logging_options_errors(), tuple()}.
 describe_logging_options(Client)
   when is_map(Client) ->
     describe_logging_options(Client, #{}, #{}).
 
+-spec describe_logging_options(aws_client:aws_client(), map(), map()) ->
+    {ok, describe_logging_options_response(), tuple()} |
+    {error, any()} |
+    {error, describe_logging_options_errors(), tuple()}.
 describe_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_options(Client, QueryMap, HeadersMap, []).
 
+-spec describe_logging_options(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, describe_logging_options_response(), tuple()} |
+    {error, any()} |
+    {error, describe_logging_options_errors(), tuple()}.
 describe_logging_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging"],
@@ -1489,14 +5025,26 @@ describe_logging_options(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a portal.
+-spec describe_portal(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_portal_response(), tuple()} |
+    {error, any()} |
+    {error, describe_portal_errors(), tuple()}.
 describe_portal(Client, PortalId)
   when is_map(Client) ->
     describe_portal(Client, PortalId, #{}, #{}).
 
+-spec describe_portal(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_portal_response(), tuple()} |
+    {error, any()} |
+    {error, describe_portal_errors(), tuple()}.
 describe_portal(Client, PortalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_portal(Client, PortalId, QueryMap, HeadersMap, []).
 
+-spec describe_portal(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_portal_response(), tuple()} |
+    {error, any()} |
+    {error, describe_portal_errors(), tuple()}.
 describe_portal(Client, PortalId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
@@ -1514,14 +5062,26 @@ describe_portal(Client, PortalId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a project.
+-spec describe_project(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_project_response(), tuple()} |
+    {error, any()} |
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectId)
   when is_map(Client) ->
     describe_project(Client, ProjectId, #{}, #{}).
 
+-spec describe_project(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_project_response(), tuple()} |
+    {error, any()} |
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectId, QueryMap, HeadersMap, []).
 
+-spec describe_project(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_project_response(), tuple()} |
+    {error, any()} |
+    {error, describe_project_errors(), tuple()}.
 describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
@@ -1540,14 +5100,26 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the storage configuration for IoT
 %% SiteWise.
+-spec describe_storage_configuration(aws_client:aws_client()) ->
+    {ok, describe_storage_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_storage_configuration_errors(), tuple()}.
 describe_storage_configuration(Client)
   when is_map(Client) ->
     describe_storage_configuration(Client, #{}, #{}).
 
+-spec describe_storage_configuration(aws_client:aws_client(), map(), map()) ->
+    {ok, describe_storage_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_storage_configuration_errors(), tuple()}.
 describe_storage_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_storage_configuration(Client, QueryMap, HeadersMap, []).
 
+-spec describe_storage_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, describe_storage_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_storage_configuration_errors(), tuple()}.
 describe_storage_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration/account/storage"],
@@ -1577,14 +5149,26 @@ describe_storage_configuration(Client, QueryMap, HeadersMap, Options0)
 %% The `alias' of the time series.
 %%
 %% The `assetId' and `propertyId' that identifies the asset property.
+-spec describe_time_series(aws_client:aws_client()) ->
+    {ok, describe_time_series_response(), tuple()} |
+    {error, any()} |
+    {error, describe_time_series_errors(), tuple()}.
 describe_time_series(Client)
   when is_map(Client) ->
     describe_time_series(Client, #{}, #{}).
 
+-spec describe_time_series(aws_client:aws_client(), map(), map()) ->
+    {ok, describe_time_series_response(), tuple()} |
+    {error, any()} |
+    {error, describe_time_series_errors(), tuple()}.
 describe_time_series(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_time_series(Client, QueryMap, HeadersMap, []).
 
+-spec describe_time_series(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, describe_time_series_response(), tuple()} |
+    {error, any()} |
+    {error, describe_time_series_errors(), tuple()}.
 describe_time_series(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/timeseries/describe"],
@@ -1610,8 +5194,17 @@ describe_time_series(Client, QueryMap, HeadersMap, Options0)
 %% @doc Disassociates a child asset from the given parent asset through a
 %% hierarchy defined in the
 %% parent asset's model.
+-spec disassociate_assets(aws_client:aws_client(), binary() | list(), disassociate_assets_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_assets_errors(), tuple()}.
 disassociate_assets(Client, AssetId, Input) ->
     disassociate_assets(Client, AssetId, Input, []).
+
+-spec disassociate_assets(aws_client:aws_client(), binary() | list(), disassociate_assets_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_assets_errors(), tuple()}.
 disassociate_assets(Client, AssetId, Input0, Options0) ->
     Method = post,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/disassociate"],
@@ -1635,8 +5228,17 @@ disassociate_assets(Client, AssetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a time series (data stream) from an asset property.
+-spec disassociate_time_series_from_asset_property(aws_client:aws_client(), disassociate_time_series_from_asset_property_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_time_series_from_asset_property_errors(), tuple()}.
 disassociate_time_series_from_asset_property(Client, Input) ->
     disassociate_time_series_from_asset_property(Client, Input, []).
+
+-spec disassociate_time_series_from_asset_property(aws_client:aws_client(), disassociate_time_series_from_asset_property_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_time_series_from_asset_property_errors(), tuple()}.
 disassociate_time_series_from_asset_property(Client, Input0, Options0) ->
     Method = post,
     Path = ["/timeseries/disassociate"],
@@ -1663,8 +5265,17 @@ disassociate_time_series_from_asset_property(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Executes an action on a target resource.
+-spec execute_action(aws_client:aws_client(), execute_action_request()) ->
+    {ok, execute_action_response(), tuple()} |
+    {error, any()} |
+    {error, execute_action_errors(), tuple()}.
 execute_action(Client, Input) ->
     execute_action(Client, Input, []).
+
+-spec execute_action(aws_client:aws_client(), execute_action_request(), proplists:proplist()) ->
+    {ok, execute_action_response(), tuple()} |
+    {error, any()} |
+    {error, execute_action_errors(), tuple()}.
 execute_action(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actions"],
@@ -1689,8 +5300,17 @@ execute_action(Client, Input0, Options0) ->
 
 %% @doc Run SQL queries to retrieve metadata and time-series data from asset
 %% models, assets, measurements, metrics, transforms, and aggregates.
+-spec execute_query(aws_client:aws_client(), execute_query_request()) ->
+    {ok, execute_query_response(), tuple()} |
+    {error, any()} |
+    {error, execute_query_errors(), tuple()}.
 execute_query(Client, Input) ->
     execute_query(Client, Input, []).
+
+-spec execute_query(aws_client:aws_client(), execute_query_request(), proplists:proplist()) ->
+    {ok, execute_query_response(), tuple()} |
+    {error, any()} |
+    {error, execute_query_errors(), tuple()}.
 execute_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/queries/execution"],
@@ -1728,14 +5348,26 @@ execute_query(Client, Input0, Options0) ->
 %% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
+-spec get_asset_property_aggregates(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_asset_property_aggregates_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_property_aggregates_errors(), tuple()}.
 get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate)
   when is_map(Client) ->
     get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, #{}, #{}).
 
+-spec get_asset_property_aggregates(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_asset_property_aggregates_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_property_aggregates_errors(), tuple()}.
 get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap, []).
 
+-spec get_asset_property_aggregates(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_asset_property_aggregates_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_property_aggregates_errors(), tuple()}.
 get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/aggregates"],
@@ -1781,14 +5413,26 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
 %% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
+-spec get_asset_property_value(aws_client:aws_client()) ->
+    {ok, get_asset_property_value_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_property_value_errors(), tuple()}.
 get_asset_property_value(Client)
   when is_map(Client) ->
     get_asset_property_value(Client, #{}, #{}).
 
+-spec get_asset_property_value(aws_client:aws_client(), map(), map()) ->
+    {ok, get_asset_property_value_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_property_value_errors(), tuple()}.
 get_asset_property_value(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_value(Client, QueryMap, HeadersMap, []).
 
+-spec get_asset_property_value(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_asset_property_value_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_property_value_errors(), tuple()}.
 get_asset_property_value(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/latest"],
@@ -1826,14 +5470,26 @@ get_asset_property_value(Client, QueryMap, HeadersMap, Options0)
 %% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
+-spec get_asset_property_value_history(aws_client:aws_client()) ->
+    {ok, get_asset_property_value_history_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_property_value_history_errors(), tuple()}.
 get_asset_property_value_history(Client)
   when is_map(Client) ->
     get_asset_property_value_history(Client, #{}, #{}).
 
+-spec get_asset_property_value_history(aws_client:aws_client(), map(), map()) ->
+    {ok, get_asset_property_value_history_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_property_value_history_errors(), tuple()}.
 get_asset_property_value_history(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_value_history(Client, QueryMap, HeadersMap, []).
 
+-spec get_asset_property_value_history(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_asset_property_value_history_response(), tuple()} |
+    {error, any()} |
+    {error, get_asset_property_value_history_errors(), tuple()}.
 get_asset_property_value_history(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/history"],
@@ -1882,14 +5538,26 @@ get_asset_property_value_history(Client, QueryMap, HeadersMap, Options0)
 %% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
+-spec get_interpolated_asset_property_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_interpolated_asset_property_values_response(), tuple()} |
+    {error, any()} |
+    {error, get_interpolated_asset_property_values_errors(), tuple()}.
 get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type)
   when is_map(Client) ->
     get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, #{}, #{}).
 
+-spec get_interpolated_asset_property_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_interpolated_asset_property_values_response(), tuple()} |
+    {error, any()} |
+    {error, get_interpolated_asset_property_values_errors(), tuple()}.
 get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, QueryMap, HeadersMap, []).
 
+-spec get_interpolated_asset_property_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_interpolated_asset_property_values_response(), tuple()} |
+    {error, any()} |
+    {error, get_interpolated_asset_property_values_errors(), tuple()}.
 get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/properties/interpolated"],
@@ -1926,14 +5594,26 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
 %% Identity Center user, an IAM Identity Center
 %% group, or an IAM user) or an IoT SiteWise Monitor resource (a portal or
 %% project).
+-spec list_access_policies(aws_client:aws_client()) ->
+    {ok, list_access_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_access_policies_errors(), tuple()}.
 list_access_policies(Client)
   when is_map(Client) ->
     list_access_policies(Client, #{}, #{}).
 
+-spec list_access_policies(aws_client:aws_client(), map(), map()) ->
+    {ok, list_access_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_access_policies_errors(), tuple()}.
 list_access_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_policies(Client, QueryMap, HeadersMap, []).
 
+-spec list_access_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_access_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_access_policies_errors(), tuple()}.
 list_access_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-policies"],
@@ -1961,14 +5641,26 @@ list_access_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of actions for a specific target resource.
+-spec list_actions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, TargetResourceId, TargetResourceType)
   when is_map(Client) ->
     list_actions(Client, TargetResourceId, TargetResourceType, #{}, #{}).
 
+-spec list_actions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap, []).
 
+-spec list_actions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/actions"],
@@ -1994,14 +5686,26 @@ list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap,
 
 %% @doc Retrieves a paginated list of composite models associated with the
 %% asset model
+-spec list_asset_model_composite_models(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_asset_model_composite_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_model_composite_models_errors(), tuple()}.
 list_asset_model_composite_models(Client, AssetModelId)
   when is_map(Client) ->
     list_asset_model_composite_models(Client, AssetModelId, #{}, #{}).
 
+-spec list_asset_model_composite_models(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_asset_model_composite_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_model_composite_models_errors(), tuple()}.
 list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, []).
 
+-spec list_asset_model_composite_models(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_model_composite_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_model_composite_models_errors(), tuple()}.
 list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models"],
@@ -2029,14 +5733,26 @@ list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, Op
 %% If you update properties associated with the model before you finish
 %% listing all the properties,
 %% you need to start all over again.
+-spec list_asset_model_properties(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_asset_model_properties_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_model_properties_errors(), tuple()}.
 list_asset_model_properties(Client, AssetModelId)
   when is_map(Client) ->
     list_asset_model_properties(Client, AssetModelId, #{}, #{}).
 
+-spec list_asset_model_properties(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_asset_model_properties_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_model_properties_errors(), tuple()}.
 list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, []).
 
+-spec list_asset_model_properties(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_model_properties_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_model_properties_errors(), tuple()}.
 list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/properties"],
@@ -2060,14 +5776,26 @@ list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of summaries of all asset models.
+-spec list_asset_models(aws_client:aws_client()) ->
+    {ok, list_asset_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_models_errors(), tuple()}.
 list_asset_models(Client)
   when is_map(Client) ->
     list_asset_models(Client, #{}, #{}).
 
+-spec list_asset_models(aws_client:aws_client(), map(), map()) ->
+    {ok, list_asset_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_models_errors(), tuple()}.
 list_asset_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_models(Client, QueryMap, HeadersMap, []).
 
+-spec list_asset_models(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_models_errors(), tuple()}.
 list_asset_models(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models"],
@@ -2095,14 +5823,26 @@ list_asset_models(Client, QueryMap, HeadersMap, Options0)
 %% If you update properties associated with the model before you finish
 %% listing all the properties,
 %% you need to start all over again.
+-spec list_asset_properties(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_asset_properties_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_properties_errors(), tuple()}.
 list_asset_properties(Client, AssetId)
   when is_map(Client) ->
     list_asset_properties(Client, AssetId, #{}, #{}).
 
+-spec list_asset_properties(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_asset_properties_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_properties_errors(), tuple()}.
 list_asset_properties(Client, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_properties(Client, AssetId, QueryMap, HeadersMap, []).
 
+-spec list_asset_properties(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_properties_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_properties_errors(), tuple()}.
 list_asset_properties(Client, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties"],
@@ -2131,14 +5871,26 @@ list_asset_properties(Client, AssetId, QueryMap, HeadersMap, Options0)
 %% to identify an asset's root asset and all associated assets between
 %% that asset and its
 %% root.
+-spec list_asset_relationships(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_asset_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_relationships_errors(), tuple()}.
 list_asset_relationships(Client, AssetId, TraversalType)
   when is_map(Client) ->
     list_asset_relationships(Client, AssetId, TraversalType, #{}, #{}).
 
+-spec list_asset_relationships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_asset_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_relationships_errors(), tuple()}.
 list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, []).
 
+-spec list_asset_relationships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_relationships_errors(), tuple()}.
 list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/assetRelationships"],
@@ -2175,14 +5927,26 @@ list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, O
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_ListAssetModels.html
 %% to get all of your asset model IDs. Then, use ListAssets to get all
 %% assets for each asset model.
+-spec list_assets(aws_client:aws_client()) ->
+    {ok, list_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client)
   when is_map(Client) ->
     list_assets(Client, #{}, #{}).
 
+-spec list_assets(aws_client:aws_client(), map(), map()) ->
+    {ok, list_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assets(Client, QueryMap, HeadersMap, []).
 
+-spec list_assets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets"],
@@ -2214,14 +5978,26 @@ list_assets(Client, QueryMap, HeadersMap, Options0)
 %% specify.
 %%
 %% List an asset's parent asset.
+-spec list_associated_assets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_associated_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_associated_assets_errors(), tuple()}.
 list_associated_assets(Client, AssetId)
   when is_map(Client) ->
     list_associated_assets(Client, AssetId, #{}, #{}).
 
+-spec list_associated_assets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_associated_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_associated_assets_errors(), tuple()}.
 list_associated_assets(Client, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_associated_assets(Client, AssetId, QueryMap, HeadersMap, []).
 
+-spec list_associated_assets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_associated_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_associated_assets_errors(), tuple()}.
 list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/hierarchies"],
@@ -2251,14 +6027,26 @@ list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options0)
 %% import jobs (CLI):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/ListBulkImportJobs.html
 %% in the IoT SiteWise User Guide.
+-spec list_bulk_import_jobs(aws_client:aws_client()) ->
+    {ok, list_bulk_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_bulk_import_jobs_errors(), tuple()}.
 list_bulk_import_jobs(Client)
   when is_map(Client) ->
     list_bulk_import_jobs(Client, #{}, #{}).
 
+-spec list_bulk_import_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_bulk_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_bulk_import_jobs_errors(), tuple()}.
 list_bulk_import_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bulk_import_jobs(Client, QueryMap, HeadersMap, []).
 
+-spec list_bulk_import_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_bulk_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_bulk_import_jobs_errors(), tuple()}.
 list_bulk_import_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs"],
@@ -2283,14 +6071,26 @@ list_bulk_import_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of composition relationships for an asset
 %% model of type `COMPONENT_MODEL'.
+-spec list_composition_relationships(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_composition_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_composition_relationships_errors(), tuple()}.
 list_composition_relationships(Client, AssetModelId)
   when is_map(Client) ->
     list_composition_relationships(Client, AssetModelId, #{}, #{}).
 
+-spec list_composition_relationships(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_composition_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_composition_relationships_errors(), tuple()}.
 list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, []).
 
+-spec list_composition_relationships(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_composition_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_composition_relationships_errors(), tuple()}.
 list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composition-relationships"],
@@ -2314,14 +6114,26 @@ list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, Optio
 
 %% @doc Retrieves a paginated list of dashboards for an IoT SiteWise Monitor
 %% project.
+-spec list_dashboards(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_dashboards_response(), tuple()} |
+    {error, any()} |
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, ProjectId)
   when is_map(Client) ->
     list_dashboards(Client, ProjectId, #{}, #{}).
 
+-spec list_dashboards(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_dashboards_response(), tuple()} |
+    {error, any()} |
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboards(Client, ProjectId, QueryMap, HeadersMap, []).
 
+-spec list_dashboards(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_dashboards_response(), tuple()} |
+    {error, any()} |
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, ProjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dashboards"],
@@ -2345,14 +6157,26 @@ list_dashboards(Client, ProjectId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of gateways.
+-spec list_gateways(aws_client:aws_client()) ->
+    {ok, list_gateways_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client)
   when is_map(Client) ->
     list_gateways(Client, #{}, #{}).
 
+-spec list_gateways(aws_client:aws_client(), map(), map()) ->
+    {ok, list_gateways_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gateways(Client, QueryMap, HeadersMap, []).
 
+-spec list_gateways(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_gateways_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/20200301/gateways"],
@@ -2375,14 +6199,26 @@ list_gateways(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of IoT SiteWise Monitor portals.
+-spec list_portals(aws_client:aws_client()) ->
+    {ok, list_portals_response(), tuple()} |
+    {error, any()} |
+    {error, list_portals_errors(), tuple()}.
 list_portals(Client)
   when is_map(Client) ->
     list_portals(Client, #{}, #{}).
 
+-spec list_portals(aws_client:aws_client(), map(), map()) ->
+    {ok, list_portals_response(), tuple()} |
+    {error, any()} |
+    {error, list_portals_errors(), tuple()}.
 list_portals(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_portals(Client, QueryMap, HeadersMap, []).
 
+-spec list_portals(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_portals_response(), tuple()} |
+    {error, any()} |
+    {error, list_portals_errors(), tuple()}.
 list_portals(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals"],
@@ -2406,14 +6242,26 @@ list_portals(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of assets associated with an IoT SiteWise
 %% Monitor project.
+-spec list_project_assets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_project_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_project_assets_errors(), tuple()}.
 list_project_assets(Client, ProjectId)
   when is_map(Client) ->
     list_project_assets(Client, ProjectId, #{}, #{}).
 
+-spec list_project_assets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_project_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_project_assets_errors(), tuple()}.
 list_project_assets(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_project_assets(Client, ProjectId, QueryMap, HeadersMap, []).
 
+-spec list_project_assets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_project_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_project_assets_errors(), tuple()}.
 list_project_assets(Client, ProjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets"],
@@ -2437,14 +6285,26 @@ list_project_assets(Client, ProjectId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of projects for an IoT SiteWise Monitor
 %% portal.
+-spec list_projects(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_projects_response(), tuple()} |
+    {error, any()} |
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, PortalId)
   when is_map(Client) ->
     list_projects(Client, PortalId, #{}, #{}).
 
+-spec list_projects(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_projects_response(), tuple()} |
+    {error, any()} |
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, PortalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, PortalId, QueryMap, HeadersMap, []).
 
+-spec list_projects(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_projects_response(), tuple()} |
+    {error, any()} |
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, PortalId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
@@ -2468,14 +6328,26 @@ list_projects(Client, PortalId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the list of tags for an IoT SiteWise resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
@@ -2497,14 +6369,26 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of time series (data streams).
+-spec list_time_series(aws_client:aws_client()) ->
+    {ok, list_time_series_response(), tuple()} |
+    {error, any()} |
+    {error, list_time_series_errors(), tuple()}.
 list_time_series(Client)
   when is_map(Client) ->
     list_time_series(Client, #{}, #{}).
 
+-spec list_time_series(aws_client:aws_client(), map(), map()) ->
+    {ok, list_time_series_response(), tuple()} |
+    {error, any()} |
+    {error, list_time_series_errors(), tuple()}.
 list_time_series(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_time_series(Client, QueryMap, HeadersMap, []).
 
+-spec list_time_series(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_time_series_response(), tuple()} |
+    {error, any()} |
+    {error, list_time_series_errors(), tuple()}.
 list_time_series(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/timeseries"],
@@ -2537,8 +6421,17 @@ list_time_series(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html
 %% in
 %% the IoT SiteWise User Guide.
+-spec put_default_encryption_configuration(aws_client:aws_client(), put_default_encryption_configuration_request()) ->
+    {ok, put_default_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_default_encryption_configuration_errors(), tuple()}.
 put_default_encryption_configuration(Client, Input) ->
     put_default_encryption_configuration(Client, Input, []).
+
+-spec put_default_encryption_configuration(aws_client:aws_client(), put_default_encryption_configuration_request(), proplists:proplist()) ->
+    {ok, put_default_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_default_encryption_configuration_errors(), tuple()}.
 put_default_encryption_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration/account/encryption"],
@@ -2562,8 +6455,17 @@ put_default_encryption_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets logging options for IoT SiteWise.
+-spec put_logging_options(aws_client:aws_client(), put_logging_options_request()) ->
+    {ok, put_logging_options_response(), tuple()} |
+    {error, any()} |
+    {error, put_logging_options_errors(), tuple()}.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
+
+-spec put_logging_options(aws_client:aws_client(), put_logging_options_request(), proplists:proplist()) ->
+    {ok, put_logging_options_response(), tuple()} |
+    {error, any()} |
+    {error, put_logging_options_errors(), tuple()}.
 put_logging_options(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging"],
@@ -2587,8 +6489,17 @@ put_logging_options(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Configures storage settings for IoT SiteWise.
+-spec put_storage_configuration(aws_client:aws_client(), put_storage_configuration_request()) ->
+    {ok, put_storage_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_storage_configuration_errors(), tuple()}.
 put_storage_configuration(Client, Input) ->
     put_storage_configuration(Client, Input, []).
+
+-spec put_storage_configuration(aws_client:aws_client(), put_storage_configuration_request(), proplists:proplist()) ->
+    {ok, put_storage_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_storage_configuration_errors(), tuple()}.
 put_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration/account/storage"],
@@ -2615,8 +6526,17 @@ put_storage_configuration(Client, Input0, Options0) ->
 %%
 %% If a tag already exists for the resource, this operation
 %% updates the tag's value.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
@@ -2641,8 +6561,17 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from an IoT SiteWise resource.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/tags"],
@@ -2670,8 +6599,17 @@ untag_resource(Client, Input0, Options0) ->
 %% @doc Updates an existing access policy that specifies an identity's
 %% access to an IoT SiteWise Monitor
 %% portal or project resource.
+-spec update_access_policy(aws_client:aws_client(), binary() | list(), update_access_policy_request()) ->
+    {ok, update_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_access_policy_errors(), tuple()}.
 update_access_policy(Client, AccessPolicyId, Input) ->
     update_access_policy(Client, AccessPolicyId, Input, []).
+
+-spec update_access_policy(aws_client:aws_client(), binary() | list(), update_access_policy_request(), proplists:proplist()) ->
+    {ok, update_access_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_access_policy_errors(), tuple()}.
 update_access_policy(Client, AccessPolicyId, Input0, Options0) ->
     Method = put,
     Path = ["/access-policies/", aws_util:encode_uri(AccessPolicyId), ""],
@@ -2700,8 +6638,17 @@ update_access_policy(Client, AccessPolicyId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html
 %% in the
 %% IoT SiteWise User Guide.
+-spec update_asset(aws_client:aws_client(), binary() | list(), update_asset_request()) ->
+    {ok, update_asset_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_errors(), tuple()}.
 update_asset(Client, AssetId, Input) ->
     update_asset(Client, AssetId, Input, []).
+
+-spec update_asset(aws_client:aws_client(), binary() | list(), update_asset_request(), proplists:proplist()) ->
+    {ok, update_asset_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_errors(), tuple()}.
 update_asset(Client, AssetId, Input0, Options0) ->
     Method = put,
     Path = ["/assets/", aws_util:encode_uri(AssetId), ""],
@@ -2750,8 +6697,17 @@ update_asset(Client, AssetId, Input0, Options0) ->
 %% asset associated with that hierarchy. You can't change the type or
 %% data type of an existing
 %% property.
+-spec update_asset_model(aws_client:aws_client(), binary() | list(), update_asset_model_request()) ->
+    {ok, update_asset_model_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_model_errors(), tuple()}.
 update_asset_model(Client, AssetModelId, Input) ->
     update_asset_model(Client, AssetModelId, Input, []).
+
+-spec update_asset_model(aws_client:aws_client(), binary() | list(), update_asset_model_request(), proplists:proplist()) ->
+    {ok, update_asset_model_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_model_errors(), tuple()}.
 update_asset_model(Client, AssetModelId, Input0, Options0) ->
     Method = put,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
@@ -2799,8 +6755,17 @@ update_asset_model(Client, AssetModelId, Input0, Options0) ->
 %% the new property. The new asset property will have the same
 %% `name' as the previous one and IoT SiteWise will generate a new unique
 %% `id'.
+-spec update_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_model_composite_model_request()) ->
+    {ok, update_asset_model_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_model_composite_model_errors(), tuple()}.
 update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input) ->
     update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input, []).
+
+-spec update_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_model_composite_model_request(), proplists:proplist()) ->
+    {ok, update_asset_model_composite_model_response(), tuple()} |
+    {error, any()} |
+    {error, update_asset_model_composite_model_errors(), tuple()}.
 update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input0, Options0) ->
     Method = put,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
@@ -2832,8 +6797,17 @@ update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
 %% in the UpdateAssetProperty request. For more information, see
 %% DescribeAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetProperty.html.
+-spec update_asset_property(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_property_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_asset_property_errors(), tuple()}.
 update_asset_property(Client, AssetId, PropertyId, Input) ->
     update_asset_property(Client, AssetId, PropertyId, Input, []).
+
+-spec update_asset_property(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_property_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_asset_property_errors(), tuple()}.
 update_asset_property(Client, AssetId, PropertyId, Input0, Options0) ->
     Method = put,
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
@@ -2857,8 +6831,17 @@ update_asset_property(Client, AssetId, PropertyId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an IoT SiteWise Monitor dashboard.
+-spec update_dashboard(aws_client:aws_client(), binary() | list(), update_dashboard_request()) ->
+    {ok, update_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_errors(), tuple()}.
 update_dashboard(Client, DashboardId, Input) ->
     update_dashboard(Client, DashboardId, Input, []).
+
+-spec update_dashboard(aws_client:aws_client(), binary() | list(), update_dashboard_request(), proplists:proplist()) ->
+    {ok, update_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_errors(), tuple()}.
 update_dashboard(Client, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -2882,8 +6865,17 @@ update_dashboard(Client, DashboardId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a gateway's name.
+-spec update_gateway(aws_client:aws_client(), binary() | list(), update_gateway_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_gateway_errors(), tuple()}.
 update_gateway(Client, GatewayId, Input) ->
     update_gateway(Client, GatewayId, Input, []).
+
+-spec update_gateway(aws_client:aws_client(), binary() | list(), update_gateway_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_gateway_errors(), tuple()}.
 update_gateway(Client, GatewayId, Input0, Options0) ->
     Method = put,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
@@ -2917,8 +6909,17 @@ update_gateway(Client, GatewayId, Input0, Options0) ->
 %% capability configuration. To
 %% list all capability configurations for a gateway, use DescribeGateway:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html.
+-spec update_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), update_gateway_capability_configuration_request()) ->
+    {ok, update_gateway_capability_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_capability_configuration_errors(), tuple()}.
 update_gateway_capability_configuration(Client, GatewayId, Input) ->
     update_gateway_capability_configuration(Client, GatewayId, Input, []).
+
+-spec update_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), update_gateway_capability_configuration_request(), proplists:proplist()) ->
+    {ok, update_gateway_capability_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_capability_configuration_errors(), tuple()}.
 update_gateway_capability_configuration(Client, GatewayId, Input0, Options0) ->
     Method = post,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), "/capability"],
@@ -2942,8 +6943,17 @@ update_gateway_capability_configuration(Client, GatewayId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an IoT SiteWise Monitor portal.
+-spec update_portal(aws_client:aws_client(), binary() | list(), update_portal_request()) ->
+    {ok, update_portal_response(), tuple()} |
+    {error, any()} |
+    {error, update_portal_errors(), tuple()}.
 update_portal(Client, PortalId, Input) ->
     update_portal(Client, PortalId, Input, []).
+
+-spec update_portal(aws_client:aws_client(), binary() | list(), update_portal_request(), proplists:proplist()) ->
+    {ok, update_portal_response(), tuple()} |
+    {error, any()} |
+    {error, update_portal_errors(), tuple()}.
 update_portal(Client, PortalId, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_uri(PortalId), ""],
@@ -2967,8 +6977,17 @@ update_portal(Client, PortalId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an IoT SiteWise Monitor project.
+-spec update_project(aws_client:aws_client(), binary() | list(), update_project_request()) ->
+    {ok, update_project_response(), tuple()} |
+    {error, any()} |
+    {error, update_project_errors(), tuple()}.
 update_project(Client, ProjectId, Input) ->
     update_project(Client, ProjectId, Input, []).
+
+-spec update_project(aws_client:aws_client(), binary() | list(), update_project_request(), proplists:proplist()) ->
+    {ok, update_project_response(), tuple()} |
+    {error, any()} |
+    {error, update_project_errors(), tuple()}.
 update_project(Client, ProjectId, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
@@ -2995,7 +7014,7 @@ update_project(Client, ProjectId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

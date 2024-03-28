@@ -93,6 +93,1067 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% update_sol_network_package_output() :: #{
+%%   <<"nsdOperationalState">> => list(any())
+%% }
+-type update_sol_network_package_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_vnf_info() :: #{
+%%   <<"vnfState">> => list(any()),
+%%   <<"vnfcResourceInfo">> => list(get_sol_vnfc_resource_info()())
+%% }
+-type get_sol_vnf_info() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sol_function_package_input() :: #{}
+-type delete_sol_function_package_input() :: #{}.
+
+%% Example:
+%% delete_sol_network_instance_input() :: #{}
+-type delete_sol_network_instance_input() :: #{}.
+
+
+%% Example:
+%% create_sol_network_package_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"nsdOnboardingState">> => list(any()),
+%%   <<"nsdOperationalState">> => list(any()),
+%%   <<"nsdUsageState">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_sol_network_package_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_function_package_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => get_sol_function_package_metadata(),
+%%   <<"onboardingState">> => list(any()),
+%%   <<"operationalState">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"usageState">> => list(any()),
+%%   <<"vnfProductName">> => [string()],
+%%   <<"vnfProvider">> => [string()],
+%%   <<"vnfdId">> => [string()],
+%%   <<"vnfdVersion">> => [string()]
+%% }
+-type get_sol_function_package_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_instance_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
+%% }
+-type list_sol_function_instance_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_instances_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_function_instances_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_operations_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_network_operations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_sol_network_package_content_metadata() :: #{
+%%   <<"nsd">> => network_artifact_meta()
+%% }
+-type validate_sol_network_package_content_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_packages_output() :: #{
+%%   <<"networkPackages">> => list(list_sol_network_package_info()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_network_packages_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_function_instance_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
+%% }
+-type get_sol_function_instance_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sol_network_package_input() :: #{
+%%   <<"tags">> => map()
+%% }
+-type create_sol_network_package_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_function_package_content_metadata() :: #{
+%%   <<"vnfd">> => function_artifact_meta()
+%% }
+-type put_sol_function_package_content_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_sol_network_package_descriptor_input() :: #{}
+-type get_sol_network_package_descriptor_input() :: #{}.
+
+
+%% Example:
+%% get_sol_function_package_descriptor_input() :: #{
+%%   <<"accept">> := list(any())
+%% }
+-type get_sol_function_package_descriptor_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_function_instance_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"instantiatedVnfInfo">> => get_sol_vnf_info(),
+%%   <<"instantiationState">> => list(any()),
+%%   <<"metadata">> => get_sol_function_instance_metadata(),
+%%   <<"nsInstanceId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"vnfPkgId">> => string(),
+%%   <<"vnfProductName">> => [string()],
+%%   <<"vnfProvider">> => [string()],
+%%   <<"vnfdId">> => string(),
+%%   <<"vnfdVersion">> => [string()]
+%% }
+-type get_sol_function_instance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_package_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => get_sol_network_package_metadata(),
+%%   <<"nsdId">> => string(),
+%%   <<"nsdName">> => [string()],
+%%   <<"nsdOnboardingState">> => list(any()),
+%%   <<"nsdOperationalState">> => list(any()),
+%%   <<"nsdUsageState">> => list(any()),
+%%   <<"nsdVersion">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"vnfPkgIds">> => list(string()())
+%% }
+-type get_sol_network_package_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_info() :: #{
+%%   <<"cause">> => string(),
+%%   <<"details">> => string()
+%% }
+-type error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_function_package_content_output() :: #{
+%%   <<"id">> => string(),
+%%   <<"metadata">> => put_sol_function_package_content_metadata(),
+%%   <<"vnfProductName">> => [string()],
+%%   <<"vnfProvider">> => [string()],
+%%   <<"vnfdId">> => string(),
+%%   <<"vnfdVersion">> => [string()]
+%% }
+-type put_sol_function_package_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_sol_network_package_input() :: #{}
+-type get_sol_network_package_input() :: #{}.
+
+
+%% Example:
+%% list_sol_network_packages_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_network_packages_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_sol_network_package_content_input() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"file">> := [binary()]
+%% }
+-type validate_sol_network_package_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_network_package_content_input() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"file">> := [binary()]
+%% }
+-type put_sol_network_package_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_operations_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"error">> => problem_details(),
+%%   <<"id">> => string(),
+%%   <<"lcmOperationType">> => list(any()),
+%%   <<"metadata">> => list_sol_network_operations_metadata(),
+%%   <<"nsInstanceId">> => string(),
+%%   <<"operationState">> => list(any())
+%% }
+-type list_sol_network_operations_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_sol_network_instance_input() :: #{
+%%   <<"tags">> => map()
+%% }
+-type terminate_sol_network_instance_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_instantiated_vnf_info() :: #{
+%%   <<"vnfState">> => list(any())
+%% }
+-type get_sol_instantiated_vnf_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_vnfc_resource_info() :: #{
+%%   <<"metadata">> => get_sol_vnfc_resource_info_metadata()
+%% }
+-type get_sol_vnfc_resource_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_package_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
+%% }
+-type list_sol_network_package_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_network_package_content_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => put_sol_network_package_content_metadata(),
+%%   <<"nsdId">> => string(),
+%%   <<"nsdName">> => [string()],
+%%   <<"nsdVersion">> => [string()],
+%%   <<"vnfPkgIds">> => list(string()())
+%% }
+-type put_sol_network_package_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_instances_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_network_instances_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_network_package_content_metadata() :: #{
+%%   <<"nsd">> => network_artifact_meta()
+%% }
+-type put_sol_network_package_content_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_operations_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
+%% }
+-type list_sol_network_operations_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_package_content_output() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"nsdContent">> => [binary()]
+%% }
+-type get_sol_network_package_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_network_instance_output() :: #{
+%%   <<"nsLcmOpOccId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type update_sol_network_instance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% problem_details() :: #{
+%%   <<"detail">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type problem_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sol_network_instance_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"nsInstanceName">> => [string()],
+%%   <<"nsdInfoId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_sol_network_instance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_sol_network_instance_output() :: #{
+%%   <<"nsLcmOpOccId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type terminate_sol_network_instance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_function_package_content_input() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"file">> := [binary()]
+%% }
+-type put_sol_function_package_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% instantiate_sol_network_instance_input() :: #{
+%%   <<"additionalParamsForNs">> => [any()],
+%%   <<"dryRun">> => [boolean()],
+%%   <<"tags">> => map()
+%% }
+-type instantiate_sol_network_instance_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_packages_output() :: #{
+%%   <<"functionPackages">> => list(list_sol_function_package_info()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_function_packages_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sol_function_package_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"onboardingState">> => list(any()),
+%%   <<"operationalState">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"usageState">> => list(any())
+%% }
+-type create_sol_function_package_output() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_sol_network_operation_input() :: #{}
+-type cancel_sol_network_operation_input() :: #{}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_network_modify() :: #{
+%%   <<"vnfConfigurableProperties">> => [any()],
+%%   <<"vnfInstanceId">> => string()
+%% }
+-type update_sol_network_modify() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_instance_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
+%% }
+-type list_sol_network_instance_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_instance_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lcmOpInfo">> => lcm_operation_info(),
+%%   <<"metadata">> => get_sol_network_instance_metadata(),
+%%   <<"nsInstanceDescription">> => [string()],
+%%   <<"nsInstanceName">> => [string()],
+%%   <<"nsState">> => list(any()),
+%%   <<"nsdId">> => string(),
+%%   <<"nsdInfoId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_sol_network_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_function_package_descriptor_output() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"vnfd">> => [binary()]
+%% }
+-type get_sol_function_package_descriptor_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_instance_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
+%% }
+-type get_sol_network_instance_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_package_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()],
+%%   <<"nsd">> => network_artifact_meta()
+%% }
+-type get_sol_network_package_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_sol_network_operation_input() :: #{}
+-type get_sol_network_operation_input() :: #{}.
+
+
+%% Example:
+%% update_sol_network_package_input() :: #{
+%%   <<"nsdOperationalState">> := list(any())
+%% }
+-type update_sol_network_package_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sol_function_package_input() :: #{
+%%   <<"tags">> => map()
+%% }
+-type create_sol_function_package_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_function_package_output() :: #{
+%%   <<"operationalState">> => list(any())
+%% }
+-type update_sol_function_package_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_operation_task_details() :: #{
+%%   <<"taskContext">> => map(),
+%%   <<"taskEndTime">> => [non_neg_integer()],
+%%   <<"taskErrorDetails">> => error_info(),
+%%   <<"taskName">> => [string()],
+%%   <<"taskStartTime">> => [non_neg_integer()],
+%%   <<"taskStatus">> => list(any())
+%% }
+-type get_sol_network_operation_task_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_package_content_input() :: #{
+%%   <<"accept">> := list(any())
+%% }
+-type get_sol_network_package_content_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sol_network_package_input() :: #{}
+-type delete_sol_network_package_input() :: #{}.
+
+%% Example:
+%% get_sol_function_package_input() :: #{}
+-type get_sol_function_package_input() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% validate_sol_network_package_content_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => validate_sol_network_package_content_metadata(),
+%%   <<"nsdId">> => string(),
+%%   <<"nsdName">> => [string()],
+%%   <<"nsdVersion">> => [string()],
+%%   <<"vnfPkgIds">> => list(string()())
+%% }
+-type validate_sol_network_package_content_output() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% get_sol_function_package_content_input() :: #{
+%%   <<"accept">> := list(any())
+%% }
+-type get_sol_function_package_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_function_package_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()],
+%%   <<"vnfd">> => function_artifact_meta()
+%% }
+-type get_sol_function_package_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_network_instance_input() :: #{
+%%   <<"modifyVnfInfoData">> => update_sol_network_modify(),
+%%   <<"tags">> => map(),
+%%   <<"updateType">> := list(any())
+%% }
+-type update_sol_network_instance_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% instantiate_sol_network_instance_output() :: #{
+%%   <<"nsLcmOpOccId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type instantiate_sol_network_instance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tosca_override() :: #{
+%%   <<"defaultValue">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type tosca_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_operation_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
+%% }
+-type get_sol_network_operation_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_operations_output() :: #{
+%%   <<"networkOperations">> => list(list_sol_network_operations_info()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_network_operations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_package_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
+%% }
+-type list_sol_function_package_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_sol_function_instance_input() :: #{}
+-type get_sol_function_instance_input() :: #{}.
+
+
+%% Example:
+%% get_sol_vnfc_resource_info_metadata() :: #{
+%%   <<"cluster">> => [string()],
+%%   <<"helmChart">> => [string()],
+%%   <<"nodeGroup">> => [string()]
+%% }
+-type get_sol_vnfc_resource_info_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_sol_network_instance_input() :: #{}
+-type get_sol_network_instance_input() :: #{}.
+
+
+%% Example:
+%% list_sol_network_instances_output() :: #{
+%%   <<"networkInstances">> => list(list_sol_network_instance_info()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_network_instances_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sol_network_instance_input() :: #{
+%%   <<"nsDescription">> => [string()],
+%%   <<"nsName">> := [string()],
+%%   <<"nsdInfoId">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_sol_network_instance_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_instance_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => list_sol_network_instance_metadata(),
+%%   <<"nsInstanceDescription">> => [string()],
+%%   <<"nsInstanceName">> => [string()],
+%%   <<"nsState">> => list(any()),
+%%   <<"nsdId">> => string(),
+%%   <<"nsdInfoId">> => string()
+%% }
+-type list_sol_network_instance_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_package_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => list_sol_function_package_metadata(),
+%%   <<"onboardingState">> => list(any()),
+%%   <<"operationalState">> => list(any()),
+%%   <<"usageState">> => list(any()),
+%%   <<"vnfProductName">> => [string()],
+%%   <<"vnfProvider">> => [string()],
+%%   <<"vnfdId">> => [string()],
+%%   <<"vnfdVersion">> => [string()]
+%% }
+-type list_sol_function_package_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_artifact_meta() :: #{
+%%   <<"overrides">> => list(tosca_override()())
+%% }
+-type function_artifact_meta() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_sol_function_package_content_input() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"file">> := [binary()]
+%% }
+-type validate_sol_function_package_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_sol_function_package_content_output() :: #{
+%%   <<"id">> => string(),
+%%   <<"metadata">> => validate_sol_function_package_content_metadata(),
+%%   <<"vnfProductName">> => [string()],
+%%   <<"vnfProvider">> => [string()],
+%%   <<"vnfdId">> => string(),
+%%   <<"vnfdVersion">> => [string()]
+%% }
+-type validate_sol_function_package_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_package_descriptor_output() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"nsd">> => [binary()]
+%% }
+-type get_sol_network_package_descriptor_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_sol_function_package_content_metadata() :: #{
+%%   <<"vnfd">> => function_artifact_meta()
+%% }
+-type validate_sol_function_package_content_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_function_package_content_output() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"packageContent">> => [binary()]
+%% }
+-type get_sol_function_package_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_operation_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"error">> => problem_details(),
+%%   <<"id">> => string(),
+%%   <<"lcmOperationType">> => list(any()),
+%%   <<"metadata">> => get_sol_network_operation_metadata(),
+%%   <<"nsInstanceId">> => string(),
+%%   <<"operationState">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"tasks">> => list(get_sol_network_operation_task_details()())
+%% }
+-type get_sol_network_operation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_instance_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"instantiatedVnfInfo">> => get_sol_instantiated_vnf_info(),
+%%   <<"instantiationState">> => list(any()),
+%%   <<"metadata">> => list_sol_function_instance_metadata(),
+%%   <<"nsInstanceId">> => string(),
+%%   <<"vnfPkgId">> => string(),
+%%   <<"vnfPkgName">> => [string()]
+%% }
+-type list_sol_function_instance_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% lcm_operation_info() :: #{
+%%   <<"nsLcmOpOccId">> => string()
+%% }
+-type lcm_operation_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_function_package_input() :: #{
+%%   <<"operationalState">> := list(any())
+%% }
+-type update_sol_function_package_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_instances_output() :: #{
+%%   <<"functionInstances">> => list(list_sol_function_instance_info()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_function_instances_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_package_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => list_sol_network_package_metadata(),
+%%   <<"nsdDesigner">> => [string()],
+%%   <<"nsdId">> => [string()],
+%%   <<"nsdInvariantId">> => [string()],
+%%   <<"nsdName">> => [string()],
+%%   <<"nsdOnboardingState">> => list(any()),
+%%   <<"nsdOperationalState">> => list(any()),
+%%   <<"nsdUsageState">> => list(any()),
+%%   <<"nsdVersion">> => [string()],
+%%   <<"vnfPkgIds">> => list(string()())
+%% }
+-type list_sol_network_package_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_packages_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_function_packages_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_artifact_meta() :: #{
+%%   <<"overrides">> => list(tosca_override()())
+%% }
+-type network_artifact_meta() :: #{binary() => any()}.
+
+-type cancel_sol_network_operation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_sol_function_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_sol_network_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type delete_sol_function_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_sol_network_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_function_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_function_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_function_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_function_package_descriptor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_network_operation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_network_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_network_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_sol_network_package_descriptor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type instantiate_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_sol_function_instances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_sol_function_packages_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_sol_network_instances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_sol_network_operations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_sol_network_packages_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_sol_function_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_sol_network_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type terminate_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_sol_function_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_sol_network_instance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_sol_network_package_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type validate_sol_function_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type validate_sol_network_package_content_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -101,8 +1162,17 @@
 %%
 %% A network operation is any operation that is done to your network, such as
 %% network instance instantiation or termination.
+-spec cancel_sol_network_operation(aws_client:aws_client(), binary() | list(), cancel_sol_network_operation_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, cancel_sol_network_operation_errors(), tuple()}.
 cancel_sol_network_operation(Client, NsLcmOpOccId, Input) ->
     cancel_sol_network_operation(Client, NsLcmOpOccId, Input, []).
+
+-spec cancel_sol_network_operation(aws_client:aws_client(), binary() | list(), cancel_sol_network_operation_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, cancel_sol_network_operation_errors(), tuple()}.
 cancel_sol_network_operation(Client, NsLcmOpOccId, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nslcm/v1/ns_lcm_op_occs/", aws_util:encode_uri(NsLcmOpOccId), "/cancel"],
@@ -140,8 +1210,17 @@ cancel_sol_network_operation(Client, NsLcmOpOccId, Input0, Options0) ->
 %% is to upload the actual CSAR zip file into that empty container. To upload
 %% function package content, see PutSolFunctionPackageContent:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolFunctionPackageContent.html.
+-spec create_sol_function_package(aws_client:aws_client(), create_sol_function_package_input()) ->
+    {ok, create_sol_function_package_output(), tuple()} |
+    {error, any()} |
+    {error, create_sol_function_package_errors(), tuple()}.
 create_sol_function_package(Client, Input) ->
     create_sol_function_package(Client, Input, []).
+
+-spec create_sol_function_package(aws_client:aws_client(), create_sol_function_package_input(), proplists:proplist()) ->
+    {ok, create_sol_function_package_output(), tuple()} |
+    {error, any()} |
+    {error, create_sol_function_package_errors(), tuple()}.
 create_sol_function_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sol/vnfpkgm/v1/vnf_packages"],
@@ -177,8 +1256,17 @@ create_sol_function_package(Client, Input0, Options0) ->
 %% Once you create a network instance, you can instantiate it. To instantiate
 %% a network, see InstantiateSolNetworkInstance:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_InstantiateSolNetworkInstance.html.
+-spec create_sol_network_instance(aws_client:aws_client(), create_sol_network_instance_input()) ->
+    {ok, create_sol_network_instance_output(), tuple()} |
+    {error, any()} |
+    {error, create_sol_network_instance_errors(), tuple()}.
 create_sol_network_instance(Client, Input) ->
     create_sol_network_instance(Client, Input, []).
+
+-spec create_sol_network_instance(aws_client:aws_client(), create_sol_network_instance_input(), proplists:proplist()) ->
+    {ok, create_sol_network_instance_output(), tuple()} |
+    {error, any()} |
+    {error, create_sol_network_instance_errors(), tuple()}.
 create_sol_network_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nslcm/v1/ns_instances"],
@@ -220,8 +1308,17 @@ create_sol_network_instance(Client, Input0, Options0) ->
 %% you create a network package, you can upload the network package content
 %% using PutSolNetworkPackageContent:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolNetworkPackageContent.html.
+-spec create_sol_network_package(aws_client:aws_client(), create_sol_network_package_input()) ->
+    {ok, create_sol_network_package_output(), tuple()} |
+    {error, any()} |
+    {error, create_sol_network_package_errors(), tuple()}.
 create_sol_network_package(Client, Input) ->
     create_sol_network_package(Client, Input, []).
+
+-spec create_sol_network_package(aws_client:aws_client(), create_sol_network_package_input(), proplists:proplist()) ->
+    {ok, create_sol_network_package_output(), tuple()} |
+    {error, any()} |
+    {error, create_sol_network_package_errors(), tuple()}.
 create_sol_network_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nsd/v1/ns_descriptors"],
@@ -254,8 +1351,17 @@ create_sol_network_package(Client, Input0, Options0) ->
 %% To delete a function package, the package must be in a disabled state. To
 %% disable a function package, see UpdateSolFunctionPackage:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_UpdateSolFunctionPackage.html.
+-spec delete_sol_function_package(aws_client:aws_client(), binary() | list(), delete_sol_function_package_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_sol_function_package_errors(), tuple()}.
 delete_sol_function_package(Client, VnfPkgId, Input) ->
     delete_sol_function_package(Client, VnfPkgId, Input, []).
+
+-spec delete_sol_function_package(aws_client:aws_client(), binary() | list(), delete_sol_function_package_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_sol_function_package_errors(), tuple()}.
 delete_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
     Method = delete,
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), ""],
@@ -288,8 +1394,17 @@ delete_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
 %% terminated state. To terminate a network instance, see
 %% TerminateSolNetworkInstance:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_TerminateSolNetworkInstance.html.
+-spec delete_sol_network_instance(aws_client:aws_client(), binary() | list(), delete_sol_network_instance_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_sol_network_instance_errors(), tuple()}.
 delete_sol_network_instance(Client, NsInstanceId, Input) ->
     delete_sol_network_instance(Client, NsInstanceId, Input, []).
+
+-spec delete_sol_network_instance(aws_client:aws_client(), binary() | list(), delete_sol_network_instance_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_sol_network_instance_errors(), tuple()}.
 delete_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/sol/nslcm/v1/ns_instances/", aws_util:encode_uri(NsInstanceId), ""],
@@ -321,8 +1436,17 @@ delete_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 %% To delete a network package, the package must be in a disable state. To
 %% disable a network package, see UpdateSolNetworkPackage:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_UpdateSolNetworkPackage.html.
+-spec delete_sol_network_package(aws_client:aws_client(), binary() | list(), delete_sol_network_package_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_sol_network_package_errors(), tuple()}.
 delete_sol_network_package(Client, NsdInfoId, Input) ->
     delete_sol_network_package(Client, NsdInfoId, Input, []).
+
+-spec delete_sol_network_package(aws_client:aws_client(), binary() | list(), delete_sol_network_package_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_sol_network_package_errors(), tuple()}.
 delete_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
     Method = delete,
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), ""],
@@ -350,14 +1474,26 @@ delete_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
 %% the network function package.
 %%
 %% A network function instance is a function in a function package .
+-spec get_sol_function_instance(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_sol_function_instance_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_instance_errors(), tuple()}.
 get_sol_function_instance(Client, VnfInstanceId)
   when is_map(Client) ->
     get_sol_function_instance(Client, VnfInstanceId, #{}, #{}).
 
+-spec get_sol_function_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_sol_function_instance_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_instance_errors(), tuple()}.
 get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap, []).
 
+-spec get_sol_function_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sol_function_instance_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_instance_errors(), tuple()}.
 get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnflcm/v1/vnf_instances/", aws_util:encode_uri(VnfInstanceId), ""],
@@ -381,14 +1517,26 @@ get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap, Options0)
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network..
+-spec get_sol_function_package(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_sol_function_package_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_package_errors(), tuple()}.
 get_sol_function_package(Client, VnfPkgId)
   when is_map(Client) ->
     get_sol_function_package(Client, VnfPkgId, #{}, #{}).
 
+-spec get_sol_function_package(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_sol_function_package_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_package_errors(), tuple()}.
 get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap, []).
 
+-spec get_sol_function_package(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sol_function_package_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_package_errors(), tuple()}.
 get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), ""],
@@ -411,14 +1559,26 @@ get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap, Options0)
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
+-spec get_sol_function_package_content(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_sol_function_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_package_content_errors(), tuple()}.
 get_sol_function_package_content(Client, VnfPkgId, Accept)
   when is_map(Client) ->
     get_sol_function_package_content(Client, VnfPkgId, Accept, #{}, #{}).
 
+-spec get_sol_function_package_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_sol_function_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_package_content_errors(), tuple()}.
 get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap, []).
 
+-spec get_sol_function_package_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sol_function_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_package_content_errors(), tuple()}.
 get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), "/package_content"],
@@ -465,14 +1625,26 @@ get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap,
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
+-spec get_sol_function_package_descriptor(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_sol_function_package_descriptor_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_package_descriptor_errors(), tuple()}.
 get_sol_function_package_descriptor(Client, VnfPkgId, Accept)
   when is_map(Client) ->
     get_sol_function_package_descriptor(Client, VnfPkgId, Accept, #{}, #{}).
 
+-spec get_sol_function_package_descriptor(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_sol_function_package_descriptor_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_package_descriptor_errors(), tuple()}.
 get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersMap, []).
 
+-spec get_sol_function_package_descriptor(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sol_function_package_descriptor_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_function_package_descriptor_errors(), tuple()}.
 get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), "/vnfd"],
@@ -514,14 +1686,26 @@ get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersM
 %% A network instance is a single network created in Amazon Web Services TNB
 %% that can be deployed and on which life-cycle operations (like terminate,
 %% update, and delete) can be performed.
+-spec get_sol_network_instance(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_sol_network_instance_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_instance_errors(), tuple()}.
 get_sol_network_instance(Client, NsInstanceId)
   when is_map(Client) ->
     get_sol_network_instance(Client, NsInstanceId, #{}, #{}).
 
+-spec get_sol_network_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_sol_network_instance_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_instance_errors(), tuple()}.
 get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap, []).
 
+-spec get_sol_network_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sol_network_instance_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_instance_errors(), tuple()}.
 get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nslcm/v1/ns_instances/", aws_util:encode_uri(NsInstanceId), ""],
@@ -543,14 +1727,26 @@ get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap, Options0)
 %%
 %% A network operation is any operation that is done to your network, such as
 %% network instance instantiation or termination.
+-spec get_sol_network_operation(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_sol_network_operation_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_operation_errors(), tuple()}.
 get_sol_network_operation(Client, NsLcmOpOccId)
   when is_map(Client) ->
     get_sol_network_operation(Client, NsLcmOpOccId, #{}, #{}).
 
+-spec get_sol_network_operation(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_sol_network_operation_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_operation_errors(), tuple()}.
 get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap, []).
 
+-spec get_sol_network_operation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sol_network_operation_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_operation_errors(), tuple()}.
 get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nslcm/v1/ns_lcm_op_occs/", aws_util:encode_uri(NsLcmOpOccId), ""],
@@ -572,14 +1768,26 @@ get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap, Options0)
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web
 %% Services infrastructure you want to deploy them on.
+-spec get_sol_network_package(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_sol_network_package_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_package_errors(), tuple()}.
 get_sol_network_package(Client, NsdInfoId)
   when is_map(Client) ->
     get_sol_network_package(Client, NsdInfoId, #{}, #{}).
 
+-spec get_sol_network_package(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_sol_network_package_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_package_errors(), tuple()}.
 get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap, []).
 
+-spec get_sol_network_package(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sol_network_package_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_package_errors(), tuple()}.
 get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), ""],
@@ -601,14 +1809,26 @@ get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap, Options0)
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web
 %% Services infrastructure you want to deploy them on.
+-spec get_sol_network_package_content(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_sol_network_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_package_content_errors(), tuple()}.
 get_sol_network_package_content(Client, NsdInfoId, Accept)
   when is_map(Client) ->
     get_sol_network_package_content(Client, NsdInfoId, Accept, #{}, #{}).
 
+-spec get_sol_network_package_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_sol_network_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_package_content_errors(), tuple()}.
 get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap, []).
 
+-spec get_sol_network_package_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sol_network_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_package_content_errors(), tuple()}.
 get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), "/nsd_content"],
@@ -651,14 +1871,26 @@ get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap,
 %% uses the TOSCA standard to describe the network functions you want to
 %% deploy and the Amazon Web Services infrastructure you want to deploy the
 %% network functions on.
+-spec get_sol_network_package_descriptor(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_sol_network_package_descriptor_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_package_descriptor_errors(), tuple()}.
 get_sol_network_package_descriptor(Client, NsdInfoId)
   when is_map(Client) ->
     get_sol_network_package_descriptor(Client, NsdInfoId, #{}, #{}).
 
+-spec get_sol_network_package_descriptor(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_sol_network_package_descriptor_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_package_descriptor_errors(), tuple()}.
 get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap, []).
 
+-spec get_sol_network_package_descriptor(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sol_network_package_descriptor_output(), tuple()} |
+    {error, any()} |
+    {error, get_sol_network_package_descriptor_errors(), tuple()}.
 get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), "/nsd"],
@@ -700,8 +1932,17 @@ get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap, Opti
 %% Before you can instantiate a network instance, you have to create a
 %% network instance. For more information, see CreateSolNetworkInstance:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_CreateSolNetworkInstance.html.
+-spec instantiate_sol_network_instance(aws_client:aws_client(), binary() | list(), instantiate_sol_network_instance_input()) ->
+    {ok, instantiate_sol_network_instance_output(), tuple()} |
+    {error, any()} |
+    {error, instantiate_sol_network_instance_errors(), tuple()}.
 instantiate_sol_network_instance(Client, NsInstanceId, Input) ->
     instantiate_sol_network_instance(Client, NsInstanceId, Input, []).
+
+-spec instantiate_sol_network_instance(aws_client:aws_client(), binary() | list(), instantiate_sol_network_instance_input(), proplists:proplist()) ->
+    {ok, instantiate_sol_network_instance_output(), tuple()} |
+    {error, any()} |
+    {error, instantiate_sol_network_instance_errors(), tuple()}.
 instantiate_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nslcm/v1/ns_instances/", aws_util:encode_uri(NsInstanceId), "/instantiate"],
@@ -728,14 +1969,26 @@ instantiate_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 %% @doc Lists network function instances.
 %%
 %% A network function instance is a function in a function package .
+-spec list_sol_function_instances(aws_client:aws_client()) ->
+    {ok, list_sol_function_instances_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_function_instances_errors(), tuple()}.
 list_sol_function_instances(Client)
   when is_map(Client) ->
     list_sol_function_instances(Client, #{}, #{}).
 
+-spec list_sol_function_instances(aws_client:aws_client(), map(), map()) ->
+    {ok, list_sol_function_instances_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_function_instances_errors(), tuple()}.
 list_sol_function_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_function_instances(Client, QueryMap, HeadersMap, []).
 
+-spec list_sol_function_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_sol_function_instances_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_function_instances_errors(), tuple()}.
 list_sol_function_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnflcm/v1/vnf_instances"],
@@ -763,14 +2016,26 @@ list_sol_function_instances(Client, QueryMap, HeadersMap, Options0)
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
+-spec list_sol_function_packages(aws_client:aws_client()) ->
+    {ok, list_sol_function_packages_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_function_packages_errors(), tuple()}.
 list_sol_function_packages(Client)
   when is_map(Client) ->
     list_sol_function_packages(Client, #{}, #{}).
 
+-spec list_sol_function_packages(aws_client:aws_client(), map(), map()) ->
+    {ok, list_sol_function_packages_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_function_packages_errors(), tuple()}.
 list_sol_function_packages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_function_packages(Client, QueryMap, HeadersMap, []).
 
+-spec list_sol_function_packages(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_sol_function_packages_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_function_packages_errors(), tuple()}.
 list_sol_function_packages(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/vnfpkgm/v1/vnf_packages"],
@@ -797,14 +2062,26 @@ list_sol_function_packages(Client, QueryMap, HeadersMap, Options0)
 %% A network instance is a single network created in Amazon Web Services TNB
 %% that can be deployed and on which life-cycle operations (like terminate,
 %% update, and delete) can be performed.
+-spec list_sol_network_instances(aws_client:aws_client()) ->
+    {ok, list_sol_network_instances_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_network_instances_errors(), tuple()}.
 list_sol_network_instances(Client)
   when is_map(Client) ->
     list_sol_network_instances(Client, #{}, #{}).
 
+-spec list_sol_network_instances(aws_client:aws_client(), map(), map()) ->
+    {ok, list_sol_network_instances_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_network_instances_errors(), tuple()}.
 list_sol_network_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_network_instances(Client, QueryMap, HeadersMap, []).
 
+-spec list_sol_network_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_sol_network_instances_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_network_instances_errors(), tuple()}.
 list_sol_network_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nslcm/v1/ns_instances"],
@@ -831,14 +2108,26 @@ list_sol_network_instances(Client, QueryMap, HeadersMap, Options0)
 %%
 %% A network operation is any operation that is done to your network, such as
 %% network instance instantiation or termination.
+-spec list_sol_network_operations(aws_client:aws_client()) ->
+    {ok, list_sol_network_operations_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_network_operations_errors(), tuple()}.
 list_sol_network_operations(Client)
   when is_map(Client) ->
     list_sol_network_operations(Client, #{}, #{}).
 
+-spec list_sol_network_operations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_sol_network_operations_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_network_operations_errors(), tuple()}.
 list_sol_network_operations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_network_operations(Client, QueryMap, HeadersMap, []).
 
+-spec list_sol_network_operations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_sol_network_operations_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_network_operations_errors(), tuple()}.
 list_sol_network_operations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nslcm/v1/ns_lcm_op_occs"],
@@ -865,14 +2154,26 @@ list_sol_network_operations(Client, QueryMap, HeadersMap, Options0)
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web
 %% Services infrastructure you want to deploy them on.
+-spec list_sol_network_packages(aws_client:aws_client()) ->
+    {ok, list_sol_network_packages_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_network_packages_errors(), tuple()}.
 list_sol_network_packages(Client)
   when is_map(Client) ->
     list_sol_network_packages(Client, #{}, #{}).
 
+-spec list_sol_network_packages(aws_client:aws_client(), map(), map()) ->
+    {ok, list_sol_network_packages_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_network_packages_errors(), tuple()}.
 list_sol_network_packages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_network_packages(Client, QueryMap, HeadersMap, []).
 
+-spec list_sol_network_packages(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_sol_network_packages_output(), tuple()} |
+    {error, any()} |
+    {error, list_sol_network_packages_errors(), tuple()}.
 list_sol_network_packages(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sol/nsd/v1/ns_descriptors"],
@@ -895,14 +2196,26 @@ list_sol_network_packages(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists tags for AWS TNB resources.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -925,8 +2238,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
+-spec put_sol_function_package_content(aws_client:aws_client(), binary() | list(), put_sol_function_package_content_input()) ->
+    {ok, put_sol_function_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, put_sol_function_package_content_errors(), tuple()}.
 put_sol_function_package_content(Client, VnfPkgId, Input) ->
     put_sol_function_package_content(Client, VnfPkgId, Input, []).
+
+-spec put_sol_function_package_content(aws_client:aws_client(), binary() | list(), put_sol_function_package_content_input(), proplists:proplist()) ->
+    {ok, put_sol_function_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, put_sol_function_package_content_errors(), tuple()}.
 put_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
     Method = put,
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), "/package_content"],
@@ -956,8 +2278,17 @@ put_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web
 %% Services infrastructure you want to deploy them on.
+-spec put_sol_network_package_content(aws_client:aws_client(), binary() | list(), put_sol_network_package_content_input()) ->
+    {ok, put_sol_network_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, put_sol_network_package_content_errors(), tuple()}.
 put_sol_network_package_content(Client, NsdInfoId, Input) ->
     put_sol_network_package_content(Client, NsdInfoId, Input, []).
+
+-spec put_sol_network_package_content(aws_client:aws_client(), binary() | list(), put_sol_network_package_content_input(), proplists:proplist()) ->
+    {ok, put_sol_network_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, put_sol_network_package_content_errors(), tuple()}.
 put_sol_network_package_content(Client, NsdInfoId, Input0, Options0) ->
     Method = put,
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), "/nsd_content"],
@@ -987,8 +2318,17 @@ put_sol_network_package_content(Client, NsdInfoId, Input0, Options0) ->
 %% A tag is a label that you assign to an Amazon Web Services resource. Each
 %% tag consists of a key and an optional value. You can use tags to search
 %% and filter your resources or track your Amazon Web Services costs.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1018,8 +2358,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% update, and delete) can be performed.
 %%
 %% You must terminate a network instance before you can delete it.
+-spec terminate_sol_network_instance(aws_client:aws_client(), binary() | list(), terminate_sol_network_instance_input()) ->
+    {ok, terminate_sol_network_instance_output(), tuple()} |
+    {error, any()} |
+    {error, terminate_sol_network_instance_errors(), tuple()}.
 terminate_sol_network_instance(Client, NsInstanceId, Input) ->
     terminate_sol_network_instance(Client, NsInstanceId, Input, []).
+
+-spec terminate_sol_network_instance(aws_client:aws_client(), binary() | list(), terminate_sol_network_instance_input(), proplists:proplist()) ->
+    {ok, terminate_sol_network_instance_output(), tuple()} |
+    {error, any()} |
+    {error, terminate_sol_network_instance_errors(), tuple()}.
 terminate_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nslcm/v1/ns_instances/", aws_util:encode_uri(NsInstanceId), "/terminate"],
@@ -1047,8 +2396,17 @@ terminate_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 %% A tag is a label that you assign to an Amazon Web Services resource. Each
 %% tag consists of a key and an optional value. You can use tags to search
 %% and filter your resources or track your Amazon Web Services costs.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1078,8 +2436,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
+-spec update_sol_function_package(aws_client:aws_client(), binary() | list(), update_sol_function_package_input()) ->
+    {ok, update_sol_function_package_output(), tuple()} |
+    {error, any()} |
+    {error, update_sol_function_package_errors(), tuple()}.
 update_sol_function_package(Client, VnfPkgId, Input) ->
     update_sol_function_package(Client, VnfPkgId, Input, []).
+
+-spec update_sol_function_package(aws_client:aws_client(), binary() | list(), update_sol_function_package_input(), proplists:proplist()) ->
+    {ok, update_sol_function_package_output(), tuple()} |
+    {error, any()} |
+    {error, update_sol_function_package_errors(), tuple()}.
 update_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
     Method = patch,
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), ""],
@@ -1107,8 +2474,17 @@ update_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
 %% A network instance is a single network created in Amazon Web Services TNB
 %% that can be deployed and on which life-cycle operations (like terminate,
 %% update, and delete) can be performed.
+-spec update_sol_network_instance(aws_client:aws_client(), binary() | list(), update_sol_network_instance_input()) ->
+    {ok, update_sol_network_instance_output(), tuple()} |
+    {error, any()} |
+    {error, update_sol_network_instance_errors(), tuple()}.
 update_sol_network_instance(Client, NsInstanceId, Input) ->
     update_sol_network_instance(Client, NsInstanceId, Input, []).
+
+-spec update_sol_network_instance(aws_client:aws_client(), binary() | list(), update_sol_network_instance_input(), proplists:proplist()) ->
+    {ok, update_sol_network_instance_output(), tuple()} |
+    {error, any()} |
+    {error, update_sol_network_instance_errors(), tuple()}.
 update_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/sol/nslcm/v1/ns_instances/", aws_util:encode_uri(NsInstanceId), "/update"],
@@ -1141,8 +2517,17 @@ update_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 %% uses the TOSCA standard to describe the network functions you want to
 %% deploy and the Amazon Web Services infrastructure you want to deploy the
 %% network functions on.
+-spec update_sol_network_package(aws_client:aws_client(), binary() | list(), update_sol_network_package_input()) ->
+    {ok, update_sol_network_package_output(), tuple()} |
+    {error, any()} |
+    {error, update_sol_network_package_errors(), tuple()}.
 update_sol_network_package(Client, NsdInfoId, Input) ->
     update_sol_network_package(Client, NsdInfoId, Input, []).
+
+-spec update_sol_network_package(aws_client:aws_client(), binary() | list(), update_sol_network_package_input(), proplists:proplist()) ->
+    {ok, update_sol_network_package_output(), tuple()} |
+    {error, any()} |
+    {error, update_sol_network_package_errors(), tuple()}.
 update_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
     Method = patch,
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), ""],
@@ -1175,8 +2560,17 @@ update_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
+-spec validate_sol_function_package_content(aws_client:aws_client(), binary() | list(), validate_sol_function_package_content_input()) ->
+    {ok, validate_sol_function_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, validate_sol_function_package_content_errors(), tuple()}.
 validate_sol_function_package_content(Client, VnfPkgId, Input) ->
     validate_sol_function_package_content(Client, VnfPkgId, Input, []).
+
+-spec validate_sol_function_package_content(aws_client:aws_client(), binary() | list(), validate_sol_function_package_content_input(), proplists:proplist()) ->
+    {ok, validate_sol_function_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, validate_sol_function_package_content_errors(), tuple()}.
 validate_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
     Method = put,
     Path = ["/sol/vnfpkgm/v1/vnf_packages/", aws_util:encode_uri(VnfPkgId), "/package_content/validate"],
@@ -1210,8 +2604,17 @@ validate_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web
 %% Services infrastructure you want to deploy them on.
+-spec validate_sol_network_package_content(aws_client:aws_client(), binary() | list(), validate_sol_network_package_content_input()) ->
+    {ok, validate_sol_network_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, validate_sol_network_package_content_errors(), tuple()}.
 validate_sol_network_package_content(Client, NsdInfoId, Input) ->
     validate_sol_network_package_content(Client, NsdInfoId, Input, []).
+
+-spec validate_sol_network_package_content(aws_client:aws_client(), binary() | list(), validate_sol_network_package_content_input(), proplists:proplist()) ->
+    {ok, validate_sol_network_package_content_output(), tuple()} |
+    {error, any()} |
+    {error, validate_sol_network_package_content_errors(), tuple()}.
 validate_sol_network_package_content(Client, NsdInfoId, Input0, Options0) ->
     Method = put,
     Path = ["/sol/nsd/v1/ns_descriptors/", aws_util:encode_uri(NsdInfoId), "/nsd_content/validate"],
@@ -1240,7 +2643,7 @@ validate_sol_network_package_content(Client, NsdInfoId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

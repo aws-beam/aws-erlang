@@ -80,6 +80,523 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% register_device_response() :: #{
+%%   <<"DeviceId">> => string()
+%% }
+-type register_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_records_response() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"DatasetDeletedAfterRequestedSyncCount">> => boolean(),
+%%   <<"DatasetExists">> => boolean(),
+%%   <<"DatasetSyncCount">> => float(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"MergedDatasetNames">> => list(string()()),
+%%   <<"NextToken">> => string(),
+%%   <<"Records">> => list(record()()),
+%%   <<"SyncSessionToken">> => string()
+%% }
+-type list_records_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_pool_usage_request() :: #{}
+-type describe_identity_pool_usage_request() :: #{}.
+
+
+%% Example:
+%% record() :: #{
+%%   <<"DeviceLastModifiedDate">> => non_neg_integer(),
+%%   <<"Key">> => string(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"SyncCount">> => float(),
+%%   <<"Value">> => string()
+%% }
+-type record() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_response() :: #{
+%%   <<"Dataset">> => dataset()
+%% }
+-type delete_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_pool_usage_response() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"IdentityPoolUsages">> => list(identity_pool_usage()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_pool_usage_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_bulk_publish_details_request() :: #{}
+-type get_bulk_publish_details_request() :: #{}.
+
+
+%% Example:
+%% push_sync() :: #{
+%%   <<"ApplicationArns">> => list(string()()),
+%%   <<"RoleArn">> => string()
+%% }
+-type push_sync() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_identity_usage_response() :: #{
+%%   <<"IdentityUsage">> => identity_usage()
+%% }
+-type describe_identity_usage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bulk_publish_response() :: #{
+%%   <<"IdentityPoolId">> => string()
+%% }
+-type bulk_publish_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_pool_usage_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_pool_usage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_identity_pool_configuration_response() :: #{
+%%   <<"CognitoStreams">> => cognito_streams(),
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"PushSync">> => push_sync()
+%% }
+-type set_identity_pool_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_records_request() :: #{
+%%   <<"ClientContext">> => string(),
+%%   <<"DeviceId">> => string(),
+%%   <<"RecordPatches">> => list(record_patch()()),
+%%   <<"SyncSessionToken">> := string()
+%% }
+-type update_records_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_cognito_events_request() :: #{}
+-type get_cognito_events_request() :: #{}.
+
+
+%% Example:
+%% cognito_streams() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"StreamingStatus">> => list(any())
+%% }
+-type cognito_streams() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DataStorage">> => float(),
+%%   <<"DatasetName">> => string(),
+%%   <<"IdentityId">> => string(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"NumRecords">> => float()
+%% }
+-type dataset() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_lambda_function_output_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_lambda_function_output_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% already_streamed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type already_streamed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_publish_request() :: #{}
+-type bulk_publish_request() :: #{}.
+
+
+%% Example:
+%% list_records_request() :: #{
+%%   <<"LastSyncCount">> => float(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SyncSessionToken">> => string()
+%% }
+-type list_records_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_pool_usage() :: #{
+%%   <<"DataStorage">> => float(),
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"SyncSessionsCount">> => float()
+%% }
+-type identity_pool_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% duplicate_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bulk_publish_details_response() :: #{
+%%   <<"BulkPublishCompleteTime">> => non_neg_integer(),
+%%   <<"BulkPublishStartTime">> => non_neg_integer(),
+%%   <<"BulkPublishStatus">> => list(any()),
+%%   <<"FailureMessage">> => string(),
+%%   <<"IdentityPoolId">> => string()
+%% }
+-type get_bulk_publish_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% unsubscribe_from_dataset_request() :: #{}
+-type unsubscribe_from_dataset_request() :: #{}.
+
+%% Example:
+%% describe_identity_usage_request() :: #{}
+-type describe_identity_usage_request() :: #{}.
+
+
+%% Example:
+%% lambda_throttled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type lambda_throttled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_cognito_events_request() :: #{
+%%   <<"Events">> := map()
+%% }
+-type set_cognito_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_identity_pool_configuration_response() :: #{
+%%   <<"CognitoStreams">> => cognito_streams(),
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"PushSync">> => push_sync()
+%% }
+-type get_identity_pool_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dataset_response() :: #{
+%%   <<"Dataset">> => dataset()
+%% }
+-type describe_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_records_response() :: #{
+%%   <<"Records">> => list(record()())
+%% }
+-type update_records_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_device_request() :: #{
+%%   <<"Platform">> := list(any()),
+%%   <<"Token">> := string()
+%% }
+-type register_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% record_patch() :: #{
+%%   <<"DeviceLastModifiedDate">> => non_neg_integer(),
+%%   <<"Key">> => string(),
+%%   <<"Op">> => list(any()),
+%%   <<"SyncCount">> => float(),
+%%   <<"Value">> => string()
+%% }
+-type record_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_identity_pool_configuration_request() :: #{
+%%   <<"CognitoStreams">> => cognito_streams(),
+%%   <<"PushSync">> => push_sync()
+%% }
+-type set_identity_pool_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cognito_events_response() :: #{
+%%   <<"Events">> => map()
+%% }
+-type get_cognito_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_request() :: #{}
+-type describe_dataset_request() :: #{}.
+
+%% Example:
+%% delete_dataset_request() :: #{}
+-type delete_dataset_request() :: #{}.
+
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Datasets">> => list(dataset()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_usage() :: #{
+%%   <<"DataStorage">> => float(),
+%%   <<"DatasetCount">> => integer(),
+%%   <<"IdentityId">> => string(),
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer()
+%% }
+-type identity_usage() :: #{binary() => any()}.
+
+%% Example:
+%% subscribe_to_dataset_request() :: #{}
+-type subscribe_to_dataset_request() :: #{}.
+
+%% Example:
+%% unsubscribe_from_dataset_response() :: #{}
+-type unsubscribe_from_dataset_response() :: #{}.
+
+
+%% Example:
+%% resource_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_pool_configuration_request() :: #{}
+-type get_identity_pool_configuration_request() :: #{}.
+
+
+%% Example:
+%% internal_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% subscribe_to_dataset_response() :: #{}
+-type subscribe_to_dataset_response() :: #{}.
+
+
+%% Example:
+%% describe_identity_pool_usage_response() :: #{
+%%   <<"IdentityPoolUsage">> => identity_pool_usage()
+%% }
+-type describe_identity_pool_usage_response() :: #{binary() => any()}.
+
+-type bulk_publish_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    duplicate_request_exception() | 
+    already_streamed_exception() | 
+    resource_not_found_exception().
+
+-type delete_dataset_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_dataset_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_identity_pool_usage_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_identity_usage_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_bulk_publish_details_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception().
+
+-type get_cognito_events_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_identity_pool_configuration_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_datasets_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    too_many_requests_exception().
+
+-type list_identity_pool_usage_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    too_many_requests_exception().
+
+-type list_records_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    too_many_requests_exception().
+
+-type register_device_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_configuration_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type set_cognito_events_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type set_identity_pool_configuration_errors() ::
+    internal_error_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type subscribe_to_dataset_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_configuration_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type unsubscribe_from_dataset_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_configuration_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_records_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    lambda_throttled_exception() | 
+    invalid_lambda_function_output_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -93,8 +610,17 @@
 %%
 %% This API can only be called with developer credentials. You cannot call
 %% this API with the temporary user credentials provided by Cognito Identity.
+-spec bulk_publish(aws_client:aws_client(), binary() | list(), bulk_publish_request()) ->
+    {ok, bulk_publish_response(), tuple()} |
+    {error, any()} |
+    {error, bulk_publish_errors(), tuple()}.
 bulk_publish(Client, IdentityPoolId, Input) ->
     bulk_publish(Client, IdentityPoolId, Input, []).
+
+-spec bulk_publish(aws_client:aws_client(), binary() | list(), bulk_publish_request(), proplists:proplist()) ->
+    {ok, bulk_publish_response(), tuple()} |
+    {error, any()} |
+    {error, bulk_publish_errors(), tuple()}.
 bulk_publish(Client, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/bulkpublish"],
@@ -127,8 +653,17 @@ bulk_publish(Client, IdentityPoolId, Input0, Options0) ->
 %%
 %% This API can be called with temporary user credentials provided by Cognito
 %% Identity or with developer credentials.
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_dataset_request()) ->
+    {ok, delete_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input) ->
     delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input, []).
+
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
+    {ok, delete_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options0) ->
     Method = delete,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), ""],
@@ -161,14 +696,26 @@ delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options0
 %% This API can be called with temporary user credentials provided by Cognito
 %% Identity or with developer credentials. You should use Cognito Identity
 %% credentials to make this API call.
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId)
   when is_map(Client) ->
     describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, #{}, #{}).
 
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), ""],
@@ -237,14 +784,26 @@ describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, Head
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
+-spec describe_identity_pool_usage(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_identity_pool_usage_response(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_pool_usage_errors(), tuple()}.
 describe_identity_pool_usage(Client, IdentityPoolId)
   when is_map(Client) ->
     describe_identity_pool_usage(Client, IdentityPoolId, #{}, #{}).
 
+-spec describe_identity_pool_usage(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_identity_pool_usage_response(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_pool_usage_errors(), tuple()}.
 describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap, []).
 
+-spec describe_identity_pool_usage(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_identity_pool_usage_response(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_pool_usage_errors(), tuple()}.
 describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), ""],
@@ -315,14 +874,26 @@ describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap, Optio
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
+-spec describe_identity_usage(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_identity_usage_response(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_usage_errors(), tuple()}.
 describe_identity_usage(Client, IdentityId, IdentityPoolId)
   when is_map(Client) ->
     describe_identity_usage(Client, IdentityId, IdentityPoolId, #{}, #{}).
 
+-spec describe_identity_usage(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_identity_usage_response(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_usage_errors(), tuple()}.
 describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
+-spec describe_identity_usage(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_identity_usage_response(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_usage_errors(), tuple()}.
 describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), ""],
@@ -344,8 +915,17 @@ describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap
 %%
 %% This API can only be called with developer credentials. You cannot call
 %% this API with the temporary user credentials provided by Cognito Identity.
+-spec get_bulk_publish_details(aws_client:aws_client(), binary() | list(), get_bulk_publish_details_request()) ->
+    {ok, get_bulk_publish_details_response(), tuple()} |
+    {error, any()} |
+    {error, get_bulk_publish_details_errors(), tuple()}.
 get_bulk_publish_details(Client, IdentityPoolId, Input) ->
     get_bulk_publish_details(Client, IdentityPoolId, Input, []).
+
+-spec get_bulk_publish_details(aws_client:aws_client(), binary() | list(), get_bulk_publish_details_request(), proplists:proplist()) ->
+    {ok, get_bulk_publish_details_response(), tuple()} |
+    {error, any()} |
+    {error, get_bulk_publish_details_errors(), tuple()}.
 get_bulk_publish_details(Client, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/getBulkPublishDetails"],
@@ -373,14 +953,26 @@ get_bulk_publish_details(Client, IdentityPoolId, Input0, Options0) ->
 %%
 %% This API can only be called with developer credentials. You cannot call
 %% this API with the temporary user credentials provided by Cognito Identity.
+-spec get_cognito_events(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_cognito_events_response(), tuple()} |
+    {error, any()} |
+    {error, get_cognito_events_errors(), tuple()}.
 get_cognito_events(Client, IdentityPoolId)
   when is_map(Client) ->
     get_cognito_events(Client, IdentityPoolId, #{}, #{}).
 
+-spec get_cognito_events(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_cognito_events_response(), tuple()} |
+    {error, any()} |
+    {error, get_cognito_events_errors(), tuple()}.
 get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap, []).
 
+-spec get_cognito_events(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_cognito_events_response(), tuple()} |
+    {error, any()} |
+    {error, get_cognito_events_errors(), tuple()}.
 get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/events"],
@@ -448,14 +1040,26 @@ get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap, Options0)
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
+-spec get_identity_pool_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_identity_pool_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_pool_configuration_errors(), tuple()}.
 get_identity_pool_configuration(Client, IdentityPoolId)
   when is_map(Client) ->
     get_identity_pool_configuration(Client, IdentityPoolId, #{}, #{}).
 
+-spec get_identity_pool_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_identity_pool_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_pool_configuration_errors(), tuple()}.
 get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap, []).
 
+-spec get_identity_pool_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_identity_pool_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_pool_configuration_errors(), tuple()}.
 get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/configuration"],
@@ -539,14 +1143,26 @@ get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap, Op
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
+-spec list_datasets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, IdentityId, IdentityPoolId)
   when is_map(Client) ->
     list_datasets(Client, IdentityId, IdentityPoolId, #{}, #{}).
 
+-spec list_datasets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
+-spec list_datasets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets"],
@@ -631,14 +1247,26 @@ list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options0
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
+-spec list_identity_pool_usage(aws_client:aws_client()) ->
+    {ok, list_identity_pool_usage_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_pool_usage_errors(), tuple()}.
 list_identity_pool_usage(Client)
   when is_map(Client) ->
     list_identity_pool_usage(Client, #{}, #{}).
 
+-spec list_identity_pool_usage(aws_client:aws_client(), map(), map()) ->
+    {ok, list_identity_pool_usage_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_pool_usage_errors(), tuple()}.
 list_identity_pool_usage(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_pool_usage(Client, QueryMap, HeadersMap, []).
 
+-spec list_identity_pool_usage(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_identity_pool_usage_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_pool_usage_errors(), tuple()}.
 list_identity_pool_usage(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools"],
@@ -725,14 +1353,26 @@ list_identity_pool_usage(Client, QueryMap, HeadersMap, Options0)
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
+-spec list_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_records_errors(), tuple()}.
 list_records(Client, DatasetName, IdentityId, IdentityPoolId)
   when is_map(Client) ->
     list_records(Client, DatasetName, IdentityId, IdentityPoolId, #{}, #{}).
 
+-spec list_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_records_errors(), tuple()}.
 list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
+-spec list_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_records_errors(), tuple()}.
 list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), "/records"],
@@ -805,8 +1445,17 @@ list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersM
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
+-spec register_device(aws_client:aws_client(), binary() | list(), binary() | list(), register_device_request()) ->
+    {ok, register_device_response(), tuple()} |
+    {error, any()} |
+    {error, register_device_errors(), tuple()}.
 register_device(Client, IdentityId, IdentityPoolId, Input) ->
     register_device(Client, IdentityId, IdentityPoolId, Input, []).
+
+-spec register_device(aws_client:aws_client(), binary() | list(), binary() | list(), register_device_request(), proplists:proplist()) ->
+    {ok, register_device_response(), tuple()} |
+    {error, any()} |
+    {error, register_device_errors(), tuple()}.
 register_device(Client, IdentityId, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identity/", aws_util:encode_uri(IdentityId), "/device"],
@@ -838,8 +1487,17 @@ register_device(Client, IdentityId, IdentityPoolId, Input0, Options0) ->
 %%
 %% This API can only be called with developer credentials. You cannot call
 %% this API with the temporary user credentials provided by Cognito Identity.
+-spec set_cognito_events(aws_client:aws_client(), binary() | list(), set_cognito_events_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_cognito_events_errors(), tuple()}.
 set_cognito_events(Client, IdentityPoolId, Input) ->
     set_cognito_events(Client, IdentityPoolId, Input, []).
+
+-spec set_cognito_events(aws_client:aws_client(), binary() | list(), set_cognito_events_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_cognito_events_errors(), tuple()}.
 set_cognito_events(Client, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/events"],
@@ -919,8 +1577,17 @@ set_cognito_events(Client, IdentityPoolId, Input0, Options0) ->
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
+-spec set_identity_pool_configuration(aws_client:aws_client(), binary() | list(), set_identity_pool_configuration_request()) ->
+    {ok, set_identity_pool_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, set_identity_pool_configuration_errors(), tuple()}.
 set_identity_pool_configuration(Client, IdentityPoolId, Input) ->
     set_identity_pool_configuration(Client, IdentityPoolId, Input, []).
+
+-spec set_identity_pool_configuration(aws_client:aws_client(), binary() | list(), set_identity_pool_configuration_request(), proplists:proplist()) ->
+    {ok, set_identity_pool_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, set_identity_pool_configuration_errors(), tuple()}.
 set_identity_pool_configuration(Client, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/configuration"],
@@ -992,8 +1659,17 @@ set_identity_pool_configuration(Client, IdentityPoolId, Input0, Options0) ->
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
+-spec subscribe_to_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), subscribe_to_dataset_request()) ->
+    {ok, subscribe_to_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, subscribe_to_dataset_errors(), tuple()}.
 subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input) ->
     subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input, []).
+
+-spec subscribe_to_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), subscribe_to_dataset_request(), proplists:proplist()) ->
+    {ok, subscribe_to_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, subscribe_to_dataset_errors(), tuple()}.
 subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), "/subscriptions/", aws_util:encode_uri(DeviceId), ""],
@@ -1066,8 +1742,17 @@ subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, 
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
+-spec unsubscribe_from_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), unsubscribe_from_dataset_request()) ->
+    {ok, unsubscribe_from_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, unsubscribe_from_dataset_errors(), tuple()}.
 unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input) ->
     unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input, []).
+
+-spec unsubscribe_from_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), unsubscribe_from_dataset_request(), proplists:proplist()) ->
+    {ok, unsubscribe_from_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, unsubscribe_from_dataset_errors(), tuple()}.
 unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input0, Options0) ->
     Method = delete,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), "/subscriptions/", aws_util:encode_uri(DeviceId), ""],
@@ -1108,8 +1793,17 @@ unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPool
 %%
 %% This API can be called with temporary user credentials provided by Cognito
 %% Identity or with developer credentials.
+-spec update_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_records_request()) ->
+    {ok, update_records_response(), tuple()} |
+    {error, any()} |
+    {error, update_records_errors(), tuple()}.
 update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input) ->
     update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input, []).
+
+-spec update_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_records_request(), proplists:proplist()) ->
+    {ok, update_records_response(), tuple()} |
+    {error, any()} |
+    {error, update_records_errors(), tuple()}.
 update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), ""],
@@ -1138,7 +1832,7 @@ update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options0
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

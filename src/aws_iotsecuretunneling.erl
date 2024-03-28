@@ -30,6 +30,204 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% close_tunnel_request() :: #{
+%%   <<"delete">> => boolean()
+%% }
+-type close_tunnel_request() :: #{binary() => any()}.
+
+%% Example:
+%% close_tunnel_response() :: #{
+
+%% }
+-type close_tunnel_response() :: #{binary() => any()}.
+
+%% Example:
+%% connection_state() :: #{
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type connection_state() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tunnel_request() :: #{
+
+%% }
+-type describe_tunnel_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tunnel_response() :: #{
+%%   <<"tunnel">> => tunnel()
+%% }
+-type describe_tunnel_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination_config() :: #{
+%%   <<"services">> => list(string()()),
+%%   <<"thingName">> => string()
+%% }
+-type destination_config() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tunnels_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"thingName">> => string()
+%% }
+-type list_tunnels_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tunnels_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tunnelSummaries">> => list(tunnel_summary()())
+%% }
+-type list_tunnels_response() :: #{binary() => any()}.
+
+%% Example:
+%% open_tunnel_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"destinationConfig">> => destination_config(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"timeoutConfig">> => timeout_config()
+%% }
+-type open_tunnel_request() :: #{binary() => any()}.
+
+%% Example:
+%% open_tunnel_response() :: #{
+%%   <<"destinationAccessToken">> => string(),
+%%   <<"sourceAccessToken">> => string(),
+%%   <<"tunnelArn">> => string(),
+%%   <<"tunnelId">> => string()
+%% }
+-type open_tunnel_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rotate_tunnel_access_token_request() :: #{
+%%   <<"clientMode">> := list(any()),
+%%   <<"destinationConfig">> => destination_config()
+%% }
+-type rotate_tunnel_access_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% rotate_tunnel_access_token_response() :: #{
+%%   <<"destinationAccessToken">> => string(),
+%%   <<"sourceAccessToken">> => string(),
+%%   <<"tunnelArn">> => string()
+%% }
+-type rotate_tunnel_access_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% timeout_config() :: #{
+%%   <<"maxLifetimeTimeoutMinutes">> => integer()
+%% }
+-type timeout_config() :: #{binary() => any()}.
+
+%% Example:
+%% tunnel() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"destinationConfig">> => destination_config(),
+%%   <<"destinationConnectionState">> => connection_state(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"sourceConnectionState">> => connection_state(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => list(tag()()),
+%%   <<"timeoutConfig">> => timeout_config(),
+%%   <<"tunnelArn">> => string(),
+%%   <<"tunnelId">> => string()
+%% }
+-type tunnel() :: #{binary() => any()}.
+
+%% Example:
+%% tunnel_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"tunnelArn">> => string(),
+%%   <<"tunnelId">> => string()
+%% }
+-type tunnel_summary() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+-type close_tunnel_errors() ::
+    resource_not_found_exception().
+
+-type describe_tunnel_errors() ::
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception().
+
+-type open_tunnel_errors() ::
+    limit_exceeded_exception().
+
+-type rotate_tunnel_access_token_errors() ::
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -44,9 +242,18 @@
 %% Requires permission to access the CloseTunnel:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec close_tunnel(aws_client:aws_client(), close_tunnel_request()) ->
+    {ok, close_tunnel_response(), tuple()} |
+    {error, any()} |
+    {error, close_tunnel_errors(), tuple()}.
 close_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_tunnel(Client, Input, []).
+
+-spec close_tunnel(aws_client:aws_client(), close_tunnel_request(), proplists:proplist()) ->
+    {ok, close_tunnel_response(), tuple()} |
+    {error, any()} |
+    {error, close_tunnel_errors(), tuple()}.
 close_tunnel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CloseTunnel">>, Input, Options).
@@ -56,17 +263,35 @@ close_tunnel(Client, Input, Options)
 %% Requires permission to access the DescribeTunnel:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec describe_tunnel(aws_client:aws_client(), describe_tunnel_request()) ->
+    {ok, describe_tunnel_response(), tuple()} |
+    {error, any()} |
+    {error, describe_tunnel_errors(), tuple()}.
 describe_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tunnel(Client, Input, []).
+
+-spec describe_tunnel(aws_client:aws_client(), describe_tunnel_request(), proplists:proplist()) ->
+    {ok, describe_tunnel_response(), tuple()} |
+    {error, any()} |
+    {error, describe_tunnel_errors(), tuple()}.
 describe_tunnel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTunnel">>, Input, Options).
 
 %% @doc Lists the tags for the specified resource.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -79,9 +304,16 @@ list_tags_for_resource(Client, Input, Options)
 %% Requires permission to access the ListTunnels:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec list_tunnels(aws_client:aws_client(), list_tunnels_request()) ->
+    {ok, list_tunnels_response(), tuple()} |
+    {error, any()}.
 list_tunnels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tunnels(Client, Input, []).
+
+-spec list_tunnels(aws_client:aws_client(), list_tunnels_request(), proplists:proplist()) ->
+    {ok, list_tunnels_response(), tuple()} |
+    {error, any()}.
 list_tunnels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTunnels">>, Input, Options).
@@ -93,9 +325,18 @@ list_tunnels(Client, Input, Options)
 %% Requires permission to access the OpenTunnel:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec open_tunnel(aws_client:aws_client(), open_tunnel_request()) ->
+    {ok, open_tunnel_response(), tuple()} |
+    {error, any()} |
+    {error, open_tunnel_errors(), tuple()}.
 open_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     open_tunnel(Client, Input, []).
+
+-spec open_tunnel(aws_client:aws_client(), open_tunnel_request(), proplists:proplist()) ->
+    {ok, open_tunnel_response(), tuple()} |
+    {error, any()} |
+    {error, open_tunnel_errors(), tuple()}.
 open_tunnel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"OpenTunnel">>, Input, Options).
@@ -115,25 +356,52 @@ open_tunnel(Client, Input, Options)
 %% rotate the access tokens, the new tokens that are generated can only be
 %% used for the
 %% remaining 8 hours.
+-spec rotate_tunnel_access_token(aws_client:aws_client(), rotate_tunnel_access_token_request()) ->
+    {ok, rotate_tunnel_access_token_response(), tuple()} |
+    {error, any()} |
+    {error, rotate_tunnel_access_token_errors(), tuple()}.
 rotate_tunnel_access_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     rotate_tunnel_access_token(Client, Input, []).
+
+-spec rotate_tunnel_access_token(aws_client:aws_client(), rotate_tunnel_access_token_request(), proplists:proplist()) ->
+    {ok, rotate_tunnel_access_token_response(), tuple()} |
+    {error, any()} |
+    {error, rotate_tunnel_access_token_errors(), tuple()}.
 rotate_tunnel_access_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RotateTunnelAccessToken">>, Input, Options).
 
 %% @doc A resource tag.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes a tag from a resource.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

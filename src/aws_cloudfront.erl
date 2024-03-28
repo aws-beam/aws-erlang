@@ -289,6 +289,5068 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% response_headers_policy_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type response_headers_policy_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalidation_summary() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type invalidation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_origin_access_controls() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_origin_access_controls() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_metrics_subscription_config() :: #{
+%%   <<"RealtimeMetricsSubscriptionStatus">> => list(any())
+%% }
+-type realtime_metrics_subscription_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_store_association() :: #{
+%%   <<"KeyValueStoreARN">> => string()
+%% }
+-type key_value_store_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% signer() :: #{
+%%   <<"AwsAccountNumber">> => string(),
+%%   <<"KeyPairIds">> => key_pair_ids()
+%% }
+-type signer() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cache_policy_request() :: #{
+%%   <<"CachePolicyConfig">> := cache_policy_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_cache_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_response_headers_policies_result() :: #{
+%%   <<"ResponseHeadersPolicyList">> => response_headers_policy_list()
+%% }
+-type list_response_headers_policies_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_front_origin_access_identity_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cloud_front_origin_access_identity_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_realtime_log_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_realtime_log_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_origin_groups_per_distribution() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_origin_groups_per_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% end_point() :: #{
+%%   <<"KinesisStreamConfig">> => kinesis_stream_config(),
+%%   <<"StreamType">> => string()
+%% }
+-type end_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_response_headers_policy_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"ResponseHeadersPolicy">> => response_headers_policy()
+%% }
+-type update_response_headers_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_distribution_not_disabled() :: #{
+%%   <<"Message">> => string()
+%% }
+-type streaming_distribution_not_disabled() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_realtime_log_config_request() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type delete_realtime_log_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_request_policies_result() :: #{
+%%   <<"OriginRequestPolicyList">> => origin_request_policy_list()
+%% }
+-type list_origin_request_policies_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% cannot_change_immutable_public_key_fields() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cannot_change_immutable_public_key_fields() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_function_associations() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_function_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_origin_access_identity() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_origin_access_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% forwarded_values() :: #{
+%%   <<"Cookies">> => cookie_preference(),
+%%   <<"Headers">> => headers(),
+%%   <<"QueryString">> => boolean(),
+%%   <<"QueryStringCacheKeys">> => query_string_cache_keys()
+%% }
+-type forwarded_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_not_disabled() :: #{
+%%   <<"Message">> => string()
+%% }
+-type distribution_not_disabled() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Resource">> := string(),
+%%   <<"Tags">> := tags()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_log_configs() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(realtime_log_config()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type realtime_log_configs() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_continuous_deployment_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_continuous_deployment_policy() :: #{binary() => any()}.
+
+%% Example:
+%% get_continuous_deployment_policy_request() :: #{}
+-type get_continuous_deployment_policy_request() :: #{}.
+
+
+%% Example:
+%% update_key_group_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyGroup">> => key_group()
+%% }
+-type update_key_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_custom_headers_in_response_headers_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_custom_headers_in_response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_response_headers_policies() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_response_headers_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_cookies_in_cache_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cookies_in_cache_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_invalidations_in_progress() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_invalidations_in_progress() :: #{binary() => any()}.
+
+
+%% Example:
+%% status_codes() :: #{
+%%   <<"Items">> => list(integer()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type status_codes() :: #{binary() => any()}.
+
+%% Example:
+%% get_streaming_distribution_config_request() :: #{}
+-type get_streaming_distribution_config_request() :: #{}.
+
+
+%% Example:
+%% lambda_function_associations() :: #{
+%%   <<"Items">> => list(lambda_function_association()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type lambda_function_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_continuous_deployment_policies() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_continuous_deployment_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_long_c_s_p_in_response_headers_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_long_c_s_p_in_response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_summary() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"ContentTypeProfileConfig">> => content_type_profile_config(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"QueryArgProfileConfig">> => query_arg_profile_config()
+%% }
+-type field_level_encryption_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_arg_profile_empty() :: #{
+%%   <<"Message">> => string()
+%% }
+-type query_arg_profile_empty() :: #{binary() => any()}.
+
+%% Example:
+%% get_origin_request_policy_request() :: #{}
+-type get_origin_request_policy_request() :: #{}.
+
+
+%% Example:
+%% distribution_config_with_tags() :: #{
+%%   <<"DistributionConfig">> => distribution_config(),
+%%   <<"Tags">> => tags()
+%% }
+-type distribution_config_with_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_distribution_result() :: #{
+%%   <<"Distribution">> => distribution(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type copy_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_origin_request_policy_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_origin_request_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_front_origin_access_identity_request() :: #{}
+-type get_cloud_front_origin_access_identity_request() :: #{}.
+
+
+%% Example:
+%% illegal_origin_access_configuration() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_origin_access_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_field_level_encryption_profile_request() :: #{}
+-type get_field_level_encryption_profile_request() :: #{}.
+
+
+%% Example:
+%% invalid_if_match_version() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_if_match_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_origin_request_policy_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginRequestPolicy">> => origin_request_policy()
+%% }
+-type update_origin_request_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_field_level_encryption_profile_request() :: #{
+%%   <<"FieldLevelEncryptionProfileConfig">> := field_level_encryption_profile_config()
+%% }
+-type create_field_level_encryption_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions_associated_to_cache_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions_associated_to_cache_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% trusted_key_group_does_not_exist() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trusted_key_group_does_not_exist() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_policy_list() :: #{
+%%   <<"Items">> => list(continuous_deployment_policy_summary()()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type continuous_deployment_policy_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_realtime_log_config_result() :: #{
+%%   <<"RealtimeLogConfig">> => realtime_log_config()
+%% }
+-type create_realtime_log_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_entities() :: #{
+%%   <<"Items">> => list(encryption_entity()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type encryption_entities() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cloud_front_origin_access_identity_config_result() :: #{
+%%   <<"CloudFrontOriginAccessIdentityConfig">> => cloud_front_origin_access_identity_config(),
+%%   <<"ETag">> => string()
+%% }
+-type get_cloud_front_origin_access_identity_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_request_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"Type">> => list(any())
+%% }
+-type list_origin_request_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_query_string_parameters() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_query_string_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_monitoring_subscription_result() :: #{
+%%   <<"MonitoringSubscription">> => monitoring_subscription()
+%% }
+-type get_monitoring_subscription_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_functions() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_functions() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions_associated_to_origin_request_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions_associated_to_origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_result() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"FunctionCode">> => binary()
+%% }
+-type get_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions_associated_to_key_group() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions_associated_to_key_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_tagging() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_tagging() :: #{binary() => any()}.
+
+%% Example:
+%% get_continuous_deployment_policy_config_request() :: #{}
+-type get_continuous_deployment_policy_config_request() :: #{}.
+
+
+%% Example:
+%% origin_request_policy_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"CookiesConfig">> => origin_request_policy_cookies_config(),
+%%   <<"HeadersConfig">> => origin_request_policy_headers_config(),
+%%   <<"Name">> => string(),
+%%   <<"QueryStringsConfig">> => origin_request_policy_query_strings_config()
+%% }
+-type origin_request_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_key_value_stores_result() :: #{
+%%   <<"KeyValueStoreList">> => key_value_store_list()
+%% }
+-type list_key_value_stores_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_continuous_deployment_policy_result() :: #{
+%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy(),
+%%   <<"ETag">> => string()
+%% }
+-type update_continuous_deployment_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_protocol_settings() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_protocol_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_list() :: #{
+%%   <<"Items">> => list(field_level_encryption_summary()()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type field_level_encryption_list() :: #{binary() => any()}.
+
+%% Example:
+%% get_response_headers_policy_request() :: #{}
+-type get_response_headers_policy_request() :: #{}.
+
+
+%% Example:
+%% list_distributions_by_web_acl_id_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_web_acl_id_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type public_key_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_single_weight_config() :: #{
+%%   <<"SessionStickinessConfig">> => session_stickiness_config(),
+%%   <<"Weight">> => float()
+%% }
+-type continuous_deployment_single_weight_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_strict_transport_security() :: #{
+%%   <<"AccessControlMaxAgeSec">> => integer(),
+%%   <<"IncludeSubdomains">> => boolean(),
+%%   <<"Override">> => boolean(),
+%%   <<"Preload">> => boolean()
+%% }
+-type response_headers_policy_strict_transport_security() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_streaming_distribution_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"StreamingDistributionConfig">> => streaming_distribution_config()
+%% }
+-type get_streaming_distribution_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_not_found() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_field_level_encryption_config_request() :: #{
+%%   <<"FieldLevelEncryptionConfig">> := field_level_encryption_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_field_level_encryption_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_monitoring_subscription_result() :: #{}
+-type delete_monitoring_subscription_result() :: #{}.
+
+
+%% Example:
+%% list_invalidations_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_invalidations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cache_policy_result() :: #{
+%%   <<"CachePolicy">> => cache_policy(),
+%%   <<"ETag">> => string()
+%% }
+-type update_cache_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflicting_alias() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Alias">> => string(),
+%%   <<"DistributionId">> => string()
+%% }
+-type conflicting_alias() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_cache_policy_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_distributions_by_cache_policy_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_field_level_encryption_content_type_profiles() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_field_level_encryption_content_type_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_policy_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type continuous_deployment_policy_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"DefaultTTL">> => float(),
+%%   <<"MaxTTL">> => float(),
+%%   <<"MinTTL">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"ParametersInCacheKeyAndForwardedToOrigin">> => parameters_in_cache_key_and_forwarded_to_origin()
+%% }
+-type cache_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% trusted_key_groups() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type trusted_key_groups() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_front_origin_access_identity_request() :: #{
+%%   <<"CloudFrontOriginAccessIdentityConfig">> := cloud_front_origin_access_identity_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_front_origin_access_identity_summary() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"S3CanonicalUserId">> => string()
+%% }
+-type cloud_front_origin_access_identity_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(origin_access_control_summary()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type origin_access_control_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% geo_restriction() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer(),
+%%   <<"RestrictionType">> => list(any())
+%% }
+-type geo_restriction() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_content_type_options() :: #{
+%%   <<"Override">> => boolean()
+%% }
+-type response_headers_policy_content_type_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_access_control_request() :: #{
+%%   <<"OriginAccessControlConfig">> := origin_access_control_config()
+%% }
+-type create_origin_access_control_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_origin_request_policy_config_request() :: #{}
+-type get_origin_request_policy_config_request() :: #{}.
+
+
+%% Example:
+%% copy_distribution_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IfMatch">> => string(),
+%%   <<"Staging">> => boolean()
+%% }
+-type copy_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_result() :: #{
+%%   <<"ComputeUtilization">> => string(),
+%%   <<"FunctionErrorMessage">> => string(),
+%%   <<"FunctionExecutionLogs">> => list(string()()),
+%%   <<"FunctionOutput">> => string(),
+%%   <<"FunctionSummary">> => function_summary()
+%% }
+-type test_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_front_origin_access_identity_result() :: #{
+%%   <<"CloudFrontOriginAccessIdentity">> => cloud_front_origin_access_identity(),
+%%   <<"ETag">> => string()
+%% }
+-type update_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_group_member() :: #{
+%%   <<"OriginId">> => string()
+%% }
+-type origin_group_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_summary() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"AliasICPRecordals">> => list(alias_i_c_p_recordal()()),
+%%   <<"Aliases">> => aliases(),
+%%   <<"CacheBehaviors">> => cache_behaviors(),
+%%   <<"Comment">> => string(),
+%%   <<"CustomErrorResponses">> => custom_error_responses(),
+%%   <<"DefaultCacheBehavior">> => default_cache_behavior(),
+%%   <<"DomainName">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HttpVersion">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"IsIPV6Enabled">> => boolean(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OriginGroups">> => origin_groups(),
+%%   <<"Origins">> => origins(),
+%%   <<"PriceClass">> => list(any()),
+%%   <<"Restrictions">> => restrictions(),
+%%   <<"Staging">> => boolean(),
+%%   <<"Status">> => string(),
+%%   <<"ViewerCertificate">> => viewer_certificate(),
+%%   <<"WebACLId">> => string()
+%% }
+-type distribution_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cloud_front_origin_access_identities_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_cloud_front_origin_access_identities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% alias_i_c_p_recordal() :: #{
+%%   <<"CNAME">> => string(),
+%%   <<"ICPRecordalStatus">> => list(any())
+%% }
+-type alias_i_c_p_recordal() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cloud_front_origin_access_identities_result() :: #{
+%%   <<"CloudFrontOriginAccessIdentityList">> => cloud_front_origin_access_identity_list()
+%% }
+-type list_cloud_front_origin_access_identities_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_stickiness_config() :: #{
+%%   <<"IdleTTL">> => integer(),
+%%   <<"MaximumTTL">> => integer()
+%% }
+-type session_stickiness_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_public_keys_result() :: #{
+%%   <<"PublicKeyList">> => public_key_list()
+%% }
+-type list_public_keys_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_field_level_encryption_configs_result() :: #{
+%%   <<"FieldLevelEncryptionList">> => field_level_encryption_list()
+%% }
+-type list_field_level_encryption_configs_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_config_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type field_level_encryption_config_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_cache_behavior() :: #{
+%%   <<"AllowedMethods">> => allowed_methods(),
+%%   <<"CachePolicyId">> => string(),
+%%   <<"Compress">> => boolean(),
+%%   <<"DefaultTTL">> => float(),
+%%   <<"FieldLevelEncryptionId">> => string(),
+%%   <<"ForwardedValues">> => forwarded_values(),
+%%   <<"FunctionAssociations">> => function_associations(),
+%%   <<"LambdaFunctionAssociations">> => lambda_function_associations(),
+%%   <<"MaxTTL">> => float(),
+%%   <<"MinTTL">> => float(),
+%%   <<"OriginRequestPolicyId">> => string(),
+%%   <<"RealtimeLogConfigArn">> => string(),
+%%   <<"ResponseHeadersPolicyId">> => string(),
+%%   <<"SmoothStreaming">> => boolean(),
+%%   <<"TargetOriginId">> => string(),
+%%   <<"TrustedKeyGroups">> => trusted_key_groups(),
+%%   <<"TrustedSigners">> => trusted_signers(),
+%%   <<"ViewerProtocolPolicy">> => list(any())
+%% }
+-type default_cache_behavior() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile() :: #{
+%%   <<"FieldLevelEncryptionProfileConfig">> => field_level_encryption_profile_config(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type field_level_encryption_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% illegal_update() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_key_value_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyValueStore">> => key_value_store(),
+%%   <<"Location">> => string()
+%% }
+-type create_key_value_store_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_policy_summary() :: #{
+%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy()
+%% }
+-type continuous_deployment_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_result() :: #{
+%%   <<"FunctionList">> => function_list()
+%% }
+-type list_functions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_front_origin_access_identity_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cloud_front_origin_access_identity_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_function_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FunctionSummary">> => function_summary()
+%% }
+-type describe_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_group_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Items">> => list(string()()),
+%%   <<"Name">> => string()
+%% }
+-type key_group_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_origin() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"OriginAccessIdentity">> => string()
+%% }
+-type s3_origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy() :: #{
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ResponseHeadersPolicyConfig">> => response_headers_policy_config()
+%% }
+-type response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_t_t_l_order() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_t_t_l_order() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type field_level_encryption_profile_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_function_result() :: #{
+%%   <<"TestResult">> => test_result()
+%% }
+-type test_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitoring_subscription() :: #{
+%%   <<"RealtimeMetricsSubscriptionConfig">> => realtime_metrics_subscription_config()
+%% }
+-type monitoring_subscription() :: #{binary() => any()}.
+
+%% Example:
+%% get_public_key_config_request() :: #{}
+-type get_public_key_config_request() :: #{}.
+
+
+%% Example:
+%% get_invalidation_result() :: #{
+%%   <<"Invalidation">> => invalidation()
+%% }
+-type get_invalidation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_logging_config() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Prefix">> => string()
+%% }
+-type streaming_logging_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_invalidation_request() :: #{
+%%   <<"InvalidationBatch">> := invalidation_batch()
+%% }
+-type create_invalidation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_string_cache_keys() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type query_string_cache_keys() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_streaming_distribution_request() :: #{
+%%   <<"StreamingDistributionConfig">> := streaming_distribution_config()
+%% }
+-type create_streaming_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OriginAccessControlOriginType">> => list(any()),
+%%   <<"SigningBehavior">> => list(any()),
+%%   <<"SigningProtocol">> => list(any())
+%% }
+-type origin_access_control_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_group_config_request() :: #{}
+-type get_key_group_config_request() :: #{}.
+
+
+%% Example:
+%% too_many_cookie_names_in_white_list() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cookie_names_in_white_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_distribution_request() :: #{
+%%   <<"DistributionConfig">> := distribution_config()
+%% }
+-type create_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_continuous_deployment_policy_request() :: #{
+%%   <<"ContinuousDeploymentPolicyConfig">> := continuous_deployment_policy_config()
+%% }
+-type create_continuous_deployment_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_config() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IncludeCookies">> => boolean(),
+%%   <<"Prefix">> => string()
+%% }
+-type logging_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_argument() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_argument() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_referrer_policy() :: #{
+%%   <<"Override">> => boolean(),
+%%   <<"ReferrerPolicy">> => list(any())
+%% }
+-type response_headers_policy_referrer_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"Resource">> := string(),
+%%   <<"TagKeys">> := tag_keys()
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_streaming_distribution_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"StreamingDistribution">> => streaming_distribution()
+%% }
+-type create_streaming_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_web_acl_id() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_web_acl_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_cookies_in_origin_request_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cookies_in_origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cache_policy_result() :: #{
+%%   <<"CachePolicy">> => cache_policy(),
+%%   <<"ETag">> => string()
+%% }
+-type get_cache_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_continuous_deployment_policy_result() :: #{
+%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_continuous_deployment_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_group() :: #{
+%%   <<"Id">> => string(),
+%%   <<"KeyGroupConfig">> => key_group_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type key_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_key_group_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_distributions_by_key_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_public_key_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"PublicKeyConfig">> := public_key_config()
+%% }
+-type update_public_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_type_profile() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"ProfileId">> => string()
+%% }
+-type content_type_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_key_group_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyGroup">> => key_group()
+%% }
+-type get_key_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_headers_config() :: #{
+%%   <<"HeaderBehavior">> => list(any()),
+%%   <<"Headers">> => headers()
+%% }
+-type origin_request_policy_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_too_large() :: #{
+%%   <<"Message">> => string()
+%% }
+-type batch_too_large() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_arg_profiles() :: #{
+%%   <<"Items">> => list(query_arg_profile()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type query_arg_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_continuous_deployment_policy_request() :: #{
+%%   <<"ContinuousDeploymentPolicyConfig">> := continuous_deployment_policy_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_continuous_deployment_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_access_control_allow_origins() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_access_control_allow_origins() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_association() :: #{
+%%   <<"EventType">> => list(any()),
+%%   <<"FunctionARN">> => string()
+%% }
+-type function_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_group_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type key_group_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_realtime_log_config_request() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type get_realtime_log_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_group_list() :: #{
+%%   <<"Items">> => list(key_group_summary()()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type key_group_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_policy() :: #{
+%%   <<"ContinuousDeploymentPolicyConfig">> => continuous_deployment_policy_config(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type continuous_deployment_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_shield() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"OriginShieldRegion">> => string()
+%% }
+-type origin_shield() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_type_profiles() :: #{
+%%   <<"Items">> => list(content_type_profile()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type content_type_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_frame_options() :: #{
+%%   <<"FrameOption">> => list(any()),
+%%   <<"Override">> => boolean()
+%% }
+-type response_headers_policy_frame_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_field_level_encryption_profiles_result() :: #{
+%%   <<"FieldLevelEncryptionProfileList">> => field_level_encryption_profile_list()
+%% }
+-type list_field_level_encryption_profiles_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_size_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_size_limit_exceeded() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type field_level_encryption_profile_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_field_level_encryption_config() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_field_level_encryption_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_list() :: #{
+%%   <<"Items">> => list(cache_policy_summary()()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type cache_policy_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_public_keys_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_public_keys_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_distribution_config_result() :: #{
+%%   <<"DistributionConfig">> => distribution_config(),
+%%   <<"ETag">> => string()
+%% }
+-type get_distribution_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_key_value_stores_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"Status">> => string()
+%% }
+-type list_key_value_stores_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_distribution() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"ActiveTrustedSigners">> => active_trusted_signers(),
+%%   <<"DomainName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> => string(),
+%%   <<"StreamingDistributionConfig">> => streaming_distribution_config()
+%% }
+-type streaming_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% origins() :: #{
+%%   <<"Items">> => list(origin()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type origins() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_cloud_front_origin_access_identity() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_cloud_front_origin_access_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_field_level_encryption_config_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_field_level_encryption_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_size_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type function_size_limit_exceeded() :: #{binary() => any()}.
+
+
+%% Example:
+%% cached_methods() :: #{
+%%   <<"Items">> => list(list(any())()),
+%%   <<"Quantity">> => integer()
+%% }
+-type cached_methods() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_origin_access_control() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_origin_access_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_key_value_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyValueStore">> => key_value_store()
+%% }
+-type describe_key_value_store_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_origin() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_behaviors() :: #{
+%%   <<"Items">> => list(cache_behavior()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type cache_behaviors() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_headers() :: #{
+%%   <<"Items">> => list(origin_custom_header()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type custom_headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_config_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type field_level_encryption_config_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_realtime_log_config_request() :: #{
+%%   <<"EndPoints">> := list(end_point()()),
+%%   <<"Fields">> := list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"SamplingRate">> := float()
+%% }
+-type create_realtime_log_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_operation() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_headers_in_cache_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_headers_in_cache_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_associations() :: #{
+%%   <<"Items">> => list(function_association()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type function_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_certificates() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_certificates() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_conflicting_aliases_request() :: #{
+%%   <<"Alias">> := string(),
+%%   <<"DistributionId">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_conflicting_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_streaming_distribution_with_tags_request() :: #{
+%%   <<"StreamingDistributionConfigWithTags">> := streaming_distribution_config_with_tags()
+%% }
+-type create_streaming_distribution_with_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_config() :: #{
+%%   <<"SingleHeaderConfig">> => continuous_deployment_single_header_config(),
+%%   <<"SingleWeightConfig">> => continuous_deployment_single_weight_config(),
+%%   <<"Type">> => list(any())
+%% }
+-type traffic_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_cookies_config() :: #{
+%%   <<"CookieBehavior">> => list(any()),
+%%   <<"Cookies">> => cookie_names()
+%% }
+-type cache_policy_cookies_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cloud_front_origin_access_identity_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function_association() :: #{
+%%   <<"EventType">> => list(any()),
+%%   <<"IncludeBody">> => boolean(),
+%%   <<"LambdaFunctionARN">> => string()
+%% }
+-type lambda_function_association() :: #{binary() => any()}.
+
+%% Example:
+%% describe_key_value_store_request() :: #{}
+-type describe_key_value_store_request() :: #{}.
+
+%% Example:
+%% get_distribution_config_request() :: #{}
+-type get_distribution_config_request() :: #{}.
+
+
+%% Example:
+%% delete_public_key_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_public_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_config() :: #{
+%%   <<"Aliases">> => aliases(),
+%%   <<"CacheBehaviors">> => cache_behaviors(),
+%%   <<"CallerReference">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"ContinuousDeploymentPolicyId">> => string(),
+%%   <<"CustomErrorResponses">> => custom_error_responses(),
+%%   <<"DefaultCacheBehavior">> => default_cache_behavior(),
+%%   <<"DefaultRootObject">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HttpVersion">> => list(any()),
+%%   <<"IsIPV6Enabled">> => boolean(),
+%%   <<"Logging">> => logging_config(),
+%%   <<"OriginGroups">> => origin_groups(),
+%%   <<"Origins">> => origins(),
+%%   <<"PriceClass">> => list(any()),
+%%   <<"Restrictions">> => restrictions(),
+%%   <<"Staging">> => boolean(),
+%%   <<"ViewerCertificate">> => viewer_certificate(),
+%%   <<"WebACLId">> => string()
+%% }
+-type distribution_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_continuous_deployment_policy_result() :: #{
+%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy(),
+%%   <<"ETag">> => string()
+%% }
+-type get_continuous_deployment_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_required_protocol() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_required_protocol() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_request() :: #{
+%%   <<"Stage">> => list(any())
+%% }
+-type get_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_cookies_config() :: #{
+%%   <<"CookieBehavior">> => list(any()),
+%%   <<"Cookies">> => cookie_names()
+%% }
+-type origin_request_policy_cookies_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_key_value_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyValueStore">> => key_value_store()
+%% }
+-type update_key_value_store_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_key_groups_result() :: #{
+%%   <<"KeyGroupList">> => key_group_list()
+%% }
+-type list_key_groups_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_key_group_request() :: #{
+%%   <<"KeyGroupConfig">> := key_group_config()
+%% }
+-type create_key_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_response_headers_policy_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_response_headers_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type origin_access_control_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% precondition_failed() :: #{
+%%   <<"Message">> => string()
+%% }
+-type precondition_failed() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key_list() :: #{
+%%   <<"Items">> => list(public_key_summary()()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type public_key_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_response_headers_policy_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"ResponseHeadersPolicyConfig">> := response_headers_policy_config()
+%% }
+-type update_response_headers_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_custom_headers_config() :: #{
+%%   <<"Items">> => list(response_headers_policy_custom_header()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_custom_headers_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_cache_policy_config_request() :: #{}
+-type get_cache_policy_config_request() :: #{}.
+
+
+%% Example:
+%% list_key_groups_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_key_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distribution_cnames() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distribution_cnames() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_origin_request_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_distribution() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% get_field_level_encryption_profile_config_request() :: #{}
+-type get_field_level_encryption_profile_config_request() :: #{}.
+
+
+%% Example:
+%% cache_policy_summary() :: #{
+%%   <<"CachePolicy">> => cache_policy(),
+%%   <<"Type">> => list(any())
+%% }
+-type cache_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_arg_profile() :: #{
+%%   <<"ProfileId">> => string(),
+%%   <<"QueryArg">> => string()
+%% }
+-type query_arg_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_access_control_expose_headers() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_access_control_expose_headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_origin_config() :: #{
+%%   <<"OriginAccessIdentity">> => string()
+%% }
+-type s3_origin_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_request() :: #{
+%%   <<"DistributionConfig">> := distribution_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_trusted_signers() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_trusted_signers() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_function_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_function_result() :: #{
+%%   <<"FunctionSummary">> => function_summary()
+%% }
+-type publish_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_query_strings_in_origin_request_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_query_strings_in_origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_cache_policies() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cache_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_remove_headers_config() :: #{
+%%   <<"Items">> => list(response_headers_policy_remove_header()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_remove_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_error_code() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_error_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_response_headers_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"Type">> => list(any())
+%% }
+-type list_response_headers_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption() :: #{
+%%   <<"FieldLevelEncryptionConfig">> => field_level_encryption_config(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type field_level_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_geo_restriction_parameter() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_geo_restriction_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_store_associations() :: #{
+%%   <<"Items">> => list(key_value_store_association()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type key_value_store_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control() :: #{
+%%   <<"Id">> => string(),
+%%   <<"OriginAccessControlConfig">> => origin_access_control_config()
+%% }
+-type origin_access_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type origin_request_policy_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy() :: #{
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OriginRequestPolicyConfig">> => origin_request_policy_config()
+%% }
+-type origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type response_headers_policy_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_policy_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type continuous_deployment_policy_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_list() :: #{
+%%   <<"Items">> => list(response_headers_policy_summary()()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_origin_access_control_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"OriginAccessControlConfig">> := origin_access_control_config()
+%% }
+-type update_origin_access_control_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_realtime_log_config_result() :: #{
+%%   <<"RealtimeLogConfig">> => realtime_log_config()
+%% }
+-type update_realtime_log_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions_with_function_associations() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions_with_function_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_body() :: #{
+%%   <<"Message">> => string()
+%% }
+-type missing_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% cookie_names() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type cookie_names() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_query_strings_in_cache_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_query_strings_in_cache_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% inconsistent_quantities() :: #{
+%%   <<"Message">> => string()
+%% }
+-type inconsistent_quantities() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_headers_for_s3_origin() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_headers_for_s3_origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_cache_policy_id_result() :: #{
+%%   <<"DistributionIdList">> => distribution_id_list()
+%% }
+-type list_distributions_by_cache_policy_id_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_patterns() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type field_patterns() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitoring_subscription_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type monitoring_subscription_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_lambda_function_association() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_lambda_function_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% tags() :: #{
+%%   <<"Items">> => list(tag()())
+%% }
+-type tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"ActiveTrustedKeyGroups">> => active_trusted_key_groups(),
+%%   <<"ActiveTrustedSigners">> => active_trusted_signers(),
+%%   <<"AliasICPRecordals">> => list(alias_i_c_p_recordal()()),
+%%   <<"DistributionConfig">> => distribution_config(),
+%%   <<"DomainName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"InProgressInvalidationBatches">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> => string()
+%% }
+-type distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cache_policy_request() :: #{
+%%   <<"CachePolicyConfig">> := cache_policy_config()
+%% }
+-type create_cache_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_query_strings_config() :: #{
+%%   <<"QueryStringBehavior">> => list(any()),
+%%   <<"QueryStrings">> => query_string_names()
+%% }
+-type origin_request_policy_query_strings_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_origin_keepalive_timeout() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_origin_keepalive_timeout() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_continuous_deployment_policies_result() :: #{
+%%   <<"ContinuousDeploymentPolicyList">> => continuous_deployment_policy_list()
+%% }
+-type list_continuous_deployment_policies_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_stream_config() :: #{
+%%   <<"RoleARN">> => string(),
+%%   <<"StreamARN">> => string()
+%% }
+-type kinesis_stream_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_forward_cookies() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_forward_cookies() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_key_group_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyGroup">> => key_group(),
+%%   <<"Location">> => string()
+%% }
+-type create_key_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_key_group_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_key_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_field_level_encryption_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryption">> => field_level_encryption(),
+%%   <<"Location">> => string()
+%% }
+-type create_field_level_encryption_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_log_config_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type realtime_log_config_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_cache_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_cache_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% aliases() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type aliases() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_alias_request() :: #{
+%%   <<"Alias">> := string()
+%% }
+-type associate_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_groups() :: #{
+%%   <<"Items">> => list(origin_group()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type origin_groups() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_entity() :: #{
+%%   <<"FieldPatterns">> => field_patterns(),
+%%   <<"ProviderId">> => string(),
+%%   <<"PublicKeyId">> => string()
+%% }
+-type encryption_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalidation_batch() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Paths">> => paths()
+%% }
+-type invalidation_batch() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streaming_distributions_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_streaming_distributions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% trusted_signer_does_not_exist() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trusted_signer_does_not_exist() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_front_origin_access_identity_request() :: #{
+%%   <<"CloudFrontOriginAccessIdentityConfig">> := cloud_front_origin_access_identity_config()
+%% }
+-type create_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_streaming_distribution() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_streaming_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_origin_read_timeout() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_origin_read_timeout() :: #{binary() => any()}.
+
+%% Example:
+%% get_invalidation_request() :: #{}
+-type get_invalidation_request() :: #{}.
+
+
+%% Example:
+%% continuous_deployment_policy_config() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"StagingDistributionDnsNames">> => staging_distribution_dns_names(),
+%%   <<"TrafficConfig">> => traffic_config()
+%% }
+-type continuous_deployment_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_origin_request_policy_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginRequestPolicyConfig">> => origin_request_policy_config()
+%% }
+-type get_origin_request_policy_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_response_headers_policy_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"ResponseHeadersPolicy">> => response_headers_policy()
+%% }
+-type create_response_headers_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_key_value_store_request() :: #{
+%%   <<"Comment">> := string(),
+%%   <<"IfMatch">> := string()
+%% }
+-type update_key_value_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_domain_name_for_origin_access_control() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_domain_name_for_origin_access_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_content_security_policy() :: #{
+%%   <<"ContentSecurityPolicy">> => string(),
+%%   <<"Override">> => boolean()
+%% }
+-type response_headers_policy_content_security_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"PublicKeyConfig">> => public_key_config()
+%% }
+-type public_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_field_level_encryption_profile_request() :: #{
+%%   <<"FieldLevelEncryptionProfileConfig">> := field_level_encryption_profile_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_field_level_encryption_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_summary() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"EncryptionEntities">> => encryption_entities(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type field_level_encryption_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_summary() :: #{
+%%   <<"FunctionConfig">> => function_config(),
+%%   <<"FunctionMetadata">> => function_metadata(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type function_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_key_groups_associated_to_distribution() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_key_groups_associated_to_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cache_policy_result() :: #{
+%%   <<"CachePolicy">> => cache_policy(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_cache_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_key_value_store_request() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"ImportSource">> => import_source(),
+%%   <<"Name">> := string()
+%% }
+-type create_key_value_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_custom_header() :: #{
+%%   <<"HeaderName">> => string(),
+%%   <<"HeaderValue">> => string()
+%% }
+-type origin_custom_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_field_level_encryption_profiles_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_field_level_encryption_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cache_policy_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_headers_in_forwarded_values() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_headers_in_forwarded_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_remove_header() :: #{
+%%   <<"Header">> => string()
+%% }
+-type response_headers_policy_remove_header() :: #{binary() => any()}.
+
+%% Example:
+%% get_field_level_encryption_request() :: #{}
+-type get_field_level_encryption_request() :: #{}.
+
+
+%% Example:
+%% invalid_minimum_protocol_version() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_minimum_protocol_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_store_list() :: #{
+%%   <<"Items">> => list(key_value_store()()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type key_value_store_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cloud_front_origin_access_identity_result() :: #{
+%%   <<"CloudFrontOriginAccessIdentity">> => cloud_front_origin_access_identity(),
+%%   <<"ETag">> => string()
+%% }
+-type get_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_string_names() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type query_string_names() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_field_level_encryption_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryption">> => field_level_encryption()
+%% }
+-type get_field_level_encryption_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_streaming_distribution_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"StreamingDistributionConfig">> := streaming_distribution_config()
+%% }
+-type update_streaming_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_streaming_distributions() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_streaming_distributions() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_origin_access_control() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_origin_access_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% cannot_delete_entity_while_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cannot_delete_entity_while_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflicting_aliases_list() :: #{
+%%   <<"Items">> => list(conflicting_alias()()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type conflicting_aliases_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_field_level_encryption_profiles() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_field_level_encryption_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_field_level_encryption_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_field_level_encryption_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_public_key_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"PublicKey">> => public_key()
+%% }
+-type update_public_key_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_field_level_encryption_config_request() :: #{}
+-type get_field_level_encryption_config_request() :: #{}.
+
+
+%% Example:
+%% too_many_field_level_encryption_configs() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_field_level_encryption_configs() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_key_value_store_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_key_value_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_origin_custom_headers() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_origin_custom_headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_function_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FunctionSummary">> => function_summary(),
+%%   <<"Location">> => string()
+%% }
+-type create_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type distribution_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_config() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"ContentTypeProfileConfig">> => content_type_profile_config(),
+%%   <<"QueryArgProfileConfig">> => query_arg_profile_config()
+%% }
+-type field_level_encryption_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cache_policies_result() :: #{
+%%   <<"CachePolicyList">> => cache_policy_list()
+%% }
+-type list_cache_policies_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% active_trusted_signers() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Items">> => list(signer()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type active_trusted_signers() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_front_origin_access_identity() :: #{
+%%   <<"CloudFrontOriginAccessIdentityConfig">> => cloud_front_origin_access_identity_config(),
+%%   <<"Id">> => string(),
+%%   <<"S3CanonicalUserId">> => string()
+%% }
+-type cloud_front_origin_access_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"Stage">> => list(any())
+%% }
+-type list_functions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_origins() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_origins() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions_with_single_function_arn() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions_with_single_function_arn() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions_with_lambda_associations() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions_with_lambda_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_resource() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(distribution_summary()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type distribution_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"CorsConfig">> => response_headers_policy_cors_config(),
+%%   <<"CustomHeadersConfig">> => response_headers_policy_custom_headers_config(),
+%%   <<"Name">> => string(),
+%%   <<"RemoveHeadersConfig">> => response_headers_policy_remove_headers_config(),
+%%   <<"SecurityHeadersConfig">> => response_headers_policy_security_headers_config(),
+%%   <<"ServerTimingHeadersConfig">> => response_headers_policy_server_timing_headers_config()
+%% }
+-type response_headers_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cache_policy_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_cache_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"Tags">> => tags()
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_response_headers_policy_config_request() :: #{}
+-type get_response_headers_policy_config_request() :: #{}.
+
+
+%% Example:
+%% too_many_field_level_encryption_encryption_entities() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_field_level_encryption_encryption_entities() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_lambda_function_associations() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_lambda_function_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_streaming_distribution_cnames() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_streaming_distribution_cnames() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"KeyValueStoreAssociations">> => key_value_store_associations(),
+%%   <<"Runtime">> => list(any())
+%% }
+-type function_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streaming_distributions_result() :: #{
+%%   <<"StreamingDistributionList">> => streaming_distribution_list()
+%% }
+-type list_streaming_distributions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_summary() :: #{
+%%   <<"OriginRequestPolicy">> => origin_request_policy(),
+%%   <<"Type">> => list(any())
+%% }
+-type origin_request_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_keys() :: #{
+%%   <<"Items">> => list(string()())
+%% }
+-type tag_keys() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_realtime_log_configs() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_realtime_log_configs() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cache_policy_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_group() :: #{
+%%   <<"FailoverCriteria">> => origin_group_failover_criteria(),
+%%   <<"Id">> => string(),
+%%   <<"Members">> => origin_group_members()
+%% }
+-type origin_group() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_group_request() :: #{}
+-type get_key_group_request() :: #{}.
+
+%% Example:
+%% get_public_key_request() :: #{}
+-type get_public_key_request() :: #{}.
+
+
+%% Example:
+%% create_distribution_result() :: #{
+%%   <<"Distribution">> => distribution(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_error_response() :: #{
+%%   <<"ErrorCachingMinTTL">> => float(),
+%%   <<"ErrorCode">> => integer(),
+%%   <<"ResponseCode">> => string(),
+%%   <<"ResponsePagePath">> => string()
+%% }
+-type custom_error_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions_associated_to_response_headers_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions_associated_to_response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_function_request() :: #{
+%%   <<"EventObject">> := binary(),
+%%   <<"IfMatch">> := string(),
+%%   <<"Stage">> => list(any())
+%% }
+-type test_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_monitoring_subscription_result() :: #{
+%%   <<"MonitoringSubscription">> => monitoring_subscription()
+%% }
+-type create_monitoring_subscription_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_custom_header() :: #{
+%%   <<"Header">> => string(),
+%%   <<"Override">> => boolean(),
+%%   <<"Value">> => string()
+%% }
+-type response_headers_policy_custom_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_function_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_function_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_field_level_encryption_profile_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryptionProfileConfig">> => field_level_encryption_profile_config()
+%% }
+-type get_field_level_encryption_profile_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_ssl_protocols() :: #{
+%%   <<"Items">> => list(list(any())()),
+%%   <<"Quantity">> => integer()
+%% }
+-type origin_ssl_protocols() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_cloud_front_origin_access_identities() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cloud_front_origin_access_identities() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_config() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"EncryptionEntities">> => encryption_entities(),
+%%   <<"Name">> => string()
+%% }
+-type field_level_encryption_profile_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_access_controls_result() :: #{
+%%   <<"OriginAccessControlList">> => origin_access_control_list()
+%% }
+-type list_origin_access_controls_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_web_acl_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_distributions_by_web_acl_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_response_headers_policy_id_result() :: #{
+%%   <<"DistributionIdList">> => distribution_id_list()
+%% }
+-type list_distributions_by_response_headers_policy_id_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_monitoring_subscription_request() :: #{}
+-type get_monitoring_subscription_request() :: #{}.
+
+
+%% Example:
+%% origin() :: #{
+%%   <<"ConnectionAttempts">> => integer(),
+%%   <<"ConnectionTimeout">> => integer(),
+%%   <<"CustomHeaders">> => custom_headers(),
+%%   <<"CustomOriginConfig">> => custom_origin_config(),
+%%   <<"DomainName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"OriginAccessControlId">> => string(),
+%%   <<"OriginPath">> => string(),
+%%   <<"OriginShield">> => origin_shield(),
+%%   <<"S3OriginConfig">> => s3_origin_config()
+%% }
+-type origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_field_level_encryption_profile_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryptionProfile">> => field_level_encryption_profile(),
+%%   <<"Location">> => string()
+%% }
+-type create_field_level_encryption_profile_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_public_keys_in_key_group() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_public_keys_in_key_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_single_header_config() :: #{
+%%   <<"Header">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type continuous_deployment_single_header_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_distributions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_realtime_log_config_request() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"EndPoints">> => list(end_point()()),
+%%   <<"Fields">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"SamplingRate">> => float()
+%% }
+-type update_realtime_log_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_distribution_result() :: #{
+%%   <<"Distribution">> => distribution(),
+%%   <<"ETag">> => string()
+%% }
+-type get_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_cache_behaviors() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cache_behaviors() :: #{binary() => any()}.
+
+%% Example:
+%% get_origin_access_control_request() :: #{}
+-type get_origin_access_control_request() :: #{}.
+
+
+%% Example:
+%% list_invalidations_result() :: #{
+%%   <<"InvalidationList">> => invalidation_list()
+%% }
+-type list_invalidations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_list() :: #{
+%%   <<"Items">> => list(function_summary()()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type function_list() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_front_origin_access_identity_config_request() :: #{}
+-type get_cloud_front_origin_access_identity_config_request() :: #{}.
+
+
+%% Example:
+%% response_headers_policy_server_timing_headers_config() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"SamplingRate">> => float()
+%% }
+-type response_headers_policy_server_timing_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% headers() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_log_config_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type realtime_log_config_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_distribution_summary() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Aliases">> => aliases(),
+%%   <<"Comment">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PriceClass">> => list(any()),
+%%   <<"S3Origin">> => s3_origin(),
+%%   <<"Status">> => string(),
+%%   <<"TrustedSigners">> => trusted_signers()
+%% }
+-type streaming_distribution_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_realtime_log_config_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"RealtimeLogConfigArn">> => string(),
+%%   <<"RealtimeLogConfigName">> => string()
+%% }
+-type list_distributions_by_realtime_log_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_cors_config() :: #{
+%%   <<"AccessControlAllowCredentials">> => boolean(),
+%%   <<"AccessControlAllowHeaders">> => response_headers_policy_access_control_allow_headers(),
+%%   <<"AccessControlAllowMethods">> => response_headers_policy_access_control_allow_methods(),
+%%   <<"AccessControlAllowOrigins">> => response_headers_policy_access_control_allow_origins(),
+%%   <<"AccessControlExposeHeaders">> => response_headers_policy_access_control_expose_headers(),
+%%   <<"AccessControlMaxAgeSec">> => integer(),
+%%   <<"OriginOverride">> => boolean()
+%% }
+-type response_headers_policy_cors_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_group_failover_criteria() :: #{
+%%   <<"StatusCodes">> => status_codes()
+%% }
+-type origin_group_failover_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_key_groups() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_key_groups() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"Resource">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_key_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"PublicKeyConfig">> => public_key_config()
+%% }
+-type get_public_key_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_function_failed() :: #{
+%%   <<"Message">> => string()
+%% }
+-type test_function_failed() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_response_headers_policy_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"ResponseHeadersPolicyConfig">> => response_headers_policy_config()
+%% }
+-type get_response_headers_policy_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type function_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_group_members() :: #{
+%%   <<"Items">> => list(origin_group_member()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type origin_group_members() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_distribution_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type streaming_distribution_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_default_root_object() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_default_root_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_request_policy_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"OriginRequestPolicy">> => origin_request_policy()
+%% }
+-type create_origin_request_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_origin_request_policy_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_distributions_by_origin_request_policy_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cname_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cname_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_size_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type field_level_encryption_profile_size_exceeded() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_response_headers_policy_request() :: #{
+%%   <<"ResponseHeadersPolicyConfig">> := response_headers_policy_config()
+%% }
+-type create_response_headers_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_field_level_encryption_field_patterns() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_field_level_encryption_field_patterns() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_continuous_deployment_policy_config_result() :: #{
+%%   <<"ContinuousDeploymentPolicyConfig">> => continuous_deployment_policy_config(),
+%%   <<"ETag">> => string()
+%% }
+-type get_continuous_deployment_policy_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_list() :: #{
+%%   <<"Items">> => list(origin_request_policy_summary()()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type origin_request_policy_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_store() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type key_value_store() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_remove_headers_in_response_headers_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_remove_headers_in_response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_origin_request_policies() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_origin_request_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_origin_access_control_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginAccessControl">> => origin_access_control()
+%% }
+-type get_origin_access_control_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_origin_access_control_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_origin_access_control_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_continuous_deployment_policy_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_continuous_deployment_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_front_origin_access_identity_result() :: #{
+%%   <<"CloudFrontOriginAccessIdentity">> => cloud_front_origin_access_identity(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_response_headers_policy_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"ResponseHeadersPolicy">> => response_headers_policy()
+%% }
+-type get_response_headers_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_key_group_result() :: #{
+%%   <<"DistributionIdList">> => distribution_id_list()
+%% }
+-type list_distributions_by_key_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cache_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"Type">> => list(any())
+%% }
+-type list_cache_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_invalidation() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_invalidation() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_query_string_parameters() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_query_string_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% illegal_delete() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_delete() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_viewer_certificate() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_viewer_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_result() :: #{
+%%   <<"Distribution">> => distribution(),
+%%   <<"ETag">> => string()
+%% }
+-type update_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_conflicting_aliases_result() :: #{
+%%   <<"ConflictingAliasesList">> => conflicting_aliases_list()
+%% }
+-type list_conflicting_aliases_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_with_staging_config_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"StagingDistributionId">> => string()
+%% }
+-type update_distribution_with_staging_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% paths() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type paths() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_relative_path() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_relative_path() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_field_level_encryption_config_request() :: #{
+%%   <<"FieldLevelEncryptionConfig">> := field_level_encryption_config()
+%% }
+-type create_field_level_encryption_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_access_control_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"OriginAccessControl">> => origin_access_control()
+%% }
+-type create_origin_access_control_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_streaming_distribution_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_streaming_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_response_headers_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_front_origin_access_identity_config() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Comment">> => string()
+%% }
+-type cloud_front_origin_access_identity_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_g_key_pair_ids() :: #{
+%%   <<"KeyGroupId">> => string(),
+%%   <<"KeyPairIds">> => key_pair_ids()
+%% }
+-type k_g_key_pair_ids() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalidation_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(invalidation_summary()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type invalidation_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_public_key_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"PublicKey">> => public_key()
+%% }
+-type create_public_key_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_access_control_allow_methods() :: #{
+%%   <<"Items">> => list(list(any())()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_access_control_allow_methods() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_security_headers_config() :: #{
+%%   <<"ContentSecurityPolicy">> => response_headers_policy_content_security_policy(),
+%%   <<"ContentTypeOptions">> => response_headers_policy_content_type_options(),
+%%   <<"FrameOptions">> => response_headers_policy_frame_options(),
+%%   <<"ReferrerPolicy">> => response_headers_policy_referrer_policy(),
+%%   <<"StrictTransportSecurity">> => response_headers_policy_strict_transport_security(),
+%%   <<"XSSProtection">> => response_headers_policy_x_s_s_protection()
+%% }
+-type response_headers_policy_security_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_log_config_owner_mismatch() :: #{
+%%   <<"Message">> => string()
+%% }
+-type realtime_log_config_owner_mismatch() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_distribution_with_tags_result() :: #{
+%%   <<"Distribution">> => distribution(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_distribution_with_tags_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_origin_request_policy_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"OriginRequestPolicyConfig">> := origin_request_policy_config()
+%% }
+-type update_origin_request_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type origin_access_control_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% get_distribution_request() :: #{}
+-type get_distribution_request() :: #{}.
+
+
+%% Example:
+%% streaming_distribution_config_with_tags() :: #{
+%%   <<"StreamingDistributionConfig">> => streaming_distribution_config(),
+%%   <<"Tags">> => tags()
+%% }
+-type streaming_distribution_config_with_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_field_level_encryption_profile_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_field_level_encryption_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_function_request() :: #{
+%%   <<"FunctionCode">> := binary(),
+%%   <<"FunctionConfig">> := function_config(),
+%%   <<"IfMatch">> := string()
+%% }
+-type update_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_origin_access_control_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginAccessControl">> => origin_access_control()
+%% }
+-type update_origin_access_control_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_source() :: #{
+%%   <<"SourceARN">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type import_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_distribution_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_list() :: #{
+%%   <<"Items">> => list(field_level_encryption_profile_summary()()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type field_level_encryption_profile_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_realtime_log_config_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_realtime_log_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_origin() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_arg_profile_config() :: #{
+%%   <<"ForwardWhenQueryArgProfileIsUnknown">> => boolean(),
+%%   <<"QueryArgProfiles">> => query_arg_profiles()
+%% }
+-type query_arg_profile_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_field_level_encryption_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryptionConfig">> => field_level_encryption_config()
+%% }
+-type get_field_level_encryption_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_monitoring_subscription_request() :: #{}
+-type delete_monitoring_subscription_request() :: #{}.
+
+
+%% Example:
+%% no_such_monitoring_subscription() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_monitoring_subscription() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_function_request() :: #{
+%%   <<"FunctionCode">> := binary(),
+%%   <<"FunctionConfig">> := function_config(),
+%%   <<"Name">> := string()
+%% }
+-type create_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% allowed_methods() :: #{
+%%   <<"CachedMethods">> => cached_methods(),
+%%   <<"Items">> => list(list(any())()),
+%%   <<"Quantity">> => integer()
+%% }
+-type allowed_methods() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_access_controls_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_origin_access_controls_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key_summary() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EncodedKey">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type public_key_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% illegal_field_level_encryption_config_association_with_cache_behavior() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_field_level_encryption_config_association_with_cache_behavior() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_front_origin_access_identity_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(cloud_front_origin_access_identity_summary()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type cloud_front_origin_access_identity_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_origin_request_policy_id_result() :: #{
+%%   <<"DistributionIdList">> => distribution_id_list()
+%% }
+-type list_distributions_by_origin_request_policy_id_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_public_keys() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_public_keys() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cache_policy_config_result() :: #{
+%%   <<"CachePolicyConfig">> => cache_policy_config(),
+%%   <<"ETag">> => string()
+%% }
+-type get_cache_policy_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy() :: #{
+%%   <<"CachePolicyConfig">> => cache_policy_config(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type cache_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key_config() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"EncodedKey">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type public_key_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_streaming_distribution_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"StreamingDistribution">> => streaming_distribution()
+%% }
+-type get_streaming_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_distribution_with_tags_request() :: #{
+%%   <<"DistributionConfigWithTags">> := distribution_config_with_tags()
+%% }
+-type create_distribution_with_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_streaming_distribution_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"StreamingDistribution">> => streaming_distribution()
+%% }
+-type update_streaming_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_continuous_deployment_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_continuous_deployment_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_x_s_s_protection() :: #{
+%%   <<"ModeBlock">> => boolean(),
+%%   <<"Override">> => boolean(),
+%%   <<"Protection">> => boolean(),
+%%   <<"ReportUri">> => string()
+%% }
+-type response_headers_policy_x_s_s_protection() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_error_responses() :: #{
+%%   <<"Items">> => list(custom_error_response()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type custom_error_responses() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_field_level_encryption_profile() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_field_level_encryption_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_invalidation_result() :: #{
+%%   <<"Invalidation">> => invalidation(),
+%%   <<"Location">> => string()
+%% }
+-type create_invalidation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_key_group_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyGroupConfig">> => key_group_config()
+%% }
+-type get_key_group_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_function_association() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_function_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_behavior() :: #{
+%%   <<"AllowedMethods">> => allowed_methods(),
+%%   <<"CachePolicyId">> => string(),
+%%   <<"Compress">> => boolean(),
+%%   <<"DefaultTTL">> => float(),
+%%   <<"FieldLevelEncryptionId">> => string(),
+%%   <<"ForwardedValues">> => forwarded_values(),
+%%   <<"FunctionAssociations">> => function_associations(),
+%%   <<"LambdaFunctionAssociations">> => lambda_function_associations(),
+%%   <<"MaxTTL">> => float(),
+%%   <<"MinTTL">> => float(),
+%%   <<"OriginRequestPolicyId">> => string(),
+%%   <<"PathPattern">> => string(),
+%%   <<"RealtimeLogConfigArn">> => string(),
+%%   <<"ResponseHeadersPolicyId">> => string(),
+%%   <<"SmoothStreaming">> => boolean(),
+%%   <<"TargetOriginId">> => string(),
+%%   <<"TrustedKeyGroups">> => trusted_key_groups(),
+%%   <<"TrustedSigners">> => trusted_signers(),
+%%   <<"ViewerProtocolPolicy">> => list(any())
+%% }
+-type cache_behavior() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_field_level_encryption_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryption">> => field_level_encryption()
+%% }
+-type update_field_level_encryption_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameters_in_cache_key_and_forwarded_to_origin() :: #{
+%%   <<"CookiesConfig">> => cache_policy_cookies_config(),
+%%   <<"EnableAcceptEncodingBrotli">> => boolean(),
+%%   <<"EnableAcceptEncodingGzip">> => boolean(),
+%%   <<"HeadersConfig">> => cache_policy_headers_config(),
+%%   <<"QueryStringsConfig">> => cache_policy_query_strings_config()
+%% }
+-type parameters_in_cache_key_and_forwarded_to_origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_realtime_log_configs_result() :: #{
+%%   <<"RealtimeLogConfigs">> => realtime_log_configs()
+%% }
+-type list_realtime_log_configs_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_headers_config() :: #{
+%%   <<"HeaderBehavior">> => list(any()),
+%%   <<"Headers">> => headers()
+%% }
+-type cache_policy_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_request_policy_request() :: #{
+%%   <<"OriginRequestPolicyConfig">> := origin_request_policy_config()
+%% }
+-type create_origin_request_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type public_key_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type function_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_headers_in_origin_request_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_headers_in_origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% viewer_certificate() :: #{
+%%   <<"ACMCertificateArn">> => string(),
+%%   <<"Certificate">> => string(),
+%%   <<"CertificateSource">> => list(any()),
+%%   <<"CloudFrontDefaultCertificate">> => boolean(),
+%%   <<"IAMCertificateId">> => string(),
+%%   <<"MinimumProtocolVersion">> => list(any()),
+%%   <<"SSLSupportMethod">> => list(any())
+%% }
+-type viewer_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_query_strings_config() :: #{
+%%   <<"QueryStringBehavior">> => list(any()),
+%%   <<"QueryStrings">> => query_string_names()
+%% }
+-type cache_policy_query_strings_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_response_headers_policy_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_distributions_by_response_headers_policy_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control_config() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OriginAccessControlOriginType">> => list(any()),
+%%   <<"SigningBehavior">> => list(any()),
+%%   <<"SigningProtocol">> => list(any())
+%% }
+-type origin_access_control_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_realtime_log_config() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_realtime_log_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_key_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"PublicKey">> => public_key()
+%% }
+-type get_public_key_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_function_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type publish_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% trusted_signers() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type trusted_signers() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_distribution_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(streaming_distribution_summary()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type streaming_distribution_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_function_request() :: #{
+%%   <<"Stage">> => list(any())
+%% }
+-type describe_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% staging_distribution_dns_names() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type staging_distribution_dns_names() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_summary() :: #{
+%%   <<"ResponseHeadersPolicy">> => response_headers_policy(),
+%%   <<"Type">> => list(any())
+%% }
+-type response_headers_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_origin_request_policy_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginRequestPolicy">> => origin_request_policy()
+%% }
+-type get_origin_request_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_public_key() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_public_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_limit_exceeded() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_public_key_request() :: #{
+%%   <<"PublicKeyConfig">> := public_key_config()
+%% }
+-type create_public_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_metadata() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"FunctionARN">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Stage">> => list(any())
+%% }
+-type function_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_origin_access_control_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginAccessControlConfig">> => origin_access_control_config()
+%% }
+-type get_origin_access_control_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% restrictions() :: #{
+%%   <<"GeoRestriction">> => geo_restriction()
+%% }
+-type restrictions() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_pair_ids() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type key_pair_ids() :: #{binary() => any()}.
+
+%% Example:
+%% get_cache_policy_request() :: #{}
+-type get_cache_policy_request() :: #{}.
+
+
+%% Example:
+%% invalid_response_code() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_response_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalidation() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"InvalidationBatch">> => invalidation_batch(),
+%%   <<"Status">> => string()
+%% }
+-type invalidation() :: #{binary() => any()}.
+
+
+%% Example:
+%% cookie_preference() :: #{
+%%   <<"Forward">> => list(any()),
+%%   <<"WhitelistedNames">> => cookie_names()
+%% }
+-type cookie_preference() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_key_group_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"KeyGroupConfig">> := key_group_config()
+%% }
+-type update_key_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_distribution_config() :: #{
+%%   <<"Aliases">> => aliases(),
+%%   <<"CallerReference">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Logging">> => streaming_logging_config(),
+%%   <<"PriceClass">> => list(any()),
+%%   <<"S3Origin">> => s3_origin(),
+%%   <<"TrustedSigners">> => trusted_signers()
+%% }
+-type streaming_distribution_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_field_level_encryption_query_arg_profiles() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_field_level_encryption_query_arg_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% active_trusted_key_groups() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Items">> => list(k_g_key_pair_ids()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type active_trusted_key_groups() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_log_config() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"EndPoints">> => list(end_point()()),
+%%   <<"Fields">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"SamplingRate">> => float()
+%% }
+-type realtime_log_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_origin_access_control_config_request() :: #{}
+-type get_origin_access_control_config_request() :: #{}.
+
+
+%% Example:
+%% distribution_id_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(string()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type distribution_id_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_location_code() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_location_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% staging_distribution_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type staging_distribution_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type origin_request_policy_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_group_summary() :: #{
+%%   <<"KeyGroup">> => key_group()
+%% }
+-type key_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_monitoring_subscription_request() :: #{
+%%   <<"MonitoringSubscription">> := monitoring_subscription()
+%% }
+-type create_monitoring_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions_associated_to_field_level_encryption_config() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions_associated_to_field_level_encryption_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_type_profile_config() :: #{
+%%   <<"ContentTypeProfiles">> => content_type_profiles(),
+%%   <<"ForwardWhenContentTypeIsUnknown">> => boolean()
+%% }
+-type content_type_profile_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_access_control_allow_headers() :: #{
+%%   <<"Items">> => list(string()()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_access_control_allow_headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_origin_config() :: #{
+%%   <<"HTTPPort">> => integer(),
+%%   <<"HTTPSPort">> => integer(),
+%%   <<"OriginKeepaliveTimeout">> => integer(),
+%%   <<"OriginProtocolPolicy">> => list(any()),
+%%   <<"OriginReadTimeout">> => integer(),
+%%   <<"OriginSslProtocols">> => origin_ssl_protocols()
+%% }
+-type custom_origin_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_streaming_distribution_with_tags_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"StreamingDistribution">> => streaming_distribution()
+%% }
+-type create_streaming_distribution_with_tags_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_field_level_encryption_profile_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryptionProfile">> => field_level_encryption_profile()
+%% }
+-type get_field_level_encryption_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_streaming_distribution_request() :: #{}
+-type get_streaming_distribution_request() :: #{}.
+
+
+%% Example:
+%% get_realtime_log_config_result() :: #{
+%%   <<"RealtimeLogConfig">> => realtime_log_config()
+%% }
+-type get_realtime_log_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_with_staging_config_result() :: #{
+%%   <<"Distribution">> => distribution(),
+%%   <<"ETag">> => string()
+%% }
+-type update_distribution_with_staging_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_field_level_encryption_profile_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryptionProfile">> => field_level_encryption_profile()
+%% }
+-type update_field_level_encryption_profile_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions_associated_to_origin_access_control() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions_associated_to_origin_access_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_function_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FunctionSummary">> => function_summary()
+%% }
+-type update_function_result() :: #{binary() => any()}.
+
+-type associate_alias_errors() ::
+    no_such_distribution() | 
+    too_many_distribution_cnames() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update().
+
+-type copy_distribution_errors() ::
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    invalid_location_code() | 
+    invalid_response_code() | 
+    too_many_distributions() | 
+    no_such_realtime_log_config() | 
+    invalid_function_association() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    no_such_origin() | 
+    realtime_log_config_owner_mismatch() | 
+    no_such_response_headers_policy() | 
+    invalid_relative_path() | 
+    invalid_viewer_certificate() | 
+    too_many_query_string_parameters() | 
+    cname_already_exists() | 
+    invalid_default_root_object() | 
+    too_many_cache_behaviors() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_lambda_function_associations() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_origins() | 
+    distribution_already_exists() | 
+    too_many_origin_custom_headers() | 
+    invalid_minimum_protocol_version() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_key_groups_associated_to_distribution() | 
+    invalid_origin_read_timeout() | 
+    trusted_signer_does_not_exist() | 
+    no_such_cache_policy() | 
+    invalid_forward_cookies() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_lambda_function_association() | 
+    invalid_headers_for_s3_origin() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_distributions_with_function_associations() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_error_code() | 
+    too_many_trusted_signers() | 
+    no_such_distribution() | 
+    no_such_origin_request_policy() | 
+    too_many_distribution_cnames() | 
+    precondition_failed() | 
+    invalid_required_protocol() | 
+    too_many_certificates() | 
+    invalid_origin() | 
+    invalid_origin_access_control() | 
+    no_such_field_level_encryption_config() | 
+    invalid_web_acl_id() | 
+    invalid_argument() | 
+    too_many_cookie_names_in_white_list() | 
+    access_denied() | 
+    invalid_t_t_l_order() | 
+    invalid_protocol_settings() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    invalid_query_string_parameters() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    invalid_if_match_version() | 
+    invalid_origin_access_identity() | 
+    too_many_function_associations() | 
+    too_many_origin_groups_per_distribution().
+
+-type create_cache_policy_errors() ::
+    cache_policy_already_exists() | 
+    inconsistent_quantities() | 
+    too_many_query_strings_in_cache_policy() | 
+    too_many_cache_policies() | 
+    too_many_headers_in_cache_policy() | 
+    invalid_argument() | 
+    access_denied() | 
+    too_many_cookies_in_cache_policy().
+
+-type create_cloud_front_origin_access_identity_errors() ::
+    too_many_cloud_front_origin_access_identities() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    invalid_argument() | 
+    cloud_front_origin_access_identity_already_exists().
+
+-type create_continuous_deployment_policy_errors() ::
+    staging_distribution_in_use() | 
+    inconsistent_quantities() | 
+    invalid_argument() | 
+    access_denied() | 
+    continuous_deployment_policy_already_exists() | 
+    too_many_continuous_deployment_policies().
+
+-type create_distribution_errors() ::
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    invalid_location_code() | 
+    invalid_response_code() | 
+    too_many_distributions() | 
+    no_such_realtime_log_config() | 
+    invalid_function_association() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    no_such_origin() | 
+    realtime_log_config_owner_mismatch() | 
+    no_such_response_headers_policy() | 
+    invalid_relative_path() | 
+    invalid_viewer_certificate() | 
+    too_many_query_string_parameters() | 
+    cname_already_exists() | 
+    invalid_default_root_object() | 
+    too_many_cache_behaviors() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_lambda_function_associations() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_origins() | 
+    distribution_already_exists() | 
+    too_many_origin_custom_headers() | 
+    invalid_minimum_protocol_version() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_key_groups_associated_to_distribution() | 
+    invalid_domain_name_for_origin_access_control() | 
+    invalid_origin_read_timeout() | 
+    trusted_signer_does_not_exist() | 
+    no_such_cache_policy() | 
+    invalid_forward_cookies() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_lambda_function_association() | 
+    invalid_headers_for_s3_origin() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_distributions_with_function_associations() | 
+    continuous_deployment_policy_in_use() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_error_code() | 
+    too_many_trusted_signers() | 
+    no_such_origin_request_policy() | 
+    too_many_distribution_cnames() | 
+    invalid_required_protocol() | 
+    too_many_certificates() | 
+    invalid_origin() | 
+    invalid_origin_access_control() | 
+    no_such_field_level_encryption_config() | 
+    invalid_web_acl_id() | 
+    invalid_argument() | 
+    too_many_cookie_names_in_white_list() | 
+    access_denied() | 
+    invalid_t_t_l_order() | 
+    invalid_protocol_settings() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    invalid_query_string_parameters() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    illegal_origin_access_configuration() | 
+    no_such_continuous_deployment_policy() | 
+    invalid_origin_access_identity() | 
+    too_many_function_associations() | 
+    too_many_origin_groups_per_distribution().
+
+-type create_distribution_with_tags_errors() ::
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    invalid_location_code() | 
+    invalid_response_code() | 
+    too_many_distributions() | 
+    no_such_realtime_log_config() | 
+    invalid_function_association() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    no_such_origin() | 
+    realtime_log_config_owner_mismatch() | 
+    no_such_response_headers_policy() | 
+    invalid_relative_path() | 
+    invalid_viewer_certificate() | 
+    too_many_query_string_parameters() | 
+    cname_already_exists() | 
+    invalid_default_root_object() | 
+    too_many_cache_behaviors() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_lambda_function_associations() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_origins() | 
+    distribution_already_exists() | 
+    too_many_origin_custom_headers() | 
+    invalid_minimum_protocol_version() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_key_groups_associated_to_distribution() | 
+    invalid_domain_name_for_origin_access_control() | 
+    invalid_origin_read_timeout() | 
+    trusted_signer_does_not_exist() | 
+    no_such_cache_policy() | 
+    invalid_forward_cookies() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_lambda_function_association() | 
+    invalid_headers_for_s3_origin() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_distributions_with_function_associations() | 
+    continuous_deployment_policy_in_use() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_error_code() | 
+    too_many_trusted_signers() | 
+    no_such_origin_request_policy() | 
+    too_many_distribution_cnames() | 
+    invalid_required_protocol() | 
+    too_many_certificates() | 
+    invalid_origin() | 
+    invalid_origin_access_control() | 
+    no_such_field_level_encryption_config() | 
+    invalid_web_acl_id() | 
+    invalid_argument() | 
+    too_many_cookie_names_in_white_list() | 
+    access_denied() | 
+    invalid_t_t_l_order() | 
+    invalid_protocol_settings() | 
+    invalid_tagging() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    invalid_query_string_parameters() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    illegal_origin_access_configuration() | 
+    no_such_continuous_deployment_policy() | 
+    invalid_origin_access_identity() | 
+    too_many_function_associations() | 
+    too_many_origin_groups_per_distribution().
+
+-type create_field_level_encryption_config_errors() ::
+    too_many_field_level_encryption_query_arg_profiles() | 
+    no_such_field_level_encryption_profile() | 
+    too_many_field_level_encryption_configs() | 
+    inconsistent_quantities() | 
+    field_level_encryption_config_already_exists() | 
+    invalid_argument() | 
+    too_many_field_level_encryption_content_type_profiles() | 
+    query_arg_profile_empty().
+
+-type create_field_level_encryption_profile_errors() ::
+    no_such_public_key() | 
+    too_many_field_level_encryption_field_patterns() | 
+    field_level_encryption_profile_size_exceeded() | 
+    too_many_field_level_encryption_encryption_entities() | 
+    too_many_field_level_encryption_profiles() | 
+    inconsistent_quantities() | 
+    invalid_argument() | 
+    field_level_encryption_profile_already_exists().
+
+-type create_function_errors() ::
+    function_already_exists() | 
+    unsupported_operation() | 
+    function_size_limit_exceeded() | 
+    invalid_argument() | 
+    too_many_functions().
+
+-type create_invalidation_errors() ::
+    inconsistent_quantities() | 
+    missing_body() | 
+    no_such_distribution() | 
+    batch_too_large() | 
+    invalid_argument() | 
+    access_denied() | 
+    too_many_invalidations_in_progress().
+
+-type create_key_group_errors() ::
+    too_many_key_groups() | 
+    too_many_public_keys_in_key_group() | 
+    key_group_already_exists() | 
+    invalid_argument().
+
+-type create_key_value_store_errors() ::
+    entity_limit_exceeded() | 
+    entity_size_limit_exceeded() | 
+    entity_already_exists() | 
+    invalid_argument() | 
+    access_denied().
+
+-type create_monitoring_subscription_errors() ::
+    monitoring_subscription_already_exists() | 
+    no_such_distribution() | 
+    unsupported_operation() | 
+    access_denied().
+
+-type create_origin_access_control_errors() ::
+    origin_access_control_already_exists() | 
+    invalid_argument() | 
+    too_many_origin_access_controls().
+
+-type create_origin_request_policy_errors() ::
+    too_many_headers_in_origin_request_policy() | 
+    too_many_origin_request_policies() | 
+    inconsistent_quantities() | 
+    origin_request_policy_already_exists() | 
+    too_many_query_strings_in_origin_request_policy() | 
+    too_many_cookies_in_origin_request_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type create_public_key_errors() ::
+    too_many_public_keys() | 
+    invalid_argument() | 
+    public_key_already_exists().
+
+-type create_realtime_log_config_errors() ::
+    too_many_realtime_log_configs() | 
+    realtime_log_config_already_exists() | 
+    invalid_argument() | 
+    access_denied().
+
+-type create_response_headers_policy_errors() ::
+    too_many_remove_headers_in_response_headers_policy() | 
+    inconsistent_quantities() | 
+    response_headers_policy_already_exists() | 
+    invalid_argument() | 
+    access_denied() | 
+    too_long_c_s_p_in_response_headers_policy() | 
+    too_many_response_headers_policies() | 
+    too_many_custom_headers_in_response_headers_policy().
+
+-type create_streaming_distribution_errors() ::
+    cname_already_exists() | 
+    streaming_distribution_already_exists() | 
+    too_many_streaming_distribution_cnames() | 
+    too_many_streaming_distributions() | 
+    trusted_signer_does_not_exist() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_trusted_signers() | 
+    invalid_origin() | 
+    invalid_origin_access_control() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_origin_access_identity().
+
+-type create_streaming_distribution_with_tags_errors() ::
+    cname_already_exists() | 
+    streaming_distribution_already_exists() | 
+    too_many_streaming_distribution_cnames() | 
+    too_many_streaming_distributions() | 
+    trusted_signer_does_not_exist() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_trusted_signers() | 
+    invalid_origin() | 
+    invalid_origin_access_control() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_tagging() | 
+    invalid_origin_access_identity().
+
+-type delete_cache_policy_errors() ::
+    illegal_delete() | 
+    cache_policy_in_use() | 
+    no_such_cache_policy() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version().
+
+-type delete_cloud_front_origin_access_identity_errors() ::
+    precondition_failed() | 
+    no_such_cloud_front_origin_access_identity() | 
+    access_denied() | 
+    cloud_front_origin_access_identity_in_use() | 
+    invalid_if_match_version().
+
+-type delete_continuous_deployment_policy_errors() ::
+    continuous_deployment_policy_in_use() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_if_match_version() | 
+    no_such_continuous_deployment_policy().
+
+-type delete_distribution_errors() ::
+    no_such_distribution() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version() | 
+    distribution_not_disabled().
+
+-type delete_field_level_encryption_config_errors() ::
+    precondition_failed() | 
+    no_such_field_level_encryption_config() | 
+    access_denied() | 
+    field_level_encryption_config_in_use() | 
+    invalid_if_match_version().
+
+-type delete_field_level_encryption_profile_errors() ::
+    no_such_field_level_encryption_profile() | 
+    precondition_failed() | 
+    field_level_encryption_profile_in_use() | 
+    access_denied() | 
+    invalid_if_match_version().
+
+-type delete_function_errors() ::
+    function_in_use() | 
+    no_such_function_exists() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_if_match_version().
+
+-type delete_key_group_errors() ::
+    no_such_resource() | 
+    precondition_failed() | 
+    resource_in_use() | 
+    invalid_if_match_version().
+
+-type delete_key_value_store_errors() ::
+    cannot_delete_entity_while_in_use() | 
+    precondition_failed() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
+-type delete_monitoring_subscription_errors() ::
+    no_such_monitoring_subscription() | 
+    no_such_distribution() | 
+    unsupported_operation() | 
+    access_denied().
+
+-type delete_origin_access_control_errors() ::
+    no_such_origin_access_control() | 
+    precondition_failed() | 
+    origin_access_control_in_use() | 
+    access_denied() | 
+    invalid_if_match_version().
+
+-type delete_origin_request_policy_errors() ::
+    origin_request_policy_in_use() | 
+    illegal_delete() | 
+    no_such_origin_request_policy() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version().
+
+-type delete_public_key_errors() ::
+    no_such_public_key() | 
+    public_key_in_use() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version().
+
+-type delete_realtime_log_config_errors() ::
+    no_such_realtime_log_config() | 
+    realtime_log_config_in_use() | 
+    invalid_argument() | 
+    access_denied().
+
+-type delete_response_headers_policy_errors() ::
+    no_such_response_headers_policy() | 
+    illegal_delete() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version() | 
+    response_headers_policy_in_use().
+
+-type delete_streaming_distribution_errors() ::
+    no_such_streaming_distribution() | 
+    precondition_failed() | 
+    access_denied() | 
+    invalid_if_match_version() | 
+    streaming_distribution_not_disabled().
+
+-type describe_function_errors() ::
+    no_such_function_exists() | 
+    unsupported_operation().
+
+-type describe_key_value_store_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
+-type get_cache_policy_errors() ::
+    no_such_cache_policy() | 
+    access_denied().
+
+-type get_cache_policy_config_errors() ::
+    no_such_cache_policy() | 
+    access_denied().
+
+-type get_cloud_front_origin_access_identity_errors() ::
+    no_such_cloud_front_origin_access_identity() | 
+    access_denied().
+
+-type get_cloud_front_origin_access_identity_config_errors() ::
+    no_such_cloud_front_origin_access_identity() | 
+    access_denied().
+
+-type get_continuous_deployment_policy_errors() ::
+    access_denied() | 
+    no_such_continuous_deployment_policy().
+
+-type get_continuous_deployment_policy_config_errors() ::
+    access_denied() | 
+    no_such_continuous_deployment_policy().
+
+-type get_distribution_errors() ::
+    no_such_distribution() | 
+    access_denied().
+
+-type get_distribution_config_errors() ::
+    no_such_distribution() | 
+    access_denied().
+
+-type get_field_level_encryption_errors() ::
+    no_such_field_level_encryption_config() | 
+    access_denied().
+
+-type get_field_level_encryption_config_errors() ::
+    no_such_field_level_encryption_config() | 
+    access_denied().
+
+-type get_field_level_encryption_profile_errors() ::
+    no_such_field_level_encryption_profile() | 
+    access_denied().
+
+-type get_field_level_encryption_profile_config_errors() ::
+    no_such_field_level_encryption_profile() | 
+    access_denied().
+
+-type get_function_errors() ::
+    no_such_function_exists() | 
+    unsupported_operation().
+
+-type get_invalidation_errors() ::
+    no_such_invalidation() | 
+    no_such_distribution() | 
+    access_denied().
+
+-type get_key_group_errors() ::
+    no_such_resource().
+
+-type get_key_group_config_errors() ::
+    no_such_resource().
+
+-type get_monitoring_subscription_errors() ::
+    no_such_monitoring_subscription() | 
+    no_such_distribution() | 
+    unsupported_operation() | 
+    access_denied().
+
+-type get_origin_access_control_errors() ::
+    no_such_origin_access_control() | 
+    access_denied().
+
+-type get_origin_access_control_config_errors() ::
+    no_such_origin_access_control() | 
+    access_denied().
+
+-type get_origin_request_policy_errors() ::
+    no_such_origin_request_policy() | 
+    access_denied().
+
+-type get_origin_request_policy_config_errors() ::
+    no_such_origin_request_policy() | 
+    access_denied().
+
+-type get_public_key_errors() ::
+    no_such_public_key() | 
+    access_denied().
+
+-type get_public_key_config_errors() ::
+    no_such_public_key() | 
+    access_denied().
+
+-type get_realtime_log_config_errors() ::
+    no_such_realtime_log_config() | 
+    invalid_argument() | 
+    access_denied().
+
+-type get_response_headers_policy_errors() ::
+    no_such_response_headers_policy() | 
+    access_denied().
+
+-type get_response_headers_policy_config_errors() ::
+    no_such_response_headers_policy() | 
+    access_denied().
+
+-type get_streaming_distribution_errors() ::
+    no_such_streaming_distribution() | 
+    access_denied().
+
+-type get_streaming_distribution_config_errors() ::
+    no_such_streaming_distribution() | 
+    access_denied().
+
+-type list_cache_policies_errors() ::
+    no_such_cache_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_cloud_front_origin_access_identities_errors() ::
+    invalid_argument().
+
+-type list_conflicting_aliases_errors() ::
+    no_such_distribution() | 
+    invalid_argument().
+
+-type list_continuous_deployment_policies_errors() ::
+    invalid_argument() | 
+    access_denied() | 
+    no_such_continuous_deployment_policy().
+
+-type list_distributions_errors() ::
+    invalid_argument().
+
+-type list_distributions_by_cache_policy_id_errors() ::
+    no_such_cache_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_distributions_by_key_group_errors() ::
+    no_such_resource() | 
+    invalid_argument().
+
+-type list_distributions_by_origin_request_policy_id_errors() ::
+    no_such_origin_request_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_distributions_by_realtime_log_config_errors() ::
+    invalid_argument().
+
+-type list_distributions_by_response_headers_policy_id_errors() ::
+    no_such_response_headers_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_distributions_by_web_acl_id_errors() ::
+    invalid_web_acl_id() | 
+    invalid_argument().
+
+-type list_field_level_encryption_configs_errors() ::
+    invalid_argument().
+
+-type list_field_level_encryption_profiles_errors() ::
+    invalid_argument().
+
+-type list_functions_errors() ::
+    unsupported_operation() | 
+    invalid_argument().
+
+-type list_invalidations_errors() ::
+    no_such_distribution() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_key_groups_errors() ::
+    invalid_argument().
+
+-type list_key_value_stores_errors() ::
+    invalid_argument() | 
+    access_denied().
+
+-type list_origin_access_controls_errors() ::
+    invalid_argument().
+
+-type list_origin_request_policies_errors() ::
+    no_such_origin_request_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_public_keys_errors() ::
+    invalid_argument().
+
+-type list_realtime_log_configs_errors() ::
+    no_such_realtime_log_config() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_response_headers_policies_errors() ::
+    no_such_response_headers_policy() | 
+    invalid_argument() | 
+    access_denied().
+
+-type list_streaming_distributions_errors() ::
+    invalid_argument().
+
+-type list_tags_for_resource_errors() ::
+    no_such_resource() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_tagging().
+
+-type publish_function_errors() ::
+    no_such_function_exists() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    invalid_if_match_version().
+
+-type tag_resource_errors() ::
+    no_such_resource() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_tagging().
+
+-type test_function_errors() ::
+    test_function_failed() | 
+    no_such_function_exists() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    invalid_if_match_version().
+
+-type untag_resource_errors() ::
+    no_such_resource() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_tagging().
+
+-type update_cache_policy_errors() ::
+    cache_policy_already_exists() | 
+    no_such_cache_policy() | 
+    inconsistent_quantities() | 
+    too_many_query_strings_in_cache_policy() | 
+    precondition_failed() | 
+    too_many_headers_in_cache_policy() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version() | 
+    too_many_cookies_in_cache_policy().
+
+-type update_cloud_front_origin_access_identity_errors() ::
+    inconsistent_quantities() | 
+    missing_body() | 
+    precondition_failed() | 
+    no_such_cloud_front_origin_access_identity() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version().
+
+-type update_continuous_deployment_policy_errors() ::
+    staging_distribution_in_use() | 
+    inconsistent_quantities() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    invalid_if_match_version() | 
+    no_such_continuous_deployment_policy().
+
+-type update_distribution_errors() ::
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    staging_distribution_in_use() | 
+    invalid_location_code() | 
+    invalid_response_code() | 
+    no_such_realtime_log_config() | 
+    invalid_function_association() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    no_such_origin() | 
+    realtime_log_config_owner_mismatch() | 
+    no_such_response_headers_policy() | 
+    invalid_relative_path() | 
+    invalid_viewer_certificate() | 
+    too_many_query_string_parameters() | 
+    cname_already_exists() | 
+    invalid_default_root_object() | 
+    too_many_cache_behaviors() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_lambda_function_associations() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_origins() | 
+    too_many_origin_custom_headers() | 
+    invalid_minimum_protocol_version() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_key_groups_associated_to_distribution() | 
+    invalid_domain_name_for_origin_access_control() | 
+    invalid_origin_read_timeout() | 
+    trusted_signer_does_not_exist() | 
+    no_such_cache_policy() | 
+    invalid_forward_cookies() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_lambda_function_association() | 
+    invalid_headers_for_s3_origin() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_distributions_with_function_associations() | 
+    continuous_deployment_policy_in_use() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_error_code() | 
+    too_many_trusted_signers() | 
+    no_such_distribution() | 
+    no_such_origin_request_policy() | 
+    too_many_distribution_cnames() | 
+    precondition_failed() | 
+    invalid_required_protocol() | 
+    too_many_certificates() | 
+    invalid_origin_access_control() | 
+    no_such_field_level_encryption_config() | 
+    invalid_web_acl_id() | 
+    invalid_argument() | 
+    too_many_cookie_names_in_white_list() | 
+    access_denied() | 
+    invalid_t_t_l_order() | 
+    illegal_update() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    invalid_query_string_parameters() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    invalid_if_match_version() | 
+    illegal_origin_access_configuration() | 
+    no_such_continuous_deployment_policy() | 
+    invalid_origin_access_identity() | 
+    too_many_function_associations() | 
+    too_many_origin_groups_per_distribution().
+
+-type update_distribution_with_staging_config_errors() ::
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    invalid_location_code() | 
+    invalid_response_code() | 
+    no_such_realtime_log_config() | 
+    invalid_function_association() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    no_such_origin() | 
+    realtime_log_config_owner_mismatch() | 
+    no_such_response_headers_policy() | 
+    invalid_relative_path() | 
+    invalid_viewer_certificate() | 
+    too_many_query_string_parameters() | 
+    cname_already_exists() | 
+    invalid_default_root_object() | 
+    too_many_cache_behaviors() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_lambda_function_associations() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_origins() | 
+    too_many_origin_custom_headers() | 
+    invalid_minimum_protocol_version() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_key_groups_associated_to_distribution() | 
+    invalid_origin_read_timeout() | 
+    trusted_signer_does_not_exist() | 
+    no_such_cache_policy() | 
+    invalid_forward_cookies() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_lambda_function_association() | 
+    invalid_headers_for_s3_origin() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_distributions_with_function_associations() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_error_code() | 
+    too_many_trusted_signers() | 
+    no_such_distribution() | 
+    no_such_origin_request_policy() | 
+    too_many_distribution_cnames() | 
+    precondition_failed() | 
+    invalid_required_protocol() | 
+    too_many_certificates() | 
+    invalid_origin_access_control() | 
+    no_such_field_level_encryption_config() | 
+    invalid_web_acl_id() | 
+    invalid_argument() | 
+    too_many_cookie_names_in_white_list() | 
+    access_denied() | 
+    invalid_t_t_l_order() | 
+    illegal_update() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    invalid_query_string_parameters() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    invalid_if_match_version() | 
+    invalid_origin_access_identity() | 
+    too_many_function_associations() | 
+    too_many_origin_groups_per_distribution().
+
+-type update_field_level_encryption_config_errors() ::
+    too_many_field_level_encryption_query_arg_profiles() | 
+    no_such_field_level_encryption_profile() | 
+    inconsistent_quantities() | 
+    precondition_failed() | 
+    no_such_field_level_encryption_config() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    too_many_field_level_encryption_content_type_profiles() | 
+    invalid_if_match_version() | 
+    query_arg_profile_empty().
+
+-type update_field_level_encryption_profile_errors() ::
+    no_such_public_key() | 
+    no_such_field_level_encryption_profile() | 
+    too_many_field_level_encryption_field_patterns() | 
+    field_level_encryption_profile_size_exceeded() | 
+    too_many_field_level_encryption_encryption_entities() | 
+    inconsistent_quantities() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    field_level_encryption_profile_already_exists() | 
+    illegal_update() | 
+    invalid_if_match_version().
+
+-type update_function_errors() ::
+    no_such_function_exists() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    function_size_limit_exceeded() | 
+    invalid_argument() | 
+    invalid_if_match_version().
+
+-type update_key_group_errors() ::
+    too_many_public_keys_in_key_group() | 
+    no_such_resource() | 
+    precondition_failed() | 
+    key_group_already_exists() | 
+    invalid_argument() | 
+    invalid_if_match_version().
+
+-type update_key_value_store_errors() ::
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
+
+-type update_origin_access_control_errors() ::
+    origin_access_control_already_exists() | 
+    no_such_origin_access_control() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version().
+
+-type update_origin_request_policy_errors() ::
+    too_many_headers_in_origin_request_policy() | 
+    inconsistent_quantities() | 
+    origin_request_policy_already_exists() | 
+    too_many_query_strings_in_origin_request_policy() | 
+    no_such_origin_request_policy() | 
+    precondition_failed() | 
+    too_many_cookies_in_origin_request_policy() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version().
+
+-type update_public_key_errors() ::
+    no_such_public_key() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version() | 
+    cannot_change_immutable_public_key_fields().
+
+-type update_realtime_log_config_errors() ::
+    no_such_realtime_log_config() | 
+    invalid_argument() | 
+    access_denied().
+
+-type update_response_headers_policy_errors() ::
+    no_such_response_headers_policy() | 
+    too_many_remove_headers_in_response_headers_policy() | 
+    inconsistent_quantities() | 
+    response_headers_policy_already_exists() | 
+    precondition_failed() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version() | 
+    too_long_c_s_p_in_response_headers_policy() | 
+    too_many_custom_headers_in_response_headers_policy().
+
+-type update_streaming_distribution_errors() ::
+    cname_already_exists() | 
+    too_many_streaming_distribution_cnames() | 
+    no_such_streaming_distribution() | 
+    trusted_signer_does_not_exist() | 
+    inconsistent_quantities() | 
+    missing_body() | 
+    too_many_trusted_signers() | 
+    precondition_failed() | 
+    invalid_origin_access_control() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    invalid_if_match_version() | 
+    invalid_origin_access_identity().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -315,8 +5377,17 @@
 %% distribution:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move
 %% in the Amazon CloudFront Developer Guide.
+-spec associate_alias(aws_client:aws_client(), binary() | list(), associate_alias_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_alias_errors(), tuple()}.
 associate_alias(Client, TargetDistributionId, Input) ->
     associate_alias(Client, TargetDistributionId, Input, []).
+
+-spec associate_alias(aws_client:aws_client(), binary() | list(), associate_alias_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associate_alias_errors(), tuple()}.
 associate_alias(Client, TargetDistributionId, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(TargetDistributionId), "/associate-alias"],
@@ -365,8 +5436,17 @@ associate_alias(Client, TargetDistributionId, Input0, Options0) ->
 %%
 %% CopyDistribution:
 %% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CopyDistribution.html
+-spec copy_distribution(aws_client:aws_client(), binary() | list(), copy_distribution_request()) ->
+    {ok, copy_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, copy_distribution_errors(), tuple()}.
 copy_distribution(Client, PrimaryDistributionId, Input) ->
     copy_distribution(Client, PrimaryDistributionId, Input, []).
+
+-spec copy_distribution(aws_client:aws_client(), binary() | list(), copy_distribution_request(), proplists:proplist()) ->
+    {ok, copy_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, copy_distribution_errors(), tuple()}.
 copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(PrimaryDistributionId), "/copy"],
@@ -439,8 +5519,17 @@ copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html
 %% in the
 %% Amazon CloudFront Developer Guide.
+-spec create_cache_policy(aws_client:aws_client(), create_cache_policy_request()) ->
+    {ok, create_cache_policy_result(), tuple()} |
+    {error, any()} |
+    {error, create_cache_policy_errors(), tuple()}.
 create_cache_policy(Client, Input) ->
     create_cache_policy(Client, Input, []).
+
+-spec create_cache_policy(aws_client:aws_client(), create_cache_policy_request(), proplists:proplist()) ->
+    {ok, create_cache_policy_result(), tuple()} |
+    {error, any()} |
+    {error, create_cache_policy_errors(), tuple()}.
 create_cache_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/cache-policy"],
@@ -491,8 +5580,17 @@ create_cache_policy(Client, Input0, Options0) ->
 %% Content through CloudFront:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html
 %% in the Amazon CloudFront Developer Guide.
+-spec create_cloud_front_origin_access_identity(aws_client:aws_client(), create_cloud_front_origin_access_identity_request()) ->
+    {ok, create_cloud_front_origin_access_identity_result(), tuple()} |
+    {error, any()} |
+    {error, create_cloud_front_origin_access_identity_errors(), tuple()}.
 create_cloud_front_origin_access_identity(Client, Input) ->
     create_cloud_front_origin_access_identity(Client, Input, []).
+
+-spec create_cloud_front_origin_access_identity(aws_client:aws_client(), create_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
+    {ok, create_cloud_front_origin_access_identity_result(), tuple()} |
+    {error, any()} |
+    {error, create_cloud_front_origin_access_identity_errors(), tuple()}.
 create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/origin-access-identity/cloudfront"],
@@ -548,8 +5646,17 @@ create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
 %% workflow enables you to test changes to a distribution's configuration
 %% before moving all
 %% of your domain's production traffic to the new configuration.
+-spec create_continuous_deployment_policy(aws_client:aws_client(), create_continuous_deployment_policy_request()) ->
+    {ok, create_continuous_deployment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, create_continuous_deployment_policy_errors(), tuple()}.
 create_continuous_deployment_policy(Client, Input) ->
     create_continuous_deployment_policy(Client, Input, []).
+
+-spec create_continuous_deployment_policy(aws_client:aws_client(), create_continuous_deployment_policy_request(), proplists:proplist()) ->
+    {ok, create_continuous_deployment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, create_continuous_deployment_policy_errors(), tuple()}.
 create_continuous_deployment_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/continuous-deployment-policy"],
@@ -590,8 +5697,17 @@ create_continuous_deployment_policy(Client, Input0, Options0) ->
     end.
 
 %% @doc Creates a CloudFront distribution.
+-spec create_distribution(aws_client:aws_client(), create_distribution_request()) ->
+    {ok, create_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, create_distribution_errors(), tuple()}.
 create_distribution(Client, Input) ->
     create_distribution(Client, Input, []).
+
+-spec create_distribution(aws_client:aws_client(), create_distribution_request(), proplists:proplist()) ->
+    {ok, create_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, create_distribution_errors(), tuple()}.
 create_distribution(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution"],
@@ -641,8 +5757,17 @@ create_distribution(Client, Input0, Options0) ->
 %%
 %% TagResource:
 %% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_TagResource.html
+-spec create_distribution_with_tags(aws_client:aws_client(), create_distribution_with_tags_request()) ->
+    {ok, create_distribution_with_tags_result(), tuple()} |
+    {error, any()} |
+    {error, create_distribution_with_tags_errors(), tuple()}.
 create_distribution_with_tags(Client, Input) ->
     create_distribution_with_tags(Client, Input, []).
+
+-spec create_distribution_with_tags(aws_client:aws_client(), create_distribution_with_tags_request(), proplists:proplist()) ->
+    {ok, create_distribution_with_tags_result(), tuple()} |
+    {error, any()} |
+    {error, create_distribution_with_tags_errors(), tuple()}.
 create_distribution_with_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution?WithTags"],
@@ -683,8 +5808,17 @@ create_distribution_with_tags(Client, Input0, Options0) ->
     end.
 
 %% @doc Create a new field-level encryption configuration.
+-spec create_field_level_encryption_config(aws_client:aws_client(), create_field_level_encryption_config_request()) ->
+    {ok, create_field_level_encryption_config_result(), tuple()} |
+    {error, any()} |
+    {error, create_field_level_encryption_config_errors(), tuple()}.
 create_field_level_encryption_config(Client, Input) ->
     create_field_level_encryption_config(Client, Input, []).
+
+-spec create_field_level_encryption_config(aws_client:aws_client(), create_field_level_encryption_config_request(), proplists:proplist()) ->
+    {ok, create_field_level_encryption_config_result(), tuple()} |
+    {error, any()} |
+    {error, create_field_level_encryption_config_errors(), tuple()}.
 create_field_level_encryption_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/field-level-encryption"],
@@ -725,8 +5859,17 @@ create_field_level_encryption_config(Client, Input0, Options0) ->
     end.
 
 %% @doc Create a field-level encryption profile.
+-spec create_field_level_encryption_profile(aws_client:aws_client(), create_field_level_encryption_profile_request()) ->
+    {ok, create_field_level_encryption_profile_result(), tuple()} |
+    {error, any()} |
+    {error, create_field_level_encryption_profile_errors(), tuple()}.
 create_field_level_encryption_profile(Client, Input) ->
     create_field_level_encryption_profile(Client, Input, []).
+
+-spec create_field_level_encryption_profile(aws_client:aws_client(), create_field_level_encryption_profile_request(), proplists:proplist()) ->
+    {ok, create_field_level_encryption_profile_result(), tuple()} |
+    {error, any()} |
+    {error, create_field_level_encryption_profile_errors(), tuple()}.
 create_field_level_encryption_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/field-level-encryption-profile"],
@@ -784,8 +5927,17 @@ create_field_level_encryption_profile(Client, Input0, Options0) ->
 %% `PublishFunction' to copy the function from the `DEVELOPMENT'
 %% stage to `LIVE'. When it's live, you can attach the function to a
 %% distribution's cache behavior, using the function's ARN.
+-spec create_function(aws_client:aws_client(), create_function_request()) ->
+    {ok, create_function_result(), tuple()} |
+    {error, any()} |
+    {error, create_function_errors(), tuple()}.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
+
+-spec create_function(aws_client:aws_client(), create_function_request(), proplists:proplist()) ->
+    {ok, create_function_result(), tuple()} |
+    {error, any()} |
+    {error, create_function_errors(), tuple()}.
 create_function(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/function"],
@@ -826,8 +5978,17 @@ create_function(Client, Input0, Options0) ->
     end.
 
 %% @doc Create a new invalidation.
+-spec create_invalidation(aws_client:aws_client(), binary() | list(), create_invalidation_request()) ->
+    {ok, create_invalidation_result(), tuple()} |
+    {error, any()} |
+    {error, create_invalidation_errors(), tuple()}.
 create_invalidation(Client, DistributionId, Input) ->
     create_invalidation(Client, DistributionId, Input, []).
+
+-spec create_invalidation(aws_client:aws_client(), binary() | list(), create_invalidation_request(), proplists:proplist()) ->
+    {ok, create_invalidation_result(), tuple()} |
+    {error, any()} |
+    {error, create_invalidation_errors(), tuple()}.
 create_invalidation(Client, DistributionId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
@@ -886,8 +6047,17 @@ create_invalidation(Client, DistributionId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html
 %% in the
 %% Amazon CloudFront Developer Guide.
+-spec create_key_group(aws_client:aws_client(), create_key_group_request()) ->
+    {ok, create_key_group_result(), tuple()} |
+    {error, any()} |
+    {error, create_key_group_errors(), tuple()}.
 create_key_group(Client, Input) ->
     create_key_group(Client, Input, []).
+
+-spec create_key_group(aws_client:aws_client(), create_key_group_request(), proplists:proplist()) ->
+    {ok, create_key_group_result(), tuple()} |
+    {error, any()} |
+    {error, create_key_group_errors(), tuple()}.
 create_key_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/key-group"],
@@ -932,8 +6102,17 @@ create_key_group(Client, Input0, Options0) ->
 %% In your account, the Key Value Store names must be unique. You can also
 %% import Key Value Store data in JSON format from an S3 bucket by providing
 %% a valid `ImportSource' that you own.
+-spec create_key_value_store(aws_client:aws_client(), create_key_value_store_request()) ->
+    {ok, create_key_value_store_result(), tuple()} |
+    {error, any()} |
+    {error, create_key_value_store_errors(), tuple()}.
 create_key_value_store(Client, Input) ->
     create_key_value_store(Client, Input, []).
+
+-spec create_key_value_store(aws_client:aws_client(), create_key_value_store_request(), proplists:proplist()) ->
+    {ok, create_key_value_store_result(), tuple()} |
+    {error, any()} |
+    {error, create_key_value_store_errors(), tuple()}.
 create_key_value_store(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/key-value-store"],
@@ -984,8 +6163,17 @@ create_key_value_store(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/viewing-cloudfront-metrics.html#monitoring-console.distributions-additional
 %% in
 %% the Amazon CloudFront Developer Guide.
+-spec create_monitoring_subscription(aws_client:aws_client(), binary() | list(), create_monitoring_subscription_request()) ->
+    {ok, create_monitoring_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, create_monitoring_subscription_errors(), tuple()}.
 create_monitoring_subscription(Client, DistributionId, Input) ->
     create_monitoring_subscription(Client, DistributionId, Input, []).
+
+-spec create_monitoring_subscription(aws_client:aws_client(), binary() | list(), create_monitoring_subscription_request(), proplists:proplist()) ->
+    {ok, create_monitoring_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, create_monitoring_subscription_errors(), tuple()}.
 create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
@@ -1024,8 +6212,17 @@ create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-origin.html
 %% in the
 %% Amazon CloudFront Developer Guide.
+-spec create_origin_access_control(aws_client:aws_client(), create_origin_access_control_request()) ->
+    {ok, create_origin_access_control_result(), tuple()} |
+    {error, any()} |
+    {error, create_origin_access_control_errors(), tuple()}.
 create_origin_access_control(Client, Input) ->
     create_origin_access_control(Client, Input, []).
+
+-spec create_origin_access_control(aws_client:aws_client(), create_origin_access_control_request(), proplists:proplist()) ->
+    {ok, create_origin_access_control_result(), tuple()} |
+    {error, any()} |
+    {error, create_origin_access_control_errors(), tuple()}.
 create_origin_access_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/origin-access-control"],
@@ -1102,8 +6299,17 @@ create_origin_access_control(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html
 %% in the
 %% Amazon CloudFront Developer Guide.
+-spec create_origin_request_policy(aws_client:aws_client(), create_origin_request_policy_request()) ->
+    {ok, create_origin_request_policy_result(), tuple()} |
+    {error, any()} |
+    {error, create_origin_request_policy_errors(), tuple()}.
 create_origin_request_policy(Client, Input) ->
     create_origin_request_policy(Client, Input, []).
+
+-spec create_origin_request_policy(aws_client:aws_client(), create_origin_request_policy_request(), proplists:proplist()) ->
+    {ok, create_origin_request_policy_result(), tuple()} |
+    {error, any()} |
+    {error, create_origin_request_policy_errors(), tuple()}.
 create_origin_request_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/origin-request-policy"],
@@ -1148,8 +6354,17 @@ create_origin_request_policy(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html,
 %% or with field-level encryption:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html.
+-spec create_public_key(aws_client:aws_client(), create_public_key_request()) ->
+    {ok, create_public_key_result(), tuple()} |
+    {error, any()} |
+    {error, create_public_key_errors(), tuple()}.
 create_public_key(Client, Input) ->
     create_public_key(Client, Input, []).
+
+-spec create_public_key(aws_client:aws_client(), create_public_key_request(), proplists:proplist()) ->
+    {ok, create_public_key_result(), tuple()} |
+    {error, any()} |
+    {error, create_public_key_errors(), tuple()}.
 create_public_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/public-key"],
@@ -1201,8 +6416,17 @@ create_public_key(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html
 %% in the
 %% Amazon CloudFront Developer Guide.
+-spec create_realtime_log_config(aws_client:aws_client(), create_realtime_log_config_request()) ->
+    {ok, create_realtime_log_config_result(), tuple()} |
+    {error, any()} |
+    {error, create_realtime_log_config_errors(), tuple()}.
 create_realtime_log_config(Client, Input) ->
     create_realtime_log_config(Client, Input, []).
+
+-spec create_realtime_log_config(aws_client:aws_client(), create_realtime_log_config_request(), proplists:proplist()) ->
+    {ok, create_realtime_log_config_result(), tuple()} |
+    {error, any()} |
+    {error, create_realtime_log_config_errors(), tuple()}.
 create_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/realtime-log-config"],
@@ -1248,8 +6472,17 @@ create_realtime_log_config(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/modifying-response-headers.html
 %% in the
 %% Amazon CloudFront Developer Guide.
+-spec create_response_headers_policy(aws_client:aws_client(), create_response_headers_policy_request()) ->
+    {ok, create_response_headers_policy_result(), tuple()} |
+    {error, any()} |
+    {error, create_response_headers_policy_errors(), tuple()}.
 create_response_headers_policy(Client, Input) ->
     create_response_headers_policy(Client, Input, []).
+
+-spec create_response_headers_policy(aws_client:aws_client(), create_response_headers_policy_request(), proplists:proplist()) ->
+    {ok, create_response_headers_policy_result(), tuple()} |
+    {error, any()} |
+    {error, create_response_headers_policy_errors(), tuple()}.
 create_response_headers_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/response-headers-policy"],
@@ -1296,8 +6529,17 @@ create_response_headers_policy(Client, Input0, Options0) ->
 %% announcement: http://forums.aws.amazon.com/ann.jspa?annID=7356 on the
 %% Amazon CloudFront discussion
 %% forum.
+-spec create_streaming_distribution(aws_client:aws_client(), create_streaming_distribution_request()) ->
+    {ok, create_streaming_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, create_streaming_distribution_errors(), tuple()}.
 create_streaming_distribution(Client, Input) ->
     create_streaming_distribution(Client, Input, []).
+
+-spec create_streaming_distribution(aws_client:aws_client(), create_streaming_distribution_request(), proplists:proplist()) ->
+    {ok, create_streaming_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, create_streaming_distribution_errors(), tuple()}.
 create_streaming_distribution(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/streaming-distribution"],
@@ -1344,8 +6586,17 @@ create_streaming_distribution(Client, Input0, Options0) ->
 %% announcement: http://forums.aws.amazon.com/ann.jspa?annID=7356 on the
 %% Amazon CloudFront discussion
 %% forum.
+-spec create_streaming_distribution_with_tags(aws_client:aws_client(), create_streaming_distribution_with_tags_request()) ->
+    {ok, create_streaming_distribution_with_tags_result(), tuple()} |
+    {error, any()} |
+    {error, create_streaming_distribution_with_tags_errors(), tuple()}.
 create_streaming_distribution_with_tags(Client, Input) ->
     create_streaming_distribution_with_tags(Client, Input, []).
+
+-spec create_streaming_distribution_with_tags(aws_client:aws_client(), create_streaming_distribution_with_tags_request(), proplists:proplist()) ->
+    {ok, create_streaming_distribution_with_tags_result(), tuple()} |
+    {error, any()} |
+    {error, create_streaming_distribution_with_tags_errors(), tuple()}.
 create_streaming_distribution_with_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/streaming-distribution?WithTags"],
@@ -1397,8 +6648,17 @@ create_streaming_distribution_with_tags(Client, Input0, Options0) ->
 %% version. To get
 %% these values, you can use `ListCachePolicies' or
 %% `GetCachePolicy'.
+-spec delete_cache_policy(aws_client:aws_client(), binary() | list(), delete_cache_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_cache_policy_errors(), tuple()}.
 delete_cache_policy(Client, Id, Input) ->
     delete_cache_policy(Client, Id, Input, []).
+
+-spec delete_cache_policy(aws_client:aws_client(), binary() | list(), delete_cache_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_cache_policy_errors(), tuple()}.
 delete_cache_policy(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
@@ -1424,8 +6684,17 @@ delete_cache_policy(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an origin access identity.
+-spec delete_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), delete_cloud_front_origin_access_identity_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_cloud_front_origin_access_identity_errors(), tuple()}.
 delete_cloud_front_origin_access_identity(Client, Id, Input) ->
     delete_cloud_front_origin_access_identity(Client, Id, Input, []).
+
+-spec delete_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), delete_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_cloud_front_origin_access_identity_errors(), tuple()}.
 delete_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), ""],
@@ -1457,8 +6726,17 @@ delete_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
 %% distribution. First update your distribution to remove the continuous
 %% deployment policy,
 %% then you can delete the policy.
+-spec delete_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), delete_continuous_deployment_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_continuous_deployment_policy_errors(), tuple()}.
 delete_continuous_deployment_policy(Client, Id, Input) ->
     delete_continuous_deployment_policy(Client, Id, Input, []).
+
+-spec delete_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), delete_continuous_deployment_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_continuous_deployment_policy_errors(), tuple()}.
 delete_continuous_deployment_policy(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), ""],
@@ -1484,8 +6762,17 @@ delete_continuous_deployment_policy(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a distribution.
+-spec delete_distribution(aws_client:aws_client(), binary() | list(), delete_distribution_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_distribution_errors(), tuple()}.
 delete_distribution(Client, Id, Input) ->
     delete_distribution(Client, Id, Input, []).
+
+-spec delete_distribution(aws_client:aws_client(), binary() | list(), delete_distribution_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_distribution_errors(), tuple()}.
 delete_distribution(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), ""],
@@ -1511,8 +6798,17 @@ delete_distribution(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove a field-level encryption configuration.
+-spec delete_field_level_encryption_config(aws_client:aws_client(), binary() | list(), delete_field_level_encryption_config_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_field_level_encryption_config_errors(), tuple()}.
 delete_field_level_encryption_config(Client, Id, Input) ->
     delete_field_level_encryption_config(Client, Id, Input, []).
+
+-spec delete_field_level_encryption_config(aws_client:aws_client(), binary() | list(), delete_field_level_encryption_config_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_field_level_encryption_config_errors(), tuple()}.
 delete_field_level_encryption_config(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), ""],
@@ -1538,8 +6834,17 @@ delete_field_level_encryption_config(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove a field-level encryption profile.
+-spec delete_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), delete_field_level_encryption_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_field_level_encryption_profile_errors(), tuple()}.
 delete_field_level_encryption_profile(Client, Id, Input) ->
     delete_field_level_encryption_profile(Client, Id, Input, []).
+
+-spec delete_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), delete_field_level_encryption_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_field_level_encryption_profile_errors(), tuple()}.
 delete_field_level_encryption_profile(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), ""],
@@ -1575,8 +6880,17 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 %% To delete a function, you must provide the function's name and version
 %% (`ETag' value). To get these values, you can use
 %% `ListFunctions' and `DescribeFunction'.
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_errors(), tuple()}.
 delete_function(Client, Name, Input) ->
     delete_function(Client, Name, Input, []).
+
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_errors(), tuple()}.
 delete_function(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), ""],
@@ -1613,8 +6927,17 @@ delete_function(Client, Name, Input0, Options0) ->
 %% version. To get
 %% these values, use `ListKeyGroups' followed by `GetKeyGroup' or
 %% `GetKeyGroupConfig'.
+-spec delete_key_group(aws_client:aws_client(), binary() | list(), delete_key_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_key_group_errors(), tuple()}.
 delete_key_group(Client, Id, Input) ->
     delete_key_group(Client, Id, Input, []).
+
+-spec delete_key_group(aws_client:aws_client(), binary() | list(), delete_key_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_key_group_errors(), tuple()}.
 delete_key_group(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
@@ -1640,8 +6963,17 @@ delete_key_group(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Specifies the Key Value Store to delete.
+-spec delete_key_value_store(aws_client:aws_client(), binary() | list(), delete_key_value_store_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_key_value_store_errors(), tuple()}.
 delete_key_value_store(Client, Name, Input) ->
     delete_key_value_store(Client, Name, Input, []).
+
+-spec delete_key_value_store(aws_client:aws_client(), binary() | list(), delete_key_value_store_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_key_value_store_errors(), tuple()}.
 delete_key_value_store(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/key-value-store/", aws_util:encode_uri(Name), ""],
@@ -1668,8 +7000,17 @@ delete_key_value_store(Client, Name, Input0, Options0) ->
 
 %% @doc Disables additional CloudWatch metrics for the specified CloudFront
 %% distribution.
+-spec delete_monitoring_subscription(aws_client:aws_client(), binary() | list(), delete_monitoring_subscription_request()) ->
+    {ok, delete_monitoring_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, delete_monitoring_subscription_errors(), tuple()}.
 delete_monitoring_subscription(Client, DistributionId, Input) ->
     delete_monitoring_subscription(Client, DistributionId, Input, []).
+
+-spec delete_monitoring_subscription(aws_client:aws_client(), binary() | list(), delete_monitoring_subscription_request(), proplists:proplist()) ->
+    {ok, delete_monitoring_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, delete_monitoring_subscription_errors(), tuple()}.
 delete_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
@@ -1699,8 +7040,17 @@ delete_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 %% distributions to remove the origin access control from all origins, then
 %% delete the
 %% origin access control.
+-spec delete_origin_access_control(aws_client:aws_client(), binary() | list(), delete_origin_access_control_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_origin_access_control_errors(), tuple()}.
 delete_origin_access_control(Client, Id, Input) ->
     delete_origin_access_control(Client, Id, Input, []).
+
+-spec delete_origin_access_control(aws_client:aws_client(), binary() | list(), delete_origin_access_control_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_origin_access_control_errors(), tuple()}.
 delete_origin_access_control(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), ""],
@@ -1738,8 +7088,17 @@ delete_origin_access_control(Client, Id, Input0, Options0) ->
 %% version. To get the identifier, you can use
 %% `ListOriginRequestPolicies' or
 %% `GetOriginRequestPolicy'.
+-spec delete_origin_request_policy(aws_client:aws_client(), binary() | list(), delete_origin_request_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_origin_request_policy_errors(), tuple()}.
 delete_origin_request_policy(Client, Id, Input) ->
     delete_origin_request_policy(Client, Id, Input, []).
+
+-spec delete_origin_request_policy(aws_client:aws_client(), binary() | list(), delete_origin_request_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_origin_request_policy_errors(), tuple()}.
 delete_origin_request_policy(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
@@ -1765,8 +7124,17 @@ delete_origin_request_policy(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove a public key you previously added to CloudFront.
+-spec delete_public_key(aws_client:aws_client(), binary() | list(), delete_public_key_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_public_key_errors(), tuple()}.
 delete_public_key(Client, Id, Input) ->
     delete_public_key(Client, Id, Input, []).
+
+-spec delete_public_key(aws_client:aws_client(), binary() | list(), delete_public_key_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_public_key_errors(), tuple()}.
 delete_public_key(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), ""],
@@ -1804,8 +7172,17 @@ delete_public_key(Client, Id, Input0, Options0) ->
 %% its Amazon Resource Name (ARN). You must provide at least one. If you
 %% provide both, CloudFront
 %% uses the name to identify the real-time log configuration to delete.
+-spec delete_realtime_log_config(aws_client:aws_client(), delete_realtime_log_config_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_realtime_log_config_errors(), tuple()}.
 delete_realtime_log_config(Client, Input) ->
     delete_realtime_log_config(Client, Input, []).
+
+-spec delete_realtime_log_config(aws_client:aws_client(), delete_realtime_log_config_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_realtime_log_config_errors(), tuple()}.
 delete_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/delete-realtime-log-config"],
@@ -1841,8 +7218,17 @@ delete_realtime_log_config(Client, Input0, Options0) ->
 %% version. To get these values, you can use
 %% `ListResponseHeadersPolicies' or
 %% `GetResponseHeadersPolicy'.
+-spec delete_response_headers_policy(aws_client:aws_client(), binary() | list(), delete_response_headers_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_response_headers_policy_errors(), tuple()}.
 delete_response_headers_policy(Client, Id, Input) ->
     delete_response_headers_policy(Client, Id, Input, []).
+
+-spec delete_response_headers_policy(aws_client:aws_client(), binary() | list(), delete_response_headers_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_response_headers_policy_errors(), tuple()}.
 delete_response_headers_policy(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), ""],
@@ -1916,8 +7302,17 @@ delete_response_headers_policy(Client, Id, Input0, Options0) ->
 %% Distribution:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html
 %% in the Amazon CloudFront Developer Guide.
+-spec delete_streaming_distribution(aws_client:aws_client(), binary() | list(), delete_streaming_distribution_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_streaming_distribution_errors(), tuple()}.
 delete_streaming_distribution(Client, Id, Input) ->
     delete_streaming_distribution(Client, Id, Input, []).
+
+-spec delete_streaming_distribution(aws_client:aws_client(), binary() | list(), delete_streaming_distribution_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_streaming_distribution_errors(), tuple()}.
 delete_streaming_distribution(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), ""],
@@ -1952,14 +7347,26 @@ delete_streaming_distribution(Client, Id, Input0, Options0) ->
 %% provide the
 %% function's name and stage. To get these values, you can use
 %% `ListFunctions'.
+-spec describe_function(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_function_result(), tuple()} |
+    {error, any()} |
+    {error, describe_function_errors(), tuple()}.
 describe_function(Client, Name)
   when is_map(Client) ->
     describe_function(Client, Name, #{}, #{}).
 
+-spec describe_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_function_result(), tuple()} |
+    {error, any()} |
+    {error, describe_function_errors(), tuple()}.
 describe_function(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_function(Client, Name, QueryMap, HeadersMap, []).
 
+-spec describe_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_function_result(), tuple()} |
+    {error, any()} |
+    {error, describe_function_errors(), tuple()}.
 describe_function(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), "/describe"],
@@ -1997,14 +7404,26 @@ describe_function(Client, Name, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Specifies the Key Value Store and its configuration.
+-spec describe_key_value_store(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_key_value_store_result(), tuple()} |
+    {error, any()} |
+    {error, describe_key_value_store_errors(), tuple()}.
 describe_key_value_store(Client, Name)
   when is_map(Client) ->
     describe_key_value_store(Client, Name, #{}, #{}).
 
+-spec describe_key_value_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_key_value_store_result(), tuple()} |
+    {error, any()} |
+    {error, describe_key_value_store_errors(), tuple()}.
 describe_key_value_store(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_key_value_store(Client, Name, QueryMap, HeadersMap, []).
 
+-spec describe_key_value_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_key_value_store_result(), tuple()} |
+    {error, any()} |
+    {error, describe_key_value_store_errors(), tuple()}.
 describe_key_value_store(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-value-store/", aws_util:encode_uri(Name), ""],
@@ -2051,14 +7470,26 @@ describe_key_value_store(Client, Name, QueryMap, HeadersMap, Options0)
 %% policy is not attached to a cache behavior, you can get the identifier
 %% using
 %% `ListCachePolicies'.
+-spec get_cache_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_cache_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_cache_policy_errors(), tuple()}.
 get_cache_policy(Client, Id)
   when is_map(Client) ->
     get_cache_policy(Client, Id, #{}, #{}).
 
+-spec get_cache_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_cache_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_cache_policy_errors(), tuple()}.
 get_cache_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cache_policy(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_cache_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_cache_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_cache_policy_errors(), tuple()}.
 get_cache_policy(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
@@ -2101,14 +7532,26 @@ get_cache_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %% cache policy is not attached to a cache behavior, you can get the
 %% identifier using
 %% `ListCachePolicies'.
+-spec get_cache_policy_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_cache_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_cache_policy_config_errors(), tuple()}.
 get_cache_policy_config(Client, Id)
   when is_map(Client) ->
     get_cache_policy_config(Client, Id, #{}, #{}).
 
+-spec get_cache_policy_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_cache_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_cache_policy_config_errors(), tuple()}.
 get_cache_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cache_policy_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_cache_policy_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_cache_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_cache_policy_config_errors(), tuple()}.
 get_cache_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), "/config"],
@@ -2142,14 +7585,26 @@ get_cache_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the information about an origin access identity.
+-spec get_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_cloud_front_origin_access_identity_result(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_front_origin_access_identity_errors(), tuple()}.
 get_cloud_front_origin_access_identity(Client, Id)
   when is_map(Client) ->
     get_cloud_front_origin_access_identity(Client, Id, #{}, #{}).
 
+-spec get_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_cloud_front_origin_access_identity_result(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_front_origin_access_identity_errors(), tuple()}.
 get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_cloud_front_origin_access_identity_result(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_front_origin_access_identity_errors(), tuple()}.
 get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), ""],
@@ -2183,14 +7638,26 @@ get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, Options
     end.
 
 %% @doc Get the configuration information about an origin access identity.
+-spec get_cloud_front_origin_access_identity_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_cloud_front_origin_access_identity_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_front_origin_access_identity_config_errors(), tuple()}.
 get_cloud_front_origin_access_identity_config(Client, Id)
   when is_map(Client) ->
     get_cloud_front_origin_access_identity_config(Client, Id, #{}, #{}).
 
+-spec get_cloud_front_origin_access_identity_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_cloud_front_origin_access_identity_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_front_origin_access_identity_config_errors(), tuple()}.
 get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_cloud_front_origin_access_identity_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_cloud_front_origin_access_identity_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_front_origin_access_identity_config_errors(), tuple()}.
 get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
@@ -2226,14 +7693,26 @@ get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, 
 %% @doc Gets a continuous deployment policy, including metadata (the
 %% policy's identifier and
 %% the date and time when the policy was last modified).
+-spec get_continuous_deployment_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_continuous_deployment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_continuous_deployment_policy_errors(), tuple()}.
 get_continuous_deployment_policy(Client, Id)
   when is_map(Client) ->
     get_continuous_deployment_policy(Client, Id, #{}, #{}).
 
+-spec get_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_continuous_deployment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_continuous_deployment_policy_errors(), tuple()}.
 get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_continuous_deployment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_continuous_deployment_policy_errors(), tuple()}.
 get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), ""],
@@ -2267,14 +7746,26 @@ get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Gets configuration information about a continuous deployment policy.
+-spec get_continuous_deployment_policy_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_continuous_deployment_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_continuous_deployment_policy_config_errors(), tuple()}.
 get_continuous_deployment_policy_config(Client, Id)
   when is_map(Client) ->
     get_continuous_deployment_policy_config(Client, Id, #{}, #{}).
 
+-spec get_continuous_deployment_policy_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_continuous_deployment_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_continuous_deployment_policy_config_errors(), tuple()}.
 get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_continuous_deployment_policy_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_continuous_deployment_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_continuous_deployment_policy_config_errors(), tuple()}.
 get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), "/config"],
@@ -2308,14 +7799,26 @@ get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap, Option
     end.
 
 %% @doc Get the information about a distribution.
+-spec get_distribution(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_errors(), tuple()}.
 get_distribution(Client, Id)
   when is_map(Client) ->
     get_distribution(Client, Id, #{}, #{}).
 
+-spec get_distribution(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_errors(), tuple()}.
 get_distribution(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_distribution(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_distribution(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_errors(), tuple()}.
 get_distribution(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), ""],
@@ -2349,14 +7852,26 @@ get_distribution(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the configuration information about a distribution.
+-spec get_distribution_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_distribution_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_config_errors(), tuple()}.
 get_distribution_config(Client, Id)
   when is_map(Client) ->
     get_distribution_config(Client, Id, #{}, #{}).
 
+-spec get_distribution_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_distribution_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_config_errors(), tuple()}.
 get_distribution_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_distribution_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_distribution_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_distribution_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_distribution_config_errors(), tuple()}.
 get_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/config"],
@@ -2390,14 +7905,26 @@ get_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the field-level encryption configuration information.
+-spec get_field_level_encryption(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_field_level_encryption_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_errors(), tuple()}.
 get_field_level_encryption(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption(Client, Id, #{}, #{}).
 
+-spec get_field_level_encryption(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_field_level_encryption_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_errors(), tuple()}.
 get_field_level_encryption(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_field_level_encryption(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_field_level_encryption_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_errors(), tuple()}.
 get_field_level_encryption(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), ""],
@@ -2431,14 +7958,26 @@ get_field_level_encryption(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the field-level encryption configuration information.
+-spec get_field_level_encryption_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_field_level_encryption_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_config_errors(), tuple()}.
 get_field_level_encryption_config(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption_config(Client, Id, #{}, #{}).
 
+-spec get_field_level_encryption_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_field_level_encryption_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_config_errors(), tuple()}.
 get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_field_level_encryption_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_field_level_encryption_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_config_errors(), tuple()}.
 get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), "/config"],
@@ -2472,14 +8011,26 @@ get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the field-level encryption profile information.
+-spec get_field_level_encryption_profile(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_field_level_encryption_profile_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_profile_errors(), tuple()}.
 get_field_level_encryption_profile(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption_profile(Client, Id, #{}, #{}).
 
+-spec get_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_field_level_encryption_profile_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_profile_errors(), tuple()}.
 get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_field_level_encryption_profile_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_profile_errors(), tuple()}.
 get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), ""],
@@ -2513,14 +8064,26 @@ get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the field-level encryption profile configuration information.
+-spec get_field_level_encryption_profile_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_field_level_encryption_profile_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_profile_config_errors(), tuple()}.
 get_field_level_encryption_profile_config(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption_profile_config(Client, Id, #{}, #{}).
 
+-spec get_field_level_encryption_profile_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_field_level_encryption_profile_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_profile_config_errors(), tuple()}.
 get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_field_level_encryption_profile_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_field_level_encryption_profile_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_field_level_encryption_profile_config_errors(), tuple()}.
 get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), "/config"],
@@ -2561,14 +8124,26 @@ get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Opti
 %% To get a function's code, you must provide the function's name and
 %% stage. To get these
 %% values, you can use `ListFunctions'.
+-spec get_function(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_function_result(), tuple()} |
+    {error, any()} |
+    {error, get_function_errors(), tuple()}.
 get_function(Client, Name)
   when is_map(Client) ->
     get_function(Client, Name, #{}, #{}).
 
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_function_result(), tuple()} |
+    {error, any()} |
+    {error, get_function_errors(), tuple()}.
 get_function(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function(Client, Name, QueryMap, HeadersMap, []).
 
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_function_result(), tuple()} |
+    {error, any()} |
+    {error, get_function_errors(), tuple()}.
 get_function(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), ""],
@@ -2607,14 +8182,26 @@ get_function(Client, Name, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the information about an invalidation.
+-spec get_invalidation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_invalidation_result(), tuple()} |
+    {error, any()} |
+    {error, get_invalidation_errors(), tuple()}.
 get_invalidation(Client, DistributionId, Id)
   when is_map(Client) ->
     get_invalidation(Client, DistributionId, Id, #{}, #{}).
 
+-spec get_invalidation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_invalidation_result(), tuple()} |
+    {error, any()} |
+    {error, get_invalidation_errors(), tuple()}.
 get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, []).
 
+-spec get_invalidation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_invalidation_result(), tuple()} |
+    {error, any()} |
+    {error, get_invalidation_errors(), tuple()}.
 get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation/", aws_util:encode_uri(Id), ""],
@@ -2642,14 +8229,26 @@ get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, Options0)
 %% using `ListDistributions' or `GetDistribution'. If the key group
 %% is not referenced in a cache behavior, you can get the identifier using
 %% `ListKeyGroups'.
+-spec get_key_group(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_key_group_result(), tuple()} |
+    {error, any()} |
+    {error, get_key_group_errors(), tuple()}.
 get_key_group(Client, Id)
   when is_map(Client) ->
     get_key_group(Client, Id, #{}, #{}).
 
+-spec get_key_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_key_group_result(), tuple()} |
+    {error, any()} |
+    {error, get_key_group_errors(), tuple()}.
 get_key_group(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_key_group(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_key_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_key_group_result(), tuple()} |
+    {error, any()} |
+    {error, get_key_group_errors(), tuple()}.
 get_key_group(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
@@ -2692,14 +8291,26 @@ get_key_group(Client, Id, QueryMap, HeadersMap, Options0)
 %% key group is not referenced in a cache behavior, you can get the
 %% identifier using
 %% `ListKeyGroups'.
+-spec get_key_group_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_key_group_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_key_group_config_errors(), tuple()}.
 get_key_group_config(Client, Id)
   when is_map(Client) ->
     get_key_group_config(Client, Id, #{}, #{}).
 
+-spec get_key_group_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_key_group_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_key_group_config_errors(), tuple()}.
 get_key_group_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_key_group_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_key_group_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_key_group_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_key_group_config_errors(), tuple()}.
 get_key_group_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), "/config"],
@@ -2735,14 +8346,26 @@ get_key_group_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about whether additional CloudWatch metrics are
 %% enabled for the
 %% specified CloudFront distribution.
+-spec get_monitoring_subscription(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_monitoring_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, get_monitoring_subscription_errors(), tuple()}.
 get_monitoring_subscription(Client, DistributionId)
   when is_map(Client) ->
     get_monitoring_subscription(Client, DistributionId, #{}, #{}).
 
+-spec get_monitoring_subscription(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_monitoring_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, get_monitoring_subscription_errors(), tuple()}.
 get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, []).
 
+-spec get_monitoring_subscription(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_monitoring_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, get_monitoring_subscription_errors(), tuple()}.
 get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
@@ -2761,14 +8384,26 @@ get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, Option
 
 %% @doc Gets a CloudFront origin access control, including its unique
 %% identifier.
+-spec get_origin_access_control(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_origin_access_control_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_access_control_errors(), tuple()}.
 get_origin_access_control(Client, Id)
   when is_map(Client) ->
     get_origin_access_control(Client, Id, #{}, #{}).
 
+-spec get_origin_access_control(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_origin_access_control_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_access_control_errors(), tuple()}.
 get_origin_access_control(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_access_control(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_origin_access_control(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_origin_access_control_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_access_control_errors(), tuple()}.
 get_origin_access_control(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), ""],
@@ -2802,14 +8437,26 @@ get_origin_access_control(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Gets a CloudFront origin access control configuration.
+-spec get_origin_access_control_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_origin_access_control_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_access_control_config_errors(), tuple()}.
 get_origin_access_control_config(Client, Id)
   when is_map(Client) ->
     get_origin_access_control_config(Client, Id, #{}, #{}).
 
+-spec get_origin_access_control_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_origin_access_control_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_access_control_config_errors(), tuple()}.
 get_origin_access_control_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_origin_access_control_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_origin_access_control_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_access_control_config_errors(), tuple()}.
 get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), "/config"],
@@ -2857,14 +8504,26 @@ get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% cache
 %% behavior, you can get the identifier using
 %% `ListOriginRequestPolicies'.
+-spec get_origin_request_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_origin_request_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_request_policy_errors(), tuple()}.
 get_origin_request_policy(Client, Id)
   when is_map(Client) ->
     get_origin_request_policy(Client, Id, #{}, #{}).
 
+-spec get_origin_request_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_origin_request_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_request_policy_errors(), tuple()}.
 get_origin_request_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_request_policy(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_origin_request_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_origin_request_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_request_policy_errors(), tuple()}.
 get_origin_request_policy(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
@@ -2907,14 +8566,26 @@ get_origin_request_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %% `GetDistribution'. If the origin request policy is not attached to a
 %% cache behavior, you can get the identifier using
 %% `ListOriginRequestPolicies'.
+-spec get_origin_request_policy_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_origin_request_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_request_policy_config_errors(), tuple()}.
 get_origin_request_policy_config(Client, Id)
   when is_map(Client) ->
     get_origin_request_policy_config(Client, Id, #{}, #{}).
 
+-spec get_origin_request_policy_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_origin_request_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_request_policy_config_errors(), tuple()}.
 get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_origin_request_policy_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_origin_request_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_origin_request_policy_config_errors(), tuple()}.
 get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), "/config"],
@@ -2948,14 +8619,26 @@ get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Gets a public key.
+-spec get_public_key(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_public_key_result(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_errors(), tuple()}.
 get_public_key(Client, Id)
   when is_map(Client) ->
     get_public_key(Client, Id, #{}, #{}).
 
+-spec get_public_key(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_public_key_result(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_errors(), tuple()}.
 get_public_key(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_key(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_public_key(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_public_key_result(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_errors(), tuple()}.
 get_public_key(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), ""],
@@ -2989,14 +8672,26 @@ get_public_key(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Gets a public key configuration.
+-spec get_public_key_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_public_key_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_config_errors(), tuple()}.
 get_public_key_config(Client, Id)
   when is_map(Client) ->
     get_public_key_config(Client, Id, #{}, #{}).
 
+-spec get_public_key_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_public_key_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_config_errors(), tuple()}.
 get_public_key_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_key_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_public_key_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_public_key_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_config_errors(), tuple()}.
 get_public_key_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), "/config"],
@@ -3036,8 +8731,17 @@ get_public_key_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% Amazon Resource Name (ARN). You must provide at least one. If you provide
 %% both, CloudFront
 %% uses the name to identify the real-time log configuration to get.
+-spec get_realtime_log_config(aws_client:aws_client(), get_realtime_log_config_request()) ->
+    {ok, get_realtime_log_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_realtime_log_config_errors(), tuple()}.
 get_realtime_log_config(Client, Input) ->
     get_realtime_log_config(Client, Input, []).
+
+-spec get_realtime_log_config(aws_client:aws_client(), get_realtime_log_config_request(), proplists:proplist()) ->
+    {ok, get_realtime_log_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_realtime_log_config_errors(), tuple()}.
 get_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/get-realtime-log-config"],
@@ -3073,14 +8777,26 @@ get_realtime_log_config(Client, Input0, Options0) ->
 %% cache
 %% behavior, you can get the identifier using
 %% `ListResponseHeadersPolicies'.
+-spec get_response_headers_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_response_headers_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_response_headers_policy_errors(), tuple()}.
 get_response_headers_policy(Client, Id)
   when is_map(Client) ->
     get_response_headers_policy(Client, Id, #{}, #{}).
 
+-spec get_response_headers_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_response_headers_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_response_headers_policy_errors(), tuple()}.
 get_response_headers_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_response_headers_policy(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_response_headers_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_response_headers_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_response_headers_policy_errors(), tuple()}.
 get_response_headers_policy(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), ""],
@@ -3124,14 +8840,26 @@ get_response_headers_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %% `GetDistribution'. If the response headers policy is not attached to a
 %% cache behavior, you can get the identifier using
 %% `ListResponseHeadersPolicies'.
+-spec get_response_headers_policy_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_response_headers_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_response_headers_policy_config_errors(), tuple()}.
 get_response_headers_policy_config(Client, Id)
   when is_map(Client) ->
     get_response_headers_policy_config(Client, Id, #{}, #{}).
 
+-spec get_response_headers_policy_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_response_headers_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_response_headers_policy_config_errors(), tuple()}.
 get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_response_headers_policy_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_response_headers_policy_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_response_headers_policy_config_errors(), tuple()}.
 get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), "/config"],
@@ -3167,14 +8895,26 @@ get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about a specified RTMP distribution, including the
 %% distribution
 %% configuration.
+-spec get_streaming_distribution(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_streaming_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, get_streaming_distribution_errors(), tuple()}.
 get_streaming_distribution(Client, Id)
   when is_map(Client) ->
     get_streaming_distribution(Client, Id, #{}, #{}).
 
+-spec get_streaming_distribution(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_streaming_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, get_streaming_distribution_errors(), tuple()}.
 get_streaming_distribution(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_distribution(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_streaming_distribution(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_streaming_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, get_streaming_distribution_errors(), tuple()}.
 get_streaming_distribution(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), ""],
@@ -3208,14 +8948,26 @@ get_streaming_distribution(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the configuration information about a streaming distribution.
+-spec get_streaming_distribution_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_streaming_distribution_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_streaming_distribution_config_errors(), tuple()}.
 get_streaming_distribution_config(Client, Id)
   when is_map(Client) ->
     get_streaming_distribution_config(Client, Id, #{}, #{}).
 
+-spec get_streaming_distribution_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_streaming_distribution_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_streaming_distribution_config_errors(), tuple()}.
 get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_streaming_distribution_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_streaming_distribution_config_result(), tuple()} |
+    {error, any()} |
+    {error, get_streaming_distribution_config_errors(), tuple()}.
 get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],
@@ -3264,14 +9016,26 @@ get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_cache_policies(aws_client:aws_client()) ->
+    {ok, list_cache_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_cache_policies_errors(), tuple()}.
 list_cache_policies(Client)
   when is_map(Client) ->
     list_cache_policies(Client, #{}, #{}).
 
+-spec list_cache_policies(aws_client:aws_client(), map(), map()) ->
+    {ok, list_cache_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_cache_policies_errors(), tuple()}.
 list_cache_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cache_policies(Client, QueryMap, HeadersMap, []).
 
+-spec list_cache_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_cache_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_cache_policies_errors(), tuple()}.
 list_cache_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/cache-policy"],
@@ -3295,14 +9059,26 @@ list_cache_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists origin access identities.
+-spec list_cloud_front_origin_access_identities(aws_client:aws_client()) ->
+    {ok, list_cloud_front_origin_access_identities_result(), tuple()} |
+    {error, any()} |
+    {error, list_cloud_front_origin_access_identities_errors(), tuple()}.
 list_cloud_front_origin_access_identities(Client)
   when is_map(Client) ->
     list_cloud_front_origin_access_identities(Client, #{}, #{}).
 
+-spec list_cloud_front_origin_access_identities(aws_client:aws_client(), map(), map()) ->
+    {ok, list_cloud_front_origin_access_identities_result(), tuple()} |
+    {error, any()} |
+    {error, list_cloud_front_origin_access_identities_errors(), tuple()}.
 list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, []).
 
+-spec list_cloud_front_origin_access_identities(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_cloud_front_origin_access_identities_result(), tuple()} |
+    {error, any()} |
+    {error, list_cloud_front_origin_access_identities_errors(), tuple()}.
 list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront"],
@@ -3370,14 +9146,26 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_conflicting_aliases(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_conflicting_aliases_result(), tuple()} |
+    {error, any()} |
+    {error, list_conflicting_aliases_errors(), tuple()}.
 list_conflicting_aliases(Client, Alias, DistributionId)
   when is_map(Client) ->
     list_conflicting_aliases(Client, Alias, DistributionId, #{}, #{}).
 
+-spec list_conflicting_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_conflicting_aliases_result(), tuple()} |
+    {error, any()} |
+    {error, list_conflicting_aliases_errors(), tuple()}.
 list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, []).
 
+-spec list_conflicting_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_conflicting_aliases_result(), tuple()} |
+    {error, any()} |
+    {error, list_conflicting_aliases_errors(), tuple()}.
 list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/conflicting-alias"],
@@ -3413,14 +9201,26 @@ list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, Op
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_continuous_deployment_policies(aws_client:aws_client()) ->
+    {ok, list_continuous_deployment_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_continuous_deployment_policies_errors(), tuple()}.
 list_continuous_deployment_policies(Client)
   when is_map(Client) ->
     list_continuous_deployment_policies(Client, #{}, #{}).
 
+-spec list_continuous_deployment_policies(aws_client:aws_client(), map(), map()) ->
+    {ok, list_continuous_deployment_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_continuous_deployment_policies_errors(), tuple()}.
 list_continuous_deployment_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_continuous_deployment_policies(Client, QueryMap, HeadersMap, []).
 
+-spec list_continuous_deployment_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_continuous_deployment_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_continuous_deployment_policies_errors(), tuple()}.
 list_continuous_deployment_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/continuous-deployment-policy"],
@@ -3443,14 +9243,26 @@ list_continuous_deployment_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List CloudFront distributions.
+-spec list_distributions(aws_client:aws_client()) ->
+    {ok, list_distributions_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_errors(), tuple()}.
 list_distributions(Client)
   when is_map(Client) ->
     list_distributions(Client, #{}, #{}).
 
+-spec list_distributions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_distributions_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_errors(), tuple()}.
 list_distributions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions(Client, QueryMap, HeadersMap, []).
 
+-spec list_distributions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_errors(), tuple()}.
 list_distributions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution"],
@@ -3485,14 +9297,26 @@ list_distributions(Client, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_distributions_by_cache_policy_id(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_distributions_by_cache_policy_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_cache_policy_id_errors(), tuple()}.
 list_distributions_by_cache_policy_id(Client, CachePolicyId)
   when is_map(Client) ->
     list_distributions_by_cache_policy_id(Client, CachePolicyId, #{}, #{}).
 
+-spec list_distributions_by_cache_policy_id(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_distributions_by_cache_policy_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_cache_policy_id_errors(), tuple()}.
 list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap, []).
 
+-spec list_distributions_by_cache_policy_id(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_by_cache_policy_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_cache_policy_id_errors(), tuple()}.
 list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByCachePolicyId/", aws_util:encode_uri(CachePolicyId), ""],
@@ -3527,14 +9351,26 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMa
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_distributions_by_key_group(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_distributions_by_key_group_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_key_group_errors(), tuple()}.
 list_distributions_by_key_group(Client, KeyGroupId)
   when is_map(Client) ->
     list_distributions_by_key_group(Client, KeyGroupId, #{}, #{}).
 
+-spec list_distributions_by_key_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_distributions_by_key_group_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_key_group_errors(), tuple()}.
 list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, []).
 
+-spec list_distributions_by_key_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_by_key_group_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_key_group_errors(), tuple()}.
 list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByKeyGroupId/", aws_util:encode_uri(KeyGroupId), ""],
@@ -3569,14 +9405,26 @@ list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, Option
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_distributions_by_origin_request_policy_id(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_distributions_by_origin_request_policy_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_origin_request_policy_id_errors(), tuple()}.
 list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId)
   when is_map(Client) ->
     list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, #{}, #{}).
 
+-spec list_distributions_by_origin_request_policy_id(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_distributions_by_origin_request_policy_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_origin_request_policy_id_errors(), tuple()}.
 list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap, []).
 
+-spec list_distributions_by_origin_request_policy_id(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_by_origin_request_policy_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_origin_request_policy_id_errors(), tuple()}.
 list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByOriginRequestPolicyId/", aws_util:encode_uri(OriginRequestPolicyId), ""],
@@ -3617,8 +9465,17 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Qu
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_distributions_by_realtime_log_config(aws_client:aws_client(), list_distributions_by_realtime_log_config_request()) ->
+    {ok, list_distributions_by_realtime_log_config_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_realtime_log_config_errors(), tuple()}.
 list_distributions_by_realtime_log_config(Client, Input) ->
     list_distributions_by_realtime_log_config(Client, Input, []).
+
+-spec list_distributions_by_realtime_log_config(aws_client:aws_client(), list_distributions_by_realtime_log_config_request(), proplists:proplist()) ->
+    {ok, list_distributions_by_realtime_log_config_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_realtime_log_config_errors(), tuple()}.
 list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distributionsByRealtimeLogConfig"],
@@ -3654,14 +9511,26 @@ list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_distributions_by_response_headers_policy_id(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_distributions_by_response_headers_policy_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_response_headers_policy_id_errors(), tuple()}.
 list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId)
   when is_map(Client) ->
     list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, #{}, #{}).
 
+-spec list_distributions_by_response_headers_policy_id(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_distributions_by_response_headers_policy_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_response_headers_policy_id_errors(), tuple()}.
 list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, QueryMap, HeadersMap, []).
 
+-spec list_distributions_by_response_headers_policy_id(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_by_response_headers_policy_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_response_headers_policy_id_errors(), tuple()}.
 list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByResponseHeadersPolicyId/", aws_util:encode_uri(ResponseHeadersPolicyId), ""],
@@ -3685,14 +9554,26 @@ list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId
 
 %% @doc List the distributions that are associated with a specified WAF web
 %% ACL.
+-spec list_distributions_by_web_acl_id(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_distributions_by_web_acl_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_web_acl_id_errors(), tuple()}.
 list_distributions_by_web_acl_id(Client, WebACLId)
   when is_map(Client) ->
     list_distributions_by_web_acl_id(Client, WebACLId, #{}, #{}).
 
+-spec list_distributions_by_web_acl_id(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_distributions_by_web_acl_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_web_acl_id_errors(), tuple()}.
 list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, []).
 
+-spec list_distributions_by_web_acl_id(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_by_web_acl_id_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_web_acl_id_errors(), tuple()}.
 list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByWebACLId/", aws_util:encode_uri(WebACLId), ""],
@@ -3717,14 +9598,26 @@ list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, Options
 %% @doc List all field-level encryption configurations that have been created
 %% in CloudFront for this
 %% account.
+-spec list_field_level_encryption_configs(aws_client:aws_client()) ->
+    {ok, list_field_level_encryption_configs_result(), tuple()} |
+    {error, any()} |
+    {error, list_field_level_encryption_configs_errors(), tuple()}.
 list_field_level_encryption_configs(Client)
   when is_map(Client) ->
     list_field_level_encryption_configs(Client, #{}, #{}).
 
+-spec list_field_level_encryption_configs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_field_level_encryption_configs_result(), tuple()} |
+    {error, any()} |
+    {error, list_field_level_encryption_configs_errors(), tuple()}.
 list_field_level_encryption_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_field_level_encryption_configs(Client, QueryMap, HeadersMap, []).
 
+-spec list_field_level_encryption_configs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_field_level_encryption_configs_result(), tuple()} |
+    {error, any()} |
+    {error, list_field_level_encryption_configs_errors(), tuple()}.
 list_field_level_encryption_configs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption"],
@@ -3749,14 +9642,26 @@ list_field_level_encryption_configs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Request a list of field-level encryption profiles that have been
 %% created in CloudFront for
 %% this account.
+-spec list_field_level_encryption_profiles(aws_client:aws_client()) ->
+    {ok, list_field_level_encryption_profiles_result(), tuple()} |
+    {error, any()} |
+    {error, list_field_level_encryption_profiles_errors(), tuple()}.
 list_field_level_encryption_profiles(Client)
   when is_map(Client) ->
     list_field_level_encryption_profiles(Client, #{}, #{}).
 
+-spec list_field_level_encryption_profiles(aws_client:aws_client(), map(), map()) ->
+    {ok, list_field_level_encryption_profiles_result(), tuple()} |
+    {error, any()} |
+    {error, list_field_level_encryption_profiles_errors(), tuple()}.
 list_field_level_encryption_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, []).
 
+-spec list_field_level_encryption_profiles(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_field_level_encryption_profiles_result(), tuple()} |
+    {error, any()} |
+    {error, list_field_level_encryption_profiles_errors(), tuple()}.
 list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile"],
@@ -3794,14 +9699,26 @@ list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_functions(aws_client:aws_client()) ->
+    {ok, list_functions_result(), tuple()} |
+    {error, any()} |
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client)
   when is_map(Client) ->
     list_functions(Client, #{}, #{}).
 
+-spec list_functions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_functions_result(), tuple()} |
+    {error, any()} |
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions(Client, QueryMap, HeadersMap, []).
 
+-spec list_functions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_functions_result(), tuple()} |
+    {error, any()} |
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/function"],
@@ -3825,14 +9742,26 @@ list_functions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists invalidation batches.
+-spec list_invalidations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_invalidations_result(), tuple()} |
+    {error, any()} |
+    {error, list_invalidations_errors(), tuple()}.
 list_invalidations(Client, DistributionId)
   when is_map(Client) ->
     list_invalidations(Client, DistributionId, #{}, #{}).
 
+-spec list_invalidations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_invalidations_result(), tuple()} |
+    {error, any()} |
+    {error, list_invalidations_errors(), tuple()}.
 list_invalidations(Client, DistributionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invalidations(Client, DistributionId, QueryMap, HeadersMap, []).
 
+-spec list_invalidations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_invalidations_result(), tuple()} |
+    {error, any()} |
+    {error, list_invalidations_errors(), tuple()}.
 list_invalidations(Client, DistributionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
@@ -3865,14 +9794,26 @@ list_invalidations(Client, DistributionId, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_key_groups(aws_client:aws_client()) ->
+    {ok, list_key_groups_result(), tuple()} |
+    {error, any()} |
+    {error, list_key_groups_errors(), tuple()}.
 list_key_groups(Client)
   when is_map(Client) ->
     list_key_groups(Client, #{}, #{}).
 
+-spec list_key_groups(aws_client:aws_client(), map(), map()) ->
+    {ok, list_key_groups_result(), tuple()} |
+    {error, any()} |
+    {error, list_key_groups_errors(), tuple()}.
 list_key_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_key_groups(Client, QueryMap, HeadersMap, []).
 
+-spec list_key_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_key_groups_result(), tuple()} |
+    {error, any()} |
+    {error, list_key_groups_errors(), tuple()}.
 list_key_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-group"],
@@ -3895,14 +9836,26 @@ list_key_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Specifies the Key Value Stores to list.
+-spec list_key_value_stores(aws_client:aws_client()) ->
+    {ok, list_key_value_stores_result(), tuple()} |
+    {error, any()} |
+    {error, list_key_value_stores_errors(), tuple()}.
 list_key_value_stores(Client)
   when is_map(Client) ->
     list_key_value_stores(Client, #{}, #{}).
 
+-spec list_key_value_stores(aws_client:aws_client(), map(), map()) ->
+    {ok, list_key_value_stores_result(), tuple()} |
+    {error, any()} |
+    {error, list_key_value_stores_errors(), tuple()}.
 list_key_value_stores(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_key_value_stores(Client, QueryMap, HeadersMap, []).
 
+-spec list_key_value_stores(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_key_value_stores_result(), tuple()} |
+    {error, any()} |
+    {error, list_key_value_stores_errors(), tuple()}.
 list_key_value_stores(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-value-store"],
@@ -3937,14 +9890,26 @@ list_key_value_stores(Client, QueryMap, HeadersMap, Options0)
 %% request that specifies the `NextMarker' value from the current
 %% response as
 %% the `Marker' value in the next request.
+-spec list_origin_access_controls(aws_client:aws_client()) ->
+    {ok, list_origin_access_controls_result(), tuple()} |
+    {error, any()} |
+    {error, list_origin_access_controls_errors(), tuple()}.
 list_origin_access_controls(Client)
   when is_map(Client) ->
     list_origin_access_controls(Client, #{}, #{}).
 
+-spec list_origin_access_controls(aws_client:aws_client(), map(), map()) ->
+    {ok, list_origin_access_controls_result(), tuple()} |
+    {error, any()} |
+    {error, list_origin_access_controls_errors(), tuple()}.
 list_origin_access_controls(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_access_controls(Client, QueryMap, HeadersMap, []).
 
+-spec list_origin_access_controls(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_origin_access_controls_result(), tuple()} |
+    {error, any()} |
+    {error, list_origin_access_controls_errors(), tuple()}.
 list_origin_access_controls(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-control"],
@@ -3982,14 +9947,26 @@ list_origin_access_controls(Client, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_origin_request_policies(aws_client:aws_client()) ->
+    {ok, list_origin_request_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_origin_request_policies_errors(), tuple()}.
 list_origin_request_policies(Client)
   when is_map(Client) ->
     list_origin_request_policies(Client, #{}, #{}).
 
+-spec list_origin_request_policies(aws_client:aws_client(), map(), map()) ->
+    {ok, list_origin_request_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_origin_request_policies_errors(), tuple()}.
 list_origin_request_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_request_policies(Client, QueryMap, HeadersMap, []).
 
+-spec list_origin_request_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_origin_request_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_origin_request_policies_errors(), tuple()}.
 list_origin_request_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-request-policy"],
@@ -4014,14 +9991,26 @@ list_origin_request_policies(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List all public keys that have been added to CloudFront for this
 %% account.
+-spec list_public_keys(aws_client:aws_client()) ->
+    {ok, list_public_keys_result(), tuple()} |
+    {error, any()} |
+    {error, list_public_keys_errors(), tuple()}.
 list_public_keys(Client)
   when is_map(Client) ->
     list_public_keys(Client, #{}, #{}).
 
+-spec list_public_keys(aws_client:aws_client(), map(), map()) ->
+    {ok, list_public_keys_result(), tuple()} |
+    {error, any()} |
+    {error, list_public_keys_errors(), tuple()}.
 list_public_keys(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_public_keys(Client, QueryMap, HeadersMap, []).
 
+-spec list_public_keys(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_public_keys_result(), tuple()} |
+    {error, any()} |
+    {error, list_public_keys_errors(), tuple()}.
 list_public_keys(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/public-key"],
@@ -4054,14 +10043,26 @@ list_public_keys(Client, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_realtime_log_configs(aws_client:aws_client()) ->
+    {ok, list_realtime_log_configs_result(), tuple()} |
+    {error, any()} |
+    {error, list_realtime_log_configs_errors(), tuple()}.
 list_realtime_log_configs(Client)
   when is_map(Client) ->
     list_realtime_log_configs(Client, #{}, #{}).
 
+-spec list_realtime_log_configs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_realtime_log_configs_result(), tuple()} |
+    {error, any()} |
+    {error, list_realtime_log_configs_errors(), tuple()}.
 list_realtime_log_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_realtime_log_configs(Client, QueryMap, HeadersMap, []).
 
+-spec list_realtime_log_configs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_realtime_log_configs_result(), tuple()} |
+    {error, any()} |
+    {error, list_realtime_log_configs_errors(), tuple()}.
 list_realtime_log_configs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/realtime-log-config"],
@@ -4098,14 +10099,26 @@ list_realtime_log_configs(Client, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
+-spec list_response_headers_policies(aws_client:aws_client()) ->
+    {ok, list_response_headers_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_response_headers_policies_errors(), tuple()}.
 list_response_headers_policies(Client)
   when is_map(Client) ->
     list_response_headers_policies(Client, #{}, #{}).
 
+-spec list_response_headers_policies(aws_client:aws_client(), map(), map()) ->
+    {ok, list_response_headers_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_response_headers_policies_errors(), tuple()}.
 list_response_headers_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_response_headers_policies(Client, QueryMap, HeadersMap, []).
 
+-spec list_response_headers_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_response_headers_policies_result(), tuple()} |
+    {error, any()} |
+    {error, list_response_headers_policies_errors(), tuple()}.
 list_response_headers_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/response-headers-policy"],
@@ -4129,14 +10142,26 @@ list_response_headers_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List streaming distributions.
+-spec list_streaming_distributions(aws_client:aws_client()) ->
+    {ok, list_streaming_distributions_result(), tuple()} |
+    {error, any()} |
+    {error, list_streaming_distributions_errors(), tuple()}.
 list_streaming_distributions(Client)
   when is_map(Client) ->
     list_streaming_distributions(Client, #{}, #{}).
 
+-spec list_streaming_distributions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_streaming_distributions_result(), tuple()} |
+    {error, any()} |
+    {error, list_streaming_distributions_errors(), tuple()}.
 list_streaming_distributions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streaming_distributions(Client, QueryMap, HeadersMap, []).
 
+-spec list_streaming_distributions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_streaming_distributions_result(), tuple()} |
+    {error, any()} |
+    {error, list_streaming_distributions_errors(), tuple()}.
 list_streaming_distributions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/streaming-distribution"],
@@ -4159,14 +10184,26 @@ list_streaming_distributions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List tags for a CloudFront resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Resource)
   when is_map(Client) ->
     list_tags_for_resource(Client, Resource, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Resource, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/tagging"],
@@ -4204,8 +10241,17 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options0)
 %% version
 %% (`ETag' value). To get these values, you can use
 %% `ListFunctions' and `DescribeFunction'.
+-spec publish_function(aws_client:aws_client(), binary() | list(), publish_function_request()) ->
+    {ok, publish_function_result(), tuple()} |
+    {error, any()} |
+    {error, publish_function_errors(), tuple()}.
 publish_function(Client, Name, Input) ->
     publish_function(Client, Name, Input, []).
+
+-spec publish_function(aws_client:aws_client(), binary() | list(), publish_function_request(), proplists:proplist()) ->
+    {ok, publish_function_result(), tuple()} |
+    {error, any()} |
+    {error, publish_function_errors(), tuple()}.
 publish_function(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), "/publish"],
@@ -4231,8 +10277,17 @@ publish_function(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Add tags to a CloudFront resource.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/tagging?Operation=Tag"],
@@ -4276,8 +10331,17 @@ tag_resource(Client, Input0, Options0) ->
 %% value) along with the event object. To get the function's name and
 %% version, you can use
 %% `ListFunctions' and `DescribeFunction'.
+-spec test_function(aws_client:aws_client(), binary() | list(), test_function_request()) ->
+    {ok, test_function_result(), tuple()} |
+    {error, any()} |
+    {error, test_function_errors(), tuple()}.
 test_function(Client, Name, Input) ->
     test_function(Client, Name, Input, []).
+
+-spec test_function(aws_client:aws_client(), binary() | list(), test_function_request(), proplists:proplist()) ->
+    {ok, test_function_result(), tuple()} |
+    {error, any()} |
+    {error, test_function_errors(), tuple()}.
 test_function(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), "/test"],
@@ -4303,8 +10367,17 @@ test_function(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove tags from a CloudFront resource.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/tagging?Operation=Untag"],
@@ -4345,8 +10418,17 @@ untag_resource(Client, Input0, Options0) ->
 %% Call `UpdateCachePolicy' by providing the entire cache policy
 %% configuration, including the fields that you modified and those that you
 %% didn't.
+-spec update_cache_policy(aws_client:aws_client(), binary() | list(), update_cache_policy_request()) ->
+    {ok, update_cache_policy_result(), tuple()} |
+    {error, any()} |
+    {error, update_cache_policy_errors(), tuple()}.
 update_cache_policy(Client, Id, Input) ->
     update_cache_policy(Client, Id, Input, []).
+
+-spec update_cache_policy(aws_client:aws_client(), binary() | list(), update_cache_policy_request(), proplists:proplist()) ->
+    {ok, update_cache_policy_result(), tuple()} |
+    {error, any()} |
+    {error, update_cache_policy_errors(), tuple()}.
 update_cache_policy(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
@@ -4388,8 +10470,17 @@ update_cache_policy(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Update an origin access identity.
+-spec update_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), update_cloud_front_origin_access_identity_request()) ->
+    {ok, update_cloud_front_origin_access_identity_result(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_front_origin_access_identity_errors(), tuple()}.
 update_cloud_front_origin_access_identity(Client, Id, Input) ->
     update_cloud_front_origin_access_identity(Client, Id, Input, []).
+
+-spec update_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), update_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
+    {ok, update_cloud_front_origin_access_identity_result(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_front_origin_access_identity_errors(), tuple()}.
 update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
@@ -4456,8 +10547,17 @@ update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
 %% Use `UpdateContinuousDeploymentPolicy', providing the entire
 %% continuous deployment policy configuration, including the fields that you
 %% modified and those that you didn't.
+-spec update_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), update_continuous_deployment_policy_request()) ->
+    {ok, update_continuous_deployment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, update_continuous_deployment_policy_errors(), tuple()}.
 update_continuous_deployment_policy(Client, Id, Input) ->
     update_continuous_deployment_policy(Client, Id, Input, []).
+
+-spec update_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), update_continuous_deployment_policy_request(), proplists:proplist()) ->
+    {ok, update_continuous_deployment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, update_continuous_deployment_policy_errors(), tuple()}.
 update_continuous_deployment_policy(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), ""],
@@ -4530,8 +10630,17 @@ update_continuous_deployment_policy(Client, Id, Input0, Options0) ->
 %% merged into your existing configuration. Make sure to include all fields:
 %% the
 %% ones that you modified and also the ones that you didn't.
+-spec update_distribution(aws_client:aws_client(), binary() | list(), update_distribution_request()) ->
+    {ok, update_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, update_distribution_errors(), tuple()}.
 update_distribution(Client, Id, Input) ->
     update_distribution(Client, Id, Input, []).
+
+-spec update_distribution(aws_client:aws_client(), binary() | list(), update_distribution_request(), proplists:proplist()) ->
+    {ok, update_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, update_distribution_errors(), tuple()}.
 update_distribution(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/config"],
@@ -4602,8 +10711,17 @@ update_distribution(Client, Id, Input0, Options0) ->
 %%
 %% UpdateDistribution:
 %% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html
+-spec update_distribution_with_staging_config(aws_client:aws_client(), binary() | list(), update_distribution_with_staging_config_request()) ->
+    {ok, update_distribution_with_staging_config_result(), tuple()} |
+    {error, any()} |
+    {error, update_distribution_with_staging_config_errors(), tuple()}.
 update_distribution_with_staging_config(Client, Id, Input) ->
     update_distribution_with_staging_config(Client, Id, Input, []).
+
+-spec update_distribution_with_staging_config(aws_client:aws_client(), binary() | list(), update_distribution_with_staging_config_request(), proplists:proplist()) ->
+    {ok, update_distribution_with_staging_config_result(), tuple()} |
+    {error, any()} |
+    {error, update_distribution_with_staging_config_errors(), tuple()}.
 update_distribution_with_staging_config(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/promote-staging-config"],
@@ -4646,8 +10764,17 @@ update_distribution_with_staging_config(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Update a field-level encryption configuration.
+-spec update_field_level_encryption_config(aws_client:aws_client(), binary() | list(), update_field_level_encryption_config_request()) ->
+    {ok, update_field_level_encryption_config_result(), tuple()} |
+    {error, any()} |
+    {error, update_field_level_encryption_config_errors(), tuple()}.
 update_field_level_encryption_config(Client, Id, Input) ->
     update_field_level_encryption_config(Client, Id, Input, []).
+
+-spec update_field_level_encryption_config(aws_client:aws_client(), binary() | list(), update_field_level_encryption_config_request(), proplists:proplist()) ->
+    {ok, update_field_level_encryption_config_result(), tuple()} |
+    {error, any()} |
+    {error, update_field_level_encryption_config_errors(), tuple()}.
 update_field_level_encryption_config(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), "/config"],
@@ -4689,8 +10816,17 @@ update_field_level_encryption_config(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Update a field-level encryption profile.
+-spec update_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), update_field_level_encryption_profile_request()) ->
+    {ok, update_field_level_encryption_profile_result(), tuple()} |
+    {error, any()} |
+    {error, update_field_level_encryption_profile_errors(), tuple()}.
 update_field_level_encryption_profile(Client, Id, Input) ->
     update_field_level_encryption_profile(Client, Id, Input, []).
+
+-spec update_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), update_field_level_encryption_profile_request(), proplists:proplist()) ->
+    {ok, update_field_level_encryption_profile_result(), tuple()} |
+    {error, any()} |
+    {error, update_field_level_encryption_profile_errors(), tuple()}.
 update_field_level_encryption_profile(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), "/config"],
@@ -4742,8 +10878,17 @@ update_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 %% value) along with the updated function code. To get the name and version,
 %% you can use
 %% `ListFunctions' and `DescribeFunction'.
+-spec update_function(aws_client:aws_client(), binary() | list(), update_function_request()) ->
+    {ok, update_function_result(), tuple()} |
+    {error, any()} |
+    {error, update_function_errors(), tuple()}.
 update_function(Client, Name, Input) ->
     update_function(Client, Name, Input, []).
+
+-spec update_function(aws_client:aws_client(), binary() | list(), update_function_request(), proplists:proplist()) ->
+    {ok, update_function_result(), tuple()} |
+    {error, any()} |
+    {error, update_function_errors(), tuple()}.
 update_function(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), ""],
@@ -4800,8 +10945,17 @@ update_function(Client, Name, Input0, Options0) ->
 %%
 %% Call `UpdateKeyGroup' with the entire key group object, including
 %% the fields that you modified and those that you didn't.
+-spec update_key_group(aws_client:aws_client(), binary() | list(), update_key_group_request()) ->
+    {ok, update_key_group_result(), tuple()} |
+    {error, any()} |
+    {error, update_key_group_errors(), tuple()}.
 update_key_group(Client, Id, Input) ->
     update_key_group(Client, Id, Input, []).
+
+-spec update_key_group(aws_client:aws_client(), binary() | list(), update_key_group_request(), proplists:proplist()) ->
+    {ok, update_key_group_result(), tuple()} |
+    {error, any()} |
+    {error, update_key_group_errors(), tuple()}.
 update_key_group(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
@@ -4843,8 +10997,17 @@ update_key_group(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Specifies the Key Value Store to update.
+-spec update_key_value_store(aws_client:aws_client(), binary() | list(), update_key_value_store_request()) ->
+    {ok, update_key_value_store_result(), tuple()} |
+    {error, any()} |
+    {error, update_key_value_store_errors(), tuple()}.
 update_key_value_store(Client, Name, Input) ->
     update_key_value_store(Client, Name, Input, []).
+
+-spec update_key_value_store(aws_client:aws_client(), binary() | list(), update_key_value_store_request(), proplists:proplist()) ->
+    {ok, update_key_value_store_result(), tuple()} |
+    {error, any()} |
+    {error, update_key_value_store_errors(), tuple()}.
 update_key_value_store(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/key-value-store/", aws_util:encode_uri(Name), ""],
@@ -4886,8 +11049,17 @@ update_key_value_store(Client, Name, Input0, Options0) ->
     end.
 
 %% @doc Updates a CloudFront origin access control.
+-spec update_origin_access_control(aws_client:aws_client(), binary() | list(), update_origin_access_control_request()) ->
+    {ok, update_origin_access_control_result(), tuple()} |
+    {error, any()} |
+    {error, update_origin_access_control_errors(), tuple()}.
 update_origin_access_control(Client, Id, Input) ->
     update_origin_access_control(Client, Id, Input, []).
+
+-spec update_origin_access_control(aws_client:aws_client(), binary() | list(), update_origin_access_control_request(), proplists:proplist()) ->
+    {ok, update_origin_access_control_result(), tuple()} |
+    {error, any()} |
+    {error, update_origin_access_control_errors(), tuple()}.
 update_origin_access_control(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), "/config"],
@@ -4947,8 +11119,17 @@ update_origin_access_control(Client, Id, Input0, Options0) ->
 %% request policy configuration, including the fields that you modified and
 %% those
 %% that you didn't.
+-spec update_origin_request_policy(aws_client:aws_client(), binary() | list(), update_origin_request_policy_request()) ->
+    {ok, update_origin_request_policy_result(), tuple()} |
+    {error, any()} |
+    {error, update_origin_request_policy_errors(), tuple()}.
 update_origin_request_policy(Client, Id, Input) ->
     update_origin_request_policy(Client, Id, Input, []).
+
+-spec update_origin_request_policy(aws_client:aws_client(), binary() | list(), update_origin_request_policy_request(), proplists:proplist()) ->
+    {ok, update_origin_request_policy_result(), tuple()} |
+    {error, any()} |
+    {error, update_origin_request_policy_errors(), tuple()}.
 update_origin_request_policy(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
@@ -4993,8 +11174,17 @@ update_origin_request_policy(Client, Id, Input0, Options0) ->
 %%
 %% Note that the only value you can change is the
 %% comment.
+-spec update_public_key(aws_client:aws_client(), binary() | list(), update_public_key_request()) ->
+    {ok, update_public_key_result(), tuple()} |
+    {error, any()} |
+    {error, update_public_key_errors(), tuple()}.
 update_public_key(Client, Id, Input) ->
     update_public_key(Client, Id, Input, []).
+
+-spec update_public_key(aws_client:aws_client(), binary() | list(), update_public_key_request(), proplists:proplist()) ->
+    {ok, update_public_key_result(), tuple()} |
+    {error, any()} |
+    {error, update_public_key_errors(), tuple()}.
 update_public_key(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), "/config"],
@@ -5057,8 +11247,17 @@ update_public_key(Client, Id, Input0, Options0) ->
 %%
 %% You cannot update a real-time log configuration's `Name' or
 %% `ARN'.
+-spec update_realtime_log_config(aws_client:aws_client(), update_realtime_log_config_request()) ->
+    {ok, update_realtime_log_config_result(), tuple()} |
+    {error, any()} |
+    {error, update_realtime_log_config_errors(), tuple()}.
 update_realtime_log_config(Client, Input) ->
     update_realtime_log_config(Client, Input, []).
+
+-spec update_realtime_log_config(aws_client:aws_client(), update_realtime_log_config_request(), proplists:proplist()) ->
+    {ok, update_realtime_log_config_result(), tuple()} |
+    {error, any()} |
+    {error, update_realtime_log_config_errors(), tuple()}.
 update_realtime_log_config(Client, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/realtime-log-config"],
@@ -5100,8 +11299,17 @@ update_realtime_log_config(Client, Input0, Options0) ->
 %% headers policy configuration, including the fields that you modified and
 %% those
 %% that you didn't.
+-spec update_response_headers_policy(aws_client:aws_client(), binary() | list(), update_response_headers_policy_request()) ->
+    {ok, update_response_headers_policy_result(), tuple()} |
+    {error, any()} |
+    {error, update_response_headers_policy_errors(), tuple()}.
 update_response_headers_policy(Client, Id, Input) ->
     update_response_headers_policy(Client, Id, Input, []).
+
+-spec update_response_headers_policy(aws_client:aws_client(), binary() | list(), update_response_headers_policy_request(), proplists:proplist()) ->
+    {ok, update_response_headers_policy_result(), tuple()} |
+    {error, any()} |
+    {error, update_response_headers_policy_errors(), tuple()}.
 update_response_headers_policy(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), ""],
@@ -5143,8 +11351,17 @@ update_response_headers_policy(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Update a streaming distribution.
+-spec update_streaming_distribution(aws_client:aws_client(), binary() | list(), update_streaming_distribution_request()) ->
+    {ok, update_streaming_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, update_streaming_distribution_errors(), tuple()}.
 update_streaming_distribution(Client, Id, Input) ->
     update_streaming_distribution(Client, Id, Input, []).
+
+-spec update_streaming_distribution(aws_client:aws_client(), binary() | list(), update_streaming_distribution_request(), proplists:proplist()) ->
+    {ok, update_streaming_distribution_result(), tuple()} |
+    {error, any()} |
+    {error, update_streaming_distribution_errors(), tuple()}.
 update_streaming_distribution(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],
@@ -5189,7 +11406,7 @@ update_streaming_distribution(Client, Id, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

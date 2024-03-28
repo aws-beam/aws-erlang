@@ -39,6 +39,1178 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% http_endpoint_request_configuration() :: #{
+%%   <<"CommonAttributes">> => list(http_endpoint_common_attribute()()),
+%%   <<"ContentEncoding">> => list(any())
+%% }
+-type http_endpoint_request_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% record() :: #{
+%%   <<"Data">> => binary()
+%% }
+-type record() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"KMSEncryptionConfig">> => kms_encryption_config(),
+%%   <<"NoEncryptionConfig">> => list(any())
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% http_endpoint_buffering_hints() :: #{
+%%   <<"IntervalInSeconds">> => integer(),
+%%   <<"SizeInMBs">> => integer()
+%% }
+-type http_endpoint_buffering_hints() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_kms_resource_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_kms_resource_exception() :: #{binary() => any()}.
+
+%% Example:
+%% failure_description() :: #{
+%%   <<"Details">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type failure_description() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_retry_options() :: #{
+%%   <<"DurationInSeconds">> => integer()
+%% }
+-type redshift_retry_options() :: #{binary() => any()}.
+
+%% Example:
+%% amazon_open_search_serverless_buffering_hints() :: #{
+%%   <<"IntervalInSeconds">> => integer(),
+%%   <<"SizeInMBs">> => integer()
+%% }
+-type amazon_open_search_serverless_buffering_hints() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_configuration() :: #{
+%%   <<"RoleARN">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% snowflake_vpc_configuration() :: #{
+%%   <<"PrivateLinkVpceId">> => string()
+%% }
+-type snowflake_vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_destination_output() :: #{
+
+%% }
+-type update_destination_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_delivery_stream_encryption_output() :: #{
+
+%% }
+-type start_delivery_stream_encryption_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% extended_s3_destination_description() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"BufferingHints">> => buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"CompressionFormat">> => list(any()),
+%%   <<"CustomTimeZone">> => string(),
+%%   <<"DataFormatConversionConfiguration">> => data_format_conversion_configuration(),
+%%   <<"DynamicPartitioningConfiguration">> => dynamic_partitioning_configuration(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ErrorOutputPrefix">> => string(),
+%%   <<"FileExtension">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupDescription">> => s3_destination_description(),
+%%   <<"S3BackupMode">> => list(any())
+%% }
+-type extended_s3_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_delivery_stream_output() :: #{
+%%   <<"HasMoreTags">> => boolean(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_delivery_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% snowflake_destination_update() :: #{
+%%   <<"AccountUrl">> => string(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ContentColumnName">> => string(),
+%%   <<"DataLoadingOption">> => list(any()),
+%%   <<"Database">> => string(),
+%%   <<"KeyPassphrase">> => string(),
+%%   <<"MetaDataColumnName">> => string(),
+%%   <<"PrivateKey">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => snowflake_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Update">> => s3_destination_update(),
+%%   <<"Schema">> => string(),
+%%   <<"SnowflakeRoleConfiguration">> => snowflake_role_configuration(),
+%%   <<"Table">> => string(),
+%%   <<"User">> => string()
+%% }
+-type snowflake_destination_update() :: #{binary() => any()}.
+
+%% Example:
+%% start_delivery_stream_encryption_input() :: #{
+%%   <<"DeliveryStreamEncryptionConfigurationInput">> => delivery_stream_encryption_configuration_input(),
+%%   <<"DeliveryStreamName">> := string()
+%% }
+-type start_delivery_stream_encryption_input() :: #{binary() => any()}.
+
+%% Example:
+%% amazon_open_search_serverless_destination_description() :: #{
+%%   <<"BufferingHints">> => amazon_open_search_serverless_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"CollectionEndpoint">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => amazon_open_search_serverless_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3DestinationDescription">> => s3_destination_description(),
+%%   <<"VpcConfigurationDescription">> => vpc_configuration_description()
+%% }
+-type amazon_open_search_serverless_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% s3_destination_update() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"BufferingHints">> => buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"CompressionFormat">> => list(any()),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ErrorOutputPrefix">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type s3_destination_update() :: #{binary() => any()}.
+
+%% Example:
+%% create_delivery_stream_input() :: #{
+%%   <<"AmazonOpenSearchServerlessDestinationConfiguration">> => amazon_open_search_serverless_destination_configuration(),
+%%   <<"AmazonopensearchserviceDestinationConfiguration">> => amazonopensearchservice_destination_configuration(),
+%%   <<"DeliveryStreamEncryptionConfigurationInput">> => delivery_stream_encryption_configuration_input(),
+%%   <<"DeliveryStreamName">> := string(),
+%%   <<"DeliveryStreamType">> => list(any()),
+%%   <<"ElasticsearchDestinationConfiguration">> => elasticsearch_destination_configuration(),
+%%   <<"ExtendedS3DestinationConfiguration">> => extended_s3_destination_configuration(),
+%%   <<"HttpEndpointDestinationConfiguration">> => http_endpoint_destination_configuration(),
+%%   <<"KinesisStreamSourceConfiguration">> => kinesis_stream_source_configuration(),
+%%   <<"MSKSourceConfiguration">> => m_s_k_source_configuration(),
+%%   <<"RedshiftDestinationConfiguration">> => redshift_destination_configuration(),
+%%   <<"S3DestinationConfiguration">> => s3_destination_configuration(),
+%%   <<"SnowflakeDestinationConfiguration">> => snowflake_destination_configuration(),
+%%   <<"SplunkDestinationConfiguration">> => splunk_destination_configuration(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_delivery_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_configuration_description() :: #{
+%%   <<"RoleARN">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% source_description() :: #{
+%%   <<"KinesisStreamSourceDescription">> => kinesis_stream_source_description(),
+%%   <<"MSKSourceDescription">> => m_s_k_source_description()
+%% }
+-type source_description() :: #{binary() => any()}.
+
+%% Example:
+%% http_endpoint_configuration() :: #{
+%%   <<"AccessKey">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type http_endpoint_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% http_endpoint_destination_description() :: #{
+%%   <<"BufferingHints">> => http_endpoint_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"EndpointConfiguration">> => http_endpoint_description(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RequestConfiguration">> => http_endpoint_request_configuration(),
+%%   <<"RetryOptions">> => http_endpoint_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3DestinationDescription">> => s3_destination_description()
+%% }
+-type http_endpoint_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% put_record_batch_input() :: #{
+%%   <<"DeliveryStreamName">> := string(),
+%%   <<"Records">> := list(record()())
+%% }
+-type put_record_batch_input() :: #{binary() => any()}.
+
+%% Example:
+%% m_s_k_source_description() :: #{
+%%   <<"AuthenticationConfiguration">> => authentication_configuration(),
+%%   <<"DeliveryStartTimestamp">> => non_neg_integer(),
+%%   <<"MSKClusterARN">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type m_s_k_source_description() :: #{binary() => any()}.
+
+%% Example:
+%% processor() :: #{
+%%   <<"Parameters">> => list(processor_parameter()()),
+%%   <<"Type">> => list(any())
+%% }
+-type processor() :: #{binary() => any()}.
+
+%% Example:
+%% m_s_k_source_configuration() :: #{
+%%   <<"AuthenticationConfiguration">> => authentication_configuration(),
+%%   <<"MSKClusterARN">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type m_s_k_source_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% snowflake_role_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"SnowflakeRole">> => string()
+%% }
+-type snowflake_role_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_delivery_streams_output() :: #{
+%%   <<"DeliveryStreamNames">> => list(string()()),
+%%   <<"HasMoreDeliveryStreams">> => boolean()
+%% }
+-type list_delivery_streams_output() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_stream_encryption_configuration_input() :: #{
+%%   <<"KeyARN">> => string(),
+%%   <<"KeyType">> => list(any())
+%% }
+-type delivery_stream_encryption_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% elasticsearch_destination_configuration() :: #{
+%%   <<"BufferingHints">> => elasticsearch_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ClusterEndpoint">> => string(),
+%%   <<"DocumentIdOptions">> => document_id_options(),
+%%   <<"DomainARN">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexRotationPeriod">> => list(any()),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => elasticsearch_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Configuration">> => s3_destination_configuration(),
+%%   <<"TypeName">> => string(),
+%%   <<"VpcConfiguration">> => vpc_configuration()
+%% }
+-type elasticsearch_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% splunk_buffering_hints() :: #{
+%%   <<"IntervalInSeconds">> => integer(),
+%%   <<"SizeInMBs">> => integer()
+%% }
+-type splunk_buffering_hints() :: #{binary() => any()}.
+
+%% Example:
+%% http_endpoint_destination_configuration() :: #{
+%%   <<"BufferingHints">> => http_endpoint_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"EndpointConfiguration">> => http_endpoint_configuration(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RequestConfiguration">> => http_endpoint_request_configuration(),
+%%   <<"RetryOptions">> => http_endpoint_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Configuration">> => s3_destination_configuration()
+%% }
+-type http_endpoint_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% destination_description() :: #{
+%%   <<"AmazonOpenSearchServerlessDestinationDescription">> => amazon_open_search_serverless_destination_description(),
+%%   <<"AmazonopensearchserviceDestinationDescription">> => amazonopensearchservice_destination_description(),
+%%   <<"DestinationId">> => string(),
+%%   <<"ElasticsearchDestinationDescription">> => elasticsearch_destination_description(),
+%%   <<"ExtendedS3DestinationDescription">> => extended_s3_destination_description(),
+%%   <<"HttpEndpointDestinationDescription">> => http_endpoint_destination_description(),
+%%   <<"RedshiftDestinationDescription">> => redshift_destination_description(),
+%%   <<"S3DestinationDescription">> => s3_destination_description(),
+%%   <<"SnowflakeDestinationDescription">> => snowflake_destination_description(),
+%%   <<"SplunkDestinationDescription">> => splunk_destination_description()
+%% }
+-type destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% snowflake_destination_description() :: #{
+%%   <<"AccountUrl">> => string(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ContentColumnName">> => string(),
+%%   <<"DataLoadingOption">> => list(any()),
+%%   <<"Database">> => string(),
+%%   <<"MetaDataColumnName">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => snowflake_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3DestinationDescription">> => s3_destination_description(),
+%%   <<"Schema">> => string(),
+%%   <<"SnowflakeRoleConfiguration">> => snowflake_role_configuration(),
+%%   <<"SnowflakeVpcConfiguration">> => snowflake_vpc_configuration(),
+%%   <<"Table">> => string(),
+%%   <<"User">> => string()
+%% }
+-type snowflake_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% open_x_json_ser_de() :: #{
+%%   <<"CaseInsensitive">> => boolean(),
+%%   <<"ColumnToJsonKeyMappings">> => map(),
+%%   <<"ConvertDotsInJsonKeysToUnderscores">> => boolean()
+%% }
+-type open_x_json_ser_de() :: #{binary() => any()}.
+
+%% Example:
+%% update_destination_input() :: #{
+%%   <<"AmazonOpenSearchServerlessDestinationUpdate">> => amazon_open_search_serverless_destination_update(),
+%%   <<"AmazonopensearchserviceDestinationUpdate">> => amazonopensearchservice_destination_update(),
+%%   <<"CurrentDeliveryStreamVersionId">> := string(),
+%%   <<"DeliveryStreamName">> := string(),
+%%   <<"DestinationId">> := string(),
+%%   <<"ElasticsearchDestinationUpdate">> => elasticsearch_destination_update(),
+%%   <<"ExtendedS3DestinationUpdate">> => extended_s3_destination_update(),
+%%   <<"HttpEndpointDestinationUpdate">> => http_endpoint_destination_update(),
+%%   <<"RedshiftDestinationUpdate">> => redshift_destination_update(),
+%%   <<"S3DestinationUpdate">> => s3_destination_update(),
+%%   <<"SnowflakeDestinationUpdate">> => snowflake_destination_update(),
+%%   <<"SplunkDestinationUpdate">> => splunk_destination_update()
+%% }
+-type update_destination_input() :: #{binary() => any()}.
+
+%% Example:
+%% elasticsearch_retry_options() :: #{
+%%   <<"DurationInSeconds">> => integer()
+%% }
+-type elasticsearch_retry_options() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_source_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_source_exception() :: #{binary() => any()}.
+
+%% Example:
+%% copy_command() :: #{
+%%   <<"CopyOptions">> => string(),
+%%   <<"DataTableColumns">> => string(),
+%%   <<"DataTableName">> => string()
+%% }
+-type copy_command() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% amazonopensearchservice_retry_options() :: #{
+%%   <<"DurationInSeconds">> => integer()
+%% }
+-type amazonopensearchservice_retry_options() :: #{binary() => any()}.
+
+%% Example:
+%% document_id_options() :: #{
+%%   <<"DefaultDocumentIdFormat">> => list(any())
+%% }
+-type document_id_options() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_delivery_stream_input() :: #{
+%%   <<"DeliveryStreamName">> := string(),
+%%   <<"ExclusiveStartTagKey">> => string(),
+%%   <<"Limit">> => integer()
+%% }
+-type list_tags_for_delivery_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% snowflake_destination_configuration() :: #{
+%%   <<"AccountUrl">> => string(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ContentColumnName">> => string(),
+%%   <<"DataLoadingOption">> => list(any()),
+%%   <<"Database">> => string(),
+%%   <<"KeyPassphrase">> => string(),
+%%   <<"MetaDataColumnName">> => string(),
+%%   <<"PrivateKey">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => snowflake_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Configuration">> => s3_destination_configuration(),
+%%   <<"Schema">> => string(),
+%%   <<"SnowflakeRoleConfiguration">> => snowflake_role_configuration(),
+%%   <<"SnowflakeVpcConfiguration">> => snowflake_vpc_configuration(),
+%%   <<"Table">> => string(),
+%%   <<"User">> => string()
+%% }
+-type snowflake_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% amazon_open_search_serverless_retry_options() :: #{
+%%   <<"DurationInSeconds">> => integer()
+%% }
+-type amazon_open_search_serverless_retry_options() :: #{binary() => any()}.
+
+%% Example:
+%% s3_destination_configuration() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"BufferingHints">> => buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"CompressionFormat">> => list(any()),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ErrorOutputPrefix">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type s3_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% splunk_destination_update() :: #{
+%%   <<"BufferingHints">> => splunk_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"HECAcknowledgmentTimeoutInSeconds">> => integer(),
+%%   <<"HECEndpoint">> => string(),
+%%   <<"HECEndpointType">> => list(any()),
+%%   <<"HECToken">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => splunk_retry_options(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Update">> => s3_destination_update()
+%% }
+-type splunk_destination_update() :: #{binary() => any()}.
+
+%% Example:
+%% delete_delivery_stream_input() :: #{
+%%   <<"AllowForceDelete">> => boolean(),
+%%   <<"DeliveryStreamName">> := string()
+%% }
+-type delete_delivery_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_stream_encryption_configuration() :: #{
+%%   <<"FailureDescription">> => failure_description(),
+%%   <<"KeyARN">> => string(),
+%%   <<"KeyType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type delivery_stream_encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% amazon_open_search_serverless_destination_configuration() :: #{
+%%   <<"BufferingHints">> => amazon_open_search_serverless_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"CollectionEndpoint">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => amazon_open_search_serverless_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Configuration">> => s3_destination_configuration(),
+%%   <<"VpcConfiguration">> => vpc_configuration()
+%% }
+-type amazon_open_search_serverless_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% tag_delivery_stream_input() :: #{
+%%   <<"DeliveryStreamName">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_delivery_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_record_batch_response_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"RecordId">> => string()
+%% }
+-type put_record_batch_response_entry() :: #{binary() => any()}.
+
+%% Example:
+%% processing_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Processors">> => list(processor()())
+%% }
+-type processing_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_delivery_stream_output() :: #{
+
+%% }
+-type tag_delivery_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_destination_update() :: #{
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ClusterJDBCURL">> => string(),
+%%   <<"CopyCommand">> => copy_command(),
+%%   <<"Password">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => redshift_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3BackupUpdate">> => s3_destination_update(),
+%%   <<"S3Update">> => s3_destination_update(),
+%%   <<"Username">> => string()
+%% }
+-type redshift_destination_update() :: #{binary() => any()}.
+
+%% Example:
+%% buffering_hints() :: #{
+%%   <<"IntervalInSeconds">> => integer(),
+%%   <<"SizeInMBs">> => integer()
+%% }
+-type buffering_hints() :: #{binary() => any()}.
+
+%% Example:
+%% hive_json_ser_de() :: #{
+%%   <<"TimestampFormats">> => list(string()())
+%% }
+-type hive_json_ser_de() :: #{binary() => any()}.
+
+%% Example:
+%% put_record_batch_output() :: #{
+%%   <<"Encrypted">> => boolean(),
+%%   <<"FailedPutCount">> => integer(),
+%%   <<"RequestResponses">> => list(put_record_batch_response_entry()())
+%% }
+-type put_record_batch_output() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_stream_source_description() :: #{
+%%   <<"DeliveryStartTimestamp">> => non_neg_integer(),
+%%   <<"KinesisStreamARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type kinesis_stream_source_description() :: #{binary() => any()}.
+
+%% Example:
+%% http_endpoint_retry_options() :: #{
+%%   <<"DurationInSeconds">> => integer()
+%% }
+-type http_endpoint_retry_options() :: #{binary() => any()}.
+
+%% Example:
+%% elasticsearch_destination_update() :: #{
+%%   <<"BufferingHints">> => elasticsearch_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ClusterEndpoint">> => string(),
+%%   <<"DocumentIdOptions">> => document_id_options(),
+%%   <<"DomainARN">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexRotationPeriod">> => list(any()),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => elasticsearch_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3Update">> => s3_destination_update(),
+%%   <<"TypeName">> => string()
+%% }
+-type elasticsearch_destination_update() :: #{binary() => any()}.
+
+%% Example:
+%% splunk_destination_configuration() :: #{
+%%   <<"BufferingHints">> => splunk_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"HECAcknowledgmentTimeoutInSeconds">> => integer(),
+%%   <<"HECEndpoint">> => string(),
+%%   <<"HECEndpointType">> => list(any()),
+%%   <<"HECToken">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => splunk_retry_options(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Configuration">> => s3_destination_configuration()
+%% }
+-type splunk_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% amazonopensearchservice_destination_configuration() :: #{
+%%   <<"BufferingHints">> => amazonopensearchservice_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ClusterEndpoint">> => string(),
+%%   <<"DocumentIdOptions">> => document_id_options(),
+%%   <<"DomainARN">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexRotationPeriod">> => list(any()),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => amazonopensearchservice_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Configuration">> => s3_destination_configuration(),
+%%   <<"TypeName">> => string(),
+%%   <<"VpcConfiguration">> => vpc_configuration()
+%% }
+-type amazonopensearchservice_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% stop_delivery_stream_encryption_input() :: #{
+%%   <<"DeliveryStreamName">> := string()
+%% }
+-type stop_delivery_stream_encryption_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_delivery_stream_input() :: #{
+%%   <<"DeliveryStreamName">> := string(),
+%%   <<"ExclusiveStartDestinationId">> => string(),
+%%   <<"Limit">> => integer()
+%% }
+-type describe_delivery_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% elasticsearch_destination_description() :: #{
+%%   <<"BufferingHints">> => elasticsearch_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ClusterEndpoint">> => string(),
+%%   <<"DocumentIdOptions">> => document_id_options(),
+%%   <<"DomainARN">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexRotationPeriod">> => list(any()),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => elasticsearch_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3DestinationDescription">> => s3_destination_description(),
+%%   <<"TypeName">> => string(),
+%%   <<"VpcConfigurationDescription">> => vpc_configuration_description()
+%% }
+-type elasticsearch_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% extended_s3_destination_configuration() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"BufferingHints">> => buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"CompressionFormat">> => list(any()),
+%%   <<"CustomTimeZone">> => string(),
+%%   <<"DataFormatConversionConfiguration">> => data_format_conversion_configuration(),
+%%   <<"DynamicPartitioningConfiguration">> => dynamic_partitioning_configuration(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ErrorOutputPrefix">> => string(),
+%%   <<"FileExtension">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupConfiguration">> => s3_destination_configuration(),
+%%   <<"S3BackupMode">> => list(any())
+%% }
+-type extended_s3_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% put_record_output() :: #{
+%%   <<"Encrypted">> => boolean(),
+%%   <<"RecordId">> => string()
+%% }
+-type put_record_output() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_stream_description() :: #{
+%%   <<"CreateTimestamp">> => non_neg_integer(),
+%%   <<"DeliveryStreamARN">> => string(),
+%%   <<"DeliveryStreamEncryptionConfiguration">> => delivery_stream_encryption_configuration(),
+%%   <<"DeliveryStreamName">> => string(),
+%%   <<"DeliveryStreamStatus">> => list(any()),
+%%   <<"DeliveryStreamType">> => list(any()),
+%%   <<"Destinations">> => list(destination_description()()),
+%%   <<"FailureDescription">> => failure_description(),
+%%   <<"HasMoreDestinations">> => boolean(),
+%%   <<"LastUpdateTimestamp">> => non_neg_integer(),
+%%   <<"Source">> => source_description(),
+%%   <<"VersionId">> => string()
+%% }
+-type delivery_stream_description() :: #{binary() => any()}.
+
+%% Example:
+%% amazonopensearchservice_destination_description() :: #{
+%%   <<"BufferingHints">> => amazonopensearchservice_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ClusterEndpoint">> => string(),
+%%   <<"DocumentIdOptions">> => document_id_options(),
+%%   <<"DomainARN">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexRotationPeriod">> => list(any()),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => amazonopensearchservice_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3DestinationDescription">> => s3_destination_description(),
+%%   <<"TypeName">> => string(),
+%%   <<"VpcConfigurationDescription">> => vpc_configuration_description()
+%% }
+-type amazonopensearchservice_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% output_format_configuration() :: #{
+%%   <<"Serializer">> => serializer()
+%% }
+-type output_format_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% snowflake_retry_options() :: #{
+%%   <<"DurationInSeconds">> => integer()
+%% }
+-type snowflake_retry_options() :: #{binary() => any()}.
+
+%% Example:
+%% http_endpoint_description() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type http_endpoint_description() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logging_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogGroupName">> => string(),
+%%   <<"LogStreamName">> => string()
+%% }
+-type cloud_watch_logging_options() :: #{binary() => any()}.
+
+%% Example:
+%% kms_encryption_config() :: #{
+%%   <<"AWSKMSKeyARN">> => string()
+%% }
+-type kms_encryption_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_delivery_stream_output() :: #{
+
+%% }
+-type delete_delivery_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% orc_ser_de() :: #{
+%%   <<"BlockSizeBytes">> => integer(),
+%%   <<"BloomFilterColumns">> => list(string()()),
+%%   <<"BloomFilterFalsePositiveProbability">> => float(),
+%%   <<"Compression">> => list(any()),
+%%   <<"DictionaryKeyThreshold">> => float(),
+%%   <<"EnablePadding">> => boolean(),
+%%   <<"FormatVersion">> => list(any()),
+%%   <<"PaddingTolerance">> => float(),
+%%   <<"RowIndexStride">> => integer(),
+%%   <<"StripeSizeBytes">> => integer()
+%% }
+-type orc_ser_de() :: #{binary() => any()}.
+
+%% Example:
+%% stop_delivery_stream_encryption_output() :: #{
+
+%% }
+-type stop_delivery_stream_encryption_output() :: #{binary() => any()}.
+
+%% Example:
+%% amazonopensearchservice_destination_update() :: #{
+%%   <<"BufferingHints">> => amazonopensearchservice_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ClusterEndpoint">> => string(),
+%%   <<"DocumentIdOptions">> => document_id_options(),
+%%   <<"DomainARN">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexRotationPeriod">> => list(any()),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => amazonopensearchservice_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3Update">> => s3_destination_update(),
+%%   <<"TypeName">> => string()
+%% }
+-type amazonopensearchservice_destination_update() :: #{binary() => any()}.
+
+%% Example:
+%% retry_options() :: #{
+%%   <<"DurationInSeconds">> => integer()
+%% }
+-type retry_options() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_argument_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% parquet_ser_de() :: #{
+%%   <<"BlockSizeBytes">> => integer(),
+%%   <<"Compression">> => list(any()),
+%%   <<"EnableDictionaryCompression">> => boolean(),
+%%   <<"MaxPaddingBytes">> => integer(),
+%%   <<"PageSizeBytes">> => integer(),
+%%   <<"WriterVersion">> => list(any())
+%% }
+-type parquet_ser_de() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% http_endpoint_common_attribute() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeValue">> => string()
+%% }
+-type http_endpoint_common_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_destination_description() :: #{
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ClusterJDBCURL">> => string(),
+%%   <<"CopyCommand">> => copy_command(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => redshift_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupDescription">> => s3_destination_description(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3DestinationDescription">> => s3_destination_description(),
+%%   <<"Username">> => string()
+%% }
+-type redshift_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_destination_configuration() :: #{
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"ClusterJDBCURL">> => string(),
+%%   <<"CopyCommand">> => copy_command(),
+%%   <<"Password">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => redshift_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupConfiguration">> => s3_destination_configuration(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Configuration">> => s3_destination_configuration(),
+%%   <<"Username">> => string()
+%% }
+-type redshift_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% input_format_configuration() :: #{
+%%   <<"Deserializer">> => deserializer()
+%% }
+-type input_format_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_delivery_streams_input() :: #{
+%%   <<"DeliveryStreamType">> => list(any()),
+%%   <<"ExclusiveStartDeliveryStreamName">> => string(),
+%%   <<"Limit">> => integer()
+%% }
+-type list_delivery_streams_input() :: #{binary() => any()}.
+
+%% Example:
+%% schema_configuration() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"RoleARN">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type schema_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% data_format_conversion_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"InputFormatConfiguration">> => input_format_configuration(),
+%%   <<"OutputFormatConfiguration">> => output_format_configuration(),
+%%   <<"SchemaConfiguration">> => schema_configuration()
+%% }
+-type data_format_conversion_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% untag_delivery_stream_input() :: #{
+%%   <<"DeliveryStreamName">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_delivery_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% amazon_open_search_serverless_destination_update() :: #{
+%%   <<"BufferingHints">> => amazon_open_search_serverless_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"CollectionEndpoint">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => amazon_open_search_serverless_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3Update">> => s3_destination_update()
+%% }
+-type amazon_open_search_serverless_destination_update() :: #{binary() => any()}.
+
+%% Example:
+%% s3_destination_description() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"BufferingHints">> => buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"CompressionFormat">> => list(any()),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ErrorOutputPrefix">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type s3_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% untag_delivery_stream_output() :: #{
+
+%% }
+-type untag_delivery_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_delivery_stream_output() :: #{
+%%   <<"DeliveryStreamARN">> => string()
+%% }
+-type create_delivery_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_stream_source_configuration() :: #{
+%%   <<"KinesisStreamARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type kinesis_stream_source_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_configuration() :: #{
+%%   <<"Connectivity">> => list(any()),
+%%   <<"RoleARN">> => string()
+%% }
+-type authentication_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% elasticsearch_buffering_hints() :: #{
+%%   <<"IntervalInSeconds">> => integer(),
+%%   <<"SizeInMBs">> => integer()
+%% }
+-type elasticsearch_buffering_hints() :: #{binary() => any()}.
+
+%% Example:
+%% extended_s3_destination_update() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"BufferingHints">> => buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"CompressionFormat">> => list(any()),
+%%   <<"CustomTimeZone">> => string(),
+%%   <<"DataFormatConversionConfiguration">> => data_format_conversion_configuration(),
+%%   <<"DynamicPartitioningConfiguration">> => dynamic_partitioning_configuration(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ErrorOutputPrefix">> => string(),
+%%   <<"FileExtension">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3BackupUpdate">> => s3_destination_update()
+%% }
+-type extended_s3_destination_update() :: #{binary() => any()}.
+
+%% Example:
+%% put_record_input() :: #{
+%%   <<"DeliveryStreamName">> := string(),
+%%   <<"Record">> := record()
+%% }
+-type put_record_input() :: #{binary() => any()}.
+
+%% Example:
+%% deserializer() :: #{
+%%   <<"HiveJsonSerDe">> => hive_json_ser_de(),
+%%   <<"OpenXJsonSerDe">> => open_x_json_ser_de()
+%% }
+-type deserializer() :: #{binary() => any()}.
+
+%% Example:
+%% amazonopensearchservice_buffering_hints() :: #{
+%%   <<"IntervalInSeconds">> => integer(),
+%%   <<"SizeInMBs">> => integer()
+%% }
+-type amazonopensearchservice_buffering_hints() :: #{binary() => any()}.
+
+%% Example:
+%% splunk_retry_options() :: #{
+%%   <<"DurationInSeconds">> => integer()
+%% }
+-type splunk_retry_options() :: #{binary() => any()}.
+
+%% Example:
+%% dynamic_partitioning_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"RetryOptions">> => retry_options()
+%% }
+-type dynamic_partitioning_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% processor_parameter() :: #{
+%%   <<"ParameterName">> => list(any()),
+%%   <<"ParameterValue">> => string()
+%% }
+-type processor_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_delivery_stream_output() :: #{
+%%   <<"DeliveryStreamDescription">> => delivery_stream_description()
+%% }
+-type describe_delivery_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% splunk_destination_description() :: #{
+%%   <<"BufferingHints">> => splunk_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"HECAcknowledgmentTimeoutInSeconds">> => integer(),
+%%   <<"HECEndpoint">> => string(),
+%%   <<"HECEndpointType">> => list(any()),
+%%   <<"HECToken">> => string(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RetryOptions">> => splunk_retry_options(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3DestinationDescription">> => s3_destination_description()
+%% }
+-type splunk_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% serializer() :: #{
+%%   <<"OrcSerDe">> => orc_ser_de(),
+%%   <<"ParquetSerDe">> => parquet_ser_de()
+%% }
+-type serializer() :: #{binary() => any()}.
+
+%% Example:
+%% http_endpoint_destination_update() :: #{
+%%   <<"BufferingHints">> => http_endpoint_buffering_hints(),
+%%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
+%%   <<"EndpointConfiguration">> => http_endpoint_configuration(),
+%%   <<"ProcessingConfiguration">> => processing_configuration(),
+%%   <<"RequestConfiguration">> => http_endpoint_request_configuration(),
+%%   <<"RetryOptions">> => http_endpoint_retry_options(),
+%%   <<"RoleARN">> => string(),
+%%   <<"S3BackupMode">> => list(any()),
+%%   <<"S3Update">> => s3_destination_update()
+%% }
+-type http_endpoint_destination_update() :: #{binary() => any()}.
+
+-type create_delivery_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_in_use_exception() | 
+    invalid_kms_resource_exception().
+
+-type delete_delivery_stream_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type describe_delivery_stream_errors() ::
+    resource_not_found_exception().
+
+-type list_tags_for_delivery_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception().
+
+-type put_record_errors() ::
+    invalid_argument_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_source_exception() | 
+    invalid_kms_resource_exception().
+
+-type put_record_batch_errors() ::
+    invalid_argument_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_source_exception() | 
+    invalid_kms_resource_exception().
+
+-type start_delivery_stream_encryption_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_kms_resource_exception().
+
+-type stop_delivery_stream_encryption_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type tag_delivery_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type untag_delivery_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type update_destination_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -144,9 +1316,18 @@
 %% information, see Grant Firehose Access to an Amazon S3 Destination:
 %% https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3
 %% in the Amazon Firehose Developer Guide.
+-spec create_delivery_stream(aws_client:aws_client(), create_delivery_stream_input()) ->
+    {ok, create_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, create_delivery_stream_errors(), tuple()}.
 create_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_delivery_stream(Client, Input, []).
+
+-spec create_delivery_stream(aws_client:aws_client(), create_delivery_stream_input(), proplists:proplist()) ->
+    {ok, create_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, create_delivery_stream_errors(), tuple()}.
 create_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeliveryStream">>, Input, Options).
@@ -177,9 +1358,18 @@ create_delivery_stream(Client, Input, Options)
 %% `DELETING' state for several minutes. Therefore, as a best practice,
 %% applications should not wait for streams in the `DELETING' state
 %% to be removed.
+-spec delete_delivery_stream(aws_client:aws_client(), delete_delivery_stream_input()) ->
+    {ok, delete_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, delete_delivery_stream_errors(), tuple()}.
 delete_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_stream(Client, Input, []).
+
+-spec delete_delivery_stream(aws_client:aws_client(), delete_delivery_stream_input(), proplists:proplist()) ->
+    {ok, delete_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, delete_delivery_stream_errors(), tuple()}.
 delete_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeliveryStream">>, Input, Options).
@@ -200,9 +1390,18 @@ delete_delivery_stream(Client, Input, Options)
 %% If the status is `DELETING_FAILED', you can force deletion by invoking
 %% `DeleteDeliveryStream' again but with
 %% `DeleteDeliveryStreamInput$AllowForceDelete' set to true.
+-spec describe_delivery_stream(aws_client:aws_client(), describe_delivery_stream_input()) ->
+    {ok, describe_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, describe_delivery_stream_errors(), tuple()}.
 describe_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_stream(Client, Input, []).
+
+-spec describe_delivery_stream(aws_client:aws_client(), describe_delivery_stream_input(), proplists:proplist()) ->
+    {ok, describe_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, describe_delivery_stream_errors(), tuple()}.
 describe_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveryStream">>, Input, Options).
@@ -222,9 +1421,16 @@ describe_delivery_stream(Client, Input, Options)
 %% again and setting the `ExclusiveStartDeliveryStreamName' parameter to
 %% the name
 %% of the last delivery stream returned in the last call.
+-spec list_delivery_streams(aws_client:aws_client(), list_delivery_streams_input()) ->
+    {ok, list_delivery_streams_output(), tuple()} |
+    {error, any()}.
 list_delivery_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_delivery_streams(Client, Input, []).
+
+-spec list_delivery_streams(aws_client:aws_client(), list_delivery_streams_input(), proplists:proplist()) ->
+    {ok, list_delivery_streams_output(), tuple()} |
+    {error, any()}.
 list_delivery_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeliveryStreams">>, Input, Options).
@@ -233,9 +1439,18 @@ list_delivery_streams(Client, Input, Options)
 %%
 %% This operation has a limit of five
 %% transactions per second per account.
+-spec list_tags_for_delivery_stream(aws_client:aws_client(), list_tags_for_delivery_stream_input()) ->
+    {ok, list_tags_for_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_delivery_stream_errors(), tuple()}.
 list_tags_for_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_delivery_stream(Client, Input, []).
+
+-spec list_tags_for_delivery_stream(aws_client:aws_client(), list_tags_for_delivery_stream_input(), proplists:proplist()) ->
+    {ok, list_tags_for_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_delivery_stream_errors(), tuple()}.
 list_tags_for_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForDeliveryStream">>, Input, Options).
@@ -307,9 +1522,18 @@ list_tags_for_delivery_stream(Client, Input, Options)
 %% Don't concatenate two or more base64 strings to form the data fields
 %% of your records.
 %% Instead, concatenate the raw data, then perform base64 encoding.
+-spec put_record(aws_client:aws_client(), put_record_input()) ->
+    {ok, put_record_output(), tuple()} |
+    {error, any()} |
+    {error, put_record_errors(), tuple()}.
 put_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_record(Client, Input, []).
+
+-spec put_record(aws_client:aws_client(), put_record_input(), proplists:proplist()) ->
+    {ok, put_record_output(), tuple()} |
+    {error, any()} |
+    {error, put_record_errors(), tuple()}.
 put_record(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecord">>, Input, Options).
@@ -413,9 +1637,18 @@ put_record(Client, Input, Options)
 %% Don't concatenate two or more base64 strings to form the data fields
 %% of your records.
 %% Instead, concatenate the raw data, then perform base64 encoding.
+-spec put_record_batch(aws_client:aws_client(), put_record_batch_input()) ->
+    {ok, put_record_batch_output(), tuple()} |
+    {error, any()} |
+    {error, put_record_batch_errors(), tuple()}.
 put_record_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_record_batch(Client, Input, []).
+
+-spec put_record_batch(aws_client:aws_client(), put_record_batch_input(), proplists:proplist()) ->
+    {ok, put_record_batch_output(), tuple()} |
+    {error, any()} |
+    {error, put_record_batch_errors(), tuple()}.
 put_record_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecordBatch">>, Input, Options).
@@ -488,9 +1721,18 @@ put_record_batch(Client, Input, Options)
 %% `StopDeliveryStreamEncryption' 12 times for the same delivery stream
 %% in a
 %% 24-hour period.
+-spec start_delivery_stream_encryption(aws_client:aws_client(), start_delivery_stream_encryption_input()) ->
+    {ok, start_delivery_stream_encryption_output(), tuple()} |
+    {error, any()} |
+    {error, start_delivery_stream_encryption_errors(), tuple()}.
 start_delivery_stream_encryption(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_delivery_stream_encryption(Client, Input, []).
+
+-spec start_delivery_stream_encryption(aws_client:aws_client(), start_delivery_stream_encryption_input(), proplists:proplist()) ->
+    {ok, start_delivery_stream_encryption_output(), tuple()} |
+    {error, any()} |
+    {error, start_delivery_stream_encryption_errors(), tuple()}.
 start_delivery_stream_encryption(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDeliveryStreamEncryption">>, Input, Options).
@@ -529,9 +1771,18 @@ start_delivery_stream_encryption(Client, Input, Options)
 %% `StopDeliveryStreamEncryption' 12 times for the same delivery stream
 %% in a
 %% 24-hour period.
+-spec stop_delivery_stream_encryption(aws_client:aws_client(), stop_delivery_stream_encryption_input()) ->
+    {ok, stop_delivery_stream_encryption_output(), tuple()} |
+    {error, any()} |
+    {error, stop_delivery_stream_encryption_errors(), tuple()}.
 stop_delivery_stream_encryption(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_delivery_stream_encryption(Client, Input, []).
+
+-spec stop_delivery_stream_encryption(aws_client:aws_client(), stop_delivery_stream_encryption_input(), proplists:proplist()) ->
+    {ok, stop_delivery_stream_encryption_output(), tuple()} |
+    {error, any()} |
+    {error, stop_delivery_stream_encryption_errors(), tuple()}.
 stop_delivery_stream_encryption(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDeliveryStreamEncryption">>, Input, Options).
@@ -556,9 +1807,18 @@ stop_delivery_stream_encryption(Client, Input, Options)
 %% Each delivery stream can have up to 50 tags.
 %%
 %% This operation has a limit of five transactions per second per account.
+-spec tag_delivery_stream(aws_client:aws_client(), tag_delivery_stream_input()) ->
+    {ok, tag_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, tag_delivery_stream_errors(), tuple()}.
 tag_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_delivery_stream(Client, Input, []).
+
+-spec tag_delivery_stream(aws_client:aws_client(), tag_delivery_stream_input(), proplists:proplist()) ->
+    {ok, tag_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, tag_delivery_stream_errors(), tuple()}.
 tag_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagDeliveryStream">>, Input, Options).
@@ -571,9 +1831,18 @@ tag_delivery_stream(Client, Input, Options)
 %% If you specify a tag that doesn't exist, the operation ignores it.
 %%
 %% This operation has a limit of five transactions per second per account.
+-spec untag_delivery_stream(aws_client:aws_client(), untag_delivery_stream_input()) ->
+    {ok, untag_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, untag_delivery_stream_errors(), tuple()}.
 untag_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_delivery_stream(Client, Input, []).
+
+-spec untag_delivery_stream(aws_client:aws_client(), untag_delivery_stream_input(), proplists:proplist()) ->
+    {ok, untag_delivery_stream_output(), tuple()} |
+    {error, any()} |
+    {error, untag_delivery_stream_errors(), tuple()}.
 untag_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagDeliveryStream">>, Input, Options).
@@ -622,9 +1891,18 @@ untag_delivery_stream(Client, Input, Options)
 %% retrieved using `DescribeDeliveryStream'. Use the new version ID to
 %% set
 %% `CurrentDeliveryStreamVersionId' in the next call.
+-spec update_destination(aws_client:aws_client(), update_destination_input()) ->
+    {ok, update_destination_output(), tuple()} |
+    {error, any()} |
+    {error, update_destination_errors(), tuple()}.
 update_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_destination(Client, Input, []).
+
+-spec update_destination(aws_client:aws_client(), update_destination_input(), proplists:proplist()) ->
+    {ok, update_destination_output(), tuple()} |
+    {error, any()} |
+    {error, update_destination_errors(), tuple()}.
 update_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDestination">>, Input, Options).

@@ -45,6 +45,609 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_reset_alarm_response() :: #{
+%%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
+%% }
+-type batch_reset_alarm_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_alarm_action_error_entry() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type batch_alarm_action_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% detector_state() :: #{
+%%   <<"stateName">> => string(),
+%%   <<"timers">> => list(timer()()),
+%%   <<"variables">> => list(variable()())
+%% }
+-type detector_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_snooze_alarm_request() :: #{
+%%   <<"snoozeActionRequests">> := list(snooze_alarm_action_request()())
+%% }
+-type batch_snooze_alarm_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% alarm() :: #{
+%%   <<"alarmModelName">> => string(),
+%%   <<"alarmModelVersion">> => string(),
+%%   <<"alarmState">> => alarm_state(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"keyValue">> => string(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"severity">> => integer()
+%% }
+-type alarm() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_alarms_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_alarms_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% acknowledge_action_configuration() :: #{
+%%   <<"note">> => string()
+%% }
+-type acknowledge_action_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% timer() :: #{
+%%   <<"name">> => string(),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type timer() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_detectors_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"stateName">> => string()
+%% }
+-type list_detectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_alarm_action_request() :: #{
+%%   <<"alarmModelName">> => string(),
+%%   <<"keyValue">> => string(),
+%%   <<"note">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type disable_alarm_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_acknowledge_alarm_response() :: #{
+%%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
+%% }
+-type batch_acknowledge_alarm_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_alarm_action_request() :: #{
+%%   <<"alarmModelName">> => string(),
+%%   <<"keyValue">> => string(),
+%%   <<"note">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type reset_alarm_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_message_request() :: #{
+%%   <<"messages">> := list(message()())
+%% }
+-type batch_put_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_action_configuration() :: #{
+%%   <<"note">> => string()
+%% }
+-type enable_action_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_detector_response() :: #{
+%%   <<"batchDeleteDetectorErrorEntries">> => list(batch_delete_detector_error_entry()())
+%% }
+-type batch_delete_detector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_detector_request() :: #{
+%%   <<"keyValue">> => string()
+%% }
+-type describe_detector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% alarm_summary() :: #{
+%%   <<"alarmModelName">> => string(),
+%%   <<"alarmModelVersion">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"keyValue">> => string(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"stateName">> => list(any())
+%% }
+-type alarm_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% simple_rule_evaluation() :: #{
+%%   <<"inputPropertyValue">> => string(),
+%%   <<"operator">> => list(any()),
+%%   <<"thresholdValue">> => string()
+%% }
+-type simple_rule_evaluation() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_acknowledge_alarm_request() :: #{
+%%   <<"acknowledgeActionRequests">> := list(acknowledge_alarm_action_request()())
+%% }
+-type batch_acknowledge_alarm_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% acknowledge_alarm_action_request() :: #{
+%%   <<"alarmModelName">> => string(),
+%%   <<"keyValue">> => string(),
+%%   <<"note">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type acknowledge_alarm_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% detector_state_summary() :: #{
+%%   <<"stateName">> => string()
+%% }
+-type detector_state_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% timer_definition() :: #{
+%%   <<"name">> => string(),
+%%   <<"seconds">> => integer()
+%% }
+-type timer_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_detector_request() :: #{
+%%   <<"detectors">> := list(update_detector_request()())
+%% }
+-type batch_update_detector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_snooze_alarm_response() :: #{
+%%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
+%% }
+-type batch_snooze_alarm_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% customer_action() :: #{
+%%   <<"acknowledgeActionConfiguration">> => acknowledge_action_configuration(),
+%%   <<"actionName">> => list(any()),
+%%   <<"disableActionConfiguration">> => disable_action_configuration(),
+%%   <<"enableActionConfiguration">> => enable_action_configuration(),
+%%   <<"resetActionConfiguration">> => reset_action_configuration(),
+%%   <<"snoozeActionConfiguration">> => snooze_action_configuration()
+%% }
+-type customer_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_action_configuration() :: #{
+%%   <<"note">> => string()
+%% }
+-type disable_action_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% detector_state_definition() :: #{
+%%   <<"stateName">> => string(),
+%%   <<"timers">> => list(timer_definition()()),
+%%   <<"variables">> => list(variable_definition()())
+%% }
+-type detector_state_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_detector_error_entry() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"messageId">> => string()
+%% }
+-type batch_update_detector_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% detector_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"detectorModelName">> => string(),
+%%   <<"detectorModelVersion">> => string(),
+%%   <<"keyValue">> => string(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"state">> => detector_state_summary()
+%% }
+-type detector_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type variable() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disable_alarm_request() :: #{
+%%   <<"disableActionRequests">> := list(disable_alarm_action_request()())
+%% }
+-type batch_disable_alarm_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_alarms_response() :: #{
+%%   <<"alarmSummaries">> => list(alarm_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_alarms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_action_configuration() :: #{
+%%   <<"note">> => string()
+%% }
+-type reset_action_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_alarm_response() :: #{
+%%   <<"alarm">> => alarm()
+%% }
+-type describe_alarm_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_enable_alarm_request() :: #{
+%%   <<"enableActionRequests">> := list(enable_alarm_action_request()())
+%% }
+-type batch_enable_alarm_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_reset_alarm_request() :: #{
+%%   <<"resetActionRequests">> := list(reset_alarm_action_request()())
+%% }
+-type batch_reset_alarm_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_detector_response() :: #{
+%%   <<"detector">> => detector()
+%% }
+-type describe_detector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_detector_request() :: #{
+%%   <<"detectors">> := list(delete_detector_request()())
+%% }
+-type batch_delete_detector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_detectors_response() :: #{
+%%   <<"detectorSummaries">> => list(detector_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_detectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% alarm_state() :: #{
+%%   <<"customerAction">> => customer_action(),
+%%   <<"ruleEvaluation">> => rule_evaluation(),
+%%   <<"stateName">> => list(any()),
+%%   <<"systemEvent">> => system_event()
+%% }
+-type alarm_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% variable_definition() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type variable_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_alarm_request() :: #{
+%%   <<"keyValue">> => string()
+%% }
+-type describe_alarm_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% state_change_configuration() :: #{
+%%   <<"triggerType">> => list(any())
+%% }
+-type state_change_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_message_error_entry() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"messageId">> => string()
+%% }
+-type batch_put_message_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% snooze_action_configuration() :: #{
+%%   <<"note">> => string(),
+%%   <<"snoozeDuration">> => integer()
+%% }
+-type snooze_action_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% snooze_alarm_action_request() :: #{
+%%   <<"alarmModelName">> => string(),
+%%   <<"keyValue">> => string(),
+%%   <<"note">> => string(),
+%%   <<"requestId">> => string(),
+%%   <<"snoozeDuration">> => integer()
+%% }
+-type snooze_alarm_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_event() :: #{
+%%   <<"eventType">> => list(any()),
+%%   <<"stateChangeConfiguration">> => state_change_configuration()
+%% }
+-type system_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_detector_response() :: #{
+%%   <<"batchUpdateDetectorErrorEntries">> => list(batch_update_detector_error_entry()())
+%% }
+-type batch_update_detector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_enable_alarm_response() :: #{
+%%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
+%% }
+-type batch_enable_alarm_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_detector_error_entry() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"messageId">> => string()
+%% }
+-type batch_delete_detector_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_detector_request() :: #{
+%%   <<"detectorModelName">> => string(),
+%%   <<"keyValue">> => string(),
+%%   <<"messageId">> => string(),
+%%   <<"state">> => detector_state_definition()
+%% }
+-type update_detector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_message_response() :: #{
+%%   <<"BatchPutMessageErrorEntries">> => list(batch_put_message_error_entry()())
+%% }
+-type batch_put_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_evaluation() :: #{
+%%   <<"simpleRuleEvaluation">> => simple_rule_evaluation()
+%% }
+-type rule_evaluation() :: #{binary() => any()}.
+
+
+%% Example:
+%% detector() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"detectorModelName">> => string(),
+%%   <<"detectorModelVersion">> => string(),
+%%   <<"keyValue">> => string(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"state">> => detector_state()
+%% }
+-type detector() :: #{binary() => any()}.
+
+
+%% Example:
+%% timestamp_value() :: #{
+%%   <<"timeInMillis">> => float()
+%% }
+-type timestamp_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disable_alarm_response() :: #{
+%%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
+%% }
+-type batch_disable_alarm_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% message() :: #{
+%%   <<"inputName">> => string(),
+%%   <<"messageId">> => string(),
+%%   <<"payload">> => binary(),
+%%   <<"timestamp">> => timestamp_value()
+%% }
+-type message() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_detector_request() :: #{
+%%   <<"detectorModelName">> => string(),
+%%   <<"keyValue">> => string(),
+%%   <<"messageId">> => string()
+%% }
+-type delete_detector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_alarm_action_request() :: #{
+%%   <<"alarmModelName">> => string(),
+%%   <<"keyValue">> => string(),
+%%   <<"note">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type enable_alarm_action_request() :: #{binary() => any()}.
+
+-type batch_acknowledge_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_delete_detector_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_disable_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_enable_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_put_message_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_reset_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_snooze_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type batch_update_detector_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type describe_alarm_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_detector_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_alarms_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_detectors_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -53,8 +656,17 @@
 %%
 %% The alarms change to the `ACKNOWLEDGED' state
 %% after you acknowledge them.
+-spec batch_acknowledge_alarm(aws_client:aws_client(), batch_acknowledge_alarm_request()) ->
+    {ok, batch_acknowledge_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, batch_acknowledge_alarm_errors(), tuple()}.
 batch_acknowledge_alarm(Client, Input) ->
     batch_acknowledge_alarm(Client, Input, []).
+
+-spec batch_acknowledge_alarm(aws_client:aws_client(), batch_acknowledge_alarm_request(), proplists:proplist()) ->
+    {ok, batch_acknowledge_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, batch_acknowledge_alarm_errors(), tuple()}.
 batch_acknowledge_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/acknowledge"],
@@ -84,8 +696,17 @@ batch_acknowledge_alarm(Client, Input0, Options0) ->
 %% longer appear if referenced in the ListDetectors:
 %% https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_ListDetectors.html
 %% API call.
+-spec batch_delete_detector(aws_client:aws_client(), batch_delete_detector_request()) ->
+    {ok, batch_delete_detector_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_detector_errors(), tuple()}.
 batch_delete_detector(Client, Input) ->
     batch_delete_detector(Client, Input, []).
+
+-spec batch_delete_detector(aws_client:aws_client(), batch_delete_detector_request(), proplists:proplist()) ->
+    {ok, batch_delete_detector_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_detector_errors(), tuple()}.
 batch_delete_detector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detectors/delete"],
@@ -112,8 +733,17 @@ batch_delete_detector(Client, Input0, Options0) ->
 %%
 %% The alarms change to the `DISABLED' state after
 %% you disable them.
+-spec batch_disable_alarm(aws_client:aws_client(), batch_disable_alarm_request()) ->
+    {ok, batch_disable_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, batch_disable_alarm_errors(), tuple()}.
 batch_disable_alarm(Client, Input) ->
     batch_disable_alarm(Client, Input, []).
+
+-spec batch_disable_alarm(aws_client:aws_client(), batch_disable_alarm_request(), proplists:proplist()) ->
+    {ok, batch_disable_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, batch_disable_alarm_errors(), tuple()}.
 batch_disable_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/disable"],
@@ -140,8 +770,17 @@ batch_disable_alarm(Client, Input0, Options0) ->
 %%
 %% The alarms change to the `NORMAL' state after you
 %% enable them.
+-spec batch_enable_alarm(aws_client:aws_client(), batch_enable_alarm_request()) ->
+    {ok, batch_enable_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, batch_enable_alarm_errors(), tuple()}.
 batch_enable_alarm(Client, Input) ->
     batch_enable_alarm(Client, Input, []).
+
+-spec batch_enable_alarm(aws_client:aws_client(), batch_enable_alarm_request(), proplists:proplist()) ->
+    {ok, batch_enable_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, batch_enable_alarm_errors(), tuple()}.
 batch_enable_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/enable"],
@@ -174,8 +813,17 @@ batch_enable_alarm(Client, Input0, Options0) ->
 %% guaranteed. To guarantee ordering, you must send messages one at a time
 %% and wait for a
 %% successful response.
+-spec batch_put_message(aws_client:aws_client(), batch_put_message_request()) ->
+    {ok, batch_put_message_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_message_errors(), tuple()}.
 batch_put_message(Client, Input) ->
     batch_put_message(Client, Input, []).
+
+-spec batch_put_message(aws_client:aws_client(), batch_put_message_request(), proplists:proplist()) ->
+    {ok, batch_put_message_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_message_errors(), tuple()}.
 batch_put_message(Client, Input0, Options0) ->
     Method = post,
     Path = ["/inputs/messages"],
@@ -202,8 +850,17 @@ batch_put_message(Client, Input0, Options0) ->
 %%
 %% The alarms return to the `NORMAL' state after you
 %% reset them.
+-spec batch_reset_alarm(aws_client:aws_client(), batch_reset_alarm_request()) ->
+    {ok, batch_reset_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, batch_reset_alarm_errors(), tuple()}.
 batch_reset_alarm(Client, Input) ->
     batch_reset_alarm(Client, Input, []).
+
+-spec batch_reset_alarm(aws_client:aws_client(), batch_reset_alarm_request(), proplists:proplist()) ->
+    {ok, batch_reset_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, batch_reset_alarm_errors(), tuple()}.
 batch_reset_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/reset"],
@@ -230,8 +887,17 @@ batch_reset_alarm(Client, Input0, Options0) ->
 %%
 %% The alarms change to the
 %% `SNOOZE_DISABLED' state after you set them to the snooze mode.
+-spec batch_snooze_alarm(aws_client:aws_client(), batch_snooze_alarm_request()) ->
+    {ok, batch_snooze_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, batch_snooze_alarm_errors(), tuple()}.
 batch_snooze_alarm(Client, Input) ->
     batch_snooze_alarm(Client, Input, []).
+
+-spec batch_snooze_alarm(aws_client:aws_client(), batch_snooze_alarm_request(), proplists:proplist()) ->
+    {ok, batch_snooze_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, batch_snooze_alarm_errors(), tuple()}.
 batch_snooze_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/snooze"],
@@ -257,8 +923,17 @@ batch_snooze_alarm(Client, Input0, Options0) ->
 %% @doc Updates the state, variable values, and timer settings of one or more
 %% detectors
 %% (instances) of a specified detector model.
+-spec batch_update_detector(aws_client:aws_client(), batch_update_detector_request()) ->
+    {ok, batch_update_detector_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_detector_errors(), tuple()}.
 batch_update_detector(Client, Input) ->
     batch_update_detector(Client, Input, []).
+
+-spec batch_update_detector(aws_client:aws_client(), batch_update_detector_request(), proplists:proplist()) ->
+    {ok, batch_update_detector_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_detector_errors(), tuple()}.
 batch_update_detector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detectors"],
@@ -282,14 +957,26 @@ batch_update_detector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an alarm.
+-spec describe_alarm(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, describe_alarm_errors(), tuple()}.
 describe_alarm(Client, AlarmModelName)
   when is_map(Client) ->
     describe_alarm(Client, AlarmModelName, #{}, #{}).
 
+-spec describe_alarm(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, describe_alarm_errors(), tuple()}.
 describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap, []).
 
+-spec describe_alarm(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_alarm_response(), tuple()} |
+    {error, any()} |
+    {error, describe_alarm_errors(), tuple()}.
 describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alarms/", aws_util:encode_uri(AlarmModelName), "/keyValues"],
@@ -311,14 +998,26 @@ describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the specified detector (instance).
+-spec describe_detector(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_detector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_detector_errors(), tuple()}.
 describe_detector(Client, DetectorModelName)
   when is_map(Client) ->
     describe_detector(Client, DetectorModelName, #{}, #{}).
 
+-spec describe_detector(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_detector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_detector_errors(), tuple()}.
 describe_detector(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, []).
 
+-spec describe_detector(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_detector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_detector_errors(), tuple()}.
 describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detectors/", aws_util:encode_uri(DetectorModelName), "/keyValues"],
@@ -343,14 +1042,26 @@ describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
 %%
 %% The operation returns only the metadata associated with each
 %% alarm.
+-spec list_alarms(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_alarms_response(), tuple()} |
+    {error, any()} |
+    {error, list_alarms_errors(), tuple()}.
 list_alarms(Client, AlarmModelName)
   when is_map(Client) ->
     list_alarms(Client, AlarmModelName, #{}, #{}).
 
+-spec list_alarms(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_alarms_response(), tuple()} |
+    {error, any()} |
+    {error, list_alarms_errors(), tuple()}.
 list_alarms(Client, AlarmModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_alarms(Client, AlarmModelName, QueryMap, HeadersMap, []).
 
+-spec list_alarms(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_alarms_response(), tuple()} |
+    {error, any()} |
+    {error, list_alarms_errors(), tuple()}.
 list_alarms(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alarms/", aws_util:encode_uri(AlarmModelName), ""],
@@ -373,14 +1084,26 @@ list_alarms(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists detectors (the instances of a detector model).
+-spec list_detectors(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_detectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_detectors_errors(), tuple()}.
 list_detectors(Client, DetectorModelName)
   when is_map(Client) ->
     list_detectors(Client, DetectorModelName, #{}, #{}).
 
+-spec list_detectors(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_detectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_detectors_errors(), tuple()}.
 list_detectors(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detectors(Client, DetectorModelName, QueryMap, HeadersMap, []).
 
+-spec list_detectors(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_detectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_detectors_errors(), tuple()}.
 list_detectors(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detectors/", aws_util:encode_uri(DetectorModelName), ""],
@@ -407,7 +1130,7 @@ list_detectors(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

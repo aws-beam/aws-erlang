@@ -24,14 +24,144 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% categories() :: #{
+%%   <<"MatchedCategories">> => list(string()()),
+%%   <<"MatchedDetails">> => map()
+%% }
+-type categories() :: #{binary() => any()}.
+
+
+%% Example:
+%% category_details() :: #{
+%%   <<"PointsOfInterest">> => list(point_of_interest()())
+%% }
+-type category_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% character_offsets() :: #{
+%%   <<"BeginOffsetChar">> => integer(),
+%%   <<"EndOffsetChar">> => integer()
+%% }
+-type character_offsets() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% issue_detected() :: #{
+%%   <<"CharacterOffsets">> => character_offsets()
+%% }
+-type issue_detected() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_realtime_contact_analysis_segments_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_realtime_contact_analysis_segments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_realtime_contact_analysis_segments_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Segments">> => list(realtime_contact_analysis_segment()())
+%% }
+-type list_realtime_contact_analysis_segments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% point_of_interest() :: #{
+%%   <<"BeginOffsetMillis">> => integer(),
+%%   <<"EndOffsetMillis">> => integer()
+%% }
+-type point_of_interest() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_contact_analysis_segment() :: #{
+%%   <<"Categories">> => categories(),
+%%   <<"Transcript">> => transcript()
+%% }
+-type realtime_contact_analysis_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transcript() :: #{
+%%   <<"BeginOffsetMillis">> => integer(),
+%%   <<"Content">> => string(),
+%%   <<"EndOffsetMillis">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"IssuesDetected">> => list(issue_detected()()),
+%%   <<"ParticipantId">> => string(),
+%%   <<"ParticipantRole">> => string(),
+%%   <<"Sentiment">> => list(any())
+%% }
+-type transcript() :: #{binary() => any()}.
+
+-type list_realtime_contact_analysis_segments_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Provides a list of analysis segments for a real-time analysis
 %% session.
+-spec list_realtime_contact_analysis_segments(aws_client:aws_client(), list_realtime_contact_analysis_segments_request()) ->
+    {ok, list_realtime_contact_analysis_segments_response(), tuple()} |
+    {error, any()} |
+    {error, list_realtime_contact_analysis_segments_errors(), tuple()}.
 list_realtime_contact_analysis_segments(Client, Input) ->
     list_realtime_contact_analysis_segments(Client, Input, []).
+
+-spec list_realtime_contact_analysis_segments(aws_client:aws_client(), list_realtime_contact_analysis_segments_request(), proplists:proplist()) ->
+    {ok, list_realtime_contact_analysis_segments_response(), tuple()} |
+    {error, any()} |
+    {error, list_realtime_contact_analysis_segments_errors(), tuple()}.
 list_realtime_contact_analysis_segments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/realtime-contact-analysis/analysis-segments"],
@@ -58,7 +188,7 @@ list_realtime_contact_analysis_segments(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

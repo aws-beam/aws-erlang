@@ -82,14 +82,1041 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% permission_group_params() :: #{
+%%   <<"datasetPermissions">> => list(resource_permission()()),
+%%   <<"permissionGroupId">> => string()
+%% }
+-type permission_group_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_permission_group_request() :: #{
+%%   <<"applicationPermissions">> := list(list(any())()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string()
+%% }
+-type create_permission_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_external_data_view_access_details_request() :: #{}
+-type get_external_data_view_access_details_request() :: #{}.
+
+
+%% Example:
+%% list_users_by_permission_group_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"users">> => list(user_by_permission_group()())
+%% }
+-type list_users_by_permission_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_permission_group_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_permission_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_response() :: #{
+%%   <<"datasetId">> => string()
+%% }
+-type delete_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_programmatic_access_credentials_response() :: #{
+%%   <<"credentials">> => credentials(),
+%%   <<"durationInMinutes">> => float()
+%% }
+-type get_programmatic_access_credentials_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_response() :: #{
+%%   <<"datasetId">> => string()
+%% }
+-type update_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_response() :: #{
+%%   <<"userId">> => string()
+%% }
+-type update_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_definition() :: #{
+%%   <<"columns">> => list(column_definition()()),
+%%   <<"primaryKeyColumns">> => list(string()())
+%% }
+-type schema_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_view_response() :: #{
+%%   <<"dataViewId">> => string(),
+%%   <<"datasetId">> => string()
+%% }
+-type create_data_view_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% credentials() :: #{
+%%   <<"accessKeyId">> => string(),
+%%   <<"secretAccessKey">> => string(),
+%%   <<"sessionToken">> => string()
+%% }
+-type credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_user_response() :: #{
+%%   <<"apiAccess">> => list(any()),
+%%   <<"apiAccessPrincipalArn">> => string(),
+%%   <<"createTime">> => float(),
+%%   <<"emailAddress">> => string(),
+%%   <<"firstName">> => string(),
+%%   <<"lastDisabledTime">> => float(),
+%%   <<"lastEnabledTime">> => float(),
+%%   <<"lastLoginTime">> => float(),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"lastName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"userId">> => string()
+%% }
+-type get_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_user_from_permission_group_response() :: #{
+%%   <<"statusCode">> => integer()
+%% }
+-type disassociate_user_from_permission_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_groups_by_user_request() :: #{
+%%   <<"maxResults">> := integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_permission_groups_by_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_user_to_permission_group_response() :: #{
+%%   <<"statusCode">> => integer()
+%% }
+-type associate_user_to_permission_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_permission_group_request() :: #{}
+-type get_permission_group_request() :: #{}.
+
+
+%% Example:
+%% create_data_view_request() :: #{
+%%   <<"asOfTimestamp">> => float(),
+%%   <<"autoUpdate">> => boolean(),
+%%   <<"clientToken">> => string(),
+%%   <<"destinationTypeParams">> := data_view_destination_type_params(),
+%%   <<"partitionColumns">> => list(string()()),
+%%   <<"sortColumns">> => list(string()())
+%% }
+-type create_data_view_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_by_permission_group_request() :: #{
+%%   <<"maxResults">> := integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_users_by_permission_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_external_data_view_access_details_response() :: #{
+%%   <<"credentials">> => aws_credentials(),
+%%   <<"s3Location">> => s3_location()
+%% }
+-type get_external_data_view_access_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_changeset_request() :: #{}
+-type get_changeset_request() :: #{}.
+
+
+%% Example:
+%% create_permission_group_response() :: #{
+%%   <<"permissionGroupId">> => string()
+%% }
+-type create_permission_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_permission_group_response() :: #{
+%%   <<"permissionGroupId">> => string()
+%% }
+-type delete_permission_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_groups_by_user_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissionGroups">> => list(permission_group_by_user()())
+%% }
+-type list_permission_groups_by_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset() :: #{
+%%   <<"alias">> => string(),
+%%   <<"createTime">> => float(),
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetTitle">> => string(),
+%%   <<"kind">> => list(any()),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"ownerInfo">> => dataset_owner_info(),
+%%   <<"schemaDefinition">> => schema_union()
+%% }
+-type dataset() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_response() :: #{
+%%   <<"datasetId">> => string()
+%% }
+-type create_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_view_request() :: #{}
+-type get_data_view_request() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_changeset_response() :: #{
+%%   <<"changesetId">> => string(),
+%%   <<"datasetId">> => string()
+%% }
+-type create_changeset_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_request() :: #{}
+-type get_user_request() :: #{}.
+
+
+%% Example:
+%% dataset_owner_info() :: #{
+%%   <<"email">> => string(),
+%%   <<"name">> => string(),
+%%   <<"phoneNumber">> => string()
+%% }
+-type dataset_owner_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_working_location_response() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3Path">> => string(),
+%%   <<"s3Uri">> => string()
+%% }
+-type get_working_location_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_view_response() :: #{
+%%   <<"asOfTimestamp">> => float(),
+%%   <<"autoUpdate">> => boolean(),
+%%   <<"createTime">> => float(),
+%%   <<"dataViewArn">> => string(),
+%%   <<"dataViewId">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"destinationTypeParams">> => data_view_destination_type_params(),
+%%   <<"errorInfo">> => data_view_error_info(),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"partitionColumns">> => list(string()()),
+%%   <<"sortColumns">> => list(string()()),
+%%   <<"status">> => list(any())
+%% }
+-type get_data_view_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_user_from_permission_group_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type disassociate_user_from_permission_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_user_password_response() :: #{
+%%   <<"temporaryPassword">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type reset_user_password_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_group_by_user() :: #{
+%%   <<"membershipStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"permissionGroupId">> => string()
+%% }
+-type permission_group_by_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"users">> => list(user()())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_permission_group_response() :: #{
+%%   <<"permissionGroup">> => permission_group()
+%% }
+-type get_permission_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_view_destination_type_params() :: #{
+%%   <<"destinationType">> => string(),
+%%   <<"s3DestinationExportFileFormat">> => list(any()),
+%%   <<"s3DestinationExportFileFormatOptions">> => map()
+%% }
+-type data_view_destination_type_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_permission_group_request() :: #{
+%%   <<"applicationPermissions">> => list(list(any())()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_permission_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_changeset_request() :: #{
+%%   <<"changeType">> := list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"formatParams">> := map(),
+%%   <<"sourceParams">> := map()
+%% }
+-type create_changeset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_union() :: #{
+%%   <<"tabularSchemaConfig">> => schema_definition()
+%% }
+-type schema_union() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_changeset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"formatParams">> := map(),
+%%   <<"sourceParams">> := map()
+%% }
+-type update_changeset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetTitle">> := string(),
+%%   <<"kind">> := list(any()),
+%%   <<"schemaDefinition">> => schema_union()
+%% }
+-type update_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_changesets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_changesets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% changeset_summary() :: #{
+%%   <<"activeFromTimestamp">> => float(),
+%%   <<"activeUntilTimestamp">> => float(),
+%%   <<"changeType">> => list(any()),
+%%   <<"changesetArn">> => string(),
+%%   <<"changesetId">> => string(),
+%%   <<"createTime">> => float(),
+%%   <<"datasetId">> => string(),
+%%   <<"errorInfo">> => changeset_error_info(),
+%%   <<"formatParams">> => map(),
+%%   <<"sourceParams">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedByChangesetId">> => string(),
+%%   <<"updatesChangesetId">> => string()
+%% }
+-type changeset_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_user_password_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type reset_user_password_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_user_response() :: #{
+%%   <<"userId">> => string()
+%% }
+-type disable_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% changeset_error_info() :: #{
+%%   <<"errorCategory">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type changeset_error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_changeset_response() :: #{
+%%   <<"activeFromTimestamp">> => float(),
+%%   <<"activeUntilTimestamp">> => float(),
+%%   <<"changeType">> => list(any()),
+%%   <<"changesetArn">> => string(),
+%%   <<"changesetId">> => string(),
+%%   <<"createTime">> => float(),
+%%   <<"datasetId">> => string(),
+%%   <<"errorInfo">> => changeset_error_info(),
+%%   <<"formatParams">> => map(),
+%%   <<"sourceParams">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedByChangesetId">> => string(),
+%%   <<"updatesChangesetId">> => string()
+%% }
+-type get_changeset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_groups_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissionGroups">> => list(permission_group()())
+%% }
+-type list_permission_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_changeset_response() :: #{
+%%   <<"changesetId">> => string(),
+%%   <<"datasetId">> => string()
+%% }
+-type update_changeset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_view_error_info() :: #{
+%%   <<"errorCategory">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type data_view_error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_credentials() :: #{
+%%   <<"accessKeyId">> => string(),
+%%   <<"expiration">> => float(),
+%%   <<"secretAccessKey">> => string(),
+%%   <<"sessionToken">> => string()
+%% }
+-type aws_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% get_dataset_request() :: #{}
+-type get_dataset_request() :: #{}.
+
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"apiAccess">> => list(any()),
+%%   <<"apiAccessPrincipalArn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"firstName">> => string(),
+%%   <<"lastName">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type update_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dataset_response() :: #{
+%%   <<"alias">> => string(),
+%%   <<"createTime">> => float(),
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetTitle">> => string(),
+%%   <<"kind">> => list(any()),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"schemaDefinition">> => schema_union(),
+%%   <<"status">> => list(any())
+%% }
+-type get_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetTitle">> := string(),
+%%   <<"kind">> := list(any()),
+%%   <<"ownerInfo">> => dataset_owner_info(),
+%%   <<"permissionGroupParams">> := permission_group_params(),
+%%   <<"schemaDefinition">> => schema_union()
+%% }
+-type create_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_user_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type enable_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_permission_group_response() :: #{
+%%   <<"permissionGroupId">> => string()
+%% }
+-type update_permission_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_user_to_permission_group_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type associate_user_to_permission_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{}
+-type throttling_exception() :: #{}.
+
+
+%% Example:
+%% user() :: #{
+%%   <<"apiAccess">> => list(any()),
+%%   <<"apiAccessPrincipalArn">> => string(),
+%%   <<"createTime">> => float(),
+%%   <<"emailAddress">> => string(),
+%%   <<"firstName">> => string(),
+%%   <<"lastDisabledTime">> => float(),
+%%   <<"lastEnabledTime">> => float(),
+%%   <<"lastLoginTime">> => float(),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"lastName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"userId">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_views_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_views_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"maxResults">> := integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_by_permission_group() :: #{
+%%   <<"apiAccess">> => list(any()),
+%%   <<"apiAccessPrincipalArn">> => string(),
+%%   <<"emailAddress">> => string(),
+%%   <<"firstName">> => string(),
+%%   <<"lastName">> => string(),
+%%   <<"membershipStatus">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"userId">> => string()
+%% }
+-type user_by_permission_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_working_location_request() :: #{
+%%   <<"locationType">> => list(any())
+%% }
+-type get_working_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_permission() :: #{
+%%   <<"permission">> => string()
+%% }
+-type resource_permission() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"datasets">> => list(dataset()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_group() :: #{
+%%   <<"applicationPermissions">> => list(list(any())()),
+%%   <<"createTime">> => float(),
+%%   <<"description">> => string(),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"membershipStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"permissionGroupId">> => string()
+%% }
+-type permission_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_programmatic_access_credentials_request() :: #{
+%%   <<"durationInMinutes">> => float(),
+%%   <<"environmentId">> := string()
+%% }
+-type get_programmatic_access_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_groups_request() :: #{
+%%   <<"maxResults">> := integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_permission_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_changesets_response() :: #{
+%%   <<"changesets">> => list(changeset_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_changesets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_view_summary() :: #{
+%%   <<"asOfTimestamp">> => float(),
+%%   <<"autoUpdate">> => boolean(),
+%%   <<"createTime">> => float(),
+%%   <<"dataViewArn">> => string(),
+%%   <<"dataViewId">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"destinationTypeProperties">> => data_view_destination_type_params(),
+%%   <<"errorInfo">> => data_view_error_info(),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"partitionColumns">> => list(string()()),
+%%   <<"sortColumns">> => list(string()()),
+%%   <<"status">> => list(any())
+%% }
+-type data_view_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_user_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type disable_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_response() :: #{
+%%   <<"userId">> => string()
+%% }
+-type create_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_user_response() :: #{
+%%   <<"userId">> => string()
+%% }
+-type enable_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_definition() :: #{
+%%   <<"columnDescription">> => string(),
+%%   <<"columnName">> => string(),
+%%   <<"dataType">> => list(any())
+%% }
+-type column_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_views_response() :: #{
+%%   <<"dataViews">> => list(data_view_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_views_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"apiAccess">> => list(any()),
+%%   <<"apiAccessPrincipalArn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"emailAddress">> := string(),
+%%   <<"firstName">> => string(),
+%%   <<"lastName">> => string(),
+%%   <<"type">> := list(any())
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+-type associate_user_to_permission_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_changeset_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_view_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_dataset_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_permission_group_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_user_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_dataset_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_permission_group_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disable_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_user_from_permission_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type enable_user_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_changeset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_data_view_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_external_data_view_access_details_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_permission_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_programmatic_access_credentials_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type get_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_working_location_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_changesets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_data_views_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_datasets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_permission_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_permission_groups_by_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_users_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_users_by_permission_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type reset_user_password_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_changeset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_dataset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_permission_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Adds a user to a permission group to grant permissions for actions a
 %% user can perform in FinSpace.
+-spec associate_user_to_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), associate_user_to_permission_group_request()) ->
+    {ok, associate_user_to_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, associate_user_to_permission_group_errors(), tuple()}.
 associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input) ->
     associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input, []).
+
+-spec associate_user_to_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), associate_user_to_permission_group_request(), proplists:proplist()) ->
+    {ok, associate_user_to_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, associate_user_to_permission_group_errors(), tuple()}.
 associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), "/users/", aws_util:encode_uri(UserId), ""],
@@ -113,8 +1140,17 @@ associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Changeset in a FinSpace Dataset.
+-spec create_changeset(aws_client:aws_client(), binary() | list(), create_changeset_request()) ->
+    {ok, create_changeset_response(), tuple()} |
+    {error, any()} |
+    {error, create_changeset_errors(), tuple()}.
 create_changeset(Client, DatasetId, Input) ->
     create_changeset(Client, DatasetId, Input, []).
+
+-spec create_changeset(aws_client:aws_client(), binary() | list(), create_changeset_request(), proplists:proplist()) ->
+    {ok, create_changeset_response(), tuple()} |
+    {error, any()} |
+    {error, create_changeset_errors(), tuple()}.
 create_changeset(Client, DatasetId, Input0, Options0) ->
     Method = post,
     Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/changesetsv2"],
@@ -138,8 +1174,17 @@ create_changeset(Client, DatasetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Dataview for a Dataset.
+-spec create_data_view(aws_client:aws_client(), binary() | list(), create_data_view_request()) ->
+    {ok, create_data_view_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_view_errors(), tuple()}.
 create_data_view(Client, DatasetId, Input) ->
     create_data_view(Client, DatasetId, Input, []).
+
+-spec create_data_view(aws_client:aws_client(), binary() | list(), create_data_view_request(), proplists:proplist()) ->
+    {ok, create_data_view_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_view_errors(), tuple()}.
 create_data_view(Client, DatasetId, Input0, Options0) ->
     Method = post,
     Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/dataviewsv2"],
@@ -163,8 +1208,17 @@ create_data_view(Client, DatasetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new FinSpace Dataset.
+-spec create_dataset(aws_client:aws_client(), create_dataset_request()) ->
+    {ok, create_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input) ->
     create_dataset(Client, Input, []).
+
+-spec create_dataset(aws_client:aws_client(), create_dataset_request(), proplists:proplist()) ->
+    {ok, create_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datasetsv2"],
@@ -189,8 +1243,17 @@ create_dataset(Client, Input0, Options0) ->
 
 %% @doc Creates a group of permissions for various actions that a user can
 %% perform in FinSpace.
+-spec create_permission_group(aws_client:aws_client(), create_permission_group_request()) ->
+    {ok, create_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_permission_group_errors(), tuple()}.
 create_permission_group(Client, Input) ->
     create_permission_group(Client, Input, []).
+
+-spec create_permission_group(aws_client:aws_client(), create_permission_group_request(), proplists:proplist()) ->
+    {ok, create_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_permission_group_errors(), tuple()}.
 create_permission_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/permission-group"],
@@ -214,8 +1277,17 @@ create_permission_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new user in FinSpace.
+-spec create_user(aws_client:aws_client(), create_user_request()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input) ->
     create_user(Client, Input, []).
+
+-spec create_user(aws_client:aws_client(), create_user_request(), proplists:proplist()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, create_user_errors(), tuple()}.
 create_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user"],
@@ -239,8 +1311,17 @@ create_user(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a FinSpace Dataset.
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request()) ->
+    {ok, delete_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, DatasetId, Input) ->
     delete_dataset(Client, DatasetId, Input, []).
+
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
+    {ok, delete_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, DatasetId, Input0, Options0) ->
     Method = delete,
     Path = ["/datasetsv2/", aws_util:encode_uri(DatasetId), ""],
@@ -267,8 +1348,17 @@ delete_dataset(Client, DatasetId, Input0, Options0) ->
 %% @doc Deletes a permission group.
 %%
 %% This action is irreversible.
+-spec delete_permission_group(aws_client:aws_client(), binary() | list(), delete_permission_group_request()) ->
+    {ok, delete_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_permission_group_errors(), tuple()}.
 delete_permission_group(Client, PermissionGroupId, Input) ->
     delete_permission_group(Client, PermissionGroupId, Input, []).
+
+-spec delete_permission_group(aws_client:aws_client(), binary() | list(), delete_permission_group_request(), proplists:proplist()) ->
+    {ok, delete_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_permission_group_errors(), tuple()}.
 delete_permission_group(Client, PermissionGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), ""],
@@ -294,8 +1384,17 @@ delete_permission_group(Client, PermissionGroupId, Input0, Options0) ->
 
 %% @doc Denies access to the FinSpace web application and API for the
 %% specified user.
+-spec disable_user(aws_client:aws_client(), binary() | list(), disable_user_request()) ->
+    {ok, disable_user_response(), tuple()} |
+    {error, any()} |
+    {error, disable_user_errors(), tuple()}.
 disable_user(Client, UserId, Input) ->
     disable_user(Client, UserId, Input, []).
+
+-spec disable_user(aws_client:aws_client(), binary() | list(), disable_user_request(), proplists:proplist()) ->
+    {ok, disable_user_response(), tuple()} |
+    {error, any()} |
+    {error, disable_user_errors(), tuple()}.
 disable_user(Client, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/user/", aws_util:encode_uri(UserId), "/disable"],
@@ -319,8 +1418,17 @@ disable_user(Client, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a user from a permission group.
+-spec disassociate_user_from_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_user_from_permission_group_request()) ->
+    {ok, disassociate_user_from_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_user_from_permission_group_errors(), tuple()}.
 disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input) ->
     disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input, []).
+
+-spec disassociate_user_from_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_user_from_permission_group_request(), proplists:proplist()) ->
+    {ok, disassociate_user_from_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_user_from_permission_group_errors(), tuple()}.
 disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), "/users/", aws_util:encode_uri(UserId), ""],
@@ -346,8 +1454,17 @@ disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input
 
 %% @doc Allows the specified user to access the FinSpace web application and
 %% API.
+-spec enable_user(aws_client:aws_client(), binary() | list(), enable_user_request()) ->
+    {ok, enable_user_response(), tuple()} |
+    {error, any()} |
+    {error, enable_user_errors(), tuple()}.
 enable_user(Client, UserId, Input) ->
     enable_user(Client, UserId, Input, []).
+
+-spec enable_user(aws_client:aws_client(), binary() | list(), enable_user_request(), proplists:proplist()) ->
+    {ok, enable_user_response(), tuple()} |
+    {error, any()} |
+    {error, enable_user_errors(), tuple()}.
 enable_user(Client, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/user/", aws_util:encode_uri(UserId), "/enable"],
@@ -371,14 +1488,26 @@ enable_user(Client, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get information about a Changeset.
+-spec get_changeset(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_changeset_response(), tuple()} |
+    {error, any()} |
+    {error, get_changeset_errors(), tuple()}.
 get_changeset(Client, ChangesetId, DatasetId)
   when is_map(Client) ->
     get_changeset(Client, ChangesetId, DatasetId, #{}, #{}).
 
+-spec get_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_changeset_response(), tuple()} |
+    {error, any()} |
+    {error, get_changeset_errors(), tuple()}.
 get_changeset(Client, ChangesetId, DatasetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_changeset(Client, ChangesetId, DatasetId, QueryMap, HeadersMap, []).
 
+-spec get_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_changeset_response(), tuple()} |
+    {error, any()} |
+    {error, get_changeset_errors(), tuple()}.
 get_changeset(Client, ChangesetId, DatasetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/changesetsv2/", aws_util:encode_uri(ChangesetId), ""],
@@ -396,14 +1525,26 @@ get_changeset(Client, ChangesetId, DatasetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Dataview.
+-spec get_data_view(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_data_view_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_view_errors(), tuple()}.
 get_data_view(Client, DataViewId, DatasetId)
   when is_map(Client) ->
     get_data_view(Client, DataViewId, DatasetId, #{}, #{}).
 
+-spec get_data_view(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_view_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_view_errors(), tuple()}.
 get_data_view(Client, DataViewId, DatasetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_view(Client, DataViewId, DatasetId, QueryMap, HeadersMap, []).
 
+-spec get_data_view(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_view_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_view_errors(), tuple()}.
 get_data_view(Client, DataViewId, DatasetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/dataviewsv2/", aws_util:encode_uri(DataViewId), ""],
@@ -421,14 +1562,26 @@ get_data_view(Client, DataViewId, DatasetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a Dataset.
+-spec get_dataset(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_errors(), tuple()}.
 get_dataset(Client, DatasetId)
   when is_map(Client) ->
     get_dataset(Client, DatasetId, #{}, #{}).
 
+-spec get_dataset(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_errors(), tuple()}.
 get_dataset(Client, DatasetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dataset(Client, DatasetId, QueryMap, HeadersMap, []).
 
+-spec get_dataset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_errors(), tuple()}.
 get_dataset(Client, DatasetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasetsv2/", aws_util:encode_uri(DatasetId), ""],
@@ -454,8 +1607,17 @@ get_dataset(Client, DatasetId, QueryMap, HeadersMap, Options0)
 %%
 %% You must be a member of a FinSpace user group, where the dataset that you
 %% want to access has `Read Dataset Data' permissions.
+-spec get_external_data_view_access_details(aws_client:aws_client(), binary() | list(), binary() | list(), get_external_data_view_access_details_request()) ->
+    {ok, get_external_data_view_access_details_response(), tuple()} |
+    {error, any()} |
+    {error, get_external_data_view_access_details_errors(), tuple()}.
 get_external_data_view_access_details(Client, DataViewId, DatasetId, Input) ->
     get_external_data_view_access_details(Client, DataViewId, DatasetId, Input, []).
+
+-spec get_external_data_view_access_details(aws_client:aws_client(), binary() | list(), binary() | list(), get_external_data_view_access_details_request(), proplists:proplist()) ->
+    {ok, get_external_data_view_access_details_response(), tuple()} |
+    {error, any()} |
+    {error, get_external_data_view_access_details_errors(), tuple()}.
 get_external_data_view_access_details(Client, DataViewId, DatasetId, Input0, Options0) ->
     Method = post,
     Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/dataviewsv2/", aws_util:encode_uri(DataViewId), "/external-access-details"],
@@ -479,14 +1641,26 @@ get_external_data_view_access_details(Client, DataViewId, DatasetId, Input0, Opt
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of a specific permission group.
+-spec get_permission_group(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_permission_group_errors(), tuple()}.
 get_permission_group(Client, PermissionGroupId)
   when is_map(Client) ->
     get_permission_group(Client, PermissionGroupId, #{}, #{}).
 
+-spec get_permission_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_permission_group_errors(), tuple()}.
 get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap, []).
 
+-spec get_permission_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_permission_group_errors(), tuple()}.
 get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), ""],
@@ -508,14 +1682,26 @@ get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap, Options0)
 %% For more information, see Step 2. Access credentials programmatically
 %% using IAM access key id and secret access key:
 %% https://docs.aws.amazon.com/finspace/latest/data-api/fs-using-the-finspace-api.html#accessing-credentials.
+-spec get_programmatic_access_credentials(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_programmatic_access_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_programmatic_access_credentials_errors(), tuple()}.
 get_programmatic_access_credentials(Client, EnvironmentId)
   when is_map(Client) ->
     get_programmatic_access_credentials(Client, EnvironmentId, #{}, #{}).
 
+-spec get_programmatic_access_credentials(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_programmatic_access_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_programmatic_access_credentials_errors(), tuple()}.
 get_programmatic_access_credentials(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_programmatic_access_credentials(Client, EnvironmentId, QueryMap, HeadersMap, []).
 
+-spec get_programmatic_access_credentials(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_programmatic_access_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_programmatic_access_credentials_errors(), tuple()}.
 get_programmatic_access_credentials(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/credentials/programmatic"],
@@ -538,14 +1724,26 @@ get_programmatic_access_credentials(Client, EnvironmentId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details for a specific user.
+-spec get_user(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_errors(), tuple()}.
 get_user(Client, UserId)
   when is_map(Client) ->
     get_user(Client, UserId, #{}, #{}).
 
+-spec get_user(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_errors(), tuple()}.
 get_user(Client, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user(Client, UserId, QueryMap, HeadersMap, []).
 
+-spec get_user(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_errors(), tuple()}.
 get_user(Client, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user/", aws_util:encode_uri(UserId), ""],
@@ -565,8 +1763,17 @@ get_user(Client, UserId, QueryMap, HeadersMap, Options0)
 %% @doc A temporary Amazon S3 location, where you can copy your files from a
 %% source location to stage or use
 %% as a scratch space in FinSpace notebook.
+-spec get_working_location(aws_client:aws_client(), get_working_location_request()) ->
+    {ok, get_working_location_response(), tuple()} |
+    {error, any()} |
+    {error, get_working_location_errors(), tuple()}.
 get_working_location(Client, Input) ->
     get_working_location(Client, Input, []).
+
+-spec get_working_location(aws_client:aws_client(), get_working_location_request(), proplists:proplist()) ->
+    {ok, get_working_location_response(), tuple()} |
+    {error, any()} |
+    {error, get_working_location_errors(), tuple()}.
 get_working_location(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workingLocationV1"],
@@ -590,14 +1797,26 @@ get_working_location(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the FinSpace Changesets for a Dataset.
+-spec list_changesets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_changesets_response(), tuple()} |
+    {error, any()} |
+    {error, list_changesets_errors(), tuple()}.
 list_changesets(Client, DatasetId)
   when is_map(Client) ->
     list_changesets(Client, DatasetId, #{}, #{}).
 
+-spec list_changesets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_changesets_response(), tuple()} |
+    {error, any()} |
+    {error, list_changesets_errors(), tuple()}.
 list_changesets(Client, DatasetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_changesets(Client, DatasetId, QueryMap, HeadersMap, []).
 
+-spec list_changesets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_changesets_response(), tuple()} |
+    {error, any()} |
+    {error, list_changesets_errors(), tuple()}.
 list_changesets(Client, DatasetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/changesetsv2"],
@@ -620,14 +1839,26 @@ list_changesets(Client, DatasetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all available Dataviews for a Dataset.
+-spec list_data_views(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_data_views_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_views_errors(), tuple()}.
 list_data_views(Client, DatasetId)
   when is_map(Client) ->
     list_data_views(Client, DatasetId, #{}, #{}).
 
+-spec list_data_views(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_data_views_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_views_errors(), tuple()}.
 list_data_views(Client, DatasetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_views(Client, DatasetId, QueryMap, HeadersMap, []).
 
+-spec list_data_views(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_views_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_views_errors(), tuple()}.
 list_data_views(Client, DatasetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/dataviewsv2"],
@@ -650,14 +1881,26 @@ list_data_views(Client, DatasetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the active Datasets that a user has access to.
+-spec list_datasets(aws_client:aws_client()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client)
   when is_map(Client) ->
     list_datasets(Client, #{}, #{}).
 
+-spec list_datasets(aws_client:aws_client(), map(), map()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datasets(Client, QueryMap, HeadersMap, []).
 
+-spec list_datasets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasetsv2"],
@@ -680,14 +1923,26 @@ list_datasets(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all available permission groups in FinSpace.
+-spec list_permission_groups(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_permission_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_permission_groups_errors(), tuple()}.
 list_permission_groups(Client, MaxResults)
   when is_map(Client) ->
     list_permission_groups(Client, MaxResults, #{}, #{}).
 
+-spec list_permission_groups(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_permission_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_permission_groups_errors(), tuple()}.
 list_permission_groups(Client, MaxResults, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_permission_groups(Client, MaxResults, QueryMap, HeadersMap, []).
 
+-spec list_permission_groups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_permission_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_permission_groups_errors(), tuple()}.
 list_permission_groups(Client, MaxResults, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/permission-group"],
@@ -711,14 +1966,26 @@ list_permission_groups(Client, MaxResults, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all the permission groups that are associated with a specific
 %% user.
+-spec list_permission_groups_by_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_permission_groups_by_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_permission_groups_by_user_errors(), tuple()}.
 list_permission_groups_by_user(Client, UserId, MaxResults)
   when is_map(Client) ->
     list_permission_groups_by_user(Client, UserId, MaxResults, #{}, #{}).
 
+-spec list_permission_groups_by_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_permission_groups_by_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_permission_groups_by_user_errors(), tuple()}.
 list_permission_groups_by_user(Client, UserId, MaxResults, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_permission_groups_by_user(Client, UserId, MaxResults, QueryMap, HeadersMap, []).
 
+-spec list_permission_groups_by_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_permission_groups_by_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_permission_groups_by_user_errors(), tuple()}.
 list_permission_groups_by_user(Client, UserId, MaxResults, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user/", aws_util:encode_uri(UserId), "/permission-groups"],
@@ -741,14 +2008,26 @@ list_permission_groups_by_user(Client, UserId, MaxResults, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all available users in FinSpace.
+-spec list_users(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_errors(), tuple()}.
 list_users(Client, MaxResults)
   when is_map(Client) ->
     list_users(Client, MaxResults, #{}, #{}).
 
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_errors(), tuple()}.
 list_users(Client, MaxResults, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, MaxResults, QueryMap, HeadersMap, []).
 
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_errors(), tuple()}.
 list_users(Client, MaxResults, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user"],
@@ -771,14 +2050,26 @@ list_users(Client, MaxResults, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists details of all the users in a specific permission group.
+-spec list_users_by_permission_group(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_users_by_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_by_permission_group_errors(), tuple()}.
 list_users_by_permission_group(Client, PermissionGroupId, MaxResults)
   when is_map(Client) ->
     list_users_by_permission_group(Client, PermissionGroupId, MaxResults, #{}, #{}).
 
+-spec list_users_by_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_users_by_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_by_permission_group_errors(), tuple()}.
 list_users_by_permission_group(Client, PermissionGroupId, MaxResults, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users_by_permission_group(Client, PermissionGroupId, MaxResults, QueryMap, HeadersMap, []).
 
+-spec list_users_by_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_users_by_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_by_permission_group_errors(), tuple()}.
 list_users_by_permission_group(Client, PermissionGroupId, MaxResults, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), "/users"],
@@ -806,8 +2097,17 @@ list_users_by_permission_group(Client, PermissionGroupId, MaxResults, QueryMap, 
 %% Only a superuser can reset password for other users. Resetting the
 %% password immediately invalidates the previous password associated with the
 %% user.
+-spec reset_user_password(aws_client:aws_client(), binary() | list(), reset_user_password_request()) ->
+    {ok, reset_user_password_response(), tuple()} |
+    {error, any()} |
+    {error, reset_user_password_errors(), tuple()}.
 reset_user_password(Client, UserId, Input) ->
     reset_user_password(Client, UserId, Input, []).
+
+-spec reset_user_password(aws_client:aws_client(), binary() | list(), reset_user_password_request(), proplists:proplist()) ->
+    {ok, reset_user_password_response(), tuple()} |
+    {error, any()} |
+    {error, reset_user_password_errors(), tuple()}.
 reset_user_password(Client, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/user/", aws_util:encode_uri(UserId), "/password"],
@@ -831,8 +2131,17 @@ reset_user_password(Client, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a FinSpace Changeset.
+-spec update_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), update_changeset_request()) ->
+    {ok, update_changeset_response(), tuple()} |
+    {error, any()} |
+    {error, update_changeset_errors(), tuple()}.
 update_changeset(Client, ChangesetId, DatasetId, Input) ->
     update_changeset(Client, ChangesetId, DatasetId, Input, []).
+
+-spec update_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), update_changeset_request(), proplists:proplist()) ->
+    {ok, update_changeset_response(), tuple()} |
+    {error, any()} |
+    {error, update_changeset_errors(), tuple()}.
 update_changeset(Client, ChangesetId, DatasetId, Input0, Options0) ->
     Method = put,
     Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/changesetsv2/", aws_util:encode_uri(ChangesetId), ""],
@@ -856,8 +2165,17 @@ update_changeset(Client, ChangesetId, DatasetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a FinSpace Dataset.
+-spec update_dataset(aws_client:aws_client(), binary() | list(), update_dataset_request()) ->
+    {ok, update_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, update_dataset_errors(), tuple()}.
 update_dataset(Client, DatasetId, Input) ->
     update_dataset(Client, DatasetId, Input, []).
+
+-spec update_dataset(aws_client:aws_client(), binary() | list(), update_dataset_request(), proplists:proplist()) ->
+    {ok, update_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, update_dataset_errors(), tuple()}.
 update_dataset(Client, DatasetId, Input0, Options0) ->
     Method = put,
     Path = ["/datasetsv2/", aws_util:encode_uri(DatasetId), ""],
@@ -883,8 +2201,17 @@ update_dataset(Client, DatasetId, Input0, Options0) ->
 %% @doc Modifies the details of a permission group.
 %%
 %% You cannot modify a `permissionGroupID'.
+-spec update_permission_group(aws_client:aws_client(), binary() | list(), update_permission_group_request()) ->
+    {ok, update_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_permission_group_errors(), tuple()}.
 update_permission_group(Client, PermissionGroupId, Input) ->
     update_permission_group(Client, PermissionGroupId, Input, []).
+
+-spec update_permission_group(aws_client:aws_client(), binary() | list(), update_permission_group_request(), proplists:proplist()) ->
+    {ok, update_permission_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_permission_group_errors(), tuple()}.
 update_permission_group(Client, PermissionGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), ""],
@@ -910,8 +2237,17 @@ update_permission_group(Client, PermissionGroupId, Input0, Options0) ->
 %% @doc Modifies the details of the specified user.
 %%
 %% You cannot update the `userId' for a user.
+-spec update_user(aws_client:aws_client(), binary() | list(), update_user_request()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_errors(), tuple()}.
 update_user(Client, UserId, Input) ->
     update_user(Client, UserId, Input, []).
+
+-spec update_user(aws_client:aws_client(), binary() | list(), update_user_request(), proplists:proplist()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_errors(), tuple()}.
 update_user(Client, UserId, Input0, Options0) ->
     Method = put,
     Path = ["/user/", aws_util:encode_uri(UserId), ""],
@@ -938,7 +2274,7 @@ update_user(Client, UserId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

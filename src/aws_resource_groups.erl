@@ -89,6 +89,606 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% resource_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type resource_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_input() :: #{
+%%   <<"Configuration">> => list(group_configuration_item()()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"ResourceQuery">> => resource_query(),
+%%   <<"Tags">> => map()
+%% }
+-type create_group_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_query_output() :: #{
+%%   <<"GroupQuery">> => group_query()
+%% }
+-type update_group_query_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_resources_item() :: #{
+%%   <<"Identifier">> => resource_identifier(),
+%%   <<"Status">> => resource_status()
+%% }
+-type list_group_resources_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type tag_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% method_not_allowed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type method_not_allowed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_query_input() :: #{
+%%   <<"Group">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"ResourceQuery">> := resource_query()
+%% }
+-type update_group_query_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_configuration_input() :: #{
+%%   <<"Group">> => string()
+%% }
+-type get_group_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_status() :: #{
+%%   <<"Name">> => list(any())
+%% }
+-type resource_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_query() :: #{
+%%   <<"Query">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type resource_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_identifier() :: #{
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type group_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_tags_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_tags_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_input() :: #{
+%%   <<"Keys">> := list(string()())
+%% }
+-type untag_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_output() :: #{
+%%   <<"Group">> => group()
+%% }
+-type update_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_group_configuration_input() :: #{
+%%   <<"Configuration">> => list(group_configuration_item()()),
+%%   <<"Group">> => string()
+%% }
+-type put_group_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_output() :: #{
+%%   <<"GroupIdentifiers">> => list(group_identifier()()),
+%%   <<"Groups">> => list(group()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_query_input() :: #{
+%%   <<"Group">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type get_group_query_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_configuration_output() :: #{
+%%   <<"GroupConfiguration">> => group_configuration()
+%% }
+-type get_group_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% pending_resource() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type pending_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_query_output() :: #{
+%%   <<"GroupQuery">> => group_query()
+%% }
+-type get_group_query_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_resources_output() :: #{
+%%   <<"Failed">> => list(failed_resource()()),
+%%   <<"Pending">> => list(pending_resource()()),
+%%   <<"Succeeded">> => list(string()())
+%% }
+-type group_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_identifier() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_configuration_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type group_configuration_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_output() :: #{
+%%   <<"Group">> => group(),
+%%   <<"GroupConfiguration">> => group_configuration(),
+%%   <<"ResourceQuery">> => resource_query(),
+%%   <<"Tags">> => map()
+%% }
+-type create_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% ungroup_resources_output() :: #{
+%%   <<"Failed">> => list(failed_resource()()),
+%%   <<"Pending">> => list(pending_resource()()),
+%%   <<"Succeeded">> => list(string()())
+%% }
+-type ungroup_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceQuery">> := resource_query()
+%% }
+-type search_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type group_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_resources_input() :: #{
+%%   <<"Group">> := string(),
+%%   <<"ResourceArns">> := list(string()())
+%% }
+-type group_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QueryErrors">> => list(query_error()()),
+%%   <<"ResourceIdentifiers">> => list(resource_identifier()())
+%% }
+-type search_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_resources_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QueryErrors">> => list(query_error()()),
+%%   <<"ResourceIdentifiers">> => list(resource_identifier()()),
+%%   <<"Resources">> => list(list_group_resources_item()())
+%% }
+-type list_group_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_group_input() :: #{
+%%   <<"Group">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type delete_group_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_query() :: #{
+%%   <<"GroupName">> => string(),
+%%   <<"ResourceQuery">> => resource_query()
+%% }
+-type group_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_settings_input() :: #{
+%%   <<"GroupLifecycleEventsDesiredStatus">> => list(any())
+%% }
+-type update_account_settings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_output() :: #{
+%%   <<"Group">> => group()
+%% }
+-type get_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_settings_output() :: #{
+%%   <<"AccountSettings">> => account_settings()
+%% }
+-type update_account_settings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_input() :: #{
+%%   <<"Group">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type get_group_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_resources_input() :: #{
+%%   <<"Filters">> => list(resource_filter()()),
+%%   <<"Group">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_group_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_settings() :: #{
+%%   <<"GroupLifecycleEventsDesiredStatus">> => list(any()),
+%%   <<"GroupLifecycleEventsStatus">> => list(any()),
+%%   <<"GroupLifecycleEventsStatusMessage">> => string()
+%% }
+-type account_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Group">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type update_group_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_tags_input() :: #{}
+-type get_tags_input() :: #{}.
+
+
+%% Example:
+%% group() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GroupArn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type group() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_account_settings_output() :: #{
+%%   <<"AccountSettings">> => account_settings()
+%% }
+-type get_account_settings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% ungroup_resources_input() :: #{
+%%   <<"Group">> := string(),
+%%   <<"ResourceArns">> := list(string()())
+%% }
+-type ungroup_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_input() :: #{
+%%   <<"Filters">> => list(group_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Keys">> => list(string()())
+%% }
+-type untag_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_resource() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type failed_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_group_output() :: #{
+%%   <<"Group">> => group()
+%% }
+-type delete_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_configuration() :: #{
+%%   <<"Configuration">> => list(group_configuration_item()()),
+%%   <<"FailureReason">> => string(),
+%%   <<"ProposedConfiguration">> => list(group_configuration_item()()),
+%%   <<"Status">> => list(any())
+%% }
+-type group_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type query_error() :: #{binary() => any()}.
+
+%% Example:
+%% put_group_configuration_output() :: #{}
+-type put_group_configuration_output() :: #{}.
+
+
+%% Example:
+%% group_configuration_item() :: #{
+%%   <<"Parameters">> => list(group_configuration_parameter()()),
+%%   <<"Type">> => string()
+%% }
+-type group_configuration_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_input() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_input() :: #{binary() => any()}.
+
+-type create_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type delete_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_account_settings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_group_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_group_query_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type get_tags_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type group_resources_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type list_group_resources_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type list_groups_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type put_group_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type search_resources_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type tag_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type ungroup_resources_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type untag_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_account_settings_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
+-type update_group_query_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    method_not_allowed_exception() | 
+    forbidden_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -111,8 +711,17 @@
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:CreateGroup'
+-spec create_group(aws_client:aws_client(), create_group_input()) ->
+    {ok, create_group_output(), tuple()} |
+    {error, any()} |
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
+
+-spec create_group(aws_client:aws_client(), create_group_input(), proplists:proplist()) ->
+    {ok, create_group_output(), tuple()} |
+    {error, any()} |
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/groups"],
@@ -146,8 +755,17 @@ create_group(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:DeleteGroup'
+-spec delete_group(aws_client:aws_client(), delete_group_input()) ->
+    {ok, delete_group_output(), tuple()} |
+    {error, any()} |
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input) ->
     delete_group(Client, Input, []).
+
+-spec delete_group(aws_client:aws_client(), delete_group_input(), proplists:proplist()) ->
+    {ok, delete_group_output(), tuple()} |
+    {error, any()} |
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-group"],
@@ -171,8 +789,17 @@ delete_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the current status of optional features in Resource Groups.
+-spec get_account_settings(aws_client:aws_client(), #{}) ->
+    {ok, get_account_settings_output(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, Input) ->
     get_account_settings(Client, Input, []).
+
+-spec get_account_settings(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, get_account_settings_output(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-account-settings"],
@@ -202,8 +829,17 @@ get_account_settings(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:GetGroup'
+-spec get_group(aws_client:aws_client(), get_group_input()) ->
+    {ok, get_group_output(), tuple()} |
+    {error, any()} |
+    {error, get_group_errors(), tuple()}.
 get_group(Client, Input) ->
     get_group(Client, Input, []).
+
+-spec get_group(aws_client:aws_client(), get_group_input(), proplists:proplist()) ->
+    {ok, get_group_output(), tuple()} |
+    {error, any()} |
+    {error, get_group_errors(), tuple()}.
 get_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-group"],
@@ -239,8 +875,17 @@ get_group(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:GetGroupConfiguration'
+-spec get_group_configuration(aws_client:aws_client(), get_group_configuration_input()) ->
+    {ok, get_group_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_group_configuration_errors(), tuple()}.
 get_group_configuration(Client, Input) ->
     get_group_configuration(Client, Input, []).
+
+-spec get_group_configuration(aws_client:aws_client(), get_group_configuration_input(), proplists:proplist()) ->
+    {ok, get_group_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_group_configuration_errors(), tuple()}.
 get_group_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-group-configuration"],
@@ -276,8 +921,17 @@ get_group_configuration(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:GetGroupQuery'
+-spec get_group_query(aws_client:aws_client(), get_group_query_input()) ->
+    {ok, get_group_query_output(), tuple()} |
+    {error, any()} |
+    {error, get_group_query_errors(), tuple()}.
 get_group_query(Client, Input) ->
     get_group_query(Client, Input, []).
+
+-spec get_group_query(aws_client:aws_client(), get_group_query_input(), proplists:proplist()) ->
+    {ok, get_group_query_output(), tuple()} |
+    {error, any()} |
+    {error, get_group_query_errors(), tuple()}.
 get_group_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-group-query"],
@@ -309,14 +963,26 @@ get_group_query(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:GetTags'
+-spec get_tags(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_tags_output(), tuple()} |
+    {error, any()} |
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, Arn)
   when is_map(Client) ->
     get_tags(Client, Arn, #{}, #{}).
 
+-spec get_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_tags_output(), tuple()} |
+    {error, any()} |
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_tags(Client, Arn, QueryMap, HeadersMap, []).
 
+-spec get_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_tags_output(), tuple()} |
+    {error, any()} |
+    {error, get_tags_errors(), tuple()}.
 get_tags(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
@@ -352,8 +1018,17 @@ get_tags(Client, Arn, QueryMap, HeadersMap, Options0)
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:GroupResources'
+-spec group_resources(aws_client:aws_client(), group_resources_input()) ->
+    {ok, group_resources_output(), tuple()} |
+    {error, any()} |
+    {error, group_resources_errors(), tuple()}.
 group_resources(Client, Input) ->
     group_resources(Client, Input, []).
+
+-spec group_resources(aws_client:aws_client(), group_resources_input(), proplists:proplist()) ->
+    {ok, group_resources_output(), tuple()} |
+    {error, any()} |
+    {error, group_resources_errors(), tuple()}.
 group_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/group-resources"],
@@ -391,8 +1066,17 @@ group_resources(Client, Input0, Options0) ->
 %% `cloudformation:ListStackResources'
 %%
 %% `tag:GetResources'
+-spec list_group_resources(aws_client:aws_client(), list_group_resources_input()) ->
+    {ok, list_group_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_group_resources_errors(), tuple()}.
 list_group_resources(Client, Input) ->
     list_group_resources(Client, Input, []).
+
+-spec list_group_resources(aws_client:aws_client(), list_group_resources_input(), proplists:proplist()) ->
+    {ok, list_group_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_group_resources_errors(), tuple()}.
 list_group_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-group-resources"],
@@ -422,8 +1106,17 @@ list_group_resources(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:ListGroups'
+-spec list_groups(aws_client:aws_client(), list_groups_input()) ->
+    {ok, list_groups_output(), tuple()} |
+    {error, any()} |
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input) ->
     list_groups(Client, Input, []).
+
+-spec list_groups(aws_client:aws_client(), list_groups_input(), proplists:proplist()) ->
+    {ok, list_groups_output(), tuple()} |
+    {error, any()} |
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input0, Options0) ->
     Method = post,
     Path = ["/groups-list"],
@@ -459,8 +1152,17 @@ list_groups(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:PutGroupConfiguration'
+-spec put_group_configuration(aws_client:aws_client(), put_group_configuration_input()) ->
+    {ok, put_group_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_group_configuration_errors(), tuple()}.
 put_group_configuration(Client, Input) ->
     put_group_configuration(Client, Input, []).
+
+-spec put_group_configuration(aws_client:aws_client(), put_group_configuration_input(), proplists:proplist()) ->
+    {ok, put_group_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_group_configuration_errors(), tuple()}.
 put_group_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/put-group-configuration"],
@@ -501,8 +1203,17 @@ put_group_configuration(Client, Input0, Options0) ->
 %% `cloudformation:ListStackResources'
 %%
 %% `tag:GetResources'
+-spec search_resources(aws_client:aws_client(), search_resources_input()) ->
+    {ok, search_resources_output(), tuple()} |
+    {error, any()} |
+    {error, search_resources_errors(), tuple()}.
 search_resources(Client, Input) ->
     search_resources(Client, Input, []).
+
+-spec search_resources(aws_client:aws_client(), search_resources_input(), proplists:proplist()) ->
+    {ok, search_resources_output(), tuple()} |
+    {error, any()} |
+    {error, search_resources_errors(), tuple()}.
 search_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/resources/search"],
@@ -542,8 +1253,17 @@ search_resources(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:Tag'
+-spec tag(aws_client:aws_client(), binary() | list(), tag_input()) ->
+    {ok, tag_output(), tuple()} |
+    {error, any()} |
+    {error, tag_errors(), tuple()}.
 tag(Client, Arn, Input) ->
     tag(Client, Arn, Input, []).
+
+-spec tag(aws_client:aws_client(), binary() | list(), tag_input(), proplists:proplist()) ->
+    {ok, tag_output(), tuple()} |
+    {error, any()} |
+    {error, tag_errors(), tuple()}.
 tag(Client, Arn, Input0, Options0) ->
     Method = put,
     Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
@@ -579,8 +1299,17 @@ tag(Client, Arn, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:UngroupResources'
+-spec ungroup_resources(aws_client:aws_client(), ungroup_resources_input()) ->
+    {ok, ungroup_resources_output(), tuple()} |
+    {error, any()} |
+    {error, ungroup_resources_errors(), tuple()}.
 ungroup_resources(Client, Input) ->
     ungroup_resources(Client, Input, []).
+
+-spec ungroup_resources(aws_client:aws_client(), ungroup_resources_input(), proplists:proplist()) ->
+    {ok, ungroup_resources_output(), tuple()} |
+    {error, any()} |
+    {error, ungroup_resources_errors(), tuple()}.
 ungroup_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ungroup-resources"],
@@ -610,8 +1339,17 @@ ungroup_resources(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:Untag'
+-spec untag(aws_client:aws_client(), binary() | list(), untag_input()) ->
+    {ok, untag_output(), tuple()} |
+    {error, any()} |
+    {error, untag_errors(), tuple()}.
 untag(Client, Arn, Input) ->
     untag(Client, Arn, Input, []).
+
+-spec untag(aws_client:aws_client(), binary() | list(), untag_input(), proplists:proplist()) ->
+    {ok, untag_output(), tuple()} |
+    {error, any()} |
+    {error, untag_errors(), tuple()}.
 untag(Client, Arn, Input0, Options0) ->
     Method = patch,
     Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
@@ -642,8 +1380,17 @@ untag(Client, Arn, Input0, Options0) ->
 %% operation to check for completion by looking for
 %% `GroupLifecycleEventsStatus'
 %% to change to `ACTIVE'.
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_input()) ->
+    {ok, update_account_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, Input) ->
     update_account_settings(Client, Input, []).
+
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_input(), proplists:proplist()) ->
+    {ok, update_account_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-account-settings"],
@@ -676,8 +1423,17 @@ update_account_settings(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:UpdateGroup'
+-spec update_group(aws_client:aws_client(), update_group_input()) ->
+    {ok, update_group_output(), tuple()} |
+    {error, any()} |
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input) ->
     update_group(Client, Input, []).
+
+-spec update_group(aws_client:aws_client(), update_group_input(), proplists:proplist()) ->
+    {ok, update_group_output(), tuple()} |
+    {error, any()} |
+    {error, update_group_errors(), tuple()}.
 update_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-group"],
@@ -711,8 +1467,17 @@ update_group(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:UpdateGroupQuery'
+-spec update_group_query(aws_client:aws_client(), update_group_query_input()) ->
+    {ok, update_group_query_output(), tuple()} |
+    {error, any()} |
+    {error, update_group_query_errors(), tuple()}.
 update_group_query(Client, Input) ->
     update_group_query(Client, Input, []).
+
+-spec update_group_query(aws_client:aws_client(), update_group_query_input(), proplists:proplist()) ->
+    {ok, update_group_query_output(), tuple()} |
+    {error, any()} |
+    {error, update_group_query_errors(), tuple()}.
 update_group_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-group-query"],
@@ -739,7 +1504,7 @@ update_group_query(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -13,6 +13,125 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% get_action_recommendations_request() :: #{
+%%   <<"campaignArn">> => string(),
+%%   <<"filterArn">> => string(),
+%%   <<"filterValues">> => map(),
+%%   <<"numResults">> => integer(),
+%%   <<"userId">> => string()
+%% }
+-type get_action_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_action_recommendations_response() :: #{
+%%   <<"actionList">> => list(predicted_action()()),
+%%   <<"recommendationId">> => string()
+%% }
+-type get_action_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_personalized_ranking_request() :: #{
+%%   <<"campaignArn">> := string(),
+%%   <<"context">> => map(),
+%%   <<"filterArn">> => string(),
+%%   <<"filterValues">> => map(),
+%%   <<"inputList">> := list(string()()),
+%%   <<"metadataColumns">> => map(),
+%%   <<"userId">> := string()
+%% }
+-type get_personalized_ranking_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_personalized_ranking_response() :: #{
+%%   <<"personalizedRanking">> => list(predicted_item()()),
+%%   <<"recommendationId">> => string()
+%% }
+-type get_personalized_ranking_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommendations_request() :: #{
+%%   <<"campaignArn">> => string(),
+%%   <<"context">> => map(),
+%%   <<"filterArn">> => string(),
+%%   <<"filterValues">> => map(),
+%%   <<"itemId">> => string(),
+%%   <<"metadataColumns">> => map(),
+%%   <<"numResults">> => integer(),
+%%   <<"promotions">> => list(promotion()()),
+%%   <<"recommenderArn">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type get_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommendations_response() :: #{
+%%   <<"itemList">> => list(predicted_item()()),
+%%   <<"recommendationId">> => string()
+%% }
+-type get_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% predicted_action() :: #{
+%%   <<"actionId">> => string(),
+%%   <<"score">> => float()
+%% }
+-type predicted_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% predicted_item() :: #{
+%%   <<"itemId">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"promotionName">> => string(),
+%%   <<"score">> => float()
+%% }
+-type predicted_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% promotion() :: #{
+%%   <<"filterArn">> => string(),
+%%   <<"filterValues">> => map(),
+%%   <<"name">> => string(),
+%%   <<"percentPromotedItems">> => integer()
+%% }
+-type promotion() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+-type get_action_recommendations_errors() ::
+    resource_not_found_exception() | 
+    invalid_input_exception().
+
+-type get_personalized_ranking_errors() ::
+    resource_not_found_exception() | 
+    invalid_input_exception().
+
+-type get_recommendations_errors() ::
+    resource_not_found_exception() | 
+    invalid_input_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -30,8 +149,17 @@
 %% For more information about getting action recommendations, see Getting
 %% action recommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/get-action-recommendations.html.
+-spec get_action_recommendations(aws_client:aws_client(), get_action_recommendations_request()) ->
+    {ok, get_action_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_action_recommendations_errors(), tuple()}.
 get_action_recommendations(Client, Input) ->
     get_action_recommendations(Client, Input, []).
+
+-spec get_action_recommendations(aws_client:aws_client(), get_action_recommendations_request(), proplists:proplist()) ->
+    {ok, get_action_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_action_recommendations_errors(), tuple()}.
 get_action_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/action-recommendations"],
@@ -62,8 +190,17 @@ get_action_recommendations(Client, Input0, Options0) ->
 %% The solution backing the campaign must have been created using a recipe of
 %% type
 %% PERSONALIZED_RANKING.
+-spec get_personalized_ranking(aws_client:aws_client(), get_personalized_ranking_request()) ->
+    {ok, get_personalized_ranking_response(), tuple()} |
+    {error, any()} |
+    {error, get_personalized_ranking_errors(), tuple()}.
 get_personalized_ranking(Client, Input) ->
     get_personalized_ranking(Client, Input, []).
+
+-spec get_personalized_ranking(aws_client:aws_client(), get_personalized_ranking_request(), proplists:proplist()) ->
+    {ok, get_personalized_ranking_response(), tuple()} |
+    {error, any()} |
+    {error, get_personalized_ranking_errors(), tuple()}.
 get_personalized_ranking(Client, Input0, Options0) ->
     Method = post,
     Path = ["/personalize-ranking"],
@@ -105,8 +242,17 @@ get_personalized_ranking(Client, Input0, Options0) ->
 %% For information on use case requirements see Choosing recommender use
 %% cases:
 %% https://docs.aws.amazon.com/personalize/latest/dg/domain-use-cases.html.
+-spec get_recommendations(aws_client:aws_client(), get_recommendations_request()) ->
+    {ok, get_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommendations_errors(), tuple()}.
 get_recommendations(Client, Input) ->
     get_recommendations(Client, Input, []).
+
+-spec get_recommendations(aws_client:aws_client(), get_recommendations_request(), proplists:proplist()) ->
+    {ok, get_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommendations_errors(), tuple()}.
 get_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/recommendations"],
@@ -133,7 +279,7 @@ get_recommendations(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

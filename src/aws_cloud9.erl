@@ -79,6 +79,401 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_environments_result() :: #{
+%%   <<"environmentIds">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environments_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environments_result() :: #{
+%%   <<"environments">> => list(environment()())
+%% }
+-type describe_environments_result() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_membership_request() :: #{
+%%   <<"environmentId">> := string(),
+%%   <<"userArn">> := string()
+%% }
+-type delete_environment_membership_request() :: #{binary() => any()}.
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_environment_membership_request() :: #{
+%%   <<"environmentId">> := string(),
+%%   <<"permissions">> := list(any()),
+%%   <<"userArn">> := string()
+%% }
+-type create_environment_membership_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environment_memberships_request() :: #{
+%%   <<"environmentId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"permissions">> => list(list(any())()),
+%%   <<"userArn">> => string()
+%% }
+-type describe_environment_memberships_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environment_status_result() :: #{
+%%   <<"message">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_environment_status_result() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% environment() :: #{
+%%   <<"arn">> => string(),
+%%   <<"connectionType">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lifecycle">> => environment_lifecycle(),
+%%   <<"managedCredentialsStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"ownerArn">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type environment() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_environment_result() :: #{
+
+%% }
+-type update_environment_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_environments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environments_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_environment_membership_result() :: #{
+%%   <<"membership">> => environment_member()
+%% }
+-type create_environment_membership_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_request() :: #{
+%%   <<"environmentId">> := string()
+%% }
+-type delete_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_environment_ec2_result() :: #{
+%%   <<"environmentId">> => string()
+%% }
+-type create_environment_ec2_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_result() :: #{
+
+%% }
+-type delete_environment_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_access_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type concurrent_access_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_environment_ec2_request() :: #{
+%%   <<"automaticStopTimeMinutes">> => integer(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"connectionType">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"dryRun">> => boolean(),
+%%   <<"imageId">> := string(),
+%%   <<"instanceType">> := string(),
+%%   <<"name">> := string(),
+%%   <<"ownerArn">> => string(),
+%%   <<"subnetId">> => string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_environment_ec2_request() :: #{binary() => any()}.
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environment_status_request() :: #{
+%%   <<"environmentId">> := string()
+%% }
+-type describe_environment_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environment_memberships_result() :: #{
+%%   <<"memberships">> => list(environment_member()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_environment_memberships_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_environment_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"environmentId">> := string(),
+%%   <<"managedCredentialsAction">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type update_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_environment_membership_request() :: #{
+%%   <<"environmentId">> := string(),
+%%   <<"permissions">> := list(any()),
+%%   <<"userArn">> := string()
+%% }
+-type update_environment_membership_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_environment_membership_result() :: #{
+%%   <<"membership">> => environment_member()
+%% }
+-type update_environment_membership_result() :: #{binary() => any()}.
+
+%% Example:
+%% environment_member() :: #{
+%%   <<"environmentId">> => string(),
+%%   <<"lastAccess">> => non_neg_integer(),
+%%   <<"permissions">> => list(any()),
+%%   <<"userArn">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type environment_member() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_membership_result() :: #{
+
+%% }
+-type delete_environment_membership_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environments_request() :: #{
+%%   <<"environmentIds">> := list(string()())
+%% }
+-type describe_environments_request() :: #{binary() => any()}.
+
+%% Example:
+%% environment_lifecycle() :: #{
+%%   <<"failureResource">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type environment_lifecycle() :: #{binary() => any()}.
+
+-type create_environment_ec2_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_environment_membership_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_environment_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_environment_membership_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_environment_memberships_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_environment_status_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_environments_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_environments_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    concurrent_access_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    concurrent_access_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception().
+
+-type update_environment_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_environment_membership_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -86,17 +481,35 @@
 %% @doc Creates an Cloud9 development environment, launches an Amazon Elastic
 %% Compute Cloud (Amazon EC2) instance, and
 %% then connects from the instance to the environment.
+-spec create_environment_ec2(aws_client:aws_client(), create_environment_ec2_request()) ->
+    {ok, create_environment_ec2_result(), tuple()} |
+    {error, any()} |
+    {error, create_environment_ec2_errors(), tuple()}.
 create_environment_ec2(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_ec2(Client, Input, []).
+
+-spec create_environment_ec2(aws_client:aws_client(), create_environment_ec2_request(), proplists:proplist()) ->
+    {ok, create_environment_ec2_result(), tuple()} |
+    {error, any()} |
+    {error, create_environment_ec2_errors(), tuple()}.
 create_environment_ec2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentEC2">>, Input, Options).
 
 %% @doc Adds an environment member to an Cloud9 development environment.
+-spec create_environment_membership(aws_client:aws_client(), create_environment_membership_request()) ->
+    {ok, create_environment_membership_result(), tuple()} |
+    {error, any()} |
+    {error, create_environment_membership_errors(), tuple()}.
 create_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_membership(Client, Input, []).
+
+-spec create_environment_membership(aws_client:aws_client(), create_environment_membership_request(), proplists:proplist()) ->
+    {ok, create_environment_membership_result(), tuple()} |
+    {error, any()} |
+    {error, create_environment_membership_errors(), tuple()}.
 create_environment_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentMembership">>, Input, Options).
@@ -105,59 +518,122 @@ create_environment_membership(Client, Input, Options)
 %%
 %% If an Amazon EC2 instance is connected to the
 %% environment, also terminates the instance.
+-spec delete_environment(aws_client:aws_client(), delete_environment_request()) ->
+    {ok, delete_environment_result(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment(Client, Input, []).
+
+-spec delete_environment(aws_client:aws_client(), delete_environment_request(), proplists:proplist()) ->
+    {ok, delete_environment_result(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironment">>, Input, Options).
 
 %% @doc Deletes an environment member from a development environment.
+-spec delete_environment_membership(aws_client:aws_client(), delete_environment_membership_request()) ->
+    {ok, delete_environment_membership_result(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_membership_errors(), tuple()}.
 delete_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_membership(Client, Input, []).
+
+-spec delete_environment_membership(aws_client:aws_client(), delete_environment_membership_request(), proplists:proplist()) ->
+    {ok, delete_environment_membership_result(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_membership_errors(), tuple()}.
 delete_environment_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironmentMembership">>, Input, Options).
 
 %% @doc Gets information about environment members for an Cloud9 development
 %% environment.
+-spec describe_environment_memberships(aws_client:aws_client(), describe_environment_memberships_request()) ->
+    {ok, describe_environment_memberships_result(), tuple()} |
+    {error, any()} |
+    {error, describe_environment_memberships_errors(), tuple()}.
 describe_environment_memberships(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_memberships(Client, Input, []).
+
+-spec describe_environment_memberships(aws_client:aws_client(), describe_environment_memberships_request(), proplists:proplist()) ->
+    {ok, describe_environment_memberships_result(), tuple()} |
+    {error, any()} |
+    {error, describe_environment_memberships_errors(), tuple()}.
 describe_environment_memberships(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironmentMemberships">>, Input, Options).
 
 %% @doc Gets status information for an Cloud9 development environment.
+-spec describe_environment_status(aws_client:aws_client(), describe_environment_status_request()) ->
+    {ok, describe_environment_status_result(), tuple()} |
+    {error, any()} |
+    {error, describe_environment_status_errors(), tuple()}.
 describe_environment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_status(Client, Input, []).
+
+-spec describe_environment_status(aws_client:aws_client(), describe_environment_status_request(), proplists:proplist()) ->
+    {ok, describe_environment_status_result(), tuple()} |
+    {error, any()} |
+    {error, describe_environment_status_errors(), tuple()}.
 describe_environment_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironmentStatus">>, Input, Options).
 
 %% @doc Gets information about Cloud9 development environments.
+-spec describe_environments(aws_client:aws_client(), describe_environments_request()) ->
+    {ok, describe_environments_result(), tuple()} |
+    {error, any()} |
+    {error, describe_environments_errors(), tuple()}.
 describe_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environments(Client, Input, []).
+
+-spec describe_environments(aws_client:aws_client(), describe_environments_request(), proplists:proplist()) ->
+    {ok, describe_environments_result(), tuple()} |
+    {error, any()} |
+    {error, describe_environments_errors(), tuple()}.
 describe_environments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironments">>, Input, Options).
 
 %% @doc Gets a list of Cloud9 development environment identifiers.
+-spec list_environments(aws_client:aws_client(), list_environments_request()) ->
+    {ok, list_environments_result(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environments(Client, Input, []).
+
+-spec list_environments(aws_client:aws_client(), list_environments_request(), proplists:proplist()) ->
+    {ok, list_environments_result(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironments">>, Input, Options).
 
 %% @doc Gets a list of the tags associated with an Cloud9 development
 %% environment.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -167,25 +643,52 @@ list_tags_for_resource(Client, Input, Options)
 %% Tags that you add to an Cloud9 environment by using this method will NOT
 %% be
 %% automatically propagated to underlying resources.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes tags from an Cloud9 development environment.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Changes the settings of an existing Cloud9 development environment.
+-spec update_environment(aws_client:aws_client(), update_environment_request()) ->
+    {ok, update_environment_result(), tuple()} |
+    {error, any()} |
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment(Client, Input, []).
+
+-spec update_environment(aws_client:aws_client(), update_environment_request(), proplists:proplist()) ->
+    {ok, update_environment_result(), tuple()} |
+    {error, any()} |
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnvironment">>, Input, Options).
@@ -193,9 +696,18 @@ update_environment(Client, Input, Options)
 %% @doc Changes the settings of an existing environment member for an Cloud9
 %% development
 %% environment.
+-spec update_environment_membership(aws_client:aws_client(), update_environment_membership_request()) ->
+    {ok, update_environment_membership_result(), tuple()} |
+    {error, any()} |
+    {error, update_environment_membership_errors(), tuple()}.
 update_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_membership(Client, Input, []).
+
+-spec update_environment_membership(aws_client:aws_client(), update_environment_membership_request(), proplists:proplist()) ->
+    {ok, update_environment_membership_result(), tuple()} |
+    {error, any()} |
+    {error, update_environment_membership_errors(), tuple()}.
 update_environment_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnvironmentMembership">>, Input, Options).

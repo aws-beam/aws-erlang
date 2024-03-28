@@ -130,6 +130,946 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_lake_exceptions_response() :: #{
+%%   <<"exceptions">> => list(data_lake_exception()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_lake_exceptions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_aws_log_source_response() :: #{
+%%   <<"failed">> => list(string()())
+%% }
+-type create_aws_log_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscriber_request() :: #{}
+-type delete_subscriber_request() :: #{}.
+
+
+%% Example:
+%% list_data_lakes_request() :: #{
+%%   <<"regions">> => list(string()())
+%% }
+-type list_data_lakes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_replication_configuration() :: #{
+%%   <<"regions">> => list(string()()),
+%%   <<"roleArn">> => string()
+%% }
+-type data_lake_replication_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_log_source_response() :: #{
+%%   <<"source">> => custom_log_source_resource()
+%% }
+-type create_custom_log_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_log_source_attributes() :: #{
+%%   <<"crawlerArn">> => string(),
+%%   <<"databaseArn">> => string(),
+%%   <<"tableArn">> => string()
+%% }
+-type custom_log_source_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_log_sources_request() :: #{
+%%   <<"accounts">> => list(string()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"regions">> => list(string()()),
+%%   <<"sources">> => list(list()())
+%% }
+-type list_log_sources_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% update_data_lake_exception_subscription_response() :: #{}
+-type update_data_lake_exception_subscription_response() :: #{}.
+
+
+%% Example:
+%% update_subscriber_response() :: #{
+%%   <<"subscriber">> => subscriber_resource()
+%% }
+-type update_subscriber_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_lake_sources_request() :: #{
+%%   <<"accounts">> => list(string()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_data_lake_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_lake_request() :: #{
+%%   <<"configurations">> := list(data_lake_configuration()()),
+%%   <<"metaStoreManagerRoleArn">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_data_lake_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_log_source_configuration() :: #{
+%%   <<"crawlerConfiguration">> => custom_log_source_crawler_configuration(),
+%%   <<"providerIdentity">> => aws_identity()
+%% }
+-type custom_log_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_lakes_response() :: #{
+%%   <<"dataLakes">> => list(data_lake_resource()())
+%% }
+-type list_data_lakes_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_log_source_response() :: #{}
+-type delete_custom_log_source_response() :: #{}.
+
+
+%% Example:
+%% create_subscriber_response() :: #{
+%%   <<"subscriber">> => subscriber_resource()
+%% }
+-type create_subscriber_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_lake_organization_configuration_response() :: #{}
+-type create_data_lake_organization_configuration_response() :: #{}.
+
+
+%% Example:
+%% data_lake_source_status() :: #{
+%%   <<"resource">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type data_lake_source_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_lake_exception_subscription_response() :: #{}
+-type create_data_lake_exception_subscription_response() :: #{}.
+
+
+%% Example:
+%% update_data_lake_exception_subscription_request() :: #{
+%%   <<"exceptionTimeToLive">> => [float()],
+%%   <<"notificationEndpoint">> := string(),
+%%   <<"subscriptionProtocol">> := string()
+%% }
+-type update_data_lake_exception_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_auto_enable_new_account_configuration() :: #{
+%%   <<"region">> => string(),
+%%   <<"sources">> => list(aws_log_source_resource()())
+%% }
+-type data_lake_auto_enable_new_account_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_lake_request() :: #{
+%%   <<"configurations">> := list(data_lake_configuration()()),
+%%   <<"metaStoreManagerRoleArn">> => string()
+%% }
+-type update_data_lake_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscriber_response() :: #{}
+-type delete_subscriber_response() :: #{}.
+
+
+%% Example:
+%% create_aws_log_source_request() :: #{
+%%   <<"sources">> := list(aws_log_source_configuration()())
+%% }
+-type create_aws_log_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_lake_sources_response() :: #{
+%%   <<"dataLakeArn">> => string(),
+%%   <<"dataLakeSources">> => list(data_lake_source()()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_data_lake_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_log_source_resource() :: #{
+%%   <<"sourceName">> => list(any()),
+%%   <<"sourceVersion">> => string()
+%% }
+-type aws_log_source_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_encryption_configuration() :: #{
+%%   <<"kmsKeyId">> => [string()]
+%% }
+-type data_lake_encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_lake_organization_configuration_response() :: #{}
+-type delete_data_lake_organization_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_data_lake_response() :: #{
+%%   <<"dataLakes">> => list(data_lake_resource()())
+%% }
+-type update_data_lake_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_lake_response() :: #{
+%%   <<"dataLakes">> => list(data_lake_resource()())
+%% }
+-type create_data_lake_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscriber_request() :: #{
+%%   <<"sources">> => list(list()()),
+%%   <<"subscriberDescription">> => string(),
+%%   <<"subscriberIdentity">> => aws_identity(),
+%%   <<"subscriberName">> => string()
+%% }
+-type update_subscriber_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_subscriber_response() :: #{
+%%   <<"subscriber">> => subscriber_resource()
+%% }
+-type get_subscriber_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_lifecycle_transition() :: #{
+%%   <<"days">> => [integer()],
+%%   <<"storageClass">> => string()
+%% }
+-type data_lake_lifecycle_transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_configuration() :: #{
+%%   <<"encryptionConfiguration">> => data_lake_encryption_configuration(),
+%%   <<"lifecycleConfiguration">> => data_lake_lifecycle_configuration(),
+%%   <<"region">> => string(),
+%%   <<"replicationConfiguration">> => data_lake_replication_configuration()
+%% }
+-type data_lake_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_identity() :: #{
+%%   <<"externalId">> => string(),
+%%   <<"principal">> => string()
+%% }
+-type aws_identity() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscriber_notification_response() :: #{}
+-type delete_subscriber_notification_response() :: #{}.
+
+
+%% Example:
+%% get_data_lake_exception_subscription_response() :: #{
+%%   <<"exceptionTimeToLive">> => [float()],
+%%   <<"notificationEndpoint">> => string(),
+%%   <<"subscriptionProtocol">> => string()
+%% }
+-type get_data_lake_exception_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscriber_notification_request() :: #{
+%%   <<"configuration">> := list()
+%% }
+-type update_subscriber_notification_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_lake_exception_subscription_request() :: #{
+%%   <<"exceptionTimeToLive">> => [float()],
+%%   <<"notificationEndpoint">> := string(),
+%%   <<"subscriptionProtocol">> := string()
+%% }
+-type create_data_lake_exception_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% sqs_notification_configuration() :: #{}
+-type sqs_notification_configuration() :: #{}.
+
+
+%% Example:
+%% create_subscriber_notification_request() :: #{
+%%   <<"configuration">> := list()
+%% }
+-type create_subscriber_notification_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscriber_resource() :: #{
+%%   <<"accessTypes">> => list(list(any())()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"resourceShareArn">> => string(),
+%%   <<"resourceShareName">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"s3BucketArn">> => string(),
+%%   <<"sources">> => list(list()()),
+%%   <<"subscriberArn">> => string(),
+%%   <<"subscriberDescription">> => string(),
+%%   <<"subscriberEndpoint">> => string(),
+%%   <<"subscriberId">> => string(),
+%%   <<"subscriberIdentity">> => aws_identity(),
+%%   <<"subscriberName">> => string(),
+%%   <<"subscriberStatus">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type subscriber_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_lake_organization_configuration_request() :: #{
+%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration()())
+%% }
+-type create_data_lake_organization_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_data_lake_delegated_administrator_response() :: #{}
+-type deregister_data_lake_delegated_administrator_response() :: #{}.
+
+
+%% Example:
+%% list_data_lake_exceptions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"regions">> => list(string()())
+%% }
+-type list_data_lake_exceptions_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_data_lake_delegated_administrator_request() :: #{}
+-type deregister_data_lake_delegated_administrator_request() :: #{}.
+
+
+%% Example:
+%% list_subscribers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"subscribers">> => list(subscriber_resource()())
+%% }
+-type list_subscribers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_data_lake_organization_configuration_request() :: #{
+%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration()())
+%% }
+-type delete_data_lake_organization_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_log_source_configuration() :: #{
+%%   <<"accounts">> => list(string()()),
+%%   <<"regions">> => list(string()()),
+%%   <<"sourceName">> => list(any()),
+%%   <<"sourceVersion">> => string()
+%% }
+-type aws_log_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_log_source_crawler_configuration() :: #{
+%%   <<"roleArn">> => string()
+%% }
+-type custom_log_source_crawler_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_source() :: #{
+%%   <<"account">> => [string()],
+%%   <<"eventClasses">> => list(string()()),
+%%   <<"sourceName">> => [string()],
+%%   <<"sourceStatuses">> => list(data_lake_source_status()())
+%% }
+-type data_lake_source() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscriber_request() :: #{}
+-type get_subscriber_request() :: #{}.
+
+
+%% Example:
+%% data_lake_lifecycle_expiration() :: #{
+%%   <<"days">> => [integer()]
+%% }
+-type data_lake_lifecycle_expiration() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_source() :: #{
+%%   <<"account">> => string(),
+%%   <<"region">> => string(),
+%%   <<"sources">> => list(list()())
+%% }
+-type log_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_resource() :: #{
+%%   <<"createStatus">> => list(any()),
+%%   <<"dataLakeArn">> => string(),
+%%   <<"encryptionConfiguration">> => data_lake_encryption_configuration(),
+%%   <<"lifecycleConfiguration">> => data_lake_lifecycle_configuration(),
+%%   <<"region">> => string(),
+%%   <<"replicationConfiguration">> => data_lake_replication_configuration(),
+%%   <<"s3BucketArn">> => string(),
+%%   <<"updateStatus">> => data_lake_update_status()
+%% }
+-type data_lake_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_aws_log_source_response() :: #{
+%%   <<"failed">> => list(string()())
+%% }
+-type delete_aws_log_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_lifecycle_configuration() :: #{
+%%   <<"expiration">> => data_lake_lifecycle_expiration(),
+%%   <<"transitions">> => list(data_lake_lifecycle_transition()())
+%% }
+-type data_lake_lifecycle_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_lake_response() :: #{}
+-type delete_data_lake_response() :: #{}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_lake_organization_configuration_request() :: #{}
+-type get_data_lake_organization_configuration_request() :: #{}.
+
+
+%% Example:
+%% list_log_sources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sources">> => list(log_source()())
+%% }
+-type list_log_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% data_lake_update_exception() :: #{
+%%   <<"code">> => [string()],
+%%   <<"reason">> => [string()]
+%% }
+-type data_lake_update_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_log_source_request() :: #{
+%%   <<"configuration">> := custom_log_source_configuration(),
+%%   <<"eventClasses">> => list(string()()),
+%%   <<"sourceName">> := string(),
+%%   <<"sourceVersion">> => string()
+%% }
+-type create_custom_log_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_log_source_provider() :: #{
+%%   <<"location">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type custom_log_source_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_data_lake_request() :: #{
+%%   <<"regions">> := list(string()())
+%% }
+-type delete_data_lake_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_lake_exception_subscription_response() :: #{}
+-type delete_data_lake_exception_subscription_response() :: #{}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_exception() :: #{
+%%   <<"exception">> => string(),
+%%   <<"region">> => string(),
+%%   <<"remediation">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type data_lake_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscriber_notification_response() :: #{
+%%   <<"subscriberEndpoint">> => string()
+%% }
+-type update_subscriber_notification_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscriber_notification_response() :: #{
+%%   <<"subscriberEndpoint">> => string()
+%% }
+-type create_subscriber_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_data_lake_delegated_administrator_response() :: #{}
+-type register_data_lake_delegated_administrator_response() :: #{}.
+
+
+%% Example:
+%% delete_custom_log_source_request() :: #{
+%%   <<"sourceVersion">> => string()
+%% }
+-type delete_custom_log_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_log_source_resource() :: #{
+%%   <<"attributes">> => custom_log_source_attributes(),
+%%   <<"provider">> => custom_log_source_provider(),
+%%   <<"sourceName">> => string(),
+%%   <<"sourceVersion">> => string()
+%% }
+-type custom_log_source_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_lake_organization_configuration_response() :: #{
+%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration()())
+%% }
+-type get_data_lake_organization_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_lake_exception_subscription_request() :: #{}
+-type get_data_lake_exception_subscription_request() :: #{}.
+
+
+%% Example:
+%% register_data_lake_delegated_administrator_request() :: #{
+%%   <<"accountId">> := string()
+%% }
+-type register_data_lake_delegated_administrator_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscriber_notification_request() :: #{}
+-type delete_subscriber_notification_request() :: #{}.
+
+
+%% Example:
+%% create_subscriber_request() :: #{
+%%   <<"accessTypes">> => list(list(any())()),
+%%   <<"sources">> := list(list()()),
+%%   <<"subscriberDescription">> => string(),
+%%   <<"subscriberIdentity">> := aws_identity(),
+%%   <<"subscriberName">> := [string()],
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_subscriber_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_aws_log_source_request() :: #{
+%%   <<"sources">> := list(aws_log_source_configuration()())
+%% }
+-type delete_aws_log_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscribers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscribers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_update_status() :: #{
+%%   <<"exception">> => data_lake_update_exception(),
+%%   <<"requestId">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type data_lake_update_status() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_lake_exception_subscription_request() :: #{}
+-type delete_data_lake_exception_subscription_request() :: #{}.
+
+
+%% Example:
+%% https_notification_configuration() :: #{
+%%   <<"authorizationApiKeyName">> => [string()],
+%%   <<"authorizationApiKeyValue">> => [string()],
+%%   <<"endpoint">> => [string()],
+%%   <<"httpMethod">> => list(any()),
+%%   <<"targetRoleArn">> => string()
+%% }
+-type https_notification_configuration() :: #{binary() => any()}.
+
+-type create_aws_log_source_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_custom_log_source_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_lake_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_lake_exception_subscription_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_lake_organization_configuration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_subscriber_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_subscriber_notification_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_aws_log_source_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_custom_log_source_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_data_lake_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_data_lake_exception_subscription_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_data_lake_organization_configuration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_subscriber_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_subscriber_notification_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type deregister_data_lake_delegated_administrator_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_data_lake_exception_subscription_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_data_lake_organization_configuration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_data_lake_sources_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_subscriber_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_data_lake_exceptions_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_data_lakes_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_log_sources_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_subscribers_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type register_data_lake_delegated_administrator_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_data_lake_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_data_lake_exception_subscription_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_subscriber_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_subscriber_notification_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -151,8 +1091,17 @@
 %% source. Use `CreateCustomLogSource' to enable data collection from a
 %% custom
 %% source.
+-spec create_aws_log_source(aws_client:aws_client(), create_aws_log_source_request()) ->
+    {ok, create_aws_log_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_aws_log_source_errors(), tuple()}.
 create_aws_log_source(Client, Input) ->
     create_aws_log_source(Client, Input, []).
+
+-spec create_aws_log_source(aws_client:aws_client(), create_aws_log_source_request(), proplists:proplist()) ->
+    {ok, create_aws_log_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_aws_log_source_errors(), tuple()}.
 create_aws_log_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/aws"],
@@ -188,8 +1137,17 @@ create_aws_log_source(Client, Input0, Options0) ->
 %% location for log files from the custom source. In addition, this operation
 %% also creates an
 %% associated Glue table and an Glue crawler.
+-spec create_custom_log_source(aws_client:aws_client(), create_custom_log_source_request()) ->
+    {ok, create_custom_log_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_log_source_errors(), tuple()}.
 create_custom_log_source(Client, Input) ->
     create_custom_log_source(Client, Input, []).
+
+-spec create_custom_log_source(aws_client:aws_client(), create_custom_log_source_request(), proplists:proplist()) ->
+    {ok, create_custom_log_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_log_source_errors(), tuple()}.
 create_custom_log_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/custom"],
@@ -240,8 +1198,17 @@ create_custom_log_source(Client, Input0, Options0) ->
 %% more information, see the Amazon Security Lake User
 %% Guide:
 %% https://docs.aws.amazon.com/security-lake/latest/userguide/what-is-security-lake.html.
+-spec create_data_lake(aws_client:aws_client(), create_data_lake_request()) ->
+    {ok, create_data_lake_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_lake_errors(), tuple()}.
 create_data_lake(Client, Input) ->
     create_data_lake(Client, Input, []).
+
+-spec create_data_lake(aws_client:aws_client(), create_data_lake_request(), proplists:proplist()) ->
+    {ok, create_data_lake_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_lake_errors(), tuple()}.
 create_data_lake(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake"],
@@ -267,8 +1234,17 @@ create_data_lake(Client, Input0, Options0) ->
 %% @doc Creates the specified notification subscription in Amazon Security
 %% Lake for the organization
 %% you specify.
+-spec create_data_lake_exception_subscription(aws_client:aws_client(), create_data_lake_exception_subscription_request()) ->
+    {ok, create_data_lake_exception_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_lake_exception_subscription_errors(), tuple()}.
 create_data_lake_exception_subscription(Client, Input) ->
     create_data_lake_exception_subscription(Client, Input, []).
+
+-spec create_data_lake_exception_subscription(aws_client:aws_client(), create_data_lake_exception_subscription_request(), proplists:proplist()) ->
+    {ok, create_data_lake_exception_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_lake_exception_subscription_errors(), tuple()}.
 create_data_lake_exception_subscription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/exceptions/subscription"],
@@ -297,8 +1273,17 @@ create_data_lake_exception_subscription(Client, Input0, Options0) ->
 %% Security Lake is not automatically enabled for any existing member
 %% accounts in your
 %% organization.
+-spec create_data_lake_organization_configuration(aws_client:aws_client(), create_data_lake_organization_configuration_request()) ->
+    {ok, create_data_lake_organization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_lake_organization_configuration_errors(), tuple()}.
 create_data_lake_organization_configuration(Client, Input) ->
     create_data_lake_organization_configuration(Client, Input, []).
+
+-spec create_data_lake_organization_configuration(aws_client:aws_client(), create_data_lake_organization_configuration_request(), proplists:proplist()) ->
+    {ok, create_data_lake_organization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_lake_organization_configuration_errors(), tuple()}.
 create_data_lake_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/organization/configuration"],
@@ -327,8 +1312,17 @@ create_data_lake_organization_configuration(Client, Input0, Options0) ->
 %%
 %% You can create a subscriber with access to data in the current Amazon Web
 %% Services Region.
+-spec create_subscriber(aws_client:aws_client(), create_subscriber_request()) ->
+    {ok, create_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, create_subscriber_errors(), tuple()}.
 create_subscriber(Client, Input) ->
     create_subscriber(Client, Input, []).
+
+-spec create_subscriber(aws_client:aws_client(), create_subscriber_request(), proplists:proplist()) ->
+    {ok, create_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, create_subscriber_errors(), tuple()}.
 create_subscriber(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/subscribers"],
@@ -357,8 +1351,17 @@ create_subscriber(Client, Input0, Options0) ->
 %%
 %% You can create only one subscriber notification per
 %% subscriber.
+-spec create_subscriber_notification(aws_client:aws_client(), binary() | list(), create_subscriber_notification_request()) ->
+    {ok, create_subscriber_notification_response(), tuple()} |
+    {error, any()} |
+    {error, create_subscriber_notification_errors(), tuple()}.
 create_subscriber_notification(Client, SubscriberId, Input) ->
     create_subscriber_notification(Client, SubscriberId, Input, []).
+
+-spec create_subscriber_notification(aws_client:aws_client(), binary() | list(), create_subscriber_notification_request(), proplists:proplist()) ->
+    {ok, create_subscriber_notification_response(), tuple()} |
+    {error, any()} |
+    {error, create_subscriber_notification_errors(), tuple()}.
 create_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],
@@ -396,8 +1399,17 @@ create_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
 %% You can choose any source type in any Amazon Web Services Region for
 %% either accounts that
 %% are part of a trusted organization or standalone accounts.
+-spec delete_aws_log_source(aws_client:aws_client(), delete_aws_log_source_request()) ->
+    {ok, delete_aws_log_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_aws_log_source_errors(), tuple()}.
 delete_aws_log_source(Client, Input) ->
     delete_aws_log_source(Client, Input, []).
+
+-spec delete_aws_log_source(aws_client:aws_client(), delete_aws_log_source_request(), proplists:proplist()) ->
+    {ok, delete_aws_log_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_aws_log_source_errors(), tuple()}.
 delete_aws_log_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/aws/delete"],
@@ -423,8 +1435,17 @@ delete_aws_log_source(Client, Input0, Options0) ->
 %% @doc Removes a custom log source from Amazon Security Lake, to stop
 %% sending data from the custom
 %% source to Security Lake.
+-spec delete_custom_log_source(aws_client:aws_client(), binary() | list(), delete_custom_log_source_request()) ->
+    {ok, delete_custom_log_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_log_source_errors(), tuple()}.
 delete_custom_log_source(Client, SourceName, Input) ->
     delete_custom_log_source(Client, SourceName, Input, []).
+
+-spec delete_custom_log_source(aws_client:aws_client(), binary() | list(), delete_custom_log_source_request(), proplists:proplist()) ->
+    {ok, delete_custom_log_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_log_source_errors(), tuple()}.
 delete_custom_log_source(Client, SourceName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/datalake/logsources/custom/", aws_util:encode_uri(SourceName), ""],
@@ -466,8 +1487,17 @@ delete_custom_log_source(Client, SourceName, Input0, Options0) ->
 %% information, see the Amazon Security Lake User
 %% Guide:
 %% https://docs.aws.amazon.com/security-lake/latest/userguide/disable-security-lake.html.
+-spec delete_data_lake(aws_client:aws_client(), delete_data_lake_request()) ->
+    {ok, delete_data_lake_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_lake_errors(), tuple()}.
 delete_data_lake(Client, Input) ->
     delete_data_lake(Client, Input, []).
+
+-spec delete_data_lake(aws_client:aws_client(), delete_data_lake_request(), proplists:proplist()) ->
+    {ok, delete_data_lake_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_lake_errors(), tuple()}.
 delete_data_lake(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/delete"],
@@ -493,8 +1523,17 @@ delete_data_lake(Client, Input0, Options0) ->
 %% @doc Deletes the specified notification subscription in Amazon Security
 %% Lake for the organization
 %% you specify.
+-spec delete_data_lake_exception_subscription(aws_client:aws_client(), delete_data_lake_exception_subscription_request()) ->
+    {ok, delete_data_lake_exception_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_lake_exception_subscription_errors(), tuple()}.
 delete_data_lake_exception_subscription(Client, Input) ->
     delete_data_lake_exception_subscription(Client, Input, []).
+
+-spec delete_data_lake_exception_subscription(aws_client:aws_client(), delete_data_lake_exception_subscription_request(), proplists:proplist()) ->
+    {ok, delete_data_lake_exception_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_lake_exception_subscription_errors(), tuple()}.
 delete_data_lake_exception_subscription(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/datalake/exceptions/subscription"],
@@ -525,8 +1564,17 @@ delete_data_lake_exception_subscription(Client, Input0, Options0) ->
 %% operation. If the delegated Security Lake administrator performs this
 %% operation, new member
 %% accounts won't automatically contribute data to the data lake.
+-spec delete_data_lake_organization_configuration(aws_client:aws_client(), delete_data_lake_organization_configuration_request()) ->
+    {ok, delete_data_lake_organization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_lake_organization_configuration_errors(), tuple()}.
 delete_data_lake_organization_configuration(Client, Input) ->
     delete_data_lake_organization_configuration(Client, Input, []).
+
+-spec delete_data_lake_organization_configuration(aws_client:aws_client(), delete_data_lake_organization_configuration_request(), proplists:proplist()) ->
+    {ok, delete_data_lake_organization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_lake_organization_configuration_errors(), tuple()}.
 delete_data_lake_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/organization/configuration/delete"],
@@ -558,8 +1606,17 @@ delete_data_lake_organization_configuration(Client, Input0, Options0) ->
 %% subscriber is removed. This
 %% operation deletes the subscriber and removes access to data in the current
 %% Amazon Web Services Region.
+-spec delete_subscriber(aws_client:aws_client(), binary() | list(), delete_subscriber_request()) ->
+    {ok, delete_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, delete_subscriber_errors(), tuple()}.
 delete_subscriber(Client, SubscriberId, Input) ->
     delete_subscriber(Client, SubscriberId, Input, []).
+
+-spec delete_subscriber(aws_client:aws_client(), binary() | list(), delete_subscriber_request(), proplists:proplist()) ->
+    {ok, delete_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, delete_subscriber_errors(), tuple()}.
 delete_subscriber(Client, SubscriberId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
@@ -585,8 +1642,17 @@ delete_subscriber(Client, SubscriberId, Input0, Options0) ->
 %% @doc Deletes the specified notification subscription in Amazon Security
 %% Lake for the organization
 %% you specify.
+-spec delete_subscriber_notification(aws_client:aws_client(), binary() | list(), delete_subscriber_notification_request()) ->
+    {ok, delete_subscriber_notification_response(), tuple()} |
+    {error, any()} |
+    {error, delete_subscriber_notification_errors(), tuple()}.
 delete_subscriber_notification(Client, SubscriberId, Input) ->
     delete_subscriber_notification(Client, SubscriberId, Input, []).
+
+-spec delete_subscriber_notification(aws_client:aws_client(), binary() | list(), delete_subscriber_notification_request(), proplists:proplist()) ->
+    {ok, delete_subscriber_notification_response(), tuple()} |
+    {error, any()} |
+    {error, delete_subscriber_notification_errors(), tuple()}.
 delete_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],
@@ -616,8 +1682,17 @@ delete_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
 %% can only be called by the organization management account. The
 %% organization management
 %% account cannot be the delegated administrator account.
+-spec deregister_data_lake_delegated_administrator(aws_client:aws_client(), deregister_data_lake_delegated_administrator_request()) ->
+    {ok, deregister_data_lake_delegated_administrator_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_data_lake_delegated_administrator_errors(), tuple()}.
 deregister_data_lake_delegated_administrator(Client, Input) ->
     deregister_data_lake_delegated_administrator(Client, Input, []).
+
+-spec deregister_data_lake_delegated_administrator(aws_client:aws_client(), deregister_data_lake_delegated_administrator_request(), proplists:proplist()) ->
+    {ok, deregister_data_lake_delegated_administrator_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_data_lake_delegated_administrator_errors(), tuple()}.
 deregister_data_lake_delegated_administrator(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/datalake/delegate"],
@@ -642,14 +1717,26 @@ deregister_data_lake_delegated_administrator(Client, Input0, Options0) ->
 
 %% @doc Retrieves the details of exception notifications for the account in
 %% Amazon Security Lake.
+-spec get_data_lake_exception_subscription(aws_client:aws_client()) ->
+    {ok, get_data_lake_exception_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_exception_subscription_errors(), tuple()}.
 get_data_lake_exception_subscription(Client)
   when is_map(Client) ->
     get_data_lake_exception_subscription(Client, #{}, #{}).
 
+-spec get_data_lake_exception_subscription(aws_client:aws_client(), map(), map()) ->
+    {ok, get_data_lake_exception_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_exception_subscription_errors(), tuple()}.
 get_data_lake_exception_subscription(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, []).
 
+-spec get_data_lake_exception_subscription(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_lake_exception_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_exception_subscription_errors(), tuple()}.
 get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/datalake/exceptions/subscription"],
@@ -672,14 +1759,26 @@ get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This API does not take
 %% input parameters.
+-spec get_data_lake_organization_configuration(aws_client:aws_client()) ->
+    {ok, get_data_lake_organization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_organization_configuration_errors(), tuple()}.
 get_data_lake_organization_configuration(Client)
   when is_map(Client) ->
     get_data_lake_organization_configuration(Client, #{}, #{}).
 
+-spec get_data_lake_organization_configuration(aws_client:aws_client(), map(), map()) ->
+    {ok, get_data_lake_organization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_organization_configuration_errors(), tuple()}.
 get_data_lake_organization_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, []).
 
+-spec get_data_lake_organization_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_lake_organization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_organization_configuration_errors(), tuple()}.
 get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/datalake/organization/configuration"],
@@ -700,8 +1799,17 @@ get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, Options0)
 %% Security Lake is enabled
 %% for those accounts and which sources Security Lake is collecting data
 %% from.
+-spec get_data_lake_sources(aws_client:aws_client(), get_data_lake_sources_request()) ->
+    {ok, get_data_lake_sources_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_sources_errors(), tuple()}.
 get_data_lake_sources(Client, Input) ->
     get_data_lake_sources(Client, Input, []).
+
+-spec get_data_lake_sources(aws_client:aws_client(), get_data_lake_sources_request(), proplists:proplist()) ->
+    {ok, get_data_lake_sources_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_sources_errors(), tuple()}.
 get_data_lake_sources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/sources"],
@@ -729,14 +1837,26 @@ get_data_lake_sources(Client, Input0, Options0) ->
 %%
 %% You can get
 %% information about a specific subscriber.
+-spec get_subscriber(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, get_subscriber_errors(), tuple()}.
 get_subscriber(Client, SubscriberId)
   when is_map(Client) ->
     get_subscriber(Client, SubscriberId, #{}, #{}).
 
+-spec get_subscriber(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, get_subscriber_errors(), tuple()}.
 get_subscriber(Client, SubscriberId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, []).
 
+-spec get_subscriber(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, get_subscriber_errors(), tuple()}.
 get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
@@ -756,8 +1876,17 @@ get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the Amazon Security Lake exceptions that you can use to find
 %% the source of problems and
 %% fix them.
+-spec list_data_lake_exceptions(aws_client:aws_client(), list_data_lake_exceptions_request()) ->
+    {ok, list_data_lake_exceptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_lake_exceptions_errors(), tuple()}.
 list_data_lake_exceptions(Client, Input) ->
     list_data_lake_exceptions(Client, Input, []).
+
+-spec list_data_lake_exceptions(aws_client:aws_client(), list_data_lake_exceptions_request(), proplists:proplist()) ->
+    {ok, list_data_lake_exceptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_lake_exceptions_errors(), tuple()}.
 list_data_lake_exceptions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/exceptions"],
@@ -785,14 +1914,26 @@ list_data_lake_exceptions(Client, Input0, Options0) ->
 %%
 %% You can use this operation to determine whether
 %% Security Lake is enabled for a Region.
+-spec list_data_lakes(aws_client:aws_client()) ->
+    {ok, list_data_lakes_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_lakes_errors(), tuple()}.
 list_data_lakes(Client)
   when is_map(Client) ->
     list_data_lakes(Client, #{}, #{}).
 
+-spec list_data_lakes(aws_client:aws_client(), map(), map()) ->
+    {ok, list_data_lakes_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_lakes_errors(), tuple()}.
 list_data_lakes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_lakes(Client, QueryMap, HeadersMap, []).
 
+-spec list_data_lakes(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_lakes_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_lakes_errors(), tuple()}.
 list_data_lakes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/datalakes"],
@@ -814,8 +1955,17 @@ list_data_lakes(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the log sources in the current Amazon Web Services Region.
+-spec list_log_sources(aws_client:aws_client(), list_log_sources_request()) ->
+    {ok, list_log_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_log_sources_errors(), tuple()}.
 list_log_sources(Client, Input) ->
     list_log_sources(Client, Input, []).
+
+-spec list_log_sources(aws_client:aws_client(), list_log_sources_request(), proplists:proplist()) ->
+    {ok, list_log_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_log_sources_errors(), tuple()}.
 list_log_sources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/logsources/list"],
@@ -844,14 +1994,26 @@ list_log_sources(Client, Input0, Options0) ->
 %% You can retrieve a list
 %% of subscriptions associated with a specific organization or Amazon Web
 %% Services account.
+-spec list_subscribers(aws_client:aws_client()) ->
+    {ok, list_subscribers_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscribers_errors(), tuple()}.
 list_subscribers(Client)
   when is_map(Client) ->
     list_subscribers(Client, #{}, #{}).
 
+-spec list_subscribers(aws_client:aws_client(), map(), map()) ->
+    {ok, list_subscribers_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscribers_errors(), tuple()}.
 list_subscribers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscribers(Client, QueryMap, HeadersMap, []).
 
+-spec list_subscribers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_subscribers_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscribers_errors(), tuple()}.
 list_subscribers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/subscribers"],
@@ -878,14 +2040,26 @@ list_subscribers(Client, QueryMap, HeadersMap, Options0)
 %% configuration for
 %% your Amazon Web Services account in a particular Amazon Web Services
 %% Region.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -909,8 +2083,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% API can only be called by the organization management account. The
 %% organization management
 %% account cannot be the delegated administrator account.
+-spec register_data_lake_delegated_administrator(aws_client:aws_client(), register_data_lake_delegated_administrator_request()) ->
+    {ok, register_data_lake_delegated_administrator_response(), tuple()} |
+    {error, any()} |
+    {error, register_data_lake_delegated_administrator_errors(), tuple()}.
 register_data_lake_delegated_administrator(Client, Input) ->
     register_data_lake_delegated_administrator(Client, Input, []).
+
+-spec register_data_lake_delegated_administrator(aws_client:aws_client(), register_data_lake_delegated_administrator_request(), proplists:proplist()) ->
+    {ok, register_data_lake_delegated_administrator_response(), tuple()} |
+    {error, any()} |
+    {error, register_data_lake_delegated_administrator_errors(), tuple()}.
 register_data_lake_delegated_administrator(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/delegate"],
@@ -951,8 +2134,17 @@ register_data_lake_delegated_administrator(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/security-lake/latest/userguide/tagging-resources.html
 %% in the
 %% Amazon Security Lake User Guide.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -978,8 +2170,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes one or more tags (keys and values) from an Amazon Security
 %% Lake resource: a subscriber, or the data lake configuration for your
 %% Amazon Web Services account in a particular Amazon Web Services Region.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1007,8 +2208,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% You can add a rollup
 %% Region to consolidate data from multiple Amazon Web Services Regions.
+-spec update_data_lake(aws_client:aws_client(), update_data_lake_request()) ->
+    {ok, update_data_lake_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_lake_errors(), tuple()}.
 update_data_lake(Client, Input) ->
     update_data_lake(Client, Input, []).
+
+-spec update_data_lake(aws_client:aws_client(), update_data_lake_request(), proplists:proplist()) ->
+    {ok, update_data_lake_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_lake_errors(), tuple()}.
 update_data_lake(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/datalake"],
@@ -1034,8 +2244,17 @@ update_data_lake(Client, Input0, Options0) ->
 %% @doc Updates the specified notification subscription in Amazon Security
 %% Lake for the organization
 %% you specify.
+-spec update_data_lake_exception_subscription(aws_client:aws_client(), update_data_lake_exception_subscription_request()) ->
+    {ok, update_data_lake_exception_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_lake_exception_subscription_errors(), tuple()}.
 update_data_lake_exception_subscription(Client, Input) ->
     update_data_lake_exception_subscription(Client, Input, []).
+
+-spec update_data_lake_exception_subscription(aws_client:aws_client(), update_data_lake_exception_subscription_request(), proplists:proplist()) ->
+    {ok, update_data_lake_exception_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_lake_exception_subscription_errors(), tuple()}.
 update_data_lake_exception_subscription(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/datalake/exceptions/subscription"],
@@ -1064,8 +2283,17 @@ update_data_lake_exception_subscription(Client, Input0, Options0) ->
 %% You can update
 %% a subscriber by changing the sources that the subscriber consumes data
 %% from.
+-spec update_subscriber(aws_client:aws_client(), binary() | list(), update_subscriber_request()) ->
+    {ok, update_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, update_subscriber_errors(), tuple()}.
 update_subscriber(Client, SubscriberId, Input) ->
     update_subscriber(Client, SubscriberId, Input, []).
+
+-spec update_subscriber(aws_client:aws_client(), binary() | list(), update_subscriber_request(), proplists:proplist()) ->
+    {ok, update_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, update_subscriber_errors(), tuple()}.
 update_subscriber(Client, SubscriberId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
@@ -1091,8 +2319,17 @@ update_subscriber(Client, SubscriberId, Input0, Options0) ->
 %% @doc Updates an existing notification method for the subscription (SQS or
 %% HTTPs endpoint) or
 %% switches the notification subscription endpoint for a subscriber.
+-spec update_subscriber_notification(aws_client:aws_client(), binary() | list(), update_subscriber_notification_request()) ->
+    {ok, update_subscriber_notification_response(), tuple()} |
+    {error, any()} |
+    {error, update_subscriber_notification_errors(), tuple()}.
 update_subscriber_notification(Client, SubscriberId, Input) ->
     update_subscriber_notification(Client, SubscriberId, Input, []).
+
+-spec update_subscriber_notification(aws_client:aws_client(), binary() | list(), update_subscriber_notification_request(), proplists:proplist()) ->
+    {ok, update_subscriber_notification_response(), tuple()} |
+    {error, any()} |
+    {error, update_subscriber_notification_errors(), tuple()}.
 update_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],
@@ -1119,7 +2356,7 @@ update_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

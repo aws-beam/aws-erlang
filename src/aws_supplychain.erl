@@ -26,6 +26,108 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% bill_of_materials_import_job() :: #{
+%%   <<"instanceId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => [string()],
+%%   <<"s3uri">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type bill_of_materials_import_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bill_of_materials_import_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"s3uri">> := string()
+%% }
+-type create_bill_of_materials_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bill_of_materials_import_job_response() :: #{
+%%   <<"jobId">> => string()
+%% }
+-type create_bill_of_materials_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_bill_of_materials_import_job_request() :: #{}
+-type get_bill_of_materials_import_job_request() :: #{}.
+
+
+%% Example:
+%% get_bill_of_materials_import_job_response() :: #{
+%%   <<"job">> => bill_of_materials_import_job()
+%% }
+-type get_bill_of_materials_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+-type create_bill_of_materials_import_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_bill_of_materials_import_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -39,8 +141,17 @@
 %% The CSV file must be located in an Amazon S3 location accessible to AWS
 %% Supply Chain. It is recommended to use the same Amazon S3 bucket created
 %% during your AWS Supply Chain instance creation.
+-spec create_bill_of_materials_import_job(aws_client:aws_client(), binary() | list(), create_bill_of_materials_import_job_request()) ->
+    {ok, create_bill_of_materials_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_bill_of_materials_import_job_errors(), tuple()}.
 create_bill_of_materials_import_job(Client, InstanceId, Input) ->
     create_bill_of_materials_import_job(Client, InstanceId, Input, []).
+
+-spec create_bill_of_materials_import_job(aws_client:aws_client(), binary() | list(), create_bill_of_materials_import_job_request(), proplists:proplist()) ->
+    {ok, create_bill_of_materials_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_bill_of_materials_import_job_errors(), tuple()}.
 create_bill_of_materials_import_job(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/api/configuration/instances/", aws_util:encode_uri(InstanceId), "/bill-of-materials-import-jobs"],
@@ -64,14 +175,26 @@ create_bill_of_materials_import_job(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get status and details of a BillOfMaterialsImportJob.
+-spec get_bill_of_materials_import_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bill_of_materials_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_bill_of_materials_import_job_errors(), tuple()}.
 get_bill_of_materials_import_job(Client, InstanceId, JobId)
   when is_map(Client) ->
     get_bill_of_materials_import_job(Client, InstanceId, JobId, #{}, #{}).
 
+-spec get_bill_of_materials_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bill_of_materials_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_bill_of_materials_import_job_errors(), tuple()}.
 get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap, []).
 
+-spec get_bill_of_materials_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bill_of_materials_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_bill_of_materials_import_job_errors(), tuple()}.
 get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/configuration/instances/", aws_util:encode_uri(InstanceId), "/bill-of-materials-import-jobs/", aws_util:encode_uri(JobId), ""],
@@ -92,7 +215,7 @@ get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

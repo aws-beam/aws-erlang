@@ -68,6 +68,662 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_permissions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissions">> := list(permission_entry()())
+%% }
+-type list_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_configuration() :: #{
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()())
+%% }
+-type vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_configuration_request() :: #{
+%%   <<"configuration">> := string(),
+%%   <<"grafanaVersion">> => string()
+%% }
+-type update_workspace_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_api_key_response() :: #{
+%%   <<"key">> := string(),
+%%   <<"keyName">> := string(),
+%%   <<"workspaceId">> := string()
+%% }
+-type create_workspace_api_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% describe_workspace_authentication_response() :: #{
+%%   <<"authentication">> := authentication_description()
+%% }
+-type describe_workspace_authentication_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_access_configuration() :: #{
+%%   <<"prefixListIds">> => list(string()()),
+%%   <<"vpceIds">> => list(string()())
+%% }
+-type network_access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% saml_authentication() :: #{
+%%   <<"configuration">> => saml_configuration(),
+%%   <<"status">> => string()
+%% }
+-type saml_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_summary() :: #{
+%%   <<"authentication">> => authentication_summary(),
+%%   <<"created">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"grafanaToken">> => string(),
+%%   <<"grafanaVersion">> => string(),
+%%   <<"id">> => string(),
+%%   <<"licenseType">> => string(),
+%%   <<"modified">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"notificationDestinations">> => list(string()()),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type workspace_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_configuration_request() :: #{}
+-type describe_workspace_configuration_request() :: #{}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_api_key_request() :: #{
+%%   <<"keyName">> := string(),
+%%   <<"keyRole">> := [string()],
+%%   <<"secondsToLive">> := [integer()]
+%% }
+-type create_workspace_api_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workspace_response() :: #{
+%%   <<"workspace">> := workspace_description()
+%% }
+-type delete_workspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_configuration_response() :: #{}
+-type update_workspace_configuration_response() :: #{}.
+
+
+%% Example:
+%% authentication_description() :: #{
+%%   <<"awsSso">> => aws_sso_authentication(),
+%%   <<"providers">> => list(string()()),
+%%   <<"saml">> => saml_authentication()
+%% }
+-type authentication_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_authentication_response() :: #{
+%%   <<"authentication">> := authentication_description()
+%% }
+-type update_workspace_authentication_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_error() :: #{
+%%   <<"causedBy">> => update_instruction(),
+%%   <<"code">> => [integer()],
+%%   <<"message">> => [string()]
+%% }
+-type update_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_workspace_response() :: #{
+%%   <<"workspace">> := workspace_description()
+%% }
+-type describe_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_workspace_configuration_response() :: #{
+%%   <<"configuration">> := string(),
+%%   <<"grafanaVersion">> => string()
+%% }
+-type describe_workspace_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_authentication_request() :: #{
+%%   <<"authenticationProviders">> := list(string()()),
+%%   <<"samlConfiguration">> => saml_configuration()
+%% }
+-type update_workspace_authentication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% authentication_summary() :: #{
+%%   <<"providers">> => list(string()()),
+%%   <<"samlConfigurationStatus">> => string()
+%% }
+-type authentication_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_license_response() :: #{
+%%   <<"workspace">> := workspace_description()
+%% }
+-type associate_license_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_request() :: #{}
+-type describe_workspace_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_authentication_request() :: #{}
+-type describe_workspace_authentication_request() :: #{}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_response() :: #{
+%%   <<"workspace">> := workspace_description()
+%% }
+-type update_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_versions_response() :: #{
+%%   <<"grafanaVersions">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_request() :: #{}
+-type delete_workspace_request() :: #{}.
+
+
+%% Example:
+%% update_workspace_request() :: #{
+%%   <<"accountAccessType">> => string(),
+%%   <<"networkAccessControl">> => network_access_configuration(),
+%%   <<"organizationRoleName">> => string(),
+%%   <<"permissionType">> => string(),
+%%   <<"removeNetworkAccessConfiguration">> => [boolean()],
+%%   <<"removeVpcConfiguration">> => [boolean()],
+%%   <<"stackSetName">> => string(),
+%%   <<"vpcConfiguration">> => vpc_configuration(),
+%%   <<"workspaceDataSources">> => list(string()()),
+%%   <<"workspaceDescription">> => string(),
+%%   <<"workspaceName">> => string(),
+%%   <<"workspaceNotificationDestinations">> => list(string()()),
+%%   <<"workspaceOrganizationalUnits">> => list(string()()),
+%%   <<"workspaceRoleArn">> => string()
+%% }
+-type update_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permissions_request() :: #{
+%%   <<"groupId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"userId">> => string(),
+%%   <<"userType">> => string()
+%% }
+-type list_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_description() :: #{
+%%   <<"accountAccessType">> => string(),
+%%   <<"authentication">> => authentication_summary(),
+%%   <<"created">> => [non_neg_integer()],
+%%   <<"dataSources">> => list(string()()),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"freeTrialConsumed">> => [boolean()],
+%%   <<"freeTrialExpiration">> => [non_neg_integer()],
+%%   <<"grafanaToken">> => string(),
+%%   <<"grafanaVersion">> => string(),
+%%   <<"id">> => string(),
+%%   <<"licenseExpiration">> => [non_neg_integer()],
+%%   <<"licenseType">> => string(),
+%%   <<"modified">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"networkAccessControl">> => network_access_configuration(),
+%%   <<"notificationDestinations">> => list(string()()),
+%%   <<"organizationRoleName">> => string(),
+%%   <<"organizationalUnits">> => list(string()()),
+%%   <<"permissionType">> => string(),
+%%   <<"stackSetName">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"vpcConfiguration">> => vpc_configuration(),
+%%   <<"workspaceRoleArn">> => string()
+%% }
+-type workspace_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_response() :: #{
+%%   <<"workspace">> := workspace_description()
+%% }
+-type create_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspaces_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workspaces">> := list(workspace_summary()())
+%% }
+-type list_workspaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_license_request() :: #{
+%%   <<"grafanaToken">> => string()
+%% }
+-type associate_license_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_permissions_response() :: #{
+%%   <<"errors">> := list(update_error()())
+%% }
+-type update_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_entry() :: #{
+%%   <<"role">> => string(),
+%%   <<"user">> => user()
+%% }
+-type permission_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_sso_authentication() :: #{
+%%   <<"ssoClientId">> => string()
+%% }
+-type aws_sso_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_workspaces_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_workspaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_instruction() :: #{
+%%   <<"action">> => string(),
+%%   <<"role">> => string(),
+%%   <<"users">> => list(user()())
+%% }
+-type update_instruction() :: #{binary() => any()}.
+
+
+%% Example:
+%% user() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_api_key_request() :: #{}
+-type delete_workspace_api_key_request() :: #{}.
+
+
+%% Example:
+%% list_versions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceId">> => string()
+%% }
+-type list_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% assertion_attributes() :: #{
+%%   <<"email">> => string(),
+%%   <<"groups">> => string(),
+%%   <<"login">> => string(),
+%%   <<"name">> => string(),
+%%   <<"org">> => string(),
+%%   <<"role">> => string()
+%% }
+-type assertion_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% role_values() :: #{
+%%   <<"admin">> => list(string()()),
+%%   <<"editor">> => list(string()())
+%% }
+-type role_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_license_response() :: #{
+%%   <<"workspace">> := workspace_description()
+%% }
+-type disassociate_license_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_permissions_request() :: #{
+%%   <<"updateInstructionBatch">> := list(update_instruction()())
+%% }
+-type update_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workspace_api_key_response() :: #{
+%%   <<"keyName">> := string(),
+%%   <<"workspaceId">> := string()
+%% }
+-type delete_workspace_api_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_license_request() :: #{}
+-type disassociate_license_request() :: #{}.
+
+
+%% Example:
+%% saml_configuration() :: #{
+%%   <<"allowedOrganizations">> => list(string()()),
+%%   <<"assertionAttributes">> => assertion_attributes(),
+%%   <<"idpMetadata">> => list(),
+%%   <<"loginValidityDuration">> => integer(),
+%%   <<"roleValues">> => role_values()
+%% }
+-type saml_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_request() :: #{
+%%   <<"accountAccessType">> := string(),
+%%   <<"authenticationProviders">> := list(string()()),
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> => string(),
+%%   <<"grafanaVersion">> => string(),
+%%   <<"networkAccessControl">> => network_access_configuration(),
+%%   <<"organizationRoleName">> => string(),
+%%   <<"permissionType">> := string(),
+%%   <<"stackSetName">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"vpcConfiguration">> => vpc_configuration(),
+%%   <<"workspaceDataSources">> => list(string()()),
+%%   <<"workspaceDescription">> => string(),
+%%   <<"workspaceName">> => string(),
+%%   <<"workspaceNotificationDestinations">> => list(string()()),
+%%   <<"workspaceOrganizationalUnits">> => list(string()()),
+%%   <<"workspaceRoleArn">> => string()
+%% }
+-type create_workspace_request() :: #{binary() => any()}.
+
+-type associate_license_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_workspace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_workspace_api_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_workspace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_workspace_api_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_workspace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_workspace_authentication_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_workspace_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_license_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_permissions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_workspaces_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_permissions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_workspace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_workspace_authentication_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_workspace_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -78,8 +734,17 @@
 %% incurs additional fees. For more information, see Upgrade a
 %% workspace to Grafana Enterprise:
 %% https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html.
+-spec associate_license(aws_client:aws_client(), binary() | list(), binary() | list(), associate_license_request()) ->
+    {ok, associate_license_response(), tuple()} |
+    {error, any()} |
+    {error, associate_license_errors(), tuple()}.
 associate_license(Client, LicenseType, WorkspaceId, Input) ->
     associate_license(Client, LicenseType, WorkspaceId, Input, []).
+
+-spec associate_license(aws_client:aws_client(), binary() | list(), binary() | list(), associate_license_request(), proplists:proplist()) ->
+    {ok, associate_license_response(), tuple()} |
+    {error, any()} |
+    {error, associate_license_errors(), tuple()}.
 associate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/licenses/", aws_util:encode_uri(LicenseType), ""],
@@ -115,8 +780,17 @@ associate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
 %% Instead, use
 %% UpdateWorkspace:
 %% https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateWorkspace.html.
+-spec create_workspace(aws_client:aws_client(), create_workspace_request()) ->
+    {ok, create_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_errors(), tuple()}.
 create_workspace(Client, Input) ->
     create_workspace(Client, Input, []).
+
+-spec create_workspace(aws_client:aws_client(), create_workspace_request(), proplists:proplist()) ->
+    {ok, create_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_errors(), tuple()}.
 create_workspace(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces"],
@@ -145,8 +819,17 @@ create_workspace(Client, Input0, Options0) ->
 %% requests sent to the workspace's HTTP API. See
 %% [https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html]
 %% for available APIs and example requests.
+-spec create_workspace_api_key(aws_client:aws_client(), binary() | list(), create_workspace_api_key_request()) ->
+    {ok, create_workspace_api_key_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_api_key_errors(), tuple()}.
 create_workspace_api_key(Client, WorkspaceId, Input) ->
     create_workspace_api_key(Client, WorkspaceId, Input, []).
+
+-spec create_workspace_api_key(aws_client:aws_client(), binary() | list(), create_workspace_api_key_request(), proplists:proplist()) ->
+    {ok, create_workspace_api_key_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_api_key_errors(), tuple()}.
 create_workspace_api_key(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/apikeys"],
@@ -170,8 +853,17 @@ create_workspace_api_key(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Managed Grafana workspace.
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request()) ->
+    {ok, delete_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_errors(), tuple()}.
 delete_workspace(Client, WorkspaceId, Input) ->
     delete_workspace(Client, WorkspaceId, Input, []).
+
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
+    {ok, delete_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_errors(), tuple()}.
 delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
@@ -195,8 +887,17 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Grafana API key for the workspace.
+-spec delete_workspace_api_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workspace_api_key_request()) ->
+    {ok, delete_workspace_api_key_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_api_key_errors(), tuple()}.
 delete_workspace_api_key(Client, KeyName, WorkspaceId, Input) ->
     delete_workspace_api_key(Client, KeyName, WorkspaceId, Input, []).
+
+-spec delete_workspace_api_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workspace_api_key_request(), proplists:proplist()) ->
+    {ok, delete_workspace_api_key_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_api_key_errors(), tuple()}.
 delete_workspace_api_key(Client, KeyName, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/apikeys/", aws_util:encode_uri(KeyName), ""],
@@ -220,14 +921,26 @@ delete_workspace_api_key(Client, KeyName, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays information about one Amazon Managed Grafana workspace.
+-spec describe_workspace(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
 describe_workspace(Client, WorkspaceId)
   when is_map(Client) ->
     describe_workspace(Client, WorkspaceId, #{}, #{}).
 
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
 describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
 describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
@@ -247,14 +960,26 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 %% @doc Displays information about the authentication methods used in one
 %% Amazon Managed Grafana
 %% workspace.
+-spec describe_workspace_authentication(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_workspace_authentication_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_authentication_errors(), tuple()}.
 describe_workspace_authentication(Client, WorkspaceId)
   when is_map(Client) ->
     describe_workspace_authentication(Client, WorkspaceId, #{}, #{}).
 
+-spec describe_workspace_authentication(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_workspace_authentication_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_authentication_errors(), tuple()}.
 describe_workspace_authentication(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_workspace_authentication(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec describe_workspace_authentication(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_workspace_authentication_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_authentication_errors(), tuple()}.
 describe_workspace_authentication(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/authentication"],
@@ -272,14 +997,26 @@ describe_workspace_authentication(Client, WorkspaceId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the current configuration string for the given workspace.
+-spec describe_workspace_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_workspace_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_configuration_errors(), tuple()}.
 describe_workspace_configuration(Client, WorkspaceId)
   when is_map(Client) ->
     describe_workspace_configuration(Client, WorkspaceId, #{}, #{}).
 
+-spec describe_workspace_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_workspace_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_configuration_errors(), tuple()}.
 describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec describe_workspace_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_workspace_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_configuration_errors(), tuple()}.
 describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/configuration"],
@@ -297,8 +1034,17 @@ describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Removes the Grafana Enterprise license from a workspace.
+-spec disassociate_license(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_license_request()) ->
+    {ok, disassociate_license_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_license_errors(), tuple()}.
 disassociate_license(Client, LicenseType, WorkspaceId, Input) ->
     disassociate_license(Client, LicenseType, WorkspaceId, Input, []).
+
+-spec disassociate_license(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_license_request(), proplists:proplist()) ->
+    {ok, disassociate_license_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_license_errors(), tuple()}.
 disassociate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/licenses/", aws_util:encode_uri(LicenseType), ""],
@@ -330,14 +1076,26 @@ disassociate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
 %% only the roles for that user or group are returned. If you do this, you
 %% can specify only
 %% one `userId' or one `groupId'.
+-spec list_permissions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, WorkspaceId)
   when is_map(Client) ->
     list_permissions(Client, WorkspaceId, #{}, #{}).
 
+-spec list_permissions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_permissions(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec list_permissions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/permissions"],
@@ -369,14 +1127,26 @@ list_permissions(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 %%
 %% Currently, the only resource that can be tagged is a
 %% workspace.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -399,14 +1169,26 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% `CreateWorkspace'. Optionally, include a workspace to list the
 %% versions
 %% to which it can be upgraded.
+-spec list_versions(aws_client:aws_client()) ->
+    {ok, list_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_errors(), tuple()}.
 list_versions(Client)
   when is_map(Client) ->
     list_versions(Client, #{}, #{}).
 
+-spec list_versions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_errors(), tuple()}.
 list_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_versions(Client, QueryMap, HeadersMap, []).
 
+-spec list_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_errors(), tuple()}.
 list_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/versions"],
@@ -435,14 +1217,26 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For more complete information about one workspace, use DescribeWorkspace:
 %% https://docs.aws.amazon.com/AAMG/latest/APIReference/API_DescribeWorkspace.html.
+-spec list_workspaces(aws_client:aws_client()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
 list_workspaces(Client)
   when is_map(Client) ->
     list_workspaces(Client, #{}, #{}).
 
+-spec list_workspaces(aws_client:aws_client(), map(), map()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
 list_workspaces(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workspaces(Client, QueryMap, HeadersMap, []).
 
+-spec list_workspaces(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
 list_workspaces(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces"],
@@ -477,8 +1271,17 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
 %% with the resource, the new tag value that you specify replaces the
 %% previous value for
 %% that tag.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -504,8 +1307,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc The `UntagResource' operation removes the association of the tag
 %% with the
 %% Amazon Managed Grafana resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -531,8 +1343,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates which users in a workspace have the Grafana `Admin' or
 %% `Editor' roles.
+-spec update_permissions(aws_client:aws_client(), binary() | list(), update_permissions_request()) ->
+    {ok, update_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_permissions_errors(), tuple()}.
 update_permissions(Client, WorkspaceId, Input) ->
     update_permissions(Client, WorkspaceId, Input, []).
+
+-spec update_permissions(aws_client:aws_client(), binary() | list(), update_permissions_request(), proplists:proplist()) ->
+    {ok, update_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_permissions_errors(), tuple()}.
 update_permissions(Client, WorkspaceId, Input0, Options0) ->
     Method = patch,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/permissions"],
@@ -569,8 +1390,17 @@ update_permissions(Client, WorkspaceId, Input0, Options0) ->
 %% To modify which users in the workspace have the `Admin' and
 %% `Editor' Grafana roles, use UpdatePermissions:
 %% https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdatePermissions.html.
+-spec update_workspace(aws_client:aws_client(), binary() | list(), update_workspace_request()) ->
+    {ok, update_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_errors(), tuple()}.
 update_workspace(Client, WorkspaceId, Input) ->
     update_workspace(Client, WorkspaceId, Input, []).
+
+-spec update_workspace(aws_client:aws_client(), binary() | list(), update_workspace_request(), proplists:proplist()) ->
+    {ok, update_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_errors(), tuple()}.
 update_workspace(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
@@ -605,8 +1435,17 @@ update_workspace(Client, WorkspaceId, Input0, Options0) ->
 %% Changes to the authentication method for a workspace may take a few
 %% minutes to
 %% take effect.
+-spec update_workspace_authentication(aws_client:aws_client(), binary() | list(), update_workspace_authentication_request()) ->
+    {ok, update_workspace_authentication_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_authentication_errors(), tuple()}.
 update_workspace_authentication(Client, WorkspaceId, Input) ->
     update_workspace_authentication(Client, WorkspaceId, Input, []).
+
+-spec update_workspace_authentication(aws_client:aws_client(), binary() | list(), update_workspace_authentication_request(), proplists:proplist()) ->
+    {ok, update_workspace_authentication_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_authentication_errors(), tuple()}.
 update_workspace_authentication(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/authentication"],
@@ -630,8 +1469,17 @@ update_workspace_authentication(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration string for the given workspace
+-spec update_workspace_configuration(aws_client:aws_client(), binary() | list(), update_workspace_configuration_request()) ->
+    {ok, update_workspace_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_configuration_errors(), tuple()}.
 update_workspace_configuration(Client, WorkspaceId, Input) ->
     update_workspace_configuration(Client, WorkspaceId, Input, []).
+
+-spec update_workspace_configuration(aws_client:aws_client(), binary() | list(), update_workspace_configuration_request(), proplists:proplist()) ->
+    {ok, update_workspace_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_configuration_errors(), tuple()}.
 update_workspace_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/configuration"],
@@ -658,7 +1506,7 @@ update_workspace_configuration(Client, WorkspaceId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

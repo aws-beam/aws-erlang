@@ -88,6 +88,392 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% create_notification_rule_result() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type create_notification_rule_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_result() :: #{}
+-type untag_resource_result() :: #{}.
+
+
+%% Example:
+%% list_notification_rules_request() :: #{
+%%   <<"Filters">> => list(list_notification_rules_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_notification_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsubscribe_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"TargetAddress">> := string()
+%% }
+-type unsubscribe_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_target_result() :: #{}
+-type delete_target_result() :: #{}.
+
+
+%% Example:
+%% list_event_types_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type list_event_types_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_targets_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Targets">> => list(target_summary()())
+%% }
+-type list_targets_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_notification_rule_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type delete_notification_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_rule_result() :: #{}
+-type update_notification_rule_result() :: #{}.
+
+
+%% Example:
+%% target() :: #{
+%%   <<"TargetAddress">> => string(),
+%%   <<"TargetType">> => string()
+%% }
+-type target() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_type_summary() :: #{
+%%   <<"EventTypeId">> => string(),
+%%   <<"EventTypeName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceName">> => string()
+%% }
+-type event_type_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_notification_rule_result() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type delete_notification_rule_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_summary() :: #{
+%%   <<"TargetAddress">> => string(),
+%%   <<"TargetStatus">> => list(any()),
+%%   <<"TargetType">> => string()
+%% }
+-type target_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_target_request() :: #{
+%%   <<"ForceUnsubscribeAll">> => boolean(),
+%%   <<"TargetAddress">> := string()
+%% }
+-type delete_target_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_rules_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type list_notification_rules_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_types_result() :: #{
+%%   <<"EventTypes">> => list(event_type_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_types_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_notification_rule_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DetailType">> := list(any()),
+%%   <<"EventTypeIds">> := list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"Resource">> := string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Targets">> := list(target()())
+%% }
+-type create_notification_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribe_result() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type subscribe_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_notification_rule_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"DetailType">> => list(any()),
+%%   <<"EventTypeIds">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Targets">> => list(target()())
+%% }
+-type update_notification_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_targets_request() :: #{
+%%   <<"Filters">> => list(list_targets_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsubscribe_result() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type unsubscribe_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribe_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Target">> := target()
+%% }
+-type subscribe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_result() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type tag_resource_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_rules_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotificationRules">> => list(notification_rule_summary()())
+%% }
+-type list_notification_rules_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_notification_rule_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type describe_notification_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_notification_rule_result() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"DetailType">> => list(any()),
+%%   <<"EventTypes">> => list(event_type_summary()()),
+%%   <<"LastModifiedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Resource">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Targets">> => list(target_summary()())
+%% }
+-type describe_notification_rule_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_rule_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type notification_rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_types_request() :: #{
+%%   <<"Filters">> => list(list_event_types_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_targets_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type list_targets_filter() :: #{binary() => any()}.
+
+-type create_notification_rule_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    configuration_exception().
+
+-type delete_notification_rule_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type delete_target_errors() ::
+    validation_exception().
+
+-type describe_notification_rule_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_event_types_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_notification_rules_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_targets_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type subscribe_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    configuration_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    resource_not_found_exception().
+
+-type unsubscribe_errors() ::
+    validation_exception().
+
+-type untag_resource_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    resource_not_found_exception().
+
+-type update_notification_rule_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    configuration_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -98,8 +484,17 @@
 %% notifications about and the targets (such as Chatbot topics or Chatbot
 %% clients configured for Slack) where you want to receive
 %% them.
+-spec create_notification_rule(aws_client:aws_client(), create_notification_rule_request()) ->
+    {ok, create_notification_rule_result(), tuple()} |
+    {error, any()} |
+    {error, create_notification_rule_errors(), tuple()}.
 create_notification_rule(Client, Input) ->
     create_notification_rule(Client, Input, []).
+
+-spec create_notification_rule(aws_client:aws_client(), create_notification_rule_request(), proplists:proplist()) ->
+    {ok, create_notification_rule_result(), tuple()} |
+    {error, any()} |
+    {error, create_notification_rule_errors(), tuple()}.
 create_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createNotificationRule"],
@@ -123,8 +518,17 @@ create_notification_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a notification rule for a resource.
+-spec delete_notification_rule(aws_client:aws_client(), delete_notification_rule_request()) ->
+    {ok, delete_notification_rule_result(), tuple()} |
+    {error, any()} |
+    {error, delete_notification_rule_errors(), tuple()}.
 delete_notification_rule(Client, Input) ->
     delete_notification_rule(Client, Input, []).
+
+-spec delete_notification_rule(aws_client:aws_client(), delete_notification_rule_request(), proplists:proplist()) ->
+    {ok, delete_notification_rule_result(), tuple()} |
+    {error, any()} |
+    {error, delete_notification_rule_errors(), tuple()}.
 delete_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteNotificationRule"],
@@ -148,8 +552,17 @@ delete_notification_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a specified target for notifications.
+-spec delete_target(aws_client:aws_client(), delete_target_request()) ->
+    {ok, delete_target_result(), tuple()} |
+    {error, any()} |
+    {error, delete_target_errors(), tuple()}.
 delete_target(Client, Input) ->
     delete_target(Client, Input, []).
+
+-spec delete_target(aws_client:aws_client(), delete_target_request(), proplists:proplist()) ->
+    {ok, delete_target_result(), tuple()} |
+    {error, any()} |
+    {error, delete_target_errors(), tuple()}.
 delete_target(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteTarget"],
@@ -173,8 +586,17 @@ delete_target(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specified notification rule.
+-spec describe_notification_rule(aws_client:aws_client(), describe_notification_rule_request()) ->
+    {ok, describe_notification_rule_result(), tuple()} |
+    {error, any()} |
+    {error, describe_notification_rule_errors(), tuple()}.
 describe_notification_rule(Client, Input) ->
     describe_notification_rule(Client, Input, []).
+
+-spec describe_notification_rule(aws_client:aws_client(), describe_notification_rule_request(), proplists:proplist()) ->
+    {ok, describe_notification_rule_result(), tuple()} |
+    {error, any()} |
+    {error, describe_notification_rule_errors(), tuple()}.
 describe_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeNotificationRule"],
@@ -199,8 +621,17 @@ describe_notification_rule(Client, Input0, Options0) ->
 
 %% @doc Returns information about the event types available for configuring
 %% notifications.
+-spec list_event_types(aws_client:aws_client(), list_event_types_request()) ->
+    {ok, list_event_types_result(), tuple()} |
+    {error, any()} |
+    {error, list_event_types_errors(), tuple()}.
 list_event_types(Client, Input) ->
     list_event_types(Client, Input, []).
+
+-spec list_event_types(aws_client:aws_client(), list_event_types_request(), proplists:proplist()) ->
+    {ok, list_event_types_result(), tuple()} |
+    {error, any()} |
+    {error, list_event_types_errors(), tuple()}.
 list_event_types(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listEventTypes"],
@@ -225,8 +656,17 @@ list_event_types(Client, Input0, Options0) ->
 
 %% @doc Returns a list of the notification rules for an Amazon Web Services
 %% account.
+-spec list_notification_rules(aws_client:aws_client(), list_notification_rules_request()) ->
+    {ok, list_notification_rules_result(), tuple()} |
+    {error, any()} |
+    {error, list_notification_rules_errors(), tuple()}.
 list_notification_rules(Client, Input) ->
     list_notification_rules(Client, Input, []).
+
+-spec list_notification_rules(aws_client:aws_client(), list_notification_rules_request(), proplists:proplist()) ->
+    {ok, list_notification_rules_result(), tuple()} |
+    {error, any()} |
+    {error, list_notification_rules_errors(), tuple()}.
 list_notification_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listNotificationRules"],
@@ -250,8 +690,17 @@ list_notification_rules(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the tags associated with a notification rule.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTagsForResource"],
@@ -276,8 +725,17 @@ list_tags_for_resource(Client, Input0, Options0) ->
 
 %% @doc Returns a list of the notification rule targets for an Amazon Web
 %% Services account.
+-spec list_targets(aws_client:aws_client(), list_targets_request()) ->
+    {ok, list_targets_result(), tuple()} |
+    {error, any()} |
+    {error, list_targets_errors(), tuple()}.
 list_targets(Client, Input) ->
     list_targets(Client, Input, []).
+
+-spec list_targets(aws_client:aws_client(), list_targets_request(), proplists:proplist()) ->
+    {ok, list_targets_result(), tuple()} |
+    {error, any()} |
+    {error, list_targets_errors(), tuple()}.
 list_targets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTargets"],
@@ -305,8 +763,17 @@ list_targets(Client, Input0, Options0) ->
 %% associated target can receive notifications when the events described in
 %% the rule are
 %% triggered.
+-spec subscribe(aws_client:aws_client(), subscribe_request()) ->
+    {ok, subscribe_result(), tuple()} |
+    {error, any()} |
+    {error, subscribe_errors(), tuple()}.
 subscribe(Client, Input) ->
     subscribe(Client, Input, []).
+
+-spec subscribe(aws_client:aws_client(), subscribe_request(), proplists:proplist()) ->
+    {ok, subscribe_result(), tuple()} |
+    {error, any()} |
+    {error, subscribe_errors(), tuple()}.
 subscribe(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscribe"],
@@ -330,8 +797,17 @@ subscribe(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a set of provided tags with a notification rule.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tagResource"],
@@ -359,8 +835,17 @@ tag_resource(Client, Input0, Options0) ->
 %% subscribers to that topic stop receiving notifications when the events
 %% described in the
 %% rule are triggered.
+-spec unsubscribe(aws_client:aws_client(), unsubscribe_request()) ->
+    {ok, unsubscribe_result(), tuple()} |
+    {error, any()} |
+    {error, unsubscribe_errors(), tuple()}.
 unsubscribe(Client, Input) ->
     unsubscribe(Client, Input, []).
+
+-spec unsubscribe(aws_client:aws_client(), unsubscribe_request(), proplists:proplist()) ->
+    {ok, unsubscribe_result(), tuple()} |
+    {error, any()} |
+    {error, unsubscribe_errors(), tuple()}.
 unsubscribe(Client, Input0, Options0) ->
     Method = post,
     Path = ["/unsubscribe"],
@@ -386,8 +871,17 @@ unsubscribe(Client, Input0, Options0) ->
 %% @doc Removes the association between one or more provided tags and a
 %% notification
 %% rule.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input0, Options0) ->
     Method = post,
     Path = ["/untagResource/", aws_util:encode_uri(Arn), ""],
@@ -420,8 +914,17 @@ untag_resource(Client, Arn, Input0, Options0) ->
 %%
 %% To add or remove tags for a notification rule, you must use
 %% `TagResource' and `UntagResource'.
+-spec update_notification_rule(aws_client:aws_client(), update_notification_rule_request()) ->
+    {ok, update_notification_rule_result(), tuple()} |
+    {error, any()} |
+    {error, update_notification_rule_errors(), tuple()}.
 update_notification_rule(Client, Input) ->
     update_notification_rule(Client, Input, []).
+
+-spec update_notification_rule(aws_client:aws_client(), update_notification_rule_request(), proplists:proplist()) ->
+    {ok, update_notification_rule_result(), tuple()} |
+    {error, any()} |
+    {error, update_notification_rule_errors(), tuple()}.
 update_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateNotificationRule"],
@@ -448,7 +951,7 @@ update_notification_rule(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

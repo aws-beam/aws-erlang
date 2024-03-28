@@ -29,13 +29,350 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_object() :: #{
+%%   <<"ChunksCount">> => float(),
+%%   <<"MetadataString">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ObjectChecksum">> => string(),
+%%   <<"ObjectChecksumAlgorithm">> => list(any()),
+%%   <<"ObjectToken">> => string()
+%% }
+-type backup_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% chunk() :: #{
+%%   <<"Checksum">> => string(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChunkToken">> => string(),
+%%   <<"Index">> => float(),
+%%   <<"Length">> => float()
+%% }
+-type chunk() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_already_exists_exception() :: #{
+%%   <<"Checksum">> => string(),
+%%   <<"ChecksumAlgorithm">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type data_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_object_input() :: #{}
+-type delete_object_input() :: #{}.
+
+%% Example:
+%% get_chunk_input() :: #{}
+-type get_chunk_input() :: #{}.
+
+
+%% Example:
+%% get_chunk_output() :: #{
+%%   <<"Checksum">> => string(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"Data">> => binary(),
+%%   <<"Length">> => float()
+%% }
+-type get_chunk_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_object_metadata_input() :: #{}
+-type get_object_metadata_input() :: #{}.
+
+
+%% Example:
+%% get_object_metadata_output() :: #{
+%%   <<"MetadataBlob">> => binary(),
+%%   <<"MetadataBlobChecksum">> => string(),
+%%   <<"MetadataBlobChecksumAlgorithm">> => list(any()),
+%%   <<"MetadataBlobLength">> => float(),
+%%   <<"MetadataString">> => string()
+%% }
+-type get_object_metadata_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% illegal_argument_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_argument_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_invalid_key_usage_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_invalid_key_usage_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_chunks_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_chunks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_chunks_output() :: #{
+%%   <<"ChunkList">> => list(chunk()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_chunks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objects_input() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartingObjectName">> => string(),
+%%   <<"StartingObjectPrefix">> => string()
+%% }
+-type list_objects_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objects_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectList">> => list(backup_object()())
+%% }
+-type list_objects_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_readable_input_stream_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_readable_input_stream_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% notify_object_complete_input() :: #{
+%%   <<"MetadataBlob">> => binary(),
+%%   <<"MetadataBlobChecksum">> => string(),
+%%   <<"MetadataBlobChecksumAlgorithm">> => list(any()),
+%%   <<"MetadataBlobLength">> => float(),
+%%   <<"MetadataString">> => string(),
+%%   <<"ObjectChecksum">> := string(),
+%%   <<"ObjectChecksumAlgorithm">> := list(any())
+%% }
+-type notify_object_complete_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% notify_object_complete_output() :: #{
+%%   <<"ObjectChecksum">> => string(),
+%%   <<"ObjectChecksumAlgorithm">> => list(any())
+%% }
+-type notify_object_complete_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_chunk_input() :: #{
+%%   <<"Checksum">> := string(),
+%%   <<"ChecksumAlgorithm">> := list(any()),
+%%   <<"Data">> := binary(),
+%%   <<"Length">> := float()
+%% }
+-type put_chunk_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_chunk_output() :: #{
+%%   <<"ChunkChecksum">> => string(),
+%%   <<"ChunkChecksumAlgorithm">> => list(any())
+%% }
+-type put_chunk_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_input() :: #{
+%%   <<"InlineChunk">> => binary(),
+%%   <<"InlineChunkChecksum">> => string(),
+%%   <<"InlineChunkChecksumAlgorithm">> => string(),
+%%   <<"InlineChunkLength">> => float(),
+%%   <<"MetadataString">> => string(),
+%%   <<"ObjectChecksum">> => string(),
+%%   <<"ObjectChecksumAlgorithm">> => list(any()),
+%%   <<"ThrowOnDuplicate">> => boolean()
+%% }
+-type put_object_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_output() :: #{
+%%   <<"InlineChunkChecksum">> => string(),
+%%   <<"InlineChunkChecksumAlgorithm">> => list(any()),
+%%   <<"ObjectChecksum">> => string(),
+%%   <<"ObjectChecksumAlgorithm">> => list(any())
+%% }
+-type put_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retryable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type retryable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_internal_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_internal_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_object_input() :: #{
+%%   <<"ThrowOnDuplicate">> => boolean()
+%% }
+-type start_object_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_object_output() :: #{
+%%   <<"UploadId">> => string()
+%% }
+-type start_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+-type delete_object_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    service_internal_exception() | 
+    retryable_exception() | 
+    resource_not_found_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
+
+-type get_chunk_errors() ::
+    throttling_exception() | 
+    service_internal_exception() | 
+    retryable_exception() | 
+    resource_not_found_exception() | 
+    kms_invalid_key_usage_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
+
+-type get_object_metadata_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    service_internal_exception() | 
+    retryable_exception() | 
+    resource_not_found_exception() | 
+    kms_invalid_key_usage_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
+
+-type list_chunks_errors() ::
+    service_unavailable_exception() | 
+    service_internal_exception() | 
+    retryable_exception() | 
+    resource_not_found_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
+
+-type list_objects_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    service_internal_exception() | 
+    retryable_exception() | 
+    resource_not_found_exception() | 
+    kms_invalid_key_usage_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
+
+-type notify_object_complete_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    service_internal_exception() | 
+    retryable_exception() | 
+    not_readable_input_stream_exception() | 
+    kms_invalid_key_usage_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
+
+-type put_chunk_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    service_internal_exception() | 
+    retryable_exception() | 
+    not_readable_input_stream_exception() | 
+    kms_invalid_key_usage_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
+
+-type put_object_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    service_internal_exception() | 
+    retryable_exception() | 
+    not_readable_input_stream_exception() | 
+    kms_invalid_key_usage_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
+
+-type start_object_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    service_internal_exception() | 
+    retryable_exception() | 
+    resource_not_found_exception() | 
+    illegal_argument_exception() | 
+    data_already_exists_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Delete Object from the incremental base Backup.
+-spec delete_object(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_object_errors(), tuple()}.
 delete_object(Client, BackupJobId, ObjectName, Input) ->
     delete_object(Client, BackupJobId, ObjectName, Input, []).
+
+-spec delete_object(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_object_errors(), tuple()}.
 delete_object(Client, BackupJobId, ObjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), "/object/", aws_util:encode_uri(ObjectName), ""],
@@ -59,14 +396,26 @@ delete_object(Client, BackupJobId, ObjectName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified object's chunk.
+-spec get_chunk(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_chunk_output(), tuple()} |
+    {error, any()} |
+    {error, get_chunk_errors(), tuple()}.
 get_chunk(Client, ChunkToken, StorageJobId)
   when is_map(Client) ->
     get_chunk(Client, ChunkToken, StorageJobId, #{}, #{}).
 
+-spec get_chunk(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_chunk_output(), tuple()} |
+    {error, any()} |
+    {error, get_chunk_errors(), tuple()}.
 get_chunk(Client, ChunkToken, StorageJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_chunk(Client, ChunkToken, StorageJobId, QueryMap, HeadersMap, []).
 
+-spec get_chunk(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_chunk_output(), tuple()} |
+    {error, any()} |
+    {error, get_chunk_errors(), tuple()}.
 get_chunk(Client, ChunkToken, StorageJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(StorageJobId), "/chunk/", aws_util:encode_uri(ChunkToken), ""],
@@ -102,14 +451,26 @@ get_chunk(Client, ChunkToken, StorageJobId, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get metadata associated with an Object.
+-spec get_object_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_object_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_metadata_errors(), tuple()}.
 get_object_metadata(Client, ObjectToken, StorageJobId)
   when is_map(Client) ->
     get_object_metadata(Client, ObjectToken, StorageJobId, #{}, #{}).
 
+-spec get_object_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_object_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_metadata_errors(), tuple()}.
 get_object_metadata(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_metadata(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap, []).
 
+-spec get_object_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_object_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_metadata_errors(), tuple()}.
 get_object_metadata(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(StorageJobId), "/object/", aws_util:encode_uri(ObjectToken), "/metadata"],
@@ -146,14 +507,26 @@ get_object_metadata(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap, Opt
     end.
 
 %% @doc List chunks in a given Object
+-spec list_chunks(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_chunks_output(), tuple()} |
+    {error, any()} |
+    {error, list_chunks_errors(), tuple()}.
 list_chunks(Client, ObjectToken, StorageJobId)
   when is_map(Client) ->
     list_chunks(Client, ObjectToken, StorageJobId, #{}, #{}).
 
+-spec list_chunks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_chunks_output(), tuple()} |
+    {error, any()} |
+    {error, list_chunks_errors(), tuple()}.
 list_chunks(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_chunks(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap, []).
 
+-spec list_chunks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_chunks_output(), tuple()} |
+    {error, any()} |
+    {error, list_chunks_errors(), tuple()}.
 list_chunks(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(StorageJobId), "/chunks/", aws_util:encode_uri(ObjectToken), "/list"],
@@ -176,14 +549,26 @@ list_chunks(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all Objects in a given Backup.
+-spec list_objects(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_objects_output(), tuple()} |
+    {error, any()} |
+    {error, list_objects_errors(), tuple()}.
 list_objects(Client, StorageJobId)
   when is_map(Client) ->
     list_objects(Client, StorageJobId, #{}, #{}).
 
+-spec list_objects(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_objects_output(), tuple()} |
+    {error, any()} |
+    {error, list_objects_errors(), tuple()}.
 list_objects(Client, StorageJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_objects(Client, StorageJobId, QueryMap, HeadersMap, []).
 
+-spec list_objects(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_objects_output(), tuple()} |
+    {error, any()} |
+    {error, list_objects_errors(), tuple()}.
 list_objects(Client, StorageJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(StorageJobId), "/objects/list"],
@@ -210,8 +595,17 @@ list_objects(Client, StorageJobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Complete upload
+-spec notify_object_complete(aws_client:aws_client(), binary() | list(), binary() | list(), notify_object_complete_input()) ->
+    {ok, notify_object_complete_output(), tuple()} |
+    {error, any()} |
+    {error, notify_object_complete_errors(), tuple()}.
 notify_object_complete(Client, BackupJobId, UploadId, Input) ->
     notify_object_complete(Client, BackupJobId, UploadId, Input, []).
+
+-spec notify_object_complete(aws_client:aws_client(), binary() | list(), binary() | list(), notify_object_complete_input(), proplists:proplist()) ->
+    {ok, notify_object_complete_output(), tuple()} |
+    {error, any()} |
+    {error, notify_object_complete_errors(), tuple()}.
 notify_object_complete(Client, BackupJobId, UploadId, Input0, Options0) ->
     Method = put,
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), "/object/", aws_util:encode_uri(UploadId), "/complete"],
@@ -241,8 +635,17 @@ notify_object_complete(Client, BackupJobId, UploadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Upload chunk.
+-spec put_chunk(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_chunk_input()) ->
+    {ok, put_chunk_output(), tuple()} |
+    {error, any()} |
+    {error, put_chunk_errors(), tuple()}.
 put_chunk(Client, BackupJobId, ChunkIndex, UploadId, Input) ->
     put_chunk(Client, BackupJobId, ChunkIndex, UploadId, Input, []).
+
+-spec put_chunk(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_chunk_input(), proplists:proplist()) ->
+    {ok, put_chunk_output(), tuple()} |
+    {error, any()} |
+    {error, put_chunk_errors(), tuple()}.
 put_chunk(Client, BackupJobId, ChunkIndex, UploadId, Input0, Options0) ->
     Method = put,
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), "/chunk/", aws_util:encode_uri(UploadId), "/", aws_util:encode_uri(ChunkIndex), ""],
@@ -270,8 +673,17 @@ put_chunk(Client, BackupJobId, ChunkIndex, UploadId, Input0, Options0) ->
 
 %% @doc Upload object that can store object metadata String and data blob in
 %% single API call using inline chunk field.
+-spec put_object(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_input()) ->
+    {ok, put_object_output(), tuple()} |
+    {error, any()} |
+    {error, put_object_errors(), tuple()}.
 put_object(Client, BackupJobId, ObjectName, Input) ->
     put_object(Client, BackupJobId, ObjectName, Input, []).
+
+-spec put_object(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_input(), proplists:proplist()) ->
+    {ok, put_object_output(), tuple()} |
+    {error, any()} |
+    {error, put_object_errors(), tuple()}.
 put_object(Client, BackupJobId, ObjectName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), "/object/", aws_util:encode_uri(ObjectName), "/put-object"],
@@ -302,8 +714,17 @@ put_object(Client, BackupJobId, ObjectName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Start upload containing one or many chunks.
+-spec start_object(aws_client:aws_client(), binary() | list(), binary() | list(), start_object_input()) ->
+    {ok, start_object_output(), tuple()} |
+    {error, any()} |
+    {error, start_object_errors(), tuple()}.
 start_object(Client, BackupJobId, ObjectName, Input) ->
     start_object(Client, BackupJobId, ObjectName, Input, []).
+
+-spec start_object(aws_client:aws_client(), binary() | list(), binary() | list(), start_object_input(), proplists:proplist()) ->
+    {ok, start_object_output(), tuple()} |
+    {error, any()} |
+    {error, start_object_errors(), tuple()}.
 start_object(Client, BackupJobId, ObjectName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), "/object/", aws_util:encode_uri(ObjectName), ""],
@@ -330,7 +751,7 @@ start_object(Client, BackupJobId, ObjectName, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

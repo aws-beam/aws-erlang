@@ -131,6 +131,1946 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% app() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"assessmentSchedule">> => string(),
+%%   <<"complianceStatus">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"driftStatus">> => string(),
+%%   <<"eventSubscriptions">> => list(event_subscription()()),
+%%   <<"lastAppComplianceEvaluationTime">> => non_neg_integer(),
+%%   <<"lastDriftEvaluationTime">> => non_neg_integer(),
+%%   <<"lastResiliencyScoreEvaluationTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"permissionModel">> => permission_model(),
+%%   <<"policyArn">> => string(),
+%%   <<"resiliencyScore">> => float(),
+%%   <<"rpoInSecs">> => integer(),
+%%   <<"rtoInSecs">> => integer(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type app() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_recommendation_status_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"requestEntries">> := list(update_recommendation_status_request_entry()())
+%% }
+-type batch_update_recommendation_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_component_compliances_response() :: #{
+%%   <<"componentCompliances">> := list(app_component_compliance()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_component_compliances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_resources_resolution_status_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"resolutionId">> => string()
+%% }
+-type describe_app_version_resources_resolution_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_apps_response() :: #{
+%%   <<"appSummaries">> := list(app_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_apps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_component_recommendations_response() :: #{
+%%   <<"componentRecommendations">> := list(component_recommendation()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_component_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_resource_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"physicalResourceId">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type describe_app_version_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_component_recommendations_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_component_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_draft_app_version_resource_mappings_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"resourceMappings">> := list(resource_mapping()())
+%% }
+-type add_draft_app_version_resource_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_request() :: #{
+%%   <<"assessmentSchedule">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"eventSubscriptions">> => list(event_subscription()()),
+%%   <<"name">> := string(),
+%%   <<"permissionModel">> => permission_model(),
+%%   <<"policyArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_resources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"physicalResources">> := list(physical_resource()()),
+%%   <<"resolutionId">> := string()
+%% }
+-type list_app_version_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_response() :: #{
+%%   <<"appArn">> := string()
+%% }
+-type delete_app_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_version_app_component_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appComponent">> => app_component(),
+%%   <<"appVersion">> := string()
+%% }
+-type create_app_version_app_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_assessments_request() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"assessmentName">> => string(),
+%%   <<"assessmentStatus">> => list(string()()),
+%%   <<"complianceStatus">> => string(),
+%%   <<"invoker">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reverseOrder">> => boolean()
+%% }
+-type list_app_assessments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_versions_response() :: #{
+%%   <<"appVersions">> := list(app_version_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_draft_app_version_resource_mappings_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appVersion">> => string()
+%% }
+-type remove_draft_app_version_resource_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolve_app_version_resources_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string()
+%% }
+-type resolve_app_version_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_app_version_app_component_request() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string(),
+%%   <<"id">> := string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type update_app_version_app_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_draft_app_version_template_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appTemplateBody">> := string()
+%% }
+-type put_draft_app_version_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_mapping() :: #{
+%%   <<"appRegistryAppName">> => string(),
+%%   <<"eksSourceName">> => string(),
+%%   <<"logicalStackName">> => string(),
+%%   <<"mappingType">> => string(),
+%%   <<"physicalResourceId">> => physical_resource_id(),
+%%   <<"resourceGroupName">> => string(),
+%%   <<"resourceName">> => string(),
+%%   <<"terraformSourceName">> => string()
+%% }
+-type resource_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_unsupported_app_version_resources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resolutionId">> := string(),
+%%   <<"unsupportedResources">> := list(unsupported_resource()())
+%% }
+-type list_unsupported_app_version_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resiliency_score() :: #{
+%%   <<"componentScore">> => map(),
+%%   <<"disruptionScore">> => map(),
+%%   <<"score">> => float()
+%% }
+-type resiliency_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_resource() :: #{
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"physicalResourceId">> => physical_resource_id(),
+%%   <<"resourceType">> => string(),
+%%   <<"unsupportedResourceStatus">> => string()
+%% }
+-type unsupported_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_version_resource_request() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string(),
+%%   <<"appComponents">> := list(string()()),
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"logicalResourceId">> := logical_resource_id(),
+%%   <<"physicalResourceId">> := string(),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceType">> := string()
+%% }
+-type create_app_version_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% config_recommendation() :: #{
+%%   <<"appComponentName">> => string(),
+%%   <<"compliance">> => map(),
+%%   <<"cost">> => cost(),
+%%   <<"description">> => string(),
+%%   <<"haArchitecture">> => string(),
+%%   <<"name">> => string(),
+%%   <<"optimizationType">> => string(),
+%%   <<"recommendationCompliance">> => map(),
+%%   <<"referenceId">> => string(),
+%%   <<"suggestedChanges">> => list(string()())
+%% }
+-type config_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_subscription() :: #{
+%%   <<"eventType">> => string(),
+%%   <<"name">> => string(),
+%%   <<"snsTopicArn">> => string()
+%% }
+-type event_subscription() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_template_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string()
+%% }
+-type describe_app_version_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_resources_to_draft_app_version_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"eksSources">> => list(eks_source()()),
+%%   <<"importStrategy">> => string(),
+%%   <<"sourceArns">> => list(string()()),
+%%   <<"terraformSources">> => list(terraform_source()())
+%% }
+-type import_resources_to_draft_app_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_input_source_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appInputSource">> => app_input_source()
+%% }
+-type delete_app_input_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_app_assessment_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"assessmentName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type start_app_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_app_components_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appComponents">> => list(app_component()()),
+%%   <<"appVersion">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_version_app_components_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_recommendation_status_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"failedEntries">> => list(batch_update_recommendation_status_failed_entry()()),
+%%   <<"successfulEntries">> => list(batch_update_recommendation_status_successful_entry()())
+%% }
+-type batch_update_recommendation_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_unsupported_app_version_resources_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resolutionId">> => string()
+%% }
+-type list_unsupported_app_version_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_input_sources_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_input_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_recommendations_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_test_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% failure_policy() :: #{
+%%   <<"rpoInSecs">> => integer(),
+%%   <<"rtoInSecs">> => integer()
+%% }
+-type failure_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommendation_template_response() :: #{
+%%   <<"recommendationTemplate">> => recommendation_template()
+%% }
+-type create_recommendation_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_response() :: #{
+%%   <<"app">> := app()
+%% }
+-type describe_app_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disruption_compliance() :: #{
+%%   <<"achievableRpoInSecs">> => integer(),
+%%   <<"achievableRtoInSecs">> => integer(),
+%%   <<"complianceStatus">> => string(),
+%%   <<"currentRpoInSecs">> => integer(),
+%%   <<"currentRtoInSecs">> => integer(),
+%%   <<"message">> => string(),
+%%   <<"rpoDescription">> => string(),
+%%   <<"rpoReferenceId">> => string(),
+%%   <<"rtoDescription">> => string(),
+%%   <<"rtoReferenceId">> => string()
+%% }
+-type disruption_compliance() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resiliency_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyName">> => string()
+%% }
+-type list_resiliency_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recommendation_status_request_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"excludeReason">> => string(),
+%%   <<"excluded">> => boolean(),
+%%   <<"item">> => update_recommendation_status_item(),
+%%   <<"referenceId">> => string()
+%% }
+-type update_recommendation_status_request_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% terraform_source() :: #{
+%%   <<"s3StateFileUrl">> => string()
+%% }
+-type terraform_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_resources_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resolutionId">> => string()
+%% }
+-type list_app_version_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_errors_details() :: #{
+%%   <<"hasMoreErrors">> => boolean(),
+%%   <<"resourceErrors">> => list(resource_error()())
+%% }
+-type resource_errors_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_recommendation() :: #{
+%%   <<"appComponentName">> => string(),
+%%   <<"configRecommendations">> => list(config_recommendation()()),
+%%   <<"recommendationStatus">> => string()
+%% }
+-type component_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_version_resource_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"physicalResource">> => physical_resource()
+%% }
+-type create_app_version_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logical_resource_id() :: #{
+%%   <<"eksSourceName">> => string(),
+%%   <<"identifier">> => string(),
+%%   <<"logicalStackName">> => string(),
+%%   <<"resourceGroupName">> => string(),
+%%   <<"terraformSourceName">> => string()
+%% }
+-type logical_resource_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_version_resource_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"physicalResource">> => physical_resource()
+%% }
+-type delete_app_version_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_assessment_request() :: #{
+%%   <<"assessmentArn">> := string()
+%% }
+-type describe_app_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_item() :: #{
+%%   <<"alreadyImplemented">> => boolean(),
+%%   <<"excludeReason">> => string(),
+%%   <<"excluded">> => boolean(),
+%%   <<"resourceId">> => string(),
+%%   <<"targetAccountId">> => string(),
+%%   <<"targetRegion">> => string()
+%% }
+-type recommendation_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_resource_mappings_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceMappings">> := list(resource_mapping()())
+%% }
+-type list_app_version_resource_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_resource_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"physicalResource">> => physical_resource()
+%% }
+-type describe_app_version_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_draft_app_version_template_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appVersion">> => string()
+%% }
+-type put_draft_app_version_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_assessment_compliance_drifts_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_assessment_compliance_drifts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_input_source_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"eksSourceClusterNamespace">> => eks_source_cluster_namespace(),
+%%   <<"sourceArn">> => string(),
+%%   <<"terraformSource">> => terraform_source()
+%% }
+-type delete_app_input_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_suggested_resiliency_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_suggested_resiliency_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_recommendation_status_failed_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_update_recommendation_status_failed_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% alarm_recommendation() :: #{
+%%   <<"appComponentName">> => string(),
+%%   <<"appComponentNames">> => list(string()()),
+%%   <<"description">> => string(),
+%%   <<"items">> => list(recommendation_item()()),
+%%   <<"name">> => string(),
+%%   <<"prerequisite">> => string(),
+%%   <<"recommendationId">> => string(),
+%%   <<"recommendationStatus">> => string(),
+%%   <<"referenceId">> => string(),
+%%   <<"type">> => string()
+%% }
+-type alarm_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendation_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationTemplates">> => list(recommendation_template()())
+%% }
+-type list_recommendation_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% scoring_component_resiliency_score() :: #{
+%%   <<"excludedCount">> => float(),
+%%   <<"outstandingCount">> => float(),
+%%   <<"possibleScore">> => float(),
+%%   <<"score">> => float()
+%% }
+-type scoring_component_resiliency_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resiliency_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"dataLocationConstraint">> => string(),
+%%   <<"policy">> := map(),
+%%   <<"policyDescription">> => string(),
+%%   <<"policyName">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"tier">> := string()
+%% }
+-type create_resiliency_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_assessments_response() :: #{
+%%   <<"assessmentSummaries">> := list(app_assessment_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_assessments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sop_recommendations_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sop_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_resource_mappings_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_version_resource_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_draft_app_version_resource_mappings_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"resourceMappings">> := list(resource_mapping()())
+%% }
+-type add_draft_app_version_resource_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_app_component_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"id">> := string()
+%% }
+-type describe_app_version_app_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resiliency_policy_response() :: #{
+%%   <<"policy">> := resiliency_policy()
+%% }
+-type update_resiliency_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_app_version_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> => string(),
+%%   <<"identifier">> => float(),
+%%   <<"versionName">> => string()
+%% }
+-type publish_app_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_version_resource_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"physicalResource">> => physical_resource()
+%% }
+-type update_app_version_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_recommendation_status_successful_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"excludeReason">> => string(),
+%%   <<"excluded">> => boolean(),
+%%   <<"item">> => update_recommendation_status_item(),
+%%   <<"referenceId">> => string()
+%% }
+-type batch_update_recommendation_status_successful_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resiliency_policy_response() :: #{
+%%   <<"policy">> := resiliency_policy()
+%% }
+-type create_resiliency_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_version_response() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string()
+%% }
+-type update_app_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_alarm_recommendations_response() :: #{
+%%   <<"alarmRecommendations">> := list(alarm_recommendation()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_alarm_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_source_cluster_namespace() :: #{
+%%   <<"eksClusterArn">> => string(),
+%%   <<"namespace">> => string()
+%% }
+-type eks_source_cluster_namespace() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_draft_app_version_resources_import_status_request() :: #{
+%%   <<"appArn">> := string()
+%% }
+-type describe_draft_app_version_resources_import_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_template_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appTemplateBody">> := string(),
+%%   <<"appVersion">> := string()
+%% }
+-type describe_app_version_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_resiliency_policy_response() :: #{
+%%   <<"policy">> := resiliency_policy()
+%% }
+-type describe_resiliency_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_component() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type app_component() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_disruption_compliance() :: #{
+%%   <<"expectedComplianceStatus">> => string(),
+%%   <<"expectedRpoDescription">> => string(),
+%%   <<"expectedRpoInSecs">> => integer(),
+%%   <<"expectedRtoDescription">> => string(),
+%%   <<"expectedRtoInSecs">> => integer()
+%% }
+-type recommendation_disruption_compliance() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_suggested_resiliency_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resiliencyPolicies">> := list(resiliency_policy()())
+%% }
+-type list_suggested_resiliency_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_error() :: #{
+%%   <<"logicalResourceId">> => string(),
+%%   <<"physicalResourceId">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type resource_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolve_app_version_resources_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"resolutionId">> := string(),
+%%   <<"status">> := string()
+%% }
+-type resolve_app_version_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_input_source() :: #{
+%%   <<"eksSourceClusterNamespace">> => eks_source_cluster_namespace(),
+%%   <<"importType">> => string(),
+%%   <<"resourceCount">> => integer(),
+%%   <<"sourceArn">> => string(),
+%%   <<"sourceName">> => string(),
+%%   <<"terraformSource">> => terraform_source()
+%% }
+-type app_input_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recommendation_template_response() :: #{
+%%   <<"recommendationTemplateArn">> := string(),
+%%   <<"status">> := string()
+%% }
+-type delete_recommendation_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% physical_resource() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appComponents">> => list(app_component()()),
+%%   <<"excluded">> => boolean(),
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"parentResourceName">> => string(),
+%%   <<"physicalResourceId">> => physical_resource_id(),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"sourceType">> => string()
+%% }
+-type physical_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_summary() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"assessmentSchedule">> => string(),
+%%   <<"complianceStatus">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"driftStatus">> => string(),
+%%   <<"lastAppComplianceEvaluationTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"resiliencyScore">> => float(),
+%%   <<"rpoInSecs">> => integer(),
+%%   <<"rtoInSecs">> => integer(),
+%%   <<"status">> => string()
+%% }
+-type app_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_recommendations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testRecommendations">> := list(test_recommendation()())
+%% }
+-type list_test_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_response() :: #{
+%%   <<"app">> := app()
+%% }
+-type update_app_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_assessment_summary() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appVersion">> => string(),
+%%   <<"assessmentArn">> => string(),
+%%   <<"assessmentName">> => string(),
+%%   <<"assessmentStatus">> => string(),
+%%   <<"complianceStatus">> => string(),
+%%   <<"cost">> => cost(),
+%%   <<"driftStatus">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"invoker">> => string(),
+%%   <<"message">> => string(),
+%%   <<"resiliencyScore">> => float(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"versionName">> => string()
+%% }
+-type app_assessment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_source() :: #{
+%%   <<"eksClusterArn">> => string(),
+%%   <<"namespaces">> => list(string()())
+%% }
+-type eks_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"forceDelete">> => boolean()
+%% }
+-type delete_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_version_resource_request() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string(),
+%%   <<"appComponents">> => list(string()()),
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"excluded">> => boolean(),
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"physicalResourceId">> => string(),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type update_app_version_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_app_version_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"versionName">> => string()
+%% }
+-type publish_app_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_request() :: #{
+%%   <<"appArn">> := string()
+%% }
+-type describe_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resiliency_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"policyArn">> := string()
+%% }
+-type delete_resiliency_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_assessment_compliance_drifts_response() :: #{
+%%   <<"complianceDrifts">> => list(compliance_drift()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_assessment_compliance_drifts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_version_app_component_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appComponent">> => app_component(),
+%%   <<"appVersion">> := string()
+%% }
+-type delete_app_version_app_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% delete_app_version_app_component_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"id">> := string()
+%% }
+-type delete_app_version_app_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_resources_to_draft_app_version_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"eksSources">> => list(eks_source()()),
+%%   <<"sourceArns">> => list(string()()),
+%%   <<"status">> := string(),
+%%   <<"terraformSources">> => list(terraform_source()())
+%% }
+-type import_resources_to_draft_app_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_version_summary() :: #{
+%%   <<"appVersion">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"identifier">> => float(),
+%%   <<"versionName">> => string()
+%% }
+-type app_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_app_components_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_version_app_components_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_model() :: #{
+%%   <<"crossAccountRoleArns">> => list(string()()),
+%%   <<"invokerRoleName">> => string(),
+%%   <<"type">> => string()
+%% }
+-type permission_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resiliency_policy_request() :: #{
+%%   <<"dataLocationConstraint">> => string(),
+%%   <<"policy">> => map(),
+%%   <<"policyArn">> := string(),
+%%   <<"policyDescription">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"tier">> => string()
+%% }
+-type update_resiliency_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_input_sources_response() :: #{
+%%   <<"appInputSources">> := list(app_input_source()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_input_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% resiliency_policy() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"dataLocationConstraint">> => string(),
+%%   <<"estimatedCostTier">> => string(),
+%%   <<"policy">> => map(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyDescription">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"tier">> => string()
+%% }
+-type resiliency_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"assessmentSchedule">> => string(),
+%%   <<"clearResiliencyPolicyArn">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"eventSubscriptions">> => list(event_subscription()()),
+%%   <<"permissionModel">> => permission_model(),
+%%   <<"policyArn">> => string()
+%% }
+-type update_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_assessment() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appVersion">> => string(),
+%%   <<"assessmentArn">> => string(),
+%%   <<"assessmentName">> => string(),
+%%   <<"assessmentStatus">> => string(),
+%%   <<"compliance">> => map(),
+%%   <<"complianceStatus">> => string(),
+%%   <<"cost">> => cost(),
+%%   <<"driftStatus">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"invoker">> => string(),
+%%   <<"message">> => string(),
+%%   <<"policy">> => resiliency_policy(),
+%%   <<"resiliencyScore">> => resiliency_score(),
+%%   <<"resourceErrorsDetails">> => resource_errors_details(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"tags">> => map(),
+%%   <<"versionName">> => string()
+%% }
+-type app_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_recommendation() :: #{
+%%   <<"appComponentName">> => string(),
+%%   <<"dependsOnAlarms">> => list(string()()),
+%%   <<"description">> => string(),
+%%   <<"intent">> => string(),
+%%   <<"items">> => list(recommendation_item()()),
+%%   <<"name">> => string(),
+%%   <<"prerequisite">> => string(),
+%%   <<"recommendationId">> => string(),
+%%   <<"recommendationStatus">> => string(),
+%%   <<"referenceId">> => string(),
+%%   <<"risk">> => string(),
+%%   <<"type">> => string()
+%% }
+-type test_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendation_templates_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationTemplateArn">> => string(),
+%%   <<"reverseOrder">> => boolean(),
+%%   <<"status">> => list(string()())
+%% }
+-type list_recommendation_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_app_assessment_response() :: #{
+%%   <<"assessment">> := app_assessment()
+%% }
+-type start_app_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recommendation_status_item() :: #{
+%%   <<"resourceId">> => string(),
+%%   <<"targetAccountId">> => string(),
+%%   <<"targetRegion">> => string()
+%% }
+-type update_recommendation_status_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_alarm_recommendations_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_alarm_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_version_request() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string()
+%% }
+-type update_app_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_resiliency_policy_request() :: #{
+%%   <<"policyArn">> := string()
+%% }
+-type describe_resiliency_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_assessment_response() :: #{
+%%   <<"assessment">> := app_assessment()
+%% }
+-type describe_app_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_app_component_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appComponent">> => app_component(),
+%%   <<"appVersion">> := string()
+%% }
+-type describe_app_version_app_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_apps_request() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"fromLastAssessmentTime">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"reverseOrder">> => boolean(),
+%%   <<"toLastAssessmentTime">> => non_neg_integer()
+%% }
+-type list_apps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_version_app_component_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appComponent">> => app_component(),
+%%   <<"appVersion">> := string()
+%% }
+-type update_app_version_app_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_template() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"assessmentArn">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"format">> => string(),
+%%   <<"message">> => string(),
+%%   <<"name">> => string(),
+%%   <<"needsReplacements">> => boolean(),
+%%   <<"recommendationIds">> => list(string()()),
+%%   <<"recommendationTemplateArn">> => string(),
+%%   <<"recommendationTypes">> => list(string()()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"templatesLocation">> => s3_location()
+%% }
+-type recommendation_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resiliency_policy_response() :: #{
+%%   <<"policyArn">> := string()
+%% }
+-type delete_resiliency_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_version_resource_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"physicalResourceId">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type delete_app_version_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sop_recommendations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sopRecommendations">> := list(sop_recommendation()())
+%% }
+-type list_sop_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_assessment_response() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"assessmentStatus">> := string()
+%% }
+-type delete_app_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% physical_resource_id() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"identifier">> => string(),
+%%   <<"type">> => string()
+%% }
+-type physical_resource_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_response() :: #{
+%%   <<"app">> := app()
+%% }
+-type create_app_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_component_compliances_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_component_compliances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_versions_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type list_app_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% compliance_drift() :: #{
+%%   <<"actualReferenceId">> => string(),
+%%   <<"actualValue">> => map(),
+%%   <<"appId">> => string(),
+%%   <<"appVersion">> => string(),
+%%   <<"diffType">> => string(),
+%%   <<"driftType">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"entityType">> => string(),
+%%   <<"expectedReferenceId">> => string(),
+%%   <<"expectedValue">> => map()
+%% }
+-type compliance_drift() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_version_app_component_request() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> := string(),
+%%   <<"type">> := string()
+%% }
+-type create_app_version_app_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recommendation_template_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"recommendationTemplateArn">> := string()
+%% }
+-type delete_recommendation_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cost() :: #{
+%%   <<"amount">> => float(),
+%%   <<"currency">> => string(),
+%%   <<"frequency">> => string()
+%% }
+-type cost() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_resources_resolution_status_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"resolutionId">> := string(),
+%%   <<"status">> := string()
+%% }
+-type describe_app_version_resources_resolution_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resiliency_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resiliencyPolicies">> := list(resiliency_policy()())
+%% }
+-type list_resiliency_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_draft_app_version_resource_mappings_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appRegistryAppNames">> => list(string()()),
+%%   <<"eksSourceNames">> => list(string()()),
+%%   <<"logicalStackNames">> => list(string()()),
+%%   <<"resourceGroupNames">> => list(string()()),
+%%   <<"resourceNames">> => list(string()()),
+%%   <<"terraformSourceNames">> => list(string()())
+%% }
+-type remove_draft_app_version_resource_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sop_recommendation() :: #{
+%%   <<"appComponentName">> => string(),
+%%   <<"description">> => string(),
+%%   <<"items">> => list(recommendation_item()()),
+%%   <<"name">> => string(),
+%%   <<"prerequisite">> => string(),
+%%   <<"recommendationId">> => string(),
+%%   <<"recommendationStatus">> => string(),
+%%   <<"referenceId">> => string(),
+%%   <<"serviceType">> => string()
+%% }
+-type sop_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_component_compliance() :: #{
+%%   <<"appComponentName">> => string(),
+%%   <<"compliance">> => map(),
+%%   <<"cost">> => cost(),
+%%   <<"message">> => string(),
+%%   <<"resiliencyScore">> => resiliency_score(),
+%%   <<"status">> => string()
+%% }
+-type app_component_compliance() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_assessment_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"clientToken">> => string()
+%% }
+-type delete_app_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommendation_template_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"bucketName">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"format">> => string(),
+%%   <<"name">> := string(),
+%%   <<"recommendationIds">> => list(string()()),
+%%   <<"recommendationTypes">> => list(string()()),
+%%   <<"tags">> => map()
+%% }
+-type create_recommendation_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string()
+%% }
+-type describe_app_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_draft_app_version_resources_import_status_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"status">> := string(),
+%%   <<"statusChangeTime">> := non_neg_integer()
+%% }
+-type describe_draft_app_version_resources_import_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_response() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string()
+%% }
+-type describe_app_version_response() :: #{binary() => any()}.
+
+-type add_draft_app_version_resource_mappings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_update_recommendation_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_app_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_app_version_app_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_app_version_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_recommendation_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_resiliency_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_app_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_app_assessment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_app_input_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_app_version_app_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_app_version_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_recommendation_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_resiliency_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_app_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_app_assessment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_app_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_app_version_app_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_app_version_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_app_version_resources_resolution_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_app_version_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_draft_app_version_resources_import_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_resiliency_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type import_resources_to_draft_app_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_alarm_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_assessment_compliance_drifts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_app_assessments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_component_compliances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_component_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_input_sources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_version_app_components_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_app_version_resource_mappings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_app_version_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_app_versions_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_apps_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_recommendation_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_resiliency_policies_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_sop_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_suggested_resiliency_policies_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_test_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_unsupported_app_version_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type publish_app_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_draft_app_version_template_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type remove_draft_app_version_resource_mappings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type resolve_app_version_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_app_assessment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_app_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_app_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_app_version_app_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_app_version_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_resiliency_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -145,8 +2085,17 @@
 %% application managed?:
 %% https://docs.aws.amazon.com/resilience-hub/latest/userguide/how-app-manage.html
 %% in the Resilience Hub User Guide.
+-spec add_draft_app_version_resource_mappings(aws_client:aws_client(), add_draft_app_version_resource_mappings_request()) ->
+    {ok, add_draft_app_version_resource_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, add_draft_app_version_resource_mappings_errors(), tuple()}.
 add_draft_app_version_resource_mappings(Client, Input) ->
     add_draft_app_version_resource_mappings(Client, Input, []).
+
+-spec add_draft_app_version_resource_mappings(aws_client:aws_client(), add_draft_app_version_resource_mappings_request(), proplists:proplist()) ->
+    {ok, add_draft_app_version_resource_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, add_draft_app_version_resource_mappings_errors(), tuple()}.
 add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/add-draft-app-version-resource-mappings"],
@@ -171,8 +2120,17 @@ add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
 
 %% @doc Enables you to include or exclude one or more operational
 %% recommendations.
+-spec batch_update_recommendation_status(aws_client:aws_client(), batch_update_recommendation_status_request()) ->
+    {ok, batch_update_recommendation_status_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_recommendation_status_errors(), tuple()}.
 batch_update_recommendation_status(Client, Input) ->
     batch_update_recommendation_status(Client, Input, []).
+
+-spec batch_update_recommendation_status(aws_client:aws_client(), batch_update_recommendation_status_request(), proplists:proplist()) ->
+    {ok, batch_update_recommendation_status_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_recommendation_status_errors(), tuple()}.
 batch_update_recommendation_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batch-update-recommendation-status"],
@@ -220,8 +2178,17 @@ batch_update_recommendation_status(Client, Input0, Options0) ->
 %% achieve your goals for recovery time objective (RTO) and recovery point
 %% objective
 %% (RPO).
+-spec create_app(aws_client:aws_client(), create_app_request()) ->
+    {ok, create_app_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input) ->
     create_app(Client, Input, []).
+
+-spec create_app(aws_client:aws_client(), create_app_request(), proplists:proplist()) ->
+    {ok, create_app_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-app"],
@@ -250,8 +2217,17 @@ create_app(Client, Input0, Options0) ->
 %% This API updates the Resilience Hub application draft version. To use this
 %% Application Component for running assessments, you must publish the
 %% Resilience Hub application using the `PublishAppVersion' API.
+-spec create_app_version_app_component(aws_client:aws_client(), create_app_version_app_component_request()) ->
+    {ok, create_app_version_app_component_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_version_app_component_errors(), tuple()}.
 create_app_version_app_component(Client, Input) ->
     create_app_version_app_component(Client, Input, []).
+
+-spec create_app_version_app_component(aws_client:aws_client(), create_app_version_app_component_request(), proplists:proplist()) ->
+    {ok, create_app_version_app_component_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_version_app_component_errors(), tuple()}.
 create_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-app-version-app-component"],
@@ -292,8 +2268,17 @@ create_app_version_app_component(Client, Input0, Options0) ->
 %%
 %% To update application version with new `physicalResourceID', you must
 %% call `ResolveAppVersionResources' API.
+-spec create_app_version_resource(aws_client:aws_client(), create_app_version_resource_request()) ->
+    {ok, create_app_version_resource_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_version_resource_errors(), tuple()}.
 create_app_version_resource(Client, Input) ->
     create_app_version_resource(Client, Input, []).
+
+-spec create_app_version_resource(aws_client:aws_client(), create_app_version_resource_request(), proplists:proplist()) ->
+    {ok, create_app_version_resource_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_version_resource_errors(), tuple()}.
 create_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-app-version-resource"],
@@ -318,8 +2303,17 @@ create_app_version_resource(Client, Input0, Options0) ->
 
 %% @doc Creates a new recommendation template for the Resilience Hub
 %% application.
+-spec create_recommendation_template(aws_client:aws_client(), create_recommendation_template_request()) ->
+    {ok, create_recommendation_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_recommendation_template_errors(), tuple()}.
 create_recommendation_template(Client, Input) ->
     create_recommendation_template(Client, Input, []).
+
+-spec create_recommendation_template(aws_client:aws_client(), create_recommendation_template_request(), proplists:proplist()) ->
+    {ok, create_recommendation_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_recommendation_template_errors(), tuple()}.
 create_recommendation_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-recommendation-template"],
@@ -353,8 +2347,17 @@ create_recommendation_template(Client, Input0, Options0) ->
 %% and estimated workload RPO result will be near zero and the Compliance
 %% status for your application will be set to Policy
 %% breached.
+-spec create_resiliency_policy(aws_client:aws_client(), create_resiliency_policy_request()) ->
+    {ok, create_resiliency_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_resiliency_policy_errors(), tuple()}.
 create_resiliency_policy(Client, Input) ->
     create_resiliency_policy(Client, Input, []).
+
+-spec create_resiliency_policy(aws_client:aws_client(), create_resiliency_policy_request(), proplists:proplist()) ->
+    {ok, create_resiliency_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_resiliency_policy_errors(), tuple()}.
 create_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-resiliency-policy"],
@@ -381,8 +2384,17 @@ create_resiliency_policy(Client, Input0, Options0) ->
 %%
 %% This is a destructive action that can't be
 %% undone.
+-spec delete_app(aws_client:aws_client(), delete_app_request()) ->
+    {ok, delete_app_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input) ->
     delete_app(Client, Input, []).
+
+-spec delete_app(aws_client:aws_client(), delete_app_request(), proplists:proplist()) ->
+    {ok, delete_app_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app"],
@@ -409,8 +2421,17 @@ delete_app(Client, Input0, Options0) ->
 %%
 %% This is a destructive action that can't
 %% be undone.
+-spec delete_app_assessment(aws_client:aws_client(), delete_app_assessment_request()) ->
+    {ok, delete_app_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_assessment_errors(), tuple()}.
 delete_app_assessment(Client, Input) ->
     delete_app_assessment(Client, Input, []).
+
+-spec delete_app_assessment(aws_client:aws_client(), delete_app_assessment_request(), proplists:proplist()) ->
+    {ok, delete_app_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_assessment_errors(), tuple()}.
 delete_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-assessment"],
@@ -435,8 +2456,17 @@ delete_app_assessment(Client, Input0, Options0) ->
 
 %% @doc Deletes the input source and all of its imported resources from the
 %% Resilience Hub application.
+-spec delete_app_input_source(aws_client:aws_client(), delete_app_input_source_request()) ->
+    {ok, delete_app_input_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_input_source_errors(), tuple()}.
 delete_app_input_source(Client, Input) ->
     delete_app_input_source(Client, Input, []).
+
+-spec delete_app_input_source(aws_client:aws_client(), delete_app_input_source_request(), proplists:proplist()) ->
+    {ok, delete_app_input_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_input_source_errors(), tuple()}.
 delete_app_input_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-input-source"],
@@ -467,8 +2497,17 @@ delete_app_input_source(Client, Input0, Options0) ->
 %%
 %% You will not be able to delete an Application Component if it has
 %% resources associated with it.
+-spec delete_app_version_app_component(aws_client:aws_client(), delete_app_version_app_component_request()) ->
+    {ok, delete_app_version_app_component_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_version_app_component_errors(), tuple()}.
 delete_app_version_app_component(Client, Input) ->
     delete_app_version_app_component(Client, Input, []).
+
+-spec delete_app_version_app_component(aws_client:aws_client(), delete_app_version_app_component_request(), proplists:proplist()) ->
+    {ok, delete_app_version_app_component_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_version_app_component_errors(), tuple()}.
 delete_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-version-app-component"],
@@ -501,8 +2540,17 @@ delete_app_version_app_component(Client, Input0, Options0) ->
 %% This API updates the Resilience Hub application draft version. To use this
 %% resource for running resiliency assessments, you must publish the
 %% Resilience Hub application using the `PublishAppVersion' API.
+-spec delete_app_version_resource(aws_client:aws_client(), delete_app_version_resource_request()) ->
+    {ok, delete_app_version_resource_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_version_resource_errors(), tuple()}.
 delete_app_version_resource(Client, Input) ->
     delete_app_version_resource(Client, Input, []).
+
+-spec delete_app_version_resource(aws_client:aws_client(), delete_app_version_resource_request(), proplists:proplist()) ->
+    {ok, delete_app_version_resource_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_version_resource_errors(), tuple()}.
 delete_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-version-resource"],
@@ -529,8 +2577,17 @@ delete_app_version_resource(Client, Input0, Options0) ->
 %%
 %% This is a destructive action that can't be
 %% undone.
+-spec delete_recommendation_template(aws_client:aws_client(), delete_recommendation_template_request()) ->
+    {ok, delete_recommendation_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recommendation_template_errors(), tuple()}.
 delete_recommendation_template(Client, Input) ->
     delete_recommendation_template(Client, Input, []).
+
+-spec delete_recommendation_template(aws_client:aws_client(), delete_recommendation_template_request(), proplists:proplist()) ->
+    {ok, delete_recommendation_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recommendation_template_errors(), tuple()}.
 delete_recommendation_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-recommendation-template"],
@@ -556,8 +2613,17 @@ delete_recommendation_template(Client, Input0, Options0) ->
 %% @doc Deletes a resiliency policy.
 %%
 %% This is a destructive action that can't be undone.
+-spec delete_resiliency_policy(aws_client:aws_client(), delete_resiliency_policy_request()) ->
+    {ok, delete_resiliency_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resiliency_policy_errors(), tuple()}.
 delete_resiliency_policy(Client, Input) ->
     delete_resiliency_policy(Client, Input, []).
+
+-spec delete_resiliency_policy(aws_client:aws_client(), delete_resiliency_policy_request(), proplists:proplist()) ->
+    {ok, delete_resiliency_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resiliency_policy_errors(), tuple()}.
 delete_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-resiliency-policy"],
@@ -581,8 +2647,17 @@ delete_resiliency_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes an Resilience Hub application.
+-spec describe_app(aws_client:aws_client(), describe_app_request()) ->
+    {ok, describe_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_errors(), tuple()}.
 describe_app(Client, Input) ->
     describe_app(Client, Input, []).
+
+-spec describe_app(aws_client:aws_client(), describe_app_request(), proplists:proplist()) ->
+    {ok, describe_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_errors(), tuple()}.
 describe_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app"],
@@ -606,8 +2681,17 @@ describe_app(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes an assessment for an Resilience Hub application.
+-spec describe_app_assessment(aws_client:aws_client(), describe_app_assessment_request()) ->
+    {ok, describe_app_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_assessment_errors(), tuple()}.
 describe_app_assessment(Client, Input) ->
     describe_app_assessment(Client, Input, []).
+
+-spec describe_app_assessment(aws_client:aws_client(), describe_app_assessment_request(), proplists:proplist()) ->
+    {ok, describe_app_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_assessment_errors(), tuple()}.
 describe_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-assessment"],
@@ -631,8 +2715,17 @@ describe_app_assessment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the Resilience Hub application version.
+-spec describe_app_version(aws_client:aws_client(), describe_app_version_request()) ->
+    {ok, describe_app_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_version_errors(), tuple()}.
 describe_app_version(Client, Input) ->
     describe_app_version(Client, Input, []).
+
+-spec describe_app_version(aws_client:aws_client(), describe_app_version_request(), proplists:proplist()) ->
+    {ok, describe_app_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_version_errors(), tuple()}.
 describe_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version"],
@@ -656,8 +2749,17 @@ describe_app_version(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes an Application Component in the Resilience Hub application.
+-spec describe_app_version_app_component(aws_client:aws_client(), describe_app_version_app_component_request()) ->
+    {ok, describe_app_version_app_component_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_version_app_component_errors(), tuple()}.
 describe_app_version_app_component(Client, Input) ->
     describe_app_version_app_component(Client, Input, []).
+
+-spec describe_app_version_app_component(aws_client:aws_client(), describe_app_version_app_component_request(), proplists:proplist()) ->
+    {ok, describe_app_version_app_component_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_version_app_component_errors(), tuple()}.
 describe_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-app-component"],
@@ -692,8 +2794,17 @@ describe_app_version_app_component(Client, Input0, Options0) ->
 %% `physicalResourceId' (Along with `physicalResourceId', you can
 %% also
 %% provide `awsAccountId', and `awsRegion')
+-spec describe_app_version_resource(aws_client:aws_client(), describe_app_version_resource_request()) ->
+    {ok, describe_app_version_resource_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_version_resource_errors(), tuple()}.
 describe_app_version_resource(Client, Input) ->
     describe_app_version_resource(Client, Input, []).
+
+-spec describe_app_version_resource(aws_client:aws_client(), describe_app_version_resource_request(), proplists:proplist()) ->
+    {ok, describe_app_version_resource_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_version_resource_errors(), tuple()}.
 describe_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-resource"],
@@ -722,8 +2833,17 @@ describe_app_version_resource(Client, Input0, Options0) ->
 %%
 %% If `resolutionId' is not specified, the current resolution status is
 %% returned.
+-spec describe_app_version_resources_resolution_status(aws_client:aws_client(), describe_app_version_resources_resolution_status_request()) ->
+    {ok, describe_app_version_resources_resolution_status_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_version_resources_resolution_status_errors(), tuple()}.
 describe_app_version_resources_resolution_status(Client, Input) ->
     describe_app_version_resources_resolution_status(Client, Input, []).
+
+-spec describe_app_version_resources_resolution_status(aws_client:aws_client(), describe_app_version_resources_resolution_status_request(), proplists:proplist()) ->
+    {ok, describe_app_version_resources_resolution_status_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_version_resources_resolution_status_errors(), tuple()}.
 describe_app_version_resources_resolution_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-resources-resolution-status"],
@@ -747,8 +2867,17 @@ describe_app_version_resources_resolution_status(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes details about an Resilience Hub application.
+-spec describe_app_version_template(aws_client:aws_client(), describe_app_version_template_request()) ->
+    {ok, describe_app_version_template_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_version_template_errors(), tuple()}.
 describe_app_version_template(Client, Input) ->
     describe_app_version_template(Client, Input, []).
+
+-spec describe_app_version_template(aws_client:aws_client(), describe_app_version_template_request(), proplists:proplist()) ->
+    {ok, describe_app_version_template_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_version_template_errors(), tuple()}.
 describe_app_version_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-app-version-template"],
@@ -780,8 +2909,17 @@ describe_app_version_template(Client, Input0, Options0) ->
 %% before
 %% calling `describeDraftAppVersionResourcesImportStatus' to obtain the
 %% status.
+-spec describe_draft_app_version_resources_import_status(aws_client:aws_client(), describe_draft_app_version_resources_import_status_request()) ->
+    {ok, describe_draft_app_version_resources_import_status_response(), tuple()} |
+    {error, any()} |
+    {error, describe_draft_app_version_resources_import_status_errors(), tuple()}.
 describe_draft_app_version_resources_import_status(Client, Input) ->
     describe_draft_app_version_resources_import_status(Client, Input, []).
+
+-spec describe_draft_app_version_resources_import_status(aws_client:aws_client(), describe_draft_app_version_resources_import_status_request(), proplists:proplist()) ->
+    {ok, describe_draft_app_version_resources_import_status_response(), tuple()} |
+    {error, any()} |
+    {error, describe_draft_app_version_resources_import_status_errors(), tuple()}.
 describe_draft_app_version_resources_import_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-draft-app-version-resources-import-status"],
@@ -811,8 +2949,17 @@ describe_draft_app_version_resources_import_status(Client, Input0, Options0) ->
 %% returned policy object includes creation time, data location constraints,
 %% the Amazon Resource
 %% Name (ARN) for the policy, tags, tier, and more.
+-spec describe_resiliency_policy(aws_client:aws_client(), describe_resiliency_policy_request()) ->
+    {ok, describe_resiliency_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resiliency_policy_errors(), tuple()}.
 describe_resiliency_policy(Client, Input) ->
     describe_resiliency_policy(Client, Input, []).
+
+-spec describe_resiliency_policy(aws_client:aws_client(), describe_resiliency_policy_request(), proplists:proplist()) ->
+    {ok, describe_resiliency_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resiliency_policy_errors(), tuple()}.
 describe_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-resiliency-policy"],
@@ -842,8 +2989,17 @@ describe_resiliency_policy(Client, Input0, Options0) ->
 %% see Discover
 %% the structure and describe your Resilience Hub application:
 %% https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html.
+-spec import_resources_to_draft_app_version(aws_client:aws_client(), import_resources_to_draft_app_version_request()) ->
+    {ok, import_resources_to_draft_app_version_response(), tuple()} |
+    {error, any()} |
+    {error, import_resources_to_draft_app_version_errors(), tuple()}.
 import_resources_to_draft_app_version(Client, Input) ->
     import_resources_to_draft_app_version(Client, Input, []).
+
+-spec import_resources_to_draft_app_version(aws_client:aws_client(), import_resources_to_draft_app_version_request(), proplists:proplist()) ->
+    {ok, import_resources_to_draft_app_version_response(), tuple()} |
+    {error, any()} |
+    {error, import_resources_to_draft_app_version_errors(), tuple()}.
 import_resources_to_draft_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/import-resources-to-draft-app-version"],
@@ -867,8 +3023,17 @@ import_resources_to_draft_app_version(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the alarm recommendations for an Resilience Hub application.
+-spec list_alarm_recommendations(aws_client:aws_client(), list_alarm_recommendations_request()) ->
+    {ok, list_alarm_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_alarm_recommendations_errors(), tuple()}.
 list_alarm_recommendations(Client, Input) ->
     list_alarm_recommendations(Client, Input, []).
+
+-spec list_alarm_recommendations(aws_client:aws_client(), list_alarm_recommendations_request(), proplists:proplist()) ->
+    {ok, list_alarm_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_alarm_recommendations_errors(), tuple()}.
 list_alarm_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-alarm-recommendations"],
@@ -893,8 +3058,17 @@ list_alarm_recommendations(Client, Input0, Options0) ->
 
 %% @doc List of compliance drifts that were detected while running an
 %% assessment.
+-spec list_app_assessment_compliance_drifts(aws_client:aws_client(), list_app_assessment_compliance_drifts_request()) ->
+    {ok, list_app_assessment_compliance_drifts_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_assessment_compliance_drifts_errors(), tuple()}.
 list_app_assessment_compliance_drifts(Client, Input) ->
     list_app_assessment_compliance_drifts(Client, Input, []).
+
+-spec list_app_assessment_compliance_drifts(aws_client:aws_client(), list_app_assessment_compliance_drifts_request(), proplists:proplist()) ->
+    {ok, list_app_assessment_compliance_drifts_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_assessment_compliance_drifts_errors(), tuple()}.
 list_app_assessment_compliance_drifts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-assessment-compliance-drifts"],
@@ -921,14 +3095,26 @@ list_app_assessment_compliance_drifts(Client, Input0, Options0) ->
 %%
 %% You can use request parameters to
 %% refine the results for the response object.
+-spec list_app_assessments(aws_client:aws_client()) ->
+    {ok, list_app_assessments_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_assessments_errors(), tuple()}.
 list_app_assessments(Client)
   when is_map(Client) ->
     list_app_assessments(Client, #{}, #{}).
 
+-spec list_app_assessments(aws_client:aws_client(), map(), map()) ->
+    {ok, list_app_assessments_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_assessments_errors(), tuple()}.
 list_app_assessments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_assessments(Client, QueryMap, HeadersMap, []).
 
+-spec list_app_assessments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_app_assessments_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_assessments_errors(), tuple()}.
 list_app_assessments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-app-assessments"],
@@ -957,8 +3143,17 @@ list_app_assessments(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the compliances for an Resilience Hub Application Component.
+-spec list_app_component_compliances(aws_client:aws_client(), list_app_component_compliances_request()) ->
+    {ok, list_app_component_compliances_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_component_compliances_errors(), tuple()}.
 list_app_component_compliances(Client, Input) ->
     list_app_component_compliances(Client, Input, []).
+
+-spec list_app_component_compliances(aws_client:aws_client(), list_app_component_compliances_request(), proplists:proplist()) ->
+    {ok, list_app_component_compliances_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_component_compliances_errors(), tuple()}.
 list_app_component_compliances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-component-compliances"],
@@ -983,8 +3178,17 @@ list_app_component_compliances(Client, Input0, Options0) ->
 
 %% @doc Lists the recommendations for an Resilience Hub Application
 %% Component.
+-spec list_app_component_recommendations(aws_client:aws_client(), list_app_component_recommendations_request()) ->
+    {ok, list_app_component_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_component_recommendations_errors(), tuple()}.
 list_app_component_recommendations(Client, Input) ->
     list_app_component_recommendations(Client, Input, []).
+
+-spec list_app_component_recommendations(aws_client:aws_client(), list_app_component_recommendations_request(), proplists:proplist()) ->
+    {ok, list_app_component_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_component_recommendations_errors(), tuple()}.
 list_app_component_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-component-recommendations"],
@@ -1013,8 +3217,17 @@ list_app_component_recommendations(Client, Input0, Options0) ->
 %% input sources supported by Resilience Hub, see Discover
 %% the structure and describe your Resilience Hub application:
 %% https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html.
+-spec list_app_input_sources(aws_client:aws_client(), list_app_input_sources_request()) ->
+    {ok, list_app_input_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_input_sources_errors(), tuple()}.
 list_app_input_sources(Client, Input) ->
     list_app_input_sources(Client, Input, []).
+
+-spec list_app_input_sources(aws_client:aws_client(), list_app_input_sources_request(), proplists:proplist()) ->
+    {ok, list_app_input_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_input_sources_errors(), tuple()}.
 list_app_input_sources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-input-sources"],
@@ -1039,8 +3252,17 @@ list_app_input_sources(Client, Input0, Options0) ->
 
 %% @doc Lists all the Application Components in the Resilience Hub
 %% application.
+-spec list_app_version_app_components(aws_client:aws_client(), list_app_version_app_components_request()) ->
+    {ok, list_app_version_app_components_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_version_app_components_errors(), tuple()}.
 list_app_version_app_components(Client, Input) ->
     list_app_version_app_components(Client, Input, []).
+
+-spec list_app_version_app_components(aws_client:aws_client(), list_app_version_app_components_request(), proplists:proplist()) ->
+    {ok, list_app_version_app_components_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_version_app_components_errors(), tuple()}.
 list_app_version_app_components(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-version-app-components"],
@@ -1070,8 +3292,17 @@ list_app_version_app_components(Client, Input0, Options0) ->
 %% physical resource identifiers, CloudFormation stacks, resource-groups, or
 %% an application registry
 %% app.
+-spec list_app_version_resource_mappings(aws_client:aws_client(), list_app_version_resource_mappings_request()) ->
+    {ok, list_app_version_resource_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_version_resource_mappings_errors(), tuple()}.
 list_app_version_resource_mappings(Client, Input) ->
     list_app_version_resource_mappings(Client, Input, []).
+
+-spec list_app_version_resource_mappings(aws_client:aws_client(), list_app_version_resource_mappings_request(), proplists:proplist()) ->
+    {ok, list_app_version_resource_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_version_resource_mappings_errors(), tuple()}.
 list_app_version_resource_mappings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-version-resource-mappings"],
@@ -1095,8 +3326,17 @@ list_app_version_resource_mappings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all the resources in an Resilience Hub application.
+-spec list_app_version_resources(aws_client:aws_client(), list_app_version_resources_request()) ->
+    {ok, list_app_version_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_version_resources_errors(), tuple()}.
 list_app_version_resources(Client, Input) ->
     list_app_version_resources(Client, Input, []).
+
+-spec list_app_version_resources(aws_client:aws_client(), list_app_version_resources_request(), proplists:proplist()) ->
+    {ok, list_app_version_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_version_resources_errors(), tuple()}.
 list_app_version_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-version-resources"],
@@ -1120,8 +3360,17 @@ list_app_version_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the different versions for the Resilience Hub applications.
+-spec list_app_versions(aws_client:aws_client(), list_app_versions_request()) ->
+    {ok, list_app_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_versions_errors(), tuple()}.
 list_app_versions(Client, Input) ->
     list_app_versions(Client, Input, []).
+
+-spec list_app_versions(aws_client:aws_client(), list_app_versions_request(), proplists:proplist()) ->
+    {ok, list_app_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_versions_errors(), tuple()}.
 list_app_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-versions"],
@@ -1155,14 +3404,26 @@ list_app_versions(Client, Input0, Options0) ->
 %% ```
 %% An error occurred (ValidationException) when calling the ListApps
 %% operation: Only one filter is supported for this operation.'''
+-spec list_apps(aws_client:aws_client()) ->
+    {ok, list_apps_response(), tuple()} |
+    {error, any()} |
+    {error, list_apps_errors(), tuple()}.
 list_apps(Client)
   when is_map(Client) ->
     list_apps(Client, #{}, #{}).
 
+-spec list_apps(aws_client:aws_client(), map(), map()) ->
+    {ok, list_apps_response(), tuple()} |
+    {error, any()} |
+    {error, list_apps_errors(), tuple()}.
 list_apps(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_apps(Client, QueryMap, HeadersMap, []).
 
+-spec list_apps(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_apps_response(), tuple()} |
+    {error, any()} |
+    {error, list_apps_errors(), tuple()}.
 list_apps(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-apps"],
@@ -1191,14 +3452,26 @@ list_apps(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the recommendation templates for the Resilience Hub
 %% applications.
+-spec list_recommendation_templates(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_recommendation_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendation_templates_errors(), tuple()}.
 list_recommendation_templates(Client, AssessmentArn)
   when is_map(Client) ->
     list_recommendation_templates(Client, AssessmentArn, #{}, #{}).
 
+-spec list_recommendation_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_recommendation_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendation_templates_errors(), tuple()}.
 list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, []).
 
+-spec list_recommendation_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_recommendation_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendation_templates_errors(), tuple()}.
 list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-recommendation-templates"],
@@ -1226,14 +3499,26 @@ list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the resiliency policies for the Resilience Hub applications.
+-spec list_resiliency_policies(aws_client:aws_client()) ->
+    {ok, list_resiliency_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_resiliency_policies_errors(), tuple()}.
 list_resiliency_policies(Client)
   when is_map(Client) ->
     list_resiliency_policies(Client, #{}, #{}).
 
+-spec list_resiliency_policies(aws_client:aws_client(), map(), map()) ->
+    {ok, list_resiliency_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_resiliency_policies_errors(), tuple()}.
 list_resiliency_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resiliency_policies(Client, QueryMap, HeadersMap, []).
 
+-spec list_resiliency_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_resiliency_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_resiliency_policies_errors(), tuple()}.
 list_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-resiliency-policies"],
@@ -1259,8 +3544,17 @@ list_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the standard operating procedure (SOP) recommendations for the
 %% Resilience Hub
 %% applications.
+-spec list_sop_recommendations(aws_client:aws_client(), list_sop_recommendations_request()) ->
+    {ok, list_sop_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_sop_recommendations_errors(), tuple()}.
 list_sop_recommendations(Client, Input) ->
     list_sop_recommendations(Client, Input, []).
+
+-spec list_sop_recommendations(aws_client:aws_client(), list_sop_recommendations_request(), proplists:proplist()) ->
+    {ok, list_sop_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_sop_recommendations_errors(), tuple()}.
 list_sop_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-sop-recommendations"],
@@ -1285,14 +3579,26 @@ list_sop_recommendations(Client, Input0, Options0) ->
 
 %% @doc Lists the suggested resiliency policies for the Resilience Hub
 %% applications.
+-spec list_suggested_resiliency_policies(aws_client:aws_client()) ->
+    {ok, list_suggested_resiliency_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_suggested_resiliency_policies_errors(), tuple()}.
 list_suggested_resiliency_policies(Client)
   when is_map(Client) ->
     list_suggested_resiliency_policies(Client, #{}, #{}).
 
+-spec list_suggested_resiliency_policies(aws_client:aws_client(), map(), map()) ->
+    {ok, list_suggested_resiliency_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_suggested_resiliency_policies_errors(), tuple()}.
 list_suggested_resiliency_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_suggested_resiliency_policies(Client, QueryMap, HeadersMap, []).
 
+-spec list_suggested_resiliency_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_suggested_resiliency_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_suggested_resiliency_policies_errors(), tuple()}.
 list_suggested_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-suggested-resiliency-policies"],
@@ -1316,14 +3622,26 @@ list_suggested_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the tags for your resources in your Resilience Hub
 %% applications.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1341,8 +3659,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the test recommendations for the Resilience Hub application.
+-spec list_test_recommendations(aws_client:aws_client(), list_test_recommendations_request()) ->
+    {ok, list_test_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_recommendations_errors(), tuple()}.
 list_test_recommendations(Client, Input) ->
     list_test_recommendations(Client, Input, []).
+
+-spec list_test_recommendations(aws_client:aws_client(), list_test_recommendations_request(), proplists:proplist()) ->
+    {ok, list_test_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_recommendations_errors(), tuple()}.
 list_test_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-test-recommendations"],
@@ -1372,8 +3699,17 @@ list_test_recommendations(Client, Input0, Options0) ->
 %% resource is a resource that exists in the object that was used to create
 %% an app, but is not
 %% supported by Resilience Hub.
+-spec list_unsupported_app_version_resources(aws_client:aws_client(), list_unsupported_app_version_resources_request()) ->
+    {ok, list_unsupported_app_version_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_unsupported_app_version_resources_errors(), tuple()}.
 list_unsupported_app_version_resources(Client, Input) ->
     list_unsupported_app_version_resources(Client, Input, []).
+
+-spec list_unsupported_app_version_resources(aws_client:aws_client(), list_unsupported_app_version_resources_request(), proplists:proplist()) ->
+    {ok, list_unsupported_app_version_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_unsupported_app_version_resources_errors(), tuple()}.
 list_unsupported_app_version_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-unsupported-app-version-resources"],
@@ -1397,8 +3733,17 @@ list_unsupported_app_version_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Publishes a new version of a specific Resilience Hub application.
+-spec publish_app_version(aws_client:aws_client(), publish_app_version_request()) ->
+    {ok, publish_app_version_response(), tuple()} |
+    {error, any()} |
+    {error, publish_app_version_errors(), tuple()}.
 publish_app_version(Client, Input) ->
     publish_app_version(Client, Input, []).
+
+-spec publish_app_version(aws_client:aws_client(), publish_app_version_request(), proplists:proplist()) ->
+    {ok, publish_app_version_response(), tuple()} |
+    {error, any()} |
+    {error, publish_app_version_errors(), tuple()}.
 publish_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/publish-app-version"],
@@ -1423,8 +3768,17 @@ publish_app_version(Client, Input0, Options0) ->
 
 %% @doc Adds or updates the app template for an Resilience Hub application
 %% draft version.
+-spec put_draft_app_version_template(aws_client:aws_client(), put_draft_app_version_template_request()) ->
+    {ok, put_draft_app_version_template_response(), tuple()} |
+    {error, any()} |
+    {error, put_draft_app_version_template_errors(), tuple()}.
 put_draft_app_version_template(Client, Input) ->
     put_draft_app_version_template(Client, Input, []).
+
+-spec put_draft_app_version_template(aws_client:aws_client(), put_draft_app_version_template_request(), proplists:proplist()) ->
+    {ok, put_draft_app_version_template_response(), tuple()} |
+    {error, any()} |
+    {error, put_draft_app_version_template_errors(), tuple()}.
 put_draft_app_version_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/put-draft-app-version-template"],
@@ -1448,8 +3802,17 @@ put_draft_app_version_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes resource mappings from a draft application version.
+-spec remove_draft_app_version_resource_mappings(aws_client:aws_client(), remove_draft_app_version_resource_mappings_request()) ->
+    {ok, remove_draft_app_version_resource_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, remove_draft_app_version_resource_mappings_errors(), tuple()}.
 remove_draft_app_version_resource_mappings(Client, Input) ->
     remove_draft_app_version_resource_mappings(Client, Input, []).
+
+-spec remove_draft_app_version_resource_mappings(aws_client:aws_client(), remove_draft_app_version_resource_mappings_request(), proplists:proplist()) ->
+    {ok, remove_draft_app_version_resource_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, remove_draft_app_version_resource_mappings_errors(), tuple()}.
 remove_draft_app_version_resource_mappings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/remove-draft-app-version-resource-mappings"],
@@ -1473,8 +3836,17 @@ remove_draft_app_version_resource_mappings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Resolves the resources for an application version.
+-spec resolve_app_version_resources(aws_client:aws_client(), resolve_app_version_resources_request()) ->
+    {ok, resolve_app_version_resources_response(), tuple()} |
+    {error, any()} |
+    {error, resolve_app_version_resources_errors(), tuple()}.
 resolve_app_version_resources(Client, Input) ->
     resolve_app_version_resources(Client, Input, []).
+
+-spec resolve_app_version_resources(aws_client:aws_client(), resolve_app_version_resources_request(), proplists:proplist()) ->
+    {ok, resolve_app_version_resources_response(), tuple()} |
+    {error, any()} |
+    {error, resolve_app_version_resources_errors(), tuple()}.
 resolve_app_version_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/resolve-app-version-resources"],
@@ -1498,8 +3870,17 @@ resolve_app_version_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new application assessment for an application.
+-spec start_app_assessment(aws_client:aws_client(), start_app_assessment_request()) ->
+    {ok, start_app_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, start_app_assessment_errors(), tuple()}.
 start_app_assessment(Client, Input) ->
     start_app_assessment(Client, Input, []).
+
+-spec start_app_assessment(aws_client:aws_client(), start_app_assessment_request(), proplists:proplist()) ->
+    {ok, start_app_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, start_app_assessment_errors(), tuple()}.
 start_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-app-assessment"],
@@ -1523,8 +3904,17 @@ start_app_assessment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies one or more tags to a resource.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1548,8 +3938,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from a resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1574,8 +3973,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an application.
+-spec update_app(aws_client:aws_client(), update_app_request()) ->
+    {ok, update_app_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_errors(), tuple()}.
 update_app(Client, Input) ->
     update_app(Client, Input, []).
+
+-spec update_app(aws_client:aws_client(), update_app_request(), proplists:proplist()) ->
+    {ok, update_app_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_errors(), tuple()}.
 update_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app"],
@@ -1605,8 +4013,17 @@ update_app(Client, Input0, Options0) ->
 %% for running resiliency assessments, you must publish the Resilience Hub
 %% application using the
 %% `PublishAppVersion' API.
+-spec update_app_version(aws_client:aws_client(), update_app_version_request()) ->
+    {ok, update_app_version_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_version_errors(), tuple()}.
 update_app_version(Client, Input) ->
     update_app_version(Client, Input, []).
+
+-spec update_app_version(aws_client:aws_client(), update_app_version_request(), proplists:proplist()) ->
+    {ok, update_app_version_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_version_errors(), tuple()}.
 update_app_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app-version"],
@@ -1635,8 +4052,17 @@ update_app_version(Client, Input0, Options0) ->
 %% This API updates the Resilience Hub application draft version. To use this
 %% Application Component for running assessments, you must publish the
 %% Resilience Hub application using the `PublishAppVersion' API.
+-spec update_app_version_app_component(aws_client:aws_client(), update_app_version_app_component_request()) ->
+    {ok, update_app_version_app_component_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_version_app_component_errors(), tuple()}.
 update_app_version_app_component(Client, Input) ->
     update_app_version_app_component(Client, Input, []).
+
+-spec update_app_version_app_component(aws_client:aws_client(), update_app_version_app_component_request(), proplists:proplist()) ->
+    {ok, update_app_version_app_component_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_version_app_component_errors(), tuple()}.
 update_app_version_app_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app-version-app-component"],
@@ -1670,8 +4096,17 @@ update_app_version_app_component(Client, Input0, Options0) ->
 %% To update application version with new `physicalResourceID', you must
 %% call
 %% `ResolveAppVersionResources' API.
+-spec update_app_version_resource(aws_client:aws_client(), update_app_version_resource_request()) ->
+    {ok, update_app_version_resource_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_version_resource_errors(), tuple()}.
 update_app_version_resource(Client, Input) ->
     update_app_version_resource(Client, Input, []).
+
+-spec update_app_version_resource(aws_client:aws_client(), update_app_version_resource_request(), proplists:proplist()) ->
+    {ok, update_app_version_resource_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_version_resource_errors(), tuple()}.
 update_app_version_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app-version-resource"],
@@ -1707,8 +4142,17 @@ update_app_version_resource(Client, Input0, Options0) ->
 %% estimated workload RPO result will be near zero and the Compliance
 %% status for your application will be set to Policy
 %% breached.
+-spec update_resiliency_policy(aws_client:aws_client(), update_resiliency_policy_request()) ->
+    {ok, update_resiliency_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_resiliency_policy_errors(), tuple()}.
 update_resiliency_policy(Client, Input) ->
     update_resiliency_policy(Client, Input, []).
+
+-spec update_resiliency_policy(aws_client:aws_client(), update_resiliency_policy_request(), proplists:proplist()) ->
+    {ok, update_resiliency_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_resiliency_policy_errors(), tuple()}.
 update_resiliency_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-resiliency-policy"],
@@ -1735,7 +4179,7 @@ update_resiliency_policy(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

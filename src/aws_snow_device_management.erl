@@ -38,6 +38,476 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% physical_network_interface() :: #{
+%%   <<"defaultGateway">> => [string()],
+%%   <<"ipAddress">> => [string()],
+%%   <<"ipAddressAssignment">> => string(),
+%%   <<"macAddress">> => [string()],
+%%   <<"netmask">> => [string()],
+%%   <<"physicalConnectorType">> => string(),
+%%   <<"physicalNetworkInterfaceId">> => [string()]
+%% }
+-type physical_network_interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_devices_output() :: #{
+%%   <<"devices">> => list(device_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_devices_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_executions_output() :: #{
+%%   <<"executions">> => list(execution_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_executions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_device_ec2_output() :: #{
+%%   <<"instances">> => list(instance_summary()())
+%% }
+-type describe_device_ec2_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_task_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"command">> := list(),
+%%   <<"description">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targets">> := list([string()]())
+%% }
+-type create_task_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_execution_input() :: #{}
+-type describe_execution_input() :: #{}.
+
+
+%% Example:
+%% describe_execution_output() :: #{
+%%   <<"executionId">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"managedDeviceId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"state">> => string(),
+%%   <<"taskId">> => string()
+%% }
+-type describe_execution_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_block_device_mapping() :: #{
+%%   <<"deviceName">> => [string()],
+%%   <<"ebs">> => ebs_instance_block_device()
+%% }
+-type instance_block_device_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_task_output() :: #{
+%%   <<"taskId">> => [string()]
+%% }
+-type cancel_task_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_summary() :: #{
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"taskArn">> => [string()],
+%%   <<"taskId">> => string()
+%% }
+-type task_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_device_input() :: #{}
+-type describe_device_input() :: #{}.
+
+
+%% Example:
+%% create_task_output() :: #{
+%%   <<"taskArn">> => [string()],
+%%   <<"taskId">> => [string()]
+%% }
+-type create_task_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity() :: #{
+%%   <<"available">> => [float()],
+%%   <<"name">> => [string()],
+%%   <<"total">> => [float()],
+%%   <<"unit">> => [string()],
+%%   <<"used">> => [float()]
+%% }
+-type capacity() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_summary() :: #{
+%%   <<"executionId">> => string(),
+%%   <<"managedDeviceId">> => string(),
+%%   <<"state">> => string(),
+%%   <<"taskId">> => string()
+%% }
+-type execution_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tasks_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tasks">> => list(task_summary()())
+%% }
+-type list_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_device_output() :: #{
+%%   <<"associatedWithJob">> => [string()],
+%%   <<"deviceCapacities">> => list(capacity()()),
+%%   <<"deviceState">> => string(),
+%%   <<"deviceType">> => [string()],
+%%   <<"lastReachedOutAt">> => [non_neg_integer()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"managedDeviceArn">> => [string()],
+%%   <<"managedDeviceId">> => string(),
+%%   <<"physicalNetworkInterfaces">> => list(physical_network_interface()()),
+%%   <<"software">> => software_information(),
+%%   <<"tags">> => map()
+%% }
+-type describe_device_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% cpu_options() :: #{
+%%   <<"coreCount">> => [integer()],
+%%   <<"threadsPerCore">> => [integer()]
+%% }
+-type cpu_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_devices_input() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_devices_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_state() :: #{
+%%   <<"code">> => [integer()],
+%%   <<"name">> => string()
+%% }
+-type instance_state() :: #{binary() => any()}.
+
+%% Example:
+%% reboot() :: #{}
+-type reboot() :: #{}.
+
+
+%% Example:
+%% list_device_resources_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => [string()]
+%% }
+-type list_device_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_summary() :: #{
+%%   <<"associatedWithJob">> => [string()],
+%%   <<"managedDeviceArn">> => [string()],
+%%   <<"managedDeviceId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type device_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_device_ec2_input() :: #{
+%%   <<"instanceIds">> := list([string()]())
+%% }
+-type describe_device_ec2_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance() :: #{
+%%   <<"amiLaunchIndex">> => [integer()],
+%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()()),
+%%   <<"cpuOptions">> => cpu_options(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"imageId">> => [string()],
+%%   <<"instanceId">> => [string()],
+%%   <<"instanceType">> => [string()],
+%%   <<"privateIpAddress">> => [string()],
+%%   <<"publicIpAddress">> => [string()],
+%%   <<"rootDeviceName">> => [string()],
+%%   <<"securityGroups">> => list(security_group_identifier()()),
+%%   <<"state">> => instance_state(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unlock() :: #{}
+-type unlock() :: #{}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list([string()]())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_resources_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resources">> => list(resource_summary()())
+%% }
+-type list_device_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_task_output() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targets">> => list([string()]()),
+%%   <<"taskArn">> => [string()],
+%%   <<"taskId">> => [string()]
+%% }
+-type describe_task_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_instance_block_device() :: #{
+%%   <<"attachTime">> => [non_neg_integer()],
+%%   <<"deleteOnTermination">> => [boolean()],
+%%   <<"status">> => string(),
+%%   <<"volumeId">> => [string()]
+%% }
+-type ebs_instance_block_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+%% Example:
+%% describe_task_input() :: #{}
+-type describe_task_input() :: #{}.
+
+
+%% Example:
+%% instance_summary() :: #{
+%%   <<"instance">> => instance(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()]
+%% }
+-type instance_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_group_identifier() :: #{
+%%   <<"groupId">> => [string()],
+%%   <<"groupName">> => [string()]
+%% }
+-type security_group_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% software_information() :: #{
+%%   <<"installState">> => [string()],
+%%   <<"installedVersion">> => [string()],
+%%   <<"installingVersion">> => [string()]
+%% }
+-type software_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tasks_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"state">> => string()
+%% }
+-type list_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_executions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"state">> => string(),
+%%   <<"taskId">> := string()
+%% }
+-type list_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_task_input() :: #{}
+-type cancel_task_input() :: #{}.
+
+-type cancel_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type describe_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_device_ec2_instances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_device_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_devices_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_executions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tasks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -49,8 +519,17 @@
 %%
 %% A task might still run if it's processed from the queue before the
 %% `CancelTask' operation changes the task's state.
+-spec cancel_task(aws_client:aws_client(), binary() | list(), cancel_task_input()) ->
+    {ok, cancel_task_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_task_errors(), tuple()}.
 cancel_task(Client, TaskId, Input) ->
     cancel_task(Client, TaskId, Input, []).
+
+-spec cancel_task(aws_client:aws_client(), binary() | list(), cancel_task_input(), proplists:proplist()) ->
+    {ok, cancel_task_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_task_errors(), tuple()}.
 cancel_task(Client, TaskId, Input0, Options0) ->
     Method = post,
     Path = ["/task/", aws_util:encode_uri(TaskId), "/cancel"],
@@ -75,8 +554,17 @@ cancel_task(Client, TaskId, Input0, Options0) ->
 
 %% @doc Instructs one or more devices to start a task, such as unlocking or
 %% rebooting.
+-spec create_task(aws_client:aws_client(), create_task_input()) ->
+    {ok, create_task_output(), tuple()} |
+    {error, any()} |
+    {error, create_task_errors(), tuple()}.
 create_task(Client, Input) ->
     create_task(Client, Input, []).
+
+-spec create_task(aws_client:aws_client(), create_task_input(), proplists:proplist()) ->
+    {ok, create_task_output(), tuple()} |
+    {error, any()} |
+    {error, create_task_errors(), tuple()}.
 create_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/task"],
@@ -102,8 +590,17 @@ create_task(Client, Input0, Options0) ->
 %% @doc Checks device-specific information, such as the device type, software
 %% version, IP
 %% addresses, and lock status.
+-spec describe_device(aws_client:aws_client(), binary() | list(), describe_device_input()) ->
+    {ok, describe_device_output(), tuple()} |
+    {error, any()} |
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, ManagedDeviceId, Input) ->
     describe_device(Client, ManagedDeviceId, Input, []).
+
+-spec describe_device(aws_client:aws_client(), binary() | list(), describe_device_input(), proplists:proplist()) ->
+    {ok, describe_device_output(), tuple()} |
+    {error, any()} |
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, ManagedDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/managed-device/", aws_util:encode_uri(ManagedDeviceId), "/describe"],
@@ -132,8 +629,17 @@ describe_device(Client, ManagedDeviceId, Input0, Options0) ->
 %% `describeDevice', but the results are sourced from the device cache in
 %% the
 %% Amazon Web Services Cloud and include a subset of the available fields.
+-spec describe_device_ec2_instances(aws_client:aws_client(), binary() | list(), describe_device_ec2_input()) ->
+    {ok, describe_device_ec2_output(), tuple()} |
+    {error, any()} |
+    {error, describe_device_ec2_instances_errors(), tuple()}.
 describe_device_ec2_instances(Client, ManagedDeviceId, Input) ->
     describe_device_ec2_instances(Client, ManagedDeviceId, Input, []).
+
+-spec describe_device_ec2_instances(aws_client:aws_client(), binary() | list(), describe_device_ec2_input(), proplists:proplist()) ->
+    {ok, describe_device_ec2_output(), tuple()} |
+    {error, any()} |
+    {error, describe_device_ec2_instances_errors(), tuple()}.
 describe_device_ec2_instances(Client, ManagedDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/managed-device/", aws_util:encode_uri(ManagedDeviceId), "/resources/ec2/describe"],
@@ -158,8 +664,17 @@ describe_device_ec2_instances(Client, ManagedDeviceId, Input0, Options0) ->
 
 %% @doc Checks the status of a remote task running on one or more target
 %% devices.
+-spec describe_execution(aws_client:aws_client(), binary() | list(), binary() | list(), describe_execution_input()) ->
+    {ok, describe_execution_output(), tuple()} |
+    {error, any()} |
+    {error, describe_execution_errors(), tuple()}.
 describe_execution(Client, ManagedDeviceId, TaskId, Input) ->
     describe_execution(Client, ManagedDeviceId, TaskId, Input, []).
+
+-spec describe_execution(aws_client:aws_client(), binary() | list(), binary() | list(), describe_execution_input(), proplists:proplist()) ->
+    {ok, describe_execution_output(), tuple()} |
+    {error, any()} |
+    {error, describe_execution_errors(), tuple()}.
 describe_execution(Client, ManagedDeviceId, TaskId, Input0, Options0) ->
     Method = post,
     Path = ["/task/", aws_util:encode_uri(TaskId), "/execution/", aws_util:encode_uri(ManagedDeviceId), ""],
@@ -183,8 +698,17 @@ describe_execution(Client, ManagedDeviceId, TaskId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Checks the metadata for a given task on a device.
+-spec describe_task(aws_client:aws_client(), binary() | list(), describe_task_input()) ->
+    {ok, describe_task_output(), tuple()} |
+    {error, any()} |
+    {error, describe_task_errors(), tuple()}.
 describe_task(Client, TaskId, Input) ->
     describe_task(Client, TaskId, Input, []).
+
+-spec describe_task(aws_client:aws_client(), binary() | list(), describe_task_input(), proplists:proplist()) ->
+    {ok, describe_task_output(), tuple()} |
+    {error, any()} |
+    {error, describe_task_errors(), tuple()}.
 describe_task(Client, TaskId, Input0, Options0) ->
     Method = post,
     Path = ["/task/", aws_util:encode_uri(TaskId), ""],
@@ -211,14 +735,26 @@ describe_task(Client, TaskId, Input0, Options0) ->
 %% device.
 %%
 %% Currently, Amazon EC2 instances are the only supported resource type.
+-spec list_device_resources(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_device_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_device_resources_errors(), tuple()}.
 list_device_resources(Client, ManagedDeviceId)
   when is_map(Client) ->
     list_device_resources(Client, ManagedDeviceId, #{}, #{}).
 
+-spec list_device_resources(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_device_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_device_resources_errors(), tuple()}.
 list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap, []).
 
+-spec list_device_resources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_device_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_device_resources_errors(), tuple()}.
 list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/managed-device/", aws_util:encode_uri(ManagedDeviceId), "/resources"],
@@ -244,14 +780,26 @@ list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of all devices on your Amazon Web Services account
 %% that have Amazon Web Services Snow Device Management
 %% enabled in the Amazon Web Services Region where the command is run.
+-spec list_devices(aws_client:aws_client()) ->
+    {ok, list_devices_output(), tuple()} |
+    {error, any()} |
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client)
   when is_map(Client) ->
     list_devices(Client, #{}, #{}).
 
+-spec list_devices(aws_client:aws_client(), map(), map()) ->
+    {ok, list_devices_output(), tuple()} |
+    {error, any()} |
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices(Client, QueryMap, HeadersMap, []).
 
+-spec list_devices(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_devices_output(), tuple()} |
+    {error, any()} |
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/managed-devices"],
@@ -275,14 +823,26 @@ list_devices(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the status of tasks for one or more target devices.
+-spec list_executions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_executions_output(), tuple()} |
+    {error, any()} |
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, TaskId)
   when is_map(Client) ->
     list_executions(Client, TaskId, #{}, #{}).
 
+-spec list_executions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_executions_output(), tuple()} |
+    {error, any()} |
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_executions(Client, TaskId, QueryMap, HeadersMap, []).
 
+-spec list_executions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_executions_output(), tuple()} |
+    {error, any()} |
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/executions"],
@@ -307,14 +867,26 @@ list_executions(Client, TaskId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags for a managed device or task.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -332,14 +904,26 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tasks that can be filtered by state.
+-spec list_tasks(aws_client:aws_client()) ->
+    {ok, list_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_tasks_errors(), tuple()}.
 list_tasks(Client)
   when is_map(Client) ->
     list_tasks(Client, #{}, #{}).
 
+-spec list_tasks(aws_client:aws_client(), map(), map()) ->
+    {ok, list_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_tasks_errors(), tuple()}.
 list_tasks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tasks(Client, QueryMap, HeadersMap, []).
 
+-spec list_tasks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_tasks_errors(), tuple()}.
 list_tasks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tasks"],
@@ -363,8 +947,17 @@ list_tasks(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds or replaces tags on a device or task.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -388,8 +981,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a device or task.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -417,7 +1019,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

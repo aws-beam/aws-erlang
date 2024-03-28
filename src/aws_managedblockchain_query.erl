@@ -39,6 +39,523 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% get_asset_contract_input() :: #{
+%%   <<"contractIdentifier">> := contract_identifier()
+%% }
+-type get_asset_contract_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_contracts_output() :: #{
+%%   <<"contracts">> => list(asset_contract()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_contracts_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_token_balance_input_item() :: #{
+%%   <<"atBlockchainInstant">> => blockchain_instant(),
+%%   <<"ownerIdentifier">> => owner_identifier(),
+%%   <<"tokenIdentifier">> => token_identifier()
+%% }
+-type batch_get_token_balance_input_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_contract_output() :: #{
+%%   <<"contractIdentifier">> => contract_identifier(),
+%%   <<"deployerAddress">> => string(),
+%%   <<"metadata">> => contract_metadata(),
+%%   <<"tokenStandard">> => string()
+%% }
+-type get_asset_contract_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% contract_filter() :: #{
+%%   <<"deployerAddress">> => string(),
+%%   <<"network">> => string(),
+%%   <<"tokenStandard">> => string()
+%% }
+-type contract_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner_filter() :: #{
+%%   <<"address">> => string()
+%% }
+-type owner_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% blockchain_instant() :: #{
+%%   <<"time">> => [non_neg_integer()]
+%% }
+-type blockchain_instant() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_token_balance_output_item() :: #{
+%%   <<"atBlockchainInstant">> => blockchain_instant(),
+%%   <<"balance">> => [string()],
+%%   <<"lastUpdatedTime">> => blockchain_instant(),
+%%   <<"ownerIdentifier">> => owner_identifier(),
+%%   <<"tokenIdentifier">> => token_identifier()
+%% }
+-type batch_get_token_balance_output_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_token_balances_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"ownerFilter">> => owner_filter(),
+%%   <<"tokenFilter">> := token_filter()
+%% }
+-type list_token_balances_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_transactions_input() :: #{
+%%   <<"address">> := string(),
+%%   <<"confirmationStatusFilter">> => confirmation_status_filter(),
+%%   <<"fromBlockchainInstant">> => blockchain_instant(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"network">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => list_transactions_sort(),
+%%   <<"toBlockchainInstant">> => blockchain_instant()
+%% }
+-type list_transactions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_filter() :: #{
+%%   <<"from">> => blockchain_instant(),
+%%   <<"to">> => blockchain_instant()
+%% }
+-type time_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transaction_output_item() :: #{
+%%   <<"confirmationStatus">> => string(),
+%%   <<"network">> => string(),
+%%   <<"transactionHash">> => string(),
+%%   <<"transactionId">> => string(),
+%%   <<"transactionTimestamp">> => [non_neg_integer()]
+%% }
+-type transaction_output_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_contract() :: #{
+%%   <<"contractIdentifier">> => contract_identifier(),
+%%   <<"deployerAddress">> => string(),
+%%   <<"tokenStandard">> => string()
+%% }
+-type asset_contract() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_token_balance_output() :: #{
+%%   <<"errors">> => list(batch_get_token_balance_error_item()()),
+%%   <<"tokenBalances">> => list(batch_get_token_balance_output_item()())
+%% }
+-type batch_get_token_balance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_filtered_transaction_events_input() :: #{
+%%   <<"addressIdentifierFilter">> := address_identifier_filter(),
+%%   <<"confirmationStatusFilter">> => confirmation_status_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"network">> := [string()],
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => list_filtered_transaction_events_sort(),
+%%   <<"timeFilter">> => time_filter(),
+%%   <<"voutFilter">> => vout_filter()
+%% }
+-type list_filtered_transaction_events_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_token_balance_output() :: #{
+%%   <<"atBlockchainInstant">> => blockchain_instant(),
+%%   <<"balance">> => [string()],
+%%   <<"lastUpdatedTime">> => blockchain_instant(),
+%%   <<"ownerIdentifier">> => owner_identifier(),
+%%   <<"tokenIdentifier">> => token_identifier()
+%% }
+-type get_token_balance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% contract_metadata() :: #{
+%%   <<"decimals">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"symbol">> => [string()]
+%% }
+-type contract_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_token_balance_error_item() :: #{
+%%   <<"atBlockchainInstant">> => blockchain_instant(),
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"errorType">> => string(),
+%%   <<"ownerIdentifier">> => owner_identifier(),
+%%   <<"tokenIdentifier">> => token_identifier()
+%% }
+-type batch_get_token_balance_error_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% vout_filter() :: #{
+%%   <<"voutSpent">> => [boolean()]
+%% }
+-type vout_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_transaction_output() :: #{
+%%   <<"transaction">> => transaction()
+%% }
+-type get_transaction_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_transactions_sort() :: #{
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type list_transactions_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_transaction_input() :: #{
+%%   <<"network">> := string(),
+%%   <<"transactionHash">> => string(),
+%%   <<"transactionId">> => string()
+%% }
+-type get_transaction_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_identifier() :: #{
+%%   <<"contractAddress">> => string(),
+%%   <<"network">> => string(),
+%%   <<"tokenId">> => string()
+%% }
+-type token_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_token_balance_input() :: #{
+%%   <<"getTokenBalanceInputs">> => list(batch_get_token_balance_input_item()())
+%% }
+-type batch_get_token_balance_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_transaction_events_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"network">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"transactionHash">> => string(),
+%%   <<"transactionId">> => string()
+%% }
+-type list_transaction_events_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_filtered_transaction_events_sort() :: #{
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type list_filtered_transaction_events_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% confirmation_status_filter() :: #{
+%%   <<"include">> => list(string()())
+%% }
+-type confirmation_status_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_balance() :: #{
+%%   <<"atBlockchainInstant">> => blockchain_instant(),
+%%   <<"balance">> => [string()],
+%%   <<"lastUpdatedTime">> => blockchain_instant(),
+%%   <<"ownerIdentifier">> => owner_identifier(),
+%%   <<"tokenIdentifier">> => token_identifier()
+%% }
+-type token_balance() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_contracts_input() :: #{
+%%   <<"contractFilter">> := contract_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_contracts_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner_identifier() :: #{
+%%   <<"address">> => string()
+%% }
+-type owner_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% contract_identifier() :: #{
+%%   <<"contractAddress">> => string(),
+%%   <<"network">> => string()
+%% }
+-type contract_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_filtered_transaction_events_output() :: #{
+%%   <<"events">> => list(transaction_event()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_filtered_transaction_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_token_balance_input() :: #{
+%%   <<"atBlockchainInstant">> => blockchain_instant(),
+%%   <<"ownerIdentifier">> := owner_identifier(),
+%%   <<"tokenIdentifier">> := token_identifier()
+%% }
+-type get_token_balance_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_token_balances_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tokenBalances">> => list(token_balance()())
+%% }
+-type list_token_balances_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_transaction_events_output() :: #{
+%%   <<"events">> => list(transaction_event()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_transaction_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% transaction_event() :: #{
+%%   <<"blockchainInstant">> => blockchain_instant(),
+%%   <<"confirmationStatus">> => string(),
+%%   <<"contractAddress">> => string(),
+%%   <<"eventType">> => string(),
+%%   <<"from">> => string(),
+%%   <<"network">> => string(),
+%%   <<"spentVoutIndex">> => [integer()],
+%%   <<"spentVoutTransactionHash">> => [string()],
+%%   <<"spentVoutTransactionId">> => [string()],
+%%   <<"to">> => string(),
+%%   <<"tokenId">> => string(),
+%%   <<"transactionHash">> => string(),
+%%   <<"transactionId">> => [string()],
+%%   <<"value">> => [string()],
+%%   <<"voutIndex">> => [integer()],
+%%   <<"voutSpent">> => [boolean()]
+%% }
+-type transaction_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% address_identifier_filter() :: #{
+%%   <<"transactionEventToAddress">> => list(string()())
+%% }
+-type address_identifier_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% transaction() :: #{
+%%   <<"blockHash">> => string(),
+%%   <<"blockNumber">> => [string()],
+%%   <<"confirmationStatus">> => string(),
+%%   <<"contractAddress">> => string(),
+%%   <<"cumulativeGasUsed">> => [string()],
+%%   <<"effectiveGasPrice">> => [string()],
+%%   <<"executionStatus">> => string(),
+%%   <<"from">> => string(),
+%%   <<"gasUsed">> => [string()],
+%%   <<"network">> => string(),
+%%   <<"numberOfTransactions">> => [float()],
+%%   <<"signatureR">> => [string()],
+%%   <<"signatureS">> => [string()],
+%%   <<"signatureV">> => [integer()],
+%%   <<"to">> => string(),
+%%   <<"transactionFee">> => [string()],
+%%   <<"transactionHash">> => string(),
+%%   <<"transactionId">> => [string()],
+%%   <<"transactionIndex">> => [float()],
+%%   <<"transactionTimestamp">> => [non_neg_integer()]
+%% }
+-type transaction() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_transactions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"transactions">> => list(transaction_output_item()())
+%% }
+-type list_transactions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_filter() :: #{
+%%   <<"contractAddress">> => string(),
+%%   <<"network">> => string(),
+%%   <<"tokenId">> => string()
+%% }
+-type token_filter() :: #{binary() => any()}.
+
+-type batch_get_token_balance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_asset_contract_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_token_balance_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_transaction_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type list_asset_contracts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_filtered_transaction_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_token_balances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_transaction_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type list_transactions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -49,8 +566,17 @@
 %%
 %% Only the native tokens BTC and ETH, and the ERC-20,
 %% ERC-721, and ERC 1155 token standards are supported.
+-spec batch_get_token_balance(aws_client:aws_client(), batch_get_token_balance_input()) ->
+    {ok, batch_get_token_balance_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_token_balance_errors(), tuple()}.
 batch_get_token_balance(Client, Input) ->
     batch_get_token_balance(Client, Input, []).
+
+-spec batch_get_token_balance(aws_client:aws_client(), batch_get_token_balance_input(), proplists:proplist()) ->
+    {ok, batch_get_token_balance_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_token_balance_errors(), tuple()}.
 batch_get_token_balance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batch-get-token-balance"],
@@ -81,8 +607,17 @@ batch_get_token_balance(Client, Input0, Options0) ->
 %%
 %% Metadata is currently only available for some `ERC-20' contracts.
 %% Metadata will be available for additional contracts in the future.
+-spec get_asset_contract(aws_client:aws_client(), get_asset_contract_input()) ->
+    {ok, get_asset_contract_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_contract_errors(), tuple()}.
 get_asset_contract(Client, Input) ->
     get_asset_contract(Client, Input, []).
+
+-spec get_asset_contract(aws_client:aws_client(), get_asset_contract_input(), proplists:proplist()) ->
+    {ok, get_asset_contract_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_contract_errors(), tuple()}.
 get_asset_contract(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-asset-contract"],
@@ -110,8 +645,17 @@ get_asset_contract(Client, Input0, Options0) ->
 %%
 %% Only the native tokens BTC and ETH, and the ERC-20,
 %% ERC-721, and ERC 1155 token standards are supported.
+-spec get_token_balance(aws_client:aws_client(), get_token_balance_input()) ->
+    {ok, get_token_balance_output(), tuple()} |
+    {error, any()} |
+    {error, get_token_balance_errors(), tuple()}.
 get_token_balance(Client, Input) ->
     get_token_balance(Client, Input, []).
+
+-spec get_token_balance(aws_client:aws_client(), get_token_balance_input(), proplists:proplist()) ->
+    {ok, get_token_balance_output(), tuple()} |
+    {error, any()} |
+    {error, get_token_balance_errors(), tuple()}.
 get_token_balance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-token-balance"],
@@ -140,8 +684,17 @@ get_token_balance(Client, Input0, Options0) ->
 %% that are confirmed on the blockchain, even if they have not reached
 %% finality:
 %% https://docs.aws.amazon.com/managed-blockchain/latest/ambq-dg/key-concepts.html#finality.
+-spec get_transaction(aws_client:aws_client(), get_transaction_input()) ->
+    {ok, get_transaction_output(), tuple()} |
+    {error, any()} |
+    {error, get_transaction_errors(), tuple()}.
 get_transaction(Client, Input) ->
     get_transaction(Client, Input, []).
+
+-spec get_transaction(aws_client:aws_client(), get_transaction_input(), proplists:proplist()) ->
+    {ok, get_transaction_output(), tuple()} |
+    {error, any()} |
+    {error, get_transaction_errors(), tuple()}.
 get_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-transaction"],
@@ -170,8 +723,17 @@ get_transaction(Client, Input0, Options0) ->
 %%
 %% The Bitcoin blockchain networks do not support this
 %% operation.
+-spec list_asset_contracts(aws_client:aws_client(), list_asset_contracts_input()) ->
+    {ok, list_asset_contracts_output(), tuple()} |
+    {error, any()} |
+    {error, list_asset_contracts_errors(), tuple()}.
 list_asset_contracts(Client, Input) ->
     list_asset_contracts(Client, Input, []).
+
+-spec list_asset_contracts(aws_client:aws_client(), list_asset_contracts_input(), proplists:proplist()) ->
+    {ok, list_asset_contracts_output(), tuple()} |
+    {error, any()} |
+    {error, list_asset_contracts_errors(), tuple()}.
 list_asset_contracts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-asset-contracts"],
@@ -197,8 +759,17 @@ list_asset_contracts(Client, Input0, Options0) ->
 %% @doc Lists all the transaction events for an address on the blockchain.
 %%
 %% This operation is only supported on the Bitcoin networks.
+-spec list_filtered_transaction_events(aws_client:aws_client(), list_filtered_transaction_events_input()) ->
+    {ok, list_filtered_transaction_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_filtered_transaction_events_errors(), tuple()}.
 list_filtered_transaction_events(Client, Input) ->
     list_filtered_transaction_events(Client, Input, []).
+
+-spec list_filtered_transaction_events(aws_client:aws_client(), list_filtered_transaction_events_input(), proplists:proplist()) ->
+    {ok, list_filtered_transaction_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_filtered_transaction_events_errors(), tuple()}.
 list_filtered_transaction_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-filtered-transaction-events"],
@@ -232,8 +803,17 @@ list_filtered_transaction_events(Client, Input0, Options0) ->
 %%
 %% You must always specify the network property of
 %% the `tokenFilter' when using this operation.
+-spec list_token_balances(aws_client:aws_client(), list_token_balances_input()) ->
+    {ok, list_token_balances_output(), tuple()} |
+    {error, any()} |
+    {error, list_token_balances_errors(), tuple()}.
 list_token_balances(Client, Input) ->
     list_token_balances(Client, Input, []).
+
+-spec list_token_balances(aws_client:aws_client(), list_token_balances_input(), proplists:proplist()) ->
+    {ok, list_token_balances_output(), tuple()} |
+    {error, any()} |
+    {error, list_token_balances_errors(), tuple()}.
 list_token_balances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-token-balances"],
@@ -262,8 +842,17 @@ list_token_balances(Client, Input0, Options0) ->
 %% that are confirmed on the blockchain, even if they have not reached
 %% finality:
 %% https://docs.aws.amazon.com/managed-blockchain/latest/ambq-dg/key-concepts.html#finality.
+-spec list_transaction_events(aws_client:aws_client(), list_transaction_events_input()) ->
+    {ok, list_transaction_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_transaction_events_errors(), tuple()}.
 list_transaction_events(Client, Input) ->
     list_transaction_events(Client, Input, []).
+
+-spec list_transaction_events(aws_client:aws_client(), list_transaction_events_input(), proplists:proplist()) ->
+    {ok, list_transaction_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_transaction_events_errors(), tuple()}.
 list_transaction_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-transaction-events"],
@@ -287,8 +876,17 @@ list_transaction_events(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all the transaction events for a transaction.
+-spec list_transactions(aws_client:aws_client(), list_transactions_input()) ->
+    {ok, list_transactions_output(), tuple()} |
+    {error, any()} |
+    {error, list_transactions_errors(), tuple()}.
 list_transactions(Client, Input) ->
     list_transactions(Client, Input, []).
+
+-spec list_transactions(aws_client:aws_client(), list_transactions_input(), proplists:proplist()) ->
+    {ok, list_transactions_output(), tuple()} |
+    {error, any()} |
+    {error, list_transactions_errors(), tuple()}.
 list_transactions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-transactions"],
@@ -315,7 +913,7 @@ list_transactions(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -432,13 +432,11722 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% box_plot_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => box_plot_chart_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type box_plot_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% theme() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ThemeId">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => theme_version()
+%% }
+-type theme() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_point_drill_up_down_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type data_point_drill_up_down_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% folder_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"FolderId">> => string(),
+%%   <<"FolderType">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SharingModel">> => list(any())
+%% }
+-type folder_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_topic_refresh_schedule_response() :: #{
+%%   <<"DatasetArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type update_topic_refresh_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_chart_default_series_settings() :: #{
+%%   <<"AxisBinding">> => list(any()),
+%%   <<"LineStyleSettings">> => line_chart_line_style_settings(),
+%%   <<"MarkerStyleSettings">> => line_chart_marker_style_settings()
+%% }
+-type line_chart_default_series_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_label_type() :: #{
+%%   <<"DataPathLabelType">> => data_path_label_type(),
+%%   <<"FieldLabelType">> => field_label_type(),
+%%   <<"MaximumLabelType">> => maximum_label_type(),
+%%   <<"MinimumLabelType">> => minimum_label_type(),
+%%   <<"RangeEndsLabelType">> => range_ends_label_type()
+%% }
+-type data_label_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% number_format_configuration() :: #{
+%%   <<"FormatConfiguration">> => numeric_format_configuration()
+%% }
+-type number_format_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dashboards_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dashboards_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% growth_rate_computation() :: #{
+%%   <<"ComputationId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PeriodSize">> => integer(),
+%%   <<"Time">> => dimension_field(),
+%%   <<"Value">> => measure_field()
+%% }
+-type growth_rate_computation() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dashboard_snapshot_job_request() :: #{}
+-type describe_dashboard_snapshot_job_request() :: #{}.
+
+
+%% Example:
+%% update_dashboard_permissions_response() :: #{
+%%   <<"DashboardArn">> => string(),
+%%   <<"DashboardId">> => string(),
+%%   <<"LinkSharingConfiguration">> => link_sharing_configuration(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_dashboard_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_based_tooltip() :: #{
+%%   <<"AggregationVisibility">> => list(any()),
+%%   <<"TooltipFields">> => list(tooltip_item()()),
+%%   <<"TooltipTitleType">> => list(any())
+%% }
+-type field_based_tooltip() :: #{binary() => any()}.
+
+
+%% Example:
+%% gutter_style() :: #{
+%%   <<"Show">> => boolean()
+%% }
+-type gutter_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_namespace_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_time_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(non_neg_integer()())
+%% }
+-type date_time_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% axis_label_options() :: #{
+%%   <<"ApplyTo">> => axis_label_reference_options(),
+%%   <<"CustomLabel">> => string(),
+%%   <<"FontConfiguration">> => font_configuration()
+%% }
+-type axis_label_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% free_form_layout_canvas_size_options() :: #{
+%%   <<"ScreenCanvasSizeOptions">> => free_form_layout_screen_canvas_size_options()
+%% }
+-type free_form_layout_canvas_size_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_iam_policy_assignments_for_user_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_iam_policy_assignments_for_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_error() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"ViolatedEntities">> => list(entity()())
+%% }
+-type dashboard_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_field_collapse_state_option() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"Target">> => pivot_table_field_collapse_state_target()
+%% }
+-type pivot_table_field_collapse_state_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dashboard_embed_url_response() :: #{
+%%   <<"EmbedUrl">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type get_dashboard_embed_url_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_line_custom_label_configuration() :: #{
+%%   <<"CustomLabel">> => string()
+%% }
+-type reference_line_custom_label_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_analysis_definition_response() :: #{
+%%   <<"AnalysisId">> => string(),
+%%   <<"Definition">> => analysis_definition(),
+%%   <<"Errors">> => list(analysis_error()()),
+%%   <<"Name">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceStatus">> => list(any()),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeArn">> => string()
+%% }
+-type describe_analysis_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% filled_map_configuration() :: #{
+%%   <<"FieldWells">> => filled_map_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"MapStyleOptions">> => geospatial_map_style_options(),
+%%   <<"SortConfiguration">> => filled_map_sort_configuration(),
+%%   <<"Tooltip">> => tooltip_options(),
+%%   <<"WindowOptions">> => geospatial_window_options()
+%% }
+-type filled_map_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_date_time_picker_control() :: #{
+%%   <<"DisplayOptions">> => date_time_picker_control_display_options(),
+%%   <<"FilterControlId">> => string(),
+%%   <<"SourceFilterId">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type filter_date_time_picker_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dashboard_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"DashboardId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"VersionArn">> => string()
+%% }
+-type update_dashboard_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_line_data_configuration() :: #{
+%%   <<"AxisBinding">> => list(any()),
+%%   <<"DynamicConfiguration">> => reference_line_dynamic_data_configuration(),
+%%   <<"SeriesType">> => list(any()),
+%%   <<"StaticConfiguration">> => reference_line_static_data_configuration()
+%% }
+-type reference_line_data_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_version() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DataSetConfigurations">> => list(data_set_configuration()()),
+%%   <<"Description">> => string(),
+%%   <<"Errors">> => list(template_error()()),
+%%   <<"Sheets">> => list(sheet()()),
+%%   <<"SourceEntityArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"ThemeArn">> => string(),
+%%   <<"VersionNumber">> => float()
+%% }
+-type template_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% trend_arrow_options() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type trend_arrow_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% radar_chart_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => radar_chart_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type radar_chart_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_list_control() :: #{
+%%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
+%%   <<"DisplayOptions">> => list_control_display_options(),
+%%   <<"FilterControlId">> => string(),
+%%   <<"SelectableValues">> => filter_selectable_values(),
+%%   <<"SourceFilterId">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type filter_list_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_aggregation() :: #{
+%%   <<"DatasetRowDateGranularity">> => list(any()),
+%%   <<"DefaultDateColumnName">> => string()
+%% }
+-type data_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_sort() :: #{
+%%   <<"Direction">> => list(any()),
+%%   <<"FieldId">> => string()
+%% }
+-type field_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetBundleImportJobId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"FailureAction">> => list(any()),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type asset_bundle_import_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_point_menu_label_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type data_point_menu_label_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_default_values() :: #{
+%%   <<"DynamicValue">> => dynamic_default_value(),
+%%   <<"StaticValues">> => list(string()())
+%% }
+-type string_default_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_alias() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"TemplateVersionNumber">> => float()
+%% }
+-type template_alias() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_vpc_connection_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"VPCConnection">> => vpc_connection()
+%% }
+-type describe_vpc_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_dashboard_snapshot_job_request() :: #{
+%%   <<"SnapshotConfiguration">> := snapshot_configuration(),
+%%   <<"SnapshotJobId">> := string(),
+%%   <<"UserConfiguration">> := snapshot_user_configuration()
+%% }
+-type start_dashboard_snapshot_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dashboard_request() :: #{
+%%   <<"DashboardPublishOptions">> => dashboard_publish_options(),
+%%   <<"Definition">> => dashboard_version_definition(),
+%%   <<"Name">> := string(),
+%%   <<"Parameters">> => parameters(),
+%%   <<"SourceEntity">> => dashboard_source_entity(),
+%%   <<"ThemeArn">> => string(),
+%%   <<"ValidationStrategy">> => validation_strategy(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type update_dashboard_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_refresh_properties() :: #{
+%%   <<"RefreshConfiguration">> => refresh_configuration()
+%% }
+-type data_set_refresh_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_namespace_response() :: #{
+%%   <<"Namespace">> => namespace_info_v2(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_chart_aggregated_field_wells() :: #{
+%%   <<"Category">> => list(dimension_field()()),
+%%   <<"Colors">> => list(dimension_field()()),
+%%   <<"SmallMultiples">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type line_chart_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% drill_down_filter() :: #{
+%%   <<"CategoryFilter">> => category_drill_down_filter(),
+%%   <<"NumericEqualityFilter">> => numeric_equality_drill_down_filter(),
+%%   <<"TimeRangeFilter">> => time_range_drill_down_filter()
+%% }
+-type drill_down_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_category_filter_constant() :: #{
+%%   <<"CollectiveConstant">> => collective_constant(),
+%%   <<"ConstantType">> => list(any()),
+%%   <<"SingularConstant">> => string()
+%% }
+-type topic_category_filter_constant() :: #{binary() => any()}.
+
+
+%% Example:
+%% override_dataset_parameter_operation() :: #{
+%%   <<"NewDefaultValues">> => new_default_values(),
+%%   <<"NewParameterName">> => string(),
+%%   <<"ParameterName">> => string()
+%% }
+-type override_dataset_parameter_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% bar_chart_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => bar_chart_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type bar_chart_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_paginated_report_options() :: #{
+%%   <<"OverflowColumnHeaderVisibility">> => list(any()),
+%%   <<"VerticalOverflowVisibility">> => list(any())
+%% }
+-type table_paginated_report_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_data_set_refresh_properties_response() :: #{
+%%   <<"DataSetRefreshProperties">> => data_set_refresh_properties(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_data_set_refresh_properties_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_level_permission_rule() :: #{
+%%   <<"ColumnNames">> => list(string()()),
+%%   <<"Principals">> => list(string()())
+%% }
+-type column_level_permission_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_column_operation() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"TagNames">> => list(list(any())())
+%% }
+-type untag_column_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_file_sheet_selection() :: #{
+%%   <<"SelectionScope">> => list(any()),
+%%   <<"SheetId">> => string(),
+%%   <<"VisualIds">> => list(string()())
+%% }
+-type snapshot_file_sheet_selection() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_subscription_request() :: #{}
+-type delete_account_subscription_request() :: #{}.
+
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_columns_operation() :: #{
+%%   <<"Columns">> => list(calculated_column()())
+%% }
+-type create_columns_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dashboard_definition_response() :: #{
+%%   <<"DashboardId">> => string(),
+%%   <<"DashboardPublishOptions">> => dashboard_publish_options(),
+%%   <<"Definition">> => dashboard_version_definition(),
+%%   <<"Errors">> => list(dashboard_error()()),
+%%   <<"Name">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceStatus">> => list(any()),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeArn">> => string()
+%% }
+-type describe_dashboard_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_border_options() :: #{
+%%   <<"Color">> => string(),
+%%   <<"Style">> => list(any()),
+%%   <<"Thickness">> => integer()
+%% }
+-type table_border_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% waterfall_chart_options() :: #{
+%%   <<"TotalBarLabel">> => string()
+%% }
+-type waterfall_chart_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% radar_chart_field_wells() :: #{
+%%   <<"RadarChartAggregatedFieldWells">> => radar_chart_aggregated_field_wells()
+%% }
+-type radar_chart_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_template_alias_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateAlias">> => template_alias()
+%% }
+-type create_template_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_identity_propagation_config_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_identity_propagation_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% label_options() :: #{
+%%   <<"CustomLabel">> => string(),
+%%   <<"FontConfiguration">> => font_configuration(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type label_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% legend_options() :: #{
+%%   <<"Height">> => string(),
+%%   <<"Position">> => list(any()),
+%%   <<"Title">> => label_options(),
+%%   <<"Visibility">> => list(any()),
+%%   <<"Width">> => string()
+%% }
+-type legend_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_user_q_search_bar_embedding_configuration() :: #{
+%%   <<"InitialTopicId">> => string()
+%% }
+-type registered_user_q_search_bar_embedding_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_settings_request() :: #{}
+-type describe_account_settings_request() :: #{}.
+
+
+%% Example:
+%% string_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type string_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_settings() :: #{
+%%   <<"ContainsHeader">> => boolean(),
+%%   <<"Delimiter">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"StartFromRow">> => integer(),
+%%   <<"TextQualifier">> => list(any())
+%% }
+-type upload_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dashboard_embed_url_request() :: #{
+%%   <<"AdditionalDashboardIds">> => list(string()()),
+%%   <<"IdentityType">> := list(any()),
+%%   <<"Namespace">> => string(),
+%%   <<"ResetDisabled">> => boolean(),
+%%   <<"SessionLifetimeInMinutes">> => float(),
+%%   <<"StatePersistenceEnabled">> => boolean(),
+%%   <<"UndoRedoDisabled">> => boolean(),
+%%   <<"UserArn">> => string()
+%% }
+-type get_dashboard_embed_url_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_control() :: #{
+%%   <<"DateTimePicker">> => parameter_date_time_picker_control(),
+%%   <<"Dropdown">> => parameter_drop_down_control(),
+%%   <<"List">> => parameter_list_control(),
+%%   <<"Slider">> => parameter_slider_control(),
+%%   <<"TextArea">> => parameter_text_area_control(),
+%%   <<"TextField">> => parameter_text_field_control()
+%% }
+-type parameter_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% cell_value_synonym() :: #{
+%%   <<"CellValue">> => string(),
+%%   <<"Synonyms">> => list(string()())
+%% }
+-type cell_value_synonym() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_source_request() :: #{}
+-type describe_data_source_request() :: #{}.
+
+
+%% Example:
+%% snapshot_configuration() :: #{
+%%   <<"DestinationConfiguration">> => snapshot_destination_configuration(),
+%%   <<"FileGroups">> => list(snapshot_file_group()()),
+%%   <<"Parameters">> => parameters()
+%% }
+-type snapshot_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% numerical_aggregation_function() :: #{
+%%   <<"PercentileAggregation">> => percentile_aggregation(),
+%%   <<"SimpleNumericalAggregation">> => list(any())
+%% }
+-type numerical_aggregation_function() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_grid_layout_configuration() :: #{
+%%   <<"CanvasSizeOptions">> => grid_layout_canvas_size_options()
+%% }
+-type default_grid_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% period_to_date_computation() :: #{
+%%   <<"ComputationId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PeriodTimeGranularity">> => list(any()),
+%%   <<"Time">> => dimension_field(),
+%%   <<"Value">> => measure_field()
+%% }
+-type period_to_date_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_folder_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FolderId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_folder_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_folder_request() :: #{}
+-type describe_folder_request() :: #{}.
+
+
+%% Example:
+%% create_vpc_connection_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityStatus">> => list(any()),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"VPCConnectionId">> => string()
+%% }
+-type create_vpc_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logical_table() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"DataTransforms">> => list(list()()),
+%%   <<"Source">> => logical_table_source()
+%% }
+-type logical_table() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dashboard_snapshot_job_result_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"ErrorInfo">> => snapshot_job_error_info(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"RequestId">> => string(),
+%%   <<"Result">> => snapshot_job_result(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_dashboard_snapshot_job_result_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% negative_format() :: #{
+%%   <<"Prefix">> => string(),
+%%   <<"Suffix">> => string()
+%% }
+-type negative_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% anonymous_user_q_search_bar_embedding_configuration() :: #{
+%%   <<"InitialTopicId">> => string()
+%% }
+-type anonymous_user_q_search_bar_embedding_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_text_area_control() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"DisplayOptions">> => text_area_control_display_options(),
+%%   <<"ParameterControlId">> => string(),
+%%   <<"SourceParameterName">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type parameter_text_area_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_subtitle_label_options() :: #{
+%%   <<"FormatText">> => long_format_text(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type visual_subtitle_label_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_source() :: #{
+%%   <<"DataSourceArn">> => string(),
+%%   <<"InputColumns">> => list(input_column()()),
+%%   <<"UploadSettings">> => upload_settings()
+%% }
+-type s3_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sets_response() :: #{
+%%   <<"DataSetSummaries">> => list(data_set_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_data_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_time_picker_control_display_options() :: #{
+%%   <<"DateTimeFormat">> => string(),
+%%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
+%%   <<"TitleOptions">> => label_options()
+%% }
+-type date_time_picker_control_display_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_rows_label_options() :: #{
+%%   <<"CustomLabel">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type pivot_table_rows_label_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% combo_chart_sort_configuration() :: #{
+%%   <<"CategoryItemsLimit">> => items_limit_configuration(),
+%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"ColorItemsLimit">> => items_limit_configuration(),
+%%   <<"ColorSort">> => list(field_sort_options()())
+%% }
+-type combo_chart_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_numeric_equality_filter() :: #{
+%%   <<"Aggregation">> => list(any()),
+%%   <<"Constant">> => topic_singular_filter_constant()
+%% }
+-type topic_numeric_equality_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_subscription_request() :: #{}
+-type describe_account_subscription_request() :: #{}.
+
+
+%% Example:
+%% integer_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(float()())
+%% }
+-type integer_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_interactive_layout_configuration() :: #{
+%%   <<"FreeForm">> => default_free_form_layout_configuration(),
+%%   <<"Grid">> => default_grid_layout_configuration()
+%% }
+-type default_interactive_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_configuration() :: #{
+%%   <<"Computations">> => list(computation()()),
+%%   <<"CustomNarrative">> => custom_narrative_options(),
+%%   <<"Interactions">> => visual_interaction_options()
+%% }
+-type insight_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_field_wells() :: #{
+%%   <<"PivotTableAggregatedFieldWells">> => pivot_table_aggregated_field_wells()
+%% }
+-type pivot_table_field_wells() :: #{binary() => any()}.
+
+%% Example:
+%% describe_refresh_schedule_request() :: #{}
+-type describe_refresh_schedule_request() :: #{}.
+
+
+%% Example:
+%% default_free_form_layout_configuration() :: #{
+%%   <<"CanvasSizeOptions">> => free_form_layout_canvas_size_options()
+%% }
+-type default_free_form_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% numerical_measure_field() :: #{
+%%   <<"AggregationFunction">> => numerical_aggregation_function(),
+%%   <<"Column">> => column_identifier(),
+%%   <<"FieldId">> => string(),
+%%   <<"FormatConfiguration">> => number_format_configuration()
+%% }
+-type numerical_measure_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_refresh_on_entity() :: #{
+%%   <<"DayOfMonth">> => string(),
+%%   <<"DayOfWeek">> => list(any())
+%% }
+-type schedule_refresh_on_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_error() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type asset_bundle_import_job_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_connections_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"VPCConnectionSummaries">> => list(vpc_connection_summary()())
+%% }
+-type list_vpc_connections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_refresh_schedule_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ScheduleId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_refresh_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% predefined_hierarchy() :: #{
+%%   <<"Columns">> => list(column_identifier()()),
+%%   <<"DrillDownFilters">> => list(drill_down_filter()()),
+%%   <<"HierarchyId">> => string()
+%% }
+-type predefined_hierarchy() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ingestions_response() :: #{
+%%   <<"Ingestions">> => list(ingestion()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_ingestions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_ip_restriction_response() :: #{
+%%   <<"AwsAccountId">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IpRestrictionRuleMap">> => map(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_ip_restriction_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% aurora_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type aurora_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_source_template() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DataSetReferences">> => list(data_set_reference()())
+%% }
+-type analysis_source_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_refresh_schedule_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ScheduleId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_refresh_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_ingestion_request() :: #{}
+-type cancel_ingestion_request() :: #{}.
+
+%% Example:
+%% delete_theme_alias_request() :: #{}
+-type delete_theme_alias_request() :: #{}.
+
+
+%% Example:
+%% dashboard_version_definition() :: #{
+%%   <<"AnalysisDefaults">> => analysis_defaults(),
+%%   <<"CalculatedFields">> => list(calculated_field()()),
+%%   <<"ColumnConfigurations">> => list(column_configuration()()),
+%%   <<"DataSetIdentifierDeclarations">> => list(data_set_identifier_declaration()()),
+%%   <<"FilterGroups">> => list(filter_group()()),
+%%   <<"Options">> => asset_options(),
+%%   <<"ParameterDeclarations">> => list(parameter_declaration()()),
+%%   <<"Sheets">> => list(sheet_definition()())
+%% }
+-type dashboard_version_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"User">> => user()
+%% }
+-type update_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_source_request() :: #{
+%%   <<"Credentials">> => data_source_credentials(),
+%%   <<"DataSourceId">> := string(),
+%%   <<"DataSourceParameters">> => list(),
+%%   <<"FolderArns">> => list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"SslProperties">> => ssl_properties(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Type">> := list(any()),
+%%   <<"VpcConnectionProperties">> => vpc_connection_properties()
+%% }
+-type create_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_topic_refresh_schedules_response() :: #{
+%%   <<"RefreshSchedules">> => list(topic_refresh_schedule_summary()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type list_topic_refresh_schedules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_resource_permissions() :: #{
+%%   <<"Actions">> => list(string()()),
+%%   <<"Principals">> => list(string()())
+%% }
+-type asset_bundle_resource_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% waterfall_chart_configuration() :: #{
+%%   <<"CategoryAxisDisplayOptions">> => axis_display_options(),
+%%   <<"CategoryAxisLabelOptions">> => chart_axis_label_options(),
+%%   <<"ColorConfiguration">> => waterfall_chart_color_configuration(),
+%%   <<"DataLabels">> => data_label_options(),
+%%   <<"FieldWells">> => waterfall_chart_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"PrimaryYAxisDisplayOptions">> => axis_display_options(),
+%%   <<"PrimaryYAxisLabelOptions">> => chart_axis_label_options(),
+%%   <<"SortConfiguration">> => waterfall_chart_sort_configuration(),
+%%   <<"VisualPalette">> => visual_palette(),
+%%   <<"WaterfallChartOptions">> => waterfall_chart_options()
+%% }
+-type waterfall_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_folders_response() :: #{
+%%   <<"FolderSummaryList">> => list(folder_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type search_folders_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% gauge_chart_configuration() :: #{
+%%   <<"DataLabels">> => data_label_options(),
+%%   <<"FieldWells">> => gauge_chart_field_wells(),
+%%   <<"GaugeChartOptions">> => gauge_chart_options(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"TooltipOptions">> => tooltip_options(),
+%%   <<"VisualPalette">> => visual_palette()
+%% }
+-type gauge_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_data_set_refresh_properties_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type put_data_set_refresh_properties_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_data_source_permissions_response() :: #{
+%%   <<"DataSourceArn">> => string(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_data_source_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% folder_member() :: #{
+%%   <<"MemberId">> => string(),
+%%   <<"MemberType">> => list(any())
+%% }
+-type folder_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% decimal_dataset_parameter() :: #{
+%%   <<"DefaultValues">> => decimal_dataset_parameter_default_values(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ValueType">> => list(any())
+%% }
+-type decimal_dataset_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_template_request() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"VersionNumber">> => float()
+%% }
+-type describe_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_text_box() :: #{
+%%   <<"Content">> => string(),
+%%   <<"SheetTextBoxId">> => string()
+%% }
+-type sheet_text_box() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_layout_element_maximization_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type sheet_layout_element_maximization_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% relational_table() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"DataSourceArn">> => string(),
+%%   <<"InputColumns">> => list(input_column()()),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type relational_table() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_field_options() :: #{
+%%   <<"Order">> => list(string()()),
+%%   <<"PinnedFieldOptions">> => table_pinned_field_options(),
+%%   <<"SelectedFieldOptions">> => list(table_field_option()())
+%% }
+-type table_field_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_i_options() :: #{
+%%   <<"Comparison">> => comparison_configuration(),
+%%   <<"PrimaryValueDisplayType">> => list(any()),
+%%   <<"PrimaryValueFontConfiguration">> => font_configuration(),
+%%   <<"ProgressBar">> => progress_bar_options(),
+%%   <<"SecondaryValue">> => secondary_value_options(),
+%%   <<"SecondaryValueFontConfiguration">> => font_configuration(),
+%%   <<"Sparkline">> => k_p_i_sparkline_options(),
+%%   <<"TrendArrows">> => trend_arrow_options(),
+%%   <<"VisualLayoutOptions">> => k_p_i_visual_layout_options()
+%% }
+-type k_p_i_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_templates_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_controls_option() :: #{
+%%   <<"VisibilityState">> => list(any())
+%% }
+-type sheet_controls_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% tile_layout_style() :: #{
+%%   <<"Gutter">> => gutter_style(),
+%%   <<"Margin">> => margin_style()
+%% }
+-type tile_layout_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% percentile_aggregation() :: #{
+%%   <<"PercentileValue">> => float()
+%% }
+-type percentile_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity() :: #{
+%%   <<"Path">> => string()
+%% }
+-type entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_analysis_response() :: #{
+%%   <<"AnalysisId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"UpdateStatus">> => list(any())
+%% }
+-type update_analysis_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% waterfall_chart_color_configuration() :: #{
+%%   <<"GroupColorConfiguration">> => waterfall_chart_group_color_configuration()
+%% }
+-type waterfall_chart_color_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% axis_label_reference_options() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"FieldId">> => string()
+%% }
+-type axis_label_reference_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_field_custom_icon_content() :: #{
+%%   <<"Icon">> => list(any())
+%% }
+-type table_field_custom_icon_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_description() :: #{
+%%   <<"Text">> => string()
+%% }
+-type column_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_i_field_wells() :: #{
+%%   <<"TargetValues">> => list(measure_field()()),
+%%   <<"TrendGroups">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type k_p_i_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_field_control_display_options() :: #{
+%%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
+%%   <<"PlaceholderOptions">> => text_control_placeholder_options(),
+%%   <<"TitleOptions">> => label_options()
+%% }
+-type text_field_control_display_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_theme_override_parameters() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ThemeId">> => string()
+%% }
+-type asset_bundle_import_job_theme_override_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% tooltip_options() :: #{
+%%   <<"FieldBasedTooltip">> => field_based_tooltip(),
+%%   <<"SelectedTooltipType">> => list(any()),
+%%   <<"TooltipVisibility">> => list(any())
+%% }
+-type tooltip_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% gauge_chart_arc_conditional_formatting() :: #{
+%%   <<"ForegroundColor">> => conditional_formatting_color()
+%% }
+-type gauge_chart_arc_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% axis_tick_label_options() :: #{
+%%   <<"LabelOptions">> => label_options(),
+%%   <<"RotationAngle">> => float()
+%% }
+-type axis_tick_label_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ingestions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ingestions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_namespaces_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_namespaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_propagation_configs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_propagation_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% pie_chart_sort_configuration() :: #{
+%%   <<"CategoryItemsLimit">> => items_limit_configuration(),
+%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"SmallMultiplesLimitConfiguration">> => items_limit_configuration(),
+%%   <<"SmallMultiplesSort">> => list(field_sort_options()())
+%% }
+-type pie_chart_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_data_set_refresh_properties_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_data_set_refresh_properties_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_i_conditional_formatting_option() :: #{
+%%   <<"ActualValue">> => k_p_i_actual_value_conditional_formatting(),
+%%   <<"ComparisonValue">> => k_p_i_comparison_value_conditional_formatting(),
+%%   <<"PrimaryValue">> => k_p_iprimary_value_conditional_formatting(),
+%%   <<"ProgressBar">> => k_p_iprogress_bar_conditional_formatting()
+%% }
+-type k_p_i_conditional_formatting_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_vpc_connection_override_properties() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Properties">> => list(list(any())())
+%% }
+-type asset_bundle_export_job_vpc_connection_override_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_chart_sort_configuration() :: #{
+%%   <<"CategoryItemsLimitConfiguration">> => items_limit_configuration(),
+%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"ColorItemsLimitConfiguration">> => items_limit_configuration(),
+%%   <<"SmallMultiplesLimitConfiguration">> => items_limit_configuration(),
+%%   <<"SmallMultiplesSort">> => list(field_sort_options()())
+%% }
+-type line_chart_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_template_permissions_response() :: #{
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateArn">> => string(),
+%%   <<"TemplateId">> => string()
+%% }
+-type update_template_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_theme_alias_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeAlias">> => theme_alias()
+%% }
+-type create_theme_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ColumnGroups">> => list(column_group()()),
+%%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()()),
+%%   <<"ConsumedSpiceCapacityInBytes">> => float(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"DataSetUsageConfiguration">> => data_set_usage_configuration(),
+%%   <<"DatasetParameters">> => list(dataset_parameter()()),
+%%   <<"FieldFolders">> => map(),
+%%   <<"ImportMode">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"LogicalTableMap">> => map(),
+%%   <<"Name">> => string(),
+%%   <<"OutputColumns">> => list(output_column()()),
+%%   <<"PhysicalTableMap">> => map(),
+%%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
+%%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration()
+%% }
+-type data_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% radar_chart_sort_configuration() :: #{
+%%   <<"CategoryItemsLimit">> => items_limit_configuration(),
+%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"ColorItemsLimit">> => items_limit_configuration(),
+%%   <<"ColorSort">> => list(field_sort_options()())
+%% }
+-type radar_chart_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ingestion_request() :: #{
+%%   <<"IngestionType">> => list(any())
+%% }
+-type create_ingestion_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_heatmap_data_color() :: #{
+%%   <<"Color">> => string()
+%% }
+-type geospatial_heatmap_data_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_iam_policy_assignment_request() :: #{
+%%   <<"AssignmentName">> := string(),
+%%   <<"AssignmentStatus">> := list(any()),
+%%   <<"Identities">> => map(),
+%%   <<"PolicyArn">> => string()
+%% }
+-type create_iam_policy_assignment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_template_alias_request() :: #{
+%%   <<"TemplateVersionNumber">> := float()
+%% }
+-type update_template_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_bundle_import_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_asset_bundle_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% lookback_window() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"Size">> => float(),
+%%   <<"SizeUnit">> => list(any())
+%% }
+-type lookback_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster_marker() :: #{
+%%   <<"SimpleClusterMarker">> => simple_cluster_marker()
+%% }
+-type cluster_marker() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_sort_configuration() :: #{
+%%   <<"FieldSortOptions">> => list(pivot_field_sort_options()())
+%% }
+-type pivot_table_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_groups_response() :: #{
+%%   <<"GroupList">> => list(group()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_user_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorized_targets_by_service() :: #{
+%%   <<"AuthorizedTargets">> => list(string()()),
+%%   <<"Service">> => list(any())
+%% }
+-type authorized_targets_by_service() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_search_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type data_set_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% forecast_computation() :: #{
+%%   <<"ComputationId">> => string(),
+%%   <<"CustomSeasonalityValue">> => integer(),
+%%   <<"LowerBoundary">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"PeriodsBackward">> => integer(),
+%%   <<"PeriodsForward">> => integer(),
+%%   <<"PredictionInterval">> => integer(),
+%%   <<"Seasonality">> => list(any()),
+%%   <<"Time">> => dimension_field(),
+%%   <<"UpperBoundary">> => float(),
+%%   <<"Value">> => measure_field()
+%% }
+-type forecast_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% filled_map_field_wells() :: #{
+%%   <<"FilledMapAggregatedFieldWells">> => filled_map_aggregated_field_wells()
+%% }
+-type filled_map_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_file_group() :: #{
+%%   <<"Files">> => list(snapshot_file()())
+%% }
+-type snapshot_file_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_folders_request() :: #{
+%%   <<"Filters">> := list(folder_search_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_folders_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_topic_refresh_schedule_request() :: #{
+%%   <<"RefreshSchedule">> := topic_refresh_schedule()
+%% }
+-type update_topic_refresh_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_aliases_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateAliasList">> => list(template_alias()())
+%% }
+-type list_template_aliases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_based_forecast_properties() :: #{
+%%   <<"LowerBoundary">> => float(),
+%%   <<"PeriodsBackward">> => integer(),
+%%   <<"PeriodsForward">> => integer(),
+%%   <<"PredictionInterval">> => integer(),
+%%   <<"Seasonality">> => integer(),
+%%   <<"UpperBoundary">> => float()
+%% }
+-type time_based_forecast_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_data_source_credential_pair() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type asset_bundle_import_job_data_source_credential_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% header_footer_section_configuration() :: #{
+%%   <<"Layout">> => section_layout_configuration(),
+%%   <<"SectionId">> => string(),
+%%   <<"Style">> => section_style()
+%% }
+-type header_footer_section_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_folder() :: #{
+%%   <<"columns">> => list(string()()),
+%%   <<"description">> => string()
+%% }
+-type field_folder() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_vpc_connection_override_tags() :: #{
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VPCConnectionIds">> => list(string()())
+%% }
+-type asset_bundle_import_job_vpc_connection_override_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_iam_policy_assignments_response() :: #{
+%%   <<"IAMPolicyAssignments">> => list(iam_policy_assignment_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_iam_policy_assignments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% namespace_info_v2() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CapacityRegion">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"IdentityStore">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"NamespaceError">> => namespace_error()
+%% }
+-type namespace_info_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_sight_user_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type quick_sight_user_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% funnel_chart_sort_configuration() :: #{
+%%   <<"CategoryItemsLimit">> => items_limit_configuration(),
+%%   <<"CategorySort">> => list(field_sort_options()())
+%% }
+-type funnel_chart_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% font_configuration() :: #{
+%%   <<"FontColor">> => string(),
+%%   <<"FontDecoration">> => list(any()),
+%%   <<"FontSize">> => font_size(),
+%%   <<"FontStyle">> => list(any()),
+%%   <<"FontWeight">> => font_weight()
+%% }
+-type font_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% gauge_chart_conditional_formatting() :: #{
+%%   <<"ConditionalFormattingOptions">> => list(gauge_chart_conditional_formatting_option()())
+%% }
+-type gauge_chart_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_range_drill_down_filter() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"RangeMaximum">> => non_neg_integer(),
+%%   <<"RangeMinimum">> => non_neg_integer(),
+%%   <<"TimeGranularity">> => list(any())
+%% }
+-type time_range_drill_down_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_source_description() :: #{
+%%   <<"Body">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type asset_bundle_import_source_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% athena_parameters() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"WorkGroup">> => string()
+%% }
+-type athena_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% describe_iam_policy_assignment_request() :: #{}
+-type describe_iam_policy_assignment_request() :: #{}.
+
+
+%% Example:
+%% bin_count_options() :: #{
+%%   <<"Value">> => integer()
+%% }
+-type bin_count_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_bundle_export_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetBundleExportJobId">> => string(),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"CloudFormationOverridePropertyConfiguration">> => asset_bundle_cloud_formation_override_property_configuration(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DownloadUrl">> => string(),
+%%   <<"Errors">> => list(asset_bundle_export_job_error()()),
+%%   <<"ExportFormat">> => list(any()),
+%%   <<"IncludeAllDependencies">> => boolean(),
+%%   <<"IncludePermissions">> => boolean(),
+%%   <<"IncludeTags">> => boolean(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceArns">> => list(string()()),
+%%   <<"Status">> => integer(),
+%%   <<"ValidationStrategy">> => asset_bundle_export_job_validation_strategy(),
+%%   <<"Warnings">> => list(asset_bundle_export_job_warning()())
+%% }
+-type describe_asset_bundle_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_analysis_request() :: #{}
+-type restore_analysis_request() :: #{}.
+
+
+%% Example:
+%% free_form_section_layout_configuration() :: #{
+%%   <<"Elements">> => list(free_form_layout_element()())
+%% }
+-type free_form_section_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_data_source_override_parameters() :: #{
+%%   <<"Credentials">> => asset_bundle_import_job_data_source_credentials(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"DataSourceParameters">> => list(),
+%%   <<"Name">> => string(),
+%%   <<"SslProperties">> => ssl_properties(),
+%%   <<"VpcConnectionProperties">> => vpc_connection_properties()
+%% }
+-type asset_bundle_import_job_data_source_override_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_coordinate_bounds() :: #{
+%%   <<"East">> => float(),
+%%   <<"North">> => float(),
+%%   <<"South">> => float(),
+%%   <<"West">> => float()
+%% }
+-type geospatial_coordinate_bounds() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditional_formatting_color() :: #{
+%%   <<"Gradient">> => conditional_formatting_gradient_color(),
+%%   <<"Solid">> => conditional_formatting_solid_color()
+%% }
+-type conditional_formatting_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_text_field_control() :: #{
+%%   <<"DisplayOptions">> => text_field_control_display_options(),
+%%   <<"ParameterControlId">> => string(),
+%%   <<"SourceParameterName">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type parameter_text_field_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_unavailable_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type resource_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_heatmap_configuration() :: #{
+%%   <<"HeatmapColor">> => geospatial_heatmap_color_scale()
+%% }
+-type geospatial_heatmap_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_theme_override_permissions() :: #{
+%%   <<"Permissions">> => asset_bundle_resource_permissions(),
+%%   <<"ThemeIds">> => list(string()())
+%% }
+-type asset_bundle_import_job_theme_override_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% gauge_chart_primary_value_conditional_formatting() :: #{
+%%   <<"Icon">> => conditional_formatting_icon(),
+%%   <<"TextColor">> => conditional_formatting_color()
+%% }
+-type gauge_chart_primary_value_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_element_rendering_rule() :: #{
+%%   <<"ConfigurationOverrides">> => sheet_element_configuration_overrides(),
+%%   <<"Expression">> => string()
+%% }
+-type sheet_element_rendering_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_asset_bundle_import_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetBundleImportJobId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type start_asset_bundle_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_field_link_content_configuration() :: #{
+%%   <<"CustomIconContent">> => table_field_custom_icon_content(),
+%%   <<"CustomTextContent">> => table_field_custom_text_content()
+%% }
+-type table_field_link_content_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_refresh_schedule_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RefreshSchedule">> => refresh_schedule(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_refresh_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% category_filter_configuration() :: #{
+%%   <<"CustomFilterConfiguration">> => custom_filter_configuration(),
+%%   <<"CustomFilterListConfiguration">> => custom_filter_list_configuration(),
+%%   <<"FilterListConfiguration">> => filter_list_configuration()
+%% }
+-type category_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_template_definition_response() :: #{
+%%   <<"Definition">> => template_version_definition(),
+%%   <<"Errors">> => list(template_error()()),
+%%   <<"Name">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceStatus">> => list(any()),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateId">> => string(),
+%%   <<"ThemeArn">> => string()
+%% }
+-type describe_template_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_refresh_schedule() :: #{
+%%   <<"BasedOnSpiceSchedule">> => boolean(),
+%%   <<"IsEnabled">> => boolean(),
+%%   <<"RepeatAt">> => string(),
+%%   <<"StartingAt">> => non_neg_integer(),
+%%   <<"Timezone">> => string(),
+%%   <<"TopicScheduleType">> => list(any())
+%% }
+-type topic_refresh_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_sort() :: #{
+%%   <<"AggregationFunction">> => aggregation_function(),
+%%   <<"Direction">> => list(any()),
+%%   <<"SortBy">> => column_identifier()
+%% }
+-type column_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_column() :: #{
+%%   <<"Name">> => string(),
+%%   <<"SubType">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type input_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_settings_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_account_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_resource_id_override_configuration() :: #{
+%%   <<"PrefixForAllResources">> => boolean()
+%% }
+-type asset_bundle_export_job_resource_id_override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% axis_display_range() :: #{
+%%   <<"DataDriven">> => axis_display_data_driven_range(),
+%%   <<"MinMax">> => axis_display_min_max_range()
+%% }
+-type axis_display_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% filled_map_shape_conditional_formatting() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"Format">> => shape_conditional_format()
+%% }
+-type filled_map_shape_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"NetworkInterfaceId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubnetId">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_iam_policy_assignment_response() :: #{
+%%   <<"AssignmentId">> => string(),
+%%   <<"AssignmentName">> => string(),
+%%   <<"AssignmentStatus">> => list(any()),
+%%   <<"Identities">> => map(),
+%%   <<"PolicyArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_iam_policy_assignment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_chart_field_wells() :: #{
+%%   <<"LineChartAggregatedFieldWells">> => line_chart_aggregated_field_wells()
+%% }
+-type line_chart_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_version() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DataSetArns">> => list(string()()),
+%%   <<"Description">> => string(),
+%%   <<"Errors">> => list(dashboard_error()()),
+%%   <<"Sheets">> => list(sheet()()),
+%%   <<"SourceEntityArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"ThemeArn">> => string(),
+%%   <<"VersionNumber">> => float()
+%% }
+-type dashboard_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_unaggregated_field_wells() :: #{
+%%   <<"Values">> => list(unaggregated_field()())
+%% }
+-type table_unaggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_summary() :: #{
+%%   <<"AnalysisId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type analysis_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% integer_default_values() :: #{
+%%   <<"DynamicValue">> => dynamic_default_value(),
+%%   <<"StaticValues">> => list(float()())
+%% }
+-type integer_default_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_analysis_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()()),
+%%   <<"RevokePermissions">> => list(resource_permission()())
+%% }
+-type update_analysis_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% pie_chart_field_wells() :: #{
+%%   <<"PieChartAggregatedFieldWells">> => pie_chart_aggregated_field_wells()
+%% }
+-type pie_chart_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_template_request() :: #{
+%%   <<"Definition">> => template_version_definition(),
+%%   <<"Name">> => string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"SourceEntity">> => template_source_entity(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"ValidationStrategy">> => validation_strategy(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type create_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% anonymous_user_dashboard_embedding_configuration() :: #{
+%%   <<"InitialDashboardId">> => string()
+%% }
+-type anonymous_user_dashboard_embedding_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dashboard_published_version_response() :: #{
+%%   <<"DashboardArn">> => string(),
+%%   <<"DashboardId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_dashboard_published_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_field_link_configuration() :: #{
+%%   <<"Content">> => table_field_link_content_configuration(),
+%%   <<"Target">> => list(any())
+%% }
+-type table_field_link_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_embed_url_for_registered_user_request() :: #{
+%%   <<"AllowedDomains">> => list(string()()),
+%%   <<"ExperienceConfiguration">> := registered_user_embedding_experience_configuration(),
+%%   <<"SessionLifetimeInMinutes">> => float(),
+%%   <<"UserArn">> := string()
+%% }
+-type generate_embed_url_for_registered_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_data_sources_request() :: #{
+%%   <<"Filters">> := list(data_source_search_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_data_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_info() :: #{
+%%   <<"AccountName">> => string(),
+%%   <<"AccountSubscriptionStatus">> => string(),
+%%   <<"AuthenticationType">> => string(),
+%%   <<"Edition">> => list(any()),
+%%   <<"IAMIdentityCenterInstanceArn">> => string(),
+%%   <<"NotificationEmail">> => string()
+%% }
+-type account_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% global_table_border_options() :: #{
+%%   <<"SideSpecificBorder">> => table_side_border_options(),
+%%   <<"UniformBorder">> => table_border_options()
+%% }
+-type global_table_border_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_slider_control() :: #{
+%%   <<"DisplayOptions">> => slider_control_display_options(),
+%%   <<"FilterControlId">> => string(),
+%%   <<"MaximumValue">> => float(),
+%%   <<"MinimumValue">> => float(),
+%%   <<"SourceFilterId">> => string(),
+%%   <<"StepSize">> => float(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type filter_slider_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% histogram_field_wells() :: #{
+%%   <<"HistogramAggregatedFieldWells">> => histogram_aggregated_field_wells()
+%% }
+-type histogram_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% loading_animation() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type loading_animation() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_display_options() :: #{
+%%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
+%%   <<"SearchOptions">> => list_control_search_options(),
+%%   <<"SelectAllOptions">> => list_control_select_all_options(),
+%%   <<"TitleOptions">> => label_options()
+%% }
+-type list_control_display_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_customization_response() :: #{
+%%   <<"AccountCustomization">> => account_customization(),
+%%   <<"Arn">> => string(),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_account_customization_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% integer_dataset_parameter() :: #{
+%%   <<"DefaultValues">> => integer_dataset_parameter_default_values(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ValueType">> => list(any())
+%% }
+-type integer_dataset_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_s3_destination_configuration() :: #{
+%%   <<"BucketConfiguration">> => s3_bucket_configuration()
+%% }
+-type snapshot_s3_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dashboard_links_request() :: #{
+%%   <<"LinkEntities">> := list(string()())
+%% }
+-type update_dashboard_links_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% geo_spatial_column_group() :: #{
+%%   <<"Columns">> => list(string()()),
+%%   <<"CountryCode">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type geo_spatial_column_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_topic_request() :: #{
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Topic">> := topic_details(),
+%%   <<"TopicId">> := string()
+%% }
+-type create_topic_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% decimal_value_when_unset_configuration() :: #{
+%%   <<"CustomValue">> => float(),
+%%   <<"ValueWhenUnsetOption">> => list(any())
+%% }
+-type decimal_value_when_unset_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% font() :: #{
+%%   <<"FontFamily">> => string()
+%% }
+-type font() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_pricing_plan_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type unsupported_pricing_plan_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_point_style_options() :: #{
+%%   <<"ClusterMarkerConfiguration">> => cluster_marker_configuration(),
+%%   <<"HeatmapConfiguration">> => geospatial_heatmap_configuration(),
+%%   <<"SelectedPointStyle">> => list(any())
+%% }
+-type geospatial_point_style_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% radar_chart_series_settings() :: #{
+%%   <<"AreaStyleSettings">> => radar_chart_area_style_settings()
+%% }
+-type radar_chart_series_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_data_set_refresh_properties_request() :: #{
+%%   <<"DataSetRefreshProperties">> := data_set_refresh_properties()
+%% }
+-type put_data_set_refresh_properties_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% scroll_bar_options() :: #{
+%%   <<"Visibility">> => list(any()),
+%%   <<"VisibleRange">> => visible_range_options()
+%% }
+-type scroll_bar_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_data_sources_response() :: #{
+%%   <<"DataSourceSummaries">> => list(data_source_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type search_data_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_topic_request() :: #{
+%%   <<"Topic">> := topic_details()
+%% }
+-type update_topic_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% theme_alias() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"ThemeVersionNumber">> => float()
+%% }
+-type theme_alias() :: #{binary() => any()}.
+
+%% Example:
+%% update_dashboard_published_version_request() :: #{}
+-type update_dashboard_published_version_request() :: #{}.
+
+%% Example:
+%% describe_asset_bundle_import_job_request() :: #{}
+-type describe_asset_bundle_import_job_request() :: #{}.
+
+
+%% Example:
+%% layout() :: #{
+%%   <<"Configuration">> => layout_configuration()
+%% }
+-type layout() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_line_static_data_configuration() :: #{
+%%   <<"Value">> => float()
+%% }
+-type reference_line_static_data_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% free_form_layout_element_border_style() :: #{
+%%   <<"Color">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type free_form_layout_element_border_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_group() :: #{
+%%   <<"CrossDataset">> => list(any()),
+%%   <<"FilterGroupId">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"ScopeConfiguration">> => filter_scope_configuration(),
+%%   <<"Status">> => list(any())
+%% }
+-type filter_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_iam_policy_assignment_request() :: #{
+%%   <<"AssignmentStatus">> => list(any()),
+%%   <<"Identities">> => map(),
+%%   <<"PolicyArn">> => string()
+%% }
+-type update_iam_policy_assignment_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_namespace_request() :: #{}
+-type describe_namespace_request() :: #{}.
+
+
+%% Example:
+%% create_ingestion_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"IngestionId">> => string(),
+%%   <<"IngestionStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_ingestion_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_account_customization_request() :: #{
+%%   <<"Namespace">> => string(),
+%%   <<"Resolved">> => boolean()
+%% }
+-type describe_account_customization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_iot_analytics_parameters() :: #{
+%%   <<"DataSetName">> => string()
+%% }
+-type aws_iot_analytics_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_template_request() :: #{
+%%   <<"Definition">> => template_version_definition(),
+%%   <<"Name">> => string(),
+%%   <<"SourceEntity">> => template_source_entity(),
+%%   <<"ValidationStrategy">> => validation_strategy(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type update_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_menu_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type context_menu_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_filter_list_configuration() :: #{
+%%   <<"CategoryValues">> => list(string()()),
+%%   <<"MatchOperator">> => list(any()),
+%%   <<"NullOption">> => list(any()),
+%%   <<"SelectAllOptions">> => list(any())
+%% }
+-type custom_filter_list_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% scatter_plot_categorically_aggregated_field_wells() :: #{
+%%   <<"Category">> => list(dimension_field()()),
+%%   <<"Label">> => list(dimension_field()()),
+%%   <<"Size">> => list(measure_field()()),
+%%   <<"XAxis">> => list(measure_field()()),
+%%   <<"YAxis">> => list(measure_field()())
+%% }
+-type scatter_plot_categorically_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_theme_alias_request() :: #{
+%%   <<"ThemeVersionNumber">> := float()
+%% }
+-type create_theme_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% bookmarks_configurations() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type bookmarks_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"UpdateStatus">> => list(any())
+%% }
+-type update_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% gauge_chart_options() :: #{
+%%   <<"Arc">> => arc_configuration(),
+%%   <<"ArcAxis">> => arc_axis_configuration(),
+%%   <<"Comparison">> => comparison_configuration(),
+%%   <<"PrimaryValueDisplayType">> => list(any()),
+%%   <<"PrimaryValueFontConfiguration">> => font_configuration()
+%% }
+-type gauge_chart_options() :: #{binary() => any()}.
+
+%% Example:
+%% describe_topic_request() :: #{}
+-type describe_topic_request() :: #{}.
+
+
+%% Example:
+%% top_bottom_filter() :: #{
+%%   <<"AggregationSortConfigurations">> => list(aggregation_sort_configuration()()),
+%%   <<"Column">> => column_identifier(),
+%%   <<"FilterId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"ParameterName">> => string(),
+%%   <<"TimeGranularity">> => list(any())
+%% }
+-type top_bottom_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_info() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% maximum_minimum_computation() :: #{
+%%   <<"ComputationId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Time">> => dimension_field(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => measure_field()
+%% }
+-type maximum_minimum_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_account_customization_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_account_customization_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_sort_options() :: #{
+%%   <<"ColumnSort">> => column_sort(),
+%%   <<"FieldSort">> => field_sort()
+%% }
+-type field_sort_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connection() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityStatus">> => list(any()),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DnsResolvers">> => list(string()()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkInterfaces">> => list(network_interface()()),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"Status">> => list(any()),
+%%   <<"VPCConnectionId">> => string(),
+%%   <<"VPCId">> => string()
+%% }
+-type vpc_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_connection_request() :: #{
+%%   <<"DnsResolvers">> => list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"SecurityGroupIds">> := list(string()()),
+%%   <<"SubnetIds">> := list(string()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VPCConnectionId">> := string()
+%% }
+-type create_vpc_connection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unaggregated_field() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"FieldId">> => string(),
+%%   <<"FormatConfiguration">> => format_configuration()
+%% }
+-type unaggregated_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_series_axis_display_options() :: #{
+%%   <<"AxisOptions">> => axis_display_options(),
+%%   <<"MissingDataConfigurations">> => list(missing_data_configuration()())
+%% }
+-type line_series_axis_display_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_visual_scoping_configuration() :: #{
+%%   <<"Scope">> => list(any()),
+%%   <<"SheetId">> => string(),
+%%   <<"VisualIds">> => list(string()())
+%% }
+-type sheet_visual_scoping_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamic_default_value() :: #{
+%%   <<"DefaultValueColumn">> => column_identifier(),
+%%   <<"GroupNameColumn">> => column_identifier(),
+%%   <<"UserNameColumn">> => column_identifier()
+%% }
+-type dynamic_default_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% axis_display_min_max_range() :: #{
+%%   <<"Maximum">> => float(),
+%%   <<"Minimum">> => float()
+%% }
+-type axis_display_min_max_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_cell_conditional_formatting() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"Scope">> => pivot_table_conditional_formatting_scope(),
+%%   <<"Scopes">> => list(pivot_table_conditional_formatting_scope()()),
+%%   <<"TextFormat">> => text_conditional_format()
+%% }
+-type pivot_table_cell_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_analyses_response() :: #{
+%%   <<"AnalysisSummaryList">> => list(analysis_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type search_analyses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameters() :: #{
+%%   <<"DateTimeParameters">> => list(date_time_parameter()()),
+%%   <<"DecimalParameters">> => list(decimal_parameter()()),
+%%   <<"IntegerParameters">> => list(integer_parameter()()),
+%%   <<"StringParameters">> => list(string_parameter()())
+%% }
+-type parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% grid_layout_configuration() :: #{
+%%   <<"CanvasSizeOptions">> => grid_layout_canvas_size_options(),
+%%   <<"Elements">> => list(grid_layout_element()())
+%% }
+-type grid_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_theme_request() :: #{
+%%   <<"VersionNumber">> => float()
+%% }
+-type delete_theme_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_version_definition() :: #{
+%%   <<"AnalysisDefaults">> => analysis_defaults(),
+%%   <<"CalculatedFields">> => list(calculated_field()()),
+%%   <<"ColumnConfigurations">> => list(column_configuration()()),
+%%   <<"DataSetConfigurations">> => list(data_set_configuration()()),
+%%   <<"FilterGroups">> => list(filter_group()()),
+%%   <<"Options">> => asset_options(),
+%%   <<"ParameterDeclarations">> => list(parameter_declaration()()),
+%%   <<"Sheets">> => list(sheet_definition()())
+%% }
+-type template_version_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% named_entity_definition_metric() :: #{
+%%   <<"Aggregation">> => list(any()),
+%%   <<"AggregationFunctionParameters">> => map()
+%% }
+-type named_entity_definition_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% free_form_layout_screen_canvas_size_options() :: #{
+%%   <<"OptimizedViewPortWidth">> => string()
+%% }
+-type free_form_layout_screen_canvas_size_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_label_type() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type field_label_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_set_permissions_request() :: #{}
+-type describe_data_set_permissions_request() :: #{}.
+
+
+%% Example:
+%% sheet_definition() :: #{
+%%   <<"ContentType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"FilterControls">> => list(filter_control()()),
+%%   <<"Layouts">> => list(layout()()),
+%%   <<"Name">> => string(),
+%%   <<"ParameterControls">> => list(parameter_control()()),
+%%   <<"SheetControlLayouts">> => list(sheet_control_layout()()),
+%%   <<"SheetId">> => string(),
+%%   <<"TextBoxes">> => list(sheet_text_box()()),
+%%   <<"Title">> => string(),
+%%   <<"Visuals">> => list(visual()())
+%% }
+-type sheet_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% relative_dates_filter() :: #{
+%%   <<"AnchorDateConfiguration">> => anchor_date_configuration(),
+%%   <<"Column">> => column_identifier(),
+%%   <<"ExcludePeriodConfiguration">> => exclude_period_configuration(),
+%%   <<"FilterId">> => string(),
+%%   <<"MinimumGranularity">> => list(any()),
+%%   <<"NullOption">> => list(any()),
+%%   <<"ParameterName">> => string(),
+%%   <<"RelativeDateType">> => list(any()),
+%%   <<"RelativeDateValue">> => integer(),
+%%   <<"TimeGranularity">> => list(any())
+%% }
+-type relative_dates_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_chart_series_settings() :: #{
+%%   <<"LineStyleSettings">> => line_chart_line_style_settings(),
+%%   <<"MarkerStyleSettings">> => line_chart_marker_style_settings()
+%% }
+-type line_chart_series_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_field_sort_options() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"SortBy">> => pivot_table_sort_by()
+%% }
+-type pivot_field_sort_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% queue_info() :: #{
+%%   <<"QueuedIngestion">> => string(),
+%%   <<"WaitingOnIngestion">> => string()
+%% }
+-type queue_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% rename_column_operation() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"NewColumnName">> => string()
+%% }
+-type rename_column_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% long_format_text() :: #{
+%%   <<"PlainText">> => string(),
+%%   <<"RichText">> => string()
+%% }
+-type long_format_text() :: #{binary() => any()}.
+
+
+%% Example:
+%% tree_map_field_wells() :: #{
+%%   <<"TreeMapAggregatedFieldWells">> => tree_map_aggregated_field_wells()
+%% }
+-type tree_map_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% grid_layout_element() :: #{
+%%   <<"ColumnIndex">> => integer(),
+%%   <<"ColumnSpan">> => integer(),
+%%   <<"ElementId">> => string(),
+%%   <<"ElementType">> => list(any()),
+%%   <<"RowIndex">> => integer(),
+%%   <<"RowSpan">> => integer()
+%% }
+-type grid_layout_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_identifier() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"DataSetIdentifier">> => string()
+%% }
+-type column_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% heat_map_field_wells() :: #{
+%%   <<"HeatMapAggregatedFieldWells">> => heat_map_aggregated_field_wells()
+%% }
+-type heat_map_field_wells() :: #{binary() => any()}.
+
+%% Example:
+%% delete_role_custom_permission_request() :: #{}
+-type delete_role_custom_permission_request() :: #{}.
+
+
+%% Example:
+%% ssl_properties() :: #{
+%%   <<"DisableSsl">> => boolean()
+%% }
+-type ssl_properties() :: #{binary() => any()}.
+
+%% Example:
+%% describe_topic_permissions_request() :: #{}
+-type describe_topic_permissions_request() :: #{}.
+
+
+%% Example:
+%% table_field_option() :: #{
+%%   <<"CustomLabel">> => string(),
+%%   <<"FieldId">> => string(),
+%%   <<"URLStyling">> => table_field_url_configuration(),
+%%   <<"Visibility">> => list(any()),
+%%   <<"Width">> => string()
+%% }
+-type table_field_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% arc_axis_display_range() :: #{
+%%   <<"Max">> => float(),
+%%   <<"Min">> => float()
+%% }
+-type arc_axis_display_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_customization_request() :: #{
+%%   <<"AccountCustomization">> := account_customization(),
+%%   <<"Namespace">> => string()
+%% }
+-type update_account_customization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% word_cloud_chart_configuration() :: #{
+%%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
+%%   <<"FieldWells">> => word_cloud_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"SortConfiguration">> => word_cloud_sort_configuration(),
+%%   <<"WordCloudOptions">> => word_cloud_options()
+%% }
+-type word_cloud_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% histogram_configuration() :: #{
+%%   <<"BinOptions">> => histogram_bin_options(),
+%%   <<"DataLabels">> => data_label_options(),
+%%   <<"FieldWells">> => histogram_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Tooltip">> => tooltip_options(),
+%%   <<"VisualPalette">> => visual_palette(),
+%%   <<"XAxisDisplayOptions">> => axis_display_options(),
+%%   <<"XAxisLabelOptions">> => chart_axis_label_options(),
+%%   <<"YAxisDisplayOptions">> => axis_display_options()
+%% }
+-type histogram_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_dataset_parameter() :: #{
+%%   <<"DefaultValues">> => string_dataset_parameter_default_values(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ValueType">> => list(any())
+%% }
+-type string_dataset_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_analysis_request() :: #{
+%%   <<"ForceDeleteWithoutRecovery">> => boolean(),
+%%   <<"RecoveryWindowInDays">> => float()
+%% }
+-type delete_analysis_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type update_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_sql() :: #{
+%%   <<"Columns">> => list(input_column()()),
+%%   <<"DataSourceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SqlQuery">> => string()
+%% }
+-type custom_sql() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_selectable_values() :: #{
+%%   <<"Values">> => list(string()())
+%% }
+-type filter_selectable_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% donut_options() :: #{
+%%   <<"ArcOptions">> => arc_options(),
+%%   <<"DonutCenterOptions">> => donut_center_options()
+%% }
+-type donut_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_analysis_response() :: #{
+%%   <<"AnalysisId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_analysis_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_analyses_request() :: #{
+%%   <<"Filters">> := list(analysis_search_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_analyses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_theme_permissions_response() :: #{
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeArn">> => string(),
+%%   <<"ThemeId">> => string()
+%% }
+-type describe_theme_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% integer_parameter_declaration() :: #{
+%%   <<"DefaultValues">> => integer_default_values(),
+%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()()),
+%%   <<"Name">> => string(),
+%%   <<"ParameterValueType">> => list(any()),
+%%   <<"ValueWhenUnset">> => integer_value_when_unset_configuration()
+%% }
+-type integer_parameter_declaration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_folder_permissions_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FolderId">> => string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_folder_permissions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_set_refresh_properties_request() :: #{}
+-type describe_data_set_refresh_properties_request() :: #{}.
+
+
+%% Example:
+%% describe_theme_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"Theme">> => theme()
+%% }
+-type describe_theme_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% state_persistence_configurations() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type state_persistence_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_path_sort() :: #{
+%%   <<"Direction">> => list(any()),
+%%   <<"SortPaths">> => list(data_path_value()())
+%% }
+-type data_path_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% folder_search_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type folder_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% arc_options() :: #{
+%%   <<"ArcThickness">> => list(any())
+%% }
+-type arc_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% combo_chart_field_wells() :: #{
+%%   <<"ComboChartAggregatedFieldWells">> => combo_chart_aggregated_field_wells()
+%% }
+-type combo_chart_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_identity_propagation_config_request() :: #{
+%%   <<"AuthorizedTargets">> => list(string()())
+%% }
+-type update_identity_propagation_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_topic_permissions_response() :: #{
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type describe_topic_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_content_configuration() :: #{
+%%   <<"ContentType">> => list(any()),
+%%   <<"ContentUrl">> => string(),
+%%   <<"ImageScaling">> => list(any()),
+%%   <<"Interactions">> => visual_interaction_options()
+%% }
+-type custom_content_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_error() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"ViolatedEntities">> => list(entity()())
+%% }
+-type template_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_data_source_response() :: #{
+%%   <<"DataSource">> => data_source(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_version_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"SourceEntityArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VersionNumber">> => float()
+%% }
+-type dashboard_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_topic_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RefreshArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicId">> => string()
+%% }
+-type create_topic_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_axis_options() :: #{
+%%   <<"MissingDateVisibility">> => list(any())
+%% }
+-type date_axis_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% join_instruction() :: #{
+%%   <<"LeftJoinKeyProperties">> => join_key_properties(),
+%%   <<"LeftOperand">> => string(),
+%%   <<"OnClause">> => string(),
+%%   <<"RightJoinKeyProperties">> => join_key_properties(),
+%%   <<"RightOperand">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type join_instruction() :: #{binary() => any()}.
+
+
+%% Example:
+%% comparison_format_configuration() :: #{
+%%   <<"NumberDisplayFormatConfiguration">> => number_display_format_configuration(),
+%%   <<"PercentageDisplayFormatConfiguration">> => percentage_display_format_configuration()
+%% }
+-type comparison_format_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_resource_id_override_configuration() :: #{
+%%   <<"PrefixForAllResources">> => string()
+%% }
+-type asset_bundle_import_job_resource_id_override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_theme_alias_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeAlias">> => theme_alias()
+%% }
+-type describe_theme_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_definition() :: #{
+%%   <<"AnalysisDefaults">> => analysis_defaults(),
+%%   <<"CalculatedFields">> => list(calculated_field()()),
+%%   <<"ColumnConfigurations">> => list(column_configuration()()),
+%%   <<"DataSetIdentifierDeclarations">> => list(data_set_identifier_declaration()()),
+%%   <<"FilterGroups">> => list(filter_group()()),
+%%   <<"Options">> => asset_options(),
+%%   <<"ParameterDeclarations">> => list(parameter_declaration()()),
+%%   <<"Sheets">> => list(sheet_definition()())
+%% }
+-type analysis_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% integer_value_when_unset_configuration() :: #{
+%%   <<"CustomValue">> => float(),
+%%   <<"ValueWhenUnsetOption">> => list(any())
+%% }
+-type integer_value_when_unset_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_set_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DataSetId">> => string(),
+%%   <<"IngestionArn">> => string(),
+%%   <<"IngestionId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_data_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_theme_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeId">> => string(),
+%%   <<"VersionArn">> => string()
+%% }
+-type create_theme_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_template_definition_request() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"VersionNumber">> => float()
+%% }
+-type describe_template_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_total_options() :: #{
+%%   <<"CustomLabel">> => string(),
+%%   <<"MetricHeaderCellStyle">> => table_cell_style(),
+%%   <<"Placement">> => list(any()),
+%%   <<"ScrollStatus">> => list(any()),
+%%   <<"TotalAggregationOptions">> => list(total_aggregation_option()()),
+%%   <<"TotalCellStyle">> => table_cell_style(),
+%%   <<"TotalsVisibility">> => list(any()),
+%%   <<"ValueCellStyle">> => table_cell_style()
+%% }
+-type pivot_total_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_inline_visualization() :: #{
+%%   <<"DataBars">> => data_bars_options()
+%% }
+-type table_inline_visualization() :: #{binary() => any()}.
+
+
+%% Example:
+%% named_entity_definition() :: #{
+%%   <<"FieldName">> => string(),
+%%   <<"Metric">> => named_entity_definition_metric(),
+%%   <<"PropertyName">> => string(),
+%%   <<"PropertyRole">> => list(any()),
+%%   <<"PropertyUsage">> => list(any())
+%% }
+-type named_entity_definition() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_connection_request() :: #{}
+-type delete_vpc_connection_request() :: #{}.
+
+
+%% Example:
+%% snapshot_job_result() :: #{
+%%   <<"AnonymousUsers">> => list(anonymous_user_snapshot_job_result()())
+%% }
+-type snapshot_job_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_search_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type dashboard_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% small_multiples_axis_properties() :: #{
+%%   <<"Placement">> => list(any()),
+%%   <<"Scale">> => list(any())
+%% }
+-type small_multiples_axis_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% maria_db_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type maria_db_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_analysis_permissions_response() :: #{
+%%   <<"AnalysisArn">> => string(),
+%%   <<"AnalysisId">> => string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_analysis_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% axis_linear_scale() :: #{
+%%   <<"StepCount">> => integer(),
+%%   <<"StepSize">> => float()
+%% }
+-type axis_linear_scale() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_list_control() :: #{
+%%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
+%%   <<"DisplayOptions">> => list_control_display_options(),
+%%   <<"ParameterControlId">> => string(),
+%%   <<"SelectableValues">> => parameter_selectable_values(),
+%%   <<"SourceParameterName">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type parameter_list_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_role_custom_permission_response() :: #{
+%%   <<"CustomPermissionsName">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_role_custom_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_control_layout_configuration() :: #{
+%%   <<"GridLayout">> => grid_layout_configuration()
+%% }
+-type sheet_control_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_chart_configuration() :: #{
+%%   <<"ContributionAnalysisDefaults">> => list(contribution_analysis_default()()),
+%%   <<"DataLabels">> => data_label_options(),
+%%   <<"DefaultSeriesSettings">> => line_chart_default_series_settings(),
+%%   <<"FieldWells">> => line_chart_field_wells(),
+%%   <<"ForecastConfigurations">> => list(forecast_configuration()()),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"PrimaryYAxisDisplayOptions">> => line_series_axis_display_options(),
+%%   <<"PrimaryYAxisLabelOptions">> => chart_axis_label_options(),
+%%   <<"ReferenceLines">> => list(reference_line()()),
+%%   <<"SecondaryYAxisDisplayOptions">> => line_series_axis_display_options(),
+%%   <<"SecondaryYAxisLabelOptions">> => chart_axis_label_options(),
+%%   <<"Series">> => list(series_item()()),
+%%   <<"SingleAxisOptions">> => single_axis_options(),
+%%   <<"SmallMultiplesOptions">> => small_multiples_options(),
+%%   <<"SortConfiguration">> => line_chart_sort_configuration(),
+%%   <<"Tooltip">> => tooltip_options(),
+%%   <<"Type">> => list(any()),
+%%   <<"VisualPalette">> => visual_palette(),
+%%   <<"XAxisDisplayOptions">> => axis_display_options(),
+%%   <<"XAxisLabelOptions">> => chart_axis_label_options()
+%% }
+-type line_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_axis_sort_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type visual_axis_sort_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_named_entity() :: #{
+%%   <<"Definition">> => list(named_entity_definition()()),
+%%   <<"EntityDescription">> => string(),
+%%   <<"EntityName">> => string(),
+%%   <<"EntitySynonyms">> => list(string()()),
+%%   <<"SemanticEntityType">> => semantic_entity_type()
+%% }
+-type topic_named_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_total_options() :: #{
+%%   <<"ColumnSubtotalOptions">> => subtotal_options(),
+%%   <<"ColumnTotalOptions">> => pivot_total_options(),
+%%   <<"RowSubtotalOptions">> => subtotal_options(),
+%%   <<"RowTotalOptions">> => pivot_total_options()
+%% }
+-type pivot_table_total_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% bar_chart_aggregated_field_wells() :: #{
+%%   <<"Category">> => list(dimension_field()()),
+%%   <<"Colors">> => list(dimension_field()()),
+%%   <<"SmallMultiples">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type bar_chart_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_user_edition_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type unsupported_user_edition_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% display_format_options() :: #{
+%%   <<"BlankCellFormat">> => string(),
+%%   <<"CurrencySymbol">> => string(),
+%%   <<"DateFormat">> => string(),
+%%   <<"DecimalSeparator">> => list(any()),
+%%   <<"FractionDigits">> => integer(),
+%%   <<"GroupingSeparator">> => string(),
+%%   <<"NegativeFormat">> => negative_format(),
+%%   <<"Prefix">> => string(),
+%%   <<"Suffix">> => string(),
+%%   <<"UnitScaler">> => list(any()),
+%%   <<"UseBlankCellFormat">> => boolean(),
+%%   <<"UseGrouping">> => boolean()
+%% }
+-type display_format_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% total_aggregation_function() :: #{
+%%   <<"SimpleTotalAggregationFunction">> => list(any())
+%% }
+-type total_aggregation_function() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_sharing_configuration() :: #{
+%%   <<"Permissions">> => list(resource_permission()())
+%% }
+-type link_sharing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_connections_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_connections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% mapped_data_set_parameter() :: #{
+%%   <<"DataSetIdentifier">> => string(),
+%%   <<"DataSetParameterName">> => string()
+%% }
+-type mapped_data_set_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% starburst_parameters() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ProductType">> => list(any())
+%% }
+-type starburst_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% shape_conditional_format() :: #{
+%%   <<"BackgroundColor">> => conditional_formatting_color()
+%% }
+-type shape_conditional_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tree_map_configuration() :: #{
+%%   <<"ColorLabelOptions">> => chart_axis_label_options(),
+%%   <<"ColorScale">> => color_scale(),
+%%   <<"DataLabels">> => data_label_options(),
+%%   <<"FieldWells">> => tree_map_field_wells(),
+%%   <<"GroupLabelOptions">> => chart_axis_label_options(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"SizeLabelOptions">> => chart_axis_label_options(),
+%%   <<"SortConfiguration">> => tree_map_sort_configuration(),
+%%   <<"Tooltip">> => tooltip_options()
+%% }
+-type tree_map_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_role_custom_permission_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_role_custom_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% active_iam_policy_assignment() :: #{
+%%   <<"AssignmentName">> => string(),
+%%   <<"PolicyArn">> => string()
+%% }
+-type active_iam_policy_assignment() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_analysis_override_tags() :: #{
+%%   <<"AnalysisIds">> => list(string()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type asset_bundle_import_job_analysis_override_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_namespace_request() :: #{
+%%   <<"IdentityStore">> := list(any()),
+%%   <<"Namespace">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_namespace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_bars_options() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"NegativeColor">> => string(),
+%%   <<"PositiveColor">> => string()
+%% }
+-type data_bars_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_configuration() :: #{
+%%   <<"ColumnGroupSchemaList">> => list(column_group_schema()()),
+%%   <<"DataSetSchema">> => data_set_schema(),
+%%   <<"Placeholder">> => string()
+%% }
+-type data_set_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_search_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type data_source_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% heat_map_aggregated_field_wells() :: #{
+%%   <<"Columns">> => list(dimension_field()()),
+%%   <<"Rows">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type heat_map_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_paginated_layout_configuration() :: #{
+%%   <<"SectionBased">> => default_section_based_layout_configuration()
+%% }
+-type default_paginated_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_iam_policy_assignments_for_user_response() :: #{
+%%   <<"ActiveAssignments">> => list(active_iam_policy_assignment()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_iam_policy_assignments_for_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_data_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% axis_scale() :: #{
+%%   <<"Linear">> => axis_linear_scale(),
+%%   <<"Logarithmic">> => axis_logarithmic_scale()
+%% }
+-type axis_scale() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_data_configuration() :: #{
+%%   <<"TreatmentOption">> => list(any())
+%% }
+-type missing_data_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dashboard_snapshot_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DashboardId">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"RequestId">> => string(),
+%%   <<"SnapshotConfiguration">> => snapshot_configuration(),
+%%   <<"SnapshotJobId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"UserConfiguration">> => snapshot_user_configuration_redacted()
+%% }
+-type describe_dashboard_snapshot_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_area_control_display_options() :: #{
+%%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
+%%   <<"PlaceholderOptions">> => text_control_placeholder_options(),
+%%   <<"TitleOptions">> => label_options()
+%% }
+-type text_area_control_display_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_template_request() :: #{
+%%   <<"VersionNumber">> => float()
+%% }
+-type delete_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_folder_membership_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_folder_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% filled_map_conditional_formatting_option() :: #{
+%%   <<"Shape">> => filled_map_shape_conditional_formatting()
+%% }
+-type filled_map_conditional_formatting_option() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_set_request() :: #{}
+-type describe_data_set_request() :: #{}.
+
+%% Example:
+%% delete_data_set_refresh_properties_request() :: #{}
+-type delete_data_set_refresh_properties_request() :: #{}.
+
+
+%% Example:
+%% conditional_formatting_icon_display_configuration() :: #{
+%%   <<"IconDisplayOption">> => list(any())
+%% }
+-type conditional_formatting_icon_display_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% arc_configuration() :: #{
+%%   <<"ArcAngle">> => float(),
+%%   <<"ArcThickness">> => list(any())
+%% }
+-type arc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% box_plot_style_options() :: #{
+%%   <<"FillStyle">> => list(any())
+%% }
+-type box_plot_style_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% minimum_label_type() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type minimum_label_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% anonymous_user_dashboard_visual_embedding_configuration() :: #{
+%%   <<"InitialDashboardVisualId">> => dashboard_visual_id()
+%% }
+-type anonymous_user_dashboard_visual_embedding_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_topic_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"Topic">> => topic_details(),
+%%   <<"TopicId">> => string()
+%% }
+-type describe_topic_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_user_dashboard_embedding_configuration() :: #{
+%%   <<"FeatureConfigurations">> => registered_user_dashboard_feature_configurations(),
+%%   <<"InitialDashboardId">> => string()
+%% }
+-type registered_user_dashboard_embedding_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% numeric_range_filter() :: #{
+%%   <<"AggregationFunction">> => aggregation_function(),
+%%   <<"Column">> => column_identifier(),
+%%   <<"FilterId">> => string(),
+%%   <<"IncludeMaximum">> => boolean(),
+%%   <<"IncludeMinimum">> => boolean(),
+%%   <<"NullOption">> => list(any()),
+%%   <<"RangeMaximum">> => numeric_range_filter_value(),
+%%   <<"RangeMinimum">> => numeric_range_filter_value(),
+%%   <<"SelectAllOptions">> => list(any())
+%% }
+-type numeric_range_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_data_sets_response() :: #{
+%%   <<"DataSetSummaries">> => list(data_set_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type search_data_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_propagation_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Services">> => list(authorized_targets_by_service()()),
+%%   <<"Status">> => integer()
+%% }
+-type list_identity_propagation_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% box_plot_field_wells() :: #{
+%%   <<"BoxPlotAggregatedFieldWells">> => box_plot_aggregated_field_wells()
+%% }
+-type box_plot_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_resource_link_sharing_configuration() :: #{
+%%   <<"Permissions">> => asset_bundle_resource_permissions()
+%% }
+-type asset_bundle_resource_link_sharing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_themes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_themes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_group_column_schema() :: #{
+%%   <<"Name">> => string()
+%% }
+-type column_group_column_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_relative_date_time_control() :: #{
+%%   <<"DisplayOptions">> => relative_date_time_control_display_options(),
+%%   <<"FilterControlId">> => string(),
+%%   <<"SourceFilterId">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type filter_relative_date_time_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster_marker_configuration() :: #{
+%%   <<"ClusterMarker">> => cluster_marker()
+%% }
+-type cluster_marker_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_dataset_parameter_default_values() :: #{
+%%   <<"StaticValues">> => list(string()())
+%% }
+-type string_dataset_parameter_default_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dashboard_definition_request() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"VersionNumber">> => float()
+%% }
+-type describe_dashboard_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyses_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_analyses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% numeric_range_filter_value() :: #{
+%%   <<"Parameter">> => string(),
+%%   <<"StaticValue">> => float()
+%% }
+-type numeric_range_filter_value() :: #{binary() => any()}.
+
+%% Example:
+%% describe_analysis_request() :: #{}
+-type describe_analysis_request() :: #{}.
+
+
+%% Example:
+%% section_style() :: #{
+%%   <<"Height">> => string(),
+%%   <<"Padding">> => spacing()
+%% }
+-type section_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% colors_configuration() :: #{
+%%   <<"CustomColors">> => list(custom_color()())
+%% }
+-type colors_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% section_after_page_break() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type section_after_page_break() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_search_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type analysis_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => pivot_table_configuration(),
+%%   <<"ConditionalFormatting">> => pivot_table_conditional_formatting(),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type pivot_table_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_control_placeholder_options() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type text_control_placeholder_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_conditional_format() :: #{
+%%   <<"BackgroundColor">> => conditional_formatting_color(),
+%%   <<"Icon">> => conditional_formatting_icon(),
+%%   <<"TextColor">> => conditional_formatting_color()
+%% }
+-type text_conditional_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% unique_values_computation() :: #{
+%%   <<"Category">> => dimension_field(),
+%%   <<"ComputationId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type unique_values_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% funnel_chart_data_label_options() :: #{
+%%   <<"CategoryLabelVisibility">> => list(any()),
+%%   <<"LabelColor">> => string(),
+%%   <<"LabelFontConfiguration">> => font_configuration(),
+%%   <<"MeasureDataLabelStyle">> => list(any()),
+%%   <<"MeasureLabelVisibility">> => list(any()),
+%%   <<"Position">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type funnel_chart_data_label_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% axis_logarithmic_scale() :: #{
+%%   <<"Base">> => float()
+%% }
+-type axis_logarithmic_scale() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_template_permissions_response() :: #{
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateArn">> => string(),
+%%   <<"TemplateId">> => string()
+%% }
+-type describe_template_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingestion() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"ErrorInfo">> => error_info(),
+%%   <<"IngestionId">> => string(),
+%%   <<"IngestionSizeInBytes">> => float(),
+%%   <<"IngestionStatus">> => list(any()),
+%%   <<"IngestionTimeInSeconds">> => float(),
+%%   <<"QueueInfo">> => queue_info(),
+%%   <<"RequestSource">> => list(any()),
+%%   <<"RequestType">> => list(any()),
+%%   <<"RowInfo">> => row_info()
+%% }
+-type ingestion() :: #{binary() => any()}.
+
+
+%% Example:
+%% subtotal_options() :: #{
+%%   <<"CustomLabel">> => string(),
+%%   <<"FieldLevel">> => list(any()),
+%%   <<"FieldLevelOptions">> => list(pivot_table_field_subtotal_options()()),
+%%   <<"MetricHeaderCellStyle">> => table_cell_style(),
+%%   <<"StyleTargets">> => list(table_style_target()()),
+%%   <<"TotalCellStyle">> => table_cell_style(),
+%%   <<"TotalsVisibility">> => list(any()),
+%%   <<"ValueCellStyle">> => table_cell_style()
+%% }
+-type subtotal_options() :: #{binary() => any()}.
+
+%% Example:
+%% describe_theme_permissions_request() :: #{}
+-type describe_theme_permissions_request() :: #{}.
+
+
+%% Example:
+%% axis_display_options() :: #{
+%%   <<"AxisLineVisibility">> => list(any()),
+%%   <<"AxisOffset">> => string(),
+%%   <<"DataOptions">> => axis_data_options(),
+%%   <<"GridLineVisibility">> => list(any()),
+%%   <<"ScrollbarOptions">> => scroll_bar_options(),
+%%   <<"TickLabelOptions">> => axis_tick_label_options()
+%% }
+-type axis_display_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_analysis_override_parameters() :: #{
+%%   <<"AnalysisId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type asset_bundle_import_job_analysis_override_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_field_collapse_state_target() :: #{
+%%   <<"FieldDataPathValues">> => list(data_path_value()()),
+%%   <<"FieldId">> => string()
+%% }
+-type pivot_table_field_collapse_state_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_set_request() :: #{
+%%   <<"ColumnGroups">> => list(column_group()()),
+%%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()()),
+%%   <<"DataSetId">> := string(),
+%%   <<"DataSetUsageConfiguration">> => data_set_usage_configuration(),
+%%   <<"DatasetParameters">> => list(dataset_parameter()()),
+%%   <<"FieldFolders">> => map(),
+%%   <<"FolderArns">> => list(string()()),
+%%   <<"ImportMode">> := list(any()),
+%%   <<"LogicalTableMap">> => map(),
+%%   <<"Name">> := string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"PhysicalTableMap">> := map(),
+%%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
+%%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_data_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_user_dashboard_feature_configurations() :: #{
+%%   <<"Bookmarks">> => bookmarks_configurations(),
+%%   <<"StatePersistence">> => state_persistence_configurations()
+%% }
+-type registered_user_dashboard_feature_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_operation() :: #{
+%%   <<"ConditionExpression">> => string()
+%% }
+-type filter_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_data_set_override_properties() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Properties">> => list(list(any())())
+%% }
+-type asset_bundle_export_job_data_set_override_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_data_sets_request() :: #{
+%%   <<"Filters">> := list(data_set_search_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_data_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_palette() :: #{
+%%   <<"ChartColor">> => string(),
+%%   <<"ColorMap">> => list(data_path_color()())
+%% }
+-type visual_palette() :: #{binary() => any()}.
+
+
+%% Example:
+%% visible_range_options() :: #{
+%%   <<"PercentRange">> => percent_visible_range()
+%% }
+-type visible_range_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_error() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type asset_bundle_export_job_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% scatter_plot_unaggregated_field_wells() :: #{
+%%   <<"Category">> => list(dimension_field()()),
+%%   <<"Label">> => list(dimension_field()()),
+%%   <<"Size">> => list(measure_field()()),
+%%   <<"XAxis">> => list(dimension_field()()),
+%%   <<"YAxis">> => list(dimension_field()())
+%% }
+-type scatter_plot_unaggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_user_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"User">> => user(),
+%%   <<"UserInvitationUrl">> => string()
+%% }
+-type register_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_category_filter() :: #{
+%%   <<"CategoryFilterFunction">> => list(any()),
+%%   <<"CategoryFilterType">> => list(any()),
+%%   <<"Constant">> => topic_category_filter_constant(),
+%%   <<"Inverse">> => boolean()
+%% }
+-type topic_category_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_folder_permissions_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FolderId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_folder_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_entity_type() :: #{
+%%   <<"SubTypeName">> => string(),
+%%   <<"TypeName">> => string(),
+%%   <<"TypeParameters">> => map()
+%% }
+-type semantic_entity_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% filled_map_sort_configuration() :: #{
+%%   <<"CategorySort">> => list(field_sort_options()())
+%% }
+-type filled_map_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% snowflake_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Warehouse">> => string()
+%% }
+-type snowflake_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_source_analysis() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DataSetReferences">> => list(data_set_reference()())
+%% }
+-type template_source_analysis() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_tooltip_item() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"TooltipTarget">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type field_tooltip_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% scatter_plot_sort_configuration() :: #{
+%%   <<"ScatterPlotLimitConfiguration">> => items_limit_configuration()
+%% }
+-type scatter_plot_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_window_options() :: #{
+%%   <<"Bounds">> => geospatial_coordinate_bounds(),
+%%   <<"MapZoomMode">> => list(any())
+%% }
+-type geospatial_window_options() :: #{binary() => any()}.
+
+%% Example:
+%% describe_template_alias_request() :: #{}
+-type describe_template_alias_request() :: #{}.
+
+
+%% Example:
+%% describe_account_subscription_response() :: #{
+%%   <<"AccountInfo">> => account_info(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_account_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_bundle_export_jobs_response() :: #{
+%%   <<"AssetBundleExportJobSummaryList">> => list(asset_bundle_export_job_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_asset_bundle_export_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_i_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => k_p_i_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ConditionalFormatting">> => k_p_i_conditional_formatting(),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type k_p_i_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DashboardId">> => string(),
+%%   <<"LastPublishedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"LinkEntities">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => dashboard_version()
+%% }
+-type dashboard() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_topic_refresh_response() :: #{
+%%   <<"RefreshDetails">> => topic_refresh_details(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_topic_refresh_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditional_formatting_custom_icon_options() :: #{
+%%   <<"Icon">> => list(any()),
+%%   <<"UnicodeIcon">> => string()
+%% }
+-type conditional_formatting_custom_icon_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% panel_configuration() :: #{
+%%   <<"BackgroundColor">> => string(),
+%%   <<"BackgroundVisibility">> => list(any()),
+%%   <<"BorderColor">> => string(),
+%%   <<"BorderStyle">> => list(any()),
+%%   <<"BorderThickness">> => string(),
+%%   <<"BorderVisibility">> => list(any()),
+%%   <<"GutterSpacing">> => string(),
+%%   <<"GutterVisibility">> => list(any()),
+%%   <<"Title">> => panel_title_options()
+%% }
+-type panel_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_data_source_override_tags() :: #{
+%%   <<"DataSourceIds">> => list(string()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type asset_bundle_import_job_data_source_override_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_not_whitelisted_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type domain_not_whitelisted_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_type() :: #{
+%%   <<"FalseyCellValue">> => string(),
+%%   <<"FalseyCellValueSynonyms">> => list(string()()),
+%%   <<"SubTypeName">> => string(),
+%%   <<"TruthyCellValue">> => string(),
+%%   <<"TruthyCellValueSynonyms">> => list(string()()),
+%%   <<"TypeName">> => string(),
+%%   <<"TypeParameters">> => map()
+%% }
+-type semantic_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => table_configuration(),
+%%   <<"ConditionalFormatting">> => table_conditional_formatting(),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type table_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_menu_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type visual_menu_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_visual_publish_options() :: #{
+%%   <<"ExportHiddenFieldsOption">> => export_hidden_fields_option()
+%% }
+-type dashboard_visual_publish_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% computation() :: #{
+%%   <<"Forecast">> => forecast_computation(),
+%%   <<"GrowthRate">> => growth_rate_computation(),
+%%   <<"MaximumMinimum">> => maximum_minimum_computation(),
+%%   <<"MetricComparison">> => metric_comparison_computation(),
+%%   <<"PeriodOverPeriod">> => period_over_period_computation(),
+%%   <<"PeriodToDate">> => period_to_date_computation(),
+%%   <<"TopBottomMovers">> => top_bottom_movers_computation(),
+%%   <<"TopBottomRanked">> => top_bottom_ranked_computation(),
+%%   <<"TotalAggregation">> => total_aggregation_computation(),
+%%   <<"UniqueValues">> => unique_values_computation()
+%% }
+-type computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_to_csv_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type export_to_csv_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_formatting() :: #{
+%%   <<"DisplayFormat">> => list(any()),
+%%   <<"DisplayFormatOptions">> => display_format_options()
+%% }
+-type default_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_source_entity() :: #{
+%%   <<"SourceTemplate">> => analysis_source_template()
+%% }
+-type analysis_source_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditional_formatting_custom_icon_condition() :: #{
+%%   <<"Color">> => string(),
+%%   <<"DisplayConfiguration">> => conditional_formatting_icon_display_configuration(),
+%%   <<"Expression">> => string(),
+%%   <<"IconOptions">> => conditional_formatting_custom_icon_options()
+%% }
+-type conditional_formatting_custom_icon_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_anonymous_user_redacted() :: #{
+%%   <<"RowLevelPermissionTagKeys">> => list(string()())
+%% }
+-type snapshot_anonymous_user_redacted() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_comparison_computation() :: #{
+%%   <<"ComputationId">> => string(),
+%%   <<"FromValue">> => measure_field(),
+%%   <<"Name">> => string(),
+%%   <<"TargetValue">> => measure_field(),
+%%   <<"Time">> => dimension_field()
+%% }
+-type metric_comparison_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_analysis_response() :: #{
+%%   <<"Analysis">> => analysis(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_analysis_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% namespace_error() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type namespace_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"LatestVersionNumber">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"TemplateId">> => string()
+%% }
+-type template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_path_label_type() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"FieldValue">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type data_path_label_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_template_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_theme_override_properties() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Properties">> => list(list(any())())
+%% }
+-type asset_bundle_export_job_theme_override_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% slider_control_display_options() :: #{
+%%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
+%%   <<"TitleOptions">> => label_options()
+%% }
+-type slider_control_display_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_analysis_request() :: #{
+%%   <<"Definition">> => analysis_definition(),
+%%   <<"Name">> := string(),
+%%   <<"Parameters">> => parameters(),
+%%   <<"SourceEntity">> => analysis_source_entity(),
+%%   <<"ThemeArn">> => string(),
+%%   <<"ValidationStrategy">> => validation_strategy()
+%% }
+-type update_analysis_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% total_aggregation_computation() :: #{
+%%   <<"ComputationId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Value">> => measure_field()
+%% }
+-type total_aggregation_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_refresh_schedule_request() :: #{
+%%   <<"Schedule">> := refresh_schedule()
+%% }
+-type update_refresh_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"UserList">> => list(user()())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_role_memberships_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_role_memberships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_operation() :: #{
+%%   <<"ProjectedColumns">> => list(string()())
+%% }
+-type project_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_theme_request() :: #{
+%%   <<"BaseThemeId">> := string(),
+%%   <<"Configuration">> => theme_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type update_theme_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_theme_alias_request() :: #{
+%%   <<"ThemeVersionNumber">> := float()
+%% }
+-type update_theme_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_theme_request() :: #{
+%%   <<"BaseThemeId">> := string(),
+%%   <<"Configuration">> := theme_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VersionDescription">> => string()
+%% }
+-type create_theme_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% axis_data_options() :: #{
+%%   <<"DateAxisOptions">> => date_axis_options(),
+%%   <<"NumericAxisOptions">> => numeric_axis_options()
+%% }
+-type axis_data_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_groups_request() :: #{
+%%   <<"Filters">> := list(group_search_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% radar_chart_configuration() :: #{
+%%   <<"AlternateBandColorsVisibility">> => list(any()),
+%%   <<"AlternateBandEvenColor">> => string(),
+%%   <<"AlternateBandOddColor">> => string(),
+%%   <<"AxesRangeScale">> => list(any()),
+%%   <<"BaseSeriesSettings">> => radar_chart_series_settings(),
+%%   <<"CategoryAxis">> => axis_display_options(),
+%%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
+%%   <<"ColorAxis">> => axis_display_options(),
+%%   <<"ColorLabelOptions">> => chart_axis_label_options(),
+%%   <<"FieldWells">> => radar_chart_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"Shape">> => list(any()),
+%%   <<"SortConfiguration">> => radar_chart_sort_configuration(),
+%%   <<"StartAngle">> => float(),
+%%   <<"VisualPalette">> => visual_palette()
+%% }
+-type radar_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dashboard_response() :: #{
+%%   <<"Dashboard">> => dashboard(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_dashboard_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% amazon_elasticsearch_parameters() :: #{
+%%   <<"Domain">> => string()
+%% }
+-type amazon_elasticsearch_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_conditional_formatting_option() :: #{
+%%   <<"Cell">> => pivot_table_cell_conditional_formatting()
+%% }
+-type pivot_table_conditional_formatting_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% sankey_diagram_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => sankey_diagram_chart_configuration(),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type sankey_diagram_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dashboard_permissions_response() :: #{
+%%   <<"DashboardArn">> => string(),
+%%   <<"DashboardId">> => string(),
+%%   <<"LinkSharingConfiguration">> => link_sharing_configuration(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_dashboard_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_set_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DataSetId">> => string(),
+%%   <<"IngestionArn">> => string(),
+%%   <<"IngestionId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_data_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_topics_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_topics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_i_visual_layout_options() :: #{
+%%   <<"StandardLayout">> => k_p_i_visual_standard_layout()
+%% }
+-type k_p_i_visual_layout_options() :: #{binary() => any()}.
+
+%% Example:
+%% delete_topic_refresh_schedule_request() :: #{}
+-type delete_topic_refresh_schedule_request() :: #{}.
+
+
+%% Example:
+%% theme_version() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"BaseThemeId">> => string(),
+%%   <<"Configuration">> => theme_configuration(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Errors">> => list(theme_error()()),
+%%   <<"Status">> => list(any()),
+%%   <<"VersionNumber">> => float()
+%% }
+-type theme_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% postgre_sql_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type postgre_sql_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_date_time_picker_control() :: #{
+%%   <<"DisplayOptions">> => date_time_picker_control_display_options(),
+%%   <<"ParameterControlId">> => string(),
+%%   <<"SourceParameterName">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type parameter_date_time_picker_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% refresh_configuration() :: #{
+%%   <<"IncrementalRefresh">> => incremental_refresh()
+%% }
+-type refresh_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_i_actual_value_conditional_formatting() :: #{
+%%   <<"Icon">> => conditional_formatting_icon(),
+%%   <<"TextColor">> => conditional_formatting_color()
+%% }
+-type k_p_i_actual_value_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% combo_chart_aggregated_field_wells() :: #{
+%%   <<"BarValues">> => list(measure_field()()),
+%%   <<"Category">> => list(dimension_field()()),
+%%   <<"Colors">> => list(dimension_field()()),
+%%   <<"LineValues">> => list(measure_field()())
+%% }
+-type combo_chart_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateVersionSummaryList">> => list(template_version_summary()())
+%% }
+-type list_template_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% secondary_value_options() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type secondary_value_options() :: #{binary() => any()}.
+
+%% Example:
+%% delete_refresh_schedule_request() :: #{}
+-type delete_refresh_schedule_request() :: #{}.
+
+%% Example:
+%% list_refresh_schedules_request() :: #{}
+-type list_refresh_schedules_request() :: #{}.
+
+
+%% Example:
+%% list_data_sources_response() :: #{
+%%   <<"DataSources">> => list(data_source()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_data_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_source_request() :: #{}
+-type delete_data_source_request() :: #{}.
+
+
+%% Example:
+%% member_id_arn_pair() :: #{
+%%   <<"MemberArn">> => string(),
+%%   <<"MemberId">> => string()
+%% }
+-type member_id_arn_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_theme_aliases_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeAliasList">> => list(theme_alias()())
+%% }
+-type list_theme_aliases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_refresh_schedule_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ScheduleId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_refresh_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_slider_control() :: #{
+%%   <<"DisplayOptions">> => slider_control_display_options(),
+%%   <<"MaximumValue">> => float(),
+%%   <<"MinimumValue">> => float(),
+%%   <<"ParameterControlId">> => string(),
+%%   <<"SourceParameterName">> => string(),
+%%   <<"StepSize">> => float(),
+%%   <<"Title">> => string()
+%% }
+-type parameter_slider_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_value_when_unset_configuration() :: #{
+%%   <<"CustomValue">> => string(),
+%%   <<"ValueWhenUnsetOption">> => list(any())
+%% }
+-type string_value_when_unset_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_filter_configuration() :: #{
+%%   <<"CategoryValue">> => string(),
+%%   <<"MatchOperator">> => list(any()),
+%%   <<"NullOption">> => list(any()),
+%%   <<"ParameterName">> => string(),
+%%   <<"SelectAllOptions">> => list(any())
+%% }
+-type custom_filter_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_template_permissions_request() :: #{}
+-type describe_template_permissions_request() :: #{}.
+
+
+%% Example:
+%% data_set_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ColumnLevelPermissionRulesApplied">> => boolean(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"ImportMode">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
+%%   <<"RowLevelPermissionTagConfigurationApplied">> => boolean()
+%% }
+-type data_set_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tree_map_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => tree_map_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type tree_map_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% empty_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"DataSetIdentifier">> => string(),
+%%   <<"VisualId">> => string()
+%% }
+-type empty_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_data_set_override_tags() :: #{
+%%   <<"DataSetIds">> => list(string()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type asset_bundle_import_job_data_set_override_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_field_option() :: #{
+%%   <<"CustomLabel">> => string(),
+%%   <<"FieldId">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type pivot_table_field_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_asset_bundle_export_job_request() :: #{
+%%   <<"AssetBundleExportJobId">> := string(),
+%%   <<"CloudFormationOverridePropertyConfiguration">> => asset_bundle_cloud_formation_override_property_configuration(),
+%%   <<"ExportFormat">> := list(any()),
+%%   <<"IncludeAllDependencies">> => boolean(),
+%%   <<"IncludePermissions">> => boolean(),
+%%   <<"IncludeTags">> => boolean(),
+%%   <<"ResourceArns">> := list(string()()),
+%%   <<"ValidationStrategy">> => asset_bundle_export_job_validation_strategy()
+%% }
+-type start_asset_bundle_export_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditional_formatting_icon_set() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"IconSetType">> => list(any())
+%% }
+-type conditional_formatting_icon_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_field_options() :: #{
+%%   <<"CollapseStateOptions">> => list(pivot_table_field_collapse_state_option()()),
+%%   <<"DataPathOptions">> => list(pivot_table_data_path_option()()),
+%%   <<"SelectedFieldOptions">> => list(pivot_table_field_option()())
+%% }
+-type pivot_table_field_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_drop_down_control() :: #{
+%%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
+%%   <<"DisplayOptions">> => drop_down_control_display_options(),
+%%   <<"ParameterControlId">> => string(),
+%%   <<"SelectableValues">> => parameter_selectable_values(),
+%%   <<"SourceParameterName">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type parameter_drop_down_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% refresh_frequency() :: #{
+%%   <<"Interval">> => list(any()),
+%%   <<"RefreshOnDay">> => schedule_refresh_on_entity(),
+%%   <<"TimeOfTheDay">> => string(),
+%%   <<"Timezone">> => string()
+%% }
+-type refresh_frequency() :: #{binary() => any()}.
+
+
+%% Example:
+%% tree_map_sort_configuration() :: #{
+%%   <<"TreeMapGroupItemsLimitConfiguration">> => items_limit_configuration(),
+%%   <<"TreeMapSort">> => list(field_sort_options()())
+%% }
+-type tree_map_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% grid_layout_canvas_size_options() :: #{
+%%   <<"ScreenCanvasSizeOptions">> => grid_layout_screen_canvas_size_options()
+%% }
+-type grid_layout_canvas_size_options() :: #{binary() => any()}.
+
+%% Example:
+%% delete_folder_request() :: #{}
+-type delete_folder_request() :: #{}.
+
+
+%% Example:
+%% template_source_template() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type template_source_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% row_level_permission_data_set() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FormatVersion">> => list(any()),
+%%   <<"Namespace">> => string(),
+%%   <<"PermissionPolicy">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type row_level_permission_data_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dashboard_permissions_request() :: #{
+%%   <<"GrantLinkPermissions">> => list(resource_permission()()),
+%%   <<"GrantPermissions">> => list(resource_permission()()),
+%%   <<"RevokeLinkPermissions">> => list(resource_permission()()),
+%%   <<"RevokePermissions">> => list(resource_permission()())
+%% }
+-type update_dashboard_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% row_info() :: #{
+%%   <<"RowsDropped">> => float(),
+%%   <<"RowsIngested">> => float(),
+%%   <<"TotalRowsInDataset">> => float()
+%% }
+-type row_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_memberships_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_group_memberships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% row_level_permission_tag_rule() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"MatchAllValue">> => string(),
+%%   <<"TagKey">> => string(),
+%%   <<"TagMultiValueDelimiter">> => string()
+%% }
+-type row_level_permission_tag_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_control() :: #{
+%%   <<"DateTimePicker">> => filter_date_time_picker_control(),
+%%   <<"Dropdown">> => filter_drop_down_control(),
+%%   <<"List">> => filter_list_control(),
+%%   <<"RelativeDateTime">> => filter_relative_date_time_control(),
+%%   <<"Slider">> => filter_slider_control(),
+%%   <<"TextArea">> => filter_text_area_control(),
+%%   <<"TextField">> => filter_text_field_control()
+%% }
+-type filter_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% my_sql_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type my_sql_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_iprogress_bar_conditional_formatting() :: #{
+%%   <<"ForegroundColor">> => conditional_formatting_color()
+%% }
+-type k_p_iprogress_bar_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_tag() :: #{
+%%   <<"ColumnDescription">> => column_description(),
+%%   <<"ColumnGeographicRole">> => list(any())
+%% }
+-type column_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% free_form_layout_configuration() :: #{
+%%   <<"CanvasSizeOptions">> => free_form_layout_canvas_size_options(),
+%%   <<"Elements">> => list(free_form_layout_element()())
+%% }
+-type free_form_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% funnel_chart_aggregated_field_wells() :: #{
+%%   <<"Category">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type funnel_chart_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_time_parameter_declaration() :: #{
+%%   <<"DefaultValues">> => date_time_default_values(),
+%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()()),
+%%   <<"Name">> => string(),
+%%   <<"TimeGranularity">> => list(any()),
+%%   <<"ValueWhenUnset">> => date_time_value_when_unset_configuration()
+%% }
+-type date_time_parameter_declaration() :: #{binary() => any()}.
+
+
+%% Example:
+%% panel_title_options() :: #{
+%%   <<"FontConfiguration">> => font_configuration(),
+%%   <<"HorizontalTextAlignment">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type panel_title_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_hidden_fields_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type export_hidden_fields_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% top_bottom_movers_computation() :: #{
+%%   <<"Category">> => dimension_field(),
+%%   <<"ComputationId">> => string(),
+%%   <<"MoverSize">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"Time">> => dimension_field(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => measure_field()
+%% }
+-type top_bottom_movers_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_topics_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicsSummaries">> => list(topic_summary()())
+%% }
+-type list_topics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% word_cloud_options() :: #{
+%%   <<"CloudLayout">> => list(any()),
+%%   <<"MaximumStringLength">> => integer(),
+%%   <<"WordCasing">> => list(any()),
+%%   <<"WordOrientation">> => list(any()),
+%%   <<"WordPadding">> => list(any()),
+%%   <<"WordScaling">> => list(any())
+%% }
+-type word_cloud_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% total_aggregation_option() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"TotalAggregationFunction">> => total_aggregation_function()
+%% }
+-type total_aggregation_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_analysis_override_permissions() :: #{
+%%   <<"AnalysisIds">> => list(string()()),
+%%   <<"Permissions">> => asset_bundle_resource_permissions()
+%% }
+-type asset_bundle_import_job_analysis_override_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% radar_chart_aggregated_field_wells() :: #{
+%%   <<"Category">> => list(dimension_field()()),
+%%   <<"Color">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type radar_chart_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_refresh_schedule_override_parameters() :: #{
+%%   <<"DataSetId">> => string(),
+%%   <<"ScheduleId">> => string(),
+%%   <<"StartAfterDateTime">> => non_neg_integer()
+%% }
+-type asset_bundle_import_job_refresh_schedule_override_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pie_chart_aggregated_field_wells() :: #{
+%%   <<"Category">> => list(dimension_field()()),
+%%   <<"SmallMultiples">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type pie_chart_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% grid_layout_screen_canvas_size_options() :: #{
+%%   <<"OptimizedViewPortWidth">> => string(),
+%%   <<"ResizeOption">> => list(any())
+%% }
+-type grid_layout_screen_canvas_size_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% what_if_range_scenario() :: #{
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Value">> => float()
+%% }
+-type what_if_range_scenario() :: #{binary() => any()}.
+
+%% Example:
+%% describe_role_custom_permission_request() :: #{}
+-type describe_role_custom_permission_request() :: #{}.
+
+
+%% Example:
+%% create_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GroupName">> := string()
+%% }
+-type create_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_template_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()()),
+%%   <<"RevokePermissions">> => list(resource_permission()())
+%% }
+-type update_template_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_settings_request() :: #{
+%%   <<"DefaultNamespace">> := string(),
+%%   <<"NotificationEmail">> => string(),
+%%   <<"TerminationProtectionEnabled">> => boolean()
+%% }
+-type update_account_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_folder_membership_request() :: #{}
+-type create_folder_membership_request() :: #{}.
+
+
+%% Example:
+%% asset_bundle_export_job_refresh_schedule_override_properties() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Properties">> => list(list(any())())
+%% }
+-type asset_bundle_export_job_refresh_schedule_override_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_group() :: #{
+%%   <<"GeoSpatialColumnGroup">> => geo_spatial_column_group()
+%% }
+-type column_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_template_alias_request() :: #{
+%%   <<"TemplateVersionNumber">> := float()
+%% }
+-type create_template_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_error() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"ViolatedEntities">> => list(entity()())
+%% }
+-type analysis_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_user_dashboard_visual_embedding_configuration() :: #{
+%%   <<"InitialDashboardVisualId">> => dashboard_visual_id()
+%% }
+-type registered_user_dashboard_visual_embedding_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_action_navigation_operation() :: #{
+%%   <<"LocalNavigationConfiguration">> => local_navigation_configuration()
+%% }
+-type custom_action_navigation_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% bar_chart_configuration() :: #{
+%%   <<"BarsArrangement">> => list(any()),
+%%   <<"CategoryAxis">> => axis_display_options(),
+%%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
+%%   <<"ColorLabelOptions">> => chart_axis_label_options(),
+%%   <<"ContributionAnalysisDefaults">> => list(contribution_analysis_default()()),
+%%   <<"DataLabels">> => data_label_options(),
+%%   <<"FieldWells">> => bar_chart_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"Orientation">> => list(any()),
+%%   <<"ReferenceLines">> => list(reference_line()()),
+%%   <<"SmallMultiplesOptions">> => small_multiples_options(),
+%%   <<"SortConfiguration">> => bar_chart_sort_configuration(),
+%%   <<"Tooltip">> => tooltip_options(),
+%%   <<"ValueAxis">> => axis_display_options(),
+%%   <<"ValueLabelOptions">> => chart_axis_label_options(),
+%%   <<"VisualPalette">> => visual_palette()
+%% }
+-type bar_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_measure_field() :: #{
+%%   <<"AggregationFunction">> => list(any()),
+%%   <<"Column">> => column_identifier(),
+%%   <<"FieldId">> => string(),
+%%   <<"FormatConfiguration">> => date_time_format_configuration()
+%% }
+-type date_measure_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_iam_policy_assignment_response() :: #{
+%%   <<"AssignmentId">> => string(),
+%%   <<"AssignmentName">> => string(),
+%%   <<"AssignmentStatus">> => list(any()),
+%%   <<"Identities">> => map(),
+%%   <<"PolicyArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_iam_policy_assignment_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_group_membership_request() :: #{}
+-type create_group_membership_request() :: #{}.
+
+%% Example:
+%% describe_group_membership_request() :: #{}
+-type describe_group_membership_request() :: #{}.
+
+
+%% Example:
+%% generate_embed_url_for_anonymous_user_request() :: #{
+%%   <<"AllowedDomains">> => list(string()()),
+%%   <<"AuthorizedResourceArns">> := list(string()()),
+%%   <<"ExperienceConfiguration">> := anonymous_user_embedding_experience_configuration(),
+%%   <<"Namespace">> := string(),
+%%   <<"SessionLifetimeInMinutes">> => float(),
+%%   <<"SessionTags">> => list(session_tag()())
+%% }
+-type generate_embed_url_for_anonymous_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_time_dataset_parameter_default_values() :: #{
+%%   <<"StaticValues">> => list(non_neg_integer()())
+%% }
+-type date_time_dataset_parameter_default_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_interaction_options() :: #{
+%%   <<"ContextMenuOption">> => context_menu_option(),
+%%   <<"VisualMenuOption">> => visual_menu_option()
+%% }
+-type visual_interaction_options() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_source_permissions_request() :: #{}
+-type describe_data_source_permissions_request() :: #{}.
+
+
+%% Example:
+%% asset_bundle_import_job_dashboard_override_tags() :: #{
+%%   <<"DashboardIds">> => list(string()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type asset_bundle_import_job_dashboard_override_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_text_field_control() :: #{
+%%   <<"DisplayOptions">> => text_field_control_display_options(),
+%%   <<"FilterControlId">> => string(),
+%%   <<"SourceFilterId">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type filter_text_field_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% tile_style() :: #{
+%%   <<"Border">> => border_style()
+%% }
+-type tile_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_path_type() :: #{
+%%   <<"PivotTableDataPathType">> => list(any())
+%% }
+-type data_path_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_time_dataset_parameter() :: #{
+%%   <<"DefaultValues">> => date_time_dataset_parameter_default_values(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"TimeGranularity">> => list(any()),
+%%   <<"ValueType">> => list(any())
+%% }
+-type date_time_dataset_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% currency_display_format_configuration() :: #{
+%%   <<"DecimalPlacesConfiguration">> => decimal_places_configuration(),
+%%   <<"NegativeValueConfiguration">> => negative_value_configuration(),
+%%   <<"NullValueFormatConfiguration">> => null_value_format_configuration(),
+%%   <<"NumberScale">> => list(any()),
+%%   <<"Prefix">> => string(),
+%%   <<"SeparatorConfiguration">> => numeric_separator_configuration(),
+%%   <<"Suffix">> => string(),
+%%   <<"Symbol">> => string()
+%% }
+-type currency_display_format_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_asset_bundle_import_job_request() :: #{
+%%   <<"AssetBundleImportJobId">> := string(),
+%%   <<"AssetBundleImportSource">> := asset_bundle_import_source(),
+%%   <<"FailureAction">> => list(any()),
+%%   <<"OverrideParameters">> => asset_bundle_import_job_override_parameters(),
+%%   <<"OverridePermissions">> => asset_bundle_import_job_override_permissions(),
+%%   <<"OverrideTags">> => asset_bundle_import_job_override_tags(),
+%%   <<"OverrideValidationStrategy">> => asset_bundle_import_job_override_validation_strategy()
+%% }
+-type start_asset_bundle_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_session_embed_url_response() :: #{
+%%   <<"EmbedUrl">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type get_session_embed_url_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_bundle_import_jobs_response() :: #{
+%%   <<"AssetBundleImportJobSummaryList">> => list(asset_bundle_import_job_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_asset_bundle_import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_member() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"MemberName">> => string()
+%% }
+-type group_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% category_drill_down_filter() :: #{
+%%   <<"CategoryValues">> => list(string()()),
+%%   <<"Column">> => column_identifier()
+%% }
+-type category_drill_down_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% signup_response() :: #{
+%%   <<"IAMUser">> => boolean(),
+%%   <<"accountName">> => string(),
+%%   <<"directoryType">> => string(),
+%%   <<"userLoginName">> => string()
+%% }
+-type signup_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% section_based_layout_paper_canvas_size_options() :: #{
+%%   <<"PaperMargin">> => spacing(),
+%%   <<"PaperOrientation">> => list(any()),
+%%   <<"PaperSize">> => list(any())
+%% }
+-type section_based_layout_paper_canvas_size_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_credentials() :: #{
+%%   <<"CopySourceArn">> => string(),
+%%   <<"CredentialPair">> => credential_pair(),
+%%   <<"SecretArn">> => string()
+%% }
+-type data_source_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_customization() :: #{
+%%   <<"DefaultEmailCustomizationTemplate">> => string(),
+%%   <<"DefaultTheme">> => string()
+%% }
+-type account_customization() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_theme_request() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"VersionNumber">> => float()
+%% }
+-type describe_theme_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% series_item() :: #{
+%%   <<"DataFieldSeriesItem">> => data_field_series_item(),
+%%   <<"FieldSeriesItem">> => field_series_item()
+%% }
+-type series_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_role_custom_permission_request() :: #{
+%%   <<"CustomPermissionsName">> := string()
+%% }
+-type update_role_custom_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_embed_url_for_registered_user_response() :: #{
+%%   <<"EmbedUrl">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type generate_embed_url_for_registered_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_strategy() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type validation_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{}
+-type delete_user_request() :: #{}.
+
+
+%% Example:
+%% jira_parameters() :: #{
+%%   <<"SiteBaseUrl">> => string()
+%% }
+-type jira_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_folder_permissions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Namespace">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_folder_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"CategoryFilter">> => category_filter(),
+%%   <<"NumericEqualityFilter">> => numeric_equality_filter(),
+%%   <<"NumericRangeFilter">> => numeric_range_filter(),
+%%   <<"RelativeDatesFilter">> => relative_dates_filter(),
+%%   <<"TimeEqualityFilter">> => time_equality_filter(),
+%%   <<"TimeRangeFilter">> => time_range_filter(),
+%%   <<"TopBottomFilter">> => top_bottom_filter()
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% progress_bar_options() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type progress_bar_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_range_filter_value() :: #{
+%%   <<"Parameter">> => string(),
+%%   <<"RollingDate">> => rolling_date_configuration(),
+%%   <<"StaticValue">> => non_neg_integer()
+%% }
+-type time_range_filter_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% numeric_format_configuration() :: #{
+%%   <<"CurrencyDisplayFormatConfiguration">> => currency_display_format_configuration(),
+%%   <<"NumberDisplayFormatConfiguration">> => number_display_format_configuration(),
+%%   <<"PercentageDisplayFormatConfiguration">> => percentage_display_format_configuration()
+%% }
+-type numeric_format_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_operation_selected_fields_configuration() :: #{
+%%   <<"SelectedColumns">> => list(column_identifier()()),
+%%   <<"SelectedFieldOptions">> => list(any()),
+%%   <<"SelectedFields">> => list(string()())
+%% }
+-type filter_operation_selected_fields_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% anchor_date_configuration() :: #{
+%%   <<"AnchorOption">> => list(any()),
+%%   <<"ParameterName">> => string()
+%% }
+-type anchor_date_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_map_style_options() :: #{
+%%   <<"BaseMapStyle">> => list(any())
+%% }
+-type geospatial_map_style_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_aggregation_function() :: #{
+%%   <<"SimpleAttributeAggregation">> => list(any()),
+%%   <<"ValueForMultipleValues">> => string()
+%% }
+-type attribute_aggregation_function() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_role_membership_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_role_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_identifier_declaration() :: #{
+%%   <<"DataSetArn">> => string(),
+%%   <<"Identifier">> => string()
+%% }
+-type data_set_identifier_declaration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_topic_permissions_response() :: #{
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type update_topic_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_parameter_value_configuration() :: #{
+%%   <<"DestinationParameterName">> => string(),
+%%   <<"Value">> => destination_parameter_value_configuration()
+%% }
+-type set_parameter_value_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% null_value_format_configuration() :: #{
+%%   <<"NullString">> => string()
+%% }
+-type null_value_format_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% teradata_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type teradata_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% axis_display_data_driven_range() :: #{}
+-type axis_display_data_driven_range() :: #{}.
+
+
+%% Example:
+%% dashboard_visual_id() :: #{
+%%   <<"DashboardId">> => string(),
+%%   <<"SheetId">> => string(),
+%%   <<"VisualId">> => string()
+%% }
+-type dashboard_visual_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% range_ends_label_type() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type range_ends_label_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% concurrent_updating_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type concurrent_updating_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% items_limit_configuration() :: #{
+%%   <<"ItemsLimit">> => float(),
+%%   <<"OtherCategories">> => list(any())
+%% }
+-type items_limit_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dashboard_request() :: #{
+%%   <<"VersionNumber">> => float()
+%% }
+-type delete_dashboard_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_i_configuration() :: #{
+%%   <<"FieldWells">> => k_p_i_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"KPIOptions">> => k_p_i_options(),
+%%   <<"SortConfiguration">> => k_p_i_sort_configuration()
+%% }
+-type k_p_i_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_point_tooltip_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type data_point_tooltip_option() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dashboard_snapshot_job_result_request() :: #{}
+-type describe_dashboard_snapshot_job_result_request() :: #{}.
+
+
+%% Example:
+%% negative_value_configuration() :: #{
+%%   <<"DisplayMode">> => list(any())
+%% }
+-type negative_value_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_user_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_control_layout() :: #{
+%%   <<"Configuration">> => sheet_control_layout_configuration()
+%% }
+-type sheet_control_layout() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_theme_alias_response() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeId">> => string()
+%% }
+-type delete_theme_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_policy_assignment() :: #{
+%%   <<"AssignmentId">> => string(),
+%%   <<"AssignmentName">> => string(),
+%%   <<"AssignmentStatus">> => list(any()),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"Identities">> => map(),
+%%   <<"PolicyArn">> => string()
+%% }
+-type iam_policy_assignment() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_account_subscription_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_account_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_side_border_options() :: #{
+%%   <<"Bottom">> => table_border_options(),
+%%   <<"InnerHorizontal">> => table_border_options(),
+%%   <<"InnerVertical">> => table_border_options(),
+%%   <<"Left">> => table_border_options(),
+%%   <<"Right">> => table_border_options(),
+%%   <<"Top">> => table_border_options()
+%% }
+-type table_side_border_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% gauge_chart_field_wells() :: #{
+%%   <<"TargetValues">> => list(measure_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type gauge_chart_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_details() :: #{
+%%   <<"DataSets">> => list(dataset_metadata()()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"UserExperienceVersion">> => list(any())
+%% }
+-type topic_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_parameter() :: #{
+%%   <<"DateTimeDatasetParameter">> => date_time_dataset_parameter(),
+%%   <<"DecimalDatasetParameter">> => decimal_dataset_parameter(),
+%%   <<"IntegerDatasetParameter">> => integer_dataset_parameter(),
+%%   <<"StringDatasetParameter">> => string_dataset_parameter()
+%% }
+-type dataset_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_connection_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"UpdateStatus">> => list(any()),
+%%   <<"VPCConnectionId">> => string()
+%% }
+-type update_vpc_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ad_hoc_filtering_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type ad_hoc_filtering_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_account_subscription_request() :: #{
+%%   <<"AccountName">> := string(),
+%%   <<"ActiveDirectoryName">> => string(),
+%%   <<"AdminGroup">> => list(string()()),
+%%   <<"AuthenticationMethod">> := list(any()),
+%%   <<"AuthorGroup">> => list(string()()),
+%%   <<"ContactNumber">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"Edition">> := list(any()),
+%%   <<"EmailAddress">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"NotificationEmail">> := string(),
+%%   <<"ReaderGroup">> => list(string()()),
+%%   <<"Realm">> => string()
+%% }
+-type create_account_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_column_operation() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"Tags">> => list(column_tag()())
+%% }
+-type tag_column_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% bar_chart_sort_configuration() :: #{
+%%   <<"CategoryItemsLimit">> => items_limit_configuration(),
+%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"ColorItemsLimit">> => items_limit_configuration(),
+%%   <<"ColorSort">> => list(field_sort_options()()),
+%%   <<"SmallMultiplesLimitConfiguration">> => items_limit_configuration(),
+%%   <<"SmallMultiplesSort">> => list(field_sort_options()())
+%% }
+-type bar_chart_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_drop_down_control() :: #{
+%%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
+%%   <<"DisplayOptions">> => drop_down_control_display_options(),
+%%   <<"FilterControlId">> => string(),
+%%   <<"SelectableValues">> => filter_selectable_values(),
+%%   <<"SourceFilterId">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type filter_drop_down_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% pie_chart_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => pie_chart_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type pie_chart_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% refresh_schedule() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RefreshType">> => list(any()),
+%%   <<"ScheduleFrequency">> => refresh_frequency(),
+%%   <<"ScheduleId">> => string(),
+%%   <<"StartAfterDateTime">> => non_neg_integer()
+%% }
+-type refresh_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_folders_response() :: #{
+%%   <<"FolderSummaryList">> => list(folder_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_folders_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_aggregated_field_wells() :: #{
+%%   <<"GroupBy">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type table_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dashboard_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DashboardId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_dashboard_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_now_parameters() :: #{
+%%   <<"SiteBaseUrl">> => string()
+%% }
+-type service_now_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_template_alias_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateAlias">> => template_alias()
+%% }
+-type update_template_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_parameter_value_configuration() :: #{
+%%   <<"CustomValuesConfiguration">> => custom_values_configuration(),
+%%   <<"SelectAllValueOptions">> => list(any()),
+%%   <<"SourceColumn">> => column_identifier(),
+%%   <<"SourceField">> => string(),
+%%   <<"SourceParameterName">> => string()
+%% }
+-type destination_parameter_value_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"InstanceId">> => string()
+%% }
+-type rds_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_folders_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_folders_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% thousand_separator_options() :: #{
+%%   <<"Symbol">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type thousand_separator_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% aurora_postgre_sql_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type aurora_postgre_sql_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateId">> => string(),
+%%   <<"VersionArn">> => string()
+%% }
+-type update_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% numeric_separator_configuration() :: #{
+%%   <<"DecimalSeparator">> => list(any()),
+%%   <<"ThousandsSeparator">> => thousand_separator_options()
+%% }
+-type numeric_separator_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditional_formatting_icon() :: #{
+%%   <<"CustomCondition">> => conditional_formatting_custom_icon_condition(),
+%%   <<"IconSet">> => conditional_formatting_icon_set()
+%% }
+-type conditional_formatting_icon() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_list_configuration() :: #{
+%%   <<"CategoryValues">> => list(string()()),
+%%   <<"MatchOperator">> => list(any()),
+%%   <<"NullOption">> => list(any()),
+%%   <<"SelectAllOptions">> => list(any())
+%% }
+-type filter_list_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_declaration() :: #{
+%%   <<"DateTimeParameterDeclaration">> => date_time_parameter_declaration(),
+%%   <<"DecimalParameterDeclaration">> => decimal_parameter_declaration(),
+%%   <<"IntegerParameterDeclaration">> => integer_parameter_declaration(),
+%%   <<"StringParameterDeclaration">> => string_parameter_declaration()
+%% }
+-type parameter_declaration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_content_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => custom_content_configuration(),
+%%   <<"DataSetIdentifier">> => string(),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type custom_content_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% waterfall_chart_aggregated_field_wells() :: #{
+%%   <<"Breakdowns">> => list(dimension_field()()),
+%%   <<"Categories">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type waterfall_chart_aggregated_field_wells() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_connection_request() :: #{}
+-type describe_vpc_connection_request() :: #{}.
+
+%% Example:
+%% delete_data_set_request() :: #{}
+-type delete_data_set_request() :: #{}.
+
+
+%% Example:
+%% sankey_diagram_field_wells() :: #{
+%%   <<"SankeyDiagramAggregatedFieldWells">> => sankey_diagram_aggregated_field_wells()
+%% }
+-type sankey_diagram_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% range_constant() :: #{
+%%   <<"Maximum">> => string(),
+%%   <<"Minimum">> => string()
+%% }
+-type range_constant() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_row_conditional_formatting() :: #{
+%%   <<"BackgroundColor">> => conditional_formatting_color(),
+%%   <<"TextColor">> => conditional_formatting_color()
+%% }
+-type table_row_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% numeric_equality_drill_down_filter() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"Value">> => float()
+%% }
+-type numeric_equality_drill_down_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_destination_configuration() :: #{
+%%   <<"S3Destinations">> => list(snapshot_s3_destination_configuration()())
+%% }
+-type snapshot_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_singular_filter_constant() :: #{
+%%   <<"ConstantType">> => list(any()),
+%%   <<"SingularConstant">> => string()
+%% }
+-type topic_singular_filter_constant() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis() :: #{
+%%   <<"AnalysisId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DataSetArns">> => list(string()()),
+%%   <<"Errors">> => list(analysis_error()()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Sheets">> => list(sheet()()),
+%%   <<"Status">> => list(any()),
+%%   <<"ThemeArn">> => string()
+%% }
+-type analysis() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_section_based_layout_configuration() :: #{
+%%   <<"CanvasSizeOptions">> => section_based_layout_canvas_size_options()
+%% }
+-type default_section_based_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% new_default_values() :: #{
+%%   <<"DateTimeStaticValues">> => list(non_neg_integer()()),
+%%   <<"DecimalStaticValues">> => list(float()()),
+%%   <<"IntegerStaticValues">> => list(float()()),
+%%   <<"StringStaticValues">> => list(string()())
+%% }
+-type new_default_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_i_sort_configuration() :: #{
+%%   <<"TrendGroupSort">> => list(field_sort_options()())
+%% }
+-type k_p_i_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_lifetime_in_minutes_invalid_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type session_lifetime_in_minutes_invalid_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_heatmap_color_scale() :: #{
+%%   <<"Colors">> => list(geospatial_heatmap_data_color()())
+%% }
+-type geospatial_heatmap_color_scale() :: #{binary() => any()}.
+
+
+%% Example:
+%% theme_version_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VersionNumber">> => float()
+%% }
+-type theme_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"DataSourceId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_field_wells() :: #{
+%%   <<"TableAggregatedFieldWells">> => table_aggregated_field_wells(),
+%%   <<"TableUnaggregatedFieldWells">> => table_unaggregated_field_wells()
+%% }
+-type table_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% theme_configuration() :: #{
+%%   <<"DataColorPalette">> => data_color_palette(),
+%%   <<"Sheet">> => sheet_style(),
+%%   <<"Typography">> => typography(),
+%%   <<"UIColorPalette">> => ui_color_palette()
+%% }
+-type theme_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% combo_chart_configuration() :: #{
+%%   <<"BarDataLabels">> => data_label_options(),
+%%   <<"BarsArrangement">> => list(any()),
+%%   <<"CategoryAxis">> => axis_display_options(),
+%%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
+%%   <<"ColorLabelOptions">> => chart_axis_label_options(),
+%%   <<"FieldWells">> => combo_chart_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"LineDataLabels">> => data_label_options(),
+%%   <<"PrimaryYAxisDisplayOptions">> => axis_display_options(),
+%%   <<"PrimaryYAxisLabelOptions">> => chart_axis_label_options(),
+%%   <<"ReferenceLines">> => list(reference_line()()),
+%%   <<"SecondaryYAxisDisplayOptions">> => axis_display_options(),
+%%   <<"SecondaryYAxisLabelOptions">> => chart_axis_label_options(),
+%%   <<"SingleAxisOptions">> => single_axis_options(),
+%%   <<"SortConfiguration">> => combo_chart_sort_configuration(),
+%%   <<"Tooltip">> => tooltip_options(),
+%%   <<"VisualPalette">> => visual_palette()
+%% }
+-type combo_chart_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_asset_bundle_export_job_request() :: #{}
+-type describe_asset_bundle_export_job_request() :: #{}.
+
+
+%% Example:
+%% describe_user_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"User">> => user()
+%% }
+-type describe_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_role_memberships_response() :: #{
+%%   <<"MembersList">> => list(string()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_role_memberships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_date_range_filter() :: #{
+%%   <<"Constant">> => topic_range_filter_constant(),
+%%   <<"Inclusive">> => boolean()
+%% }
+-type topic_date_range_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% funnel_chart_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => funnel_chart_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type funnel_chart_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dashboard_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"DashboardId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"VersionArn">> => string()
+%% }
+-type create_dashboard_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyses_response() :: #{
+%%   <<"AnalysisSummaryList">> => list(analysis_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_analyses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tooltip_item() :: #{
+%%   <<"ColumnTooltipItem">> => column_tooltip_item(),
+%%   <<"FieldTooltipItem">> => field_tooltip_item()
+%% }
+-type tooltip_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_data_source_override_properties() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Properties">> => list(list(any())())
+%% }
+-type asset_bundle_export_job_data_source_override_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_field_custom_text_content() :: #{
+%%   <<"FontConfiguration">> => font_configuration(),
+%%   <<"Value">> => string()
+%% }
+-type table_field_custom_text_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_format_configuration() :: #{
+%%   <<"NullValueFormatConfiguration">> => null_value_format_configuration(),
+%%   <<"NumericFormatConfiguration">> => numeric_format_configuration()
+%% }
+-type string_format_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_sort_configuration() :: #{
+%%   <<"AggregationFunction">> => aggregation_function(),
+%%   <<"Column">> => column_identifier(),
+%%   <<"SortDirection">> => list(any())
+%% }
+-type aggregation_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_chart_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => line_chart_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type line_chart_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% row_alternate_color_options() :: #{
+%%   <<"RowAlternateColors">> => list(string()()),
+%%   <<"Status">> => list(any()),
+%%   <<"UsePrimaryBackgroundColor">> => list(any())
+%% }
+-type row_alternate_color_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% integer_dataset_parameter_default_values() :: #{
+%%   <<"StaticValues">> => list(float()())
+%% }
+-type integer_dataset_parameter_default_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_theme_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeId">> => string(),
+%%   <<"VersionArn">> => string()
+%% }
+-type update_theme_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_topic_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RefreshArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicId">> => string()
+%% }
+-type update_topic_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% gauge_chart_conditional_formatting_option() :: #{
+%%   <<"Arc">> => gauge_chart_arc_conditional_formatting(),
+%%   <<"PrimaryValue">> => gauge_chart_primary_value_conditional_formatting()
+%% }
+-type gauge_chart_conditional_formatting_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_tooltip_item() :: #{
+%%   <<"Aggregation">> => aggregation_function(),
+%%   <<"Column">> => column_identifier(),
+%%   <<"Label">> => string(),
+%%   <<"TooltipTarget">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type column_tooltip_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type data_source_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% anonymous_user_snapshot_job_result() :: #{
+%%   <<"FileGroups">> => list(snapshot_job_result_file_group()())
+%% }
+-type anonymous_user_snapshot_job_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dashboard_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dashboard_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_propagation_config_request() :: #{}
+-type delete_identity_propagation_config_request() :: #{}.
+
+
+%% Example:
+%% cast_column_type_operation() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"Format">> => string(),
+%%   <<"NewColumnType">> => list(any()),
+%%   <<"SubType">> => list(any())
+%% }
+-type cast_column_type_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_action_url_operation() :: #{
+%%   <<"URLTarget">> => list(any()),
+%%   <<"URLTemplate">> => string()
+%% }
+-type custom_action_url_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% selected_sheets_filter_scope_configuration() :: #{
+%%   <<"SheetVisualScopingConfigurations">> => list(sheet_visual_scoping_configuration()())
+%% }
+-type selected_sheets_filter_scope_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_data_set_permissions_response() :: #{
+%%   <<"DataSetArn">> => string(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_data_set_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_cell_image_sizing_configuration() :: #{
+%%   <<"TableCellImageScalingConfiguration">> => list(any())
+%% }
+-type table_cell_image_sizing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_numeric_range_filter() :: #{
+%%   <<"Aggregation">> => list(any()),
+%%   <<"Constant">> => topic_range_filter_constant(),
+%%   <<"Inclusive">> => boolean()
+%% }
+-type topic_numeric_range_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_source() :: #{
+%%   <<"Body">> => binary(),
+%%   <<"S3Uri">> => string()
+%% }
+-type asset_bundle_import_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_map_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => geospatial_map_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type geospatial_map_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_user_console_feature_configurations() :: #{
+%%   <<"StatePersistence">> => state_persistence_configurations()
+%% }
+-type registered_user_console_feature_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_job_result_file_group() :: #{
+%%   <<"Files">> => list(snapshot_file()()),
+%%   <<"S3Results">> => list(snapshot_job_s3_result()())
+%% }
+-type snapshot_job_result_file_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dashboard_links_response() :: #{
+%%   <<"DashboardArn">> => string(),
+%%   <<"LinkEntities">> => list(string()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_dashboard_links_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_source_entity() :: #{
+%%   <<"SourceAnalysis">> => template_source_analysis(),
+%%   <<"SourceTemplate">> => template_source_template()
+%% }
+-type template_source_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_public_sharing_settings_request() :: #{
+%%   <<"PublicSharingEnabled">> => boolean()
+%% }
+-type update_public_sharing_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_account_subscription_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"SignupResponse">> => signup_response(),
+%%   <<"Status">> => integer()
+%% }
+-type create_account_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% spacing() :: #{
+%%   <<"Bottom">> => string(),
+%%   <<"Left">> => string(),
+%%   <<"Right">> => string(),
+%%   <<"Top">> => string()
+%% }
+-type spacing() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_exists_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type resource_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_user_configuration() :: #{
+%%   <<"AnonymousUsers">> => list(snapshot_anonymous_user()())
+%% }
+-type snapshot_user_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_theme_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()()),
+%%   <<"RevokePermissions">> => list(resource_permission()())
+%% }
+-type update_theme_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% donut_center_options() :: #{
+%%   <<"LabelVisibility">> => list(any())
+%% }
+-type donut_center_options() :: #{binary() => any()}.
+
+%% Example:
+%% list_topic_refresh_schedules_request() :: #{}
+-type list_topic_refresh_schedules_request() :: #{}.
+
+
+%% Example:
+%% describe_group_membership_response() :: #{
+%%   <<"GroupMember">> => group_member(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_group_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_label_options() :: #{
+%%   <<"CategoryLabelVisibility">> => list(any()),
+%%   <<"DataLabelTypes">> => list(data_label_type()()),
+%%   <<"LabelColor">> => string(),
+%%   <<"LabelContent">> => list(any()),
+%%   <<"LabelFontConfiguration">> => font_configuration(),
+%%   <<"MeasureLabelVisibility">> => list(any()),
+%%   <<"Overlap">> => list(any()),
+%%   <<"Position">> => list(any()),
+%%   <<"TotalsVisibility">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type data_label_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_configuration() :: #{
+%%   <<"ColorsConfiguration">> => colors_configuration(),
+%%   <<"Column">> => column_identifier(),
+%%   <<"FormatConfiguration">> => format_configuration(),
+%%   <<"Role">> => list(any())
+%% }
+-type column_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% row_level_permission_tag_configuration() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"TagRuleConfigurations">> => list(list(string()())()),
+%%   <<"TagRules">> => list(row_level_permission_tag_rule()())
+%% }
+-type row_level_permission_tag_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% what_if_point_scenario() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Value">> => float()
+%% }
+-type what_if_point_scenario() :: #{binary() => any()}.
+
+
+%% Example:
+%% exasol_parameters() :: #{
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type exasol_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_theme_alias_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeAlias">> => theme_alias()
+%% }
+-type update_theme_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_publish_options() :: #{
+%%   <<"AdHocFilteringOption">> => ad_hoc_filtering_option(),
+%%   <<"DataPointDrillUpDownOption">> => data_point_drill_up_down_option(),
+%%   <<"DataPointMenuLabelOption">> => data_point_menu_label_option(),
+%%   <<"DataPointTooltipOption">> => data_point_tooltip_option(),
+%%   <<"ExportToCSVOption">> => export_to_csv_option(),
+%%   <<"ExportWithHiddenFieldsOption">> => export_with_hidden_fields_option(),
+%%   <<"SheetControlsOption">> => sheet_controls_option(),
+%%   <<"SheetLayoutElementMaximizationOption">> => sheet_layout_element_maximization_option(),
+%%   <<"VisualAxisSortOption">> => visual_axis_sort_option(),
+%%   <<"VisualMenuOption">> => visual_menu_option(),
+%%   <<"VisualPublishOptions">> => dashboard_visual_publish_options()
+%% }
+-type dashboard_publish_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_aliases_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_template_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% bar_chart_field_wells() :: #{
+%%   <<"BarChartAggregatedFieldWells">> => bar_chart_aggregated_field_wells()
+%% }
+-type bar_chart_field_wells() :: #{binary() => any()}.
+
+%% Example:
+%% delete_folder_membership_request() :: #{}
+-type delete_folder_membership_request() :: #{}.
+
+%% Example:
+%% delete_role_membership_request() :: #{}
+-type delete_role_membership_request() :: #{}.
+
+
+%% Example:
+%% asset_bundle_import_job_dashboard_override_parameters() :: #{
+%%   <<"DashboardId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type asset_bundle_import_job_dashboard_override_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% delete_template_alias_request() :: #{}
+-type delete_template_alias_request() :: #{}.
+
+
+%% Example:
+%% explicit_hierarchy() :: #{
+%%   <<"Columns">> => list(column_identifier()()),
+%%   <<"DrillDownFilters">> => list(drill_down_filter()()),
+%%   <<"HierarchyId">> => string()
+%% }
+-type explicit_hierarchy() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_group_membership_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_group_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% exclude_period_configuration() :: #{
+%%   <<"Amount">> => integer(),
+%%   <<"Granularity">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type exclude_period_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_group_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% maximum_label_type() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type maximum_label_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_user_embedding_experience_configuration() :: #{
+%%   <<"Dashboard">> => registered_user_dashboard_embedding_configuration(),
+%%   <<"DashboardVisual">> => registered_user_dashboard_visual_embedding_configuration(),
+%%   <<"QSearchBar">> => registered_user_q_search_bar_embedding_configuration(),
+%%   <<"QuickSightConsole">> => registered_user_quick_sight_console_embedding_configuration()
+%% }
+-type registered_user_embedding_experience_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% categorical_dimension_field() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"FieldId">> => string(),
+%%   <<"FormatConfiguration">> => string_format_configuration(),
+%%   <<"HierarchyId">> => string()
+%% }
+-type categorical_dimension_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_analysis_override_properties() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Properties">> => list(list(any())())
+%% }
+-type asset_bundle_export_job_analysis_override_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_pinned_field_options() :: #{
+%%   <<"PinnedLeftFields">> => list(string()())
+%% }
+-type table_pinned_field_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_selectable_values() :: #{
+%%   <<"LinkToDataSetColumn">> => column_identifier(),
+%%   <<"Values">> => list(string()())
+%% }
+-type parameter_selectable_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_line_dynamic_data_configuration() :: #{
+%%   <<"Calculation">> => numerical_aggregation_function(),
+%%   <<"Column">> => column_identifier(),
+%%   <<"MeasureAggregationFunction">> => aggregation_function()
+%% }
+-type reference_line_dynamic_data_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_ingestion_response() :: #{
+%%   <<"Ingestion">> => ingestion(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_ingestion_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_equality_filter() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"FilterId">> => string(),
+%%   <<"ParameterName">> => string(),
+%%   <<"RollingDate">> => rolling_date_configuration(),
+%%   <<"TimeGranularity">> => list(any()),
+%%   <<"Value">> => non_neg_integer()
+%% }
+-type time_equality_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% forecast_scenario() :: #{
+%%   <<"WhatIfPointScenario">> => what_if_point_scenario(),
+%%   <<"WhatIfRangeScenario">> => what_if_range_scenario()
+%% }
+-type forecast_scenario() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_conditional_formatting_option() :: #{
+%%   <<"Cell">> => table_cell_conditional_formatting(),
+%%   <<"Row">> => table_row_conditional_formatting()
+%% }
+-type table_conditional_formatting_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_relative_date_filter() :: #{
+%%   <<"Constant">> => topic_singular_filter_constant(),
+%%   <<"RelativeDateFilterFunction">> => list(any()),
+%%   <<"TimeGranularity">> => list(any())
+%% }
+-type topic_relative_date_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_bundle_import_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetBundleImportJobId">> => string(),
+%%   <<"AssetBundleImportSource">> => asset_bundle_import_source_description(),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Errors">> => list(asset_bundle_import_job_error()()),
+%%   <<"FailureAction">> => list(any()),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"OverrideParameters">> => asset_bundle_import_job_override_parameters(),
+%%   <<"OverridePermissions">> => asset_bundle_import_job_override_permissions(),
+%%   <<"OverrideTags">> => asset_bundle_import_job_override_tags(),
+%%   <<"OverrideValidationStrategy">> => asset_bundle_import_job_override_validation_strategy(),
+%%   <<"RequestId">> => string(),
+%%   <<"RollbackErrors">> => list(asset_bundle_import_job_error()()),
+%%   <<"Status">> => integer()
+%% }
+-type describe_asset_bundle_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_folder_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type update_folder_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% filled_map_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => filled_map_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ConditionalFormatting">> => filled_map_conditional_formatting(),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type filled_map_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_configuration() :: #{
+%%   <<"FieldOptions">> => table_field_options(),
+%%   <<"FieldWells">> => table_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"PaginatedReportOptions">> => table_paginated_report_options(),
+%%   <<"SortConfiguration">> => table_sort_configuration(),
+%%   <<"TableInlineVisualizations">> => list(table_inline_visualization()()),
+%%   <<"TableOptions">> => table_options(),
+%%   <<"TotalOptions">> => total_options()
+%% }
+-type table_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% contribution_analysis_default() :: #{
+%%   <<"ContributorDimensions">> => list(column_identifier()()),
+%%   <<"MeasureFieldId">> => string()
+%% }
+-type contribution_analysis_default() :: #{binary() => any()}.
+
+
+%% Example:
+%% word_cloud_field_wells() :: #{
+%%   <<"WordCloudAggregatedFieldWells">> => word_cloud_aggregated_field_wells()
+%% }
+-type word_cloud_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% gauge_chart_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => gauge_chart_configuration(),
+%%   <<"ConditionalFormatting">> => gauge_chart_conditional_formatting(),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type gauge_chart_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_time_value_when_unset_configuration() :: #{
+%%   <<"CustomValue">> => non_neg_integer(),
+%%   <<"ValueWhenUnsetOption">> => list(any())
+%% }
+-type date_time_value_when_unset_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% percent_visible_range() :: #{
+%%   <<"From">> => float(),
+%%   <<"To">> => float()
+%% }
+-type percent_visible_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_vpc_connection_override_parameters() :: #{
+%%   <<"DnsResolvers">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"VPCConnectionId">> => string()
+%% }
+-type asset_bundle_import_job_vpc_connection_override_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% histogram_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => histogram_configuration(),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type histogram_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% gradient_stop() :: #{
+%%   <<"Color">> => string(),
+%%   <<"DataValue">> => float(),
+%%   <<"GradientOffset">> => float()
+%% }
+-type gradient_stop() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% box_plot_chart_configuration() :: #{
+%%   <<"BoxPlotOptions">> => box_plot_options(),
+%%   <<"CategoryAxis">> => axis_display_options(),
+%%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
+%%   <<"FieldWells">> => box_plot_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"PrimaryYAxisDisplayOptions">> => axis_display_options(),
+%%   <<"PrimaryYAxisLabelOptions">> => chart_axis_label_options(),
+%%   <<"ReferenceLines">> => list(reference_line()()),
+%%   <<"SortConfiguration">> => box_plot_sort_configuration(),
+%%   <<"Tooltip">> => tooltip_options(),
+%%   <<"VisualPalette">> => visual_palette()
+%% }
+-type box_plot_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DashboardId">> => string(),
+%%   <<"LastPublishedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublishedVersionNumber">> => float()
+%% }
+-type dashboard_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_time_format_configuration() :: #{
+%%   <<"DateTimeFormat">> => string(),
+%%   <<"NullValueFormatConfiguration">> => null_value_format_configuration(),
+%%   <<"NumericFormatConfiguration">> => numeric_format_configuration()
+%% }
+-type date_time_format_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_template_alias_response() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateId">> => string()
+%% }
+-type delete_template_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% short_format_text() :: #{
+%%   <<"PlainText">> => string(),
+%%   <<"RichText">> => string()
+%% }
+-type short_format_text() :: #{binary() => any()}.
+
+
+%% Example:
+%% tree_map_aggregated_field_wells() :: #{
+%%   <<"Colors">> => list(measure_field()()),
+%%   <<"Groups">> => list(dimension_field()()),
+%%   <<"Sizes">> => list(measure_field()())
+%% }
+-type tree_map_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% big_query_parameters() :: #{
+%%   <<"DataSetRegion">> => string(),
+%%   <<"ProjectId">> => string()
+%% }
+-type big_query_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_dashboard_snapshot_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"SnapshotJobId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type start_dashboard_snapshot_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_series_item() :: #{
+%%   <<"AxisBinding">> => list(any()),
+%%   <<"FieldId">> => string(),
+%%   <<"Settings">> => line_chart_series_settings()
+%% }
+-type field_series_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_title_label_options() :: #{
+%%   <<"FormatText">> => short_format_text(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type visual_title_label_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% join_key_properties() :: #{
+%%   <<"UniqueKey">> => boolean()
+%% }
+-type join_key_properties() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dashboard_permissions_request() :: #{}
+-type describe_dashboard_permissions_request() :: #{}.
+
+
+%% Example:
+%% delete_theme_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeId">> => string()
+%% }
+-type delete_theme_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% theme_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"LatestVersionNumber">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"ThemeId">> => string()
+%% }
+-type theme_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_column() :: #{
+%%   <<"Aggregation">> => list(any()),
+%%   <<"AllowedAggregations">> => list(list(any())()),
+%%   <<"CellValueSynonyms">> => list(cell_value_synonym()()),
+%%   <<"ColumnDataRole">> => list(any()),
+%%   <<"ColumnDescription">> => string(),
+%%   <<"ColumnFriendlyName">> => string(),
+%%   <<"ColumnName">> => string(),
+%%   <<"ColumnSynonyms">> => list(string()()),
+%%   <<"ComparativeOrder">> => comparative_order(),
+%%   <<"DefaultFormatting">> => default_formatting(),
+%%   <<"DisableIndexing">> => boolean(),
+%%   <<"IsIncludedInTopic">> => boolean(),
+%%   <<"NeverAggregateInFilter">> => boolean(),
+%%   <<"NonAdditive">> => boolean(),
+%%   <<"NotAllowedAggregations">> => list(list(any())()),
+%%   <<"SemanticType">> => semantic_type(),
+%%   <<"TimeGranularity">> => list(any())
+%% }
+-type topic_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_options() :: #{
+%%   <<"Timezone">> => string(),
+%%   <<"WeekStart">> => list(any())
+%% }
+-type asset_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% presto_parameters() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type presto_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_sort_by() :: #{
+%%   <<"Column">> => column_sort(),
+%%   <<"DataPath">> => data_path_sort(),
+%%   <<"Field">> => field_sort()
+%% }
+-type pivot_table_sort_by() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_request() :: #{}
+-type describe_user_request() :: #{}.
+
+
+%% Example:
+%% period_over_period_computation() :: #{
+%%   <<"ComputationId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Time">> => dimension_field(),
+%%   <<"Value">> => measure_field()
+%% }
+-type period_over_period_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% chart_axis_label_options() :: #{
+%%   <<"AxisLabelOptions">> => list(axis_label_options()()),
+%%   <<"SortIconVisibility">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type chart_axis_label_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_set_permissions_response() :: #{
+%%   <<"DataSetArn">> => string(),
+%%   <<"DataSetId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_data_set_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_topic_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()()),
+%%   <<"RevokePermissions">> => list(resource_permission()())
+%% }
+-type update_topic_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% waterfall_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => waterfall_chart_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type waterfall_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_element_configuration_overrides() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type sheet_element_configuration_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_settings() :: #{
+%%   <<"AccountName">> => string(),
+%%   <<"DefaultNamespace">> => string(),
+%%   <<"Edition">> => list(any()),
+%%   <<"NotificationEmail">> => string(),
+%%   <<"PublicSharingEnabled">> => boolean(),
+%%   <<"TerminationProtectionEnabled">> => boolean()
+%% }
+-type account_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% number_display_format_configuration() :: #{
+%%   <<"DecimalPlacesConfiguration">> => decimal_places_configuration(),
+%%   <<"NegativeValueConfiguration">> => negative_value_configuration(),
+%%   <<"NullValueFormatConfiguration">> => null_value_format_configuration(),
+%%   <<"NumberScale">> => list(any()),
+%%   <<"Prefix">> => string(),
+%%   <<"SeparatorConfiguration">> => numeric_separator_configuration(),
+%%   <<"Suffix">> => string()
+%% }
+-type number_display_format_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculated_measure_field() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"FieldId">> => string()
+%% }
+-type calculated_measure_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% category_filter() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"Configuration">> => category_filter_configuration(),
+%%   <<"FilterId">> => string()
+%% }
+-type category_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connection_properties() :: #{
+%%   <<"VpcConnectionArn">> => string()
+%% }
+-type vpc_connection_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% percentage_display_format_configuration() :: #{
+%%   <<"DecimalPlacesConfiguration">> => decimal_places_configuration(),
+%%   <<"NegativeValueConfiguration">> => negative_value_configuration(),
+%%   <<"NullValueFormatConfiguration">> => null_value_format_configuration(),
+%%   <<"Prefix">> => string(),
+%%   <<"SeparatorConfiguration">> => numeric_separator_configuration(),
+%%   <<"Suffix">> => string()
+%% }
+-type percentage_display_format_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_namespace_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CapacityRegion">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"IdentityStore">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"CustomFederationProviderUrl">> => string(),
+%%   <<"CustomPermissionsName">> => string(),
+%%   <<"Email">> := string(),
+%%   <<"ExternalLoginFederationProviderType">> => string(),
+%%   <<"ExternalLoginId">> => string(),
+%%   <<"Role">> := list(any()),
+%%   <<"UnapplyCustomPermissions">> => boolean()
+%% }
+-type update_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_role_membership_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_role_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_control_info_icon_label_options() :: #{
+%%   <<"InfoIconText">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type sheet_control_info_icon_label_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_templates_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateSummaryList">> => list(template_summary()())
+%% }
+-type list_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_source_permissions_response() :: #{
+%%   <<"DataSourceArn">> => string(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_data_source_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_analysis_response() :: #{
+%%   <<"AnalysisId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"DeletionTime">> => non_neg_integer(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_analysis_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_configuration() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"BucketPrefix">> => string(),
+%%   <<"BucketRegion">> => string()
+%% }
+-type s3_bucket_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% credential_pair() :: #{
+%%   <<"AlternateDataSourceParameters">> => list(list()()),
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type credential_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_group_schema() :: #{
+%%   <<"ColumnGroupColumnSchemaList">> => list(column_group_column_schema()()),
+%%   <<"Name">> => string()
+%% }
+-type column_group_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% amazon_open_search_parameters() :: #{
+%%   <<"Domain">> => string()
+%% }
+-type amazon_open_search_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet() :: #{
+%%   <<"Name">> => string(),
+%%   <<"SheetId">> => string()
+%% }
+-type sheet() :: #{binary() => any()}.
+
+
+%% Example:
+%% heat_map_configuration() :: #{
+%%   <<"ColorScale">> => color_scale(),
+%%   <<"ColumnLabelOptions">> => chart_axis_label_options(),
+%%   <<"DataLabels">> => data_label_options(),
+%%   <<"FieldWells">> => heat_map_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"RowLabelOptions">> => chart_axis_label_options(),
+%%   <<"SortConfiguration">> => heat_map_sort_configuration(),
+%%   <<"Tooltip">> => tooltip_options()
+%% }
+-type heat_map_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% group_search_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type group_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% decimal_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(float()())
+%% }
+-type decimal_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% categorical_measure_field() :: #{
+%%   <<"AggregationFunction">> => list(any()),
+%%   <<"Column">> => column_identifier(),
+%%   <<"FieldId">> => string(),
+%%   <<"FormatConfiguration">> => string_format_configuration()
+%% }
+-type categorical_measure_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% gradient_color() :: #{
+%%   <<"Stops">> => list(gradient_stop()())
+%% }
+-type gradient_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type topic_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_folder_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FolderId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_folder_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_session_embed_url_request() :: #{
+%%   <<"EntryPoint">> => string(),
+%%   <<"SessionLifetimeInMinutes">> => float(),
+%%   <<"UserArn">> => string()
+%% }
+-type get_session_embed_url_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_user_configuration_redacted() :: #{
+%%   <<"AnonymousUsers">> => list(snapshot_anonymous_user_redacted()())
+%% }
+-type snapshot_user_configuration_redacted() :: #{binary() => any()}.
+
+
+%% Example:
+%% border_style() :: #{
+%%   <<"Show">> => boolean()
+%% }
+-type border_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% logical_table_source() :: #{
+%%   <<"DataSetArn">> => string(),
+%%   <<"JoinInstruction">> => join_instruction(),
+%%   <<"PhysicalTableId">> => string()
+%% }
+-type logical_table_source() :: #{binary() => any()}.
+
+%% Example:
+%% describe_topic_refresh_request() :: #{}
+-type describe_topic_refresh_request() :: #{}.
+
+
+%% Example:
+%% sankey_diagram_aggregated_field_wells() :: #{
+%%   <<"Destination">> => list(dimension_field()()),
+%%   <<"Source">> => list(dimension_field()()),
+%%   <<"Weight">> => list(measure_field()())
+%% }
+-type sankey_diagram_aggregated_field_wells() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_membership_request() :: #{}
+-type delete_group_membership_request() :: #{}.
+
+
+%% Example:
+%% pivot_table_data_path_option() :: #{
+%%   <<"DataPathList">> => list(data_path_value()()),
+%%   <<"Width">> => string()
+%% }
+-type pivot_table_data_path_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_configuration() :: #{
+%%   <<"EnableIdentityPropagation">> => boolean()
+%% }
+-type identity_center_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_iam_policy_assignment_response() :: #{
+%%   <<"IAMPolicyAssignment">> => iam_policy_assignment(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_iam_policy_assignment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_options() :: #{
+%%   <<"CellStyle">> => table_cell_style(),
+%%   <<"CollapsedRowDimensionsVisibility">> => list(any()),
+%%   <<"ColumnHeaderStyle">> => table_cell_style(),
+%%   <<"ColumnNamesVisibility">> => list(any()),
+%%   <<"DefaultCellWidth">> => string(),
+%%   <<"MetricPlacement">> => list(any()),
+%%   <<"RowAlternateColorOptions">> => row_alternate_color_options(),
+%%   <<"RowFieldNamesStyle">> => table_cell_style(),
+%%   <<"RowHeaderStyle">> => table_cell_style(),
+%%   <<"RowsLabelOptions">> => pivot_table_rows_label_options(),
+%%   <<"RowsLayout">> => list(any()),
+%%   <<"SingleMetricVisibility">> => list(any()),
+%%   <<"ToggleButtonsVisibility">> => list(any())
+%% }
+-type pivot_table_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_topic_refresh_schedule_response() :: #{
+%%   <<"DatasetArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type delete_topic_refresh_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_field_url_configuration() :: #{
+%%   <<"ImageConfiguration">> => table_field_image_configuration(),
+%%   <<"LinkConfiguration">> => table_field_link_configuration()
+%% }
+-type table_field_url_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% collective_constant() :: #{
+%%   <<"ValueList">> => list(string()())
+%% }
+-type collective_constant() :: #{binary() => any()}.
+
+
+%% Example:
+%% section_layout_configuration() :: #{
+%%   <<"FreeFormLayout">> => free_form_section_layout_configuration()
+%% }
+-type section_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_i_conditional_formatting() :: #{
+%%   <<"ConditionalFormattingOptions">> => list(k_p_i_conditional_formatting_option()())
+%% }
+-type k_p_i_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_template_alias_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateAlias">> => template_alias()
+%% }
+-type describe_template_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sheet_style() :: #{
+%%   <<"Tile">> => tile_style(),
+%%   <<"TileLayout">> => tile_layout_style()
+%% }
+-type sheet_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_source_request() :: #{
+%%   <<"Credentials">> => data_source_credentials(),
+%%   <<"DataSourceParameters">> => list(),
+%%   <<"Name">> := string(),
+%%   <<"SslProperties">> => ssl_properties(),
+%%   <<"VpcConnectionProperties">> => vpc_connection_properties()
+%% }
+-type update_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_range_filter() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"ExcludePeriodConfiguration">> => exclude_period_configuration(),
+%%   <<"FilterId">> => string(),
+%%   <<"IncludeMaximum">> => boolean(),
+%%   <<"IncludeMinimum">> => boolean(),
+%%   <<"NullOption">> => list(any()),
+%%   <<"RangeMaximumValue">> => time_range_filter_value(),
+%%   <<"RangeMinimumValue">> => time_range_filter_value(),
+%%   <<"TimeGranularity">> => list(any())
+%% }
+-type time_range_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_topic_refresh_schedule_response() :: #{
+%%   <<"DatasetArn">> => string(),
+%%   <<"RefreshSchedule">> => topic_refresh_schedule(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type describe_topic_refresh_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_ingestion_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"IngestionId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type cancel_ingestion_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_search_options() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type list_control_search_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_theme_aliases_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_theme_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_cell_style() :: #{
+%%   <<"BackgroundColor">> => string(),
+%%   <<"Border">> => global_table_border_options(),
+%%   <<"FontConfiguration">> => font_configuration(),
+%%   <<"Height">> => integer(),
+%%   <<"HorizontalTextAlignment">> => list(any()),
+%%   <<"TextWrap">> => list(any()),
+%%   <<"VerticalTextAlignment">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type table_cell_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_namespaces_response() :: #{
+%%   <<"Namespaces">> => list(namespace_info_v2()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_namespaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_color() :: #{
+%%   <<"Color">> => string(),
+%%   <<"DataValue">> => float()
+%% }
+-type data_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% font_weight() :: #{
+%%   <<"Name">> => list(any())
+%% }
+-type font_weight() :: #{binary() => any()}.
+
+
+%% Example:
+%% group() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"PrincipalId">> => string()
+%% }
+-type group() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_topic_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicId">> => string()
+%% }
+-type delete_topic_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_source_template() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DataSetReferences">> => list(data_set_reference()())
+%% }
+-type dashboard_source_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_folder_members_response() :: #{
+%%   <<"FolderMemberList">> => list(member_id_arn_pair()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_folder_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% word_cloud_sort_configuration() :: #{
+%%   <<"CategoryItemsLimit">> => items_limit_configuration(),
+%%   <<"CategorySort">> => list(field_sort_options()())
+%% }
+-type word_cloud_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% user() :: #{
+%%   <<"Active">> => boolean(),
+%%   <<"Arn">> => string(),
+%%   <<"CustomPermissionsName">> => string(),
+%%   <<"Email">> => string(),
+%%   <<"ExternalLoginFederationProviderType">> => string(),
+%%   <<"ExternalLoginFederationProviderUrl">> => string(),
+%%   <<"ExternalLoginId">> => string(),
+%%   <<"IdentityType">> => list(any()),
+%%   <<"PrincipalId">> => string(),
+%%   <<"Role">> => list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+
+%% Example:
+%% arc_axis_configuration() :: #{
+%%   <<"Range">> => arc_axis_display_range(),
+%%   <<"ReserveRange">> => integer()
+%% }
+-type arc_axis_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_job_result_error_info() :: #{
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ErrorType">> => string()
+%% }
+-type snapshot_job_result_error_info() :: #{binary() => any()}.
+
+%% Example:
+%% describe_group_request() :: #{}
+-type describe_group_request() :: #{}.
+
+
+%% Example:
+%% list_user_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_user_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% radar_chart_area_style_settings() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type radar_chart_area_style_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_folder_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FolderId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_folder_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% databricks_parameters() :: #{
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"SqlEndpointPath">> => string()
+%% }
+-type databricks_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% sankey_diagram_sort_configuration() :: #{
+%%   <<"DestinationItemsLimit">> => items_limit_configuration(),
+%%   <<"SourceItemsLimit">> => items_limit_configuration(),
+%%   <<"WeightSort">> => list(field_sort_options()())
+%% }
+-type sankey_diagram_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_account_settings_response() :: #{
+%%   <<"AccountSettings">> => account_settings(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_account_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ip_restriction_request() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"IpRestrictionRuleMap">> => map()
+%% }
+-type update_ip_restriction_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% folder() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"FolderId">> => string(),
+%%   <<"FolderPath">> => list(string()()),
+%%   <<"FolderType">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SharingModel">> => list(any())
+%% }
+-type folder() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_scope_configuration() :: #{
+%%   <<"AllSheets">> => all_sheets_filter_scope_configuration(),
+%%   <<"SelectedSheets">> => selected_sheets_filter_scope_configuration()
+%% }
+-type filter_scope_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_namespace_request() :: #{}
+-type delete_namespace_request() :: #{}.
+
+
+%% Example:
+%% geospatial_map_aggregated_field_wells() :: #{
+%%   <<"Colors">> => list(dimension_field()()),
+%%   <<"Geospatial">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type geospatial_map_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dashboard_request() :: #{
+%%   <<"DashboardPublishOptions">> => dashboard_publish_options(),
+%%   <<"Definition">> => dashboard_version_definition(),
+%%   <<"FolderArns">> => list(string()()),
+%%   <<"LinkEntities">> => list(string()()),
+%%   <<"LinkSharingConfiguration">> => link_sharing_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"Parameters">> => parameters(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"SourceEntity">> => dashboard_source_entity(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"ThemeArn">> => string(),
+%%   <<"ValidationStrategy">> => validation_strategy(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type create_dashboard_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_policy_assignment_summary() :: #{
+%%   <<"AssignmentName">> => string(),
+%%   <<"AssignmentStatus">> => list(any())
+%% }
+-type iam_policy_assignment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_custom_action() :: #{
+%%   <<"ActionOperations">> => list(visual_custom_action_operation()()),
+%%   <<"CustomActionId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Trigger">> => list(any())
+%% }
+-type visual_custom_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_custom_action_operation() :: #{
+%%   <<"FilterOperation">> => custom_action_filter_operation(),
+%%   <<"NavigationOperation">> => custom_action_navigation_operation(),
+%%   <<"SetParametersOperation">> => custom_action_set_parameters_operation(),
+%%   <<"URLOperation">> => custom_action_url_operation()
+%% }
+-type visual_custom_action_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% measure_field() :: #{
+%%   <<"CalculatedMeasureField">> => calculated_measure_field(),
+%%   <<"CategoricalMeasureField">> => categorical_measure_field(),
+%%   <<"DateMeasureField">> => date_measure_field(),
+%%   <<"NumericalMeasureField">> => numerical_measure_field()
+%% }
+-type measure_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% decimal_default_values() :: #{
+%%   <<"DynamicValue">> => dynamic_default_value(),
+%%   <<"StaticValues">> => list(float()())
+%% }
+-type decimal_default_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_refresh_schedules_response() :: #{
+%%   <<"RefreshSchedules">> => list(refresh_schedule()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_refresh_schedules_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_request() :: #{}
+-type delete_group_request() :: #{}.
+
+
+%% Example:
+%% list_control_select_all_options() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type list_control_select_all_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% numerical_dimension_field() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"FieldId">> => string(),
+%%   <<"FormatConfiguration">> => number_format_configuration(),
+%%   <<"HierarchyId">> => string()
+%% }
+-type numerical_dimension_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_analysis_response() :: #{
+%%   <<"AnalysisId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type restore_analysis_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% twitter_parameters() :: #{
+%%   <<"MaxRows">> => integer(),
+%%   <<"Query">> => string()
+%% }
+-type twitter_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_usage_configuration() :: #{
+%%   <<"DisableUseAsDirectQuerySource">> => boolean(),
+%%   <<"DisableUseAsImportedSource">> => boolean()
+%% }
+-type data_set_usage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_dashboard_override_permissions() :: #{
+%%   <<"DashboardIds">> => list(string()()),
+%%   <<"LinkSharingConfiguration">> => asset_bundle_resource_link_sharing_configuration(),
+%%   <<"Permissions">> => asset_bundle_resource_permissions()
+%% }
+-type asset_bundle_import_job_dashboard_override_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% heat_map_sort_configuration() :: #{
+%%   <<"HeatMapColumnItemsLimitConfiguration">> => items_limit_configuration(),
+%%   <<"HeatMapColumnSort">> => list(field_sort_options()()),
+%%   <<"HeatMapRowItemsLimitConfiguration">> => items_limit_configuration(),
+%%   <<"HeatMapRowSort">> => list(field_sort_options()())
+%% }
+-type heat_map_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_style_target() :: #{
+%%   <<"CellType">> => list(any())
+%% }
+-type table_style_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% numeric_equality_filter() :: #{
+%%   <<"AggregationFunction">> => aggregation_function(),
+%%   <<"Column">> => column_identifier(),
+%%   <<"FilterId">> => string(),
+%%   <<"MatchOperator">> => list(any()),
+%%   <<"NullOption">> => list(any()),
+%%   <<"ParameterName">> => string(),
+%%   <<"SelectAllOptions">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type numeric_equality_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% funnel_chart_field_wells() :: #{
+%%   <<"FunnelChartAggregatedFieldWells">> => funnel_chart_aggregated_field_wells()
+%% }
+-type funnel_chart_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_parameters() :: #{
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type spark_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_analysis_permissions_response() :: #{
+%%   <<"AnalysisArn">> => string(),
+%%   <<"AnalysisId">> => string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_analysis_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% theme_error() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type theme_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_chart_line_style_settings() :: #{
+%%   <<"LineInterpolation">> => list(any()),
+%%   <<"LineStyle">> => list(any()),
+%%   <<"LineVisibility">> => list(any()),
+%%   <<"LineWidth">> => string()
+%% }
+-type line_chart_line_style_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_line_style_configuration() :: #{
+%%   <<"Color">> => string(),
+%%   <<"Pattern">> => list(any())
+%% }
+-type reference_line_style_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_dimension_field() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"DateGranularity">> => list(any()),
+%%   <<"FieldId">> => string(),
+%%   <<"FormatConfiguration">> => date_time_format_configuration(),
+%%   <<"HierarchyId">> => string()
+%% }
+-type date_dimension_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_account_customization_response() :: #{
+%%   <<"AccountCustomization">> => account_customization(),
+%%   <<"Arn">> => string(),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_account_customization_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type session_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% pie_chart_configuration() :: #{
+%%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
+%%   <<"ContributionAnalysisDefaults">> => list(contribution_analysis_default()()),
+%%   <<"DataLabels">> => data_label_options(),
+%%   <<"DonutOptions">> => donut_options(),
+%%   <<"FieldWells">> => pie_chart_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"SmallMultiplesOptions">> => small_multiples_options(),
+%%   <<"SortConfiguration">> => pie_chart_sort_configuration(),
+%%   <<"Tooltip">> => tooltip_options(),
+%%   <<"ValueLabelOptions">> => chart_axis_label_options(),
+%%   <<"VisualPalette">> => visual_palette()
+%% }
+-type pie_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_embed_url_for_anonymous_user_response() :: #{
+%%   <<"AnonymousUserArn">> => string(),
+%%   <<"EmbedUrl">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type generate_embed_url_for_anonymous_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_theme_override_tags() :: #{
+%%   <<"Tags">> => list(tag()()),
+%%   <<"ThemeIds">> => list(string()())
+%% }
+-type asset_bundle_import_job_theme_override_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_dashboards_request() :: #{
+%%   <<"Filters">> := list(dashboard_search_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_dashboards_request() :: #{binary() => any()}.
+
+%% Example:
+%% all_sheets_filter_scope_configuration() :: #{}
+-type all_sheets_filter_scope_configuration() :: #{}.
+
+
+%% Example:
+%% asset_bundle_import_job_data_set_override_permissions() :: #{
+%%   <<"DataSetIds">> => list(string()()),
+%%   <<"Permissions">> => asset_bundle_resource_permissions()
+%% }
+-type asset_bundle_import_job_data_set_override_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_vpc_connection_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityStatus">> => list(any()),
+%%   <<"DeletionStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"VPCConnectionId">> => string()
+%% }
+-type delete_vpc_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bin_width_options() :: #{
+%%   <<"BinCountLimit">> => float(),
+%%   <<"Value">> => float()
+%% }
+-type bin_width_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% pagination_configuration() :: #{
+%%   <<"PageNumber">> => float(),
+%%   <<"PageSize">> => float()
+%% }
+-type pagination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_connection_request() :: #{
+%%   <<"DnsResolvers">> => list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"SecurityGroupIds">> := list(string()()),
+%%   <<"SubnetIds">> := list(string()())
+%% }
+-type update_vpc_connection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% scatter_plot_configuration() :: #{
+%%   <<"DataLabels">> => data_label_options(),
+%%   <<"FieldWells">> => scatter_plot_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"SortConfiguration">> => scatter_plot_sort_configuration(),
+%%   <<"Tooltip">> => tooltip_options(),
+%%   <<"VisualPalette">> => visual_palette(),
+%%   <<"XAxisDisplayOptions">> => axis_display_options(),
+%%   <<"XAxisLabelOptions">> => chart_axis_label_options(),
+%%   <<"YAxisDisplayOptions">> => axis_display_options(),
+%%   <<"YAxisLabelOptions">> => chart_axis_label_options()
+%% }
+-type scatter_plot_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_conditional_formatting() :: #{
+%%   <<"ConditionalFormattingOptions">> => list(table_conditional_formatting_option()())
+%% }
+-type table_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_folder_response() :: #{
+%%   <<"Folder">> => folder(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_folder_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_account_customization_request() :: #{
+%%   <<"AccountCustomization">> := account_customization(),
+%%   <<"Namespace">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_account_customization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_map_field_wells() :: #{
+%%   <<"GeospatialMapAggregatedFieldWells">> => geospatial_map_aggregated_field_wells()
+%% }
+-type geospatial_map_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% cascading_control_source() :: #{
+%%   <<"ColumnToMatch">> => column_identifier(),
+%%   <<"SourceSheetControlId">> => string()
+%% }
+-type cascading_control_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% single_axis_options() :: #{
+%%   <<"YAxisOptions">> => y_axis_options()
+%% }
+-type single_axis_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connection_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityStatus">> => list(any()),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DnsResolvers">> => list(string()()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkInterfaces">> => list(network_interface()()),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"Status">> => list(any()),
+%%   <<"VPCConnectionId">> => string(),
+%%   <<"VPCId">> => string()
+%% }
+-type vpc_connection_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_aggregated_field_wells() :: #{
+%%   <<"Columns">> => list(dimension_field()()),
+%%   <<"Rows">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type pivot_table_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% local_navigation_configuration() :: #{
+%%   <<"TargetSheetId">> => string()
+%% }
+-type local_navigation_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_analysis_permissions_request() :: #{}
+-type describe_analysis_permissions_request() :: #{}.
+
+
+%% Example:
+%% asset_bundle_export_job_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetBundleExportJobId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"ExportFormat">> => list(any()),
+%%   <<"IncludeAllDependencies">> => boolean(),
+%%   <<"IncludePermissions">> => boolean(),
+%%   <<"IncludeTags">> => boolean(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type asset_bundle_export_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_topic_refresh_schedule_request() :: #{}
+-type describe_topic_refresh_schedule_request() :: #{}.
+
+
+%% Example:
+%% margin_style() :: #{
+%%   <<"Show">> => boolean()
+%% }
+-type margin_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_dashboard_override_properties() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Properties">> => list(list(any())())
+%% }
+-type asset_bundle_export_job_dashboard_override_properties() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ingestion_request() :: #{}
+-type describe_ingestion_request() :: #{}.
+
+
+%% Example:
+%% anonymous_user_embedding_experience_configuration() :: #{
+%%   <<"Dashboard">> => anonymous_user_dashboard_embedding_configuration(),
+%%   <<"DashboardVisual">> => anonymous_user_dashboard_visual_embedding_configuration(),
+%%   <<"QSearchBar">> => anonymous_user_q_search_bar_embedding_configuration()
+%% }
+-type anonymous_user_embedding_experience_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% y_axis_options() :: #{
+%%   <<"YAxis">> => list(any())
+%% }
+-type y_axis_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_topic_refresh_schedule_request() :: #{
+%%   <<"DatasetArn">> := string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"RefreshSchedule">> := topic_refresh_schedule()
+%% }
+-type create_topic_refresh_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_schema() :: #{
+%%   <<"DataType">> => string(),
+%%   <<"GeographicRole">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type column_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ip_restriction_response() :: #{
+%%   <<"AwsAccountId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_ip_restriction_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_i_sparkline_options() :: #{
+%%   <<"Color">> => string(),
+%%   <<"TooltipVisibility">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type k_p_i_sparkline_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_theme_permissions_response() :: #{
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeArn">> => string(),
+%%   <<"ThemeId">> => string()
+%% }
+-type update_theme_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% waterfall_chart_sort_configuration() :: #{
+%%   <<"BreakdownItemsLimit">> => items_limit_configuration(),
+%%   <<"CategorySort">> => list(field_sort_options()())
+%% }
+-type waterfall_chart_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_time_default_values() :: #{
+%%   <<"DynamicValue">> => dynamic_default_value(),
+%%   <<"RollingDate">> => rolling_date_configuration(),
+%%   <<"StaticValues">> => list(non_neg_integer()())
+%% }
+-type date_time_default_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_schema() :: #{
+%%   <<"ColumnSchemaList">> => list(column_schema()())
+%% }
+-type data_set_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_field_image_configuration() :: #{
+%%   <<"SizingOptions">> => table_cell_image_sizing_configuration()
+%% }
+-type table_field_image_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_refresh_schedule_summary() :: #{
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetId">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"RefreshSchedule">> => topic_refresh_schedule()
+%% }
+-type topic_refresh_schedule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_set_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()()),
+%%   <<"RevokePermissions">> => list(resource_permission()())
+%% }
+-type update_data_set_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_color() :: #{
+%%   <<"Color">> => string(),
+%%   <<"FieldValue">> => string(),
+%%   <<"SpecialValue">> => list(any())
+%% }
+-type custom_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_function() :: #{
+%%   <<"AttributeAggregationFunction">> => attribute_aggregation_function(),
+%%   <<"CategoricalAggregationFunction">> => list(any()),
+%%   <<"DateAggregationFunction">> => list(any()),
+%%   <<"NumericalAggregationFunction">> => numerical_aggregation_function()
+%% }
+-type aggregation_function() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dashboard_request() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"VersionNumber">> => float()
+%% }
+-type describe_dashboard_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% total_options() :: #{
+%%   <<"CustomLabel">> => string(),
+%%   <<"Placement">> => list(any()),
+%%   <<"ScrollStatus">> => list(any()),
+%%   <<"TotalAggregationOptions">> => list(total_aggregation_option()()),
+%%   <<"TotalCellStyle">> => table_cell_style(),
+%%   <<"TotalsVisibility">> => list(any())
+%% }
+-type total_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_dashboards_response() :: #{
+%%   <<"DashboardSummaryList">> => list(dashboard_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type search_dashboards_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_type_not_supported_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type identity_type_not_supported_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% box_plot_options() :: #{
+%%   <<"AllDataPointsVisibility">> => list(any()),
+%%   <<"OutlierVisibility">> => list(any()),
+%%   <<"StyleOptions">> => box_plot_style_options()
+%% }
+-type box_plot_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateId">> => string(),
+%%   <<"VersionArn">> => string()
+%% }
+-type create_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_group_response() :: #{
+%%   <<"Group">> => group(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% funnel_chart_configuration() :: #{
+%%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
+%%   <<"DataLabelOptions">> => funnel_chart_data_label_options(),
+%%   <<"FieldWells">> => funnel_chart_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"SortConfiguration">> => funnel_chart_sort_configuration(),
+%%   <<"Tooltip">> => tooltip_options(),
+%%   <<"ValueLabelOptions">> => chart_axis_label_options(),
+%%   <<"VisualPalette">> => visual_palette()
+%% }
+-type funnel_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual() :: #{
+%%   <<"BarChartVisual">> => bar_chart_visual(),
+%%   <<"BoxPlotVisual">> => box_plot_visual(),
+%%   <<"ComboChartVisual">> => combo_chart_visual(),
+%%   <<"CustomContentVisual">> => custom_content_visual(),
+%%   <<"EmptyVisual">> => empty_visual(),
+%%   <<"FilledMapVisual">> => filled_map_visual(),
+%%   <<"FunnelChartVisual">> => funnel_chart_visual(),
+%%   <<"GaugeChartVisual">> => gauge_chart_visual(),
+%%   <<"GeospatialMapVisual">> => geospatial_map_visual(),
+%%   <<"HeatMapVisual">> => heat_map_visual(),
+%%   <<"HistogramVisual">> => histogram_visual(),
+%%   <<"InsightVisual">> => insight_visual(),
+%%   <<"KPIVisual">> => k_p_i_visual(),
+%%   <<"LineChartVisual">> => line_chart_visual(),
+%%   <<"PieChartVisual">> => pie_chart_visual(),
+%%   <<"PivotTableVisual">> => pivot_table_visual(),
+%%   <<"RadarChartVisual">> => radar_chart_visual(),
+%%   <<"SankeyDiagramVisual">> => sankey_diagram_visual(),
+%%   <<"ScatterPlotVisual">> => scatter_plot_visual(),
+%%   <<"TableVisual">> => table_visual(),
+%%   <<"TreeMapVisual">> => tree_map_visual(),
+%%   <<"WaterfallVisual">> => waterfall_visual(),
+%%   <<"WordCloudVisual">> => word_cloud_visual()
+%% }
+-type visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_permission() :: #{
+%%   <<"Actions">> => list(string()()),
+%%   <<"Principal">> => string()
+%% }
+-type resource_permission() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_user_quick_sight_console_embedding_configuration() :: #{
+%%   <<"FeatureConfigurations">> => registered_user_console_feature_configurations(),
+%%   <<"InitialPath">> => string()
+%% }
+-type registered_user_quick_sight_console_embedding_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TemplateId">> => string()
+%% }
+-type delete_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_options() :: #{
+%%   <<"CellStyle">> => table_cell_style(),
+%%   <<"HeaderStyle">> => table_cell_style(),
+%%   <<"Orientation">> => list(any()),
+%%   <<"RowAlternateColorOptions">> => row_alternate_color_options()
+%% }
+-type table_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_iam_parameters() :: #{
+%%   <<"AutoCreateDatabaseUser">> => boolean(),
+%%   <<"DatabaseGroups">> => list(string()()),
+%%   <<"DatabaseUser">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type redshift_iam_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_warning() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type asset_bundle_export_job_warning() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_folder_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()()),
+%%   <<"RevokePermissions">> => list(resource_permission()())
+%% }
+-type update_folder_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% typography() :: #{
+%%   <<"FontFamilies">> => list(font()())
+%% }
+-type typography() :: #{binary() => any()}.
+
+
+%% Example:
+%% template() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"TemplateId">> => string(),
+%%   <<"Version">> => template_version()
+%% }
+-type template() :: #{binary() => any()}.
+
+
+%% Example:
+%% filled_map_aggregated_field_wells() :: #{
+%%   <<"Geospatial">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type filled_map_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_source_entity() :: #{
+%%   <<"SourceTemplate">> => dashboard_source_template()
+%% }
+-type dashboard_source_entity() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ip_restriction_request() :: #{}
+-type describe_ip_restriction_request() :: #{}.
+
+
+%% Example:
+%% table_cell_conditional_formatting() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"TextFormat">> => text_conditional_format()
+%% }
+-type table_cell_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% histogram_bin_options() :: #{
+%%   <<"BinCount">> => bin_count_options(),
+%%   <<"BinWidth">> => bin_width_options(),
+%%   <<"SelectedBinType">> => list(any()),
+%%   <<"StartValue">> => float()
+%% }
+-type histogram_bin_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% trino_parameters() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type trino_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_membership_response() :: #{
+%%   <<"GroupMember">> => group_member(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_group_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_data_set_response() :: #{
+%%   <<"DataSet">> => data_set(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_data_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_override_permissions() :: #{
+%%   <<"Analyses">> => list(asset_bundle_import_job_analysis_override_permissions()()),
+%%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_permissions()()),
+%%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_permissions()()),
+%%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_permissions()()),
+%%   <<"Themes">> => list(asset_bundle_import_job_theme_override_permissions()())
+%% }
+-type asset_bundle_import_job_override_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_hierarchy() :: #{
+%%   <<"DateTimeHierarchy">> => date_time_hierarchy(),
+%%   <<"ExplicitHierarchy">> => explicit_hierarchy(),
+%%   <<"PredefinedHierarchy">> => predefined_hierarchy()
+%% }
+-type column_hierarchy() :: #{binary() => any()}.
+
+
+%% Example:
+%% simple_cluster_marker() :: #{
+%%   <<"Color">> => string()
+%% }
+-type simple_cluster_marker() :: #{binary() => any()}.
+
+
+%% Example:
+%% font_size() :: #{
+%%   <<"Relative">> => list(any())
+%% }
+-type font_size() :: #{binary() => any()}.
+
+
+%% Example:
+%% waterfall_chart_field_wells() :: #{
+%%   <<"WaterfallChartAggregatedFieldWells">> => waterfall_chart_aggregated_field_wells()
+%% }
+-type waterfall_chart_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculated_field() :: #{
+%%   <<"DataSetIdentifier">> => string(),
+%%   <<"Expression">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type calculated_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_with_hidden_fields_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type export_with_hidden_fields_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% decimal_dataset_parameter_default_values() :: #{
+%%   <<"StaticValues">> => list(float()())
+%% }
+-type decimal_dataset_parameter_default_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% incremental_refresh() :: #{
+%%   <<"LookbackWindow">> => lookback_window()
+%% }
+-type incremental_refresh() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_paginated_report_options() :: #{
+%%   <<"OverflowColumnHeaderVisibility">> => list(any()),
+%%   <<"VerticalOverflowVisibility">> => list(any())
+%% }
+-type pivot_table_paginated_report_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_iprimary_value_conditional_formatting() :: #{
+%%   <<"Icon">> => conditional_formatting_icon(),
+%%   <<"TextColor">> => conditional_formatting_color()
+%% }
+-type k_p_iprimary_value_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_range_filter_constant() :: #{
+%%   <<"ConstantType">> => list(any()),
+%%   <<"RangeConstant">> => range_constant()
+%% }
+-type topic_range_filter_constant() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source() :: #{
+%%   <<"AlternateDataSourceParameters">> => list(list()()),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"DataSourceParameters">> => list(),
+%%   <<"ErrorInfo">> => data_source_error_info(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"SslProperties">> => ssl_properties(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"VpcConnectionProperties">> => vpc_connection_properties()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_groups_response() :: #{
+%%   <<"GroupList">> => list(group()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type search_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculated_column() :: #{
+%%   <<"ColumnId">> => string(),
+%%   <<"ColumnName">> => string(),
+%%   <<"Expression">> => string()
+%% }
+-type calculated_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% dimension_field() :: #{
+%%   <<"CategoricalDimensionField">> => categorical_dimension_field(),
+%%   <<"DateDimensionField">> => date_dimension_field(),
+%%   <<"NumericalDimensionField">> => numerical_dimension_field()
+%% }
+-type dimension_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% waterfall_chart_group_color_configuration() :: #{
+%%   <<"NegativeBarColor">> => string(),
+%%   <<"PositiveBarColor">> => string(),
+%%   <<"TotalBarColor">> => string()
+%% }
+-type waterfall_chart_group_color_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_parameter_declaration() :: #{
+%%   <<"DefaultValues">> => string_default_values(),
+%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()()),
+%%   <<"Name">> => string(),
+%%   <<"ParameterValueType">> => list(any()),
+%%   <<"ValueWhenUnset">> => string_value_when_unset_configuration()
+%% }
+-type string_parameter_declaration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_reference() :: #{
+%%   <<"DataSetArn">> => string(),
+%%   <<"DataSetPlaceholder">> => string()
+%% }
+-type data_set_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_memberships_response() :: #{
+%%   <<"GroupMemberList">> => list(group_member()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_group_memberships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% combo_chart_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => combo_chart_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type combo_chart_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% comparison_configuration() :: #{
+%%   <<"ComparisonFormat">> => comparison_format_configuration(),
+%%   <<"ComparisonMethod">> => list(any())
+%% }
+-type comparison_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% numeric_axis_options() :: #{
+%%   <<"Range">> => axis_display_range(),
+%%   <<"Scale">> => axis_scale()
+%% }
+-type numeric_axis_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% forecast_configuration() :: #{
+%%   <<"ForecastProperties">> => time_based_forecast_properties(),
+%%   <<"Scenario">> => forecast_scenario()
+%% }
+-type forecast_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_folder_membership_response() :: #{
+%%   <<"FolderMember">> => folder_member(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_folder_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sql_server_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type sql_server_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"GroupList">> => list(group()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_asset_bundle_export_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetBundleExportJobId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type start_asset_bundle_export_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_text_area_control() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"DisplayOptions">> => text_area_control_display_options(),
+%%   <<"FilterControlId">> => string(),
+%%   <<"SourceFilterId">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type filter_text_area_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditional_formatting_solid_color() :: #{
+%%   <<"Color">> => string(),
+%%   <<"Expression">> => string()
+%% }
+-type conditional_formatting_solid_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_anonymous_user() :: #{
+%%   <<"RowLevelPermissionTags">> => list(session_tag()())
+%% }
+-type snapshot_anonymous_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% rolling_date_configuration() :: #{
+%%   <<"DataSetIdentifier">> => string(),
+%%   <<"Expression">> => string()
+%% }
+-type rolling_date_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditional_formatting_gradient_color() :: #{
+%%   <<"Color">> => gradient_color(),
+%%   <<"Expression">> => string()
+%% }
+-type conditional_formatting_gradient_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% ui_color_palette() :: #{
+%%   <<"Accent">> => string(),
+%%   <<"AccentForeground">> => string(),
+%%   <<"Danger">> => string(),
+%%   <<"DangerForeground">> => string(),
+%%   <<"Dimension">> => string(),
+%%   <<"DimensionForeground">> => string(),
+%%   <<"Measure">> => string(),
+%%   <<"MeasureForeground">> => string(),
+%%   <<"PrimaryBackground">> => string(),
+%%   <<"PrimaryForeground">> => string(),
+%%   <<"SecondaryBackground">> => string(),
+%%   <<"SecondaryForeground">> => string(),
+%%   <<"Success">> => string(),
+%%   <<"SuccessForeground">> => string(),
+%%   <<"Warning">> => string(),
+%%   <<"WarningForeground">> => string()
+%% }
+-type ui_color_palette() :: #{binary() => any()}.
+
+
+%% Example:
+%% manifest_file_location() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string()
+%% }
+-type manifest_file_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% relative_date_time_control_display_options() :: #{
+%%   <<"DateTimeFormat">> => string(),
+%%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
+%%   <<"TitleOptions">> => label_options()
+%% }
+-type relative_date_time_control_display_options() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_by_principal_id_request() :: #{}
+-type delete_user_by_principal_id_request() :: #{}.
+
+
+%% Example:
+%% snapshot_file() :: #{
+%%   <<"FormatType">> => list(any()),
+%%   <<"SheetSelections">> => list(snapshot_file_sheet_selection()())
+%% }
+-type snapshot_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% color_scale() :: #{
+%%   <<"ColorFillType">> => list(any()),
+%%   <<"Colors">> => list(data_color()()),
+%%   <<"NullValueColor">> => data_color()
+%% }
+-type color_scale() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_data_source_credentials() :: #{
+%%   <<"CredentialPair">> => asset_bundle_import_job_data_source_credential_pair(),
+%%   <<"SecretArn">> => string()
+%% }
+-type asset_bundle_import_job_data_source_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% same_sheet_target_visual_configuration() :: #{
+%%   <<"TargetVisualOptions">> => list(any()),
+%%   <<"TargetVisuals">> => list(string()())
+%% }
+-type same_sheet_target_visual_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_user_by_principal_id_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_user_by_principal_id_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_conditional_formatting() :: #{
+%%   <<"ConditionalFormattingOptions">> => list(pivot_table_conditional_formatting_option()())
+%% }
+-type pivot_table_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_field_series_item() :: #{
+%%   <<"AxisBinding">> => list(any()),
+%%   <<"FieldId">> => string(),
+%%   <<"FieldValue">> => string(),
+%%   <<"Settings">> => line_chart_series_settings()
+%% }
+-type data_field_series_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_narrative_options() :: #{
+%%   <<"Narrative">> => string()
+%% }
+-type custom_narrative_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_iam_policy_assignment_response() :: #{
+%%   <<"AssignmentName">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_iam_policy_assignment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_job_error_info() :: #{
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ErrorType">> => string()
+%% }
+-type snapshot_job_error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_folder_request() :: #{
+%%   <<"FolderType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"ParentFolderArn">> => string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"SharingModel">> => list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_folder_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_themes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeSummaryList">> => list(theme_summary()())
+%% }
+-type list_themes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_theme_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"ThemeVersionSummaryList">> => list(theme_version_summary()())
+%% }
+-type list_theme_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_time_hierarchy() :: #{
+%%   <<"DrillDownFilters">> => list(drill_down_filter()()),
+%%   <<"HierarchyId">> => string()
+%% }
+-type date_time_hierarchy() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_override_validation_strategy() :: #{
+%%   <<"StrictModeForAllResources">> => boolean()
+%% }
+-type asset_bundle_import_job_override_validation_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% body_section_configuration() :: #{
+%%   <<"Content">> => body_section_content(),
+%%   <<"PageBreakConfiguration">> => section_page_break_configuration(),
+%%   <<"SectionId">> => string(),
+%%   <<"Style">> => section_style()
+%% }
+-type body_section_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dashboards_response() :: #{
+%%   <<"DashboardSummaryList">> => list(dashboard_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_dashboards_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_field_subtotal_options() :: #{
+%%   <<"FieldId">> => string()
+%% }
+-type pivot_table_field_subtotal_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_validation_strategy() :: #{
+%%   <<"StrictModeForAllResources">> => boolean()
+%% }
+-type asset_bundle_export_job_validation_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_defaults() :: #{
+%%   <<"DefaultNewSheetConfiguration">> => default_new_sheet_configuration()
+%% }
+-type analysis_defaults() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_topic_refresh_schedule_response() :: #{
+%%   <<"DatasetArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type create_topic_refresh_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% small_multiples_options() :: #{
+%%   <<"MaxVisibleColumns">> => float(),
+%%   <<"MaxVisibleRows">> => float(),
+%%   <<"PanelConfiguration">> => panel_configuration(),
+%%   <<"XAxis">> => small_multiples_axis_properties(),
+%%   <<"YAxis">> => small_multiples_axis_properties()
+%% }
+-type small_multiples_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_line_value_label_configuration() :: #{
+%%   <<"FormatConfiguration">> => numeric_format_configuration(),
+%%   <<"RelativePosition">> => list(any())
+%% }
+-type reference_line_value_label_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_folder_resolved_permissions_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FolderId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_folder_resolved_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_line() :: #{
+%%   <<"DataConfiguration">> => reference_line_data_configuration(),
+%%   <<"LabelConfiguration">> => reference_line_label_configuration(),
+%%   <<"Status">> => list(any()),
+%%   <<"StyleConfiguration">> => reference_line_style_configuration()
+%% }
+-type reference_line() :: #{binary() => any()}.
+
+
+%% Example:
+%% section_page_break_configuration() :: #{
+%%   <<"After">> => section_after_page_break()
+%% }
+-type section_page_break_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_job_s3_result() :: #{
+%%   <<"ErrorInfo">> => list(snapshot_job_result_error_info()()),
+%%   <<"S3DestinationConfiguration">> => snapshot_s3_destination_configuration(),
+%%   <<"S3Uri">> => string()
+%% }
+-type snapshot_job_s3_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% precondition_not_met_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type precondition_not_met_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sankey_diagram_chart_configuration() :: #{
+%%   <<"DataLabels">> => data_label_options(),
+%%   <<"FieldWells">> => sankey_diagram_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"SortConfiguration">> => sankey_diagram_sort_configuration()
+%% }
+-type sankey_diagram_chart_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_data_set_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DataSetId">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_data_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_operation_target_visuals_configuration() :: #{
+%%   <<"SameSheetTargetVisualConfiguration">> => same_sheet_target_visual_configuration()
+%% }
+-type filter_operation_target_visuals_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% free_form_layout_element_background_style() :: #{
+%%   <<"Color">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type free_form_layout_element_background_style() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_column() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SubType">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type output_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"DataSetIdentifier">> => string(),
+%%   <<"InsightConfiguration">> => insight_configuration(),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type insight_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% drop_down_control_display_options() :: #{
+%%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
+%%   <<"SelectAllOptions">> => list_control_select_all_options(),
+%%   <<"TitleOptions">> => label_options()
+%% }
+-type drop_down_control_display_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_configuration() :: #{
+%%   <<"FieldOptions">> => pivot_table_field_options(),
+%%   <<"FieldWells">> => pivot_table_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"PaginatedReportOptions">> => pivot_table_paginated_report_options(),
+%%   <<"SortConfiguration">> => pivot_table_sort_configuration(),
+%%   <<"TableOptions">> => pivot_table_options(),
+%%   <<"TotalOptions">> => pivot_table_total_options()
+%% }
+-type pivot_table_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_user_request() :: #{
+%%   <<"CustomFederationProviderUrl">> => string(),
+%%   <<"CustomPermissionsName">> => string(),
+%%   <<"Email">> := string(),
+%%   <<"ExternalLoginFederationProviderType">> => string(),
+%%   <<"ExternalLoginId">> => string(),
+%%   <<"IamArn">> => string(),
+%%   <<"IdentityType">> := list(any()),
+%%   <<"SessionName">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UserName">> => string(),
+%%   <<"UserRole">> := list(any())
+%% }
+-type register_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_refresh_schedule_request() :: #{
+%%   <<"Schedule">> := refresh_schedule()
+%% }
+-type create_refresh_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_override_parameters() :: #{
+%%   <<"Analyses">> => list(asset_bundle_import_job_analysis_override_parameters()()),
+%%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_parameters()()),
+%%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_parameters()()),
+%%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_parameters()()),
+%%   <<"RefreshSchedules">> => list(asset_bundle_import_job_refresh_schedule_override_parameters()()),
+%%   <<"ResourceIdOverrideConfiguration">> => asset_bundle_import_job_resource_id_override_configuration(),
+%%   <<"Themes">> => list(asset_bundle_import_job_theme_override_parameters()()),
+%%   <<"VPCConnections">> => list(asset_bundle_import_job_vpc_connection_override_parameters()())
+%% }
+-type asset_bundle_import_job_override_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_error_info() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type data_source_error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_action_set_parameters_operation() :: #{
+%%   <<"ParameterValueConfigurations">> => list(set_parameter_value_configuration()())
+%% }
+-type custom_action_set_parameters_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% comparative_order() :: #{
+%%   <<"SpecifedOrder">> => list(string()()),
+%%   <<"TreatUndefinedSpecifiedValues">> => list(any()),
+%%   <<"UseOrdering">> => list(any())
+%% }
+-type comparative_order() :: #{binary() => any()}.
+
+
+%% Example:
+%% scatter_plot_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => scatter_plot_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type scatter_plot_visual() :: #{binary() => any()}.
+
+%% Example:
+%% describe_analysis_definition_request() :: #{}
+-type describe_analysis_definition_request() :: #{}.
+
+
+%% Example:
+%% heat_map_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => heat_map_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type heat_map_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% decimal_parameter_declaration() :: #{
+%%   <<"DefaultValues">> => decimal_default_values(),
+%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()()),
+%%   <<"Name">> => string(),
+%%   <<"ParameterValueType">> => list(any()),
+%%   <<"ValueWhenUnset">> => decimal_value_when_unset_configuration()
+%% }
+-type decimal_parameter_declaration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_analysis_request() :: #{
+%%   <<"Definition">> => analysis_definition(),
+%%   <<"FolderArns">> => list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"Parameters">> => parameters(),
+%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"SourceEntity">> => analysis_source_entity(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"ThemeArn">> => string(),
+%%   <<"ValidationStrategy">> => validation_strategy()
+%% }
+-type create_analysis_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% oracle_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type oracle_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% top_bottom_ranked_computation() :: #{
+%%   <<"Category">> => dimension_field(),
+%%   <<"ComputationId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ResultSize">> => integer(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => measure_field()
+%% }
+-type top_bottom_ranked_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% cascading_control_configuration() :: #{
+%%   <<"SourceControls">> => list(cascading_control_source()())
+%% }
+-type cascading_control_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_color_palette() :: #{
+%%   <<"Colors">> => list(string()()),
+%%   <<"EmptyFillColor">> => string(),
+%%   <<"MinMaxGradient">> => list(string()())
+%% }
+-type data_color_palette() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_parameter_values() :: #{
+%%   <<"DateTimeValues">> => list(non_neg_integer()()),
+%%   <<"DecimalValues">> => list(float()()),
+%%   <<"IntegerValues">> => list(float()()),
+%%   <<"StringValues">> => list(string()())
+%% }
+-type custom_parameter_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_response() :: #{
+%%   <<"Group">> => group(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_iam_policy_assignment_request() :: #{}
+-type delete_iam_policy_assignment_request() :: #{}.
+
+
+%% Example:
+%% delete_identity_propagation_config_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_identity_propagation_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% free_form_layout_element() :: #{
+%%   <<"BackgroundStyle">> => free_form_layout_element_background_style(),
+%%   <<"BorderStyle">> => free_form_layout_element_border_style(),
+%%   <<"ElementId">> => string(),
+%%   <<"ElementType">> => list(any()),
+%%   <<"Height">> => string(),
+%%   <<"LoadingAnimation">> => loading_animation(),
+%%   <<"RenderingRules">> => list(sheet_element_rendering_rule()()),
+%%   <<"SelectedBorderStyle">> => free_form_layout_element_border_style(),
+%%   <<"Visibility">> => list(any()),
+%%   <<"Width">> => string(),
+%%   <<"XAxisLocation">> => string(),
+%%   <<"YAxisLocation">> => string()
+%% }
+-type free_form_layout_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% filled_map_conditional_formatting() :: #{
+%%   <<"ConditionalFormattingOptions">> => list(filled_map_conditional_formatting_option()())
+%% }
+-type filled_map_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_override_tags() :: #{
+%%   <<"Analyses">> => list(asset_bundle_import_job_analysis_override_tags()()),
+%%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_tags()()),
+%%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_tags()()),
+%%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_tags()()),
+%%   <<"Themes">> => list(asset_bundle_import_job_theme_override_tags()()),
+%%   <<"VPCConnections">> => list(asset_bundle_import_job_vpc_connection_override_tags()())
+%% }
+-type asset_bundle_import_job_override_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_metadata() :: #{
+%%   <<"CalculatedFields">> => list(topic_calculated_field()()),
+%%   <<"Columns">> => list(topic_column()()),
+%%   <<"DataAggregation">> => data_aggregation(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetDescription">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"Filters">> => list(topic_filter()()),
+%%   <<"NamedEntities">> => list(topic_named_entity()())
+%% }
+-type dataset_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% word_cloud_aggregated_field_wells() :: #{
+%%   <<"GroupBy">> => list(dimension_field()()),
+%%   <<"Size">> => list(measure_field()())
+%% }
+-type word_cloud_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_version_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VersionNumber">> => float()
+%% }
+-type template_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_role_custom_permission_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_role_custom_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_line_label_configuration() :: #{
+%%   <<"CustomLabelConfiguration">> => reference_line_custom_label_configuration(),
+%%   <<"FontColor">> => string(),
+%%   <<"FontConfiguration">> => font_configuration(),
+%%   <<"HorizontalPosition">> => list(any()),
+%%   <<"ValueLabelConfiguration">> => reference_line_value_label_configuration(),
+%%   <<"VerticalPosition">> => list(any())
+%% }
+-type reference_line_label_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% section_based_layout_canvas_size_options() :: #{
+%%   <<"PaperCanvasSizeOptions">> => section_based_layout_paper_canvas_size_options()
+%% }
+-type section_based_layout_canvas_size_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_calculated_field() :: #{
+%%   <<"Aggregation">> => list(any()),
+%%   <<"AllowedAggregations">> => list(list(any())()),
+%%   <<"CalculatedFieldDescription">> => string(),
+%%   <<"CalculatedFieldName">> => string(),
+%%   <<"CalculatedFieldSynonyms">> => list(string()()),
+%%   <<"CellValueSynonyms">> => list(cell_value_synonym()()),
+%%   <<"ColumnDataRole">> => list(any()),
+%%   <<"ComparativeOrder">> => comparative_order(),
+%%   <<"DefaultFormatting">> => default_formatting(),
+%%   <<"DisableIndexing">> => boolean(),
+%%   <<"Expression">> => string(),
+%%   <<"IsIncludedInTopic">> => boolean(),
+%%   <<"NeverAggregateInFilter">> => boolean(),
+%%   <<"NonAdditive">> => boolean(),
+%%   <<"NotAllowedAggregations">> => list(list(any())()),
+%%   <<"SemanticType">> => semantic_type(),
+%%   <<"TimeGranularity">> => list(any())
+%% }
+-type topic_calculated_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_path_value() :: #{
+%%   <<"DataPathType">> => data_path_type(),
+%%   <<"FieldId">> => string(),
+%%   <<"FieldValue">> => string()
+%% }
+-type data_path_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_template_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer(),
+%%   <<"Template">> => template()
+%% }
+-type describe_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_chart_marker_style_settings() :: #{
+%%   <<"MarkerColor">> => string(),
+%%   <<"MarkerShape">> => list(any()),
+%%   <<"MarkerSize">> => string(),
+%%   <<"MarkerVisibility">> => list(any())
+%% }
+-type line_chart_marker_style_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_bundle_export_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_asset_bundle_export_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% decimal_places_configuration() :: #{
+%%   <<"DecimalPlaces">> => float()
+%% }
+-type decimal_places_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_set_request() :: #{
+%%   <<"ColumnGroups">> => list(column_group()()),
+%%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()()),
+%%   <<"DataSetUsageConfiguration">> => data_set_usage_configuration(),
+%%   <<"DatasetParameters">> => list(dataset_parameter()()),
+%%   <<"FieldFolders">> => map(),
+%%   <<"ImportMode">> := list(any()),
+%%   <<"LogicalTableMap">> => map(),
+%%   <<"Name">> := string(),
+%%   <<"PhysicalTableMap">> := map(),
+%%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
+%%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration()
+%% }
+-type update_data_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_theme_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_theme_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% body_section_content() :: #{
+%%   <<"Layout">> => section_layout_configuration()
+%% }
+-type body_section_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivot_table_conditional_formatting_scope() :: #{
+%%   <<"Role">> => list(any())
+%% }
+-type pivot_table_conditional_formatting_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_account_customization_request() :: #{
+%%   <<"Namespace">> => string()
+%% }
+-type delete_account_customization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_response() :: #{
+%%   <<"Group">> => group(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_theme_alias_request() :: #{}
+-type describe_theme_alias_request() :: #{}.
+
+
+%% Example:
+%% k_p_i_comparison_value_conditional_formatting() :: #{
+%%   <<"Icon">> => conditional_formatting_icon(),
+%%   <<"TextColor">> => conditional_formatting_color()
+%% }
+-type k_p_i_comparison_value_conditional_formatting() :: #{binary() => any()}.
+
+
+%% Example:
+%% box_plot_sort_configuration() :: #{
+%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"PaginationConfiguration">> => pagination_configuration()
+%% }
+-type box_plot_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_folder_members_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_folder_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_cloud_formation_override_property_configuration() :: #{
+%%   <<"Analyses">> => list(asset_bundle_export_job_analysis_override_properties()()),
+%%   <<"Dashboards">> => list(asset_bundle_export_job_dashboard_override_properties()()),
+%%   <<"DataSets">> => list(asset_bundle_export_job_data_set_override_properties()()),
+%%   <<"DataSources">> => list(asset_bundle_export_job_data_source_override_properties()()),
+%%   <<"RefreshSchedules">> => list(asset_bundle_export_job_refresh_schedule_override_properties()()),
+%%   <<"ResourceIdOverrideConfiguration">> => asset_bundle_export_job_resource_id_override_configuration(),
+%%   <<"Themes">> => list(asset_bundle_export_job_theme_override_properties()()),
+%%   <<"VPCConnections">> => list(asset_bundle_export_job_vpc_connection_override_properties()())
+%% }
+-type asset_bundle_cloud_formation_override_property_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% box_plot_aggregated_field_wells() :: #{
+%%   <<"GroupBy">> => list(dimension_field()()),
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type box_plot_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_p_i_visual_standard_layout() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type k_p_i_visual_standard_layout() :: #{binary() => any()}.
+
+%% Example:
+%% create_role_membership_request() :: #{}
+-type create_role_membership_request() :: #{}.
+
+
+%% Example:
+%% layout_configuration() :: #{
+%%   <<"FreeFormLayout">> => free_form_layout_configuration(),
+%%   <<"GridLayout">> => grid_layout_configuration(),
+%%   <<"SectionBasedLayout">> => section_based_layout_configuration()
+%% }
+-type layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_path_color() :: #{
+%%   <<"Color">> => string(),
+%%   <<"Element">> => data_path_value(),
+%%   <<"TimeGranularity">> => list(any())
+%% }
+-type data_path_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_data_set_override_parameters() :: #{
+%%   <<"DataSetId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type asset_bundle_import_job_data_set_override_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_filter() :: #{
+%%   <<"CategoryFilter">> => topic_category_filter(),
+%%   <<"DateRangeFilter">> => topic_date_range_filter(),
+%%   <<"FilterClass">> => list(any()),
+%%   <<"FilterDescription">> => string(),
+%%   <<"FilterName">> => string(),
+%%   <<"FilterSynonyms">> => list(string()()),
+%%   <<"FilterType">> => list(any()),
+%%   <<"NumericEqualityFilter">> => topic_numeric_equality_filter(),
+%%   <<"NumericRangeFilter">> => topic_numeric_range_filter(),
+%%   <<"OperandFieldName">> => string(),
+%%   <<"RelativeDateFilter">> => topic_relative_date_filter()
+%% }
+-type topic_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_parameters() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"Database">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"IAMParameters">> => redshift_iam_parameters(),
+%%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
+%%   <<"Port">> => integer()
+%% }
+-type redshift_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% histogram_aggregated_field_wells() :: #{
+%%   <<"Values">> => list(measure_field()())
+%% }
+-type histogram_aggregated_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_folder_resolved_permissions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Namespace">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_folder_resolved_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_public_sharing_settings_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_public_sharing_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% scatter_plot_field_wells() :: #{
+%%   <<"ScatterPlotCategoricallyAggregatedFieldWells">> => scatter_plot_categorically_aggregated_field_wells(),
+%%   <<"ScatterPlotUnaggregatedFieldWells">> => scatter_plot_unaggregated_field_wells()
+%% }
+-type scatter_plot_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_source_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()()),
+%%   <<"RevokePermissions">> => list(resource_permission()())
+%% }
+-type update_data_source_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_refresh_details() :: #{
+%%   <<"RefreshArn">> => string(),
+%%   <<"RefreshId">> => string(),
+%%   <<"RefreshStatus">> => list(any())
+%% }
+-type topic_refresh_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_values_configuration() :: #{
+%%   <<"CustomValues">> => custom_parameter_values(),
+%%   <<"IncludeNullValue">> => boolean()
+%% }
+-type custom_values_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_sort_configuration() :: #{
+%%   <<"PaginationConfiguration">> => pagination_configuration(),
+%%   <<"RowSort">> => list(field_sort_options()())
+%% }
+-type table_sort_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_parameters() :: #{
+%%   <<"ManifestFileLocation">> => manifest_file_location(),
+%%   <<"RoleArn">> => string()
+%% }
+-type s3_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_iam_policy_assignments_request() :: #{
+%%   <<"AssignmentStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_iam_policy_assignments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_data_source_override_permissions() :: #{
+%%   <<"DataSourceIds">> => list(string()()),
+%%   <<"Permissions">> => asset_bundle_resource_permissions()
+%% }
+-type asset_bundle_import_job_data_source_override_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_new_sheet_configuration() :: #{
+%%   <<"InteractiveLayoutConfiguration">> => default_interactive_layout_configuration(),
+%%   <<"PaginatedLayoutConfiguration">> => default_paginated_layout_configuration(),
+%%   <<"SheetContentType">> => list(any())
+%% }
+-type default_new_sheet_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_account_customization_response() :: #{
+%%   <<"AccountCustomization">> => account_customization(),
+%%   <<"Arn">> => string(),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_account_customization_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_topic_request() :: #{}
+-type delete_topic_request() :: #{}.
+
+
+%% Example:
+%% custom_action_filter_operation() :: #{
+%%   <<"SelectedFieldsConfiguration">> => filter_operation_selected_fields_configuration(),
+%%   <<"TargetVisualsConfiguration">> => filter_operation_target_visuals_configuration()
+%% }
+-type custom_action_filter_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% word_cloud_visual() :: #{
+%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"ChartConfiguration">> => word_cloud_chart_configuration(),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"Subtitle">> => visual_subtitle_label_options(),
+%%   <<"Title">> => visual_title_label_options(),
+%%   <<"VisualId">> => string()
+%% }
+-type word_cloud_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% format_configuration() :: #{
+%%   <<"DateTimeFormatConfiguration">> => date_time_format_configuration(),
+%%   <<"NumberFormatConfiguration">> => number_format_configuration(),
+%%   <<"StringFormatConfiguration">> => string_format_configuration()
+%% }
+-type format_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dashboard_versions_response() :: #{
+%%   <<"DashboardVersionSummaryList">> => list(dashboard_version_summary()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type list_dashboard_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% geospatial_map_configuration() :: #{
+%%   <<"FieldWells">> => geospatial_map_field_wells(),
+%%   <<"Interactions">> => visual_interaction_options(),
+%%   <<"Legend">> => legend_options(),
+%%   <<"MapStyleOptions">> => geospatial_map_style_options(),
+%%   <<"PointStyleOptions">> => geospatial_point_style_options(),
+%%   <<"Tooltip">> => tooltip_options(),
+%%   <<"VisualPalette">> => visual_palette(),
+%%   <<"WindowOptions">> => geospatial_window_options()
+%% }
+-type geospatial_map_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% section_based_layout_configuration() :: #{
+%%   <<"BodySections">> => list(body_section_configuration()()),
+%%   <<"CanvasSizeOptions">> => section_based_layout_canvas_size_options(),
+%%   <<"FooterSections">> => list(header_footer_section_configuration()()),
+%%   <<"HeaderSections">> => list(header_footer_section_configuration()())
+%% }
+-type section_based_layout_configuration() :: #{binary() => any()}.
+
+-type cancel_ingestion_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_account_customization_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_account_subscription_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_analysis_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_dashboard_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_data_set_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_data_source_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_folder_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_folder_membership_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_group_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_group_membership_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_iam_policy_assignment_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    concurrent_updating_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_ingestion_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_namespace_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_refresh_schedule_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_role_membership_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_template_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_template_alias_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    resource_exists_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_theme_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_theme_alias_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type create_topic_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_topic_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type create_vpc_connection_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_account_customization_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_account_subscription_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_analysis_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_dashboard_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_data_set_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_data_set_refresh_properties_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_data_source_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_folder_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_folder_membership_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_group_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_group_membership_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_iam_policy_assignment_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    concurrent_updating_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_identity_propagation_config_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_namespace_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type delete_role_custom_permission_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_role_membership_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_template_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_template_alias_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_theme_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_theme_alias_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type delete_topic_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_topic_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type delete_user_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_user_by_principal_id_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_vpc_connection_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_account_customization_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_account_settings_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_account_subscription_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_analysis_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_analysis_definition_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_analysis_permissions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_bundle_export_job_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception().
+
+-type describe_asset_bundle_import_job_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception().
+
+-type describe_dashboard_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_dashboard_definition_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_dashboard_permissions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_dashboard_snapshot_job_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_dashboard_snapshot_job_result_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_data_set_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_data_set_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_data_set_refresh_properties_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_data_source_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_data_source_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_folder_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_folder_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_folder_resolved_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_group_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_group_membership_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_iam_policy_assignment_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_ingestion_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_ip_restriction_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_namespace_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_role_custom_permission_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_template_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_template_alias_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_template_definition_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_template_permissions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_theme_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_theme_alias_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_theme_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type describe_topic_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_topic_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_topic_refresh_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_topic_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type describe_user_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_vpc_connection_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type generate_embed_url_for_anonymous_user_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    session_lifetime_in_minutes_invalid_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    unsupported_pricing_plan_exception() | 
+    internal_failure_exception().
+
+-type generate_embed_url_for_registered_user_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    session_lifetime_in_minutes_invalid_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    unsupported_pricing_plan_exception() | 
+    quick_sight_user_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_dashboard_embed_url_errors() ::
+    identity_type_not_supported_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    session_lifetime_in_minutes_invalid_exception() | 
+    invalid_parameter_value_exception() | 
+    domain_not_whitelisted_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    unsupported_pricing_plan_exception() | 
+    quick_sight_user_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_session_embed_url_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    session_lifetime_in_minutes_invalid_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    quick_sight_user_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_analyses_errors() ::
+    throttling_exception() | 
+    invalid_next_token_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_asset_bundle_export_jobs_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception().
+
+-type list_asset_bundle_import_jobs_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception().
+
+-type list_dashboard_versions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_dashboards_errors() ::
+    throttling_exception() | 
+    invalid_next_token_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_data_sets_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    internal_failure_exception().
+
+-type list_data_sources_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    internal_failure_exception().
+
+-type list_folder_members_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_folders_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_group_memberships_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_groups_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_iam_policy_assignments_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_iam_policy_assignments_for_user_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    concurrent_updating_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_identity_propagation_configs_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_ingestions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_namespaces_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_refresh_schedules_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_role_memberships_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_template_aliases_errors() ::
+    throttling_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_template_versions_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_templates_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_theme_aliases_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_theme_versions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_themes_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type list_topic_refresh_schedules_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type list_topics_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    internal_failure_exception().
+
+-type list_user_groups_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_users_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type list_vpc_connections_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type put_data_set_refresh_properties_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type register_user_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type restore_analysis_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type search_analyses_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type search_dashboards_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type search_data_sets_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type search_data_sources_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type search_folders_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type search_groups_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type start_asset_bundle_export_job_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception().
+
+-type start_asset_bundle_import_job_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception().
+
+-type start_dashboard_snapshot_job_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    unsupported_pricing_plan_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_account_customization_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_account_settings_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_analysis_errors() ::
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_analysis_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_dashboard_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_dashboard_links_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_dashboard_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_dashboard_published_version_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_data_set_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_data_set_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_data_source_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_data_source_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_folder_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_folder_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_group_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_iam_policy_assignment_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    concurrent_updating_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_identity_propagation_config_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_ip_restriction_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_public_sharing_settings_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_pricing_plan_exception() | 
+    internal_failure_exception().
+
+-type update_refresh_schedule_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_role_custom_permission_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_template_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_template_alias_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_template_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_theme_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_theme_alias_errors() ::
+    throttling_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_theme_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_topic_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_topic_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
+-type update_topic_refresh_schedule_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_user_errors() ::
+    precondition_not_met_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_vpc_connection_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
+    internal_failure_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Cancels an ongoing ingestion of data into SPICE.
+-spec cancel_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), cancel_ingestion_request()) ->
+    {ok, cancel_ingestion_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_ingestion_errors(), tuple()}.
 cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
+
+-spec cancel_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), cancel_ingestion_request(), proplists:proplist()) ->
+    {ok, cancel_ingestion_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_ingestion_errors(), tuple()}.
 cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
@@ -502,8 +12211,17 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateThemePermissions.html
 %% '''
 %% API operation.
+-spec create_account_customization(aws_client:aws_client(), binary() | list(), create_account_customization_request()) ->
+    {ok, create_account_customization_response(), tuple()} |
+    {error, any()} |
+    {error, create_account_customization_errors(), tuple()}.
 create_account_customization(Client, AwsAccountId, Input) ->
     create_account_customization(Client, AwsAccountId, Input, []).
+
+-spec create_account_customization(aws_client:aws_client(), binary() | list(), create_account_customization_request(), proplists:proplist()) ->
+    {ok, create_account_customization_response(), tuple()} |
+    {error, any()} |
+    {error, create_account_customization_errors(), tuple()}.
 create_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
@@ -573,8 +12291,17 @@ create_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/quicksight/latest/user/scoping-policies-defaults.html
 %% in the Amazon QuickSight
 %% User Guide.
+-spec create_account_subscription(aws_client:aws_client(), binary() | list(), create_account_subscription_request()) ->
+    {ok, create_account_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, create_account_subscription_errors(), tuple()}.
 create_account_subscription(Client, AwsAccountId, Input) ->
     create_account_subscription(Client, AwsAccountId, Input, []).
+
+-spec create_account_subscription(aws_client:aws_client(), binary() | list(), create_account_subscription_request(), proplists:proplist()) ->
+    {ok, create_account_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, create_account_subscription_errors(), tuple()}.
 create_account_subscription(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/account/", aws_util:encode_uri(AwsAccountId), ""],
@@ -601,8 +12328,17 @@ create_account_subscription(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% Analyses can be created either from a template or from an
 %% `AnalysisDefinition'.
+-spec create_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), create_analysis_request()) ->
+    {ok, create_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, create_analysis_errors(), tuple()}.
 create_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     create_analysis(Client, AnalysisId, AwsAccountId, Input, []).
+
+-spec create_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), create_analysis_request(), proplists:proplist()) ->
+    {ok, create_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, create_analysis_errors(), tuple()}.
 create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
@@ -644,8 +12380,17 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 %% permissions, you can
 %% create a dashboard from a template that exists in a different Amazon Web
 %% Services account.
+-spec create_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), create_dashboard_request()) ->
+    {ok, create_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, create_dashboard_errors(), tuple()}.
 create_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     create_dashboard(Client, AwsAccountId, DashboardId, Input, []).
+
+-spec create_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), create_dashboard_request(), proplists:proplist()) ->
+    {ok, create_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, create_dashboard_errors(), tuple()}.
 create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -672,8 +12417,17 @@ create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
 %%
 %% This operation doesn't support datasets that include uploaded files as
 %% a source.
+-spec create_data_set(aws_client:aws_client(), binary() | list(), create_data_set_request()) ->
+    {ok, create_data_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_set_errors(), tuple()}.
 create_data_set(Client, AwsAccountId, Input) ->
     create_data_set(Client, AwsAccountId, Input, []).
+
+-spec create_data_set(aws_client:aws_client(), binary() | list(), create_data_set_request(), proplists:proplist()) ->
+    {ok, create_data_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_set_errors(), tuple()}.
 create_data_set(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets"],
@@ -697,8 +12451,17 @@ create_data_set(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a data source.
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_request()) ->
+    {ok, create_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, AwsAccountId, Input) ->
     create_data_source(Client, AwsAccountId, Input, []).
+
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
+    {ok, create_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
@@ -722,8 +12485,17 @@ create_data_source(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an empty shared folder.
+-spec create_folder(aws_client:aws_client(), binary() | list(), binary() | list(), create_folder_request()) ->
+    {ok, create_folder_response(), tuple()} |
+    {error, any()} |
+    {error, create_folder_errors(), tuple()}.
 create_folder(Client, AwsAccountId, FolderId, Input) ->
     create_folder(Client, AwsAccountId, FolderId, Input, []).
+
+-spec create_folder(aws_client:aws_client(), binary() | list(), binary() | list(), create_folder_request(), proplists:proplist()) ->
+    {ok, create_folder_response(), tuple()} |
+    {error, any()} |
+    {error, create_folder_errors(), tuple()}.
 create_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
@@ -748,8 +12520,17 @@ create_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
 
 %% @doc Adds an asset, such as a dashboard, analysis, or dataset into a
 %% folder.
+-spec create_folder_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_folder_membership_request()) ->
+    {ok, create_folder_membership_response(), tuple()} |
+    {error, any()} |
+    {error, create_folder_membership_errors(), tuple()}.
 create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input) ->
     create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input, []).
+
+-spec create_folder_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_folder_membership_request(), proplists:proplist()) ->
+    {ok, create_folder_membership_response(), tuple()} |
+    {error, any()} |
+    {error, create_folder_membership_errors(), tuple()}.
 create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members/", aws_util:encode_uri(MemberType), "/", aws_util:encode_uri(MemberId), ""],
@@ -785,8 +12566,17 @@ create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 %% arn:aws:quicksight:::group/default/ '''.
 %%
 %% The response is a group object.
+-spec create_group(aws_client:aws_client(), binary() | list(), binary() | list(), create_group_request()) ->
+    {ok, create_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_group_errors(), tuple()}.
 create_group(Client, AwsAccountId, Namespace, Input) ->
     create_group(Client, AwsAccountId, Namespace, Input, []).
+
+-spec create_group(aws_client:aws_client(), binary() | list(), binary() | list(), create_group_request(), proplists:proplist()) ->
+    {ok, create_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_group_errors(), tuple()}.
 create_group(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups"],
@@ -810,8 +12600,17 @@ create_group(Client, AwsAccountId, Namespace, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds an Amazon QuickSight user to an Amazon QuickSight group.
+-spec create_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_group_membership_request()) ->
+    {ok, create_group_membership_response(), tuple()} |
+    {error, any()} |
+    {error, create_group_membership_errors(), tuple()}.
 create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input) ->
     create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input, []).
+
+-spec create_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_group_membership_request(), proplists:proplist()) ->
+    {ok, create_group_membership_response(), tuple()} |
+    {error, any()} |
+    {error, create_group_membership_errors(), tuple()}.
 create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
@@ -844,8 +12643,17 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 %% account. To avoid overwriting rules in other namespaces, use assignment
 %% names that are
 %% unique.
+-spec create_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), create_iam_policy_assignment_request()) ->
+    {ok, create_iam_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, create_iam_policy_assignment_errors(), tuple()}.
 create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input) ->
     create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input, []).
+
+-spec create_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), create_iam_policy_assignment_request(), proplists:proplist()) ->
+    {ok, create_iam_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, create_iam_policy_assignment_errors(), tuple()}.
 create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments"],
@@ -885,8 +12693,17 @@ create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) 
 %% http://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/
 %% in the Amazon Web Services Knowledge Center. Tags are visible on the
 %% tagged dataset, but not on the ingestion resource.
+-spec create_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_ingestion_request()) ->
+    {ok, create_ingestion_response(), tuple()} |
+    {error, any()} |
+    {error, create_ingestion_errors(), tuple()}.
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
+
+-spec create_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_ingestion_request(), proplists:proplist()) ->
+    {ok, create_ingestion_response(), tuple()} |
+    {error, any()} |
+    {error, create_ingestion_errors(), tuple()}.
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
@@ -925,8 +12742,17 @@ create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% limit of 100 namespaces per Amazon Web Services account. To increase your
 %% limit, create a ticket with
 %% Amazon Web Services Support.
+-spec create_namespace(aws_client:aws_client(), binary() | list(), create_namespace_request()) ->
+    {ok, create_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_namespace_errors(), tuple()}.
 create_namespace(Client, AwsAccountId, Input) ->
     create_namespace(Client, AwsAccountId, Input, []).
+
+-spec create_namespace(aws_client:aws_client(), binary() | list(), create_namespace_request(), proplists:proplist()) ->
+    {ok, create_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_namespace_errors(), tuple()}.
 create_namespace(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), ""],
@@ -952,8 +12778,17 @@ create_namespace(Client, AwsAccountId, Input0, Options0) ->
 %% @doc Creates a refresh schedule for a dataset.
 %%
 %% You can create up to 5 different schedules for a single dataset.
+-spec create_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_refresh_schedule_request()) ->
+    {ok, create_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, create_refresh_schedule_errors(), tuple()}.
 create_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
     create_refresh_schedule(Client, AwsAccountId, DataSetId, Input, []).
+
+-spec create_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_refresh_schedule_request(), proplists:proplist()) ->
+    {ok, create_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, create_refresh_schedule_errors(), tuple()}.
 create_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
@@ -978,8 +12813,17 @@ create_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
 
 %% @doc Use `CreateRoleMembership' to add an existing Amazon QuickSight
 %% group to an existing role.
+-spec create_role_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_role_membership_request()) ->
+    {ok, create_role_membership_response(), tuple()} |
+    {error, any()} |
+    {error, create_role_membership_errors(), tuple()}.
 create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input) ->
     create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input, []).
+
+-spec create_role_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_role_membership_request(), proplists:proplist()) ->
+    {ok, create_role_membership_response(), tuple()} |
+    {error, any()} |
+    {error, create_role_membership_errors(), tuple()}.
 create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members/", aws_util:encode_uri(MemberName), ""],
@@ -1019,8 +12863,17 @@ create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0
 %% with datasets that follow the same schema that was used to create the
 %% source analysis
 %% and template.
+-spec create_template(aws_client:aws_client(), binary() | list(), binary() | list(), create_template_request()) ->
+    {ok, create_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_template_errors(), tuple()}.
 create_template(Client, AwsAccountId, TemplateId, Input) ->
     create_template(Client, AwsAccountId, TemplateId, Input, []).
+
+-spec create_template(aws_client:aws_client(), binary() | list(), binary() | list(), create_template_request(), proplists:proplist()) ->
+    {ok, create_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_template_errors(), tuple()}.
 create_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -1044,8 +12897,17 @@ create_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a template alias for a template.
+-spec create_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_template_alias_request()) ->
+    {ok, create_template_alias_response(), tuple()} |
+    {error, any()} |
+    {error, create_template_alias_errors(), tuple()}.
 create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
+
+-spec create_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_template_alias_request(), proplists:proplist()) ->
+    {ok, create_template_alias_response(), tuple()} |
+    {error, any()} |
+    {error, create_template_alias_errors(), tuple()}.
 create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -1075,8 +12937,17 @@ create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 %% Themes in Amazon QuickSight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/themes-in-quicksight.html
 %% in the Amazon QuickSight User Guide.
+-spec create_theme(aws_client:aws_client(), binary() | list(), binary() | list(), create_theme_request()) ->
+    {ok, create_theme_response(), tuple()} |
+    {error, any()} |
+    {error, create_theme_errors(), tuple()}.
 create_theme(Client, AwsAccountId, ThemeId, Input) ->
     create_theme(Client, AwsAccountId, ThemeId, Input, []).
+
+-spec create_theme(aws_client:aws_client(), binary() | list(), binary() | list(), create_theme_request(), proplists:proplist()) ->
+    {ok, create_theme_response(), tuple()} |
+    {error, any()} |
+    {error, create_theme_errors(), tuple()}.
 create_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
@@ -1100,8 +12971,17 @@ create_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a theme alias for a theme.
+-spec create_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_theme_alias_request()) ->
+    {ok, create_theme_alias_response(), tuple()} |
+    {error, any()} |
+    {error, create_theme_alias_errors(), tuple()}.
 create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
+
+-spec create_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_theme_alias_request(), proplists:proplist()) ->
+    {ok, create_theme_alias_response(), tuple()} |
+    {error, any()} |
+    {error, create_theme_alias_errors(), tuple()}.
 create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -1125,8 +13005,17 @@ create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Q topic.
+-spec create_topic(aws_client:aws_client(), binary() | list(), create_topic_request()) ->
+    {ok, create_topic_response(), tuple()} |
+    {error, any()} |
+    {error, create_topic_errors(), tuple()}.
 create_topic(Client, AwsAccountId, Input) ->
     create_topic(Client, AwsAccountId, Input, []).
+
+-spec create_topic(aws_client:aws_client(), binary() | list(), create_topic_request(), proplists:proplist()) ->
+    {ok, create_topic_response(), tuple()} |
+    {error, any()} |
+    {error, create_topic_errors(), tuple()}.
 create_topic(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics"],
@@ -1150,8 +13039,17 @@ create_topic(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a topic refresh schedule.
+-spec create_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_topic_refresh_schedule_request()) ->
+    {ok, create_topic_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, create_topic_refresh_schedule_errors(), tuple()}.
 create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input) ->
     create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input, []).
+
+-spec create_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_topic_refresh_schedule_request(), proplists:proplist()) ->
+    {ok, create_topic_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, create_topic_refresh_schedule_errors(), tuple()}.
 create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules"],
@@ -1175,8 +13073,17 @@ create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new VPC connection.
+-spec create_vpc_connection(aws_client:aws_client(), binary() | list(), create_vpc_connection_request()) ->
+    {ok, create_vpc_connection_response(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_connection_errors(), tuple()}.
 create_vpc_connection(Client, AwsAccountId, Input) ->
     create_vpc_connection(Client, AwsAccountId, Input, []).
+
+-spec create_vpc_connection(aws_client:aws_client(), binary() | list(), create_vpc_connection_request(), proplists:proplist()) ->
+    {ok, create_vpc_connection_response(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_connection_errors(), tuple()}.
 create_vpc_connection(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections"],
@@ -1202,8 +13109,17 @@ create_vpc_connection(Client, AwsAccountId, Input0, Options0) ->
 %% @doc Deletes all Amazon QuickSight customizations in this Amazon Web
 %% Services Region for the specified
 %% Amazon Web Services account and Amazon QuickSight namespace.
+-spec delete_account_customization(aws_client:aws_client(), binary() | list(), delete_account_customization_request()) ->
+    {ok, delete_account_customization_response(), tuple()} |
+    {error, any()} |
+    {error, delete_account_customization_errors(), tuple()}.
 delete_account_customization(Client, AwsAccountId, Input) ->
     delete_account_customization(Client, AwsAccountId, Input, []).
+
+-spec delete_account_customization(aws_client:aws_client(), binary() | list(), delete_account_customization_request(), proplists:proplist()) ->
+    {ok, delete_account_customization_response(), tuple()} |
+    {error, any()} |
+    {error, delete_account_customization_errors(), tuple()}.
 delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
@@ -1236,8 +13152,17 @@ delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %% and set the value of the `TerminationProtectionEnabled' parameter to
 %% `False', then make another call to the `DeleteAccountSubscription'
 %% API.
+-spec delete_account_subscription(aws_client:aws_client(), binary() | list(), delete_account_subscription_request()) ->
+    {ok, delete_account_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, delete_account_subscription_errors(), tuple()}.
 delete_account_subscription(Client, AwsAccountId, Input) ->
     delete_account_subscription(Client, AwsAccountId, Input, []).
+
+-spec delete_account_subscription(aws_client:aws_client(), binary() | list(), delete_account_subscription_request(), proplists:proplist()) ->
+    {ok, delete_account_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, delete_account_subscription_errors(), tuple()}.
 delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/account/", aws_util:encode_uri(AwsAccountId), ""],
@@ -1284,8 +13209,17 @@ delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
 %% To access it in the console, restore it. Deleting an analysis doesn't
 %% delete the
 %% dashboards that you publish from it.
+-spec delete_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), delete_analysis_request()) ->
+    {ok, delete_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, delete_analysis_errors(), tuple()}.
 delete_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     delete_analysis(Client, AnalysisId, AwsAccountId, Input, []).
+
+-spec delete_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), delete_analysis_request(), proplists:proplist()) ->
+    {ok, delete_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, delete_analysis_errors(), tuple()}.
 delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
@@ -1311,8 +13245,17 @@ delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a dashboard.
+-spec delete_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dashboard_request()) ->
+    {ok, delete_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dashboard_errors(), tuple()}.
 delete_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     delete_dashboard(Client, AwsAccountId, DashboardId, Input, []).
+
+-spec delete_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dashboard_request(), proplists:proplist()) ->
+    {ok, delete_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dashboard_errors(), tuple()}.
 delete_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -1337,8 +13280,17 @@ delete_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a dataset.
+-spec delete_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_set_request()) ->
+    {ok, delete_data_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_set_errors(), tuple()}.
 delete_data_set(Client, AwsAccountId, DataSetId, Input) ->
     delete_data_set(Client, AwsAccountId, DataSetId, Input, []).
+
+-spec delete_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_set_request(), proplists:proplist()) ->
+    {ok, delete_data_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_set_errors(), tuple()}.
 delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
@@ -1362,8 +13314,17 @@ delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the dataset refresh properties of the dataset.
+-spec delete_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_set_refresh_properties_request()) ->
+    {ok, delete_data_set_refresh_properties_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_set_refresh_properties_errors(), tuple()}.
 delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input) ->
     delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input, []).
+
+-spec delete_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_set_refresh_properties_request(), proplists:proplist()) ->
+    {ok, delete_data_set_refresh_properties_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_set_refresh_properties_errors(), tuple()}.
 delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
@@ -1390,8 +13351,17 @@ delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Opti
 %%
 %% This operation breaks
 %% all the datasets that reference the deleted data source.
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request()) ->
+    {ok, delete_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     delete_data_source(Client, AwsAccountId, DataSourceId, Input, []).
+
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
+    {ok, delete_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
@@ -1415,8 +13385,17 @@ delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an empty folder.
+-spec delete_folder(aws_client:aws_client(), binary() | list(), binary() | list(), delete_folder_request()) ->
+    {ok, delete_folder_response(), tuple()} |
+    {error, any()} |
+    {error, delete_folder_errors(), tuple()}.
 delete_folder(Client, AwsAccountId, FolderId, Input) ->
     delete_folder(Client, AwsAccountId, FolderId, Input, []).
+
+-spec delete_folder(aws_client:aws_client(), binary() | list(), binary() | list(), delete_folder_request(), proplists:proplist()) ->
+    {ok, delete_folder_response(), tuple()} |
+    {error, any()} |
+    {error, delete_folder_errors(), tuple()}.
 delete_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
@@ -1441,8 +13420,17 @@ delete_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
 
 %% @doc Removes an asset, such as a dashboard, analysis, or dataset, from a
 %% folder.
+-spec delete_folder_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_folder_membership_request()) ->
+    {ok, delete_folder_membership_response(), tuple()} |
+    {error, any()} |
+    {error, delete_folder_membership_errors(), tuple()}.
 delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input) ->
     delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input, []).
+
+-spec delete_folder_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_folder_membership_request(), proplists:proplist()) ->
+    {ok, delete_folder_membership_response(), tuple()} |
+    {error, any()} |
+    {error, delete_folder_membership_errors(), tuple()}.
 delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members/", aws_util:encode_uri(MemberType), "/", aws_util:encode_uri(MemberId), ""],
@@ -1466,8 +13454,17 @@ delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a user group from Amazon QuickSight.
+-spec delete_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_group_request()) ->
+    {ok, delete_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     delete_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
+
+-spec delete_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_group_request(), proplists:proplist()) ->
+    {ok, delete_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
@@ -1492,8 +13489,17 @@ delete_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
 
 %% @doc Removes a user from a group so that the user is no longer a member of
 %% the group.
+-spec delete_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_group_membership_request()) ->
+    {ok, delete_group_membership_response(), tuple()} |
+    {error, any()} |
+    {error, delete_group_membership_errors(), tuple()}.
 delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input) ->
     delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input, []).
+
+-spec delete_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_group_membership_request(), proplists:proplist()) ->
+    {ok, delete_group_membership_response(), tuple()} |
+    {error, any()} |
+    {error, delete_group_membership_errors(), tuple()}.
 delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
@@ -1517,8 +13523,17 @@ delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing IAM policy assignment.
+-spec delete_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_iam_policy_assignment_request()) ->
+    {ok, delete_iam_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_iam_policy_assignment_errors(), tuple()}.
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
+
+-spec delete_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_iam_policy_assignment_request(), proplists:proplist()) ->
+    {ok, delete_iam_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_iam_policy_assignment_errors(), tuple()}.
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespace/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
@@ -1546,8 +13561,17 @@ delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 %%
 %% This operation is only supported for Amazon QuickSight accounts that use
 %% IAM Identity Center.
+-spec delete_identity_propagation_config(aws_client:aws_client(), binary() | list(), binary() | list(), delete_identity_propagation_config_request()) ->
+    {ok, delete_identity_propagation_config_response(), tuple()} |
+    {error, any()} |
+    {error, delete_identity_propagation_config_errors(), tuple()}.
 delete_identity_propagation_config(Client, AwsAccountId, Service, Input) ->
     delete_identity_propagation_config(Client, AwsAccountId, Service, Input, []).
+
+-spec delete_identity_propagation_config(aws_client:aws_client(), binary() | list(), binary() | list(), delete_identity_propagation_config_request(), proplists:proplist()) ->
+    {ok, delete_identity_propagation_config_response(), tuple()} |
+    {error, any()} |
+    {error, delete_identity_propagation_config_errors(), tuple()}.
 delete_identity_propagation_config(Client, AwsAccountId, Service, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config/", aws_util:encode_uri(Service), ""],
@@ -1577,8 +13601,17 @@ delete_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
 %% datasets and data sources are not
 %% deleted. To delete these assets, you use the API operations for the
 %% relevant asset.
+-spec delete_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_namespace_request()) ->
+    {ok, delete_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, AwsAccountId, Namespace, Input) ->
     delete_namespace(Client, AwsAccountId, Namespace, Input, []).
+
+-spec delete_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_namespace_request(), proplists:proplist()) ->
+    {ok, delete_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
@@ -1602,8 +13635,17 @@ delete_namespace(Client, AwsAccountId, Namespace, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a refresh schedule from a dataset.
+-spec delete_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_refresh_schedule_request()) ->
+    {ok, delete_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_refresh_schedule_errors(), tuple()}.
 delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input) ->
     delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input, []).
+
+-spec delete_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_refresh_schedule_request(), proplists:proplist()) ->
+    {ok, delete_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_refresh_schedule_errors(), tuple()}.
 delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
@@ -1627,8 +13669,17 @@ delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input0, Opt
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes custom permissions from the role.
+-spec delete_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_role_custom_permission_request()) ->
+    {ok, delete_role_custom_permission_response(), tuple()} |
+    {error, any()} |
+    {error, delete_role_custom_permission_errors(), tuple()}.
 delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input) ->
     delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input, []).
+
+-spec delete_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_role_custom_permission_request(), proplists:proplist()) ->
+    {ok, delete_role_custom_permission_response(), tuple()} |
+    {error, any()} |
+    {error, delete_role_custom_permission_errors(), tuple()}.
 delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
@@ -1652,8 +13703,17 @@ delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Opt
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a group from a role.
+-spec delete_role_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_role_membership_request()) ->
+    {ok, delete_role_membership_response(), tuple()} |
+    {error, any()} |
+    {error, delete_role_membership_errors(), tuple()}.
 delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input) ->
     delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input, []).
+
+-spec delete_role_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_role_membership_request(), proplists:proplist()) ->
+    {ok, delete_role_membership_response(), tuple()} |
+    {error, any()} |
+    {error, delete_role_membership_errors(), tuple()}.
 delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members/", aws_util:encode_uri(MemberName), ""],
@@ -1677,8 +13737,17 @@ delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a template.
+-spec delete_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_template_request()) ->
+    {ok, delete_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_template_errors(), tuple()}.
 delete_template(Client, AwsAccountId, TemplateId, Input) ->
     delete_template(Client, AwsAccountId, TemplateId, Input, []).
+
+-spec delete_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_template_request(), proplists:proplist()) ->
+    {ok, delete_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_template_errors(), tuple()}.
 delete_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -1706,8 +13775,17 @@ delete_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
 %%
 %% If you provide a specific
 %% alias, you delete the version of the template that the alias points to.
+-spec delete_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_template_alias_request()) ->
+    {ok, delete_template_alias_response(), tuple()} |
+    {error, any()} |
+    {error, delete_template_alias_errors(), tuple()}.
 delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
+
+-spec delete_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_template_alias_request(), proplists:proplist()) ->
+    {ok, delete_template_alias_response(), tuple()} |
+    {error, any()} |
+    {error, delete_template_alias_errors(), tuple()}.
 delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -1731,8 +13809,17 @@ delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a theme.
+-spec delete_theme(aws_client:aws_client(), binary() | list(), binary() | list(), delete_theme_request()) ->
+    {ok, delete_theme_response(), tuple()} |
+    {error, any()} |
+    {error, delete_theme_errors(), tuple()}.
 delete_theme(Client, AwsAccountId, ThemeId, Input) ->
     delete_theme(Client, AwsAccountId, ThemeId, Input, []).
+
+-spec delete_theme(aws_client:aws_client(), binary() | list(), binary() | list(), delete_theme_request(), proplists:proplist()) ->
+    {ok, delete_theme_response(), tuple()} |
+    {error, any()} |
+    {error, delete_theme_errors(), tuple()}.
 delete_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
@@ -1761,8 +13848,17 @@ delete_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
 %%
 %% If you provide a specific alias, you delete the version of the theme
 %% that the alias points to.
+-spec delete_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_theme_alias_request()) ->
+    {ok, delete_theme_alias_response(), tuple()} |
+    {error, any()} |
+    {error, delete_theme_alias_errors(), tuple()}.
 delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
+
+-spec delete_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_theme_alias_request(), proplists:proplist()) ->
+    {ok, delete_theme_alias_response(), tuple()} |
+    {error, any()} |
+    {error, delete_theme_alias_errors(), tuple()}.
 delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -1786,8 +13882,17 @@ delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a topic.
+-spec delete_topic(aws_client:aws_client(), binary() | list(), binary() | list(), delete_topic_request()) ->
+    {ok, delete_topic_response(), tuple()} |
+    {error, any()} |
+    {error, delete_topic_errors(), tuple()}.
 delete_topic(Client, AwsAccountId, TopicId, Input) ->
     delete_topic(Client, AwsAccountId, TopicId, Input, []).
+
+-spec delete_topic(aws_client:aws_client(), binary() | list(), binary() | list(), delete_topic_request(), proplists:proplist()) ->
+    {ok, delete_topic_response(), tuple()} |
+    {error, any()} |
+    {error, delete_topic_errors(), tuple()}.
 delete_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
@@ -1811,8 +13916,17 @@ delete_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a topic refresh schedule.
+-spec delete_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_topic_refresh_schedule_request()) ->
+    {ok, delete_topic_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_topic_refresh_schedule_errors(), tuple()}.
 delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input) ->
     delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input, []).
+
+-spec delete_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_topic_refresh_schedule_request(), proplists:proplist()) ->
+    {ok, delete_topic_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_topic_refresh_schedule_errors(), tuple()}.
 delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
@@ -1841,8 +13955,17 @@ delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, 
 %%
 %% The IAM user
 %% isn't deleted as a result of this call.
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_user_request()) ->
+    {ok, delete_user_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     delete_user(Client, AwsAccountId, Namespace, UserName, Input, []).
+
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
+    {ok, delete_user_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
@@ -1866,8 +13989,17 @@ delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a user identified by its principal ID.
+-spec delete_user_by_principal_id(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_user_by_principal_id_request()) ->
+    {ok, delete_user_by_principal_id_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_by_principal_id_errors(), tuple()}.
 delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input) ->
     delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input, []).
+
+-spec delete_user_by_principal_id(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_user_by_principal_id_request(), proplists:proplist()) ->
+    {ok, delete_user_by_principal_id_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_by_principal_id_errors(), tuple()}.
 delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/user-principals/", aws_util:encode_uri(PrincipalId), ""],
@@ -1891,8 +14023,17 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a VPC connection.
+-spec delete_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vpc_connection_request()) ->
+    {ok, delete_vpc_connection_response(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_connection_errors(), tuple()}.
 delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input) ->
     delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input, []).
+
+-spec delete_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vpc_connection_request(), proplists:proplist()) ->
+    {ok, delete_vpc_connection_response(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_connection_errors(), tuple()}.
 delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],
@@ -1987,14 +14128,26 @@ delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) -
 %% `CreateAccountCustomization' command in
 %% each Amazon Web Services Region where you want to apply the same
 %% customizations.
+-spec describe_account_customization(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_account_customization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_account_customization_errors(), tuple()}.
 describe_account_customization(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_customization(Client, AwsAccountId, #{}, #{}).
 
+-spec describe_account_customization(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_account_customization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_account_customization_errors(), tuple()}.
 describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec describe_account_customization(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_account_customization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_account_customization_errors(), tuple()}.
 describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
@@ -2019,14 +14172,26 @@ describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Optio
 %% @doc Describes the settings that were used when your Amazon QuickSight
 %% subscription was first
 %% created in this Amazon Web Services account.
+-spec describe_account_settings(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, describe_account_settings_errors(), tuple()}.
 describe_account_settings(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_settings(Client, AwsAccountId, #{}, #{}).
 
+-spec describe_account_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, describe_account_settings_errors(), tuple()}.
 describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec describe_account_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, describe_account_settings_errors(), tuple()}.
 describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/settings"],
@@ -2049,14 +14214,26 @@ describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 %% A successful API call returns an `AccountInfo' object that includes an
 %% account's name, subscription status, authentication type, edition, and
 %% notification email address.
+-spec describe_account_subscription(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_account_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, describe_account_subscription_errors(), tuple()}.
 describe_account_subscription(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_subscription(Client, AwsAccountId, #{}, #{}).
 
+-spec describe_account_subscription(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_account_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, describe_account_subscription_errors(), tuple()}.
 describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec describe_account_subscription(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_account_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, describe_account_subscription_errors(), tuple()}.
 describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account/", aws_util:encode_uri(AwsAccountId), ""],
@@ -2074,14 +14251,26 @@ describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a summary of the metadata for an analysis.
+-spec describe_analysis(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, describe_analysis_errors(), tuple()}.
 describe_analysis(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
     describe_analysis(Client, AnalysisId, AwsAccountId, #{}, #{}).
 
+-spec describe_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, describe_analysis_errors(), tuple()}.
 describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec describe_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, describe_analysis_errors(), tuple()}.
 describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
@@ -2109,14 +14298,26 @@ describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Option
 %% :
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAnalysis.html
 %% instead.
+-spec describe_analysis_definition(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_analysis_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_analysis_definition_errors(), tuple()}.
 describe_analysis_definition(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
     describe_analysis_definition(Client, AnalysisId, AwsAccountId, #{}, #{}).
 
+-spec describe_analysis_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_analysis_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_analysis_definition_errors(), tuple()}.
 describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec describe_analysis_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_analysis_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_analysis_definition_errors(), tuple()}.
 describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/definition"],
@@ -2134,14 +14335,26 @@ describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides the read and write permissions for an analysis.
+-spec describe_analysis_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_analysis_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_analysis_permissions_errors(), tuple()}.
 describe_analysis_permissions(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
     describe_analysis_permissions(Client, AnalysisId, AwsAccountId, #{}, #{}).
 
+-spec describe_analysis_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_analysis_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_analysis_permissions_errors(), tuple()}.
 describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec describe_analysis_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_analysis_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_analysis_permissions_errors(), tuple()}.
 describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/permissions"],
@@ -2167,14 +14380,26 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, Header
 %% a new download URL as needed.
 %%
 %% Job descriptions are available for 14 days after the job starts.
+-spec describe_asset_bundle_export_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_asset_bundle_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_bundle_export_job_errors(), tuple()}.
 describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId)
   when is_map(Client) ->
     describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, #{}, #{}).
 
+-spec describe_asset_bundle_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_asset_bundle_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_bundle_export_job_errors(), tuple()}.
 describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec describe_asset_bundle_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_asset_bundle_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_bundle_export_job_errors(), tuple()}.
 describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs/", aws_util:encode_uri(AssetBundleExportJobId), ""],
@@ -2195,14 +14420,26 @@ describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, Q
 %%
 %% Poll job descriptions after starting a job to know when it has succeeded
 %% or failed. Job descriptions are available for 14 days after job starts.
+-spec describe_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_asset_bundle_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_bundle_import_job_errors(), tuple()}.
 describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId)
   when is_map(Client) ->
     describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, #{}, #{}).
 
+-spec describe_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_asset_bundle_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_bundle_import_job_errors(), tuple()}.
 describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec describe_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_asset_bundle_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_bundle_import_job_errors(), tuple()}.
 describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs/", aws_util:encode_uri(AssetBundleImportJobId), ""],
@@ -2220,14 +14457,26 @@ describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, Q
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a summary for a dashboard.
+-spec describe_dashboard(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     describe_dashboard(Client, AwsAccountId, DashboardId, #{}, #{}).
 
+-spec describe_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
 
+-spec describe_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_errors(), tuple()}.
 describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -2260,14 +14509,26 @@ describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Opti
 %% :
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboard.html
 %% instead.
+-spec describe_dashboard_definition(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_dashboard_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_definition_errors(), tuple()}.
 describe_dashboard_definition(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     describe_dashboard_definition(Client, AwsAccountId, DashboardId, #{}, #{}).
 
+-spec describe_dashboard_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_dashboard_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_definition_errors(), tuple()}.
 describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
 
+-spec describe_dashboard_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_dashboard_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_definition_errors(), tuple()}.
 describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/definition"],
@@ -2290,14 +14551,26 @@ describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes read and write permissions for a dashboard.
+-spec describe_dashboard_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_dashboard_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_permissions_errors(), tuple()}.
 describe_dashboard_permissions(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     describe_dashboard_permissions(Client, AwsAccountId, DashboardId, #{}, #{}).
 
+-spec describe_dashboard_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_dashboard_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_permissions_errors(), tuple()}.
 describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
 
+-spec describe_dashboard_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_dashboard_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_permissions_errors(), tuple()}.
 describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
@@ -2318,14 +14591,26 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, Head
 %%
 %% Poll job descriptions after a job starts to know the status of the job.
 %% For information on available status codes, see `JobStatus'.
+-spec describe_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_dashboard_snapshot_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_snapshot_job_errors(), tuple()}.
 describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId)
   when is_map(Client) ->
     describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, #{}, #{}).
 
+-spec describe_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_dashboard_snapshot_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_snapshot_job_errors(), tuple()}.
 describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, []).
 
+-spec describe_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_dashboard_snapshot_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_snapshot_job_errors(), tuple()}.
 describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs/", aws_util:encode_uri(SnapshotJobId), ""],
@@ -2352,14 +14637,26 @@ describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId
 %% If the job has not finished running, this operation returns a message that
 %% says `Dashboard Snapshot Job with id has not reached a terminal
 %% state.'.
+-spec describe_dashboard_snapshot_job_result(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_dashboard_snapshot_job_result_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_snapshot_job_result_errors(), tuple()}.
 describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId)
   when is_map(Client) ->
     describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, #{}, #{}).
 
+-spec describe_dashboard_snapshot_job_result(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_dashboard_snapshot_job_result_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_snapshot_job_result_errors(), tuple()}.
 describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, []).
 
+-spec describe_dashboard_snapshot_job_result(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_dashboard_snapshot_job_result_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dashboard_snapshot_job_result_errors(), tuple()}.
 describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs/", aws_util:encode_uri(SnapshotJobId), "/result"],
@@ -2380,14 +14677,26 @@ describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, Snapsh
 %%
 %% This operation doesn't support datasets that include uploaded files as
 %% a source.
+-spec describe_data_set(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_data_set_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_set_errors(), tuple()}.
 describe_data_set(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set(Client, AwsAccountId, DataSetId, #{}, #{}).
 
+-spec describe_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_data_set_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_set_errors(), tuple()}.
 describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
+-spec describe_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_data_set_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_set_errors(), tuple()}.
 describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
@@ -2408,14 +14717,26 @@ describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options
 %%
 %% The permissions resource is
 %% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id'.
+-spec describe_data_set_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_data_set_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_set_permissions_errors(), tuple()}.
 describe_data_set_permissions(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set_permissions(Client, AwsAccountId, DataSetId, #{}, #{}).
 
+-spec describe_data_set_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_data_set_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_set_permissions_errors(), tuple()}.
 describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
+-spec describe_data_set_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_data_set_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_set_permissions_errors(), tuple()}.
 describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/permissions"],
@@ -2433,14 +14754,26 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the refresh properties of a dataset.
+-spec describe_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_data_set_refresh_properties_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_set_refresh_properties_errors(), tuple()}.
 describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, #{}, #{}).
 
+-spec describe_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_data_set_refresh_properties_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_set_refresh_properties_errors(), tuple()}.
 describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
+-spec describe_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_data_set_refresh_properties_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_set_refresh_properties_errors(), tuple()}.
 describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
@@ -2458,14 +14791,26 @@ describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a data source.
+-spec describe_data_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_source_errors(), tuple()}.
 describe_data_source(Client, AwsAccountId, DataSourceId)
   when is_map(Client) ->
     describe_data_source(Client, AwsAccountId, DataSourceId, #{}, #{}).
 
+-spec describe_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_source_errors(), tuple()}.
 describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, []).
 
+-spec describe_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_source_errors(), tuple()}.
 describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
@@ -2483,14 +14828,26 @@ describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the resource permissions for a data source.
+-spec describe_data_source_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_data_source_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_source_permissions_errors(), tuple()}.
 describe_data_source_permissions(Client, AwsAccountId, DataSourceId)
   when is_map(Client) ->
     describe_data_source_permissions(Client, AwsAccountId, DataSourceId, #{}, #{}).
 
+-spec describe_data_source_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_data_source_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_source_permissions_errors(), tuple()}.
 describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, []).
 
+-spec describe_data_source_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_data_source_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_source_permissions_errors(), tuple()}.
 describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), "/permissions"],
@@ -2508,14 +14865,26 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, H
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a folder.
+-spec describe_folder(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_folder_response(), tuple()} |
+    {error, any()} |
+    {error, describe_folder_errors(), tuple()}.
 describe_folder(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     describe_folder(Client, AwsAccountId, FolderId, #{}, #{}).
 
+-spec describe_folder(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_folder_response(), tuple()} |
+    {error, any()} |
+    {error, describe_folder_errors(), tuple()}.
 describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
 
+-spec describe_folder(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_folder_response(), tuple()} |
+    {error, any()} |
+    {error, describe_folder_errors(), tuple()}.
 describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
@@ -2533,14 +14902,26 @@ describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes permissions for a folder.
+-spec describe_folder_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_folder_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_folder_permissions_errors(), tuple()}.
 describe_folder_permissions(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     describe_folder_permissions(Client, AwsAccountId, FolderId, #{}, #{}).
 
+-spec describe_folder_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_folder_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_folder_permissions_errors(), tuple()}.
 describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
 
+-spec describe_folder_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_folder_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_folder_permissions_errors(), tuple()}.
 describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/permissions"],
@@ -2567,14 +14948,26 @@ describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap
 %%
 %% Permissions consists of both folder direct permissions and the inherited
 %% permissions from the ancestor folders.
+-spec describe_folder_resolved_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_folder_resolved_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_folder_resolved_permissions_errors(), tuple()}.
 describe_folder_resolved_permissions(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, #{}, #{}).
 
+-spec describe_folder_resolved_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_folder_resolved_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_folder_resolved_permissions_errors(), tuple()}.
 describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
 
+-spec describe_folder_resolved_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_folder_resolved_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_folder_resolved_permissions_errors(), tuple()}.
 describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/resolved-permissions"],
@@ -2599,14 +14992,26 @@ describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, H
 
 %% @doc Returns an Amazon QuickSight group's description and Amazon
 %% Resource Name (ARN).
+-spec describe_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_group_errors(), tuple()}.
 describe_group(Client, AwsAccountId, GroupName, Namespace)
   when is_map(Client) ->
     describe_group(Client, AwsAccountId, GroupName, Namespace, #{}, #{}).
 
+-spec describe_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_group_errors(), tuple()}.
 describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, []).
 
+-spec describe_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_group_errors(), tuple()}.
 describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
@@ -2629,14 +15034,26 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap,
 %%
 %% If the user exists and is a member of the specified
 %% group, an associated `GroupMember' object is returned.
+-spec describe_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_group_membership_response(), tuple()} |
+    {error, any()} |
+    {error, describe_group_membership_errors(), tuple()}.
 describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace)
   when is_map(Client) ->
     describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, #{}, #{}).
 
+-spec describe_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_group_membership_response(), tuple()} |
+    {error, any()} |
+    {error, describe_group_membership_errors(), tuple()}.
 describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, QueryMap, HeadersMap, []).
 
+-spec describe_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_group_membership_response(), tuple()} |
+    {error, any()} |
+    {error, describe_group_membership_errors(), tuple()}.
 describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
@@ -2655,14 +15072,26 @@ describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace
 
 %% @doc Describes an existing IAM policy assignment, as specified by the
 %% assignment name.
+-spec describe_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_iam_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_iam_policy_assignment_errors(), tuple()}.
 describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace)
   when is_map(Client) ->
     describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, #{}, #{}).
 
+-spec describe_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_iam_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_iam_policy_assignment_errors(), tuple()}.
 describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
+-spec describe_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_iam_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_iam_policy_assignment_errors(), tuple()}.
 describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
@@ -2680,14 +15109,26 @@ describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a SPICE ingestion.
+-spec describe_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_ingestion_response(), tuple()} |
+    {error, any()} |
+    {error, describe_ingestion_errors(), tuple()}.
 describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId)
   when is_map(Client) ->
     describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, #{}, #{}).
 
+-spec describe_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_ingestion_response(), tuple()} |
+    {error, any()} |
+    {error, describe_ingestion_errors(), tuple()}.
 describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, []).
 
+-spec describe_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_ingestion_response(), tuple()} |
+    {error, any()} |
+    {error, describe_ingestion_errors(), tuple()}.
 describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
@@ -2705,14 +15146,26 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a summary and status of IP rules.
+-spec describe_ip_restriction(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_ip_restriction_response(), tuple()} |
+    {error, any()} |
+    {error, describe_ip_restriction_errors(), tuple()}.
 describe_ip_restriction(Client, AwsAccountId)
   when is_map(Client) ->
     describe_ip_restriction(Client, AwsAccountId, #{}, #{}).
 
+-spec describe_ip_restriction(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_ip_restriction_response(), tuple()} |
+    {error, any()} |
+    {error, describe_ip_restriction_errors(), tuple()}.
 describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec describe_ip_restriction(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_ip_restriction_response(), tuple()} |
+    {error, any()} |
+    {error, describe_ip_restriction_errors(), tuple()}.
 describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/ip-restriction"],
@@ -2730,14 +15183,26 @@ describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the current namespace.
+-spec describe_namespace(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_namespace_errors(), tuple()}.
 describe_namespace(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     describe_namespace(Client, AwsAccountId, Namespace, #{}, #{}).
 
+-spec describe_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_namespace_errors(), tuple()}.
 describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
+-spec describe_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_namespace_errors(), tuple()}.
 describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
@@ -2755,14 +15220,26 @@ describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a summary of a refresh schedule.
+-spec describe_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_refresh_schedule_errors(), tuple()}.
 describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId)
   when is_map(Client) ->
     describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, #{}, #{}).
 
+-spec describe_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_refresh_schedule_errors(), tuple()}.
 describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap, []).
 
+-spec describe_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_refresh_schedule_errors(), tuple()}.
 describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
@@ -2780,14 +15257,26 @@ describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes all custom permissions that are mapped to a role.
+-spec describe_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_role_custom_permission_response(), tuple()} |
+    {error, any()} |
+    {error, describe_role_custom_permission_errors(), tuple()}.
 describe_role_custom_permission(Client, AwsAccountId, Namespace, Role)
   when is_map(Client) ->
     describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, #{}, #{}).
 
+-spec describe_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_role_custom_permission_response(), tuple()} |
+    {error, any()} |
+    {error, describe_role_custom_permission_errors(), tuple()}.
 describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, []).
 
+-spec describe_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_role_custom_permission_response(), tuple()} |
+    {error, any()} |
+    {error, describe_role_custom_permission_errors(), tuple()}.
 describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
@@ -2805,14 +15294,26 @@ describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a template's metadata.
+-spec describe_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_template_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_errors(), tuple()}.
 describe_template(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template(Client, AwsAccountId, TemplateId, #{}, #{}).
 
+-spec describe_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_template_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_errors(), tuple()}.
 describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
+-spec describe_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_template_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_errors(), tuple()}.
 describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -2835,14 +15336,26 @@ describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the template alias for a template.
+-spec describe_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_template_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_alias_errors(), tuple()}.
 describe_template_alias(Client, AliasName, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, #{}, #{}).
 
+-spec describe_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_template_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_alias_errors(), tuple()}.
 describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
+-spec describe_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_template_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_alias_errors(), tuple()}.
 describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -2870,14 +15383,26 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, H
 %% :
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTemplate.html
 %% instead.
+-spec describe_template_definition(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_template_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_definition_errors(), tuple()}.
 describe_template_definition(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template_definition(Client, AwsAccountId, TemplateId, #{}, #{}).
 
+-spec describe_template_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_template_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_definition_errors(), tuple()}.
 describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
+-spec describe_template_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_template_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_definition_errors(), tuple()}.
 describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/definition"],
@@ -2900,14 +15425,26 @@ describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes read and write permissions on a template.
+-spec describe_template_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_template_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_permissions_errors(), tuple()}.
 describe_template_permissions(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template_permissions(Client, AwsAccountId, TemplateId, #{}, #{}).
 
+-spec describe_template_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_template_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_permissions_errors(), tuple()}.
 describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
+-spec describe_template_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_template_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_template_permissions_errors(), tuple()}.
 describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/permissions"],
@@ -2925,14 +15462,26 @@ describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a theme.
+-spec describe_theme(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_theme_response(), tuple()} |
+    {error, any()} |
+    {error, describe_theme_errors(), tuple()}.
 describe_theme(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     describe_theme(Client, AwsAccountId, ThemeId, #{}, #{}).
 
+-spec describe_theme(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_theme_response(), tuple()} |
+    {error, any()} |
+    {error, describe_theme_errors(), tuple()}.
 describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
+-spec describe_theme(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_theme_response(), tuple()} |
+    {error, any()} |
+    {error, describe_theme_errors(), tuple()}.
 describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
@@ -2955,14 +15504,26 @@ describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the alias for a theme.
+-spec describe_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_theme_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_theme_alias_errors(), tuple()}.
 describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId)
   when is_map(Client) ->
     describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, #{}, #{}).
 
+-spec describe_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_theme_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_theme_alias_errors(), tuple()}.
 describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
+-spec describe_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_theme_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_theme_alias_errors(), tuple()}.
 describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -2980,14 +15541,26 @@ describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the read and write permissions for a theme.
+-spec describe_theme_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_theme_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_theme_permissions_errors(), tuple()}.
 describe_theme_permissions(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     describe_theme_permissions(Client, AwsAccountId, ThemeId, #{}, #{}).
 
+-spec describe_theme_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_theme_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_theme_permissions_errors(), tuple()}.
 describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
+-spec describe_theme_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_theme_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_theme_permissions_errors(), tuple()}.
 describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/permissions"],
@@ -3005,14 +15578,26 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a topic.
+-spec describe_topic(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_topic_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_errors(), tuple()}.
 describe_topic(Client, AwsAccountId, TopicId)
   when is_map(Client) ->
     describe_topic(Client, AwsAccountId, TopicId, #{}, #{}).
 
+-spec describe_topic(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_topic_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_errors(), tuple()}.
 describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
 
+-spec describe_topic(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_topic_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_errors(), tuple()}.
 describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
@@ -3030,14 +15615,26 @@ describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the permissions of a topic.
+-spec describe_topic_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_topic_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_permissions_errors(), tuple()}.
 describe_topic_permissions(Client, AwsAccountId, TopicId)
   when is_map(Client) ->
     describe_topic_permissions(Client, AwsAccountId, TopicId, #{}, #{}).
 
+-spec describe_topic_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_topic_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_permissions_errors(), tuple()}.
 describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
 
+-spec describe_topic_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_topic_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_permissions_errors(), tuple()}.
 describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/permissions"],
@@ -3055,14 +15652,26 @@ describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the status of a topic refresh.
+-spec describe_topic_refresh(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_topic_refresh_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_refresh_errors(), tuple()}.
 describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId)
   when is_map(Client) ->
     describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, #{}, #{}).
 
+-spec describe_topic_refresh(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_topic_refresh_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_refresh_errors(), tuple()}.
 describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, HeadersMap, []).
 
+-spec describe_topic_refresh(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_topic_refresh_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_refresh_errors(), tuple()}.
 describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/refresh/", aws_util:encode_uri(RefreshId), ""],
@@ -3080,14 +15689,26 @@ describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Deletes a topic refresh schedule.
+-spec describe_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_topic_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_refresh_schedule_errors(), tuple()}.
 describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId)
   when is_map(Client) ->
     describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, #{}, #{}).
 
+-spec describe_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_topic_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_refresh_schedule_errors(), tuple()}.
 describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryMap, HeadersMap, []).
 
+-spec describe_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_topic_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_refresh_schedule_errors(), tuple()}.
 describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
@@ -3105,14 +15726,26 @@ describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a user, given the user name.
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
     describe_user(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
 
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
 
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_user_errors(), tuple()}.
 describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
@@ -3130,14 +15763,26 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a VPC connection.
+-spec describe_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_vpc_connection_response(), tuple()} |
+    {error, any()} |
+    {error, describe_vpc_connection_errors(), tuple()}.
 describe_vpc_connection(Client, AwsAccountId, VPCConnectionId)
   when is_map(Client) ->
     describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, #{}, #{}).
 
+-spec describe_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_vpc_connection_response(), tuple()} |
+    {error, any()} |
+    {error, describe_vpc_connection_errors(), tuple()}.
 describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, HeadersMap, []).
 
+-spec describe_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_vpc_connection_response(), tuple()} |
+    {error, any()} |
+    {error, describe_vpc_connection_errors(), tuple()}.
 describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],
@@ -3188,8 +15833,17 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 %% interactive demo of the ways you can customize embedding, visit the Amazon
 %% QuickSight Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
+-spec generate_embed_url_for_anonymous_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_anonymous_user_request()) ->
+    {ok, generate_embed_url_for_anonymous_user_response(), tuple()} |
+    {error, any()} |
+    {error, generate_embed_url_for_anonymous_user_errors(), tuple()}.
 generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input) ->
     generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input, []).
+
+-spec generate_embed_url_for_anonymous_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_anonymous_user_request(), proplists:proplist()) ->
+    {ok, generate_embed_url_for_anonymous_user_response(), tuple()} |
+    {error, any()} |
+    {error, generate_embed_url_for_anonymous_user_errors(), tuple()}.
 generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/embed-url/anonymous-user"],
@@ -3249,8 +15903,17 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 %% interactive demo of the ways you can customize embedding, visit the Amazon
 %% QuickSight Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
+-spec generate_embed_url_for_registered_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_registered_user_request()) ->
+    {ok, generate_embed_url_for_registered_user_response(), tuple()} |
+    {error, any()} |
+    {error, generate_embed_url_for_registered_user_errors(), tuple()}.
 generate_embed_url_for_registered_user(Client, AwsAccountId, Input) ->
     generate_embed_url_for_registered_user(Client, AwsAccountId, Input, []).
+
+-spec generate_embed_url_for_registered_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_registered_user_request(), proplists:proplist()) ->
+    {ok, generate_embed_url_for_registered_user_response(), tuple()} |
+    {error, any()} |
+    {error, generate_embed_url_for_registered_user_errors(), tuple()}.
 generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/embed-url/registered-user"],
@@ -3306,14 +15969,26 @@ generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) -
 %% interactive demo of the ways you can customize embedding, visit the Amazon
 %% QuickSight Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
+-spec get_dashboard_embed_url(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_dashboard_embed_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_dashboard_embed_url_errors(), tuple()}.
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType)
   when is_map(Client) ->
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, #{}, #{}).
 
+-spec get_dashboard_embed_url(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_dashboard_embed_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_dashboard_embed_url_errors(), tuple()}.
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap, []).
 
+-spec get_dashboard_embed_url(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_dashboard_embed_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_dashboard_embed_url_errors(), tuple()}.
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/embed-url"],
@@ -3373,14 +16048,26 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
 %%
 %% Customizing Access to the Amazon QuickSight Console:
 %% https://docs.aws.amazon.com/quicksight/latest/user/customizing-permissions-to-the-quicksight-console.html
+-spec get_session_embed_url(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_session_embed_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_embed_url_errors(), tuple()}.
 get_session_embed_url(Client, AwsAccountId)
   when is_map(Client) ->
     get_session_embed_url(Client, AwsAccountId, #{}, #{}).
 
+-spec get_session_embed_url(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_session_embed_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_embed_url_errors(), tuple()}.
 get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec get_session_embed_url(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_session_embed_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_embed_url_errors(), tuple()}.
 get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/session-embed-url"],
@@ -3405,14 +16092,26 @@ get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists Amazon QuickSight analyses that exist in the specified Amazon
 %% Web Services account.
+-spec list_analyses(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_analyses_response(), tuple()} |
+    {error, any()} |
+    {error, list_analyses_errors(), tuple()}.
 list_analyses(Client, AwsAccountId)
   when is_map(Client) ->
     list_analyses(Client, AwsAccountId, #{}, #{}).
 
+-spec list_analyses(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_analyses_response(), tuple()} |
+    {error, any()} |
+    {error, list_analyses_errors(), tuple()}.
 list_analyses(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_analyses(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_analyses_response(), tuple()} |
+    {error, any()} |
+    {error, list_analyses_errors(), tuple()}.
 list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses"],
@@ -3441,14 +16140,26 @@ list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 %% returned. If you are using the same job ID for multiple jobs,
 %% `ListAssetBundleExportJobs' only returns the most recent job that uses
 %% the repeated job ID.
+-spec list_asset_bundle_export_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_asset_bundle_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_bundle_export_jobs_errors(), tuple()}.
 list_asset_bundle_export_jobs(Client, AwsAccountId)
   when is_map(Client) ->
     list_asset_bundle_export_jobs(Client, AwsAccountId, #{}, #{}).
 
+-spec list_asset_bundle_export_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_asset_bundle_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_bundle_export_jobs_errors(), tuple()}.
 list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_asset_bundle_export_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_bundle_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_bundle_export_jobs_errors(), tuple()}.
 list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs"],
@@ -3477,14 +16188,26 @@ list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Option
 %% returned. If you are using the same job ID for multiple jobs,
 %% `ListAssetBundleImportJobs' only returns the most recent job that uses
 %% the repeated job ID.
+-spec list_asset_bundle_import_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_asset_bundle_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_bundle_import_jobs_errors(), tuple()}.
 list_asset_bundle_import_jobs(Client, AwsAccountId)
   when is_map(Client) ->
     list_asset_bundle_import_jobs(Client, AwsAccountId, #{}, #{}).
 
+-spec list_asset_bundle_import_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_asset_bundle_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_bundle_import_jobs_errors(), tuple()}.
 list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_asset_bundle_import_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_bundle_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_asset_bundle_import_jobs_errors(), tuple()}.
 list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs"],
@@ -3508,14 +16231,26 @@ list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Option
 
 %% @doc Lists all the versions of the dashboards in the Amazon QuickSight
 %% subscription.
+-spec list_dashboard_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_dashboard_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_dashboard_versions_errors(), tuple()}.
 list_dashboard_versions(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     list_dashboard_versions(Client, AwsAccountId, DashboardId, #{}, #{}).
 
+-spec list_dashboard_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_dashboard_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_dashboard_versions_errors(), tuple()}.
 list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
 
+-spec list_dashboard_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_dashboard_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_dashboard_versions_errors(), tuple()}.
 list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions"],
@@ -3538,14 +16273,26 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists dashboards in an Amazon Web Services account.
+-spec list_dashboards(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_dashboards_response(), tuple()} |
+    {error, any()} |
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, AwsAccountId)
   when is_map(Client) ->
     list_dashboards(Client, AwsAccountId, #{}, #{}).
 
+-spec list_dashboards(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_dashboards_response(), tuple()} |
+    {error, any()} |
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_dashboards(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_dashboards_response(), tuple()} |
+    {error, any()} |
+    {error, list_dashboards_errors(), tuple()}.
 list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards"],
@@ -3572,14 +16319,26 @@ list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 %%
 %% The permissions resource is
 %% `arn:aws:quicksight:region:aws-account-id:dataset/*'.
+-spec list_data_sets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_data_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client, AwsAccountId)
   when is_map(Client) ->
     list_data_sets(Client, AwsAccountId, #{}, #{}).
 
+-spec list_data_sets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_data_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_data_sets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets"],
@@ -3603,14 +16362,26 @@ list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists data sources in current Amazon Web Services Region that belong
 %% to this Amazon Web Services account.
+-spec list_data_sources(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_data_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, AwsAccountId)
   when is_map(Client) ->
     list_data_sources(Client, AwsAccountId, #{}, #{}).
 
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_data_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
@@ -3634,14 +16405,26 @@ list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc List all assets (`DASHBOARD', `ANALYSIS', and `DATASET')
 %% in a folder.
+-spec list_folder_members(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_folder_members_response(), tuple()} |
+    {error, any()} |
+    {error, list_folder_members_errors(), tuple()}.
 list_folder_members(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     list_folder_members(Client, AwsAccountId, FolderId, #{}, #{}).
 
+-spec list_folder_members(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_folder_members_response(), tuple()} |
+    {error, any()} |
+    {error, list_folder_members_errors(), tuple()}.
 list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
 
+-spec list_folder_members(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_folder_members_response(), tuple()} |
+    {error, any()} |
+    {error, list_folder_members_errors(), tuple()}.
 list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members"],
@@ -3664,14 +16447,26 @@ list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all folders in an account.
+-spec list_folders(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_folders_response(), tuple()} |
+    {error, any()} |
+    {error, list_folders_errors(), tuple()}.
 list_folders(Client, AwsAccountId)
   when is_map(Client) ->
     list_folders(Client, AwsAccountId, #{}, #{}).
 
+-spec list_folders(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_folders_response(), tuple()} |
+    {error, any()} |
+    {error, list_folders_errors(), tuple()}.
 list_folders(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_folders(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_folders(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_folders_response(), tuple()} |
+    {error, any()} |
+    {error, list_folders_errors(), tuple()}.
 list_folders(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders"],
@@ -3694,14 +16489,26 @@ list_folders(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists member users in a group.
+-spec list_group_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_group_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_group_memberships_errors(), tuple()}.
 list_group_memberships(Client, AwsAccountId, GroupName, Namespace)
   when is_map(Client) ->
     list_group_memberships(Client, AwsAccountId, GroupName, Namespace, #{}, #{}).
 
+-spec list_group_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_group_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_group_memberships_errors(), tuple()}.
 list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, []).
 
+-spec list_group_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_group_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_group_memberships_errors(), tuple()}.
 list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members"],
@@ -3724,14 +16531,26 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, Hea
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all user groups in Amazon QuickSight.
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     list_groups(Client, AwsAccountId, Namespace, #{}, #{}).
 
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups"],
@@ -3756,14 +16575,26 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 %% @doc Lists the
 %% IAM policy assignments in the current Amazon QuickSight
 %% account.
+-spec list_iam_policy_assignments(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_iam_policy_assignments_response(), tuple()} |
+    {error, any()} |
+    {error, list_iam_policy_assignments_errors(), tuple()}.
 list_iam_policy_assignments(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     list_iam_policy_assignments(Client, AwsAccountId, Namespace, #{}, #{}).
 
+-spec list_iam_policy_assignments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_iam_policy_assignments_response(), tuple()} |
+    {error, any()} |
+    {error, list_iam_policy_assignments_errors(), tuple()}.
 list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
+-spec list_iam_policy_assignments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_iam_policy_assignments_response(), tuple()} |
+    {error, any()} |
+    {error, list_iam_policy_assignments_errors(), tuple()}.
 list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/v2/iam-policy-assignments"],
@@ -3793,14 +16624,26 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
 %% for the IAM policies assigned to the specified user and
 %% group,
 %% or groups that the user belongs to.
+-spec list_iam_policy_assignments_for_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_iam_policy_assignments_for_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_iam_policy_assignments_for_user_errors(), tuple()}.
 list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
     list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
 
+-spec list_iam_policy_assignments_for_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_iam_policy_assignments_for_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_iam_policy_assignments_for_user_errors(), tuple()}.
 list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
 
+-spec list_iam_policy_assignments_for_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_iam_policy_assignments_for_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_iam_policy_assignments_for_user_errors(), tuple()}.
 list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/iam-policy-assignments"],
@@ -3827,14 +16670,26 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, 
 %%
 %% This operation is only supported for Amazon QuickSight accounts that use
 %% IAM Identity Center.
+-spec list_identity_propagation_configs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_identity_propagation_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_propagation_configs_errors(), tuple()}.
 list_identity_propagation_configs(Client, AwsAccountId)
   when is_map(Client) ->
     list_identity_propagation_configs(Client, AwsAccountId, #{}, #{}).
 
+-spec list_identity_propagation_configs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_identity_propagation_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_propagation_configs_errors(), tuple()}.
 list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_identity_propagation_configs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_identity_propagation_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_propagation_configs_errors(), tuple()}.
 list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config"],
@@ -3857,14 +16712,26 @@ list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the history of SPICE ingestions for a dataset.
+-spec list_ingestions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_ingestions_response(), tuple()} |
+    {error, any()} |
+    {error, list_ingestions_errors(), tuple()}.
 list_ingestions(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     list_ingestions(Client, AwsAccountId, DataSetId, #{}, #{}).
 
+-spec list_ingestions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_ingestions_response(), tuple()} |
+    {error, any()} |
+    {error, list_ingestions_errors(), tuple()}.
 list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
+-spec list_ingestions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_ingestions_response(), tuple()} |
+    {error, any()} |
+    {error, list_ingestions_errors(), tuple()}.
 list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions"],
@@ -3889,14 +16756,26 @@ list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the namespaces for the specified Amazon Web Services account.
 %%
 %% This operation doesn't list deleted namespaces.
+-spec list_namespaces(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, AwsAccountId)
   when is_map(Client) ->
     list_namespaces(Client, AwsAccountId, #{}, #{}).
 
+-spec list_namespaces(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_namespaces(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces"],
@@ -3921,14 +16800,26 @@ list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the refresh schedules of a dataset.
 %%
 %% Each dataset can have up to 5 schedules.
+-spec list_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_refresh_schedules_response(), tuple()} |
+    {error, any()} |
+    {error, list_refresh_schedules_errors(), tuple()}.
 list_refresh_schedules(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     list_refresh_schedules(Client, AwsAccountId, DataSetId, #{}, #{}).
 
+-spec list_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_refresh_schedules_response(), tuple()} |
+    {error, any()} |
+    {error, list_refresh_schedules_errors(), tuple()}.
 list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
+-spec list_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_refresh_schedules_response(), tuple()} |
+    {error, any()} |
+    {error, list_refresh_schedules_errors(), tuple()}.
 list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
@@ -3946,14 +16837,26 @@ list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all groups that are associated with a role.
+-spec list_role_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_role_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_role_memberships_errors(), tuple()}.
 list_role_memberships(Client, AwsAccountId, Namespace, Role)
   when is_map(Client) ->
     list_role_memberships(Client, AwsAccountId, Namespace, Role, #{}, #{}).
 
+-spec list_role_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_role_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_role_memberships_errors(), tuple()}.
 list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, []).
 
+-spec list_role_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_role_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_role_memberships_errors(), tuple()}.
 list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members"],
@@ -3976,14 +16879,26 @@ list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags assigned to a resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
@@ -4001,14 +16916,26 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the aliases of a template.
+-spec list_template_aliases(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_template_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_template_aliases_errors(), tuple()}.
 list_template_aliases(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     list_template_aliases(Client, AwsAccountId, TemplateId, #{}, #{}).
 
+-spec list_template_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_template_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_template_aliases_errors(), tuple()}.
 list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
+-spec list_template_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_template_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_template_aliases_errors(), tuple()}.
 list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases"],
@@ -4032,14 +16959,26 @@ list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Op
 
 %% @doc Lists all the versions of the templates in the current Amazon
 %% QuickSight account.
+-spec list_template_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_template_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_template_versions_errors(), tuple()}.
 list_template_versions(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     list_template_versions(Client, AwsAccountId, TemplateId, #{}, #{}).
 
+-spec list_template_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_template_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_template_versions_errors(), tuple()}.
 list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
+-spec list_template_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_template_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_template_versions_errors(), tuple()}.
 list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/versions"],
@@ -4062,14 +17001,26 @@ list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the templates in the current Amazon QuickSight account.
+-spec list_templates(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, AwsAccountId)
   when is_map(Client) ->
     list_templates(Client, AwsAccountId, #{}, #{}).
 
+-spec list_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_templates(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_templates_errors(), tuple()}.
 list_templates(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates"],
@@ -4092,14 +17043,26 @@ list_templates(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the aliases of a theme.
+-spec list_theme_aliases(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_theme_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_theme_aliases_errors(), tuple()}.
 list_theme_aliases(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     list_theme_aliases(Client, AwsAccountId, ThemeId, #{}, #{}).
 
+-spec list_theme_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_theme_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_theme_aliases_errors(), tuple()}.
 list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
+-spec list_theme_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_theme_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_theme_aliases_errors(), tuple()}.
 list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases"],
@@ -4123,14 +17086,26 @@ list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0
 
 %% @doc Lists all the versions of the themes in the current Amazon Web
 %% Services account.
+-spec list_theme_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_theme_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_theme_versions_errors(), tuple()}.
 list_theme_versions(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     list_theme_versions(Client, AwsAccountId, ThemeId, #{}, #{}).
 
+-spec list_theme_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_theme_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_theme_versions_errors(), tuple()}.
 list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
+-spec list_theme_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_theme_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_theme_versions_errors(), tuple()}.
 list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/versions"],
@@ -4153,14 +17128,26 @@ list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the themes in the current Amazon Web Services account.
+-spec list_themes(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_themes_response(), tuple()} |
+    {error, any()} |
+    {error, list_themes_errors(), tuple()}.
 list_themes(Client, AwsAccountId)
   when is_map(Client) ->
     list_themes(Client, AwsAccountId, #{}, #{}).
 
+-spec list_themes(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_themes_response(), tuple()} |
+    {error, any()} |
+    {error, list_themes_errors(), tuple()}.
 list_themes(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_themes(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_themes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_themes_response(), tuple()} |
+    {error, any()} |
+    {error, list_themes_errors(), tuple()}.
 list_themes(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes"],
@@ -4184,14 +17171,26 @@ list_themes(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the refresh schedules for a topic.
+-spec list_topic_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_topic_refresh_schedules_response(), tuple()} |
+    {error, any()} |
+    {error, list_topic_refresh_schedules_errors(), tuple()}.
 list_topic_refresh_schedules(Client, AwsAccountId, TopicId)
   when is_map(Client) ->
     list_topic_refresh_schedules(Client, AwsAccountId, TopicId, #{}, #{}).
 
+-spec list_topic_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_topic_refresh_schedules_response(), tuple()} |
+    {error, any()} |
+    {error, list_topic_refresh_schedules_errors(), tuple()}.
 list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
 
+-spec list_topic_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_topic_refresh_schedules_response(), tuple()} |
+    {error, any()} |
+    {error, list_topic_refresh_schedules_errors(), tuple()}.
 list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules"],
@@ -4209,14 +17208,26 @@ list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the topics within an account.
+-spec list_topics(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_topics_response(), tuple()} |
+    {error, any()} |
+    {error, list_topics_errors(), tuple()}.
 list_topics(Client, AwsAccountId)
   when is_map(Client) ->
     list_topics(Client, AwsAccountId, #{}, #{}).
 
+-spec list_topics(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_topics_response(), tuple()} |
+    {error, any()} |
+    {error, list_topics_errors(), tuple()}.
 list_topics(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topics(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_topics(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_topics_response(), tuple()} |
+    {error, any()} |
+    {error, list_topics_errors(), tuple()}.
 list_topics(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics"],
@@ -4240,14 +17251,26 @@ list_topics(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Amazon QuickSight groups that an Amazon QuickSight user is
 %% a member of.
+-spec list_user_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_user_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_groups_errors(), tuple()}.
 list_user_groups(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
     list_user_groups(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
 
+-spec list_user_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_user_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_groups_errors(), tuple()}.
 list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
 
+-spec list_user_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_user_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_groups_errors(), tuple()}.
 list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/groups"],
@@ -4271,14 +17294,26 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap
 
 %% @doc Returns a list of all of the Amazon QuickSight users belonging to
 %% this account.
+-spec list_users(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_errors(), tuple()}.
 list_users(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     list_users(Client, AwsAccountId, Namespace, #{}, #{}).
 
+-spec list_users(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_errors(), tuple()}.
 list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
+-spec list_users(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_errors(), tuple()}.
 list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users"],
@@ -4303,14 +17338,26 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 %% @doc Lists all of the VPC connections in the current set Amazon Web
 %% Services Region of an
 %% Amazon Web Services account.
+-spec list_vpc_connections(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_vpc_connections_response(), tuple()} |
+    {error, any()} |
+    {error, list_vpc_connections_errors(), tuple()}.
 list_vpc_connections(Client, AwsAccountId)
   when is_map(Client) ->
     list_vpc_connections(Client, AwsAccountId, #{}, #{}).
 
+-spec list_vpc_connections(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_vpc_connections_response(), tuple()} |
+    {error, any()} |
+    {error, list_vpc_connections_errors(), tuple()}.
 list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
+-spec list_vpc_connections(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_vpc_connections_response(), tuple()} |
+    {error, any()} |
+    {error, list_vpc_connections_errors(), tuple()}.
 list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections"],
@@ -4333,8 +17380,17 @@ list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates or updates the dataset refresh properties for the dataset.
+-spec put_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), put_data_set_refresh_properties_request()) ->
+    {ok, put_data_set_refresh_properties_response(), tuple()} |
+    {error, any()} |
+    {error, put_data_set_refresh_properties_errors(), tuple()}.
 put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input) ->
     put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input, []).
+
+-spec put_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), put_data_set_refresh_properties_request(), proplists:proplist()) ->
+    {ok, put_data_set_refresh_properties_response(), tuple()} |
+    {error, any()} |
+    {error, put_data_set_refresh_properties_errors(), tuple()}.
 put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
@@ -4370,8 +17426,17 @@ put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options
 %% information on registering a new user in the Amazon QuickSight console,
 %% see Inviting users to access Amazon QuickSight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/managing-users.html#inviting-users.
+-spec register_user(aws_client:aws_client(), binary() | list(), binary() | list(), register_user_request()) ->
+    {ok, register_user_response(), tuple()} |
+    {error, any()} |
+    {error, register_user_errors(), tuple()}.
 register_user(Client, AwsAccountId, Namespace, Input) ->
     register_user(Client, AwsAccountId, Namespace, Input, []).
+
+-spec register_user(aws_client:aws_client(), binary() | list(), binary() | list(), register_user_request(), proplists:proplist()) ->
+    {ok, register_user_response(), tuple()} |
+    {error, any()} |
+    {error, register_user_errors(), tuple()}.
 register_user(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users"],
@@ -4395,8 +17460,17 @@ register_user(Client, AwsAccountId, Namespace, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Restores an analysis.
+-spec restore_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), restore_analysis_request()) ->
+    {ok, restore_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, restore_analysis_errors(), tuple()}.
 restore_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     restore_analysis(Client, AnalysisId, AwsAccountId, Input, []).
+
+-spec restore_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), restore_analysis_request(), proplists:proplist()) ->
+    {ok, restore_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, restore_analysis_errors(), tuple()}.
 restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/restore/analyses/", aws_util:encode_uri(AnalysisId), ""],
@@ -4424,8 +17498,17 @@ restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
+-spec search_analyses(aws_client:aws_client(), binary() | list(), search_analyses_request()) ->
+    {ok, search_analyses_response(), tuple()} |
+    {error, any()} |
+    {error, search_analyses_errors(), tuple()}.
 search_analyses(Client, AwsAccountId, Input) ->
     search_analyses(Client, AwsAccountId, Input, []).
+
+-spec search_analyses(aws_client:aws_client(), binary() | list(), search_analyses_request(), proplists:proplist()) ->
+    {ok, search_analyses_response(), tuple()} |
+    {error, any()} |
+    {error, search_analyses_errors(), tuple()}.
 search_analyses(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/analyses"],
@@ -4452,8 +17535,17 @@ search_analyses(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
+-spec search_dashboards(aws_client:aws_client(), binary() | list(), search_dashboards_request()) ->
+    {ok, search_dashboards_response(), tuple()} |
+    {error, any()} |
+    {error, search_dashboards_errors(), tuple()}.
 search_dashboards(Client, AwsAccountId, Input) ->
     search_dashboards(Client, AwsAccountId, Input, []).
+
+-spec search_dashboards(aws_client:aws_client(), binary() | list(), search_dashboards_request(), proplists:proplist()) ->
+    {ok, search_dashboards_response(), tuple()} |
+    {error, any()} |
+    {error, search_dashboards_errors(), tuple()}.
 search_dashboards(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/dashboards"],
@@ -4478,8 +17570,17 @@ search_dashboards(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Use the `SearchDataSets' operation to search for datasets that
 %% belong to an account.
+-spec search_data_sets(aws_client:aws_client(), binary() | list(), search_data_sets_request()) ->
+    {ok, search_data_sets_response(), tuple()} |
+    {error, any()} |
+    {error, search_data_sets_errors(), tuple()}.
 search_data_sets(Client, AwsAccountId, Input) ->
     search_data_sets(Client, AwsAccountId, Input, []).
+
+-spec search_data_sets(aws_client:aws_client(), binary() | list(), search_data_sets_request(), proplists:proplist()) ->
+    {ok, search_data_sets_response(), tuple()} |
+    {error, any()} |
+    {error, search_data_sets_errors(), tuple()}.
 search_data_sets(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/data-sets"],
@@ -4504,8 +17605,17 @@ search_data_sets(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Use the `SearchDataSources' operation to search for data sources
 %% that belong to an account.
+-spec search_data_sources(aws_client:aws_client(), binary() | list(), search_data_sources_request()) ->
+    {ok, search_data_sources_response(), tuple()} |
+    {error, any()} |
+    {error, search_data_sources_errors(), tuple()}.
 search_data_sources(Client, AwsAccountId, Input) ->
     search_data_sources(Client, AwsAccountId, Input, []).
+
+-spec search_data_sources(aws_client:aws_client(), binary() | list(), search_data_sources_request(), proplists:proplist()) ->
+    {ok, search_data_sources_response(), tuple()} |
+    {error, any()} |
+    {error, search_data_sources_errors(), tuple()}.
 search_data_sources(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/data-sources"],
@@ -4529,8 +17639,17 @@ search_data_sources(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches the subfolders in a folder.
+-spec search_folders(aws_client:aws_client(), binary() | list(), search_folders_request()) ->
+    {ok, search_folders_response(), tuple()} |
+    {error, any()} |
+    {error, search_folders_errors(), tuple()}.
 search_folders(Client, AwsAccountId, Input) ->
     search_folders(Client, AwsAccountId, Input, []).
+
+-spec search_folders(aws_client:aws_client(), binary() | list(), search_folders_request(), proplists:proplist()) ->
+    {ok, search_folders_response(), tuple()} |
+    {error, any()} |
+    {error, search_folders_errors(), tuple()}.
 search_folders(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/folders"],
@@ -4555,8 +17674,17 @@ search_folders(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Use the `SearchGroups' operation to search groups in a specified
 %% Amazon QuickSight namespace using the supplied filters.
+-spec search_groups(aws_client:aws_client(), binary() | list(), binary() | list(), search_groups_request()) ->
+    {ok, search_groups_response(), tuple()} |
+    {error, any()} |
+    {error, search_groups_errors(), tuple()}.
 search_groups(Client, AwsAccountId, Namespace, Input) ->
     search_groups(Client, AwsAccountId, Namespace, Input, []).
+
+-spec search_groups(aws_client:aws_client(), binary() | list(), binary() | list(), search_groups_request(), proplists:proplist()) ->
+    {ok, search_groups_response(), tuple()} |
+    {error, any()} |
+    {error, search_groups_errors(), tuple()}.
 search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups-search"],
@@ -4594,8 +17722,17 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
 %%
 %% The API caller must have the necessary permissions in their IAM role to
 %% access each resource before the resources can be exported.
+-spec start_asset_bundle_export_job(aws_client:aws_client(), binary() | list(), start_asset_bundle_export_job_request()) ->
+    {ok, start_asset_bundle_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_asset_bundle_export_job_errors(), tuple()}.
 start_asset_bundle_export_job(Client, AwsAccountId, Input) ->
     start_asset_bundle_export_job(Client, AwsAccountId, Input, []).
+
+-spec start_asset_bundle_export_job(aws_client:aws_client(), binary() | list(), start_asset_bundle_export_job_request(), proplists:proplist()) ->
+    {ok, start_asset_bundle_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_asset_bundle_export_job_errors(), tuple()}.
 start_asset_bundle_export_job(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs/export"],
@@ -4631,8 +17768,17 @@ start_asset_bundle_export_job(Client, AwsAccountId, Input0, Options0) ->
 %% `&quot;describe&quot;', and `&quot;update&quot;' permissions in
 %% their IAM role to access each resource type that is contained in the
 %% bundle file before the resources can be imported.
+-spec start_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), start_asset_bundle_import_job_request()) ->
+    {ok, start_asset_bundle_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_asset_bundle_import_job_errors(), tuple()}.
 start_asset_bundle_import_job(Client, AwsAccountId, Input) ->
     start_asset_bundle_import_job(Client, AwsAccountId, Input, []).
+
+-spec start_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), start_asset_bundle_import_job_request(), proplists:proplist()) ->
+    {ok, start_asset_bundle_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_asset_bundle_import_job_errors(), tuple()}.
 start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs/import"],
@@ -4668,8 +17814,17 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 %% Poll job descriptions with a `DescribeDashboardSnapshotJob' API call.
 %% Once the job succeeds, use the `DescribeDashboardSnapshotJobResult'
 %% API to obtain the download URIs that the job generates.
+-spec start_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_request()) ->
+    {ok, start_dashboard_snapshot_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_dashboard_snapshot_job_errors(), tuple()}.
 start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input) ->
     start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input, []).
+
+-spec start_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_request(), proplists:proplist()) ->
+    {ok, start_dashboard_snapshot_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_dashboard_snapshot_job_errors(), tuple()}.
 start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs"],
@@ -4724,8 +17879,17 @@ start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input0, Options0
 %%
 %% Amazon QuickSight doesn't currently support the tag editor for
 %% Resource Groups.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
@@ -4749,8 +17913,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag or tags from a resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
@@ -4786,8 +17959,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% customizations that apply to an Amazon Web Services account. To find out
 %% which customizations apply, use
 %% the `DescribeAccountCustomization' API operation.
+-spec update_account_customization(aws_client:aws_client(), binary() | list(), update_account_customization_request()) ->
+    {ok, update_account_customization_response(), tuple()} |
+    {error, any()} |
+    {error, update_account_customization_errors(), tuple()}.
 update_account_customization(Client, AwsAccountId, Input) ->
     update_account_customization(Client, AwsAccountId, Input, []).
+
+-spec update_account_customization(aws_client:aws_client(), binary() | list(), update_account_customization_request(), proplists:proplist()) ->
+    {ok, update_account_customization_response(), tuple()} |
+    {error, any()} |
+    {error, update_account_customization_errors(), tuple()}.
 update_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
@@ -4813,8 +17995,17 @@ update_account_customization(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Updates the Amazon QuickSight settings in your Amazon Web Services
 %% account.
+-spec update_account_settings(aws_client:aws_client(), binary() | list(), update_account_settings_request()) ->
+    {ok, update_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, AwsAccountId, Input) ->
     update_account_settings(Client, AwsAccountId, Input, []).
+
+-spec update_account_settings(aws_client:aws_client(), binary() | list(), update_account_settings_request(), proplists:proplist()) ->
+    {ok, update_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/settings"],
@@ -4838,8 +18029,17 @@ update_account_settings(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an analysis in Amazon QuickSight
+-spec update_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_request()) ->
+    {ok, update_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, update_analysis_errors(), tuple()}.
 update_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     update_analysis(Client, AnalysisId, AwsAccountId, Input, []).
+
+-spec update_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_request(), proplists:proplist()) ->
+    {ok, update_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, update_analysis_errors(), tuple()}.
 update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
@@ -4863,8 +18063,17 @@ update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the read and write permissions for an analysis.
+-spec update_analysis_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_permissions_request()) ->
+    {ok, update_analysis_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_analysis_permissions_errors(), tuple()}.
 update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input) ->
     update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input, []).
+
+-spec update_analysis_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_permissions_request(), proplists:proplist()) ->
+    {ok, update_analysis_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_analysis_permissions_errors(), tuple()}.
 update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/permissions"],
@@ -4897,8 +18106,17 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 %% UpdateDashboardPublishedVersion:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDashboardPublishedVersion.html
 %% ''' API operation.
+-spec update_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_request()) ->
+    {ok, update_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_errors(), tuple()}.
 update_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard(Client, AwsAccountId, DashboardId, Input, []).
+
+-spec update_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_request(), proplists:proplist()) ->
+    {ok, update_dashboard_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_errors(), tuple()}.
 update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
@@ -4922,8 +18140,17 @@ update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the linked analyses on a dashboard.
+-spec update_dashboard_links(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_links_request()) ->
+    {ok, update_dashboard_links_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_links_errors(), tuple()}.
 update_dashboard_links(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard_links(Client, AwsAccountId, DashboardId, Input, []).
+
+-spec update_dashboard_links(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_links_request(), proplists:proplist()) ->
+    {ok, update_dashboard_links_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_links_errors(), tuple()}.
 update_dashboard_links(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/linked-entities"],
@@ -4947,8 +18174,17 @@ update_dashboard_links(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates read and write permissions on a dashboard.
+-spec update_dashboard_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_permissions_request()) ->
+    {ok, update_dashboard_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_permissions_errors(), tuple()}.
 update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input, []).
+
+-spec update_dashboard_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_permissions_request(), proplists:proplist()) ->
+    {ok, update_dashboard_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_permissions_errors(), tuple()}.
 update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
@@ -4972,8 +18208,17 @@ update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the published version of a dashboard.
+-spec update_dashboard_published_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_dashboard_published_version_request()) ->
+    {ok, update_dashboard_published_version_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_published_version_errors(), tuple()}.
 update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input) ->
     update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input, []).
+
+-spec update_dashboard_published_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_dashboard_published_version_request(), proplists:proplist()) ->
+    {ok, update_dashboard_published_version_response(), tuple()} |
+    {error, any()} |
+    {error, update_dashboard_published_version_errors(), tuple()}.
 update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions/", aws_util:encode_uri(VersionNumber), ""],
@@ -5000,8 +18245,17 @@ update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNum
 %%
 %% This operation doesn't support datasets that include uploaded files as
 %% a source. Partial updates are not supported by this operation.
+-spec update_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_set_request()) ->
+    {ok, update_data_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_set_errors(), tuple()}.
 update_data_set(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set(Client, AwsAccountId, DataSetId, Input, []).
+
+-spec update_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_set_request(), proplists:proplist()) ->
+    {ok, update_data_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_set_errors(), tuple()}.
 update_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
@@ -5028,8 +18282,17 @@ update_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
 %%
 %% The permissions resource is
 %% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id'.
+-spec update_data_set_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_set_permissions_request()) ->
+    {ok, update_data_set_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_set_permissions_errors(), tuple()}.
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set_permissions(Client, AwsAccountId, DataSetId, Input, []).
+
+-spec update_data_set_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_set_permissions_request(), proplists:proplist()) ->
+    {ok, update_data_set_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_set_permissions_errors(), tuple()}.
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/permissions"],
@@ -5053,8 +18316,17 @@ update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a data source.
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request()) ->
+    {ok, update_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     update_data_source(Client, AwsAccountId, DataSourceId, Input, []).
+
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
+    {ok, update_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
@@ -5078,8 +18350,17 @@ update_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the permissions to a data source.
+-spec update_data_source_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_permissions_request()) ->
+    {ok, update_data_source_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_source_permissions_errors(), tuple()}.
 update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input) ->
     update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input, []).
+
+-spec update_data_source_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_permissions_request(), proplists:proplist()) ->
+    {ok, update_data_source_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_source_permissions_errors(), tuple()}.
 update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), "/permissions"],
@@ -5103,8 +18384,17 @@ update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Optio
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the name of a folder.
+-spec update_folder(aws_client:aws_client(), binary() | list(), binary() | list(), update_folder_request()) ->
+    {ok, update_folder_response(), tuple()} |
+    {error, any()} |
+    {error, update_folder_errors(), tuple()}.
 update_folder(Client, AwsAccountId, FolderId, Input) ->
     update_folder(Client, AwsAccountId, FolderId, Input, []).
+
+-spec update_folder(aws_client:aws_client(), binary() | list(), binary() | list(), update_folder_request(), proplists:proplist()) ->
+    {ok, update_folder_response(), tuple()} |
+    {error, any()} |
+    {error, update_folder_errors(), tuple()}.
 update_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
@@ -5128,8 +18418,17 @@ update_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates permissions of a folder.
+-spec update_folder_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_folder_permissions_request()) ->
+    {ok, update_folder_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_folder_permissions_errors(), tuple()}.
 update_folder_permissions(Client, AwsAccountId, FolderId, Input) ->
     update_folder_permissions(Client, AwsAccountId, FolderId, Input, []).
+
+-spec update_folder_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_folder_permissions_request(), proplists:proplist()) ->
+    {ok, update_folder_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_folder_permissions_errors(), tuple()}.
 update_folder_permissions(Client, AwsAccountId, FolderId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/permissions"],
@@ -5153,8 +18452,17 @@ update_folder_permissions(Client, AwsAccountId, FolderId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes a group description.
+-spec update_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_group_request()) ->
+    {ok, update_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_group_errors(), tuple()}.
 update_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     update_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
+
+-spec update_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_group_request(), proplists:proplist()) ->
+    {ok, update_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_group_errors(), tuple()}.
 update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
@@ -5183,8 +18491,17 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
 %% the optional parameter or parameters that are specified in the request.
 %% This overwrites
 %% all of the users included in `Identities'.
+-spec update_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_iam_policy_assignment_request()) ->
+    {ok, update_iam_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, update_iam_policy_assignment_errors(), tuple()}.
 update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
+
+-spec update_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_iam_policy_assignment_request(), proplists:proplist()) ->
+    {ok, update_iam_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, update_iam_policy_assignment_errors(), tuple()}.
 update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
@@ -5212,8 +18529,17 @@ update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 %%
 %% This operation is only supported for Amazon QuickSight accounts using IAM
 %% Identity Center
+-spec update_identity_propagation_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_identity_propagation_config_request()) ->
+    {ok, update_identity_propagation_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_identity_propagation_config_errors(), tuple()}.
 update_identity_propagation_config(Client, AwsAccountId, Service, Input) ->
     update_identity_propagation_config(Client, AwsAccountId, Service, Input, []).
+
+-spec update_identity_propagation_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_identity_propagation_config_request(), proplists:proplist()) ->
+    {ok, update_identity_propagation_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_identity_propagation_config_errors(), tuple()}.
 update_identity_propagation_config(Client, AwsAccountId, Service, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config/", aws_util:encode_uri(Service), ""],
@@ -5243,8 +18569,17 @@ update_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
 %% provide the entire map of rules. You can use the
 %% `DescribeIpRestriction'
 %% operation to get the current rule map.
+-spec update_ip_restriction(aws_client:aws_client(), binary() | list(), update_ip_restriction_request()) ->
+    {ok, update_ip_restriction_response(), tuple()} |
+    {error, any()} |
+    {error, update_ip_restriction_errors(), tuple()}.
 update_ip_restriction(Client, AwsAccountId, Input) ->
     update_ip_restriction(Client, AwsAccountId, Input, []).
+
+-spec update_ip_restriction(aws_client:aws_client(), binary() | list(), update_ip_restriction_request(), proplists:proplist()) ->
+    {ok, update_ip_restriction_response(), tuple()} |
+    {error, any()} |
+    {error, update_ip_restriction_errors(), tuple()}.
 update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/ip-restriction"],
@@ -5284,8 +18619,17 @@ update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/quicksight/latest/user/security_iam_service-with-iam.html
 %% in the Amazon QuickSight
 %% User Guide.
+-spec update_public_sharing_settings(aws_client:aws_client(), binary() | list(), update_public_sharing_settings_request()) ->
+    {ok, update_public_sharing_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_public_sharing_settings_errors(), tuple()}.
 update_public_sharing_settings(Client, AwsAccountId, Input) ->
     update_public_sharing_settings(Client, AwsAccountId, Input, []).
+
+-spec update_public_sharing_settings(aws_client:aws_client(), binary() | list(), update_public_sharing_settings_request(), proplists:proplist()) ->
+    {ok, update_public_sharing_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_public_sharing_settings_errors(), tuple()}.
 update_public_sharing_settings(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/public-sharing-settings"],
@@ -5309,8 +18653,17 @@ update_public_sharing_settings(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a refresh schedule for a dataset.
+-spec update_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), update_refresh_schedule_request()) ->
+    {ok, update_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, update_refresh_schedule_errors(), tuple()}.
 update_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
     update_refresh_schedule(Client, AwsAccountId, DataSetId, Input, []).
+
+-spec update_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), update_refresh_schedule_request(), proplists:proplist()) ->
+    {ok, update_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, update_refresh_schedule_errors(), tuple()}.
 update_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
@@ -5334,8 +18687,17 @@ update_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the custom permissions that are associated with a role.
+-spec update_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_role_custom_permission_request()) ->
+    {ok, update_role_custom_permission_response(), tuple()} |
+    {error, any()} |
+    {error, update_role_custom_permission_errors(), tuple()}.
 update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input) ->
     update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input, []).
+
+-spec update_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_role_custom_permission_request(), proplists:proplist()) ->
+    {ok, update_role_custom_permission_response(), tuple()} |
+    {error, any()} |
+    {error, update_role_custom_permission_errors(), tuple()}.
 update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
@@ -5360,8 +18722,17 @@ update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Opt
 
 %% @doc Updates a template from an existing Amazon QuickSight analysis or
 %% another template.
+-spec update_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_request()) ->
+    {ok, update_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_template_errors(), tuple()}.
 update_template(Client, AwsAccountId, TemplateId, Input) ->
     update_template(Client, AwsAccountId, TemplateId, Input, []).
+
+-spec update_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_request(), proplists:proplist()) ->
+    {ok, update_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_template_errors(), tuple()}.
 update_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -5385,8 +18756,17 @@ update_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the template alias of a template.
+-spec update_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_template_alias_request()) ->
+    {ok, update_template_alias_response(), tuple()} |
+    {error, any()} |
+    {error, update_template_alias_errors(), tuple()}.
 update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
+
+-spec update_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_template_alias_request(), proplists:proplist()) ->
+    {ok, update_template_alias_response(), tuple()} |
+    {error, any()} |
+    {error, update_template_alias_errors(), tuple()}.
 update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -5410,8 +18790,17 @@ update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the resource permissions for a template.
+-spec update_template_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_permissions_request()) ->
+    {ok, update_template_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_template_permissions_errors(), tuple()}.
 update_template_permissions(Client, AwsAccountId, TemplateId, Input) ->
     update_template_permissions(Client, AwsAccountId, TemplateId, Input, []).
+
+-spec update_template_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_permissions_request(), proplists:proplist()) ->
+    {ok, update_template_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_template_permissions_errors(), tuple()}.
 update_template_permissions(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/permissions"],
@@ -5435,8 +18824,17 @@ update_template_permissions(Client, AwsAccountId, TemplateId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a theme.
+-spec update_theme(aws_client:aws_client(), binary() | list(), binary() | list(), update_theme_request()) ->
+    {ok, update_theme_response(), tuple()} |
+    {error, any()} |
+    {error, update_theme_errors(), tuple()}.
 update_theme(Client, AwsAccountId, ThemeId, Input) ->
     update_theme(Client, AwsAccountId, ThemeId, Input, []).
+
+-spec update_theme(aws_client:aws_client(), binary() | list(), binary() | list(), update_theme_request(), proplists:proplist()) ->
+    {ok, update_theme_response(), tuple()} |
+    {error, any()} |
+    {error, update_theme_errors(), tuple()}.
 update_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
@@ -5460,8 +18858,17 @@ update_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an alias of a theme.
+-spec update_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_theme_alias_request()) ->
+    {ok, update_theme_alias_response(), tuple()} |
+    {error, any()} |
+    {error, update_theme_alias_errors(), tuple()}.
 update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
+
+-spec update_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_theme_alias_request(), proplists:proplist()) ->
+    {ok, update_theme_alias_response(), tuple()} |
+    {error, any()} |
+    {error, update_theme_alias_errors(), tuple()}.
 update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
@@ -5529,8 +18936,17 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
 %% `&quot;quicksight:DescribeThemePermissions&quot;'
 %%
 %% To specify no permissions, omit the permissions list.
+-spec update_theme_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_theme_permissions_request()) ->
+    {ok, update_theme_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_theme_permissions_errors(), tuple()}.
 update_theme_permissions(Client, AwsAccountId, ThemeId, Input) ->
     update_theme_permissions(Client, AwsAccountId, ThemeId, Input, []).
+
+-spec update_theme_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_theme_permissions_request(), proplists:proplist()) ->
+    {ok, update_theme_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_theme_permissions_errors(), tuple()}.
 update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/permissions"],
@@ -5554,8 +18970,17 @@ update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a topic.
+-spec update_topic(aws_client:aws_client(), binary() | list(), binary() | list(), update_topic_request()) ->
+    {ok, update_topic_response(), tuple()} |
+    {error, any()} |
+    {error, update_topic_errors(), tuple()}.
 update_topic(Client, AwsAccountId, TopicId, Input) ->
     update_topic(Client, AwsAccountId, TopicId, Input, []).
+
+-spec update_topic(aws_client:aws_client(), binary() | list(), binary() | list(), update_topic_request(), proplists:proplist()) ->
+    {ok, update_topic_response(), tuple()} |
+    {error, any()} |
+    {error, update_topic_errors(), tuple()}.
 update_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
@@ -5579,8 +19004,17 @@ update_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the permissions of a topic.
+-spec update_topic_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_topic_permissions_request()) ->
+    {ok, update_topic_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_topic_permissions_errors(), tuple()}.
 update_topic_permissions(Client, AwsAccountId, TopicId, Input) ->
     update_topic_permissions(Client, AwsAccountId, TopicId, Input, []).
+
+-spec update_topic_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_topic_permissions_request(), proplists:proplist()) ->
+    {ok, update_topic_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_topic_permissions_errors(), tuple()}.
 update_topic_permissions(Client, AwsAccountId, TopicId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/permissions"],
@@ -5604,8 +19038,17 @@ update_topic_permissions(Client, AwsAccountId, TopicId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a topic refresh schedule.
+-spec update_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_topic_refresh_schedule_request()) ->
+    {ok, update_topic_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, update_topic_refresh_schedule_errors(), tuple()}.
 update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input) ->
     update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input, []).
+
+-spec update_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_topic_refresh_schedule_request(), proplists:proplist()) ->
+    {ok, update_topic_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, update_topic_refresh_schedule_errors(), tuple()}.
 update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
@@ -5629,8 +19072,17 @@ update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon QuickSight user.
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_user_request()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_errors(), tuple()}.
 update_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     update_user(Client, AwsAccountId, Namespace, UserName, Input, []).
+
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_errors(), tuple()}.
 update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
@@ -5654,8 +19106,17 @@ update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a VPC connection.
+-spec update_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), update_vpc_connection_request()) ->
+    {ok, update_vpc_connection_response(), tuple()} |
+    {error, any()} |
+    {error, update_vpc_connection_errors(), tuple()}.
 update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input) ->
     update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input, []).
+
+-spec update_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), update_vpc_connection_request(), proplists:proplist()) ->
+    {ok, update_vpc_connection_response(), tuple()} |
+    {error, any()} |
+    {error, update_vpc_connection_errors(), tuple()}.
 update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],
@@ -5682,7 +19143,7 @@ update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) -
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

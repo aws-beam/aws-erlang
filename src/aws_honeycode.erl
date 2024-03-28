@@ -48,6 +48,655 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_table_rows_result() :: #{
+%%   <<"columnIds">> => list(string()()),
+%%   <<"nextToken">> => string(),
+%%   <<"rowIdsNotFound">> => list(string()()),
+%%   <<"rows">> => list(table_row()()),
+%%   <<"workbookCursor">> => float()
+%% }
+-type list_table_rows_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delimited_text_import_options() :: #{
+%%   <<"dataCharacterEncoding">> => list(any()),
+%%   <<"delimiter">> => string(),
+%%   <<"hasHeaderRow">> => boolean(),
+%%   <<"ignoreEmptyRows">> => boolean()
+%% }
+-type delimited_text_import_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_options() :: #{
+%%   <<"delimitedTextOptions">> => delimited_text_import_options(),
+%%   <<"destinationOptions">> => destination_options()
+%% }
+-type import_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_table_rows_result() :: #{
+%%   <<"columnIds">> => list(string()()),
+%%   <<"nextToken">> => string(),
+%%   <<"rows">> => list(table_row()()),
+%%   <<"workbookCursor">> => float()
+%% }
+-type query_table_rows_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_table_data_import_job_result() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"jobMetadata">> => table_data_import_job_metadata(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type describe_table_data_import_job_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_row_data() :: #{
+%%   <<"batchItemId">> => string(),
+%%   <<"cellsToCreate">> => map()
+%% }
+-type create_row_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_table_rows_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"rowIds">> => list(string()())
+%% }
+-type list_table_rows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_table_rows_request() :: #{
+%%   <<"filterFormula">> := filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type query_table_rows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_screen_automation_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"rowId">> => string(),
+%%   <<"variables">> => map()
+%% }
+-type invoke_screen_automation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_metadata() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type column_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_result() :: #{}
+-type untag_resource_result() :: #{}.
+
+
+%% Example:
+%% automation_execution_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type automation_execution_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_row_data() :: #{
+%%   <<"cellsToUpdate">> => map(),
+%%   <<"rowId">> => string()
+%% }
+-type update_row_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_item() :: #{
+%%   <<"formattedValue">> => string(),
+%%   <<"overrideFormat">> => list(any()),
+%%   <<"rawValue">> => string()
+%% }
+-type data_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% cell() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"formattedValue">> => string(),
+%%   <<"formattedValues">> => list(string()()),
+%%   <<"formula">> => string(),
+%%   <<"rawValue">> => string()
+%% }
+-type cell() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_table_rows_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"rowIds">> := list(string()())
+%% }
+-type batch_delete_table_rows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_data_import_job_metadata() :: #{
+%%   <<"dataSource">> => import_data_source(),
+%%   <<"importOptions">> => import_options(),
+%%   <<"submitTime">> => non_neg_integer(),
+%%   <<"submitter">> => import_job_submitter()
+%% }
+-type table_data_import_job_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% upsert_row_data() :: #{
+%%   <<"batchItemId">> => string(),
+%%   <<"cellsToUpdate">> => map(),
+%%   <<"filter">> => filter()
+%% }
+-type upsert_row_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_upsert_table_rows_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"rowsToUpsert">> := list(upsert_row_data()())
+%% }
+-type batch_upsert_table_rows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_table_rows_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"rowsToCreate">> := list(create_row_data()())
+%% }
+-type batch_create_table_rows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_row() :: #{
+%%   <<"cells">> => list(cell()()),
+%%   <<"rowId">> => string()
+%% }
+-type table_row() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_column() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"tableColumnId">> => string(),
+%%   <<"tableColumnName">> => string()
+%% }
+-type table_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% result_row() :: #{
+%%   <<"dataItems">> => list(data_item()()),
+%%   <<"rowId">> => string()
+%% }
+-type result_row() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_table_rows_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"rowsToUpdate">> := list(update_row_data()())
+%% }
+-type batch_update_table_rows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_table_columns_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tableColumns">> => list(table_column()()),
+%%   <<"workbookCursor">> => float()
+%% }
+-type list_table_columns_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_job_submitter() :: #{
+%%   <<"email">> => string(),
+%%   <<"userArn">> => string()
+%% }
+-type import_job_submitter() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"contextRowId">> => string(),
+%%   <<"formula">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_table_rows_result() :: #{
+%%   <<"failedBatchItems">> => list(failed_batch_item()()),
+%%   <<"workbookCursor">> => float()
+%% }
+-type batch_update_table_rows_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% automation_execution_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type automation_execution_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% upsert_rows_result() :: #{
+%%   <<"rowIds">> => list(string()()),
+%%   <<"upsertAction">> => list(any())
+%% }
+-type upsert_rows_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_table_columns_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_table_columns_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_batch_item() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"id">> => string()
+%% }
+-type failed_batch_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_screen_data_request() :: #{
+%%   <<"appId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"screenId">> := string(),
+%%   <<"variables">> => map(),
+%%   <<"workbookId">> := string()
+%% }
+-type get_screen_data_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_table_data_import_job_request() :: #{
+%%   <<"clientRequestToken">> := string(),
+%%   <<"dataFormat">> := list(any()),
+%%   <<"dataSource">> := import_data_source(),
+%%   <<"importOptions">> := import_options()
+%% }
+-type start_table_data_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_options() :: #{
+%%   <<"columnMap">> => map()
+%% }
+-type destination_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_data_import_job_request() :: #{}
+-type describe_table_data_import_job_request() :: #{}.
+
+
+%% Example:
+%% result_set() :: #{
+%%   <<"headers">> => list(column_metadata()()),
+%%   <<"rows">> => list(result_row()())
+%% }
+-type result_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tables_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tables">> => list(table()()),
+%%   <<"workbookCursor">> => float()
+%% }
+-type list_tables_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% invoke_screen_automation_result() :: #{
+%%   <<"workbookCursor">> => float()
+%% }
+-type invoke_screen_automation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_upsert_table_rows_result() :: #{
+%%   <<"failedBatchItems">> => list(failed_batch_item()()),
+%%   <<"rows">> => map(),
+%%   <<"workbookCursor">> => float()
+%% }
+-type batch_upsert_table_rows_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_table_data_import_job_result() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"jobStatus">> => list(any())
+%% }
+-type start_table_data_import_job_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_screen_data_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => map(),
+%%   <<"workbookCursor">> => float()
+%% }
+-type get_screen_data_result() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_result() :: #{}
+-type tag_resource_result() :: #{}.
+
+
+%% Example:
+%% variable_value() :: #{
+%%   <<"rawValue">> => string()
+%% }
+-type variable_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_data_source() :: #{
+%%   <<"dataSourceConfig">> => import_data_source_config()
+%% }
+-type import_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_data_source_config() :: #{
+%%   <<"dataSourceUrl">> => string()
+%% }
+-type import_data_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_data_column_properties() :: #{
+%%   <<"columnIndex">> => integer()
+%% }
+-type source_data_column_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_table_rows_result() :: #{
+%%   <<"createdRows">> => map(),
+%%   <<"failedBatchItems">> => list(failed_batch_item()()),
+%%   <<"workbookCursor">> => float()
+%% }
+-type batch_create_table_rows_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% table() :: #{
+%%   <<"tableId">> => string(),
+%%   <<"tableName">> => string()
+%% }
+-type table() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_table_rows_result() :: #{
+%%   <<"failedBatchItems">> => list(failed_batch_item()()),
+%%   <<"workbookCursor">> => float()
+%% }
+-type batch_delete_table_rows_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% cell_input() :: #{
+%%   <<"fact">> => string(),
+%%   <<"facts">> => list(string()())
+%% }
+-type cell_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tables_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_tables_request() :: #{binary() => any()}.
+
+-type batch_create_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type batch_delete_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type batch_update_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type batch_upsert_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type describe_table_data_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type get_screen_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type invoke_screen_automation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    automation_execution_timeout_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception() | 
+    automation_execution_exception().
+
+-type list_table_columns_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type list_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type list_tables_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type query_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type start_table_data_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -67,8 +716,17 @@
 %% no column level formula and
 %% no formula in the last row of the table, then that column will be left
 %% blank for the new rows.
+-spec batch_create_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_table_rows_request()) ->
+    {ok, batch_create_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, batch_create_table_rows_errors(), tuple()}.
 batch_create_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_create_table_rows(Client, TableId, WorkbookId, Input, []).
+
+-spec batch_create_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_table_rows_request(), proplists:proplist()) ->
+    {ok, batch_create_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, batch_create_table_rows_errors(), tuple()}.
 batch_create_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchcreate"],
@@ -97,8 +755,17 @@ batch_create_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %%
 %% You need to specify the ids of the rows that you want to delete from the
 %% table.
+-spec batch_delete_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_table_rows_request()) ->
+    {ok, batch_delete_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_table_rows_errors(), tuple()}.
 batch_delete_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_delete_table_rows(Client, TableId, WorkbookId, Input, []).
+
+-spec batch_delete_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_table_rows_request(), proplists:proplist()) ->
+    {ok, batch_delete_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_table_rows_errors(), tuple()}.
 batch_delete_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchdelete"],
@@ -133,8 +800,17 @@ batch_delete_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% for that row. To clear out the data in a specific cell, you need to set
 %% the value as an empty string
 %% (&quot;&quot;).
+-spec batch_update_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_update_table_rows_request()) ->
+    {ok, batch_update_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, batch_update_table_rows_errors(), tuple()}.
 batch_update_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_update_table_rows(Client, TableId, WorkbookId, Input, []).
+
+-spec batch_update_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_update_table_rows_request(), proplists:proplist()) ->
+    {ok, batch_update_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, batch_update_table_rows_errors(), tuple()}.
 batch_update_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchupdate"],
@@ -177,8 +853,17 @@ batch_update_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% column will not be updated for that row. To clear out the data in a
 %% specific cell, you need to set the value
 %% as an empty string (&quot;&quot;).
+-spec batch_upsert_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_upsert_table_rows_request()) ->
+    {ok, batch_upsert_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, batch_upsert_table_rows_errors(), tuple()}.
 batch_upsert_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_upsert_table_rows(Client, TableId, WorkbookId, Input, []).
+
+-spec batch_upsert_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_upsert_table_rows_request(), proplists:proplist()) ->
+    {ok, batch_upsert_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, batch_upsert_table_rows_errors(), tuple()}.
 batch_upsert_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchupsert"],
@@ -204,14 +889,26 @@ batch_upsert_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% @doc
 %% The DescribeTableDataImportJob API allows you to retrieve the status and
 %% details of a table data import job.
+-spec describe_table_data_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_table_data_import_job_result(), tuple()} |
+    {error, any()} |
+    {error, describe_table_data_import_job_errors(), tuple()}.
 describe_table_data_import_job(Client, JobId, TableId, WorkbookId)
   when is_map(Client) ->
     describe_table_data_import_job(Client, JobId, TableId, WorkbookId, #{}, #{}).
 
+-spec describe_table_data_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_table_data_import_job_result(), tuple()} |
+    {error, any()} |
+    {error, describe_table_data_import_job_errors(), tuple()}.
 describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap, []).
 
+-spec describe_table_data_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_table_data_import_job_result(), tuple()} |
+    {error, any()} |
+    {error, describe_table_data_import_job_errors(), tuple()}.
 describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/import/", aws_util:encode_uri(JobId), ""],
@@ -235,8 +932,17 @@ describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, Hea
 %% The API allows setting local variables in the screen to filter, sort or
 %% otherwise affect what will be
 %% displayed on the screen.
+-spec get_screen_data(aws_client:aws_client(), get_screen_data_request()) ->
+    {ok, get_screen_data_result(), tuple()} |
+    {error, any()} |
+    {error, get_screen_data_errors(), tuple()}.
 get_screen_data(Client, Input) ->
     get_screen_data(Client, Input, []).
+
+-spec get_screen_data(aws_client:aws_client(), get_screen_data_request(), proplists:proplist()) ->
+    {ok, get_screen_data_result(), tuple()} |
+    {error, any()} |
+    {error, get_screen_data_errors(), tuple()}.
 get_screen_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/screendata"],
@@ -267,8 +973,17 @@ get_screen_data(Client, Input0, Options0) ->
 %% automation being invoked.
 %% This allows automating the Honeycode app interactions to write, update or
 %% delete data in the workbook.
+-spec invoke_screen_automation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), invoke_screen_automation_request()) ->
+    {ok, invoke_screen_automation_result(), tuple()} |
+    {error, any()} |
+    {error, invoke_screen_automation_errors(), tuple()}.
 invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input) ->
     invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input, []).
+
+-spec invoke_screen_automation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), invoke_screen_automation_request(), proplists:proplist()) ->
+    {ok, invoke_screen_automation_result(), tuple()} |
+    {error, any()} |
+    {error, invoke_screen_automation_errors(), tuple()}.
 invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/apps/", aws_util:encode_uri(AppId), "/screens/", aws_util:encode_uri(ScreenId), "/automations/", aws_util:encode_uri(ScreenAutomationId), ""],
@@ -294,14 +1009,26 @@ invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId
 %% @doc
 %% The ListTableColumns API allows you to retrieve a list of all the columns
 %% in a table in a workbook.
+-spec list_table_columns(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_table_columns_result(), tuple()} |
+    {error, any()} |
+    {error, list_table_columns_errors(), tuple()}.
 list_table_columns(Client, TableId, WorkbookId)
   when is_map(Client) ->
     list_table_columns(Client, TableId, WorkbookId, #{}, #{}).
 
+-spec list_table_columns(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_table_columns_result(), tuple()} |
+    {error, any()} |
+    {error, list_table_columns_errors(), tuple()}.
 list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, []).
 
+-spec list_table_columns(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_table_columns_result(), tuple()} |
+    {error, any()} |
+    {error, list_table_columns_errors(), tuple()}.
 list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/columns"],
@@ -325,8 +1052,17 @@ list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, Options0)
 %% @doc
 %% The ListTableRows API allows you to retrieve a list of all the rows in a
 %% table in a workbook.
+-spec list_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), list_table_rows_request()) ->
+    {ok, list_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, list_table_rows_errors(), tuple()}.
 list_table_rows(Client, TableId, WorkbookId, Input) ->
     list_table_rows(Client, TableId, WorkbookId, Input, []).
+
+-spec list_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), list_table_rows_request(), proplists:proplist()) ->
+    {ok, list_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, list_table_rows_errors(), tuple()}.
 list_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/list"],
@@ -352,14 +1088,26 @@ list_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% @doc
 %% The ListTables API allows you to retrieve a list of all the tables in a
 %% workbook.
+-spec list_tables(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tables_result(), tuple()} |
+    {error, any()} |
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, WorkbookId)
   when is_map(Client) ->
     list_tables(Client, WorkbookId, #{}, #{}).
 
+-spec list_tables(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tables_result(), tuple()} |
+    {error, any()} |
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, WorkbookId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tables(Client, WorkbookId, QueryMap, HeadersMap, []).
 
+-spec list_tables(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tables_result(), tuple()} |
+    {error, any()} |
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, WorkbookId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables"],
@@ -383,14 +1131,26 @@ list_tables(Client, WorkbookId, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% The ListTagsForResource API allows you to return a resource's tags.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -410,8 +1170,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc
 %% The QueryTableRows API allows you to use a filter formula to query for
 %% specific rows in a table.
+-spec query_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), query_table_rows_request()) ->
+    {ok, query_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, query_table_rows_errors(), tuple()}.
 query_table_rows(Client, TableId, WorkbookId, Input) ->
     query_table_rows(Client, TableId, WorkbookId, Input, []).
+
+-spec query_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), query_table_rows_request(), proplists:proplist()) ->
+    {ok, query_table_rows_result(), tuple()} |
+    {error, any()} |
+    {error, query_table_rows_errors(), tuple()}.
 query_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/query"],
@@ -442,8 +1211,17 @@ query_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% the id of the job that was started. To find out the status of the import
 %% request, you need to call the
 %% DescribeTableDataImportJob API.
+-spec start_table_data_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_table_data_import_job_request()) ->
+    {ok, start_table_data_import_job_result(), tuple()} |
+    {error, any()} |
+    {error, start_table_data_import_job_errors(), tuple()}.
 start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input) ->
     start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input, []).
+
+-spec start_table_data_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_table_data_import_job_request(), proplists:proplist()) ->
+    {ok, start_table_data_import_job_result(), tuple()} |
+    {error, any()} |
+    {error, start_table_data_import_job_errors(), tuple()}.
 start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(DestinationTableId), "/import"],
@@ -471,8 +1249,17 @@ start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input0, Opti
 %%
 %% Resource includes workbook, table,
 %% screen and screen-automation.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -501,8 +1288,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Resource includes workbook, table,
 %% screen and screen-automation.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -530,7 +1326,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -82,6 +82,398 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% get_environment_output() :: #{
+%%   <<"Environment">> => environment()
+%% }
+-type get_environment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_input() :: #{
+%%   <<"AirflowConfigurationOptions">> => map(),
+%%   <<"AirflowVersion">> => string(),
+%%   <<"DagS3Path">> => string(),
+%%   <<"EndpointManagement">> => string(),
+%%   <<"EnvironmentClass">> => string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"KmsKey">> => string(),
+%%   <<"LoggingConfiguration">> => logging_configuration_input(),
+%%   <<"MaxWorkers">> => integer(),
+%%   <<"MinWorkers">> => integer(),
+%%   <<"NetworkConfiguration">> => network_configuration(),
+%%   <<"PluginsS3ObjectVersion">> => string(),
+%%   <<"PluginsS3Path">> => string(),
+%%   <<"RequirementsS3ObjectVersion">> => string(),
+%%   <<"RequirementsS3Path">> => string(),
+%%   <<"Schedulers">> => integer(),
+%%   <<"SourceBucketArn">> => string(),
+%%   <<"StartupScriptS3ObjectVersion">> => string(),
+%%   <<"StartupScriptS3Path">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"WebserverAccessMode">> => string(),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type create_environment_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_input() :: #{}
+-type delete_environment_input() :: #{}.
+
+
+%% Example:
+%% module_logging_configuration() :: #{
+%%   <<"CloudWatchLogGroupArn">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogLevel">> => string()
+%% }
+-type module_logging_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_configuration_input() :: #{
+%%   <<"DagProcessingLogs">> => module_logging_configuration_input(),
+%%   <<"SchedulerLogs">> => module_logging_configuration_input(),
+%%   <<"TaskLogs">> => module_logging_configuration_input(),
+%%   <<"WebserverLogs">> => module_logging_configuration_input(),
+%%   <<"WorkerLogs">> => module_logging_configuration_input()
+%% }
+-type logging_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_environments_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_configuration_input() :: #{
+%%   <<"SecurityGroupIds">> => list(string()())
+%% }
+-type update_network_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"DagProcessingLogs">> => module_logging_configuration(),
+%%   <<"SchedulerLogs">> => module_logging_configuration(),
+%%   <<"TaskLogs">> => module_logging_configuration(),
+%%   <<"WebserverLogs">> => module_logging_configuration(),
+%%   <<"WorkerLogs">> => module_logging_configuration()
+%% }
+-type logging_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_output() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type create_environment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type update_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_datum() :: #{
+%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"MetricName">> => [string()],
+%%   <<"StatisticValues">> => statistic_set(),
+%%   <<"Timestamp">> => [non_neg_integer()],
+%%   <<"Unit">> => string(),
+%%   <<"Value">> => [float()]
+%% }
+-type metric_datum() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_output() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type update_environment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% last_update() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Error">> => update_error(),
+%%   <<"Source">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type last_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment() :: #{
+%%   <<"AirflowConfigurationOptions">> => map(),
+%%   <<"AirflowVersion">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CeleryExecutorQueue">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DagS3Path">> => string(),
+%%   <<"DatabaseVpcEndpointService">> => string(),
+%%   <<"EndpointManagement">> => string(),
+%%   <<"EnvironmentClass">> => string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"KmsKey">> => string(),
+%%   <<"LastUpdate">> => last_update(),
+%%   <<"LoggingConfiguration">> => logging_configuration(),
+%%   <<"MaxWorkers">> => integer(),
+%%   <<"MinWorkers">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkConfiguration">> => network_configuration(),
+%%   <<"PluginsS3ObjectVersion">> => string(),
+%%   <<"PluginsS3Path">> => string(),
+%%   <<"RequirementsS3ObjectVersion">> => string(),
+%%   <<"RequirementsS3Path">> => string(),
+%%   <<"Schedulers">> => integer(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"SourceBucketArn">> => string(),
+%%   <<"StartupScriptS3ObjectVersion">> => [string()],
+%%   <<"StartupScriptS3Path">> => [string()],
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"WebserverAccessMode">> => string(),
+%%   <<"WebserverUrl">> => string(),
+%%   <<"WebserverVpcEndpointService">> => string(),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type environment() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_input() :: #{}
+-type get_environment_input() :: #{}.
+
+
+%% Example:
+%% list_environments_output() :: #{
+%%   <<"Environments">> := list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environments_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_input() :: #{
+%%   <<"AirflowConfigurationOptions">> => map(),
+%%   <<"AirflowVersion">> => string(),
+%%   <<"DagS3Path">> => string(),
+%%   <<"EnvironmentClass">> => string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"LoggingConfiguration">> => logging_configuration_input(),
+%%   <<"MaxWorkers">> => integer(),
+%%   <<"MinWorkers">> => integer(),
+%%   <<"NetworkConfiguration">> => update_network_configuration_input(),
+%%   <<"PluginsS3ObjectVersion">> => string(),
+%%   <<"PluginsS3Path">> => string(),
+%%   <<"RequirementsS3ObjectVersion">> => string(),
+%%   <<"RequirementsS3Path">> => string(),
+%%   <<"Schedulers">> => integer(),
+%%   <<"SourceBucketArn">> => string(),
+%%   <<"StartupScriptS3ObjectVersion">> => string(),
+%%   <<"StartupScriptS3Path">> => string(),
+%%   <<"WebserverAccessMode">> => string(),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type update_environment_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_web_login_token_request() :: #{}
+-type create_web_login_token_request() :: #{}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_output() :: #{}
+-type delete_environment_output() :: #{}.
+
+
+%% Example:
+%% create_cli_token_response() :: #{
+%%   <<"CliToken">> => string(),
+%%   <<"WebServerHostname">> => string()
+%% }
+-type create_cli_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_cli_token_request() :: #{}
+-type create_cli_token_request() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% create_web_login_token_response() :: #{
+%%   <<"AirflowIdentity">> => string(),
+%%   <<"IamIdentity">> => string(),
+%%   <<"WebServerHostname">> => string(),
+%%   <<"WebToken">> => string()
+%% }
+-type create_web_login_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dimension() :: #{
+%%   <<"Name">> => [string()],
+%%   <<"Value">> => [string()]
+%% }
+-type dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_metrics_input() :: #{
+%%   <<"MetricData">> => list(metric_datum()())
+%% }
+-type publish_metrics_input() :: #{binary() => any()}.
+
+%% Example:
+%% publish_metrics_output() :: #{}
+-type publish_metrics_output() :: #{}.
+
+
+%% Example:
+%% module_logging_configuration_input() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogLevel">> => string()
+%% }
+-type module_logging_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% statistic_set() :: #{
+%%   <<"Maximum">> => [float()],
+%%   <<"Minimum">> => [float()],
+%%   <<"SampleCount">> => [integer()],
+%%   <<"Sum">> => [float()]
+%% }
+-type statistic_set() :: #{binary() => any()}.
+
+-type create_cli_token_errors() ::
+    resource_not_found_exception().
+
+-type create_environment_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type create_web_login_token_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_environment_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_environments_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type publish_metrics_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_environment_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -90,8 +482,17 @@
 %%
 %% To learn more, see Creating an Apache Airflow CLI token:
 %% https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-cli.html.
+-spec create_cli_token(aws_client:aws_client(), binary() | list(), create_cli_token_request()) ->
+    {ok, create_cli_token_response(), tuple()} |
+    {error, any()} |
+    {error, create_cli_token_errors(), tuple()}.
 create_cli_token(Client, Name, Input) ->
     create_cli_token(Client, Name, Input, []).
+
+-spec create_cli_token(aws_client:aws_client(), binary() | list(), create_cli_token_request(), proplists:proplist()) ->
+    {ok, create_cli_token_response(), tuple()} |
+    {error, any()} |
+    {error, create_cli_token_errors(), tuple()}.
 create_cli_token(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/clitoken/", aws_util:encode_uri(Name), ""],
@@ -116,8 +517,17 @@ create_cli_token(Client, Name, Input0, Options0) ->
 
 %% @doc Creates an Amazon Managed Workflows for Apache Airflow (MWAA)
 %% environment.
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_input()) ->
+    {ok, create_environment_output(), tuple()} |
+    {error, any()} |
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Name, Input) ->
     create_environment(Client, Name, Input, []).
+
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_input(), proplists:proplist()) ->
+    {ok, create_environment_output(), tuple()} |
+    {error, any()} |
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
@@ -144,8 +554,17 @@ create_environment(Client, Name, Input0, Options0) ->
 %%
 %% To learn more, see Creating an Apache Airflow web login token:
 %% https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-web.html.
+-spec create_web_login_token(aws_client:aws_client(), binary() | list(), create_web_login_token_request()) ->
+    {ok, create_web_login_token_response(), tuple()} |
+    {error, any()} |
+    {error, create_web_login_token_errors(), tuple()}.
 create_web_login_token(Client, Name, Input) ->
     create_web_login_token(Client, Name, Input, []).
+
+-spec create_web_login_token(aws_client:aws_client(), binary() | list(), create_web_login_token_request(), proplists:proplist()) ->
+    {ok, create_web_login_token_response(), tuple()} |
+    {error, any()} |
+    {error, create_web_login_token_errors(), tuple()}.
 create_web_login_token(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/webtoken/", aws_util:encode_uri(Name), ""],
@@ -170,8 +589,17 @@ create_web_login_token(Client, Name, Input0, Options0) ->
 
 %% @doc Deletes an Amazon Managed Workflows for Apache Airflow (MWAA)
 %% environment.
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_input()) ->
+    {ok, delete_environment_output(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Name, Input) ->
     delete_environment(Client, Name, Input, []).
+
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_input(), proplists:proplist()) ->
+    {ok, delete_environment_output(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
@@ -196,14 +624,26 @@ delete_environment(Client, Name, Input0, Options0) ->
 
 %% @doc Describes an Amazon Managed Workflows for Apache Airflow (MWAA)
 %% environment.
+-spec get_environment(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_environment_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, Name)
   when is_map(Client) ->
     get_environment(Client, Name, #{}, #{}).
 
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_environment_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, Name, QueryMap, HeadersMap, []).
 
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_environment_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
@@ -222,14 +662,26 @@ get_environment(Client, Name, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Amazon Managed Workflows for Apache Airflow (MWAA)
 %% environments.
+-spec list_environments(aws_client:aws_client()) ->
+    {ok, list_environments_output(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
 
+-spec list_environments(aws_client:aws_client(), map(), map()) ->
+    {ok, list_environments_output(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, QueryMap, HeadersMap, []).
 
+-spec list_environments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_environments_output(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments"],
@@ -255,14 +707,26 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
 %% Workflows for Apache Airflow (MWAA) environment.
 %%
 %% For example, `&quot;Environment&quot;: &quot;Staging&quot;'.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -283,8 +747,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% Internal only.
 %%
 %% Publishes environment health metrics to Amazon CloudWatch.
+-spec publish_metrics(aws_client:aws_client(), binary() | list(), publish_metrics_input()) ->
+    {ok, publish_metrics_output(), tuple()} |
+    {error, any()} |
+    {error, publish_metrics_errors(), tuple()}.
 publish_metrics(Client, EnvironmentName, Input) ->
     publish_metrics(Client, EnvironmentName, Input, []).
+
+-spec publish_metrics(aws_client:aws_client(), binary() | list(), publish_metrics_input(), proplists:proplist()) ->
+    {ok, publish_metrics_output(), tuple()} |
+    {error, any()} |
+    {error, publish_metrics_errors(), tuple()}.
 publish_metrics(Client, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/environments/", aws_util:encode_uri(EnvironmentName), ""],
@@ -309,8 +782,17 @@ publish_metrics(Client, EnvironmentName, Input0, Options0) ->
 
 %% @doc Associates key-value tag pairs to your Amazon Managed Workflows for
 %% Apache Airflow (MWAA) environment.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -337,8 +819,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Workflows for Apache Airflow (MWAA) environment.
 %%
 %% For example, `&quot;Environment&quot;: &quot;Staging&quot;'.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -364,8 +855,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates an Amazon Managed Workflows for Apache Airflow (MWAA)
 %% environment.
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_input()) ->
+    {ok, update_environment_output(), tuple()} |
+    {error, any()} |
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Name, Input) ->
     update_environment(Client, Name, Input, []).
+
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_input(), proplists:proplist()) ->
+    {ok, update_environment_output(), tuple()} |
+    {error, any()} |
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/environments/", aws_util:encode_uri(Name), ""],
@@ -392,7 +892,7 @@ update_environment(Client, Name, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -74,6 +74,273 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_slack_channel_configuration_request() :: #{
+%%   <<"channelId">> := string(),
+%%   <<"channelName">> => string(),
+%%   <<"channelRoleArn">> := string(),
+%%   <<"notifyOnAddCorrespondenceToCase">> => boolean(),
+%%   <<"notifyOnCaseSeverity">> := string(),
+%%   <<"notifyOnCreateOrReopenCase">> => boolean(),
+%%   <<"notifyOnResolveCase">> => boolean(),
+%%   <<"teamId">> := string()
+%% }
+-type create_slack_channel_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_slack_channel_configuration_result() :: #{}
+-type create_slack_channel_configuration_result() :: #{}.
+
+%% Example:
+%% delete_account_alias_request() :: #{}
+-type delete_account_alias_request() :: #{}.
+
+%% Example:
+%% delete_account_alias_result() :: #{}
+-type delete_account_alias_result() :: #{}.
+
+
+%% Example:
+%% delete_slack_channel_configuration_request() :: #{
+%%   <<"channelId">> := string(),
+%%   <<"teamId">> := string()
+%% }
+-type delete_slack_channel_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_slack_channel_configuration_result() :: #{}
+-type delete_slack_channel_configuration_result() :: #{}.
+
+
+%% Example:
+%% delete_slack_workspace_configuration_request() :: #{
+%%   <<"teamId">> := string()
+%% }
+-type delete_slack_workspace_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_slack_workspace_configuration_result() :: #{}
+-type delete_slack_workspace_configuration_result() :: #{}.
+
+%% Example:
+%% get_account_alias_request() :: #{}
+-type get_account_alias_request() :: #{}.
+
+
+%% Example:
+%% get_account_alias_result() :: #{
+%%   <<"accountAlias">> => string()
+%% }
+-type get_account_alias_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_slack_channel_configurations_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_slack_channel_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_slack_channel_configurations_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"slackChannelConfigurations">> := list(slack_channel_configuration()())
+%% }
+-type list_slack_channel_configurations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_slack_workspace_configurations_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_slack_workspace_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_slack_workspace_configurations_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"slackWorkspaceConfigurations">> => list(slack_workspace_configuration()())
+%% }
+-type list_slack_workspace_configurations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_account_alias_request() :: #{
+%%   <<"accountAlias">> := string()
+%% }
+-type put_account_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_alias_result() :: #{}
+-type put_account_alias_result() :: #{}.
+
+
+%% Example:
+%% register_slack_workspace_for_organization_request() :: #{
+%%   <<"teamId">> := string()
+%% }
+-type register_slack_workspace_for_organization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_slack_workspace_for_organization_result() :: #{
+%%   <<"accountType">> => string(),
+%%   <<"teamId">> => string(),
+%%   <<"teamName">> => string()
+%% }
+-type register_slack_workspace_for_organization_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% slack_channel_configuration() :: #{
+%%   <<"channelId">> => string(),
+%%   <<"channelName">> => string(),
+%%   <<"channelRoleArn">> => string(),
+%%   <<"notifyOnAddCorrespondenceToCase">> => boolean(),
+%%   <<"notifyOnCaseSeverity">> => string(),
+%%   <<"notifyOnCreateOrReopenCase">> => boolean(),
+%%   <<"notifyOnResolveCase">> => boolean(),
+%%   <<"teamId">> => string()
+%% }
+-type slack_channel_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% slack_workspace_configuration() :: #{
+%%   <<"allowOrganizationMemberAccount">> => boolean(),
+%%   <<"teamId">> => string(),
+%%   <<"teamName">> => string()
+%% }
+-type slack_workspace_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_slack_channel_configuration_request() :: #{
+%%   <<"channelId">> := string(),
+%%   <<"channelName">> => string(),
+%%   <<"channelRoleArn">> => string(),
+%%   <<"notifyOnAddCorrespondenceToCase">> => boolean(),
+%%   <<"notifyOnCaseSeverity">> => string(),
+%%   <<"notifyOnCreateOrReopenCase">> => boolean(),
+%%   <<"notifyOnResolveCase">> => boolean(),
+%%   <<"teamId">> := string()
+%% }
+-type update_slack_channel_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_slack_channel_configuration_result() :: #{
+%%   <<"channelId">> => string(),
+%%   <<"channelName">> => string(),
+%%   <<"channelRoleArn">> => string(),
+%%   <<"notifyOnAddCorrespondenceToCase">> => boolean(),
+%%   <<"notifyOnCaseSeverity">> => string(),
+%%   <<"notifyOnCreateOrReopenCase">> => boolean(),
+%%   <<"notifyOnResolveCase">> => boolean(),
+%%   <<"teamId">> => string()
+%% }
+-type update_slack_channel_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+-type create_slack_channel_configuration_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_account_alias_errors() ::
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type delete_slack_channel_configuration_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_slack_workspace_configuration_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_account_alias_errors() ::
+    internal_server_exception().
+
+-type list_slack_channel_configurations_errors() ::
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_slack_workspace_configurations_errors() ::
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_account_alias_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type register_slack_workspace_for_organization_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_slack_channel_configuration_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -100,8 +367,17 @@
 %% create, update, or resolve support cases for your account. Users require
 %% an invitation to
 %% join private channels.
+-spec create_slack_channel_configuration(aws_client:aws_client(), create_slack_channel_configuration_request()) ->
+    {ok, create_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, create_slack_channel_configuration_errors(), tuple()}.
 create_slack_channel_configuration(Client, Input) ->
     create_slack_channel_configuration(Client, Input, []).
+
+-spec create_slack_channel_configuration(aws_client:aws_client(), create_slack_channel_configuration_request(), proplists:proplist()) ->
+    {ok, create_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, create_slack_channel_configuration_errors(), tuple()}.
 create_slack_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/create-slack-channel-configuration"],
@@ -129,8 +405,17 @@ create_slack_channel_configuration(Client, Input0, Options0) ->
 %% The alias appears in the Amazon Web Services Support App page of the
 %% Amazon Web Services Support Center. The alias also appears in Slack
 %% messages from the Amazon Web Services Support App.
+-spec delete_account_alias(aws_client:aws_client(), delete_account_alias_request()) ->
+    {ok, delete_account_alias_result(), tuple()} |
+    {error, any()} |
+    {error, delete_account_alias_errors(), tuple()}.
 delete_account_alias(Client, Input) ->
     delete_account_alias(Client, Input, []).
+
+-spec delete_account_alias(aws_client:aws_client(), delete_account_alias_request(), proplists:proplist()) ->
+    {ok, delete_account_alias_result(), tuple()} |
+    {error, any()} |
+    {error, delete_account_alias_errors(), tuple()}.
 delete_account_alias(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/delete-account-alias"],
@@ -158,8 +443,17 @@ delete_account_alias(Client, Input0, Options0) ->
 %%
 %% This operation doesn't
 %% delete your Slack channel.
+-spec delete_slack_channel_configuration(aws_client:aws_client(), delete_slack_channel_configuration_request()) ->
+    {ok, delete_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_slack_channel_configuration_errors(), tuple()}.
 delete_slack_channel_configuration(Client, Input) ->
     delete_slack_channel_configuration(Client, Input, []).
+
+-spec delete_slack_channel_configuration(aws_client:aws_client(), delete_slack_channel_configuration_request(), proplists:proplist()) ->
+    {ok, delete_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_slack_channel_configuration_errors(), tuple()}.
 delete_slack_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/delete-slack-channel-configuration"],
@@ -187,8 +481,17 @@ delete_slack_channel_configuration(Client, Input0, Options0) ->
 %%
 %% This operation doesn't
 %% delete your Slack workspace.
+-spec delete_slack_workspace_configuration(aws_client:aws_client(), delete_slack_workspace_configuration_request()) ->
+    {ok, delete_slack_workspace_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_slack_workspace_configuration_errors(), tuple()}.
 delete_slack_workspace_configuration(Client, Input) ->
     delete_slack_workspace_configuration(Client, Input, []).
+
+-spec delete_slack_workspace_configuration(aws_client:aws_client(), delete_slack_workspace_configuration_request(), proplists:proplist()) ->
+    {ok, delete_slack_workspace_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_slack_workspace_configuration_errors(), tuple()}.
 delete_slack_workspace_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/delete-slack-workspace-configuration"],
@@ -216,8 +519,17 @@ delete_slack_workspace_configuration(Client, Input0, Options0) ->
 %% The alias appears in the Amazon Web Services Support App page of
 %% the Amazon Web Services Support Center. The alias also appears in Slack
 %% messages from the Amazon Web Services Support App.
+-spec get_account_alias(aws_client:aws_client(), get_account_alias_request()) ->
+    {ok, get_account_alias_result(), tuple()} |
+    {error, any()} |
+    {error, get_account_alias_errors(), tuple()}.
 get_account_alias(Client, Input) ->
     get_account_alias(Client, Input, []).
+
+-spec get_account_alias(aws_client:aws_client(), get_account_alias_request(), proplists:proplist()) ->
+    {ok, get_account_alias_result(), tuple()} |
+    {error, any()} |
+    {error, get_account_alias_errors(), tuple()}.
 get_account_alias(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/get-account-alias"],
@@ -242,8 +554,17 @@ get_account_alias(Client, Input0, Options0) ->
 
 %% @doc Lists the Slack channel configurations for an Amazon Web Services
 %% account.
+-spec list_slack_channel_configurations(aws_client:aws_client(), list_slack_channel_configurations_request()) ->
+    {ok, list_slack_channel_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, list_slack_channel_configurations_errors(), tuple()}.
 list_slack_channel_configurations(Client, Input) ->
     list_slack_channel_configurations(Client, Input, []).
+
+-spec list_slack_channel_configurations(aws_client:aws_client(), list_slack_channel_configurations_request(), proplists:proplist()) ->
+    {ok, list_slack_channel_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, list_slack_channel_configurations_errors(), tuple()}.
 list_slack_channel_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/list-slack-channel-configurations"],
@@ -268,8 +589,17 @@ list_slack_channel_configurations(Client, Input0, Options0) ->
 
 %% @doc Lists the Slack workspace configurations for an Amazon Web Services
 %% account.
+-spec list_slack_workspace_configurations(aws_client:aws_client(), list_slack_workspace_configurations_request()) ->
+    {ok, list_slack_workspace_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, list_slack_workspace_configurations_errors(), tuple()}.
 list_slack_workspace_configurations(Client, Input) ->
     list_slack_workspace_configurations(Client, Input, []).
+
+-spec list_slack_workspace_configurations(aws_client:aws_client(), list_slack_workspace_configurations_request(), proplists:proplist()) ->
+    {ok, list_slack_workspace_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, list_slack_workspace_configurations_errors(), tuple()}.
 list_slack_workspace_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/list-slack-workspace-configurations"],
@@ -299,8 +629,17 @@ list_slack_workspace_configurations(Client, Input0, Options0) ->
 %% Amazon Web Services Support App page of the Amazon Web Services Support
 %% Center. The alias also appears in Slack messages from the
 %% Amazon Web Services Support App.
+-spec put_account_alias(aws_client:aws_client(), put_account_alias_request()) ->
+    {ok, put_account_alias_result(), tuple()} |
+    {error, any()} |
+    {error, put_account_alias_errors(), tuple()}.
 put_account_alias(Client, Input) ->
     put_account_alias(Client, Input, []).
+
+-spec put_account_alias(aws_client:aws_client(), put_account_alias_request(), proplists:proplist()) ->
+    {ok, put_account_alias_result(), tuple()} |
+    {error, any()} |
+    {error, put_account_alias_errors(), tuple()}.
 put_account_alias(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/put-account-alias"],
@@ -362,8 +701,17 @@ put_account_alias(Client, Input0, Options0) ->
 %% support cases for that account. For
 %% more information, see Configuring a Slack channel:
 %% https://docs.aws.amazon.com/awssupport/latest/user/add-your-slack-channel.html.
+-spec register_slack_workspace_for_organization(aws_client:aws_client(), register_slack_workspace_for_organization_request()) ->
+    {ok, register_slack_workspace_for_organization_result(), tuple()} |
+    {error, any()} |
+    {error, register_slack_workspace_for_organization_errors(), tuple()}.
 register_slack_workspace_for_organization(Client, Input) ->
     register_slack_workspace_for_organization(Client, Input, []).
+
+-spec register_slack_workspace_for_organization(aws_client:aws_client(), register_slack_workspace_for_organization_request(), proplists:proplist()) ->
+    {ok, register_slack_workspace_for_organization_result(), tuple()} |
+    {error, any()} |
+    {error, register_slack_workspace_for_organization_errors(), tuple()}.
 register_slack_workspace_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/register-slack-workspace-for-organization"],
@@ -388,8 +736,17 @@ register_slack_workspace_for_organization(Client, Input0, Options0) ->
 
 %% @doc Updates the configuration for a Slack channel, such as case update
 %% notifications.
+-spec update_slack_channel_configuration(aws_client:aws_client(), update_slack_channel_configuration_request()) ->
+    {ok, update_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, update_slack_channel_configuration_errors(), tuple()}.
 update_slack_channel_configuration(Client, Input) ->
     update_slack_channel_configuration(Client, Input, []).
+
+-spec update_slack_channel_configuration(aws_client:aws_client(), update_slack_channel_configuration_request(), proplists:proplist()) ->
+    {ok, update_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, update_slack_channel_configuration_errors(), tuple()}.
 update_slack_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/update-slack-channel-configuration"],
@@ -416,7 +773,7 @@ update_slack_channel_configuration(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

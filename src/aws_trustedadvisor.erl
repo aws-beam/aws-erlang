@@ -35,6 +35,455 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% recommendation_pillar_specific_aggregates() :: #{
+%%   <<"costOptimizing">> => recommendation_cost_optimizing_aggregates()
+%% }
+-type recommendation_pillar_specific_aggregates() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_recommendation_accounts_response() :: #{
+%%   <<"accountRecommendationLifecycleSummaries">> => list(account_recommendation_lifecycle_summary()()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_organization_recommendation_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_checks_response() :: #{
+%%   <<"checkSummaries">> => list(check_summary()()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_checks_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommendation_request() :: #{}
+-type get_recommendation_request() :: #{}.
+
+
+%% Example:
+%% organization_recommendation_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"awsServices">> => list(string()()),
+%%   <<"checkArn">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"id">> => [string()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"lifecycleStage">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"pillarSpecificAggregates">> => recommendation_pillar_specific_aggregates(),
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"resourcesAggregates">> => recommendation_resources_aggregates(),
+%%   <<"source">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type organization_recommendation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recommendation_lifecycle_request() :: #{
+%%   <<"lifecycleStage">> := list(any()),
+%%   <<"updateReason">> => string(),
+%%   <<"updateReasonCode">> => list(any())
+%% }
+-type update_recommendation_lifecycle_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_resources_aggregates() :: #{
+%%   <<"errorCount">> => [float()],
+%%   <<"okCount">> => [float()],
+%%   <<"warningCount">> => [float()]
+%% }
+-type recommendation_resources_aggregates() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendation_resources_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"recommendationResourceSummaries">> => list(recommendation_resource_summary()())
+%% }
+-type list_recommendation_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"arn">> => string(),
+%%   <<"awsServices">> => list(string()()),
+%%   <<"checkArn">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"lifecycleStage">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"pillarSpecificAggregates">> => recommendation_pillar_specific_aggregates(),
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"resolvedAt">> => [non_neg_integer()],
+%%   <<"resourcesAggregates">> => recommendation_resources_aggregates(),
+%%   <<"source">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updateReason">> => string(),
+%%   <<"updateReasonCode">> => list(any()),
+%%   <<"updatedOnBehalfOf">> => [string()],
+%%   <<"updatedOnBehalfOfJobTitle">> => [string()]
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_checks_request() :: #{
+%%   <<"awsService">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"pillar">> => list(any()),
+%%   <<"source">> => list(any())
+%% }
+-type list_checks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_recommendation_lifecycle_summary() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"accountRecommendationArn">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"lifecycleStage">> => list(any()),
+%%   <<"updateReason">> => string(),
+%%   <<"updateReasonCode">> => list(any()),
+%%   <<"updatedOnBehalfOf">> => [string()],
+%%   <<"updatedOnBehalfOfJobTitle">> => [string()]
+%% }
+-type account_recommendation_lifecycle_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_organization_recommendation_request() :: #{}
+-type get_organization_recommendation_request() :: #{}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_recommendations_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"organizationRecommendationSummaries">> => list(organization_recommendation_summary()())
+%% }
+-type list_organization_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_recommendation_accounts_request() :: #{
+%%   <<"affectedAccountId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_organization_recommendation_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendation_resources_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"regionCode">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type list_recommendation_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_recommendation_resources_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"organizationRecommendationResourceSummaries">> => list(organization_recommendation_resource_summary()())
+%% }
+-type list_organization_recommendation_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_organization_recommendation_lifecycle_request() :: #{
+%%   <<"lifecycleStage">> := list(any()),
+%%   <<"updateReason">> => string(),
+%%   <<"updateReasonCode">> => list(any())
+%% }
+-type update_organization_recommendation_lifecycle_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_organization_recommendation_response() :: #{
+%%   <<"organizationRecommendation">> => organization_recommendation()
+%% }
+-type get_organization_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_recommendation_resources_request() :: #{
+%%   <<"affectedAccountId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"regionCode">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type list_organization_recommendation_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_recommendations_request() :: #{
+%%   <<"afterLastUpdatedAt">> => [non_neg_integer()],
+%%   <<"awsService">> => string(),
+%%   <<"beforeLastUpdatedAt">> => [non_neg_integer()],
+%%   <<"checkIdentifier">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"pillar">> => list(any()),
+%%   <<"source">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type list_organization_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"awsServices">> => list(string()()),
+%%   <<"description">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => [string()],
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"source">> => list(any())
+%% }
+-type check_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"awsServices">> => list(string()()),
+%%   <<"checkArn">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"id">> => [string()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"lifecycleStage">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"pillarSpecificAggregates">> => recommendation_pillar_specific_aggregates(),
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"resourcesAggregates">> => recommendation_resources_aggregates(),
+%%   <<"source">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type recommendation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_recommendation_resource_summary() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"awsResourceId">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"metadata">> => map(),
+%%   <<"recommendationArn">> => string(),
+%%   <<"regionCode">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type organization_recommendation_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"recommendationSummaries">> => list(recommendation_summary()())
+%% }
+-type list_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_cost_optimizing_aggregates() :: #{
+%%   <<"estimatedMonthlySavings">> => [float()],
+%%   <<"estimatedPercentMonthlySavings">> => [float()]
+%% }
+-type recommendation_cost_optimizing_aggregates() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommendation_response() :: #{
+%%   <<"recommendation">> => recommendation()
+%% }
+-type get_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_recommendation() :: #{
+%%   <<"arn">> => string(),
+%%   <<"awsServices">> => list(string()()),
+%%   <<"checkArn">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"lifecycleStage">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"pillarSpecificAggregates">> => recommendation_pillar_specific_aggregates(),
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"resolvedAt">> => [non_neg_integer()],
+%%   <<"resourcesAggregates">> => recommendation_resources_aggregates(),
+%%   <<"source">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updateReason">> => string(),
+%%   <<"updateReasonCode">> => list(any()),
+%%   <<"updatedOnBehalfOf">> => [string()],
+%%   <<"updatedOnBehalfOfJobTitle">> => [string()]
+%% }
+-type organization_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_resource_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"awsResourceId">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"metadata">> => map(),
+%%   <<"recommendationArn">> => string(),
+%%   <<"regionCode">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type recommendation_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_request() :: #{
+%%   <<"afterLastUpdatedAt">> => [non_neg_integer()],
+%%   <<"awsService">> => string(),
+%%   <<"beforeLastUpdatedAt">> => [non_neg_integer()],
+%%   <<"checkIdentifier">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"pillar">> => list(any()),
+%%   <<"source">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type list_recommendations_request() :: #{binary() => any()}.
+
+-type get_organization_recommendation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_recommendation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_checks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_organization_recommendation_accounts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_organization_recommendation_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_organization_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_recommendation_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type update_organization_recommendation_lifecycle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_recommendation_lifecycle_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -44,14 +493,26 @@
 %%
 %% This API supports only prioritized
 %% recommendations.
+-spec get_organization_recommendation(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_organization_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_organization_recommendation_errors(), tuple()}.
 get_organization_recommendation(Client, OrganizationRecommendationIdentifier)
   when is_map(Client) ->
     get_organization_recommendation(Client, OrganizationRecommendationIdentifier, #{}, #{}).
 
+-spec get_organization_recommendation(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_organization_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_organization_recommendation_errors(), tuple()}.
 get_organization_recommendation(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_organization_recommendation(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_organization_recommendation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_organization_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_organization_recommendation_errors(), tuple()}.
 get_organization_recommendation(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/organization-recommendations/", aws_util:encode_uri(OrganizationRecommendationIdentifier), ""],
@@ -69,14 +530,26 @@ get_organization_recommendation(Client, OrganizationRecommendationIdentifier, Qu
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a specific Recommendation
+-spec get_recommendation(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommendation_errors(), tuple()}.
 get_recommendation(Client, RecommendationIdentifier)
   when is_map(Client) ->
     get_recommendation(Client, RecommendationIdentifier, #{}, #{}).
 
+-spec get_recommendation(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommendation_errors(), tuple()}.
 get_recommendation(Client, RecommendationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommendation(Client, RecommendationIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_recommendation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommendation_errors(), tuple()}.
 get_recommendation(Client, RecommendationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/recommendations/", aws_util:encode_uri(RecommendationIdentifier), ""],
@@ -94,14 +567,26 @@ get_recommendation(Client, RecommendationIdentifier, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List a filterable set of Checks
+-spec list_checks(aws_client:aws_client()) ->
+    {ok, list_checks_response(), tuple()} |
+    {error, any()} |
+    {error, list_checks_errors(), tuple()}.
 list_checks(Client)
   when is_map(Client) ->
     list_checks(Client, #{}, #{}).
 
+-spec list_checks(aws_client:aws_client(), map(), map()) ->
+    {ok, list_checks_response(), tuple()} |
+    {error, any()} |
+    {error, list_checks_errors(), tuple()}.
 list_checks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_checks(Client, QueryMap, HeadersMap, []).
 
+-spec list_checks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_checks_response(), tuple()} |
+    {error, any()} |
+    {error, list_checks_errors(), tuple()}.
 list_checks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/checks"],
@@ -132,14 +617,26 @@ list_checks(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This API only
 %% supports prioritized recommendations.
+-spec list_organization_recommendation_accounts(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_organization_recommendation_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_recommendation_accounts_errors(), tuple()}.
 list_organization_recommendation_accounts(Client, OrganizationRecommendationIdentifier)
   when is_map(Client) ->
     list_organization_recommendation_accounts(Client, OrganizationRecommendationIdentifier, #{}, #{}).
 
+-spec list_organization_recommendation_accounts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_organization_recommendation_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_recommendation_accounts_errors(), tuple()}.
 list_organization_recommendation_accounts(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_recommendation_accounts(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_organization_recommendation_accounts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_organization_recommendation_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_recommendation_accounts_errors(), tuple()}.
 list_organization_recommendation_accounts(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/organization-recommendations/", aws_util:encode_uri(OrganizationRecommendationIdentifier), "/accounts"],
@@ -166,14 +663,26 @@ list_organization_recommendation_accounts(Client, OrganizationRecommendationIden
 %%
 %% This API only supports prioritized
 %% recommendations.
+-spec list_organization_recommendation_resources(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_organization_recommendation_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_recommendation_resources_errors(), tuple()}.
 list_organization_recommendation_resources(Client, OrganizationRecommendationIdentifier)
   when is_map(Client) ->
     list_organization_recommendation_resources(Client, OrganizationRecommendationIdentifier, #{}, #{}).
 
+-spec list_organization_recommendation_resources(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_organization_recommendation_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_recommendation_resources_errors(), tuple()}.
 list_organization_recommendation_resources(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_recommendation_resources(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_organization_recommendation_resources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_organization_recommendation_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_recommendation_resources_errors(), tuple()}.
 list_organization_recommendation_resources(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/organization-recommendations/", aws_util:encode_uri(OrganizationRecommendationIdentifier), "/resources"],
@@ -202,14 +711,26 @@ list_organization_recommendation_resources(Client, OrganizationRecommendationIde
 %%
 %% This API only supports prioritized
 %% recommendations.
+-spec list_organization_recommendations(aws_client:aws_client()) ->
+    {ok, list_organization_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_recommendations_errors(), tuple()}.
 list_organization_recommendations(Client)
   when is_map(Client) ->
     list_organization_recommendations(Client, #{}, #{}).
 
+-spec list_organization_recommendations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_organization_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_recommendations_errors(), tuple()}.
 list_organization_recommendations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_recommendations(Client, QueryMap, HeadersMap, []).
 
+-spec list_organization_recommendations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_organization_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_recommendations_errors(), tuple()}.
 list_organization_recommendations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/organization-recommendations"],
@@ -240,14 +761,26 @@ list_organization_recommendations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List Resources of a Recommendation
+-spec list_recommendation_resources(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_recommendation_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendation_resources_errors(), tuple()}.
 list_recommendation_resources(Client, RecommendationIdentifier)
   when is_map(Client) ->
     list_recommendation_resources(Client, RecommendationIdentifier, #{}, #{}).
 
+-spec list_recommendation_resources(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_recommendation_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendation_resources_errors(), tuple()}.
 list_recommendation_resources(Client, RecommendationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendation_resources(Client, RecommendationIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_recommendation_resources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_recommendation_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendation_resources_errors(), tuple()}.
 list_recommendation_resources(Client, RecommendationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/recommendations/", aws_util:encode_uri(RecommendationIdentifier), "/resources"],
@@ -272,14 +805,26 @@ list_recommendation_resources(Client, RecommendationIdentifier, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List a filterable set of Recommendations
+-spec list_recommendations(aws_client:aws_client()) ->
+    {ok, list_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client)
   when is_map(Client) ->
     list_recommendations(Client, #{}, #{}).
 
+-spec list_recommendations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendations(Client, QueryMap, HeadersMap, []).
 
+-spec list_recommendations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/recommendations"],
@@ -313,8 +858,17 @@ list_recommendations(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This API only supports prioritized
 %% recommendations.
+-spec update_organization_recommendation_lifecycle(aws_client:aws_client(), binary() | list(), update_organization_recommendation_lifecycle_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_organization_recommendation_lifecycle_errors(), tuple()}.
 update_organization_recommendation_lifecycle(Client, OrganizationRecommendationIdentifier, Input) ->
     update_organization_recommendation_lifecycle(Client, OrganizationRecommendationIdentifier, Input, []).
+
+-spec update_organization_recommendation_lifecycle(aws_client:aws_client(), binary() | list(), update_organization_recommendation_lifecycle_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_organization_recommendation_lifecycle_errors(), tuple()}.
 update_organization_recommendation_lifecycle(Client, OrganizationRecommendationIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/v1/organization-recommendations/", aws_util:encode_uri(OrganizationRecommendationIdentifier), "/lifecycle"],
@@ -340,8 +894,17 @@ update_organization_recommendation_lifecycle(Client, OrganizationRecommendationI
 %% @doc Update the lifecyle of a Recommendation.
 %%
 %% This API only supports prioritized recommendations.
+-spec update_recommendation_lifecycle(aws_client:aws_client(), binary() | list(), update_recommendation_lifecycle_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_recommendation_lifecycle_errors(), tuple()}.
 update_recommendation_lifecycle(Client, RecommendationIdentifier, Input) ->
     update_recommendation_lifecycle(Client, RecommendationIdentifier, Input, []).
+
+-spec update_recommendation_lifecycle(aws_client:aws_client(), binary() | list(), update_recommendation_lifecycle_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_recommendation_lifecycle_errors(), tuple()}.
 update_recommendation_lifecycle(Client, RecommendationIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/v1/recommendations/", aws_util:encode_uri(RecommendationIdentifier), "/lifecycle"],
@@ -368,7 +931,7 @@ update_recommendation_lifecycle(Client, RecommendationIdentifier, Input0, Option
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

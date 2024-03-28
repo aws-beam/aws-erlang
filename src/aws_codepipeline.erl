@@ -247,6 +247,1644 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% get_action_type_output() :: #{
+%%   <<"actionType">> => action_type_declaration()
+%% }
+-type get_action_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_blocker_declaration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_blocker_declaration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% latest_in_pipeline_execution_filter() :: #{
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"startTimeRange">> => list(any())
+%% }
+-type latest_in_pipeline_execution_filter() :: #{binary() => any()}.
+
+%% Example:
+%% action_context() :: #{
+%%   <<"actionExecutionId">> => string(),
+%%   <<"name">> => string()
+%% }
+-type action_context() :: #{binary() => any()}.
+
+%% Example:
+%% git_branch_filter_criteria() :: #{
+%%   <<"excludes">> => list(string()()),
+%%   <<"includes">> => list(string()())
+%% }
+-type git_branch_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% request_failed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_action_executions_output() :: #{
+%%   <<"actionExecutionDetails">> => list(action_execution_detail()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_action_executions_output() :: #{binary() => any()}.
+
+%% Example:
+%% aws_session_credentials() :: #{
+%%   <<"accessKeyId">> => string(),
+%%   <<"secretAccessKey">> => string(),
+%%   <<"sessionToken">> => string()
+%% }
+-type aws_session_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% webhook_auth_configuration() :: #{
+%%   <<"AllowedIPRange">> => string(),
+%%   <<"SecretToken">> => string()
+%% }
+-type webhook_auth_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% stage_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type stage_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_third_party_jobs_input() :: #{
+%%   <<"actionTypeId">> := action_type_id(),
+%%   <<"maxBatchSize">> => integer()
+%% }
+-type poll_for_third_party_jobs_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pipeline_execution_output() :: #{
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type stop_pipeline_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_webhook_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"definition">> => webhook_definition(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"lastTriggered">> => non_neg_integer(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"url">> => string()
+%% }
+-type list_webhook_item() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_declaration() :: #{
+%%   <<"artifactStore">> => artifact_store(),
+%%   <<"artifactStores">> => map(),
+%%   <<"executionMode">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"pipelineType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"stages">> => list(stage_declaration()()),
+%%   <<"triggers">> => list(pipeline_trigger_declaration()()),
+%%   <<"variables">> => list(pipeline_variable_declaration()()),
+%%   <<"version">> => integer()
+%% }
+-type pipeline_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% output_artifact() :: #{
+%%   <<"name">> => string()
+%% }
+-type output_artifact() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_permissions() :: #{
+%%   <<"allowedAccounts">> => list(string()())
+%% }
+-type action_type_permissions() :: #{binary() => any()}.
+
+%% Example:
+%% resolved_pipeline_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"resolvedValue">> => string()
+%% }
+-type resolved_pipeline_variable() :: #{binary() => any()}.
+
+%% Example:
+%% put_approval_result_output() :: #{
+%%   <<"approvedAt">> => non_neg_integer()
+%% }
+-type put_approval_result_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_pipeline_output() :: #{
+%%   <<"pipeline">> => pipeline_declaration(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_webhook_output() :: #{
+
+%% }
+-type delete_webhook_output() :: #{binary() => any()}.
+
+%% Example:
+%% action_state() :: #{
+%%   <<"actionName">> => string(),
+%%   <<"currentRevision">> => action_revision(),
+%%   <<"entityUrl">> => string(),
+%%   <<"latestExecution">> => action_execution(),
+%%   <<"revisionUrl">> => string()
+%% }
+-type action_state() :: #{binary() => any()}.
+
+%% Example:
+%% put_webhook_output() :: #{
+%%   <<"webhook">> => list_webhook_item()
+%% }
+-type put_webhook_output() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_revision() :: #{
+%%   <<"created">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"revisionChangeIdentifier">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"revisionSummary">> => string(),
+%%   <<"revisionUrl">> => string()
+%% }
+-type artifact_revision() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_trigger_declaration() :: #{
+%%   <<"gitConfiguration">> => git_configuration(),
+%%   <<"providerType">> => list(any())
+%% }
+-type pipeline_trigger_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% execution_details() :: #{
+%%   <<"externalExecutionId">> => string(),
+%%   <<"percentComplete">> => integer(),
+%%   <<"summary">> => string()
+%% }
+-type execution_details() :: #{binary() => any()}.
+
+%% Example:
+%% not_latest_pipeline_execution_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_latest_pipeline_execution_exception() :: #{binary() => any()}.
+
+%% Example:
+%% executor_configuration() :: #{
+%%   <<"jobWorkerExecutorConfiguration">> => job_worker_executor_configuration(),
+%%   <<"lambdaExecutorConfiguration">> => lambda_executor_configuration()
+%% }
+-type executor_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_action_declaration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_action_declaration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_third_party_job_failure_result_input() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"failureDetails">> := failure_details(),
+%%   <<"jobId">> := string()
+%% }
+-type put_third_party_job_failure_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_summary() :: #{
+%%   <<"executionMode">> => list(any()),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"sourceRevisions">> => list(source_revision()()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stopTrigger">> => stop_execution_trigger(),
+%%   <<"trigger">> => execution_trigger()
+%% }
+-type pipeline_execution_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_third_party_job_details_output() :: #{
+%%   <<"jobDetails">> => third_party_job_details()
+%% }
+-type get_third_party_job_details_output() :: #{binary() => any()}.
+
+%% Example:
+%% third_party_job() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"jobId">> => string()
+%% }
+-type third_party_job() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_third_party_job_output() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type acknowledge_third_party_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution() :: #{
+%%   <<"artifactRevisions">> => list(artifact_revision()()),
+%%   <<"executionMode">> => list(any()),
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"pipelineName">> => string(),
+%%   <<"pipelineVersion">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusSummary">> => string(),
+%%   <<"trigger">> => execution_trigger(),
+%%   <<"variables">> => list(resolved_pipeline_variable()())
+%% }
+-type pipeline_execution() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_job_output() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type acknowledge_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_third_party_job_input() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"jobId">> := string(),
+%%   <<"nonce">> := string()
+%% }
+-type acknowledge_third_party_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_variable_declaration() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type pipeline_variable_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_name_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_name_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_output() :: #{
+%%   <<"metadata">> => pipeline_metadata(),
+%%   <<"pipeline">> => pipeline_declaration()
+%% }
+-type get_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% action_revision() :: #{
+%%   <<"created">> => non_neg_integer(),
+%%   <<"revisionChangeId">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type action_revision() :: #{binary() => any()}.
+
+%% Example:
+%% stage_context() :: #{
+%%   <<"name">> => string()
+%% }
+-type stage_context() :: #{binary() => any()}.
+
+%% Example:
+%% enable_stage_transition_input() :: #{
+%%   <<"pipelineName">> := string(),
+%%   <<"stageName">> := string(),
+%%   <<"transitionType">> := list(any())
+%% }
+-type enable_stage_transition_input() :: #{binary() => any()}.
+
+%% Example:
+%% third_party_job_data() :: #{
+%%   <<"actionConfiguration">> => action_configuration(),
+%%   <<"actionTypeId">> => action_type_id(),
+%%   <<"artifactCredentials">> => aws_session_credentials(),
+%%   <<"continuationToken">> => string(),
+%%   <<"encryptionKey">> => encryption_key(),
+%%   <<"inputArtifacts">> => list(artifact()()),
+%%   <<"outputArtifacts">> => list(artifact()()),
+%%   <<"pipelineContext">> => pipeline_context()
+%% }
+-type third_party_job_data() :: #{binary() => any()}.
+
+%% Example:
+%% list_webhooks_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"webhooks">> => list(list_webhook_item()())
+%% }
+-type list_webhooks_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_job_success_result_input() :: #{
+%%   <<"continuationToken">> => string(),
+%%   <<"currentRevision">> => current_revision(),
+%%   <<"executionDetails">> => execution_details(),
+%%   <<"jobId">> := string(),
+%%   <<"outputVariables">> => map()
+%% }
+-type put_job_success_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_execution_input() :: #{
+%%   <<"pipelineExecutionId">> := string(),
+%%   <<"pipelineName">> := string()
+%% }
+-type get_pipeline_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% failure_details() :: #{
+%%   <<"externalExecutionId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_not_stoppable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_execution_not_stoppable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_webhooks_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_webhooks_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_input() :: #{
+%%   <<"pipeline">> := pipeline_declaration()
+%% }
+-type update_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% execution_trigger() :: #{
+%%   <<"triggerDetail">> => string(),
+%%   <<"triggerType">> => list(any())
+%% }
+-type execution_trigger() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_store() :: #{
+%%   <<"encryptionKey">> => encryption_key(),
+%%   <<"location">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type artifact_store() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_location() :: #{
+%%   <<"s3Location">> => s3_artifact_location(),
+%%   <<"type">> => list(any())
+%% }
+-type artifact_location() :: #{binary() => any()}.
+
+%% Example:
+%% job_data() :: #{
+%%   <<"actionConfiguration">> => action_configuration(),
+%%   <<"actionTypeId">> => action_type_id(),
+%%   <<"artifactCredentials">> => aws_session_credentials(),
+%%   <<"continuationToken">> => string(),
+%%   <<"encryptionKey">> => encryption_key(),
+%%   <<"inputArtifacts">> => list(artifact()()),
+%%   <<"outputArtifacts">> => list(artifact()()),
+%%   <<"pipelineContext">> => pipeline_context()
+%% }
+-type job_data() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_webhook_filter_pattern_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_webhook_filter_pattern_exception() :: #{binary() => any()}.
+
+%% Example:
+%% git_file_path_filter_criteria() :: #{
+%%   <<"excludes">> => list(string()()),
+%%   <<"includes">> => list(string()())
+%% }
+-type git_file_path_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% job_worker_executor_configuration() :: #{
+%%   <<"pollingAccounts">> => list(string()()),
+%%   <<"pollingServicePrincipals">> => list(string()())
+%% }
+-type job_worker_executor_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% approval_already_completed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_already_completed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% current_revision() :: #{
+%%   <<"changeIdentifier">> => string(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"revision">> => string(),
+%%   <<"revisionSummary">> => string()
+%% }
+-type current_revision() :: #{binary() => any()}.
+
+%% Example:
+%% action_execution_filter() :: #{
+%%   <<"latestInPipelineExecution">> => latest_in_pipeline_execution_filter(),
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type action_execution_filter() :: #{binary() => any()}.
+
+%% Example:
+%% create_pipeline_input() :: #{
+%%   <<"pipeline">> := pipeline_declaration(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% action_declaration() :: #{
+%%   <<"actionTypeId">> => action_type_id(),
+%%   <<"configuration">> => map(),
+%%   <<"inputArtifacts">> => list(input_artifact()()),
+%%   <<"name">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"outputArtifacts">> => list(output_artifact()()),
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"runOrder">> => integer(),
+%%   <<"timeoutInMinutes">> => integer()
+%% }
+-type action_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% input_artifact() :: #{
+%%   <<"name">> => string()
+%% }
+-type input_artifact() :: #{binary() => any()}.
+
+%% Example:
+%% put_webhook_input() :: #{
+%%   <<"tags">> => list(tag()()),
+%%   <<"webhook">> := webhook_definition()
+%% }
+-type put_webhook_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% action_execution() :: #{
+%%   <<"actionExecutionId">> => string(),
+%%   <<"errorDetails">> => error_details(),
+%%   <<"externalExecutionId">> => string(),
+%%   <<"externalExecutionUrl">> => string(),
+%%   <<"lastStatusChange">> => non_neg_integer(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"percentComplete">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"summary">> => string(),
+%%   <<"token">> => string()
+%% }
+-type action_execution() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_pipelines_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_action_type_input() :: #{
+%%   <<"category">> := list(any()),
+%%   <<"owner">> := string(),
+%%   <<"provider">> := string(),
+%%   <<"version">> := string()
+%% }
+-type get_action_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_detail() :: #{
+%%   <<"name">> => string(),
+%%   <<"s3location">> => s3_location()
+%% }
+-type artifact_detail() :: #{binary() => any()}.
+
+%% Example:
+%% update_action_type_input() :: #{
+%%   <<"actionType">> := action_type_declaration()
+%% }
+-type update_action_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_artifact_details() :: #{
+%%   <<"maximumCount">> => integer(),
+%%   <<"minimumCount">> => integer()
+%% }
+-type action_type_artifact_details() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_job_failure_result_input() :: #{
+%%   <<"failureDetails">> := failure_details(),
+%%   <<"jobId">> := string()
+%% }
+-type put_job_failure_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% action_execution_output() :: #{
+%%   <<"executionResult">> => action_execution_result(),
+%%   <<"outputArtifacts">> => list(artifact_detail()()),
+%%   <<"outputVariables">> => map()
+%% }
+-type action_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_stage_declaration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_stage_declaration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_action_executions_input() :: #{
+%%   <<"filter">> => action_execution_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineName">> := string()
+%% }
+-type list_action_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% s3_artifact_location() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"objectKey">> => string()
+%% }
+-type s3_artifact_location() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_executions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineExecutionSummaries">> => list(pipeline_execution_summary()())
+%% }
+-type list_pipeline_executions_output() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_urls() :: #{
+%%   <<"configurationUrl">> => string(),
+%%   <<"entityUrlTemplate">> => string(),
+%%   <<"executionUrlTemplate">> => string(),
+%%   <<"revisionUrlTemplate">> => string()
+%% }
+-type action_type_urls() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_execution_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_pipeline_execution_output() :: #{
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type start_pipeline_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% transition_state() :: #{
+%%   <<"disabledReason">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"lastChangedAt">> => non_neg_integer(),
+%%   <<"lastChangedBy">> => string()
+%% }
+-type transition_state() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_summary() :: #{
+%%   <<"created">> => non_neg_integer(),
+%%   <<"executionMode">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"pipelineType">> => list(any()),
+%%   <<"updated">> => non_neg_integer(),
+%%   <<"version">> => integer()
+%% }
+-type pipeline_summary() :: #{binary() => any()}.
+
+%% Example:
+%% error_details() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+%% Example:
+%% git_configuration() :: #{
+%%   <<"pullRequest">> => list(git_pull_request_filter()()),
+%%   <<"push">> => list(git_push_filter()()),
+%%   <<"sourceActionName">> => string()
+%% }
+-type git_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_action_types_output() :: #{
+%%   <<"actionTypes">> => list(action_type()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_action_types_output() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_id() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"owner">> => list(any()),
+%%   <<"provider">> => string(),
+%%   <<"version">> => string()
+%% }
+-type action_type_id() :: #{binary() => any()}.
+
+%% Example:
+%% webhook_definition() :: #{
+%%   <<"authentication">> => list(any()),
+%%   <<"authenticationConfiguration">> => webhook_auth_configuration(),
+%%   <<"filters">> => list(webhook_filter_rule()()),
+%%   <<"name">> => string(),
+%%   <<"targetAction">> => string(),
+%%   <<"targetPipeline">> => string()
+%% }
+-type webhook_definition() :: #{binary() => any()}.
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_details_input() :: #{
+%%   <<"jobId">> := string()
+%% }
+-type get_job_details_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_state_output() :: #{
+%%   <<"created">> => non_neg_integer(),
+%%   <<"pipelineName">> => string(),
+%%   <<"pipelineVersion">> => integer(),
+%%   <<"stageStates">> => list(stage_state()()),
+%%   <<"updated">> => non_neg_integer()
+%% }
+-type get_pipeline_state_output() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_executor() :: #{
+%%   <<"configuration">> => executor_configuration(),
+%%   <<"jobTimeout">> => integer(),
+%%   <<"policyStatementsTemplate">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type action_type_executor() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% approval_result() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"summary">> => string()
+%% }
+-type approval_result() :: #{binary() => any()}.
+
+%% Example:
+%% stage_not_retryable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type stage_not_retryable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% git_pull_request_filter() :: #{
+%%   <<"branches">> => git_branch_filter_criteria(),
+%%   <<"events">> => list(list(any())()),
+%%   <<"filePaths">> => git_file_path_filter_criteria()
+%% }
+-type git_pull_request_filter() :: #{binary() => any()}.
+
+%% Example:
+%% job_details() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"data">> => job_data(),
+%%   <<"id">> => string()
+%% }
+-type job_details() :: #{binary() => any()}.
+
+%% Example:
+%% git_tag_filter_criteria() :: #{
+%%   <<"excludes">> => list(string()()),
+%%   <<"includes">> => list(string()())
+%% }
+-type git_tag_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_jobs_output() :: #{
+%%   <<"jobs">> => list(job()())
+%% }
+-type poll_for_jobs_output() :: #{binary() => any()}.
+
+%% Example:
+%% output_variables_size_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type output_variables_size_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_structure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_structure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stop_execution_trigger() :: #{
+%%   <<"reason">> => string()
+%% }
+-type stop_execution_trigger() :: #{binary() => any()}.
+
+%% Example:
+%% webhook_filter_rule() :: #{
+%%   <<"jsonPath">> => string(),
+%%   <<"matchEquals">> => string()
+%% }
+-type webhook_filter_rule() :: #{binary() => any()}.
+
+%% Example:
+%% get_third_party_job_details_input() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"jobId">> := string()
+%% }
+-type get_third_party_job_details_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_metadata() :: #{
+%%   <<"created">> => non_neg_integer(),
+%%   <<"pipelineArn">> => string(),
+%%   <<"pollingDisabledAt">> => non_neg_integer(),
+%%   <<"updated">> => non_neg_integer()
+%% }
+-type pipeline_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% put_action_revision_input() :: #{
+%%   <<"actionName">> := string(),
+%%   <<"actionRevision">> := action_revision(),
+%%   <<"pipelineName">> := string(),
+%%   <<"stageName">> := string()
+%% }
+-type put_action_revision_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_pipeline_execution_input() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"name">> := string(),
+%%   <<"sourceRevisions">> => list(source_revision_override()()),
+%%   <<"variables">> => list(pipeline_variable()())
+%% }
+-type start_pipeline_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_context() :: #{
+%%   <<"action">> => action_context(),
+%%   <<"pipelineArn">> => string(),
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"pipelineName">> => string(),
+%%   <<"stage">> => stage_context()
+%% }
+-type pipeline_context() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_output() :: #{
+%%   <<"pipeline">> => pipeline_declaration()
+%% }
+-type update_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type action_type_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% blocker_declaration() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type blocker_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_details() :: #{
+%%   <<"maximumCount">> => integer(),
+%%   <<"minimumCount">> => integer()
+%% }
+-type artifact_details() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% action_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type action_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_webhook_with_third_party_input() :: #{
+%%   <<"webhookName">> => string()
+%% }
+-type deregister_webhook_with_third_party_input() :: #{binary() => any()}.
+
+%% Example:
+%% job() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"data">> => job_data(),
+%%   <<"id">> => string(),
+%%   <<"nonce">> => string()
+%% }
+-type job() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_pipeline_executions_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_pipeline_executions_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_action_type_output() :: #{
+%%   <<"actionType">> => action_type(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_custom_action_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_third_party_job_success_result_input() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"continuationToken">> => string(),
+%%   <<"currentRevision">> => current_revision(),
+%%   <<"executionDetails">> => execution_details(),
+%%   <<"jobId">> := string()
+%% }
+-type put_third_party_job_success_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_third_party_jobs_output() :: #{
+%%   <<"jobs">> => list(third_party_job()())
+%% }
+-type poll_for_third_party_jobs_output() :: #{binary() => any()}.
+
+%% Example:
+%% action_execution_input() :: #{
+%%   <<"actionTypeId">> => action_type_id(),
+%%   <<"configuration">> => map(),
+%%   <<"inputArtifacts">> => list(artifact_detail()()),
+%%   <<"namespace">> => string(),
+%%   <<"region">> => string(),
+%%   <<"resolvedConfiguration">> => map(),
+%%   <<"roleArn">> => string()
+%% }
+-type action_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_nonce_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_nonce_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_client_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_client_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_identifier() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"owner">> => string(),
+%%   <<"provider">> => string(),
+%%   <<"version">> => string()
+%% }
+-type action_type_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_webhook_with_third_party_output() :: #{
+
+%% }
+-type deregister_webhook_with_third_party_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_webhook_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_webhook_input() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type pipeline_variable() :: #{binary() => any()}.
+
+%% Example:
+%% action_execution_detail() :: #{
+%%   <<"actionExecutionId">> => string(),
+%%   <<"actionName">> => string(),
+%%   <<"input">> => action_execution_input(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"output">> => action_execution_output(),
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"pipelineVersion">> => integer(),
+%%   <<"stageName">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedBy">> => string()
+%% }
+-type action_execution_detail() :: #{binary() => any()}.
+
+%% Example:
+%% source_revision_override() :: #{
+%%   <<"actionName">> => string(),
+%%   <<"revisionType">> => list(any()),
+%%   <<"revisionValue">> => string()
+%% }
+-type source_revision_override() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pipelines">> => list(pipeline_summary()())
+%% }
+-type list_pipelines_output() :: #{binary() => any()}.
+
+%% Example:
+%% register_webhook_with_third_party_input() :: #{
+%%   <<"webhookName">> => string()
+%% }
+-type register_webhook_with_third_party_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_action_types_input() :: #{
+%%   <<"actionOwnerFilter">> => list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"regionFilter">> => string()
+%% }
+-type list_action_types_input() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stage_declaration() :: #{
+%%   <<"actions">> => list(action_declaration()()),
+%%   <<"blockers">> => list(blocker_declaration()()),
+%%   <<"name">> => string()
+%% }
+-type stage_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_action_type_input() :: #{
+%%   <<"category">> := list(any()),
+%%   <<"configurationProperties">> => list(action_configuration_property()()),
+%%   <<"inputArtifactDetails">> := artifact_details(),
+%%   <<"outputArtifactDetails">> := artifact_details(),
+%%   <<"provider">> := string(),
+%%   <<"settings">> => action_type_settings(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"version">> := string()
+%% }
+-type create_custom_action_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% action_configuration() :: #{
+%%   <<"configuration">> => map()
+%% }
+-type action_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% stage_execution() :: #{
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type stage_execution() :: #{binary() => any()}.
+
+%% Example:
+%% action_execution_result() :: #{
+%%   <<"errorDetails">> => error_details(),
+%%   <<"externalExecutionId">> => string(),
+%%   <<"externalExecutionSummary">> => string(),
+%%   <<"externalExecutionUrl">> => string()
+%% }
+-type action_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_input() :: #{
+%%   <<"name">> := string(),
+%%   <<"version">> => integer()
+%% }
+-type get_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% stage_state() :: #{
+%%   <<"actionStates">> => list(action_state()()),
+%%   <<"inboundExecution">> => stage_execution(),
+%%   <<"inboundExecutions">> => list(stage_execution()()),
+%%   <<"inboundTransitionState">> => transition_state(),
+%%   <<"latestExecution">> => stage_execution(),
+%%   <<"stageName">> => string()
+%% }
+-type stage_state() :: #{binary() => any()}.
+
+%% Example:
+%% job_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type job_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% third_party_job_details() :: #{
+%%   <<"data">> => third_party_job_data(),
+%%   <<"id">> => string(),
+%%   <<"nonce">> => string()
+%% }
+-type third_party_job_details() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_version_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_version_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% artifact() :: #{
+%%   <<"location">> => artifact_location(),
+%%   <<"name">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type artifact() :: #{binary() => any()}.
+
+%% Example:
+%% retry_stage_execution_input() :: #{
+%%   <<"pipelineExecutionId">> := string(),
+%%   <<"pipelineName">> := string(),
+%%   <<"retryMode">> := list(any()),
+%%   <<"stageName">> := string()
+%% }
+-type retry_stage_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_details_output() :: #{
+%%   <<"jobDetails">> => job_details()
+%% }
+-type get_job_details_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pipeline_execution_input() :: #{
+%%   <<"abandon">> => boolean(),
+%%   <<"pipelineExecutionId">> := string(),
+%%   <<"pipelineName">> := string(),
+%%   <<"reason">> => string()
+%% }
+-type stop_pipeline_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% duplicated_stop_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicated_stop_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% source_revision() :: #{
+%%   <<"actionName">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"revisionSummary">> => string(),
+%%   <<"revisionUrl">> => string()
+%% }
+-type source_revision() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_property() :: #{
+%%   <<"description">> => string(),
+%%   <<"key">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"noEcho">> => boolean(),
+%%   <<"optional">> => boolean(),
+%%   <<"queryable">> => boolean()
+%% }
+-type action_type_property() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_job_input() :: #{
+%%   <<"jobId">> := string(),
+%%   <<"nonce">> := string()
+%% }
+-type acknowledge_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_state_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_pipeline_state_input() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_jobs_input() :: #{
+%%   <<"actionTypeId">> := action_type_id(),
+%%   <<"maxBatchSize">> => integer(),
+%%   <<"queryParam">> => map()
+%% }
+-type poll_for_jobs_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_action_type_input() :: #{
+%%   <<"category">> := list(any()),
+%%   <<"provider">> := string(),
+%%   <<"version">> := string()
+%% }
+-type delete_custom_action_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_action_revision_output() :: #{
+%%   <<"newRevision">> => boolean(),
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type put_action_revision_output() :: #{binary() => any()}.
+
+%% Example:
+%% disable_stage_transition_input() :: #{
+%%   <<"pipelineName">> := string(),
+%%   <<"reason">> := string(),
+%%   <<"stageName">> := string(),
+%%   <<"transitionType">> := list(any())
+%% }
+-type disable_stage_transition_input() :: #{binary() => any()}.
+
+%% Example:
+%% retry_stage_execution_output() :: #{
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type retry_stage_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type encryption_key() :: #{binary() => any()}.
+
+%% Example:
+%% put_approval_result_input() :: #{
+%%   <<"actionName">> := string(),
+%%   <<"pipelineName">> := string(),
+%%   <<"result">> := approval_result(),
+%%   <<"stageName">> := string(),
+%%   <<"token">> := string()
+%% }
+-type put_approval_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_executor_configuration() :: #{
+%%   <<"lambdaFunctionArn">> => string()
+%% }
+-type lambda_executor_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% git_push_filter() :: #{
+%%   <<"branches">> => git_branch_filter_criteria(),
+%%   <<"filePaths">> => git_file_path_filter_criteria(),
+%%   <<"tags">> => git_tag_filter_criteria()
+%% }
+-type git_push_filter() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_declaration() :: #{
+%%   <<"description">> => string(),
+%%   <<"executor">> => action_type_executor(),
+%%   <<"id">> => action_type_identifier(),
+%%   <<"inputArtifactDetails">> => action_type_artifact_details(),
+%%   <<"outputArtifactDetails">> => action_type_artifact_details(),
+%%   <<"permissions">> => action_type_permissions(),
+%%   <<"properties">> => list(action_type_property()()),
+%%   <<"urls">> => action_type_urls()
+%% }
+-type action_type_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_job_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_job_exception() :: #{binary() => any()}.
+
+%% Example:
+%% action_type() :: #{
+%%   <<"actionConfigurationProperties">> => list(action_configuration_property()()),
+%%   <<"id">> => action_type_id(),
+%%   <<"inputArtifactDetails">> => artifact_details(),
+%%   <<"outputArtifactDetails">> => artifact_details(),
+%%   <<"settings">> => action_type_settings()
+%% }
+-type action_type() :: #{binary() => any()}.
+
+%% Example:
+%% webhook_not_found_exception() :: #{
+
+%% }
+-type webhook_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% register_webhook_with_third_party_output() :: #{
+
+%% }
+-type register_webhook_with_third_party_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_execution_output() :: #{
+%%   <<"pipelineExecution">> => pipeline_execution()
+%% }
+-type get_pipeline_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% action_configuration_property() :: #{
+%%   <<"description">> => string(),
+%%   <<"key">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"queryable">> => boolean(),
+%%   <<"required">> => boolean(),
+%%   <<"secret">> => boolean(),
+%%   <<"type">> => list(any())
+%% }
+-type action_configuration_property() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_webhook_authentication_parameters_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_webhook_authentication_parameters_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_executions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineName">> := string()
+%% }
+-type list_pipeline_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_settings() :: #{
+%%   <<"entityUrlTemplate">> => string(),
+%%   <<"executionUrlTemplate">> => string(),
+%%   <<"revisionUrlTemplate">> => string(),
+%%   <<"thirdPartyConfigurationUrl">> => string()
+%% }
+-type action_type_settings() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_job_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_job_state_exception() :: #{binary() => any()}.
+
+-type acknowledge_job_errors() ::
+    job_not_found_exception() | 
+    invalid_nonce_exception() | 
+    validation_exception().
+
+-type acknowledge_third_party_job_errors() ::
+    job_not_found_exception() | 
+    invalid_client_token_exception() | 
+    invalid_nonce_exception() | 
+    validation_exception().
+
+-type create_custom_action_type_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_tags_exception().
+
+-type create_pipeline_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_structure_exception() | 
+    invalid_stage_declaration_exception() | 
+    invalid_tags_exception() | 
+    pipeline_name_in_use_exception() | 
+    invalid_action_declaration_exception() | 
+    invalid_blocker_declaration_exception().
+
+-type delete_custom_action_type_errors() ::
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type delete_pipeline_errors() ::
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type delete_webhook_errors() ::
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type deregister_webhook_with_third_party_errors() ::
+    webhook_not_found_exception() | 
+    validation_exception().
+
+-type disable_stage_transition_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    stage_not_found_exception().
+
+-type enable_stage_transition_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    stage_not_found_exception().
+
+-type get_action_type_errors() ::
+    validation_exception() | 
+    action_type_not_found_exception().
+
+-type get_job_details_errors() ::
+    job_not_found_exception() | 
+    validation_exception().
+
+-type get_pipeline_errors() ::
+    pipeline_version_not_found_exception() | 
+    pipeline_not_found_exception() | 
+    validation_exception().
+
+-type get_pipeline_execution_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    pipeline_execution_not_found_exception().
+
+-type get_pipeline_state_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception().
+
+-type get_third_party_job_details_errors() ::
+    invalid_job_exception() | 
+    job_not_found_exception() | 
+    invalid_client_token_exception() | 
+    validation_exception().
+
+-type list_action_executions_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    pipeline_execution_not_found_exception() | 
+    invalid_next_token_exception().
+
+-type list_action_types_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_pipeline_executions_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_pipelines_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception().
+
+-type list_webhooks_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type poll_for_jobs_errors() ::
+    validation_exception() | 
+    action_type_not_found_exception().
+
+-type poll_for_third_party_jobs_errors() ::
+    validation_exception() | 
+    action_type_not_found_exception().
+
+-type put_action_revision_errors() ::
+    pipeline_not_found_exception() | 
+    action_not_found_exception() | 
+    validation_exception() | 
+    stage_not_found_exception().
+
+-type put_approval_result_errors() ::
+    pipeline_not_found_exception() | 
+    action_not_found_exception() | 
+    validation_exception() | 
+    invalid_approval_token_exception() | 
+    approval_already_completed_exception() | 
+    stage_not_found_exception().
+
+-type put_job_failure_result_errors() ::
+    invalid_job_state_exception() | 
+    job_not_found_exception() | 
+    validation_exception().
+
+-type put_job_success_result_errors() ::
+    invalid_job_state_exception() | 
+    job_not_found_exception() | 
+    validation_exception() | 
+    output_variables_size_exceeded_exception().
+
+-type put_third_party_job_failure_result_errors() ::
+    invalid_job_state_exception() | 
+    job_not_found_exception() | 
+    invalid_client_token_exception() | 
+    validation_exception().
+
+-type put_third_party_job_success_result_errors() ::
+    invalid_job_state_exception() | 
+    job_not_found_exception() | 
+    invalid_client_token_exception() | 
+    validation_exception().
+
+-type put_webhook_errors() ::
+    invalid_webhook_authentication_parameters_exception() | 
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    invalid_webhook_filter_pattern_exception() | 
+    invalid_tags_exception().
+
+-type register_webhook_with_third_party_errors() ::
+    webhook_not_found_exception() | 
+    validation_exception().
+
+-type retry_stage_execution_errors() ::
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    stage_not_retryable_exception() | 
+    conflict_exception() | 
+    not_latest_pipeline_execution_exception() | 
+    stage_not_found_exception().
+
+-type start_pipeline_execution_errors() ::
+    pipeline_not_found_exception() | 
+    concurrent_pipeline_executions_limit_exceeded_exception() | 
+    validation_exception() | 
+    conflict_exception().
+
+-type stop_pipeline_execution_errors() ::
+    duplicated_stop_request_exception() | 
+    pipeline_not_found_exception() | 
+    validation_exception() | 
+    conflict_exception() | 
+    pipeline_execution_not_stoppable_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
+    invalid_tags_exception() | 
+    invalid_arn_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
+    invalid_tags_exception() | 
+    invalid_arn_exception().
+
+-type update_action_type_errors() ::
+    validation_exception() | 
+    action_type_not_found_exception() | 
+    request_failed_exception().
+
+-type update_pipeline_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    invalid_structure_exception() | 
+    invalid_stage_declaration_exception() | 
+    invalid_action_declaration_exception() | 
+    invalid_blocker_declaration_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -256,9 +1894,18 @@
 %% the job worker.
 %%
 %% Used for custom actions only.
+-spec acknowledge_job(aws_client:aws_client(), acknowledge_job_input()) ->
+    {ok, acknowledge_job_output(), tuple()} |
+    {error, any()} |
+    {error, acknowledge_job_errors(), tuple()}.
 acknowledge_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     acknowledge_job(Client, Input, []).
+
+-spec acknowledge_job(aws_client:aws_client(), acknowledge_job_input(), proplists:proplist()) ->
+    {ok, acknowledge_job_output(), tuple()} |
+    {error, any()} |
+    {error, acknowledge_job_errors(), tuple()}.
 acknowledge_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcknowledgeJob">>, Input, Options).
@@ -267,9 +1914,18 @@ acknowledge_job(Client, Input, Options)
 %%
 %% Used for partner actions
 %% only.
+-spec acknowledge_third_party_job(aws_client:aws_client(), acknowledge_third_party_job_input()) ->
+    {ok, acknowledge_third_party_job_output(), tuple()} |
+    {error, any()} |
+    {error, acknowledge_third_party_job_errors(), tuple()}.
 acknowledge_third_party_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     acknowledge_third_party_job(Client, Input, []).
+
+-spec acknowledge_third_party_job(aws_client:aws_client(), acknowledge_third_party_job_input(), proplists:proplist()) ->
+    {ok, acknowledge_third_party_job_output(), tuple()} |
+    {error, any()} |
+    {error, acknowledge_third_party_job_errors(), tuple()}.
 acknowledge_third_party_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcknowledgeThirdPartyJob">>, Input, Options).
@@ -279,9 +1935,18 @@ acknowledge_third_party_job(Client, Input, Options)
 %% Amazon Web Services account.
 %%
 %% Only used for custom actions.
+-spec create_custom_action_type(aws_client:aws_client(), create_custom_action_type_input()) ->
+    {ok, create_custom_action_type_output(), tuple()} |
+    {error, any()} |
+    {error, create_custom_action_type_errors(), tuple()}.
 create_custom_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_action_type(Client, Input, []).
+
+-spec create_custom_action_type(aws_client:aws_client(), create_custom_action_type_input(), proplists:proplist()) ->
+    {ok, create_custom_action_type_output(), tuple()} |
+    {error, any()} |
+    {error, create_custom_action_type_errors(), tuple()}.
 create_custom_action_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomActionType">>, Input, Options).
@@ -292,9 +1957,18 @@ create_custom_action_type(Client, Input, Options)
 %% or `artifactStores' in your pipeline, but you cannot use both. If you
 %% create a cross-region action in your pipeline, you must use
 %% `artifactStores'.
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_input()) ->
+    {ok, create_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pipeline(Client, Input, []).
+
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_input(), proplists:proplist()) ->
+    {ok, create_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePipeline">>, Input, Options).
@@ -314,17 +1988,35 @@ create_pipeline(Client, Input, Options)
 %% that is identical to the deleted action, including the original string in
 %% the
 %% version field.
+-spec delete_custom_action_type(aws_client:aws_client(), delete_custom_action_type_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_custom_action_type_errors(), tuple()}.
 delete_custom_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_action_type(Client, Input, []).
+
+-spec delete_custom_action_type(aws_client:aws_client(), delete_custom_action_type_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_custom_action_type_errors(), tuple()}.
 delete_custom_action_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomActionType">>, Input, Options).
 
 %% @doc Deletes the specified pipeline.
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pipeline(Client, Input, []).
+
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePipeline">>, Input, Options).
@@ -338,9 +2030,18 @@ delete_pipeline(Client, Input, Options)
 %% deleted webhook is re-created by calling PutWebhook with the same name, it
 %% will have a
 %% different URL.
+-spec delete_webhook(aws_client:aws_client(), delete_webhook_input()) ->
+    {ok, delete_webhook_output(), tuple()} |
+    {error, any()} |
+    {error, delete_webhook_errors(), tuple()}.
 delete_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_webhook(Client, Input, []).
+
+-spec delete_webhook(aws_client:aws_client(), delete_webhook_input(), proplists:proplist()) ->
+    {ok, delete_webhook_output(), tuple()} |
+    {error, any()} |
+    {error, delete_webhook_errors(), tuple()}.
 delete_webhook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebhook">>, Input, Options).
@@ -351,9 +2052,18 @@ delete_webhook(Client, Input, Options)
 %%
 %% Currently supported only for webhooks
 %% that target an action type of GitHub.
+-spec deregister_webhook_with_third_party(aws_client:aws_client(), deregister_webhook_with_third_party_input()) ->
+    {ok, deregister_webhook_with_third_party_output(), tuple()} |
+    {error, any()} |
+    {error, deregister_webhook_with_third_party_errors(), tuple()}.
 deregister_webhook_with_third_party(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_webhook_with_third_party(Client, Input, []).
+
+-spec deregister_webhook_with_third_party(aws_client:aws_client(), deregister_webhook_with_third_party_input(), proplists:proplist()) ->
+    {ok, deregister_webhook_with_third_party_output(), tuple()} |
+    {error, any()} |
+    {error, deregister_webhook_with_third_party_errors(), tuple()}.
 deregister_webhook_with_third_party(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterWebhookWithThirdParty">>, Input, Options).
@@ -361,18 +2071,36 @@ deregister_webhook_with_third_party(Client, Input, Options)
 %% @doc Prevents artifacts in a pipeline from transitioning to the next stage
 %% in the
 %% pipeline.
+-spec disable_stage_transition(aws_client:aws_client(), disable_stage_transition_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_stage_transition_errors(), tuple()}.
 disable_stage_transition(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_stage_transition(Client, Input, []).
+
+-spec disable_stage_transition(aws_client:aws_client(), disable_stage_transition_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_stage_transition_errors(), tuple()}.
 disable_stage_transition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableStageTransition">>, Input, Options).
 
 %% @doc Enables artifacts in a pipeline to transition to a stage in a
 %% pipeline.
+-spec enable_stage_transition(aws_client:aws_client(), enable_stage_transition_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_stage_transition_errors(), tuple()}.
 enable_stage_transition(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_stage_transition(Client, Input, []).
+
+-spec enable_stage_transition(aws_client:aws_client(), enable_stage_transition_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_stage_transition_errors(), tuple()}.
 enable_stage_transition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableStageTransition">>, Input, Options).
@@ -383,9 +2111,18 @@ enable_stage_transition(Client, Input, Options)
 %%
 %% The action can be created
 %% with any supported integration model.
+-spec get_action_type(aws_client:aws_client(), get_action_type_input()) ->
+    {ok, get_action_type_output(), tuple()} |
+    {error, any()} |
+    {error, get_action_type_errors(), tuple()}.
 get_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_action_type(Client, Input, []).
+
+-spec get_action_type(aws_client:aws_client(), get_action_type_input(), proplists:proplist()) ->
+    {ok, get_action_type_output(), tuple()} |
+    {error, any()} |
+    {error, get_action_type_errors(), tuple()}.
 get_action_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetActionType">>, Input, Options).
@@ -400,9 +2137,18 @@ get_action_type(Client, Input, Options)
 %% access to that S3 bucket for input or output artifacts. This API also
 %% returns any
 %% secret values defined for the action.
+-spec get_job_details(aws_client:aws_client(), get_job_details_input()) ->
+    {ok, get_job_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_job_details_errors(), tuple()}.
 get_job_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_details(Client, Input, []).
+
+-spec get_job_details(aws_client:aws_client(), get_job_details_input(), proplists:proplist()) ->
+    {ok, get_job_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_job_details_errors(), tuple()}.
 get_job_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJobDetails">>, Input, Options).
@@ -413,9 +2159,18 @@ get_job_details(Client, Input, Options)
 %% return the entire structure of a pipeline in JSON format, which can then
 %% be modified and
 %% used to update the pipeline structure with `UpdatePipeline'.
+-spec get_pipeline(aws_client:aws_client(), get_pipeline_input()) ->
+    {ok, get_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_errors(), tuple()}.
 get_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline(Client, Input, []).
+
+-spec get_pipeline(aws_client:aws_client(), get_pipeline_input(), proplists:proplist()) ->
+    {ok, get_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_errors(), tuple()}.
 get_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPipeline">>, Input, Options).
@@ -425,9 +2180,18 @@ get_pipeline(Client, Input, Options)
 %% artifacts, the pipeline execution ID, and the name, version, and status of
 %% the
 %% pipeline.
+-spec get_pipeline_execution(aws_client:aws_client(), get_pipeline_execution_input()) ->
+    {ok, get_pipeline_execution_output(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_execution_errors(), tuple()}.
 get_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_execution(Client, Input, []).
+
+-spec get_pipeline_execution(aws_client:aws_client(), get_pipeline_execution_input(), proplists:proplist()) ->
+    {ok, get_pipeline_execution_output(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_execution_errors(), tuple()}.
 get_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPipelineExecution">>, Input, Options).
@@ -440,9 +2204,18 @@ get_pipeline_execution(Client, Input, Options)
 %% fields indicate the source revision information, such as the commit ID,
 %% for the
 %% current state.
+-spec get_pipeline_state(aws_client:aws_client(), get_pipeline_state_input()) ->
+    {ok, get_pipeline_state_output(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_state_errors(), tuple()}.
 get_pipeline_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_state(Client, Input, []).
+
+-spec get_pipeline_state(aws_client:aws_client(), get_pipeline_state_input(), proplists:proplist()) ->
+    {ok, get_pipeline_state_output(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_state_errors(), tuple()}.
 get_pipeline_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPipelineState">>, Input, Options).
@@ -458,42 +2231,87 @@ get_pipeline_state(Client, Input, Options)
 %% access to that S3 bucket for input or output artifacts. This API also
 %% returns any
 %% secret values defined for the action.
+-spec get_third_party_job_details(aws_client:aws_client(), get_third_party_job_details_input()) ->
+    {ok, get_third_party_job_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_third_party_job_details_errors(), tuple()}.
 get_third_party_job_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_third_party_job_details(Client, Input, []).
+
+-spec get_third_party_job_details(aws_client:aws_client(), get_third_party_job_details_input(), proplists:proplist()) ->
+    {ok, get_third_party_job_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_third_party_job_details_errors(), tuple()}.
 get_third_party_job_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetThirdPartyJobDetails">>, Input, Options).
 
 %% @doc Lists the action executions that have occurred in a pipeline.
+-spec list_action_executions(aws_client:aws_client(), list_action_executions_input()) ->
+    {ok, list_action_executions_output(), tuple()} |
+    {error, any()} |
+    {error, list_action_executions_errors(), tuple()}.
 list_action_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_action_executions(Client, Input, []).
+
+-spec list_action_executions(aws_client:aws_client(), list_action_executions_input(), proplists:proplist()) ->
+    {ok, list_action_executions_output(), tuple()} |
+    {error, any()} |
+    {error, list_action_executions_errors(), tuple()}.
 list_action_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActionExecutions">>, Input, Options).
 
 %% @doc Gets a summary of all CodePipeline action types associated with your
 %% account.
+-spec list_action_types(aws_client:aws_client(), list_action_types_input()) ->
+    {ok, list_action_types_output(), tuple()} |
+    {error, any()} |
+    {error, list_action_types_errors(), tuple()}.
 list_action_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_action_types(Client, Input, []).
+
+-spec list_action_types(aws_client:aws_client(), list_action_types_input(), proplists:proplist()) ->
+    {ok, list_action_types_output(), tuple()} |
+    {error, any()} |
+    {error, list_action_types_errors(), tuple()}.
 list_action_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActionTypes">>, Input, Options).
 
 %% @doc Gets a summary of the most recent executions for a pipeline.
+-spec list_pipeline_executions(aws_client:aws_client(), list_pipeline_executions_input()) ->
+    {ok, list_pipeline_executions_output(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_executions_errors(), tuple()}.
 list_pipeline_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_executions(Client, Input, []).
+
+-spec list_pipeline_executions(aws_client:aws_client(), list_pipeline_executions_input(), proplists:proplist()) ->
+    {ok, list_pipeline_executions_output(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_executions_errors(), tuple()}.
 list_pipeline_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelineExecutions">>, Input, Options).
 
 %% @doc Gets a summary of all of the pipelines associated with your account.
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_input()) ->
+    {ok, list_pipelines_output(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipelines(Client, Input, []).
+
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_input(), proplists:proplist()) ->
+    {ok, list_pipelines_output(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelines">>, Input, Options).
@@ -501,9 +2319,18 @@ list_pipelines(Client, Input, Options)
 %% @doc Gets the set of key-value pairs (metadata) that are used to manage
 %% the
 %% resource.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -514,9 +2341,18 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% The output lists all webhooks and includes the webhook URL and ARN and the
 %% configuration for each webhook.
+-spec list_webhooks(aws_client:aws_client(), list_webhooks_input()) ->
+    {ok, list_webhooks_output(), tuple()} |
+    {error, any()} |
+    {error, list_webhooks_errors(), tuple()}.
 list_webhooks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_webhooks(Client, Input, []).
+
+-spec list_webhooks(aws_client:aws_client(), list_webhooks_input(), proplists:proplist()) ->
+    {ok, list_webhooks_output(), tuple()} |
+    {error, any()} |
+    {error, list_webhooks_errors(), tuple()}.
 list_webhooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebhooks">>, Input, Options).
@@ -534,9 +2370,18 @@ list_webhooks(Client, Input, Options)
 %% access to that S3 bucket for input or output artifacts. This API also
 %% returns any
 %% secret values defined for the action.
+-spec poll_for_jobs(aws_client:aws_client(), poll_for_jobs_input()) ->
+    {ok, poll_for_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, poll_for_jobs_errors(), tuple()}.
 poll_for_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_jobs(Client, Input, []).
+
+-spec poll_for_jobs(aws_client:aws_client(), poll_for_jobs_input(), proplists:proplist()) ->
+    {ok, poll_for_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, poll_for_jobs_errors(), tuple()}.
 poll_for_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForJobs">>, Input, Options).
@@ -551,18 +2396,36 @@ poll_for_jobs(Client, Input, Options)
 %% the S3 bucket used to store artifacts for the pipeline, if the action
 %% requires
 %% access to that S3 bucket for input or output artifacts.
+-spec poll_for_third_party_jobs(aws_client:aws_client(), poll_for_third_party_jobs_input()) ->
+    {ok, poll_for_third_party_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, poll_for_third_party_jobs_errors(), tuple()}.
 poll_for_third_party_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_third_party_jobs(Client, Input, []).
+
+-spec poll_for_third_party_jobs(aws_client:aws_client(), poll_for_third_party_jobs_input(), proplists:proplist()) ->
+    {ok, poll_for_third_party_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, poll_for_third_party_jobs_errors(), tuple()}.
 poll_for_third_party_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForThirdPartyJobs">>, Input, Options).
 
 %% @doc Provides information to CodePipeline about new revisions to a
 %% source.
+-spec put_action_revision(aws_client:aws_client(), put_action_revision_input()) ->
+    {ok, put_action_revision_output(), tuple()} |
+    {error, any()} |
+    {error, put_action_revision_errors(), tuple()}.
 put_action_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_action_revision(Client, Input, []).
+
+-spec put_action_revision(aws_client:aws_client(), put_action_revision_input(), proplists:proplist()) ->
+    {ok, put_action_revision_output(), tuple()} |
+    {error, any()} |
+    {error, put_action_revision_errors(), tuple()}.
 put_action_revision(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutActionRevision">>, Input, Options).
@@ -571,9 +2434,18 @@ put_action_revision(Client, Input, Options)
 %%
 %% Valid
 %% responses include Approved and Rejected.
+-spec put_approval_result(aws_client:aws_client(), put_approval_result_input()) ->
+    {ok, put_approval_result_output(), tuple()} |
+    {error, any()} |
+    {error, put_approval_result_errors(), tuple()}.
 put_approval_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_approval_result(Client, Input, []).
+
+-spec put_approval_result(aws_client:aws_client(), put_approval_result_input(), proplists:proplist()) ->
+    {ok, put_approval_result_output(), tuple()} |
+    {error, any()} |
+    {error, put_approval_result_errors(), tuple()}.
 put_approval_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutApprovalResult">>, Input, Options).
@@ -583,9 +2455,18 @@ put_approval_result(Client, Input, Options)
 %%
 %% Used
 %% for custom actions only.
+-spec put_job_failure_result(aws_client:aws_client(), put_job_failure_result_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_job_failure_result_errors(), tuple()}.
 put_job_failure_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_job_failure_result(Client, Input, []).
+
+-spec put_job_failure_result(aws_client:aws_client(), put_job_failure_result_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_job_failure_result_errors(), tuple()}.
 put_job_failure_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutJobFailureResult">>, Input, Options).
@@ -595,9 +2476,18 @@ put_job_failure_result(Client, Input, Options)
 %%
 %% Used
 %% for custom actions only.
+-spec put_job_success_result(aws_client:aws_client(), put_job_success_result_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_job_success_result_errors(), tuple()}.
 put_job_success_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_job_success_result(Client, Input, []).
+
+-spec put_job_success_result(aws_client:aws_client(), put_job_success_result_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_job_success_result_errors(), tuple()}.
 put_job_success_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutJobSuccessResult">>, Input, Options).
@@ -607,9 +2497,18 @@ put_job_success_result(Client, Input, Options)
 %% worker.
 %%
 %% Used for partner actions only.
+-spec put_third_party_job_failure_result(aws_client:aws_client(), put_third_party_job_failure_result_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_third_party_job_failure_result_errors(), tuple()}.
 put_third_party_job_failure_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_third_party_job_failure_result(Client, Input, []).
+
+-spec put_third_party_job_failure_result(aws_client:aws_client(), put_third_party_job_failure_result_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_third_party_job_failure_result_errors(), tuple()}.
 put_third_party_job_failure_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutThirdPartyJobFailureResult">>, Input, Options).
@@ -619,9 +2518,18 @@ put_third_party_job_failure_result(Client, Input, Options)
 %% worker.
 %%
 %% Used for partner actions only.
+-spec put_third_party_job_success_result(aws_client:aws_client(), put_third_party_job_success_result_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_third_party_job_success_result_errors(), tuple()}.
 put_third_party_job_success_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_third_party_job_success_result(Client, Input, []).
+
+-spec put_third_party_job_success_result(aws_client:aws_client(), put_third_party_job_success_result_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_third_party_job_success_result_errors(), tuple()}.
 put_third_party_job_success_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutThirdPartyJobSuccessResult">>, Input, Options).
@@ -642,9 +2550,18 @@ put_third_party_job_success_result(Client, Input, Options)
 %% automatically configure supported third parties to call the generated
 %% webhook
 %% URL.
+-spec put_webhook(aws_client:aws_client(), put_webhook_input()) ->
+    {ok, put_webhook_output(), tuple()} |
+    {error, any()} |
+    {error, put_webhook_errors(), tuple()}.
 put_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_webhook(Client, Input, []).
+
+-spec put_webhook(aws_client:aws_client(), put_webhook_input(), proplists:proplist()) ->
+    {ok, put_webhook_output(), tuple()} |
+    {error, any()} |
+    {error, put_webhook_errors(), tuple()}.
 put_webhook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutWebhook">>, Input, Options).
@@ -652,9 +2569,18 @@ put_webhook(Client, Input, Options)
 %% @doc Configures a connection between the webhook that was created and the
 %% external tool
 %% with events to be detected.
+-spec register_webhook_with_third_party(aws_client:aws_client(), register_webhook_with_third_party_input()) ->
+    {ok, register_webhook_with_third_party_output(), tuple()} |
+    {error, any()} |
+    {error, register_webhook_with_third_party_errors(), tuple()}.
 register_webhook_with_third_party(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_webhook_with_third_party(Client, Input, []).
+
+-spec register_webhook_with_third_party(aws_client:aws_client(), register_webhook_with_third_party_input(), proplists:proplist()) ->
+    {ok, register_webhook_with_third_party_output(), tuple()} |
+    {error, any()} |
+    {error, register_webhook_with_third_party_errors(), tuple()}.
 register_webhook_with_third_party(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterWebhookWithThirdParty">>, Input, Options).
@@ -675,9 +2601,18 @@ register_webhook_with_third_party(Client, Input, Options)
 %% can be retried, it must either have all actions failed or some actions
 %% failed and some
 %% succeeded.
+-spec retry_stage_execution(aws_client:aws_client(), retry_stage_execution_input()) ->
+    {ok, retry_stage_execution_output(), tuple()} |
+    {error, any()} |
+    {error, retry_stage_execution_errors(), tuple()}.
 retry_stage_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_stage_execution(Client, Input, []).
+
+-spec retry_stage_execution(aws_client:aws_client(), retry_stage_execution_input(), proplists:proplist()) ->
+    {ok, retry_stage_execution_output(), tuple()} |
+    {error, any()} |
+    {error, retry_stage_execution_errors(), tuple()}.
 retry_stage_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetryStageExecution">>, Input, Options).
@@ -686,9 +2621,18 @@ retry_stage_execution(Client, Input, Options)
 %%
 %% Specifically, it begins processing the latest commit
 %% to the source location specified as part of the pipeline.
+-spec start_pipeline_execution(aws_client:aws_client(), start_pipeline_execution_input()) ->
+    {ok, start_pipeline_execution_output(), tuple()} |
+    {error, any()} |
+    {error, start_pipeline_execution_errors(), tuple()}.
 start_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_pipeline_execution(Client, Input, []).
+
+-spec start_pipeline_execution(aws_client:aws_client(), start_pipeline_execution_input(), proplists:proplist()) ->
+    {ok, start_pipeline_execution_output(), tuple()} |
+    {error, any()} |
+    {error, start_pipeline_execution_errors(), tuple()}.
 start_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPipelineExecution">>, Input, Options).
@@ -704,9 +2648,18 @@ start_pipeline_execution(Client, Input, Options)
 %% actions
 %% are completed or abandoned, the pipeline execution is in a `Stopped'
 %% state.
+-spec stop_pipeline_execution(aws_client:aws_client(), stop_pipeline_execution_input()) ->
+    {ok, stop_pipeline_execution_output(), tuple()} |
+    {error, any()} |
+    {error, stop_pipeline_execution_errors(), tuple()}.
 stop_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_pipeline_execution(Client, Input, []).
+
+-spec stop_pipeline_execution(aws_client:aws_client(), stop_pipeline_execution_input(), proplists:proplist()) ->
+    {ok, stop_pipeline_execution_output(), tuple()} |
+    {error, any()} |
+    {error, stop_pipeline_execution_errors(), tuple()}.
 stop_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopPipelineExecution">>, Input, Options).
@@ -715,17 +2668,35 @@ stop_pipeline_execution(Client, Input, Options)
 %%
 %% Tags are metadata that can be used
 %% to manage a resource.
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes tags from an Amazon Web Services resource.
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -737,9 +2708,18 @@ untag_resource(Client, Input, Options)
 %% Use a JSON file
 %% with the action definition and `UpdateActionType' to provide the full
 %% structure.
+-spec update_action_type(aws_client:aws_client(), update_action_type_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_action_type_errors(), tuple()}.
 update_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_action_type(Client, Input, []).
+
+-spec update_action_type(aws_client:aws_client(), update_action_type_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_action_type_errors(), tuple()}.
 update_action_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateActionType">>, Input, Options).
@@ -752,9 +2732,18 @@ update_action_type(Client, Input, Options)
 %% structure of the pipeline. Updating the pipeline increases the version
 %% number of the
 %% pipeline by 1.
+-spec update_pipeline(aws_client:aws_client(), update_pipeline_input()) ->
+    {ok, update_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pipeline(Client, Input, []).
+
+-spec update_pipeline(aws_client:aws_client(), update_pipeline_input(), proplists:proplist()) ->
+    {ok, update_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePipeline">>, Input, Options).

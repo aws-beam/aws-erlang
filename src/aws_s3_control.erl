@@ -233,6 +233,2505 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% region_report() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"BucketAccountId">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type region_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_policy_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ConfirmRemoveSelfBucketAccess">> => boolean(),
+%%   <<"Policy">> := string()
+%% }
+-type put_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_multi_region_access_point_policy_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Details">> := put_multi_region_access_point_policy_input()
+%% }
+-type put_multi_region_access_point_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_group_level_selection_criteria() :: #{
+%%   <<"Exclude">> => list(string()()),
+%%   <<"Include">> => list(string()())
+%% }
+-type storage_lens_group_level_selection_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_manifest() :: #{
+%%   <<"Location">> => job_manifest_location(),
+%%   <<"Spec">> => job_manifest_spec()
+%% }
+-type job_manifest() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_configuration_tagging_result() :: #{
+%%   <<"Tags">> => list(storage_lens_tag()())
+%% }
+-type get_storage_lens_configuration_tagging_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_multi_region_access_point_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Details">> := delete_multi_region_access_point_input()
+%% }
+-type delete_multi_region_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"ReplicaKmsKeyID">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_public_access_block_configuration() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_public_access_block_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_versioning_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MFA">> => string(),
+%%   <<"VersioningConfiguration">> := versioning_configuration()
+%% }
+-type put_bucket_versioning_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_access_point_regional_response() :: #{
+%%   <<"Name">> => string(),
+%%   <<"RequestStatus">> => string()
+%% }
+-type multi_region_access_point_regional_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_configuration_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_storage_lens_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_configuration_for_object_lambda_result() :: #{
+%%   <<"Configuration">> => object_lambda_configuration()
+%% }
+-type get_access_point_configuration_for_object_lambda_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_access_block_configuration() :: #{
+%%   <<"BlockPublicAcls">> => boolean(),
+%%   <<"BlockPublicPolicy">> => boolean(),
+%%   <<"IgnorePublicAcls">> => boolean(),
+%%   <<"RestrictPublicBuckets">> => boolean()
+%% }
+-type public_access_block_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_data_export() :: #{
+%%   <<"CloudWatchMetrics">> => cloud_watch_metrics(),
+%%   <<"S3BucketDestination">> => s3_bucket_destination()
+%% }
+-type storage_lens_data_export() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_group_level() :: #{
+%%   <<"SelectionCriteria">> => storage_lens_group_level_selection_criteria()
+%% }
+-type storage_lens_group_level() :: #{binary() => any()}.
+
+
+%% Example:
+%% prefix_level_storage_metrics() :: #{
+%%   <<"IsEnabled">> => boolean(),
+%%   <<"SelectionCriteria">> => selection_criteria()
+%% }
+-type prefix_level_storage_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_grants_instance_result() :: #{
+%%   <<"AccessGrantsInstanceArn">> => string(),
+%%   <<"AccessGrantsInstanceId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IdentityCenterArn">> => string()
+%% }
+-type create_access_grants_instance_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% generated_manifest_encryption() :: #{
+%%   <<"SSEKMS">> => sse_kms_encryption(),
+%%   <<"SSES3">> => sse_s3_encryption()
+%% }
+-type generated_manifest_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_result() :: #{
+%%   <<"Job">> => job_descriptor()
+%% }
+-type describe_job_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_object_age() :: #{
+%%   <<"DaysGreaterThan">> => integer(),
+%%   <<"DaysLessThan">> => integer()
+%% }
+-type match_object_age() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_result() :: #{
+%%   <<"Jobs">> => list(job_list_descriptor()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_public_access_block_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"PublicAccessBlockConfiguration">> := public_access_block_configuration()
+%% }
+-type put_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grant_result() :: #{
+%%   <<"AccessGrantArn">> => string(),
+%%   <<"AccessGrantId">> => string(),
+%%   <<"AccessGrantsLocationConfiguration">> => access_grants_location_configuration(),
+%%   <<"AccessGrantsLocationId">> => string(),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"GrantScope">> => string(),
+%%   <<"Grantee">> => grantee(),
+%%   <<"Permission">> => list(any())
+%% }
+-type get_access_grant_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_configuration() :: #{
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_access_control_list() :: #{
+%%   <<"Grants">> => list(s3_grant()()),
+%%   <<"Owner">> => s3_object_owner()
+%% }
+-type s3_access_control_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% abort_incomplete_multipart_upload() :: #{
+%%   <<"DaysAfterInitiation">> => integer()
+%% }
+-type abort_incomplete_multipart_upload() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule() :: #{
+%%   <<"AbortIncompleteMultipartUpload">> => abort_incomplete_multipart_upload(),
+%%   <<"Expiration">> => lifecycle_expiration(),
+%%   <<"Filter">> => lifecycle_rule_filter(),
+%%   <<"ID">> => string(),
+%%   <<"NoncurrentVersionExpiration">> => noncurrent_version_expiration(),
+%%   <<"NoncurrentVersionTransitions">> => list(noncurrent_version_transition()()),
+%%   <<"Status">> => list(any()),
+%%   <<"Transitions">> => list(transition()())
+%% }
+-type lifecycle_rule() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_result() :: #{}
+-type untag_resource_result() :: #{}.
+
+
+%% Example:
+%% delete_public_access_block_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_access_grants_instance_resource_policy_result() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Organization">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type put_access_grants_instance_resource_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lambda_configuration() :: #{
+%%   <<"AllowedFeatures">> => list(list(any())()),
+%%   <<"CloudWatchMetricsEnabled">> => boolean(),
+%%   <<"SupportingAccessPoint">> => string(),
+%%   <<"TransformationConfigurations">> => list(object_lambda_transformation_configuration()())
+%% }
+-type object_lambda_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_policy_result() :: #{
+%%   <<"Policy">> => multi_region_access_point_policy_document()
+%% }
+-type get_multi_region_access_point_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% versioning_configuration() :: #{
+%%   <<"MFADelete">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type versioning_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_report() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Format">> => list(any()),
+%%   <<"Prefix">> => string(),
+%%   <<"ReportScope">> => list(any())
+%% }
+-type job_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_storage_lens_group_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"StorageLensGroup">> := storage_lens_group(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_storage_lens_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_result() :: #{
+%%   <<"AccessGrantsList">> => list(list_access_grant_entry()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_grants_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_access_grants_instance_resource_policy_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Organization">> => string(),
+%%   <<"Policy">> := string()
+%% }
+-type put_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_job_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_job_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"JobStatuses">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_grants_instance_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"IdentityCenterArn">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_access_grants_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_selection_criteria() :: #{
+%%   <<"ReplicaModifications">> => replica_modifications(),
+%%   <<"SseKmsEncryptedObjects">> => sse_kms_encrypted_objects()
+%% }
+-type source_selection_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_job_tagging_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Tags">> := list(s3_tag()())
+%% }
+-type put_job_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_configuration() :: #{
+%%   <<"Rules">> => list(lifecycle_rule()())
+%% }
+-type lifecycle_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_lens_group_entry() :: #{
+%%   <<"HomeRegion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"StorageLensGroupArn">> => string()
+%% }
+-type list_storage_lens_group_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_bucket_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_group_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_storage_lens_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% prefix_level() :: #{
+%%   <<"StorageMetrics">> => prefix_level_storage_metrics()
+%% }
+-type prefix_level() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_grant_result() :: #{
+%%   <<"AccessGrantArn">> => string(),
+%%   <<"AccessGrantId">> => string(),
+%%   <<"AccessGrantsLocationConfiguration">> => access_grants_location_configuration(),
+%%   <<"AccessGrantsLocationId">> => string(),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"GrantScope">> => string(),
+%%   <<"Grantee">> => grantee(),
+%%   <<"Permission">> => list(any())
+%% }
+-type create_access_grant_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_replication_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ReplicationConfiguration">> := replication_configuration()
+%% }
+-type put_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_point_for_object_lambda_result() :: #{
+%%   <<"Alias">> => object_lambda_access_point_alias(),
+%%   <<"ObjectLambdaAccessPointArn">> => string()
+%% }
+-type create_access_point_for_object_lambda_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type job_status_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_instance_for_prefix_result() :: #{
+%%   <<"AccessGrantsInstanceArn">> => string(),
+%%   <<"AccessGrantsInstanceId">> => string()
+%% }
+-type get_access_grants_instance_for_prefix_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_access_grants_identity_center_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"IdentityCenterArn">> := string()
+%% }
+-type associate_access_grants_identity_center_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_lens_configurations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StorageLensConfigurationList">> => list(list_storage_lens_configuration_entry()())
+%% }
+-type list_storage_lens_configurations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_multi_region_access_point_input() :: #{
+%%   <<"Name">> => string()
+%% }
+-type delete_multi_region_access_point_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_multi_region_access_point_operation_result() :: #{
+%%   <<"AsyncOperation">> => async_operation()
+%% }
+-type describe_multi_region_access_point_operation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_points_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_points_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_tagging_result() :: #{
+%%   <<"Tags">> => list(s3_tag()())
+%% }
+-type get_job_tagging_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_grants_location_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"IAMRoleArn">> := string(),
+%%   <<"LocationScope">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_access_grants_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% async_operation() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Operation">> => list(any()),
+%%   <<"RequestParameters">> => async_request_parameters(),
+%%   <<"RequestStatus">> => string(),
+%%   <<"RequestTokenARN">> => string(),
+%%   <<"ResponseDetails">> => async_response_details()
+%% }
+-type async_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_point_policy_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_destination() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"Encryption">> => storage_lens_data_export_encryption(),
+%%   <<"Format">> => list(any()),
+%%   <<"OutputSchemaVersion">> => list(any()),
+%%   <<"Prefix">> => string()
+%% }
+-type s3_bucket_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_group_result() :: #{
+%%   <<"StorageLensGroup">> => storage_lens_group()
+%% }
+-type get_storage_lens_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_instance_resource_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% grantee() :: #{
+%%   <<"GranteeIdentifier">> => string(),
+%%   <<"GranteeType">> => list(any())
+%% }
+-type grantee() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_level() :: #{
+%%   <<"ActivityMetrics">> => activity_metrics(),
+%%   <<"AdvancedCostOptimizationMetrics">> => advanced_cost_optimization_metrics(),
+%%   <<"AdvancedDataProtectionMetrics">> => advanced_data_protection_metrics(),
+%%   <<"DetailedStatusCodesMetrics">> => detailed_status_codes_metrics(),
+%%   <<"PrefixLevel">> => prefix_level()
+%% }
+-type bucket_level() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_status_result() :: #{
+%%   <<"PolicyStatus">> => policy_status()
+%% }
+-type get_access_point_policy_status_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_grantee() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"Identifier">> => string(),
+%%   <<"TypeIdentifier">> => list(any())
+%% }
+-type s3_grantee() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ConfirmationRequired">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"Manifest">> => job_manifest(),
+%%   <<"ManifestGenerator">> => list(),
+%%   <<"Operation">> := job_operation(),
+%%   <<"Priority">> := integer(),
+%%   <<"Report">> := job_report(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(s3_tag()())
+%% }
+-type create_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_for_object_lambda_result() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_access_point_policy_for_object_lambda_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type storage_lens_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grant_entry() :: #{
+%%   <<"AccessGrantArn">> => string(),
+%%   <<"AccessGrantId">> => string(),
+%%   <<"AccessGrantsLocationConfiguration">> => access_grants_location_configuration(),
+%%   <<"AccessGrantsLocationId">> => string(),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"GrantScope">> => string(),
+%%   <<"Grantee">> => grantee(),
+%%   <<"Permission">> => list(any())
+%% }
+-type list_access_grant_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_group_filter() :: #{
+%%   <<"And">> => storage_lens_group_and_operator(),
+%%   <<"MatchAnyPrefix">> => list(string()()),
+%%   <<"MatchAnySuffix">> => list(string()()),
+%%   <<"MatchAnyTag">> => list(s3_tag()()),
+%%   <<"MatchObjectAge">> => match_object_age(),
+%%   <<"MatchObjectSize">> => match_object_size(),
+%%   <<"Or">> => storage_lens_group_or_operator()
+%% }
+-type storage_lens_group_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_group_or_operator() :: #{
+%%   <<"MatchAnyPrefix">> => list(string()()),
+%%   <<"MatchAnySuffix">> => list(string()()),
+%%   <<"MatchAnyTag">> => list(s3_tag()()),
+%%   <<"MatchObjectAge">> => match_object_age(),
+%%   <<"MatchObjectSize">> => match_object_size()
+%% }
+-type storage_lens_group_or_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% proposed_multi_region_access_point_policy() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type proposed_multi_region_access_point_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% include() :: #{
+%%   <<"Buckets">> => list(string()()),
+%%   <<"Regions">> => list(string()())
+%% }
+-type include() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_multi_region_access_point_policy_input() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type put_multi_region_access_point_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_instance_result() :: #{
+%%   <<"AccessGrantsInstanceArn">> => string(),
+%%   <<"AccessGrantsInstanceId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IdentityCenterArn">> => string()
+%% }
+-type get_access_grants_instance_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% sse_kms_encryption() :: #{
+%%   <<"KeyId">> => string()
+%% }
+-type sse_kms_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_versioning_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_versioning_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_data_protection_metrics() :: #{
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type advanced_data_protection_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_point_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Configuration">> := object_lambda_configuration()
+%% }
+-type create_access_point_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sse_kms_encrypted_objects() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type sse_kms_encrypted_objects() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_manifest_location() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"ObjectArn">> => string(),
+%%   <<"ObjectVersionId">> => string()
+%% }
+-type job_manifest_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_points_for_object_lambda_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectLambdaAccessPointList">> => list(object_lambda_access_point()())
+%% }
+-type list_access_points_for_object_lambda_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_storage_lens_configuration_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"StorageLensConfiguration">> := storage_lens_configuration(),
+%%   <<"Tags">> => list(storage_lens_tag()())
+%% }
+-type put_storage_lens_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_configuration_result() :: #{
+%%   <<"StorageLensConfiguration">> => storage_lens_configuration()
+%% }
+-type get_storage_lens_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_job_manifest_generator() :: #{
+%%   <<"EnableManifestOutput">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Filter">> => job_manifest_generator_filter(),
+%%   <<"ManifestOutputLocation">> => s3_manifest_output_location(),
+%%   <<"SourceBucket">> => string()
+%% }
+-type s3_job_manifest_generator() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_regional_buckets_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RegionalBucketList">> => list(regional_bucket()())
+%% }
+-type list_regional_buckets_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_lifecycle_configuration_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lambda_access_point() :: #{
+%%   <<"Alias">> => object_lambda_access_point_alias(),
+%%   <<"Name">> => string(),
+%%   <<"ObjectLambdaAccessPointArn">> => string()
+%% }
+-type object_lambda_access_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule_filter() :: #{
+%%   <<"And">> => replication_rule_and_operator(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tag">> => s3_tag()
+%% }
+-type replication_rule_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_storage_lens_configuration_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multi_region_access_point_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Details">> := create_multi_region_access_point_input()
+%% }
+-type create_multi_region_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_operation() :: #{
+%%   <<"LambdaInvoke">> => lambda_invoke_operation(),
+%%   <<"S3DeleteObjectTagging">> => s3_delete_object_tagging_operation(),
+%%   <<"S3InitiateRestoreObject">> => s3_initiate_restore_object_operation(),
+%%   <<"S3PutObjectAcl">> => s3_set_object_acl_operation(),
+%%   <<"S3PutObjectCopy">> => s3_copy_object_operation(),
+%%   <<"S3PutObjectLegalHold">> => s3_set_object_legal_hold_operation(),
+%%   <<"S3PutObjectRetention">> => s3_set_object_retention_operation(),
+%%   <<"S3PutObjectTagging">> => s3_set_object_tagging_operation(),
+%%   <<"S3ReplicateObject">> => s3_replicate_object_operation()
+%% }
+-type job_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_lens_groups_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_storage_lens_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_already_owned_by_you() :: #{}
+-type bucket_already_owned_by_you() :: #{}.
+
+
+%% Example:
+%% delete_bucket_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_multi_region_access_point_policy_result() :: #{
+%%   <<"RequestTokenARN">> => string()
+%% }
+-type put_multi_region_access_point_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_storage_lens_configuration_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_storage_lens_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% dissociate_access_grants_identity_center_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type dissociate_access_grants_identity_center_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% noncurrent_version_expiration() :: #{
+%%   <<"NewerNoncurrentVersions">> => integer(),
+%%   <<"NoncurrentDays">> => integer()
+%% }
+-type noncurrent_version_expiration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_storage_lens_configuration_tagging_result() :: #{}
+-type delete_storage_lens_configuration_tagging_result() :: #{}.
+
+%% Example:
+%% submit_multi_region_access_point_routes_result() :: #{}
+-type submit_multi_region_access_point_routes_result() :: #{}.
+
+
+%% Example:
+%% list_access_grants_instances_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_grants_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_access_points_async_response() :: #{
+%%   <<"Regions">> => list(multi_region_access_point_regional_response()())
+%% }
+-type multi_region_access_points_async_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multi_region_access_points_result() :: #{
+%%   <<"AccessPoints">> => list(multi_region_access_point_report()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multi_region_access_points_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_bucket_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_policy_status_result() :: #{
+%%   <<"Established">> => policy_status()
+%% }
+-type get_multi_region_access_point_policy_status_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_point_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Bucket">> := string(),
+%%   <<"BucketAccountId">> => string(),
+%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration(),
+%%   <<"VpcConfiguration">> => vpc_configuration()
+%% }
+-type create_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_grants_instance_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_grants_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% submit_multi_region_access_point_routes_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"RouteUpdates">> := list(multi_region_access_point_route()())
+%% }
+-type submit_multi_region_access_point_routes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics() :: #{
+%%   <<"EventThreshold">> => replication_time_value(),
+%%   <<"Status">> => list(any())
+%% }
+-type metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multi_region_access_point_result() :: #{
+%%   <<"RequestTokenARN">> => string()
+%% }
+-type create_multi_region_access_point_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% region() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"BucketAccountId">> => string()
+%% }
+-type region() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_configuration_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replica_modifications() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type replica_modifications() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_time_value() :: #{
+%%   <<"Minutes">> => integer()
+%% }
+-type replication_time_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_grants_location_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"IAMRoleArn">> := string()
+%% }
+-type update_access_grants_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% exclude() :: #{
+%%   <<"Buckets">> => list(string()()),
+%%   <<"Regions">> => list(string()())
+%% }
+-type exclude() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_status() :: #{
+%%   <<"IsPublic">> => boolean()
+%% }
+-type policy_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_replication_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_initiate_restore_object_operation() :: #{
+%%   <<"ExpirationInDays">> => integer(),
+%%   <<"GlacierJobTier">> => list(any())
+%% }
+-type s3_initiate_restore_object_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_configuration() :: #{
+%%   <<"Role">> => string(),
+%%   <<"Rules">> => list(replication_rule()())
+%% }
+-type replication_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_access_control_policy() :: #{
+%%   <<"AccessControlList">> => s3_access_control_list(),
+%%   <<"CannedAccessControlList">> => list(any())
+%% }
+-type s3_access_control_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_configuration_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_configuration_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grant_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_grant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_grant() :: #{
+%%   <<"Grantee">> => s3_grantee(),
+%%   <<"Permission">> => list(any())
+%% }
+-type s3_grant() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_access_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Permission">> := list(any()),
+%%   <<"Privilege">> => list(any()),
+%%   <<"Target">> := string(),
+%%   <<"TargetType">> => list(any())
+%% }
+-type get_data_access_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_policy_result() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_bucket_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% noncurrent_version_transition() :: #{
+%%   <<"NoncurrentDays">> => integer(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type noncurrent_version_transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_location_result() :: #{
+%%   <<"AccessGrantsLocationArn">> => string(),
+%%   <<"AccessGrantsLocationId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IAMRoleArn">> => string(),
+%%   <<"LocationScope">> => string()
+%% }
+-type get_access_grants_location_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule_filter() :: #{
+%%   <<"And">> => lifecycle_rule_and_operator(),
+%%   <<"ObjectSizeGreaterThan">> => float(),
+%%   <<"ObjectSizeLessThan">> => float(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tag">> => s3_tag()
+%% }
+-type lifecycle_rule_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_storage_lens_group_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_storage_lens_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_status_result() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusUpdateReason">> => string()
+%% }
+-type update_job_status_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multi_region_access_points_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multi_region_access_points_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_access_point_policy_document() :: #{
+%%   <<"Established">> => established_multi_region_access_point_policy(),
+%%   <<"Proposed">> => proposed_multi_region_access_point_policy()
+%% }
+-type multi_region_access_point_policy_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_instance_entry() :: #{
+%%   <<"AccessGrantsInstanceArn">> => string(),
+%%   <<"AccessGrantsInstanceId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IdentityCenterArn">> => string()
+%% }
+-type list_access_grants_instance_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_instance_resource_policy_result() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Organization">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type get_access_grants_instance_resource_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_failure() :: #{
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureReason">> => string()
+%% }
+-type job_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bucket_configuration() :: #{
+%%   <<"LocationConstraint">> => list(any())
+%% }
+-type create_bucket_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_already_exists() :: #{}
+-type bucket_already_exists() :: #{}.
+
+
+%% Example:
+%% get_bucket_replication_result() :: #{
+%%   <<"ReplicationConfiguration">> => replication_configuration()
+%% }
+-type get_bucket_replication_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% regional_bucket() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"BucketArn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"OutpostId">> => string(),
+%%   <<"PublicAccessBlockEnabled">> => boolean()
+%% }
+-type regional_bucket() :: #{binary() => any()}.
+
+
+%% Example:
+%% async_response_details() :: #{
+%%   <<"ErrorDetails">> => async_error_details(),
+%%   <<"MultiRegionAccessPointDetails">> => multi_region_access_points_async_response()
+%% }
+-type async_response_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_set_object_acl_operation() :: #{
+%%   <<"AccessControlPolicy">> => s3_access_control_policy()
+%% }
+-type s3_set_object_acl_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% async_request_parameters() :: #{
+%%   <<"CreateMultiRegionAccessPointRequest">> => create_multi_region_access_point_input(),
+%%   <<"DeleteMultiRegionAccessPointRequest">> => delete_multi_region_access_point_input(),
+%%   <<"PutMultiRegionAccessPointPolicyRequest">> => put_multi_region_access_point_policy_input()
+%% }
+-type async_request_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% tagging() :: #{
+%%   <<"TagSet">> => list(s3_tag()())
+%% }
+-type tagging() :: #{binary() => any()}.
+
+
+%% Example:
+%% activity_metrics() :: #{
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type activity_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_control_translation() :: #{
+%%   <<"Owner">> => list(any())
+%% }
+-type access_control_translation() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_grants_location_result() :: #{
+%%   <<"AccessGrantsLocationArn">> => string(),
+%%   <<"AccessGrantsLocationId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IAMRoleArn">> => string(),
+%%   <<"LocationScope">> => string()
+%% }
+-type create_access_grants_location_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type describe_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_data_export_encryption() :: #{
+%%   <<"SSEKMS">> => sse_kms(),
+%%   <<"SSES3">> => sse_s3()
+%% }
+-type storage_lens_data_export_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_group_and_operator() :: #{
+%%   <<"MatchAnyPrefix">> => list(string()()),
+%%   <<"MatchAnySuffix">> => list(string()()),
+%%   <<"MatchAnyTag">> => list(s3_tag()()),
+%%   <<"MatchObjectAge">> => match_object_age(),
+%%   <<"MatchObjectSize">> => match_object_size()
+%% }
+-type storage_lens_group_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lambda_transformation_configuration() :: #{
+%%   <<"Actions">> => list(list(any())()),
+%%   <<"ContentTransformation">> => list()
+%% }
+-type object_lambda_transformation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_descriptor() :: #{
+%%   <<"ConfirmationRequired">> => boolean(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FailureReasons">> => list(job_failure()()),
+%%   <<"GeneratedManifestDescriptor">> => s3_generated_manifest_descriptor(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Manifest">> => job_manifest(),
+%%   <<"ManifestGenerator">> => list(),
+%%   <<"Operation">> => job_operation(),
+%%   <<"Priority">> => integer(),
+%%   <<"ProgressSummary">> => job_progress_summary(),
+%%   <<"Report">> => job_report(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusUpdateReason">> => string(),
+%%   <<"SuspendedCause">> => string(),
+%%   <<"SuspendedDate">> => non_neg_integer(),
+%%   <<"TerminationDate">> => non_neg_integer()
+%% }
+-type job_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% detailed_status_codes_metrics() :: #{
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type detailed_status_codes_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_status_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_policy_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_manifest_spec() :: #{
+%%   <<"Fields">> => list(list(any())()),
+%%   <<"Format">> => list(any())
+%% }
+-type job_manifest_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object_metadata() :: #{
+%%   <<"CacheControl">> => string(),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"HttpExpiresDate">> => non_neg_integer(),
+%%   <<"RequesterCharged">> => boolean(),
+%%   <<"SSEAlgorithm">> => list(any()),
+%%   <<"UserMetadata">> => map()
+%% }
+-type s3_object_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_instances_result() :: #{
+%%   <<"AccessGrantsInstancesList">> => list(list_access_grants_instance_entry()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_grants_instances_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_multi_region_access_point_result() :: #{
+%%   <<"RequestTokenARN">> => string()
+%% }
+-type delete_multi_region_access_point_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% established_multi_region_access_point_policy() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type established_multi_region_access_point_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_grants_location_result() :: #{
+%%   <<"AccessGrantsLocationArn">> => string(),
+%%   <<"AccessGrantsLocationId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IAMRoleArn">> => string(),
+%%   <<"LocationScope">> => string()
+%% }
+-type update_access_grants_location_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_tagging_result() :: #{}
+-type delete_job_tagging_result() :: #{}.
+
+
+%% Example:
+%% create_multi_region_access_point_input() :: #{
+%%   <<"Name">> => string(),
+%%   <<"PublicAccessBlock">> => public_access_block_configuration(),
+%%   <<"Regions">> => list(region()())
+%% }
+-type create_multi_region_access_point_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_group() :: #{
+%%   <<"Filter">> => storage_lens_group_filter(),
+%%   <<"Name">> => string(),
+%%   <<"StorageLensGroupArn">> => string()
+%% }
+-type storage_lens_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_for_object_lambda_result() :: #{
+%%   <<"Alias">> => object_lambda_access_point_alias(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration()
+%% }
+-type get_access_point_for_object_lambda_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bucket_result() :: #{
+%%   <<"BucketArn">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_bucket_result() :: #{binary() => any()}.
+
+%% Example:
+%% s3_replicate_object_operation() :: #{}
+-type s3_replicate_object_operation() :: #{}.
+
+
+%% Example:
+%% list_regional_buckets_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostId">> => string()
+%% }
+-type list_regional_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_manifest_output_location() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"ExpectedManifestBucketOwner">> => string(),
+%%   <<"ManifestEncryption">> => generated_manifest_encryption(),
+%%   <<"ManifestFormat">> => list(any()),
+%%   <<"ManifestPrefix">> => string()
+%% }
+-type s3_manifest_output_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_point_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_invoke_operation() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"InvocationSchemaVersion">> => string(),
+%%   <<"UserArguments">> => map()
+%% }
+-type lambda_invoke_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_lifecycle_configuration_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_grants_instance_resource_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_aws_org() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type storage_lens_aws_org() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% async_error_details() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Resource">> => string()
+%% }
+-type async_error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_list_descriptor() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => list(any()),
+%%   <<"Priority">> => integer(),
+%%   <<"ProgressSummary">> => job_progress_summary(),
+%%   <<"Status">> => list(any()),
+%%   <<"TerminationDate">> => non_neg_integer()
+%% }
+-type job_list_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_point_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_point_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_copy_object_operation() :: #{
+%%   <<"AccessControlGrants">> => list(s3_grant()()),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"CannedAccessControlList">> => list(any()),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"MetadataDirective">> => list(any()),
+%%   <<"ModifiedSinceConstraint">> => non_neg_integer(),
+%%   <<"NewObjectMetadata">> => s3_object_metadata(),
+%%   <<"NewObjectTagging">> => list(s3_tag()()),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
+%%   <<"RedirectLocation">> => string(),
+%%   <<"RequesterPays">> => boolean(),
+%%   <<"SSEAwsKmsKeyId">> => string(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"TargetKeyPrefix">> => string(),
+%%   <<"TargetResource">> => string(),
+%%   <<"UnModifiedSinceConstraint">> => non_neg_integer()
+%% }
+-type s3_copy_object_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_access_block_output() :: #{
+%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration()
+%% }
+-type get_public_access_block_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_point_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_point_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_lambda_transformation() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionPayload">> => string()
+%% }
+-type aws_lambda_transformation() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_tagging_result() :: #{
+%%   <<"TagSet">> => list(s3_tag()())
+%% }
+-type get_bucket_tagging_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_marker_replication() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_marker_replication() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bucket_request() :: #{
+%%   <<"ACL">> => list(any()),
+%%   <<"CreateBucketConfiguration">> => create_bucket_configuration(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"GrantRead">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"GrantWrite">> => string(),
+%%   <<"GrantWriteACP">> => string(),
+%%   <<"ObjectLockEnabledForBucket">> => boolean(),
+%%   <<"OutpostId">> => string()
+%% }
+-type create_bucket_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_name_constraint() :: #{
+%%   <<"MatchAnyPrefix">> => list(string()()),
+%%   <<"MatchAnySubstring">> => list(string()()),
+%%   <<"MatchAnySuffix">> => list(string()())
+%% }
+-type key_name_constraint() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_result() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"PublicAccessBlockEnabled">> => boolean()
+%% }
+-type get_bucket_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_job_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_access_result() :: #{
+%%   <<"Credentials">> => credentials(),
+%%   <<"MatchedGrantTarget">> => string()
+%% }
+-type get_data_access_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_timers() :: #{
+%%   <<"ElapsedTimeInActiveSeconds">> => float()
+%% }
+-type job_timers() :: #{binary() => any()}.
+
+
+%% Example:
+%% existing_object_replication() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type existing_object_replication() :: #{binary() => any()}.
+
+
+%% Example:
+%% transition() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Days">> => integer(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_access_point_route() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"TrafficDialPercentage">> => integer()
+%% }
+-type multi_region_access_point_route() :: #{binary() => any()}.
+
+%% Example:
+%% s3_delete_object_tagging_operation() :: #{}
+-type s3_delete_object_tagging_operation() :: #{}.
+
+
+%% Example:
+%% get_multi_region_access_point_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_multi_region_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_manifest_generator_filter() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"EligibleForReplication">> => boolean(),
+%%   <<"KeyNameConstraint">> => key_name_constraint(),
+%%   <<"MatchAnyStorageClass">> => list(list(any())()),
+%%   <<"ObjectReplicationStatuses">> => list(list(any())()),
+%%   <<"ObjectSizeGreaterThanBytes">> => float(),
+%%   <<"ObjectSizeLessThanBytes">> => float()
+%% }
+-type job_manifest_generator_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_access_point_report() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublicAccessBlock">> => public_access_block_configuration(),
+%%   <<"Regions">> => list(region_report()()),
+%%   <<"Status">> => list(any())
+%% }
+-type multi_region_access_point_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_tagging_request() :: #{binary() => any()}.
+
+%% Example:
+%% sse_s3_encryption() :: #{}
+-type sse_s3_encryption() :: #{}.
+
+
+%% Example:
+%% list_access_grants_locations_result() :: #{
+%%   <<"AccessGrantsLocationsList">> => list(list_access_grants_locations_entry()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_grants_locations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_status_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_policy_status_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_grants_location_configuration() :: #{
+%%   <<"S3SubPrefix">> => string()
+%% }
+-type access_grants_location_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% sse_s3() :: #{}
+-type sse_s3() :: #{}.
+
+
+%% Example:
+%% put_access_point_policy_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Policy">> := string()
+%% }
+-type put_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"GrantScope">> => string(),
+%%   <<"GranteeIdentifier">> => string(),
+%%   <<"GranteeType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Permission">> => list(any())
+%% }
+-type list_access_grants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_grants_location_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_grants_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_routes_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_multi_region_access_point_routes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"DeleteMarkerReplication">> => delete_marker_replication(),
+%%   <<"Destination">> => destination(),
+%%   <<"ExistingObjectReplication">> => existing_object_replication(),
+%%   <<"Filter">> => replication_rule_filter(),
+%%   <<"ID">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"SourceSelectionCriteria">> => source_selection_criteria(),
+%%   <<"Status">> => list(any())
+%% }
+-type replication_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_retention() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"RetainUntilDate">> => non_neg_integer()
+%% }
+-type s3_retention() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_object_size() :: #{
+%%   <<"BytesGreaterThan">> => float(),
+%%   <<"BytesLessThan">> => float()
+%% }
+-type match_object_size() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_priority_result() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"Priority">> => integer()
+%% }
+-type update_job_priority_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_point() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"Alias">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"BucketAccountId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkOrigin">> => list(any()),
+%%   <<"VpcConfiguration">> => vpc_configuration()
+%% }
+-type access_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_metrics() :: #{
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type cloud_watch_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_versioning_result() :: #{
+%%   <<"MFADelete">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_bucket_versioning_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% idempotency_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type idempotency_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination() :: #{
+%%   <<"AccessControlTranslation">> => access_control_translation(),
+%%   <<"Account">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"Metrics">> => metrics(),
+%%   <<"ReplicationTime">> => replication_time(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_status_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"RequestedJobStatus">> := list(any()),
+%%   <<"StatusUpdateReason">> => string()
+%% }
+-type update_job_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_expiration() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Days">> => integer(),
+%%   <<"ExpiredObjectDeleteMarker">> => boolean()
+%% }
+-type lifecycle_expiration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_set_object_legal_hold_operation() :: #{
+%%   <<"LegalHold">> => s3_object_lock_legal_hold()
+%% }
+-type s3_set_object_legal_hold_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_result() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type create_job_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_tagging_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Tagging">> := tagging()
+%% }
+-type put_bucket_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_instance_for_prefix_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"S3Prefix">> := string()
+%% }
+-type get_access_grants_instance_for_prefix_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sse_kms() :: #{
+%%   <<"KeyId">> => string()
+%% }
+-type sse_kms() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_priority_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Priority">> := integer()
+%% }
+-type update_job_priority_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_result() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"Alias">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"BucketAccountId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Endpoints">> => map(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkOrigin">> => list(any()),
+%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration(),
+%%   <<"VpcConfiguration">> => vpc_configuration()
+%% }
+-type get_access_point_result() :: #{binary() => any()}.
+
+%% Example:
+%% put_storage_lens_configuration_tagging_result() :: #{}
+-type put_storage_lens_configuration_tagging_result() :: #{}.
+
+
+%% Example:
+%% list_access_points_result() :: #{
+%%   <<"AccessPointList">> => list(access_point()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_points_result() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_result() :: #{}
+-type tag_resource_result() :: #{}.
+
+
+%% Example:
+%% get_multi_region_access_point_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_multi_region_access_point_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule_and_operator() :: #{
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(s3_tag()())
+%% }
+-type replication_rule_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_status_for_object_lambda_result() :: #{
+%%   <<"PolicyStatus">> => policy_status()
+%% }
+-type get_access_point_policy_status_for_object_lambda_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_routes_result() :: #{
+%%   <<"Mrap">> => string(),
+%%   <<"Routes">> => list(multi_region_access_point_route()())
+%% }
+-type get_multi_region_access_point_routes_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lambda_access_point_alias() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type object_lambda_access_point_alias() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_access_block_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_access_point_policy_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Policy">> := string()
+%% }
+-type put_access_point_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% selection_criteria() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"MaxDepth">> => integer(),
+%%   <<"MinStorageBytesPercentage">> => float()
+%% }
+-type selection_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_point_result() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"Alias">> => string()
+%% }
+-type create_access_point_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_lens_configuration_entry() :: #{
+%%   <<"HomeRegion">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IsEnabled">> => boolean(),
+%%   <<"StorageLensArn">> => string()
+%% }
+-type list_storage_lens_configuration_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_time() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"Time">> => replication_time_value()
+%% }
+-type replication_time() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object_owner() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"ID">> => string()
+%% }
+-type s3_object_owner() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_points_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Bucket">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_points_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_storage_lens_configuration_tagging_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Tags">> := list(storage_lens_tag()())
+%% }
+-type put_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_result() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_access_point_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_policy_status_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_multi_region_access_point_policy_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_configuration() :: #{
+%%   <<"AccountLevel">> => account_level(),
+%%   <<"AwsOrg">> => storage_lens_aws_org(),
+%%   <<"DataExport">> => storage_lens_data_export(),
+%%   <<"Exclude">> => exclude(),
+%%   <<"Id">> => string(),
+%%   <<"Include">> => include(),
+%%   <<"IsEnabled">> => boolean(),
+%%   <<"StorageLensArn">> => string()
+%% }
+-type storage_lens_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_set_object_tagging_operation() :: #{
+%%   <<"TagSet">> => list(s3_tag()())
+%% }
+-type s3_set_object_tagging_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_lifecycle_configuration_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"LifecycleConfiguration">> => lifecycle_configuration()
+%% }
+-type put_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_grant_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_grant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type s3_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_generated_manifest_descriptor() :: #{
+%%   <<"Format">> => list(any()),
+%%   <<"Location">> => job_manifest_location()
+%% }
+-type s3_generated_manifest_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_cost_optimization_metrics() :: #{
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type advanced_cost_optimization_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_grant_request() :: #{
+%%   <<"AccessGrantsLocationConfiguration">> => access_grants_location_configuration(),
+%%   <<"AccessGrantsLocationId">> := string(),
+%%   <<"AccountId">> := string(),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"Grantee">> := grantee(),
+%%   <<"Permission">> := list(any()),
+%%   <<"S3PrefixType">> => list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_access_grant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_lifecycle_configuration_result() :: #{
+%%   <<"Rules">> => list(lifecycle_rule()())
+%% }
+-type get_bucket_lifecycle_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_locations_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"LocationScope">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_grants_locations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_multi_region_access_point_operation_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type describe_multi_region_access_point_operation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_set_object_retention_operation() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
+%%   <<"Retention">> => s3_retention()
+%% }
+-type s3_set_object_retention_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_locations_entry() :: #{
+%%   <<"AccessGrantsLocationArn">> => string(),
+%%   <<"AccessGrantsLocationId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IAMRoleArn">> => string(),
+%%   <<"LocationScope">> => string()
+%% }
+-type list_access_grants_locations_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_storage_lens_group_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"StorageLensGroup">> := storage_lens_group()
+%% }
+-type update_storage_lens_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_level() :: #{
+%%   <<"ActivityMetrics">> => activity_metrics(),
+%%   <<"AdvancedCostOptimizationMetrics">> => advanced_cost_optimization_metrics(),
+%%   <<"AdvancedDataProtectionMetrics">> => advanced_data_protection_metrics(),
+%%   <<"BucketLevel">> => bucket_level(),
+%%   <<"DetailedStatusCodesMetrics">> => detailed_status_codes_metrics(),
+%%   <<"StorageLensGroupLevel">> => storage_lens_group_level()
+%% }
+-type account_level() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_lens_groups_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StorageLensGroupList">> => list(list_storage_lens_group_entry()())
+%% }
+-type list_storage_lens_groups_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_location_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_grants_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object_lock_legal_hold() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type s3_object_lock_legal_hold() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_replication_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_bucket_replication_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_job_tagging_result() :: #{}
+-type put_job_tagging_result() :: #{}.
+
+
+%% Example:
+%% list_storage_lens_configurations_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_storage_lens_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_progress_summary() :: #{
+%%   <<"NumberOfTasksFailed">> => float(),
+%%   <<"NumberOfTasksSucceeded">> => float(),
+%%   <<"Timers">> => job_timers(),
+%%   <<"TotalNumberOfTasks">> => float()
+%% }
+-type job_progress_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_access_point_configuration_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Configuration">> := object_lambda_configuration()
+%% }
+-type put_access_point_configuration_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_result() :: #{
+%%   <<"AccessPoint">> => multi_region_access_point_report()
+%% }
+-type get_multi_region_access_point_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule_and_operator() :: #{
+%%   <<"ObjectSizeGreaterThan">> => float(),
+%%   <<"ObjectSizeLessThan">> => float(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(s3_tag()())
+%% }
+-type lifecycle_rule_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_instance_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_grants_instance_request() :: #{binary() => any()}.
+
+-type create_bucket_errors() ::
+    bucket_already_exists() | 
+    bucket_already_owned_by_you().
+
+-type create_job_errors() ::
+    bad_request_exception() | 
+    idempotency_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type delete_job_tagging_errors() ::
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type describe_job_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type get_job_tagging_errors() ::
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type get_public_access_block_errors() ::
+    no_such_public_access_block_configuration().
+
+-type list_jobs_errors() ::
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type put_job_tagging_errors() ::
+    too_many_tags_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type update_job_priority_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception().
+
+-type update_job_status_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_exception() | 
+    job_status_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -256,8 +2755,15 @@
 %% You must also have the following permissions: `sso:CreateApplication',
 %% `sso:PutApplicationGrant', and
 %% `sso:PutApplicationAuthenticationMethod'.
+-spec associate_access_grants_identity_center(aws_client:aws_client(), associate_access_grants_identity_center_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 associate_access_grants_identity_center(Client, Input) ->
     associate_access_grants_identity_center(Client, Input, []).
+
+-spec associate_access_grants_identity_center(aws_client:aws_client(), associate_access_grants_identity_center_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 associate_access_grants_identity_center(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/accessgrantsinstance/identitycenter"],
@@ -306,8 +2812,15 @@ associate_access_grants_identity_center(Client, Input0, Options0) ->
 %% For directory users - `identitystore:DescribeUser'
 %%
 %% For directory groups - `identitystore:DescribeGroup'
+-spec create_access_grant(aws_client:aws_client(), create_access_grant_request()) ->
+    {ok, create_access_grant_result(), tuple()} |
+    {error, any()}.
 create_access_grant(Client, Input) ->
     create_access_grant(Client, Input, []).
+
+-spec create_access_grant(aws_client:aws_client(), create_access_grant_request(), proplists:proplist()) ->
+    {ok, create_access_grant_result(), tuple()} |
+    {error, any()}.
 create_access_grant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/accessgrantsinstance/grant"],
@@ -348,8 +2861,15 @@ create_access_grant(Client, Input0, Options0) ->
 %% instance, you must also have the `sso:DescribeInstance',
 %% `sso:CreateApplication', `sso:PutApplicationGrant', and
 %% `sso:PutApplicationAuthenticationMethod' permissions.
+-spec create_access_grants_instance(aws_client:aws_client(), create_access_grants_instance_request()) ->
+    {ok, create_access_grants_instance_result(), tuple()} |
+    {error, any()}.
 create_access_grants_instance(Client, Input) ->
     create_access_grants_instance(Client, Input, []).
+
+-spec create_access_grants_instance(aws_client:aws_client(), create_access_grants_instance_request(), proplists:proplist()) ->
+    {ok, create_access_grants_instance_result(), tuple()} |
+    {error, any()}.
 create_access_grants_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/accessgrantsinstance"],
@@ -402,8 +2922,15 @@ create_access_grants_instance(Client, Input0, Options0) ->
 %%
 %% You must also have the following permission for the specified IAM role:
 %% `iam:PassRole'
+-spec create_access_grants_location(aws_client:aws_client(), create_access_grants_location_request()) ->
+    {ok, create_access_grants_location_result(), tuple()} |
+    {error, any()}.
 create_access_grants_location(Client, Input) ->
     create_access_grants_location(Client, Input, []).
+
+-spec create_access_grants_location(aws_client:aws_client(), create_access_grants_location_request(), proplists:proplist()) ->
+    {ok, create_access_grants_location_result(), tuple()} |
+    {error, any()}.
 create_access_grants_location(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/accessgrantsinstance/location"],
@@ -467,8 +2994,15 @@ create_access_grants_location(Client, Input0, Options0) ->
 %%
 %% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
+-spec create_access_point(aws_client:aws_client(), binary() | list(), create_access_point_request()) ->
+    {ok, create_access_point_result(), tuple()} |
+    {error, any()}.
 create_access_point(Client, Name, Input) ->
     create_access_point(Client, Name, Input, []).
+
+-spec create_access_point(aws_client:aws_client(), binary() | list(), create_access_point_request(), proplists:proplist()) ->
+    {ok, create_access_point_result(), tuple()} |
+    {error, any()}.
 create_access_point(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
@@ -513,8 +3047,15 @@ create_access_point(Client, Name, Input0, Options0) ->
 %%
 %% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
+-spec create_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), create_access_point_for_object_lambda_request()) ->
+    {ok, create_access_point_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 create_access_point_for_object_lambda(Client, Name, Input) ->
     create_access_point_for_object_lambda(Client, Name, Input, []).
+
+-spec create_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), create_access_point_for_object_lambda_request(), proplists:proplist()) ->
+    {ok, create_access_point_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 create_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), ""],
@@ -598,8 +3139,17 @@ create_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 %%
 %% PutAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicy.html
+-spec create_bucket(aws_client:aws_client(), binary() | list(), create_bucket_request()) ->
+    {ok, create_bucket_result(), tuple()} |
+    {error, any()} |
+    {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Bucket, Input) ->
     create_bucket(Client, Bucket, Input, []).
+
+-spec create_bucket(aws_client:aws_client(), binary() | list(), create_bucket_request(), proplists:proplist()) ->
+    {ok, create_bucket_result(), tuple()} |
+    {error, any()} |
+    {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
@@ -681,8 +3231,17 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% JobOperation:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_JobOperation.html
+-spec create_job(aws_client:aws_client(), create_job_request()) ->
+    {ok, create_job_result(), tuple()} |
+    {error, any()} |
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input) ->
     create_job(Client, Input, []).
+
+-spec create_job(aws_client:aws_client(), create_job_request(), proplists:proplist()) ->
+    {ok, create_job_result(), tuple()} |
+    {error, any()} |
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs"],
@@ -745,8 +3304,15 @@ create_job(Client, Input0, Options0) ->
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
+-spec create_multi_region_access_point(aws_client:aws_client(), create_multi_region_access_point_request()) ->
+    {ok, create_multi_region_access_point_result(), tuple()} |
+    {error, any()}.
 create_multi_region_access_point(Client, Input) ->
     create_multi_region_access_point(Client, Input, []).
+
+-spec create_multi_region_access_point(aws_client:aws_client(), create_multi_region_access_point_request(), proplists:proplist()) ->
+    {ok, create_multi_region_access_point_result(), tuple()} |
+    {error, any()}.
 create_multi_region_access_point(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/async-requests/mrap/create"],
@@ -800,8 +3366,15 @@ create_multi_region_access_point(Client, Input0, Options0) ->
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
+-spec create_storage_lens_group(aws_client:aws_client(), create_storage_lens_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 create_storage_lens_group(Client, Input) ->
     create_storage_lens_group(Client, Input, []).
+
+-spec create_storage_lens_group(aws_client:aws_client(), create_storage_lens_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 create_storage_lens_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/storagelensgroup"],
@@ -835,8 +3408,15 @@ create_storage_lens_group(Client, Input0, Options0) ->
 %%
 %% You must have the `s3:DeleteAccessGrant' permission to use this
 %% operation.
+-spec delete_access_grant(aws_client:aws_client(), binary() | list(), delete_access_grant_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_grant(Client, AccessGrantId, Input) ->
     delete_access_grant(Client, AccessGrantId, Input, []).
+
+-spec delete_access_grant(aws_client:aws_client(), binary() | list(), delete_access_grant_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_grant(Client, AccessGrantId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accessgrantsinstance/grant/", aws_util:encode_uri(AccessGrantId), ""],
@@ -880,8 +3460,15 @@ delete_access_grant(Client, AccessGrantId, Input0, Options0) ->
 %%
 %% You must have the `s3:DeleteAccessGrantsInstance' permission to use
 %% this operation.
+-spec delete_access_grants_instance(aws_client:aws_client(), delete_access_grants_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_grants_instance(Client, Input) ->
     delete_access_grants_instance(Client, Input, []).
+
+-spec delete_access_grants_instance(aws_client:aws_client(), delete_access_grants_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_grants_instance(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accessgrantsinstance"],
@@ -916,8 +3503,15 @@ delete_access_grants_instance(Client, Input0, Options0) ->
 %%
 %% You must have the `s3:DeleteAccessGrantsInstanceResourcePolicy'
 %% permission to use this operation.
+-spec delete_access_grants_instance_resource_policy(aws_client:aws_client(), delete_access_grants_instance_resource_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_grants_instance_resource_policy(Client, Input) ->
     delete_access_grants_instance_resource_policy(Client, Input, []).
+
+-spec delete_access_grants_instance_resource_policy(aws_client:aws_client(), delete_access_grants_instance_resource_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_grants_instance_resource_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accessgrantsinstance/resourcepolicy"],
@@ -956,8 +3550,15 @@ delete_access_grants_instance_resource_policy(Client, Input0, Options0) ->
 %%
 %% You must have the `s3:DeleteAccessGrantsLocation' permission to use
 %% this operation.
+-spec delete_access_grants_location(aws_client:aws_client(), binary() | list(), delete_access_grants_location_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_grants_location(Client, AccessGrantsLocationId, Input) ->
     delete_access_grants_location(Client, AccessGrantsLocationId, Input, []).
+
+-spec delete_access_grants_location(aws_client:aws_client(), binary() | list(), delete_access_grants_location_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accessgrantsinstance/location/", aws_util:encode_uri(AccessGrantsLocationId), ""],
@@ -1007,8 +3608,15 @@ delete_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 %%
 %% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
+-spec delete_access_point(aws_client:aws_client(), binary() | list(), delete_access_point_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_point(Client, Name, Input) ->
     delete_access_point(Client, Name, Input, []).
+
+-spec delete_access_point(aws_client:aws_client(), binary() | list(), delete_access_point_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_point(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
@@ -1049,8 +3657,15 @@ delete_access_point(Client, Name, Input0, Options0) ->
 %%
 %% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
+-spec delete_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), delete_access_point_for_object_lambda_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_point_for_object_lambda(Client, Name, Input) ->
     delete_access_point_for_object_lambda(Client, Name, Input, []).
+
+-spec delete_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), delete_access_point_for_object_lambda_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), ""],
@@ -1097,8 +3712,15 @@ delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 %%
 %% GetAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicy.html
+-spec delete_access_point_policy(aws_client:aws_client(), binary() | list(), delete_access_point_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_point_policy(Client, Name, Input) ->
     delete_access_point_policy(Client, Name, Input, []).
+
+-spec delete_access_point_policy(aws_client:aws_client(), binary() | list(), delete_access_point_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_point_policy(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
@@ -1136,8 +3758,15 @@ delete_access_point_policy(Client, Name, Input0, Options0) ->
 %%
 %% PutAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicyForObjectLambda.html
+-spec delete_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), delete_access_point_policy_for_object_lambda_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_point_policy_for_object_lambda(Client, Name, Input) ->
     delete_access_point_policy_for_object_lambda(Client, Name, Input, []).
+
+-spec delete_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), delete_access_point_policy_for_object_lambda_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policy"],
@@ -1197,8 +3826,15 @@ delete_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
+-spec delete_bucket(aws_client:aws_client(), binary() | list(), delete_bucket_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket(Client, Bucket, Input) ->
     delete_bucket(Client, Bucket, Input, []).
+
+-spec delete_bucket(aws_client:aws_client(), binary() | list(), delete_bucket_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
@@ -1271,8 +3907,15 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
+-spec delete_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_lifecycle_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     delete_bucket_lifecycle_configuration(Client, Bucket, Input, []).
+
+-spec delete_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_lifecycle_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
@@ -1358,8 +4001,15 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketPolicy.html
+-spec delete_bucket_policy(aws_client:aws_client(), binary() | list(), delete_bucket_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_policy(Client, Bucket, Input) ->
     delete_bucket_policy(Client, Bucket, Input, []).
+
+-spec delete_bucket_policy(aws_client:aws_client(), binary() | list(), delete_bucket_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
@@ -1442,8 +4092,15 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketReplication.html
+-spec delete_bucket_replication(aws_client:aws_client(), binary() | list(), delete_bucket_replication_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_replication(Client, Bucket, Input) ->
     delete_bucket_replication(Client, Bucket, Input, []).
+
+-spec delete_bucket_replication(aws_client:aws_client(), binary() | list(), delete_bucket_replication_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_replication(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/replication"],
@@ -1503,8 +4160,15 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketTagging.html
+-spec delete_bucket_tagging(aws_client:aws_client(), binary() | list(), delete_bucket_tagging_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_tagging(Client, Bucket, Input) ->
     delete_bucket_tagging(Client, Bucket, Input, []).
+
+-spec delete_bucket_tagging(aws_client:aws_client(), binary() | list(), delete_bucket_tagging_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
@@ -1553,8 +4217,17 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% PutJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutJobTagging.html
+-spec delete_job_tagging(aws_client:aws_client(), binary() | list(), delete_job_tagging_request()) ->
+    {ok, delete_job_tagging_result(), tuple()} |
+    {error, any()} |
+    {error, delete_job_tagging_errors(), tuple()}.
 delete_job_tagging(Client, JobId, Input) ->
     delete_job_tagging(Client, JobId, Input, []).
+
+-spec delete_job_tagging(aws_client:aws_client(), binary() | list(), delete_job_tagging_request(), proplists:proplist()) ->
+    {ok, delete_job_tagging_result(), tuple()} |
+    {error, any()} |
+    {error, delete_job_tagging_errors(), tuple()}.
 delete_job_tagging(Client, JobId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
@@ -1614,8 +4287,15 @@ delete_job_tagging(Client, JobId, Input0, Options0) ->
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
+-spec delete_multi_region_access_point(aws_client:aws_client(), delete_multi_region_access_point_request()) ->
+    {ok, delete_multi_region_access_point_result(), tuple()} |
+    {error, any()}.
 delete_multi_region_access_point(Client, Input) ->
     delete_multi_region_access_point(Client, Input, []).
+
+-spec delete_multi_region_access_point(aws_client:aws_client(), delete_multi_region_access_point_request(), proplists:proplist()) ->
+    {ok, delete_multi_region_access_point_result(), tuple()} |
+    {error, any()}.
 delete_multi_region_access_point(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/async-requests/mrap/delete"],
@@ -1656,8 +4336,15 @@ delete_multi_region_access_point(Client, Input0, Options0) ->
 %%
 %% PutPublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html
+-spec delete_public_access_block(aws_client:aws_client(), delete_public_access_block_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_public_access_block(Client, Input) ->
     delete_public_access_block(Client, Input, []).
+
+-spec delete_public_access_block(aws_client:aws_client(), delete_public_access_block_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_public_access_block(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/configuration/publicAccessBlock"],
@@ -1697,8 +4384,15 @@ delete_public_access_block(Client, Input0, Options0) ->
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
+-spec delete_storage_lens_configuration(aws_client:aws_client(), binary() | list(), delete_storage_lens_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_storage_lens_configuration(Client, ConfigId, Input) ->
     delete_storage_lens_configuration(Client, ConfigId, Input, []).
+
+-spec delete_storage_lens_configuration(aws_client:aws_client(), binary() | list(), delete_storage_lens_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
@@ -1740,8 +4434,15 @@ delete_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
+-spec delete_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), delete_storage_lens_configuration_tagging_request()) ->
+    {ok, delete_storage_lens_configuration_tagging_result(), tuple()} |
+    {error, any()}.
 delete_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
     delete_storage_lens_configuration_tagging(Client, ConfigId, Input, []).
+
+-spec delete_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), delete_storage_lens_configuration_tagging_request(), proplists:proplist()) ->
+    {ok, delete_storage_lens_configuration_tagging_result(), tuple()} |
+    {error, any()}.
 delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
@@ -1780,8 +4481,15 @@ delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
+-spec delete_storage_lens_group(aws_client:aws_client(), binary() | list(), delete_storage_lens_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_storage_lens_group(Client, Name, Input) ->
     delete_storage_lens_group(Client, Name, Input, []).
+
+-spec delete_storage_lens_group(aws_client:aws_client(), binary() | list(), delete_storage_lens_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_storage_lens_group(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/storagelensgroup/", aws_util:encode_uri(Name), ""],
@@ -1832,14 +4540,26 @@ delete_storage_lens_group(Client, Name, Input0, Options0) ->
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
+-spec describe_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_job_result(), tuple()} |
+    {error, any()} |
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, JobId, AccountId)
   when is_map(Client) ->
     describe_job(Client, JobId, AccountId, #{}, #{}).
 
+-spec describe_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_job_result(), tuple()} |
+    {error, any()} |
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, JobId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, []).
 
+-spec describe_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_job_result(), tuple()} |
+    {error, any()} |
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), ""],
@@ -1884,14 +4604,23 @@ describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
+-spec describe_multi_region_access_point_operation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_multi_region_access_point_operation_result(), tuple()} |
+    {error, any()}.
 describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId)
   when is_map(Client) ->
     describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId, #{}, #{}).
 
+-spec describe_multi_region_access_point_operation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_multi_region_access_point_operation_result(), tuple()} |
+    {error, any()}.
 describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId, QueryMap, HeadersMap, []).
 
+-spec describe_multi_region_access_point_operation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_multi_region_access_point_operation_result(), tuple()} |
+    {error, any()}.
 describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/async-requests/mrap/", aws_util:encode_multi_segment_uri(RequestTokenARN), ""],
@@ -1924,8 +4653,15 @@ describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId,
 %%
 %% You must have the `sso:DeleteApplication' permission to use this
 %% operation.
+-spec dissociate_access_grants_identity_center(aws_client:aws_client(), dissociate_access_grants_identity_center_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 dissociate_access_grants_identity_center(Client, Input) ->
     dissociate_access_grants_identity_center(Client, Input, []).
+
+-spec dissociate_access_grants_identity_center(aws_client:aws_client(), dissociate_access_grants_identity_center_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 dissociate_access_grants_identity_center(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/accessgrantsinstance/identitycenter"],
@@ -1957,14 +4693,23 @@ dissociate_access_grants_identity_center(Client, Input0, Options0) ->
 %%
 %% You must have the `s3:GetAccessGrant' permission to use this
 %% operation.
+-spec get_access_grant(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_grant_result(), tuple()} |
+    {error, any()}.
 get_access_grant(Client, AccessGrantId, AccountId)
   when is_map(Client) ->
     get_access_grant(Client, AccessGrantId, AccountId, #{}, #{}).
 
+-spec get_access_grant(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_grant_result(), tuple()} |
+    {error, any()}.
 get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_grant(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_grant_result(), tuple()} |
+    {error, any()}.
 get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/grant/", aws_util:encode_uri(AccessGrantId), ""],
@@ -1991,14 +4736,23 @@ get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, Options
 %%
 %% You must have the `s3:GetAccessGrantsInstance' permission to use this
 %% operation.
+-spec get_access_grants_instance(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_access_grants_instance_result(), tuple()} |
+    {error, any()}.
 get_access_grants_instance(Client, AccountId)
   when is_map(Client) ->
     get_access_grants_instance(Client, AccountId, #{}, #{}).
 
+-spec get_access_grants_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_access_grants_instance_result(), tuple()} |
+    {error, any()}.
 get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_grants_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_grants_instance_result(), tuple()} |
+    {error, any()}.
 get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance"],
@@ -2031,14 +4785,23 @@ get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% The prefix owner account must grant you the following permissions to their
 %% S3 Access Grants instance: `s3:GetAccessGrantsInstanceForPrefix'.
+-spec get_access_grants_instance_for_prefix(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_grants_instance_for_prefix_result(), tuple()} |
+    {error, any()}.
 get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId)
   when is_map(Client) ->
     get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, #{}, #{}).
 
+-spec get_access_grants_instance_for_prefix(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_grants_instance_for_prefix_result(), tuple()} |
+    {error, any()}.
 get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_grants_instance_for_prefix(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_grants_instance_for_prefix_result(), tuple()} |
+    {error, any()}.
 get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/prefix"],
@@ -2069,14 +4832,23 @@ get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, Hea
 %%
 %% You must have the `s3:GetAccessGrantsInstanceResourcePolicy'
 %% permission to use this operation.
+-spec get_access_grants_instance_resource_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_access_grants_instance_resource_policy_result(), tuple()} |
+    {error, any()}.
 get_access_grants_instance_resource_policy(Client, AccountId)
   when is_map(Client) ->
     get_access_grants_instance_resource_policy(Client, AccountId, #{}, #{}).
 
+-spec get_access_grants_instance_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_access_grants_instance_resource_policy_result(), tuple()} |
+    {error, any()}.
 get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_grants_instance_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_grants_instance_resource_policy_result(), tuple()} |
+    {error, any()}.
 get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/resourcepolicy"],
@@ -2104,14 +4876,23 @@ get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersM
 %%
 %% You must have the `s3:GetAccessGrantsLocation' permission to use this
 %% operation.
+-spec get_access_grants_location(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_grants_location_result(), tuple()} |
+    {error, any()}.
 get_access_grants_location(Client, AccessGrantsLocationId, AccountId)
   when is_map(Client) ->
     get_access_grants_location(Client, AccessGrantsLocationId, AccountId, #{}, #{}).
 
+-spec get_access_grants_location(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_grants_location_result(), tuple()} |
+    {error, any()}.
 get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_grants_location(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_grants_location_result(), tuple()} |
+    {error, any()}.
 get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/location/", aws_util:encode_uri(AccessGrantsLocationId), ""],
@@ -2157,14 +4938,23 @@ get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, 
 %%
 %% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
+-spec get_access_point(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_point_result(), tuple()} |
+    {error, any()}.
 get_access_point(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point(Client, Name, AccountId, #{}, #{}).
 
+-spec get_access_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_point_result(), tuple()} |
+    {error, any()}.
 get_access_point(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_point_result(), tuple()} |
+    {error, any()}.
 get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
@@ -2195,14 +4985,23 @@ get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% PutAccessPointConfigurationForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointConfigurationForObjectLambda.html
+-spec get_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_point_configuration_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_configuration_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_configuration_for_object_lambda(Client, Name, AccountId, #{}, #{}).
 
+-spec get_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_point_configuration_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_point_configuration_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/configuration"],
@@ -2239,14 +5038,23 @@ get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryM
 %%
 %% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
+-spec get_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_point_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_for_object_lambda(Client, Name, AccountId, #{}, #{}).
 
+-spec get_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_point_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_point_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), ""],
@@ -2280,14 +5088,23 @@ get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap
 %%
 %% DeleteAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html
+-spec get_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_point_policy_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy(Client, Name, AccountId, #{}, #{}).
 
+-spec get_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_point_policy_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_point_policy_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
@@ -2321,14 +5138,23 @@ get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% PutAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicyForObjectLambda.html
+-spec get_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_point_policy_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy_for_object_lambda(Client, Name, AccountId, #{}, #{}).
 
+-spec get_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_point_policy_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_point_policy_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policy"],
@@ -2359,14 +5185,23 @@ get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, Hea
 %% access points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html
 %% in the Amazon S3 User Guide.
+-spec get_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_point_policy_status_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy_status(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy_status(Client, Name, AccountId, #{}, #{}).
 
+-spec get_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_point_policy_status_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_point_policy_status_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policyStatus"],
@@ -2392,14 +5227,23 @@ get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Op
 %%
 %% Returns the status of the resource policy associated with an Object Lambda
 %% Access Point.
+-spec get_access_point_policy_status_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_point_policy_status_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy_status_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, #{}, #{}).
 
+-spec get_access_point_policy_status_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_point_policy_status_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_access_point_policy_status_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_point_policy_status_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policyStatus"],
@@ -2466,14 +5310,23 @@ get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryM
 %%
 %% DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucket.html
+-spec get_bucket(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bucket_result(), tuple()} |
+    {error, any()}.
 get_bucket(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket(Client, Bucket, AccountId, #{}, #{}).
 
+-spec get_bucket(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_result(), tuple()} |
+    {error, any()}.
 get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_bucket(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_result(), tuple()} |
+    {error, any()}.
 get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
@@ -2553,14 +5406,23 @@ get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketLifecycleConfiguration.html
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bucket_lifecycle_configuration_result(), tuple()} |
+    {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_lifecycle_configuration(Client, Bucket, AccountId, #{}, #{}).
 
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_lifecycle_configuration_result(), tuple()} |
+    {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_lifecycle_configuration_result(), tuple()} |
+    {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
@@ -2643,14 +5505,23 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersM
 %%
 %% DeleteBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketPolicy.html
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bucket_policy_result(), tuple()} |
+    {error, any()}.
 get_bucket_policy(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_policy(Client, Bucket, AccountId, #{}, #{}).
 
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_policy_result(), tuple()} |
+    {error, any()}.
 get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_policy_result(), tuple()} |
+    {error, any()}.
 get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
@@ -2740,14 +5611,23 @@ get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketReplication.html
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bucket_replication_result(), tuple()} |
+    {error, any()}.
 get_bucket_replication(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_replication(Client, Bucket, AccountId, #{}, #{}).
 
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_replication_result(), tuple()} |
+    {error, any()}.
 get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_replication_result(), tuple()} |
+    {error, any()}.
 get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/replication"],
@@ -2811,14 +5691,23 @@ get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0
 %%
 %% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketTagging.html
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bucket_tagging_result(), tuple()} |
+    {error, any()}.
 get_bucket_tagging(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_tagging(Client, Bucket, AccountId, #{}, #{}).
 
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_tagging_result(), tuple()} |
+    {error, any()}.
 get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_tagging_result(), tuple()} |
+    {error, any()}.
 get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
@@ -2888,14 +5777,23 @@ get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bucket_versioning_result(), tuple()} |
+    {error, any()}.
 get_bucket_versioning(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_versioning(Client, Bucket, AccountId, #{}, #{}).
 
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_versioning_result(), tuple()} |
+    {error, any()}.
 get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_versioning_result(), tuple()} |
+    {error, any()}.
 get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/versioning"],
@@ -2934,14 +5832,23 @@ get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %% permissions specified in the trust policy when registering the location:
 %% `sts:AssumeRole', for directory users or groups `sts:SetContext',
 %% and for IAM users or roles `sts:SourceIdentity'.
+-spec get_data_access(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_data_access_result(), tuple()} |
+    {error, any()}.
 get_data_access(Client, Permission, Target, AccountId)
   when is_map(Client) ->
     get_data_access(Client, Permission, Target, AccountId, #{}, #{}).
 
+-spec get_data_access(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_access_result(), tuple()} |
+    {error, any()}.
 get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_data_access(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_access_result(), tuple()} |
+    {error, any()}.
 get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/dataaccess"],
@@ -2993,14 +5900,26 @@ get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Opt
 %%
 %% DeleteJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html
+-spec get_job_tagging(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_job_tagging_result(), tuple()} |
+    {error, any()} |
+    {error, get_job_tagging_errors(), tuple()}.
 get_job_tagging(Client, JobId, AccountId)
   when is_map(Client) ->
     get_job_tagging(Client, JobId, AccountId, #{}, #{}).
 
+-spec get_job_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_job_tagging_result(), tuple()} |
+    {error, any()} |
+    {error, get_job_tagging_errors(), tuple()}.
 get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_job_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_job_tagging_result(), tuple()} |
+    {error, any()} |
+    {error, get_job_tagging_errors(), tuple()}.
 get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
@@ -3048,14 +5967,23 @@ get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
+-spec get_multi_region_access_point(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_multi_region_access_point_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point(Client, Name, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point(Client, Name, AccountId, #{}, #{}).
 
+-spec get_multi_region_access_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_multi_region_access_point_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_multi_region_access_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_multi_region_access_point_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Name), ""],
@@ -3098,14 +6026,23 @@ get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Opt
 %%
 %% PutMultiRegionAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutMultiRegionAccessPointPolicy.html
+-spec get_multi_region_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_multi_region_access_point_policy_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point_policy(Client, Name, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point_policy(Client, Name, AccountId, #{}, #{}).
 
+-spec get_multi_region_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_multi_region_access_point_policy_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_multi_region_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_multi_region_access_point_policy_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Name), "/policy"],
@@ -3149,14 +6086,23 @@ get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersM
 %%
 %% PutMultiRegionAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutMultiRegionAccessPointPolicy.html
+-spec get_multi_region_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_multi_region_access_point_policy_status_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point_policy_status(Client, Name, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point_policy_status(Client, Name, AccountId, #{}, #{}).
 
+-spec get_multi_region_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_multi_region_access_point_policy_status_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_multi_region_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_multi_region_access_point_policy_status_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Name), "/policystatus"],
@@ -3199,14 +6145,23 @@ get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, H
 %% `eu-west-1'
 %%
 %% Your Amazon S3 bucket does not need to be in these five Regions.
+-spec get_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_multi_region_access_point_routes_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point_routes(Client, Mrap, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point_routes(Client, Mrap, AccountId, #{}, #{}).
 
+-spec get_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_multi_region_access_point_routes_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_multi_region_access_point_routes_result(), tuple()} |
+    {error, any()}.
 get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Mrap), "/routes"],
@@ -3243,14 +6198,26 @@ get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersM
 %%
 %% PutPublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html
+-spec get_public_access_block(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_public_access_block_output(), tuple()} |
+    {error, any()} |
+    {error, get_public_access_block_errors(), tuple()}.
 get_public_access_block(Client, AccountId)
   when is_map(Client) ->
     get_public_access_block(Client, AccountId, #{}, #{}).
 
+-spec get_public_access_block(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_public_access_block_output(), tuple()} |
+    {error, any()} |
+    {error, get_public_access_block_errors(), tuple()}.
 get_public_access_block(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_access_block(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_public_access_block(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_public_access_block_output(), tuple()} |
+    {error, any()} |
+    {error, get_public_access_block_errors(), tuple()}.
 get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/configuration/publicAccessBlock"],
@@ -3289,14 +6256,23 @@ get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the
 %% Amazon S3 User Guide.
+-spec get_storage_lens_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_storage_lens_configuration_result(), tuple()} |
+    {error, any()}.
 get_storage_lens_configuration(Client, ConfigId, AccountId)
   when is_map(Client) ->
     get_storage_lens_configuration(Client, ConfigId, AccountId, #{}, #{}).
 
+-spec get_storage_lens_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_storage_lens_configuration_result(), tuple()} |
+    {error, any()}.
 get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_storage_lens_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_storage_lens_configuration_result(), tuple()} |
+    {error, any()}.
 get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
@@ -3334,14 +6310,23 @@ get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
+-spec get_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_storage_lens_configuration_tagging_result(), tuple()} |
+    {error, any()}.
 get_storage_lens_configuration_tagging(Client, ConfigId, AccountId)
   when is_map(Client) ->
     get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, #{}, #{}).
 
+-spec get_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_storage_lens_configuration_tagging_result(), tuple()} |
+    {error, any()}.
 get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_storage_lens_configuration_tagging_result(), tuple()} |
+    {error, any()}.
 get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
@@ -3376,14 +6361,23 @@ get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, He
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
+-spec get_storage_lens_group(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_storage_lens_group_result(), tuple()} |
+    {error, any()}.
 get_storage_lens_group(Client, Name, AccountId)
   when is_map(Client) ->
     get_storage_lens_group(Client, Name, AccountId, #{}, #{}).
 
+-spec get_storage_lens_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_storage_lens_group_result(), tuple()} |
+    {error, any()}.
 get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_storage_lens_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_storage_lens_group_result(), tuple()} |
+    {error, any()}.
 get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelensgroup/", aws_util:encode_uri(Name), ""],
@@ -3410,14 +6404,23 @@ get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% You must have the `s3:ListAccessGrants' permission to use this
 %% operation.
+-spec list_access_grants(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_access_grants_result(), tuple()} |
+    {error, any()}.
 list_access_grants(Client, AccountId)
   when is_map(Client) ->
     list_access_grants(Client, AccountId, #{}, #{}).
 
+-spec list_access_grants(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_access_grants_result(), tuple()} |
+    {error, any()}.
 list_access_grants(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_grants(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_access_grants(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_access_grants_result(), tuple()} |
+    {error, any()}.
 list_access_grants(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/grants"],
@@ -3458,14 +6461,23 @@ list_access_grants(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% You must have the `s3:ListAccessGrantsInstances' permission to use
 %% this operation.
+-spec list_access_grants_instances(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_access_grants_instances_result(), tuple()} |
+    {error, any()}.
 list_access_grants_instances(Client, AccountId)
   when is_map(Client) ->
     list_access_grants_instances(Client, AccountId, #{}, #{}).
 
+-spec list_access_grants_instances(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_access_grants_instances_result(), tuple()} |
+    {error, any()}.
 list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_access_grants_instances(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_access_grants_instances_result(), tuple()} |
+    {error, any()}.
 list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstances"],
@@ -3498,14 +6510,23 @@ list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% You must have the `s3:ListAccessGrantsLocations' permission to use
 %% this operation.
+-spec list_access_grants_locations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_access_grants_locations_result(), tuple()} |
+    {error, any()}.
 list_access_grants_locations(Client, AccountId)
   when is_map(Client) ->
     list_access_grants_locations(Client, AccountId, #{}, #{}).
 
+-spec list_access_grants_locations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_access_grants_locations_result(), tuple()} |
+    {error, any()}.
 list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_access_grants_locations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_access_grants_locations_result(), tuple()} |
+    {error, any()}.
 list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accessgrantsinstance/locations"],
@@ -3567,14 +6588,23 @@ list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% GetAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html
+-spec list_access_points(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_access_points_result(), tuple()} |
+    {error, any()}.
 list_access_points(Client, AccountId)
   when is_map(Client) ->
     list_access_points(Client, AccountId, #{}, #{}).
 
+-spec list_access_points(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_access_points_result(), tuple()} |
+    {error, any()}.
 list_access_points(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_points(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_access_points(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_access_points_result(), tuple()} |
+    {error, any()}.
 list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspoint"],
@@ -3621,14 +6651,23 @@ list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% GetAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointForObjectLambda.html
+-spec list_access_points_for_object_lambda(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_access_points_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 list_access_points_for_object_lambda(Client, AccountId)
   when is_map(Client) ->
     list_access_points_for_object_lambda(Client, AccountId, #{}, #{}).
 
+-spec list_access_points_for_object_lambda(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_access_points_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_access_points_for_object_lambda(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_access_points_for_object_lambda_result(), tuple()} |
+    {error, any()}.
 list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda"],
@@ -3682,14 +6721,26 @@ list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Op
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
+-spec list_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_jobs_result(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, AccountId)
   when is_map(Client) ->
     list_jobs(Client, AccountId, #{}, #{}).
 
+-spec list_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_jobs_result(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_jobs_result(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/jobs"],
@@ -3746,14 +6797,23 @@ list_jobs(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% GetMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPoint.html
+-spec list_multi_region_access_points(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_multi_region_access_points_result(), tuple()} |
+    {error, any()}.
 list_multi_region_access_points(Client, AccountId)
   when is_map(Client) ->
     list_multi_region_access_points(Client, AccountId, #{}, #{}).
 
+-spec list_multi_region_access_points(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_multi_region_access_points_result(), tuple()} |
+    {error, any()}.
 list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_multi_region_access_points(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_multi_region_access_points_result(), tuple()} |
+    {error, any()}.
 list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/mrap/instances"],
@@ -3796,14 +6856,23 @@ list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap, Options
 %% the Examples:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListRegionalBuckets.html#API_control_ListRegionalBuckets_Examples
 %% section.
+-spec list_regional_buckets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_regional_buckets_result(), tuple()} |
+    {error, any()}.
 list_regional_buckets(Client, AccountId)
   when is_map(Client) ->
     list_regional_buckets(Client, AccountId, #{}, #{}).
 
+-spec list_regional_buckets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_regional_buckets_result(), tuple()} |
+    {error, any()}.
 list_regional_buckets(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_regional_buckets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_regional_buckets_result(), tuple()} |
+    {error, any()}.
 list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket"],
@@ -3846,14 +6915,23 @@ list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
+-spec list_storage_lens_configurations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_storage_lens_configurations_result(), tuple()} |
+    {error, any()}.
 list_storage_lens_configurations(Client, AccountId)
   when is_map(Client) ->
     list_storage_lens_configurations(Client, AccountId, #{}, #{}).
 
+-spec list_storage_lens_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_storage_lens_configurations_result(), tuple()} |
+    {error, any()}.
 list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_storage_lens_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_storage_lens_configurations_result(), tuple()} |
+    {error, any()}.
 list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelens"],
@@ -3892,14 +6970,23 @@ list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Option
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
+-spec list_storage_lens_groups(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_storage_lens_groups_result(), tuple()} |
+    {error, any()}.
 list_storage_lens_groups(Client, AccountId)
   when is_map(Client) ->
     list_storage_lens_groups(Client, AccountId, #{}, #{}).
 
+-spec list_storage_lens_groups(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_storage_lens_groups_result(), tuple()} |
+    {error, any()}.
 list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_storage_lens_groups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_storage_lens_groups_result(), tuple()} |
+    {error, any()}.
 list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/storagelensgroup"],
@@ -3950,14 +7037,23 @@ list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% For information about S3 Tagging errors, see List of Amazon S3 Tagging
 %% error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()}.
 list_tags_for_resource(Client, ResourceArn, AccountId)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, AccountId, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()}.
 list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()}.
 list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
@@ -3984,8 +7080,15 @@ list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, Opt
 %%
 %% You must have the `s3:PutAccessGrantsInstanceResourcePolicy'
 %% permission to use this operation.
+-spec put_access_grants_instance_resource_policy(aws_client:aws_client(), put_access_grants_instance_resource_policy_request()) ->
+    {ok, put_access_grants_instance_resource_policy_result(), tuple()} |
+    {error, any()}.
 put_access_grants_instance_resource_policy(Client, Input) ->
     put_access_grants_instance_resource_policy(Client, Input, []).
+
+-spec put_access_grants_instance_resource_policy(aws_client:aws_client(), put_access_grants_instance_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_access_grants_instance_resource_policy_result(), tuple()} |
+    {error, any()}.
 put_access_grants_instance_resource_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accessgrantsinstance/resourcepolicy"],
@@ -4020,8 +7123,15 @@ put_access_grants_instance_resource_policy(Client, Input0, Options0) ->
 %%
 %% GetAccessPointConfigurationForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointConfigurationForObjectLambda.html
+-spec put_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), put_access_point_configuration_for_object_lambda_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_access_point_configuration_for_object_lambda(Client, Name, Input) ->
     put_access_point_configuration_for_object_lambda(Client, Name, Input, []).
+
+-spec put_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), put_access_point_configuration_for_object_lambda_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/configuration"],
@@ -4072,8 +7182,15 @@ put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0)
 %%
 %% DeleteAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html
+-spec put_access_point_policy(aws_client:aws_client(), binary() | list(), put_access_point_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_access_point_policy(Client, Name, Input) ->
     put_access_point_policy(Client, Name, Input, []).
+
+-spec put_access_point_policy(aws_client:aws_client(), binary() | list(), put_access_point_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_access_point_policy(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
@@ -4114,8 +7231,15 @@ put_access_point_policy(Client, Name, Input0, Options0) ->
 %%
 %% GetAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicyForObjectLambda.html
+-spec put_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), put_access_point_policy_for_object_lambda_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_access_point_policy_for_object_lambda(Client, Name, Input) ->
     put_access_point_policy_for_object_lambda(Client, Name, Input, []).
+
+-spec put_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), put_access_point_policy_for_object_lambda_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policy"],
@@ -4176,8 +7300,15 @@ put_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 %%
 %% DeleteBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketLifecycleConfiguration.html
+-spec put_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_bucket_lifecycle_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     put_bucket_lifecycle_configuration(Client, Bucket, Input, []).
+
+-spec put_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_bucket_lifecycle_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
@@ -4262,8 +7393,15 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketPolicy.html
+-spec put_bucket_policy(aws_client:aws_client(), binary() | list(), put_bucket_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_policy(Client, Bucket, Input) ->
     put_bucket_policy(Client, Bucket, Input, []).
+
+-spec put_bucket_policy(aws_client:aws_client(), binary() | list(), put_bucket_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
@@ -4407,8 +7545,15 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketReplication.html
+-spec put_bucket_replication(aws_client:aws_client(), binary() | list(), put_bucket_replication_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_replication(Client, Bucket, Input) ->
     put_bucket_replication(Client, Bucket, Input, []).
+
+-spec put_bucket_replication(aws_client:aws_client(), binary() | list(), put_bucket_replication_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_replication(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/replication"],
@@ -4524,8 +7669,15 @@ put_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketTagging.html
+-spec put_bucket_tagging(aws_client:aws_client(), binary() | list(), put_bucket_tagging_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_tagging(Client, Bucket, Input) ->
     put_bucket_tagging(Client, Bucket, Input, []).
+
+-spec put_bucket_tagging(aws_client:aws_client(), binary() | list(), put_bucket_tagging_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
@@ -4630,8 +7782,15 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
+-spec put_bucket_versioning(aws_client:aws_client(), binary() | list(), put_bucket_versioning_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_versioning(Client, Bucket, Input) ->
     put_bucket_versioning(Client, Bucket, Input, []).
+
+-spec put_bucket_versioning(aws_client:aws_client(), binary() | list(), put_bucket_versioning_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_versioning(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/versioning"],
@@ -4720,8 +7879,17 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html
+-spec put_job_tagging(aws_client:aws_client(), binary() | list(), put_job_tagging_request()) ->
+    {ok, put_job_tagging_result(), tuple()} |
+    {error, any()} |
+    {error, put_job_tagging_errors(), tuple()}.
 put_job_tagging(Client, JobId, Input) ->
     put_job_tagging(Client, JobId, Input, []).
+
+-spec put_job_tagging(aws_client:aws_client(), binary() | list(), put_job_tagging_request(), proplists:proplist()) ->
+    {ok, put_job_tagging_result(), tuple()} |
+    {error, any()} |
+    {error, put_job_tagging_errors(), tuple()}.
 put_job_tagging(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
@@ -4771,8 +7939,15 @@ put_job_tagging(Client, JobId, Input0, Options0) ->
 %%
 %% GetMultiRegionAccessPointPolicyStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPointPolicyStatus.html
+-spec put_multi_region_access_point_policy(aws_client:aws_client(), put_multi_region_access_point_policy_request()) ->
+    {ok, put_multi_region_access_point_policy_result(), tuple()} |
+    {error, any()}.
 put_multi_region_access_point_policy(Client, Input) ->
     put_multi_region_access_point_policy(Client, Input, []).
+
+-spec put_multi_region_access_point_policy(aws_client:aws_client(), put_multi_region_access_point_policy_request(), proplists:proplist()) ->
+    {ok, put_multi_region_access_point_policy_result(), tuple()} |
+    {error, any()}.
 put_multi_region_access_point_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/async-requests/mrap/put-policy"],
@@ -4813,8 +7988,15 @@ put_multi_region_access_point_policy(Client, Input0, Options0) ->
 %%
 %% DeletePublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeletePublicAccessBlock.html
+-spec put_public_access_block(aws_client:aws_client(), put_public_access_block_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_public_access_block(Client, Input) ->
     put_public_access_block(Client, Input, []).
+
+-spec put_public_access_block(aws_client:aws_client(), put_public_access_block_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_public_access_block(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/configuration/publicAccessBlock"],
@@ -4857,8 +8039,15 @@ put_public_access_block(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the
 %% Amazon S3 User Guide.
+-spec put_storage_lens_configuration(aws_client:aws_client(), binary() | list(), put_storage_lens_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_storage_lens_configuration(Client, ConfigId, Input) ->
     put_storage_lens_configuration(Client, ConfigId, Input, []).
+
+-spec put_storage_lens_configuration(aws_client:aws_client(), binary() | list(), put_storage_lens_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
@@ -4900,8 +8089,15 @@ put_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
+-spec put_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), put_storage_lens_configuration_tagging_request()) ->
+    {ok, put_storage_lens_configuration_tagging_result(), tuple()} |
+    {error, any()}.
 put_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
     put_storage_lens_configuration_tagging(Client, ConfigId, Input, []).
+
+-spec put_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), put_storage_lens_configuration_tagging_request(), proplists:proplist()) ->
+    {ok, put_storage_lens_configuration_tagging_result(), tuple()} |
+    {error, any()}.
 put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
@@ -4968,8 +8164,15 @@ put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
 %% `eu-west-1'
 %%
 %% Your Amazon S3 bucket does not need to be in these five Regions.
+-spec submit_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), submit_multi_region_access_point_routes_request()) ->
+    {ok, submit_multi_region_access_point_routes_result(), tuple()} |
+    {error, any()}.
 submit_multi_region_access_point_routes(Client, Mrap, Input) ->
     submit_multi_region_access_point_routes(Client, Mrap, Input, []).
+
+-spec submit_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), submit_multi_region_access_point_routes_request(), proplists:proplist()) ->
+    {ok, submit_multi_region_access_point_routes_result(), tuple()} |
+    {error, any()}.
 submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
     Method = patch,
     Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Mrap), "/routes"],
@@ -5020,8 +8223,15 @@ submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
 %% For information about S3 Tagging errors, see List of Amazon S3 Tagging
 %% error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_result(), tuple()} |
+    {error, any()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_result(), tuple()} |
+    {error, any()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
@@ -5071,8 +8281,15 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% For information about S3 Tagging errors, see List of Amazon S3
 %% Tagging error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_result(), tuple()} |
+    {error, any()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_result(), tuple()} |
+    {error, any()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
@@ -5109,8 +8326,15 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Additional Permissions
 %%
 %% You must also have the following permission: `iam:PassRole'
+-spec update_access_grants_location(aws_client:aws_client(), binary() | list(), update_access_grants_location_request()) ->
+    {ok, update_access_grants_location_result(), tuple()} |
+    {error, any()}.
 update_access_grants_location(Client, AccessGrantsLocationId, Input) ->
     update_access_grants_location(Client, AccessGrantsLocationId, Input, []).
+
+-spec update_access_grants_location(aws_client:aws_client(), binary() | list(), update_access_grants_location_request(), proplists:proplist()) ->
+    {ok, update_access_grants_location_result(), tuple()} |
+    {error, any()}.
 update_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/accessgrantsinstance/location/", aws_util:encode_uri(AccessGrantsLocationId), ""],
@@ -5160,8 +8384,17 @@ update_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
+-spec update_job_priority(aws_client:aws_client(), binary() | list(), update_job_priority_request()) ->
+    {ok, update_job_priority_result(), tuple()} |
+    {error, any()} |
+    {error, update_job_priority_errors(), tuple()}.
 update_job_priority(Client, JobId, Input) ->
     update_job_priority(Client, JobId, Input, []).
+
+-spec update_job_priority(aws_client:aws_client(), binary() | list(), update_job_priority_request(), proplists:proplist()) ->
+    {ok, update_job_priority_result(), tuple()} |
+    {error, any()} |
+    {error, update_job_priority_errors(), tuple()}.
 update_job_priority(Client, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/priority"],
@@ -5214,8 +8447,17 @@ update_job_priority(Client, JobId, Input0, Options0) ->
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
+-spec update_job_status(aws_client:aws_client(), binary() | list(), update_job_status_request()) ->
+    {ok, update_job_status_result(), tuple()} |
+    {error, any()} |
+    {error, update_job_status_errors(), tuple()}.
 update_job_status(Client, JobId, Input) ->
     update_job_status(Client, JobId, Input, []).
+
+-spec update_job_status(aws_client:aws_client(), binary() | list(), update_job_status_request(), proplists:proplist()) ->
+    {ok, update_job_status_result(), tuple()} |
+    {error, any()} |
+    {error, update_job_status_errors(), tuple()}.
 update_job_status(Client, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/status"],
@@ -5256,8 +8498,15 @@ update_job_status(Client, JobId, Input0, Options0) ->
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
+-spec update_storage_lens_group(aws_client:aws_client(), binary() | list(), update_storage_lens_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 update_storage_lens_group(Client, Name, Input) ->
     update_storage_lens_group(Client, Name, Input, []).
+
+-spec update_storage_lens_group(aws_client:aws_client(), binary() | list(), update_storage_lens_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 update_storage_lens_group(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/storagelensgroup/", aws_util:encode_uri(Name), ""],
@@ -5286,7 +8535,7 @@ update_storage_lens_group(Client, Name, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

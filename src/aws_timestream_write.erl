@@ -70,6 +70,725 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% partition_key() :: #{
+%%   <<"EnforcementInRecord">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type partition_key() :: #{binary() => any()}.
+
+%% Example:
+%% create_batch_load_task_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DataModelConfiguration">> => data_model_configuration(),
+%%   <<"DataSourceConfiguration">> := data_source_configuration(),
+%%   <<"RecordVersion">> => float(),
+%%   <<"ReportConfiguration">> := report_configuration(),
+%%   <<"TargetDatabaseName">> := string(),
+%%   <<"TargetTableName">> := string()
+%% }
+-type create_batch_load_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% magnetic_store_rejected_data_location() :: #{
+%%   <<"S3Configuration">> => s3_configuration()
+%% }
+-type magnetic_store_rejected_data_location() :: #{binary() => any()}.
+
+%% Example:
+%% record() :: #{
+%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"MeasureName">> => string(),
+%%   <<"MeasureValue">> => string(),
+%%   <<"MeasureValueType">> => list(any()),
+%%   <<"MeasureValues">> => list(measure_value()()),
+%%   <<"Time">> => string(),
+%%   <<"TimeUnit">> => list(any()),
+%%   <<"Version">> => float()
+%% }
+-type record() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% database() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"TableCount">> => float()
+%% }
+-type database() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"MagneticStoreWriteProperties">> => magnetic_store_write_properties(),
+%%   <<"RetentionProperties">> => retention_properties(),
+%%   <<"Schema">> => schema(),
+%%   <<"TableName">> := string()
+%% }
+-type update_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% magnetic_store_write_properties() :: #{
+%%   <<"EnableMagneticStoreWrites">> => boolean(),
+%%   <<"MagneticStoreRejectedDataLocation">> => magnetic_store_rejected_data_location()
+%% }
+-type magnetic_store_write_properties() :: #{binary() => any()}.
+
+%% Example:
+%% data_source_configuration() :: #{
+%%   <<"CsvConfiguration">> => csv_configuration(),
+%%   <<"DataFormat">> => list(any()),
+%%   <<"DataSourceS3Configuration">> => data_source_s3_configuration()
+%% }
+-type data_source_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% measure_value() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type measure_value() :: #{binary() => any()}.
+
+%% Example:
+%% records_ingested() :: #{
+%%   <<"MagneticStore">> => integer(),
+%%   <<"MemoryStore">> => integer(),
+%%   <<"Total">> => integer()
+%% }
+-type records_ingested() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type delete_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_database_response() :: #{
+%%   <<"Database">> => database()
+%% }
+-type describe_database_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_load_task_description() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataModelConfiguration">> => data_model_configuration(),
+%%   <<"DataSourceConfiguration">> => data_source_configuration(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"ProgressReport">> => batch_load_progress_report(),
+%%   <<"RecordVersion">> => float(),
+%%   <<"ReportConfiguration">> => report_configuration(),
+%%   <<"ResumableUntil">> => non_neg_integer(),
+%%   <<"TargetDatabaseName">> => string(),
+%%   <<"TargetTableName">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskStatus">> => list(any())
+%% }
+-type batch_load_task_description() :: #{binary() => any()}.
+
+%% Example:
+%% multi_measure_attribute_mapping() :: #{
+%%   <<"MeasureValueType">> => list(any()),
+%%   <<"SourceColumn">> => string(),
+%%   <<"TargetMultiMeasureAttributeName">> => string()
+%% }
+-type multi_measure_attribute_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% csv_configuration() :: #{
+%%   <<"ColumnSeparator">> => string(),
+%%   <<"EscapeChar">> => string(),
+%%   <<"NullValue">> => string(),
+%%   <<"QuoteChar">> => string(),
+%%   <<"TrimWhiteSpace">> => boolean()
+%% }
+-type csv_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% report_s3_configuration() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"EncryptionOption">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ObjectKeyPrefix">> => string()
+%% }
+-type report_s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_endpoint_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_endpoint_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_database_request() :: #{
+%%   <<"DatabaseName">> := string()
+%% }
+-type describe_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoints_response() :: #{
+%%   <<"Endpoints">> => list(endpoint()())
+%% }
+-type describe_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_table_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"MagneticStoreWriteProperties">> => magnetic_store_write_properties(),
+%%   <<"RetentionProperties">> => retention_properties(),
+%%   <<"Schema">> => schema(),
+%%   <<"TableName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_response() :: #{
+%%   <<"Table">> => table()
+%% }
+-type describe_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_load_task_response() :: #{
+%%   <<"BatchLoadTaskDescription">> => batch_load_task_description()
+%% }
+-type describe_batch_load_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_load_task() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"ResumableUntil">> => non_neg_integer(),
+%%   <<"TableName">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskStatus">> => list(any())
+%% }
+-type batch_load_task() :: #{binary() => any()}.
+
+%% Example:
+%% data_model_configuration() :: #{
+%%   <<"DataModel">> => data_model(),
+%%   <<"DataModelS3Configuration">> => data_model_s3_configuration()
+%% }
+-type data_model_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoints_request() :: #{
+
+%% }
+-type describe_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_databases_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_databases_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tables">> => list(table()())
+%% }
+-type list_tables_response() :: #{binary() => any()}.
+
+%% Example:
+%% resume_batch_load_task_response() :: #{
+
+%% }
+-type resume_batch_load_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_load_task_request() :: #{
+%%   <<"TaskId">> := string()
+%% }
+-type describe_batch_load_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_table_response() :: #{
+%%   <<"Table">> => table()
+%% }
+-type create_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resume_batch_load_task_request() :: #{
+%%   <<"TaskId">> := string()
+%% }
+-type resume_batch_load_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% report_configuration() :: #{
+%%   <<"ReportS3Configuration">> => report_s3_configuration()
+%% }
+-type report_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% schema() :: #{
+%%   <<"CompositePartitionKey">> => list(partition_key()())
+%% }
+-type schema() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_batch_load_task_response() :: #{
+%%   <<"TaskId">> => string()
+%% }
+-type create_batch_load_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type describe_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_load_tasks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TaskStatus">> => list(any())
+%% }
+-type list_batch_load_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"CachePeriodInMinutes">> => float()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_load_tasks_response() :: #{
+%%   <<"BatchLoadTasks">> => list(batch_load_task()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_batch_load_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% write_records_request() :: #{
+%%   <<"CommonAttributes">> => record(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Records">> := list(record()()),
+%%   <<"TableName">> := string()
+%% }
+-type write_records_request() :: #{binary() => any()}.
+
+%% Example:
+%% multi_measure_mappings() :: #{
+%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()()),
+%%   <<"TargetMultiMeasureName">> => string()
+%% }
+-type multi_measure_mappings() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% data_source_s3_configuration() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"ObjectKeyPrefix">> => string()
+%% }
+-type data_source_s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% retention_properties() :: #{
+%%   <<"MagneticStoreRetentionPeriodInDays">> => float(),
+%%   <<"MemoryStoreRetentionPeriodInHours">> => float()
+%% }
+-type retention_properties() :: #{binary() => any()}.
+
+%% Example:
+%% data_model_s3_configuration() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"ObjectKey">> => string()
+%% }
+-type data_model_s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_configuration() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"EncryptionOption">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ObjectKeyPrefix">> => string()
+%% }
+-type s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% data_model() :: #{
+%%   <<"DimensionMappings">> => list(dimension_mapping()()),
+%%   <<"MeasureNameColumn">> => string(),
+%%   <<"MixedMeasureMappings">> => list(mixed_measure_mapping()()),
+%%   <<"MultiMeasureMappings">> => multi_measure_mappings(),
+%%   <<"TimeColumn">> => string(),
+%%   <<"TimeUnit">> => list(any())
+%% }
+-type data_model() :: #{binary() => any()}.
+
+%% Example:
+%% mixed_measure_mapping() :: #{
+%%   <<"MeasureName">> => string(),
+%%   <<"MeasureValueType">> => list(any()),
+%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()()),
+%%   <<"SourceColumn">> => string(),
+%%   <<"TargetMeasureName">> => string()
+%% }
+-type mixed_measure_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% update_database_response() :: #{
+%%   <<"Database">> => database()
+%% }
+-type update_database_response() :: #{binary() => any()}.
+
+%% Example:
+%% dimension() :: #{
+%%   <<"DimensionValueType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type dimension() :: #{binary() => any()}.
+
+%% Example:
+%% write_records_response() :: #{
+%%   <<"RecordsIngested">> => records_ingested()
+%% }
+-type write_records_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_response() :: #{
+%%   <<"Table">> => table()
+%% }
+-type update_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% table() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"MagneticStoreWriteProperties">> => magnetic_store_write_properties(),
+%%   <<"RetentionProperties">> => retention_properties(),
+%%   <<"Schema">> => schema(),
+%%   <<"TableName">> => string(),
+%%   <<"TableStatus">> => list(any())
+%% }
+-type table() :: #{binary() => any()}.
+
+%% Example:
+%% dimension_mapping() :: #{
+%%   <<"DestinationColumn">> => string(),
+%%   <<"SourceColumn">> => string()
+%% }
+-type dimension_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% rejected_records_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RejectedRecords">> => list(rejected_record()())
+%% }
+-type rejected_records_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_databases_response() :: #{
+%%   <<"Databases">> => list(database()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_databases_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_database_response() :: #{
+%%   <<"Database">> => database()
+%% }
+-type create_database_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_database_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_database_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"KmsKeyId">> := string()
+%% }
+-type update_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_load_progress_report() :: #{
+%%   <<"BytesMetered">> => float(),
+%%   <<"FileFailures">> => float(),
+%%   <<"ParseFailures">> => float(),
+%%   <<"RecordIngestionFailures">> => float(),
+%%   <<"RecordsIngested">> => float(),
+%%   <<"RecordsProcessed">> => float()
+%% }
+-type batch_load_progress_report() :: #{binary() => any()}.
+
+%% Example:
+%% rejected_record() :: #{
+%%   <<"ExistingVersion">> => float(),
+%%   <<"Reason">> => string(),
+%%   <<"RecordIndex">> => integer()
+%% }
+-type rejected_record() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_request() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_tables_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_database_request() :: #{
+%%   <<"DatabaseName">> := string()
+%% }
+-type delete_database_request() :: #{binary() => any()}.
+
+-type create_batch_load_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_endpoint_exception().
+
+-type create_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    invalid_endpoint_exception().
+
+-type create_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    invalid_endpoint_exception().
+
+-type delete_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type delete_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_batch_load_task_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_endpoints_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type describe_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type list_batch_load_tasks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_endpoint_exception().
+
+-type list_databases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_endpoint_exception().
+
+-type list_tables_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type resume_batch_load_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type update_database_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type update_table_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type write_records_errors() ::
+    rejected_records_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -94,9 +813,18 @@
 %% details, see code
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-batch-load.html.
+-spec create_batch_load_task(aws_client:aws_client(), create_batch_load_task_request()) ->
+    {ok, create_batch_load_task_response(), tuple()} |
+    {error, any()} |
+    {error, create_batch_load_task_errors(), tuple()}.
 create_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_load_task(Client, Input, []).
+
+-spec create_batch_load_task(aws_client:aws_client(), create_batch_load_task_request(), proplists:proplist()) ->
+    {ok, create_batch_load_task_response(), tuple()} |
+    {error, any()} |
+    {error, create_batch_load_task_errors(), tuple()}.
 create_batch_load_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBatchLoadTask">>, Input, Options).
@@ -113,9 +841,18 @@ create_batch_load_task(Client, Input, Options)
 %% For
 %% details, see code sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-db.html.
+-spec create_database(aws_client:aws_client(), create_database_request()) ->
+    {ok, create_database_response(), tuple()} |
+    {error, any()} |
+    {error, create_database_errors(), tuple()}.
 create_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_database(Client, Input, []).
+
+-spec create_database(aws_client:aws_client(), create_database_request(), proplists:proplist()) ->
+    {ok, create_database_response(), tuple()} |
+    {error, any()} |
+    {error, create_database_errors(), tuple()}.
 create_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatabase">>, Input, Options).
@@ -135,9 +872,18 @@ create_database(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-table.html
 %% for details.
+-spec create_table(aws_client:aws_client(), create_table_request()) ->
+    {ok, create_table_response(), tuple()} |
+    {error, any()} |
+    {error, create_table_errors(), tuple()}.
 create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
+
+-spec create_table(aws_client:aws_client(), create_table_request(), proplists:proplist()) ->
+    {ok, create_table_response(), tuple()} |
+    {error, any()} |
+    {error, create_table_errors(), tuple()}.
 create_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTable">>, Input, Options).
@@ -160,9 +906,18 @@ create_table(Client, Input, Options)
 %% See code sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.delete-db.html
 %% for details.
+-spec delete_database(aws_client:aws_client(), delete_database_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_database_errors(), tuple()}.
 delete_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_database(Client, Input, []).
+
+-spec delete_database(aws_client:aws_client(), delete_database_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_database_errors(), tuple()}.
 delete_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDatabase">>, Input, Options).
@@ -182,9 +937,18 @@ delete_database(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.delete-table.html
 %% for details.
+-spec delete_table(aws_client:aws_client(), delete_table_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_table_errors(), tuple()}.
 delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
+
+-spec delete_table(aws_client:aws_client(), delete_table_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_table_errors(), tuple()}.
 delete_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTable">>, Input, Options).
@@ -200,9 +964,18 @@ delete_table(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-batch-load.html
 %% for details.
+-spec describe_batch_load_task(aws_client:aws_client(), describe_batch_load_task_request()) ->
+    {ok, describe_batch_load_task_response(), tuple()} |
+    {error, any()} |
+    {error, describe_batch_load_task_errors(), tuple()}.
 describe_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_load_task(Client, Input, []).
+
+-spec describe_batch_load_task(aws_client:aws_client(), describe_batch_load_task_request(), proplists:proplist()) ->
+    {ok, describe_batch_load_task_response(), tuple()} |
+    {error, any()} |
+    {error, describe_batch_load_task_errors(), tuple()}.
 describe_batch_load_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBatchLoadTask">>, Input, Options).
@@ -218,9 +991,18 @@ describe_batch_load_task(Client, Input, Options)
 %% See code sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-db.html
 %% for details.
+-spec describe_database(aws_client:aws_client(), describe_database_request()) ->
+    {ok, describe_database_response(), tuple()} |
+    {error, any()} |
+    {error, describe_database_errors(), tuple()}.
 describe_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_database(Client, Input, []).
+
+-spec describe_database(aws_client:aws_client(), describe_database_request(), proplists:proplist()) ->
+    {ok, describe_database_response(), tuple()} |
+    {error, any()} |
+    {error, describe_database_errors(), tuple()}.
 describe_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDatabase">>, Input, Options).
@@ -249,9 +1031,18 @@ describe_database(Client, Input, Options)
 %% The
 %% Endpoint Discovery Pattern:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/Using.API.html#Using-API.endpoint-discovery.
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request()) ->
+    {ok, describe_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, describe_endpoints_errors(), tuple()}.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
+
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request(), proplists:proplist()) ->
+    {ok, describe_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, describe_endpoints_errors(), tuple()}.
 describe_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpoints">>, Input, Options).
@@ -267,9 +1058,18 @@ describe_endpoints(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-table.html
 %% for details.
+-spec describe_table(aws_client:aws_client(), describe_table_request()) ->
+    {ok, describe_table_response(), tuple()} |
+    {error, any()} |
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
+
+-spec describe_table(aws_client:aws_client(), describe_table_request(), proplists:proplist()) ->
+    {ok, describe_table_response(), tuple()} |
+    {error, any()} |
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTable">>, Input, Options).
@@ -282,9 +1082,18 @@ describe_table(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-batch-load-tasks.html
 %% for details.
+-spec list_batch_load_tasks(aws_client:aws_client(), list_batch_load_tasks_request()) ->
+    {ok, list_batch_load_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_load_tasks_errors(), tuple()}.
 list_batch_load_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_batch_load_tasks(Client, Input, []).
+
+-spec list_batch_load_tasks(aws_client:aws_client(), list_batch_load_tasks_request(), proplists:proplist()) ->
+    {ok, list_batch_load_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_load_tasks_errors(), tuple()}.
 list_batch_load_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBatchLoadTasks">>, Input, Options).
@@ -298,9 +1107,18 @@ list_batch_load_tasks(Client, Input, Options)
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-db.html
 %% for
 %% details.
+-spec list_databases(aws_client:aws_client(), list_databases_request()) ->
+    {ok, list_databases_response(), tuple()} |
+    {error, any()} |
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_databases(Client, Input, []).
+
+-spec list_databases(aws_client:aws_client(), list_databases_request(), proplists:proplist()) ->
+    {ok, list_databases_response(), tuple()} |
+    {error, any()} |
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatabases">>, Input, Options).
@@ -312,25 +1130,52 @@ list_databases(Client, Input, Options)
 %% See code sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-table.html
 %% for details.
+-spec list_tables(aws_client:aws_client(), list_tables_request()) ->
+    {ok, list_tables_response(), tuple()} |
+    {error, any()} |
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
+
+-spec list_tables(aws_client:aws_client(), list_tables_request(), proplists:proplist()) ->
+    {ok, list_tables_response(), tuple()} |
+    {error, any()} |
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTables">>, Input, Options).
 
 %% @doc Lists all tags on a Timestream resource.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc
+-spec resume_batch_load_task(aws_client:aws_client(), resume_batch_load_task_request()) ->
+    {ok, resume_batch_load_task_response(), tuple()} |
+    {error, any()} |
+    {error, resume_batch_load_task_errors(), tuple()}.
 resume_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_batch_load_task(Client, Input, []).
+
+-spec resume_batch_load_task(aws_client:aws_client(), resume_batch_load_task_request(), proplists:proplist()) ->
+    {ok, resume_batch_load_task_response(), tuple()} |
+    {error, any()} |
+    {error, resume_batch_load_task_errors(), tuple()}.
 resume_batch_load_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeBatchLoadTask">>, Input, Options).
@@ -341,17 +1186,35 @@ resume_batch_load_task(Client, Input, Options)
 %% these user-defined tags so that they appear on the Billing and Cost
 %% Management console for
 %% cost allocation tracking.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes the association of tags from a Timestream resource.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -366,9 +1229,18 @@ untag_resource(Client, Input, Options)
 %% See code sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.update-db.html
 %% for details.
+-spec update_database(aws_client:aws_client(), update_database_request()) ->
+    {ok, update_database_response(), tuple()} |
+    {error, any()} |
+    {error, update_database_errors(), tuple()}.
 update_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_database(Client, Input, []).
+
+-spec update_database(aws_client:aws_client(), update_database_request(), proplists:proplist()) ->
+    {ok, update_database_response(), tuple()} |
+    {error, any()} |
+    {error, update_database_errors(), tuple()}.
 update_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDatabase">>, Input, Options).
@@ -389,9 +1261,18 @@ update_database(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.update-table.html
 %% for details.
+-spec update_table(aws_client:aws_client(), update_table_request()) ->
+    {ok, update_table_response(), tuple()} |
+    {error, any()} |
+    {error, update_table_errors(), tuple()}.
 update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
+
+-spec update_table(aws_client:aws_client(), update_table_request(), proplists:proplist()) ->
+    {ok, update_table_response(), tuple()} |
+    {error, any()} |
+    {error, update_table_errors(), tuple()}.
 update_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTable">>, Input, Options).
@@ -463,9 +1344,18 @@ update_table(Client, Input, Options)
 %% send a version number greater than `3', or the update requests would
 %% receive a
 %% `RejectedRecordsException'.
+-spec write_records(aws_client:aws_client(), write_records_request()) ->
+    {ok, write_records_response(), tuple()} |
+    {error, any()} |
+    {error, write_records_errors(), tuple()}.
 write_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     write_records(Client, Input, []).
+
+-spec write_records(aws_client:aws_client(), write_records_request(), proplists:proplist()) ->
+    {ok, write_records_response(), tuple()} |
+    {error, any()} |
+    {error, write_records_errors(), tuple()}.
 write_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"WriteRecords">>, Input, Options).

@@ -263,6 +263,2147 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% join_domain_output() :: #{
+%%   <<"ActiveDirectoryStatus">> => list(any()),
+%%   <<"GatewayARN">> => string()
+%% }
+-type join_domain_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_stored_iscsi_volume_input() :: #{
+%%   <<"DiskId">> := string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"NetworkInterfaceId">> := string(),
+%%   <<"PreserveExistingData">> := boolean(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetName">> := string()
+%% }
+-type create_stored_iscsi_volume_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_file_system_output() :: #{
+%%   <<"FileSystemAssociationARN">> => string()
+%% }
+-type associate_file_system_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_schedule_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RecurrenceInHours">> := integer(),
+%%   <<"StartAt">> := integer(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VolumeARN">> := string()
+%% }
+-type update_snapshot_schedule_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_archival_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"TapeARN">> := string()
+%% }
+-type cancel_archival_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_information_output() :: #{
+%%   <<"CloudWatchLogGroupARN">> => string(),
+%%   <<"DeprecationDate">> => string(),
+%%   <<"Ec2InstanceId">> => string(),
+%%   <<"Ec2InstanceRegion">> => string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"GatewayARN">> => string(),
+%%   <<"GatewayCapacity">> => list(any()),
+%%   <<"GatewayId">> => string(),
+%%   <<"GatewayName">> => string(),
+%%   <<"GatewayNetworkInterfaces">> => list(network_interface()()),
+%%   <<"GatewayState">> => string(),
+%%   <<"GatewayTimezone">> => string(),
+%%   <<"GatewayType">> => string(),
+%%   <<"HostEnvironment">> => list(any()),
+%%   <<"HostEnvironmentId">> => string(),
+%%   <<"LastSoftwareUpdate">> => string(),
+%%   <<"NextUpdateAvailabilityDate">> => string(),
+%%   <<"SoftwareUpdatesEndDate">> => string(),
+%%   <<"SoftwareVersion">> => string(),
+%%   <<"SupportedGatewayCapacities">> => list(list(any())()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VPCEndpoint">> => string()
+%% }
+-type describe_gateway_information_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_volume_initiators_input() :: #{
+%%   <<"VolumeARN">> := string()
+%% }
+-type list_volume_initiators_input() :: #{binary() => any()}.
+
+%% Example:
+%% notify_when_uploaded_input() :: #{
+%%   <<"FileShareARN">> := string()
+%% }
+-type notify_when_uploaded_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_volume_recovery_points_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type list_volume_recovery_points_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_upload_buffer_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_upload_buffer_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cache_output() :: #{
+%%   <<"CacheAllocatedInBytes">> => float(),
+%%   <<"CacheDirtyPercentage">> => float(),
+%%   <<"CacheHitPercentage">> => float(),
+%%   <<"CacheMissPercentage">> => float(),
+%%   <<"CacheUsedPercentage">> => float(),
+%%   <<"DiskIds">> => list(string()()),
+%%   <<"GatewayARN">> => string()
+%% }
+-type describe_cache_output() :: #{binary() => any()}.
+
+%% Example:
+%% assign_tape_pool_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type assign_tape_pool_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_file_system_associations_output() :: #{
+%%   <<"FileSystemAssociationInfoList">> => list(file_system_association_info()())
+%% }
+-type describe_file_system_associations_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_tape_with_barcode_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"PoolId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TapeBarcode">> := string(),
+%%   <<"TapeSizeInBytes">> := float(),
+%%   <<"Worm">> => boolean()
+%% }
+-type create_tape_with_barcode_input() :: #{binary() => any()}.
+
+%% Example:
+%% tape_info() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"PoolEntryDate">> => non_neg_integer(),
+%%   <<"PoolId">> => string(),
+%%   <<"RetentionStartDate">> => non_neg_integer(),
+%%   <<"TapeARN">> => string(),
+%%   <<"TapeBarcode">> => string(),
+%%   <<"TapeSizeInBytes">> => float(),
+%%   <<"TapeStatus">> => string()
+%% }
+-type tape_info() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_share_input() :: #{
+%%   <<"FileShareARN">> := string(),
+%%   <<"ForceDelete">> => boolean()
+%% }
+-type delete_file_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% join_domain_input() :: #{
+%%   <<"DomainControllers">> => list(string()()),
+%%   <<"DomainName">> := string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"OrganizationalUnit">> => string(),
+%%   <<"Password">> := string(),
+%%   <<"TimeoutInSeconds">> => integer(),
+%%   <<"UserName">> := string()
+%% }
+-type join_domain_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_system_association_input() :: #{
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"FileSystemAssociationARN">> := string(),
+%%   <<"Password">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type update_file_system_association_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bandwidth_rate_limit_input() :: #{
+%%   <<"BandwidthType">> := string(),
+%%   <<"GatewayARN">> := string()
+%% }
+-type delete_bandwidth_rate_limit_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_maintenance_start_time_input() :: #{
+%%   <<"DayOfMonth">> => integer(),
+%%   <<"DayOfWeek">> => integer(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"HourOfDay">> := integer(),
+%%   <<"MinuteOfHour">> := integer()
+%% }
+-type update_maintenance_start_time_input() :: #{binary() => any()}.
+
+%% Example:
+%% volume_iscsi_attributes() :: #{
+%%   <<"ChapEnabled">> => boolean(),
+%%   <<"LunNumber">> => integer(),
+%%   <<"NetworkInterfaceId">> => string(),
+%%   <<"NetworkInterfacePort">> => integer(),
+%%   <<"TargetARN">> => string()
+%% }
+-type volume_iscsi_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_start_time_output() :: #{
+%%   <<"DayOfMonth">> => integer(),
+%%   <<"DayOfWeek">> => integer(),
+%%   <<"GatewayARN">> => string(),
+%%   <<"HourOfDay">> => integer(),
+%%   <<"MinuteOfHour">> => integer(),
+%%   <<"Timezone">> => string()
+%% }
+-type describe_maintenance_start_time_output() :: #{binary() => any()}.
+
+%% Example:
+%% associate_file_system_input() :: #{
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"ClientToken">> := string(),
+%%   <<"EndpointNetworkConfiguration">> => endpoint_network_configuration(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"LocationARN">> := string(),
+%%   <<"Password">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UserName">> := string()
+%% }
+-type associate_file_system_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_volume_recovery_points_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"VolumeRecoveryPointInfos">> => list(volume_recovery_point_info()())
+%% }
+-type list_volume_recovery_points_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_smb_settings_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_smb_settings_input() :: #{binary() => any()}.
+
+%% Example:
+%% file_share_info() :: #{
+%%   <<"FileShareARN">> => string(),
+%%   <<"FileShareId">> => string(),
+%%   <<"FileShareStatus">> => string(),
+%%   <<"FileShareType">> => list(any()),
+%%   <<"GatewayARN">> => string()
+%% }
+-type file_share_info() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_archive_input() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
+%%   <<"TapeARN">> := string()
+%% }
+-type delete_tape_archive_input() :: #{binary() => any()}.
+
+%% Example:
+%% volume_recovery_point_info() :: #{
+%%   <<"VolumeARN">> => string(),
+%%   <<"VolumeRecoveryPointTime">> => string(),
+%%   <<"VolumeSizeInBytes">> => float(),
+%%   <<"VolumeUsageInBytes">> => float()
+%% }
+-type volume_recovery_point_info() :: #{binary() => any()}.
+
+%% Example:
+%% pool_info() :: #{
+%%   <<"PoolARN">> => string(),
+%%   <<"PoolName">> => string(),
+%%   <<"PoolStatus">> => list(any()),
+%%   <<"RetentionLockTimeInDays">> => integer(),
+%%   <<"RetentionLockType">> => list(any()),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type pool_info() :: #{binary() => any()}.
+
+%% Example:
+%% create_tapes_output() :: #{
+%%   <<"TapeARNs">> => list(string()())
+%% }
+-type create_tapes_output() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"Ipv4Address">> => string(),
+%%   <<"Ipv6Address">> => string(),
+%%   <<"MacAddress">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% tape_recovery_point_info() :: #{
+%%   <<"TapeARN">> => string(),
+%%   <<"TapeRecoveryPointTime">> => non_neg_integer(),
+%%   <<"TapeSizeInBytes">> => float(),
+%%   <<"TapeStatus">> => string()
+%% }
+-type tape_recovery_point_info() :: #{binary() => any()}.
+
+%% Example:
+%% delete_volume_input() :: #{
+%%   <<"VolumeARN">> := string()
+%% }
+-type delete_volume_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cached_iscsi_volumes_input() :: #{
+%%   <<"VolumeARNs">> := list(string()())
+%% }
+-type describe_cached_iscsi_volumes_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_local_console_password_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"LocalConsolePassword">> := string()
+%% }
+-type set_local_console_password_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_system_associations_output() :: #{
+%%   <<"FileSystemAssociationSummaryList">> => list(file_system_association_summary()()),
+%%   <<"Marker">> => string(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_file_system_associations_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_schedule_output() :: #{
+%%   <<"VolumeARN">> => string()
+%% }
+-type delete_snapshot_schedule_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tape_pools_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"PoolInfos">> => list(pool_info()())
+%% }
+-type list_tape_pools_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tape_recovery_points_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type describe_tape_recovery_points_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vtl_devices_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"VTLDeviceARNs">> => list(string()())
+%% }
+-type describe_vtl_devices_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_system_associations_input() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_file_system_associations_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_volumes_input() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_volumes_input() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_info() :: #{
+%%   <<"DeprecationDate">> => string(),
+%%   <<"Ec2InstanceId">> => string(),
+%%   <<"Ec2InstanceRegion">> => string(),
+%%   <<"GatewayARN">> => string(),
+%%   <<"GatewayId">> => string(),
+%%   <<"GatewayName">> => string(),
+%%   <<"GatewayOperationalState">> => string(),
+%%   <<"GatewayType">> => string(),
+%%   <<"HostEnvironment">> => list(any()),
+%%   <<"HostEnvironmentId">> => string(),
+%%   <<"SoftwareVersion">> => string()
+%% }
+-type gateway_info() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_file_share_input() :: #{
+%%   <<"AccessBasedEnumeration">> => boolean(),
+%%   <<"AdminUserList">> => list(string()()),
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"CaseSensitivity">> => list(any()),
+%%   <<"DefaultStorageClass">> => string(),
+%%   <<"FileShareARN">> := string(),
+%%   <<"FileShareName">> => string(),
+%%   <<"GuessMIMETypeEnabled">> => boolean(),
+%%   <<"InvalidUserList">> => list(string()()),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"NotificationPolicy">> => string(),
+%%   <<"ObjectACL">> => list(any()),
+%%   <<"OplocksEnabled">> => boolean(),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RequesterPays">> => boolean(),
+%%   <<"SMBACLEnabled">> => boolean(),
+%%   <<"ValidUserList">> => list(string()())
+%% }
+-type update_smb_file_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_local_disks_output() :: #{
+%%   <<"Disks">> => list(disk()()),
+%%   <<"GatewayARN">> => string()
+%% }
+-type list_local_disks_output() :: #{binary() => any()}.
+
+%% Example:
+%% activate_gateway_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type activate_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% detach_volume_output() :: #{
+%%   <<"VolumeARN">> => string()
+%% }
+-type detach_volume_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_local_console_password_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type set_local_console_password_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_from_volume_recovery_point_output() :: #{
+%%   <<"SnapshotId">> => string(),
+%%   <<"VolumeARN">> => string(),
+%%   <<"VolumeRecoveryPointTime">> => string()
+%% }
+-type create_snapshot_from_volume_recovery_point_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% cached_iscsi_volume() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"KMSKey">> => string(),
+%%   <<"SourceSnapshotId">> => string(),
+%%   <<"TargetName">> => string(),
+%%   <<"VolumeARN">> => string(),
+%%   <<"VolumeAttachmentStatus">> => string(),
+%%   <<"VolumeId">> => string(),
+%%   <<"VolumeProgress">> => float(),
+%%   <<"VolumeSizeInBytes">> => float(),
+%%   <<"VolumeStatus">> => string(),
+%%   <<"VolumeType">> => string(),
+%%   <<"VolumeUsedInBytes">> => float(),
+%%   <<"VolumeiSCSIAttributes">> => volume_iscsi_attributes()
+%% }
+-type cached_iscsi_volume() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bandwidth_rate_limit_output() :: #{
+%%   <<"AverageDownloadRateLimitInBitsPerSec">> => float(),
+%%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
+%%   <<"GatewayARN">> => string()
+%% }
+-type describe_bandwidth_rate_limit_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_gateway_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type start_gateway_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_smb_file_share_output() :: #{
+%%   <<"FileShareARN">> => string()
+%% }
+-type create_smb_file_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% attach_volume_input() :: #{
+%%   <<"DiskId">> => string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"NetworkInterfaceId">> := string(),
+%%   <<"TargetName">> => string(),
+%%   <<"VolumeARN">> := string()
+%% }
+-type attach_volume_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_schedule_input() :: #{
+%%   <<"VolumeARN">> := string()
+%% }
+-type delete_snapshot_schedule_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_output() :: #{
+%%   <<"SnapshotId">> => string(),
+%%   <<"VolumeARN">> => string()
+%% }
+-type create_snapshot_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_resource_output() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type remove_tags_from_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% nfs_file_share_defaults() :: #{
+%%   <<"DirectoryMode">> => string(),
+%%   <<"FileMode">> => string(),
+%%   <<"GroupId">> => float(),
+%%   <<"OwnerId">> => float()
+%% }
+-type nfs_file_share_defaults() :: #{binary() => any()}.
+
+%% Example:
+%% create_tape_with_barcode_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type create_tape_with_barcode_output() :: #{binary() => any()}.
+
+%% Example:
+%% disable_gateway_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type disable_gateway_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_pool_output() :: #{
+%%   <<"PoolARN">> => string()
+%% }
+-type delete_tape_pool_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_local_disks_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type list_local_disks_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_working_storage_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type add_working_storage_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_file_share_visibility_input() :: #{
+%%   <<"FileSharesVisible">> := boolean(),
+%%   <<"GatewayARN">> := string()
+%% }
+-type update_smb_file_share_visibility_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_retrieval_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"TapeARN">> := string()
+%% }
+-type cancel_retrieval_input() :: #{binary() => any()}.
+
+%% Example:
+%% notify_when_uploaded_output() :: #{
+%%   <<"FileShareARN">> => string(),
+%%   <<"NotificationId">> => string()
+%% }
+-type notify_when_uploaded_output() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_error() :: #{
+%%   <<"error">> => storage_gateway_error(),
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_error() :: #{binary() => any()}.
+
+%% Example:
+%% retrieve_tape_recovery_point_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type retrieve_tape_recovery_point_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_vtl_device_type_input() :: #{
+%%   <<"DeviceType">> := string(),
+%%   <<"VTLDeviceARN">> := string()
+%% }
+-type update_vtl_device_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type add_tags_to_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_smb_settings_output() :: #{
+%%   <<"ActiveDirectoryStatus">> => list(any()),
+%%   <<"DomainName">> => string(),
+%%   <<"FileSharesVisible">> => boolean(),
+%%   <<"GatewayARN">> => string(),
+%%   <<"SMBGuestPasswordSet">> => boolean(),
+%%   <<"SMBLocalGroups">> => smb_local_groups(),
+%%   <<"SMBSecurityStrategy">> => list(any())
+%% }
+-type describe_smb_settings_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_information_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"GatewayName">> => string()
+%% }
+-type update_gateway_information_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_resource_output() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type add_tags_to_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% update_bandwidth_rate_limit_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_bandwidth_rate_limit_output() :: #{binary() => any()}.
+
+%% Example:
+%% device_iscsi_attributes() :: #{
+%%   <<"ChapEnabled">> => boolean(),
+%%   <<"NetworkInterfaceId">> => string(),
+%%   <<"NetworkInterfacePort">> => integer(),
+%%   <<"TargetARN">> => string()
+%% }
+-type device_iscsi_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vtl_devices_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"VTLDevices">> => list(vtl_device()())
+%% }
+-type describe_vtl_devices_output() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_archival_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type cancel_archival_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_availability_monitor_test_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type start_availability_monitor_test_input() :: #{binary() => any()}.
+
+%% Example:
+%% retrieve_tape_recovery_point_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"TapeARN">> := string()
+%% }
+-type retrieve_tape_recovery_point_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bandwidth_rate_limit_schedule_output() :: #{
+%%   <<"BandwidthRateLimitIntervals">> => list(bandwidth_rate_limit_interval()()),
+%%   <<"GatewayARN">> => string()
+%% }
+-type describe_bandwidth_rate_limit_schedule_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_information_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_gateway_information_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_cache_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type add_cache_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_gateway_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type start_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% assign_tape_pool_input() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
+%%   <<"PoolId">> := string(),
+%%   <<"TapeARN">> := string()
+%% }
+-type assign_tape_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_nfs_file_shares_output() :: #{
+%%   <<"NFSFileShareInfoList">> => list(nfs_file_share_info()())
+%% }
+-type describe_nfs_file_shares_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_input() :: #{
+%%   <<"SnapshotDescription">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VolumeARN">> := string()
+%% }
+-type create_snapshot_input() :: #{binary() => any()}.
+
+%% Example:
+%% storage_gateway_error() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorDetails">> => map()
+%% }
+-type storage_gateway_error() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_shares_input() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_file_shares_input() :: #{binary() => any()}.
+
+%% Example:
+%% tape() :: #{
+%%   <<"KMSKey">> => string(),
+%%   <<"PoolEntryDate">> => non_neg_integer(),
+%%   <<"PoolId">> => string(),
+%%   <<"Progress">> => float(),
+%%   <<"RetentionStartDate">> => non_neg_integer(),
+%%   <<"TapeARN">> => string(),
+%%   <<"TapeBarcode">> => string(),
+%%   <<"TapeCreatedDate">> => non_neg_integer(),
+%%   <<"TapeSizeInBytes">> => float(),
+%%   <<"TapeStatus">> => string(),
+%%   <<"TapeUsedInBytes">> => float(),
+%%   <<"VTLDevice">> => string(),
+%%   <<"Worm">> => boolean()
+%% }
+-type tape() :: #{binary() => any()}.
+
+%% Example:
+%% bandwidth_rate_limit_interval() :: #{
+%%   <<"AverageDownloadRateLimitInBitsPerSec">> => float(),
+%%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
+%%   <<"DaysOfWeek">> => list(integer()()),
+%%   <<"EndHourOfDay">> => integer(),
+%%   <<"EndMinuteOfHour">> => integer(),
+%%   <<"StartHourOfDay">> => integer(),
+%%   <<"StartMinuteOfHour">> => integer()
+%% }
+-type bandwidth_rate_limit_interval() :: #{binary() => any()}.
+
+%% Example:
+%% list_gateways_output() :: #{
+%%   <<"Gateways">> => list(gateway_info()()),
+%%   <<"Marker">> => string()
+%% }
+-type list_gateways_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_pool_input() :: #{
+%%   <<"PoolARN">> := string()
+%% }
+-type delete_tape_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_bandwidth_rate_limit_input() :: #{
+%%   <<"AverageDownloadRateLimitInBitsPerSec">> => float(),
+%%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
+%%   <<"GatewayARN">> := string()
+%% }
+-type update_bandwidth_rate_limit_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type delete_gateway_input() :: #{binary() => any()}.
+
+%% Example:
+%% reset_cache_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type reset_cache_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tapes_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"TapeInfos">> => list(tape_info()())
+%% }
+-type list_tapes_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_input() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"TapeARN">> := string()
+%% }
+-type delete_tape_input() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_network_configuration() :: #{
+%%   <<"IpAddresses">> => list(string()())
+%% }
+-type endpoint_network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stored_iscsi_volumes_output() :: #{
+%%   <<"StorediSCSIVolumes">> => list(stored_iscsi_volume()())
+%% }
+-type describe_stored_iscsi_volumes_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_volume_initiators_output() :: #{
+%%   <<"Initiators">> => list(string()())
+%% }
+-type list_volume_initiators_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type remove_tags_from_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_file_share_visibility_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_smb_file_share_visibility_output() :: #{binary() => any()}.
+
+%% Example:
+%% retrieve_tape_archive_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type retrieve_tape_archive_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_schedule_output() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RecurrenceInHours">> => integer(),
+%%   <<"StartAt">> => integer(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Timezone">> => string(),
+%%   <<"VolumeARN">> => string()
+%% }
+-type describe_snapshot_schedule_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_tape_pool_input() :: #{
+%%   <<"PoolName">> := string(),
+%%   <<"RetentionLockTimeInDays">> => integer(),
+%%   <<"RetentionLockType">> => list(any()),
+%%   <<"StorageClass">> := list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_tape_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% detach_volume_input() :: #{
+%%   <<"ForceDetach">> => boolean(),
+%%   <<"VolumeARN">> := string()
+%% }
+-type detach_volume_input() :: #{binary() => any()}.
+
+%% Example:
+%% smb_file_share_info() :: #{
+%%   <<"AccessBasedEnumeration">> => boolean(),
+%%   <<"AdminUserList">> => list(string()()),
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"Authentication">> => string(),
+%%   <<"BucketRegion">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"CaseSensitivity">> => list(any()),
+%%   <<"DefaultStorageClass">> => string(),
+%%   <<"FileShareARN">> => string(),
+%%   <<"FileShareId">> => string(),
+%%   <<"FileShareName">> => string(),
+%%   <<"FileShareStatus">> => string(),
+%%   <<"GatewayARN">> => string(),
+%%   <<"GuessMIMETypeEnabled">> => boolean(),
+%%   <<"InvalidUserList">> => list(string()()),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LocationARN">> => string(),
+%%   <<"NotificationPolicy">> => string(),
+%%   <<"ObjectACL">> => list(any()),
+%%   <<"OplocksEnabled">> => boolean(),
+%%   <<"Path">> => string(),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RequesterPays">> => boolean(),
+%%   <<"Role">> => string(),
+%%   <<"SMBACLEnabled">> => boolean(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VPCEndpointDNSName">> => string(),
+%%   <<"ValidUserList">> => list(string()())
+%% }
+-type smb_file_share_info() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cache_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_cache_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_system_association_output() :: #{
+%%   <<"FileSystemAssociationARN">> => string()
+%% }
+-type update_file_system_association_output() :: #{binary() => any()}.
+
+%% Example:
+%% vtl_device() :: #{
+%%   <<"DeviceiSCSIAttributes">> => device_iscsi_attributes(),
+%%   <<"VTLDeviceARN">> => string(),
+%%   <<"VTLDeviceProductIdentifier">> => string(),
+%%   <<"VTLDeviceType">> => string(),
+%%   <<"VTLDeviceVendor">> => string()
+%% }
+-type vtl_device() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type delete_tape_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_shares_output() :: #{
+%%   <<"FileShareInfoList">> => list(file_share_info()()),
+%%   <<"Marker">> => string(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_file_shares_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_availability_monitor_test_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type start_availability_monitor_test_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_start_time_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_maintenance_start_time_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_chap_credentials_input() :: #{
+%%   <<"InitiatorName">> := string(),
+%%   <<"TargetARN">> := string()
+%% }
+-type delete_chap_credentials_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_availability_monitor_test_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_availability_monitor_test_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_information_input() :: #{
+%%   <<"CloudWatchLogGroupARN">> => string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"GatewayCapacity">> => list(any()),
+%%   <<"GatewayName">> => string(),
+%%   <<"GatewayTimezone">> => string()
+%% }
+-type update_gateway_information_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_from_volume_recovery_point_input() :: #{
+%%   <<"SnapshotDescription">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VolumeARN">> := string()
+%% }
+-type create_snapshot_from_volume_recovery_point_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_smb_file_share_input() :: #{
+%%   <<"AccessBasedEnumeration">> => boolean(),
+%%   <<"AdminUserList">> => list(string()()),
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"Authentication">> => string(),
+%%   <<"BucketRegion">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"CaseSensitivity">> => list(any()),
+%%   <<"ClientToken">> := string(),
+%%   <<"DefaultStorageClass">> => string(),
+%%   <<"FileShareName">> => string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"GuessMIMETypeEnabled">> => boolean(),
+%%   <<"InvalidUserList">> => list(string()()),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LocationARN">> := string(),
+%%   <<"NotificationPolicy">> => string(),
+%%   <<"ObjectACL">> => list(any()),
+%%   <<"OplocksEnabled">> => boolean(),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RequesterPays">> => boolean(),
+%%   <<"Role">> := string(),
+%%   <<"SMBACLEnabled">> => boolean(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VPCEndpointDNSName">> => string(),
+%%   <<"ValidUserList">> => list(string()())
+%% }
+-type create_smb_file_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_retrieval_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type cancel_retrieval_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_local_groups_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"SMBLocalGroups">> := smb_local_groups()
+%% }
+-type update_smb_local_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% reset_cache_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type reset_cache_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_vtl_device_type_output() :: #{
+%%   <<"VTLDeviceARN">> => string()
+%% }
+-type update_vtl_device_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tape_archives_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"TapeARNs">> => list(string()())
+%% }
+-type describe_tape_archives_input() :: #{binary() => any()}.
+
+%% Example:
+%% automatic_tape_creation_rule() :: #{
+%%   <<"MinimumNumTapes">> => integer(),
+%%   <<"PoolId">> => string(),
+%%   <<"TapeBarcodePrefix">> => string(),
+%%   <<"TapeSizeInBytes">> => float(),
+%%   <<"Worm">> => boolean()
+%% }
+-type automatic_tape_creation_rule() :: #{binary() => any()}.
+
+%% Example:
+%% list_gateways_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_gateways_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_chap_credentials_output() :: #{
+%%   <<"ChapCredentials">> => list(chap_info()())
+%% }
+-type describe_chap_credentials_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_smb_file_shares_output() :: #{
+%%   <<"SMBFileShareInfoList">> => list(smb_file_share_info()())
+%% }
+-type describe_smb_file_shares_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_chap_credentials_output() :: #{
+%%   <<"InitiatorName">> => string(),
+%%   <<"TargetARN">> => string()
+%% }
+-type delete_chap_credentials_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_archive_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type delete_tape_archive_output() :: #{binary() => any()}.
+
+%% Example:
+%% shutdown_gateway_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type shutdown_gateway_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_schedule_input() :: #{
+%%   <<"VolumeARN">> := string()
+%% }
+-type describe_snapshot_schedule_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_nfs_file_share_input() :: #{
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"BucketRegion">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"ClientList">> => list(string()()),
+%%   <<"ClientToken">> := string(),
+%%   <<"DefaultStorageClass">> => string(),
+%%   <<"FileShareName">> => string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"GuessMIMETypeEnabled">> => boolean(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LocationARN">> := string(),
+%%   <<"NFSFileShareDefaults">> => nfs_file_share_defaults(),
+%%   <<"NotificationPolicy">> => string(),
+%%   <<"ObjectACL">> => list(any()),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RequesterPays">> => boolean(),
+%%   <<"Role">> := string(),
+%%   <<"Squash">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VPCEndpointDNSName">> => string()
+%% }
+-type create_nfs_file_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"error">> => storage_gateway_error(),
+%%   <<"message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_security_strategy_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_smb_security_strategy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_share_output() :: #{
+%%   <<"FileShareARN">> => string()
+%% }
+-type delete_file_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_nfs_file_share_output() :: #{
+%%   <<"FileShareARN">> => string()
+%% }
+-type create_nfs_file_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tapes_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"TapeARNs">> => list(string()())
+%% }
+-type describe_tapes_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_automatic_tape_creation_policies_input() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type list_automatic_tape_creation_policies_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_schedule_output() :: #{
+%%   <<"VolumeARN">> => string()
+%% }
+-type update_snapshot_schedule_output() :: #{binary() => any()}.
+
+%% Example:
+%% stored_iscsi_volume() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"KMSKey">> => string(),
+%%   <<"PreservedExistingData">> => boolean(),
+%%   <<"SourceSnapshotId">> => string(),
+%%   <<"TargetName">> => string(),
+%%   <<"VolumeARN">> => string(),
+%%   <<"VolumeAttachmentStatus">> => string(),
+%%   <<"VolumeDiskId">> => string(),
+%%   <<"VolumeId">> => string(),
+%%   <<"VolumeProgress">> => float(),
+%%   <<"VolumeSizeInBytes">> => float(),
+%%   <<"VolumeStatus">> => string(),
+%%   <<"VolumeType">> => string(),
+%%   <<"VolumeUsedInBytes">> => float(),
+%%   <<"VolumeiSCSIAttributes">> => volume_iscsi_attributes()
+%% }
+-type stored_iscsi_volume() :: #{binary() => any()}.
+
+%% Example:
+%% volume_info() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"GatewayId">> => string(),
+%%   <<"VolumeARN">> => string(),
+%%   <<"VolumeAttachmentStatus">> => string(),
+%%   <<"VolumeId">> => string(),
+%%   <<"VolumeSizeInBytes">> => float(),
+%%   <<"VolumeType">> => string()
+%% }
+-type volume_info() :: #{binary() => any()}.
+
+%% Example:
+%% update_nfs_file_share_output() :: #{
+%%   <<"FileShareARN">> => string()
+%% }
+-type update_nfs_file_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% disable_gateway_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type disable_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stored_iscsi_volumes_input() :: #{
+%%   <<"VolumeARNs">> := list(string()())
+%% }
+-type describe_stored_iscsi_volumes_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_file_system_associations_input() :: #{
+%%   <<"FileSystemAssociationARNList">> := list(string()())
+%% }
+-type describe_file_system_associations_input() :: #{binary() => any()}.
+
+%% Example:
+%% disk() :: #{
+%%   <<"DiskAllocationResource">> => string(),
+%%   <<"DiskAllocationType">> => string(),
+%%   <<"DiskAttributeList">> => list(string()()),
+%%   <<"DiskId">> => string(),
+%%   <<"DiskNode">> => string(),
+%%   <<"DiskPath">> => string(),
+%%   <<"DiskSizeInBytes">> => float(),
+%%   <<"DiskStatus">> => string()
+%% }
+-type disk() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tapes_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Tapes">> => list(tape()())
+%% }
+-type describe_tapes_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_automatic_tape_creation_policies_output() :: #{
+%%   <<"AutomaticTapeCreationPolicyInfos">> => list(automatic_tape_creation_policy_info()())
+%% }
+-type list_automatic_tape_creation_policies_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_cache_input() :: #{
+%%   <<"DiskIds">> := list(string()()),
+%%   <<"GatewayARN">> := string()
+%% }
+-type add_cache_input() :: #{binary() => any()}.
+
+%% Example:
+%% shutdown_gateway_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type shutdown_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_volumes_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"VolumeInfos">> => list(volume_info()())
+%% }
+-type list_volumes_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% chap_info() :: #{
+%%   <<"InitiatorName">> => string(),
+%%   <<"SecretToAuthenticateInitiator">> => string(),
+%%   <<"SecretToAuthenticateTarget">> => string(),
+%%   <<"TargetARN">> => string()
+%% }
+-type chap_info() :: #{binary() => any()}.
+
+%% Example:
+%% add_upload_buffer_input() :: #{
+%%   <<"DiskIds">> := list(string()()),
+%%   <<"GatewayARN">> := string()
+%% }
+-type add_upload_buffer_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_cached_iscsi_volume_output() :: #{
+%%   <<"TargetARN">> => string(),
+%%   <<"VolumeARN">> => string()
+%% }
+-type create_cached_iscsi_volume_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_automatic_tape_creation_policy_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_automatic_tape_creation_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% automatic_tape_creation_policy_info() :: #{
+%%   <<"AutomaticTapeCreationRules">> => list(automatic_tape_creation_rule()()),
+%%   <<"GatewayARN">> => string()
+%% }
+-type automatic_tape_creation_policy_info() :: #{binary() => any()}.
+
+%% Example:
+%% update_chap_credentials_output() :: #{
+%%   <<"InitiatorName">> => string(),
+%%   <<"TargetARN">> => string()
+%% }
+-type update_chap_credentials_output() :: #{binary() => any()}.
+
+%% Example:
+%% retrieve_tape_archive_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"TapeARN">> := string()
+%% }
+-type retrieve_tape_archive_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_automatic_tape_creation_policy_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type delete_automatic_tape_creation_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_automatic_tape_creation_policy_input() :: #{
+%%   <<"AutomaticTapeCreationRules">> := list(automatic_tape_creation_rule()()),
+%%   <<"GatewayARN">> := string()
+%% }
+-type update_automatic_tape_creation_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_tapes_input() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"NumTapesToCreate">> := integer(),
+%%   <<"PoolId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TapeBarcodePrefix">> := string(),
+%%   <<"TapeSizeInBytes">> := float(),
+%%   <<"Worm">> => boolean()
+%% }
+-type create_tapes_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type delete_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% nfs_file_share_info() :: #{
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"BucketRegion">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"ClientList">> => list(string()()),
+%%   <<"DefaultStorageClass">> => string(),
+%%   <<"FileShareARN">> => string(),
+%%   <<"FileShareId">> => string(),
+%%   <<"FileShareName">> => string(),
+%%   <<"FileShareStatus">> => string(),
+%%   <<"GatewayARN">> => string(),
+%%   <<"GuessMIMETypeEnabled">> => boolean(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LocationARN">> => string(),
+%%   <<"NFSFileShareDefaults">> => nfs_file_share_defaults(),
+%%   <<"NotificationPolicy">> => string(),
+%%   <<"ObjectACL">> => list(any()),
+%%   <<"Path">> => string(),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RequesterPays">> => boolean(),
+%%   <<"Role">> => string(),
+%%   <<"Squash">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VPCEndpointDNSName">> => string()
+%% }
+-type nfs_file_share_info() :: #{binary() => any()}.
+
+%% Example:
+%% file_system_association_info() :: #{
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"EndpointNetworkConfiguration">> => endpoint_network_configuration(),
+%%   <<"FileSystemAssociationARN">> => string(),
+%%   <<"FileSystemAssociationStatus">> => string(),
+%%   <<"FileSystemAssociationStatusDetails">> => list(file_system_association_status_detail()()),
+%%   <<"GatewayARN">> => string(),
+%%   <<"LocationARN">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type file_system_association_info() :: #{binary() => any()}.
+
+%% Example:
+%% describe_working_storage_output() :: #{
+%%   <<"DiskIds">> => list(string()()),
+%%   <<"GatewayARN">> => string(),
+%%   <<"WorkingStorageAllocatedInBytes">> => float(),
+%%   <<"WorkingStorageUsedInBytes">> => float()
+%% }
+-type describe_working_storage_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_stored_iscsi_volume_output() :: #{
+%%   <<"TargetARN">> => string(),
+%%   <<"VolumeARN">> => string(),
+%%   <<"VolumeSizeInBytes">> => float()
+%% }
+-type create_stored_iscsi_volume_output() :: #{binary() => any()}.
+
+%% Example:
+%% tape_archive() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"KMSKey">> => string(),
+%%   <<"PoolEntryDate">> => non_neg_integer(),
+%%   <<"PoolId">> => string(),
+%%   <<"RetentionStartDate">> => non_neg_integer(),
+%%   <<"RetrievedTo">> => string(),
+%%   <<"TapeARN">> => string(),
+%%   <<"TapeBarcode">> => string(),
+%%   <<"TapeCreatedDate">> => non_neg_integer(),
+%%   <<"TapeSizeInBytes">> => float(),
+%%   <<"TapeStatus">> => string(),
+%%   <<"TapeUsedInBytes">> => float(),
+%%   <<"Worm">> => boolean()
+%% }
+-type tape_archive() :: #{binary() => any()}.
+
+%% Example:
+%% file_system_association_summary() :: #{
+%%   <<"FileSystemAssociationARN">> => string(),
+%%   <<"FileSystemAssociationId">> => string(),
+%%   <<"FileSystemAssociationStatus">> => string(),
+%%   <<"GatewayARN">> => string()
+%% }
+-type file_system_association_summary() :: #{binary() => any()}.
+
+%% Example:
+%% attach_volume_output() :: #{
+%%   <<"TargetARN">> => string(),
+%%   <<"VolumeARN">> => string()
+%% }
+-type attach_volume_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_maintenance_start_time_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_maintenance_start_time_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_availability_monitor_test_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_availability_monitor_test_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tape_pools_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"PoolARNs">> => list(string()())
+%% }
+-type list_tape_pools_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tape_archives_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"TapeArchives">> => list(tape_archive()())
+%% }
+-type describe_tape_archives_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_nfs_file_share_input() :: #{
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"ClientList">> => list(string()()),
+%%   <<"DefaultStorageClass">> => string(),
+%%   <<"FileShareARN">> := string(),
+%%   <<"FileShareName">> => string(),
+%%   <<"GuessMIMETypeEnabled">> => boolean(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"NFSFileShareDefaults">> => nfs_file_share_defaults(),
+%%   <<"NotificationPolicy">> => string(),
+%%   <<"ObjectACL">> => list(any()),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RequesterPays">> => boolean(),
+%%   <<"Squash">> => string()
+%% }
+-type update_nfs_file_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_smb_guest_password_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"Password">> := string()
+%% }
+-type set_smb_guest_password_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_software_now_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_gateway_software_now_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_bandwidth_rate_limit_schedule_input() :: #{
+%%   <<"BandwidthRateLimitIntervals">> := list(bandwidth_rate_limit_interval()()),
+%%   <<"GatewayARN">> := string()
+%% }
+-type update_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_file_system_output() :: #{
+%%   <<"FileSystemAssociationARN">> => string()
+%% }
+-type disassociate_file_system_output() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_cache_output() :: #{
+%%   <<"FileShareARN">> => string(),
+%%   <<"NotificationId">> => string()
+%% }
+-type refresh_cache_output() :: #{binary() => any()}.
+
+%% Example:
+%% smb_local_groups() :: #{
+%%   <<"GatewayAdmins">> => list(string()())
+%% }
+-type smb_local_groups() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bandwidth_rate_limit_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_bandwidth_rate_limit_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_bandwidth_rate_limit_schedule_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_bandwidth_rate_limit_schedule_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_smb_file_shares_input() :: #{
+%%   <<"FileShareARNList">> := list(string()())
+%% }
+-type describe_smb_file_shares_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_chap_credentials_input() :: #{
+%%   <<"TargetARN">> := string()
+%% }
+-type describe_chap_credentials_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_software_now_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type update_gateway_software_now_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_local_groups_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_smb_local_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tape_recovery_points_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"TapeRecoveryPointInfos">> => list(tape_recovery_point_info()())
+%% }
+-type describe_tape_recovery_points_output() :: #{binary() => any()}.
+
+%% Example:
+%% cache_attributes() :: #{
+%%   <<"CacheStaleTimeoutInSeconds">> => integer()
+%% }
+-type cache_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% create_tape_pool_output() :: #{
+%%   <<"PoolARN">> => string()
+%% }
+-type create_tape_pool_output() :: #{binary() => any()}.
+
+%% Example:
+%% file_system_association_status_detail() :: #{
+%%   <<"ErrorCode">> => string()
+%% }
+-type file_system_association_status_detail() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_security_strategy_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"SMBSecurityStrategy">> := list(any())
+%% }
+-type update_smb_security_strategy_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_working_storage_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_working_storage_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_upload_buffer_output() :: #{
+%%   <<"DiskIds">> => list(string()()),
+%%   <<"GatewayARN">> => string(),
+%%   <<"UploadBufferAllocatedInBytes">> => float(),
+%%   <<"UploadBufferUsedInBytes">> => float()
+%% }
+-type describe_upload_buffer_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tapes_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"TapeARNs">> => list(string()())
+%% }
+-type list_tapes_input() :: #{binary() => any()}.
+
+%% Example:
+%% activate_gateway_input() :: #{
+%%   <<"ActivationKey">> := string(),
+%%   <<"GatewayName">> := string(),
+%%   <<"GatewayRegion">> := string(),
+%%   <<"GatewayTimezone">> := string(),
+%%   <<"GatewayType">> => string(),
+%%   <<"MediumChangerType">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TapeDriveType">> => string()
+%% }
+-type activate_gateway_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cached_iscsi_volumes_output() :: #{
+%%   <<"CachediSCSIVolumes">> => list(cached_iscsi_volume()())
+%% }
+-type describe_cached_iscsi_volumes_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_nfs_file_shares_input() :: #{
+%%   <<"FileShareARNList">> := list(string()())
+%% }
+-type describe_nfs_file_shares_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_file_system_input() :: #{
+%%   <<"FileSystemAssociationARN">> := string(),
+%%   <<"ForceDelete">> => boolean()
+%% }
+-type disassociate_file_system_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_automatic_tape_creation_policy_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type delete_automatic_tape_creation_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_upload_buffer_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type add_upload_buffer_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_chap_credentials_input() :: #{
+%%   <<"InitiatorName">> := string(),
+%%   <<"SecretToAuthenticateInitiator">> := string(),
+%%   <<"SecretToAuthenticateTarget">> => string(),
+%%   <<"TargetARN">> := string()
+%% }
+-type update_chap_credentials_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bandwidth_rate_limit_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type delete_bandwidth_rate_limit_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_cached_iscsi_volume_input() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"NetworkInterfaceId">> := string(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"SourceVolumeARN">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetName">> := string(),
+%%   <<"VolumeSizeInBytes">> := float()
+%% }
+-type create_cached_iscsi_volume_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bandwidth_rate_limit_schedule_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_volume_output() :: #{
+%%   <<"VolumeARN">> => string()
+%% }
+-type delete_volume_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_smb_guest_password_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type set_smb_guest_password_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_working_storage_input() :: #{
+%%   <<"DiskIds">> := list(string()()),
+%%   <<"GatewayARN">> := string()
+%% }
+-type add_working_storage_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_file_share_output() :: #{
+%%   <<"FileShareARN">> => string()
+%% }
+-type update_smb_file_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_cache_input() :: #{
+%%   <<"FileShareARN">> := string(),
+%%   <<"FolderList">> => list(string()()),
+%%   <<"Recursive">> => boolean()
+%% }
+-type refresh_cache_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_gateway_request_exception() :: #{
+%%   <<"error">> => storage_gateway_error(),
+%%   <<"message">> => string()
+%% }
+-type invalid_gateway_request_exception() :: #{binary() => any()}.
+
+-type activate_gateway_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type add_cache_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type add_tags_to_resource_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type add_upload_buffer_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type add_working_storage_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type assign_tape_pool_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type associate_file_system_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type attach_volume_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type cancel_archival_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type cancel_retrieval_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_cached_iscsi_volume_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_nfs_file_share_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_smb_file_share_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_snapshot_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error() | 
+    service_unavailable_error().
+
+-type create_snapshot_from_volume_recovery_point_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error() | 
+    service_unavailable_error().
+
+-type create_stored_iscsi_volume_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_tape_pool_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_tape_with_barcode_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type create_tapes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_automatic_tape_creation_policy_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_bandwidth_rate_limit_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_chap_credentials_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_file_share_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_gateway_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_snapshot_schedule_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_tape_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_tape_archive_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_tape_pool_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type delete_volume_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_availability_monitor_test_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_bandwidth_rate_limit_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_bandwidth_rate_limit_schedule_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_cache_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_cached_iscsi_volumes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_chap_credentials_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_file_system_associations_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_gateway_information_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_maintenance_start_time_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_nfs_file_shares_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_smb_file_shares_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_smb_settings_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_snapshot_schedule_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_stored_iscsi_volumes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_tape_archives_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_tape_recovery_points_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_tapes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_upload_buffer_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_vtl_devices_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type describe_working_storage_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type detach_volume_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type disable_gateway_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type disassociate_file_system_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type join_domain_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_automatic_tape_creation_policies_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_file_shares_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_file_system_associations_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_gateways_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_local_disks_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_tags_for_resource_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_tape_pools_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_tapes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_volume_initiators_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_volume_recovery_points_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type list_volumes_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type notify_when_uploaded_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type refresh_cache_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type remove_tags_from_resource_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type reset_cache_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type retrieve_tape_archive_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type retrieve_tape_recovery_point_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type set_local_console_password_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type set_smb_guest_password_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type shutdown_gateway_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type start_availability_monitor_test_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type start_gateway_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_automatic_tape_creation_policy_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_bandwidth_rate_limit_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_bandwidth_rate_limit_schedule_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_chap_credentials_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_file_system_association_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_gateway_information_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_gateway_software_now_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_maintenance_start_time_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_nfs_file_share_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_smb_file_share_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_smb_file_share_visibility_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_smb_local_groups_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_smb_security_strategy_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_snapshot_schedule_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
+-type update_vtl_device_type_errors() ::
+    invalid_gateway_request_exception() | 
+    internal_server_error().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -280,9 +2421,18 @@
 %% `UpdateGatewayInformation'.
 %%
 %% You must turn on the gateway VM before you can activate your gateway.
+-spec activate_gateway(aws_client:aws_client(), activate_gateway_input()) ->
+    {ok, activate_gateway_output(), tuple()} |
+    {error, any()} |
+    {error, activate_gateway_errors(), tuple()}.
 activate_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_gateway(Client, Input, []).
+
+-spec activate_gateway(aws_client:aws_client(), activate_gateway_input(), proplists:proplist()) ->
+    {ok, activate_gateway_output(), tuple()} |
+    {error, any()} |
+    {error, activate_gateway_errors(), tuple()}.
 activate_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivateGateway">>, Input, Options).
@@ -297,9 +2447,18 @@ activate_gateway(Client, Input, Options)
 %% In the request, you specify the gateway Amazon Resource Name (ARN) to
 %% which you want to
 %% add cache, and one or more disk IDs that you want to configure as cache.
+-spec add_cache(aws_client:aws_client(), add_cache_input()) ->
+    {ok, add_cache_output(), tuple()} |
+    {error, any()} |
+    {error, add_cache_errors(), tuple()}.
 add_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_cache(Client, Input, []).
+
+-spec add_cache(aws_client:aws_client(), add_cache_input(), proplists:proplist()) ->
+    {ok, add_cache_output(), tuple()} |
+    {error, any()} |
+    {error, add_cache_errors(), tuple()}.
 add_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCache">>, Input, Options).
@@ -327,9 +2486,18 @@ add_cache(Client, Input, Options)
 %% You can create a maximum of 50 tags for each resource. Virtual tapes and
 %% storage volumes
 %% that are recovered to a new gateway maintain their tags.
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_input()) ->
+    {ok, add_tags_to_resource_output(), tuple()} |
+    {error, any()} |
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
+
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_input(), proplists:proplist()) ->
+    {ok, add_tags_to_resource_output(), tuple()} |
+    {error, any()} |
+    {error, add_tags_to_resource_errors(), tuple()}.
 add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
@@ -346,9 +2514,18 @@ add_tags_to_resource(Client, Input, Options)
 %% add upload buffer, and one or more disk IDs that you want to configure as
 %% upload
 %% buffer.
+-spec add_upload_buffer(aws_client:aws_client(), add_upload_buffer_input()) ->
+    {ok, add_upload_buffer_output(), tuple()} |
+    {error, any()} |
+    {error, add_upload_buffer_errors(), tuple()}.
 add_upload_buffer(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_upload_buffer(Client, Input, []).
+
+-spec add_upload_buffer(aws_client:aws_client(), add_upload_buffer_input(), proplists:proplist()) ->
+    {ok, add_upload_buffer_output(), tuple()} |
+    {error, any()} |
+    {error, add_upload_buffer_errors(), tuple()}.
 add_upload_buffer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddUploadBuffer">>, Input, Options).
@@ -371,9 +2548,18 @@ add_upload_buffer(Client, Input, Options)
 %% add working storage, and one or more disk IDs that you want to configure
 %% as working
 %% storage.
+-spec add_working_storage(aws_client:aws_client(), add_working_storage_input()) ->
+    {ok, add_working_storage_output(), tuple()} |
+    {error, any()} |
+    {error, add_working_storage_errors(), tuple()}.
 add_working_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_working_storage(Client, Input, []).
+
+-spec add_working_storage(aws_client:aws_client(), add_working_storage_input(), proplists:proplist()) ->
+    {ok, add_working_storage_output(), tuple()} |
+    {error, any()} |
+    {error, add_working_storage_errors(), tuple()}.
 add_working_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddWorkingStorage">>, Input, Options).
@@ -386,9 +2572,18 @@ add_working_storage(Client, Input, Options)
 %% to eject the tape, the tape is archived directly into the S3 storage class
 %% (S3 Glacier or
 %% S3 Glacier Deep Archive) that corresponds to the pool.
+-spec assign_tape_pool(aws_client:aws_client(), assign_tape_pool_input()) ->
+    {ok, assign_tape_pool_output(), tuple()} |
+    {error, any()} |
+    {error, assign_tape_pool_errors(), tuple()}.
 assign_tape_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_tape_pool(Client, Input, []).
+
+-spec assign_tape_pool(aws_client:aws_client(), assign_tape_pool_input(), proplists:proplist()) ->
+    {ok, assign_tape_pool_output(), tuple()} |
+    {error, any()} |
+    {error, assign_tape_pool_errors(), tuple()}.
 assign_tape_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssignTapePool">>, Input, Options).
@@ -401,9 +2596,18 @@ assign_tape_pool(Client, Input, Options)
 %% available for access through the gateway. This operation only supports the
 %% FSx File Gateway
 %% type.
+-spec associate_file_system(aws_client:aws_client(), associate_file_system_input()) ->
+    {ok, associate_file_system_output(), tuple()} |
+    {error, any()} |
+    {error, associate_file_system_errors(), tuple()}.
 associate_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_file_system(Client, Input, []).
+
+-spec associate_file_system(aws_client:aws_client(), associate_file_system_input(), proplists:proplist()) ->
+    {ok, associate_file_system_output(), tuple()} |
+    {error, any()} |
+    {error, associate_file_system_errors(), tuple()}.
 associate_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateFileSystem">>, Input, Options).
@@ -418,9 +2622,18 @@ associate_file_system(Client, Input, Options)
 %% easier to move your
 %% volumes from an on-premises gateway to a gateway hosted on an Amazon EC2
 %% instance.
+-spec attach_volume(aws_client:aws_client(), attach_volume_input()) ->
+    {ok, attach_volume_output(), tuple()} |
+    {error, any()} |
+    {error, attach_volume_errors(), tuple()}.
 attach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_volume(Client, Input, []).
+
+-spec attach_volume(aws_client:aws_client(), attach_volume_input(), proplists:proplist()) ->
+    {ok, attach_volume_output(), tuple()} |
+    {error, any()} |
+    {error, attach_volume_errors(), tuple()}.
 attach_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachVolume">>, Input, Options).
@@ -430,9 +2643,18 @@ attach_volume(Client, Input, Options)
 %% process is initiated.
 %%
 %% This operation is only supported in the tape gateway type.
+-spec cancel_archival(aws_client:aws_client(), cancel_archival_input()) ->
+    {ok, cancel_archival_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_archival_errors(), tuple()}.
 cancel_archival(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_archival(Client, Input, []).
+
+-spec cancel_archival(aws_client:aws_client(), cancel_archival_input(), proplists:proplist()) ->
+    {ok, cancel_archival_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_archival_errors(), tuple()}.
 cancel_archival(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelArchival">>, Input, Options).
@@ -443,9 +2665,18 @@ cancel_archival(Client, Input, Options)
 %%
 %% The virtual tape is returned to the VTS. This operation
 %% is only supported in the tape gateway type.
+-spec cancel_retrieval(aws_client:aws_client(), cancel_retrieval_input()) ->
+    {ok, cancel_retrieval_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_retrieval_errors(), tuple()}.
 cancel_retrieval(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_retrieval(Client, Input, []).
+
+-spec cancel_retrieval(aws_client:aws_client(), cancel_retrieval_input(), proplists:proplist()) ->
+    {ok, cancel_retrieval_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_retrieval_errors(), tuple()}.
 cancel_retrieval(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelRetrieval">>, Input, Options).
@@ -475,9 +2706,18 @@ cancel_retrieval(Client, Input, Options)
 %% existing volume’s latest recovery point. The `VolumeSizeInBytes' value
 %% must be
 %% equal to or larger than the size of the copied volume, in bytes.
+-spec create_cached_iscsi_volume(aws_client:aws_client(), create_cached_iscsi_volume_input()) ->
+    {ok, create_cached_iscsi_volume_output(), tuple()} |
+    {error, any()} |
+    {error, create_cached_iscsi_volume_errors(), tuple()}.
 create_cached_iscsi_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cached_iscsi_volume(Client, Input, []).
+
+-spec create_cached_iscsi_volume(aws_client:aws_client(), create_cached_iscsi_volume_input(), proplists:proplist()) ->
+    {ok, create_cached_iscsi_volume_output(), tuple()} |
+    {error, any()} |
+    {error, create_cached_iscsi_volume_errors(), tuple()}.
 create_cached_iscsi_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCachediSCSIVolume">>, Input, Options).
@@ -509,9 +2749,18 @@ create_cached_iscsi_volume(Client, Input, Options)
 %%
 %% S3 File Gateways do not support creating hard or symbolic links on a file
 %% share.
+-spec create_nfs_file_share(aws_client:aws_client(), create_nfs_file_share_input()) ->
+    {ok, create_nfs_file_share_output(), tuple()} |
+    {error, any()} |
+    {error, create_nfs_file_share_errors(), tuple()}.
 create_nfs_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_nfs_file_share(Client, Input, []).
+
+-spec create_nfs_file_share(aws_client:aws_client(), create_nfs_file_share_input(), proplists:proplist()) ->
+    {ok, create_nfs_file_share_output(), tuple()} |
+    {error, any()} |
+    {error, create_nfs_file_share_errors(), tuple()}.
 create_nfs_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNFSFileShare">>, Input, Options).
@@ -543,9 +2792,18 @@ create_nfs_file_share(Client, Input, Options)
 %%
 %% File gateways don't support creating hard or symbolic links on a file
 %% share.
+-spec create_smb_file_share(aws_client:aws_client(), create_smb_file_share_input()) ->
+    {ok, create_smb_file_share_output(), tuple()} |
+    {error, any()} |
+    {error, create_smb_file_share_errors(), tuple()}.
 create_smb_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_smb_file_share(Client, Input, []).
+
+-spec create_smb_file_share(aws_client:aws_client(), create_smb_file_share_input(), proplists:proplist()) ->
+    {ok, create_smb_file_share_output(), tuple()} |
+    {error, any()} |
+    {error, create_smb_file_share_errors(), tuple()}.
 create_smb_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSMBFileShare">>, Input, Options).
@@ -592,9 +2850,18 @@ create_smb_file_share(Client, Input, Options)
 %% information, see the important note on the Welcome:
 %% https://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html
 %% page.
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_input()) ->
+    {ok, create_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
+
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_input(), proplists:proplist()) ->
+    {ok, create_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
@@ -630,9 +2897,18 @@ create_snapshot(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSnapshot.html
 %% in the Amazon Elastic Compute Cloud API
 %% Reference.
+-spec create_snapshot_from_volume_recovery_point(aws_client:aws_client(), create_snapshot_from_volume_recovery_point_input()) ->
+    {ok, create_snapshot_from_volume_recovery_point_output(), tuple()} |
+    {error, any()} |
+    {error, create_snapshot_from_volume_recovery_point_errors(), tuple()}.
 create_snapshot_from_volume_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot_from_volume_recovery_point(Client, Input, []).
+
+-spec create_snapshot_from_volume_recovery_point(aws_client:aws_client(), create_snapshot_from_volume_recovery_point_input(), proplists:proplist()) ->
+    {ok, create_snapshot_from_volume_recovery_point_output(), tuple()} |
+    {error, any()} |
+    {error, create_snapshot_from_volume_recovery_point_errors(), tuple()}.
 create_snapshot_from_volume_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshotFromVolumeRecoveryPoint">>, Input, Options).
@@ -657,9 +2933,18 @@ create_snapshot_from_volume_recovery_point(Client, Input, Options)
 %% information such as the volume Amazon Resource Name (ARN), its size, and
 %% the iSCSI target
 %% ARN that initiators can use to connect to the volume target.
+-spec create_stored_iscsi_volume(aws_client:aws_client(), create_stored_iscsi_volume_input()) ->
+    {ok, create_stored_iscsi_volume_output(), tuple()} |
+    {error, any()} |
+    {error, create_stored_iscsi_volume_errors(), tuple()}.
 create_stored_iscsi_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stored_iscsi_volume(Client, Input, []).
+
+-spec create_stored_iscsi_volume(aws_client:aws_client(), create_stored_iscsi_volume_input(), proplists:proplist()) ->
+    {ok, create_stored_iscsi_volume_output(), tuple()} |
+    {error, any()} |
+    {error, create_stored_iscsi_volume_errors(), tuple()}.
 create_stored_iscsi_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStorediSCSIVolume">>, Input, Options).
@@ -668,9 +2953,18 @@ create_stored_iscsi_volume(Client, Input, Options)
 %%
 %% You can use custom tape pool to enable tape retention
 %% lock on tapes that are archived in the custom pool.
+-spec create_tape_pool(aws_client:aws_client(), create_tape_pool_input()) ->
+    {ok, create_tape_pool_output(), tuple()} |
+    {error, any()} |
+    {error, create_tape_pool_errors(), tuple()}.
 create_tape_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tape_pool(Client, Input, []).
+
+-spec create_tape_pool(aws_client:aws_client(), create_tape_pool_input(), proplists:proplist()) ->
+    {ok, create_tape_pool_output(), tuple()} |
+    {error, any()} |
+    {error, create_tape_pool_errors(), tuple()}.
 create_tape_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTapePool">>, Input, Options).
@@ -687,9 +2981,18 @@ create_tape_pool(Client, Input, Options)
 %% Cache storage must be allocated to the gateway before you can create a
 %% virtual tape.
 %% Use the `AddCache' operation to add cache storage to a gateway.
+-spec create_tape_with_barcode(aws_client:aws_client(), create_tape_with_barcode_input()) ->
+    {ok, create_tape_with_barcode_output(), tuple()} |
+    {error, any()} |
+    {error, create_tape_with_barcode_errors(), tuple()}.
 create_tape_with_barcode(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tape_with_barcode(Client, Input, []).
+
+-spec create_tape_with_barcode(aws_client:aws_client(), create_tape_with_barcode_input(), proplists:proplist()) ->
+    {ok, create_tape_with_barcode_output(), tuple()} |
+    {error, any()} |
+    {error, create_tape_with_barcode_errors(), tuple()}.
 create_tape_with_barcode(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTapeWithBarcode">>, Input, Options).
@@ -702,9 +3005,18 @@ create_tape_with_barcode(Client, Input, Options)
 %% Cache storage must be allocated to the gateway before you can create
 %% virtual tapes.
 %% Use the `AddCache' operation to add cache storage to a gateway.
+-spec create_tapes(aws_client:aws_client(), create_tapes_input()) ->
+    {ok, create_tapes_output(), tuple()} |
+    {error, any()} |
+    {error, create_tapes_errors(), tuple()}.
 create_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tapes(Client, Input, []).
+
+-spec create_tapes(aws_client:aws_client(), create_tapes_input(), proplists:proplist()) ->
+    {ok, create_tapes_output(), tuple()} |
+    {error, any()} |
+    {error, create_tapes_errors(), tuple()}.
 create_tapes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTapes">>, Input, Options).
@@ -715,9 +3027,18 @@ create_tapes(Client, Input, Options)
 %% virtual tapes must be created manually. Use the Amazon Resource Name (ARN)
 %% of the gateway
 %% in your request to remove the policy.
+-spec delete_automatic_tape_creation_policy(aws_client:aws_client(), delete_automatic_tape_creation_policy_input()) ->
+    {ok, delete_automatic_tape_creation_policy_output(), tuple()} |
+    {error, any()} |
+    {error, delete_automatic_tape_creation_policy_errors(), tuple()}.
 delete_automatic_tape_creation_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_automatic_tape_creation_policy(Client, Input, []).
+
+-spec delete_automatic_tape_creation_policy(aws_client:aws_client(), delete_automatic_tape_creation_policy_input(), proplists:proplist()) ->
+    {ok, delete_automatic_tape_creation_policy_output(), tuple()} |
+    {error, any()} |
+    {error, delete_automatic_tape_creation_policy_errors(), tuple()}.
 delete_automatic_tape_creation_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAutomaticTapeCreationPolicy">>, Input, Options).
@@ -732,9 +3053,18 @@ delete_automatic_tape_creation_policy(Client, Input, Options)
 %% Amazon Resource Name (ARN) of the gateway in your request. This operation
 %% is supported only
 %% for the stored volume, cached volume, and tape gateway types.
+-spec delete_bandwidth_rate_limit(aws_client:aws_client(), delete_bandwidth_rate_limit_input()) ->
+    {ok, delete_bandwidth_rate_limit_output(), tuple()} |
+    {error, any()} |
+    {error, delete_bandwidth_rate_limit_errors(), tuple()}.
 delete_bandwidth_rate_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bandwidth_rate_limit(Client, Input, []).
+
+-spec delete_bandwidth_rate_limit(aws_client:aws_client(), delete_bandwidth_rate_limit_input(), proplists:proplist()) ->
+    {ok, delete_bandwidth_rate_limit_output(), tuple()} |
+    {error, any()} |
+    {error, delete_bandwidth_rate_limit_errors(), tuple()}.
 delete_bandwidth_rate_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBandwidthRateLimit">>, Input, Options).
@@ -745,9 +3075,18 @@ delete_bandwidth_rate_limit(Client, Input, Options)
 %%
 %% This operation is supported in volume and tape gateway
 %% types.
+-spec delete_chap_credentials(aws_client:aws_client(), delete_chap_credentials_input()) ->
+    {ok, delete_chap_credentials_output(), tuple()} |
+    {error, any()} |
+    {error, delete_chap_credentials_errors(), tuple()}.
 delete_chap_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_chap_credentials(Client, Input, []).
+
+-spec delete_chap_credentials(aws_client:aws_client(), delete_chap_credentials_input(), proplists:proplist()) ->
+    {ok, delete_chap_credentials_output(), tuple()} |
+    {error, any()} |
+    {error, delete_chap_credentials_errors(), tuple()}.
 delete_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteChapCredentials">>, Input, Options).
@@ -756,9 +3095,18 @@ delete_chap_credentials(Client, Input, Options)
 %%
 %% This operation is only supported for S3
 %% File Gateways.
+-spec delete_file_share(aws_client:aws_client(), delete_file_share_input()) ->
+    {ok, delete_file_share_output(), tuple()} |
+    {error, any()} |
+    {error, delete_file_share_errors(), tuple()}.
 delete_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file_share(Client, Input, []).
+
+-spec delete_file_share(aws_client:aws_client(), delete_file_share_input(), proplists:proplist()) ->
+    {ok, delete_file_share_output(), tuple()} |
+    {error, any()} |
+    {error, delete_file_share_errors(), tuple()}.
 delete_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFileShare">>, Input, Options).
@@ -790,9 +3138,18 @@ delete_file_share(Client, Input, Options)
 %% information, see the
 %% Storage Gateway detail
 %% page: http://aws.amazon.com/storagegateway.
+-spec delete_gateway(aws_client:aws_client(), delete_gateway_input()) ->
+    {ok, delete_gateway_output(), tuple()} |
+    {error, any()} |
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_gateway(Client, Input, []).
+
+-spec delete_gateway(aws_client:aws_client(), delete_gateway_input(), proplists:proplist()) ->
+    {ok, delete_gateway_output(), tuple()} |
+    {error, any()} |
+    {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGateway">>, Input, Options).
@@ -816,9 +3173,18 @@ delete_gateway(Client, Input, Options)
 %% go to DescribeSnapshots:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html
 %% in the Amazon Elastic Compute Cloud API Reference.
+-spec delete_snapshot_schedule(aws_client:aws_client(), delete_snapshot_schedule_input()) ->
+    {ok, delete_snapshot_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, delete_snapshot_schedule_errors(), tuple()}.
 delete_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot_schedule(Client, Input, []).
+
+-spec delete_snapshot_schedule(aws_client:aws_client(), delete_snapshot_schedule_input(), proplists:proplist()) ->
+    {ok, delete_snapshot_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, delete_snapshot_schedule_errors(), tuple()}.
 delete_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshotSchedule">>, Input, Options).
@@ -827,9 +3193,18 @@ delete_snapshot_schedule(Client, Input, Options)
 %%
 %% This operation is only supported in the tape gateway
 %% type.
+-spec delete_tape(aws_client:aws_client(), delete_tape_input()) ->
+    {ok, delete_tape_output(), tuple()} |
+    {error, any()} |
+    {error, delete_tape_errors(), tuple()}.
 delete_tape(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tape(Client, Input, []).
+
+-spec delete_tape(aws_client:aws_client(), delete_tape_input(), proplists:proplist()) ->
+    {ok, delete_tape_output(), tuple()} |
+    {error, any()} |
+    {error, delete_tape_errors(), tuple()}.
 delete_tape(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTape">>, Input, Options).
@@ -838,9 +3213,18 @@ delete_tape(Client, Input, Options)
 %%
 %% This operation is
 %% only supported in the tape gateway type.
+-spec delete_tape_archive(aws_client:aws_client(), delete_tape_archive_input()) ->
+    {ok, delete_tape_archive_output(), tuple()} |
+    {error, any()} |
+    {error, delete_tape_archive_errors(), tuple()}.
 delete_tape_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tape_archive(Client, Input, []).
+
+-spec delete_tape_archive(aws_client:aws_client(), delete_tape_archive_input(), proplists:proplist()) ->
+    {ok, delete_tape_archive_output(), tuple()} |
+    {error, any()} |
+    {error, delete_tape_archive_errors(), tuple()}.
 delete_tape_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTapeArchive">>, Input, Options).
@@ -851,9 +3235,18 @@ delete_tape_archive(Client, Input, Options)
 %% in the pool and if there are no automatic tape creation policies that
 %% reference the custom
 %% tape pool.
+-spec delete_tape_pool(aws_client:aws_client(), delete_tape_pool_input()) ->
+    {ok, delete_tape_pool_output(), tuple()} |
+    {error, any()} |
+    {error, delete_tape_pool_errors(), tuple()}.
 delete_tape_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tape_pool(Client, Input, []).
+
+-spec delete_tape_pool(aws_client:aws_client(), delete_tape_pool_input(), proplists:proplist()) ->
+    {ok, delete_tape_pool_output(), tuple()} |
+    {error, any()} |
+    {error, delete_tape_pool_errors(), tuple()}.
 delete_tape_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTapePool">>, Input, Options).
@@ -883,9 +3276,18 @@ delete_tape_pool(Client, Input, Options)
 %% In the request, you must provide the Amazon Resource Name (ARN) of the
 %% storage volume
 %% you want to delete.
+-spec delete_volume(aws_client:aws_client(), delete_volume_input()) ->
+    {ok, delete_volume_output(), tuple()} |
+    {error, any()} |
+    {error, delete_volume_errors(), tuple()}.
 delete_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_volume(Client, Input, []).
+
+-spec delete_volume(aws_client:aws_client(), delete_volume_input(), proplists:proplist()) ->
+    {ok, delete_volume_output(), tuple()} |
+    {error, any()} |
+    {error, delete_volume_errors(), tuple()}.
 delete_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVolume">>, Input, Options).
@@ -896,9 +3298,18 @@ delete_volume(Client, Input, Options)
 %%
 %% If a test isn't performed, the status and start
 %% time in the response would be null.
+-spec describe_availability_monitor_test(aws_client:aws_client(), describe_availability_monitor_test_input()) ->
+    {ok, describe_availability_monitor_test_output(), tuple()} |
+    {error, any()} |
+    {error, describe_availability_monitor_test_errors(), tuple()}.
 describe_availability_monitor_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_availability_monitor_test(Client, Input, []).
+
+-spec describe_availability_monitor_test(aws_client:aws_client(), describe_availability_monitor_test_input(), proplists:proplist()) ->
+    {ok, describe_availability_monitor_test_output(), tuple()} |
+    {error, any()} |
+    {error, describe_availability_monitor_test_errors(), tuple()}.
 describe_availability_monitor_test(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAvailabilityMonitorTest">>, Input, Options).
@@ -919,9 +3330,18 @@ describe_availability_monitor_test(Client, Input, Options)
 %% response body. To specify which gateway to describe, use the Amazon
 %% Resource Name (ARN) of
 %% the gateway in your request.
+-spec describe_bandwidth_rate_limit(aws_client:aws_client(), describe_bandwidth_rate_limit_input()) ->
+    {ok, describe_bandwidth_rate_limit_output(), tuple()} |
+    {error, any()} |
+    {error, describe_bandwidth_rate_limit_errors(), tuple()}.
 describe_bandwidth_rate_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_bandwidth_rate_limit(Client, Input, []).
+
+-spec describe_bandwidth_rate_limit(aws_client:aws_client(), describe_bandwidth_rate_limit_input(), proplists:proplist()) ->
+    {ok, describe_bandwidth_rate_limit_output(), tuple()} |
+    {error, any()} |
+    {error, describe_bandwidth_rate_limit_errors(), tuple()}.
 describe_bandwidth_rate_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBandwidthRateLimit">>, Input, Options).
@@ -956,9 +3376,18 @@ describe_bandwidth_rate_limit(Client, Input, Options)
 %% returns an empty response. To specify which gateway to describe, use the
 %% Amazon Resource
 %% Name (ARN) of the gateway in your request.
+-spec describe_bandwidth_rate_limit_schedule(aws_client:aws_client(), describe_bandwidth_rate_limit_schedule_input()) ->
+    {ok, describe_bandwidth_rate_limit_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, describe_bandwidth_rate_limit_schedule_errors(), tuple()}.
 describe_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_bandwidth_rate_limit_schedule(Client, Input, []).
+
+-spec describe_bandwidth_rate_limit_schedule(aws_client:aws_client(), describe_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
+    {ok, describe_bandwidth_rate_limit_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, describe_bandwidth_rate_limit_schedule_errors(), tuple()}.
 describe_bandwidth_rate_limit_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBandwidthRateLimitSchedule">>, Input, Options).
@@ -971,9 +3400,18 @@ describe_bandwidth_rate_limit_schedule(Client, Input, Options)
 %% The response includes disk IDs that are configured as cache, and it
 %% includes the amount
 %% of cache allocated and used.
+-spec describe_cache(aws_client:aws_client(), describe_cache_input()) ->
+    {ok, describe_cache_output(), tuple()} |
+    {error, any()} |
+    {error, describe_cache_errors(), tuple()}.
 describe_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache(Client, Input, []).
+
+-spec describe_cache(aws_client:aws_client(), describe_cache_input(), proplists:proplist()) ->
+    {ok, describe_cache_output(), tuple()} |
+    {error, any()} |
+    {error, describe_cache_errors(), tuple()}.
 describe_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCache">>, Input, Options).
@@ -989,9 +3427,18 @@ describe_cache(Client, Input, Options)
 %% Storage Gateway returns volume information sorted by volume Amazon
 %% Resource Name
 %% (ARN).
+-spec describe_cached_iscsi_volumes(aws_client:aws_client(), describe_cached_iscsi_volumes_input()) ->
+    {ok, describe_cached_iscsi_volumes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_cached_iscsi_volumes_errors(), tuple()}.
 describe_cached_iscsi_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cached_iscsi_volumes(Client, Input, []).
+
+-spec describe_cached_iscsi_volumes(aws_client:aws_client(), describe_cached_iscsi_volumes_input(), proplists:proplist()) ->
+    {ok, describe_cached_iscsi_volumes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_cached_iscsi_volumes_errors(), tuple()}.
 describe_cached_iscsi_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCachediSCSIVolumes">>, Input, Options).
@@ -1003,9 +3450,18 @@ describe_cached_iscsi_volumes(Client, Input, Options)
 %%
 %% This
 %% operation is supported in the volume and tape gateway types.
+-spec describe_chap_credentials(aws_client:aws_client(), describe_chap_credentials_input()) ->
+    {ok, describe_chap_credentials_output(), tuple()} |
+    {error, any()} |
+    {error, describe_chap_credentials_errors(), tuple()}.
 describe_chap_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_chap_credentials(Client, Input, []).
+
+-spec describe_chap_credentials(aws_client:aws_client(), describe_chap_credentials_input(), proplists:proplist()) ->
+    {ok, describe_chap_credentials_output(), tuple()} |
+    {error, any()} |
+    {error, describe_chap_credentials_errors(), tuple()}.
 describe_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeChapCredentials">>, Input, Options).
@@ -1014,9 +3470,18 @@ describe_chap_credentials(Client, Input, Options)
 %%
 %% This operation is only supported for FSx
 %% File Gateways.
+-spec describe_file_system_associations(aws_client:aws_client(), describe_file_system_associations_input()) ->
+    {ok, describe_file_system_associations_output(), tuple()} |
+    {error, any()} |
+    {error, describe_file_system_associations_errors(), tuple()}.
 describe_file_system_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_file_system_associations(Client, Input, []).
+
+-spec describe_file_system_associations(aws_client:aws_client(), describe_file_system_associations_input(), proplists:proplist()) ->
+    {ok, describe_file_system_associations_output(), tuple()} |
+    {error, any()} |
+    {error, describe_file_system_associations_errors(), tuple()}.
 describe_file_system_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFileSystemAssociations">>, Input, Options).
@@ -1027,9 +3492,18 @@ describe_file_system_associations(Client, Input, Options)
 %%
 %% To specify which gateway to describe, use the Amazon Resource
 %% Name (ARN) of the gateway in your request.
+-spec describe_gateway_information(aws_client:aws_client(), describe_gateway_information_input()) ->
+    {ok, describe_gateway_information_output(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_information_errors(), tuple()}.
 describe_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_gateway_information(Client, Input, []).
+
+-spec describe_gateway_information(aws_client:aws_client(), describe_gateway_information_input(), proplists:proplist()) ->
+    {ok, describe_gateway_information_output(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_information_errors(), tuple()}.
 describe_gateway_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGatewayInformation">>, Input, Options).
@@ -1039,9 +3513,18 @@ describe_gateway_information(Client, Input, Options)
 %% the week.
 %%
 %% Note that values are in terms of the gateway's time zone.
+-spec describe_maintenance_start_time(aws_client:aws_client(), describe_maintenance_start_time_input()) ->
+    {ok, describe_maintenance_start_time_output(), tuple()} |
+    {error, any()} |
+    {error, describe_maintenance_start_time_errors(), tuple()}.
 describe_maintenance_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_start_time(Client, Input, []).
+
+-spec describe_maintenance_start_time(aws_client:aws_client(), describe_maintenance_start_time_input(), proplists:proplist()) ->
+    {ok, describe_maintenance_start_time_output(), tuple()} |
+    {error, any()} |
+    {error, describe_maintenance_start_time_errors(), tuple()}.
 describe_maintenance_start_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMaintenanceStartTime">>, Input, Options).
@@ -1051,9 +3534,18 @@ describe_maintenance_start_time(Client, Input, Options)
 %% Gateway.
 %%
 %% This operation is only supported for S3 File Gateways.
+-spec describe_nfs_file_shares(aws_client:aws_client(), describe_nfs_file_shares_input()) ->
+    {ok, describe_nfs_file_shares_output(), tuple()} |
+    {error, any()} |
+    {error, describe_nfs_file_shares_errors(), tuple()}.
 describe_nfs_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_nfs_file_shares(Client, Input, []).
+
+-spec describe_nfs_file_shares(aws_client:aws_client(), describe_nfs_file_shares_input(), proplists:proplist()) ->
+    {ok, describe_nfs_file_shares_output(), tuple()} |
+    {error, any()} |
+    {error, describe_nfs_file_shares_errors(), tuple()}.
 describe_nfs_file_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNFSFileShares">>, Input, Options).
@@ -1063,9 +3555,18 @@ describe_nfs_file_shares(Client, Input, Options)
 %% Gateway.
 %%
 %% This operation is only supported for S3 File Gateways.
+-spec describe_smb_file_shares(aws_client:aws_client(), describe_smb_file_shares_input()) ->
+    {ok, describe_smb_file_shares_output(), tuple()} |
+    {error, any()} |
+    {error, describe_smb_file_shares_errors(), tuple()}.
 describe_smb_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_smb_file_shares(Client, Input, []).
+
+-spec describe_smb_file_shares(aws_client:aws_client(), describe_smb_file_shares_input(), proplists:proplist()) ->
+    {ok, describe_smb_file_shares_output(), tuple()} |
+    {error, any()} |
+    {error, describe_smb_file_shares_errors(), tuple()}.
 describe_smb_file_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSMBFileShares">>, Input, Options).
@@ -1075,9 +3576,18 @@ describe_smb_file_shares(Client, Input, Options)
 %% gateway.
 %%
 %% This operation is only supported for file gateways.
+-spec describe_smb_settings(aws_client:aws_client(), describe_smb_settings_input()) ->
+    {ok, describe_smb_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_smb_settings_errors(), tuple()}.
 describe_smb_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_smb_settings(Client, Input, []).
+
+-spec describe_smb_settings(aws_client:aws_client(), describe_smb_settings_input(), proplists:proplist()) ->
+    {ok, describe_smb_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_smb_settings_errors(), tuple()}.
 describe_smb_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSMBSettings">>, Input, Options).
@@ -1090,9 +3600,18 @@ describe_smb_settings(Client, Input, Options)
 %% volume. This operation is only supported in the cached volume and stored
 %% volume
 %% types.
+-spec describe_snapshot_schedule(aws_client:aws_client(), describe_snapshot_schedule_input()) ->
+    {ok, describe_snapshot_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, describe_snapshot_schedule_errors(), tuple()}.
 describe_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshot_schedule(Client, Input, []).
+
+-spec describe_snapshot_schedule(aws_client:aws_client(), describe_snapshot_schedule_input(), proplists:proplist()) ->
+    {ok, describe_snapshot_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, describe_snapshot_schedule_errors(), tuple()}.
 describe_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSnapshotSchedule">>, Input, Options).
@@ -1105,9 +3624,18 @@ describe_snapshot_schedule(Client, Input, Options)
 %% Storage Gateway returns volume information sorted by volume ARNs. This
 %% operation is only
 %% supported in stored volume gateway type.
+-spec describe_stored_iscsi_volumes(aws_client:aws_client(), describe_stored_iscsi_volumes_input()) ->
+    {ok, describe_stored_iscsi_volumes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_stored_iscsi_volumes_errors(), tuple()}.
 describe_stored_iscsi_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stored_iscsi_volumes(Client, Input, []).
+
+-spec describe_stored_iscsi_volumes(aws_client:aws_client(), describe_stored_iscsi_volumes_input(), proplists:proplist()) ->
+    {ok, describe_stored_iscsi_volumes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_stored_iscsi_volumes_errors(), tuple()}.
 describe_stored_iscsi_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStorediSCSIVolumes">>, Input, Options).
@@ -1121,9 +3649,18 @@ describe_stored_iscsi_volumes(Client, Input, Options)
 %% If a specific `TapeARN' is not specified, Storage Gateway returns a
 %% description of all virtual tapes found in the VTS associated with your
 %% account.
+-spec describe_tape_archives(aws_client:aws_client(), describe_tape_archives_input()) ->
+    {ok, describe_tape_archives_output(), tuple()} |
+    {error, any()} |
+    {error, describe_tape_archives_errors(), tuple()}.
 describe_tape_archives(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tape_archives(Client, Input, []).
+
+-spec describe_tape_archives(aws_client:aws_client(), describe_tape_archives_input(), proplists:proplist()) ->
+    {ok, describe_tape_archives_output(), tuple()} |
+    {error, any()} |
+    {error, describe_tape_archives_errors(), tuple()}.
 describe_tape_archives(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTapeArchives">>, Input, Options).
@@ -1139,9 +3676,18 @@ describe_tape_archives(Client, Input, Options)
 %% points can be recovered to a new gateway. This operation is only supported
 %% in the tape
 %% gateway type.
+-spec describe_tape_recovery_points(aws_client:aws_client(), describe_tape_recovery_points_input()) ->
+    {ok, describe_tape_recovery_points_output(), tuple()} |
+    {error, any()} |
+    {error, describe_tape_recovery_points_errors(), tuple()}.
 describe_tape_recovery_points(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tape_recovery_points(Client, Input, []).
+
+-spec describe_tape_recovery_points(aws_client:aws_client(), describe_tape_recovery_points_input(), proplists:proplist()) ->
+    {ok, describe_tape_recovery_points_output(), tuple()} |
+    {error, any()} |
+    {error, describe_tape_recovery_points_errors(), tuple()}.
 describe_tape_recovery_points(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTapeRecoveryPoints">>, Input, Options).
@@ -1164,9 +3710,18 @@ describe_tape_recovery_points(Client, Input, Options)
 %% truncated, the response includes a `Marker' field. You can use this
 %% `Marker' value in your subsequent request to retrieve the next set of
 %% tapes.
+-spec describe_tapes(aws_client:aws_client(), describe_tapes_input()) ->
+    {ok, describe_tapes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_tapes_errors(), tuple()}.
 describe_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tapes(Client, Input, []).
+
+-spec describe_tapes(aws_client:aws_client(), describe_tapes_input(), proplists:proplist()) ->
+    {ok, describe_tapes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_tapes_errors(), tuple()}.
 describe_tapes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTapes">>, Input, Options).
@@ -1179,9 +3734,18 @@ describe_tapes(Client, Input, Options)
 %% The response includes disk IDs that are configured as upload buffer space,
 %% and it
 %% includes the amount of upload buffer space allocated and used.
+-spec describe_upload_buffer(aws_client:aws_client(), describe_upload_buffer_input()) ->
+    {ok, describe_upload_buffer_output(), tuple()} |
+    {error, any()} |
+    {error, describe_upload_buffer_errors(), tuple()}.
 describe_upload_buffer(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_upload_buffer(Client, Input, []).
+
+-spec describe_upload_buffer(aws_client:aws_client(), describe_upload_buffer_input(), proplists:proplist()) ->
+    {ok, describe_upload_buffer_output(), tuple()} |
+    {error, any()} |
+    {error, describe_upload_buffer_errors(), tuple()}.
 describe_upload_buffer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUploadBuffer">>, Input, Options).
@@ -1193,9 +3757,18 @@ describe_upload_buffer(Client, Input, Options)
 %% In the response, Storage Gateway returns VTL device information.
 %%
 %% This operation is only supported in the tape gateway type.
+-spec describe_vtl_devices(aws_client:aws_client(), describe_vtl_devices_input()) ->
+    {ok, describe_vtl_devices_output(), tuple()} |
+    {error, any()} |
+    {error, describe_vtl_devices_errors(), tuple()}.
 describe_vtl_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vtl_devices(Client, Input, []).
+
+-spec describe_vtl_devices(aws_client:aws_client(), describe_vtl_devices_input(), proplists:proplist()) ->
+    {ok, describe_vtl_devices_output(), tuple()} |
+    {error, any()} |
+    {error, describe_vtl_devices_errors(), tuple()}.
 describe_vtl_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVTLDevices">>, Input, Options).
@@ -1214,9 +3787,18 @@ describe_vtl_devices(Client, Input, Options)
 %% The response includes disk IDs that are configured as working storage, and
 %% it includes
 %% the amount of working storage allocated and used.
+-spec describe_working_storage(aws_client:aws_client(), describe_working_storage_input()) ->
+    {ok, describe_working_storage_output(), tuple()} |
+    {error, any()} |
+    {error, describe_working_storage_errors(), tuple()}.
 describe_working_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_working_storage(Client, Input, []).
+
+-spec describe_working_storage(aws_client:aws_client(), describe_working_storage_input(), proplists:proplist()) ->
+    {ok, describe_working_storage_output(), tuple()} |
+    {error, any()} |
+    {error, describe_working_storage_errors(), tuple()}.
 describe_working_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkingStorage">>, Input, Options).
@@ -1231,9 +3813,18 @@ describe_working_storage(Client, Input, Options)
 %% move your volumes from an on-premises gateway to a gateway hosted on an
 %% Amazon EC2
 %% instance. This operation is only supported in the volume gateway type.
+-spec detach_volume(aws_client:aws_client(), detach_volume_input()) ->
+    {ok, detach_volume_output(), tuple()} |
+    {error, any()} |
+    {error, detach_volume_errors(), tuple()}.
 detach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_volume(Client, Input, []).
+
+-spec detach_volume(aws_client:aws_client(), detach_volume_input(), proplists:proplist()) ->
+    {ok, detach_volume_output(), tuple()} |
+    {error, any()} |
+    {error, detach_volume_errors(), tuple()}.
 detach_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachVolume">>, Input, Options).
@@ -1249,9 +3840,18 @@ detach_volume(Client, Input, Options)
 %% operation is only supported in the tape gateway type.
 %%
 %% After a gateway is disabled, it cannot be enabled.
+-spec disable_gateway(aws_client:aws_client(), disable_gateway_input()) ->
+    {ok, disable_gateway_output(), tuple()} |
+    {error, any()} |
+    {error, disable_gateway_errors(), tuple()}.
 disable_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_gateway(Client, Input, []).
+
+-spec disable_gateway(aws_client:aws_client(), disable_gateway_input(), proplists:proplist()) ->
+    {ok, disable_gateway_output(), tuple()} |
+    {error, any()} |
+    {error, disable_gateway_errors(), tuple()}.
 disable_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableGateway">>, Input, Options).
@@ -1263,9 +3863,18 @@ disable_gateway(Client, Input, Options)
 %% Amazon FSx
 %% file system. This operation is only supported in the FSx File Gateway
 %% type.
+-spec disassociate_file_system(aws_client:aws_client(), disassociate_file_system_input()) ->
+    {ok, disassociate_file_system_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_file_system_errors(), tuple()}.
 disassociate_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_file_system(Client, Input, []).
+
+-spec disassociate_file_system(aws_client:aws_client(), disassociate_file_system_input(), proplists:proplist()) ->
+    {ok, disassociate_file_system_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_file_system_errors(), tuple()}.
 disassociate_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateFileSystem">>, Input, Options).
@@ -1287,9 +3896,18 @@ disassociate_file_system(Client, Input, Options)
 %% To create the gateway's computer account in an organizational unit
 %% other than the
 %% default, you must specify the organizational unit when joining the domain.
+-spec join_domain(aws_client:aws_client(), join_domain_input()) ->
+    {ok, join_domain_output(), tuple()} |
+    {error, any()} |
+    {error, join_domain_errors(), tuple()}.
 join_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     join_domain(Client, Input, []).
+
+-spec join_domain(aws_client:aws_client(), join_domain_input(), proplists:proplist()) ->
+    {ok, join_domain_output(), tuple()} |
+    {error, any()} |
+    {error, join_domain_errors(), tuple()}.
 join_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"JoinDomain">>, Input, Options).
@@ -1300,9 +3918,18 @@ join_domain(Client, Input, Options)
 %% creation policies for the gateway, it returns an empty list.
 %%
 %% This operation is only supported for tape gateways.
+-spec list_automatic_tape_creation_policies(aws_client:aws_client(), list_automatic_tape_creation_policies_input()) ->
+    {ok, list_automatic_tape_creation_policies_output(), tuple()} |
+    {error, any()} |
+    {error, list_automatic_tape_creation_policies_errors(), tuple()}.
 list_automatic_tape_creation_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_automatic_tape_creation_policies(Client, Input, []).
+
+-spec list_automatic_tape_creation_policies(aws_client:aws_client(), list_automatic_tape_creation_policies_input(), proplists:proplist()) ->
+    {ok, list_automatic_tape_creation_policies_output(), tuple()} |
+    {error, any()} |
+    {error, list_automatic_tape_creation_policies_errors(), tuple()}.
 list_automatic_tape_creation_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAutomaticTapeCreationPolicies">>, Input, Options).
@@ -1313,9 +3940,18 @@ list_automatic_tape_creation_policies(Client, Input, Options)
 %%
 %% This operation is only
 %% supported for S3 File Gateways.
+-spec list_file_shares(aws_client:aws_client(), list_file_shares_input()) ->
+    {ok, list_file_shares_output(), tuple()} |
+    {error, any()} |
+    {error, list_file_shares_errors(), tuple()}.
 list_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_file_shares(Client, Input, []).
+
+-spec list_file_shares(aws_client:aws_client(), list_file_shares_input(), proplists:proplist()) ->
+    {ok, list_file_shares_output(), tuple()} |
+    {error, any()} |
+    {error, list_file_shares_errors(), tuple()}.
 list_file_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFileShares">>, Input, Options).
@@ -1326,9 +3962,18 @@ list_file_shares(Client, Input, Options)
 %% summary of a file system association. This operation is only supported for
 %% FSx File
 %% Gateways.
+-spec list_file_system_associations(aws_client:aws_client(), list_file_system_associations_input()) ->
+    {ok, list_file_system_associations_output(), tuple()} |
+    {error, any()} |
+    {error, list_file_system_associations_errors(), tuple()}.
 list_file_system_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_file_system_associations(Client, Input, []).
+
+-spec list_file_system_associations(aws_client:aws_client(), list_file_system_associations_input(), proplists:proplist()) ->
+    {ok, list_file_system_associations_output(), tuple()} |
+    {error, any()} |
+    {error, list_file_system_associations_errors(), tuple()}.
 list_file_system_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFileSystemAssociations">>, Input, Options).
@@ -1351,9 +3996,18 @@ list_file_system_associations(Client, Input, Options)
 %% only a truncated list of your gateways), the response contains a marker
 %% that you can
 %% specify in your next request to fetch the next page of gateways.
+-spec list_gateways(aws_client:aws_client(), list_gateways_input()) ->
+    {ok, list_gateways_output(), tuple()} |
+    {error, any()} |
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_gateways(Client, Input, []).
+
+-spec list_gateways(aws_client:aws_client(), list_gateways_input(), proplists:proplist()) ->
+    {ok, list_gateways_output(), tuple()} |
+    {error, any()} |
+    {error, list_gateways_errors(), tuple()}.
 list_gateways(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGateways">>, Input, Options).
@@ -1375,9 +4029,18 @@ list_gateways(Client, Input, Options)
 %% (the disk node is occupied by a disk that has incorrect metadata or the
 %% disk content is
 %% corrupted).
+-spec list_local_disks(aws_client:aws_client(), list_local_disks_input()) ->
+    {ok, list_local_disks_output(), tuple()} |
+    {error, any()} |
+    {error, list_local_disks_errors(), tuple()}.
 list_local_disks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_local_disks(Client, Input, []).
+
+-spec list_local_disks(aws_client:aws_client(), list_local_disks_input(), proplists:proplist()) ->
+    {ok, list_local_disks_output(), tuple()} |
+    {error, any()} |
+    {error, list_local_disks_errors(), tuple()}.
 list_local_disks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLocalDisks">>, Input, Options).
@@ -1386,9 +4049,18 @@ list_local_disks(Client, Input, Options)
 %%
 %% This operation is
 %% supported in storage gateways of all types.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1408,9 +4080,18 @@ list_tags_for_resource(Client, Input, Options)
 %% `Marker' element that you can use in your subsequent request to
 %% retrieve the
 %% next set of tape pools.
+-spec list_tape_pools(aws_client:aws_client(), list_tape_pools_input()) ->
+    {ok, list_tape_pools_output(), tuple()} |
+    {error, any()} |
+    {error, list_tape_pools_errors(), tuple()}.
 list_tape_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tape_pools(Client, Input, []).
+
+-spec list_tape_pools(aws_client:aws_client(), list_tape_pools_input(), proplists:proplist()) ->
+    {ok, list_tape_pools_output(), tuple()} |
+    {error, any()} |
+    {error, list_tape_pools_errors(), tuple()}.
 list_tape_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTapePools">>, Input, Options).
@@ -1436,9 +4117,18 @@ list_tape_pools(Client, Input, Options)
 %% subsequent request to retrieve the next set of tapes. This operation is
 %% only supported in
 %% the tape gateway type.
+-spec list_tapes(aws_client:aws_client(), list_tapes_input()) ->
+    {ok, list_tapes_output(), tuple()} |
+    {error, any()} |
+    {error, list_tapes_errors(), tuple()}.
 list_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tapes(Client, Input, []).
+
+-spec list_tapes(aws_client:aws_client(), list_tapes_input(), proplists:proplist()) ->
+    {ok, list_tapes_output(), tuple()} |
+    {error, any()} |
+    {error, list_tapes_errors(), tuple()}.
 list_tapes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTapes">>, Input, Options).
@@ -1449,9 +4139,18 @@ list_tapes(Client, Input, Options)
 %% determine whether a volume is being used or not. This operation is only
 %% supported in the
 %% cached volume and stored volume gateway types.
+-spec list_volume_initiators(aws_client:aws_client(), list_volume_initiators_input()) ->
+    {ok, list_volume_initiators_output(), tuple()} |
+    {error, any()} |
+    {error, list_volume_initiators_errors(), tuple()}.
 list_volume_initiators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_volume_initiators(Client, Input, []).
+
+-spec list_volume_initiators(aws_client:aws_client(), list_volume_initiators_input(), proplists:proplist()) ->
+    {ok, list_volume_initiators_output(), tuple()} |
+    {error, any()} |
+    {error, list_volume_initiators_errors(), tuple()}.
 list_volume_initiators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVolumeInitiators">>, Input, Options).
@@ -1468,9 +4167,18 @@ list_volume_initiators(Client, Input, Options)
 %% clone a new cached volume from a source volume. To create a snapshot from
 %% a volume recovery
 %% point use the `CreateSnapshotFromVolumeRecoveryPoint' operation.
+-spec list_volume_recovery_points(aws_client:aws_client(), list_volume_recovery_points_input()) ->
+    {ok, list_volume_recovery_points_output(), tuple()} |
+    {error, any()} |
+    {error, list_volume_recovery_points_errors(), tuple()}.
 list_volume_recovery_points(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_volume_recovery_points(Client, Input, []).
+
+-spec list_volume_recovery_points(aws_client:aws_client(), list_volume_recovery_points_input(), proplists:proplist()) ->
+    {ok, list_volume_recovery_points_output(), tuple()} |
+    {error, any()} |
+    {error, list_volume_recovery_points_errors(), tuple()}.
 list_volume_recovery_points(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVolumeRecoveryPoints">>, Input, Options).
@@ -1494,9 +4202,18 @@ list_volume_recovery_points(Client, Input, Options)
 %% subsequent request to retrieve the next set of volumes. This operation is
 %% only supported in
 %% the cached volume and stored volume gateway types.
+-spec list_volumes(aws_client:aws_client(), list_volumes_input()) ->
+    {ok, list_volumes_output(), tuple()} |
+    {error, any()} |
+    {error, list_volumes_errors(), tuple()}.
 list_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_volumes(Client, Input, []).
+
+-spec list_volumes(aws_client:aws_client(), list_volumes_input(), proplists:proplist()) ->
+    {ok, list_volumes_output(), tuple()} |
+    {error, any()} |
+    {error, list_volumes_errors(), tuple()}.
 list_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVolumes">>, Input, Options).
@@ -1522,9 +4239,18 @@ list_volumes(Client, Input, Options)
 %% https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification
 %% in the Amazon S3 File Gateway User
 %% Guide.
+-spec notify_when_uploaded(aws_client:aws_client(), notify_when_uploaded_input()) ->
+    {ok, notify_when_uploaded_output(), tuple()} |
+    {error, any()} |
+    {error, notify_when_uploaded_errors(), tuple()}.
 notify_when_uploaded(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_when_uploaded(Client, Input, []).
+
+-spec notify_when_uploaded(aws_client:aws_client(), notify_when_uploaded_input(), proplists:proplist()) ->
+    {ok, notify_when_uploaded_output(), tuple()} |
+    {error, any()} |
+    {error, notify_when_uploaded_errors(), tuple()}.
 notify_when_uploaded(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyWhenUploaded">>, Input, Options).
@@ -1590,9 +4316,18 @@ notify_when_uploaded(Client, Input, Options)
 %% https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification
 %% in the Amazon S3 File Gateway User
 %% Guide.
+-spec refresh_cache(aws_client:aws_client(), refresh_cache_input()) ->
+    {ok, refresh_cache_output(), tuple()} |
+    {error, any()} |
+    {error, refresh_cache_errors(), tuple()}.
 refresh_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_cache(Client, Input, []).
+
+-spec refresh_cache(aws_client:aws_client(), refresh_cache_input(), proplists:proplist()) ->
+    {ok, refresh_cache_output(), tuple()} |
+    {error, any()} |
+    {error, refresh_cache_errors(), tuple()}.
 refresh_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RefreshCache">>, Input, Options).
@@ -1601,9 +4336,18 @@ refresh_cache(Client, Input, Options)
 %%
 %% This operation is supported in
 %% storage gateways of all types.
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_input()) ->
+    {ok, remove_tags_from_resource_output(), tuple()} |
+    {error, any()} |
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
+
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_input(), proplists:proplist()) ->
+    {ok, remove_tags_from_resource_output(), tuple()} |
+    {error, any()} |
+    {error, remove_tags_from_resource_errors(), tuple()}.
 remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
@@ -1629,9 +4373,18 @@ remove_tags_from_resource(Client, Input, Options)
 %% be no configured cache disks left in the gateway, so you must configure at
 %% least one new
 %% cache disk for your gateway to function properly.
+-spec reset_cache(aws_client:aws_client(), reset_cache_input()) ->
+    {ok, reset_cache_output(), tuple()} |
+    {error, any()} |
+    {error, reset_cache_errors(), tuple()}.
 reset_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_cache(Client, Input, []).
+
+-spec reset_cache(aws_client:aws_client(), reset_cache_input(), proplists:proplist()) ->
+    {ok, reset_cache_output(), tuple()} |
+    {error, any()} |
+    {error, reset_cache_errors(), tuple()}.
 reset_cache(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetCache">>, Input, Options).
@@ -1651,9 +4404,18 @@ reset_cache(Client, Input, Options)
 %% another gateway. You must archive the tape again before you can retrieve
 %% it to another
 %% gateway. This operation is only supported in the tape gateway type.
+-spec retrieve_tape_archive(aws_client:aws_client(), retrieve_tape_archive_input()) ->
+    {ok, retrieve_tape_archive_output(), tuple()} |
+    {error, any()} |
+    {error, retrieve_tape_archive_errors(), tuple()}.
 retrieve_tape_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve_tape_archive(Client, Input, []).
+
+-spec retrieve_tape_archive(aws_client:aws_client(), retrieve_tape_archive_input(), proplists:proplist()) ->
+    {ok, retrieve_tape_archive_output(), tuple()} |
+    {error, any()} |
+    {error, retrieve_tape_archive_errors(), tuple()}.
 retrieve_tape_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetrieveTapeArchive">>, Input, Options).
@@ -1674,9 +4436,18 @@ retrieve_tape_archive(Client, Input, Options)
 %% read-only. The virtual tape can be retrieved to only a tape gateway. There
 %% is no charge
 %% for retrieving recovery points.
+-spec retrieve_tape_recovery_point(aws_client:aws_client(), retrieve_tape_recovery_point_input()) ->
+    {ok, retrieve_tape_recovery_point_output(), tuple()} |
+    {error, any()} |
+    {error, retrieve_tape_recovery_point_errors(), tuple()}.
 retrieve_tape_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve_tape_recovery_point(Client, Input, []).
+
+-spec retrieve_tape_recovery_point(aws_client:aws_client(), retrieve_tape_recovery_point_input(), proplists:proplist()) ->
+    {ok, retrieve_tape_recovery_point_output(), tuple()} |
+    {error, any()} |
+    {error, retrieve_tape_recovery_point_errors(), tuple()}.
 retrieve_tape_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetrieveTapeRecoveryPoint">>, Input, Options).
@@ -1689,9 +4460,18 @@ retrieve_tape_recovery_point(Client, Input, Options)
 %% set a new password. You don't need to know the default password to set
 %% a new
 %% password.
+-spec set_local_console_password(aws_client:aws_client(), set_local_console_password_input()) ->
+    {ok, set_local_console_password_output(), tuple()} |
+    {error, any()} |
+    {error, set_local_console_password_errors(), tuple()}.
 set_local_console_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_local_console_password(Client, Input, []).
+
+-spec set_local_console_password(aws_client:aws_client(), set_local_console_password_input(), proplists:proplist()) ->
+    {ok, set_local_console_password_output(), tuple()} |
+    {error, any()} |
+    {error, set_local_console_password_errors(), tuple()}.
 set_local_console_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetLocalConsolePassword">>, Input, Options).
@@ -1702,9 +4482,18 @@ set_local_console_password(Client, Input, Options)
 %% user is the user when the authentication method for the file share is set
 %% to
 %% `GuestAccess'. This operation only supported for S3 File Gateways
+-spec set_smb_guest_password(aws_client:aws_client(), set_smb_guest_password_input()) ->
+    {ok, set_smb_guest_password_output(), tuple()} |
+    {error, any()} |
+    {error, set_smb_guest_password_errors(), tuple()}.
 set_smb_guest_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_smb_guest_password(Client, Input, []).
+
+-spec set_smb_guest_password(aws_client:aws_client(), set_smb_guest_password_input(), proplists:proplist()) ->
+    {ok, set_smb_guest_password_output(), tuple()} |
+    {error, any()} |
+    {error, set_smb_guest_password_errors(), tuple()}.
 set_smb_guest_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSMBGuestPassword">>, Input, Options).
@@ -1743,9 +4532,18 @@ set_smb_guest_password(Client, Input, Options)
 %% (using `DeleteGateway') to no longer pay software charges associated
 %% with the
 %% gateway.
+-spec shutdown_gateway(aws_client:aws_client(), shutdown_gateway_input()) ->
+    {ok, shutdown_gateway_output(), tuple()} |
+    {error, any()} |
+    {error, shutdown_gateway_errors(), tuple()}.
 shutdown_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     shutdown_gateway(Client, Input, []).
+
+-spec shutdown_gateway(aws_client:aws_client(), shutdown_gateway_input(), proplists:proplist()) ->
+    {ok, shutdown_gateway_output(), tuple()} |
+    {error, any()} |
+    {error, shutdown_gateway_errors(), tuple()}.
 shutdown_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ShutdownGateway">>, Input, Options).
@@ -1762,9 +4560,18 @@ shutdown_gateway(Client, Input, Options)
 %%
 %% Starting this test will cause your gateway to go offline for a brief
 %% period.
+-spec start_availability_monitor_test(aws_client:aws_client(), start_availability_monitor_test_input()) ->
+    {ok, start_availability_monitor_test_output(), tuple()} |
+    {error, any()} |
+    {error, start_availability_monitor_test_errors(), tuple()}.
 start_availability_monitor_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_availability_monitor_test(Client, Input, []).
+
+-spec start_availability_monitor_test(aws_client:aws_client(), start_availability_monitor_test_input(), proplists:proplist()) ->
+    {ok, start_availability_monitor_test_output(), tuple()} |
+    {error, any()} |
+    {error, start_availability_monitor_test_errors(), tuple()}.
 start_availability_monitor_test(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAvailabilityMonitorTest">>, Input, Options).
@@ -1787,9 +4594,18 @@ start_availability_monitor_test(Client, Input, Options)
 %% To specify which gateway to start, use the Amazon Resource Name (ARN) of
 %% the gateway in
 %% your request.
+-spec start_gateway(aws_client:aws_client(), start_gateway_input()) ->
+    {ok, start_gateway_output(), tuple()} |
+    {error, any()} |
+    {error, start_gateway_errors(), tuple()}.
 start_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_gateway(Client, Input, []).
+
+-spec start_gateway(aws_client:aws_client(), start_gateway_input(), proplists:proplist()) ->
+    {ok, start_gateway_output(), tuple()} |
+    {error, any()} |
+    {error, start_gateway_errors(), tuple()}.
 start_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartGateway">>, Input, Options).
@@ -1804,9 +4620,18 @@ start_gateway(Client, Input, Options)
 %% By default, there is no automatic tape creation policy.
 %%
 %% A gateway can have only one automatic tape creation policy.
+-spec update_automatic_tape_creation_policy(aws_client:aws_client(), update_automatic_tape_creation_policy_input()) ->
+    {ok, update_automatic_tape_creation_policy_output(), tuple()} |
+    {error, any()} |
+    {error, update_automatic_tape_creation_policy_errors(), tuple()}.
 update_automatic_tape_creation_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_automatic_tape_creation_policy(Client, Input, []).
+
+-spec update_automatic_tape_creation_policy(aws_client:aws_client(), update_automatic_tape_creation_policy_input(), proplists:proplist()) ->
+    {ok, update_automatic_tape_creation_policy_output(), tuple()} |
+    {error, any()} |
+    {error, update_automatic_tape_creation_policy_errors(), tuple()}.
 update_automatic_tape_creation_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAutomaticTapeCreationPolicy">>, Input, Options).
@@ -1831,9 +4656,18 @@ update_automatic_tape_creation_policy(Client, Input, Options)
 %% To specify which gateway to update, use the Amazon Resource Name (ARN) of
 %% the gateway in
 %% your request.
+-spec update_bandwidth_rate_limit(aws_client:aws_client(), update_bandwidth_rate_limit_input()) ->
+    {ok, update_bandwidth_rate_limit_output(), tuple()} |
+    {error, any()} |
+    {error, update_bandwidth_rate_limit_errors(), tuple()}.
 update_bandwidth_rate_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bandwidth_rate_limit(Client, Input, []).
+
+-spec update_bandwidth_rate_limit(aws_client:aws_client(), update_bandwidth_rate_limit_input(), proplists:proplist()) ->
+    {ok, update_bandwidth_rate_limit_output(), tuple()} |
+    {error, any()} |
+    {error, update_bandwidth_rate_limit_errors(), tuple()}.
 update_bandwidth_rate_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBandwidthRateLimit">>, Input, Options).
@@ -1850,9 +4684,18 @@ update_bandwidth_rate_limit(Client, Input, Options)
 %% bandwidth rate limits for upload only. FSx file gateways do not support
 %% bandwidth rate
 %% limits.
+-spec update_bandwidth_rate_limit_schedule(aws_client:aws_client(), update_bandwidth_rate_limit_schedule_input()) ->
+    {ok, update_bandwidth_rate_limit_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, update_bandwidth_rate_limit_schedule_errors(), tuple()}.
 update_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bandwidth_rate_limit_schedule(Client, Input, []).
+
+-spec update_bandwidth_rate_limit_schedule(aws_client:aws_client(), update_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
+    {ok, update_bandwidth_rate_limit_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, update_bandwidth_rate_limit_schedule_errors(), tuple()}.
 update_bandwidth_rate_limit_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBandwidthRateLimitSchedule">>, Input, Options).
@@ -1869,9 +4712,18 @@ update_bandwidth_rate_limit_schedule(Client, Input, Options)
 %% When you update CHAP credentials, all existing connections on the target
 %% are closed
 %% and initiators must reconnect with the new credentials.
+-spec update_chap_credentials(aws_client:aws_client(), update_chap_credentials_input()) ->
+    {ok, update_chap_credentials_output(), tuple()} |
+    {error, any()} |
+    {error, update_chap_credentials_errors(), tuple()}.
 update_chap_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_chap_credentials(Client, Input, []).
+
+-spec update_chap_credentials(aws_client:aws_client(), update_chap_credentials_input(), proplists:proplist()) ->
+    {ok, update_chap_credentials_output(), tuple()} |
+    {error, any()} |
+    {error, update_chap_credentials_errors(), tuple()}.
 update_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateChapCredentials">>, Input, Options).
@@ -1880,9 +4732,18 @@ update_chap_credentials(Client, Input, Options)
 %%
 %% This operation is only supported in the FSx File
 %% Gateways.
+-spec update_file_system_association(aws_client:aws_client(), update_file_system_association_input()) ->
+    {ok, update_file_system_association_output(), tuple()} |
+    {error, any()} |
+    {error, update_file_system_association_errors(), tuple()}.
 update_file_system_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_file_system_association(Client, Input, []).
+
+-spec update_file_system_association(aws_client:aws_client(), update_file_system_association_input(), proplists:proplist()) ->
+    {ok, update_file_system_association_output(), tuple()} |
+    {error, any()} |
+    {error, update_file_system_association_errors(), tuple()}.
 update_file_system_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFileSystemAssociation">>, Input, Options).
@@ -1899,9 +4760,18 @@ update_file_system_association(Client, Input, Options)
 %% gateway ID rather than the gateway name. However, changing the name of the
 %% gateway has
 %% no effect on the gateway's ARN.
+-spec update_gateway_information(aws_client:aws_client(), update_gateway_information_input()) ->
+    {ok, update_gateway_information_output(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_information_errors(), tuple()}.
 update_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_information(Client, Input, []).
+
+-spec update_gateway_information(aws_client:aws_client(), update_gateway_information_input(), proplists:proplist()) ->
+    {ok, update_gateway_information_output(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_information_errors(), tuple()}.
 update_gateway_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGatewayInformation">>, Input, Options).
@@ -1928,9 +4798,18 @@ update_gateway_information(Client, Input, Options)
 %% and Customizing your Linux iSCSI settings:
 %% https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings,
 %% respectively.
+-spec update_gateway_software_now(aws_client:aws_client(), update_gateway_software_now_input()) ->
+    {ok, update_gateway_software_now_output(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_software_now_errors(), tuple()}.
 update_gateway_software_now(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_software_now(Client, Input, []).
+
+-spec update_gateway_software_now(aws_client:aws_client(), update_gateway_software_now_input(), proplists:proplist()) ->
+    {ok, update_gateway_software_now_output(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_software_now_errors(), tuple()}.
 update_gateway_software_now(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGatewaySoftwareNow">>, Input, Options).
@@ -1940,9 +4819,18 @@ update_gateway_software_now(Client, Input, Options)
 %% time of the week.
 %%
 %% The maintenance time is the time in your gateway's time zone.
+-spec update_maintenance_start_time(aws_client:aws_client(), update_maintenance_start_time_input()) ->
+    {ok, update_maintenance_start_time_output(), tuple()} |
+    {error, any()} |
+    {error, update_maintenance_start_time_errors(), tuple()}.
 update_maintenance_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_start_time(Client, Input, []).
+
+-spec update_maintenance_start_time(aws_client:aws_client(), update_maintenance_start_time_input(), proplists:proplist()) ->
+    {ok, update_maintenance_start_time_output(), tuple()} |
+    {error, any()} |
+    {error, update_maintenance_start_time_errors(), tuple()}.
 update_maintenance_start_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaintenanceStartTime">>, Input, Options).
@@ -1967,9 +4855,18 @@ update_maintenance_start_time(Client, Input, Options)
 %% Squash settings
 %%
 %% Write status of your file share
+-spec update_nfs_file_share(aws_client:aws_client(), update_nfs_file_share_input()) ->
+    {ok, update_nfs_file_share_output(), tuple()} |
+    {error, any()} |
+    {error, update_nfs_file_share_errors(), tuple()}.
 update_nfs_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_nfs_file_share(Client, Input, []).
+
+-spec update_nfs_file_share(aws_client:aws_client(), update_nfs_file_share_input(), proplists:proplist()) ->
+    {ok, update_nfs_file_share_output(), tuple()} |
+    {error, any()} |
+    {error, update_nfs_file_share_errors(), tuple()}.
 update_nfs_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNFSFileShare">>, Input, Options).
@@ -2000,9 +4897,18 @@ update_nfs_file_share(Client, Input, Options)
 %%
 %% File gateways don't support creating hard or symbolic links on a file
 %% share.
+-spec update_smb_file_share(aws_client:aws_client(), update_smb_file_share_input()) ->
+    {ok, update_smb_file_share_output(), tuple()} |
+    {error, any()} |
+    {error, update_smb_file_share_errors(), tuple()}.
 update_smb_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_file_share(Client, Input, []).
+
+-spec update_smb_file_share(aws_client:aws_client(), update_smb_file_share_input(), proplists:proplist()) ->
+    {ok, update_smb_file_share_output(), tuple()} |
+    {error, any()} |
+    {error, update_smb_file_share_errors(), tuple()}.
 update_smb_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBFileShare">>, Input, Options).
@@ -2012,9 +4918,18 @@ update_smb_file_share(Client, Input, Options)
 %% list.
 %%
 %% The operation is only supported for S3 File Gateways.
+-spec update_smb_file_share_visibility(aws_client:aws_client(), update_smb_file_share_visibility_input()) ->
+    {ok, update_smb_file_share_visibility_output(), tuple()} |
+    {error, any()} |
+    {error, update_smb_file_share_visibility_errors(), tuple()}.
 update_smb_file_share_visibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_file_share_visibility(Client, Input, []).
+
+-spec update_smb_file_share_visibility(aws_client:aws_client(), update_smb_file_share_visibility_input(), proplists:proplist()) ->
+    {ok, update_smb_file_share_visibility_output(), tuple()} |
+    {error, any()} |
+    {error, update_smb_file_share_visibility_errors(), tuple()}.
 update_smb_file_share_visibility(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBFileShareVisibility">>, Input, Options).
@@ -2022,9 +4937,18 @@ update_smb_file_share_visibility(Client, Input, Options)
 %% @doc Updates the list of Active Directory users and groups that have
 %% special permissions for
 %% SMB file shares on the gateway.
+-spec update_smb_local_groups(aws_client:aws_client(), update_smb_local_groups_input()) ->
+    {ok, update_smb_local_groups_output(), tuple()} |
+    {error, any()} |
+    {error, update_smb_local_groups_errors(), tuple()}.
 update_smb_local_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_local_groups(Client, Input, []).
+
+-spec update_smb_local_groups(aws_client:aws_client(), update_smb_local_groups_input(), proplists:proplist()) ->
+    {ok, update_smb_local_groups_output(), tuple()} |
+    {error, any()} |
+    {error, update_smb_local_groups_errors(), tuple()}.
 update_smb_local_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBLocalGroups">>, Input, Options).
@@ -2037,9 +4961,18 @@ update_smb_local_groups(Client, Input, Options)
 %% This API is called Security level in the User Guide.
 %%
 %% A higher security level can affect performance of the gateway.
+-spec update_smb_security_strategy(aws_client:aws_client(), update_smb_security_strategy_input()) ->
+    {ok, update_smb_security_strategy_output(), tuple()} |
+    {error, any()} |
+    {error, update_smb_security_strategy_errors(), tuple()}.
 update_smb_security_strategy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_security_strategy(Client, Input, []).
+
+-spec update_smb_security_strategy(aws_client:aws_client(), update_smb_security_strategy_input(), proplists:proplist()) ->
+    {ok, update_smb_security_strategy_output(), tuple()} |
+    {error, any()} |
+    {error, update_smb_security_strategy_errors(), tuple()}.
 update_smb_security_strategy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBSecurityStrategy">>, Input, Options).
@@ -2060,9 +4993,18 @@ update_smb_security_strategy(Client, Input, Options)
 %% update, and the schedule information, including when you want the snapshot
 %% to begin on a
 %% day and the frequency (in hours) of snapshots.
+-spec update_snapshot_schedule(aws_client:aws_client(), update_snapshot_schedule_input()) ->
+    {ok, update_snapshot_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, update_snapshot_schedule_errors(), tuple()}.
 update_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot_schedule(Client, Input, []).
+
+-spec update_snapshot_schedule(aws_client:aws_client(), update_snapshot_schedule_input(), proplists:proplist()) ->
+    {ok, update_snapshot_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, update_snapshot_schedule_errors(), tuple()}.
 update_snapshot_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSnapshotSchedule">>, Input, Options).
@@ -2075,9 +5017,18 @@ update_snapshot_schedule(Client, Input, Options)
 %% a different type of medium changer after a tape gateway is activated. This
 %% operation is
 %% only supported in the tape gateway type.
+-spec update_vtl_device_type(aws_client:aws_client(), update_vtl_device_type_input()) ->
+    {ok, update_vtl_device_type_output(), tuple()} |
+    {error, any()} |
+    {error, update_vtl_device_type_errors(), tuple()}.
 update_vtl_device_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vtl_device_type(Client, Input, []).
+
+-spec update_vtl_device_type(aws_client:aws_client(), update_vtl_device_type_input(), proplists:proplist()) ->
+    {ok, update_vtl_device_type_output(), tuple()} |
+    {error, any()} |
+    {error, update_vtl_device_type_errors(), tuple()}.
 update_vtl_device_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVTLDeviceType">>, Input, Options).

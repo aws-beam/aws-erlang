@@ -49,13 +49,617 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% get_component_output() :: #{
+%%   <<"Component">> => component(),
+%%   <<"Tags">> => map()
+%% }
+-type get_component_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% operation() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"Properties">> => map(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()],
+%%   <<"Type">> => string()
+%% }
+-type operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_permission_output() :: #{
+%%   <<"Policy">> => [string()]
+%% }
+-type put_resource_permission_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% database() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"ComponentId">> => string(),
+%%   <<"Credentials">> => list(application_credential()()),
+%%   <<"DatabaseId">> => string(),
+%%   <<"DatabaseName">> => [string()],
+%%   <<"DatabaseType">> => list(any()),
+%%   <<"LastUpdated">> => [non_neg_integer()],
+%%   <<"PrimaryHost">> => [string()],
+%%   <<"SQLPort">> => [integer()],
+%%   <<"Status">> => list(any())
+%% }
+-type database() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% register_application_output() :: #{
+%%   <<"Application">> => application(),
+%%   <<"OperationId">> => string()
+%% }
+-type register_application_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_operations_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Operations">> => list(operation()())
+%% }
+-type list_operations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% database_connection() :: #{
+%%   <<"ConnectionIp">> => [string()],
+%%   <<"DatabaseArn">> => string(),
+%%   <<"DatabaseConnectionMethod">> => list(any())
+%% }
+-type database_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_address_member() :: #{
+%%   <<"AllocationType">> => list(any()),
+%%   <<"IpAddress">> => [string()],
+%%   <<"Primary">> => [boolean()]
+%% }
+-type ip_address_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% backint_config() :: #{
+%%   <<"BackintMode">> => list(any()),
+%%   <<"EnsureNoBackupInProcess">> => [boolean()]
+%% }
+-type backint_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_permission_output() :: #{
+%%   <<"Policy">> => [string()]
+%% }
+-type delete_resource_permission_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_summary() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"ComponentId">> => string(),
+%%   <<"ComponentType">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type component_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_output() :: #{
+%%   <<"Components">> => list(component_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_components_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resilience() :: #{
+%%   <<"ClusterStatus">> => list(any()),
+%%   <<"EnqueueReplication">> => [boolean()],
+%%   <<"HsrOperationMode">> => list(any()),
+%%   <<"HsrReplicationMode">> => list(any()),
+%%   <<"HsrTier">> => [string()]
+%% }
+-type resilience() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_databases_input() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ComponentId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_databases_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_output() :: #{
+%%   <<"Applications">> => list(application_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% deregister_application_input() :: #{
+%%   <<"ApplicationId">> := string()
+%% }
+-type deregister_application_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_operation_output() :: #{
+%%   <<"Operation">> => operation()
+%% }
+-type get_operation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_credential() :: #{
+%%   <<"CredentialType">> => list(any()),
+%%   <<"DatabaseName">> => string(),
+%%   <<"SecretId">> => string()
+%% }
+-type application_credential() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_application_refresh_input() :: #{
+%%   <<"ApplicationId">> := string()
+%% }
+-type start_application_refresh_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_input() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_database_output() :: #{
+%%   <<"Database">> => database(),
+%%   <<"Tags">> => map()
+%% }
+-type get_database_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_operation_input() :: #{
+%%   <<"OperationId">> := string()
+%% }
+-type get_operation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_settings_output() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"OperationIds">> => list(string()())
+%% }
+-type update_application_settings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_databases_output() :: #{
+%%   <<"Databases">> => list(database_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_databases_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% component() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedHost">> => associated_host(),
+%%   <<"ChildComponents">> => list(string()()),
+%%   <<"ComponentId">> => string(),
+%%   <<"ComponentType">> => list(any()),
+%%   <<"DatabaseConnection">> => database_connection(),
+%%   <<"Databases">> => list(string()()),
+%%   <<"HdbVersion">> => [string()],
+%%   <<"Hosts">> => list(host()()),
+%%   <<"LastUpdated">> => [non_neg_integer()],
+%%   <<"ParentComponent">> => string(),
+%%   <<"PrimaryHost">> => [string()],
+%%   <<"Resilience">> => resilience(),
+%%   <<"SapFeature">> => [string()],
+%%   <<"SapHostname">> => [string()],
+%%   <<"SapKernelVersion">> => [string()],
+%%   <<"Sid">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"SystemNumber">> => string()
+%% }
+-type component() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_input() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_components_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% application() :: #{
+%%   <<"AppRegistryArn">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"Components">> => list(string()()),
+%%   <<"DiscoveryStatus">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdated">> => [non_neg_integer()],
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()],
+%%   <<"Type">> => list(any())
+%% }
+-type application() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_permission_input() :: #{
+%%   <<"ActionType">> => list(any()),
+%%   <<"ResourceArn">> := string(),
+%%   <<"SourceResourceArn">> => string()
+%% }
+-type delete_resource_permission_input() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_application_output() :: #{}
+-type deregister_application_output() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_database_input() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ComponentId">> => string(),
+%%   <<"DatabaseArn">> => string(),
+%%   <<"DatabaseId">> => string()
+%% }
+-type get_database_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% host() :: #{
+%%   <<"EC2InstanceId">> => [string()],
+%%   <<"HostIp">> => [string()],
+%%   <<"HostName">> => [string()],
+%%   <<"HostRole">> => list(any()),
+%%   <<"InstanceId">> => [string()],
+%%   <<"OsVersion">> => [string()]
+%% }
+-type host() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_application_output() :: #{
+%%   <<"Application">> => application(),
+%%   <<"Tags">> => map()
+%% }
+-type get_application_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"ComponentId">> := string()
+%% }
+-type get_component_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_host() :: #{
+%%   <<"Ec2InstanceId">> => [string()],
+%%   <<"Hostname">> => [string()],
+%%   <<"IpAddresses">> => list(ip_address_member()()),
+%%   <<"OsVersion">> => [string()]
+%% }
+-type associated_host() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_settings_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"Backint">> => backint_config(),
+%%   <<"CredentialsToAddOrUpdate">> => list(application_credential()()),
+%%   <<"CredentialsToRemove">> => list(application_credential()()),
+%%   <<"DatabaseArn">> => string()
+%% }
+-type update_application_settings_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_operations_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_operations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% database_summary() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"ComponentId">> => string(),
+%%   <<"DatabaseId">> => string(),
+%%   <<"DatabaseType">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type database_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_permission_input() :: #{
+%%   <<"ActionType">> => list(any()),
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_permission_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_application_refresh_output() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type start_application_refresh_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DiscoveryStatus">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any())
+%% }
+-type application_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_permission_input() :: #{
+%%   <<"ActionType">> := list(any()),
+%%   <<"ResourceArn">> := string(),
+%%   <<"SourceResourceArn">> := string()
+%% }
+-type put_resource_permission_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_permission_output() :: #{
+%%   <<"Policy">> => [string()]
+%% }
+-type get_resource_permission_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_application_input() :: #{
+%%   <<"AppRegistryArn">> => string(),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"ApplicationId">> => string()
+%% }
+-type get_application_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_application_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"ApplicationType">> := list(any()),
+%%   <<"Credentials">> => list(application_credential()()),
+%%   <<"DatabaseArn">> => string(),
+%%   <<"Instances">> := list(string()()),
+%%   <<"SapInstanceNumber">> => string(),
+%%   <<"Sid">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type register_application_input() :: #{binary() => any()}.
+
+-type delete_resource_permission_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type deregister_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    unauthorized_exception().
+
+-type get_application_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type get_component_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    unauthorized_exception().
+
+-type get_database_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type get_operation_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type get_resource_permission_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_applications_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_components_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type list_databases_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_operations_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_resource_permission_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type register_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_application_refresh_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_application_settings_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Removes permissions associated with the target database.
+-spec delete_resource_permission(aws_client:aws_client(), delete_resource_permission_input()) ->
+    {ok, delete_resource_permission_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_permission_errors(), tuple()}.
 delete_resource_permission(Client, Input) ->
     delete_resource_permission(Client, Input, []).
+
+-spec delete_resource_permission(aws_client:aws_client(), delete_resource_permission_input(), proplists:proplist()) ->
+    {ok, delete_resource_permission_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_permission_errors(), tuple()}.
 delete_resource_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-resource-permission"],
@@ -82,8 +686,17 @@ delete_resource_permission(Client, Input0, Options0) ->
 %%
 %% This action does not
 %% aﬀect the existing setup of your SAP workloads on Amazon EC2.
+-spec deregister_application(aws_client:aws_client(), deregister_application_input()) ->
+    {ok, deregister_application_output(), tuple()} |
+    {error, any()} |
+    {error, deregister_application_errors(), tuple()}.
 deregister_application(Client, Input) ->
     deregister_application(Client, Input, []).
+
+-spec deregister_application(aws_client:aws_client(), deregister_application_input(), proplists:proplist()) ->
+    {ok, deregister_application_output(), tuple()} |
+    {error, any()} |
+    {error, deregister_application_errors(), tuple()}.
 deregister_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deregister-application"],
@@ -110,8 +723,17 @@ deregister_application(Client, Input0, Options0) ->
 %%
 %% It also returns the
 %% components of the application.
+-spec get_application(aws_client:aws_client(), get_application_input()) ->
+    {ok, get_application_output(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, Input) ->
     get_application(Client, Input, []).
+
+-spec get_application(aws_client:aws_client(), get_application_input(), proplists:proplist()) ->
+    {ok, get_application_output(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-application"],
@@ -137,8 +759,17 @@ get_application(Client, Input0, Options0) ->
 %% @doc Gets the component of an application registered with AWS Systems
 %% Manager for
 %% SAP.
+-spec get_component(aws_client:aws_client(), get_component_input()) ->
+    {ok, get_component_output(), tuple()} |
+    {error, any()} |
+    {error, get_component_errors(), tuple()}.
 get_component(Client, Input) ->
     get_component(Client, Input, []).
+
+-spec get_component(aws_client:aws_client(), get_component_input(), proplists:proplist()) ->
+    {ok, get_component_output(), tuple()} |
+    {error, any()} |
+    {error, get_component_errors(), tuple()}.
 get_component(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-component"],
@@ -164,8 +795,17 @@ get_component(Client, Input0, Options0) ->
 %% @doc Gets the SAP HANA database of an application registered with AWS
 %% Systems Manager for
 %% SAP.
+-spec get_database(aws_client:aws_client(), get_database_input()) ->
+    {ok, get_database_output(), tuple()} |
+    {error, any()} |
+    {error, get_database_errors(), tuple()}.
 get_database(Client, Input) ->
     get_database(Client, Input, []).
+
+-spec get_database(aws_client:aws_client(), get_database_input(), proplists:proplist()) ->
+    {ok, get_database_output(), tuple()} |
+    {error, any()} |
+    {error, get_database_errors(), tuple()}.
 get_database(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-database"],
@@ -189,8 +829,17 @@ get_database(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the details of an operation by specifying the operation ID.
+-spec get_operation(aws_client:aws_client(), get_operation_input()) ->
+    {ok, get_operation_output(), tuple()} |
+    {error, any()} |
+    {error, get_operation_errors(), tuple()}.
 get_operation(Client, Input) ->
     get_operation(Client, Input, []).
+
+-spec get_operation(aws_client:aws_client(), get_operation_input(), proplists:proplist()) ->
+    {ok, get_operation_output(), tuple()} |
+    {error, any()} |
+    {error, get_operation_errors(), tuple()}.
 get_operation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-operation"],
@@ -214,8 +863,17 @@ get_operation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets permissions associated with the target database.
+-spec get_resource_permission(aws_client:aws_client(), get_resource_permission_input()) ->
+    {ok, get_resource_permission_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_permission_errors(), tuple()}.
 get_resource_permission(Client, Input) ->
     get_resource_permission(Client, Input, []).
+
+-spec get_resource_permission(aws_client:aws_client(), get_resource_permission_input(), proplists:proplist()) ->
+    {ok, get_resource_permission_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_permission_errors(), tuple()}.
 get_resource_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-resource-permission"],
@@ -240,8 +898,17 @@ get_resource_permission(Client, Input0, Options0) ->
 
 %% @doc Lists all the applications registered with AWS Systems Manager for
 %% SAP.
+-spec list_applications(aws_client:aws_client(), list_applications_input()) ->
+    {ok, list_applications_output(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, Input) ->
     list_applications(Client, Input, []).
+
+-spec list_applications(aws_client:aws_client(), list_applications_input(), proplists:proplist()) ->
+    {ok, list_applications_output(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-applications"],
@@ -265,8 +932,17 @@ list_applications(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all the components registered with AWS Systems Manager for SAP.
+-spec list_components(aws_client:aws_client(), list_components_input()) ->
+    {ok, list_components_output(), tuple()} |
+    {error, any()} |
+    {error, list_components_errors(), tuple()}.
 list_components(Client, Input) ->
     list_components(Client, Input, []).
+
+-spec list_components(aws_client:aws_client(), list_components_input(), proplists:proplist()) ->
+    {ok, list_components_output(), tuple()} |
+    {error, any()} |
+    {error, list_components_errors(), tuple()}.
 list_components(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-components"],
@@ -292,8 +968,17 @@ list_components(Client, Input0, Options0) ->
 %% @doc Lists the SAP HANA databases of an application registered with AWS
 %% Systems Manager for
 %% SAP.
+-spec list_databases(aws_client:aws_client(), list_databases_input()) ->
+    {ok, list_databases_output(), tuple()} |
+    {error, any()} |
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input) ->
     list_databases(Client, Input, []).
+
+-spec list_databases(aws_client:aws_client(), list_databases_input(), proplists:proplist()) ->
+    {ok, list_databases_output(), tuple()} |
+    {error, any()} |
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-databases"],
@@ -317,8 +1002,17 @@ list_databases(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the operations performed by AWS Systems Manager for SAP.
+-spec list_operations(aws_client:aws_client(), list_operations_input()) ->
+    {ok, list_operations_output(), tuple()} |
+    {error, any()} |
+    {error, list_operations_errors(), tuple()}.
 list_operations(Client, Input) ->
     list_operations(Client, Input, []).
+
+-spec list_operations(aws_client:aws_client(), list_operations_input(), proplists:proplist()) ->
+    {ok, list_operations_output(), tuple()} |
+    {error, any()} |
+    {error, list_operations_errors(), tuple()}.
 list_operations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-operations"],
@@ -344,14 +1038,26 @@ list_operations(Client, Input0, Options0) ->
 %% @doc Lists all tags on an SAP HANA application and/or database registered
 %% with AWS Systems
 %% Manager for SAP.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -369,8 +1075,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds permissions to the target database.
+-spec put_resource_permission(aws_client:aws_client(), put_resource_permission_input()) ->
+    {ok, put_resource_permission_output(), tuple()} |
+    {error, any()} |
+    {error, put_resource_permission_errors(), tuple()}.
 put_resource_permission(Client, Input) ->
     put_resource_permission(Client, Input, []).
+
+-spec put_resource_permission(aws_client:aws_client(), put_resource_permission_input(), proplists:proplist()) ->
+    {ok, put_resource_permission_output(), tuple()} |
+    {error, any()} |
+    {error, put_resource_permission_errors(), tuple()}.
 put_resource_permission(Client, Input0, Options0) ->
     Method = post,
     Path = ["/put-resource-permission"],
@@ -409,8 +1124,17 @@ put_resource_permission(Client, Input0, Options0) ->
 %% Amazon EC2 instance(s) must have access to the secrets created in AWS
 %% Secrets Manager to
 %% manage SAP applications and components.
+-spec register_application(aws_client:aws_client(), register_application_input()) ->
+    {ok, register_application_output(), tuple()} |
+    {error, any()} |
+    {error, register_application_errors(), tuple()}.
 register_application(Client, Input) ->
     register_application(Client, Input, []).
+
+-spec register_application(aws_client:aws_client(), register_application_input(), proplists:proplist()) ->
+    {ok, register_application_output(), tuple()} |
+    {error, any()} |
+    {error, register_application_errors(), tuple()}.
 register_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/register-application"],
@@ -434,8 +1158,17 @@ register_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Refreshes a registered application.
+-spec start_application_refresh(aws_client:aws_client(), start_application_refresh_input()) ->
+    {ok, start_application_refresh_output(), tuple()} |
+    {error, any()} |
+    {error, start_application_refresh_errors(), tuple()}.
 start_application_refresh(Client, Input) ->
     start_application_refresh(Client, Input, []).
+
+-spec start_application_refresh(aws_client:aws_client(), start_application_refresh_input(), proplists:proplist()) ->
+    {ok, start_application_refresh_output(), tuple()} |
+    {error, any()} |
+    {error, start_application_refresh_errors(), tuple()}.
 start_application_refresh(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-application-refresh"],
@@ -459,8 +1192,17 @@ start_application_refresh(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates tag for a resource by specifying the ARN.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -484,8 +1226,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete the tags for a resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -512,8 +1263,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates the settings of an application registered with AWS Systems
 %% Manager for
 %% SAP.
+-spec update_application_settings(aws_client:aws_client(), update_application_settings_input()) ->
+    {ok, update_application_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_application_settings_errors(), tuple()}.
 update_application_settings(Client, Input) ->
     update_application_settings(Client, Input, []).
+
+-spec update_application_settings(aws_client:aws_client(), update_application_settings_input(), proplists:proplist()) ->
+    {ok, update_application_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_application_settings_errors(), tuple()}.
 update_application_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-application-settings"],
@@ -540,7 +1300,7 @@ update_application_settings(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

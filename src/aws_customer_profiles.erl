@@ -144,6 +144,2015 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% profile() :: #{
+%%   <<"AccountNumber">> => string(),
+%%   <<"AdditionalInformation">> => string(),
+%%   <<"Address">> => address(),
+%%   <<"Attributes">> => map(),
+%%   <<"BillingAddress">> => address(),
+%%   <<"BirthDate">> => string(),
+%%   <<"BusinessEmailAddress">> => string(),
+%%   <<"BusinessName">> => string(),
+%%   <<"BusinessPhoneNumber">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"FoundByItems">> => list(found_by_key_value()()),
+%%   <<"Gender">> => list(any()),
+%%   <<"GenderString">> => string(),
+%%   <<"HomePhoneNumber">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"MailingAddress">> => address(),
+%%   <<"MiddleName">> => string(),
+%%   <<"MobilePhoneNumber">> => string(),
+%%   <<"PartyType">> => list(any()),
+%%   <<"PartyTypeString">> => string(),
+%%   <<"PersonalEmailAddress">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"ShippingAddress">> => address()
+%% }
+-type profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% integration_config() :: #{
+%%   <<"AppflowIntegration">> => appflow_integration()
+%% }
+-type integration_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_type_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_profile_object_type_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_merging() :: #{
+%%   <<"ConflictResolution">> => conflict_resolution(),
+%%   <<"Consolidation">> => consolidation(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"MinAllowedConfidenceScoreForMerging">> => float()
+%% }
+-type auto_merging() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_calculated_attribute_definition_response() :: #{
+%%   <<"AttributeDetails">> => attribute_details(),
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"Conditions">> => conditions(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_calculated_attribute_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_request() :: #{}
+-type get_domain_request() :: #{}.
+
+
+%% Example:
+%% put_profile_object_type_response() :: #{
+%%   <<"AllowProfileCreation">> => boolean(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"ExpirationDays">> => integer(),
+%%   <<"Fields">> => map(),
+%%   <<"Keys">> => map(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SourceLastUpdatedTimestampFormat">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TemplateId">> => string()
+%% }
+-type put_profile_object_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_domain_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_profile_object_response() :: #{
+%%   <<"ProfileObjectUniqueKey">> => string()
+%% }
+-type put_profile_object_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_schedule() :: #{
+%%   <<"DayOfTheWeek">> => list(any()),
+%%   <<"Time">> => string()
+%% }
+-type job_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_integration_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% task() :: #{
+%%   <<"ConnectorOperator">> => connector_operator(),
+%%   <<"DestinationField">> => string(),
+%%   <<"SourceFields">> => list(string()()),
+%%   <<"TaskProperties">> => map(),
+%%   <<"TaskType">> => list(any())
+%% }
+-type task() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_domain_request() :: #{
+%%   <<"DeadLetterQueueUrl">> => string(),
+%%   <<"DefaultEncryptionKey">> => string(),
+%%   <<"DefaultExpirationDays">> => integer(),
+%%   <<"Matching">> => matching_request(),
+%%   <<"RuleBasedMatching">> => rule_based_matching_request(),
+%%   <<"Tags">> => map()
+%% }
+-type update_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduled_trigger_properties() :: #{
+%%   <<"DataPullMode">> => list(any()),
+%%   <<"FirstExecutionFrom">> => non_neg_integer(),
+%%   <<"ScheduleEndTime">> => non_neg_integer(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"ScheduleOffset">> => float(),
+%%   <<"ScheduleStartTime">> => non_neg_integer(),
+%%   <<"Timezone">> => string()
+%% }
+-type scheduled_trigger_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% range() :: #{
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type range() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_key_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_profile_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_type_template_item() :: #{
+%%   <<"SourceName">> => string(),
+%%   <<"SourceObject">> => string(),
+%%   <<"TemplateId">> => string()
+%% }
+-type list_profile_object_type_template_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_details() :: #{
+%%   <<"Attributes">> => list(attribute_item()()),
+%%   <<"Expression">> => string()
+%% }
+-type attribute_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% detect_profile_object_type_response() :: #{
+%%   <<"DetectedProfileObjectTypes">> => list(detected_profile_object_type()())
+%% }
+-type detect_profile_object_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_resolution_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_resolution_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_stats() :: #{
+%%   <<"NumberOfMatchesFound">> => float(),
+%%   <<"NumberOfMergesDone">> => float(),
+%%   <<"NumberOfProfilesReviewed">> => float()
+%% }
+-type job_stats() :: #{binary() => any()}.
+
+
+%% Example:
+%% marketo_source_properties() :: #{
+%%   <<"Object">> => string()
+%% }
+-type marketo_source_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_profile_object_type_response() :: #{
+%%   <<"AllowProfileCreation">> => boolean(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"ExpirationDays">> => integer(),
+%%   <<"Fields">> => map(),
+%%   <<"Keys">> => map(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SourceLastUpdatedTimestampFormat">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TemplateId">> => string()
+%% }
+-type get_profile_object_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_item() :: #{
+%%   <<"Name">> => string()
+%% }
+-type attribute_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_calculated_attribute_for_profile_request() :: #{}
+-type get_calculated_attribute_for_profile_request() :: #{}.
+
+
+%% Example:
+%% conflict_resolution() :: #{
+%%   <<"ConflictResolvingModel">> => list(any()),
+%%   <<"SourceName">> => string()
+%% }
+-type conflict_resolution() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_request() :: #{
+%%   <<"ProfileId">> := string()
+%% }
+-type delete_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% domain_stats() :: #{
+%%   <<"MeteringProfileCount">> => float(),
+%%   <<"ObjectCount">> => float(),
+%%   <<"ProfileCount">> => float(),
+%%   <<"TotalSize">> => float()
+%% }
+-type domain_stats() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_request() :: #{}
+-type delete_workflow_request() :: #{}.
+
+
+%% Example:
+%% list_account_integrations_request() :: #{
+%%   <<"IncludeHidden">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Uri">> := string()
+%% }
+-type list_account_integrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_filter() :: #{
+%%   <<"KeyName">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type object_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_source_properties() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"BucketPrefix">> => string()
+%% }
+-type s3_source_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% found_by_key_value() :: #{
+%%   <<"KeyName">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type found_by_key_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_domain_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DeadLetterQueueUrl">> => string(),
+%%   <<"DefaultEncryptionKey">> => string(),
+%%   <<"DefaultExpirationDays">> => integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Matching">> => matching_response(),
+%%   <<"RuleBasedMatching">> => rule_based_matching_response(),
+%%   <<"Tags">> => map()
+%% }
+-type update_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_profiles_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type merge_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_resolution_job_request() :: #{}
+-type get_identity_resolution_job_request() :: #{}.
+
+
+%% Example:
+%% appflow_integration_workflow_step() :: #{
+%%   <<"BatchRecordsEndTime">> => string(),
+%%   <<"BatchRecordsStartTime">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExecutionMessage">> => string(),
+%%   <<"FlowName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"RecordsProcessed">> => float(),
+%%   <<"Status">> => list(any())
+%% }
+-type appflow_integration_workflow_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% detect_profile_object_type_request() :: #{
+%%   <<"Objects">> := list(string()())
+%% }
+-type detect_profile_object_type_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% exporting_location() :: #{
+%%   <<"S3Exporting">> => s3_exporting_location()
+%% }
+-type exporting_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_similar_profiles_response() :: #{
+%%   <<"ConfidenceScore">> => float(),
+%%   <<"MatchId">> => string(),
+%%   <<"MatchType">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileIds">> => list(string()()),
+%%   <<"RuleLevel">> => integer()
+%% }
+-type get_similar_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_integration_request() :: #{
+%%   <<"FlowDefinition">> => flow_definition(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"ObjectTypeNames">> => map(),
+%%   <<"Tags">> => map(),
+%%   <<"Uri">> => string()
+%% }
+-type put_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_definition() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FlowName">> => string(),
+%%   <<"KmsArn">> => string(),
+%%   <<"SourceFlowConfig">> => source_flow_config(),
+%%   <<"Tasks">> => list(task()()),
+%%   <<"TriggerConfig">> => trigger_config()
+%% }
+-type flow_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rule_based_matches_response() :: #{
+%%   <<"MatchIds">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_rule_based_matches_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% appflow_integration_workflow_attributes() :: #{
+%%   <<"ConnectorProfileName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SourceConnectorType">> => list(any())
+%% }
+-type appflow_integration_workflow_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_profile_key_response() :: #{
+%%   <<"KeyName">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type add_profile_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_resolution_jobs_response() :: #{
+%%   <<"IdentityResolutionJobsList">> => list(identity_resolution_job()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_resolution_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% matching_rule() :: #{
+%%   <<"Rule">> => list(string()())
+%% }
+-type matching_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_integration_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"IsUnstructured">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"ObjectTypeNames">> => map(),
+%%   <<"Tags">> => map(),
+%%   <<"Uri">> => string(),
+%%   <<"WorkflowId">> => string()
+%% }
+-type put_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% zendesk_source_properties() :: #{
+%%   <<"Object">> => string()
+%% }
+-type zendesk_source_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_integration_workflow_request() :: #{
+%%   <<"IntegrationConfig">> := integration_config(),
+%%   <<"ObjectTypeName">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"WorkflowType">> := list(any())
+%% }
+-type create_integration_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_identity_resolution_job_response() :: #{
+%%   <<"AutoMerging">> => auto_merging(),
+%%   <<"DomainName">> => string(),
+%%   <<"ExportingLocation">> => exporting_location(),
+%%   <<"JobEndTime">> => non_neg_integer(),
+%%   <<"JobExpirationTime">> => non_neg_integer(),
+%%   <<"JobId">> => string(),
+%%   <<"JobStartTime">> => non_neg_integer(),
+%%   <<"JobStats">> => job_stats(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_identity_resolution_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_similar_profiles_request() :: #{
+%%   <<"MatchType">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchKey">> := string(),
+%%   <<"SearchValue">> := string()
+%% }
+-type get_similar_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% trigger_properties() :: #{
+%%   <<"Scheduled">> => scheduled_trigger_properties()
+%% }
+-type trigger_properties() :: #{binary() => any()}.
+
+%% Example:
+%% get_calculated_attribute_definition_request() :: #{}
+-type get_calculated_attribute_definition_request() :: #{}.
+
+%% Example:
+%% get_workflow_request() :: #{}
+-type get_workflow_request() :: #{}.
+
+
+%% Example:
+%% create_calculated_attribute_definition_request() :: #{
+%%   <<"AttributeDetails">> := attribute_details(),
+%%   <<"Conditions">> => conditions(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Statistic">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_calculated_attribute_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attribute_definition_item() :: #{
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Tags">> => map()
+%% }
+-type list_calculated_attribute_definition_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integrations_request() :: #{
+%%   <<"IncludeHidden">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_integrations_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_calculated_attribute_definition_response() :: #{}
+-type delete_calculated_attribute_definition_response() :: #{}.
+
+
+%% Example:
+%% workflow_step_item() :: #{
+%%   <<"AppflowIntegration">> => appflow_integration_workflow_step()
+%% }
+-type workflow_step_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_type_field() :: #{
+%%   <<"ContentType">> => list(any()),
+%%   <<"Source">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type object_type_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Tags">> => map()
+%% }
+-type list_domain_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_address() :: #{
+%%   <<"Address1">> => string(),
+%%   <<"Address2">> => string(),
+%%   <<"Address3">> => string(),
+%%   <<"Address4">> => string(),
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"County">> => string(),
+%%   <<"PostalCode">> => string(),
+%%   <<"Province">> => string(),
+%%   <<"State">> => string()
+%% }
+-type update_address() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_integration_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"IsUnstructured">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"ObjectTypeNames">> => map(),
+%%   <<"Tags">> => map(),
+%%   <<"Uri">> => string(),
+%%   <<"WorkflowId">> => string()
+%% }
+-type get_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_object_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_profile_object_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_request() :: #{}
+-type delete_domain_request() :: #{}.
+
+
+%% Example:
+%% delete_profile_key_request() :: #{
+%%   <<"KeyName">> := string(),
+%%   <<"ProfileId">> := string(),
+%%   <<"Values">> := list(string()())
+%% }
+-type delete_profile_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_attributes() :: #{
+%%   <<"AppflowIntegration">> => appflow_integration_workflow_attributes()
+%% }
+-type workflow_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_item() :: #{
+%%   <<"ConfidenceScore">> => float(),
+%%   <<"MatchId">> => string(),
+%%   <<"ProfileIds">> => list(string()())
+%% }
+-type match_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profile_request() :: #{
+%%   <<"AccountNumber">> => string(),
+%%   <<"AdditionalInformation">> => string(),
+%%   <<"Address">> => address(),
+%%   <<"Attributes">> => map(),
+%%   <<"BillingAddress">> => address(),
+%%   <<"BirthDate">> => string(),
+%%   <<"BusinessEmailAddress">> => string(),
+%%   <<"BusinessName">> => string(),
+%%   <<"BusinessPhoneNumber">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"Gender">> => list(any()),
+%%   <<"GenderString">> => string(),
+%%   <<"HomePhoneNumber">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"MailingAddress">> => address(),
+%%   <<"MiddleName">> => string(),
+%%   <<"MobilePhoneNumber">> => string(),
+%%   <<"PartyType">> => list(any()),
+%%   <<"PartyTypeString">> => string(),
+%%   <<"PersonalEmailAddress">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"ShippingAddress">> => address()
+%% }
+-type create_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_response() :: #{}
+-type delete_workflow_response() :: #{}.
+
+
+%% Example:
+%% rule_based_matching_response() :: #{
+%%   <<"AttributeTypesSelector">> => attribute_types_selector(),
+%%   <<"ConflictResolution">> => conflict_resolution(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ExportingConfig">> => exporting_config(),
+%%   <<"MatchingRules">> => list(matching_rule()()),
+%%   <<"MaxAllowedRuleLevelForMatching">> => integer(),
+%%   <<"MaxAllowedRuleLevelForMerging">> => integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type rule_based_matching_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_calculated_attribute_definition_response() :: #{
+%%   <<"AttributeDetails">> => attribute_details(),
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"Conditions">> => conditions(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type update_calculated_attribute_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% additional_search_key() :: #{
+%%   <<"KeyName">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type additional_search_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_integration_request() :: #{
+%%   <<"Uri">> := string()
+%% }
+-type delete_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_request() :: #{
+%%   <<"DeadLetterQueueUrl">> => string(),
+%%   <<"DefaultEncryptionKey">> => string(),
+%%   <<"DefaultExpirationDays">> := integer(),
+%%   <<"Matching">> => matching_request(),
+%%   <<"RuleBasedMatching">> => rule_based_matching_request(),
+%%   <<"Tags">> => map()
+%% }
+-type create_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_profile_request() :: #{
+%%   <<"AccountNumber">> => string(),
+%%   <<"AdditionalInformation">> => string(),
+%%   <<"Address">> => update_address(),
+%%   <<"Attributes">> => map(),
+%%   <<"BillingAddress">> => update_address(),
+%%   <<"BirthDate">> => string(),
+%%   <<"BusinessEmailAddress">> => string(),
+%%   <<"BusinessName">> => string(),
+%%   <<"BusinessPhoneNumber">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"Gender">> => list(any()),
+%%   <<"GenderString">> => string(),
+%%   <<"HomePhoneNumber">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"MailingAddress">> => update_address(),
+%%   <<"MiddleName">> => string(),
+%%   <<"MobilePhoneNumber">> => string(),
+%%   <<"PartyType">> => list(any()),
+%%   <<"PartyTypeString">> => string(),
+%%   <<"PersonalEmailAddress">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"ProfileId">> := string(),
+%%   <<"ShippingAddress">> => update_address()
+%% }
+-type update_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_calculated_attribute_for_profile_response() :: #{
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDataPartial">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type get_calculated_attribute_for_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rule_based_matches_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_rule_based_matches_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_streams_response() :: #{
+%%   <<"Items">> => list(event_stream_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_streams_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_objects_response() :: #{
+%%   <<"Items">> => list(list_profile_objects_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_profile_objects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflows_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDescription">> => string(),
+%%   <<"WorkflowId">> => string(),
+%%   <<"WorkflowType">> => list(any())
+%% }
+-type list_workflows_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_profiles_request() :: #{
+%%   <<"FieldSourceProfileIds">> => field_source_profile_ids(),
+%%   <<"MainProfileId">> := string(),
+%%   <<"ProfileIdsToBeMerged">> := list(string()())
+%% }
+-type merge_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% appflow_integration_workflow_metrics() :: #{
+%%   <<"RecordsProcessed">> => float(),
+%%   <<"StepsCompleted">> => float(),
+%%   <<"TotalSteps">> => float()
+%% }
+-type appflow_integration_workflow_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_response() :: #{
+%%   <<"Items">> => list(list_domain_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_profile_object_type_template_response() :: #{
+%%   <<"AllowProfileCreation">> => boolean(),
+%%   <<"Fields">> => map(),
+%%   <<"Keys">> => map(),
+%%   <<"SourceLastUpdatedTimestampFormat">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceObject">> => string(),
+%%   <<"TemplateId">> => string()
+%% }
+-type get_profile_object_type_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profile_response() :: #{
+%%   <<"ProfileId">> => string()
+%% }
+-type create_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_matches_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_matches_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_profile_object_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflows_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueryEndDate">> => non_neg_integer(),
+%%   <<"QueryStartDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"WorkflowType">> => list(any())
+%% }
+-type list_workflows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% exporting_config() :: #{
+%%   <<"S3Exporting">> => s3_exporting_config()
+%% }
+-type exporting_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_summary() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"UnhealthySince">> => non_neg_integer(),
+%%   <<"Uri">> => string()
+%% }
+-type destination_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_event_stream_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DestinationDetails">> => event_stream_destination_details(),
+%%   <<"DomainName">> => string(),
+%%   <<"EventStreamArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StoppedSince">> => non_neg_integer(),
+%%   <<"Tags">> => map()
+%% }
+-type get_event_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_exporting_location() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3KeyName">> => string()
+%% }
+-type s3_exporting_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% matching_response() :: #{
+%%   <<"AutoMerging">> => auto_merging(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ExportingConfig">> => exporting_config(),
+%%   <<"JobSchedule">> => job_schedule()
+%% }
+-type matching_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditions() :: #{
+%%   <<"ObjectCount">> => integer(),
+%%   <<"Range">> => range(),
+%%   <<"Threshold">> => threshold()
+%% }
+-type conditions() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_auto_merging_preview_request() :: #{
+%%   <<"ConflictResolution">> := conflict_resolution(),
+%%   <<"Consolidation">> := consolidation(),
+%%   <<"MinAllowedConfidenceScoreForMerging">> => float()
+%% }
+-type get_auto_merging_preview_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_connector_properties() :: #{
+%%   <<"Marketo">> => marketo_source_properties(),
+%%   <<"S3">> => s3_source_properties(),
+%%   <<"Salesforce">> => salesforce_source_properties(),
+%%   <<"ServiceNow">> => service_now_source_properties(),
+%%   <<"Zendesk">> => zendesk_source_properties()
+%% }
+-type source_connector_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_integration_request() :: #{
+%%   <<"Uri">> := string()
+%% }
+-type get_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attribute_definitions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_calculated_attribute_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% consolidation() :: #{
+%%   <<"MatchingAttributesList">> => list(list(string()())())
+%% }
+-type consolidation() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_based_matching_request() :: #{
+%%   <<"AttributeTypesSelector">> => attribute_types_selector(),
+%%   <<"ConflictResolution">> => conflict_resolution(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ExportingConfig">> => exporting_config(),
+%%   <<"MatchingRules">> => list(matching_rule()()),
+%%   <<"MaxAllowedRuleLevelForMatching">> => integer(),
+%%   <<"MaxAllowedRuleLevelForMerging">> => integer()
+%% }
+-type rule_based_matching_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_type_key() :: #{
+%%   <<"FieldNames">> => list(string()()),
+%%   <<"StandardIdentifiers">> => list(list(any())())
+%% }
+-type object_type_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_matches_response() :: #{
+%%   <<"MatchGenerationDate">> => non_neg_integer(),
+%%   <<"Matches">> => list(match_item()()),
+%%   <<"NextToken">> => string(),
+%%   <<"PotentialMatches">> => integer()
+%% }
+-type get_matches_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_objects_item() :: #{
+%%   <<"Object">> => string(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"ProfileObjectUniqueKey">> => string()
+%% }
+-type list_profile_objects_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attributes_for_profile_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_calculated_attributes_for_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_domain_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DeadLetterQueueUrl">> => string(),
+%%   <<"DefaultEncryptionKey">> => string(),
+%%   <<"DefaultExpirationDays">> => integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Matching">> => matching_response(),
+%%   <<"RuleBasedMatching">> => rule_based_matching_response(),
+%%   <<"Stats">> => domain_stats(),
+%%   <<"Tags">> => map()
+%% }
+-type get_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_source_profile_ids() :: #{
+%%   <<"AccountNumber">> => string(),
+%%   <<"AdditionalInformation">> => string(),
+%%   <<"Address">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"BillingAddress">> => string(),
+%%   <<"BirthDate">> => string(),
+%%   <<"BusinessEmailAddress">> => string(),
+%%   <<"BusinessName">> => string(),
+%%   <<"BusinessPhoneNumber">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"Gender">> => string(),
+%%   <<"HomePhoneNumber">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"MailingAddress">> => string(),
+%%   <<"MiddleName">> => string(),
+%%   <<"MobilePhoneNumber">> => string(),
+%%   <<"PartyType">> => string(),
+%%   <<"PersonalEmailAddress">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"ShippingAddress">> => string()
+%% }
+-type field_source_profile_ids() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_stream_destination_details() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UnhealthySince">> => non_neg_integer(),
+%%   <<"Uri">> => string()
+%% }
+-type event_stream_destination_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_profiles_request() :: #{
+%%   <<"AdditionalSearchKeys">> => list(additional_search_key()()),
+%%   <<"KeyName">> := string(),
+%%   <<"LogicalOperator">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Values">> := list(string()())
+%% }
+-type search_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_object_type_request() :: #{}
+-type get_profile_object_type_request() :: #{}.
+
+
+%% Example:
+%% list_domains_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_stream_request() :: #{}
+-type get_event_stream_request() :: #{}.
+
+
+%% Example:
+%% source_flow_config() :: #{
+%%   <<"ConnectorProfileName">> => string(),
+%%   <<"ConnectorType">> => list(any()),
+%%   <<"IncrementalPullConfig">> => incremental_pull_config(),
+%%   <<"SourceConnectorProperties">> => source_connector_properties()
+%% }
+-type source_flow_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% salesforce_source_properties() :: #{
+%%   <<"EnableDynamicFieldUpdate">> => boolean(),
+%%   <<"IncludeDeletedRecords">> => boolean(),
+%%   <<"Object">> => string()
+%% }
+-type salesforce_source_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workflow_steps_response() :: #{
+%%   <<"Items">> => list(workflow_step_item()()),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkflowId">> => string(),
+%%   <<"WorkflowType">> => list(any())
+%% }
+-type get_workflow_steps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attributes_for_profile_response() :: #{
+%%   <<"Items">> => list(list_calculated_attribute_for_profile_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_calculated_attributes_for_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workflow_steps_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_workflow_steps_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_calculated_attribute_definition_request() :: #{}
+-type delete_calculated_attribute_definition_request() :: #{}.
+
+
+%% Example:
+%% get_auto_merging_preview_response() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"NumberOfMatchesInSample">> => float(),
+%%   <<"NumberOfProfilesInSample">> => float(),
+%%   <<"NumberOfProfilesWillBeMerged">> => float()
+%% }
+-type get_auto_merging_preview_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_profiles_response() :: #{
+%%   <<"Items">> => list(profile()()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_integration_workflow_response() :: #{
+%%   <<"Message">> => string(),
+%%   <<"WorkflowId">> => string()
+%% }
+-type create_integration_workflow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_calculated_attribute_definition_request() :: #{
+%%   <<"Conditions">> => conditions(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string()
+%% }
+-type update_calculated_attribute_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% identity_resolution_job() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"ExportingLocation">> => exporting_location(),
+%%   <<"JobEndTime">> => non_neg_integer(),
+%%   <<"JobId">> => string(),
+%%   <<"JobStartTime">> => non_neg_integer(),
+%%   <<"JobStats">> => job_stats(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type identity_resolution_job() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_stream_response() :: #{}
+-type delete_event_stream_response() :: #{}.
+
+
+%% Example:
+%% attribute_types_selector() :: #{
+%%   <<"Address">> => list(string()()),
+%%   <<"AttributeMatchingModel">> => list(any()),
+%%   <<"EmailAddress">> => list(string()()),
+%%   <<"PhoneNumber">> => list(string()())
+%% }
+-type attribute_types_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_profile_response() :: #{
+%%   <<"ProfileId">> => string()
+%% }
+-type update_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_profile_object_type_request() :: #{
+%%   <<"AllowProfileCreation">> => boolean(),
+%%   <<"Description">> := string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"ExpirationDays">> => integer(),
+%%   <<"Fields">> => map(),
+%%   <<"Keys">> => map(),
+%%   <<"SourceLastUpdatedTimestampFormat">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TemplateId">> => string()
+%% }
+-type put_profile_object_type_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type batch() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% s3_exporting_config() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3KeyName">> => string()
+%% }
+-type s3_exporting_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DeadLetterQueueUrl">> => string(),
+%%   <<"DefaultEncryptionKey">> => string(),
+%%   <<"DefaultExpirationDays">> => integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Matching">> => matching_response(),
+%%   <<"RuleBasedMatching">> => rule_based_matching_response(),
+%%   <<"Tags">> => map()
+%% }
+-type create_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_objects_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectFilter">> => object_filter(),
+%%   <<"ObjectTypeName">> := string(),
+%%   <<"ProfileId">> := string()
+%% }
+-type list_profile_objects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_type_templates_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_profile_object_type_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_stream_request() :: #{
+%%   <<"Tags">> => map(),
+%%   <<"Uri">> := string()
+%% }
+-type create_event_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% threshold() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type threshold() :: #{binary() => any()}.
+
+
+%% Example:
+%% detected_profile_object_type() :: #{
+%%   <<"Fields">> => map(),
+%%   <<"Keys">> => map(),
+%%   <<"SourceLastUpdatedTimestampFormat">> => string()
+%% }
+-type detected_profile_object_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_profile_object_type_request() :: #{}
+-type delete_profile_object_type_request() :: #{}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_operator() :: #{
+%%   <<"Marketo">> => list(any()),
+%%   <<"S3">> => list(any()),
+%%   <<"Salesforce">> => list(any()),
+%%   <<"ServiceNow">> => list(any()),
+%%   <<"Zendesk">> => list(any())
+%% }
+-type connector_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_profile_object_request() :: #{
+%%   <<"Object">> := string(),
+%%   <<"ObjectTypeName">> := string()
+%% }
+-type put_profile_object_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_stream_request() :: #{}
+-type delete_event_stream_request() :: #{}.
+
+
+%% Example:
+%% appflow_integration() :: #{
+%%   <<"Batches">> => list(batch()()),
+%%   <<"FlowDefinition">> => flow_definition()
+%% }
+-type appflow_integration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attribute_for_profile_item() :: #{
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDataPartial">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type list_calculated_attribute_for_profile_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_streams_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_streams_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% address() :: #{
+%%   <<"Address1">> => string(),
+%%   <<"Address2">> => string(),
+%%   <<"Address3">> => string(),
+%%   <<"Address4">> => string(),
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"County">> => string(),
+%%   <<"PostalCode">> => string(),
+%%   <<"Province">> => string(),
+%%   <<"State">> => string()
+%% }
+-type address() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_object_request() :: #{
+%%   <<"ObjectTypeName">> := string(),
+%%   <<"ProfileId">> := string(),
+%%   <<"ProfileObjectUniqueKey">> := string()
+%% }
+-type delete_profile_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attribute_definitions_response() :: #{
+%%   <<"Items">> => list(list_calculated_attribute_definition_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_calculated_attribute_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflows_response() :: #{
+%%   <<"Items">> => list(list_workflows_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_workflows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_type_templates_response() :: #{
+%%   <<"Items">> => list(list_profile_object_type_template_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_profile_object_type_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_object_type_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_profile_object_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_integrations_response() :: #{
+%%   <<"Items">> => list(list_integration_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_integrations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_now_source_properties() :: #{
+%%   <<"Object">> => string()
+%% }
+-type service_now_source_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integration_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"IsUnstructured">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"ObjectTypeNames">> => map(),
+%%   <<"Tags">> => map(),
+%%   <<"Uri">> => string(),
+%%   <<"WorkflowId">> => string()
+%% }
+-type list_integration_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_object_type_template_request() :: #{}
+-type get_profile_object_type_template_request() :: #{}.
+
+
+%% Example:
+%% workflow_metrics() :: #{
+%%   <<"AppflowIntegration">> => appflow_integration_workflow_metrics()
+%% }
+-type workflow_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% incremental_pull_config() :: #{
+%%   <<"DatetimeTypeFieldName">> => string()
+%% }
+-type incremental_pull_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_stream_response() :: #{
+%%   <<"EventStreamArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% trigger_config() :: #{
+%%   <<"TriggerProperties">> => trigger_properties(),
+%%   <<"TriggerType">> => list(any())
+%% }
+-type trigger_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_profile_key_request() :: #{
+%%   <<"KeyName">> := string(),
+%%   <<"ProfileId">> := string(),
+%%   <<"Values">> := list(string()())
+%% }
+-type add_profile_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% matching_request() :: #{
+%%   <<"AutoMerging">> => auto_merging(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ExportingConfig">> => exporting_config(),
+%%   <<"JobSchedule">> => job_schedule()
+%% }
+-type matching_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_calculated_attribute_definition_response() :: #{
+%%   <<"AttributeDetails">> => attribute_details(),
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"Conditions">> => conditions(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_calculated_attribute_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_types_response() :: #{
+%%   <<"Items">> => list(list_profile_object_type_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_profile_object_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integrations_response() :: #{
+%%   <<"Items">> => list(list_integration_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_integrations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workflow_response() :: #{
+%%   <<"Attributes">> => workflow_attributes(),
+%%   <<"ErrorDescription">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Metrics">> => workflow_metrics(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"WorkflowId">> => string(),
+%%   <<"WorkflowType">> => list(any())
+%% }
+-type get_workflow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_stream_summary() :: #{
+%%   <<"DestinationSummary">> => destination_summary(),
+%%   <<"DomainName">> => string(),
+%%   <<"EventStreamArn">> => string(),
+%%   <<"EventStreamName">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StoppedSince">> => non_neg_integer(),
+%%   <<"Tags">> => map()
+%% }
+-type event_stream_summary() :: #{binary() => any()}.
+
+-type add_profile_key_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_calculated_attribute_definition_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_event_stream_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_integration_workflow_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_calculated_attribute_definition_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_event_stream_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_integration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_profile_key_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_profile_object_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_profile_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_workflow_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type detect_profile_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_auto_merging_preview_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_calculated_attribute_definition_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_calculated_attribute_for_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_event_stream_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_identity_resolution_job_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_integration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_matches_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_profile_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_profile_object_type_template_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_similar_profiles_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_workflow_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_workflow_steps_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_account_integrations_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_calculated_attribute_definitions_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_calculated_attributes_for_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_domains_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_event_streams_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_identity_resolution_jobs_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_integrations_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_profile_object_type_templates_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_profile_object_types_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_profile_objects_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_rule_based_matches_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_workflows_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type merge_profiles_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_integration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_profile_object_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_profile_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type search_profiles_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_calculated_attribute_definition_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -155,8 +2164,17 @@
 %% A profile object can have a single unique key and any number of additional
 %% keys that can
 %% be used to identify the profile that it belongs to.
+-spec add_profile_key(aws_client:aws_client(), binary() | list(), add_profile_key_request()) ->
+    {ok, add_profile_key_response(), tuple()} |
+    {error, any()} |
+    {error, add_profile_key_errors(), tuple()}.
 add_profile_key(Client, DomainName, Input) ->
     add_profile_key(Client, DomainName, Input, []).
+
+-spec add_profile_key(aws_client:aws_client(), binary() | list(), add_profile_key_request(), proplists:proplist()) ->
+    {ok, add_profile_key_response(), tuple()} |
+    {error, any()} |
+    {error, add_profile_key_errors(), tuple()}.
 add_profile_key(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/keys"],
@@ -192,8 +2210,17 @@ add_profile_key(Client, DomainName, Input0, Options0) ->
 %% calculated attribute can only reference one `ObjectType' and at most,
 %% two fields
 %% from that `ObjectType'.
+-spec create_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list(), create_calculated_attribute_definition_request()) ->
+    {ok, create_calculated_attribute_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_calculated_attribute_definition_errors(), tuple()}.
 create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
     create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
+
+-spec create_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list(), create_calculated_attribute_definition_request(), proplists:proplist()) ->
+    {ok, create_calculated_attribute_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_calculated_attribute_definition_errors(), tuple()}.
 create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
@@ -240,8 +2267,17 @@ create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
 %% https://docs.aws.amazon.com/connect/latest/adminguide/cross-service-confused-deputy-prevention.html
 %% for sample policies that you should
 %% apply.
+-spec create_domain(aws_client:aws_client(), binary() | list(), create_domain_request()) ->
+    {ok, create_domain_response(), tuple()} |
+    {error, any()} |
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, DomainName, Input) ->
     create_domain(Client, DomainName, Input, []).
+
+-spec create_domain(aws_client:aws_client(), binary() | list(), create_domain_request(), proplists:proplist()) ->
+    {ok, create_domain_response(), tuple()} |
+    {error, any()} |
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
@@ -271,8 +2307,17 @@ create_domain(Client, DomainName, Input0, Options0) ->
 %% Each event stream can be associated with only one Kinesis Data Stream
 %% destination in the same region and
 %% Amazon Web Services account as the customer profiles domain
+-spec create_event_stream(aws_client:aws_client(), binary() | list(), binary() | list(), create_event_stream_request()) ->
+    {ok, create_event_stream_response(), tuple()} |
+    {error, any()} |
+    {error, create_event_stream_errors(), tuple()}.
 create_event_stream(Client, DomainName, EventStreamName, Input) ->
     create_event_stream(Client, DomainName, EventStreamName, Input, []).
+
+-spec create_event_stream(aws_client:aws_client(), binary() | list(), binary() | list(), create_event_stream_request(), proplists:proplist()) ->
+    {ok, create_event_stream_response(), tuple()} |
+    {error, any()} |
+    {error, create_event_stream_errors(), tuple()}.
 create_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
@@ -301,8 +2346,17 @@ create_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
 %% An integration workflow is an async process which ingests historic data
 %% and sets up an integration for ongoing updates. The supported Amazon
 %% AppFlow sources are Salesforce, ServiceNow, and Marketo.
+-spec create_integration_workflow(aws_client:aws_client(), binary() | list(), create_integration_workflow_request()) ->
+    {ok, create_integration_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, create_integration_workflow_errors(), tuple()}.
 create_integration_workflow(Client, DomainName, Input) ->
     create_integration_workflow(Client, DomainName, Input, []).
+
+-spec create_integration_workflow(aws_client:aws_client(), binary() | list(), create_integration_workflow_request(), proplists:proplist()) ->
+    {ok, create_integration_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, create_integration_workflow_errors(), tuple()}.
 create_integration_workflow(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/integrations"],
@@ -330,8 +2384,17 @@ create_integration_workflow(Client, DomainName, Input0, Options0) ->
 %% A standard profile represents the following attributes for a customer
 %% profile in a
 %% domain.
+-spec create_profile(aws_client:aws_client(), binary() | list(), create_profile_request()) ->
+    {ok, create_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_profile_errors(), tuple()}.
 create_profile(Client, DomainName, Input) ->
     create_profile(Client, DomainName, Input, []).
+
+-spec create_profile(aws_client:aws_client(), binary() | list(), create_profile_request(), proplists:proplist()) ->
+    {ok, create_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_profile_errors(), tuple()}.
 create_profile(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles"],
@@ -361,8 +2424,17 @@ create_profile(Client, DomainName, Input0, Options0) ->
 %% and will need to recreate it on
 %% your own using the CreateCalculatedAttributeDefinition API if you want it
 %% back.
+-spec delete_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list(), delete_calculated_attribute_definition_request()) ->
+    {ok, delete_calculated_attribute_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_calculated_attribute_definition_errors(), tuple()}.
 delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
     delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
+
+-spec delete_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list(), delete_calculated_attribute_definition_request(), proplists:proplist()) ->
+    {ok, delete_calculated_attribute_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_calculated_attribute_definition_errors(), tuple()}.
 delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
@@ -388,8 +2460,17 @@ delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
 %% @doc Deletes a specific domain and all of its customer data, such as
 %% customer profile
 %% attributes and their related objects.
+-spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_request()) ->
+    {ok, delete_domain_response(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, DomainName, Input) ->
     delete_domain(Client, DomainName, Input, []).
+
+-spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_request(), proplists:proplist()) ->
+    {ok, delete_domain_response(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
@@ -413,8 +2494,17 @@ delete_domain(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables and deletes the specified event stream.
+-spec delete_event_stream(aws_client:aws_client(), binary() | list(), binary() | list(), delete_event_stream_request()) ->
+    {ok, delete_event_stream_response(), tuple()} |
+    {error, any()} |
+    {error, delete_event_stream_errors(), tuple()}.
 delete_event_stream(Client, DomainName, EventStreamName, Input) ->
     delete_event_stream(Client, DomainName, EventStreamName, Input, []).
+
+-spec delete_event_stream(aws_client:aws_client(), binary() | list(), binary() | list(), delete_event_stream_request(), proplists:proplist()) ->
+    {ok, delete_event_stream_response(), tuple()} |
+    {error, any()} |
+    {error, delete_event_stream_errors(), tuple()}.
 delete_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
@@ -438,8 +2528,17 @@ delete_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes an integration from a specific domain.
+-spec delete_integration(aws_client:aws_client(), binary() | list(), delete_integration_request()) ->
+    {ok, delete_integration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_errors(), tuple()}.
 delete_integration(Client, DomainName, Input) ->
     delete_integration(Client, DomainName, Input, []).
+
+-spec delete_integration(aws_client:aws_client(), binary() | list(), delete_integration_request(), proplists:proplist()) ->
+    {ok, delete_integration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_integration_errors(), tuple()}.
 delete_integration(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations/delete"],
@@ -464,8 +2563,17 @@ delete_integration(Client, DomainName, Input0, Options0) ->
 
 %% @doc Deletes the standard customer profile and all data pertaining to the
 %% profile.
+-spec delete_profile(aws_client:aws_client(), binary() | list(), delete_profile_request()) ->
+    {ok, delete_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, DomainName, Input) ->
     delete_profile(Client, DomainName, Input, []).
+
+-spec delete_profile(aws_client:aws_client(), binary() | list(), delete_profile_request(), proplists:proplist()) ->
+    {ok, delete_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/delete"],
@@ -489,8 +2597,17 @@ delete_profile(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a searchable key from a customer profile.
+-spec delete_profile_key(aws_client:aws_client(), binary() | list(), delete_profile_key_request()) ->
+    {ok, delete_profile_key_response(), tuple()} |
+    {error, any()} |
+    {error, delete_profile_key_errors(), tuple()}.
 delete_profile_key(Client, DomainName, Input) ->
     delete_profile_key(Client, DomainName, Input, []).
+
+-spec delete_profile_key(aws_client:aws_client(), binary() | list(), delete_profile_key_request(), proplists:proplist()) ->
+    {ok, delete_profile_key_response(), tuple()} |
+    {error, any()} |
+    {error, delete_profile_key_errors(), tuple()}.
 delete_profile_key(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/keys/delete"],
@@ -515,8 +2632,17 @@ delete_profile_key(Client, DomainName, Input0, Options0) ->
 
 %% @doc Removes an object associated with a profile of a given
 %% ProfileObjectType.
+-spec delete_profile_object(aws_client:aws_client(), binary() | list(), delete_profile_object_request()) ->
+    {ok, delete_profile_object_response(), tuple()} |
+    {error, any()} |
+    {error, delete_profile_object_errors(), tuple()}.
 delete_profile_object(Client, DomainName, Input) ->
     delete_profile_object(Client, DomainName, Input, []).
+
+-spec delete_profile_object(aws_client:aws_client(), binary() | list(), delete_profile_object_request(), proplists:proplist()) ->
+    {ok, delete_profile_object_response(), tuple()} |
+    {error, any()} |
+    {error, delete_profile_object_errors(), tuple()}.
 delete_profile_object(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects/delete"],
@@ -547,8 +2673,17 @@ delete_profile_object(Client, DomainName, Input0, Options0) ->
 %% ProfileObjectType. In addition, it scrubs all of the fields of the
 %% standard profile that
 %% were populated from this ProfileObjectType.
+-spec delete_profile_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_profile_object_type_request()) ->
+    {ok, delete_profile_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_profile_object_type_errors(), tuple()}.
 delete_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
     delete_profile_object_type(Client, DomainName, ObjectTypeName, Input, []).
+
+-spec delete_profile_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_profile_object_type_request(), proplists:proplist()) ->
+    {ok, delete_profile_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_profile_object_type_errors(), tuple()}.
 delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
@@ -574,8 +2709,17 @@ delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0)
 %% @doc Deletes the specified workflow and all its corresponding resources.
 %%
 %% This is an async process.
+-spec delete_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workflow_request()) ->
+    {ok, delete_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, DomainName, WorkflowId, Input) ->
     delete_workflow(Client, DomainName, WorkflowId, Input, []).
+
+-spec delete_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workflow_request(), proplists:proplist()) ->
+    {ok, delete_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, DomainName, WorkflowId, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), ""],
@@ -600,8 +2744,17 @@ delete_workflow(Client, DomainName, WorkflowId, Input0, Options0) ->
 
 %% @doc The process of detecting profile object type mapping by using given
 %% objects.
+-spec detect_profile_object_type(aws_client:aws_client(), binary() | list(), detect_profile_object_type_request()) ->
+    {ok, detect_profile_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, detect_profile_object_type_errors(), tuple()}.
 detect_profile_object_type(Client, DomainName, Input) ->
     detect_profile_object_type(Client, DomainName, Input, []).
+
+-spec detect_profile_object_type(aws_client:aws_client(), binary() | list(), detect_profile_object_type_request(), proplists:proplist()) ->
+    {ok, detect_profile_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, detect_profile_object_type_errors(), tuple()}.
 detect_profile_object_type(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/detect/object-types"],
@@ -646,8 +2799,17 @@ detect_profile_object_type(Client, DomainName, Input0, Options0) ->
 %% only
 %% `FirstName' or only `LastName'), there may be a large number of
 %% matches. This increases the chances of erroneous merges.
+-spec get_auto_merging_preview(aws_client:aws_client(), binary() | list(), get_auto_merging_preview_request()) ->
+    {ok, get_auto_merging_preview_response(), tuple()} |
+    {error, any()} |
+    {error, get_auto_merging_preview_errors(), tuple()}.
 get_auto_merging_preview(Client, DomainName, Input) ->
     get_auto_merging_preview(Client, DomainName, Input, []).
+
+-spec get_auto_merging_preview(aws_client:aws_client(), binary() | list(), get_auto_merging_preview_request(), proplists:proplist()) ->
+    {ok, get_auto_merging_preview_response(), tuple()} |
+    {error, any()} |
+    {error, get_auto_merging_preview_errors(), tuple()}.
 get_auto_merging_preview(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs/auto-merging-preview"],
@@ -672,14 +2834,26 @@ get_auto_merging_preview(Client, DomainName, Input0, Options0) ->
 
 %% @doc Provides more information on a calculated attribute definition for
 %% Customer Profiles.
+-spec get_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_calculated_attribute_definition_response(), tuple()} |
+    {error, any()} |
+    {error, get_calculated_attribute_definition_errors(), tuple()}.
 get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName)
   when is_map(Client) ->
     get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, #{}, #{}).
 
+-spec get_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_calculated_attribute_definition_response(), tuple()} |
+    {error, any()} |
+    {error, get_calculated_attribute_definition_errors(), tuple()}.
 get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, QueryMap, HeadersMap, []).
 
+-spec get_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_calculated_attribute_definition_response(), tuple()} |
+    {error, any()} |
+    {error, get_calculated_attribute_definition_errors(), tuple()}.
 get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
@@ -697,14 +2871,26 @@ get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve a calculated attribute for a customer profile.
+-spec get_calculated_attribute_for_profile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_calculated_attribute_for_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_calculated_attribute_for_profile_errors(), tuple()}.
 get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId)
   when is_map(Client) ->
     get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, #{}, #{}).
 
+-spec get_calculated_attribute_for_profile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_calculated_attribute_for_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_calculated_attribute_for_profile_errors(), tuple()}.
 get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, QueryMap, HeadersMap, []).
 
+-spec get_calculated_attribute_for_profile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_calculated_attribute_for_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_calculated_attribute_for_profile_errors(), tuple()}.
 get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profile/", aws_util:encode_uri(ProfileId), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
@@ -722,14 +2908,26 @@ get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specific domain.
+-spec get_domain(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_domain_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, DomainName)
   when is_map(Client) ->
     get_domain(Client, DomainName, #{}, #{}).
 
+-spec get_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_domain_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain(Client, DomainName, QueryMap, HeadersMap, []).
 
+-spec get_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_domain_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
@@ -748,14 +2946,26 @@ get_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns information about the specified event stream in a specific
 %% domain.
+-spec get_event_stream(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_event_stream_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_stream_errors(), tuple()}.
 get_event_stream(Client, DomainName, EventStreamName)
   when is_map(Client) ->
     get_event_stream(Client, DomainName, EventStreamName, #{}, #{}).
 
+-spec get_event_stream(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_event_stream_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_stream_errors(), tuple()}.
 get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, []).
 
+-spec get_event_stream(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_event_stream_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_stream_errors(), tuple()}.
 get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
@@ -779,14 +2989,26 @@ get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, Opti
 %% console. For more information, see Use
 %% Identity Resolution to consolidate similar profiles:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-identity-resolution.html.
+-spec get_identity_resolution_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_identity_resolution_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_resolution_job_errors(), tuple()}.
 get_identity_resolution_job(Client, DomainName, JobId)
   when is_map(Client) ->
     get_identity_resolution_job(Client, DomainName, JobId, #{}, #{}).
 
+-spec get_identity_resolution_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_identity_resolution_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_resolution_job_errors(), tuple()}.
 get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap, []).
 
+-spec get_identity_resolution_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_identity_resolution_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_resolution_job_errors(), tuple()}.
 get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs/", aws_util:encode_uri(JobId), ""],
@@ -804,8 +3026,17 @@ get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an integration for a domain.
+-spec get_integration(aws_client:aws_client(), binary() | list(), get_integration_request()) ->
+    {ok, get_integration_response(), tuple()} |
+    {error, any()} |
+    {error, get_integration_errors(), tuple()}.
 get_integration(Client, DomainName, Input) ->
     get_integration(Client, DomainName, Input, []).
+
+-spec get_integration(aws_client:aws_client(), binary() | list(), get_integration_request(), proplists:proplist()) ->
+    {ok, get_integration_response(), tuple()} |
+    {error, any()} |
+    {error, get_integration_errors(), tuple()}.
 get_integration(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
@@ -878,14 +3109,26 @@ get_integration(Client, DomainName, Input0, Options0) ->
 %% johndoe@anycompany.com, or different phone number
 %% formats such as 555-010-0000 and +1-555-010-0000—can be detected as
 %% belonging to the same customer John Doe and merged into a unified profile.
+-spec get_matches(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_matches_response(), tuple()} |
+    {error, any()} |
+    {error, get_matches_errors(), tuple()}.
 get_matches(Client, DomainName)
   when is_map(Client) ->
     get_matches(Client, DomainName, #{}, #{}).
 
+-spec get_matches(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_matches_response(), tuple()} |
+    {error, any()} |
+    {error, get_matches_errors(), tuple()}.
 get_matches(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_matches(Client, DomainName, QueryMap, HeadersMap, []).
 
+-spec get_matches(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_matches_response(), tuple()} |
+    {error, any()} |
+    {error, get_matches_errors(), tuple()}.
 get_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/matches"],
@@ -908,14 +3151,26 @@ get_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the object types for a specific domain.
+-spec get_profile_object_type(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_profile_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_profile_object_type_errors(), tuple()}.
 get_profile_object_type(Client, DomainName, ObjectTypeName)
   when is_map(Client) ->
     get_profile_object_type(Client, DomainName, ObjectTypeName, #{}, #{}).
 
+-spec get_profile_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_profile_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_profile_object_type_errors(), tuple()}.
 get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap, []).
 
+-spec get_profile_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_profile_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_profile_object_type_errors(), tuple()}.
 get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
@@ -941,14 +3196,26 @@ get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap
 %% with an ObjectTypeName that matches one of the TemplateIds, it uses the
 %% mappings from the
 %% template.
+-spec get_profile_object_type_template(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_profile_object_type_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_profile_object_type_template_errors(), tuple()}.
 get_profile_object_type_template(Client, TemplateId)
   when is_map(Client) ->
     get_profile_object_type_template(Client, TemplateId, #{}, #{}).
 
+-spec get_profile_object_type_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_profile_object_type_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_profile_object_type_template_errors(), tuple()}.
 get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, []).
 
+-spec get_profile_object_type_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_profile_object_type_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_profile_object_type_template_errors(), tuple()}.
 get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -972,8 +3239,17 @@ get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Optio
 %% You can also specify the type of matching that you want for finding
 %% similar profiles using
 %% either `RULE_BASED_MATCHING' or `ML_BASED_MATCHING'.
+-spec get_similar_profiles(aws_client:aws_client(), binary() | list(), get_similar_profiles_request()) ->
+    {ok, get_similar_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, get_similar_profiles_errors(), tuple()}.
 get_similar_profiles(Client, DomainName, Input) ->
     get_similar_profiles(Client, DomainName, Input, []).
+
+-spec get_similar_profiles(aws_client:aws_client(), binary() | list(), get_similar_profiles_request(), proplists:proplist()) ->
+    {ok, get_similar_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, get_similar_profiles_errors(), tuple()}.
 get_similar_profiles(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/matches"],
@@ -999,14 +3275,26 @@ get_similar_profiles(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get details of specified workflow.
+-spec get_workflow(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, DomainName, WorkflowId)
   when is_map(Client) ->
     get_workflow(Client, DomainName, WorkflowId, #{}, #{}).
 
+-spec get_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap, []).
 
+-spec get_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), ""],
@@ -1024,14 +3312,26 @@ get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get granular list of steps in workflow.
+-spec get_workflow_steps(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_workflow_steps_response(), tuple()} |
+    {error, any()} |
+    {error, get_workflow_steps_errors(), tuple()}.
 get_workflow_steps(Client, DomainName, WorkflowId)
   when is_map(Client) ->
     get_workflow_steps(Client, DomainName, WorkflowId, #{}, #{}).
 
+-spec get_workflow_steps(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_workflow_steps_response(), tuple()} |
+    {error, any()} |
+    {error, get_workflow_steps_errors(), tuple()}.
 get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap, []).
 
+-spec get_workflow_steps(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_workflow_steps_response(), tuple()} |
+    {error, any()} |
+    {error, get_workflow_steps_errors(), tuple()}.
 get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), "/steps"],
@@ -1055,8 +3355,17 @@ get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options
 
 %% @doc Lists all of the integrations associated to a specific URI in the AWS
 %% account.
+-spec list_account_integrations(aws_client:aws_client(), list_account_integrations_request()) ->
+    {ok, list_account_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_account_integrations_errors(), tuple()}.
 list_account_integrations(Client, Input) ->
     list_account_integrations(Client, Input, []).
+
+-spec list_account_integrations(aws_client:aws_client(), list_account_integrations_request(), proplists:proplist()) ->
+    {ok, list_account_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_account_integrations_errors(), tuple()}.
 list_account_integrations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/integrations"],
@@ -1083,14 +3392,26 @@ list_account_integrations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists calculated attribute definitions for Customer Profiles
+-spec list_calculated_attribute_definitions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_calculated_attribute_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_calculated_attribute_definitions_errors(), tuple()}.
 list_calculated_attribute_definitions(Client, DomainName)
   when is_map(Client) ->
     list_calculated_attribute_definitions(Client, DomainName, #{}, #{}).
 
+-spec list_calculated_attribute_definitions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_calculated_attribute_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_calculated_attribute_definitions_errors(), tuple()}.
 list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap, []).
 
+-spec list_calculated_attribute_definitions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_calculated_attribute_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_calculated_attribute_definitions_errors(), tuple()}.
 list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes"],
@@ -1113,14 +3434,26 @@ list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve a list of calculated attributes for a customer profile.
+-spec list_calculated_attributes_for_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_calculated_attributes_for_profile_response(), tuple()} |
+    {error, any()} |
+    {error, list_calculated_attributes_for_profile_errors(), tuple()}.
 list_calculated_attributes_for_profile(Client, DomainName, ProfileId)
   when is_map(Client) ->
     list_calculated_attributes_for_profile(Client, DomainName, ProfileId, #{}, #{}).
 
+-spec list_calculated_attributes_for_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_calculated_attributes_for_profile_response(), tuple()} |
+    {error, any()} |
+    {error, list_calculated_attributes_for_profile_errors(), tuple()}.
 list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, HeadersMap, []).
 
+-spec list_calculated_attributes_for_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_calculated_attributes_for_profile_response(), tuple()} |
+    {error, any()} |
+    {error, list_calculated_attributes_for_profile_errors(), tuple()}.
 list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profile/", aws_util:encode_uri(ProfileId), "/calculated-attributes"],
@@ -1144,14 +3477,26 @@ list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, 
 
 %% @doc Returns a list of all the domains for an AWS account that have been
 %% created.
+-spec list_domains(aws_client:aws_client()) ->
+    {ok, list_domains_response(), tuple()} |
+    {error, any()} |
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client)
   when is_map(Client) ->
     list_domains(Client, #{}, #{}).
 
+-spec list_domains(aws_client:aws_client(), map(), map()) ->
+    {ok, list_domains_response(), tuple()} |
+    {error, any()} |
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domains(Client, QueryMap, HeadersMap, []).
 
+-spec list_domains(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_domains_response(), tuple()} |
+    {error, any()} |
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains"],
@@ -1174,14 +3519,26 @@ list_domains(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the event streams in a specific domain.
+-spec list_event_streams(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_event_streams_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_streams_errors(), tuple()}.
 list_event_streams(Client, DomainName)
   when is_map(Client) ->
     list_event_streams(Client, DomainName, #{}, #{}).
 
+-spec list_event_streams(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_event_streams_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_streams_errors(), tuple()}.
 list_event_streams(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_streams(Client, DomainName, QueryMap, HeadersMap, []).
 
+-spec list_event_streams(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_event_streams_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_streams_errors(), tuple()}.
 list_event_streams(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams"],
@@ -1207,14 +3564,26 @@ list_event_streams(Client, DomainName, QueryMap, HeadersMap, Options0)
 %%
 %% The response sorts the list by
 %% `JobStartTime'.
+-spec list_identity_resolution_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_identity_resolution_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_resolution_jobs_errors(), tuple()}.
 list_identity_resolution_jobs(Client, DomainName)
   when is_map(Client) ->
     list_identity_resolution_jobs(Client, DomainName, #{}, #{}).
 
+-spec list_identity_resolution_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_identity_resolution_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_resolution_jobs_errors(), tuple()}.
 list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap, []).
 
+-spec list_identity_resolution_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_identity_resolution_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_resolution_jobs_errors(), tuple()}.
 list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs"],
@@ -1237,14 +3606,26 @@ list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the integrations in your domain.
+-spec list_integrations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_integrations_errors(), tuple()}.
 list_integrations(Client, DomainName)
   when is_map(Client) ->
     list_integrations(Client, DomainName, #{}, #{}).
 
+-spec list_integrations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_integrations_errors(), tuple()}.
 list_integrations(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_integrations(Client, DomainName, QueryMap, HeadersMap, []).
 
+-spec list_integrations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, list_integrations_errors(), tuple()}.
 list_integrations(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
@@ -1268,14 +3649,26 @@ list_integrations(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the template information for object types.
+-spec list_profile_object_type_templates(aws_client:aws_client()) ->
+    {ok, list_profile_object_type_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_object_type_templates_errors(), tuple()}.
 list_profile_object_type_templates(Client)
   when is_map(Client) ->
     list_profile_object_type_templates(Client, #{}, #{}).
 
+-spec list_profile_object_type_templates(aws_client:aws_client(), map(), map()) ->
+    {ok, list_profile_object_type_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_object_type_templates_errors(), tuple()}.
 list_profile_object_type_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_object_type_templates(Client, QueryMap, HeadersMap, []).
 
+-spec list_profile_object_type_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_profile_object_type_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_object_type_templates_errors(), tuple()}.
 list_profile_object_type_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates"],
@@ -1298,14 +3691,26 @@ list_profile_object_type_templates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the templates available within the service.
+-spec list_profile_object_types(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_profile_object_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_object_types_errors(), tuple()}.
 list_profile_object_types(Client, DomainName)
   when is_map(Client) ->
     list_profile_object_types(Client, DomainName, #{}, #{}).
 
+-spec list_profile_object_types(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_profile_object_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_object_types_errors(), tuple()}.
 list_profile_object_types(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_object_types(Client, DomainName, QueryMap, HeadersMap, []).
 
+-spec list_profile_object_types(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_profile_object_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_object_types_errors(), tuple()}.
 list_profile_object_types(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types"],
@@ -1329,8 +3734,17 @@ list_profile_object_types(Client, DomainName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of objects associated with a profile of a given
 %% ProfileObjectType.
+-spec list_profile_objects(aws_client:aws_client(), binary() | list(), list_profile_objects_request()) ->
+    {ok, list_profile_objects_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_objects_errors(), tuple()}.
 list_profile_objects(Client, DomainName, Input) ->
     list_profile_objects(Client, DomainName, Input, []).
+
+-spec list_profile_objects(aws_client:aws_client(), binary() | list(), list_profile_objects_request(), proplists:proplist()) ->
+    {ok, list_profile_objects_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_objects_errors(), tuple()}.
 list_profile_objects(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects"],
@@ -1356,14 +3770,26 @@ list_profile_objects(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a set of `MatchIds' that belong to the given domain.
+-spec list_rule_based_matches(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_rule_based_matches_response(), tuple()} |
+    {error, any()} |
+    {error, list_rule_based_matches_errors(), tuple()}.
 list_rule_based_matches(Client, DomainName)
   when is_map(Client) ->
     list_rule_based_matches(Client, DomainName, #{}, #{}).
 
+-spec list_rule_based_matches(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_rule_based_matches_response(), tuple()} |
+    {error, any()} |
+    {error, list_rule_based_matches_errors(), tuple()}.
 list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap, []).
 
+-spec list_rule_based_matches(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_rule_based_matches_response(), tuple()} |
+    {error, any()} |
+    {error, list_rule_based_matches_errors(), tuple()}.
 list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/ruleBasedMatches"],
@@ -1391,14 +3817,26 @@ list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% In Connect
 %% Customer Profiles, domains, profile object types, and integrations can be
 %% tagged.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1416,8 +3854,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Query to list all workflows.
+-spec list_workflows(aws_client:aws_client(), binary() | list(), list_workflows_request()) ->
+    {ok, list_workflows_response(), tuple()} |
+    {error, any()} |
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, DomainName, Input) ->
     list_workflows(Client, DomainName, Input, []).
+
+-spec list_workflows(aws_client:aws_client(), binary() | list(), list_workflows_request(), proplists:proplist()) ->
+    {ok, list_workflows_response(), tuple()} |
+    {error, any()} |
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows"],
@@ -1476,8 +3923,17 @@ list_workflows(Client, DomainName, Input0, Options0) ->
 %% another matching
 %% system. After profiles have been merged, they cannot be separated
 %% (unmerged).
+-spec merge_profiles(aws_client:aws_client(), binary() | list(), merge_profiles_request()) ->
+    {ok, merge_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, merge_profiles_errors(), tuple()}.
 merge_profiles(Client, DomainName, Input) ->
     merge_profiles(Client, DomainName, Input, []).
+
+-spec merge_profiles(aws_client:aws_client(), binary() | list(), merge_profiles_request(), proplists:proplist()) ->
+    {ok, merge_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, merge_profiles_errors(), tuple()}.
 merge_profiles(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects/merge"],
@@ -1511,8 +3967,17 @@ merge_profiles(Client, DomainName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html/
 %% UntagResource:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UntagResource.html.
+-spec put_integration(aws_client:aws_client(), binary() | list(), put_integration_request()) ->
+    {ok, put_integration_response(), tuple()} |
+    {error, any()} |
+    {error, put_integration_errors(), tuple()}.
 put_integration(Client, DomainName, Input) ->
     put_integration(Client, DomainName, Input, []).
+
+-spec put_integration(aws_client:aws_client(), binary() | list(), put_integration_request(), proplists:proplist()) ->
+    {ok, put_integration_response(), tuple()} |
+    {error, any()} |
+    {error, put_integration_errors(), tuple()}.
 put_integration(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
@@ -1552,8 +4017,17 @@ put_integration(Client, DomainName, Input0, Options0) ->
 %%
 %% PutProfileObject needs an ObjectType, which can be created using
 %% PutProfileObjectType.
+-spec put_profile_object(aws_client:aws_client(), binary() | list(), put_profile_object_request()) ->
+    {ok, put_profile_object_response(), tuple()} |
+    {error, any()} |
+    {error, put_profile_object_errors(), tuple()}.
 put_profile_object(Client, DomainName, Input) ->
     put_profile_object(Client, DomainName, Input, []).
+
+-spec put_profile_object(aws_client:aws_client(), binary() | list(), put_profile_object_request(), proplists:proplist()) ->
+    {ok, put_profile_object_response(), tuple()} |
+    {error, any()} |
+    {error, put_profile_object_errors(), tuple()}.
 put_profile_object(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects"],
@@ -1582,8 +4056,17 @@ put_profile_object(Client, DomainName, Input0, Options0) ->
 %% TagResource:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html/UntagResource:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UntagResource.html.
+-spec put_profile_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), put_profile_object_type_request()) ->
+    {ok, put_profile_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, put_profile_object_type_errors(), tuple()}.
 put_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
     put_profile_object_type(Client, DomainName, ObjectTypeName, Input, []).
+
+-spec put_profile_object_type(aws_client:aws_client(), binary() | list(), binary() | list(), put_profile_object_type_request(), proplists:proplist()) ->
+    {ok, put_profile_object_type_response(), tuple()} |
+    {error, any()} |
+    {error, put_profile_object_type_errors(), tuple()}.
 put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
@@ -1618,8 +4101,17 @@ put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
 %% This operation supports searching for profiles with a minimum of 1
 %% key-value(s) pair and up to
 %% 5 key-value(s) pairs using either `AND' or `OR' logic.
+-spec search_profiles(aws_client:aws_client(), binary() | list(), search_profiles_request()) ->
+    {ok, search_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, search_profiles_errors(), tuple()}.
 search_profiles(Client, DomainName, Input) ->
     search_profiles(Client, DomainName, Input, []).
+
+-spec search_profiles(aws_client:aws_client(), binary() | list(), search_profiles_request(), proplists:proplist()) ->
+    {ok, search_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, search_profiles_errors(), tuple()}.
 search_profiles(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/search"],
@@ -1669,8 +4161,17 @@ search_profiles(Client, DomainName, Input0, Options0) ->
 %% you specify replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1699,8 +4200,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% In Connect
 %% Customer Profiles, domains, profile object types, and integrations can be
 %% tagged.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1730,8 +4240,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% the date range of a calculated attribute will not trigger inclusion of
 %% historical data greater than the
 %% current date range.
+-spec update_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list(), update_calculated_attribute_definition_request()) ->
+    {ok, update_calculated_attribute_definition_response(), tuple()} |
+    {error, any()} |
+    {error, update_calculated_attribute_definition_errors(), tuple()}.
 update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
     update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
+
+-spec update_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list(), update_calculated_attribute_definition_request(), proplists:proplist()) ->
+    {ok, update_calculated_attribute_definition_response(), tuple()} |
+    {error, any()} |
+    {error, update_calculated_attribute_definition_errors(), tuple()}.
 update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
@@ -1777,8 +4296,17 @@ update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
 %% To add or remove tags on an existing Domain, see TagResource:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html/UntagResource:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UntagResource.html.
+-spec update_domain(aws_client:aws_client(), binary() | list(), update_domain_request()) ->
+    {ok, update_domain_response(), tuple()} |
+    {error, any()} |
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, DomainName, Input) ->
     update_domain(Client, DomainName, Input, []).
+
+-spec update_domain(aws_client:aws_client(), binary() | list(), update_domain_request(), proplists:proplist()) ->
+    {ok, update_domain_response(), tuple()} |
+    {error, any()} |
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
@@ -1811,8 +4339,17 @@ update_domain(Client, DomainName, Input0, Options0) ->
 %% existing value will be removed. Not specifying a string value means that
 %% any value already
 %% there will be kept.
+-spec update_profile(aws_client:aws_client(), binary() | list(), update_profile_request()) ->
+    {ok, update_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_profile_errors(), tuple()}.
 update_profile(Client, DomainName, Input) ->
     update_profile(Client, DomainName, Input, []).
+
+-spec update_profile(aws_client:aws_client(), binary() | list(), update_profile_request(), proplists:proplist()) ->
+    {ok, update_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_profile_errors(), tuple()}.
 update_profile(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles"],
@@ -1839,7 +4376,7 @@ update_profile(Client, DomainName, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

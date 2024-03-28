@@ -39,6 +39,931 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% pipe_source_rabbit_mq_broker_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"Credentials">> => list(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"QueueName">> => string(),
+%%   <<"VirtualHost">> => string()
+%% }
+-type pipe_source_rabbit_mq_broker_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipe_source_active_mq_broker_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"Credentials">> => list(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer()
+%% }
+-type update_pipe_source_active_mq_broker_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_pipe_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CurrentState">> => string(),
+%%   <<"DesiredState">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type delete_pipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> => map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_sage_maker_pipeline_parameters() :: #{
+%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter()())
+%% }
+-type pipe_target_sage_maker_pipeline_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_log_configuration() :: #{
+%%   <<"CloudwatchLogsLogDestination">> => cloudwatch_logs_log_destination(),
+%%   <<"FirehoseLogDestination">> => firehose_log_destination(),
+%%   <<"IncludeExecutionData">> => list(string()()),
+%%   <<"Level">> => string(),
+%%   <<"S3LogDestination">> => s3_log_destination()
+%% }
+-type pipe_log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloudwatch_logs_log_destination_parameters() :: #{
+%%   <<"LogGroupArn">> => string()
+%% }
+-type cloudwatch_logs_log_destination_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_retry_strategy() :: #{
+%%   <<"Attempts">> => integer()
+%% }
+-type batch_retry_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipe_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CurrentState">> => string(),
+%%   <<"DesiredState">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type update_pipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_environment_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type ecs_environment_variable() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipe_source_self_managed_kafka_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"Credentials">> => list(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"ServerRootCaCertificate">> => string(),
+%%   <<"Vpc">> => self_managed_kafka_access_configuration_vpc()
+%% }
+-type update_pipe_source_self_managed_kafka_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipe_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DesiredState">> => string(),
+%%   <<"Enrichment">> => string(),
+%%   <<"EnrichmentParameters">> => pipe_enrichment_parameters(),
+%%   <<"LogConfiguration">> => pipe_log_configuration_parameters(),
+%%   <<"RoleArn">> := string(),
+%%   <<"SourceParameters">> => update_pipe_source_parameters(),
+%%   <<"Target">> => string(),
+%%   <<"TargetParameters">> => pipe_target_parameters()
+%% }
+-type update_pipe_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% filter_criteria() :: #{
+%%   <<"Filters">> => list(filter()())
+%% }
+-type filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipes_request() :: #{
+%%   <<"CurrentState">> => string(),
+%%   <<"DesiredState">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SourcePrefix">> => string(),
+%%   <<"TargetPrefix">> => string()
+%% }
+-type list_pipes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_inference_accelerator_override() :: #{
+%%   <<"deviceName">> => string(),
+%%   <<"deviceType">> => string()
+%% }
+-type ecs_inference_accelerator_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_pipe_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CurrentState">> => string(),
+%%   <<"DesiredState">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type start_pipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_array_properties() :: #{
+%%   <<"Size">> => integer()
+%% }
+-type batch_array_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_state_machine_parameters() :: #{
+%%   <<"InvocationType">> => string()
+%% }
+-type pipe_target_state_machine_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_event_bridge_event_bus_parameters() :: #{
+%%   <<"DetailType">> => string(),
+%%   <<"EndpointId">> => string(),
+%%   <<"Resources">> => list(string()()),
+%%   <<"Source">> => string(),
+%%   <<"Time">> => string()
+%% }
+-type pipe_target_event_bridge_event_bus_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_pipeline_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type sage_maker_pipeline_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_resource_requirement() :: #{
+%%   <<"Type">> => string(),
+%%   <<"Value">> => [string()]
+%% }
+-type batch_resource_requirement() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pipe_request() :: #{}
+-type describe_pipe_request() :: #{}.
+
+
+%% Example:
+%% s3_log_destination() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"BucketOwner">> => string(),
+%%   <<"OutputFormat">> => string(),
+%%   <<"Prefix">> => string()
+%% }
+-type s3_log_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipe_source_rabbit_mq_broker_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"Credentials">> => list(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer()
+%% }
+-type update_pipe_source_rabbit_mq_broker_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_source_managed_streaming_kafka_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"ConsumerGroupID">> => string(),
+%%   <<"Credentials">> => list(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"StartingPosition">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type pipe_source_managed_streaming_kafka_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> => list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% firehose_log_destination_parameters() :: #{
+%%   <<"DeliveryStreamArn">> => string()
+%% }
+-type firehose_log_destination_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% start_pipe_request() :: #{}
+-type start_pipe_request() :: #{}.
+
+
+%% Example:
+%% cloudwatch_logs_log_destination() :: #{
+%%   <<"LogGroupArn">> => string()
+%% }
+-type cloudwatch_logs_log_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CurrentState">> => string(),
+%%   <<"DesiredState">> => string(),
+%%   <<"Enrichment">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"StateReason">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type pipe() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_parameters() :: #{
+%%   <<"BatchJobParameters">> => pipe_target_batch_job_parameters(),
+%%   <<"CloudWatchLogsParameters">> => pipe_target_cloud_watch_logs_parameters(),
+%%   <<"EcsTaskParameters">> => pipe_target_ecs_task_parameters(),
+%%   <<"EventBridgeEventBusParameters">> => pipe_target_event_bridge_event_bus_parameters(),
+%%   <<"HttpParameters">> => pipe_target_http_parameters(),
+%%   <<"InputTemplate">> => string(),
+%%   <<"KinesisStreamParameters">> => pipe_target_kinesis_stream_parameters(),
+%%   <<"LambdaFunctionParameters">> => pipe_target_lambda_function_parameters(),
+%%   <<"RedshiftDataParameters">> => pipe_target_redshift_data_parameters(),
+%%   <<"SageMakerPipelineParameters">> => pipe_target_sage_maker_pipeline_parameters(),
+%%   <<"SqsQueueParameters">> => pipe_target_sqs_queue_parameters(),
+%%   <<"StepFunctionStateMachineParameters">> => pipe_target_state_machine_parameters()
+%% }
+-type pipe_target_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_source_parameters() :: #{
+%%   <<"ActiveMQBrokerParameters">> => pipe_source_active_mq_broker_parameters(),
+%%   <<"DynamoDBStreamParameters">> => pipe_source_dynamo_db_stream_parameters(),
+%%   <<"FilterCriteria">> => filter_criteria(),
+%%   <<"KinesisStreamParameters">> => pipe_source_kinesis_stream_parameters(),
+%%   <<"ManagedStreamingKafkaParameters">> => pipe_source_managed_streaming_kafka_parameters(),
+%%   <<"RabbitMQBrokerParameters">> => pipe_source_rabbit_mq_broker_parameters(),
+%%   <<"SelfManagedKafkaParameters">> => pipe_source_self_managed_kafka_parameters(),
+%%   <<"SqsQueueParameters">> => pipe_source_sqs_queue_parameters()
+%% }
+-type pipe_source_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_batch_job_parameters() :: #{
+%%   <<"ArrayProperties">> => batch_array_properties(),
+%%   <<"ContainerOverrides">> => batch_container_overrides(),
+%%   <<"DependsOn">> => list(batch_job_dependency()()),
+%%   <<"JobDefinition">> => [string()],
+%%   <<"JobName">> => [string()],
+%%   <<"Parameters">> => map(),
+%%   <<"RetryStrategy">> => batch_retry_strategy()
+%% }
+-type pipe_target_batch_job_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_source_sqs_queue_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer()
+%% }
+-type pipe_source_sqs_queue_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_http_parameters() :: #{
+%%   <<"HeaderParameters">> => map(),
+%%   <<"PathParameterValues">> => list(string()()),
+%%   <<"QueryStringParameters">> => map()
+%% }
+-type pipe_target_http_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_sqs_queue_parameters() :: #{
+%%   <<"MessageDeduplicationId">> => string(),
+%%   <<"MessageGroupId">> => string()
+%% }
+-type pipe_target_sqs_queue_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_kinesis_stream_parameters() :: #{
+%%   <<"PartitionKey">> => string()
+%% }
+-type pipe_target_kinesis_stream_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Pipes">> => list(pipe()())
+%% }
+-type list_pipes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_cloud_watch_logs_parameters() :: #{
+%%   <<"LogStreamName">> => string(),
+%%   <<"Timestamp">> => string()
+%% }
+-type pipe_target_cloud_watch_logs_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_log_destination_parameters() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"BucketOwner">> => string(),
+%%   <<"OutputFormat">> => string(),
+%%   <<"Prefix">> => string()
+%% }
+-type s3_log_destination_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pipe_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DesiredState">> => string(),
+%%   <<"Enrichment">> => string(),
+%%   <<"EnrichmentParameters">> => pipe_enrichment_parameters(),
+%%   <<"LogConfiguration">> => pipe_log_configuration_parameters(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Source">> := string(),
+%%   <<"SourceParameters">> => pipe_source_parameters(),
+%%   <<"Tags">> => map(),
+%%   <<"Target">> := string(),
+%%   <<"TargetParameters">> => pipe_target_parameters()
+%% }
+-type create_pipe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Pattern">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_container_override() :: #{
+%%   <<"Command">> => list(string()()),
+%%   <<"Cpu">> => [integer()],
+%%   <<"Environment">> => list(ecs_environment_variable()()),
+%%   <<"EnvironmentFiles">> => list(ecs_environment_file()()),
+%%   <<"Memory">> => [integer()],
+%%   <<"MemoryReservation">> => [integer()],
+%%   <<"Name">> => string(),
+%%   <<"ResourceRequirements">> => list(ecs_resource_requirement()())
+%% }
+-type ecs_container_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_environment_file() :: #{
+%%   <<"type">> => string(),
+%%   <<"value">> => string()
+%% }
+-type ecs_environment_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_pipe_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CurrentState">> => string(),
+%%   <<"DesiredState">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type stop_pipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_task_override() :: #{
+%%   <<"ContainerOverrides">> => list(ecs_container_override()()),
+%%   <<"Cpu">> => string(),
+%%   <<"EphemeralStorage">> => ecs_ephemeral_storage(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"InferenceAcceleratorOverrides">> => list(ecs_inference_accelerator_override()()),
+%%   <<"Memory">> => string(),
+%%   <<"TaskRoleArn">> => string()
+%% }
+-type ecs_task_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_strategy_item() :: #{
+%%   <<"base">> => integer(),
+%%   <<"capacityProvider">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type capacity_provider_strategy_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% placement_constraint() :: #{
+%%   <<"expression">> => string(),
+%%   <<"type">> => string()
+%% }
+-type placement_constraint() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_source_kinesis_stream_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"MaximumRecordAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"OnPartialBatchItemFailure">> => string(),
+%%   <<"ParallelizationFactor">> => integer(),
+%%   <<"StartingPosition">> => string(),
+%%   <<"StartingPositionTimestamp">> => non_neg_integer()
+%% }
+-type pipe_source_kinesis_stream_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_ecs_task_parameters() :: #{
+%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"EnableECSManagedTags">> => boolean(),
+%%   <<"EnableExecuteCommand">> => boolean(),
+%%   <<"Group">> => string(),
+%%   <<"LaunchType">> => string(),
+%%   <<"NetworkConfiguration">> => network_configuration(),
+%%   <<"Overrides">> => ecs_task_override(),
+%%   <<"PlacementConstraints">> => list(placement_constraint()()),
+%%   <<"PlacementStrategy">> => list(placement_strategy()()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"PropagateTags">> => string(),
+%%   <<"ReferenceId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TaskCount">> => integer(),
+%%   <<"TaskDefinitionArn">> => string()
+%% }
+-type pipe_target_ecs_task_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipe_request() :: #{}
+-type delete_pipe_request() :: #{}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% create_pipe_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CurrentState">> => string(),
+%%   <<"DesiredState">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type create_pipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dead_letter_config() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type dead_letter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% pipe_target_lambda_function_parameters() :: #{
+%%   <<"InvocationType">> => string()
+%% }
+-type pipe_target_lambda_function_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_redshift_data_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"SecretManagerArn">> => string(),
+%%   <<"Sqls">> => list(string()()),
+%%   <<"StatementName">> => string(),
+%%   <<"WithEvent">> => boolean()
+%% }
+-type pipe_target_redshift_data_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_source_dynamo_db_stream_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"MaximumRecordAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"OnPartialBatchItemFailure">> => string(),
+%%   <<"ParallelizationFactor">> => integer(),
+%%   <<"StartingPosition">> => string()
+%% }
+-type pipe_source_dynamo_db_stream_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipe_source_managed_streaming_kafka_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"Credentials">> => list(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer()
+%% }
+-type update_pipe_source_managed_streaming_kafka_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_job_dependency() :: #{
+%%   <<"JobId">> => [string()],
+%%   <<"Type">> => string()
+%% }
+-type batch_job_dependency() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pipe_request() :: #{}
+-type stop_pipe_request() :: #{}.
+
+
+%% Example:
+%% aws_vpc_configuration() :: #{
+%%   <<"AssignPublicIp">> => string(),
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"Subnets">> => list(string()())
+%% }
+-type aws_vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_log_configuration_parameters() :: #{
+%%   <<"CloudwatchLogsLogDestination">> => cloudwatch_logs_log_destination_parameters(),
+%%   <<"FirehoseLogDestination">> => firehose_log_destination_parameters(),
+%%   <<"IncludeExecutionData">> => list(string()()),
+%%   <<"Level">> => string(),
+%%   <<"S3LogDestination">> => s3_log_destination_parameters()
+%% }
+-type pipe_log_configuration_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_ephemeral_storage() :: #{
+%%   <<"sizeInGiB">> => integer()
+%% }
+-type ecs_ephemeral_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_resource_requirement() :: #{
+%%   <<"type">> => string(),
+%%   <<"value">> => string()
+%% }
+-type ecs_resource_requirement() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipe_source_kinesis_stream_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"MaximumRecordAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"OnPartialBatchItemFailure">> => string(),
+%%   <<"ParallelizationFactor">> => integer()
+%% }
+-type update_pipe_source_kinesis_stream_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_source_self_managed_kafka_parameters() :: #{
+%%   <<"AdditionalBootstrapServers">> => list(string()()),
+%%   <<"BatchSize">> => integer(),
+%%   <<"ConsumerGroupID">> => string(),
+%%   <<"Credentials">> => list(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"ServerRootCaCertificate">> => string(),
+%%   <<"StartingPosition">> => string(),
+%%   <<"TopicName">> => string(),
+%%   <<"Vpc">> => self_managed_kafka_access_configuration_vpc()
+%% }
+-type pipe_source_self_managed_kafka_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_container_overrides() :: #{
+%%   <<"Command">> => list(string()()),
+%%   <<"Environment">> => list(batch_environment_variable()()),
+%%   <<"InstanceType">> => [string()],
+%%   <<"ResourceRequirements">> => list(batch_resource_requirement()())
+%% }
+-type batch_container_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_environment_variable() :: #{
+%%   <<"Name">> => [string()],
+%%   <<"Value">> => [string()]
+%% }
+-type batch_environment_variable() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_enrichment_http_parameters() :: #{
+%%   <<"HeaderParameters">> => map(),
+%%   <<"PathParameterValues">> => list(string()()),
+%%   <<"QueryStringParameters">> => map()
+%% }
+-type pipe_enrichment_http_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipe_source_sqs_queue_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer()
+%% }
+-type update_pipe_source_sqs_queue_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% firehose_log_destination() :: #{
+%%   <<"DeliveryStreamArn">> => string()
+%% }
+-type firehose_log_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_enrichment_parameters() :: #{
+%%   <<"HttpParameters">> => pipe_enrichment_http_parameters(),
+%%   <<"InputTemplate">> => string()
+%% }
+-type pipe_enrichment_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipe_source_parameters() :: #{
+%%   <<"ActiveMQBrokerParameters">> => update_pipe_source_active_mq_broker_parameters(),
+%%   <<"DynamoDBStreamParameters">> => update_pipe_source_dynamo_db_stream_parameters(),
+%%   <<"FilterCriteria">> => filter_criteria(),
+%%   <<"KinesisStreamParameters">> => update_pipe_source_kinesis_stream_parameters(),
+%%   <<"ManagedStreamingKafkaParameters">> => update_pipe_source_managed_streaming_kafka_parameters(),
+%%   <<"RabbitMQBrokerParameters">> => update_pipe_source_rabbit_mq_broker_parameters(),
+%%   <<"SelfManagedKafkaParameters">> => update_pipe_source_self_managed_kafka_parameters(),
+%%   <<"SqsQueueParameters">> => update_pipe_source_sqs_queue_parameters()
+%% }
+-type update_pipe_source_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_managed_kafka_access_configuration_vpc() :: #{
+%%   <<"SecurityGroup">> => list(string()()),
+%%   <<"Subnets">> => list(string()())
+%% }
+-type self_managed_kafka_access_configuration_vpc() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_pipe_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CurrentState">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DesiredState">> => string(),
+%%   <<"Enrichment">> => string(),
+%%   <<"EnrichmentParameters">> => pipe_enrichment_parameters(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LogConfiguration">> => pipe_log_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"SourceParameters">> => pipe_source_parameters(),
+%%   <<"StateReason">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Target">> => string(),
+%%   <<"TargetParameters">> => pipe_target_parameters()
+%% }
+-type describe_pipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% placement_strategy() :: #{
+%%   <<"field">> => string(),
+%%   <<"type">> => string()
+%% }
+-type placement_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipe_source_dynamo_db_stream_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"MaximumRecordAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"OnPartialBatchItemFailure">> => string(),
+%%   <<"ParallelizationFactor">> => integer()
+%% }
+-type update_pipe_source_dynamo_db_stream_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_source_active_mq_broker_parameters() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"Credentials">> => list(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"QueueName">> => string()
+%% }
+-type pipe_source_active_mq_broker_parameters() :: #{binary() => any()}.
+
+-type create_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type describe_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception().
+
+-type list_pipes_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception().
+
+-type start_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type stop_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception().
+
+-type update_pipe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -47,8 +972,17 @@
 %%
 %% Amazon EventBridge Pipes connect event sources to targets and reduces the
 %% need for specialized knowledge and integration code.
+-spec create_pipe(aws_client:aws_client(), binary() | list(), create_pipe_request()) ->
+    {ok, create_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipe_errors(), tuple()}.
 create_pipe(Client, Name, Input) ->
     create_pipe(Client, Name, Input, []).
+
+-spec create_pipe(aws_client:aws_client(), binary() | list(), create_pipe_request(), proplists:proplist()) ->
+    {ok, create_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipe_errors(), tuple()}.
 create_pipe(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],
@@ -76,8 +1010,17 @@ create_pipe(Client, Name, Input0, Options0) ->
 %% For more information about pipes, see Amazon EventBridge Pipes:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
 %% the Amazon EventBridge User Guide.
+-spec delete_pipe(aws_client:aws_client(), binary() | list(), delete_pipe_request()) ->
+    {ok, delete_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipe_errors(), tuple()}.
 delete_pipe(Client, Name, Input) ->
     delete_pipe(Client, Name, Input, []).
+
+-spec delete_pipe(aws_client:aws_client(), binary() | list(), delete_pipe_request(), proplists:proplist()) ->
+    {ok, delete_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipe_errors(), tuple()}.
 delete_pipe(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],
@@ -105,14 +1048,26 @@ delete_pipe(Client, Name, Input0, Options0) ->
 %% For more information about pipes, see Amazon EventBridge Pipes:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
 %% the Amazon EventBridge User Guide.
+-spec describe_pipe(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipe_errors(), tuple()}.
 describe_pipe(Client, Name)
   when is_map(Client) ->
     describe_pipe(Client, Name, #{}, #{}).
 
+-spec describe_pipe(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipe_errors(), tuple()}.
 describe_pipe(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_pipe(Client, Name, QueryMap, HeadersMap, []).
 
+-spec describe_pipe(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipe_errors(), tuple()}.
 describe_pipe(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],
@@ -134,14 +1089,26 @@ describe_pipe(Client, Name, QueryMap, HeadersMap, Options0)
 %% For more information about pipes, see Amazon EventBridge Pipes:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
 %% the Amazon EventBridge User Guide.
+-spec list_pipes(aws_client:aws_client()) ->
+    {ok, list_pipes_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipes_errors(), tuple()}.
 list_pipes(Client)
   when is_map(Client) ->
     list_pipes(Client, #{}, #{}).
 
+-spec list_pipes(aws_client:aws_client(), map(), map()) ->
+    {ok, list_pipes_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipes_errors(), tuple()}.
 list_pipes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pipes(Client, QueryMap, HeadersMap, []).
 
+-spec list_pipes(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_pipes_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipes_errors(), tuple()}.
 list_pipes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/pipes"],
@@ -169,14 +1136,26 @@ list_pipes(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays the tags associated with a pipe.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -194,8 +1173,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Start an existing pipe.
+-spec start_pipe(aws_client:aws_client(), binary() | list(), start_pipe_request()) ->
+    {ok, start_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, start_pipe_errors(), tuple()}.
 start_pipe(Client, Name, Input) ->
     start_pipe(Client, Name, Input, []).
+
+-spec start_pipe(aws_client:aws_client(), binary() | list(), start_pipe_request(), proplists:proplist()) ->
+    {ok, start_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, start_pipe_errors(), tuple()}.
 start_pipe(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), "/start"],
@@ -219,8 +1207,17 @@ start_pipe(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stop an existing pipe.
+-spec stop_pipe(aws_client:aws_client(), binary() | list(), stop_pipe_request()) ->
+    {ok, stop_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, stop_pipe_errors(), tuple()}.
 stop_pipe(Client, Name, Input) ->
     stop_pipe(Client, Name, Input, []).
+
+-spec stop_pipe(aws_client:aws_client(), binary() | list(), stop_pipe_request(), proplists:proplist()) ->
+    {ok, stop_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, stop_pipe_errors(), tuple()}.
 stop_pipe(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), "/stop"],
@@ -265,8 +1262,17 @@ stop_pipe(Client, Name, Input0, Options0) ->
 %% value that you specify replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a pipe.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -290,8 +1296,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified pipes.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -334,8 +1349,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Amazon EventBridge Pipes:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
 %% the Amazon EventBridge User Guide.
+-spec update_pipe(aws_client:aws_client(), binary() | list(), update_pipe_request()) ->
+    {ok, update_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipe_errors(), tuple()}.
 update_pipe(Client, Name, Input) ->
     update_pipe(Client, Name, Input, []).
+
+-spec update_pipe(aws_client:aws_client(), binary() | list(), update_pipe_request(), proplists:proplist()) ->
+    {ok, update_pipe_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipe_errors(), tuple()}.
 update_pipe(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/v1/pipes/", aws_util:encode_uri(Name), ""],
@@ -362,7 +1386,7 @@ update_pipe(Client, Name, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

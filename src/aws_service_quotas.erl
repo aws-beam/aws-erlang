@@ -52,6 +52,643 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% request_service_quota_increase_response() :: #{
+%%   <<"RequestedQuota">> => requested_service_quota_change()
+%% }
+-type request_service_quota_increase_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_aws_default_service_quota_request() :: #{
+%%   <<"QuotaCode">> := string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type get_aws_default_service_quota_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_quotas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Quotas">> => list(service_quota()())
+%% }
+-type list_service_quotas_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_increase_request_in_template() :: #{
+%%   <<"AwsRegion">> => string(),
+%%   <<"DesiredValue">> => float(),
+%%   <<"GlobalQuota">> => boolean(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"QuotaName">> => string(),
+%%   <<"ServiceCode">> => string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"Unit">> => string()
+%% }
+-type service_quota_increase_request_in_template() :: #{binary() => any()}.
+
+%% Example:
+%% list_aws_default_service_quotas_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type list_aws_default_service_quotas_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_requested_service_quota_change_response() :: #{
+%%   <<"RequestedQuota">> => requested_service_quota_change()
+%% }
+-type get_requested_service_quota_change_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_service_quota_template_request() :: #{
+
+%% }
+-type associate_service_quota_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% dependency_access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type dependency_access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_service_quota_increase_request_into_template_request() :: #{
+%%   <<"AwsRegion">> := string(),
+%%   <<"DesiredValue">> := float(),
+%%   <<"QuotaCode">> := string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type put_service_quota_increase_request_into_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_aws_default_service_quota_response() :: #{
+%%   <<"Quota">> => service_quota()
+%% }
+-type get_aws_default_service_quota_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_quota_increase_request_from_template_response() :: #{
+%%   <<"ServiceQuotaIncreaseRequestInTemplate">> => service_quota_increase_request_in_template()
+%% }
+-type get_service_quota_increase_request_from_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_quota_increase_requests_in_template_request() :: #{
+%%   <<"AwsRegion">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type list_service_quota_increase_requests_in_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% illegal_argument_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_quota_increase_request_from_template_request() :: #{
+%%   <<"AwsRegion">> := string(),
+%%   <<"QuotaCode">> := string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type delete_service_quota_increase_request_from_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_quota_increase_request_from_template_response() :: #{
+
+%% }
+-type delete_service_quota_increase_request_from_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_requested_service_quota_change_history_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestedQuotas">> => list(requested_service_quota_change()())
+%% }
+-type list_requested_service_quota_change_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_service_quota_increase_request_into_template_response() :: #{
+%%   <<"ServiceQuotaIncreaseRequestInTemplate">> => service_quota_increase_request_in_template()
+%% }
+-type put_service_quota_increase_request_into_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% metric_info() :: #{
+%%   <<"MetricDimensions">> => map(),
+%%   <<"MetricName">> => string(),
+%%   <<"MetricNamespace">> => string(),
+%%   <<"MetricStatisticRecommendation">> => string()
+%% }
+-type metric_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_association_for_service_quota_template_request() :: #{
+
+%% }
+-type get_association_for_service_quota_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% requested_service_quota_change() :: #{
+%%   <<"CaseId">> => string(),
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"DesiredValue">> => float(),
+%%   <<"GlobalQuota">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"QuotaArn">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"QuotaContext">> => quota_context_info(),
+%%   <<"QuotaName">> => string(),
+%%   <<"QuotaRequestedAtLevel">> => list(any()),
+%%   <<"Requester">> => string(),
+%%   <<"ServiceCode">> => string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Unit">> => string()
+%% }
+-type requested_service_quota_change() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_service_quota_template_response() :: #{
+
+%% }
+-type disassociate_service_quota_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_aws_default_service_quotas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Quotas">> => list(service_quota()())
+%% }
+-type list_aws_default_service_quotas_response() :: #{binary() => any()}.
+
+%% Example:
+%% organization_not_in_all_features_mode_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organization_not_in_all_features_mode_exception() :: #{binary() => any()}.
+
+%% Example:
+%% associate_service_quota_template_response() :: #{
+
+%% }
+-type associate_service_quota_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% list_requested_service_quota_change_history_by_quota_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestedQuotas">> => list(requested_service_quota_change()())
+%% }
+-type list_requested_service_quota_change_history_by_quota_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Services">> => list(service_info()())
+%% }
+-type list_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% quota_context_info() :: #{
+%%   <<"ContextId">> => string(),
+%%   <<"ContextScope">> => list(any()),
+%%   <<"ContextScopeType">> => string()
+%% }
+-type quota_context_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_quota_response() :: #{
+%%   <<"Quota">> => service_quota()
+%% }
+-type get_service_quota_response() :: #{binary() => any()}.
+
+%% Example:
+%% request_service_quota_increase_request() :: #{
+%%   <<"ContextId">> => string(),
+%%   <<"DesiredValue">> := float(),
+%%   <<"QuotaCode">> := string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type request_service_quota_increase_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_service_quota_template_request() :: #{
+
+%% }
+-type disassociate_service_quota_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_association_for_service_quota_template_response() :: #{
+%%   <<"ServiceQuotaTemplateAssociationStatus">> => list(any())
+%% }
+-type get_association_for_service_quota_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_resource_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_resource_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_resource_exception() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_quotas_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QuotaAppliedAtLevel">> => list(any()),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type list_service_quotas_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_requested_service_quota_change_request() :: #{
+%%   <<"RequestId">> := string()
+%% }
+-type get_requested_service_quota_change_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota() :: #{
+%%   <<"Adjustable">> => boolean(),
+%%   <<"ErrorReason">> => error_reason(),
+%%   <<"GlobalQuota">> => boolean(),
+%%   <<"Period">> => quota_period(),
+%%   <<"QuotaAppliedAtLevel">> => list(any()),
+%%   <<"QuotaArn">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"QuotaContext">> => quota_context_info(),
+%%   <<"QuotaName">> => string(),
+%%   <<"ServiceCode">> => string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"Unit">> => string(),
+%%   <<"UsageMetric">> => metric_info(),
+%%   <<"Value">> => float()
+%% }
+-type service_quota() :: #{binary() => any()}.
+
+%% Example:
+%% list_requested_service_quota_change_history_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QuotaRequestedAtLevel">> => list(any()),
+%%   <<"ServiceCode">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_requested_service_quota_change_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% no_available_organization_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_available_organization_exception() :: #{binary() => any()}.
+
+%% Example:
+%% error_reason() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type error_reason() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_template_not_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_template_not_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_quota_request() :: #{
+%%   <<"ContextId">> => string(),
+%%   <<"QuotaCode">> := string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type get_service_quota_request() :: #{binary() => any()}.
+
+%% Example:
+%% templates_not_available_in_region_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type templates_not_available_in_region_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_quota_increase_request_from_template_request() :: #{
+%%   <<"AwsRegion">> := string(),
+%%   <<"QuotaCode">> := string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type get_service_quota_increase_request_from_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_info() :: #{
+%%   <<"ServiceCode">> => string(),
+%%   <<"ServiceName">> => string()
+%% }
+-type service_info() :: #{binary() => any()}.
+
+%% Example:
+%% quota_period() :: #{
+%%   <<"PeriodUnit">> => list(any()),
+%%   <<"PeriodValue">> => integer()
+%% }
+-type quota_period() :: #{binary() => any()}.
+
+%% Example:
+%% aws_service_access_not_enabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type aws_service_access_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_requested_service_quota_change_history_by_quota_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QuotaCode">> := string(),
+%%   <<"QuotaRequestedAtLevel">> => list(any()),
+%%   <<"ServiceCode">> := string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_requested_service_quota_change_history_by_quota_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_policy_violation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type tag_policy_violation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_quota_increase_requests_in_template_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceQuotaIncreaseRequestInTemplateList">> => list(service_quota_increase_request_in_template()())
+%% }
+-type list_service_quota_increase_requests_in_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pagination_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_pagination_token_exception() :: #{binary() => any()}.
+
+-type associate_service_quota_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    too_many_requests_exception() | 
+    dependency_access_denied_exception().
+
+-type delete_service_quota_increase_request_from_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    dependency_access_denied_exception().
+
+-type disassociate_service_quota_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    service_quota_template_not_in_use_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    dependency_access_denied_exception().
+
+-type get_association_for_service_quota_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    service_quota_template_not_in_use_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    dependency_access_denied_exception().
+
+-type get_aws_default_service_quota_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type get_requested_service_quota_change_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type get_service_quota_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type get_service_quota_increase_request_from_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    dependency_access_denied_exception().
+
+-type list_aws_default_service_quotas_errors() ::
+    invalid_pagination_token_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type list_requested_service_quota_change_history_errors() ::
+    invalid_pagination_token_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type list_requested_service_quota_change_history_by_quota_errors() ::
+    invalid_pagination_token_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type list_service_quota_increase_requests_in_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    dependency_access_denied_exception().
+
+-type list_service_quotas_errors() ::
+    invalid_pagination_token_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type list_services_errors() ::
+    invalid_pagination_token_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type list_tags_for_resource_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type put_service_quota_increase_request_into_template_errors() ::
+    aws_service_access_not_enabled_exception() | 
+    templates_not_available_in_region_exception() | 
+    no_available_organization_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    quota_exceeded_exception() | 
+    dependency_access_denied_exception().
+
+-type request_service_quota_increase_errors() ::
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    invalid_resource_state_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception() | 
+    quota_exceeded_exception() | 
+    dependency_access_denied_exception().
+
+-type tag_resource_errors() ::
+    tag_policy_violation_exception() | 
+    too_many_tags_exception() | 
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type untag_resource_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -64,9 +701,18 @@
 %% template are automatically applied to the account. You can add a quota
 %% increase request
 %% for any adjustable quota to your template.
+-spec associate_service_quota_template(aws_client:aws_client(), associate_service_quota_template_request()) ->
+    {ok, associate_service_quota_template_response(), tuple()} |
+    {error, any()} |
+    {error, associate_service_quota_template_errors(), tuple()}.
 associate_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_service_quota_template(Client, Input, []).
+
+-spec associate_service_quota_template(aws_client:aws_client(), associate_service_quota_template_request(), proplists:proplist()) ->
+    {ok, associate_service_quota_template_response(), tuple()} |
+    {error, any()} |
+    {error, associate_service_quota_template_errors(), tuple()}.
 associate_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateServiceQuotaTemplate">>, Input, Options).
@@ -74,9 +720,18 @@ associate_service_quota_template(Client, Input, Options)
 %% @doc Deletes the quota increase request for the specified quota from your
 %% quota request
 %% template.
+-spec delete_service_quota_increase_request_from_template(aws_client:aws_client(), delete_service_quota_increase_request_from_template_request()) ->
+    {ok, delete_service_quota_increase_request_from_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_quota_increase_request_from_template_errors(), tuple()}.
 delete_service_quota_increase_request_from_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_quota_increase_request_from_template(Client, Input, []).
+
+-spec delete_service_quota_increase_request_from_template(aws_client:aws_client(), delete_service_quota_increase_request_from_template_request(), proplists:proplist()) ->
+    {ok, delete_service_quota_increase_request_from_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_quota_increase_request_from_template_errors(), tuple()}.
 delete_service_quota_increase_request_from_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceQuotaIncreaseRequestFromTemplate">>, Input, Options).
@@ -88,18 +743,36 @@ delete_service_quota_increase_request_from_template(Client, Input, Options)
 %% accounts in your organization.
 %% Disabling a quota request template does not apply its quota increase
 %% requests.
+-spec disassociate_service_quota_template(aws_client:aws_client(), disassociate_service_quota_template_request()) ->
+    {ok, disassociate_service_quota_template_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_service_quota_template_errors(), tuple()}.
 disassociate_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_service_quota_template(Client, Input, []).
+
+-spec disassociate_service_quota_template(aws_client:aws_client(), disassociate_service_quota_template_request(), proplists:proplist()) ->
+    {ok, disassociate_service_quota_template_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_service_quota_template_errors(), tuple()}.
 disassociate_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateServiceQuotaTemplate">>, Input, Options).
 
 %% @doc Retrieves the status of the association for the quota request
 %% template.
+-spec get_association_for_service_quota_template(aws_client:aws_client(), get_association_for_service_quota_template_request()) ->
+    {ok, get_association_for_service_quota_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_association_for_service_quota_template_errors(), tuple()}.
 get_association_for_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_association_for_service_quota_template(Client, Input, []).
+
+-spec get_association_for_service_quota_template(aws_client:aws_client(), get_association_for_service_quota_template_request(), proplists:proplist()) ->
+    {ok, get_association_for_service_quota_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_association_for_service_quota_template_errors(), tuple()}.
 get_association_for_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAssociationForServiceQuotaTemplate">>, Input, Options).
@@ -108,17 +781,35 @@ get_association_for_service_quota_template(Client, Input, Options)
 %%
 %% The default value does not
 %% reflect any quota increases.
+-spec get_aws_default_service_quota(aws_client:aws_client(), get_aws_default_service_quota_request()) ->
+    {ok, get_aws_default_service_quota_response(), tuple()} |
+    {error, any()} |
+    {error, get_aws_default_service_quota_errors(), tuple()}.
 get_aws_default_service_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aws_default_service_quota(Client, Input, []).
+
+-spec get_aws_default_service_quota(aws_client:aws_client(), get_aws_default_service_quota_request(), proplists:proplist()) ->
+    {ok, get_aws_default_service_quota_response(), tuple()} |
+    {error, any()} |
+    {error, get_aws_default_service_quota_errors(), tuple()}.
 get_aws_default_service_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAWSDefaultServiceQuota">>, Input, Options).
 
 %% @doc Retrieves information about the specified quota increase request.
+-spec get_requested_service_quota_change(aws_client:aws_client(), get_requested_service_quota_change_request()) ->
+    {ok, get_requested_service_quota_change_response(), tuple()} |
+    {error, any()} |
+    {error, get_requested_service_quota_change_errors(), tuple()}.
 get_requested_service_quota_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_requested_service_quota_change(Client, Input, []).
+
+-spec get_requested_service_quota_change(aws_client:aws_client(), get_requested_service_quota_change_request(), proplists:proplist()) ->
+    {ok, get_requested_service_quota_change_response(), tuple()} |
+    {error, any()} |
+    {error, get_requested_service_quota_change_errors(), tuple()}.
 get_requested_service_quota_change(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRequestedServiceQuotaChange">>, Input, Options).
@@ -129,9 +820,18 @@ get_requested_service_quota_change(Client, Input, Options)
 %% default values are available. If the applied quota value is not available
 %% for a quota,
 %% the quota is not retrieved.
+-spec get_service_quota(aws_client:aws_client(), get_service_quota_request()) ->
+    {ok, get_service_quota_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_quota_errors(), tuple()}.
 get_service_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_quota(Client, Input, []).
+
+-spec get_service_quota(aws_client:aws_client(), get_service_quota_request(), proplists:proplist()) ->
+    {ok, get_service_quota_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_quota_errors(), tuple()}.
 get_service_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceQuota">>, Input, Options).
@@ -139,9 +839,18 @@ get_service_quota(Client, Input, Options)
 %% @doc Retrieves information about the specified quota increase request in
 %% your quota request
 %% template.
+-spec get_service_quota_increase_request_from_template(aws_client:aws_client(), get_service_quota_increase_request_from_template_request()) ->
+    {ok, get_service_quota_increase_request_from_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_quota_increase_request_from_template_errors(), tuple()}.
 get_service_quota_increase_request_from_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_quota_increase_request_from_template(Client, Input, []).
+
+-spec get_service_quota_increase_request_from_template(aws_client:aws_client(), get_service_quota_increase_request_from_template_request(), proplists:proplist()) ->
+    {ok, get_service_quota_increase_request_from_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_quota_increase_request_from_template_errors(), tuple()}.
 get_service_quota_increase_request_from_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceQuotaIncreaseRequestFromTemplate">>, Input, Options).
@@ -151,35 +860,71 @@ get_service_quota_increase_request_from_template(Client, Input, Options)
 %%
 %% A default
 %% value does not reflect any quota increases.
+-spec list_aws_default_service_quotas(aws_client:aws_client(), list_aws_default_service_quotas_request()) ->
+    {ok, list_aws_default_service_quotas_response(), tuple()} |
+    {error, any()} |
+    {error, list_aws_default_service_quotas_errors(), tuple()}.
 list_aws_default_service_quotas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aws_default_service_quotas(Client, Input, []).
+
+-spec list_aws_default_service_quotas(aws_client:aws_client(), list_aws_default_service_quotas_request(), proplists:proplist()) ->
+    {ok, list_aws_default_service_quotas_response(), tuple()} |
+    {error, any()} |
+    {error, list_aws_default_service_quotas_errors(), tuple()}.
 list_aws_default_service_quotas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAWSDefaultServiceQuotas">>, Input, Options).
 
 %% @doc Retrieves the quota increase requests for the specified Amazon Web
 %% Service.
+-spec list_requested_service_quota_change_history(aws_client:aws_client(), list_requested_service_quota_change_history_request()) ->
+    {ok, list_requested_service_quota_change_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_requested_service_quota_change_history_errors(), tuple()}.
 list_requested_service_quota_change_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_requested_service_quota_change_history(Client, Input, []).
+
+-spec list_requested_service_quota_change_history(aws_client:aws_client(), list_requested_service_quota_change_history_request(), proplists:proplist()) ->
+    {ok, list_requested_service_quota_change_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_requested_service_quota_change_history_errors(), tuple()}.
 list_requested_service_quota_change_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRequestedServiceQuotaChangeHistory">>, Input, Options).
 
 %% @doc Retrieves the quota increase requests for the specified quota.
+-spec list_requested_service_quota_change_history_by_quota(aws_client:aws_client(), list_requested_service_quota_change_history_by_quota_request()) ->
+    {ok, list_requested_service_quota_change_history_by_quota_response(), tuple()} |
+    {error, any()} |
+    {error, list_requested_service_quota_change_history_by_quota_errors(), tuple()}.
 list_requested_service_quota_change_history_by_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_requested_service_quota_change_history_by_quota(Client, Input, []).
+
+-spec list_requested_service_quota_change_history_by_quota(aws_client:aws_client(), list_requested_service_quota_change_history_by_quota_request(), proplists:proplist()) ->
+    {ok, list_requested_service_quota_change_history_by_quota_response(), tuple()} |
+    {error, any()} |
+    {error, list_requested_service_quota_change_history_by_quota_errors(), tuple()}.
 list_requested_service_quota_change_history_by_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRequestedServiceQuotaChangeHistoryByQuota">>, Input, Options).
 
 %% @doc Lists the quota increase requests in the specified quota request
 %% template.
+-spec list_service_quota_increase_requests_in_template(aws_client:aws_client(), list_service_quota_increase_requests_in_template_request()) ->
+    {ok, list_service_quota_increase_requests_in_template_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_quota_increase_requests_in_template_errors(), tuple()}.
 list_service_quota_increase_requests_in_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_quota_increase_requests_in_template(Client, Input, []).
+
+-spec list_service_quota_increase_requests_in_template(aws_client:aws_client(), list_service_quota_increase_requests_in_template_request(), proplists:proplist()) ->
+    {ok, list_service_quota_increase_requests_in_template_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_quota_increase_requests_in_template_errors(), tuple()}.
 list_service_quota_increase_requests_in_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceQuotaIncreaseRequestsInTemplate">>, Input, Options).
@@ -190,42 +935,87 @@ list_service_quota_increase_requests_in_template(Client, Input, Options)
 %% the default values are available. If the applied quota value is not
 %% available for a
 %% quota, the quota is not retrieved.
+-spec list_service_quotas(aws_client:aws_client(), list_service_quotas_request()) ->
+    {ok, list_service_quotas_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_quotas_errors(), tuple()}.
 list_service_quotas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_quotas(Client, Input, []).
+
+-spec list_service_quotas(aws_client:aws_client(), list_service_quotas_request(), proplists:proplist()) ->
+    {ok, list_service_quotas_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_quotas_errors(), tuple()}.
 list_service_quotas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceQuotas">>, Input, Options).
 
 %% @doc Lists the names and codes for the Amazon Web Services integrated with
 %% Service Quotas.
+-spec list_services(aws_client:aws_client(), list_services_request()) ->
+    {ok, list_services_response(), tuple()} |
+    {error, any()} |
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
+
+-spec list_services(aws_client:aws_client(), list_services_request(), proplists:proplist()) ->
+    {ok, list_services_response(), tuple()} |
+    {error, any()} |
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServices">>, Input, Options).
 
 %% @doc Returns a list of the tags assigned to the specified applied quota.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Adds a quota increase request to your quota request template.
+-spec put_service_quota_increase_request_into_template(aws_client:aws_client(), put_service_quota_increase_request_into_template_request()) ->
+    {ok, put_service_quota_increase_request_into_template_response(), tuple()} |
+    {error, any()} |
+    {error, put_service_quota_increase_request_into_template_errors(), tuple()}.
 put_service_quota_increase_request_into_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_service_quota_increase_request_into_template(Client, Input, []).
+
+-spec put_service_quota_increase_request_into_template(aws_client:aws_client(), put_service_quota_increase_request_into_template_request(), proplists:proplist()) ->
+    {ok, put_service_quota_increase_request_into_template_response(), tuple()} |
+    {error, any()} |
+    {error, put_service_quota_increase_request_into_template_errors(), tuple()}.
 put_service_quota_increase_request_into_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutServiceQuotaIncreaseRequestIntoTemplate">>, Input, Options).
 
 %% @doc Submits a quota increase request for the specified quota.
+-spec request_service_quota_increase(aws_client:aws_client(), request_service_quota_increase_request()) ->
+    {ok, request_service_quota_increase_response(), tuple()} |
+    {error, any()} |
+    {error, request_service_quota_increase_errors(), tuple()}.
 request_service_quota_increase(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_service_quota_increase(Client, Input, []).
+
+-spec request_service_quota_increase(aws_client:aws_client(), request_service_quota_increase_request(), proplists:proplist()) ->
+    {ok, request_service_quota_increase_response(), tuple()} |
+    {error, any()} |
+    {error, request_service_quota_increase_errors(), tuple()}.
 request_service_quota_increase(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RequestServiceQuotaIncrease">>, Input, Options).
@@ -234,9 +1024,18 @@ request_service_quota_increase(Client, Input, Options)
 %%
 %% You can include one or more tags to add to
 %% the quota.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -245,9 +1044,18 @@ tag_resource(Client, Input, Options)
 %%
 %% You can specify one or more tags to
 %% remove.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

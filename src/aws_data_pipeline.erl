@@ -76,6 +76,520 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% set_status_input() :: #{
+%%   <<"objectIds">> := list(string()()),
+%%   <<"pipelineId">> := string(),
+%%   <<"status">> := string()
+%% }
+-type set_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_pipeline_input() :: #{
+%%   <<"cancelActive">> => boolean(),
+%%   <<"pipelineId">> := string()
+%% }
+-type deactivate_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% query_objects_input() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"marker">> => string(),
+%%   <<"pipelineId">> := string(),
+%%   <<"query">> => query(),
+%%   <<"sphere">> := string()
+%% }
+-type query_objects_input() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_deleted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_deleted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_pipeline_output() :: #{
+%%   <<"pipelineId">> => string()
+%% }
+-type create_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% validate_pipeline_definition_output() :: #{
+%%   <<"errored">> => boolean(),
+%%   <<"validationErrors">> => list(validation_error()()),
+%%   <<"validationWarnings">> => list(validation_warning()())
+%% }
+-type validate_pipeline_definition_output() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_object() :: #{
+%%   <<"fields">> => list(field()()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type pipeline_object() :: #{binary() => any()}.
+
+%% Example:
+%% evaluate_expression_input() :: #{
+%%   <<"expression">> := string(),
+%%   <<"objectId">> := string(),
+%%   <<"pipelineId">> := string()
+%% }
+-type evaluate_expression_input() :: #{binary() => any()}.
+
+%% Example:
+%% validate_pipeline_definition_input() :: #{
+%%   <<"parameterObjects">> => list(parameter_object()()),
+%%   <<"parameterValues">> => list(parameter_value()()),
+%%   <<"pipelineId">> := string(),
+%%   <<"pipelineObjects">> := list(pipeline_object()())
+%% }
+-type validate_pipeline_definition_input() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_task_input() :: #{
+%%   <<"hostname">> => string(),
+%%   <<"instanceIdentity">> => instance_identity(),
+%%   <<"workerGroup">> := string()
+%% }
+-type poll_for_task_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_output() :: #{
+
+%% }
+-type add_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% selector() :: #{
+%%   <<"fieldName">> => string(),
+%%   <<"operator">> => operator()
+%% }
+-type selector() :: #{binary() => any()}.
+
+%% Example:
+%% report_task_progress_output() :: #{
+%%   <<"canceled">> => boolean()
+%% }
+-type report_task_progress_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_task_status_input() :: #{
+%%   <<"errorId">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"errorStackTrace">> => string(),
+%%   <<"taskId">> := string(),
+%%   <<"taskStatus">> := list(any())
+%% }
+-type set_task_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_input() :: #{
+%%   <<"pipelineId">> := string(),
+%%   <<"tags">> := list(tag()())
+%% }
+-type add_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_definition_output() :: #{
+%%   <<"parameterObjects">> => list(parameter_object()()),
+%%   <<"parameterValues">> => list(parameter_value()()),
+%%   <<"pipelineObjects">> => list(pipeline_object()())
+%% }
+-type get_pipeline_definition_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pipelines_input() :: #{
+%%   <<"pipelineIds">> := list(string()())
+%% }
+-type describe_pipelines_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_output() :: #{
+
+%% }
+-type remove_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% operator() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"values">> => list(string()())
+%% }
+-type operator() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_input() :: #{
+%%   <<"pipelineId">> := string()
+%% }
+-type delete_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_value() :: #{
+%%   <<"id">> => string(),
+%%   <<"stringValue">> => string()
+%% }
+-type parameter_value() :: #{binary() => any()}.
+
+%% Example:
+%% create_pipeline_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"uniqueId">> := string()
+%% }
+-type create_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_task_status_output() :: #{
+
+%% }
+-type set_task_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_input() :: #{
+%%   <<"marker">> => string()
+%% }
+-type list_pipelines_input() :: #{binary() => any()}.
+
+%% Example:
+%% report_task_runner_heartbeat_output() :: #{
+%%   <<"terminate">> => boolean()
+%% }
+-type report_task_runner_heartbeat_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pipelines_output() :: #{
+%%   <<"pipelineDescriptionList">> => list(pipeline_description()())
+%% }
+-type describe_pipelines_output() :: #{binary() => any()}.
+
+%% Example:
+%% field() :: #{
+%%   <<"key">> => string(),
+%%   <<"refValue">> => string(),
+%%   <<"stringValue">> => string()
+%% }
+-type field() :: #{binary() => any()}.
+
+%% Example:
+%% validation_error() :: #{
+%%   <<"errors">> => list(string()()),
+%%   <<"id">> => string()
+%% }
+-type validation_error() :: #{binary() => any()}.
+
+%% Example:
+%% report_task_runner_heartbeat_input() :: #{
+%%   <<"hostname">> => string(),
+%%   <<"taskrunnerId">> := string(),
+%%   <<"workerGroup">> => string()
+%% }
+-type report_task_runner_heartbeat_input() :: #{binary() => any()}.
+
+%% Example:
+%% evaluate_expression_output() :: #{
+%%   <<"evaluatedExpression">> => string()
+%% }
+-type evaluate_expression_output() :: #{binary() => any()}.
+
+%% Example:
+%% task_object() :: #{
+%%   <<"attemptId">> => string(),
+%%   <<"objects">> => map(),
+%%   <<"pipelineId">> => string(),
+%%   <<"taskId">> => string()
+%% }
+-type task_object() :: #{binary() => any()}.
+
+%% Example:
+%% describe_objects_output() :: #{
+%%   <<"hasMoreResults">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pipelineObjects">> => list(pipeline_object()())
+%% }
+-type describe_objects_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_definition_input() :: #{
+%%   <<"pipelineId">> := string(),
+%%   <<"version">> => string()
+%% }
+-type get_pipeline_definition_input() :: #{binary() => any()}.
+
+%% Example:
+%% query_objects_output() :: #{
+%%   <<"hasMoreResults">> => boolean(),
+%%   <<"ids">> => list(string()()),
+%%   <<"marker">> => string()
+%% }
+-type query_objects_output() :: #{binary() => any()}.
+
+%% Example:
+%% validation_warning() :: #{
+%%   <<"id">> => string(),
+%%   <<"warnings">> => list(string()())
+%% }
+-type validation_warning() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_description() :: #{
+%%   <<"description">> => string(),
+%%   <<"fields">> => list(field()()),
+%%   <<"name">> => string(),
+%%   <<"pipelineId">> => string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type pipeline_description() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_service_error() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_pipeline_output() :: #{
+
+%% }
+-type deactivate_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_task_output() :: #{
+%%   <<"taskObject">> => task_object()
+%% }
+-type poll_for_task_output() :: #{binary() => any()}.
+
+%% Example:
+%% activate_pipeline_input() :: #{
+%%   <<"parameterValues">> => list(parameter_value()()),
+%%   <<"pipelineId">> := string(),
+%%   <<"startTimestamp">> => non_neg_integer()
+%% }
+-type activate_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_output() :: #{
+%%   <<"hasMoreResults">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pipelineIdList">> => list(pipeline_id_name()())
+%% }
+-type list_pipelines_output() :: #{binary() => any()}.
+
+%% Example:
+%% task_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type task_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_pipeline_definition_output() :: #{
+%%   <<"errored">> => boolean(),
+%%   <<"validationErrors">> => list(validation_error()()),
+%%   <<"validationWarnings">> => list(validation_warning()())
+%% }
+-type put_pipeline_definition_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_pipeline_definition_input() :: #{
+%%   <<"parameterObjects">> => list(parameter_object()()),
+%%   <<"parameterValues">> => list(parameter_value()()),
+%%   <<"pipelineId">> := string(),
+%%   <<"pipelineObjects">> := list(pipeline_object()())
+%% }
+-type put_pipeline_definition_input() :: #{binary() => any()}.
+
+%% Example:
+%% query() :: #{
+%%   <<"selectors">> => list(selector()())
+%% }
+-type query() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_input() :: #{
+%%   <<"pipelineId">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type remove_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_objects_input() :: #{
+%%   <<"evaluateExpressions">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"objectIds">> := list(string()()),
+%%   <<"pipelineId">> := string()
+%% }
+-type describe_objects_input() :: #{binary() => any()}.
+
+%% Example:
+%% report_task_progress_input() :: #{
+%%   <<"fields">> => list(field()()),
+%%   <<"taskId">> := string()
+%% }
+-type report_task_progress_input() :: #{binary() => any()}.
+
+%% Example:
+%% instance_identity() :: #{
+%%   <<"document">> => string(),
+%%   <<"signature">> => string()
+%% }
+-type instance_identity() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_attribute() :: #{
+%%   <<"key">> => string(),
+%%   <<"stringValue">> => string()
+%% }
+-type parameter_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% activate_pipeline_output() :: #{
+
+%% }
+-type activate_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_object() :: #{
+%%   <<"attributes">> => list(parameter_attribute()()),
+%%   <<"id">> => string()
+%% }
+-type parameter_object() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_id_name() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type pipeline_id_name() :: #{binary() => any()}.
+
+-type activate_pipeline_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type add_tags_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type create_pipeline_errors() ::
+    internal_service_error() | 
+    invalid_request_exception().
+
+-type deactivate_pipeline_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type delete_pipeline_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception().
+
+-type describe_objects_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type describe_pipelines_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type evaluate_expression_errors() ::
+    task_not_found_exception() | 
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type get_pipeline_definition_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type list_pipelines_errors() ::
+    internal_service_error() | 
+    invalid_request_exception().
+
+-type poll_for_task_errors() ::
+    task_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception().
+
+-type put_pipeline_definition_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type query_objects_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type remove_tags_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type report_task_progress_errors() ::
+    task_not_found_exception() | 
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type report_task_runner_heartbeat_errors() ::
+    internal_service_error() | 
+    invalid_request_exception().
+
+-type set_status_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type set_task_status_errors() ::
+    task_not_found_exception() | 
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
+-type validate_pipeline_definition_errors() ::
+    pipeline_not_found_exception() | 
+    internal_service_error() | 
+    invalid_request_exception() | 
+    pipeline_deleted_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -110,17 +624,35 @@
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% {}
+-spec activate_pipeline(aws_client:aws_client(), activate_pipeline_input()) ->
+    {ok, activate_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, activate_pipeline_errors(), tuple()}.
 activate_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_pipeline(Client, Input, []).
+
+-spec activate_pipeline(aws_client:aws_client(), activate_pipeline_input(), proplists:proplist()) ->
+    {ok, activate_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, activate_pipeline_errors(), tuple()}.
 activate_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivatePipeline">>, Input, Options).
 
 %% @doc Adds or modifies tags for the specified pipeline.
+-spec add_tags(aws_client:aws_client(), add_tags_input()) ->
+    {ok, add_tags_output(), tuple()} |
+    {error, any()} |
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
+
+-spec add_tags(aws_client:aws_client(), add_tags_input(), proplists:proplist()) ->
+    {ok, add_tags_output(), tuple()} |
+    {error, any()} |
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
@@ -148,9 +680,18 @@ add_tags(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% {&quot;pipelineId&quot;: &quot;df-06372391ZG65EXAMPLE&quot;}
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_input()) ->
+    {ok, create_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pipeline(Client, Input, []).
+
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_input(), proplists:proplist()) ->
+    {ok, create_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePipeline">>, Input, Options).
@@ -163,9 +704,18 @@ create_pipeline(Client, Input, Options)
 %% To resume a deactivated pipeline, use `ActivatePipeline'. By default,
 %% the pipeline resumes from the last completed execution.
 %% Optionally, you can specify the date and time to resume the pipeline.
+-spec deactivate_pipeline(aws_client:aws_client(), deactivate_pipeline_input()) ->
+    {ok, deactivate_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, deactivate_pipeline_errors(), tuple()}.
 deactivate_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_pipeline(Client, Input, []).
+
+-spec deactivate_pipeline(aws_client:aws_client(), deactivate_pipeline_input(), proplists:proplist()) ->
+    {ok, deactivate_pipeline_output(), tuple()} |
+    {error, any()} |
+    {error, deactivate_pipeline_errors(), tuple()}.
 deactivate_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivatePipeline">>, Input, Options).
@@ -198,9 +748,18 @@ deactivate_pipeline(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% Unexpected response: 200, OK, undefined
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pipeline(Client, Input, []).
+
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePipeline">>, Input, Options).
@@ -257,9 +816,18 @@ delete_pipeline(Client, Input, Options)
 %% &quot;name&quot;: &quot;Schedule&quot;}
 %% ]
 %% }
+-spec describe_objects(aws_client:aws_client(), describe_objects_input()) ->
+    {ok, describe_objects_output(), tuple()} |
+    {error, any()} |
+    {error, describe_objects_errors(), tuple()}.
 describe_objects(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_objects(Client, Input, []).
+
+-spec describe_objects(aws_client:aws_client(), describe_objects_input(), proplists:proplist()) ->
+    {ok, describe_objects_output(), tuple()} |
+    {error, any()} |
+    {error, describe_objects_errors(), tuple()}.
 describe_objects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeObjects">>, Input, Options).
@@ -324,9 +892,18 @@ describe_objects(Client, Input, Options)
 %% &quot;pipelineId&quot;: &quot;df-0937003356ZJEXAMPLE&quot;}
 %% ]
 %% }
+-spec describe_pipelines(aws_client:aws_client(), describe_pipelines_input()) ->
+    {ok, describe_pipelines_output(), tuple()} |
+    {error, any()} |
+    {error, describe_pipelines_errors(), tuple()}.
 describe_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipelines(Client, Input, []).
+
+-spec describe_pipelines(aws_client:aws_client(), describe_pipelines_input(), proplists:proplist()) ->
+    {ok, describe_pipelines_output(), tuple()} |
+    {error, any()} |
+    {error, describe_pipelines_errors(), tuple()}.
 describe_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePipelines">>, Input, Options).
@@ -356,9 +933,18 @@ describe_pipelines(Client, Input, Options)
 %%
 %% {&quot;evaluatedExpression&quot;: &quot;Transform started at
 %% 2012-12-12T00:00:00 and finished at 2012-12-21T18:00:00&quot;}
+-spec evaluate_expression(aws_client:aws_client(), evaluate_expression_input()) ->
+    {ok, evaluate_expression_output(), tuple()} |
+    {error, any()} |
+    {error, evaluate_expression_errors(), tuple()}.
 evaluate_expression(Client, Input)
   when is_map(Client), is_map(Input) ->
     evaluate_expression(Client, Input, []).
+
+-spec evaluate_expression(aws_client:aws_client(), evaluate_expression_input(), proplists:proplist()) ->
+    {ok, evaluate_expression_output(), tuple()} |
+    {error, any()} |
+    {error, evaluate_expression_errors(), tuple()}.
 evaluate_expression(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EvaluateExpression">>, Input, Options).
@@ -421,9 +1007,18 @@ evaluate_expression(Client, Input, Options)
 %% &quot;name&quot;: &quot;SayHello&quot;}
 %% ]
 %% }
+-spec get_pipeline_definition(aws_client:aws_client(), get_pipeline_definition_input()) ->
+    {ok, get_pipeline_definition_output(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_definition_errors(), tuple()}.
 get_pipeline_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_definition(Client, Input, []).
+
+-spec get_pipeline_definition(aws_client:aws_client(), get_pipeline_definition_input(), proplists:proplist()) ->
+    {ok, get_pipeline_definition_output(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_definition_errors(), tuple()}.
 get_pipeline_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPipelineDefinition">>, Input, Options).
@@ -455,9 +1050,18 @@ get_pipeline_definition(Client, Input, Options)
 %% &quot;name&quot;: &quot;MySecondPipeline&quot;}
 %% ]
 %% }
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_input()) ->
+    {ok, list_pipelines_output(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipelines(Client, Input, []).
+
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_input(), proplists:proplist()) ->
+    {ok, list_pipelines_output(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelines">>, Input, Options).
@@ -543,9 +1147,18 @@ list_pipelines(Client, Input, Options)
 %% &quot;taskId&quot;:
 %% &quot;2xaM4wRs5zOsIH+g9U3oVHfAgAlbSqU6XduncB0HhZ3xMnmvfePZPn4dIbYXHyWyRK+cU15MqDHwdrvftx/4wv+sNS4w34vJfv7QA9aOoOazW28l1GYSb2ZRR0N0paiQp+d1MhSKo10hOTWOsVK5S5Lnx9Qm6omFgXHyIvZRIvTlrQMpr1xuUrflyGOfbFOGpOLpvPE172MYdqpZKnbSS4TcuqgQKSWV2833fEubI57DPOP7ghWa2TcYeSIv4pdLYG53fTuwfbnbdc98g2LNUQzSVhSnt7BoqyNwht2aQ6b/UHg9A80+KVpuXuqmz3m1MXwHFgxjdmuesXNOrrlGpeLCcRWD+aGo0RN1NqhQRzNAig8V4GlaPTQzMsRCljKqvrIyAoP3Tt2XEGsHkkQo12rEX8Z90957XX2qKRwhruwYzqGkSLWjINoLdAxUJdpRXRc5DJTrBd3D5mdzn7kY1l7NEh4kFHJDt3Cx4Z3Mk8MYCACyCk/CEyy9DwuPi66cLz0NBcgbCM5LKjTBOwo1m+am+pvM1kSposE9FPP1+RFGb8k6jQBTJx3TRz1yKilnGXQTZ5xvdOFpJrklIT0OXP1MG3+auM9FlJA+1dX90QoNJE5z7axmK//MOGXUdkqFe2kiDkorqjxwDvc0Js9pVKfKvAmW8YqUbmI9l0ERpWCXXnLVHNmPWz3jaPY+OBAmuJWDmxB/Z8p94aEDg4BVXQ7LvsKQ3DLYhaB7yJ390CJT+i0mm+EBqY60V6YikPSWDFrYQ/NPi2b1DgE19mX8zHqw8qprIl4yh1Ckx2Iige4En/N5ktOoIxnASxAw/TzcE2skxdw5KlHDF+UTj71m16CR/dIaKlXijlfNlNzUBo/bNSadCQn3G5NoO501wPKI:XO50TgDNyo8EXAMPLE/g==:1&quot;}
 %% }
+-spec poll_for_task(aws_client:aws_client(), poll_for_task_input()) ->
+    {ok, poll_for_task_output(), tuple()} |
+    {error, any()} |
+    {error, poll_for_task_errors(), tuple()}.
 poll_for_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_task(Client, Input, []).
+
+-spec poll_for_task(aws_client:aws_client(), poll_for_task_input(), proplists:proplist()) ->
+    {ok, poll_for_task_output(), tuple()} |
+    {error, any()} |
+    {error, poll_for_task_errors(), tuple()}.
 poll_for_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForTask">>, Input, Options).
@@ -696,9 +1309,18 @@ poll_for_task(Client, Input, Options)
 %% the pipeline definition due to FATAL errors:
 %% [com.amazon.setl.webservice.ValidationError@108d7ea9] Please call Validate
 %% to validate your pipeline&quot;}
+-spec put_pipeline_definition(aws_client:aws_client(), put_pipeline_definition_input()) ->
+    {ok, put_pipeline_definition_output(), tuple()} |
+    {error, any()} |
+    {error, put_pipeline_definition_errors(), tuple()}.
 put_pipeline_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_pipeline_definition(Client, Input, []).
+
+-spec put_pipeline_definition(aws_client:aws_client(), put_pipeline_definition_input(), proplists:proplist()) ->
+    {ok, put_pipeline_definition_output(), tuple()} |
+    {error, any()} |
+    {error, put_pipeline_definition_errors(), tuple()}.
 put_pipeline_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPipelineDefinition">>, Input, Options).
@@ -733,17 +1355,35 @@ put_pipeline_definition(Client, Input, Options)
 %% &quot;ids&quot;:
 %% [&quot;@SayHello_1_2012-09-25T17:00:00&quot;]
 %% }
+-spec query_objects(aws_client:aws_client(), query_objects_input()) ->
+    {ok, query_objects_output(), tuple()} |
+    {error, any()} |
+    {error, query_objects_errors(), tuple()}.
 query_objects(Client, Input)
   when is_map(Client), is_map(Input) ->
     query_objects(Client, Input, []).
+
+-spec query_objects(aws_client:aws_client(), query_objects_input(), proplists:proplist()) ->
+    {ok, query_objects_output(), tuple()} |
+    {error, any()} |
+    {error, query_objects_errors(), tuple()}.
 query_objects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"QueryObjects">>, Input, Options).
 
 %% @doc Removes existing tags from the specified pipeline.
+-spec remove_tags(aws_client:aws_client(), remove_tags_input()) ->
+    {ok, remove_tags_output(), tuple()} |
+    {error, any()} |
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
+
+-spec remove_tags(aws_client:aws_client(), remove_tags_input(), proplists:proplist()) ->
+    {ok, remove_tags_output(), tuple()} |
+    {error, any()} |
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
@@ -787,9 +1427,18 @@ remove_tags(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% {&quot;canceled&quot;: false}
+-spec report_task_progress(aws_client:aws_client(), report_task_progress_input()) ->
+    {ok, report_task_progress_output(), tuple()} |
+    {error, any()} |
+    {error, report_task_progress_errors(), tuple()}.
 report_task_progress(Client, Input)
   when is_map(Client), is_map(Input) ->
     report_task_progress(Client, Input, []).
+
+-spec report_task_progress(aws_client:aws_client(), report_task_progress_input(), proplists:proplist()) ->
+    {ok, report_task_progress_output(), tuple()} |
+    {error, any()} |
+    {error, report_task_progress_errors(), tuple()}.
 report_task_progress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReportTaskProgress">>, Input, Options).
@@ -821,9 +1470,18 @@ report_task_progress(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% {&quot;terminate&quot;: false}
+-spec report_task_runner_heartbeat(aws_client:aws_client(), report_task_runner_heartbeat_input()) ->
+    {ok, report_task_runner_heartbeat_output(), tuple()} |
+    {error, any()} |
+    {error, report_task_runner_heartbeat_errors(), tuple()}.
 report_task_runner_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     report_task_runner_heartbeat(Client, Input, []).
+
+-spec report_task_runner_heartbeat(aws_client:aws_client(), report_task_runner_heartbeat_input(), proplists:proplist()) ->
+    {ok, report_task_runner_heartbeat_output(), tuple()} |
+    {error, any()} |
+    {error, report_task_runner_heartbeat_errors(), tuple()}.
 report_task_runner_heartbeat(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReportTaskRunnerHeartbeat">>, Input, Options).
@@ -856,9 +1514,18 @@ report_task_runner_heartbeat(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% Unexpected response: 200, OK, undefined
+-spec set_status(aws_client:aws_client(), set_status_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_status_errors(), tuple()}.
 set_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_status(Client, Input, []).
+
+-spec set_status(aws_client:aws_client(), set_status_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_status_errors(), tuple()}.
 set_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetStatus">>, Input, Options).
@@ -889,9 +1556,18 @@ set_status(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% {}
+-spec set_task_status(aws_client:aws_client(), set_task_status_input()) ->
+    {ok, set_task_status_output(), tuple()} |
+    {error, any()} |
+    {error, set_task_status_errors(), tuple()}.
 set_task_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_task_status(Client, Input, []).
+
+-spec set_task_status(aws_client:aws_client(), set_task_status_input(), proplists:proplist()) ->
+    {ok, set_task_status_output(), tuple()} |
+    {error, any()} |
+    {error, set_task_status_errors(), tuple()}.
 set_task_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTaskStatus">>, Input, Options).
@@ -1031,9 +1707,18 @@ set_task_status(Client, Input, Options)
 %% &quot;id&quot;: &quot;Schedule&quot;}
 %% ]
 %% }
+-spec validate_pipeline_definition(aws_client:aws_client(), validate_pipeline_definition_input()) ->
+    {ok, validate_pipeline_definition_output(), tuple()} |
+    {error, any()} |
+    {error, validate_pipeline_definition_errors(), tuple()}.
 validate_pipeline_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_pipeline_definition(Client, Input, []).
+
+-spec validate_pipeline_definition(aws_client:aws_client(), validate_pipeline_definition_input(), proplists:proplist()) ->
+    {ok, validate_pipeline_definition_output(), tuple()} |
+    {error, any()} |
+    {error, validate_pipeline_definition_errors(), tuple()}.
 validate_pipeline_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ValidatePipelineDefinition">>, Input, Options).

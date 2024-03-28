@@ -151,6 +151,2382 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% table_description() :: #{
+%%   <<"ArchivalSummary">> => archival_summary(),
+%%   <<"AttributeDefinitions">> => list(attribute_definition()()),
+%%   <<"BillingModeSummary">> => billing_mode_summary(),
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"DeletionProtectionEnabled">> => boolean(),
+%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_description()()),
+%%   <<"GlobalTableVersion">> => string(),
+%%   <<"ItemCount">> => float(),
+%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"LatestStreamArn">> => string(),
+%%   <<"LatestStreamLabel">> => string(),
+%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_description()()),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput_description(),
+%%   <<"Replicas">> => list(replica_description()()),
+%%   <<"RestoreSummary">> => restore_summary(),
+%%   <<"SSEDescription">> => sse_description(),
+%%   <<"StreamSpecification">> => stream_specification(),
+%%   <<"TableArn">> => string(),
+%%   <<"TableClassSummary">> => table_class_summary(),
+%%   <<"TableId">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableSizeBytes">> => float(),
+%%   <<"TableStatus">> => list(any())
+%% }
+-type table_description() :: #{binary() => any()}.
+
+%% Example:
+%% transact_write_items_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
+%%   <<"ItemCollectionMetrics">> => map()
+%% }
+-type transact_write_items_output() :: #{binary() => any()}.
+
+%% Example:
+%% replica_settings_description() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"ReplicaBillingModeSummary">> => billing_mode_summary(),
+%%   <<"ReplicaGlobalSecondaryIndexSettings">> => list(replica_global_secondary_index_settings_description()()),
+%%   <<"ReplicaProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ReplicaProvisionedReadCapacityUnits">> => float(),
+%%   <<"ReplicaProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ReplicaProvisionedWriteCapacityUnits">> => float(),
+%%   <<"ReplicaStatus">> => list(any()),
+%%   <<"ReplicaTableClassSummary">> => table_class_summary()
+%% }
+-type replica_settings_description() :: #{binary() => any()}.
+
+%% Example:
+%% sse_description() :: #{
+%%   <<"InaccessibleEncryptionDateTime">> => non_neg_integer(),
+%%   <<"KMSMasterKeyArn">> => string(),
+%%   <<"SSEType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type sse_description() :: #{binary() => any()}.
+
+%% Example:
+%% global_table_global_secondary_index_settings_update() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"ProvisionedWriteCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
+%%   <<"ProvisionedWriteCapacityUnits">> => float()
+%% }
+-type global_table_global_secondary_index_settings_update() :: #{binary() => any()}.
+
+%% Example:
+%% transact_write_items_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnItemCollectionMetrics">> => list(any()),
+%%   <<"TransactItems">> := list(transact_write_item()())
+%% }
+-type transact_write_items_input() :: #{binary() => any()}.
+
+%% Example:
+%% local_secondary_index() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"Projection">> => projection()
+%% }
+-type local_secondary_index() :: #{binary() => any()}.
+
+%% Example:
+%% create_table_output() :: #{
+%%   <<"TableDescription">> => table_description()
+%% }
+-type create_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% local_secondary_index_info() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"Projection">> => projection()
+%% }
+-type local_secondary_index_info() :: #{binary() => any()}.
+
+%% Example:
+%% transact_write_item() :: #{
+%%   <<"ConditionCheck">> => condition_check(),
+%%   <<"Delete">> => delete(),
+%%   <<"Put">> => put(),
+%%   <<"Update">> => update()
+%% }
+-type transact_write_item() :: #{binary() => any()}.
+
+%% Example:
+%% describe_limits_output() :: #{
+%%   <<"AccountMaxReadCapacityUnits">> => float(),
+%%   <<"AccountMaxWriteCapacityUnits">> => float(),
+%%   <<"TableMaxReadCapacityUnits">> => float(),
+%%   <<"TableMaxWriteCapacityUnits">> => float()
+%% }
+-type describe_limits_output() :: #{binary() => any()}.
+
+%% Example:
+%% time_to_live_specification() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type time_to_live_specification() :: #{binary() => any()}.
+
+%% Example:
+%% expected_attribute_value() :: #{
+%%   <<"AttributeValueList">> => list(list()()),
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"Exists">> => boolean(),
+%%   <<"Value">> => list()
+%% }
+-type expected_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% keys_and_attributes() :: #{
+%%   <<"AttributesToGet">> => list(string()()),
+%%   <<"ConsistentRead">> => boolean(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"Keys">> => list(map()()),
+%%   <<"ProjectionExpression">> => string()
+%% }
+-type keys_and_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% point_in_time_recovery_description() :: #{
+%%   <<"EarliestRestorableDateTime">> => non_neg_integer(),
+%%   <<"LatestRestorableDateTime">> => non_neg_integer(),
+%%   <<"PointInTimeRecoveryStatus">> => list(any())
+%% }
+-type point_in_time_recovery_description() :: #{binary() => any()}.
+
+%% Example:
+%% batch_execute_statement_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
+%%   <<"Responses">> => list(batch_statement_response()())
+%% }
+-type batch_execute_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_output() :: #{
+%%   <<"ExportDescription">> => export_description()
+%% }
+-type describe_export_output() :: #{binary() => any()}.
+
+%% Example:
+%% item_collection_size_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type item_collection_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_definition() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeType">> => list(any())
+%% }
+-type attribute_definition() :: #{binary() => any()}.
+
+%% Example:
+%% update_time_to_live_output() :: #{
+%%   <<"TimeToLiveSpecification">> => time_to_live_specification()
+%% }
+-type update_time_to_live_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_replication_group_member_action() :: #{
+%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index()()),
+%%   <<"KMSMasterKeyId">> => string(),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
+%%   <<"RegionName">> => string(),
+%%   <<"TableClassOverride">> => list(any())
+%% }
+-type create_replication_group_member_action() :: #{binary() => any()}.
+
+%% Example:
+%% table_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type table_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_imports_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"TableArn">> => string()
+%% }
+-type list_imports_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_output() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type get_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% point_in_time_recovery_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type point_in_time_recovery_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_item_output() :: #{
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"Item">> => map()
+%% }
+-type get_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_table_input() :: #{
+%%   <<"GlobalTableName">> := string(),
+%%   <<"ReplicationGroup">> := list(replica()())
+%% }
+-type create_global_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_item_input() :: #{
+%%   <<"RequestItems">> := map(),
+%%   <<"ReturnConsumedCapacity">> => list(any())
+%% }
+-type batch_get_item_input() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_data_stream_destination() :: #{
+%%   <<"ApproximateCreationDateTimePrecision">> => list(any()),
+%%   <<"DestinationStatus">> => list(any()),
+%%   <<"DestinationStatusDescription">> => string(),
+%%   <<"StreamArn">> => string()
+%% }
+-type kinesis_data_stream_destination() :: #{binary() => any()}.
+
+%% Example:
+%% execute_transaction_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"TransactStatements">> := list(parameterized_statement()())
+%% }
+-type execute_transaction_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_global_tables_output() :: #{
+%%   <<"GlobalTables">> => list(global_table()()),
+%%   <<"LastEvaluatedGlobalTableName">> => string()
+%% }
+-type list_global_tables_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replica_action() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type delete_replica_action() :: #{binary() => any()}.
+
+%% Example:
+%% delete() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Key">> => map(),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> => string()
+%% }
+-type delete() :: #{binary() => any()}.
+
+%% Example:
+%% update_continuous_backups_output() :: #{
+%%   <<"ContinuousBackupsDescription">> => continuous_backups_description()
+%% }
+-type update_continuous_backups_output() :: #{binary() => any()}.
+
+%% Example:
+%% billing_mode_summary() :: #{
+%%   <<"BillingMode">> => list(any()),
+%%   <<"LastUpdateToPayPerRequestDateTime">> => non_neg_integer()
+%% }
+-type billing_mode_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_backups_input() :: #{
+%%   <<"BackupType">> => list(any()),
+%%   <<"ExclusiveStartBackupArn">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"TableName">> => string(),
+%%   <<"TimeRangeLowerBound">> => non_neg_integer(),
+%%   <<"TimeRangeUpperBound">> => non_neg_integer()
+%% }
+-type list_backups_input() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index_auto_scaling_update() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"ProvisionedReadCapacityAutoScalingUpdate">> => auto_scaling_settings_update()
+%% }
+-type replica_global_secondary_index_auto_scaling_update() :: #{binary() => any()}.
+
+%% Example:
+%% replica_auto_scaling_description() :: #{
+%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_auto_scaling_description()()),
+%%   <<"RegionName">> => string(),
+%%   <<"ReplicaProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ReplicaProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ReplicaStatus">> => list(any())
+%% }
+-type replica_auto_scaling_description() :: #{binary() => any()}.
+
+%% Example:
+%% replica_settings_update() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"ReplicaGlobalSecondaryIndexSettingsUpdate">> => list(replica_global_secondary_index_settings_update()()),
+%%   <<"ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
+%%   <<"ReplicaProvisionedReadCapacityUnits">> => float(),
+%%   <<"ReplicaTableClass">> => list(any())
+%% }
+-type replica_settings_update() :: #{binary() => any()}.
+
+%% Example:
+%% global_table() :: #{
+%%   <<"GlobalTableName">> => string(),
+%%   <<"ReplicationGroup">> => list(replica()())
+%% }
+-type global_table() :: #{binary() => any()}.
+
+%% Example:
+%% batch_write_item_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
+%%   <<"ItemCollectionMetrics">> => map(),
+%%   <<"UnprocessedItems">> => map()
+%% }
+-type batch_write_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_table_input() :: #{
+%%   <<"AttributeDefinitions">> := list(attribute_definition()()),
+%%   <<"BillingMode">> => list(any()),
+%%   <<"DeletionProtectionEnabled">> => boolean(),
+%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index()()),
+%%   <<"KeySchema">> := list(key_schema_element()()),
+%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index()()),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"ResourcePolicy">> => string(),
+%%   <<"SSESpecification">> => sse_specification(),
+%%   <<"StreamSpecification">> => stream_specification(),
+%%   <<"TableClass">> => list(any()),
+%%   <<"TableName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% write_request() :: #{
+%%   <<"DeleteRequest">> => delete_request(),
+%%   <<"PutRequest">> => put_request()
+%% }
+-type write_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_summary() :: #{
+%%   <<"RestoreDateTime">> => non_neg_integer(),
+%%   <<"RestoreInProgress">> => boolean(),
+%%   <<"SourceBackupArn">> => string(),
+%%   <<"SourceTableArn">> => string()
+%% }
+-type restore_summary() :: #{binary() => any()}.
+
+%% Example:
+%% enable_kinesis_streaming_configuration() :: #{
+%%   <<"ApproximateCreationDateTimePrecision">> => list(any())
+%% }
+-type enable_kinesis_streaming_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_endpoint_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_endpoint_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_global_table_output() :: #{
+%%   <<"GlobalTableDescription">> => global_table_description()
+%% }
+-type describe_global_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% table_creation_parameters() :: #{
+%%   <<"AttributeDefinitions">> => list(attribute_definition()()),
+%%   <<"BillingMode">> => list(any()),
+%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index()()),
+%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"SSESpecification">> => sse_specification(),
+%%   <<"TableName">> => string()
+%% }
+-type table_creation_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% execute_statement_output() :: #{
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"Items">> => list(map()()),
+%%   <<"LastEvaluatedKey">> => map(),
+%%   <<"NextToken">> => string()
+%% }
+-type execute_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoints_response() :: #{
+%%   <<"Endpoints">> => list(endpoint()())
+%% }
+-type describe_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% backup_summary() :: #{
+%%   <<"BackupArn">> => string(),
+%%   <<"BackupCreationDateTime">> => non_neg_integer(),
+%%   <<"BackupExpiryDateTime">> => non_neg_integer(),
+%%   <<"BackupName">> => string(),
+%%   <<"BackupSizeBytes">> => float(),
+%%   <<"BackupStatus">> => list(any()),
+%%   <<"BackupType">> => list(any()),
+%%   <<"TableArn">> => string(),
+%%   <<"TableId">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type backup_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_kinesis_streaming_destination_input() :: #{
+%%   <<"TableName">> := string()
+%% }
+-type describe_kinesis_streaming_destination_input() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_settings_description() :: #{
+%%   <<"AutoScalingDisabled">> => boolean(),
+%%   <<"AutoScalingRoleArn">> => string(),
+%%   <<"MaximumUnits">> => float(),
+%%   <<"MinimumUnits">> => float(),
+%%   <<"ScalingPolicies">> => list(auto_scaling_policy_description()())
+%% }
+-type auto_scaling_settings_description() :: #{binary() => any()}.
+
+%% Example:
+%% update_contributor_insights_output() :: #{
+%%   <<"ContributorInsightsStatus">> => list(any()),
+%%   <<"IndexName">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type update_contributor_insights_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_output() :: #{
+%%   <<"RevisionId">> => string()
+%% }
+-type put_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_global_table_settings_input() :: #{
+%%   <<"GlobalTableBillingMode">> => list(any()),
+%%   <<"GlobalTableGlobalSecondaryIndexSettingsUpdate">> => list(global_table_global_secondary_index_settings_update()()),
+%%   <<"GlobalTableName">> := string(),
+%%   <<"GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
+%%   <<"GlobalTableProvisionedWriteCapacityUnits">> => float(),
+%%   <<"ReplicaSettingsUpdate">> => list(replica_settings_update()())
+%% }
+-type update_global_table_settings_input() :: #{binary() => any()}.
+
+%% Example:
+%% scan_input() :: #{
+%%   <<"AttributesToGet">> => list(string()()),
+%%   <<"ConditionalOperator">> => list(any()),
+%%   <<"ConsistentRead">> => boolean(),
+%%   <<"ExclusiveStartKey">> => map(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"FilterExpression">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"ProjectionExpression">> => string(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ScanFilter">> => map(),
+%%   <<"Segment">> => integer(),
+%%   <<"Select">> => list(any()),
+%%   <<"TableName">> := string(),
+%%   <<"TotalSegments">> => integer()
+%% }
+-type scan_input() :: #{binary() => any()}.
+
+%% Example:
+%% import_summary() :: #{
+%%   <<"CloudWatchLogGroupArn">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ImportArn">> => string(),
+%%   <<"ImportStatus">> => list(any()),
+%%   <<"InputFormat">> => list(any()),
+%%   <<"S3BucketSource">> => s3_bucket_source(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TableArn">> => string()
+%% }
+-type import_summary() :: #{binary() => any()}.
+
+%% Example:
+%% table_class_summary() :: #{
+%%   <<"LastUpdateDateTime">> => non_neg_integer(),
+%%   <<"TableClass">> => list(any())
+%% }
+-type table_class_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_output() :: #{
+%%   <<"Table">> => table_description()
+%% }
+-type describe_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% key_schema_element() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"KeyType">> => list(any())
+%% }
+-type key_schema_element() :: #{binary() => any()}.
+
+%% Example:
+%% transaction_canceled_exception() :: #{
+%%   <<"CancellationReasons">> => list(cancellation_reason()()),
+%%   <<"Message">> => string()
+%% }
+-type transaction_canceled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_replica_auto_scaling_output() :: #{
+%%   <<"TableAutoScalingDescription">> => table_auto_scaling_description()
+%% }
+-type update_table_replica_auto_scaling_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_import_output() :: #{
+%%   <<"ImportTableDescription">> => import_table_description()
+%% }
+-type describe_import_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_input() :: #{
+%%   <<"ExpectedRevisionId">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_replica_action() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type create_replica_action() :: #{binary() => any()}.
+
+%% Example:
+%% parameterized_statement() :: #{
+%%   <<"Parameters">> => list(list()()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"Statement">> => string()
+%% }
+-type parameterized_statement() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_of_resource_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_of_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% query_output() :: #{
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"Count">> => integer(),
+%%   <<"Items">> => list(map()()),
+%%   <<"LastEvaluatedKey">> => map(),
+%%   <<"ScannedCount">> => integer()
+%% }
+-type query_output() :: #{binary() => any()}.
+
+%% Example:
+%% capacity() :: #{
+%%   <<"CapacityUnits">> => float(),
+%%   <<"ReadCapacityUnits">> => float(),
+%%   <<"WriteCapacityUnits">> => float()
+%% }
+-type capacity() :: #{binary() => any()}.
+
+%% Example:
+%% batch_write_item_input() :: #{
+%%   <<"RequestItems">> := map(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnItemCollectionMetrics">> => list(any())
+%% }
+-type batch_write_item_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_kinesis_streaming_destination_output() :: #{
+%%   <<"DestinationStatus">> => list(any()),
+%%   <<"StreamArn">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"UpdateKinesisStreamingConfiguration">> => update_kinesis_streaming_configuration()
+%% }
+-type update_kinesis_streaming_destination_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_global_table_input() :: #{
+%%   <<"GlobalTableName">> := string(),
+%%   <<"ReplicaUpdates">> := list(replica_update()())
+%% }
+-type update_global_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% execute_statement_input() :: #{
+%%   <<"ConsistentRead">> => boolean(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Parameters">> => list(list()()),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"Statement">> := string()
+%% }
+-type execute_statement_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_input() :: #{
+%%   <<"ExclusiveStartTableName">> => string(),
+%%   <<"Limit">> => integer()
+%% }
+-type list_tables_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_global_table_settings_input() :: #{
+%%   <<"GlobalTableName">> := string()
+%% }
+-type describe_global_table_settings_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_execute_statement_input() :: #{
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"Statements">> := list(batch_statement_request()())
+%% }
+-type batch_execute_statement_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_replica_auto_scaling_input() :: #{
+%%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_auto_scaling_update()()),
+%%   <<"ProvisionedWriteCapacityAutoScalingUpdate">> => auto_scaling_settings_update(),
+%%   <<"ReplicaUpdates">> => list(replica_auto_scaling_update()()),
+%%   <<"TableName">> := string()
+%% }
+-type update_table_replica_auto_scaling_input() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_streaming_destination_input() :: #{
+%%   <<"EnableKinesisStreamingConfiguration">> => enable_kinesis_streaming_configuration(),
+%%   <<"StreamArn">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type kinesis_streaming_destination_input() :: #{binary() => any()}.
+
+%% Example:
+%% policy_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_import_input() :: #{
+%%   <<"ImportArn">> := string()
+%% }
+-type describe_import_input() :: #{binary() => any()}.
+
+%% Example:
+%% replica_auto_scaling_update() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"ReplicaGlobalSecondaryIndexUpdates">> => list(replica_global_secondary_index_auto_scaling_update()()),
+%%   <<"ReplicaProvisionedReadCapacityAutoScalingUpdate">> => auto_scaling_settings_update()
+%% }
+-type replica_auto_scaling_update() :: #{binary() => any()}.
+
+%% Example:
+%% replica_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replica_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_to_point_in_time_output() :: #{
+%%   <<"TableDescription">> => table_description()
+%% }
+-type restore_table_to_point_in_time_output() :: #{binary() => any()}.
+
+%% Example:
+%% csv_options() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"HeaderList">> => list(string()())
+%% }
+-type csv_options() :: #{binary() => any()}.
+
+%% Example:
+%% projection() :: #{
+%%   <<"NonKeyAttributes">> => list(string()()),
+%%   <<"ProjectionType">> => list(any())
+%% }
+-type projection() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override()
+%% }
+-type replica_global_secondary_index() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_throughput_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_item_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
+%%   <<"Responses">> => map(),
+%%   <<"UnprocessedKeys">> => map()
+%% }
+-type batch_get_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_backup_input() :: #{
+%%   <<"BackupArn">> := string()
+%% }
+-type describe_backup_input() :: #{binary() => any()}.
+
+%% Example:
+%% source_table_details() :: #{
+%%   <<"BillingMode">> => list(any()),
+%%   <<"ItemCount">> => float(),
+%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"TableArn">> => string(),
+%%   <<"TableCreationDateTime">> => non_neg_integer(),
+%%   <<"TableId">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableSizeBytes">> => float()
+%% }
+-type source_table_details() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index_auto_scaling_update() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"ProvisionedWriteCapacityAutoScalingUpdate">> => auto_scaling_settings_update()
+%% }
+-type global_secondary_index_auto_scaling_update() :: #{binary() => any()}.
+
+%% Example:
+%% update() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Key">> => map(),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> => string(),
+%%   <<"UpdateExpression">> => string()
+%% }
+-type update() :: #{binary() => any()}.
+
+%% Example:
+%% describe_contributor_insights_output() :: #{
+%%   <<"ContributorInsightsRuleList">> => list(string()()),
+%%   <<"ContributorInsightsStatus">> => list(any()),
+%%   <<"FailureException">> => failure_exception(),
+%%   <<"IndexName">> => string(),
+%%   <<"LastUpdateDateTime">> => non_neg_integer(),
+%%   <<"TableName">> => string()
+%% }
+-type describe_contributor_insights_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoints_request() :: #{
+
+%% }
+-type describe_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_input() :: #{
+%%   <<"TableName">> := string()
+%% }
+-type describe_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_input() :: #{
+%%   <<"BackupArn">> := string()
+%% }
+-type delete_backup_input() :: #{binary() => any()}.
+
+%% Example:
+%% consumed_capacity() :: #{
+%%   <<"CapacityUnits">> => float(),
+%%   <<"GlobalSecondaryIndexes">> => map(),
+%%   <<"LocalSecondaryIndexes">> => map(),
+%%   <<"ReadCapacityUnits">> => float(),
+%%   <<"Table">> => capacity(),
+%%   <<"TableName">> => string(),
+%%   <<"WriteCapacityUnits">> => float()
+%% }
+-type consumed_capacity() :: #{binary() => any()}.
+
+%% Example:
+%% backup_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type backup_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_input() :: #{
+%%   <<"TableName">> := string()
+%% }
+-type delete_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_backup_output() :: #{
+%%   <<"BackupDescription">> => backup_description()
+%% }
+-type describe_backup_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_secondary_index_action() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"Projection">> => projection(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput()
+%% }
+-type create_global_secondary_index_action() :: #{binary() => any()}.
+
+%% Example:
+%% local_secondary_index_description() :: #{
+%%   <<"IndexArn">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexSizeBytes">> => float(),
+%%   <<"ItemCount">> => float(),
+%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"Projection">> => projection()
+%% }
+-type local_secondary_index_description() :: #{binary() => any()}.
+
+%% Example:
+%% delete_item_output() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"ItemCollectionMetrics">> => item_collection_metrics()
+%% }
+-type delete_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index_settings_description() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"ProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ProvisionedReadCapacityUnits">> => float(),
+%%   <<"ProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ProvisionedWriteCapacityUnits">> => float()
+%% }
+-type replica_global_secondary_index_settings_description() :: #{binary() => any()}.
+
+%% Example:
+%% continuous_backups_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type continuous_backups_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_input() :: #{
+%%   <<"ConfirmRemoveSelfResourceAccess">> => boolean(),
+%%   <<"ExpectedRevisionId">> => string(),
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% replica_update() :: #{
+%%   <<"Create">> => create_replica_action(),
+%%   <<"Delete">> => delete_replica_action()
+%% }
+-type replica_update() :: #{binary() => any()}.
+
+%% Example:
+%% global_table_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type global_table_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_statement_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Item">> => map(),
+%%   <<"Message">> => string()
+%% }
+-type batch_statement_error() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_policy_description() :: #{
+%%   <<"PolicyName">> => string(),
+%%   <<"TargetTrackingScalingPolicyConfiguration">> => auto_scaling_target_tracking_scaling_policy_configuration_description()
+%% }
+-type auto_scaling_policy_description() :: #{binary() => any()}.
+
+%% Example:
+%% delete_request() :: #{
+%%   <<"Key">> => map()
+%% }
+-type delete_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_continuous_backups_input() :: #{
+%%   <<"TableName">> := string()
+%% }
+-type describe_continuous_backups_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_statement_response() :: #{
+%%   <<"Error">> => batch_statement_error(),
+%%   <<"Item">> => map(),
+%%   <<"TableName">> => string()
+%% }
+-type batch_statement_response() :: #{binary() => any()}.
+
+%% Example:
+%% idempotent_parameter_mismatch_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_policy_update() :: #{
+%%   <<"PolicyName">> => string(),
+%%   <<"TargetTrackingScalingPolicyConfiguration">> => auto_scaling_target_tracking_scaling_policy_configuration_update()
+%% }
+-type auto_scaling_policy_update() :: #{binary() => any()}.
+
+%% Example:
+%% export_summary() :: #{
+%%   <<"ExportArn">> => string(),
+%%   <<"ExportStatus">> => list(any()),
+%%   <<"ExportType">> => list(any())
+%% }
+-type export_summary() :: #{binary() => any()}.
+
+%% Example:
+%% item_collection_metrics() :: #{
+%%   <<"ItemCollectionKey">> => map(),
+%%   <<"SizeEstimateRangeGB">> => list(float()())
+%% }
+-type item_collection_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% describe_global_table_settings_output() :: #{
+%%   <<"GlobalTableName">> => string(),
+%%   <<"ReplicaSettings">> => list(replica_settings_description()())
+%% }
+-type describe_global_table_settings_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_replication_group_member_action() :: #{
+%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index()()),
+%%   <<"KMSMasterKeyId">> => string(),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
+%%   <<"RegionName">> => string(),
+%%   <<"TableClassOverride">> => list(any())
+%% }
+-type update_replication_group_member_action() :: #{binary() => any()}.
+
+%% Example:
+%% stream_specification() :: #{
+%%   <<"StreamEnabled">> => boolean(),
+%%   <<"StreamViewType">> => list(any())
+%% }
+-type stream_specification() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_input() :: #{
+%%   <<"ExportArn">> := string()
+%% }
+-type describe_export_input() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_throughput_description() :: #{
+%%   <<"LastDecreaseDateTime">> => non_neg_integer(),
+%%   <<"LastIncreaseDateTime">> => non_neg_integer(),
+%%   <<"NumberOfDecreasesToday">> => float(),
+%%   <<"ReadCapacityUnits">> => float(),
+%%   <<"WriteCapacityUnits">> => float()
+%% }
+-type provisioned_throughput_description() :: #{binary() => any()}.
+
+%% Example:
+%% create_backup_input() :: #{
+%%   <<"BackupName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type create_backup_input() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_item_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_item_exception() :: #{binary() => any()}.
+
+%% Example:
+%% transact_get_items_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
+%%   <<"Responses">> => list(item_response()())
+%% }
+-type transact_get_items_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_time_to_live_output() :: #{
+%%   <<"TimeToLiveDescription">> => time_to_live_description()
+%% }
+-type describe_time_to_live_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_contributor_insights_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type list_contributor_insights_input() :: #{binary() => any()}.
+
+%% Example:
+%% point_in_time_recovery_specification() :: #{
+%%   <<"PointInTimeRecoveryEnabled">> => boolean()
+%% }
+-type point_in_time_recovery_specification() :: #{binary() => any()}.
+
+%% Example:
+%% time_to_live_description() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"TimeToLiveStatus">> => list(any())
+%% }
+-type time_to_live_description() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index_auto_scaling_description() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"ProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description()
+%% }
+-type replica_global_secondary_index_auto_scaling_description() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_streaming_destination_output() :: #{
+%%   <<"DestinationStatus">> => list(any()),
+%%   <<"EnableKinesisStreamingConfiguration">> => enable_kinesis_streaming_configuration(),
+%%   <<"StreamArn">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type kinesis_streaming_destination_output() :: #{binary() => any()}.
+
+%% Example:
+%% condition() :: #{
+%%   <<"AttributeValueList">> => list(list()()),
+%%   <<"ComparisonOperator">> => list(any())
+%% }
+-type condition() :: #{binary() => any()}.
+
+%% Example:
+%% transact_get_items_input() :: #{
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"TransactItems">> := list(transact_get_item()())
+%% }
+-type transact_get_items_input() :: #{binary() => any()}.
+
+%% Example:
+%% import_table_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InputCompressionType">> => list(any()),
+%%   <<"InputFormat">> := list(any()),
+%%   <<"InputFormatOptions">> => input_format_options(),
+%%   <<"S3BucketSource">> := s3_bucket_source(),
+%%   <<"TableCreationParameters">> := table_creation_parameters()
+%% }
+-type import_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% transaction_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type transaction_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_global_table_input() :: #{
+%%   <<"GlobalTableName">> := string()
+%% }
+-type describe_global_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index_settings_update() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"ProvisionedReadCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
+%%   <<"ProvisionedReadCapacityUnits">> => float()
+%% }
+-type replica_global_secondary_index_settings_update() :: #{binary() => any()}.
+
+%% Example:
+%% put_item_input() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ConditionalOperator">> => list(any()),
+%%   <<"Expected">> => map(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Item">> := map(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnItemCollectionMetrics">> => list(any()),
+%%   <<"ReturnValues">> => list(any()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> := string()
+%% }
+-type put_item_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_of_resource_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_of_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_replica_auto_scaling_input() :: #{
+%%   <<"TableName">> := string()
+%% }
+-type describe_table_replica_auto_scaling_input() :: #{binary() => any()}.
+
+%% Example:
+%% export_table_to_point_in_time_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ExportFormat">> => list(any()),
+%%   <<"ExportTime">> => non_neg_integer(),
+%%   <<"ExportType">> => list(any()),
+%%   <<"IncrementalExportSpecification">> => incremental_export_specification(),
+%%   <<"S3Bucket">> := string(),
+%%   <<"S3BucketOwner">> => string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"S3SseAlgorithm">> => list(any()),
+%%   <<"S3SseKmsKeyId">> => string(),
+%%   <<"TableArn">> := string()
+%% }
+-type export_table_to_point_in_time_input() :: #{binary() => any()}.
+
+%% Example:
+%% execute_transaction_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
+%%   <<"Responses">> => list(item_response()())
+%% }
+-type execute_transaction_output() :: #{binary() => any()}.
+
+%% Example:
+%% transact_get_item() :: #{
+%%   <<"Get">> => get()
+%% }
+-type transact_get_item() :: #{binary() => any()}.
+
+%% Example:
+%% global_table_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type global_table_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"CachePeriodInMinutes">> => float()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% update_item_output() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"ItemCollectionMetrics">> => item_collection_metrics()
+%% }
+-type update_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_contributor_insights_input() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"TableName">> := string()
+%% }
+-type describe_contributor_insights_input() :: #{binary() => any()}.
+
+%% Example:
+%% backup_description() :: #{
+%%   <<"BackupDetails">> => backup_details(),
+%%   <<"SourceTableDetails">> => source_table_details(),
+%%   <<"SourceTableFeatureDetails">> => source_table_feature_details()
+%% }
+-type backup_description() :: #{binary() => any()}.
+
+%% Example:
+%% describe_kinesis_streaming_destination_output() :: #{
+%%   <<"KinesisDataStreamDestinations">> => list(kinesis_data_stream_destination()()),
+%%   <<"TableName">> => string()
+%% }
+-type describe_kinesis_streaming_destination_output() :: #{binary() => any()}.
+
+%% Example:
+%% backup_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type backup_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conditional_check_failed_exception() :: #{
+%%   <<"Item">> => map(),
+%%   <<"message">> => string()
+%% }
+-type conditional_check_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_limits_input() :: #{
+
+%% }
+-type describe_limits_input() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index_update() :: #{
+%%   <<"Create">> => create_global_secondary_index_action(),
+%%   <<"Delete">> => delete_global_secondary_index_action(),
+%%   <<"Update">> => update_global_secondary_index_action()
+%% }
+-type global_secondary_index_update() :: #{binary() => any()}.
+
+%% Example:
+%% create_backup_output() :: #{
+%%   <<"BackupDetails">> => backup_details()
+%% }
+-type create_backup_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_exports_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TableArn">> => string()
+%% }
+-type list_exports_input() :: #{binary() => any()}.
+
+%% Example:
+%% backup_details() :: #{
+%%   <<"BackupArn">> => string(),
+%%   <<"BackupCreationDateTime">> => non_neg_integer(),
+%%   <<"BackupExpiryDateTime">> => non_neg_integer(),
+%%   <<"BackupName">> => string(),
+%%   <<"BackupSizeBytes">> => float(),
+%%   <<"BackupStatus">> => list(any()),
+%%   <<"BackupType">> => list(any())
+%% }
+-type backup_details() :: #{binary() => any()}.
+
+%% Example:
+%% input_format_options() :: #{
+%%   <<"Csv">> => csv_options()
+%% }
+-type input_format_options() :: #{binary() => any()}.
+
+%% Example:
+%% import_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type import_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_exports_output() :: #{
+%%   <<"ExportSummaries">> => list(export_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_exports_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_output() :: #{
+%%   <<"RevisionId">> => string()
+%% }
+-type delete_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_settings_update() :: #{
+%%   <<"AutoScalingDisabled">> => boolean(),
+%%   <<"AutoScalingRoleArn">> => string(),
+%%   <<"MaximumUnits">> => float(),
+%%   <<"MinimumUnits">> => float(),
+%%   <<"ScalingPolicyUpdate">> => auto_scaling_policy_update()
+%% }
+-type auto_scaling_settings_update() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_table_output() :: #{
+%%   <<"GlobalTableDescription">> => global_table_description()
+%% }
+-type create_global_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_global_tables_input() :: #{
+%%   <<"ExclusiveStartGlobalTableName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"RegionName">> => string()
+%% }
+-type list_global_tables_input() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_throughput() :: #{
+%%   <<"ReadCapacityUnits">> => float(),
+%%   <<"WriteCapacityUnits">> => float()
+%% }
+-type provisioned_throughput() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index_description() :: #{
+%%   <<"Backfilling">> => boolean(),
+%%   <<"IndexArn">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexSizeBytes">> => float(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"ItemCount">> => float(),
+%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"Projection">> => projection(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput_description()
+%% }
+-type global_secondary_index_description() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index_info() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"Projection">> => projection(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput()
+%% }
+-type global_secondary_index_info() :: #{binary() => any()}.
+
+%% Example:
+%% put_request() :: #{
+%%   <<"Item">> => map()
+%% }
+-type put_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_item_input() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ConditionalOperator">> => list(any()),
+%%   <<"Expected">> => map(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Key">> := map(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnItemCollectionMetrics">> => list(any()),
+%%   <<"ReturnValues">> => list(any()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> := string()
+%% }
+-type delete_item_input() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index_description() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override()
+%% }
+-type replica_global_secondary_index_description() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_target_tracking_scaling_policy_configuration_description() :: #{
+%%   <<"DisableScaleIn">> => boolean(),
+%%   <<"ScaleInCooldown">> => integer(),
+%%   <<"ScaleOutCooldown">> => integer(),
+%%   <<"TargetValue">> => float()
+%% }
+-type auto_scaling_target_tracking_scaling_policy_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% query_input() :: #{
+%%   <<"AttributesToGet">> => list(string()()),
+%%   <<"ConditionalOperator">> => list(any()),
+%%   <<"ConsistentRead">> => boolean(),
+%%   <<"ExclusiveStartKey">> => map(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"FilterExpression">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"KeyConditionExpression">> => string(),
+%%   <<"KeyConditions">> => map(),
+%%   <<"Limit">> => integer(),
+%%   <<"ProjectionExpression">> => string(),
+%%   <<"QueryFilter">> => map(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ScanIndexForward">> => boolean(),
+%%   <<"Select">> => list(any()),
+%%   <<"TableName">> := string()
+%% }
+-type query_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_global_table_output() :: #{
+%%   <<"GlobalTableDescription">> => global_table_description()
+%% }
+-type update_global_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_restore_time_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_restore_time_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sse_specification() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"KMSMasterKeyId">> => string(),
+%%   <<"SSEType">> => list(any())
+%% }
+-type sse_specification() :: #{binary() => any()}.
+
+%% Example:
+%% describe_continuous_backups_output() :: #{
+%%   <<"ContinuousBackupsDescription">> => continuous_backups_description()
+%% }
+-type describe_continuous_backups_output() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_item_input() :: #{
+%%   <<"AttributeUpdates">> => map(),
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ConditionalOperator">> => list(any()),
+%%   <<"Expected">> => map(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Key">> := map(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnItemCollectionMetrics">> => list(any()),
+%%   <<"ReturnValues">> => list(any()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> := string(),
+%%   <<"UpdateExpression">> => string()
+%% }
+-type update_item_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% global_table_description() :: #{
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"GlobalTableArn">> => string(),
+%%   <<"GlobalTableName">> => string(),
+%%   <<"GlobalTableStatus">> => list(any()),
+%%   <<"ReplicationGroup">> => list(replica_description()())
+%% }
+-type global_table_description() :: #{binary() => any()}.
+
+%% Example:
+%% continuous_backups_description() :: #{
+%%   <<"ContinuousBackupsStatus">> => list(any()),
+%%   <<"PointInTimeRecoveryDescription">> => point_in_time_recovery_description()
+%% }
+-type continuous_backups_description() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"Projection">> => projection(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput()
+%% }
+-type global_secondary_index() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_to_point_in_time_input() :: #{
+%%   <<"BillingModeOverride">> => list(any()),
+%%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()()),
+%%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()()),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput(),
+%%   <<"RestoreDateTime">> => non_neg_integer(),
+%%   <<"SSESpecificationOverride">> => sse_specification(),
+%%   <<"SourceTableArn">> => string(),
+%%   <<"SourceTableName">> => string(),
+%%   <<"TargetTableName">> := string(),
+%%   <<"UseLatestRestorableTime">> => boolean()
+%% }
+-type restore_table_to_point_in_time_input() :: #{binary() => any()}.
+
+%% Example:
+%% request_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_backup_input() :: #{
+%%   <<"BackupArn">> := string(),
+%%   <<"BillingModeOverride">> => list(any()),
+%%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()()),
+%%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()()),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput(),
+%%   <<"SSESpecificationOverride">> => sse_specification(),
+%%   <<"TargetTableName">> := string()
+%% }
+-type restore_table_from_backup_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancellation_reason() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Item">> => map(),
+%%   <<"Message">> => string()
+%% }
+-type cancellation_reason() :: #{binary() => any()}.
+
+%% Example:
+%% source_table_feature_details() :: #{
+%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_info()()),
+%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_info()()),
+%%   <<"SSEDescription">> => sse_description(),
+%%   <<"StreamDescription">> => stream_specification(),
+%%   <<"TimeToLiveDescription">> => time_to_live_description()
+%% }
+-type source_table_feature_details() :: #{binary() => any()}.
+
+%% Example:
+%% import_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type import_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% item_response() :: #{
+%%   <<"Item">> => map()
+%% }
+-type item_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_backup_output() :: #{
+%%   <<"TableDescription">> => table_description()
+%% }
+-type restore_table_from_backup_output() :: #{binary() => any()}.
+
+%% Example:
+%% failure_exception() :: #{
+%%   <<"ExceptionDescription">> => string(),
+%%   <<"ExceptionName">> => string()
+%% }
+-type failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% replica_description() :: #{
+%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_description()()),
+%%   <<"KMSMasterKeyId">> => string(),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
+%%   <<"RegionName">> => string(),
+%%   <<"ReplicaInaccessibleDateTime">> => non_neg_integer(),
+%%   <<"ReplicaStatus">> => list(any()),
+%%   <<"ReplicaStatusDescription">> => string(),
+%%   <<"ReplicaStatusPercentProgress">> => string(),
+%%   <<"ReplicaTableClassSummary">> => table_class_summary()
+%% }
+-type replica_description() :: #{binary() => any()}.
+
+%% Example:
+%% scan_output() :: #{
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"Count">> => integer(),
+%%   <<"Items">> => list(map()()),
+%%   <<"LastEvaluatedKey">> => map(),
+%%   <<"ScannedCount">> => integer()
+%% }
+-type scan_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_group_member_action() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type delete_replication_group_member_action() :: #{binary() => any()}.
+
+%% Example:
+%% replication_group_update() :: #{
+%%   <<"Create">> => create_replication_group_member_action(),
+%%   <<"Delete">> => delete_replication_group_member_action(),
+%%   <<"Update">> => update_replication_group_member_action()
+%% }
+-type replication_group_update() :: #{binary() => any()}.
+
+%% Example:
+%% transaction_in_progress_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type transaction_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_contributor_insights_output() :: #{
+%%   <<"ContributorInsightsSummaries">> => list(contributor_insights_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contributor_insights_output() :: #{binary() => any()}.
+
+%% Example:
+%% export_description() :: #{
+%%   <<"BilledSizeBytes">> => float(),
+%%   <<"ClientToken">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ExportArn">> => string(),
+%%   <<"ExportFormat">> => list(any()),
+%%   <<"ExportManifest">> => string(),
+%%   <<"ExportStatus">> => list(any()),
+%%   <<"ExportTime">> => non_neg_integer(),
+%%   <<"ExportType">> => list(any()),
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"IncrementalExportSpecification">> => incremental_export_specification(),
+%%   <<"ItemCount">> => float(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3BucketOwner">> => string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"S3SseAlgorithm">> => list(any()),
+%%   <<"S3SseKmsKeyId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TableArn">> => string(),
+%%   <<"TableId">> => string()
+%% }
+-type export_description() :: #{binary() => any()}.
+
+%% Example:
+%% update_global_secondary_index_action() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput()
+%% }
+-type update_global_secondary_index_action() :: #{binary() => any()}.
+
+%% Example:
+%% replica() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type replica() :: #{binary() => any()}.
+
+%% Example:
+%% contributor_insights_summary() :: #{
+%%   <<"ContributorInsightsStatus">> => list(any()),
+%%   <<"IndexName">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type contributor_insights_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_item_input() :: #{
+%%   <<"AttributesToGet">> => list(string()()),
+%%   <<"ConsistentRead">> => boolean(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"Key">> := map(),
+%%   <<"ProjectionExpression">> => string(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"TableName">> := string()
+%% }
+-type get_item_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_time_to_live_input() :: #{
+%%   <<"TableName">> := string()
+%% }
+-type describe_time_to_live_input() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_target_tracking_scaling_policy_configuration_update() :: #{
+%%   <<"DisableScaleIn">> => boolean(),
+%%   <<"ScaleInCooldown">> => integer(),
+%%   <<"ScaleOutCooldown">> => integer(),
+%%   <<"TargetValue">> => float()
+%% }
+-type auto_scaling_target_tracking_scaling_policy_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% update_continuous_backups_input() :: #{
+%%   <<"PointInTimeRecoverySpecification">> := point_in_time_recovery_specification(),
+%%   <<"TableName">> := string()
+%% }
+-type update_continuous_backups_input() :: #{binary() => any()}.
+
+%% Example:
+%% archival_summary() :: #{
+%%   <<"ArchivalBackupArn">> => string(),
+%%   <<"ArchivalDateTime">> => non_neg_integer(),
+%%   <<"ArchivalReason">> => string()
+%% }
+-type archival_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_output() :: #{
+%%   <<"LastEvaluatedTableName">> => string(),
+%%   <<"TableNames">> => list(string()())
+%% }
+-type list_tables_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_export_time_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_export_time_exception() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_value_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Value">> => list()
+%% }
+-type attribute_value_update() :: #{binary() => any()}.
+
+%% Example:
+%% import_table_output() :: #{
+%%   <<"ImportTableDescription">> => import_table_description()
+%% }
+-type import_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_item_output() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"ItemCollectionMetrics">> => item_collection_metrics()
+%% }
+-type put_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_global_table_settings_output() :: #{
+%%   <<"GlobalTableName">> => string(),
+%%   <<"ReplicaSettings">> => list(replica_settings_description()())
+%% }
+-type update_global_table_settings_output() :: #{binary() => any()}.
+
+%% Example:
+%% table_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type table_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% incremental_export_specification() :: #{
+%%   <<"ExportFromTime">> => non_neg_integer(),
+%%   <<"ExportToTime">> => non_neg_integer(),
+%%   <<"ExportViewType">> => list(any())
+%% }
+-type incremental_export_specification() :: #{binary() => any()}.
+
+%% Example:
+%% import_table_description() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"CloudWatchLogGroupArn">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ErrorCount">> => float(),
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"ImportArn">> => string(),
+%%   <<"ImportStatus">> => list(any()),
+%%   <<"ImportedItemCount">> => float(),
+%%   <<"InputCompressionType">> => list(any()),
+%%   <<"InputFormat">> => list(any()),
+%%   <<"InputFormatOptions">> => input_format_options(),
+%%   <<"ProcessedItemCount">> => float(),
+%%   <<"ProcessedSizeBytes">> => float(),
+%%   <<"S3BucketSource">> => s3_bucket_source(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TableArn">> => string(),
+%%   <<"TableCreationParameters">> => table_creation_parameters(),
+%%   <<"TableId">> => string()
+%% }
+-type import_table_description() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_output() :: #{
+%%   <<"TableDescription">> => table_description()
+%% }
+-type delete_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% index_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type index_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_input() :: #{
+%%   <<"AttributeDefinitions">> => list(attribute_definition()()),
+%%   <<"BillingMode">> => list(any()),
+%%   <<"DeletionProtectionEnabled">> => boolean(),
+%%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_update()()),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"ReplicaUpdates">> => list(replication_group_update()()),
+%%   <<"SSESpecification">> => sse_specification(),
+%%   <<"StreamSpecification">> => stream_specification(),
+%%   <<"TableClass">> => list(any()),
+%%   <<"TableName">> := string()
+%% }
+-type update_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% put() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Item">> => map(),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> => string()
+%% }
+-type put() :: #{binary() => any()}.
+
+%% Example:
+%% batch_statement_request() :: #{
+%%   <<"ConsistentRead">> => boolean(),
+%%   <<"Parameters">> => list(list()()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"Statement">> => string()
+%% }
+-type batch_statement_request() :: #{binary() => any()}.
+
+%% Example:
+%% replica_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replica_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_output() :: #{
+%%   <<"BackupDescription">> => backup_description()
+%% }
+-type delete_backup_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_kinesis_streaming_configuration() :: #{
+%%   <<"ApproximateCreationDateTimePrecision">> => list(any())
+%% }
+-type update_kinesis_streaming_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_output() :: #{
+%%   <<"TableDescription">> => table_description()
+%% }
+-type update_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% s3_bucket_source() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3BucketOwner">> => string(),
+%%   <<"S3KeyPrefix">> => string()
+%% }
+-type s3_bucket_source() :: #{binary() => any()}.
+
+%% Example:
+%% list_backups_output() :: #{
+%%   <<"BackupSummaries">> => list(backup_summary()()),
+%%   <<"LastEvaluatedBackupArn">> => string()
+%% }
+-type list_backups_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_contributor_insights_input() :: #{
+%%   <<"ContributorInsightsAction">> := list(any()),
+%%   <<"IndexName">> => string(),
+%%   <<"TableName">> := string()
+%% }
+-type update_contributor_insights_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_replica_auto_scaling_output() :: #{
+%%   <<"TableAutoScalingDescription">> => table_auto_scaling_description()
+%% }
+-type describe_table_replica_auto_scaling_output() :: #{binary() => any()}.
+
+%% Example:
+%% export_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type export_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_time_to_live_input() :: #{
+%%   <<"TableName">> := string(),
+%%   <<"TimeToLiveSpecification">> := time_to_live_specification()
+%% }
+-type update_time_to_live_input() :: #{binary() => any()}.
+
+%% Example:
+%% get() :: #{
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"Key">> => map(),
+%%   <<"ProjectionExpression">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type get() :: #{binary() => any()}.
+
+%% Example:
+%% export_table_to_point_in_time_output() :: #{
+%%   <<"ExportDescription">> => export_description()
+%% }
+-type export_table_to_point_in_time_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_kinesis_streaming_destination_input() :: #{
+%%   <<"StreamArn">> := string(),
+%%   <<"TableName">> := string(),
+%%   <<"UpdateKinesisStreamingConfiguration">> => update_kinesis_streaming_configuration()
+%% }
+-type update_kinesis_streaming_destination_input() :: #{binary() => any()}.
+
+%% Example:
+%% export_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type export_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_global_secondary_index_action() :: #{
+%%   <<"IndexName">> => string()
+%% }
+-type delete_global_secondary_index_action() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_throughput_override() :: #{
+%%   <<"ReadCapacityUnits">> => float()
+%% }
+-type provisioned_throughput_override() :: #{binary() => any()}.
+
+%% Example:
+%% table_auto_scaling_description() :: #{
+%%   <<"Replicas">> => list(replica_auto_scaling_description()()),
+%%   <<"TableName">> => string(),
+%%   <<"TableStatus">> => list(any())
+%% }
+-type table_auto_scaling_description() :: #{binary() => any()}.
+
+%% Example:
+%% list_imports_output() :: #{
+%%   <<"ImportSummaryList">> => list(import_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_imports_output() :: #{binary() => any()}.
+
+%% Example:
+%% table_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type table_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% condition_check() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Key">> => map(),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> => string()
+%% }
+-type condition_check() :: #{binary() => any()}.
+
+-type batch_execute_statement_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error().
+
+-type batch_get_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception().
+
+-type batch_write_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    item_collection_size_limit_exceeded_exception().
+
+-type create_backup_errors() ::
+    table_not_found_exception() | 
+    table_in_use_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    backup_in_use_exception() | 
+    continuous_backups_unavailable_exception() | 
+    invalid_endpoint_exception().
+
+-type create_global_table_errors() ::
+    table_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    global_table_already_exists_exception() | 
+    invalid_endpoint_exception().
+
+-type create_table_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type delete_backup_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    backup_in_use_exception() | 
+    backup_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type delete_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    conditional_check_failed_exception() | 
+    transaction_conflict_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    item_collection_size_limit_exceeded_exception().
+
+-type delete_resource_policy_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    policy_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type delete_table_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type describe_backup_errors() ::
+    internal_server_error() | 
+    backup_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_continuous_backups_errors() ::
+    table_not_found_exception() | 
+    internal_server_error() | 
+    invalid_endpoint_exception().
+
+-type describe_contributor_insights_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception().
+
+-type describe_export_errors() ::
+    export_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error().
+
+-type describe_global_table_errors() ::
+    internal_server_error() | 
+    global_table_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_global_table_settings_errors() ::
+    internal_server_error() | 
+    global_table_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_import_errors() ::
+    import_not_found_exception().
+
+-type describe_kinesis_streaming_destination_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_limits_errors() ::
+    internal_server_error() | 
+    invalid_endpoint_exception().
+
+-type describe_table_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_table_replica_auto_scaling_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception().
+
+-type describe_time_to_live_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type disable_kinesis_streaming_destination_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type enable_kinesis_streaming_destination_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type execute_statement_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    conditional_check_failed_exception() | 
+    transaction_conflict_exception() | 
+    duplicate_item_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    item_collection_size_limit_exceeded_exception().
+
+-type execute_transaction_errors() ::
+    transaction_in_progress_exception() | 
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    transaction_canceled_exception().
+
+-type export_table_to_point_in_time_errors() ::
+    table_not_found_exception() | 
+    export_conflict_exception() | 
+    invalid_export_time_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    point_in_time_recovery_unavailable_exception().
+
+-type get_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception().
+
+-type get_resource_policy_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    policy_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type import_table_errors() ::
+    limit_exceeded_exception() | 
+    import_conflict_exception() | 
+    resource_in_use_exception().
+
+-type list_backups_errors() ::
+    internal_server_error() | 
+    invalid_endpoint_exception().
+
+-type list_contributor_insights_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception().
+
+-type list_exports_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error().
+
+-type list_global_tables_errors() ::
+    internal_server_error() | 
+    invalid_endpoint_exception().
+
+-type list_imports_errors() ::
+    limit_exceeded_exception().
+
+-type list_tables_errors() ::
+    internal_server_error() | 
+    invalid_endpoint_exception().
+
+-type list_tags_of_resource_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type put_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    conditional_check_failed_exception() | 
+    transaction_conflict_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    item_collection_size_limit_exceeded_exception().
+
+-type put_resource_policy_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    policy_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type query_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception().
+
+-type restore_table_from_backup_errors() ::
+    table_in_use_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    backup_in_use_exception() | 
+    backup_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    table_already_exists_exception().
+
+-type restore_table_to_point_in_time_errors() ::
+    table_not_found_exception() | 
+    table_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_restore_time_exception() | 
+    internal_server_error() | 
+    invalid_endpoint_exception() | 
+    point_in_time_recovery_unavailable_exception() | 
+    table_already_exists_exception().
+
+-type scan_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type transact_get_items_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    transaction_canceled_exception() | 
+    invalid_endpoint_exception().
+
+-type transact_write_items_errors() ::
+    transaction_in_progress_exception() | 
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    transaction_canceled_exception() | 
+    invalid_endpoint_exception().
+
+-type untag_resource_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type update_continuous_backups_errors() ::
+    table_not_found_exception() | 
+    internal_server_error() | 
+    continuous_backups_unavailable_exception() | 
+    invalid_endpoint_exception().
+
+-type update_contributor_insights_errors() ::
+    internal_server_error() | 
+    resource_not_found_exception().
+
+-type update_global_table_errors() ::
+    table_not_found_exception() | 
+    replica_not_found_exception() | 
+    internal_server_error() | 
+    global_table_not_found_exception() | 
+    replica_already_exists_exception() | 
+    invalid_endpoint_exception().
+
+-type update_global_table_settings_errors() ::
+    replica_not_found_exception() | 
+    index_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    global_table_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type update_item_errors() ::
+    request_limit_exceeded() | 
+    internal_server_error() | 
+    conditional_check_failed_exception() | 
+    transaction_conflict_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    item_collection_size_limit_exceeded_exception().
+
+-type update_kinesis_streaming_destination_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type update_table_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
+-type update_table_replica_auto_scaling_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type update_time_to_live_errors() ::
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    resource_in_use_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -175,9 +2551,18 @@
 %% https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchStatementResponse.html#DDB-Type-BatchStatementResponse-Error
 %% field of the `BatchStatementResponse' for each
 %% statement.
+-spec batch_execute_statement(aws_client:aws_client(), batch_execute_statement_input()) ->
+    {ok, batch_execute_statement_output(), tuple()} |
+    {error, any()} |
+    {error, batch_execute_statement_errors(), tuple()}.
 batch_execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_execute_statement(Client, Input, []).
+
+-spec batch_execute_statement(aws_client:aws_client(), batch_execute_statement_input(), proplists:proplist()) ->
+    {ok, batch_execute_statement_output(), tuple()} |
+    {error, any()} |
+    {error, batch_execute_statement_errors(), tuple()}.
 batch_execute_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchExecuteStatement">>, Input, Options).
@@ -261,9 +2646,18 @@ batch_execute_statement(Client, Input, Options)
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations
 %% in the Amazon DynamoDB Developer
 %% Guide.
+-spec batch_get_item(aws_client:aws_client(), batch_get_item_input()) ->
+    {ok, batch_get_item_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_item_errors(), tuple()}.
 batch_get_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_item(Client, Input, []).
+
+-spec batch_get_item(aws_client:aws_client(), batch_get_item_input(), proplists:proplist()) ->
+    {ok, batch_get_item_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_item_errors(), tuple()}.
 batch_get_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetItem">>, Input, Options).
@@ -378,9 +2772,18 @@ batch_get_item(Client, Input, Options)
 %% Any individual item in a batch exceeds 400 KB.
 %%
 %% The total request size exceeds 16 MB.
+-spec batch_write_item(aws_client:aws_client(), batch_write_item_input()) ->
+    {ok, batch_write_item_output(), tuple()} |
+    {error, any()} |
+    {error, batch_write_item_errors(), tuple()}.
 batch_write_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_write_item(Client, Input, []).
+
+-spec batch_write_item(aws_client:aws_client(), batch_write_item_input(), proplists:proplist()) ->
+    {ok, batch_write_item_output(), tuple()} |
+    {error, any()} |
+    {error, batch_write_item_errors(), tuple()}.
 batch_write_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchWriteItem">>, Input, Options).
@@ -423,9 +2826,18 @@ batch_write_item(Client, Input, Options)
 %% Streams
 %%
 %% Provisioned read and write capacity
+-spec create_backup(aws_client:aws_client(), create_backup_input()) ->
+    {ok, create_backup_output(), tuple()} |
+    {error, any()} |
+    {error, create_backup_errors(), tuple()}.
 create_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_backup(Client, Input, []).
+
+-spec create_backup(aws_client:aws_client(), create_backup_input(), proplists:proplist()) ->
+    {ok, create_backup_output(), tuple()} |
+    {error, any()} |
+    {error, create_backup_errors(), tuple()}.
 create_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBackup">>, Input, Options).
@@ -500,9 +2912,18 @@ create_backup(Client, Input, Options)
 %% provision equal replicated write capacity units to matching secondary
 %% indexes across
 %% your global table.
+-spec create_global_table(aws_client:aws_client(), create_global_table_input()) ->
+    {ok, create_global_table_output(), tuple()} |
+    {error, any()} |
+    {error, create_global_table_errors(), tuple()}.
 create_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_global_table(Client, Input, []).
+
+-spec create_global_table(aws_client:aws_client(), create_global_table_input(), proplists:proplist()) ->
+    {ok, create_global_table_output(), tuple()} |
+    {error, any()} |
+    {error, create_global_table_errors(), tuple()}.
 create_global_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGlobalTable">>, Input, Options).
@@ -528,9 +2949,18 @@ create_global_table(Client, Input, Options)
 %% secondary indexes can be in the `CREATING' state at any given time.
 %%
 %% You can use the `DescribeTable' action to check the table status.
+-spec create_table(aws_client:aws_client(), create_table_input()) ->
+    {ok, create_table_output(), tuple()} |
+    {error, any()} |
+    {error, create_table_errors(), tuple()}.
 create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
+
+-spec create_table(aws_client:aws_client(), create_table_input(), proplists:proplist()) ->
+    {ok, create_table_output(), tuple()} |
+    {error, any()} |
+    {error, create_table_errors(), tuple()}.
 create_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTable">>, Input, Options).
@@ -539,9 +2969,18 @@ create_table(Client, Input, Options)
 %%
 %% You can call `DeleteBackup' at a maximum rate of 10 times per
 %% second.
+-spec delete_backup(aws_client:aws_client(), delete_backup_input()) ->
+    {ok, delete_backup_output(), tuple()} |
+    {error, any()} |
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
+
+-spec delete_backup(aws_client:aws_client(), delete_backup_input(), proplists:proplist()) ->
+    {ok, delete_backup_output(), tuple()} |
+    {error, any()} |
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBackup">>, Input, Options).
@@ -567,9 +3006,18 @@ delete_backup(Client, Input, Options)
 %% If those conditions are met, DynamoDB performs the delete. Otherwise, the
 %% item is not
 %% deleted.
+-spec delete_item(aws_client:aws_client(), delete_item_input()) ->
+    {ok, delete_item_output(), tuple()} |
+    {error, any()} |
+    {error, delete_item_errors(), tuple()}.
 delete_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_item(Client, Input, []).
+
+-spec delete_item(aws_client:aws_client(), delete_item_input(), proplists:proplist()) ->
+    {ok, delete_item_output(), tuple()} |
+    {error, any()} |
+    {error, delete_item_errors(), tuple()}.
 delete_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteItem">>, Input, Options).
@@ -593,9 +3041,18 @@ delete_item(Client, Input, Options)
 %% deleted policy. This is because the policy for your resource might not
 %% have been deleted yet. Wait for a few seconds, and then try the
 %% `GetResourcePolicy' request again.
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input()) ->
+    {ok, delete_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input(), proplists:proplist()) ->
+    {ok, delete_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -630,9 +3087,18 @@ delete_resource_policy(Client, Input, Options)
 %% deleted after 24 hours.
 %%
 %% Use the `DescribeTable' action to check the status of the table.
+-spec delete_table(aws_client:aws_client(), delete_table_input()) ->
+    {ok, delete_table_output(), tuple()} |
+    {error, any()} |
+    {error, delete_table_errors(), tuple()}.
 delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
+
+-spec delete_table(aws_client:aws_client(), delete_table_input(), proplists:proplist()) ->
+    {ok, delete_table_output(), tuple()} |
+    {error, any()} |
+    {error, delete_table_errors(), tuple()}.
 delete_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTable">>, Input, Options).
@@ -641,9 +3107,18 @@ delete_table(Client, Input, Options)
 %%
 %% You can call `DescribeBackup' at a maximum rate of 10 times per
 %% second.
+-spec describe_backup(aws_client:aws_client(), describe_backup_input()) ->
+    {ok, describe_backup_output(), tuple()} |
+    {error, any()} |
+    {error, describe_backup_errors(), tuple()}.
 describe_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backup(Client, Input, []).
+
+-spec describe_backup(aws_client:aws_client(), describe_backup_input(), proplists:proplist()) ->
+    {ok, describe_backup_output(), tuple()} |
+    {error, any()} |
+    {error, describe_backup_errors(), tuple()}.
 describe_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBackup">>, Input, Options).
@@ -669,9 +3144,18 @@ describe_backup(Client, Input, Options)
 %% You can call `DescribeContinuousBackups' at a maximum rate of 10 times
 %% per
 %% second.
+-spec describe_continuous_backups(aws_client:aws_client(), describe_continuous_backups_input()) ->
+    {ok, describe_continuous_backups_output(), tuple()} |
+    {error, any()} |
+    {error, describe_continuous_backups_errors(), tuple()}.
 describe_continuous_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_continuous_backups(Client, Input, []).
+
+-spec describe_continuous_backups(aws_client:aws_client(), describe_continuous_backups_input(), proplists:proplist()) ->
+    {ok, describe_continuous_backups_output(), tuple()} |
+    {error, any()} |
+    {error, describe_continuous_backups_errors(), tuple()}.
 describe_continuous_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContinuousBackups">>, Input, Options).
@@ -679,9 +3163,18 @@ describe_continuous_backups(Client, Input, Options)
 %% @doc Returns information about contributor insights for a given table or
 %% global secondary
 %% index.
+-spec describe_contributor_insights(aws_client:aws_client(), describe_contributor_insights_input()) ->
+    {ok, describe_contributor_insights_output(), tuple()} |
+    {error, any()} |
+    {error, describe_contributor_insights_errors(), tuple()}.
 describe_contributor_insights(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_contributor_insights(Client, Input, []).
+
+-spec describe_contributor_insights(aws_client:aws_client(), describe_contributor_insights_input(), proplists:proplist()) ->
+    {ok, describe_contributor_insights_output(), tuple()} |
+    {error, any()} |
+    {error, describe_contributor_insights_errors(), tuple()}.
 describe_contributor_insights(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContributorInsights">>, Input, Options).
@@ -691,17 +3184,33 @@ describe_contributor_insights(Client, Input, Options)
 %% For more information
 %% on policy permissions, please see Internetwork traffic privacy:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/inter-network-traffic-privacy.html#inter-network-traffic-DescribeEndpoints.
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request()) ->
+    {ok, describe_endpoints_response(), tuple()} |
+    {error, any()}.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
+
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request(), proplists:proplist()) ->
+    {ok, describe_endpoints_response(), tuple()} |
+    {error, any()}.
 describe_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpoints">>, Input, Options).
 
 %% @doc Describes an existing table export.
+-spec describe_export(aws_client:aws_client(), describe_export_input()) ->
+    {ok, describe_export_output(), tuple()} |
+    {error, any()} |
+    {error, describe_export_errors(), tuple()}.
 describe_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export(Client, Input, []).
+
+-spec describe_export(aws_client:aws_client(), describe_export_input(), proplists:proplist()) ->
+    {ok, describe_export_output(), tuple()} |
+    {error, any()} |
+    {error, describe_export_errors(), tuple()}.
 describe_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExport">>, Input, Options).
@@ -724,9 +3233,18 @@ describe_export(Client, Input, Options)
 %% 2019.11.21 (Current), see
 %% Updating global tables:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
+-spec describe_global_table(aws_client:aws_client(), describe_global_table_input()) ->
+    {ok, describe_global_table_output(), tuple()} |
+    {error, any()} |
+    {error, describe_global_table_errors(), tuple()}.
 describe_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table(Client, Input, []).
+
+-spec describe_global_table(aws_client:aws_client(), describe_global_table_input(), proplists:proplist()) ->
+    {ok, describe_global_table_output(), tuple()} |
+    {error, any()} |
+    {error, describe_global_table_errors(), tuple()}.
 describe_global_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalTable">>, Input, Options).
@@ -749,25 +3267,52 @@ describe_global_table(Client, Input, Options)
 %% 2019.11.21 (Current), see
 %% Updating global tables:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
+-spec describe_global_table_settings(aws_client:aws_client(), describe_global_table_settings_input()) ->
+    {ok, describe_global_table_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_global_table_settings_errors(), tuple()}.
 describe_global_table_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table_settings(Client, Input, []).
+
+-spec describe_global_table_settings(aws_client:aws_client(), describe_global_table_settings_input(), proplists:proplist()) ->
+    {ok, describe_global_table_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_global_table_settings_errors(), tuple()}.
 describe_global_table_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalTableSettings">>, Input, Options).
 
 %% @doc Represents the properties of the import.
+-spec describe_import(aws_client:aws_client(), describe_import_input()) ->
+    {ok, describe_import_output(), tuple()} |
+    {error, any()} |
+    {error, describe_import_errors(), tuple()}.
 describe_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_import(Client, Input, []).
+
+-spec describe_import(aws_client:aws_client(), describe_import_input(), proplists:proplist()) ->
+    {ok, describe_import_output(), tuple()} |
+    {error, any()} |
+    {error, describe_import_errors(), tuple()}.
 describe_import(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImport">>, Input, Options).
 
 %% @doc Returns information about the status of Kinesis streaming.
+-spec describe_kinesis_streaming_destination(aws_client:aws_client(), describe_kinesis_streaming_destination_input()) ->
+    {ok, describe_kinesis_streaming_destination_output(), tuple()} |
+    {error, any()} |
+    {error, describe_kinesis_streaming_destination_errors(), tuple()}.
 describe_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_kinesis_streaming_destination(Client, Input, []).
+
+-spec describe_kinesis_streaming_destination(aws_client:aws_client(), describe_kinesis_streaming_destination_input(), proplists:proplist()) ->
+    {ok, describe_kinesis_streaming_destination_output(), tuple()} |
+    {error, any()} |
+    {error, describe_kinesis_streaming_destination_errors(), tuple()}.
 describe_kinesis_streaming_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeKinesisStreamingDestination">>, Input, Options).
@@ -854,9 +3399,18 @@ describe_kinesis_streaming_destination(Client, Input, Options)
 %% throttling errors if you call it more than once in a minute.
 %%
 %% The `DescribeLimits' Request element has no content.
+-spec describe_limits(aws_client:aws_client(), describe_limits_input()) ->
+    {ok, describe_limits_output(), tuple()} |
+    {error, any()} |
+    {error, describe_limits_errors(), tuple()}.
 describe_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_limits(Client, Input, []).
+
+-spec describe_limits(aws_client:aws_client(), describe_limits_input(), proplists:proplist()) ->
+    {ok, describe_limits_output(), tuple()} |
+    {error, any()} |
+    {error, describe_limits_errors(), tuple()}.
 describe_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLimits">>, Input, Options).
@@ -876,9 +3430,18 @@ describe_limits(Client, Input, Options)
 %% for your table might not be available at that moment. Wait for a few
 %% seconds, and
 %% then try the `DescribeTable' request again.
+-spec describe_table(aws_client:aws_client(), describe_table_input()) ->
+    {ok, describe_table_output(), tuple()} |
+    {error, any()} |
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
+
+-spec describe_table(aws_client:aws_client(), describe_table_input(), proplists:proplist()) ->
+    {ok, describe_table_output(), tuple()} |
+    {error, any()} |
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTable">>, Input, Options).
@@ -889,18 +3452,36 @@ describe_table(Client, Input, Options)
 %% This operation only applies to Version 2019.11.21 (Current):
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
 %% of global tables.
+-spec describe_table_replica_auto_scaling(aws_client:aws_client(), describe_table_replica_auto_scaling_input()) ->
+    {ok, describe_table_replica_auto_scaling_output(), tuple()} |
+    {error, any()} |
+    {error, describe_table_replica_auto_scaling_errors(), tuple()}.
 describe_table_replica_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_replica_auto_scaling(Client, Input, []).
+
+-spec describe_table_replica_auto_scaling(aws_client:aws_client(), describe_table_replica_auto_scaling_input(), proplists:proplist()) ->
+    {ok, describe_table_replica_auto_scaling_output(), tuple()} |
+    {error, any()} |
+    {error, describe_table_replica_auto_scaling_errors(), tuple()}.
 describe_table_replica_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTableReplicaAutoScaling">>, Input, Options).
 
 %% @doc Gives a description of the Time to Live (TTL) status on the specified
 %% table.
+-spec describe_time_to_live(aws_client:aws_client(), describe_time_to_live_input()) ->
+    {ok, describe_time_to_live_output(), tuple()} |
+    {error, any()} |
+    {error, describe_time_to_live_errors(), tuple()}.
 describe_time_to_live(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_time_to_live(Client, Input, []).
+
+-spec describe_time_to_live(aws_client:aws_client(), describe_time_to_live_input(), proplists:proplist()) ->
+    {ok, describe_time_to_live_output(), tuple()} |
+    {error, any()} |
+    {error, describe_time_to_live_errors(), tuple()}.
 describe_time_to_live(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTimeToLive">>, Input, Options).
@@ -909,9 +3490,18 @@ describe_time_to_live(Client, Input, Options)
 %%
 %% This is done
 %% without deleting either of the resources.
+-spec disable_kinesis_streaming_destination(aws_client:aws_client(), kinesis_streaming_destination_input()) ->
+    {ok, kinesis_streaming_destination_output(), tuple()} |
+    {error, any()} |
+    {error, disable_kinesis_streaming_destination_errors(), tuple()}.
 disable_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_kinesis_streaming_destination(Client, Input, []).
+
+-spec disable_kinesis_streaming_destination(aws_client:aws_client(), kinesis_streaming_destination_input(), proplists:proplist()) ->
+    {ok, kinesis_streaming_destination_output(), tuple()} |
+    {error, any()} |
+    {error, disable_kinesis_streaming_destination_errors(), tuple()}.
 disable_kinesis_streaming_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableKinesisStreamingDestination">>, Input, Options).
@@ -924,9 +3514,18 @@ disable_kinesis_streaming_destination(Client, Input, Options)
 %% use DescribeKinesisStreamingDestination to check if streaming to the
 %% Kinesis data stream
 %% is ACTIVE.
+-spec enable_kinesis_streaming_destination(aws_client:aws_client(), kinesis_streaming_destination_input()) ->
+    {ok, kinesis_streaming_destination_output(), tuple()} |
+    {error, any()} |
+    {error, enable_kinesis_streaming_destination_errors(), tuple()}.
 enable_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_kinesis_streaming_destination(Client, Input, []).
+
+-spec enable_kinesis_streaming_destination(aws_client:aws_client(), kinesis_streaming_destination_input(), proplists:proplist()) ->
+    {ok, kinesis_streaming_destination_output(), tuple()} |
+    {error, any()} |
+    {error, enable_kinesis_streaming_destination_errors(), tuple()}.
 enable_kinesis_streaming_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableKinesisStreamingDestination">>, Input, Options).
@@ -955,9 +3554,18 @@ enable_kinesis_streaming_destination(Client, Input, Options)
 %% result set. If `NextToken' is present, you need to paginate the result
 %% set and include
 %% `NextToken'.
+-spec execute_statement(aws_client:aws_client(), execute_statement_input()) ->
+    {ok, execute_statement_output(), tuple()} |
+    {error, any()} |
+    {error, execute_statement_errors(), tuple()}.
 execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_statement(Client, Input, []).
+
+-spec execute_statement(aws_client:aws_client(), execute_statement_input(), proplists:proplist()) ->
+    {ok, execute_statement_output(), tuple()} |
+    {error, any()} |
+    {error, execute_statement_errors(), tuple()}.
 execute_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteStatement">>, Input, Options).
@@ -975,9 +3583,18 @@ execute_statement(Client, Input, Options)
 %% manner to `ConditionCheck' in the TransactWriteItems:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transaction-apis.html#transaction-apis-txwriteitems
 %% API.
+-spec execute_transaction(aws_client:aws_client(), execute_transaction_input()) ->
+    {ok, execute_transaction_output(), tuple()} |
+    {error, any()} |
+    {error, execute_transaction_errors(), tuple()}.
 execute_transaction(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_transaction(Client, Input, []).
+
+-spec execute_transaction(aws_client:aws_client(), execute_transaction_input(), proplists:proplist()) ->
+    {ok, execute_transaction_output(), tuple()} |
+    {error, any()} |
+    {error, execute_transaction_errors(), tuple()}.
 execute_transaction(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteTransaction">>, Input, Options).
@@ -988,9 +3605,18 @@ execute_transaction(Client, Input, Options)
 %% enabled, and you can export data from any time within the point in time
 %% recovery
 %% window.
+-spec export_table_to_point_in_time(aws_client:aws_client(), export_table_to_point_in_time_input()) ->
+    {ok, export_table_to_point_in_time_output(), tuple()} |
+    {error, any()} |
+    {error, export_table_to_point_in_time_errors(), tuple()}.
 export_table_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_table_to_point_in_time(Client, Input, []).
+
+-spec export_table_to_point_in_time(aws_client:aws_client(), export_table_to_point_in_time_input(), proplists:proplist()) ->
+    {ok, export_table_to_point_in_time_output(), tuple()} |
+    {error, any()} |
+    {error, export_table_to_point_in_time_errors(), tuple()}.
 export_table_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportTableToPointInTime">>, Input, Options).
@@ -1008,9 +3634,18 @@ export_table_to_point_in_time(Client, Input, Options)
 %% `true'. Although a strongly consistent read might take more time than
 %% an
 %% eventually consistent read, it always returns the last updated value.
+-spec get_item(aws_client:aws_client(), get_item_input()) ->
+    {ok, get_item_output(), tuple()} |
+    {error, any()} |
+    {error, get_item_errors(), tuple()}.
 get_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_item(Client, Input, []).
+
+-spec get_item(aws_client:aws_client(), get_item_input(), proplists:proplist()) ->
+    {ok, get_item_output(), tuple()} |
+    {error, any()} |
+    {error, get_item_errors(), tuple()}.
 get_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetItem">>, Input, Options).
@@ -1050,17 +3685,35 @@ get_item(Client, Input, Options)
 %% policy to all requests to a resource. Policies that you attach while
 %% creating a table using the `CreateTable' request will always be
 %% applied to all requests for that table.
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input()) ->
+    {ok, get_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
+
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input(), proplists:proplist()) ->
+    {ok, get_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
 
 %% @doc Imports table data from an S3 bucket.
+-spec import_table(aws_client:aws_client(), import_table_input()) ->
+    {ok, import_table_output(), tuple()} |
+    {error, any()} |
+    {error, import_table_errors(), tuple()}.
 import_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_table(Client, Input, []).
+
+-spec import_table(aws_client:aws_client(), import_table_input(), proplists:proplist()) ->
+    {ok, import_table_output(), tuple()} |
+    {error, any()} |
+    {error, import_table_errors(), tuple()}.
 import_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportTable">>, Input, Options).
@@ -1084,9 +3737,18 @@ import_table(Client, Input, Options)
 %% Services Backup, use the
 %% Amazon Web Services Backup list API.:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/API_ListBackupJobs.html
+-spec list_backups(aws_client:aws_client(), list_backups_input()) ->
+    {ok, list_backups_output(), tuple()} |
+    {error, any()} |
+    {error, list_backups_errors(), tuple()}.
 list_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_backups(Client, Input, []).
+
+-spec list_backups(aws_client:aws_client(), list_backups_input(), proplists:proplist()) ->
+    {ok, list_backups_output(), tuple()} |
+    {error, any()} |
+    {error, list_backups_errors(), tuple()}.
 list_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBackups">>, Input, Options).
@@ -1094,17 +3756,35 @@ list_backups(Client, Input, Options)
 %% @doc Returns a list of ContributorInsightsSummary for a table and all its
 %% global secondary
 %% indexes.
+-spec list_contributor_insights(aws_client:aws_client(), list_contributor_insights_input()) ->
+    {ok, list_contributor_insights_output(), tuple()} |
+    {error, any()} |
+    {error, list_contributor_insights_errors(), tuple()}.
 list_contributor_insights(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_contributor_insights(Client, Input, []).
+
+-spec list_contributor_insights(aws_client:aws_client(), list_contributor_insights_input(), proplists:proplist()) ->
+    {ok, list_contributor_insights_output(), tuple()} |
+    {error, any()} |
+    {error, list_contributor_insights_errors(), tuple()}.
 list_contributor_insights(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContributorInsights">>, Input, Options).
 
 %% @doc Lists completed exports within the past 90 days.
+-spec list_exports(aws_client:aws_client(), list_exports_input()) ->
+    {ok, list_exports_output(), tuple()} |
+    {error, any()} |
+    {error, list_exports_errors(), tuple()}.
 list_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_exports(Client, Input, []).
+
+-spec list_exports(aws_client:aws_client(), list_exports_input(), proplists:proplist()) ->
+    {ok, list_exports_output(), tuple()} |
+    {error, any()} |
+    {error, list_exports_errors(), tuple()}.
 list_exports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExports">>, Input, Options).
@@ -1127,17 +3807,35 @@ list_exports(Client, Input, Options)
 %% 2019.11.21 (Current), see
 %% Updating global tables:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
+-spec list_global_tables(aws_client:aws_client(), list_global_tables_input()) ->
+    {ok, list_global_tables_output(), tuple()} |
+    {error, any()} |
+    {error, list_global_tables_errors(), tuple()}.
 list_global_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_global_tables(Client, Input, []).
+
+-spec list_global_tables(aws_client:aws_client(), list_global_tables_input(), proplists:proplist()) ->
+    {ok, list_global_tables_output(), tuple()} |
+    {error, any()} |
+    {error, list_global_tables_errors(), tuple()}.
 list_global_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGlobalTables">>, Input, Options).
 
 %% @doc Lists completed imports within the past 90 days.
+-spec list_imports(aws_client:aws_client(), list_imports_input()) ->
+    {ok, list_imports_output(), tuple()} |
+    {error, any()} |
+    {error, list_imports_errors(), tuple()}.
 list_imports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_imports(Client, Input, []).
+
+-spec list_imports(aws_client:aws_client(), list_imports_input(), proplists:proplist()) ->
+    {ok, list_imports_output(), tuple()} |
+    {error, any()} |
+    {error, list_imports_errors(), tuple()}.
 list_imports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImports">>, Input, Options).
@@ -1149,9 +3847,18 @@ list_imports(Client, Input, Options)
 %% output from `ListTables' is paginated, with each page returning a
 %% maximum of
 %% 100 table names.
+-spec list_tables(aws_client:aws_client(), list_tables_input()) ->
+    {ok, list_tables_output(), tuple()} |
+    {error, any()} |
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
+
+-spec list_tables(aws_client:aws_client(), list_tables_input(), proplists:proplist()) ->
+    {ok, list_tables_output(), tuple()} |
+    {error, any()} |
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTables">>, Input, Options).
@@ -1164,9 +3871,18 @@ list_tables(Client, Input, Options)
 %% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html
 %% in the Amazon DynamoDB Developer Guide.
+-spec list_tags_of_resource(aws_client:aws_client(), list_tags_of_resource_input()) ->
+    {ok, list_tags_of_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_of_resource_errors(), tuple()}.
 list_tags_of_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_of_resource(Client, Input, []).
+
+-spec list_tags_of_resource(aws_client:aws_client(), list_tags_of_resource_input(), proplists:proplist()) ->
+    {ok, list_tags_of_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_of_resource_errors(), tuple()}.
 list_tags_of_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsOfResource">>, Input, Options).
@@ -1208,9 +3924,18 @@ list_tags_of_resource(Client, Input, Options)
 %% Items:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html
 %% in the Amazon DynamoDB Developer Guide.
+-spec put_item(aws_client:aws_client(), put_item_input()) ->
+    {ok, put_item_output(), tuple()} |
+    {error, any()} |
+    {error, put_item_errors(), tuple()}.
 put_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_item(Client, Input, []).
+
+-spec put_item(aws_client:aws_client(), put_item_input(), proplists:proplist()) ->
+    {ok, put_item_output(), tuple()} |
+    {error, any()} |
+    {error, put_item_errors(), tuple()}.
 put_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutItem">>, Input, Options).
@@ -1238,9 +3963,18 @@ put_item(Client, Input, Options)
 %% query, and the metadata for your policy or table might not be available at
 %% that moment. Wait for a few seconds, and then try the
 %% `GetResourcePolicy' request again.
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_input()) ->
+    {ok, put_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_input(), proplists:proplist()) ->
+    {ok, put_resource_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -1323,9 +4057,18 @@ put_resource_policy(Client, Input, Options)
 %% reads only, so
 %% do not specify `ConsistentRead' when querying a global secondary
 %% index.
+-spec query(aws_client:aws_client(), query_input()) ->
+    {ok, query_output(), tuple()} |
+    {error, any()} |
+    {error, query_errors(), tuple()}.
 query(Client, Input)
   when is_map(Client), is_map(Input) ->
     query(Client, Input, []).
+
+-spec query(aws_client:aws_client(), query_input(), proplists:proplist()) ->
+    {ok, query_output(), tuple()} |
+    {error, any()} |
+    {error, query_errors(), tuple()}.
 query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Query">>, Input, Options).
@@ -1352,9 +4095,18 @@ query(Client, Input, Options)
 %% Stream settings
 %%
 %% Time to Live (TTL) settings
+-spec restore_table_from_backup(aws_client:aws_client(), restore_table_from_backup_input()) ->
+    {ok, restore_table_from_backup_output(), tuple()} |
+    {error, any()} |
+    {error, restore_table_from_backup_errors(), tuple()}.
 restore_table_from_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_backup(Client, Input, []).
+
+-spec restore_table_from_backup(aws_client:aws_client(), restore_table_from_backup_input(), proplists:proplist()) ->
+    {ok, restore_table_from_backup_output(), tuple()} |
+    {error, any()} |
+    {error, restore_table_from_backup_errors(), tuple()}.
 restore_table_from_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreTableFromBackup">>, Input, Options).
@@ -1402,9 +4154,18 @@ restore_table_from_backup(Client, Input, Options)
 %% Time to Live (TTL) settings
 %%
 %% Point in time recovery settings
+-spec restore_table_to_point_in_time(aws_client:aws_client(), restore_table_to_point_in_time_input()) ->
+    {ok, restore_table_to_point_in_time_output(), tuple()} |
+    {error, any()} |
+    {error, restore_table_to_point_in_time_errors(), tuple()}.
 restore_table_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_to_point_in_time(Client, Input, []).
+
+-spec restore_table_to_point_in_time(aws_client:aws_client(), restore_table_to_point_in_time_input(), proplists:proplist()) ->
+    {ok, restore_table_to_point_in_time_output(), tuple()} |
+    {error, any()} |
+    {error, restore_table_to_point_in_time_errors(), tuple()}.
 restore_table_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreTableToPointInTime">>, Input, Options).
@@ -1477,9 +4238,18 @@ restore_table_to_point_in_time(Client, Input, Options)
 %% guarantee that all reads in a scan
 %% see a consistent snapshot of the table when the scan operation was
 %% requested.
+-spec scan(aws_client:aws_client(), scan_input()) ->
+    {ok, scan_output(), tuple()} |
+    {error, any()} |
+    {error, scan_errors(), tuple()}.
 scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     scan(Client, Input, []).
+
+-spec scan(aws_client:aws_client(), scan_input(), proplists:proplist()) ->
+    {ok, scan_output(), tuple()} |
+    {error, any()} |
+    {error, scan_errors(), tuple()}.
 scan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Scan">>, Input, Options).
@@ -1496,9 +4266,18 @@ scan(Client, Input, Options)
 %% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html
 %% in the Amazon DynamoDB Developer Guide.
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1532,9 +4311,18 @@ tag_resource(Client, Input, Options)
 %% There is a user error, such as an invalid data format.
 %%
 %% The aggregate size of the items in the transaction exceeded 4 MB.
+-spec transact_get_items(aws_client:aws_client(), transact_get_items_input()) ->
+    {ok, transact_get_items_output(), tuple()} |
+    {error, any()} |
+    {error, transact_get_items_errors(), tuple()}.
 transact_get_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     transact_get_items(Client, Input, []).
+
+-spec transact_get_items(aws_client:aws_client(), transact_get_items_input(), proplists:proplist()) ->
+    {ok, transact_get_items_output(), tuple()} |
+    {error, any()} |
+    {error, transact_get_items_errors(), tuple()}.
 transact_get_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TransactGetItems">>, Input, Options).
@@ -1619,9 +4407,18 @@ transact_get_items(Client, Input, Options)
 %% The aggregate size of the items in the transaction exceeds 4 MB.
 %%
 %% There is a user error, such as an invalid data format.
+-spec transact_write_items(aws_client:aws_client(), transact_write_items_input()) ->
+    {ok, transact_write_items_output(), tuple()} |
+    {error, any()} |
+    {error, transact_write_items_errors(), tuple()}.
 transact_write_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     transact_write_items(Client, Input, []).
+
+-spec transact_write_items(aws_client:aws_client(), transact_write_items_input(), proplists:proplist()) ->
+    {ok, transact_write_items_output(), tuple()} |
+    {error, any()} |
+    {error, transact_write_items_errors(), tuple()}.
 transact_write_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TransactWriteItems">>, Input, Options).
@@ -1634,9 +4431,18 @@ transact_write_items(Client, Input, Options)
 %% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html
 %% in the Amazon DynamoDB Developer Guide.
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1660,9 +4466,18 @@ untag_resource(Client, Input, Options)
 %% `LatestRestorableDateTime' is typically 5 minutes before the current
 %% time.
 %% You can restore your table to any point in time during the last 35 days.
+-spec update_continuous_backups(aws_client:aws_client(), update_continuous_backups_input()) ->
+    {ok, update_continuous_backups_output(), tuple()} |
+    {error, any()} |
+    {error, update_continuous_backups_errors(), tuple()}.
 update_continuous_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_continuous_backups(Client, Input, []).
+
+-spec update_continuous_backups(aws_client:aws_client(), update_continuous_backups_input(), proplists:proplist()) ->
+    {ok, update_continuous_backups_output(), tuple()} |
+    {error, any()} |
+    {error, update_continuous_backups_errors(), tuple()}.
 update_continuous_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContinuousBackups">>, Input, Options).
@@ -1682,9 +4497,18 @@ update_continuous_backups(Client, Input, Options)
 %% customer managed key, you should not enable CloudWatch Contributor
 %% Insights for DynamoDB
 %% for this table.
+-spec update_contributor_insights(aws_client:aws_client(), update_contributor_insights_input()) ->
+    {ok, update_contributor_insights_output(), tuple()} |
+    {error, any()} |
+    {error, update_contributor_insights_errors(), tuple()}.
 update_contributor_insights(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_contributor_insights(Client, Input, []).
+
+-spec update_contributor_insights(aws_client:aws_client(), update_contributor_insights_input(), proplists:proplist()) ->
+    {ok, update_contributor_insights_output(), tuple()} |
+    {error, any()} |
+    {error, update_contributor_insights_errors(), tuple()}.
 update_contributor_insights(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContributorInsights">>, Input, Options).
@@ -1742,9 +4566,18 @@ update_contributor_insights(Client, Input, Options)
 %% The global secondary indexes must have the same provisioned and maximum
 %% write
 %% capacity units.
+-spec update_global_table(aws_client:aws_client(), update_global_table_input()) ->
+    {ok, update_global_table_output(), tuple()} |
+    {error, any()} |
+    {error, update_global_table_errors(), tuple()}.
 update_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_global_table(Client, Input, []).
+
+-spec update_global_table(aws_client:aws_client(), update_global_table_input(), proplists:proplist()) ->
+    {ok, update_global_table_output(), tuple()} |
+    {error, any()} |
+    {error, update_global_table_errors(), tuple()}.
 update_global_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGlobalTable">>, Input, Options).
@@ -1767,9 +4600,18 @@ update_global_table(Client, Input, Options)
 %% 2019.11.21 (Current), see
 %% Updating global tables:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
+-spec update_global_table_settings(aws_client:aws_client(), update_global_table_settings_input()) ->
+    {ok, update_global_table_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_global_table_settings_errors(), tuple()}.
 update_global_table_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_global_table_settings(Client, Input, []).
+
+-spec update_global_table_settings(aws_client:aws_client(), update_global_table_settings_input(), proplists:proplist()) ->
+    {ok, update_global_table_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_global_table_settings_errors(), tuple()}.
 update_global_table_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGlobalTableSettings">>, Input, Options).
@@ -1788,17 +4630,35 @@ update_global_table_settings(Client, Input, Options)
 %% You can also return the item's attribute values in the same
 %% `UpdateItem'
 %% operation using the `ReturnValues' parameter.
+-spec update_item(aws_client:aws_client(), update_item_input()) ->
+    {ok, update_item_output(), tuple()} |
+    {error, any()} |
+    {error, update_item_errors(), tuple()}.
 update_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_item(Client, Input, []).
+
+-spec update_item(aws_client:aws_client(), update_item_input(), proplists:proplist()) ->
+    {ok, update_item_output(), tuple()} |
+    {error, any()} |
+    {error, update_item_errors(), tuple()}.
 update_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateItem">>, Input, Options).
 
 %% @doc The command to update the Kinesis stream destination.
+-spec update_kinesis_streaming_destination(aws_client:aws_client(), update_kinesis_streaming_destination_input()) ->
+    {ok, update_kinesis_streaming_destination_output(), tuple()} |
+    {error, any()} |
+    {error, update_kinesis_streaming_destination_errors(), tuple()}.
 update_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_kinesis_streaming_destination(Client, Input, []).
+
+-spec update_kinesis_streaming_destination(aws_client:aws_client(), update_kinesis_streaming_destination_input(), proplists:proplist()) ->
+    {ok, update_kinesis_streaming_destination_output(), tuple()} |
+    {error, any()} |
+    {error, update_kinesis_streaming_destination_errors(), tuple()}.
 update_kinesis_streaming_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateKinesisStreamingDestination">>, Input, Options).
@@ -1827,9 +4687,18 @@ update_kinesis_streaming_destination(Client, Input, Options)
 %% `UPDATING', you can't issue another `UpdateTable' request.
 %% When the table returns to the `ACTIVE' state, the `UpdateTable'
 %% operation is complete.
+-spec update_table(aws_client:aws_client(), update_table_input()) ->
+    {ok, update_table_output(), tuple()} |
+    {error, any()} |
+    {error, update_table_errors(), tuple()}.
 update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
+
+-spec update_table(aws_client:aws_client(), update_table_input(), proplists:proplist()) ->
+    {ok, update_table_output(), tuple()} |
+    {error, any()} |
+    {error, update_table_errors(), tuple()}.
 update_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTable">>, Input, Options).
@@ -1839,9 +4708,18 @@ update_table(Client, Input, Options)
 %% This operation only applies to Version 2019.11.21 (Current):
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
 %% of global tables.
+-spec update_table_replica_auto_scaling(aws_client:aws_client(), update_table_replica_auto_scaling_input()) ->
+    {ok, update_table_replica_auto_scaling_output(), tuple()} |
+    {error, any()} |
+    {error, update_table_replica_auto_scaling_errors(), tuple()}.
 update_table_replica_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table_replica_auto_scaling(Client, Input, []).
+
+-spec update_table_replica_auto_scaling(aws_client:aws_client(), update_table_replica_auto_scaling_input(), proplists:proplist()) ->
+    {ok, update_table_replica_auto_scaling_output(), tuple()} |
+    {error, any()} |
+    {error, update_table_replica_auto_scaling_errors(), tuple()}.
 update_table_replica_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTableReplicaAutoScaling">>, Input, Options).
@@ -1889,9 +4767,18 @@ update_table_replica_auto_scaling(Client, Input, Options)
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html
 %% in the
 %% Amazon DynamoDB Developer Guide.
+-spec update_time_to_live(aws_client:aws_client(), update_time_to_live_input()) ->
+    {ok, update_time_to_live_output(), tuple()} |
+    {error, any()} |
+    {error, update_time_to_live_errors(), tuple()}.
 update_time_to_live(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_time_to_live(Client, Input, []).
+
+-spec update_time_to_live(aws_client:aws_client(), update_time_to_live_input(), proplists:proplist()) ->
+    {ok, update_time_to_live_output(), tuple()} |
+    {error, any()} |
+    {error, update_time_to_live_errors(), tuple()}.
 update_time_to_live(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTimeToLive">>, Input, Options).

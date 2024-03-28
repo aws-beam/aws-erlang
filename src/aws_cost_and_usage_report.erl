@@ -42,6 +42,192 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% delete_report_definition_request() :: #{
+%%   <<"ReportName">> := string()
+%% }
+-type delete_report_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_report_definition_response() :: #{
+%%   <<"ResponseMessage">> => string()
+%% }
+-type delete_report_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_report_definitions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_report_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_report_definitions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReportDefinitions">> => list(report_definition()())
+%% }
+-type describe_report_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_report_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_report_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ReportName">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_report_definition_request() :: #{
+%%   <<"ReportDefinition">> := report_definition(),
+%%   <<"ReportName">> := string()
+%% }
+-type modify_report_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_report_definition_response() :: #{
+
+%% }
+-type modify_report_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_report_definition_request() :: #{
+%%   <<"ReportDefinition">> := report_definition(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type put_report_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_report_definition_response() :: #{
+
+%% }
+-type put_report_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% report_definition() :: #{
+%%   <<"AdditionalArtifacts">> => list(list(any())()),
+%%   <<"AdditionalSchemaElements">> => list(list(any())()),
+%%   <<"BillingViewArn">> => string(),
+%%   <<"Compression">> => list(any()),
+%%   <<"Format">> => list(any()),
+%%   <<"RefreshClosedReports">> => boolean(),
+%%   <<"ReportName">> => string(),
+%%   <<"ReportStatus">> => report_status(),
+%%   <<"ReportVersioning">> => list(any()),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"S3Region">> => list(any()),
+%%   <<"TimeUnit">> => list(any())
+%% }
+-type report_definition() :: #{binary() => any()}.
+
+%% Example:
+%% report_limit_reached_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type report_limit_reached_exception() :: #{binary() => any()}.
+
+%% Example:
+%% report_status() :: #{
+%%   <<"lastDelivery">> => string(),
+%%   <<"lastStatus">> => list(any())
+%% }
+-type report_status() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ReportName">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ReportName">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+-type delete_report_definition_errors() ::
+    validation_exception() | 
+    internal_error_exception().
+
+-type describe_report_definitions_errors() ::
+    internal_error_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_error_exception().
+
+-type modify_report_definition_errors() ::
+    validation_exception() | 
+    internal_error_exception().
+
+-type put_report_definition_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    report_limit_reached_exception() | 
+    internal_error_exception() | 
+    duplicate_report_name_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_error_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_error_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -50,58 +236,121 @@
 %%
 %% Any tags associated with the report are also
 %% deleted.
+-spec delete_report_definition(aws_client:aws_client(), delete_report_definition_request()) ->
+    {ok, delete_report_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_report_definition_errors(), tuple()}.
 delete_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_report_definition(Client, Input, []).
+
+-spec delete_report_definition(aws_client:aws_client(), delete_report_definition_request(), proplists:proplist()) ->
+    {ok, delete_report_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_report_definition_errors(), tuple()}.
 delete_report_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReportDefinition">>, Input, Options).
 
 %% @doc Lists the Amazon Web Services Cost and Usage Report available to this
 %% account.
+-spec describe_report_definitions(aws_client:aws_client(), describe_report_definitions_request()) ->
+    {ok, describe_report_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_report_definitions_errors(), tuple()}.
 describe_report_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_report_definitions(Client, Input, []).
+
+-spec describe_report_definitions(aws_client:aws_client(), describe_report_definitions_request(), proplists:proplist()) ->
+    {ok, describe_report_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_report_definitions_errors(), tuple()}.
 describe_report_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReportDefinitions">>, Input, Options).
 
 %% @doc Lists the tags associated with the specified report definition.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Allows you to programmatically update your report preferences.
+-spec modify_report_definition(aws_client:aws_client(), modify_report_definition_request()) ->
+    {ok, modify_report_definition_response(), tuple()} |
+    {error, any()} |
+    {error, modify_report_definition_errors(), tuple()}.
 modify_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_report_definition(Client, Input, []).
+
+-spec modify_report_definition(aws_client:aws_client(), modify_report_definition_request(), proplists:proplist()) ->
+    {ok, modify_report_definition_response(), tuple()} |
+    {error, any()} |
+    {error, modify_report_definition_errors(), tuple()}.
 modify_report_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReportDefinition">>, Input, Options).
 
 %% @doc Creates a new report using the description that you provide.
+-spec put_report_definition(aws_client:aws_client(), put_report_definition_request()) ->
+    {ok, put_report_definition_response(), tuple()} |
+    {error, any()} |
+    {error, put_report_definition_errors(), tuple()}.
 put_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_report_definition(Client, Input, []).
+
+-spec put_report_definition(aws_client:aws_client(), put_report_definition_request(), proplists:proplist()) ->
+    {ok, put_report_definition_response(), tuple()} |
+    {error, any()} |
+    {error, put_report_definition_errors(), tuple()}.
 put_report_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutReportDefinition">>, Input, Options).
 
 %% @doc Associates a set of tags with a report definition.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Disassociates a set of tags from a report definition.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

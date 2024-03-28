@@ -50,6 +50,811 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% cancel_job_request() :: #{}
+-type cancel_job_request() :: #{}.
+
+%% Example:
+%% delete_preset_response() :: #{}
+-type delete_preset_response() :: #{}.
+
+
+%% Example:
+%% list_pipelines_response() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"Pipelines">> => list(pipeline()())
+%% }
+-type list_pipelines_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_playlist() :: #{
+%%   <<"Format">> => string(),
+%%   <<"HlsContentProtection">> => hls_content_protection(),
+%%   <<"Name">> => string(),
+%%   <<"OutputKeys">> => list(string()()),
+%%   <<"PlayReadyDrm">> => play_ready_drm()
+%% }
+-type create_job_playlist() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline(),
+%%   <<"Warnings">> => list(warning()())
+%% }
+-type update_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_response() :: #{
+%%   <<"Job">> => job()
+%% }
+-type create_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipelines_request() :: #{
+%%   <<"Ascending">> => string(),
+%%   <<"PageToken">> => string()
+%% }
+-type list_pipelines_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_preset_request() :: #{
+%%   <<"Audio">> => audio_parameters(),
+%%   <<"Container">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Thumbnails">> => thumbnails(),
+%%   <<"Video">> => video_parameters()
+%% }
+-type create_preset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% captions() :: #{
+%%   <<"CaptionFormats">> => list(caption_format()()),
+%%   <<"CaptionSources">> => list(caption_source()()),
+%%   <<"MergePolicy">> => string()
+%% }
+-type captions() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_presets_request() :: #{
+%%   <<"Ascending">> => string(),
+%%   <<"PageToken">> => string()
+%% }
+-type list_presets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline(),
+%%   <<"Warnings">> => list(warning()())
+%% }
+-type create_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_role_request() :: #{
+%%   <<"InputBucket">> := string(),
+%%   <<"OutputBucket">> := string(),
+%%   <<"Role">> := string(),
+%%   <<"Topics">> := list(string()())
+%% }
+-type test_role_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_captions() :: #{
+%%   <<"CaptionSources">> => list(caption_source()()),
+%%   <<"MergePolicy">> => string()
+%% }
+-type input_captions() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline(),
+%%   <<"Warnings">> => list(warning()())
+%% }
+-type read_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AwsKmsKeyArn">> => string(),
+%%   <<"ContentConfig">> => pipeline_output_config(),
+%%   <<"Id">> => string(),
+%%   <<"InputBucket">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Notifications">> => notifications(),
+%%   <<"OutputBucket">> => string(),
+%%   <<"Role">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"ThumbnailConfig">> => pipeline_output_config()
+%% }
+-type pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_job_response() :: #{
+%%   <<"Job">> => job()
+%% }
+-type read_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% read_pipeline_request() :: #{}
+-type read_pipeline_request() :: #{}.
+
+
+%% Example:
+%% list_jobs_by_pipeline_response() :: #{
+%%   <<"Jobs">> => list(job()()),
+%%   <<"NextPageToken">> => string()
+%% }
+-type list_jobs_by_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_request() :: #{
+%%   <<"Input">> => job_input(),
+%%   <<"Inputs">> => list(job_input()()),
+%%   <<"Output">> => create_job_output(),
+%%   <<"OutputKeyPrefix">> => string(),
+%%   <<"Outputs">> => list(create_job_output()()),
+%%   <<"PipelineId">> := string(),
+%%   <<"Playlists">> => list(create_job_playlist()()),
+%%   <<"UserMetadata">> => map()
+%% }
+-type create_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_preset_response() :: #{
+%%   <<"Preset">> => preset()
+%% }
+-type read_preset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_output() :: #{
+%%   <<"AlbumArt">> => job_album_art(),
+%%   <<"AppliedColorSpaceConversion">> => string(),
+%%   <<"Captions">> => captions(),
+%%   <<"Composition">> => list(clip()()),
+%%   <<"Duration">> => float(),
+%%   <<"DurationMillis">> => float(),
+%%   <<"Encryption">> => encryption(),
+%%   <<"FileSize">> => float(),
+%%   <<"FrameRate">> => string(),
+%%   <<"Height">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"PresetId">> => string(),
+%%   <<"Rotate">> => string(),
+%%   <<"SegmentDuration">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StatusDetail">> => string(),
+%%   <<"ThumbnailEncryption">> => encryption(),
+%%   <<"ThumbnailPattern">> => string(),
+%%   <<"Watermarks">> => list(job_watermark()()),
+%%   <<"Width">> => integer()
+%% }
+-type job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipeline_notifications_response() :: #{
+%%   <<"Pipeline">> => pipeline()
+%% }
+-type update_pipeline_notifications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% clip() :: #{
+%%   <<"TimeSpan">> => time_span()
+%% }
+-type clip() :: #{binary() => any()}.
+
+
+%% Example:
+%% detected_properties() :: #{
+%%   <<"DurationMillis">> => float(),
+%%   <<"FileSize">> => float(),
+%%   <<"FrameRate">> => string(),
+%%   <<"Height">> => integer(),
+%%   <<"Width">> => integer()
+%% }
+-type detected_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_content_protection() :: #{
+%%   <<"InitializationVector">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"KeyMd5">> => string(),
+%%   <<"KeyStoragePolicy">> => string(),
+%%   <<"LicenseAcquisitionUrl">> => string(),
+%%   <<"Method">> => string()
+%% }
+-type hls_content_protection() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pipeline_request() :: #{
+%%   <<"AwsKmsKeyArn">> => string(),
+%%   <<"ContentConfig">> => pipeline_output_config(),
+%%   <<"InputBucket">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Notifications">> => notifications(),
+%%   <<"OutputBucket">> => string(),
+%%   <<"Role">> := string(),
+%%   <<"ThumbnailConfig">> => pipeline_output_config()
+%% }
+-type create_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipeline_request() :: #{
+%%   <<"AwsKmsKeyArn">> => string(),
+%%   <<"ContentConfig">> => pipeline_output_config(),
+%%   <<"InputBucket">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Notifications">> => notifications(),
+%%   <<"Role">> => string(),
+%%   <<"ThumbnailConfig">> => pipeline_output_config()
+%% }
+-type update_pipeline_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_request() :: #{}
+-type delete_pipeline_request() :: #{}.
+
+
+%% Example:
+%% artwork() :: #{
+%%   <<"AlbumArtFormat">> => string(),
+%%   <<"Encryption">> => encryption(),
+%%   <<"InputKey">> => string(),
+%%   <<"MaxHeight">> => string(),
+%%   <<"MaxWidth">> => string(),
+%%   <<"PaddingPolicy">> => string(),
+%%   <<"SizingPolicy">> => string()
+%% }
+-type artwork() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_by_status_response() :: #{
+%%   <<"Jobs">> => list(job()()),
+%%   <<"NextPageToken">> => string()
+%% }
+-type list_jobs_by_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_parameters() :: #{
+%%   <<"AspectRatio">> => string(),
+%%   <<"BitRate">> => string(),
+%%   <<"Codec">> => string(),
+%%   <<"CodecOptions">> => map(),
+%%   <<"DisplayAspectRatio">> => string(),
+%%   <<"FixedGOP">> => string(),
+%%   <<"FrameRate">> => string(),
+%%   <<"KeyframesMaxDist">> => string(),
+%%   <<"MaxFrameRate">> => string(),
+%%   <<"MaxHeight">> => string(),
+%%   <<"MaxWidth">> => string(),
+%%   <<"PaddingPolicy">> => string(),
+%%   <<"Resolution">> => string(),
+%%   <<"SizingPolicy">> => string(),
+%%   <<"Watermarks">> => list(preset_watermark()())
+%% }
+-type video_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_by_status_request() :: #{
+%%   <<"Ascending">> => string(),
+%%   <<"PageToken">> => string()
+%% }
+-type list_jobs_by_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption() :: #{
+%%   <<"InitializationVector">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"KeyMd5">> => string(),
+%%   <<"Mode">> => string()
+%% }
+-type encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_output_config() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Permissions">> => list(permission()()),
+%%   <<"StorageClass">> => string()
+%% }
+-type pipeline_output_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_parameters() :: #{
+%%   <<"AudioPackingMode">> => string(),
+%%   <<"BitRate">> => string(),
+%%   <<"Channels">> => string(),
+%%   <<"Codec">> => string(),
+%%   <<"CodecOptions">> => audio_codec_options(),
+%%   <<"SampleRate">> => string()
+%% }
+-type audio_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipeline_status_request() :: #{
+%%   <<"Status">> := string()
+%% }
+-type update_pipeline_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_presets_response() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"Presets">> => list(preset()())
+%% }
+-type list_presets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_input() :: #{
+%%   <<"AspectRatio">> => string(),
+%%   <<"Container">> => string(),
+%%   <<"DetectedProperties">> => detected_properties(),
+%%   <<"Encryption">> => encryption(),
+%%   <<"FrameRate">> => string(),
+%%   <<"InputCaptions">> => input_captions(),
+%%   <<"Interlaced">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"Resolution">> => string(),
+%%   <<"TimeSpan">> => time_span()
+%% }
+-type job_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_preset_request() :: #{}
+-type delete_preset_request() :: #{}.
+
+
+%% Example:
+%% preset_watermark() :: #{
+%%   <<"HorizontalAlign">> => string(),
+%%   <<"HorizontalOffset">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MaxHeight">> => string(),
+%%   <<"MaxWidth">> => string(),
+%%   <<"Opacity">> => string(),
+%%   <<"SizingPolicy">> => string(),
+%%   <<"Target">> => string(),
+%%   <<"VerticalAlign">> => string(),
+%%   <<"VerticalOffset">> => string()
+%% }
+-type preset_watermark() :: #{binary() => any()}.
+
+
+%% Example:
+%% incompatible_version_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type incompatible_version_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% notifications() :: #{
+%%   <<"Completed">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"Progressing">> => string(),
+%%   <<"Warning">> => string()
+%% }
+-type notifications() :: #{binary() => any()}.
+
+
+%% Example:
+%% timing() :: #{
+%%   <<"FinishTimeMillis">> => float(),
+%%   <<"StartTimeMillis">> => float(),
+%%   <<"SubmitTimeMillis">> => float()
+%% }
+-type timing() :: #{binary() => any()}.
+
+%% Example:
+%% read_preset_request() :: #{}
+-type read_preset_request() :: #{}.
+
+
+%% Example:
+%% warning() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type warning() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% caption_format() :: #{
+%%   <<"Encryption">> => encryption(),
+%%   <<"Format">> => string(),
+%%   <<"Pattern">> => string()
+%% }
+-type caption_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_codec_options() :: #{
+%%   <<"BitDepth">> => string(),
+%%   <<"BitOrder">> => string(),
+%%   <<"Profile">> => string(),
+%%   <<"Signed">> => string()
+%% }
+-type audio_codec_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_album_art() :: #{
+%%   <<"Artwork">> => list(artwork()()),
+%%   <<"MergePolicy">> => string()
+%% }
+-type job_album_art() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_watermark() :: #{
+%%   <<"Encryption">> => encryption(),
+%%   <<"InputKey">> => string(),
+%%   <<"PresetWatermarkId">> => string()
+%% }
+-type job_watermark() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% job() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Input">> => job_input(),
+%%   <<"Inputs">> => list(job_input()()),
+%%   <<"Output">> => job_output(),
+%%   <<"OutputKeyPrefix">> => string(),
+%%   <<"Outputs">> => list(job_output()()),
+%%   <<"PipelineId">> => string(),
+%%   <<"Playlists">> => list(playlist()()),
+%%   <<"Status">> => string(),
+%%   <<"Timing">> => timing(),
+%%   <<"UserMetadata">> => map()
+%% }
+-type job() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipeline_status_response() :: #{
+%%   <<"Pipeline">> => pipeline()
+%% }
+-type update_pipeline_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% read_job_request() :: #{}
+-type read_job_request() :: #{}.
+
+
+%% Example:
+%% thumbnails() :: #{
+%%   <<"AspectRatio">> => string(),
+%%   <<"Format">> => string(),
+%%   <<"Interval">> => string(),
+%%   <<"MaxHeight">> => string(),
+%%   <<"MaxWidth">> => string(),
+%%   <<"PaddingPolicy">> => string(),
+%%   <<"Resolution">> => string(),
+%%   <<"SizingPolicy">> => string()
+%% }
+-type thumbnails() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% caption_source() :: #{
+%%   <<"Encryption">> => encryption(),
+%%   <<"Key">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"Language">> => string(),
+%%   <<"TimeOffset">> => string()
+%% }
+-type caption_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_by_pipeline_request() :: #{
+%%   <<"Ascending">> => string(),
+%%   <<"PageToken">> => string()
+%% }
+-type list_jobs_by_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_preset_response() :: #{
+%%   <<"Preset">> => preset(),
+%%   <<"Warning">> => string()
+%% }
+-type create_preset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_output() :: #{
+%%   <<"AlbumArt">> => job_album_art(),
+%%   <<"Captions">> => captions(),
+%%   <<"Composition">> => list(clip()()),
+%%   <<"Encryption">> => encryption(),
+%%   <<"Key">> => string(),
+%%   <<"PresetId">> => string(),
+%%   <<"Rotate">> => string(),
+%%   <<"SegmentDuration">> => string(),
+%%   <<"ThumbnailEncryption">> => encryption(),
+%%   <<"ThumbnailPattern">> => string(),
+%%   <<"Watermarks">> => list(job_watermark()())
+%% }
+-type create_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% play_ready_drm() :: #{
+%%   <<"Format">> => string(),
+%%   <<"InitializationVector">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"KeyId">> => string(),
+%%   <<"KeyMd5">> => string(),
+%%   <<"LicenseAcquisitionUrl">> => string()
+%% }
+-type play_ready_drm() :: #{binary() => any()}.
+
+
+%% Example:
+%% playlist() :: #{
+%%   <<"Format">> => string(),
+%%   <<"HlsContentProtection">> => hls_content_protection(),
+%%   <<"Name">> => string(),
+%%   <<"OutputKeys">> => list(string()()),
+%%   <<"PlayReadyDrm">> => play_ready_drm(),
+%%   <<"Status">> => string(),
+%%   <<"StatusDetail">> => string()
+%% }
+-type playlist() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_job_response() :: #{}
+-type cancel_job_response() :: #{}.
+
+
+%% Example:
+%% preset() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Audio">> => audio_parameters(),
+%%   <<"Container">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Thumbnails">> => thumbnails(),
+%%   <<"Type">> => string(),
+%%   <<"Video">> => video_parameters()
+%% }
+-type preset() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_role_response() :: #{
+%%   <<"Messages">> => list(string()()),
+%%   <<"Success">> => string()
+%% }
+-type test_role_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_span() :: #{
+%%   <<"Duration">> => string(),
+%%   <<"StartTime">> => string()
+%% }
+-type time_span() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission() :: #{
+%%   <<"Access">> => list(string()()),
+%%   <<"Grantee">> => string(),
+%%   <<"GranteeType">> => string()
+%% }
+-type permission() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipeline_notifications_request() :: #{
+%%   <<"Notifications">> := notifications()
+%% }
+-type update_pipeline_notifications_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_response() :: #{}
+-type delete_pipeline_response() :: #{}.
+
+-type cancel_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type create_job_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_pipeline_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type create_preset_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    internal_service_exception().
+
+-type delete_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type delete_preset_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_jobs_by_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_jobs_by_status_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_pipelines_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    internal_service_exception().
+
+-type list_presets_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    internal_service_exception().
+
+-type read_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type read_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type read_preset_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type test_role_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type update_pipeline_notifications_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
+-type update_pipeline_status_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    incompatible_version_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    resource_in_use_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -61,8 +866,17 @@
 %% pipeline from starting to process a job while you're getting the job
 %% identifier, use
 %% `UpdatePipelineStatus' to temporarily pause the pipeline.
+-spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request()) ->
+    {ok, cancel_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
+
+-spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
+    {ok, cancel_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/jobs/", aws_util:encode_uri(Id), ""],
@@ -94,8 +908,17 @@ cancel_job(Client, Id, Input0, Options0) ->
 %% Kindle Fire and another output for the Apple iPhone 4s), you currently
 %% must use the Elastic Transcoder API to
 %% list the jobs (as opposed to the AWS Console).
+-spec create_job(aws_client:aws_client(), create_job_request()) ->
+    {ok, create_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input) ->
     create_job(Client, Input, []).
+
+-spec create_job(aws_client:aws_client(), create_job_request(), proplists:proplist()) ->
+    {ok, create_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_job_errors(), tuple()}.
 create_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/jobs"],
@@ -120,8 +943,17 @@ create_job(Client, Input0, Options0) ->
 
 %% @doc The CreatePipeline operation creates a pipeline with settings that
 %% you specify.
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request()) ->
+    {ok, create_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
+
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request(), proplists:proplist()) ->
+    {ok, create_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines"],
@@ -168,8 +1000,17 @@ create_pipeline(Client, Input0, Options0) ->
 %% Telecommunication Union publication Recommendation ITU-T H.264: Advanced
 %% video coding
 %% for generic audiovisual services.
+-spec create_preset(aws_client:aws_client(), create_preset_request()) ->
+    {ok, create_preset_response(), tuple()} |
+    {error, any()} |
+    {error, create_preset_errors(), tuple()}.
 create_preset(Client, Input) ->
     create_preset(Client, Input, []).
+
+-spec create_preset(aws_client:aws_client(), create_preset_request(), proplists:proplist()) ->
+    {ok, create_preset_response(), tuple()} |
+    {error, any()} |
+    {error, create_preset_errors(), tuple()}.
 create_preset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/presets"],
@@ -199,8 +1040,17 @@ create_preset(Client, Input0, Options0) ->
 %% (doesn't contain any active jobs). If the pipeline is currently in
 %% use,
 %% `DeletePipeline' returns an error.
+-spec delete_pipeline(aws_client:aws_client(), binary() | list(), delete_pipeline_request()) ->
+    {ok, delete_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Id, Input) ->
     delete_pipeline(Client, Id, Input, []).
+
+-spec delete_pipeline(aws_client:aws_client(), binary() | list(), delete_pipeline_request(), proplists:proplist()) ->
+    {ok, delete_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
@@ -228,8 +1078,17 @@ delete_pipeline(Client, Id, Input0, Options0) ->
 %%
 %% You can't delete the default presets that are included with Elastic
 %% Transcoder.
+-spec delete_preset(aws_client:aws_client(), binary() | list(), delete_preset_request()) ->
+    {ok, delete_preset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_preset_errors(), tuple()}.
 delete_preset(Client, Id, Input) ->
     delete_preset(Client, Id, Input, []).
+
+-spec delete_preset(aws_client:aws_client(), binary() | list(), delete_preset_request(), proplists:proplist()) ->
+    {ok, delete_preset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_preset_errors(), tuple()}.
 delete_preset(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2012-09-25/presets/", aws_util:encode_uri(Id), ""],
@@ -258,14 +1117,26 @@ delete_preset(Client, Id, Input0, Options0) ->
 %% Elastic Transcoder returns all of the jobs currently in the specified
 %% pipeline. The response body contains
 %% one element for each job that satisfies the search criteria.
+-spec list_jobs_by_pipeline(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_jobs_by_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_by_pipeline_errors(), tuple()}.
 list_jobs_by_pipeline(Client, PipelineId)
   when is_map(Client) ->
     list_jobs_by_pipeline(Client, PipelineId, #{}, #{}).
 
+-spec list_jobs_by_pipeline(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_jobs_by_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_by_pipeline_errors(), tuple()}.
 list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, []).
 
+-spec list_jobs_by_pipeline(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_jobs_by_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_by_pipeline_errors(), tuple()}.
 list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobsByPipeline/", aws_util:encode_uri(PipelineId), ""],
@@ -292,14 +1163,26 @@ list_jobs_by_pipeline(Client, PipelineId, QueryMap, HeadersMap, Options0)
 %%
 %% The response
 %% body contains one element for each job that satisfies the search criteria.
+-spec list_jobs_by_status(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_jobs_by_status_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_by_status_errors(), tuple()}.
 list_jobs_by_status(Client, Status)
   when is_map(Client) ->
     list_jobs_by_status(Client, Status, #{}, #{}).
 
+-spec list_jobs_by_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_jobs_by_status_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_by_status_errors(), tuple()}.
 list_jobs_by_status(Client, Status, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs_by_status(Client, Status, QueryMap, HeadersMap, []).
 
+-spec list_jobs_by_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_jobs_by_status_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_by_status_errors(), tuple()}.
 list_jobs_by_status(Client, Status, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobsByStatus/", aws_util:encode_uri(Status), ""],
@@ -323,14 +1206,26 @@ list_jobs_by_status(Client, Status, QueryMap, HeadersMap, Options0)
 
 %% @doc The ListPipelines operation gets a list of the pipelines associated
 %% with the current AWS account.
+-spec list_pipelines(aws_client:aws_client()) ->
+    {ok, list_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client)
   when is_map(Client) ->
     list_pipelines(Client, #{}, #{}).
 
+-spec list_pipelines(aws_client:aws_client(), map(), map()) ->
+    {ok, list_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pipelines(Client, QueryMap, HeadersMap, []).
 
+-spec list_pipelines(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/pipelines"],
@@ -355,14 +1250,26 @@ list_pipelines(Client, QueryMap, HeadersMap, Options0)
 %% @doc The ListPresets operation gets a list of the default presets included
 %% with Elastic Transcoder and the presets that
 %% you've added in an AWS region.
+-spec list_presets(aws_client:aws_client()) ->
+    {ok, list_presets_response(), tuple()} |
+    {error, any()} |
+    {error, list_presets_errors(), tuple()}.
 list_presets(Client)
   when is_map(Client) ->
     list_presets(Client, #{}, #{}).
 
+-spec list_presets(aws_client:aws_client(), map(), map()) ->
+    {ok, list_presets_response(), tuple()} |
+    {error, any()} |
+    {error, list_presets_errors(), tuple()}.
 list_presets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_presets(Client, QueryMap, HeadersMap, []).
 
+-spec list_presets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_presets_response(), tuple()} |
+    {error, any()} |
+    {error, list_presets_errors(), tuple()}.
 list_presets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/presets"],
@@ -385,14 +1292,26 @@ list_presets(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The ReadJob operation returns detailed information about a job.
+-spec read_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, read_job_response(), tuple()} |
+    {error, any()} |
+    {error, read_job_errors(), tuple()}.
 read_job(Client, Id)
   when is_map(Client) ->
     read_job(Client, Id, #{}, #{}).
 
+-spec read_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, read_job_response(), tuple()} |
+    {error, any()} |
+    {error, read_job_errors(), tuple()}.
 read_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     read_job(Client, Id, QueryMap, HeadersMap, []).
 
+-spec read_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, read_job_response(), tuple()} |
+    {error, any()} |
+    {error, read_job_errors(), tuple()}.
 read_job(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/jobs/", aws_util:encode_uri(Id), ""],
@@ -411,14 +1330,26 @@ read_job(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc The ReadPipeline operation gets detailed information about a
 %% pipeline.
+-spec read_pipeline(aws_client:aws_client(), binary() | list()) ->
+    {ok, read_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, read_pipeline_errors(), tuple()}.
 read_pipeline(Client, Id)
   when is_map(Client) ->
     read_pipeline(Client, Id, #{}, #{}).
 
+-spec read_pipeline(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, read_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, read_pipeline_errors(), tuple()}.
 read_pipeline(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     read_pipeline(Client, Id, QueryMap, HeadersMap, []).
 
+-spec read_pipeline(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, read_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, read_pipeline_errors(), tuple()}.
 read_pipeline(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
@@ -436,14 +1367,26 @@ read_pipeline(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The ReadPreset operation gets detailed information about a preset.
+-spec read_preset(aws_client:aws_client(), binary() | list()) ->
+    {ok, read_preset_response(), tuple()} |
+    {error, any()} |
+    {error, read_preset_errors(), tuple()}.
 read_preset(Client, Id)
   when is_map(Client) ->
     read_preset(Client, Id, #{}, #{}).
 
+-spec read_preset(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, read_preset_response(), tuple()} |
+    {error, any()} |
+    {error, read_preset_errors(), tuple()}.
 read_preset(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     read_preset(Client, Id, QueryMap, HeadersMap, []).
 
+-spec read_preset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, read_preset_response(), tuple()} |
+    {error, any()} |
+    {error, read_preset_errors(), tuple()}.
 read_preset(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2012-09-25/presets/", aws_util:encode_uri(Id), ""],
@@ -472,8 +1415,17 @@ read_preset(Client, Id, QueryMap, HeadersMap, Options0)
 %% input and output buckets, and tries to send a test notification to Amazon
 %% SNS topics
 %% that you specify.
+-spec test_role(aws_client:aws_client(), test_role_request()) ->
+    {ok, test_role_response(), tuple()} |
+    {error, any()} |
+    {error, test_role_errors(), tuple()}.
 test_role(Client, Input) ->
     test_role(Client, Input, []).
+
+-spec test_role(aws_client:aws_client(), test_role_request(), proplists:proplist()) ->
+    {ok, test_role_response(), tuple()} |
+    {error, any()} |
+    {error, test_role_errors(), tuple()}.
 test_role(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/roleTests"],
@@ -503,8 +1455,17 @@ test_role(Client, Input0, Options0) ->
 %% Jobs that you have already submitted and that Elastic Transcoder has not
 %% started to process are
 %% affected in addition to jobs that you submit after you change settings.
+-spec update_pipeline(aws_client:aws_client(), binary() | list(), update_pipeline_request()) ->
+    {ok, update_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Id, Input) ->
     update_pipeline(Client, Id, Input, []).
+
+-spec update_pipeline(aws_client:aws_client(), binary() | list(), update_pipeline_request(), proplists:proplist()) ->
+    {ok, update_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), ""],
@@ -532,8 +1493,17 @@ update_pipeline(Client, Id, Input0, Options0) ->
 %%
 %% When you update notifications for a pipeline, Elastic Transcoder returns
 %% the values that you specified in the request.
+-spec update_pipeline_notifications(aws_client:aws_client(), binary() | list(), update_pipeline_notifications_request()) ->
+    {ok, update_pipeline_notifications_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_notifications_errors(), tuple()}.
 update_pipeline_notifications(Client, Id, Input) ->
     update_pipeline_notifications(Client, Id, Input, []).
+
+-spec update_pipeline_notifications(aws_client:aws_client(), binary() | list(), update_pipeline_notifications_request(), proplists:proplist()) ->
+    {ok, update_pipeline_notifications_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_notifications_errors(), tuple()}.
 update_pipeline_notifications(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), "/notifications"],
@@ -567,8 +1537,17 @@ update_pipeline_notifications(Client, Id, Input0, Options0) ->
 %% you submitted the jobs, you have more time to get the job IDs for the jobs
 %% that you want
 %% to cancel, and to send a `CancelJob' request.
+-spec update_pipeline_status(aws_client:aws_client(), binary() | list(), update_pipeline_status_request()) ->
+    {ok, update_pipeline_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_status_errors(), tuple()}.
 update_pipeline_status(Client, Id, Input) ->
     update_pipeline_status(Client, Id, Input, []).
+
+-spec update_pipeline_status(aws_client:aws_client(), binary() | list(), update_pipeline_status_request(), proplists:proplist()) ->
+    {ok, update_pipeline_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_status_errors(), tuple()}.
 update_pipeline_status(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2012-09-25/pipelines/", aws_util:encode_uri(Id), "/status"],
@@ -595,7 +1574,7 @@ update_pipeline_status(Client, Id, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

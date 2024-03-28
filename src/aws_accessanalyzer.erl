@@ -127,6 +127,1357 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% trail_properties() :: #{
+%%   <<"allRegions">> => [boolean()],
+%%   <<"cloudTrailArn">> => string(),
+%%   <<"regions">> => list([string()]())
+%% }
+-type trail_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_trail_details() :: #{
+%%   <<"accessRole">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"trails">> => list(trail()())
+%% }
+-type cloud_trail_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> => map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% reason_summary() :: #{
+%%   <<"description">> => [string()],
+%%   <<"statementId">> => [string()],
+%%   <<"statementIndex">> => [integer()]
+%% }
+-type reason_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% status_reason() :: #{
+%%   <<"code">> => string()
+%% }
+-type status_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_configuration() :: #{
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_archive_rule_request() :: #{
+%%   <<"clientToken">> => [string()]
+%% }
+-type delete_archive_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% list_access_previews_response() :: #{
+%%   <<"accessPreviews">> := list(access_preview_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_previews_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_iam_user_access_key_details() :: #{
+%%   <<"accessKeyId">> => [string()],
+%%   <<"lastAccessed">> => non_neg_integer()
+%% }
+-type unused_iam_user_access_key_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_grant_constraints() :: #{
+%%   <<"encryptionContextEquals">> => map(),
+%%   <<"encryptionContextSubset">> => map()
+%% }
+-type kms_grant_constraints() :: #{binary() => any()}.
+
+
+%% Example:
+%% generated_policy_properties() :: #{
+%%   <<"cloudTrailProperties">> => cloud_trail_properties(),
+%%   <<"isComplete">> => [boolean()],
+%%   <<"principalArn">> => string()
+%% }
+-type generated_policy_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_summary() :: #{
+%%   <<"action">> => list([string()]()),
+%%   <<"analyzedAt">> => non_neg_integer(),
+%%   <<"condition">> => map(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"isPublic">> => [boolean()],
+%%   <<"principal">> => map(),
+%%   <<"resource">> => [string()],
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string(),
+%%   <<"sources">> => list(finding_source()()),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type finding_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_previews_request() :: #{
+%%   <<"analyzerArn">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_previews_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sns_topic_configuration() :: #{
+%%   <<"topicPolicy">> => string()
+%% }
+-type sns_topic_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_access_configuration() :: #{
+%%   <<"unusedAccessAge">> => [integer()]
+%% }
+-type unused_access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_acl_grant_configuration() :: #{
+%%   <<"grantee">> => list(),
+%%   <<"permission">> => string()
+%% }
+-type s3_bucket_acl_grant_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% analyzed_resource() :: #{
+%%   <<"actions">> => list([string()]()),
+%%   <<"analyzedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => [string()],
+%%   <<"isPublic">> => [boolean()],
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string(),
+%%   <<"sharedVia">> => list([string()]()),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type analyzed_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_analyzer_response() :: #{
+%%   <<"analyzer">> => analyzer_summary()
+%% }
+-type get_analyzer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_response() :: #{
+%%   <<"findings">> => list(finding_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_analyzer_request() :: #{
+%%   <<"analyzerName">> => string(),
+%%   <<"archiveRules">> => list(inline_archive_rule()()),
+%%   <<"clientToken">> => [string()],
+%%   <<"configuration">> => list(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type create_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_iam_user_password_details() :: #{
+%%   <<"lastAccessed">> => non_neg_integer()
+%% }
+-type unused_iam_user_password_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_iam_role_details() :: #{
+%%   <<"lastAccessed">> => non_neg_integer()
+%% }
+-type unused_iam_role_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_permission_details() :: #{
+%%   <<"actions">> => list(unused_action()()),
+%%   <<"lastAccessed">> => non_neg_integer(),
+%%   <<"serviceNamespace">> => [string()]
+%% }
+-type unused_permission_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> => list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_analyzed_resource_response() :: #{
+%%   <<"resource">> => analyzed_resource()
+%% }
+-type get_analyzed_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_v2_request() :: #{
+%%   <<"analyzerArn">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type get_finding_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_no_new_access_request() :: #{
+%%   <<"existingPolicyDocument">> := string(),
+%%   <<"newPolicyDocument">> := string(),
+%%   <<"policyType">> := string()
+%% }
+-type check_no_new_access_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% position() :: #{
+%%   <<"column">> => [integer()],
+%%   <<"line">> => [integer()],
+%%   <<"offset">> => [integer()]
+%% }
+-type position() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_analyzer_request() :: #{
+%%   <<"clientToken">> => [string()]
+%% }
+-type delete_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyzers_response() :: #{
+%%   <<"analyzers">> => list(analyzer_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_analyzers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_access_not_granted_response() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reasons">> => list(reason_summary()()),
+%%   <<"result">> => string()
+%% }
+-type check_access_not_granted_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_policy_generation_response() :: #{}
+-type cancel_policy_generation_response() :: #{}.
+
+
+%% Example:
+%% list_findings_v2_request() :: #{
+%%   <<"analyzerArn">> := string(),
+%%   <<"filter">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => sort_criteria()
+%% }
+-type list_findings_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyzed_resources_request() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type list_analyzed_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_preview_status_reason() :: #{
+%%   <<"code">> => string()
+%% }
+-type access_preview_status_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_archive_rules_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_archive_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% span() :: #{
+%%   <<"end">> => position(),
+%%   <<"start">> => position()
+%% }
+-type span() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_source() :: #{
+%%   <<"detail">> => finding_source_detail(),
+%%   <<"type">> => string()
+%% }
+-type finding_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyzed_resources_response() :: #{
+%%   <<"analyzedResources">> => list(analyzed_resource_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_analyzed_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_preview_finding() :: #{
+%%   <<"action">> => list([string()]()),
+%%   <<"changeType">> => string(),
+%%   <<"condition">> => map(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => [string()],
+%%   <<"existingFindingId">> => string(),
+%%   <<"existingFindingStatus">> => string(),
+%%   <<"id">> => string(),
+%%   <<"isPublic">> => [boolean()],
+%%   <<"principal">> => map(),
+%%   <<"resource">> => [string()],
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string(),
+%%   <<"sources">> => list(finding_source()()),
+%%   <<"status">> => string()
+%% }
+-type access_preview_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% archive_rule_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"filter">> => map(),
+%%   <<"ruleName">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type archive_rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_preview_request() :: #{
+%%   <<"analyzerArn">> := string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"configurations">> := map()
+%% }
+-type create_access_preview_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_generation_details() :: #{
+%%   <<"principalArn">> => string()
+%% }
+-type policy_generation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecr_repository_configuration() :: #{
+%%   <<"repositoryPolicy">> => string()
+%% }
+-type ecr_repository_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_generated_policy_response() :: #{
+%%   <<"generatedPolicyResult">> := generated_policy_result(),
+%%   <<"jobDetails">> := job_details()
+%% }
+-type get_generated_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_policy_finding() :: #{
+%%   <<"findingDetails">> => [string()],
+%%   <<"findingType">> => string(),
+%%   <<"issueCode">> => string(),
+%%   <<"learnMoreLink">> => string(),
+%%   <<"locations">> => list(location()())
+%% }
+-type validate_policy_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_archive_rules_response() :: #{
+%%   <<"archiveRules">> => list(archive_rule_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_archive_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_generated_policy_request() :: #{
+%%   <<"includeResourcePlaceholders">> => [boolean()],
+%%   <<"includeServiceLevelTemplate">> => [boolean()]
+%% }
+-type get_generated_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% analyzed_resource_summary() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string()
+%% }
+-type analyzed_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding() :: #{
+%%   <<"action">> => list([string()]()),
+%%   <<"analyzedAt">> => non_neg_integer(),
+%%   <<"condition">> => map(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"isPublic">> => [boolean()],
+%%   <<"principal">> => map(),
+%%   <<"resource">> => [string()],
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string(),
+%%   <<"sources">> => list(finding_source()()),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_grant_configuration() :: #{
+%%   <<"constraints">> => kms_grant_constraints(),
+%%   <<"granteePrincipal">> => string(),
+%%   <<"issuingAccount">> => string(),
+%%   <<"operations">> => list(string()()),
+%%   <<"retiringPrincipal">> => string()
+%% }
+-type kms_grant_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_no_new_access_response() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reasons">> => list(reason_summary()()),
+%%   <<"result">> => string()
+%% }
+-type check_no_new_access_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_request() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"filter">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => sort_criteria()
+%% }
+-type list_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"principalArn">> => string()
+%% }
+-type list_policy_generations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% generated_policy_result() :: #{
+%%   <<"generatedPolicies">> => list(generated_policy()()),
+%%   <<"properties">> => generated_policy_properties()
+%% }
+-type generated_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_role_configuration() :: #{
+%%   <<"trustPolicy">> => string()
+%% }
+-type iam_role_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% location() :: #{
+%%   <<"path">> => list(list()()),
+%%   <<"span">> => span()
+%% }
+-type location() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_generation() :: #{
+%%   <<"completedOn">> => non_neg_integer(),
+%%   <<"jobId">> => string(),
+%%   <<"principalArn">> => string(),
+%%   <<"startedOn">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type policy_generation() :: #{binary() => any()}.
+
+
+%% Example:
+%% apply_archive_rule_request() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"ruleName">> => string()
+%% }
+-type apply_archive_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyGenerations">> := list(policy_generation()())
+%% }
+-type list_policy_generations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_key_configuration() :: #{
+%%   <<"grants">> => list(kms_grant_configuration()()),
+%%   <<"keyPolicies">> => map()
+%% }
+-type kms_key_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_details() :: #{
+%%   <<"completedOn">> => non_neg_integer(),
+%%   <<"jobError">> => job_error(),
+%%   <<"jobId">> => string(),
+%%   <<"startedOn">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type job_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_archive_rule() :: #{
+%%   <<"filter">> => map(),
+%%   <<"ruleName">> => string()
+%% }
+-type inline_archive_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_snapshot_configuration() :: #{
+%%   <<"groups">> => list(string()()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"userIds">> => list(string()())
+%% }
+-type ebs_snapshot_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamodb_table_configuration() :: #{
+%%   <<"tablePolicy">> => string()
+%% }
+-type dynamodb_table_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% efs_file_system_configuration() :: #{
+%%   <<"fileSystemPolicy">> => string()
+%% }
+-type efs_file_system_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_request() :: #{
+%%   <<"analyzerArn">> => string()
+%% }
+-type get_finding_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_policy_response() :: #{
+%%   <<"findings">> := list(validate_policy_finding()()),
+%%   <<"nextToken">> => string()
+%% }
+-type validate_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_express_directory_bucket_configuration() :: #{
+%%   <<"bucketPolicy">> => string()
+%% }
+-type s3_express_directory_bucket_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_preview_response() :: #{
+%%   <<"id">> := string()
+%% }
+-type create_access_preview_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_policy_generation_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"cloudTrailDetails">> => cloud_trail_details(),
+%%   <<"policyGenerationDetails">> := policy_generation_details()
+%% }
+-type start_policy_generation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_access_details() :: #{
+%%   <<"action">> => list([string()]()),
+%%   <<"condition">> => map(),
+%%   <<"isPublic">> => [boolean()],
+%%   <<"principal">> => map(),
+%%   <<"sources">> => list(finding_source()())
+%% }
+-type external_access_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_response() :: #{
+%%   <<"finding">> => finding()
+%% }
+-type get_finding_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort_criteria() :: #{
+%%   <<"attributeName">> => [string()],
+%%   <<"orderBy">> => string()
+%% }
+-type sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_trail_properties() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"trailProperties">> => list(trail_properties()())
+%% }
+-type cloud_trail_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_preview_findings_request() :: #{
+%%   <<"analyzerArn">> := string(),
+%%   <<"filter">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_preview_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_entity_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type unprocessable_entity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% substring() :: #{
+%%   <<"length">> => [integer()],
+%%   <<"start">> => [integer()]
+%% }
+-type substring() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_analyzer_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type create_analyzer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% validate_policy_request() :: #{
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"policyDocument">> := string(),
+%%   <<"policyType">> := string(),
+%%   <<"validatePolicyResourceType">> => string()
+%% }
+-type validate_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_analyzer_request() :: #{}
+-type get_analyzer_request() :: #{}.
+
+
+%% Example:
+%% get_analyzed_resource_request() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"resourceArn">> => string()
+%% }
+-type get_analyzed_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_configuration() :: #{
+%%   <<"accessPoints">> => map(),
+%%   <<"bucketAclGrants">> => list(s3_bucket_acl_grant_configuration()()),
+%%   <<"bucketPolicy">> => string(),
+%%   <<"bucketPublicAccessBlock">> => s3_public_access_block_configuration()
+%% }
+-type s3_bucket_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% update_findings_request() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"ids">> => list(string()()),
+%%   <<"resourceArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type update_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_preview_request() :: #{
+%%   <<"analyzerArn">> := string()
+%% }
+-type get_access_preview_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_source_detail() :: #{
+%%   <<"accessPointAccount">> => [string()],
+%%   <<"accessPointArn">> => [string()]
+%% }
+-type finding_source_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% access() :: #{
+%%   <<"actions">> => list(string()())
+%% }
+-type access() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_db_snapshot_configuration() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type rds_db_snapshot_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_v2_response() :: #{
+%%   <<"analyzedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => [string()],
+%%   <<"findingDetails">> => list(list()()),
+%%   <<"findingType">> => string(),
+%%   <<"id">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"resource">> => [string()],
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_finding_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_summary_v2() :: #{
+%%   <<"analyzedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => [string()],
+%%   <<"findingType">> => string(),
+%%   <<"id">> => string(),
+%%   <<"resource">> => [string()],
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type finding_summary_v2() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_policy_generation_request() :: #{}
+-type cancel_policy_generation_request() :: #{}.
+
+%% Example:
+%% get_archive_rule_request() :: #{}
+-type get_archive_rule_request() :: #{}.
+
+
+%% Example:
+%% analyzer_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastResourceAnalyzed">> => [string()],
+%%   <<"lastResourceAnalyzedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => status_reason(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type analyzer_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% trail() :: #{
+%%   <<"allRegions">> => [boolean()],
+%%   <<"cloudTrailArn">> => string(),
+%%   <<"regions">> => list([string()]())
+%% }
+-type trail() :: #{binary() => any()}.
+
+
+%% Example:
+%% generated_policy() :: #{
+%%   <<"policy">> => [string()]
+%% }
+-type generated_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_access_not_granted_request() :: #{
+%%   <<"access">> := list(access()()),
+%%   <<"policyDocument">> := string(),
+%%   <<"policyType">> := string()
+%% }
+-type check_access_not_granted_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_db_cluster_snapshot_configuration() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type rds_db_cluster_snapshot_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_preview_summary() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => access_preview_status_reason()
+%% }
+-type access_preview_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyzers_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => string()
+%% }
+-type list_analyzers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_v2_response() :: #{
+%%   <<"findings">> => list(finding_summary_v2()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_policy_generation_response() :: #{
+%%   <<"jobId">> := string()
+%% }
+-type start_policy_generation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_preview_response() :: #{
+%%   <<"accessPreview">> := access_preview()
+%% }
+-type get_access_preview_response() :: #{binary() => any()}.
+
+%% Example:
+%% internet_configuration() :: #{}
+-type internet_configuration() :: #{}.
+
+
+%% Example:
+%% criterion() :: #{
+%%   <<"contains">> => list([string()]()),
+%%   <<"eq">> => list([string()]()),
+%%   <<"exists">> => [boolean()],
+%%   <<"neq">> => list([string()]())
+%% }
+-type criterion() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_archive_rule_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"filter">> => map(),
+%%   <<"ruleName">> => string()
+%% }
+-type create_archive_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_resource_scan_request() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceOwnerAccount">> => [string()]
+%% }
+-type start_resource_scan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_secret_configuration() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"secretPolicy">> => string()
+%% }
+-type secrets_manager_secret_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type job_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_public_access_block_configuration() :: #{
+%%   <<"ignorePublicAcls">> => [boolean()],
+%%   <<"restrictPublicBuckets">> => [boolean()]
+%% }
+-type s3_public_access_block_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_preview() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"configurations">> => map(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => access_preview_status_reason()
+%% }
+-type access_preview() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_archive_rule_response() :: #{
+%%   <<"archiveRule">> => archive_rule_summary()
+%% }
+-type get_archive_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sqs_queue_configuration() :: #{
+%%   <<"queuePolicy">> => string()
+%% }
+-type sqs_queue_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_access_point_configuration() :: #{
+%%   <<"accessPointPolicy">> => string(),
+%%   <<"networkOrigin">> => list(),
+%%   <<"publicAccessBlock">> => s3_public_access_block_configuration()
+%% }
+-type s3_access_point_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_archive_rule_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"filter">> => map()
+%% }
+-type update_archive_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_preview_findings_response() :: #{
+%%   <<"findings">> := list(access_preview_finding()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_preview_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamodb_stream_configuration() :: #{
+%%   <<"streamPolicy">> => string()
+%% }
+-type dynamodb_stream_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_action() :: #{
+%%   <<"action">> => [string()],
+%%   <<"lastAccessed">> => non_neg_integer()
+%% }
+-type unused_action() :: #{binary() => any()}.
+
+-type apply_archive_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type cancel_policy_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type check_access_not_granted_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    unprocessable_entity_exception() | 
+    internal_server_exception().
+
+-type check_no_new_access_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    unprocessable_entity_exception() | 
+    internal_server_exception().
+
+-type create_access_preview_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_analyzer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_archive_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_analyzer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_archive_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_access_preview_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_analyzed_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_analyzer_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_archive_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_finding_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_finding_v2_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_generated_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_access_preview_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_access_previews_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_analyzed_resources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_analyzers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_archive_rules_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_findings_v2_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_policy_generations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_policy_generation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type start_resource_scan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_archive_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_findings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type validate_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -134,8 +1485,17 @@
 %% @doc Retroactively applies the archive rule to existing findings that meet
 %% the archive rule
 %% criteria.
+-spec apply_archive_rule(aws_client:aws_client(), apply_archive_rule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, apply_archive_rule_errors(), tuple()}.
 apply_archive_rule(Client, Input) ->
     apply_archive_rule(Client, Input, []).
+
+-spec apply_archive_rule(aws_client:aws_client(), apply_archive_rule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, apply_archive_rule_errors(), tuple()}.
 apply_archive_rule(Client, Input0, Options0) ->
     Method = put,
     Path = ["/archive-rule"],
@@ -159,8 +1519,17 @@ apply_archive_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the requested policy generation.
+-spec cancel_policy_generation(aws_client:aws_client(), binary() | list(), cancel_policy_generation_request()) ->
+    {ok, cancel_policy_generation_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_policy_generation_errors(), tuple()}.
 cancel_policy_generation(Client, JobId, Input) ->
     cancel_policy_generation(Client, JobId, Input, []).
+
+-spec cancel_policy_generation(aws_client:aws_client(), binary() | list(), cancel_policy_generation_request(), proplists:proplist()) ->
+    {ok, cancel_policy_generation_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_policy_generation_errors(), tuple()}.
 cancel_policy_generation(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/policy/generation/", aws_util:encode_uri(JobId), ""],
@@ -184,8 +1553,17 @@ cancel_policy_generation(Client, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Checks whether the specified access isn't allowed by a policy.
+-spec check_access_not_granted(aws_client:aws_client(), check_access_not_granted_request()) ->
+    {ok, check_access_not_granted_response(), tuple()} |
+    {error, any()} |
+    {error, check_access_not_granted_errors(), tuple()}.
 check_access_not_granted(Client, Input) ->
     check_access_not_granted(Client, Input, []).
+
+-spec check_access_not_granted(aws_client:aws_client(), check_access_not_granted_request(), proplists:proplist()) ->
+    {ok, check_access_not_granted_response(), tuple()} |
+    {error, any()} |
+    {error, check_access_not_granted_errors(), tuple()}.
 check_access_not_granted(Client, Input0, Options0) ->
     Method = post,
     Path = ["/policy/check-access-not-granted"],
@@ -220,8 +1598,17 @@ check_access_not_granted(Client, Input0, Options0) ->
 %% repository on GitHub. The reference
 %% policies in this repository are meant to be passed to the
 %% `existingPolicyDocument' request parameter.
+-spec check_no_new_access(aws_client:aws_client(), check_no_new_access_request()) ->
+    {ok, check_no_new_access_response(), tuple()} |
+    {error, any()} |
+    {error, check_no_new_access_errors(), tuple()}.
 check_no_new_access(Client, Input) ->
     check_no_new_access(Client, Input, []).
+
+-spec check_no_new_access(aws_client:aws_client(), check_no_new_access_request(), proplists:proplist()) ->
+    {ok, check_no_new_access_response(), tuple()} |
+    {error, any()} |
+    {error, check_no_new_access_errors(), tuple()}.
 check_no_new_access(Client, Input0, Options0) ->
     Method = post,
     Path = ["/policy/check-no-new-access"],
@@ -247,8 +1634,17 @@ check_no_new_access(Client, Input0, Options0) ->
 %% @doc Creates an access preview that allows you to preview IAM Access
 %% Analyzer findings for your
 %% resource before deploying resource permissions.
+-spec create_access_preview(aws_client:aws_client(), create_access_preview_request()) ->
+    {ok, create_access_preview_response(), tuple()} |
+    {error, any()} |
+    {error, create_access_preview_errors(), tuple()}.
 create_access_preview(Client, Input) ->
     create_access_preview(Client, Input, []).
+
+-spec create_access_preview(aws_client:aws_client(), create_access_preview_request(), proplists:proplist()) ->
+    {ok, create_access_preview_response(), tuple()} |
+    {error, any()} |
+    {error, create_access_preview_errors(), tuple()}.
 create_access_preview(Client, Input0, Options0) ->
     Method = put,
     Path = ["/access-preview"],
@@ -272,8 +1668,17 @@ create_access_preview(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an analyzer for your account.
+-spec create_analyzer(aws_client:aws_client(), create_analyzer_request()) ->
+    {ok, create_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, create_analyzer_errors(), tuple()}.
 create_analyzer(Client, Input) ->
     create_analyzer(Client, Input, []).
+
+-spec create_analyzer(aws_client:aws_client(), create_analyzer_request(), proplists:proplist()) ->
+    {ok, create_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, create_analyzer_errors(), tuple()}.
 create_analyzer(Client, Input0, Options0) ->
     Method = put,
     Path = ["/analyzer"],
@@ -305,8 +1710,17 @@ create_analyzer(Client, Input0, Options0) ->
 %% IAM Access Analyzer filter keys:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html
 %% in the IAM User Guide.
+-spec create_archive_rule(aws_client:aws_client(), binary() | list(), create_archive_rule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_archive_rule_errors(), tuple()}.
 create_archive_rule(Client, AnalyzerName, Input) ->
     create_archive_rule(Client, AnalyzerName, Input, []).
+
+-spec create_archive_rule(aws_client:aws_client(), binary() | list(), create_archive_rule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_archive_rule_errors(), tuple()}.
 create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
     Method = put,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule"],
@@ -335,8 +1749,17 @@ create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
 %% for the account or organization in the current or specific Region. All
 %% findings that were
 %% generated by the analyzer are deleted. You cannot undo this action.
+-spec delete_analyzer(aws_client:aws_client(), binary() | list(), delete_analyzer_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_analyzer_errors(), tuple()}.
 delete_analyzer(Client, AnalyzerName, Input) ->
     delete_analyzer(Client, AnalyzerName, Input, []).
+
+-spec delete_analyzer(aws_client:aws_client(), binary() | list(), delete_analyzer_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_analyzer_errors(), tuple()}.
 delete_analyzer(Client, AnalyzerName, Input0, Options0) ->
     Method = delete,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), ""],
@@ -361,8 +1784,17 @@ delete_analyzer(Client, AnalyzerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified archive rule.
+-spec delete_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_archive_rule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_archive_rule_errors(), tuple()}.
 delete_archive_rule(Client, AnalyzerName, RuleName, Input) ->
     delete_archive_rule(Client, AnalyzerName, RuleName, Input, []).
+
+-spec delete_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_archive_rule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_archive_rule_errors(), tuple()}.
 delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
     Method = delete,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
@@ -388,14 +1820,26 @@ delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
 
 %% @doc Retrieves information about an access preview for the specified
 %% analyzer.
+-spec get_access_preview(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_access_preview_response(), tuple()} |
+    {error, any()} |
+    {error, get_access_preview_errors(), tuple()}.
 get_access_preview(Client, AccessPreviewId, AnalyzerArn)
   when is_map(Client) ->
     get_access_preview(Client, AccessPreviewId, AnalyzerArn, #{}, #{}).
 
+-spec get_access_preview(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_access_preview_response(), tuple()} |
+    {error, any()} |
+    {error, get_access_preview_errors(), tuple()}.
 get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap, []).
 
+-spec get_access_preview(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_access_preview_response(), tuple()} |
+    {error, any()} |
+    {error, get_access_preview_errors(), tuple()}.
 get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-preview/", aws_util:encode_uri(AccessPreviewId), ""],
@@ -417,14 +1861,26 @@ get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a resource that was analyzed.
+-spec get_analyzed_resource(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_analyzed_resource_response(), tuple()} |
+    {error, any()} |
+    {error, get_analyzed_resource_errors(), tuple()}.
 get_analyzed_resource(Client, AnalyzerArn, ResourceArn)
   when is_map(Client) ->
     get_analyzed_resource(Client, AnalyzerArn, ResourceArn, #{}, #{}).
 
+-spec get_analyzed_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_analyzed_resource_response(), tuple()} |
+    {error, any()} |
+    {error, get_analyzed_resource_errors(), tuple()}.
 get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec get_analyzed_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_analyzed_resource_response(), tuple()} |
+    {error, any()} |
+    {error, get_analyzed_resource_errors(), tuple()}.
 get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzed-resource"],
@@ -447,14 +1903,26 @@ get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the specified analyzer.
+-spec get_analyzer(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, get_analyzer_errors(), tuple()}.
 get_analyzer(Client, AnalyzerName)
   when is_map(Client) ->
     get_analyzer(Client, AnalyzerName, #{}, #{}).
 
+-spec get_analyzer(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, get_analyzer_errors(), tuple()}.
 get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, []).
 
+-spec get_analyzer(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_analyzer_response(), tuple()} |
+    {error, any()} |
+    {error, get_analyzer_errors(), tuple()}.
 get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), ""],
@@ -477,14 +1945,26 @@ get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
 %% IAM Access Analyzer filter keys:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html
 %% in the IAM User Guide.
+-spec get_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_archive_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_archive_rule_errors(), tuple()}.
 get_archive_rule(Client, AnalyzerName, RuleName)
   when is_map(Client) ->
     get_archive_rule(Client, AnalyzerName, RuleName, #{}, #{}).
 
+-spec get_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_archive_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_archive_rule_errors(), tuple()}.
 get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, []).
 
+-spec get_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_archive_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_archive_rule_errors(), tuple()}.
 get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
@@ -507,14 +1987,26 @@ get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, Options0)
 %% `access-analyzer:GetFinding' in the `Action' element of an IAM
 %% policy statement. You must have permission to perform the
 %% `access-analyzer:GetFinding' action.
+-spec get_finding(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_finding_response(), tuple()} |
+    {error, any()} |
+    {error, get_finding_errors(), tuple()}.
 get_finding(Client, Id, AnalyzerArn)
   when is_map(Client) ->
     get_finding(Client, Id, AnalyzerArn, #{}, #{}).
 
+-spec get_finding(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_finding_response(), tuple()} |
+    {error, any()} |
+    {error, get_finding_errors(), tuple()}.
 get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, []).
 
+-spec get_finding(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_finding_response(), tuple()} |
+    {error, any()} |
+    {error, get_finding_errors(), tuple()}.
 get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/finding/", aws_util:encode_uri(Id), ""],
@@ -541,14 +2033,26 @@ get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
 %% `access-analyzer:GetFinding' in the `Action' element of an IAM
 %% policy statement. You must have permission to perform the
 %% `access-analyzer:GetFinding' action.
+-spec get_finding_v2(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_finding_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_finding_v2_errors(), tuple()}.
 get_finding_v2(Client, Id, AnalyzerArn)
   when is_map(Client) ->
     get_finding_v2(Client, Id, AnalyzerArn, #{}, #{}).
 
+-spec get_finding_v2(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_finding_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_finding_v2_errors(), tuple()}.
 get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, []).
 
+-spec get_finding_v2(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_finding_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_finding_v2_errors(), tuple()}.
 get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingv2/", aws_util:encode_uri(Id), ""],
@@ -573,14 +2077,26 @@ get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the policy that was generated using
 %% `StartPolicyGeneration'.
+-spec get_generated_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_generated_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_generated_policy_errors(), tuple()}.
 get_generated_policy(Client, JobId)
   when is_map(Client) ->
     get_generated_policy(Client, JobId, #{}, #{}).
 
+-spec get_generated_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_generated_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_generated_policy_errors(), tuple()}.
 get_generated_policy(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_generated_policy(Client, JobId, QueryMap, HeadersMap, []).
 
+-spec get_generated_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_generated_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_generated_policy_errors(), tuple()}.
 get_generated_policy(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy/generation/", aws_util:encode_uri(JobId), ""],
@@ -605,8 +2121,17 @@ get_generated_policy(Client, JobId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a list of access preview findings generated by the
 %% specified access
 %% preview.
+-spec list_access_preview_findings(aws_client:aws_client(), binary() | list(), list_access_preview_findings_request()) ->
+    {ok, list_access_preview_findings_response(), tuple()} |
+    {error, any()} |
+    {error, list_access_preview_findings_errors(), tuple()}.
 list_access_preview_findings(Client, AccessPreviewId, Input) ->
     list_access_preview_findings(Client, AccessPreviewId, Input, []).
+
+-spec list_access_preview_findings(aws_client:aws_client(), binary() | list(), list_access_preview_findings_request(), proplists:proplist()) ->
+    {ok, list_access_preview_findings_response(), tuple()} |
+    {error, any()} |
+    {error, list_access_preview_findings_errors(), tuple()}.
 list_access_preview_findings(Client, AccessPreviewId, Input0, Options0) ->
     Method = post,
     Path = ["/access-preview/", aws_util:encode_uri(AccessPreviewId), ""],
@@ -630,14 +2155,26 @@ list_access_preview_findings(Client, AccessPreviewId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of access previews for the specified analyzer.
+-spec list_access_previews(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_access_previews_response(), tuple()} |
+    {error, any()} |
+    {error, list_access_previews_errors(), tuple()}.
 list_access_previews(Client, AnalyzerArn)
   when is_map(Client) ->
     list_access_previews(Client, AnalyzerArn, #{}, #{}).
 
+-spec list_access_previews(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_access_previews_response(), tuple()} |
+    {error, any()} |
+    {error, list_access_previews_errors(), tuple()}.
 list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, []).
 
+-spec list_access_previews(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_access_previews_response(), tuple()} |
+    {error, any()} |
+    {error, list_access_previews_errors(), tuple()}.
 list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/access-preview"],
@@ -666,8 +2203,17 @@ list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, Options0)
 %%
 %% This action is not supported for unused access
 %% analyzers.
+-spec list_analyzed_resources(aws_client:aws_client(), list_analyzed_resources_request()) ->
+    {ok, list_analyzed_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_analyzed_resources_errors(), tuple()}.
 list_analyzed_resources(Client, Input) ->
     list_analyzed_resources(Client, Input, []).
+
+-spec list_analyzed_resources(aws_client:aws_client(), list_analyzed_resources_request(), proplists:proplist()) ->
+    {ok, list_analyzed_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_analyzed_resources_errors(), tuple()}.
 list_analyzed_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/analyzed-resource"],
@@ -691,14 +2237,26 @@ list_analyzed_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of analyzers.
+-spec list_analyzers(aws_client:aws_client()) ->
+    {ok, list_analyzers_response(), tuple()} |
+    {error, any()} |
+    {error, list_analyzers_errors(), tuple()}.
 list_analyzers(Client)
   when is_map(Client) ->
     list_analyzers(Client, #{}, #{}).
 
+-spec list_analyzers(aws_client:aws_client(), map(), map()) ->
+    {ok, list_analyzers_response(), tuple()} |
+    {error, any()} |
+    {error, list_analyzers_errors(), tuple()}.
 list_analyzers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_analyzers(Client, QueryMap, HeadersMap, []).
 
+-spec list_analyzers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_analyzers_response(), tuple()} |
+    {error, any()} |
+    {error, list_analyzers_errors(), tuple()}.
 list_analyzers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer"],
@@ -722,14 +2280,26 @@ list_analyzers(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of archive rules created for the specified analyzer.
+-spec list_archive_rules(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_archive_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_archive_rules_errors(), tuple()}.
 list_archive_rules(Client, AnalyzerName)
   when is_map(Client) ->
     list_archive_rules(Client, AnalyzerName, #{}, #{}).
 
+-spec list_archive_rules(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_archive_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_archive_rules_errors(), tuple()}.
 list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, []).
 
+-spec list_archive_rules(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_archive_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_archive_rules_errors(), tuple()}.
 list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule"],
@@ -763,8 +2333,17 @@ list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
 %% findings, see IAM Access Analyzer filter keys:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html
 %% in the IAM User Guide.
+-spec list_findings(aws_client:aws_client(), list_findings_request()) ->
+    {ok, list_findings_response(), tuple()} |
+    {error, any()} |
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input) ->
     list_findings(Client, Input, []).
+
+-spec list_findings(aws_client:aws_client(), list_findings_request(), proplists:proplist()) ->
+    {ok, list_findings_response(), tuple()} |
+    {error, any()} |
+    {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/finding"],
@@ -799,8 +2378,17 @@ list_findings(Client, Input0, Options0) ->
 %% findings, see IAM Access Analyzer filter keys:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html
 %% in the IAM User Guide.
+-spec list_findings_v2(aws_client:aws_client(), list_findings_v2_request()) ->
+    {ok, list_findings_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_findings_v2_errors(), tuple()}.
 list_findings_v2(Client, Input) ->
     list_findings_v2(Client, Input, []).
+
+-spec list_findings_v2(aws_client:aws_client(), list_findings_v2_request(), proplists:proplist()) ->
+    {ok, list_findings_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_findings_v2_errors(), tuple()}.
 list_findings_v2(Client, Input0, Options0) ->
     Method = post,
     Path = ["/findingv2"],
@@ -824,14 +2412,26 @@ list_findings_v2(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all of the policy generations requested in the last seven days.
+-spec list_policy_generations(aws_client:aws_client()) ->
+    {ok, list_policy_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generations_errors(), tuple()}.
 list_policy_generations(Client)
   when is_map(Client) ->
     list_policy_generations(Client, #{}, #{}).
 
+-spec list_policy_generations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_policy_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generations_errors(), tuple()}.
 list_policy_generations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policy_generations(Client, QueryMap, HeadersMap, []).
 
+-spec list_policy_generations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_policy_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_generations_errors(), tuple()}.
 list_policy_generations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/policy/generation"],
@@ -855,14 +2455,26 @@ list_policy_generations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of tags applied to the specified resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -880,8 +2492,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts the policy generation request.
+-spec start_policy_generation(aws_client:aws_client(), start_policy_generation_request()) ->
+    {ok, start_policy_generation_response(), tuple()} |
+    {error, any()} |
+    {error, start_policy_generation_errors(), tuple()}.
 start_policy_generation(Client, Input) ->
     start_policy_generation(Client, Input, []).
+
+-spec start_policy_generation(aws_client:aws_client(), start_policy_generation_request(), proplists:proplist()) ->
+    {ok, start_policy_generation_response(), tuple()} |
+    {error, any()} |
+    {error, start_policy_generation_errors(), tuple()}.
 start_policy_generation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/policy/generation"],
@@ -906,8 +2527,17 @@ start_policy_generation(Client, Input0, Options0) ->
 
 %% @doc Immediately starts a scan of the policies applied to the specified
 %% resource.
+-spec start_resource_scan(aws_client:aws_client(), start_resource_scan_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_resource_scan_errors(), tuple()}.
 start_resource_scan(Client, Input) ->
     start_resource_scan(Client, Input, []).
+
+-spec start_resource_scan(aws_client:aws_client(), start_resource_scan_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_resource_scan_errors(), tuple()}.
 start_resource_scan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/resource/scan"],
@@ -931,8 +2561,17 @@ start_resource_scan(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a tag to the specified resource.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -956,8 +2595,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from the specified resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -982,8 +2630,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the criteria and values for the specified archive rule.
+-spec update_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_archive_rule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_archive_rule_errors(), tuple()}.
 update_archive_rule(Client, AnalyzerName, RuleName, Input) ->
     update_archive_rule(Client, AnalyzerName, RuleName, Input, []).
+
+-spec update_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_archive_rule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_archive_rule_errors(), tuple()}.
 update_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
     Method = put,
     Path = ["/analyzer/", aws_util:encode_uri(AnalyzerName), "/archive-rule/", aws_util:encode_uri(RuleName), ""],
@@ -1007,8 +2664,17 @@ update_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the status for the specified findings.
+-spec update_findings(aws_client:aws_client(), update_findings_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_findings_errors(), tuple()}.
 update_findings(Client, Input) ->
     update_findings(Client, Input, []).
+
+-spec update_findings(aws_client:aws_client(), update_findings_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_findings_errors(), tuple()}.
 update_findings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/finding"],
@@ -1037,8 +2703,17 @@ update_findings(Client, Input0, Options0) ->
 %% you identify issues and provide actionable recommendations to resolve the
 %% issue and enable
 %% you to author functional policies that meet security best practices.
+-spec validate_policy(aws_client:aws_client(), validate_policy_request()) ->
+    {ok, validate_policy_response(), tuple()} |
+    {error, any()} |
+    {error, validate_policy_errors(), tuple()}.
 validate_policy(Client, Input) ->
     validate_policy(Client, Input, []).
+
+-spec validate_policy(aws_client:aws_client(), validate_policy_request(), proplists:proplist()) ->
+    {ok, validate_policy_response(), tuple()} |
+    {error, any()} |
+    {error, validate_policy_errors(), tuple()}.
 validate_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/policy/validation"],
@@ -1067,7 +2742,7 @@ validate_policy(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

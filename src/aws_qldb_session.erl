@@ -31,6 +31,202 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% abort_transaction_request() :: #{
+
+%% }
+-type abort_transaction_request() :: #{binary() => any()}.
+
+%% Example:
+%% abort_transaction_result() :: #{
+%%   <<"TimingInformation">> => timing_information()
+%% }
+-type abort_transaction_result() :: #{binary() => any()}.
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type capacity_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% commit_transaction_request() :: #{
+%%   <<"CommitDigest">> => binary(),
+%%   <<"TransactionId">> => string()
+%% }
+-type commit_transaction_request() :: #{binary() => any()}.
+
+%% Example:
+%% commit_transaction_result() :: #{
+%%   <<"CommitDigest">> => binary(),
+%%   <<"ConsumedIOs">> => i_o_usage(),
+%%   <<"TimingInformation">> => timing_information(),
+%%   <<"TransactionId">> => string()
+%% }
+-type commit_transaction_result() :: #{binary() => any()}.
+
+%% Example:
+%% end_session_request() :: #{
+
+%% }
+-type end_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% end_session_result() :: #{
+%%   <<"TimingInformation">> => timing_information()
+%% }
+-type end_session_result() :: #{binary() => any()}.
+
+%% Example:
+%% execute_statement_request() :: #{
+%%   <<"Parameters">> => list(value_holder()()),
+%%   <<"Statement">> => string(),
+%%   <<"TransactionId">> => string()
+%% }
+-type execute_statement_request() :: #{binary() => any()}.
+
+%% Example:
+%% execute_statement_result() :: #{
+%%   <<"ConsumedIOs">> => i_o_usage(),
+%%   <<"FirstPage">> => page(),
+%%   <<"TimingInformation">> => timing_information()
+%% }
+-type execute_statement_result() :: #{binary() => any()}.
+
+%% Example:
+%% fetch_page_request() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"TransactionId">> => string()
+%% }
+-type fetch_page_request() :: #{binary() => any()}.
+
+%% Example:
+%% fetch_page_result() :: #{
+%%   <<"ConsumedIOs">> => i_o_usage(),
+%%   <<"Page">> => page(),
+%%   <<"TimingInformation">> => timing_information()
+%% }
+-type fetch_page_result() :: #{binary() => any()}.
+
+%% Example:
+%% i_o_usage() :: #{
+%%   <<"ReadIOs">> => float(),
+%%   <<"WriteIOs">> => float()
+%% }
+-type i_o_usage() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_session_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_session_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% occ_conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type occ_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% page() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"Values">> => list(value_holder()())
+%% }
+-type page() :: #{binary() => any()}.
+
+%% Example:
+%% rate_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type rate_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% send_command_request() :: #{
+%%   <<"AbortTransaction">> => abort_transaction_request(),
+%%   <<"CommitTransaction">> => commit_transaction_request(),
+%%   <<"EndSession">> => end_session_request(),
+%%   <<"ExecuteStatement">> => execute_statement_request(),
+%%   <<"FetchPage">> => fetch_page_request(),
+%%   <<"SessionToken">> => string(),
+%%   <<"StartSession">> => start_session_request(),
+%%   <<"StartTransaction">> => start_transaction_request()
+%% }
+-type send_command_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_command_result() :: #{
+%%   <<"AbortTransaction">> => abort_transaction_result(),
+%%   <<"CommitTransaction">> => commit_transaction_result(),
+%%   <<"EndSession">> => end_session_result(),
+%%   <<"ExecuteStatement">> => execute_statement_result(),
+%%   <<"FetchPage">> => fetch_page_result(),
+%%   <<"StartSession">> => start_session_result(),
+%%   <<"StartTransaction">> => start_transaction_result()
+%% }
+-type send_command_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_session_request() :: #{
+%%   <<"LedgerName">> => string()
+%% }
+-type start_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_session_result() :: #{
+%%   <<"SessionToken">> => string(),
+%%   <<"TimingInformation">> => timing_information()
+%% }
+-type start_session_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_transaction_request() :: #{
+
+%% }
+-type start_transaction_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_transaction_result() :: #{
+%%   <<"TimingInformation">> => timing_information(),
+%%   <<"TransactionId">> => string()
+%% }
+-type start_transaction_result() :: #{binary() => any()}.
+
+%% Example:
+%% timing_information() :: #{
+%%   <<"ProcessingTimeMilliseconds">> => float()
+%% }
+-type timing_information() :: #{binary() => any()}.
+
+%% Example:
+%% value_holder() :: #{
+%%   <<"IonBinary">> => binary(),
+%%   <<"IonText">> => string()
+%% }
+-type value_holder() :: #{binary() => any()}.
+
+-type send_command_errors() ::
+    rate_exceeded_exception() | 
+    occ_conflict_exception() | 
+    limit_exceeded_exception() | 
+    invalid_session_exception() | 
+    capacity_exceeded_exception() | 
+    bad_request_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -58,9 +254,18 @@
 %% the
 %% QLDB shell:
 %% https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html.
+-spec send_command(aws_client:aws_client(), send_command_request()) ->
+    {ok, send_command_result(), tuple()} |
+    {error, any()} |
+    {error, send_command_errors(), tuple()}.
 send_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_command(Client, Input, []).
+
+-spec send_command(aws_client:aws_client(), send_command_request(), proplists:proplist()) ->
+    {ok, send_command_result(), tuple()} |
+    {error, any()} |
+    {error, send_command_errors(), tuple()}.
 send_command(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendCommand">>, Input, Options).

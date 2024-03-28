@@ -29,6 +29,133 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% auth_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type auth_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_instance_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ec2_instance_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_instance_state_invalid_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ec2_instance_state_invalid_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_instance_type_invalid_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ec2_instance_type_invalid_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_instance_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ec2_instance_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_args_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_args_exception() :: #{binary() => any()}.
+
+%% Example:
+%% send_serial_console_ssh_public_key_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"SSHPublicKey">> := string(),
+%%   <<"SerialPort">> => integer()
+%% }
+-type send_serial_console_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_serial_console_ssh_public_key_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Success">> => boolean()
+%% }
+-type send_serial_console_ssh_public_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_ssh_public_key_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"InstanceOSUser">> := string(),
+%%   <<"SSHPublicKey">> := string()
+%% }
+-type send_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_ssh_public_key_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Success">> => boolean()
+%% }
+-type send_ssh_public_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% serial_console_access_disabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type serial_console_access_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% serial_console_session_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type serial_console_session_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% serial_console_session_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type serial_console_session_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% serial_console_session_unsupported_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type serial_console_session_unsupported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+-type send_serial_console_ssh_public_key_errors() ::
+    throttling_exception() | 
+    service_exception() | 
+    serial_console_session_unsupported_exception() | 
+    serial_console_session_unavailable_exception() | 
+    serial_console_session_limit_exceeded_exception() | 
+    serial_console_access_disabled_exception() | 
+    invalid_args_exception() | 
+    ec2_instance_unavailable_exception() | 
+    ec2_instance_type_invalid_exception() | 
+    ec2_instance_state_invalid_exception() | 
+    ec2_instance_not_found_exception() | 
+    auth_exception().
+
+-type send_ssh_public_key_errors() ::
+    throttling_exception() | 
+    service_exception() | 
+    invalid_args_exception() | 
+    ec2_instance_unavailable_exception() | 
+    ec2_instance_state_invalid_exception() | 
+    ec2_instance_not_found_exception() | 
+    auth_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -42,9 +169,18 @@
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-serial-console.html
 %% in
 %% the Amazon EC2 User Guide.
+-spec send_serial_console_ssh_public_key(aws_client:aws_client(), send_serial_console_ssh_public_key_request()) ->
+    {ok, send_serial_console_ssh_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, send_serial_console_ssh_public_key_errors(), tuple()}.
 send_serial_console_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_serial_console_ssh_public_key(Client, Input, []).
+
+-spec send_serial_console_ssh_public_key(aws_client:aws_client(), send_serial_console_ssh_public_key_request(), proplists:proplist()) ->
+    {ok, send_serial_console_ssh_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, send_serial_console_ssh_public_key_errors(), tuple()}.
 send_serial_console_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendSerialConsoleSSHPublicKey">>, Input, Options).
@@ -57,9 +193,18 @@ send_serial_console_ssh_public_key(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html
 %% in the Amazon EC2
 %% User Guide.
+-spec send_ssh_public_key(aws_client:aws_client(), send_ssh_public_key_request()) ->
+    {ok, send_ssh_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, send_ssh_public_key_errors(), tuple()}.
 send_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_ssh_public_key(Client, Input, []).
+
+-spec send_ssh_public_key(aws_client:aws_client(), send_ssh_public_key_request(), proplists:proplist()) ->
+    {ok, send_ssh_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, send_ssh_public_key_errors(), tuple()}.
 send_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendSSHPublicKey">>, Input, Options).

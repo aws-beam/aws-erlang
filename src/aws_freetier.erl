@@ -25,15 +25,95 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% dimension_values() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"MatchOptions">> => list(list(any())()),
+%%   <<"Values">> => list(string()())
+%% }
+-type dimension_values() :: #{binary() => any()}.
+
+%% Example:
+%% expression() :: #{
+%%   <<"And">> => list(expression()()),
+%%   <<"Dimensions">> => dimension_values(),
+%%   <<"Not">> => expression(),
+%%   <<"Or">> => list(expression()())
+%% }
+-type expression() :: #{binary() => any()}.
+
+%% Example:
+%% free_tier_usage() :: #{
+%%   <<"actualUsageAmount">> => float(),
+%%   <<"description">> => string(),
+%%   <<"forecastedUsageAmount">> => float(),
+%%   <<"freeTierType">> => string(),
+%%   <<"limit">> => float(),
+%%   <<"operation">> => string(),
+%%   <<"region">> => string(),
+%%   <<"service">> => string(),
+%%   <<"unit">> => string(),
+%%   <<"usageType">> => string()
+%% }
+-type free_tier_usage() :: #{binary() => any()}.
+
+%% Example:
+%% get_free_tier_usage_request() :: #{
+%%   <<"filter">> => expression(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_free_tier_usage_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_free_tier_usage_response() :: #{
+%%   <<"freeTierUsages">> => list(free_tier_usage()()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_free_tier_usage_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+-type get_free_tier_usage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Returns a list of all Free Tier usage objects that match your
 %% filters.
+-spec get_free_tier_usage(aws_client:aws_client(), get_free_tier_usage_request()) ->
+    {ok, get_free_tier_usage_response(), tuple()} |
+    {error, any()} |
+    {error, get_free_tier_usage_errors(), tuple()}.
 get_free_tier_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_free_tier_usage(Client, Input, []).
+
+-spec get_free_tier_usage(aws_client:aws_client(), get_free_tier_usage_request(), proplists:proplist()) ->
+    {ok, get_free_tier_usage_response(), tuple()} |
+    {error, any()} |
+    {error, get_free_tier_usage_errors(), tuple()}.
 get_free_tier_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFreeTierUsage">>, Input, Options).

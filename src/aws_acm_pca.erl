@@ -87,6 +87,760 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% crl_distribution_point_extension_configuration() :: #{
+%%   <<"OmitExtension">> => boolean()
+%% }
+-type crl_distribution_point_extension_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_permissions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Permissions">> => list(permission()())
+%% }
+-type list_permissions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_authority_certificate_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string()
+%% }
+-type get_certificate_authority_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_authority_audit_report_response() :: #{
+%%   <<"AuditReportStatus">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3Key">> => string()
+%% }
+-type describe_certificate_authority_audit_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_certificate_authorities_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceOwner">> => list(any())
+%% }
+-type list_certificate_authorities_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_certificate_authority_request() :: #{
+%%   <<"CertificateAuthorityConfiguration">> := certificate_authority_configuration(),
+%%   <<"CertificateAuthorityType">> := list(any()),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"KeyStorageSecurityStandard">> => list(any()),
+%%   <<"RevocationConfiguration">> => revocation_configuration(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UsageMode">> => list(any())
+%% }
+-type create_certificate_authority_request() :: #{binary() => any()}.
+
+%% Example:
+%% request_failed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% request_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% csr_extensions() :: #{
+%%   <<"KeyUsage">> => key_usage(),
+%%   <<"SubjectInformationAccess">> => list(access_description()())
+%% }
+-type csr_extensions() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_certificate_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"CertificateSerial">> := string(),
+%%   <<"RevocationReason">> := list(any())
+%% }
+-type revoke_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_authority() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CertificateAuthorityConfiguration">> => certificate_authority_configuration(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"FailureReason">> => list(any()),
+%%   <<"KeyStorageSecurityStandard">> => list(any()),
+%%   <<"LastStateChangeAt">> => non_neg_integer(),
+%%   <<"NotAfter">> => non_neg_integer(),
+%%   <<"NotBefore">> => non_neg_integer(),
+%%   <<"OwnerAccount">> => string(),
+%%   <<"RestorableUntil">> => non_neg_integer(),
+%%   <<"RevocationConfiguration">> => revocation_configuration(),
+%%   <<"Serial">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"UsageMode">> => list(any())
+%% }
+-type certificate_authority() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_authority_configuration() :: #{
+%%   <<"CsrExtensions">> => csr_extensions(),
+%%   <<"KeyAlgorithm">> => list(any()),
+%%   <<"SigningAlgorithm">> => list(any()),
+%%   <<"Subject">> => a_s_n1_subject()
+%% }
+-type certificate_authority_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% issue_certificate_request() :: #{
+%%   <<"ApiPassthrough">> => api_passthrough(),
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"Csr">> := binary(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"SigningAlgorithm">> := list(any()),
+%%   <<"TemplateArn">> => string(),
+%%   <<"Validity">> := validity(),
+%%   <<"ValidityNotBefore">> => validity()
+%% }
+-type issue_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% a_s_n1_subject() :: #{
+%%   <<"CommonName">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"CustomAttributes">> => list(custom_attribute()()),
+%%   <<"DistinguishedNameQualifier">> => string(),
+%%   <<"GenerationQualifier">> => string(),
+%%   <<"GivenName">> => string(),
+%%   <<"Initials">> => string(),
+%%   <<"Locality">> => string(),
+%%   <<"Organization">> => string(),
+%%   <<"OrganizationalUnit">> => string(),
+%%   <<"Pseudonym">> => string(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Surname">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type a_s_n1_subject() :: #{binary() => any()}.
+
+%% Example:
+%% permission_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type permission_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_authority_csr_response() :: #{
+%%   <<"Csr">> => string()
+%% }
+-type get_certificate_authority_csr_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_args_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_args_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validity() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type validity() :: #{binary() => any()}.
+
+%% Example:
+%% create_certificate_authority_audit_report_response() :: #{
+%%   <<"AuditReportId">> => string(),
+%%   <<"S3Key">> => string()
+%% }
+-type create_certificate_authority_audit_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% api_passthrough() :: #{
+%%   <<"Extensions">> => extensions(),
+%%   <<"Subject">> => a_s_n1_subject()
+%% }
+-type api_passthrough() :: #{binary() => any()}.
+
+%% Example:
+%% delete_permission_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"Principal">> := string(),
+%%   <<"SourceAccount">> => string()
+%% }
+-type delete_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% issue_certificate_response() :: #{
+%%   <<"CertificateArn">> => string()
+%% }
+-type issue_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_information() :: #{
+%%   <<"CertPolicyId">> => string(),
+%%   <<"PolicyQualifiers">> => list(policy_qualifier_info()())
+%% }
+-type policy_information() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"CertificateAuthorityArn">> := string()
+%% }
+-type get_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_authority_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string()
+%% }
+-type describe_certificate_authority_request() :: #{binary() => any()}.
+
+%% Example:
+%% revocation_configuration() :: #{
+%%   <<"CrlConfiguration">> => crl_configuration(),
+%%   <<"OcspConfiguration">> => ocsp_configuration()
+%% }
+-type revocation_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_certificate_authority_response() :: #{
+%%   <<"CertificateAuthorityArn">> => string()
+%% }
+-type create_certificate_authority_response() :: #{binary() => any()}.
+
+%% Example:
+%% other_name() :: #{
+%%   <<"TypeId">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type other_name() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_certificate_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_certificate_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restore_certificate_authority_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string()
+%% }
+-type restore_certificate_authority_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_certificate_authority_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"PermanentDeletionTimeInDays">> => integer()
+%% }
+-type delete_certificate_authority_request() :: #{binary() => any()}.
+
+%% Example:
+%% access_method() :: #{
+%%   <<"AccessMethodType">> => list(any()),
+%%   <<"CustomObjectIdentifier">> => string()
+%% }
+-type access_method() :: #{binary() => any()}.
+
+%% Example:
+%% update_certificate_authority_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"RevocationConfiguration">> => revocation_configuration(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_certificate_authority_request() :: #{binary() => any()}.
+
+%% Example:
+%% ocsp_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"OcspCustomCname">> => string()
+%% }
+-type ocsp_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_permission_request() :: #{
+%%   <<"Actions">> := list(list(any())()),
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"Principal">> := string(),
+%%   <<"SourceAccount">> => string()
+%% }
+-type create_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% request_already_processed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_already_processed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_certificate_authority_audit_report_request() :: #{
+%%   <<"AuditReportResponseFormat">> := list(any()),
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"S3BucketName">> := string()
+%% }
+-type create_certificate_authority_audit_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_permissions_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_c_s_r_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_c_s_r_exception() :: #{binary() => any()}.
+
+%% Example:
+%% access_description() :: #{
+%%   <<"AccessLocation">> => general_name(),
+%%   <<"AccessMethod">> => access_method()
+%% }
+-type access_description() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type certificate_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% extensions() :: #{
+%%   <<"CertificatePolicies">> => list(policy_information()()),
+%%   <<"CustomExtensions">> => list(custom_extension()()),
+%%   <<"ExtendedKeyUsage">> => list(extended_key_usage()()),
+%%   <<"KeyUsage">> => key_usage(),
+%%   <<"SubjectAlternativeNames">> => list(general_name()())
+%% }
+-type extensions() :: #{binary() => any()}.
+
+%% Example:
+%% general_name() :: #{
+%%   <<"DirectoryName">> => a_s_n1_subject(),
+%%   <<"DnsName">> => string(),
+%%   <<"EdiPartyName">> => edi_party_name(),
+%%   <<"IpAddress">> => string(),
+%%   <<"OtherName">> => other_name(),
+%%   <<"RegisteredId">> => string(),
+%%   <<"Rfc822Name">> => string(),
+%%   <<"UniformResourceIdentifier">> => string()
+%% }
+-type general_name() :: #{binary() => any()}.
+
+%% Example:
+%% list_certificate_authorities_response() :: #{
+%%   <<"CertificateAuthorities">> => list(certificate_authority()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_certificate_authorities_response() :: #{binary() => any()}.
+
+%% Example:
+%% lockout_prevented_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type lockout_prevented_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_certificate_authority_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type untag_certificate_authority_request() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% crl_configuration() :: #{
+%%   <<"CrlDistributionPointExtensionConfiguration">> => crl_distribution_point_extension_configuration(),
+%%   <<"CustomCname">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ExpirationInDays">> => integer(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3ObjectAcl">> => list(any())
+%% }
+-type crl_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_authority_certificate_response() :: #{
+%%   <<"Certificate">> => string(),
+%%   <<"CertificateChain">> => string()
+%% }
+-type get_certificate_authority_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_authority_response() :: #{
+%%   <<"CertificateAuthority">> => certificate_authority()
+%% }
+-type describe_certificate_authority_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_qualifier_info() :: #{
+%%   <<"PolicyQualifierId">> => list(any()),
+%%   <<"Qualifier">> => qualifier()
+%% }
+-type policy_qualifier_info() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_certificate_authority_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_certificate_authority_request() :: #{binary() => any()}.
+
+%% Example:
+%% custom_extension() :: #{
+%%   <<"Critical">> => boolean(),
+%%   <<"ObjectIdentifier">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type custom_extension() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_authority_csr_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string()
+%% }
+-type get_certificate_authority_csr_request() :: #{binary() => any()}.
+
+%% Example:
+%% qualifier() :: #{
+%%   <<"CpsUri">> => string()
+%% }
+-type qualifier() :: #{binary() => any()}.
+
+%% Example:
+%% put_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% extended_key_usage() :: #{
+%%   <<"ExtendedKeyUsageObjectIdentifier">> => string(),
+%%   <<"ExtendedKeyUsageType">> => list(any())
+%% }
+-type extended_key_usage() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_authority_audit_report_request() :: #{
+%%   <<"AuditReportId">> := string(),
+%%   <<"CertificateAuthorityArn">> := string()
+%% }
+-type describe_certificate_authority_audit_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% custom_attribute() :: #{
+%%   <<"ObjectIdentifier">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type custom_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_response() :: #{
+%%   <<"Certificate">> => string(),
+%%   <<"CertificateChain">> => string()
+%% }
+-type get_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% edi_party_name() :: #{
+%%   <<"NameAssigner">> => string(),
+%%   <<"PartyName">> => string()
+%% }
+-type edi_party_name() :: #{binary() => any()}.
+
+%% Example:
+%% import_certificate_authority_certificate_request() :: #{
+%%   <<"Certificate">> := binary(),
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"CertificateChain">> => binary()
+%% }
+-type import_certificate_authority_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% permission() :: #{
+%%   <<"Actions">> => list(list(any())()),
+%%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Policy">> => string(),
+%%   <<"Principal">> => string(),
+%%   <<"SourceAccount">> => string()
+%% }
+-type permission() :: #{binary() => any()}.
+
+%% Example:
+%% key_usage() :: #{
+%%   <<"CRLSign">> => boolean(),
+%%   <<"DataEncipherment">> => boolean(),
+%%   <<"DecipherOnly">> => boolean(),
+%%   <<"DigitalSignature">> => boolean(),
+%%   <<"EncipherOnly">> => boolean(),
+%%   <<"KeyAgreement">> => boolean(),
+%%   <<"KeyCertSign">> => boolean(),
+%%   <<"KeyEncipherment">> => boolean(),
+%%   <<"NonRepudiation">> => boolean()
+%% }
+-type key_usage() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+-type create_certificate_authority_errors() ::
+    invalid_tag_exception() | 
+    limit_exceeded_exception() | 
+    invalid_policy_exception() | 
+    invalid_args_exception().
+
+-type create_certificate_authority_audit_report_errors() ::
+    resource_not_found_exception() | 
+    invalid_args_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_in_progress_exception() | 
+    request_failed_exception().
+
+-type create_permission_errors() ::
+    limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    permission_already_exists_exception() | 
+    request_failed_exception().
+
+-type delete_certificate_authority_errors() ::
+    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type delete_permission_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_failed_exception().
+
+-type delete_policy_errors() ::
+    concurrent_modification_exception() | 
+    lockout_prevented_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_failed_exception().
+
+-type describe_certificate_authority_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception().
+
+-type describe_certificate_authority_audit_report_errors() ::
+    resource_not_found_exception() | 
+    invalid_args_exception() | 
+    invalid_arn_exception().
+
+-type get_certificate_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_in_progress_exception() | 
+    request_failed_exception().
+
+-type get_certificate_authority_certificate_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type get_certificate_authority_csr_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_in_progress_exception() | 
+    request_failed_exception().
+
+-type get_policy_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_failed_exception().
+
+-type import_certificate_authority_certificate_errors() ::
+    concurrent_modification_exception() | 
+    certificate_mismatch_exception() | 
+    malformed_certificate_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_in_progress_exception() | 
+    request_failed_exception().
+
+-type issue_certificate_errors() ::
+    limit_exceeded_exception() | 
+    malformed_c_s_r_exception() | 
+    resource_not_found_exception() | 
+    invalid_args_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type list_certificate_authorities_errors() ::
+    invalid_next_token_exception().
+
+-type list_permissions_errors() ::
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_failed_exception().
+
+-type list_tags_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type put_policy_errors() ::
+    concurrent_modification_exception() | 
+    lockout_prevented_exception() | 
+    resource_not_found_exception() | 
+    invalid_policy_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_failed_exception().
+
+-type restore_certificate_authority_errors() ::
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type revoke_certificate_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    request_already_processed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception() | 
+    request_in_progress_exception() | 
+    request_failed_exception().
+
+-type tag_certificate_authority_errors() ::
+    too_many_tags_exception() | 
+    invalid_tag_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type untag_certificate_authority_errors() ::
+    invalid_tag_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
+-type update_certificate_authority_errors() ::
+    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
+    invalid_policy_exception() | 
+    invalid_args_exception() | 
+    invalid_arn_exception() | 
+    invalid_state_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -127,9 +881,18 @@
 %% For more information, see Encrypting Your
 %% CRLs:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/PcaCreateCa.html#crl-encryption.
+-spec create_certificate_authority(aws_client:aws_client(), create_certificate_authority_request()) ->
+    {ok, create_certificate_authority_response(), tuple()} |
+    {error, any()} |
+    {error, create_certificate_authority_errors(), tuple()}.
 create_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_certificate_authority(Client, Input, []).
+
+-spec create_certificate_authority(aws_client:aws_client(), create_certificate_authority_request(), proplists:proplist()) ->
+    {ok, create_certificate_authority_response(), tuple()} |
+    {error, any()} |
+    {error, create_certificate_authority_errors(), tuple()}.
 create_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCertificateAuthority">>, Input, Options).
@@ -161,9 +924,18 @@ create_certificate_authority(Client, Input, Options)
 %% https://docs.aws.amazon.com/privateca/latest/userguide/PcaAuditReport.html#audit-report-encryption.
 %%
 %% You can generate a maximum of one report every 30 minutes.
+-spec create_certificate_authority_audit_report(aws_client:aws_client(), create_certificate_authority_audit_report_request()) ->
+    {ok, create_certificate_authority_audit_report_response(), tuple()} |
+    {error, any()} |
+    {error, create_certificate_authority_audit_report_errors(), tuple()}.
 create_certificate_authority_audit_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_certificate_authority_audit_report(Client, Input, []).
+
+-spec create_certificate_authority_audit_report(aws_client:aws_client(), create_certificate_authority_audit_report_request(), proplists:proplist()) ->
+    {ok, create_certificate_authority_audit_report_response(), tuple()} |
+    {error, any()} |
+    {error, create_certificate_authority_audit_report_errors(), tuple()}.
 create_certificate_authority_audit_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCertificateAuthorityAuditReport">>, Input, Options).
@@ -200,9 +972,18 @@ create_certificate_authority_audit_report(Client, Input, Options)
 %% Using a Resource
 %% Based Policy with Amazon Web Services Private CA:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
+-spec create_permission(aws_client:aws_client(), create_permission_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_permission_errors(), tuple()}.
 create_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_permission(Client, Input, []).
+
+-spec create_permission(aws_client:aws_client(), create_permission_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_permission_errors(), tuple()}.
 create_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePermission">>, Input, Options).
@@ -251,9 +1032,18 @@ create_permission(Client, Input, Options)
 %% eligible CA, call the RestoreCertificateAuthority:
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_RestoreCertificateAuthority.html
 %% action.
+-spec delete_certificate_authority(aws_client:aws_client(), delete_certificate_authority_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_certificate_authority_errors(), tuple()}.
 delete_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate_authority(Client, Input, []).
+
+-spec delete_certificate_authority(aws_client:aws_client(), delete_certificate_authority_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_certificate_authority_errors(), tuple()}.
 delete_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCertificateAuthority">>, Input, Options).
@@ -292,9 +1082,18 @@ delete_certificate_authority(Client, Input, Options)
 %% Using a Resource
 %% Based Policy with Amazon Web Services Private CA:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
+-spec delete_permission(aws_client:aws_client(), delete_permission_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_permission_errors(), tuple()}.
 delete_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_permission(Client, Input, []).
+
+-spec delete_permission(aws_client:aws_client(), delete_permission_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_permission_errors(), tuple()}.
 delete_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePermission">>, Input, Options).
@@ -346,9 +1145,18 @@ delete_permission(Client, Input, Options)
 %% see Attach a Policy for Cross-Account
 %% Access:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html.
+-spec delete_policy(aws_client:aws_client(), delete_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
+
+-spec delete_policy(aws_client:aws_client(), delete_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
@@ -385,9 +1193,18 @@ delete_policy(Client, Input, Options)
 %% which it is permanently deleted. The length of time remaining in the
 %% CA's
 %% restoration period is also included in this action's output.
+-spec describe_certificate_authority(aws_client:aws_client(), describe_certificate_authority_request()) ->
+    {ok, describe_certificate_authority_response(), tuple()} |
+    {error, any()} |
+    {error, describe_certificate_authority_errors(), tuple()}.
 describe_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate_authority(Client, Input, []).
+
+-spec describe_certificate_authority(aws_client:aws_client(), describe_certificate_authority_request(), proplists:proplist()) ->
+    {ok, describe_certificate_authority_response(), tuple()} |
+    {error, any()} |
+    {error, describe_certificate_authority_errors(), tuple()}.
 describe_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificateAuthority">>, Input, Options).
@@ -406,9 +1223,18 @@ describe_certificate_authority(Client, Input, Options)
 %% RevokeCertificate:
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_RevokeCertificate.html
 %% action.
+-spec describe_certificate_authority_audit_report(aws_client:aws_client(), describe_certificate_authority_audit_report_request()) ->
+    {ok, describe_certificate_authority_audit_report_response(), tuple()} |
+    {error, any()} |
+    {error, describe_certificate_authority_audit_report_errors(), tuple()}.
 describe_certificate_authority_audit_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate_authority_audit_report(Client, Input, []).
+
+-spec describe_certificate_authority_audit_report(aws_client:aws_client(), describe_certificate_authority_audit_report_request(), proplists:proplist()) ->
+    {ok, describe_certificate_authority_audit_report_response(), tuple()} |
+    {error, any()} |
+    {error, describe_certificate_authority_audit_report_errors(), tuple()}.
 describe_certificate_authority_audit_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificateAuthorityAuditReport">>, Input, Options).
@@ -430,9 +1256,18 @@ describe_certificate_authority_audit_report(Client, Input, Options)
 %% contains information about all of the certificates issued and revoked by
 %% your private
 %% CA.
+-spec get_certificate(aws_client:aws_client(), get_certificate_request()) ->
+    {ok, get_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, get_certificate_errors(), tuple()}.
 get_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate(Client, Input, []).
+
+-spec get_certificate(aws_client:aws_client(), get_certificate_request(), proplists:proplist()) ->
+    {ok, get_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, get_certificate_errors(), tuple()}.
 get_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCertificate">>, Input, Options).
@@ -445,9 +1280,18 @@ get_certificate(Client, Input, Options)
 %% PEM-encoded. The chain does not include the CA certificate. Each
 %% certificate in the
 %% chain signs the one before it.
+-spec get_certificate_authority_certificate(aws_client:aws_client(), get_certificate_authority_certificate_request()) ->
+    {ok, get_certificate_authority_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, get_certificate_authority_certificate_errors(), tuple()}.
 get_certificate_authority_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate_authority_certificate(Client, Input, []).
+
+-spec get_certificate_authority_certificate(aws_client:aws_client(), get_certificate_authority_certificate_request(), proplists:proplist()) ->
+    {ok, get_certificate_authority_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, get_certificate_authority_certificate_errors(), tuple()}.
 get_certificate_authority_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCertificateAuthorityCertificate">>, Input, Options).
@@ -466,9 +1310,18 @@ get_certificate_authority_certificate(Client, Input, Options)
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html
 %% action. The CSR is returned as a
 %% base64 PEM-encoded string.
+-spec get_certificate_authority_csr(aws_client:aws_client(), get_certificate_authority_csr_request()) ->
+    {ok, get_certificate_authority_csr_response(), tuple()} |
+    {error, any()} |
+    {error, get_certificate_authority_csr_errors(), tuple()}.
 get_certificate_authority_csr(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate_authority_csr(Client, Input, []).
+
+-spec get_certificate_authority_csr(aws_client:aws_client(), get_certificate_authority_csr_request(), proplists:proplist()) ->
+    {ok, get_certificate_authority_csr_response(), tuple()} |
+    {error, any()} |
+    {error, get_certificate_authority_csr_errors(), tuple()}.
 get_certificate_authority_csr(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCertificateAuthorityCsr">>, Input, Options).
@@ -511,9 +1364,18 @@ get_certificate_authority_csr(Client, Input, Options)
 %% see Attach a Policy for Cross-Account
 %% Access:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html.
+-spec get_policy(aws_client:aws_client(), get_policy_request()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
+
+-spec get_policy(aws_client:aws_client(), get_policy_request(), proplists:proplist()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicy">>, Input, Options).
@@ -626,9 +1488,18 @@ get_policy(Client, Input, Options)
 %% Freshest CRL
 %%
 %% Any other extension
+-spec import_certificate_authority_certificate(aws_client:aws_client(), import_certificate_authority_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, import_certificate_authority_certificate_errors(), tuple()}.
 import_certificate_authority_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_certificate_authority_certificate(Client, Input, []).
+
+-spec import_certificate_authority_certificate(aws_client:aws_client(), import_certificate_authority_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, import_certificate_authority_certificate_errors(), tuple()}.
 import_certificate_authority_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCertificateAuthorityCertificate">>, Input, Options).
@@ -647,9 +1518,18 @@ import_certificate_authority_certificate(Client, Input, Options)
 %% You cannot use the ACM ListCertificateAuthorities action to retrieve the
 %% ARNs of the
 %% certificates that you issue by using Amazon Web Services Private CA.
+-spec issue_certificate(aws_client:aws_client(), issue_certificate_request()) ->
+    {ok, issue_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, issue_certificate_errors(), tuple()}.
 issue_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     issue_certificate(Client, Input, []).
+
+-spec issue_certificate(aws_client:aws_client(), issue_certificate_request(), proplists:proplist()) ->
+    {ok, issue_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, issue_certificate_errors(), tuple()}.
 issue_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IssueCertificate">>, Input, Options).
@@ -658,9 +1538,18 @@ issue_certificate(Client, Input, Options)
 %% the CreateCertificateAuthority:
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreateCertificateAuthority.html
 %% action.
+-spec list_certificate_authorities(aws_client:aws_client(), list_certificate_authorities_request()) ->
+    {ok, list_certificate_authorities_response(), tuple()} |
+    {error, any()} |
+    {error, list_certificate_authorities_errors(), tuple()}.
 list_certificate_authorities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificate_authorities(Client, Input, []).
+
+-spec list_certificate_authorities(aws_client:aws_client(), list_certificate_authorities_request(), proplists:proplist()) ->
+    {ok, list_certificate_authorities_response(), tuple()} |
+    {error, any()} |
+    {error, list_certificate_authorities_errors(), tuple()}.
 list_certificate_authorities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCertificateAuthorities">>, Input, Options).
@@ -697,9 +1586,18 @@ list_certificate_authorities(Client, Input, Options)
 %% Using a Resource
 %% Based Policy with Amazon Web Services Private CA:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
+-spec list_permissions(aws_client:aws_client(), list_permissions_request()) ->
+    {ok, list_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permissions(Client, Input, []).
+
+-spec list_permissions(aws_client:aws_client(), list_permissions_request(), proplists:proplist()) ->
+    {ok, list_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPermissions">>, Input, Options).
@@ -716,9 +1614,18 @@ list_permissions(Client, Input, Options)
 %% UntagCertificateAuthority:
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_UntagCertificateAuthority.html
 %% action to remove tags.
+-spec list_tags(aws_client:aws_client(), list_tags_request()) ->
+    {ok, list_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
+
+-spec list_tags(aws_client:aws_client(), list_tags_request(), proplists:proplist()) ->
+    {ok, list_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
@@ -763,9 +1670,18 @@ list_tags(Client, Input, Options)
 %% see Attach a Policy for Cross-Account
 %% Access:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html.
+-spec put_policy(aws_client:aws_client(), put_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_policy_errors(), tuple()}.
 put_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_policy(Client, Input, []).
+
+-spec put_policy(aws_client:aws_client(), put_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_policy_errors(), tuple()}.
 put_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPolicy">>, Input, Options).
@@ -800,9 +1716,18 @@ put_policy(Client, Input, Options)
 %% authority into the private CA before it can be activated. You cannot
 %% restore a CA after
 %% the restoration period has ended.
+-spec restore_certificate_authority(aws_client:aws_client(), restore_certificate_authority_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, restore_certificate_authority_errors(), tuple()}.
 restore_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_certificate_authority(Client, Input, []).
+
+-spec restore_certificate_authority(aws_client:aws_client(), restore_certificate_authority_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, restore_certificate_authority_errors(), tuple()}.
 restore_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreCertificateAuthority">>, Input, Options).
@@ -839,9 +1764,18 @@ restore_certificate_authority(Client, Input, Options)
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html.
 %%
 %% You cannot revoke a root CA self-signed certificate.
+-spec revoke_certificate(aws_client:aws_client(), revoke_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_certificate_errors(), tuple()}.
 revoke_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_certificate(Client, Input, []).
+
+-spec revoke_certificate(aws_client:aws_client(), revoke_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_certificate_errors(), tuple()}.
 revoke_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeCertificate">>, Input, Options).
@@ -873,9 +1807,18 @@ revoke_certificate(Client, Input, Options)
 %% more information, see Attaching tags to a CA
 %% at the time of creation:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/auth-InlinePolicies.html#policy-tag-ca.
+-spec tag_certificate_authority(aws_client:aws_client(), tag_certificate_authority_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_certificate_authority_errors(), tuple()}.
 tag_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_certificate_authority(Client, Input, []).
+
+-spec tag_certificate_authority(aws_client:aws_client(), tag_certificate_authority_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_certificate_authority_errors(), tuple()}.
 tag_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagCertificateAuthority">>, Input, Options).
@@ -894,9 +1837,18 @@ tag_certificate_authority(Client, Input, Options)
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ListTags.html
 %% action to see what tags are
 %% associated with your CA.
+-spec untag_certificate_authority(aws_client:aws_client(), untag_certificate_authority_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_certificate_authority_errors(), tuple()}.
 untag_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_certificate_authority(Client, Input, []).
+
+-spec untag_certificate_authority(aws_client:aws_client(), untag_certificate_authority_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_certificate_authority_errors(), tuple()}.
 untag_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagCertificateAuthority">>, Input, Options).
@@ -917,9 +1869,18 @@ untag_certificate_authority(Client, Input, Options)
 %% thrown. For more information, see Access
 %% policies for CRLs in Amazon S3:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#s3-policies.
+-spec update_certificate_authority(aws_client:aws_client(), update_certificate_authority_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_certificate_authority_errors(), tuple()}.
 update_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_certificate_authority(Client, Input, []).
+
+-spec update_certificate_authority(aws_client:aws_client(), update_certificate_authority_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_certificate_authority_errors(), tuple()}.
 update_certificate_authority(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCertificateAuthority">>, Input, Options).

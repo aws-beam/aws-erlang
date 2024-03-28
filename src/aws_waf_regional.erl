@@ -199,6 +199,2199 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% get_sampled_requests_request() :: #{
+%%   <<"MaxItems">> := float(),
+%%   <<"RuleId">> := string(),
+%%   <<"TimeWindow">> := time_window(),
+%%   <<"WebAclId">> := string()
+%% }
+-type get_sampled_requests_request() :: #{binary() => any()}.
+
+%% Example:
+%% regex_match_set_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"RegexMatchTuple">> => regex_match_tuple()
+%% }
+-type regex_match_set_update() :: #{binary() => any()}.
+
+%% Example:
+%% get_geo_match_set_request() :: #{
+%%   <<"GeoMatchSetId">> := string()
+%% }
+-type get_geo_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_web_acl_response() :: #{
+
+%% }
+-type associate_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% xss_match_set() :: #{
+%%   <<"Name">> => string(),
+%%   <<"XssMatchSetId">> => string(),
+%%   <<"XssMatchTuples">> => list(xss_match_tuple()())
+%% }
+-type xss_match_set() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"MetricName">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% sql_injection_match_set_summary() :: #{
+%%   <<"Name">> => string(),
+%%   <<"SqlInjectionMatchSetId">> => string()
+%% }
+-type sql_injection_match_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% regex_pattern_set_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"RegexPatternString">> => string()
+%% }
+-type regex_pattern_set_update() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_group_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_nonexistent_item_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_nonexistent_item_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sql_injection_match_set() :: #{
+%%   <<"Name">> => string(),
+%%   <<"SqlInjectionMatchSetId">> => string(),
+%%   <<"SqlInjectionMatchTuples">> => list(sql_injection_match_tuple()())
+%% }
+-type sql_injection_match_set() :: #{binary() => any()}.
+
+%% Example:
+%% rate_based_rule() :: #{
+%%   <<"MatchPredicates">> => list(predicate()()),
+%%   <<"MetricName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RateKey">> => list(any()),
+%%   <<"RateLimit">> => float(),
+%%   <<"RuleId">> => string()
+%% }
+-type rate_based_rule() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_for_web_acl_request() :: #{
+%%   <<"ResourceType">> => list(any()),
+%%   <<"WebACLId">> := string()
+%% }
+-type list_resources_for_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_size_constraint_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"SizeConstraintSetId">> := string(),
+%%   <<"Updates">> := list(size_constraint_set_update()())
+%% }
+-type update_size_constraint_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% geo_match_set_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"GeoMatchConstraint">> => geo_match_constraint()
+%% }
+-type geo_match_set_update() :: #{binary() => any()}.
+
+%% Example:
+%% xss_match_set_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"XssMatchTuple">> => xss_match_tuple()
+%% }
+-type xss_match_set_update() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_invalid_regex_pattern_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_invalid_regex_pattern_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_rule_group_request() :: #{
+%%   <<"RuleGroupId">> := string()
+%% }
+-type get_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_byte_match_set_response() :: #{
+%%   <<"ByteMatchSet">> => byte_match_set(),
+%%   <<"ChangeToken">> => string()
+%% }
+-type create_byte_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_byte_match_set_response() :: #{
+%%   <<"ByteMatchSet">> => byte_match_set()
+%% }
+-type get_byte_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_groups_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"RuleGroups">> => list(rule_group_summary()())
+%% }
+-type list_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_ip_sets_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_ip_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_byte_match_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_byte_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% waf_action() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type waf_action() :: #{binary() => any()}.
+
+%% Example:
+%% list_regex_match_sets_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"RegexMatchSets">> => list(regex_match_set_summary()())
+%% }
+-type list_regex_match_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_xss_match_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_xss_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_regex_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"RegexMatchSetId">> := string()
+%% }
+-type delete_regex_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_xss_match_set_response() :: #{
+%%   <<"XssMatchSet">> => xss_match_set()
+%% }
+-type get_xss_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_stale_data_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_stale_data_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_xss_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"XssMatchSetId">> := string()
+%% }
+-type delete_xss_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_byte_match_set_request() :: #{
+%%   <<"ByteMatchSetId">> := string(),
+%%   <<"ChangeToken">> := string()
+%% }
+-type delete_byte_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_xss_match_sets_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"XssMatchSets">> => list(xss_match_set_summary()())
+%% }
+-type list_xss_match_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_rate_based_rules_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_rate_based_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_byte_match_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_byte_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_sql_injection_match_set_response() :: #{
+%%   <<"ChangeToken">> => string(),
+%%   <<"SqlInjectionMatchSet">> => sql_injection_match_set()
+%% }
+-type create_sql_injection_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_rate_based_rule_request() :: #{
+%%   <<"RuleId">> := string()
+%% }
+-type get_rate_based_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% field_to_match() :: #{
+%%   <<"Data">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type field_to_match() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_service_linked_role_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_service_linked_role_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_nonexistent_container_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_nonexistent_container_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_byte_match_set_request() :: #{
+%%   <<"ByteMatchSetId">> := string(),
+%%   <<"ChangeToken">> := string(),
+%%   <<"Updates">> := list(byte_match_set_update()())
+%% }
+-type update_byte_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_geo_match_set_response() :: #{
+%%   <<"ChangeToken">> => string(),
+%%   <<"GeoMatchSet">> => geo_match_set()
+%% }
+-type create_geo_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_ip_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_ip_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_web_acl_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"WebACLId">> := string()
+%% }
+-type associate_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% rule_group() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RuleGroupId">> => string()
+%% }
+-type rule_group() :: #{binary() => any()}.
+
+%% Example:
+%% size_constraint() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"FieldToMatch">> => field_to_match(),
+%%   <<"Size">> => float(),
+%%   <<"TextTransformation">> => list(any())
+%% }
+-type size_constraint() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"RuleId">> := string(),
+%%   <<"Updates">> := list(rule_update()())
+%% }
+-type update_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_web_acl_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_web_acl_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_sql_injection_match_set_request() :: #{
+%%   <<"SqlInjectionMatchSetId">> := string()
+%% }
+-type get_sql_injection_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ip_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"IPSetId">> := string()
+%% }
+-type delete_ip_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_size_constraint_set_response() :: #{
+%%   <<"SizeConstraintSet">> => size_constraint_set()
+%% }
+-type get_size_constraint_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_rule_request() :: #{
+%%   <<"RuleId">> := string()
+%% }
+-type get_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% byte_match_set_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"ByteMatchTuple">> => byte_match_tuple()
+%% }
+-type byte_match_set_update() :: #{binary() => any()}.
+
+%% Example:
+%% get_rule_group_response() :: #{
+%%   <<"RuleGroup">> => rule_group()
+%% }
+-type get_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_unavailable_entity_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_unavailable_entity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_regex_pattern_set_request() :: #{
+%%   <<"RegexPatternSetId">> := string()
+%% }
+-type get_regex_pattern_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_web_acl_response() :: #{
+%%   <<"WebACL">> => web_acl()
+%% }
+-type get_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_info_for_resource() :: #{
+%%   <<"ResourceARN">> => string(),
+%%   <<"TagList">> => list(tag()())
+%% }
+-type tag_info_for_resource() :: #{binary() => any()}.
+
+%% Example:
+%% activated_rule() :: #{
+%%   <<"Action">> => waf_action(),
+%%   <<"ExcludedRules">> => list(excluded_rule()()),
+%%   <<"OverrideAction">> => waf_override_action(),
+%%   <<"Priority">> => integer(),
+%%   <<"RuleId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type activated_rule() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_invalid_permission_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_invalid_permission_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_rate_based_rule_response() :: #{
+%%   <<"ChangeToken">> => string(),
+%%   <<"Rule">> => rate_based_rule()
+%% }
+-type create_rate_based_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_ip_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"IPSetId">> := string(),
+%%   <<"Updates">> := list(ip_set_update()())
+%% }
+-type update_ip_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rules_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_size_constraint_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_size_constraint_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_rate_based_rule_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_rate_based_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sql_injection_match_set_response() :: #{
+%%   <<"SqlInjectionMatchSet">> => sql_injection_match_set()
+%% }
+-type get_sql_injection_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"LogDestinationConfigs">> => list(string()()),
+%%   <<"RedactedFields">> => list(field_to_match()()),
+%%   <<"ResourceArn">> => string()
+%% }
+-type logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_regex_match_set_request() :: #{
+%%   <<"RegexMatchSetId">> := string()
+%% }
+-type get_regex_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% byte_match_tuple() :: #{
+%%   <<"FieldToMatch">> => field_to_match(),
+%%   <<"PositionalConstraint">> => list(any()),
+%%   <<"TargetString">> => binary(),
+%%   <<"TextTransformation">> => list(any())
+%% }
+-type byte_match_tuple() :: #{binary() => any()}.
+
+%% Example:
+%% list_sql_injection_match_sets_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"SqlInjectionMatchSets">> => list(sql_injection_match_set_summary()())
+%% }
+-type list_sql_injection_match_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_group_response() :: #{
+%%   <<"ChangeToken">> => string(),
+%%   <<"RuleGroup">> => rule_group()
+%% }
+-type create_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_group_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"MetricName">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_logging_configuration_response() :: #{
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type put_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"RuleId">> := string()
+%% }
+-type delete_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_bad_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_geo_match_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_geo_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_regex_pattern_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"RegexPatternSetId">> := string()
+%% }
+-type delete_regex_pattern_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_geo_match_sets_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_geo_match_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% web_acl() :: #{
+%%   <<"DefaultAction">> => waf_action(),
+%%   <<"MetricName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Rules">> => list(activated_rule()()),
+%%   <<"WebACLArn">> => string(),
+%%   <<"WebACLId">> => string()
+%% }
+-type web_acl() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_internal_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% regex_match_set() :: #{
+%%   <<"Name">> => string(),
+%%   <<"RegexMatchSetId">> => string(),
+%%   <<"RegexMatchTuples">> => list(regex_match_tuple()())
+%% }
+-type regex_match_set() :: #{binary() => any()}.
+
+%% Example:
+%% list_activated_rules_in_rule_group_response() :: #{
+%%   <<"ActivatedRules">> => list(activated_rule()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_activated_rules_in_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_sql_injection_match_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_sql_injection_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% subscribed_rule_group_summary() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RuleGroupId">> => string()
+%% }
+-type subscribed_rule_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_geo_match_set_response() :: #{
+%%   <<"GeoMatchSet">> => geo_match_set()
+%% }
+-type get_geo_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_permission_policy_response() :: #{
+
+%% }
+-type delete_permission_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_size_constraint_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"SizeConstraintSetId">> := string()
+%% }
+-type delete_size_constraint_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rate_based_rule_managed_keys_request() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"RuleId">> := string()
+%% }
+-type get_rate_based_rule_managed_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_referenced_item_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_referenced_item_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_regex_pattern_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"RegexPatternSetId">> := string(),
+%%   <<"Updates">> := list(regex_pattern_set_update()())
+%% }
+-type update_regex_pattern_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rate_based_rule_response() :: #{
+%%   <<"Rule">> => rate_based_rule()
+%% }
+-type get_rate_based_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% time_window() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type time_window() :: #{binary() => any()}.
+
+%% Example:
+%% list_ip_sets_response() :: #{
+%%   <<"IPSets">> => list(ip_set_summary()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_ip_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscribed_rule_groups_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_subscribed_rule_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_xss_match_set_request() :: #{
+%%   <<"XssMatchSetId">> := string()
+%% }
+-type get_xss_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% create_web_acl_response() :: #{
+%%   <<"ChangeToken">> => string(),
+%%   <<"WebACL">> => web_acl()
+%% }
+-type create_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_sql_injection_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"SqlInjectionMatchSetId">> := string(),
+%%   <<"Updates">> := list(sql_injection_match_set_update()())
+%% }
+-type update_sql_injection_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_web_acl_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_xss_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"Updates">> := list(xss_match_set_update()()),
+%%   <<"XssMatchSetId">> := string()
+%% }
+-type update_xss_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_logging_configuration_response() :: #{
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type get_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_regex_match_sets_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_regex_match_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_rate_based_rule_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"RateLimit">> := float(),
+%%   <<"RuleId">> := string(),
+%%   <<"Updates">> := list(rule_update()())
+%% }
+-type update_rate_based_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_regex_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_regex_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% geo_match_set_summary() :: #{
+%%   <<"GeoMatchSetId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type geo_match_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_geo_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_geo_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set() :: #{
+%%   <<"IPSetDescriptors">> => list(ip_set_descriptor()()),
+%%   <<"IPSetId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type ip_set() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_invalid_account_exception() :: #{
+
+%% }
+-type w_a_f_invalid_account_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_change_token_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type get_change_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_web_acl_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type disassociate_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_tag_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_tag_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"TagInfoForResource">> => tag_info_for_resource()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_xss_match_set_response() :: #{
+%%   <<"ChangeToken">> => string(),
+%%   <<"XssMatchSet">> => xss_match_set()
+%% }
+-type create_xss_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% rule_group_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"ActivatedRule">> => activated_rule()
+%% }
+-type rule_group_update() :: #{binary() => any()}.
+
+%% Example:
+%% sampled_h_t_t_p_request() :: #{
+%%   <<"Action">> => string(),
+%%   <<"Request">> => h_t_t_p_request(),
+%%   <<"RuleWithinRuleGroup">> => string(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Weight">> => float()
+%% }
+-type sampled_h_t_t_p_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_web_acl_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"DefaultAction">> => waf_action(),
+%%   <<"Updates">> => list(web_acl_update()()),
+%%   <<"WebACLId">> := string()
+%% }
+-type update_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_web_acl_for_resource_response() :: #{
+%%   <<"WebACLSummary">> => web_acl_summary()
+%% }
+-type get_web_acl_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_byte_match_sets_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_byte_match_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rate_based_rule_managed_keys_response() :: #{
+%%   <<"ManagedKeys">> => list(string()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type get_rate_based_rule_managed_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_invalid_parameter_exception() :: #{
+%%   <<"field">> => list(any()),
+%%   <<"parameter">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type w_a_f_invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_geo_match_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_geo_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_entity_migration_exception() :: #{
+%%   <<"MigrationErrorReason">> => string(),
+%%   <<"MigrationErrorType">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type w_a_f_entity_migration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_change_token_request() :: #{
+
+%% }
+-type get_change_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rule_response() :: #{
+%%   <<"Rule">> => rule()
+%% }
+-type get_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_sql_injection_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_sql_injection_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_response() :: #{
+%%   <<"ChangeToken">> => string(),
+%%   <<"Rule">> => rule()
+%% }
+-type create_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_regex_pattern_sets_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_regex_pattern_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_xss_match_sets_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_xss_match_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% byte_match_set_summary() :: #{
+%%   <<"ByteMatchSetId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type byte_match_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% waf_override_action() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type waf_override_action() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscribed_rule_groups_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"RuleGroups">> => list(subscribed_rule_group_summary()())
+%% }
+-type list_subscribed_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% rule() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Predicates">> => list(predicate()()),
+%%   <<"RuleId">> => string()
+%% }
+-type rule() :: #{binary() => any()}.
+
+%% Example:
+%% delete_regex_pattern_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_regex_pattern_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% size_constraint_set() :: #{
+%%   <<"Name">> => string(),
+%%   <<"SizeConstraintSetId">> => string(),
+%%   <<"SizeConstraints">> => list(size_constraint()())
+%% }
+-type size_constraint_set() :: #{binary() => any()}.
+
+%% Example:
+%% get_logging_configuration_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_regex_pattern_set_response() :: #{
+%%   <<"RegexPatternSet">> => regex_pattern_set()
+%% }
+-type get_regex_pattern_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% geo_match_constraint() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => list(any())
+%% }
+-type geo_match_constraint() :: #{binary() => any()}.
+
+%% Example:
+%% regex_pattern_set_summary() :: #{
+%%   <<"Name">> => string(),
+%%   <<"RegexPatternSetId">> => string()
+%% }
+-type regex_pattern_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% put_permission_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_permission_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_regex_match_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_regex_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_byte_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_byte_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_sql_injection_match_sets_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_sql_injection_match_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_invalid_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_invalid_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rule_summary() :: #{
+%%   <<"Name">> => string(),
+%%   <<"RuleId">> => string()
+%% }
+-type rule_summary() :: #{binary() => any()}.
+
+%% Example:
+%% regex_match_set_summary() :: #{
+%%   <<"Name">> => string(),
+%%   <<"RegexMatchSetId">> => string()
+%% }
+-type regex_match_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_change_token_status_response() :: #{
+%%   <<"ChangeTokenStatus">> => list(any())
+%% }
+-type get_change_token_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_activated_rules_in_rule_group_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"RuleGroupId">> => string()
+%% }
+-type list_activated_rules_in_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_disallowed_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_disallowed_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_byte_match_sets_response() :: #{
+%%   <<"ByteMatchSets">> => list(byte_match_set_summary()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_byte_match_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_logging_configurations_response() :: #{
+%%   <<"LoggingConfigurations">> => list(logging_configuration()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_logging_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% h_t_t_p_header() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type h_t_t_p_header() :: #{binary() => any()}.
+
+%% Example:
+%% get_size_constraint_set_request() :: #{
+%%   <<"SizeConstraintSetId">> := string()
+%% }
+-type get_size_constraint_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_permission_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_permission_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_geo_match_sets_response() :: #{
+%%   <<"GeoMatchSets">> => list(geo_match_set_summary()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_geo_match_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_xss_match_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_xss_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% excluded_rule() :: #{
+%%   <<"RuleId">> => string()
+%% }
+-type excluded_rule() :: #{binary() => any()}.
+
+%% Example:
+%% create_web_acl_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"DefaultAction">> := waf_action(),
+%%   <<"MetricName">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_ip_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_ip_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% size_constraint_set_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"SizeConstraint">> => size_constraint()
+%% }
+-type size_constraint_set_update() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_group_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"RuleGroupId">> := string(),
+%%   <<"Updates">> := list(rule_group_update()())
+%% }
+-type update_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rules_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Rules">> => list(rule_summary()())
+%% }
+-type list_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ip_set_response() :: #{
+%%   <<"IPSet">> => ip_set()
+%% }
+-type get_ip_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_group_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% h_t_t_p_request() :: #{
+%%   <<"ClientIP">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"HTTPVersion">> => string(),
+%%   <<"Headers">> => list(h_t_t_p_header()()),
+%%   <<"Method">> => string(),
+%%   <<"URI">> => string()
+%% }
+-type h_t_t_p_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% regex_pattern_set() :: #{
+%%   <<"Name">> => string(),
+%%   <<"RegexPatternSetId">> => string(),
+%%   <<"RegexPatternStrings">> => list(string()())
+%% }
+-type regex_pattern_set() :: #{binary() => any()}.
+
+%% Example:
+%% update_size_constraint_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_size_constraint_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_byte_match_set_request() :: #{
+%%   <<"ByteMatchSetId">> := string()
+%% }
+-type get_byte_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rate_based_rules_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Rules">> => list(rule_summary()())
+%% }
+-type list_rate_based_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% rule_group_summary() :: #{
+%%   <<"Name">> => string(),
+%%   <<"RuleGroupId">> => string()
+%% }
+-type rule_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set_summary() :: #{
+%%   <<"IPSetId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type ip_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_regex_pattern_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_regex_pattern_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_non_empty_entity_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_non_empty_entity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_permission_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_permission_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% xss_match_set_summary() :: #{
+%%   <<"Name">> => string(),
+%%   <<"XssMatchSetId">> => string()
+%% }
+-type xss_match_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_regex_match_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_regex_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_regex_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"RegexMatchSetId">> := string(),
+%%   <<"Updates">> := list(regex_match_set_update()())
+%% }
+-type update_regex_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_permission_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_permission_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% web_acl_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"ActivatedRule">> => activated_rule()
+%% }
+-type web_acl_update() :: #{binary() => any()}.
+
+%% Example:
+%% xss_match_tuple() :: #{
+%%   <<"FieldToMatch">> => field_to_match(),
+%%   <<"TextTransformation">> => list(any())
+%% }
+-type xss_match_tuple() :: #{binary() => any()}.
+
+%% Example:
+%% predicate() :: #{
+%%   <<"DataId">> => string(),
+%%   <<"Negated">> => boolean(),
+%%   <<"Type">> => list(any())
+%% }
+-type predicate() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_for_web_acl_response() :: #{
+%%   <<"ResourceArns">> => list(string()())
+%% }
+-type list_resources_for_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_logging_configurations_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_logging_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_logging_configuration_response() :: #{
+
+%% }
+-type delete_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ip_set_request() :: #{
+%%   <<"IPSetId">> := string()
+%% }
+-type get_ip_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_size_constraint_set_response() :: #{
+%%   <<"ChangeToken">> => string(),
+%%   <<"SizeConstraintSet">> => size_constraint_set()
+%% }
+-type create_size_constraint_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_web_acl_response() :: #{
+
+%% }
+-type disassociate_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_logging_configuration_request() :: #{
+%%   <<"LoggingConfiguration">> := logging_configuration()
+%% }
+-type put_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_permission_policy_response() :: #{
+
+%% }
+-type put_permission_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% regex_match_tuple() :: #{
+%%   <<"FieldToMatch">> => field_to_match(),
+%%   <<"RegexPatternSetId">> => string(),
+%%   <<"TextTransformation">> => list(any())
+%% }
+-type regex_match_tuple() :: #{binary() => any()}.
+
+%% Example:
+%% update_geo_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"GeoMatchSetId">> := string(),
+%%   <<"Updates">> := list(geo_match_set_update()())
+%% }
+-type update_geo_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_change_token_status_request() :: #{
+%%   <<"ChangeToken">> := string()
+%% }
+-type get_change_token_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% rule_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Predicate">> => predicate()
+%% }
+-type rule_update() :: #{binary() => any()}.
+
+%% Example:
+%% list_size_constraint_sets_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"SizeConstraintSets">> => list(size_constraint_set_summary()())
+%% }
+-type list_size_constraint_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% geo_match_set() :: #{
+%%   <<"GeoMatchConstraints">> => list(geo_match_constraint()()),
+%%   <<"GeoMatchSetId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type geo_match_set() :: #{binary() => any()}.
+
+%% Example:
+%% delete_logging_configuration_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rate_based_rule_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_rate_based_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sampled_requests_response() :: #{
+%%   <<"PopulationSize">> => float(),
+%%   <<"SampledRequests">> => list(sampled_h_t_t_p_request()()),
+%%   <<"TimeWindow">> => time_window()
+%% }
+-type get_sampled_requests_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_regex_pattern_sets_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"RegexPatternSets">> => list(regex_pattern_set_summary()())
+%% }
+-type list_regex_pattern_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% sql_injection_match_set_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"SqlInjectionMatchTuple">> => sql_injection_match_tuple()
+%% }
+-type sql_injection_match_set_update() :: #{binary() => any()}.
+
+%% Example:
+%% list_web_acls_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_web_acls_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_web_acl_migration_stack_request() :: #{
+%%   <<"IgnoreUnsupportedType">> := boolean(),
+%%   <<"S3BucketName">> := string(),
+%%   <<"WebACLId">> := string()
+%% }
+-type create_web_acl_migration_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set_descriptor() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type ip_set_descriptor() :: #{binary() => any()}.
+
+%% Example:
+%% list_web_acls_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"WebACLs">> => list(web_acl_summary()())
+%% }
+-type list_web_acls_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_web_acl_migration_stack_response() :: #{
+%%   <<"S3ObjectUrl">> => string()
+%% }
+-type create_web_acl_migration_stack_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_ip_set_response() :: #{
+%%   <<"ChangeToken">> => string(),
+%%   <<"IPSet">> => ip_set()
+%% }
+-type create_ip_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sql_injection_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"SqlInjectionMatchSetId">> := string()
+%% }
+-type delete_sql_injection_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_regex_pattern_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type update_regex_pattern_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"IPSetDescriptor">> => ip_set_descriptor()
+%% }
+-type ip_set_update() :: #{binary() => any()}.
+
+%% Example:
+%% list_size_constraint_sets_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_size_constraint_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_web_acl_request() :: #{
+%%   <<"WebACLId">> := string()
+%% }
+-type get_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% sql_injection_match_tuple() :: #{
+%%   <<"FieldToMatch">> => field_to_match(),
+%%   <<"TextTransformation">> => list(any())
+%% }
+-type sql_injection_match_tuple() :: #{binary() => any()}.
+
+%% Example:
+%% get_regex_match_set_response() :: #{
+%%   <<"RegexMatchSet">> => regex_match_set()
+%% }
+-type get_regex_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_acl_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_subscription_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_subscription_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_group_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"RuleGroupId">> := string()
+%% }
+-type delete_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_limits_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_limits_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rate_based_rule_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"RuleId">> := string()
+%% }
+-type delete_rate_based_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_acl_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"WebACLId">> := string()
+%% }
+-type delete_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_geo_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"GeoMatchSetId">> := string()
+%% }
+-type delete_geo_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_tag_operation_internal_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_tag_operation_internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sql_injection_match_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_sql_injection_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% web_acl_summary() :: #{
+%%   <<"Name">> => string(),
+%%   <<"WebACLId">> => string()
+%% }
+-type web_acl_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_size_constraint_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_size_constraint_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_rate_based_rule_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"MetricName">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RateKey">> := list(any()),
+%%   <<"RateLimit">> := float(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_rate_based_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_groups_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_rule_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% byte_match_set() :: #{
+%%   <<"ByteMatchSetId">> => string(),
+%%   <<"ByteMatchTuples">> => list(byte_match_tuple()()),
+%%   <<"Name">> => string()
+%% }
+-type byte_match_set() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ip_set_response() :: #{
+%%   <<"ChangeToken">> => string()
+%% }
+-type delete_ip_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% size_constraint_set_summary() :: #{
+%%   <<"Name">> => string(),
+%%   <<"SizeConstraintSetId">> => string()
+%% }
+-type size_constraint_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_regex_match_set_response() :: #{
+%%   <<"ChangeToken">> => string(),
+%%   <<"RegexMatchSet">> => regex_match_set()
+%% }
+-type create_regex_match_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_xss_match_set_request() :: #{
+%%   <<"ChangeToken">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_xss_match_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_regex_pattern_set_response() :: #{
+%%   <<"ChangeToken">> => string(),
+%%   <<"RegexPatternSet">> => regex_pattern_set()
+%% }
+-type create_regex_pattern_set_response() :: #{binary() => any()}.
+
+-type associate_web_acl_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type create_byte_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_geo_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_ip_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_rate_based_rule_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_regex_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_regex_pattern_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_rule_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_rule_group_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_size_constraint_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_sql_injection_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_web_acl_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_stale_data_exception().
+
+-type create_web_acl_migration_stack_errors() ::
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_entity_migration_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type create_xss_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception().
+
+-type delete_byte_match_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_geo_match_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_ip_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_logging_configuration_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_permission_policy_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_rate_based_rule_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_regex_match_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_regex_pattern_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_rule_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_rule_group_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_size_constraint_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_sql_injection_match_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_web_acl_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type delete_xss_match_set_errors() ::
+    w_a_f_non_empty_entity_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type disassociate_web_acl_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_byte_match_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_change_token_errors() ::
+    w_a_f_internal_error_exception().
+
+-type get_change_token_status_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_geo_match_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_ip_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_logging_configuration_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_permission_policy_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_rate_based_rule_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_rate_based_rule_managed_keys_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_regex_match_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_regex_pattern_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_rule_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_rule_group_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_sampled_requests_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_size_constraint_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_sql_injection_match_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_web_acl_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_web_acl_for_resource_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type get_xss_match_set_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_activated_rules_in_rule_group_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_byte_match_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_geo_match_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_ip_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_logging_configurations_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_rate_based_rules_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_regex_match_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_regex_pattern_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_resources_for_web_acl_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_rule_groups_errors() ::
+    w_a_f_internal_error_exception().
+
+-type list_rules_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_size_constraint_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_sql_injection_match_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_subscribed_rule_groups_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_tags_for_resource_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type list_web_acls_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_xss_match_sets_errors() ::
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception().
+
+-type put_logging_configuration_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_service_linked_role_error_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type put_permission_policy_errors() ::
+    w_a_f_internal_error_exception() | 
+    w_a_f_invalid_permission_policy_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type tag_resource_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type untag_resource_errors() ::
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_bad_request_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_byte_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_geo_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_ip_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_rate_based_rule_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_regex_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_disallowed_name_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_regex_pattern_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_invalid_regex_pattern_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_rule_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_rule_group_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_size_constraint_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_sql_injection_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_web_acl_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_subscription_not_found_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_referenced_item_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
+-type update_xss_match_set_errors() ::
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_account_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_container_exception() | 
+    w_a_f_stale_data_exception() | 
+    w_a_f_nonexistent_item_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -220,9 +2413,18 @@
 %%
 %% Associates a web ACL with a resource, either an application load balancer
 %% or Amazon API Gateway stage.
+-spec associate_web_acl(aws_client:aws_client(), associate_web_acl_request()) ->
+    {ok, associate_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, associate_web_acl_errors(), tuple()}.
 associate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_web_acl(Client, Input, []).
+
+-spec associate_web_acl(aws_client:aws_client(), associate_web_acl_request(), proplists:proplist()) ->
+    {ok, associate_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, associate_web_acl_errors(), tuple()}.
 associate_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateWebACL">>, Input, Options).
@@ -272,9 +2474,18 @@ associate_web_acl(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_byte_match_set(aws_client:aws_client(), create_byte_match_set_request()) ->
+    {ok, create_byte_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_byte_match_set_errors(), tuple()}.
 create_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_byte_match_set(Client, Input, []).
+
+-spec create_byte_match_set(aws_client:aws_client(), create_byte_match_set_request(), proplists:proplist()) ->
+    {ok, create_byte_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_byte_match_set_errors(), tuple()}.
 create_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateByteMatchSet">>, Input, Options).
@@ -320,9 +2531,18 @@ create_byte_match_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_geo_match_set(aws_client:aws_client(), create_geo_match_set_request()) ->
+    {ok, create_geo_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_geo_match_set_errors(), tuple()}.
 create_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_geo_match_set(Client, Input, []).
+
+-spec create_geo_match_set(aws_client:aws_client(), create_geo_match_set_request(), proplists:proplist()) ->
+    {ok, create_geo_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_geo_match_set_errors(), tuple()}.
 create_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGeoMatchSet">>, Input, Options).
@@ -372,9 +2592,18 @@ create_geo_match_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_ip_set(aws_client:aws_client(), create_ip_set_request()) ->
+    {ok, create_ip_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_ip_set_errors(), tuple()}.
 create_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ip_set(Client, Input, []).
+
+-spec create_ip_set(aws_client:aws_client(), create_ip_set_request(), proplists:proplist()) ->
+    {ok, create_ip_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_ip_set_errors(), tuple()}.
 create_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIPSet">>, Input, Options).
@@ -473,9 +2702,18 @@ create_ip_set(Client, Input, Options)
 %% HTTP requests,
 %% see the AWS WAF Developer
 %% Guide: https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_rate_based_rule(aws_client:aws_client(), create_rate_based_rule_request()) ->
+    {ok, create_rate_based_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_rate_based_rule_errors(), tuple()}.
 create_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rate_based_rule(Client, Input, []).
+
+-spec create_rate_based_rule(aws_client:aws_client(), create_rate_based_rule_request(), proplists:proplist()) ->
+    {ok, create_rate_based_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_rate_based_rule_errors(), tuple()}.
 create_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRateBasedRule">>, Input, Options).
@@ -527,9 +2765,18 @@ create_rate_based_rule(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_regex_match_set(aws_client:aws_client(), create_regex_match_set_request()) ->
+    {ok, create_regex_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_regex_match_set_errors(), tuple()}.
 create_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_regex_match_set(Client, Input, []).
+
+-spec create_regex_match_set(aws_client:aws_client(), create_regex_match_set_request(), proplists:proplist()) ->
+    {ok, create_regex_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_regex_match_set_errors(), tuple()}.
 create_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRegexMatchSet">>, Input, Options).
@@ -574,9 +2821,18 @@ create_regex_match_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_regex_pattern_set(aws_client:aws_client(), create_regex_pattern_set_request()) ->
+    {ok, create_regex_pattern_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_regex_pattern_set_errors(), tuple()}.
 create_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_regex_pattern_set(Client, Input, []).
+
+-spec create_regex_pattern_set(aws_client:aws_client(), create_regex_pattern_set_request(), proplists:proplist()) ->
+    {ok, create_regex_pattern_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_regex_pattern_set_errors(), tuple()}.
 create_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRegexPatternSet">>, Input, Options).
@@ -644,9 +2900,18 @@ create_regex_pattern_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_rule(aws_client:aws_client(), create_rule_request()) ->
+    {ok, create_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule(Client, Input, []).
+
+-spec create_rule(aws_client:aws_client(), create_rule_request(), proplists:proplist()) ->
+    {ok, create_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRule">>, Input, Options).
@@ -683,9 +2948,18 @@ create_rule(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_rule_group(aws_client:aws_client(), create_rule_group_request()) ->
+    {ok, create_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_rule_group_errors(), tuple()}.
 create_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule_group(Client, Input, []).
+
+-spec create_rule_group(aws_client:aws_client(), create_rule_group_request(), proplists:proplist()) ->
+    {ok, create_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_rule_group_errors(), tuple()}.
 create_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRuleGroup">>, Input, Options).
@@ -735,9 +3009,18 @@ create_rule_group(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_size_constraint_set(aws_client:aws_client(), create_size_constraint_set_request()) ->
+    {ok, create_size_constraint_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_size_constraint_set_errors(), tuple()}.
 create_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_size_constraint_set(Client, Input, []).
+
+-spec create_size_constraint_set(aws_client:aws_client(), create_size_constraint_set_request(), proplists:proplist()) ->
+    {ok, create_size_constraint_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_size_constraint_set_errors(), tuple()}.
 create_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSizeConstraintSet">>, Input, Options).
@@ -783,9 +3066,18 @@ create_size_constraint_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_sql_injection_match_set(aws_client:aws_client(), create_sql_injection_match_set_request()) ->
+    {ok, create_sql_injection_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_sql_injection_match_set_errors(), tuple()}.
 create_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_sql_injection_match_set(Client, Input, []).
+
+-spec create_sql_injection_match_set(aws_client:aws_client(), create_sql_injection_match_set_request(), proplists:proplist()) ->
+    {ok, create_sql_injection_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_sql_injection_match_set_errors(), tuple()}.
 create_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSqlInjectionMatchSet">>, Input, Options).
@@ -844,9 +3136,18 @@ create_sql_injection_match_set(Client, Input, Options)
 %%
 %% For more information about how to use the AWS WAF API, see the AWS WAF
 %% Developer Guide: https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_web_acl(aws_client:aws_client(), create_web_acl_request()) ->
+    {ok, create_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, create_web_acl_errors(), tuple()}.
 create_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_web_acl(Client, Input, []).
+
+-spec create_web_acl(aws_client:aws_client(), create_web_acl_request(), proplists:proplist()) ->
+    {ok, create_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, create_web_acl_errors(), tuple()}.
 create_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebACL">>, Input, Options).
@@ -868,9 +3169,18 @@ create_web_acl(Client, Input, Options)
 %% in the AWS WAF
 %% Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html.
+-spec create_web_acl_migration_stack(aws_client:aws_client(), create_web_acl_migration_stack_request()) ->
+    {ok, create_web_acl_migration_stack_response(), tuple()} |
+    {error, any()} |
+    {error, create_web_acl_migration_stack_errors(), tuple()}.
 create_web_acl_migration_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_web_acl_migration_stack(Client, Input, []).
+
+-spec create_web_acl_migration_stack(aws_client:aws_client(), create_web_acl_migration_stack_request(), proplists:proplist()) ->
+    {ok, create_web_acl_migration_stack_response(), tuple()} |
+    {error, any()} |
+    {error, create_web_acl_migration_stack_errors(), tuple()}.
 create_web_acl_migration_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebACLMigrationStack">>, Input, Options).
@@ -915,9 +3225,18 @@ create_web_acl_migration_stack(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec create_xss_match_set(aws_client:aws_client(), create_xss_match_set_request()) ->
+    {ok, create_xss_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_xss_match_set_errors(), tuple()}.
 create_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_xss_match_set(Client, Input, []).
+
+-spec create_xss_match_set(aws_client:aws_client(), create_xss_match_set_request(), proplists:proplist()) ->
+    {ok, create_xss_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_xss_match_set_errors(), tuple()}.
 create_xss_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateXssMatchSet">>, Input, Options).
@@ -954,9 +3273,18 @@ create_xss_match_set(Client, Input, Options)
 %% `DeleteByteMatchSet' request.
 %%
 %% Submit a `DeleteByteMatchSet' request.
+-spec delete_byte_match_set(aws_client:aws_client(), delete_byte_match_set_request()) ->
+    {ok, delete_byte_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_byte_match_set_errors(), tuple()}.
 delete_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_byte_match_set(Client, Input, []).
+
+-spec delete_byte_match_set(aws_client:aws_client(), delete_byte_match_set_request(), proplists:proplist()) ->
+    {ok, delete_byte_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_byte_match_set_errors(), tuple()}.
 delete_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteByteMatchSet">>, Input, Options).
@@ -994,9 +3322,18 @@ delete_byte_match_set(Client, Input, Options)
 %% `DeleteGeoMatchSet' request.
 %%
 %% Submit a `DeleteGeoMatchSet' request.
+-spec delete_geo_match_set(aws_client:aws_client(), delete_geo_match_set_request()) ->
+    {ok, delete_geo_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_geo_match_set_errors(), tuple()}.
 delete_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_geo_match_set(Client, Input, []).
+
+-spec delete_geo_match_set(aws_client:aws_client(), delete_geo_match_set_request(), proplists:proplist()) ->
+    {ok, delete_geo_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_geo_match_set_errors(), tuple()}.
 delete_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGeoMatchSet">>, Input, Options).
@@ -1034,9 +3371,18 @@ delete_geo_match_set(Client, Input, Options)
 %% `DeleteIPSet' request.
 %%
 %% Submit a `DeleteIPSet' request.
+-spec delete_ip_set(aws_client:aws_client(), delete_ip_set_request()) ->
+    {ok, delete_ip_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_ip_set_errors(), tuple()}.
 delete_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ip_set(Client, Input, []).
+
+-spec delete_ip_set(aws_client:aws_client(), delete_ip_set_request(), proplists:proplist()) ->
+    {ok, delete_ip_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_ip_set_errors(), tuple()}.
 delete_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIPSet">>, Input, Options).
@@ -1058,9 +3404,18 @@ delete_ip_set(Client, Input, Options)
 %%
 %% Permanently deletes the `LoggingConfiguration' from the specified web
 %% ACL.
+-spec delete_logging_configuration(aws_client:aws_client(), delete_logging_configuration_request()) ->
+    {ok, delete_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_logging_configuration(Client, Input, []).
+
+-spec delete_logging_configuration(aws_client:aws_client(), delete_logging_configuration_request(), proplists:proplist()) ->
+    {ok, delete_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoggingConfiguration">>, Input, Options).
@@ -1083,9 +3438,18 @@ delete_logging_configuration(Client, Input, Options)
 %% Permanently deletes an IAM policy from the specified RuleGroup.
 %%
 %% The user making the request must be the owner of the RuleGroup.
+-spec delete_permission_policy(aws_client:aws_client(), delete_permission_policy_request()) ->
+    {ok, delete_permission_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_permission_policy_errors(), tuple()}.
 delete_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_permission_policy(Client, Input, []).
+
+-spec delete_permission_policy(aws_client:aws_client(), delete_permission_policy_request(), proplists:proplist()) ->
+    {ok, delete_permission_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_permission_policy_errors(), tuple()}.
 delete_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePermissionPolicy">>, Input, Options).
@@ -1125,9 +3489,18 @@ delete_permission_policy(Client, Input, Options)
 %% request.
 %%
 %% Submit a `DeleteRateBasedRule' request.
+-spec delete_rate_based_rule(aws_client:aws_client(), delete_rate_based_rule_request()) ->
+    {ok, delete_rate_based_rule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_rate_based_rule_errors(), tuple()}.
 delete_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rate_based_rule(Client, Input, []).
+
+-spec delete_rate_based_rule(aws_client:aws_client(), delete_rate_based_rule_request(), proplists:proplist()) ->
+    {ok, delete_rate_based_rule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_rate_based_rule_errors(), tuple()}.
 delete_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRateBasedRule">>, Input, Options).
@@ -1164,9 +3537,18 @@ delete_rate_based_rule(Client, Input, Options)
 %% `DeleteRegexMatchSet' request.
 %%
 %% Submit a `DeleteRegexMatchSet' request.
+-spec delete_regex_match_set(aws_client:aws_client(), delete_regex_match_set_request()) ->
+    {ok, delete_regex_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_regex_match_set_errors(), tuple()}.
 delete_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_regex_match_set(Client, Input, []).
+
+-spec delete_regex_match_set(aws_client:aws_client(), delete_regex_match_set_request(), proplists:proplist()) ->
+    {ok, delete_regex_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_regex_match_set_errors(), tuple()}.
 delete_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegexMatchSet">>, Input, Options).
@@ -1189,9 +3571,18 @@ delete_regex_match_set(Client, Input, Options)
 %% Permanently deletes a `RegexPatternSet'. You can't delete a
 %% `RegexPatternSet' if it's still used in any `RegexMatchSet'
 %% or if the `RegexPatternSet' is not empty.
+-spec delete_regex_pattern_set(aws_client:aws_client(), delete_regex_pattern_set_request()) ->
+    {ok, delete_regex_pattern_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_regex_pattern_set_errors(), tuple()}.
 delete_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_regex_pattern_set(Client, Input, []).
+
+-spec delete_regex_pattern_set(aws_client:aws_client(), delete_regex_pattern_set_request(), proplists:proplist()) ->
+    {ok, delete_regex_pattern_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_regex_pattern_set_errors(), tuple()}.
 delete_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegexPatternSet">>, Input, Options).
@@ -1230,9 +3621,18 @@ delete_regex_pattern_set(Client, Input, Options)
 %% `DeleteRule' request.
 %%
 %% Submit a `DeleteRule' request.
+-spec delete_rule(aws_client:aws_client(), delete_rule_request()) ->
+    {ok, delete_rule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
+
+-spec delete_rule(aws_client:aws_client(), delete_rule_request(), proplists:proplist()) ->
+    {ok, delete_rule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
@@ -1270,9 +3670,18 @@ delete_rule(Client, Input, Options)
 %% `DeleteRuleGroup' request.
 %%
 %% Submit a `DeleteRuleGroup' request.
+-spec delete_rule_group(aws_client:aws_client(), delete_rule_group_request()) ->
+    {ok, delete_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_rule_group_errors(), tuple()}.
 delete_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule_group(Client, Input, []).
+
+-spec delete_rule_group(aws_client:aws_client(), delete_rule_group_request(), proplists:proplist()) ->
+    {ok, delete_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_rule_group_errors(), tuple()}.
 delete_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRuleGroup">>, Input, Options).
@@ -1310,9 +3719,18 @@ delete_rule_group(Client, Input, Options)
 %% `DeleteSizeConstraintSet' request.
 %%
 %% Submit a `DeleteSizeConstraintSet' request.
+-spec delete_size_constraint_set(aws_client:aws_client(), delete_size_constraint_set_request()) ->
+    {ok, delete_size_constraint_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_size_constraint_set_errors(), tuple()}.
 delete_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_size_constraint_set(Client, Input, []).
+
+-spec delete_size_constraint_set(aws_client:aws_client(), delete_size_constraint_set_request(), proplists:proplist()) ->
+    {ok, delete_size_constraint_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_size_constraint_set_errors(), tuple()}.
 delete_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSizeConstraintSet">>, Input, Options).
@@ -1352,9 +3770,18 @@ delete_size_constraint_set(Client, Input, Options)
 %% `DeleteSqlInjectionMatchSet' request.
 %%
 %% Submit a `DeleteSqlInjectionMatchSet' request.
+-spec delete_sql_injection_match_set(aws_client:aws_client(), delete_sql_injection_match_set_request()) ->
+    {ok, delete_sql_injection_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_sql_injection_match_set_errors(), tuple()}.
 delete_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_sql_injection_match_set(Client, Input, []).
+
+-spec delete_sql_injection_match_set(aws_client:aws_client(), delete_sql_injection_match_set_request(), proplists:proplist()) ->
+    {ok, delete_sql_injection_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_sql_injection_match_set_errors(), tuple()}.
 delete_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSqlInjectionMatchSet">>, Input, Options).
@@ -1387,9 +3814,18 @@ delete_sql_injection_match_set(Client, Input, Options)
 %% `DeleteWebACL' request.
 %%
 %% Submit a `DeleteWebACL' request.
+-spec delete_web_acl(aws_client:aws_client(), delete_web_acl_request()) ->
+    {ok, delete_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, delete_web_acl_errors(), tuple()}.
 delete_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_web_acl(Client, Input, []).
+
+-spec delete_web_acl(aws_client:aws_client(), delete_web_acl_request(), proplists:proplist()) ->
+    {ok, delete_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, delete_web_acl_errors(), tuple()}.
 delete_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebACL">>, Input, Options).
@@ -1429,9 +3865,18 @@ delete_web_acl(Client, Input, Options)
 %% `DeleteXssMatchSet' request.
 %%
 %% Submit a `DeleteXssMatchSet' request.
+-spec delete_xss_match_set(aws_client:aws_client(), delete_xss_match_set_request()) ->
+    {ok, delete_xss_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_xss_match_set_errors(), tuple()}.
 delete_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_xss_match_set(Client, Input, []).
+
+-spec delete_xss_match_set(aws_client:aws_client(), delete_xss_match_set_request(), proplists:proplist()) ->
+    {ok, delete_xss_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_xss_match_set_errors(), tuple()}.
 delete_xss_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteXssMatchSet">>, Input, Options).
@@ -1453,9 +3898,18 @@ delete_xss_match_set(Client, Input, Options)
 %%
 %% Removes a web ACL from the specified resource, either an application load
 %% balancer or Amazon API Gateway stage.
+-spec disassociate_web_acl(aws_client:aws_client(), disassociate_web_acl_request()) ->
+    {ok, disassociate_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_web_acl_errors(), tuple()}.
 disassociate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_web_acl(Client, Input, []).
+
+-spec disassociate_web_acl(aws_client:aws_client(), disassociate_web_acl_request(), proplists:proplist()) ->
+    {ok, disassociate_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_web_acl_errors(), tuple()}.
 disassociate_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateWebACL">>, Input, Options).
@@ -1476,9 +3930,18 @@ disassociate_web_acl(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `ByteMatchSet' specified by `ByteMatchSetId'.
+-spec get_byte_match_set(aws_client:aws_client(), get_byte_match_set_request()) ->
+    {ok, get_byte_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_byte_match_set_errors(), tuple()}.
 get_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_byte_match_set(Client, Input, []).
+
+-spec get_byte_match_set(aws_client:aws_client(), get_byte_match_set_request(), proplists:proplist()) ->
+    {ok, get_byte_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_byte_match_set_errors(), tuple()}.
 get_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetByteMatchSet">>, Input, Options).
@@ -1515,9 +3978,18 @@ get_byte_match_set(Client, Input, Options)
 %% which indicates that AWS WAF is propagating the change to all AWS WAF
 %% servers. Use `GetChangeTokenStatus' to determine the
 %% status of your change token.
+-spec get_change_token(aws_client:aws_client(), get_change_token_request()) ->
+    {ok, get_change_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_change_token_errors(), tuple()}.
 get_change_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_change_token(Client, Input, []).
+
+-spec get_change_token(aws_client:aws_client(), get_change_token_request(), proplists:proplist()) ->
+    {ok, get_change_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_change_token_errors(), tuple()}.
 get_change_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetChangeToken">>, Input, Options).
@@ -1549,9 +4021,18 @@ get_change_token(Client, Input, Options)
 %% request to all AWS WAF servers.
 %%
 %% `INSYNC': Propagation is complete.
+-spec get_change_token_status(aws_client:aws_client(), get_change_token_status_request()) ->
+    {ok, get_change_token_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_change_token_status_errors(), tuple()}.
 get_change_token_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_change_token_status(Client, Input, []).
+
+-spec get_change_token_status(aws_client:aws_client(), get_change_token_status_request(), proplists:proplist()) ->
+    {ok, get_change_token_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_change_token_status_errors(), tuple()}.
 get_change_token_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetChangeTokenStatus">>, Input, Options).
@@ -1572,9 +4053,18 @@ get_change_token_status(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `GeoMatchSet' that is specified by `GeoMatchSetId'.
+-spec get_geo_match_set(aws_client:aws_client(), get_geo_match_set_request()) ->
+    {ok, get_geo_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_geo_match_set_errors(), tuple()}.
 get_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_geo_match_set(Client, Input, []).
+
+-spec get_geo_match_set(aws_client:aws_client(), get_geo_match_set_request(), proplists:proplist()) ->
+    {ok, get_geo_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_geo_match_set_errors(), tuple()}.
 get_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGeoMatchSet">>, Input, Options).
@@ -1595,9 +4085,18 @@ get_geo_match_set(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `IPSet' that is specified by `IPSetId'.
+-spec get_ip_set(aws_client:aws_client(), get_ip_set_request()) ->
+    {ok, get_ip_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_ip_set_errors(), tuple()}.
 get_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ip_set(Client, Input, []).
+
+-spec get_ip_set(aws_client:aws_client(), get_ip_set_request(), proplists:proplist()) ->
+    {ok, get_ip_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_ip_set_errors(), tuple()}.
 get_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIPSet">>, Input, Options).
@@ -1618,9 +4117,18 @@ get_ip_set(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `LoggingConfiguration' for the specified web ACL.
+-spec get_logging_configuration(aws_client:aws_client(), get_logging_configuration_request()) ->
+    {ok, get_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_logging_configuration_errors(), tuple()}.
 get_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_logging_configuration(Client, Input, []).
+
+-spec get_logging_configuration(aws_client:aws_client(), get_logging_configuration_request(), proplists:proplist()) ->
+    {ok, get_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_logging_configuration_errors(), tuple()}.
 get_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoggingConfiguration">>, Input, Options).
@@ -1641,9 +4149,18 @@ get_logging_configuration(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the IAM policy attached to the RuleGroup.
+-spec get_permission_policy(aws_client:aws_client(), get_permission_policy_request()) ->
+    {ok, get_permission_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_permission_policy_errors(), tuple()}.
 get_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_permission_policy(Client, Input, []).
+
+-spec get_permission_policy(aws_client:aws_client(), get_permission_policy_request(), proplists:proplist()) ->
+    {ok, get_permission_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_permission_policy_errors(), tuple()}.
 get_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPermissionPolicy">>, Input, Options).
@@ -1666,9 +4183,18 @@ get_permission_policy(Client, Input, Options)
 %% Returns the `RateBasedRule' that is specified by the
 %% `RuleId' that you included in the `GetRateBasedRule'
 %% request.
+-spec get_rate_based_rule(aws_client:aws_client(), get_rate_based_rule_request()) ->
+    {ok, get_rate_based_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_rate_based_rule_errors(), tuple()}.
 get_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rate_based_rule(Client, Input, []).
+
+-spec get_rate_based_rule(aws_client:aws_client(), get_rate_based_rule_request(), proplists:proplist()) ->
+    {ok, get_rate_based_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_rate_based_rule_errors(), tuple()}.
 get_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRateBasedRule">>, Input, Options).
@@ -1694,9 +4220,18 @@ get_rate_based_rule(Client, Input, Options)
 %% addresses exceed
 %% the rate limit, the 10,000 addresses with the highest rates will be
 %% blocked.
+-spec get_rate_based_rule_managed_keys(aws_client:aws_client(), get_rate_based_rule_managed_keys_request()) ->
+    {ok, get_rate_based_rule_managed_keys_response(), tuple()} |
+    {error, any()} |
+    {error, get_rate_based_rule_managed_keys_errors(), tuple()}.
 get_rate_based_rule_managed_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rate_based_rule_managed_keys(Client, Input, []).
+
+-spec get_rate_based_rule_managed_keys(aws_client:aws_client(), get_rate_based_rule_managed_keys_request(), proplists:proplist()) ->
+    {ok, get_rate_based_rule_managed_keys_response(), tuple()} |
+    {error, any()} |
+    {error, get_rate_based_rule_managed_keys_errors(), tuple()}.
 get_rate_based_rule_managed_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRateBasedRuleManagedKeys">>, Input, Options).
@@ -1717,9 +4252,18 @@ get_rate_based_rule_managed_keys(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `RegexMatchSet' specified by `RegexMatchSetId'.
+-spec get_regex_match_set(aws_client:aws_client(), get_regex_match_set_request()) ->
+    {ok, get_regex_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_regex_match_set_errors(), tuple()}.
 get_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regex_match_set(Client, Input, []).
+
+-spec get_regex_match_set(aws_client:aws_client(), get_regex_match_set_request(), proplists:proplist()) ->
+    {ok, get_regex_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_regex_match_set_errors(), tuple()}.
 get_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegexMatchSet">>, Input, Options).
@@ -1740,9 +4284,18 @@ get_regex_match_set(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `RegexPatternSet' specified by `RegexPatternSetId'.
+-spec get_regex_pattern_set(aws_client:aws_client(), get_regex_pattern_set_request()) ->
+    {ok, get_regex_pattern_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_regex_pattern_set_errors(), tuple()}.
 get_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regex_pattern_set(Client, Input, []).
+
+-spec get_regex_pattern_set(aws_client:aws_client(), get_regex_pattern_set_request(), proplists:proplist()) ->
+    {ok, get_regex_pattern_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_regex_pattern_set_errors(), tuple()}.
 get_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegexPatternSet">>, Input, Options).
@@ -1764,9 +4317,18 @@ get_regex_pattern_set(Client, Input, Options)
 %%
 %% Returns the `Rule' that is specified by the `RuleId' that you
 %% included in the `GetRule' request.
+-spec get_rule(aws_client:aws_client(), get_rule_request()) ->
+    {ok, get_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_rule_errors(), tuple()}.
 get_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rule(Client, Input, []).
+
+-spec get_rule(aws_client:aws_client(), get_rule_request(), proplists:proplist()) ->
+    {ok, get_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_rule_errors(), tuple()}.
 get_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRule">>, Input, Options).
@@ -1791,9 +4353,18 @@ get_rule(Client, Input, Options)
 %%
 %% To view the rules in a rule group, use
 %% `ListActivatedRulesInRuleGroup'.
+-spec get_rule_group(aws_client:aws_client(), get_rule_group_request()) ->
+    {ok, get_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_rule_group_errors(), tuple()}.
 get_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rule_group(Client, Input, []).
+
+-spec get_rule_group(aws_client:aws_client(), get_rule_group_request(), proplists:proplist()) ->
+    {ok, get_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_rule_group_errors(), tuple()}.
 get_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRuleGroup">>, Input, Options).
@@ -1825,9 +4396,18 @@ get_rule_group(Client, Input, Options)
 %% specified time range elapsed, `GetSampledRequests'
 %% returns an updated time range. This new time range indicates the actual
 %% period during which AWS WAF selected the requests in the sample.
+-spec get_sampled_requests(aws_client:aws_client(), get_sampled_requests_request()) ->
+    {ok, get_sampled_requests_response(), tuple()} |
+    {error, any()} |
+    {error, get_sampled_requests_errors(), tuple()}.
 get_sampled_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sampled_requests(Client, Input, []).
+
+-spec get_sampled_requests(aws_client:aws_client(), get_sampled_requests_request(), proplists:proplist()) ->
+    {ok, get_sampled_requests_response(), tuple()} |
+    {error, any()} |
+    {error, get_sampled_requests_errors(), tuple()}.
 get_sampled_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSampledRequests">>, Input, Options).
@@ -1849,9 +4429,18 @@ get_sampled_requests(Client, Input, Options)
 %%
 %% Returns the `SizeConstraintSet' specified by
 %% `SizeConstraintSetId'.
+-spec get_size_constraint_set(aws_client:aws_client(), get_size_constraint_set_request()) ->
+    {ok, get_size_constraint_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_size_constraint_set_errors(), tuple()}.
 get_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_size_constraint_set(Client, Input, []).
+
+-spec get_size_constraint_set(aws_client:aws_client(), get_size_constraint_set_request(), proplists:proplist()) ->
+    {ok, get_size_constraint_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_size_constraint_set_errors(), tuple()}.
 get_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSizeConstraintSet">>, Input, Options).
@@ -1873,9 +4462,18 @@ get_size_constraint_set(Client, Input, Options)
 %%
 %% Returns the `SqlInjectionMatchSet' that is specified by
 %% `SqlInjectionMatchSetId'.
+-spec get_sql_injection_match_set(aws_client:aws_client(), get_sql_injection_match_set_request()) ->
+    {ok, get_sql_injection_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_sql_injection_match_set_errors(), tuple()}.
 get_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sql_injection_match_set(Client, Input, []).
+
+-spec get_sql_injection_match_set(aws_client:aws_client(), get_sql_injection_match_set_request(), proplists:proplist()) ->
+    {ok, get_sql_injection_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_sql_injection_match_set_errors(), tuple()}.
 get_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSqlInjectionMatchSet">>, Input, Options).
@@ -1896,9 +4494,18 @@ get_sql_injection_match_set(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `WebACL' that is specified by `WebACLId'.
+-spec get_web_acl(aws_client:aws_client(), get_web_acl_request()) ->
+    {ok, get_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, get_web_acl_errors(), tuple()}.
 get_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl(Client, Input, []).
+
+-spec get_web_acl(aws_client:aws_client(), get_web_acl_request(), proplists:proplist()) ->
+    {ok, get_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, get_web_acl_errors(), tuple()}.
 get_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACL">>, Input, Options).
@@ -1920,9 +4527,18 @@ get_web_acl(Client, Input, Options)
 %%
 %% Returns the web ACL for the specified resource, either an application load
 %% balancer or Amazon API Gateway stage.
+-spec get_web_acl_for_resource(aws_client:aws_client(), get_web_acl_for_resource_request()) ->
+    {ok, get_web_acl_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, get_web_acl_for_resource_errors(), tuple()}.
 get_web_acl_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl_for_resource(Client, Input, []).
+
+-spec get_web_acl_for_resource(aws_client:aws_client(), get_web_acl_for_resource_request(), proplists:proplist()) ->
+    {ok, get_web_acl_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, get_web_acl_for_resource_errors(), tuple()}.
 get_web_acl_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACLForResource">>, Input, Options).
@@ -1943,9 +4559,18 @@ get_web_acl_for_resource(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `XssMatchSet' that is specified by `XssMatchSetId'.
+-spec get_xss_match_set(aws_client:aws_client(), get_xss_match_set_request()) ->
+    {ok, get_xss_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_xss_match_set_errors(), tuple()}.
 get_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_xss_match_set(Client, Input, []).
+
+-spec get_xss_match_set(aws_client:aws_client(), get_xss_match_set_request(), proplists:proplist()) ->
+    {ok, get_xss_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_xss_match_set_errors(), tuple()}.
 get_xss_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetXssMatchSet">>, Input, Options).
@@ -1966,9 +4591,18 @@ get_xss_match_set(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `ActivatedRule' objects.
+-spec list_activated_rules_in_rule_group(aws_client:aws_client(), list_activated_rules_in_rule_group_request()) ->
+    {ok, list_activated_rules_in_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, list_activated_rules_in_rule_group_errors(), tuple()}.
 list_activated_rules_in_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_activated_rules_in_rule_group(Client, Input, []).
+
+-spec list_activated_rules_in_rule_group(aws_client:aws_client(), list_activated_rules_in_rule_group_request(), proplists:proplist()) ->
+    {ok, list_activated_rules_in_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, list_activated_rules_in_rule_group_errors(), tuple()}.
 list_activated_rules_in_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActivatedRulesInRuleGroup">>, Input, Options).
@@ -1989,9 +4623,18 @@ list_activated_rules_in_rule_group(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `ByteMatchSetSummary' objects.
+-spec list_byte_match_sets(aws_client:aws_client(), list_byte_match_sets_request()) ->
+    {ok, list_byte_match_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_byte_match_sets_errors(), tuple()}.
 list_byte_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_byte_match_sets(Client, Input, []).
+
+-spec list_byte_match_sets(aws_client:aws_client(), list_byte_match_sets_request(), proplists:proplist()) ->
+    {ok, list_byte_match_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_byte_match_sets_errors(), tuple()}.
 list_byte_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListByteMatchSets">>, Input, Options).
@@ -2012,9 +4655,18 @@ list_byte_match_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `GeoMatchSetSummary' objects in the response.
+-spec list_geo_match_sets(aws_client:aws_client(), list_geo_match_sets_request()) ->
+    {ok, list_geo_match_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_geo_match_sets_errors(), tuple()}.
 list_geo_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_geo_match_sets(Client, Input, []).
+
+-spec list_geo_match_sets(aws_client:aws_client(), list_geo_match_sets_request(), proplists:proplist()) ->
+    {ok, list_geo_match_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_geo_match_sets_errors(), tuple()}.
 list_geo_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGeoMatchSets">>, Input, Options).
@@ -2035,9 +4687,18 @@ list_geo_match_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `IPSetSummary' objects in the response.
+-spec list_ip_sets(aws_client:aws_client(), list_ip_sets_request()) ->
+    {ok, list_ip_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_ip_sets_errors(), tuple()}.
 list_ip_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ip_sets(Client, Input, []).
+
+-spec list_ip_sets(aws_client:aws_client(), list_ip_sets_request(), proplists:proplist()) ->
+    {ok, list_ip_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_ip_sets_errors(), tuple()}.
 list_ip_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIPSets">>, Input, Options).
@@ -2058,9 +4719,18 @@ list_ip_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `LoggingConfiguration' objects.
+-spec list_logging_configurations(aws_client:aws_client(), list_logging_configurations_request()) ->
+    {ok, list_logging_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_logging_configurations_errors(), tuple()}.
 list_logging_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_logging_configurations(Client, Input, []).
+
+-spec list_logging_configurations(aws_client:aws_client(), list_logging_configurations_request(), proplists:proplist()) ->
+    {ok, list_logging_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_logging_configurations_errors(), tuple()}.
 list_logging_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLoggingConfigurations">>, Input, Options).
@@ -2081,9 +4751,18 @@ list_logging_configurations(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RuleSummary' objects.
+-spec list_rate_based_rules(aws_client:aws_client(), list_rate_based_rules_request()) ->
+    {ok, list_rate_based_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_rate_based_rules_errors(), tuple()}.
 list_rate_based_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rate_based_rules(Client, Input, []).
+
+-spec list_rate_based_rules(aws_client:aws_client(), list_rate_based_rules_request(), proplists:proplist()) ->
+    {ok, list_rate_based_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_rate_based_rules_errors(), tuple()}.
 list_rate_based_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRateBasedRules">>, Input, Options).
@@ -2104,9 +4783,18 @@ list_rate_based_rules(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RegexMatchSetSummary' objects.
+-spec list_regex_match_sets(aws_client:aws_client(), list_regex_match_sets_request()) ->
+    {ok, list_regex_match_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_regex_match_sets_errors(), tuple()}.
 list_regex_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_regex_match_sets(Client, Input, []).
+
+-spec list_regex_match_sets(aws_client:aws_client(), list_regex_match_sets_request(), proplists:proplist()) ->
+    {ok, list_regex_match_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_regex_match_sets_errors(), tuple()}.
 list_regex_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRegexMatchSets">>, Input, Options).
@@ -2127,9 +4815,18 @@ list_regex_match_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RegexPatternSetSummary' objects.
+-spec list_regex_pattern_sets(aws_client:aws_client(), list_regex_pattern_sets_request()) ->
+    {ok, list_regex_pattern_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_regex_pattern_sets_errors(), tuple()}.
 list_regex_pattern_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_regex_pattern_sets(Client, Input, []).
+
+-spec list_regex_pattern_sets(aws_client:aws_client(), list_regex_pattern_sets_request(), proplists:proplist()) ->
+    {ok, list_regex_pattern_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_regex_pattern_sets_errors(), tuple()}.
 list_regex_pattern_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRegexPatternSets">>, Input, Options).
@@ -2150,9 +4847,18 @@ list_regex_pattern_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of resources associated with the specified web ACL.
+-spec list_resources_for_web_acl(aws_client:aws_client(), list_resources_for_web_acl_request()) ->
+    {ok, list_resources_for_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, list_resources_for_web_acl_errors(), tuple()}.
 list_resources_for_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_for_web_acl(Client, Input, []).
+
+-spec list_resources_for_web_acl(aws_client:aws_client(), list_resources_for_web_acl_request(), proplists:proplist()) ->
+    {ok, list_resources_for_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, list_resources_for_web_acl_errors(), tuple()}.
 list_resources_for_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourcesForWebACL">>, Input, Options).
@@ -2173,9 +4879,18 @@ list_resources_for_web_acl(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RuleGroup' objects.
+-spec list_rule_groups(aws_client:aws_client(), list_rule_groups_request()) ->
+    {ok, list_rule_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_rule_groups_errors(), tuple()}.
 list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_groups(Client, Input, []).
+
+-spec list_rule_groups(aws_client:aws_client(), list_rule_groups_request(), proplists:proplist()) ->
+    {ok, list_rule_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_rule_groups_errors(), tuple()}.
 list_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleGroups">>, Input, Options).
@@ -2196,9 +4911,18 @@ list_rule_groups(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RuleSummary' objects.
+-spec list_rules(aws_client:aws_client(), list_rules_request()) ->
+    {ok, list_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rules(Client, Input, []).
+
+-spec list_rules(aws_client:aws_client(), list_rules_request(), proplists:proplist()) ->
+    {ok, list_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRules">>, Input, Options).
@@ -2219,9 +4943,18 @@ list_rules(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `SizeConstraintSetSummary' objects.
+-spec list_size_constraint_sets(aws_client:aws_client(), list_size_constraint_sets_request()) ->
+    {ok, list_size_constraint_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_size_constraint_sets_errors(), tuple()}.
 list_size_constraint_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_size_constraint_sets(Client, Input, []).
+
+-spec list_size_constraint_sets(aws_client:aws_client(), list_size_constraint_sets_request(), proplists:proplist()) ->
+    {ok, list_size_constraint_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_size_constraint_sets_errors(), tuple()}.
 list_size_constraint_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSizeConstraintSets">>, Input, Options).
@@ -2242,9 +4975,18 @@ list_size_constraint_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `SqlInjectionMatchSet' objects.
+-spec list_sql_injection_match_sets(aws_client:aws_client(), list_sql_injection_match_sets_request()) ->
+    {ok, list_sql_injection_match_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_sql_injection_match_sets_errors(), tuple()}.
 list_sql_injection_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sql_injection_match_sets(Client, Input, []).
+
+-spec list_sql_injection_match_sets(aws_client:aws_client(), list_sql_injection_match_sets_request(), proplists:proplist()) ->
+    {ok, list_sql_injection_match_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_sql_injection_match_sets_errors(), tuple()}.
 list_sql_injection_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSqlInjectionMatchSets">>, Input, Options).
@@ -2265,9 +5007,18 @@ list_sql_injection_match_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RuleGroup' objects that you are subscribed to.
+-spec list_subscribed_rule_groups(aws_client:aws_client(), list_subscribed_rule_groups_request()) ->
+    {ok, list_subscribed_rule_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscribed_rule_groups_errors(), tuple()}.
 list_subscribed_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscribed_rule_groups(Client, Input, []).
+
+-spec list_subscribed_rule_groups(aws_client:aws_client(), list_subscribed_rule_groups_request(), proplists:proplist()) ->
+    {ok, list_subscribed_rule_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscribed_rule_groups_errors(), tuple()}.
 list_subscribed_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSubscribedRuleGroups">>, Input, Options).
@@ -2298,9 +5049,18 @@ list_subscribed_rule_groups(Client, Input, Options)
 %% manage or view tags through the AWS WAF Classic console. You can tag the
 %% AWS resources that you manage through AWS WAF Classic: web ACLs, rule
 %% groups, and rules.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2321,9 +5081,18 @@ list_tags_for_resource(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `WebACLSummary' objects in the response.
+-spec list_web_acls(aws_client:aws_client(), list_web_acls_request()) ->
+    {ok, list_web_acls_response(), tuple()} |
+    {error, any()} |
+    {error, list_web_acls_errors(), tuple()}.
 list_web_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_web_acls(Client, Input, []).
+
+-spec list_web_acls(aws_client:aws_client(), list_web_acls_request(), proplists:proplist()) ->
+    {ok, list_web_acls_response(), tuple()} |
+    {error, any()} |
+    {error, list_web_acls_errors(), tuple()}.
 list_web_acls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebACLs">>, Input, Options).
@@ -2344,9 +5113,18 @@ list_web_acls(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `XssMatchSet' objects.
+-spec list_xss_match_sets(aws_client:aws_client(), list_xss_match_sets_request()) ->
+    {ok, list_xss_match_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_xss_match_sets_errors(), tuple()}.
 list_xss_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_xss_match_sets(Client, Input, []).
+
+-spec list_xss_match_sets(aws_client:aws_client(), list_xss_match_sets_request(), proplists:proplist()) ->
+    {ok, list_xss_match_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_xss_match_sets_errors(), tuple()}.
 list_xss_match_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListXssMatchSets">>, Input, Options).
@@ -2391,9 +5169,18 @@ list_xss_match_sets(Client, Input, Options)
 %% information, see Logging Web ACL Traffic Information:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/logging.html in the
 %% AWS WAF Developer Guide.
+-spec put_logging_configuration(aws_client:aws_client(), put_logging_configuration_request()) ->
+    {ok, put_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_logging_configuration_errors(), tuple()}.
 put_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_logging_configuration(Client, Input, []).
+
+-spec put_logging_configuration(aws_client:aws_client(), put_logging_configuration_request(), proplists:proplist()) ->
+    {ok, put_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_logging_configuration_errors(), tuple()}.
 put_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLoggingConfiguration">>, Input, Options).
@@ -2444,9 +5231,18 @@ put_logging_configuration(Client, Input, Options)
 %%
 %% An example of a valid policy parameter is shown in the Examples section
 %% below.
+-spec put_permission_policy(aws_client:aws_client(), put_permission_policy_request()) ->
+    {ok, put_permission_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_permission_policy_errors(), tuple()}.
 put_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_permission_policy(Client, Input, []).
+
+-spec put_permission_policy(aws_client:aws_client(), put_permission_policy_request(), proplists:proplist()) ->
+    {ok, put_permission_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_permission_policy_errors(), tuple()}.
 put_permission_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPermissionPolicy">>, Input, Options).
@@ -2477,9 +5273,18 @@ put_permission_policy(Client, Input, Options)
 %% manage or view tags through the AWS WAF Classic console. You can use this
 %% action to tag the AWS resources that you manage through AWS WAF Classic:
 %% web ACLs, rule groups, and rules.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2498,9 +5303,18 @@ tag_resource(Client, Input, Options)
 %% https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html.
 %% With the latest version, AWS WAF has a single set of endpoints for
 %% regional and global use.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2565,9 +5379,18 @@ untag_resource(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec update_byte_match_set(aws_client:aws_client(), update_byte_match_set_request()) ->
+    {ok, update_byte_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_byte_match_set_errors(), tuple()}.
 update_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_byte_match_set(Client, Input, []).
+
+-spec update_byte_match_set(aws_client:aws_client(), update_byte_match_set_request(), proplists:proplist()) ->
+    {ok, update_byte_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_byte_match_set_errors(), tuple()}.
 update_byte_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateByteMatchSet">>, Input, Options).
@@ -2621,9 +5444,18 @@ update_byte_match_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec update_geo_match_set(aws_client:aws_client(), update_geo_match_set_request()) ->
+    {ok, update_geo_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_geo_match_set_errors(), tuple()}.
 update_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_geo_match_set(Client, Input, []).
+
+-spec update_geo_match_set(aws_client:aws_client(), update_geo_match_set_request(), proplists:proplist()) ->
+    {ok, update_geo_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_geo_match_set_errors(), tuple()}.
 update_geo_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGeoMatchSet">>, Input, Options).
@@ -2711,9 +5543,18 @@ update_geo_match_set(Client, Input, Options)
 %% HTTP
 %% requests, see the AWS WAF
 %% Developer Guide: https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec update_ip_set(aws_client:aws_client(), update_ip_set_request()) ->
+    {ok, update_ip_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_ip_set_errors(), tuple()}.
 update_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ip_set(Client, Input, []).
+
+-spec update_ip_set(aws_client:aws_client(), update_ip_set_request(), proplists:proplist()) ->
+    {ok, update_ip_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_ip_set_errors(), tuple()}.
 update_ip_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIPSet">>, Input, Options).
@@ -2780,9 +5621,18 @@ update_ip_set(Client, Input, Options)
 %%
 %% By adding this `RateBasedRule' to a `WebACL', you could limit
 %% requests to your login page without affecting the rest of your site.
+-spec update_rate_based_rule(aws_client:aws_client(), update_rate_based_rule_request()) ->
+    {ok, update_rate_based_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_rate_based_rule_errors(), tuple()}.
 update_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rate_based_rule(Client, Input, []).
+
+-spec update_rate_based_rule(aws_client:aws_client(), update_rate_based_rule_request(), proplists:proplist()) ->
+    {ok, update_rate_based_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_rate_based_rule_errors(), tuple()}.
 update_rate_based_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRateBasedRule">>, Input, Options).
@@ -2844,9 +5694,18 @@ update_rate_based_rule(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec update_regex_match_set(aws_client:aws_client(), update_regex_match_set_request()) ->
+    {ok, update_regex_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_regex_match_set_errors(), tuple()}.
 update_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_match_set(Client, Input, []).
+
+-spec update_regex_match_set(aws_client:aws_client(), update_regex_match_set_request(), proplists:proplist()) ->
+    {ok, update_regex_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_regex_match_set_errors(), tuple()}.
 update_regex_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRegexMatchSet">>, Input, Options).
@@ -2903,9 +5762,18 @@ update_regex_match_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec update_regex_pattern_set(aws_client:aws_client(), update_regex_pattern_set_request()) ->
+    {ok, update_regex_pattern_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_regex_pattern_set_errors(), tuple()}.
 update_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_pattern_set(Client, Input, []).
+
+-spec update_regex_pattern_set(aws_client:aws_client(), update_regex_pattern_set_request(), proplists:proplist()) ->
+    {ok, update_regex_pattern_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_regex_pattern_set_errors(), tuple()}.
 update_regex_pattern_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRegexPatternSet">>, Input, Options).
@@ -2970,9 +5838,18 @@ update_regex_pattern_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec update_rule(aws_client:aws_client(), update_rule_request()) ->
+    {ok, update_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_rule_errors(), tuple()}.
 update_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule(Client, Input, []).
+
+-spec update_rule(aws_client:aws_client(), update_rule_request(), proplists:proplist()) ->
+    {ok, update_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_rule_errors(), tuple()}.
 update_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRule">>, Input, Options).
@@ -3021,9 +5898,18 @@ update_rule(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec update_rule_group(aws_client:aws_client(), update_rule_group_request()) ->
+    {ok, update_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_rule_group_errors(), tuple()}.
 update_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_group(Client, Input, []).
+
+-spec update_rule_group(aws_client:aws_client(), update_rule_group_request(), proplists:proplist()) ->
+    {ok, update_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_rule_group_errors(), tuple()}.
 update_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuleGroup">>, Input, Options).
@@ -3094,9 +5980,18 @@ update_rule_group(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec update_size_constraint_set(aws_client:aws_client(), update_size_constraint_set_request()) ->
+    {ok, update_size_constraint_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_size_constraint_set_errors(), tuple()}.
 update_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_size_constraint_set(Client, Input, []).
+
+-spec update_size_constraint_set(aws_client:aws_client(), update_size_constraint_set_request(), proplists:proplist()) ->
+    {ok, update_size_constraint_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_size_constraint_set_errors(), tuple()}.
 update_size_constraint_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSizeConstraintSet">>, Input, Options).
@@ -3163,9 +6058,18 @@ update_size_constraint_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec update_sql_injection_match_set(aws_client:aws_client(), update_sql_injection_match_set_request()) ->
+    {ok, update_sql_injection_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_sql_injection_match_set_errors(), tuple()}.
 update_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_sql_injection_match_set(Client, Input, []).
+
+-spec update_sql_injection_match_set(aws_client:aws_client(), update_sql_injection_match_set_request(), proplists:proplist()) ->
+    {ok, update_sql_injection_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_sql_injection_match_set_errors(), tuple()}.
 update_sql_injection_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSqlInjectionMatchSet">>, Input, Options).
@@ -3265,9 +6169,18 @@ update_sql_injection_match_set(Client, Input, Options)
 %% For more information about how to use the AWS WAF API to allow or block
 %% HTTP requests, see the AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec update_web_acl(aws_client:aws_client(), update_web_acl_request()) ->
+    {ok, update_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, update_web_acl_errors(), tuple()}.
 update_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_web_acl(Client, Input, []).
+
+-spec update_web_acl(aws_client:aws_client(), update_web_acl_request(), proplists:proplist()) ->
+    {ok, update_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, update_web_acl_errors(), tuple()}.
 update_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWebACL">>, Input, Options).
@@ -3333,9 +6246,18 @@ update_web_acl(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
+-spec update_xss_match_set(aws_client:aws_client(), update_xss_match_set_request()) ->
+    {ok, update_xss_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_xss_match_set_errors(), tuple()}.
 update_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_xss_match_set(Client, Input, []).
+
+-spec update_xss_match_set(aws_client:aws_client(), update_xss_match_set_request(), proplists:proplist()) ->
+    {ok, update_xss_match_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_xss_match_set_errors(), tuple()}.
 update_xss_match_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateXssMatchSet">>, Input, Options).

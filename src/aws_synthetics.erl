@@ -79,6 +79,708 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% get_canary_runs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_canary_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stop_canary_request() :: #{}
+-type stop_canary_request() :: #{}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% describe_canaries_response() :: #{
+%%   <<"Canaries">> => list(canary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_canaries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_canaries_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Names">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_canaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_canary_response() :: #{}
+-type delete_canary_response() :: #{}.
+
+
+%% Example:
+%% create_canary_request() :: #{
+%%   <<"ArtifactConfig">> => artifact_config_input(),
+%%   <<"ArtifactS3Location">> := string(),
+%%   <<"Code">> := canary_code_input(),
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"FailureRetentionPeriodInDays">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"RunConfig">> => canary_run_config_input(),
+%%   <<"RuntimeVersion">> := string(),
+%%   <<"Schedule">> := canary_schedule_input(),
+%%   <<"SuccessRetentionPeriodInDays">> => integer(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcConfig">> => vpc_config_input()
+%% }
+-type create_canary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_reference_output() :: #{
+%%   <<"BaseCanaryRunId">> => string(),
+%%   <<"BaseScreenshots">> => list(base_screenshot()())
+%% }
+-type visual_reference_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_status() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"StateReasonCode">> => list(any())
+%% }
+-type canary_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_runtime_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuntimeVersions">> => list(runtime_version()())
+%% }
+-type describe_runtime_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_run_config_output() :: #{
+%%   <<"ActiveTracing">> => boolean(),
+%%   <<"MemoryInMB">> => integer(),
+%%   <<"TimeoutInSeconds">> => integer()
+%% }
+-type canary_run_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_canaries_last_run_response() :: #{
+%%   <<"CanariesLastRun">> => list(canary_last_run()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_canaries_last_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_canary_response() :: #{}
+-type stop_canary_response() :: #{}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_resources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Resources">> => list(string()())
+%% }
+-type list_group_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_encryption_config() :: #{
+%%   <<"EncryptionMode">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type s3_encryption_config() :: #{binary() => any()}.
+
+%% Example:
+%% start_canary_response() :: #{}
+-type start_canary_response() :: #{}.
+
+
+%% Example:
+%% canary_run() :: #{
+%%   <<"ArtifactS3Location">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => canary_run_status(),
+%%   <<"Timeline">> => canary_run_timeline()
+%% }
+-type canary_run() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_schedule_input() :: #{
+%%   <<"DurationInSeconds">> => float(),
+%%   <<"Expression">> => string()
+%% }
+-type canary_schedule_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_resource_response() :: #{}
+-type associate_resource_response() :: #{}.
+
+
+%% Example:
+%% get_canary_response() :: #{
+%%   <<"Canary">> => canary()
+%% }
+-type get_canary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_run_config_input() :: #{
+%%   <<"ActiveTracing">> => boolean(),
+%%   <<"EnvironmentVariables">> => map(),
+%%   <<"MemoryInMB">> => integer(),
+%%   <<"TimeoutInSeconds">> => integer()
+%% }
+-type canary_run_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_canary_request() :: #{
+%%   <<"ArtifactConfig">> => artifact_config_input(),
+%%   <<"ArtifactS3Location">> => string(),
+%%   <<"Code">> => canary_code_input(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"FailureRetentionPeriodInDays">> => integer(),
+%%   <<"RunConfig">> => canary_run_config_input(),
+%%   <<"RuntimeVersion">> => string(),
+%%   <<"Schedule">> => canary_schedule_input(),
+%%   <<"SuccessRetentionPeriodInDays">> => integer(),
+%%   <<"VisualReference">> => visual_reference_input(),
+%%   <<"VpcConfig">> => vpc_config_input()
+%% }
+-type update_canary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_run_timeline() :: #{
+%%   <<"Completed">> => non_neg_integer(),
+%%   <<"Started">> => non_neg_integer()
+%% }
+-type canary_run_timeline() :: #{binary() => any()}.
+
+%% Example:
+%% update_canary_response() :: #{}
+-type update_canary_response() :: #{}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_run_status() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"StateReasonCode">> => list(any())
+%% }
+-type canary_run_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_last_run() :: #{
+%%   <<"CanaryName">> => string(),
+%%   <<"LastRun">> => canary_run()
+%% }
+-type canary_last_run() :: #{binary() => any()}.
+
+
+%% Example:
+%% artifact_config_output() :: #{
+%%   <<"S3Encryption">> => s3_encryption_config()
+%% }
+-type artifact_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% base_screenshot() :: #{
+%%   <<"IgnoreCoordinates">> => list(string()()),
+%%   <<"ScreenshotName">> => string()
+%% }
+-type base_screenshot() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_config_output() :: #{
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resource_response() :: #{}
+-type disassociate_resource_response() :: #{}.
+
+
+%% Example:
+%% canary_timeline() :: #{
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastStarted">> => non_neg_integer(),
+%%   <<"LastStopped">> => non_neg_integer()
+%% }
+-type canary_timeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type associate_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_canary_runs_response() :: #{
+%%   <<"CanaryRuns">> => list(canary_run()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_canary_runs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_code_output() :: #{
+%%   <<"Handler">> => string(),
+%%   <<"SourceLocationArn">> => string()
+%% }
+-type canary_code_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_canaries_last_run_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Names">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_canaries_last_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type disassociate_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_runtime_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_runtime_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% visual_reference_input() :: #{
+%%   <<"BaseCanaryRunId">> => string(),
+%%   <<"BaseScreenshots">> => list(base_screenshot()())
+%% }
+-type visual_reference_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_entity_too_large_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type request_entity_too_large_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_canary_request() :: #{}
+-type start_canary_request() :: #{}.
+
+%% Example:
+%% delete_group_response() :: #{}
+-type delete_group_response() :: #{}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% runtime_version() :: #{
+%%   <<"DeprecationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ReleaseDate">> => non_neg_integer(),
+%%   <<"VersionName">> => string()
+%% }
+-type runtime_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary() :: #{
+%%   <<"ArtifactConfig">> => artifact_config_output(),
+%%   <<"ArtifactS3Location">> => string(),
+%%   <<"Code">> => canary_code_output(),
+%%   <<"EngineArn">> => string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"FailureRetentionPeriodInDays">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RunConfig">> => canary_run_config_output(),
+%%   <<"RuntimeVersion">> => string(),
+%%   <<"Schedule">> => canary_schedule_output(),
+%%   <<"Status">> => canary_status(),
+%%   <<"SuccessRetentionPeriodInDays">> => integer(),
+%%   <<"Tags">> => map(),
+%%   <<"Timeline">> => canary_timeline(),
+%%   <<"VisualReference">> => visual_reference_output(),
+%%   <<"VpcConfig">> => vpc_config_output()
+%% }
+-type canary() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_config_input() :: #{
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type vpc_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_canary_request() :: #{
+%%   <<"DeleteLambda">> => boolean()
+%% }
+-type delete_canary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associated_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_group_resources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_group_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% group() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type group() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_response() :: #{
+%%   <<"Group">> => group()
+%% }
+-type get_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_request() :: #{}
+-type delete_group_request() :: #{}.
+
+%% Example:
+%% get_canary_request() :: #{}
+-type get_canary_request() :: #{}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_groups_response() :: #{
+%%   <<"Groups">> => list(group_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associated_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"Groups">> => list(group_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_request() :: #{}
+-type get_group_request() :: #{}.
+
+
+%% Example:
+%% canary_schedule_output() :: #{
+%%   <<"DurationInSeconds">> => float(),
+%%   <<"Expression">> => string()
+%% }
+-type canary_schedule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_canary_response() :: #{
+%%   <<"Canary">> => canary()
+%% }
+-type create_canary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_code_input() :: #{
+%%   <<"Handler">> => string(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string(),
+%%   <<"S3Version">> => string(),
+%%   <<"ZipFile">> => binary()
+%% }
+-type canary_code_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% artifact_config_input() :: #{
+%%   <<"S3Encryption">> => s3_encryption_config()
+%% }
+-type artifact_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_response() :: #{
+%%   <<"Group">> => group()
+%% }
+-type create_group_response() :: #{binary() => any()}.
+
+-type associate_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_canary_errors() ::
+    validation_exception() | 
+    request_entity_too_large_exception() | 
+    internal_server_exception().
+
+-type create_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_canary_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_canaries_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type describe_canaries_last_run_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type describe_runtime_versions_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type disassociate_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_canary_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type get_canary_runs_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_group_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_associated_groups_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_group_resources_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_groups_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    internal_failure_exception().
+
+-type start_canary_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_canary_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    internal_failure_exception().
+
+-type update_canary_errors() ::
+    validation_exception() | 
+    request_entity_too_large_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -91,8 +793,17 @@
 %% for all canaries in a group.
 %%
 %% You must run this operation in the Region where the canary exists.
+-spec associate_resource(aws_client:aws_client(), binary() | list(), associate_resource_request()) ->
+    {ok, associate_resource_response(), tuple()} |
+    {error, any()} |
+    {error, associate_resource_errors(), tuple()}.
 associate_resource(Client, GroupIdentifier, Input) ->
     associate_resource(Client, GroupIdentifier, Input, []).
+
+-spec associate_resource(aws_client:aws_client(), binary() | list(), associate_resource_request(), proplists:proplist()) ->
+    {ok, associate_resource_response(), tuple()} |
+    {error, any()} |
+    {error, associate_resource_errors(), tuple()}.
 associate_resource(Client, GroupIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/associate"],
@@ -145,8 +856,17 @@ associate_resource(Client, GroupIdentifier, Input0, Options0) ->
 %% outbound calls over the internet. For more information, see Security
 %% Considerations for Synthetics Canaries:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html.
+-spec create_canary(aws_client:aws_client(), create_canary_request()) ->
+    {ok, create_canary_response(), tuple()} |
+    {error, any()} |
+    {error, create_canary_errors(), tuple()}.
 create_canary(Client, Input) ->
     create_canary(Client, Input, []).
+
+-spec create_canary(aws_client:aws_client(), create_canary_request(), proplists:proplist()) ->
+    {ok, create_canary_response(), tuple()} |
+    {error, any()} |
+    {error, create_canary_errors(), tuple()}.
 create_canary(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canary"],
@@ -195,8 +915,17 @@ create_canary(Client, Input0, Options0) ->
 %% Each group can contain as many as 10 canaries. You can have as many as 20
 %% groups in your account. Any single canary
 %% can be a member of up to 10 groups.
+-spec create_group(aws_client:aws_client(), create_group_request()) ->
+    {ok, create_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
+
+-spec create_group(aws_client:aws_client(), create_group_request(), proplists:proplist()) ->
+    {ok, create_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_group_errors(), tuple()}.
 create_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/group"],
@@ -256,8 +985,17 @@ create_group(Client, Input0, Options0) ->
 %% note of the information returned by this operation so that you can delete
 %% these resources
 %% after you delete the canary.
+-spec delete_canary(aws_client:aws_client(), binary() | list(), delete_canary_request()) ->
+    {ok, delete_canary_response(), tuple()} |
+    {error, any()} |
+    {error, delete_canary_errors(), tuple()}.
 delete_canary(Client, Name, Input) ->
     delete_canary(Client, Name, Input, []).
+
+-spec delete_canary(aws_client:aws_client(), binary() | list(), delete_canary_request(), proplists:proplist()) ->
+    {ok, delete_canary_response(), tuple()} |
+    {error, any()} |
+    {error, delete_canary_errors(), tuple()}.
 delete_canary(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
@@ -291,8 +1029,17 @@ delete_canary(Client, Name, Input0, Options0) ->
 %% to delete a group
 %% must be made from its home Region. You can find the home Region of a group
 %% within its ARN.
+-spec delete_group(aws_client:aws_client(), binary() | list(), delete_group_request()) ->
+    {ok, delete_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, GroupIdentifier, Input) ->
     delete_group(Client, GroupIdentifier, Input, []).
+
+-spec delete_group(aws_client:aws_client(), binary() | list(), delete_group_request(), proplists:proplist()) ->
+    {ok, delete_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, GroupIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), ""],
@@ -334,8 +1081,17 @@ delete_group(Client, GroupIdentifier, Input0, Options0) ->
 %% see
 %% Limiting a user to viewing specific canaries:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html.
+-spec describe_canaries(aws_client:aws_client(), describe_canaries_request()) ->
+    {ok, describe_canaries_response(), tuple()} |
+    {error, any()} |
+    {error, describe_canaries_errors(), tuple()}.
 describe_canaries(Client, Input) ->
     describe_canaries(Client, Input, []).
+
+-spec describe_canaries(aws_client:aws_client(), describe_canaries_request(), proplists:proplist()) ->
+    {ok, describe_canaries_response(), tuple()} |
+    {error, any()} |
+    {error, describe_canaries_errors(), tuple()}.
 describe_canaries(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canaries"],
@@ -376,8 +1132,17 @@ describe_canaries(Client, Input0, Options0) ->
 %% see
 %% Limiting a user to viewing specific canaries:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html.
+-spec describe_canaries_last_run(aws_client:aws_client(), describe_canaries_last_run_request()) ->
+    {ok, describe_canaries_last_run_response(), tuple()} |
+    {error, any()} |
+    {error, describe_canaries_last_run_errors(), tuple()}.
 describe_canaries_last_run(Client, Input) ->
     describe_canaries_last_run(Client, Input, []).
+
+-spec describe_canaries_last_run(aws_client:aws_client(), describe_canaries_last_run_request(), proplists:proplist()) ->
+    {ok, describe_canaries_last_run_response(), tuple()} |
+    {error, any()} |
+    {error, describe_canaries_last_run_errors(), tuple()}.
 describe_canaries_last_run(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canaries/last-run"],
@@ -406,8 +1171,17 @@ describe_canaries_last_run(Client, Input0, Options0) ->
 %% see
 %% Canary Runtime Versions:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html.
+-spec describe_runtime_versions(aws_client:aws_client(), describe_runtime_versions_request()) ->
+    {ok, describe_runtime_versions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_runtime_versions_errors(), tuple()}.
 describe_runtime_versions(Client, Input) ->
     describe_runtime_versions(Client, Input, []).
+
+-spec describe_runtime_versions(aws_client:aws_client(), describe_runtime_versions_request(), proplists:proplist()) ->
+    {ok, describe_runtime_versions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_runtime_versions_errors(), tuple()}.
 describe_runtime_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/runtime-versions"],
@@ -433,8 +1207,17 @@ describe_runtime_versions(Client, Input0, Options0) ->
 %% @doc Removes a canary from a group.
 %%
 %% You must run this operation in the Region where the canary exists.
+-spec disassociate_resource(aws_client:aws_client(), binary() | list(), disassociate_resource_request()) ->
+    {ok, disassociate_resource_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_resource_errors(), tuple()}.
 disassociate_resource(Client, GroupIdentifier, Input) ->
     disassociate_resource(Client, GroupIdentifier, Input, []).
+
+-spec disassociate_resource(aws_client:aws_client(), binary() | list(), disassociate_resource_request(), proplists:proplist()) ->
+    {ok, disassociate_resource_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_resource_errors(), tuple()}.
 disassociate_resource(Client, GroupIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/disassociate"],
@@ -463,14 +1246,26 @@ disassociate_resource(Client, GroupIdentifier, Input0, Options0) ->
 %% the name of the canary that you want. To get a list of canaries
 %% and their names, use DescribeCanaries:
 %% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html.
+-spec get_canary(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_canary_response(), tuple()} |
+    {error, any()} |
+    {error, get_canary_errors(), tuple()}.
 get_canary(Client, Name)
   when is_map(Client) ->
     get_canary(Client, Name, #{}, #{}).
 
+-spec get_canary(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_canary_response(), tuple()} |
+    {error, any()} |
+    {error, get_canary_errors(), tuple()}.
 get_canary(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_canary(Client, Name, QueryMap, HeadersMap, []).
 
+-spec get_canary(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_canary_response(), tuple()} |
+    {error, any()} |
+    {error, get_canary_errors(), tuple()}.
 get_canary(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
@@ -488,8 +1283,17 @@ get_canary(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of runs for a specified canary.
+-spec get_canary_runs(aws_client:aws_client(), binary() | list(), get_canary_runs_request()) ->
+    {ok, get_canary_runs_response(), tuple()} |
+    {error, any()} |
+    {error, get_canary_runs_errors(), tuple()}.
 get_canary_runs(Client, Name, Input) ->
     get_canary_runs(Client, Name, Input, []).
+
+-spec get_canary_runs(aws_client:aws_client(), binary() | list(), get_canary_runs_request(), proplists:proplist()) ->
+    {ok, get_canary_runs_response(), tuple()} |
+    {error, any()} |
+    {error, get_canary_runs_errors(), tuple()}.
 get_canary_runs(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/runs"],
@@ -516,14 +1320,26 @@ get_canary_runs(Client, Name, Input0, Options0) ->
 %%
 %% Groups are a global resource, so you can use this operation from
 %% any Region.
+-spec get_group(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_group_errors(), tuple()}.
 get_group(Client, GroupIdentifier)
   when is_map(Client) ->
     get_group(Client, GroupIdentifier, #{}, #{}).
 
+-spec get_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_group_errors(), tuple()}.
 get_group(Client, GroupIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group(Client, GroupIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_group_errors(), tuple()}.
 get_group(Client, GroupIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), ""],
@@ -545,8 +1361,17 @@ get_group(Client, GroupIdentifier, QueryMap, HeadersMap, Options0)
 %%
 %% The canary
 %% that you specify must be in the current Region.
+-spec list_associated_groups(aws_client:aws_client(), binary() | list(), list_associated_groups_request()) ->
+    {ok, list_associated_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_associated_groups_errors(), tuple()}.
 list_associated_groups(Client, ResourceArn, Input) ->
     list_associated_groups(Client, ResourceArn, Input, []).
+
+-spec list_associated_groups(aws_client:aws_client(), binary() | list(), list_associated_groups_request(), proplists:proplist()) ->
+    {ok, list_associated_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_associated_groups_errors(), tuple()}.
 list_associated_groups(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/resource/", aws_util:encode_uri(ResourceArn), "/groups"],
@@ -571,8 +1396,17 @@ list_associated_groups(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc This operation returns a list of the ARNs of the canaries that are
 %% associated with the specified group.
+-spec list_group_resources(aws_client:aws_client(), binary() | list(), list_group_resources_request()) ->
+    {ok, list_group_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_group_resources_errors(), tuple()}.
 list_group_resources(Client, GroupIdentifier, Input) ->
     list_group_resources(Client, GroupIdentifier, Input, []).
+
+-spec list_group_resources(aws_client:aws_client(), binary() | list(), list_group_resources_request(), proplists:proplist()) ->
+    {ok, list_group_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_group_resources_errors(), tuple()}.
 list_group_resources(Client, GroupIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/resources"],
@@ -600,8 +1434,17 @@ list_group_resources(Client, GroupIdentifier, Input0, Options0) ->
 %%
 %% The groups
 %% from all Regions are returned.
+-spec list_groups(aws_client:aws_client(), list_groups_request()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input) ->
     list_groups(Client, Input, []).
+
+-spec list_groups(aws_client:aws_client(), list_groups_request(), proplists:proplist()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input0, Options0) ->
     Method = post,
     Path = ["/groups"],
@@ -625,14 +1468,26 @@ list_groups(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays the tags associated with a canary or group.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -655,8 +1510,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% canary's `Schedule'. To see a canary's schedule,
 %% use GetCanary:
 %% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_GetCanary.html.
+-spec start_canary(aws_client:aws_client(), binary() | list(), start_canary_request()) ->
+    {ok, start_canary_response(), tuple()} |
+    {error, any()} |
+    {error, start_canary_errors(), tuple()}.
 start_canary(Client, Name, Input) ->
     start_canary(Client, Name, Input, []).
+
+-spec start_canary(aws_client:aws_client(), binary() | list(), start_canary_request(), proplists:proplist()) ->
+    {ok, start_canary_response(), tuple()} |
+    {error, any()} |
+    {error, start_canary_errors(), tuple()}.
 start_canary(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/start"],
@@ -688,8 +1552,17 @@ start_canary(Client, Name, Input0, Options0) ->
 %%
 %% You can use `StartCanary' to start it running again
 %% with the canary’s current schedule at any point in the future.
+-spec stop_canary(aws_client:aws_client(), binary() | list(), stop_canary_request()) ->
+    {ok, stop_canary_response(), tuple()} |
+    {error, any()} |
+    {error, stop_canary_errors(), tuple()}.
 stop_canary(Client, Name, Input) ->
     stop_canary(Client, Name, Input, []).
+
+-spec stop_canary(aws_client:aws_client(), binary() | list(), stop_canary_request(), proplists:proplist()) ->
+    {ok, stop_canary_response(), tuple()} |
+    {error, any()} |
+    {error, stop_canary_errors(), tuple()}.
 stop_canary(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/stop"],
@@ -733,8 +1606,17 @@ stop_canary(Client, Name, Input0, Options0) ->
 %% the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a canary or group.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -758,8 +1640,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -791,8 +1682,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% change the tags of an existing canary, use
 %% TagResource:
 %% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html.
+-spec update_canary(aws_client:aws_client(), binary() | list(), update_canary_request()) ->
+    {ok, update_canary_response(), tuple()} |
+    {error, any()} |
+    {error, update_canary_errors(), tuple()}.
 update_canary(Client, Name, Input) ->
     update_canary(Client, Name, Input, []).
+
+-spec update_canary(aws_client:aws_client(), binary() | list(), update_canary_request(), proplists:proplist()) ->
+    {ok, update_canary_response(), tuple()} |
+    {error, any()} |
+    {error, update_canary_errors(), tuple()}.
 update_canary(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
@@ -819,7 +1719,7 @@ update_canary(Client, Name, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

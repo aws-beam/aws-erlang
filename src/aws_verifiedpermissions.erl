@@ -137,6 +137,793 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% is_authorized_with_token_input() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"action">> => action_identifier(),
+%%   <<"context">> => list(),
+%%   <<"entities">> => list(),
+%%   <<"identityToken">> => string(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type is_authorized_with_token_input() :: #{binary() => any()}.
+
+%% Example:
+%% is_authorized_input() :: #{
+%%   <<"action">> => action_identifier(),
+%%   <<"context">> => list(),
+%%   <<"entities">> => list(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type is_authorized_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_template_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyTemplateId">> => string()
+%% }
+-type create_policy_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_identity_source_input() :: #{
+%%   <<"identitySourceId">> := string(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"principalEntityType">> => string(),
+%%   <<"updateConfiguration">> := list()
+%% }
+-type update_identity_source_input() :: #{binary() => any()}.
+
+%% Example:
+%% is_authorized_output() :: #{
+%%   <<"decision">> => list(any()),
+%%   <<"determiningPolicies">> => list(determining_policy_item()()),
+%%   <<"errors">> => list(evaluation_error_item()())
+%% }
+-type is_authorized_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_template_input() :: #{
+%%   <<"policyStoreId">> := string(),
+%%   <<"policyTemplateId">> := string()
+%% }
+-type delete_policy_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_templates_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyTemplates">> => list(policy_template_item()())
+%% }
+-type list_policy_templates_output() :: #{binary() => any()}.
+
+%% Example:
+%% determining_policy_item() :: #{
+%%   <<"policyId">> => string()
+%% }
+-type determining_policy_item() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_store_input() :: #{
+%%   <<"policyStoreId">> := string()
+%% }
+-type delete_policy_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_templates_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type list_policy_templates_input() :: #{binary() => any()}.
+
+%% Example:
+%% template_linked_policy_definition() :: #{
+%%   <<"policyTemplateId">> => string(),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type template_linked_policy_definition() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_store_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"validationSettings">> := validation_settings()
+%% }
+-type create_policy_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_input() :: #{
+%%   <<"policyId">> := string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type get_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_identity_source_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"identitySourceId">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type update_identity_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_source_input() :: #{
+%%   <<"identitySourceId">> := string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type get_identity_source_input() :: #{binary() => any()}.
+
+%% Example:
+%% policy_template_item() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyTemplateId">> => string()
+%% }
+-type policy_template_item() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_store_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type update_policy_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% policy_item() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyId">> => string(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyType">> => list(any()),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type policy_item() :: #{binary() => any()}.
+
+%% Example:
+%% static_policy_definition_item() :: #{
+%%   <<"description">> => string()
+%% }
+-type static_policy_definition_item() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_store_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type create_policy_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_output() :: #{
+%%   <<"results">> => list(batch_is_authorized_output_item()())
+%% }
+-type batch_is_authorized_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_input_item() :: #{
+%%   <<"action">> => action_identifier(),
+%%   <<"context">> => list(),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type batch_is_authorized_input_item() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_input() :: #{
+%%   <<"definition">> := list(),
+%%   <<"policyId">> := string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type update_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% action_identifier() :: #{
+%%   <<"actionId">> => string(),
+%%   <<"actionType">> => string()
+%% }
+-type action_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policies">> => list(policy_item()())
+%% }
+-type list_policies_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_schema_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"namespaces">> => list(string()()),
+%%   <<"policyStoreId">> => string()
+%% }
+-type put_schema_output() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation_error_item() :: #{
+%%   <<"errorDescription">> => [string()]
+%% }
+-type evaluation_error_item() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_store_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"validationSettings">> := validation_settings()
+%% }
+-type update_policy_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_stores_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_stores_input() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resources">> => list(resource_conflict()())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_user_pool_configuration_item() :: #{
+%%   <<"clientIds">> => list(string()()),
+%%   <<"issuer">> => string(),
+%%   <<"userPoolArn">> => string()
+%% }
+-type cognito_user_pool_configuration_item() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_template_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyTemplateId">> => string()
+%% }
+-type update_policy_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_sources_output() :: #{
+%%   <<"identitySources">> => list(identity_source_item()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_identity_sources_output() :: #{binary() => any()}.
+
+%% Example:
+%% policy_store_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type policy_store_item() :: #{binary() => any()}.
+
+%% Example:
+%% identity_source_details() :: #{
+%%   <<"clientIds">> => list(string()()),
+%%   <<"discoveryUrl">> => string(),
+%%   <<"openIdIssuer">> => list(any()),
+%%   <<"userPoolArn">> => string()
+%% }
+-type identity_source_details() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => list(any()),
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_input() :: #{
+%%   <<"policyId">> := string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type delete_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"namespaces">> => list(string()()),
+%%   <<"policyStoreId">> => string(),
+%%   <<"schema">> => string()
+%% }
+-type get_schema_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_store_output() :: #{
+
+%% }
+-type delete_policy_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_source_output() :: #{
+
+%% }
+-type delete_identity_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_user_pool_configuration_detail() :: #{
+%%   <<"clientIds">> => list(string()()),
+%%   <<"issuer">> => string(),
+%%   <<"userPoolArn">> => string()
+%% }
+-type cognito_user_pool_configuration_detail() :: #{binary() => any()}.
+
+%% Example:
+%% static_policy_definition() :: #{
+%%   <<"description">> => string(),
+%%   <<"statement">> => string()
+%% }
+-type static_policy_definition() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_store_input() :: #{
+%%   <<"policyStoreId">> := string()
+%% }
+-type get_policy_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_schema_input() :: #{
+%%   <<"definition">> := list(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type put_schema_input() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"path">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% identity_source_item_details() :: #{
+%%   <<"clientIds">> => list(string()()),
+%%   <<"discoveryUrl">> => string(),
+%%   <<"openIdIssuer">> => list(any()),
+%%   <<"userPoolArn">> => string()
+%% }
+-type identity_source_item_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_template_output() :: #{
+
+%% }
+-type delete_policy_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% validation_settings() :: #{
+%%   <<"mode">> => list(any())
+%% }
+-type validation_settings() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_source_input() :: #{
+%%   <<"identitySourceId">> := string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type delete_identity_source_input() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_user_pool_configuration() :: #{
+%%   <<"clientIds">> => list(string()()),
+%%   <<"userPoolArn">> => string()
+%% }
+-type cognito_user_pool_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_input() :: #{
+%%   <<"filter">> => policy_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type list_policies_input() :: #{binary() => any()}.
+
+%% Example:
+%% policy_filter() :: #{
+%%   <<"policyTemplateId">> => string(),
+%%   <<"policyType">> => list(any()),
+%%   <<"principal">> => list(),
+%%   <<"resource">> => list()
+%% }
+-type policy_filter() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"definition">> := list(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type create_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_input() :: #{
+%%   <<"entities">> => list(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"requests">> := list(batch_is_authorized_input_item()())
+%% }
+-type batch_is_authorized_input() :: #{binary() => any()}.
+
+%% Example:
+%% template_linked_policy_definition_detail() :: #{
+%%   <<"policyTemplateId">> => string(),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type template_linked_policy_definition_detail() :: #{binary() => any()}.
+
+%% Example:
+%% update_cognito_user_pool_configuration() :: #{
+%%   <<"clientIds">> => list(string()()),
+%%   <<"userPoolArn">> => string()
+%% }
+-type update_cognito_user_pool_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_template_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"policyTemplateId">> := string(),
+%%   <<"statement">> := string()
+%% }
+-type update_policy_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% is_authorized_with_token_output() :: #{
+%%   <<"decision">> => list(any()),
+%%   <<"determiningPolicies">> => list(determining_policy_item()()),
+%%   <<"errors">> => list(evaluation_error_item()())
+%% }
+-type is_authorized_with_token_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_template_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"statement">> := string()
+%% }
+-type create_policy_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_store_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"validationSettings">> => validation_settings()
+%% }
+-type get_policy_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% template_linked_policy_definition_item() :: #{
+%%   <<"policyTemplateId">> => string(),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type template_linked_policy_definition_item() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_source_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"identitySourceId">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type create_identity_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_static_policy_definition() :: #{
+%%   <<"description">> => string(),
+%%   <<"statement">> => string()
+%% }
+-type update_static_policy_definition() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_input() :: #{
+%%   <<"policyStoreId">> := string()
+%% }
+-type get_schema_input() :: #{binary() => any()}.
+
+%% Example:
+%% resource_conflict() :: #{
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => list(any())
+%% }
+-type resource_conflict() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_template_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyTemplateId">> => string(),
+%%   <<"statement">> => string()
+%% }
+-type get_policy_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyId">> => string(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyType">> => list(any()),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type create_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_source_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"principalEntityType">> => string()
+%% }
+-type create_identity_source_input() :: #{binary() => any()}.
+
+%% Example:
+%% entity_identifier() :: #{
+%%   <<"entityId">> => string(),
+%%   <<"entityType">> => string()
+%% }
+-type entity_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_template_input() :: #{
+%%   <<"policyStoreId">> := string(),
+%%   <<"policyTemplateId">> := string()
+%% }
+-type get_policy_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% identity_source_item() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"details">> => identity_source_item_details(),
+%%   <<"identitySourceId">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"principalEntityType">> => string()
+%% }
+-type identity_source_item() :: #{binary() => any()}.
+
+%% Example:
+%% identity_source_filter() :: #{
+%%   <<"principalEntityType">> => string()
+%% }
+-type identity_source_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_sources_input() :: #{
+%%   <<"filters">> => list(identity_source_filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type list_identity_sources_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_output_item() :: #{
+%%   <<"decision">> => list(any()),
+%%   <<"determiningPolicies">> => list(determining_policy_item()()),
+%%   <<"errors">> => list(evaluation_error_item()()),
+%%   <<"request">> => batch_is_authorized_input_item()
+%% }
+-type batch_is_authorized_output_item() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyId">> => string(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyType">> => list(any()),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type update_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% static_policy_definition_detail() :: #{
+%%   <<"description">> => string(),
+%%   <<"statement">> => string()
+%% }
+-type static_policy_definition_detail() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_output() :: #{
+
+%% }
+-type delete_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% entity_item() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"identifier">> => entity_identifier(),
+%%   <<"parents">> => list(entity_identifier()())
+%% }
+-type entity_item() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_stores_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyStores">> => list(policy_store_item()())
+%% }
+-type list_policy_stores_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_source_output() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"details">> => identity_source_details(),
+%%   <<"identitySourceId">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"principalEntityType">> => string()
+%% }
+-type get_identity_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyId">> => string(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyType">> => list(any()),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type get_policy_output() :: #{binary() => any()}.
+
+-type batch_is_authorized_errors() ::
+    resource_not_found_exception().
+
+-type create_identity_source_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_policy_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_policy_store_errors() ::
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_policy_template_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_identity_source_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_policy_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_policy_template_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_identity_source_errors() ::
+    resource_not_found_exception().
+
+-type get_policy_errors() ::
+    resource_not_found_exception().
+
+-type get_policy_store_errors() ::
+    resource_not_found_exception().
+
+-type get_policy_template_errors() ::
+    resource_not_found_exception().
+
+-type get_schema_errors() ::
+    resource_not_found_exception().
+
+-type is_authorized_errors() ::
+    resource_not_found_exception().
+
+-type is_authorized_with_token_errors() ::
+    resource_not_found_exception().
+
+-type list_identity_sources_errors() ::
+    resource_not_found_exception().
+
+-type list_policies_errors() ::
+    resource_not_found_exception().
+
+-type list_policy_templates_errors() ::
+    resource_not_found_exception().
+
+-type put_schema_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_identity_source_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_policy_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_policy_store_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_policy_template_errors() ::
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -173,9 +960,18 @@
 %% permission. To authorize this operation for Amazon Web Services
 %% principals, include the permission
 %% `verifiedpermissions:IsAuthorized' in their IAM policies.
+-spec batch_is_authorized(aws_client:aws_client(), batch_is_authorized_input()) ->
+    {ok, batch_is_authorized_output(), tuple()} |
+    {error, any()} |
+    {error, batch_is_authorized_errors(), tuple()}.
 batch_is_authorized(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_is_authorized(Client, Input, []).
+
+-spec batch_is_authorized(aws_client:aws_client(), batch_is_authorized_input(), proplists:proplist()) ->
+    {ok, batch_is_authorized_output(), tuple()} |
+    {error, any()} |
+    {error, batch_is_authorized_errors(), tuple()}.
 batch_is_authorized(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchIsAuthorized">>, Input, Options).
@@ -224,9 +1020,18 @@ batch_is_authorized(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
+-spec create_identity_source(aws_client:aws_client(), create_identity_source_input()) ->
+    {ok, create_identity_source_output(), tuple()} |
+    {error, any()} |
+    {error, create_identity_source_errors(), tuple()}.
 create_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_source(Client, Input, []).
+
+-spec create_identity_source(aws_client:aws_client(), create_identity_source_input(), proplists:proplist()) ->
+    {ok, create_identity_source_output(), tuple()} |
+    {error, any()} |
+    {error, create_identity_source_errors(), tuple()}.
 create_identity_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIdentitySource">>, Input, Options).
@@ -260,9 +1065,18 @@ create_identity_source(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
+-spec create_policy(aws_client:aws_client(), create_policy_input()) ->
+    {ok, create_policy_output(), tuple()} |
+    {error, any()} |
+    {error, create_policy_errors(), tuple()}.
 create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
+
+-spec create_policy(aws_client:aws_client(), create_policy_input(), proplists:proplist()) ->
+    {ok, create_policy_output(), tuple()} |
+    {error, any()} |
+    {error, create_policy_errors(), tuple()}.
 create_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicy">>, Input, Options).
@@ -282,9 +1096,18 @@ create_policy(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
+-spec create_policy_store(aws_client:aws_client(), create_policy_store_input()) ->
+    {ok, create_policy_store_output(), tuple()} |
+    {error, any()} |
+    {error, create_policy_store_errors(), tuple()}.
 create_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_store(Client, Input, []).
+
+-spec create_policy_store(aws_client:aws_client(), create_policy_store_input(), proplists:proplist()) ->
+    {ok, create_policy_store_output(), tuple()} |
+    {error, any()} |
+    {error, create_policy_store_errors(), tuple()}.
 create_policy_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicyStore">>, Input, Options).
@@ -310,9 +1133,18 @@ create_policy_store(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
+-spec create_policy_template(aws_client:aws_client(), create_policy_template_input()) ->
+    {ok, create_policy_template_output(), tuple()} |
+    {error, any()} |
+    {error, create_policy_template_errors(), tuple()}.
 create_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_template(Client, Input, []).
+
+-spec create_policy_template(aws_client:aws_client(), create_policy_template_input(), proplists:proplist()) ->
+    {ok, create_policy_template_output(), tuple()} |
+    {error, any()} |
+    {error, create_policy_template_errors(), tuple()}.
 create_policy_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicyTemplate">>, Input, Options).
@@ -327,9 +1159,18 @@ create_policy_template(Client, Input, Options)
 %% IsAuthorizedWithToken:
 %% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_IsAuthorizedWithToken.html.
 %% operations.
+-spec delete_identity_source(aws_client:aws_client(), delete_identity_source_input()) ->
+    {ok, delete_identity_source_output(), tuple()} |
+    {error, any()} |
+    {error, delete_identity_source_errors(), tuple()}.
 delete_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_source(Client, Input, []).
+
+-spec delete_identity_source(aws_client:aws_client(), delete_identity_source_input(), proplists:proplist()) ->
+    {ok, delete_identity_source_output(), tuple()} |
+    {error, any()} |
+    {error, delete_identity_source_errors(), tuple()}.
 delete_identity_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentitySource">>, Input, Options).
@@ -339,9 +1180,18 @@ delete_identity_source(Client, Input, Options)
 %% This operation is idempotent; if you specify a policy that doesn't
 %% exist, the request response returns a successful `HTTP 200' status
 %% code.
+-spec delete_policy(aws_client:aws_client(), delete_policy_input()) ->
+    {ok, delete_policy_output(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
+
+-spec delete_policy(aws_client:aws_client(), delete_policy_input(), proplists:proplist()) ->
+    {ok, delete_policy_output(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
@@ -351,9 +1201,16 @@ delete_policy(Client, Input, Options)
 %% This operation is idempotent. If you specify a policy store that does not
 %% exist, the request
 %% response will still return a successful HTTP 200 status code.
+-spec delete_policy_store(aws_client:aws_client(), delete_policy_store_input()) ->
+    {ok, delete_policy_store_output(), tuple()} |
+    {error, any()}.
 delete_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy_store(Client, Input, []).
+
+-spec delete_policy_store(aws_client:aws_client(), delete_policy_store_input(), proplists:proplist()) ->
+    {ok, delete_policy_store_output(), tuple()} |
+    {error, any()}.
 delete_policy_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicyStore">>, Input, Options).
@@ -365,51 +1222,105 @@ delete_policy_store(Client, Input, Options)
 %% policy template. Those policies are immediately removed from all future
 %% API responses, and are
 %% asynchronously deleted from the policy store.
+-spec delete_policy_template(aws_client:aws_client(), delete_policy_template_input()) ->
+    {ok, delete_policy_template_output(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_template_errors(), tuple()}.
 delete_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy_template(Client, Input, []).
+
+-spec delete_policy_template(aws_client:aws_client(), delete_policy_template_input(), proplists:proplist()) ->
+    {ok, delete_policy_template_output(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_template_errors(), tuple()}.
 delete_policy_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicyTemplate">>, Input, Options).
 
 %% @doc Retrieves the details about the specified identity source.
+-spec get_identity_source(aws_client:aws_client(), get_identity_source_input()) ->
+    {ok, get_identity_source_output(), tuple()} |
+    {error, any()} |
+    {error, get_identity_source_errors(), tuple()}.
 get_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_source(Client, Input, []).
+
+-spec get_identity_source(aws_client:aws_client(), get_identity_source_input(), proplists:proplist()) ->
+    {ok, get_identity_source_output(), tuple()} |
+    {error, any()} |
+    {error, get_identity_source_errors(), tuple()}.
 get_identity_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentitySource">>, Input, Options).
 
 %% @doc Retrieves information about the specified policy.
+-spec get_policy(aws_client:aws_client(), get_policy_input()) ->
+    {ok, get_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
+
+-spec get_policy(aws_client:aws_client(), get_policy_input(), proplists:proplist()) ->
+    {ok, get_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicy">>, Input, Options).
 
 %% @doc Retrieves details about a policy store.
+-spec get_policy_store(aws_client:aws_client(), get_policy_store_input()) ->
+    {ok, get_policy_store_output(), tuple()} |
+    {error, any()} |
+    {error, get_policy_store_errors(), tuple()}.
 get_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy_store(Client, Input, []).
+
+-spec get_policy_store(aws_client:aws_client(), get_policy_store_input(), proplists:proplist()) ->
+    {ok, get_policy_store_output(), tuple()} |
+    {error, any()} |
+    {error, get_policy_store_errors(), tuple()}.
 get_policy_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicyStore">>, Input, Options).
 
 %% @doc Retrieve the details for the specified policy template in the
 %% specified policy store.
+-spec get_policy_template(aws_client:aws_client(), get_policy_template_input()) ->
+    {ok, get_policy_template_output(), tuple()} |
+    {error, any()} |
+    {error, get_policy_template_errors(), tuple()}.
 get_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy_template(Client, Input, []).
+
+-spec get_policy_template(aws_client:aws_client(), get_policy_template_input(), proplists:proplist()) ->
+    {ok, get_policy_template_output(), tuple()} |
+    {error, any()} |
+    {error, get_policy_template_errors(), tuple()}.
 get_policy_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicyTemplate">>, Input, Options).
 
 %% @doc Retrieve the details for the specified schema in the specified policy
 %% store.
+-spec get_schema(aws_client:aws_client(), get_schema_input()) ->
+    {ok, get_schema_output(), tuple()} |
+    {error, any()} |
+    {error, get_schema_errors(), tuple()}.
 get_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema(Client, Input, []).
+
+-spec get_schema(aws_client:aws_client(), get_schema_input(), proplists:proplist()) ->
+    {ok, get_schema_output(), tuple()} |
+    {error, any()} |
+    {error, get_schema_errors(), tuple()}.
 get_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSchema">>, Input, Options).
@@ -425,9 +1336,18 @@ get_schema(Client, Input, Options)
 %% or
 %% `Deny', along with a list of the policies that resulted in the
 %% decision.
+-spec is_authorized(aws_client:aws_client(), is_authorized_input()) ->
+    {ok, is_authorized_output(), tuple()} |
+    {error, any()} |
+    {error, is_authorized_errors(), tuple()}.
 is_authorized(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_authorized(Client, Input, []).
+
+-spec is_authorized(aws_client:aws_client(), is_authorized_input(), proplists:proplist()) ->
+    {ok, is_authorized_output(), tuple()} |
+    {error, any()} |
+    {error, is_authorized_errors(), tuple()}.
 is_authorized(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IsAuthorized">>, Input, Options).
@@ -466,45 +1386,88 @@ is_authorized(Client, Input, Options)
 %%
 %% If you delete a Amazon Cognito user pool or user, tokens from that deleted
 %% pool or that deleted user continue to be usable until they expire.
+-spec is_authorized_with_token(aws_client:aws_client(), is_authorized_with_token_input()) ->
+    {ok, is_authorized_with_token_output(), tuple()} |
+    {error, any()} |
+    {error, is_authorized_with_token_errors(), tuple()}.
 is_authorized_with_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_authorized_with_token(Client, Input, []).
+
+-spec is_authorized_with_token(aws_client:aws_client(), is_authorized_with_token_input(), proplists:proplist()) ->
+    {ok, is_authorized_with_token_output(), tuple()} |
+    {error, any()} |
+    {error, is_authorized_with_token_errors(), tuple()}.
 is_authorized_with_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IsAuthorizedWithToken">>, Input, Options).
 
 %% @doc Returns a paginated list of all of the identity sources defined in
 %% the specified policy store.
+-spec list_identity_sources(aws_client:aws_client(), list_identity_sources_input()) ->
+    {ok, list_identity_sources_output(), tuple()} |
+    {error, any()} |
+    {error, list_identity_sources_errors(), tuple()}.
 list_identity_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_sources(Client, Input, []).
+
+-spec list_identity_sources(aws_client:aws_client(), list_identity_sources_input(), proplists:proplist()) ->
+    {ok, list_identity_sources_output(), tuple()} |
+    {error, any()} |
+    {error, list_identity_sources_errors(), tuple()}.
 list_identity_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentitySources">>, Input, Options).
 
 %% @doc Returns a paginated list of all policies stored in the specified
 %% policy store.
+-spec list_policies(aws_client:aws_client(), list_policies_input()) ->
+    {ok, list_policies_output(), tuple()} |
+    {error, any()} |
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
+
+-spec list_policies(aws_client:aws_client(), list_policies_input(), proplists:proplist()) ->
+    {ok, list_policies_output(), tuple()} |
+    {error, any()} |
+    {error, list_policies_errors(), tuple()}.
 list_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicies">>, Input, Options).
 
 %% @doc Returns a paginated list of all policy stores in the calling Amazon
 %% Web Services account.
+-spec list_policy_stores(aws_client:aws_client(), list_policy_stores_input()) ->
+    {ok, list_policy_stores_output(), tuple()} |
+    {error, any()}.
 list_policy_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policy_stores(Client, Input, []).
+
+-spec list_policy_stores(aws_client:aws_client(), list_policy_stores_input(), proplists:proplist()) ->
+    {ok, list_policy_stores_output(), tuple()} |
+    {error, any()}.
 list_policy_stores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicyStores">>, Input, Options).
 
 %% @doc Returns a paginated list of all policy templates in the specified
 %% policy store.
+-spec list_policy_templates(aws_client:aws_client(), list_policy_templates_input()) ->
+    {ok, list_policy_templates_output(), tuple()} |
+    {error, any()} |
+    {error, list_policy_templates_errors(), tuple()}.
 list_policy_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policy_templates(Client, Input, []).
+
+-spec list_policy_templates(aws_client:aws_client(), list_policy_templates_input(), proplists:proplist()) ->
+    {ok, list_policy_templates_output(), tuple()} |
+    {error, any()} |
+    {error, list_policy_templates_errors(), tuple()}.
 list_policy_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicyTemplates">>, Input, Options).
@@ -526,9 +1489,18 @@ list_policy_templates(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
+-spec put_schema(aws_client:aws_client(), put_schema_input()) ->
+    {ok, put_schema_output(), tuple()} |
+    {error, any()} |
+    {error, put_schema_errors(), tuple()}.
 put_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_schema(Client, Input, []).
+
+-spec put_schema(aws_client:aws_client(), put_schema_input(), proplists:proplist()) ->
+    {ok, put_schema_output(), tuple()} |
+    {error, any()} |
+    {error, put_schema_errors(), tuple()}.
 put_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSchema">>, Input, Options).
@@ -544,9 +1516,18 @@ put_schema(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
+-spec update_identity_source(aws_client:aws_client(), update_identity_source_input()) ->
+    {ok, update_identity_source_output(), tuple()} |
+    {error, any()} |
+    {error, update_identity_source_errors(), tuple()}.
 update_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_source(Client, Input, []).
+
+-spec update_identity_source(aws_client:aws_client(), update_identity_source_input(), proplists:proplist()) ->
+    {ok, update_identity_source_output(), tuple()} |
+    {error, any()} |
+    {error, update_identity_source_errors(), tuple()}.
 update_identity_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIdentitySource">>, Input, Options).
@@ -596,9 +1577,18 @@ update_identity_source(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
+-spec update_policy(aws_client:aws_client(), update_policy_input()) ->
+    {ok, update_policy_output(), tuple()} |
+    {error, any()} |
+    {error, update_policy_errors(), tuple()}.
 update_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy(Client, Input, []).
+
+-spec update_policy(aws_client:aws_client(), update_policy_input(), proplists:proplist()) ->
+    {ok, update_policy_output(), tuple()} |
+    {error, any()} |
+    {error, update_policy_errors(), tuple()}.
 update_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePolicy">>, Input, Options).
@@ -611,9 +1601,18 @@ update_policy(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
+-spec update_policy_store(aws_client:aws_client(), update_policy_store_input()) ->
+    {ok, update_policy_store_output(), tuple()} |
+    {error, any()} |
+    {error, update_policy_store_errors(), tuple()}.
 update_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy_store(Client, Input, []).
+
+-spec update_policy_store(aws_client:aws_client(), update_policy_store_input(), proplists:proplist()) ->
+    {ok, update_policy_store_output(), tuple()} |
+    {error, any()} |
+    {error, update_policy_store_errors(), tuple()}.
 update_policy_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePolicyStore">>, Input, Options).
@@ -636,9 +1635,18 @@ update_policy_store(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
+-spec update_policy_template(aws_client:aws_client(), update_policy_template_input()) ->
+    {ok, update_policy_template_output(), tuple()} |
+    {error, any()} |
+    {error, update_policy_template_errors(), tuple()}.
 update_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy_template(Client, Input, []).
+
+-spec update_policy_template(aws_client:aws_client(), update_policy_template_input(), proplists:proplist()) ->
+    {ok, update_policy_template_output(), tuple()} |
+    {error, any()} |
+    {error, update_policy_template_errors(), tuple()}.
 update_policy_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePolicyTemplate">>, Input, Options).

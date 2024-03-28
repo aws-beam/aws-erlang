@@ -20,6 +20,212 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_endpoint_request() :: #{
+%%   <<"AccessType">> => list(any()),
+%%   <<"CustomerOwnedIpv4Pool">> => string(),
+%%   <<"OutpostId">> := string(),
+%%   <<"SecurityGroupId">> := string(),
+%%   <<"SubnetId">> := string()
+%% }
+-type create_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_endpoint_result() :: #{
+%%   <<"EndpointArn">> => string()
+%% }
+-type create_endpoint_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_endpoint_request() :: #{
+%%   <<"EndpointId">> := string(),
+%%   <<"OutpostId">> := string()
+%% }
+-type delete_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"AccessType">> => list(any()),
+%%   <<"CidrBlock">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomerOwnedIpv4Pool">> => string(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"FailedReason">> => failed_reason(),
+%%   <<"NetworkInterfaces">> => list(network_interface()()),
+%%   <<"OutpostsId">> => string(),
+%%   <<"SecurityGroupId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubnetId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_reason() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type failed_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_endpoints_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_endpoints_result() :: #{
+%%   <<"Endpoints">> => list(endpoint()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoints_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_outposts_with_s3_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_outposts_with_s3_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_outposts_with_s3_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Outposts">> => list(outpost()())
+%% }
+-type list_outposts_with_s3_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_shared_endpoints_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostId">> := string()
+%% }
+-type list_shared_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_shared_endpoints_result() :: #{
+%%   <<"Endpoints">> => list(endpoint()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_shared_endpoints_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"NetworkInterfaceId">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% outpost() :: #{
+%%   <<"CapacityInBytes">> => float(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"OutpostId">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"S3OutpostArn">> => string()
+%% }
+-type outpost() :: #{binary() => any()}.
+
+
+%% Example:
+%% outpost_offline_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type outpost_offline_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+-type create_endpoint_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    outpost_offline_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_endpoint_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    outpost_offline_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_endpoints_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_outposts_with_s3_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_shared_endpoints_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -35,8 +241,17 @@
 %%
 %% ListEndpoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_request()) ->
+    {ok, create_endpoint_result(), tuple()} |
+    {error, any()} |
+    {error, create_endpoint_errors(), tuple()}.
 create_endpoint(Client, Input) ->
     create_endpoint(Client, Input, []).
+
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_request(), proplists:proplist()) ->
+    {ok, create_endpoint_result(), tuple()} |
+    {error, any()} |
+    {error, create_endpoint_errors(), tuple()}.
 create_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/S3Outposts/CreateEndpoint"],
@@ -70,8 +285,17 @@ create_endpoint(Client, Input0, Options0) ->
 %%
 %% ListEndpoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, Input) ->
     delete_endpoint(Client, Input, []).
+
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/S3Outposts/DeleteEndpoint"],
@@ -105,14 +329,26 @@ delete_endpoint(Client, Input0, Options0) ->
 %%
 %% DeleteEndpoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html
+-spec list_endpoints(aws_client:aws_client()) ->
+    {ok, list_endpoints_result(), tuple()} |
+    {error, any()} |
+    {error, list_endpoints_errors(), tuple()}.
 list_endpoints(Client)
   when is_map(Client) ->
     list_endpoints(Client, #{}, #{}).
 
+-spec list_endpoints(aws_client:aws_client(), map(), map()) ->
+    {ok, list_endpoints_result(), tuple()} |
+    {error, any()} |
+    {error, list_endpoints_errors(), tuple()}.
 list_endpoints(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_endpoints(Client, QueryMap, HeadersMap, []).
 
+-spec list_endpoints(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_endpoints_result(), tuple()} |
+    {error, any()} |
+    {error, list_endpoints_errors(), tuple()}.
 list_endpoints(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/S3Outposts/ListEndpoints"],
@@ -140,14 +376,26 @@ list_endpoints(Client, QueryMap, HeadersMap, Options0)
 %% Includes S3 on Outposts that you have access to as the Outposts owner, or
 %% as a shared user
 %% from Resource Access Manager (RAM).
+-spec list_outposts_with_s3(aws_client:aws_client()) ->
+    {ok, list_outposts_with_s3_result(), tuple()} |
+    {error, any()} |
+    {error, list_outposts_with_s3_errors(), tuple()}.
 list_outposts_with_s3(Client)
   when is_map(Client) ->
     list_outposts_with_s3(Client, #{}, #{}).
 
+-spec list_outposts_with_s3(aws_client:aws_client(), map(), map()) ->
+    {ok, list_outposts_with_s3_result(), tuple()} |
+    {error, any()} |
+    {error, list_outposts_with_s3_errors(), tuple()}.
 list_outposts_with_s3(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_outposts_with_s3(Client, QueryMap, HeadersMap, []).
 
+-spec list_outposts_with_s3(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_outposts_with_s3_result(), tuple()} |
+    {error, any()} |
+    {error, list_outposts_with_s3_errors(), tuple()}.
 list_outposts_with_s3(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/S3Outposts/ListOutpostsWithS3"],
@@ -179,14 +427,26 @@ list_outposts_with_s3(Client, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteEndpoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html
+-spec list_shared_endpoints(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_shared_endpoints_result(), tuple()} |
+    {error, any()} |
+    {error, list_shared_endpoints_errors(), tuple()}.
 list_shared_endpoints(Client, OutpostId)
   when is_map(Client) ->
     list_shared_endpoints(Client, OutpostId, #{}, #{}).
 
+-spec list_shared_endpoints(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_shared_endpoints_result(), tuple()} |
+    {error, any()} |
+    {error, list_shared_endpoints_errors(), tuple()}.
 list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap, []).
 
+-spec list_shared_endpoints(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_shared_endpoints_result(), tuple()} |
+    {error, any()} |
+    {error, list_shared_endpoints_errors(), tuple()}.
 list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/S3Outposts/ListSharedEndpoints"],
@@ -213,7 +473,7 @@ list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap, Options0)
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -36,13 +36,182 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_forbidden() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_forbidden() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_record_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"RecordIdentifierValueAsString">> => string()
+%% }
+-type batch_get_record_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_record_identifier() :: #{
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"FeatureNames">> => list(string()()),
+%%   <<"RecordIdentifiersValueAsString">> => list(string()())
+%% }
+-type batch_get_record_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_record_request() :: #{
+%%   <<"ExpirationTimeResponse">> => list(any()),
+%%   <<"Identifiers">> := list(batch_get_record_identifier()())
+%% }
+-type batch_get_record_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_record_response() :: #{
+%%   <<"Errors">> => list(batch_get_record_error()()),
+%%   <<"Records">> => list(batch_get_record_result_detail()()),
+%%   <<"UnprocessedIdentifiers">> => list(batch_get_record_identifier()())
+%% }
+-type batch_get_record_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_record_result_detail() :: #{
+%%   <<"ExpiresAt">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"Record">> => list(feature_value()()),
+%%   <<"RecordIdentifierValueAsString">> => string()
+%% }
+-type batch_get_record_result_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_record_request() :: #{
+%%   <<"DeletionMode">> => list(any()),
+%%   <<"EventTime">> := string(),
+%%   <<"RecordIdentifierValueAsString">> := string(),
+%%   <<"TargetStores">> => list(list(any())())
+%% }
+-type delete_record_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% feature_value() :: #{
+%%   <<"FeatureName">> => string(),
+%%   <<"ValueAsString">> => string(),
+%%   <<"ValueAsStringList">> => list(string()())
+%% }
+-type feature_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_record_request() :: #{
+%%   <<"ExpirationTimeResponse">> => list(any()),
+%%   <<"FeatureNames">> => list(string()()),
+%%   <<"RecordIdentifierValueAsString">> := string()
+%% }
+-type get_record_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_record_response() :: #{
+%%   <<"ExpiresAt">> => string(),
+%%   <<"Record">> => list(feature_value()())
+%% }
+-type get_record_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_failure() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_record_request() :: #{
+%%   <<"Record">> := list(feature_value()()),
+%%   <<"TargetStores">> => list(list(any())()),
+%%   <<"TtlDuration">> => ttl_duration()
+%% }
+-type put_record_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable() :: #{binary() => any()}.
+
+
+%% Example:
+%% ttl_duration() :: #{
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type ttl_duration() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_error() :: #{binary() => any()}.
+
+-type batch_get_record_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    internal_failure() | 
+    access_forbidden().
+
+-type delete_record_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    internal_failure() | 
+    access_forbidden().
+
+-type get_record_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    resource_not_found() | 
+    internal_failure() | 
+    access_forbidden().
+
+-type put_record_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    internal_failure() | 
+    access_forbidden().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Retrieves a batch of `Records' from a `FeatureGroup'.
+-spec batch_get_record(aws_client:aws_client(), batch_get_record_request()) ->
+    {ok, batch_get_record_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_record_errors(), tuple()}.
 batch_get_record(Client, Input) ->
     batch_get_record(Client, Input, []).
+
+-spec batch_get_record(aws_client:aws_client(), batch_get_record_request(), proplists:proplist()) ->
+    {ok, batch_get_record_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_record_errors(), tuple()}.
 batch_get_record(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetRecord"],
@@ -108,8 +277,17 @@ batch_get_record(Client, Input0, Options0) ->
 %% format
 %% enabled, see Delete records from the offline store:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-delete-records-offline-store.html#feature-store-delete-records-offline-store.
+-spec delete_record(aws_client:aws_client(), binary() | list(), delete_record_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_record_errors(), tuple()}.
 delete_record(Client, FeatureGroupName, Input) ->
     delete_record(Client, FeatureGroupName, Input, []).
+
+-spec delete_record(aws_client:aws_client(), binary() | list(), delete_record_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_record_errors(), tuple()}.
 delete_record(Client, FeatureGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), ""],
@@ -142,14 +320,26 @@ delete_record(Client, FeatureGroupName, Input0, Options0) ->
 %% latest records stored in the `OnlineStore' can be retrieved. If no
 %% Record with
 %% `RecordIdentifierValue' is found, then an empty result is returned.
+-spec get_record(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_record_response(), tuple()} |
+    {error, any()} |
+    {error, get_record_errors(), tuple()}.
 get_record(Client, FeatureGroupName, RecordIdentifierValueAsString)
   when is_map(Client) ->
     get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, #{}, #{}).
 
+-spec get_record(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_record_response(), tuple()} |
+    {error, any()} |
+    {error, get_record_errors(), tuple()}.
 get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, HeadersMap, []).
 
+-spec get_record(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_record_response(), tuple()} |
+    {error, any()} |
+    {error, get_record_errors(), tuple()}.
 get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), ""],
@@ -196,8 +386,17 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, He
 %% feature
 %% group level `TtlDuration'. A record level `TtlDuration' supersedes
 %% the group level `TtlDuration'.
+-spec put_record(aws_client:aws_client(), binary() | list(), put_record_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_record_errors(), tuple()}.
 put_record(Client, FeatureGroupName, Input) ->
     put_record(Client, FeatureGroupName, Input, []).
+
+-spec put_record(aws_client:aws_client(), binary() | list(), put_record_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_record_errors(), tuple()}.
 put_record(Client, FeatureGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), ""],
@@ -224,7 +423,7 @@ put_record(Client, FeatureGroupName, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

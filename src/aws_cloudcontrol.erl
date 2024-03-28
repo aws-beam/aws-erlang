@@ -26,6 +26,393 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% list_resource_requests_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceRequestStatusSummaries">> => list(progress_event()())
+%% }
+-type list_resource_requests_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_output() :: #{
+%%   <<"ProgressEvent">> => progress_event()
+%% }
+-type delete_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_request_status_input() :: #{
+%%   <<"RequestToken">> := string()
+%% }
+-type get_resource_request_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% handler_internal_failure_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type handler_internal_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% general_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type general_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DesiredState">> := string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"TypeName">> := string(),
+%%   <<"TypeVersionId">> => string()
+%% }
+-type create_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% network_failure_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type network_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_output() :: #{
+%%   <<"ProgressEvent">> => progress_event()
+%% }
+-type update_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% private_type_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type private_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Identifier">> := string(),
+%%   <<"PatchDocument">> := string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"TypeName">> := string(),
+%%   <<"TypeVersionId">> => string()
+%% }
+-type update_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_action_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_action_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_output() :: #{
+%%   <<"ResourceDescription">> => resource_description(),
+%%   <<"TypeName">> => string()
+%% }
+-type get_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceModel">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"TypeName">> := string(),
+%%   <<"TypeVersionId">> => string()
+%% }
+-type list_resources_input() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% type_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type type_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% client_token_conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type client_token_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% progress_event() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"EventTime">> => non_neg_integer(),
+%%   <<"Identifier">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"OperationStatus">> => string(),
+%%   <<"RequestToken">> => string(),
+%%   <<"ResourceModel">> => string(),
+%%   <<"RetryAfter">> => non_neg_integer(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type progress_event() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_resource_request_output() :: #{
+%%   <<"ProgressEvent">> => progress_event()
+%% }
+-type cancel_resource_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_requests_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceRequestStatusFilter">> => resource_request_status_filter()
+%% }
+-type list_resource_requests_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_resource_request_input() :: #{
+%%   <<"RequestToken">> := string()
+%% }
+-type cancel_resource_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_request_status_output() :: #{
+%%   <<"ProgressEvent">> => progress_event()
+%% }
+-type get_resource_request_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_description() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"Properties">> => string()
+%% }
+-type resource_description() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Identifier">> := string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"TypeName">> := string(),
+%%   <<"TypeVersionId">> => string()
+%% }
+-type delete_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% not_updatable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_updatable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% not_stabilized_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_stabilized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% request_token_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type request_token_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% handler_failure_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type handler_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_output() :: #{
+%%   <<"ProgressEvent">> => progress_event()
+%% }
+-type create_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_credentials_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_credentials_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_input() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"TypeName">> := string(),
+%%   <<"TypeVersionId">> => string()
+%% }
+-type get_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceDescriptions">> => list(resource_description()()),
+%%   <<"TypeName">> => string()
+%% }
+-type list_resources_output() :: #{binary() => any()}.
+
+%% Example:
+%% service_internal_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_request_status_filter() :: #{
+%%   <<"OperationStatuses">> => list(string()()),
+%%   <<"Operations">> => list(string()())
+%% }
+-type resource_request_status_filter() :: #{binary() => any()}.
+
+-type cancel_resource_request_errors() ::
+    request_token_not_found_exception() | 
+    concurrent_modification_exception().
+
+-type create_resource_errors() ::
+    service_internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_credentials_exception() | 
+    handler_failure_exception() | 
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    not_stabilized_exception() | 
+    not_updatable_exception() | 
+    client_token_conflict_exception() | 
+    type_not_found_exception() | 
+    invalid_request_exception() | 
+    concurrent_operation_exception() | 
+    resource_not_found_exception() | 
+    unsupported_action_exception() | 
+    private_type_exception() | 
+    network_failure_exception() | 
+    already_exists_exception() | 
+    general_service_exception() | 
+    handler_internal_failure_exception().
+
+-type delete_resource_errors() ::
+    service_internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_credentials_exception() | 
+    handler_failure_exception() | 
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    not_stabilized_exception() | 
+    not_updatable_exception() | 
+    client_token_conflict_exception() | 
+    type_not_found_exception() | 
+    invalid_request_exception() | 
+    concurrent_operation_exception() | 
+    resource_not_found_exception() | 
+    unsupported_action_exception() | 
+    private_type_exception() | 
+    network_failure_exception() | 
+    already_exists_exception() | 
+    general_service_exception() | 
+    handler_internal_failure_exception().
+
+-type get_resource_errors() ::
+    service_internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_credentials_exception() | 
+    handler_failure_exception() | 
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    not_stabilized_exception() | 
+    not_updatable_exception() | 
+    type_not_found_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unsupported_action_exception() | 
+    private_type_exception() | 
+    network_failure_exception() | 
+    already_exists_exception() | 
+    general_service_exception() | 
+    handler_internal_failure_exception().
+
+-type get_resource_request_status_errors() ::
+    request_token_not_found_exception().
+
+-type list_resources_errors() ::
+    service_internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_credentials_exception() | 
+    handler_failure_exception() | 
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    not_stabilized_exception() | 
+    not_updatable_exception() | 
+    type_not_found_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    unsupported_action_exception() | 
+    private_type_exception() | 
+    network_failure_exception() | 
+    already_exists_exception() | 
+    general_service_exception() | 
+    handler_internal_failure_exception().
+
+-type update_resource_errors() ::
+    service_internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_credentials_exception() | 
+    handler_failure_exception() | 
+    throttling_exception() | 
+    service_limit_exceeded_exception() | 
+    not_stabilized_exception() | 
+    not_updatable_exception() | 
+    client_token_conflict_exception() | 
+    type_not_found_exception() | 
+    invalid_request_exception() | 
+    concurrent_operation_exception() | 
+    resource_not_found_exception() | 
+    unsupported_action_exception() | 
+    private_type_exception() | 
+    network_failure_exception() | 
+    already_exists_exception() | 
+    general_service_exception() | 
+    handler_internal_failure_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -39,9 +426,18 @@
 %%
 %% Only resource operations requests with a status of `PENDING' or
 %% `IN_PROGRESS' can be canceled.
+-spec cancel_resource_request(aws_client:aws_client(), cancel_resource_request_input()) ->
+    {ok, cancel_resource_request_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_resource_request_errors(), tuple()}.
 cancel_resource_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_resource_request(Client, Input, []).
+
+-spec cancel_resource_request(aws_client:aws_client(), cancel_resource_request_input(), proplists:proplist()) ->
+    {ok, cancel_resource_request_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_resource_request_errors(), tuple()}.
 cancel_resource_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelResourceRequest">>, Input, Options).
@@ -59,9 +455,18 @@ cancel_resource_request(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/APIReference/API_GetResourceRequestStatus.html
 %% using the `RequestToken' of the
 %% `ProgressEvent' type returned by `CreateResource'.
+-spec create_resource(aws_client:aws_client(), create_resource_input()) ->
+    {ok, create_resource_output(), tuple()} |
+    {error, any()} |
+    {error, create_resource_errors(), tuple()}.
 create_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource(Client, Input, []).
+
+-spec create_resource(aws_client:aws_client(), create_resource_input(), proplists:proplist()) ->
+    {ok, create_resource_output(), tuple()} |
+    {error, any()} |
+    {error, create_resource_errors(), tuple()}.
 create_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResource">>, Input, Options).
@@ -79,9 +484,18 @@ create_resource(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/APIReference/API_GetResourceRequestStatus.html
 %% using the `RequestToken' of the
 %% `ProgressEvent' returned by `DeleteResource'.
+-spec delete_resource(aws_client:aws_client(), delete_resource_input()) ->
+    {ok, delete_resource_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_errors(), tuple()}.
 delete_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource(Client, Input, []).
+
+-spec delete_resource(aws_client:aws_client(), delete_resource_input(), proplists:proplist()) ->
+    {ok, delete_resource_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_errors(), tuple()}.
 delete_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResource">>, Input, Options).
@@ -97,9 +511,18 @@ delete_resource(Client, Input, Options)
 %% in your account
 %% and Amazon Web Services Region, whether those resources were provisioned
 %% using Cloud Control API.
+-spec get_resource(aws_client:aws_client(), get_resource_input()) ->
+    {ok, get_resource_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_errors(), tuple()}.
 get_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource(Client, Input, []).
+
+-spec get_resource(aws_client:aws_client(), get_resource_input(), proplists:proplist()) ->
+    {ok, get_resource_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_errors(), tuple()}.
 get_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResource">>, Input, Options).
@@ -111,9 +534,18 @@ get_resource(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-manage-requests.html#resource-operations-manage-requests-track
 %% in the
 %% Amazon Web Services Cloud Control API User Guide.
+-spec get_resource_request_status(aws_client:aws_client(), get_resource_request_status_input()) ->
+    {ok, get_resource_request_status_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_request_status_errors(), tuple()}.
 get_resource_request_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_request_status(Client, Input, []).
+
+-spec get_resource_request_status(aws_client:aws_client(), get_resource_request_status_input(), proplists:proplist()) ->
+    {ok, get_resource_request_status_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_request_status_errors(), tuple()}.
 get_resource_request_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceRequestStatus">>, Input, Options).
@@ -127,9 +559,16 @@ get_resource_request_status(Client, Input, Options)
 %% Amazon Web Services Cloud Control API User Guide.
 %%
 %% Resource operation requests expire after 7 days.
+-spec list_resource_requests(aws_client:aws_client(), list_resource_requests_input()) ->
+    {ok, list_resource_requests_output(), tuple()} |
+    {error, any()}.
 list_resource_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_requests(Client, Input, []).
+
+-spec list_resource_requests(aws_client:aws_client(), list_resource_requests_input(), proplists:proplist()) ->
+    {ok, list_resource_requests_output(), tuple()} |
+    {error, any()}.
 list_resource_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceRequests">>, Input, Options).
@@ -144,9 +583,18 @@ list_resource_requests(Client, Input, Options)
 %% your account and
 %% Amazon Web Services Region, whether those resources were provisioned using
 %% Cloud Control API.
+-spec list_resources(aws_client:aws_client(), list_resources_input()) ->
+    {ok, list_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources(Client, Input, []).
+
+-spec list_resources(aws_client:aws_client(), list_resources_input(), proplists:proplist()) ->
+    {ok, list_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResources">>, Input, Options).
@@ -177,9 +625,18 @@ list_resources(Client, Input, Options)
 %% topic for the resource in the Resource and property types reference:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
 %% in the CloudFormation Users Guide.
+-spec update_resource(aws_client:aws_client(), update_resource_input()) ->
+    {ok, update_resource_output(), tuple()} |
+    {error, any()} |
+    {error, update_resource_errors(), tuple()}.
 update_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource(Client, Input, []).
+
+-spec update_resource(aws_client:aws_client(), update_resource_input(), proplists:proplist()) ->
+    {ok, update_resource_output(), tuple()} |
+    {error, any()} |
+    {error, update_resource_errors(), tuple()}.
 update_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResource">>, Input, Options).

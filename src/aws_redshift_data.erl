@@ -37,6 +37,379 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% active_statements_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type active_statements_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_execute_statement_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"StatementId">> => string()
+%% }
+-type batch_execute_statement_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_execute_statement_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Database">> := string(),
+%%   <<"DbUser">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"Sqls">> := list(string()()),
+%%   <<"StatementName">> => string(),
+%%   <<"WithEvent">> => [boolean()],
+%%   <<"WorkgroupName">> => string()
+%% }
+-type batch_execute_statement_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_execute_statement_output() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Database">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"WorkgroupName">> => string()
+%% }
+-type batch_execute_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_statement_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type cancel_statement_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_statement_response() :: #{
+%%   <<"Status">> => [boolean()]
+%% }
+-type cancel_statement_response() :: #{binary() => any()}.
+
+%% Example:
+%% column_metadata() :: #{
+%%   <<"columnDefault">> => string(),
+%%   <<"isCaseSensitive">> => boolean(),
+%%   <<"isCurrency">> => boolean(),
+%%   <<"isSigned">> => boolean(),
+%%   <<"label">> => string(),
+%%   <<"length">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nullable">> => integer(),
+%%   <<"precision">> => integer(),
+%%   <<"scale">> => integer(),
+%%   <<"schemaName">> => string(),
+%%   <<"tableName">> => string(),
+%%   <<"typeName">> => string()
+%% }
+-type column_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% database_connection_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type database_connection_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_statement_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type describe_statement_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_statement_response() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Database">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"Duration">> => float(),
+%%   <<"Error">> => string(),
+%%   <<"HasResultSet">> => [boolean()],
+%%   <<"Id">> := string(),
+%%   <<"QueryParameters">> => list(sql_parameter()()),
+%%   <<"QueryString">> => string(),
+%%   <<"RedshiftPid">> => float(),
+%%   <<"RedshiftQueryId">> => float(),
+%%   <<"ResultRows">> => float(),
+%%   <<"ResultSize">> => float(),
+%%   <<"SecretArn">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SubStatements">> => list(sub_statement_data()()),
+%%   <<"UpdatedAt">> => [non_neg_integer()],
+%%   <<"WorkgroupName">> => string()
+%% }
+-type describe_statement_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_request() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"ConnectedDatabase">> => string(),
+%%   <<"Database">> := string(),
+%%   <<"DbUser">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Schema">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"Table">> => string(),
+%%   <<"WorkgroupName">> => string()
+%% }
+-type describe_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_response() :: #{
+%%   <<"ColumnList">> => list(column_metadata()()),
+%%   <<"NextToken">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type describe_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% execute_statement_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"StatementId">> => string()
+%% }
+-type execute_statement_exception() :: #{binary() => any()}.
+
+%% Example:
+%% execute_statement_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Database">> := string(),
+%%   <<"DbUser">> => string(),
+%%   <<"Parameters">> => list(sql_parameter()()),
+%%   <<"SecretArn">> => string(),
+%%   <<"Sql">> := string(),
+%%   <<"StatementName">> => string(),
+%%   <<"WithEvent">> => [boolean()],
+%%   <<"WorkgroupName">> => string()
+%% }
+-type execute_statement_input() :: #{binary() => any()}.
+
+%% Example:
+%% execute_statement_output() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Database">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"WorkgroupName">> => string()
+%% }
+-type execute_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_statement_result_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_statement_result_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_statement_result_response() :: #{
+%%   <<"ColumnMetadata">> => list(column_metadata()()),
+%%   <<"NextToken">> => string(),
+%%   <<"Records">> := list(list(list()())()),
+%%   <<"TotalNumRows">> => float()
+%% }
+-type get_statement_result_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_databases_request() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Database">> := string(),
+%%   <<"DbUser">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"WorkgroupName">> => string()
+%% }
+-type list_databases_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_databases_response() :: #{
+%%   <<"Databases">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_databases_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_schemas_request() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"ConnectedDatabase">> => string(),
+%%   <<"Database">> := string(),
+%%   <<"DbUser">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaPattern">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"WorkgroupName">> => string()
+%% }
+-type list_schemas_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_schemas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Schemas">> => list(string()())
+%% }
+-type list_schemas_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_statements_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RoleLevel">> => [boolean()],
+%%   <<"StatementName">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type list_statements_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_statements_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Statements">> := list(statement_data()())
+%% }
+-type list_statements_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_request() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"ConnectedDatabase">> => string(),
+%%   <<"Database">> := string(),
+%%   <<"DbUser">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaPattern">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"TablePattern">> => string(),
+%%   <<"WorkgroupName">> => string()
+%% }
+-type list_tables_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tables">> => list(table_member()())
+%% }
+-type list_tables_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sql_parameter() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type sql_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% statement_data() :: #{
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => string(),
+%%   <<"IsBatchStatement">> => [boolean()],
+%%   <<"QueryParameters">> => list(sql_parameter()()),
+%%   <<"QueryString">> => string(),
+%%   <<"QueryStrings">> => list(string()()),
+%%   <<"SecretArn">> => string(),
+%%   <<"StatementName">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type statement_data() :: #{binary() => any()}.
+
+%% Example:
+%% sub_statement_data() :: #{
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Duration">> => float(),
+%%   <<"Error">> => string(),
+%%   <<"HasResultSet">> => [boolean()],
+%%   <<"Id">> => string(),
+%%   <<"QueryString">> => string(),
+%%   <<"RedshiftQueryId">> => float(),
+%%   <<"ResultRows">> => float(),
+%%   <<"ResultSize">> => float(),
+%%   <<"Status">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type sub_statement_data() :: #{binary() => any()}.
+
+%% Example:
+%% table_member() :: #{
+%%   <<"name">> => string(),
+%%   <<"schema">> => string(),
+%%   <<"type">> => string()
+%% }
+-type table_member() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+-type batch_execute_statement_errors() ::
+    validation_exception() | 
+    batch_execute_statement_exception() | 
+    active_statements_exceeded_exception().
+
+-type cancel_statement_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    database_connection_exception().
+
+-type describe_statement_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type describe_table_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    database_connection_exception().
+
+-type execute_statement_errors() ::
+    validation_exception() | 
+    execute_statement_exception() | 
+    active_statements_exceeded_exception().
+
+-type get_statement_result_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type list_databases_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    database_connection_exception().
+
+-type list_schemas_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    database_connection_exception().
+
+-type list_statements_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tables_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    database_connection_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -88,9 +461,18 @@
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
+-spec batch_execute_statement(aws_client:aws_client(), batch_execute_statement_input()) ->
+    {ok, batch_execute_statement_output(), tuple()} |
+    {error, any()} |
+    {error, batch_execute_statement_errors(), tuple()}.
 batch_execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_execute_statement(Client, Input, []).
+
+-spec batch_execute_statement(aws_client:aws_client(), batch_execute_statement_input(), proplists:proplist()) ->
+    {ok, batch_execute_statement_output(), tuple()} |
+    {error, any()} |
+    {error, batch_execute_statement_errors(), tuple()}.
 batch_execute_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchExecuteStatement">>, Input, Options).
@@ -104,9 +486,18 @@ batch_execute_statement(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
+-spec cancel_statement(aws_client:aws_client(), cancel_statement_request()) ->
+    {ok, cancel_statement_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_statement_errors(), tuple()}.
 cancel_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_statement(Client, Input, []).
+
+-spec cancel_statement(aws_client:aws_client(), cancel_statement_request(), proplists:proplist()) ->
+    {ok, cancel_statement_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_statement_errors(), tuple()}.
 cancel_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelStatement">>, Input, Options).
@@ -124,9 +515,18 @@ cancel_statement(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
+-spec describe_statement(aws_client:aws_client(), describe_statement_request()) ->
+    {ok, describe_statement_response(), tuple()} |
+    {error, any()} |
+    {error, describe_statement_errors(), tuple()}.
 describe_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_statement(Client, Input, []).
+
+-spec describe_statement(aws_client:aws_client(), describe_statement_request(), proplists:proplist()) ->
+    {ok, describe_statement_response(), tuple()} |
+    {error, any()} |
+    {error, describe_statement_errors(), tuple()}.
 describe_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStatement">>, Input, Options).
@@ -180,9 +580,18 @@ describe_statement(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
+-spec describe_table(aws_client:aws_client(), describe_table_request()) ->
+    {ok, describe_table_response(), tuple()} |
+    {error, any()} |
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
+
+-spec describe_table(aws_client:aws_client(), describe_table_request(), proplists:proplist()) ->
+    {ok, describe_table_response(), tuple()} |
+    {error, any()} |
+    {error, describe_table_errors(), tuple()}.
 describe_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTable">>, Input, Options).
@@ -235,9 +644,18 @@ describe_table(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
+-spec execute_statement(aws_client:aws_client(), execute_statement_input()) ->
+    {ok, execute_statement_output(), tuple()} |
+    {error, any()} |
+    {error, execute_statement_errors(), tuple()}.
 execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_statement(Client, Input, []).
+
+-spec execute_statement(aws_client:aws_client(), execute_statement_input(), proplists:proplist()) ->
+    {ok, execute_statement_output(), tuple()} |
+    {error, any()} |
+    {error, execute_statement_errors(), tuple()}.
 execute_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteStatement">>, Input, Options).
@@ -251,9 +669,18 @@ execute_statement(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
+-spec get_statement_result(aws_client:aws_client(), get_statement_result_request()) ->
+    {ok, get_statement_result_response(), tuple()} |
+    {error, any()} |
+    {error, get_statement_result_errors(), tuple()}.
 get_statement_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_statement_result(Client, Input, []).
+
+-spec get_statement_result(aws_client:aws_client(), get_statement_result_request(), proplists:proplist()) ->
+    {ok, get_statement_result_response(), tuple()} |
+    {error, any()} |
+    {error, get_statement_result_errors(), tuple()}.
 get_statement_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetStatementResult">>, Input, Options).
@@ -304,9 +731,18 @@ get_statement_result(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
+-spec list_databases(aws_client:aws_client(), list_databases_request()) ->
+    {ok, list_databases_response(), tuple()} |
+    {error, any()} |
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_databases(Client, Input, []).
+
+-spec list_databases(aws_client:aws_client(), list_databases_request(), proplists:proplist()) ->
+    {ok, list_databases_response(), tuple()} |
+    {error, any()} |
+    {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatabases">>, Input, Options).
@@ -357,9 +793,18 @@ list_databases(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
+-spec list_schemas(aws_client:aws_client(), list_schemas_request()) ->
+    {ok, list_schemas_response(), tuple()} |
+    {error, any()} |
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schemas(Client, Input, []).
+
+-spec list_schemas(aws_client:aws_client(), list_schemas_request(), proplists:proplist()) ->
+    {ok, list_schemas_response(), tuple()} |
+    {error, any()} |
+    {error, list_schemas_errors(), tuple()}.
 list_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSchemas">>, Input, Options).
@@ -374,9 +819,18 @@ list_schemas(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
+-spec list_statements(aws_client:aws_client(), list_statements_request()) ->
+    {ok, list_statements_response(), tuple()} |
+    {error, any()} |
+    {error, list_statements_errors(), tuple()}.
 list_statements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_statements(Client, Input, []).
+
+-spec list_statements(aws_client:aws_client(), list_statements_request(), proplists:proplist()) ->
+    {ok, list_statements_response(), tuple()} |
+    {error, any()} |
+    {error, list_statements_errors(), tuple()}.
 list_statements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStatements">>, Input, Options).
@@ -429,9 +883,18 @@ list_statements(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
+-spec list_tables(aws_client:aws_client(), list_tables_request()) ->
+    {ok, list_tables_response(), tuple()} |
+    {error, any()} |
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
+
+-spec list_tables(aws_client:aws_client(), list_tables_request(), proplists:proplist()) ->
+    {ok, list_tables_response(), tuple()} |
+    {error, any()} |
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTables">>, Input, Options).

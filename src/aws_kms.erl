@@ -223,6 +223,1587 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% invalid_grant_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_grant_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_response() :: #{
+%%   <<"Aliases">> => list(alias_list_entry()()),
+%%   <<"NextMarker">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_aliases_response() :: #{binary() => any()}.
+
+%% Example:
+%% incorrect_key_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type incorrect_key_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_request() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_grant_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_grant_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_vpc_endpoint_service_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_vpc_endpoint_service_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% grant_constraints() :: #{
+%%   <<"EncryptionContextEquals">> => map(),
+%%   <<"EncryptionContextSubset">> => map()
+%% }
+-type grant_constraints() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_vpc_endpoint_service_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_vpc_endpoint_service_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_retirable_grants_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"RetiringPrincipal">> := string()
+%% }
+-type list_retirable_grants_request() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% dry_run_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dry_run_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% custom_key_store_name_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_key_store_name_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_key_configuration_type() :: #{
+%%   <<"Id">> => string()
+%% }
+-type xks_key_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% update_alias_request() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"TargetKeyId">> := string()
+%% }
+-type update_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_request() :: #{
+%%   <<"BypassPolicyLockoutSafetyCheck">> => boolean(),
+%%   <<"CustomKeyStoreId">> => string(),
+%%   <<"CustomerMasterKeySpec">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"KeyUsage">> => list(any()),
+%%   <<"MultiRegion">> => boolean(),
+%%   <<"Origin">> => list(any()),
+%%   <<"Policy">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"XksKeyId">> => string()
+%% }
+-type create_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_key_stores_response() :: #{
+%%   <<"CustomKeyStores">> => list(custom_key_stores_list_entry()()),
+%%   <<"NextMarker">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type describe_custom_key_stores_response() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_uri_endpoint_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_uri_endpoint_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_alias_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_alias_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_without_plaintext_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> := string(),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"NumberOfBytes">> => integer()
+%% }
+-type generate_data_key_without_plaintext_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_alias_request() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"TargetKeyId">> := string()
+%% }
+-type create_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_key_deletion_response() :: #{
+%%   <<"DeletionDate">> => non_neg_integer(),
+%%   <<"KeyId">> => string(),
+%%   <<"KeyState">> => list(any()),
+%%   <<"PendingWindowInDays">> => integer()
+%% }
+-type schedule_key_deletion_response() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_key_deletion_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"PendingWindowInDays">> => integer()
+%% }
+-type schedule_key_deletion_request() :: #{binary() => any()}.
+
+%% Example:
+%% encrypt_response() :: #{
+%%   <<"CiphertextBlob">> => binary(),
+%%   <<"EncryptionAlgorithm">> => list(any()),
+%%   <<"KeyId">> => string()
+%% }
+-type encrypt_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_keys_response() :: #{
+%%   <<"Keys">> => list(key_list_entry()()),
+%%   <<"NextMarker">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_key_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_key_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% decrypt_request() :: #{
+%%   <<"CiphertextBlob">> := binary(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionAlgorithm">> => list(any()),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> => string(),
+%%   <<"Recipient">> => recipient_info()
+%% }
+-type decrypt_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_grant_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantId">> := string(),
+%%   <<"KeyId">> := string()
+%% }
+-type revoke_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% encrypt_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionAlgorithm">> => list(any()),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> := string(),
+%%   <<"Plaintext">> := binary()
+%% }
+-type encrypt_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_grants_request() :: #{
+%%   <<"GrantId">> => string(),
+%%   <<"GranteePrincipal">> => string(),
+%%   <<"KeyId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_grants_request() :: #{binary() => any()}.
+
+%% Example:
+%% disconnect_custom_key_store_request() :: #{
+%%   <<"CustomKeyStoreId">> := string()
+%% }
+-type disconnect_custom_key_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_key_deletion_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type cancel_key_deletion_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_random_response() :: #{
+%%   <<"CiphertextForRecipient">> => binary(),
+%%   <<"Plaintext">> => binary()
+%% }
+-type generate_random_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_key_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type enable_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_pair_without_plaintext_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> := string(),
+%%   <<"KeyPairSpec">> := list(any())
+%% }
+-type generate_data_key_pair_without_plaintext_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_key_policies_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"PolicyNames">> => list(string()()),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_key_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_tags_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_resource_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_key_description_request() :: #{
+%%   <<"Description">> := string(),
+%%   <<"KeyId">> := string()
+%% }
+-type update_key_description_request() :: #{binary() => any()}.
+
+%% Example:
+%% dependency_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dependency_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% custom_key_store_has_cm_ks_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_key_store_has_cm_ks_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_key_store_response() :: #{
+%%   <<"CustomKeyStoreId">> => string()
+%% }
+-type create_custom_key_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_key_stores_list_entry() :: #{
+%%   <<"CloudHsmClusterId">> => string(),
+%%   <<"ConnectionErrorCode">> => list(any()),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CustomKeyStoreId">> => string(),
+%%   <<"CustomKeyStoreName">> => string(),
+%%   <<"CustomKeyStoreType">> => list(any()),
+%%   <<"TrustAnchorCertificate">> => string(),
+%%   <<"XksProxyConfiguration">> => xks_proxy_configuration_type()
+%% }
+-type custom_key_stores_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% multi_region_configuration() :: #{
+%%   <<"MultiRegionKeyType">> => list(any()),
+%%   <<"PrimaryKey">> => multi_region_key(),
+%%   <<"ReplicaKeys">> => list(multi_region_key()())
+%% }
+-type multi_region_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type get_key_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_key_store_request() :: #{
+%%   <<"CloudHsmClusterId">> => string(),
+%%   <<"CustomKeyStoreName">> := string(),
+%%   <<"CustomKeyStoreType">> => list(any()),
+%%   <<"KeyStorePassword">> => string(),
+%%   <<"TrustAnchorCertificate">> => string(),
+%%   <<"XksProxyAuthenticationCredential">> => xks_proxy_authentication_credential_type(),
+%%   <<"XksProxyConnectivity">> => list(any()),
+%%   <<"XksProxyUriEndpoint">> => string(),
+%%   <<"XksProxyUriPath">> => string(),
+%%   <<"XksProxyVpcEndpointServiceName">> => string()
+%% }
+-type create_custom_key_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% expired_import_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_import_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% retire_grant_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantId">> => string(),
+%%   <<"GrantToken">> => string(),
+%%   <<"KeyId">> => string()
+%% }
+-type retire_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_key_stores_request() :: #{
+%%   <<"CustomKeyStoreId">> => string(),
+%%   <<"CustomKeyStoreName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type describe_custom_key_stores_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_keys_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_for_import_response() :: #{
+%%   <<"ImportToken">> => binary(),
+%%   <<"KeyId">> => string(),
+%%   <<"ParametersValidTo">> => non_neg_integer(),
+%%   <<"PublicKey">> => binary()
+%% }
+-type get_parameters_for_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_pair_response() :: #{
+%%   <<"CiphertextForRecipient">> => binary(),
+%%   <<"KeyId">> => string(),
+%%   <<"KeyPairSpec">> => list(any()),
+%%   <<"PrivateKeyCiphertextBlob">> => binary(),
+%%   <<"PrivateKeyPlaintext">> => binary(),
+%%   <<"PublicKey">> => binary()
+%% }
+-type generate_data_key_pair_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_key_request() :: #{
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> := string()
+%% }
+-type describe_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_ciphertext_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_ciphertext_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_uri_unreachable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_uri_unreachable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_grants_response() :: #{
+%%   <<"Grants">> => list(grant_list_entry()()),
+%%   <<"NextMarker">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_grants_response() :: #{binary() => any()}.
+
+%% Example:
+%% verify_mac_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> := string(),
+%%   <<"Mac">> := binary(),
+%%   <<"MacAlgorithm">> := list(any()),
+%%   <<"Message">> := binary()
+%% }
+-type verify_mac_request() :: #{binary() => any()}.
+
+%% Example:
+%% re_encrypt_request() :: #{
+%%   <<"CiphertextBlob">> := binary(),
+%%   <<"DestinationEncryptionAlgorithm">> => list(any()),
+%%   <<"DestinationEncryptionContext">> => map(),
+%%   <<"DestinationKeyId">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"SourceEncryptionAlgorithm">> => list(any()),
+%%   <<"SourceEncryptionContext">> => map(),
+%%   <<"SourceKeyId">> => string()
+%% }
+-type re_encrypt_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_uri_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_uri_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_key_store_request() :: #{
+%%   <<"CustomKeyStoreId">> := string()
+%% }
+-type delete_custom_key_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_policy_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type get_key_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_rotation_status_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type get_key_rotation_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_grant_request() :: #{
+%%   <<"Constraints">> => grant_constraints(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GranteePrincipal">> := string(),
+%%   <<"KeyId">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"Operations">> := list(list(any())()),
+%%   <<"RetiringPrincipal">> => string()
+%% }
+-type create_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_key_material_request() :: #{
+%%   <<"EncryptedKeyMaterial">> := binary(),
+%%   <<"ExpirationModel">> => list(any()),
+%%   <<"ImportToken">> := binary(),
+%%   <<"KeyId">> := string(),
+%%   <<"ValidTo">> => non_neg_integer()
+%% }
+-type import_key_material_request() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_hsm_cluster_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cloud_hsm_cluster_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_without_plaintext_response() :: #{
+%%   <<"CiphertextBlob">> => binary(),
+%%   <<"KeyId">> => string()
+%% }
+-type generate_data_key_without_plaintext_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disconnect_custom_key_store_response() :: #{
+
+%% }
+-type disconnect_custom_key_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_key_store_request() :: #{
+%%   <<"CloudHsmClusterId">> => string(),
+%%   <<"CustomKeyStoreId">> := string(),
+%%   <<"KeyStorePassword">> => string(),
+%%   <<"NewCustomKeyStoreName">> => string(),
+%%   <<"XksProxyAuthenticationCredential">> => xks_proxy_authentication_credential_type(),
+%%   <<"XksProxyConnectivity">> => list(any()),
+%%   <<"XksProxyUriEndpoint">> => string(),
+%%   <<"XksProxyUriPath">> => string(),
+%%   <<"XksProxyVpcEndpointServiceName">> => string()
+%% }
+-type update_custom_key_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_pair_without_plaintext_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"KeyPairSpec">> => list(any()),
+%%   <<"PrivateKeyCiphertextBlob">> => binary(),
+%%   <<"PublicKey">> => binary()
+%% }
+-type generate_data_key_pair_without_plaintext_response() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_hsm_cluster_not_related_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cloud_hsm_cluster_not_related_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_rotation_status_response() :: #{
+%%   <<"KeyRotationEnabled">> => boolean()
+%% }
+-type get_key_rotation_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% xks_key_already_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_key_already_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_hsm_cluster_invalid_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cloud_hsm_cluster_invalid_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_response() :: #{
+%%   <<"CiphertextBlob">> => binary(),
+%%   <<"CiphertextForRecipient">> => binary(),
+%%   <<"KeyId">> => string(),
+%%   <<"Plaintext">> => binary()
+%% }
+-type generate_data_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_invalid_response_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_invalid_response_exception() :: #{binary() => any()}.
+
+%% Example:
+%% import_key_material_response() :: #{
+
+%% }
+-type import_key_material_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_import_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_import_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% verify_mac_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"MacAlgorithm">> => list(any()),
+%%   <<"MacValid">> => boolean()
+%% }
+-type verify_mac_response() :: #{binary() => any()}.
+
+%% Example:
+%% key_list_entry() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyId">> => string()
+%% }
+-type key_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% recipient_info() :: #{
+%%   <<"AttestationDocument">> => binary(),
+%%   <<"KeyEncryptionAlgorithm">> => list(any())
+%% }
+-type recipient_info() :: #{binary() => any()}.
+
+%% Example:
+%% key_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type key_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_key_invalid_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_key_invalid_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_hsm_cluster_not_active_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cloud_hsm_cluster_not_active_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_for_import_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"WrappingAlgorithm">> := list(any()),
+%%   <<"WrappingKeySpec">> := list(any())
+%% }
+-type get_parameters_for_import_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_marker_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_marker_exception() :: #{binary() => any()}.
+
+%% Example:
+%% verify_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> := string(),
+%%   <<"Message">> := binary(),
+%%   <<"MessageType">> => list(any()),
+%%   <<"Signature">> := binary(),
+%%   <<"SigningAlgorithm">> := list(any())
+%% }
+-type verify_request() :: #{binary() => any()}.
+
+%% Example:
+%% key_metadata() :: #{
+%%   <<"AWSAccountId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CloudHsmClusterId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CustomKeyStoreId">> => string(),
+%%   <<"CustomerMasterKeySpec">> => list(any()),
+%%   <<"DeletionDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionAlgorithms">> => list(list(any())()),
+%%   <<"ExpirationModel">> => list(any()),
+%%   <<"KeyId">> => string(),
+%%   <<"KeyManager">> => list(any()),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"KeyState">> => list(any()),
+%%   <<"KeyUsage">> => list(any()),
+%%   <<"MacAlgorithms">> => list(list(any())()),
+%%   <<"MultiRegion">> => boolean(),
+%%   <<"MultiRegionConfiguration">> => multi_region_configuration(),
+%%   <<"Origin">> => list(any()),
+%%   <<"PendingDeletionWindowInDays">> => integer(),
+%%   <<"SigningAlgorithms">> => list(list(any())()),
+%%   <<"ValidTo">> => non_neg_integer(),
+%%   <<"XksKeyConfiguration">> => xks_key_configuration_type()
+%% }
+-type key_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% connect_custom_key_store_response() :: #{
+
+%% }
+-type connect_custom_key_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% replicate_key_request() :: #{
+%%   <<"BypassPolicyLockoutSafetyCheck">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"KeyId">> := string(),
+%%   <<"Policy">> => string(),
+%%   <<"ReplicaRegion">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type replicate_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_key_rotation_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type disable_key_rotation_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_key_store_response() :: #{
+
+%% }
+-type delete_custom_key_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% kms_internal_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_internal_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_public_key_request() :: #{
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> := string()
+%% }
+-type get_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% grant_list_entry() :: #{
+%%   <<"Constraints">> => grant_constraints(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"GrantId">> => string(),
+%%   <<"GranteePrincipal">> => string(),
+%%   <<"IssuingAccount">> => string(),
+%%   <<"KeyId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Operations">> => list(list(any())()),
+%%   <<"RetiringPrincipal">> => string()
+%% }
+-type grant_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% generate_mac_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> := string(),
+%%   <<"MacAlgorithm">> := list(any()),
+%%   <<"Message">> := binary()
+%% }
+-type generate_mac_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_public_key_response() :: #{
+%%   <<"CustomerMasterKeySpec">> => list(any()),
+%%   <<"EncryptionAlgorithms">> => list(list(any())()),
+%%   <<"KeyId">> => string(),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"KeyUsage">> => list(any()),
+%%   <<"PublicKey">> => binary(),
+%%   <<"SigningAlgorithms">> => list(list(any())())
+%% }
+-type get_public_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_key_usage_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_key_usage_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sign_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"Signature">> => binary(),
+%%   <<"SigningAlgorithm">> => list(any())
+%% }
+-type sign_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_key_store_invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_key_store_invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_key_deletion_response() :: #{
+%%   <<"KeyId">> => string()
+%% }
+-type cancel_key_deletion_response() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_authentication_credential_type() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"RawSecretAccessKey">> => string()
+%% }
+-type xks_proxy_authentication_credential_type() :: #{binary() => any()}.
+
+%% Example:
+%% alias_list_entry() :: #{
+%%   <<"AliasArn">> => string(),
+%%   <<"AliasName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"TargetKeyId">> => string()
+%% }
+-type alias_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% connect_custom_key_store_request() :: #{
+%%   <<"CustomKeyStoreId">> := string()
+%% }
+-type connect_custom_key_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_hsm_cluster_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cloud_hsm_cluster_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_key_store_response() :: #{
+
+%% }
+-type update_custom_key_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_key_policy_request() :: #{
+%%   <<"BypassPolicyLockoutSafetyCheck">> => boolean(),
+%%   <<"KeyId">> := string(),
+%%   <<"Policy">> := string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type put_key_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% replicate_key_response() :: #{
+%%   <<"ReplicaKeyMetadata">> => key_metadata(),
+%%   <<"ReplicaPolicy">> => string(),
+%%   <<"ReplicaTags">> => list(tag()())
+%% }
+-type replicate_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% re_encrypt_response() :: #{
+%%   <<"CiphertextBlob">> => binary(),
+%%   <<"DestinationEncryptionAlgorithm">> => list(any()),
+%%   <<"KeyId">> => string(),
+%%   <<"SourceEncryptionAlgorithm">> => list(any()),
+%%   <<"SourceKeyId">> => string()
+%% }
+-type re_encrypt_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_key_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type disable_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_key_response() :: #{
+%%   <<"KeyMetadata">> => key_metadata()
+%% }
+-type describe_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_key_rotation_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type enable_key_rotation_request() :: #{binary() => any()}.
+
+%% Example:
+%% disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% multi_region_key() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type multi_region_key() :: #{binary() => any()}.
+
+%% Example:
+%% list_key_policies_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_key_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_imported_key_material_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type delete_imported_key_material_request() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_vpc_endpoint_service_invalid_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_vpc_endpoint_service_invalid_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_mac_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_mac_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_primary_region_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"PrimaryRegion">> := string()
+%% }
+-type update_primary_region_request() :: #{binary() => any()}.
+
+%% Example:
+%% sign_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> := string(),
+%%   <<"Message">> := binary(),
+%%   <<"MessageType">> => list(any()),
+%%   <<"SigningAlgorithm">> := list(any())
+%% }
+-type sign_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"SignatureValid">> => boolean(),
+%%   <<"SigningAlgorithm">> => list(any())
+%% }
+-type verify_response() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_pair_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> := string(),
+%%   <<"KeyPairSpec">> := list(any()),
+%%   <<"Recipient">> => recipient_info()
+%% }
+-type generate_data_key_pair_request() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_signature_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_signature_exception() :: #{binary() => any()}.
+
+%% Example:
+%% decrypt_response() :: #{
+%%   <<"CiphertextForRecipient">> => binary(),
+%%   <<"EncryptionAlgorithm">> => list(any()),
+%%   <<"KeyId">> => string(),
+%%   <<"Plaintext">> => binary()
+%% }
+-type decrypt_response() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_invalid_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_invalid_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_incorrect_authentication_credential_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_incorrect_authentication_credential_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()()),
+%%   <<"KeyId">> := string(),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"NumberOfBytes">> => integer(),
+%%   <<"Recipient">> => recipient_info()
+%% }
+-type generate_data_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_tags_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_resource_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% incorrect_trust_anchor_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type incorrect_trust_anchor_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_grant_response() :: #{
+%%   <<"GrantId">> => string(),
+%%   <<"GrantToken">> => string()
+%% }
+-type create_grant_response() :: #{binary() => any()}.
+
+%% Example:
+%% incorrect_key_material_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type incorrect_key_material_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_response() :: #{
+%%   <<"KeyMetadata">> => key_metadata()
+%% }
+-type create_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alias_request() :: #{
+%%   <<"AliasName">> := string()
+%% }
+-type delete_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_mac_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"Mac">> => binary(),
+%%   <<"MacAlgorithm">> => list(any())
+%% }
+-type generate_mac_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_key_store_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_key_store_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% generate_random_request() :: #{
+%%   <<"CustomKeyStoreId">> => string(),
+%%   <<"NumberOfBytes">> => integer(),
+%%   <<"Recipient">> => recipient_info()
+%% }
+-type generate_random_request() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_configuration_type() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Connectivity">> => list(any()),
+%%   <<"UriEndpoint">> => string(),
+%%   <<"UriPath">> => string(),
+%%   <<"VpcEndpointServiceName">> => string()
+%% }
+-type xks_proxy_configuration_type() :: #{binary() => any()}.
+
+-type cancel_key_deletion_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type connect_custom_key_store_errors() ::
+    custom_key_store_not_found_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception() | 
+    cloud_hsm_cluster_not_active_exception() | 
+    cloud_hsm_cluster_invalid_configuration_exception().
+
+-type create_alias_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    already_exists_exception() | 
+    invalid_alias_name_exception().
+
+-type create_custom_key_store_errors() ::
+    incorrect_trust_anchor_exception() | 
+    xks_proxy_incorrect_authentication_credential_exception() | 
+    xks_proxy_invalid_configuration_exception() | 
+    xks_proxy_vpc_endpoint_service_invalid_configuration_exception() | 
+    limit_exceeded_exception() | 
+    cloud_hsm_cluster_in_use_exception() | 
+    kms_internal_exception() | 
+    cloud_hsm_cluster_not_active_exception() | 
+    xks_proxy_invalid_response_exception() | 
+    cloud_hsm_cluster_invalid_configuration_exception() | 
+    cloud_hsm_cluster_not_found_exception() | 
+    xks_proxy_uri_in_use_exception() | 
+    xks_proxy_uri_unreachable_exception() | 
+    xks_proxy_uri_endpoint_in_use_exception() | 
+    custom_key_store_name_in_use_exception() | 
+    xks_proxy_vpc_endpoint_service_not_found_exception() | 
+    xks_proxy_vpc_endpoint_service_in_use_exception().
+
+-type create_grant_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    disabled_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type create_key_errors() ::
+    custom_key_store_not_found_exception() | 
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception() | 
+    xks_key_invalid_configuration_exception() | 
+    cloud_hsm_cluster_invalid_configuration_exception() | 
+    xks_key_already_in_use_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    xks_key_not_found_exception() | 
+    unsupported_operation_exception() | 
+    tag_exception().
+
+-type decrypt_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    invalid_ciphertext_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception() | 
+    incorrect_key_exception().
+
+-type delete_alias_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception().
+
+-type delete_custom_key_store_errors() ::
+    custom_key_store_not_found_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception() | 
+    custom_key_store_has_cm_ks_exception().
+
+-type delete_imported_key_material_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type describe_custom_key_stores_errors() ::
+    custom_key_store_not_found_exception() | 
+    kms_internal_exception() | 
+    invalid_marker_exception().
+
+-type describe_key_errors() ::
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type disable_key_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type disable_key_rotation_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type disconnect_custom_key_store_errors() ::
+    custom_key_store_not_found_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception().
+
+-type enable_key_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type enable_key_rotation_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type encrypt_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_data_key_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_data_key_pair_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    unsupported_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_data_key_pair_without_plaintext_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    unsupported_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_data_key_without_plaintext_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_mac_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_random_errors() ::
+    custom_key_store_not_found_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type get_key_policy_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type get_key_rotation_status_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type get_parameters_for_import_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type get_public_key_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type import_key_material_errors() ::
+    incorrect_key_material_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    invalid_import_token_exception() | 
+    not_found_exception() | 
+    invalid_ciphertext_exception() | 
+    expired_import_token_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type list_aliases_errors() ::
+    kms_internal_exception() | 
+    invalid_marker_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type list_grants_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    invalid_marker_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    invalid_grant_id_exception().
+
+-type list_key_policies_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type list_keys_errors() ::
+    kms_internal_exception() | 
+    invalid_marker_exception() | 
+    dependency_timeout_exception().
+
+-type list_resource_tags_errors() ::
+    kms_internal_exception() | 
+    invalid_marker_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception().
+
+-type list_retirable_grants_errors() ::
+    kms_internal_exception() | 
+    invalid_marker_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type put_key_policy_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type re_encrypt_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    invalid_ciphertext_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception() | 
+    incorrect_key_exception().
+
+-type replicate_key_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    disabled_exception() | 
+    malformed_policy_document_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    already_exists_exception() | 
+    unsupported_operation_exception() | 
+    tag_exception().
+
+-type retire_grant_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception() | 
+    invalid_grant_id_exception().
+
+-type revoke_grant_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_id_exception().
+
+-type schedule_key_deletion_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type sign_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type tag_resource_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    tag_exception().
+
+-type untag_resource_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    tag_exception().
+
+-type update_alias_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception().
+
+-type update_custom_key_store_errors() ::
+    custom_key_store_not_found_exception() | 
+    xks_proxy_incorrect_authentication_credential_exception() | 
+    xks_proxy_invalid_configuration_exception() | 
+    xks_proxy_vpc_endpoint_service_invalid_configuration_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception() | 
+    cloud_hsm_cluster_not_active_exception() | 
+    xks_proxy_invalid_response_exception() | 
+    cloud_hsm_cluster_invalid_configuration_exception() | 
+    cloud_hsm_cluster_not_related_exception() | 
+    cloud_hsm_cluster_not_found_exception() | 
+    xks_proxy_uri_in_use_exception() | 
+    xks_proxy_uri_unreachable_exception() | 
+    xks_proxy_uri_endpoint_in_use_exception() | 
+    custom_key_store_name_in_use_exception() | 
+    xks_proxy_vpc_endpoint_service_not_found_exception() | 
+    xks_proxy_vpc_endpoint_service_in_use_exception().
+
+-type update_key_description_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type update_primary_region_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    unsupported_operation_exception().
+
+-type verify_errors() ::
+    kms_invalid_state_exception() | 
+    kms_invalid_signature_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type verify_mac_errors() ::
+    kms_invalid_state_exception() | 
+    kms_invalid_mac_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -256,9 +1837,18 @@
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec cancel_key_deletion(aws_client:aws_client(), cancel_key_deletion_request()) ->
+    {ok, cancel_key_deletion_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_key_deletion_errors(), tuple()}.
 cancel_key_deletion(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_key_deletion(Client, Input, []).
+
+-spec cancel_key_deletion(aws_client:aws_client(), cancel_key_deletion_request(), proplists:proplist()) ->
+    {ok, cancel_key_deletion_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_key_deletion_errors(), tuple()}.
 cancel_key_deletion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelKeyDeletion">>, Input, Options).
@@ -395,9 +1985,18 @@ cancel_key_deletion(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec connect_custom_key_store(aws_client:aws_client(), connect_custom_key_store_request()) ->
+    {ok, connect_custom_key_store_response(), tuple()} |
+    {error, any()} |
+    {error, connect_custom_key_store_errors(), tuple()}.
 connect_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     connect_custom_key_store(Client, Input, []).
+
+-spec connect_custom_key_store(aws_client:aws_client(), connect_custom_key_store_request(), proplists:proplist()) ->
+    {ok, connect_custom_key_store_response(), tuple()} |
+    {error, any()} |
+    {error, connect_custom_key_store_errors(), tuple()}.
 connect_custom_key_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConnectCustomKeyStore">>, Input, Options).
@@ -474,9 +2073,18 @@ connect_custom_key_store(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec create_alias(aws_client:aws_client(), create_alias_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
+
+-spec create_alias(aws_client:aws_client(), create_alias_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
@@ -602,9 +2210,18 @@ create_alias(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec create_custom_key_store(aws_client:aws_client(), create_custom_key_store_request()) ->
+    {ok, create_custom_key_store_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_key_store_errors(), tuple()}.
 create_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_key_store(Client, Input, []).
+
+-spec create_custom_key_store(aws_client:aws_client(), create_custom_key_store_request(), proplists:proplist()) ->
+    {ok, create_custom_key_store_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_key_store_errors(), tuple()}.
 create_custom_key_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomKeyStore">>, Input, Options).
@@ -682,9 +2299,18 @@ create_custom_key_store(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec create_grant(aws_client:aws_client(), create_grant_request()) ->
+    {ok, create_grant_response(), tuple()} |
+    {error, any()} |
+    {error, create_grant_errors(), tuple()}.
 create_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant(Client, Input, []).
+
+-spec create_grant(aws_client:aws_client(), create_grant_request(), proplists:proplist()) ->
+    {ok, create_grant_response(), tuple()} |
+    {error, any()} |
+    {error, create_grant_errors(), tuple()}.
 create_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGrant">>, Input, Options).
@@ -943,9 +2569,18 @@ create_grant(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec create_key(aws_client:aws_client(), create_key_request()) ->
+    {ok, create_key_response(), tuple()} |
+    {error, any()} |
+    {error, create_key_errors(), tuple()}.
 create_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key(Client, Input, []).
+
+-spec create_key(aws_client:aws_client(), create_key_request(), proplists:proplist()) ->
+    {ok, create_key_response(), tuple()} |
+    {error, any()} |
+    {error, create_key_errors(), tuple()}.
 create_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateKey">>, Input, Options).
@@ -1065,9 +2700,18 @@ create_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec decrypt(aws_client:aws_client(), decrypt_request()) ->
+    {ok, decrypt_response(), tuple()} |
+    {error, any()} |
+    {error, decrypt_errors(), tuple()}.
 decrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrypt(Client, Input, []).
+
+-spec decrypt(aws_client:aws_client(), decrypt_request(), proplists:proplist()) ->
+    {ok, decrypt_response(), tuple()} |
+    {error, any()} |
+    {error, decrypt_errors(), tuple()}.
 decrypt(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Decrypt">>, Input, Options).
@@ -1122,9 +2766,18 @@ decrypt(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec delete_alias(aws_client:aws_client(), delete_alias_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
+
+-spec delete_alias(aws_client:aws_client(), delete_alias_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlias">>, Input, Options).
@@ -1207,9 +2860,18 @@ delete_alias(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec delete_custom_key_store(aws_client:aws_client(), delete_custom_key_store_request()) ->
+    {ok, delete_custom_key_store_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_key_store_errors(), tuple()}.
 delete_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_key_store(Client, Input, []).
+
+-spec delete_custom_key_store(aws_client:aws_client(), delete_custom_key_store_request(), proplists:proplist()) ->
+    {ok, delete_custom_key_store_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_key_store_errors(), tuple()}.
 delete_custom_key_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomKeyStore">>, Input, Options).
@@ -1252,9 +2914,18 @@ delete_custom_key_store(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec delete_imported_key_material(aws_client:aws_client(), delete_imported_key_material_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_imported_key_material_errors(), tuple()}.
 delete_imported_key_material(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_imported_key_material(Client, Input, []).
+
+-spec delete_imported_key_material(aws_client:aws_client(), delete_imported_key_material_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_imported_key_material_errors(), tuple()}.
 delete_imported_key_material(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteImportedKeyMaterial">>, Input, Options).
@@ -1333,9 +3004,18 @@ delete_imported_key_material(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec describe_custom_key_stores(aws_client:aws_client(), describe_custom_key_stores_request()) ->
+    {ok, describe_custom_key_stores_response(), tuple()} |
+    {error, any()} |
+    {error, describe_custom_key_stores_errors(), tuple()}.
 describe_custom_key_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_key_stores(Client, Input, []).
+
+-spec describe_custom_key_stores(aws_client:aws_client(), describe_custom_key_stores_request(), proplists:proplist()) ->
+    {ok, describe_custom_key_stores_response(), tuple()} |
+    {error, any()} |
+    {error, describe_custom_key_stores_errors(), tuple()}.
 describe_custom_key_stores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomKeyStores">>, Input, Options).
@@ -1425,9 +3105,18 @@ describe_custom_key_stores(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec describe_key(aws_client:aws_client(), describe_key_request()) ->
+    {ok, describe_key_response(), tuple()} |
+    {error, any()} |
+    {error, describe_key_errors(), tuple()}.
 describe_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_key(Client, Input, []).
+
+-spec describe_key(aws_client:aws_client(), describe_key_request(), proplists:proplist()) ->
+    {ok, describe_key_response(), tuple()} |
+    {error, any()} |
+    {error, describe_key_errors(), tuple()}.
 describe_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeKey">>, Input, Options).
@@ -1463,9 +3152,18 @@ describe_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec disable_key(aws_client:aws_client(), disable_key_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_key_errors(), tuple()}.
 disable_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_key(Client, Input, []).
+
+-spec disable_key(aws_client:aws_client(), disable_key_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_key_errors(), tuple()}.
 disable_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableKey">>, Input, Options).
@@ -1528,9 +3226,18 @@ disable_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec disable_key_rotation(aws_client:aws_client(), disable_key_rotation_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_key_rotation_errors(), tuple()}.
 disable_key_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_key_rotation(Client, Input, []).
+
+-spec disable_key_rotation(aws_client:aws_client(), disable_key_rotation_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_key_rotation_errors(), tuple()}.
 disable_key_rotation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableKeyRotation">>, Input, Options).
@@ -1598,9 +3305,18 @@ disable_key_rotation(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec disconnect_custom_key_store(aws_client:aws_client(), disconnect_custom_key_store_request()) ->
+    {ok, disconnect_custom_key_store_response(), tuple()} |
+    {error, any()} |
+    {error, disconnect_custom_key_store_errors(), tuple()}.
 disconnect_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     disconnect_custom_key_store(Client, Input, []).
+
+-spec disconnect_custom_key_store(aws_client:aws_client(), disconnect_custom_key_store_request(), proplists:proplist()) ->
+    {ok, disconnect_custom_key_store_response(), tuple()} |
+    {error, any()} |
+    {error, disconnect_custom_key_store_errors(), tuple()}.
 disconnect_custom_key_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisconnectCustomKeyStore">>, Input, Options).
@@ -1629,9 +3345,18 @@ disconnect_custom_key_store(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec enable_key(aws_client:aws_client(), enable_key_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_key_errors(), tuple()}.
 enable_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_key(Client, Input, []).
+
+-spec enable_key(aws_client:aws_client(), enable_key_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_key_errors(), tuple()}.
 enable_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableKey">>, Input, Options).
@@ -1711,9 +3436,18 @@ enable_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec enable_key_rotation(aws_client:aws_client(), enable_key_rotation_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_key_rotation_errors(), tuple()}.
 enable_key_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_key_rotation(Client, Input, []).
+
+-spec enable_key_rotation(aws_client:aws_client(), enable_key_rotation_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_key_rotation_errors(), tuple()}.
 enable_key_rotation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableKeyRotation">>, Input, Options).
@@ -1815,9 +3549,18 @@ enable_key_rotation(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec encrypt(aws_client:aws_client(), encrypt_request()) ->
+    {ok, encrypt_response(), tuple()} |
+    {error, any()} |
+    {error, encrypt_errors(), tuple()}.
 encrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     encrypt(Client, Input, []).
+
+-spec encrypt(aws_client:aws_client(), encrypt_request(), proplists:proplist()) ->
+    {ok, encrypt_response(), tuple()} |
+    {error, any()} |
+    {error, encrypt_errors(), tuple()}.
 encrypt(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Encrypt">>, Input, Options).
@@ -1958,9 +3701,18 @@ encrypt(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec generate_data_key(aws_client:aws_client(), generate_data_key_request()) ->
+    {ok, generate_data_key_response(), tuple()} |
+    {error, any()} |
+    {error, generate_data_key_errors(), tuple()}.
 generate_data_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key(Client, Input, []).
+
+-spec generate_data_key(aws_client:aws_client(), generate_data_key_request(), proplists:proplist()) ->
+    {ok, generate_data_key_response(), tuple()} |
+    {error, any()} |
+    {error, generate_data_key_errors(), tuple()}.
 generate_data_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateDataKey">>, Input, Options).
@@ -2092,9 +3844,18 @@ generate_data_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec generate_data_key_pair(aws_client:aws_client(), generate_data_key_pair_request()) ->
+    {ok, generate_data_key_pair_response(), tuple()} |
+    {error, any()} |
+    {error, generate_data_key_pair_errors(), tuple()}.
 generate_data_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_pair(Client, Input, []).
+
+-spec generate_data_key_pair(aws_client:aws_client(), generate_data_key_pair_request(), proplists:proplist()) ->
+    {ok, generate_data_key_pair_response(), tuple()} |
+    {error, any()} |
+    {error, generate_data_key_pair_errors(), tuple()}.
 generate_data_key_pair(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateDataKeyPair">>, Input, Options).
@@ -2186,9 +3947,18 @@ generate_data_key_pair(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec generate_data_key_pair_without_plaintext(aws_client:aws_client(), generate_data_key_pair_without_plaintext_request()) ->
+    {ok, generate_data_key_pair_without_plaintext_response(), tuple()} |
+    {error, any()} |
+    {error, generate_data_key_pair_without_plaintext_errors(), tuple()}.
 generate_data_key_pair_without_plaintext(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_pair_without_plaintext(Client, Input, []).
+
+-spec generate_data_key_pair_without_plaintext(aws_client:aws_client(), generate_data_key_pair_without_plaintext_request(), proplists:proplist()) ->
+    {ok, generate_data_key_pair_without_plaintext_response(), tuple()} |
+    {error, any()} |
+    {error, generate_data_key_pair_without_plaintext_errors(), tuple()}.
 generate_data_key_pair_without_plaintext(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateDataKeyPairWithoutPlaintext">>, Input, Options).
@@ -2295,9 +4065,18 @@ generate_data_key_pair_without_plaintext(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec generate_data_key_without_plaintext(aws_client:aws_client(), generate_data_key_without_plaintext_request()) ->
+    {ok, generate_data_key_without_plaintext_response(), tuple()} |
+    {error, any()} |
+    {error, generate_data_key_without_plaintext_errors(), tuple()}.
 generate_data_key_without_plaintext(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_without_plaintext(Client, Input, []).
+
+-spec generate_data_key_without_plaintext(aws_client:aws_client(), generate_data_key_without_plaintext_request(), proplists:proplist()) ->
+    {ok, generate_data_key_without_plaintext_response(), tuple()} |
+    {error, any()} |
+    {error, generate_data_key_without_plaintext_errors(), tuple()}.
 generate_data_key_without_plaintext(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateDataKeyWithoutPlaintext">>, Input, Options).
@@ -2354,9 +4133,18 @@ generate_data_key_without_plaintext(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec generate_mac(aws_client:aws_client(), generate_mac_request()) ->
+    {ok, generate_mac_response(), tuple()} |
+    {error, any()} |
+    {error, generate_mac_errors(), tuple()}.
 generate_mac(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_mac(Client, Input, []).
+
+-spec generate_mac(aws_client:aws_client(), generate_mac_request(), proplists:proplist()) ->
+    {ok, generate_mac_response(), tuple()} |
+    {error, any()} |
+    {error, generate_mac_errors(), tuple()}.
 generate_mac(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateMac">>, Input, Options).
@@ -2407,9 +4195,18 @@ generate_mac(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec generate_random(aws_client:aws_client(), generate_random_request()) ->
+    {ok, generate_random_response(), tuple()} |
+    {error, any()} |
+    {error, generate_random_errors(), tuple()}.
 generate_random(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_random(Client, Input, []).
+
+-spec generate_random(aws_client:aws_client(), generate_random_request(), proplists:proplist()) ->
+    {ok, generate_random_response(), tuple()} |
+    {error, any()} |
+    {error, generate_random_errors(), tuple()}.
 generate_random(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateRandom">>, Input, Options).
@@ -2429,9 +4226,18 @@ generate_random(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec get_key_policy(aws_client:aws_client(), get_key_policy_request()) ->
+    {ok, get_key_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_key_policy_errors(), tuple()}.
 get_key_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_policy(Client, Input, []).
+
+-spec get_key_policy(aws_client:aws_client(), get_key_policy_request(), proplists:proplist()) ->
+    {ok, get_key_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_key_policy_errors(), tuple()}.
 get_key_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKeyPolicy">>, Input, Options).
@@ -2520,9 +4326,18 @@ get_key_policy(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec get_key_rotation_status(aws_client:aws_client(), get_key_rotation_status_request()) ->
+    {ok, get_key_rotation_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_key_rotation_status_errors(), tuple()}.
 get_key_rotation_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_rotation_status(Client, Input, []).
+
+-spec get_key_rotation_status(aws_client:aws_client(), get_key_rotation_status_request(), proplists:proplist()) ->
+    {ok, get_key_rotation_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_key_rotation_status_errors(), tuple()}.
 get_key_rotation_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKeyRotationStatus">>, Input, Options).
@@ -2627,9 +4442,18 @@ get_key_rotation_status(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec get_parameters_for_import(aws_client:aws_client(), get_parameters_for_import_request()) ->
+    {ok, get_parameters_for_import_response(), tuple()} |
+    {error, any()} |
+    {error, get_parameters_for_import_errors(), tuple()}.
 get_parameters_for_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_for_import(Client, Input, []).
+
+-spec get_parameters_for_import(aws_client:aws_client(), get_parameters_for_import_request(), proplists:proplist()) ->
+    {ok, get_parameters_for_import_response(), tuple()} |
+    {error, any()} |
+    {error, get_parameters_for_import_errors(), tuple()}.
 get_parameters_for_import(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParametersForImport">>, Input, Options).
@@ -2715,9 +4539,18 @@ get_parameters_for_import(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec get_public_key(aws_client:aws_client(), get_public_key_request()) ->
+    {ok, get_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_errors(), tuple()}.
 get_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_public_key(Client, Input, []).
+
+-spec get_public_key(aws_client:aws_client(), get_public_key_request(), proplists:proplist()) ->
+    {ok, get_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_errors(), tuple()}.
 get_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPublicKey">>, Input, Options).
@@ -2870,9 +4703,18 @@ get_public_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec import_key_material(aws_client:aws_client(), import_key_material_request()) ->
+    {ok, import_key_material_response(), tuple()} |
+    {error, any()} |
+    {error, import_key_material_errors(), tuple()}.
 import_key_material(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_key_material(Client, Input, []).
+
+-spec import_key_material(aws_client:aws_client(), import_key_material_request(), proplists:proplist()) ->
+    {ok, import_key_material_response(), tuple()} |
+    {error, any()} |
+    {error, import_key_material_errors(), tuple()}.
 import_key_material(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportKeyMaterial">>, Input, Options).
@@ -2930,9 +4772,18 @@ import_key_material(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec list_aliases(aws_client:aws_client(), list_aliases_request()) ->
+    {ok, list_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
+
+-spec list_aliases(aws_client:aws_client(), list_aliases_request(), proplists:proplist()) ->
+    {ok, list_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAliases">>, Input, Options).
@@ -2984,9 +4835,18 @@ list_aliases(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec list_grants(aws_client:aws_client(), list_grants_request()) ->
+    {ok, list_grants_response(), tuple()} |
+    {error, any()} |
+    {error, list_grants_errors(), tuple()}.
 list_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_grants(Client, Input, []).
+
+-spec list_grants(aws_client:aws_client(), list_grants_request(), proplists:proplist()) ->
+    {ok, list_grants_response(), tuple()} |
+    {error, any()} |
+    {error, list_grants_errors(), tuple()}.
 list_grants(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGrants">>, Input, Options).
@@ -3015,9 +4875,18 @@ list_grants(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec list_key_policies(aws_client:aws_client(), list_key_policies_request()) ->
+    {ok, list_key_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_key_policies_errors(), tuple()}.
 list_key_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_key_policies(Client, Input, []).
+
+-spec list_key_policies(aws_client:aws_client(), list_key_policies_request(), proplists:proplist()) ->
+    {ok, list_key_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_key_policies_errors(), tuple()}.
 list_key_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListKeyPolicies">>, Input, Options).
@@ -3045,9 +4914,18 @@ list_key_policies(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec list_keys(aws_client:aws_client(), list_keys_request()) ->
+    {ok, list_keys_response(), tuple()} |
+    {error, any()} |
+    {error, list_keys_errors(), tuple()}.
 list_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_keys(Client, Input, []).
+
+-spec list_keys(aws_client:aws_client(), list_keys_request(), proplists:proplist()) ->
+    {ok, list_keys_response(), tuple()} |
+    {error, any()} |
+    {error, list_keys_errors(), tuple()}.
 list_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListKeys">>, Input, Options).
@@ -3082,9 +4960,18 @@ list_keys(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec list_resource_tags(aws_client:aws_client(), list_resource_tags_request()) ->
+    {ok, list_resource_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_tags_errors(), tuple()}.
 list_resource_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_tags(Client, Input, []).
+
+-spec list_resource_tags(aws_client:aws_client(), list_resource_tags_request(), proplists:proplist()) ->
+    {ok, list_resource_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_tags_errors(), tuple()}.
 list_resource_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceTags">>, Input, Options).
@@ -3147,9 +5034,18 @@ list_resource_tags(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec list_retirable_grants(aws_client:aws_client(), list_retirable_grants_request()) ->
+    {ok, list_grants_response(), tuple()} |
+    {error, any()} |
+    {error, list_retirable_grants_errors(), tuple()}.
 list_retirable_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_retirable_grants(Client, Input, []).
+
+-spec list_retirable_grants(aws_client:aws_client(), list_retirable_grants_request(), proplists:proplist()) ->
+    {ok, list_grants_response(), tuple()} |
+    {error, any()} |
+    {error, list_retirable_grants_errors(), tuple()}.
 list_retirable_grants(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRetirableGrants">>, Input, Options).
@@ -3181,9 +5077,18 @@ list_retirable_grants(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec put_key_policy(aws_client:aws_client(), put_key_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_key_policy_errors(), tuple()}.
 put_key_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_key_policy(Client, Input, []).
+
+-spec put_key_policy(aws_client:aws_client(), put_key_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_key_policy_errors(), tuple()}.
 put_key_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutKeyPolicy">>, Input, Options).
@@ -3313,9 +5218,18 @@ put_key_policy(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec re_encrypt(aws_client:aws_client(), re_encrypt_request()) ->
+    {ok, re_encrypt_response(), tuple()} |
+    {error, any()} |
+    {error, re_encrypt_errors(), tuple()}.
 re_encrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     re_encrypt(Client, Input, []).
+
+-spec re_encrypt(aws_client:aws_client(), re_encrypt_request(), proplists:proplist()) ->
+    {ok, re_encrypt_response(), tuple()} |
+    {error, any()} |
+    {error, re_encrypt_errors(), tuple()}.
 re_encrypt(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReEncrypt">>, Input, Options).
@@ -3450,9 +5364,18 @@ re_encrypt(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec replicate_key(aws_client:aws_client(), replicate_key_request()) ->
+    {ok, replicate_key_response(), tuple()} |
+    {error, any()} |
+    {error, replicate_key_errors(), tuple()}.
 replicate_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     replicate_key(Client, Input, []).
+
+-spec replicate_key(aws_client:aws_client(), replicate_key_request(), proplists:proplist()) ->
+    {ok, replicate_key_response(), tuple()} |
+    {error, any()} |
+    {error, replicate_key_errors(), tuple()}.
 replicate_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReplicateKey">>, Input, Options).
@@ -3509,9 +5432,18 @@ replicate_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec retire_grant(aws_client:aws_client(), retire_grant_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, retire_grant_errors(), tuple()}.
 retire_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     retire_grant(Client, Input, []).
+
+-spec retire_grant(aws_client:aws_client(), retire_grant_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, retire_grant_errors(), tuple()}.
 retire_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetireGrant">>, Input, Options).
@@ -3566,9 +5498,18 @@ retire_grant(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec revoke_grant(aws_client:aws_client(), revoke_grant_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_grant_errors(), tuple()}.
 revoke_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_grant(Client, Input, []).
+
+-spec revoke_grant(aws_client:aws_client(), revoke_grant_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_grant_errors(), tuple()}.
 revoke_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeGrant">>, Input, Options).
@@ -3666,9 +5607,18 @@ revoke_grant(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec schedule_key_deletion(aws_client:aws_client(), schedule_key_deletion_request()) ->
+    {ok, schedule_key_deletion_response(), tuple()} |
+    {error, any()} |
+    {error, schedule_key_deletion_errors(), tuple()}.
 schedule_key_deletion(Client, Input)
   when is_map(Client), is_map(Input) ->
     schedule_key_deletion(Client, Input, []).
+
+-spec schedule_key_deletion(aws_client:aws_client(), schedule_key_deletion_request(), proplists:proplist()) ->
+    {ok, schedule_key_deletion_response(), tuple()} |
+    {error, any()} |
+    {error, schedule_key_deletion_errors(), tuple()}.
 schedule_key_deletion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ScheduleKeyDeletion">>, Input, Options).
@@ -3752,9 +5702,18 @@ schedule_key_deletion(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec sign(aws_client:aws_client(), sign_request()) ->
+    {ok, sign_response(), tuple()} |
+    {error, any()} |
+    {error, sign_errors(), tuple()}.
 sign(Client, Input)
   when is_map(Client), is_map(Input) ->
     sign(Client, Input, []).
+
+-spec sign(aws_client:aws_client(), sign_request(), proplists:proplist()) ->
+    {ok, sign_response(), tuple()} |
+    {error, any()} |
+    {error, sign_errors(), tuple()}.
 sign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Sign">>, Input, Options).
@@ -3824,9 +5783,18 @@ sign(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3883,9 +5851,18 @@ tag_resource(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3966,9 +5943,18 @@ untag_resource(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec update_alias(aws_client:aws_client(), update_alias_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
+
+-spec update_alias(aws_client:aws_client(), update_alias_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAlias">>, Input, Options).
@@ -4095,9 +6081,18 @@ update_alias(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec update_custom_key_store(aws_client:aws_client(), update_custom_key_store_request()) ->
+    {ok, update_custom_key_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_custom_key_store_errors(), tuple()}.
 update_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_key_store(Client, Input, []).
+
+-spec update_custom_key_store(aws_client:aws_client(), update_custom_key_store_request(), proplists:proplist()) ->
+    {ok, update_custom_key_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_custom_key_store_errors(), tuple()}.
 update_custom_key_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomKeyStore">>, Input, Options).
@@ -4128,9 +6123,18 @@ update_custom_key_store(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec update_key_description(aws_client:aws_client(), update_key_description_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_key_description_errors(), tuple()}.
 update_key_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_key_description(Client, Input, []).
+
+-spec update_key_description(aws_client:aws_client(), update_key_description_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_key_description_errors(), tuple()}.
 update_key_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateKeyDescription">>, Input, Options).
@@ -4241,9 +6245,18 @@ update_key_description(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec update_primary_region(aws_client:aws_client(), update_primary_region_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_primary_region_errors(), tuple()}.
 update_primary_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_primary_region(Client, Input, []).
+
+-spec update_primary_region(aws_client:aws_client(), update_primary_region_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_primary_region_errors(), tuple()}.
 update_primary_region(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePrimaryRegion">>, Input, Options).
@@ -4319,9 +6332,18 @@ update_primary_region(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec verify(aws_client:aws_client(), verify_request()) ->
+    {ok, verify_response(), tuple()} |
+    {error, any()} |
+    {error, verify_errors(), tuple()}.
 verify(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify(Client, Input, []).
+
+-spec verify(aws_client:aws_client(), verify_request(), proplists:proplist()) ->
+    {ok, verify_response(), tuple()} |
+    {error, any()} |
+    {error, verify_errors(), tuple()}.
 verify(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Verify">>, Input, Options).
@@ -4368,9 +6390,18 @@ verify(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec verify_mac(aws_client:aws_client(), verify_mac_request()) ->
+    {ok, verify_mac_response(), tuple()} |
+    {error, any()} |
+    {error, verify_mac_errors(), tuple()}.
 verify_mac(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_mac(Client, Input, []).
+
+-spec verify_mac(aws_client:aws_client(), verify_mac_request(), proplists:proplist()) ->
+    {ok, verify_mac_response(), tuple()} |
+    {error, any()} |
+    {error, verify_mac_errors(), tuple()}.
 verify_mac(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifyMac">>, Input, Options).

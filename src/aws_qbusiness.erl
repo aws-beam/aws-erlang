@@ -197,6 +197,1973 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% source_attribution() :: #{
+%%   <<"citationNumber">> => integer(),
+%%   <<"snippet">> => string(),
+%%   <<"textMessageSegments">> => list(text_segment()()),
+%%   <<"title">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"url">> => string()
+%% }
+-type source_attribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% applied_attachments_configuration() :: #{
+%%   <<"attachmentsControlMode">> => list(any())
+%% }
+-type applied_attachments_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_feedback_request() :: #{
+%%   <<"messageCopiedAt">> => non_neg_integer(),
+%%   <<"messageUsefulness">> => message_usefulness_feedback(),
+%%   <<"userId">> := string()
+%% }
+-type put_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"kmsKeyId">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_web_experience_response() :: #{
+%%   <<"webExperienceArn">> => string(),
+%%   <<"webExperienceId">> => string()
+%% }
+-type create_web_experience_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_vpc_configuration() :: #{
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()())
+%% }
+-type data_source_vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_retriever_response() :: #{
+%%   <<"retrieverArn">> => string(),
+%%   <<"retrieverId">> => string()
+%% }
+-type create_retriever_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_web_experiences_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_web_experiences_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% index_capacity_configuration() :: #{
+%%   <<"units">> => integer()
+%% }
+-type index_capacity_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_experience_request() :: #{}
+-type delete_web_experience_request() :: #{}.
+
+
+%% Example:
+%% document_attribute() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => list()
+%% }
+-type document_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"pluginId">> => string(),
+%%   <<"serverUrl">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type plugin() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_list_attribute_boosting_configuration() :: #{
+%%   <<"boostingLevel">> => list(any())
+%% }
+-type string_list_attribute_boosting_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_response() :: #{
+%%   <<"userAliasesAdded">> => list(user_alias()()),
+%%   <<"userAliasesDeleted">> => list(user_alias()()),
+%%   <<"userAliasesUpdated">> => list(user_alias()())
+%% }
+-type update_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_source_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := any(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
+%%   <<"roleArn">> => string(),
+%%   <<"syncSchedule">> => string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"vpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type create_data_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% get_retriever_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"retrieverArn">> => string(),
+%%   <<"retrieverId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_retriever_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth2_client_credential_configuration() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"secretArn">> => string()
+%% }
+-type o_auth2_client_credential_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_group() :: #{
+%%   <<"groupName">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type member_group() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_request() :: #{}
+-type delete_index_request() :: #{}.
+
+
+%% Example:
+%% content_blocker_rule() :: #{
+%%   <<"systemMessageOverride">> => string()
+%% }
+-type content_blocker_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% principal_user() :: #{
+%%   <<"access">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"membershipType">> => list(any())
+%% }
+-type principal_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_document() :: #{
+%%   <<"documentId">> => string()
+%% }
+-type delete_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_attribute_target() :: #{
+%%   <<"attributeValueOperator">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"value">> => list()
+%% }
+-type document_attribute_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_messages_response() :: #{
+%%   <<"messages">> => list(message()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_messages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_sync_job_metrics() :: #{
+%%   <<"documentsAdded">> => string(),
+%%   <<"documentsDeleted">> => string(),
+%%   <<"documentsFailed">> => string(),
+%%   <<"documentsModified">> => string(),
+%%   <<"documentsScanned">> => string()
+%% }
+-type data_source_sync_job_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% license_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type license_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_group_response() :: #{}
+-type put_group_response() :: #{}.
+
+
+%% Example:
+%% create_plugin_response() :: #{
+%%   <<"pluginArn">> => string(),
+%%   <<"pluginId">> => string()
+%% }
+-type create_plugin_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_user_response() :: #{
+%%   <<"userAliases">> => list(user_alias()())
+%% }
+-type get_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_conversation_request() :: #{
+%%   <<"userId">> := string()
+%% }
+-type delete_conversation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_retriever_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"displayName">> := string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"type">> := list(any())
+%% }
+-type create_retriever_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_experience_response() :: #{}
+-type delete_web_experience_response() :: #{}.
+
+
+%% Example:
+%% list_web_experiences_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"webExperiences">> => list(web_experience()())
+%% }
+-type list_web_experiences_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_review() :: #{
+%%   <<"payload">> => map(),
+%%   <<"payloadFieldNameSeparator">> => string(),
+%%   <<"pluginId">> => string(),
+%%   <<"pluginType">> => list(any())
+%% }
+-type action_review() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_source_response() :: #{}
+-type update_data_source_response() :: #{}.
+
+
+%% Example:
+%% topic_configuration() :: #{
+%%   <<"description">> => string(),
+%%   <<"exampleChatMessages">> => list(string()()),
+%%   <<"name">> => string(),
+%%   <<"rules">> => list(rule()())
+%% }
+-type topic_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_retriever_request() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"displayName">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_retriever_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_alias() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"indexId">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type user_alias() :: #{binary() => any()}.
+
+
+%% Example:
+%% basic_auth_configuration() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"secretArn">> => string()
+%% }
+-type basic_auth_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_attribute_condition() :: #{
+%%   <<"key">> => string(),
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => list()
+%% }
+-type document_attribute_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indices_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_indices_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_response() :: #{}
+-type delete_index_response() :: #{}.
+
+
+%% Example:
+%% list_documents_response() :: #{
+%%   <<"documentDetailList">> => list(document_details()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_documents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_plugin_request() :: #{
+%%   <<"authConfiguration">> := list(),
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"serverUrl">> := string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"type">> := list(any())
+%% }
+-type create_plugin_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_sync_output() :: #{
+%%   <<"actionReview">> => action_review(),
+%%   <<"conversationId">> => string(),
+%%   <<"failedAttachments">> => list(attachment_output()()),
+%%   <<"sourceAttributions">> => list(source_attribution()()),
+%%   <<"systemMessage">> => string(),
+%%   <<"systemMessageId">> => string(),
+%%   <<"userMessageId">> => string()
+%% }
+-type chat_sync_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_plugin_request() :: #{}
+-type get_plugin_request() :: #{}.
+
+%% Example:
+%% update_chat_controls_configuration_response() :: #{}
+-type update_chat_controls_configuration_response() :: #{}.
+
+
+%% Example:
+%% list_data_sources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_sources_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_conversation_response() :: #{}
+-type delete_conversation_response() :: #{}.
+
+%% Example:
+%% delete_data_source_response() :: #{}
+-type delete_data_source_response() :: #{}.
+
+
+%% Example:
+%% index() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"indexId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type index() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_attribute_configuration() :: #{
+%%   <<"name">> => string(),
+%%   <<"search">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type document_attribute_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_web_experience_response() :: #{}
+-type update_web_experience_response() :: #{}.
+
+
+%% Example:
+%% create_web_experience_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"samplePromptsControlMode">> => list(any()),
+%%   <<"subtitle">> => string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"title">> => string(),
+%%   <<"welcomeMessage">> => string()
+%% }
+-type create_web_experience_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_experience() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"defaultEndpoint">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"webExperienceId">> => string()
+%% }
+-type web_experience() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_data_source_sync_job_request() :: #{}
+-type start_data_source_sync_job_request() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_plugin_response() :: #{}
+-type update_plugin_response() :: #{}.
+
+
+%% Example:
+%% inline_document_enrichment_configuration() :: #{
+%%   <<"condition">> => document_attribute_condition(),
+%%   <<"documentContentOperator">> => list(any()),
+%%   <<"target">> => document_attribute_target()
+%% }
+-type inline_document_enrichment_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_request() :: #{}
+-type get_user_request() :: #{}.
+
+
+%% Example:
+%% start_data_source_sync_job_response() :: #{
+%%   <<"executionId">> => string()
+%% }
+-type start_data_source_sync_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_web_experience_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"authenticationConfiguration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"defaultEndpoint">> => string(),
+%%   <<"error">> => error_detail(),
+%%   <<"samplePromptsControlMode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"subtitle">> => string(),
+%%   <<"title">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"webExperienceArn">> => string(),
+%%   <<"webExperienceId">> => string(),
+%%   <<"welcomeMessage">> => string()
+%% }
+-type get_web_experience_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrievers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_retrievers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrievers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"retrievers">> => list(retriever()())
+%% }
+-type list_retrievers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_document_response() :: #{
+%%   <<"failedDocuments">> => list(failed_document()())
+%% }
+-type batch_delete_document_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_sync_input() :: #{
+%%   <<"actionExecution">> => action_execution(),
+%%   <<"attachments">> => list(attachment_input()()),
+%%   <<"attributeFilter">> => attribute_filter(),
+%%   <<"clientToken">> => string(),
+%%   <<"conversationId">> => string(),
+%%   <<"parentMessageId">> => string(),
+%%   <<"userGroups">> => list(string()()),
+%%   <<"userId">> := string(),
+%%   <<"userMessage">> => string()
+%% }
+-type chat_sync_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_execution() :: #{
+%%   <<"payload">> => map(),
+%%   <<"payloadFieldNameSeparator">> => string(),
+%%   <<"pluginId">> => string()
+%% }
+-type action_execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_user() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"userId">> => string()
+%% }
+-type member_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% kendra_index_configuration() :: #{
+%%   <<"indexId">> => string()
+%% }
+-type kendra_index_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_source_request() :: #{}
+-type get_data_source_request() :: #{}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_control() :: #{
+%%   <<"memberRelation">> => list(any()),
+%%   <<"principals">> => list(list()())
+%% }
+-type access_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_web_experience_request() :: #{
+%%   <<"authenticationConfiguration">> => list(),
+%%   <<"samplePromptsControlMode">> => list(any()),
+%%   <<"subtitle">> => string(),
+%%   <<"title">> => string(),
+%%   <<"welcomeMessage">> => string()
+%% }
+-type update_web_experience_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% application() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type application() :: #{binary() => any()}.
+
+
+%% Example:
+%% number_attribute_boosting_configuration() :: #{
+%%   <<"boostingLevel">> => list(any()),
+%%   <<"boostingType">> => list(any())
+%% }
+-type number_attribute_boosting_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_attribute_boosting_configuration() :: #{
+%%   <<"attributeValueBoosting">> => map(),
+%%   <<"boostingLevel">> => list(any())
+%% }
+-type string_attribute_boosting_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_conversations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"userId">> := string()
+%% }
+-type list_conversations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sources_response() :: #{
+%%   <<"dataSources">> => list(data_source()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_source_request() :: #{}
+-type delete_data_source_request() :: #{}.
+
+%% Example:
+%% delete_retriever_request() :: #{}
+-type delete_retriever_request() :: #{}.
+
+
+%% Example:
+%% attachment_input() :: #{
+%%   <<"data">> => binary(),
+%%   <<"name">> => string()
+%% }
+-type attachment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_status_detail() :: #{
+%%   <<"errorDetail">> => error_detail(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type group_status_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"attachmentsConfiguration">> => attachments_configuration(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_segment() :: #{
+%%   <<"beginOffset">> => integer(),
+%%   <<"endOffset">> => integer()
+%% }
+-type text_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_plugin_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"authConfiguration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"pluginArn">> => string(),
+%%   <<"pluginId">> => string(),
+%%   <<"serverUrl">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_plugin_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% hook_configuration() :: #{
+%%   <<"invocationCondition">> => document_attribute_condition(),
+%%   <<"lambdaArn">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"s3BucketName">> => string()
+%% }
+-type hook_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"title">> => string()
+%% }
+-type conversation() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugins_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"plugins">> => list(plugin()())
+%% }
+-type list_plugins_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"applicationId">> => string()
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_documents_request() :: #{
+%%   <<"dataSourceIds">> => list(string()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_documents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% blocked_phrases_configuration() :: #{
+%%   <<"blockedPhrases">> => list(string()()),
+%%   <<"systemMessageOverride">> => string()
+%% }
+-type blocked_phrases_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indices_response() :: #{
+%%   <<"indices">> => list(index()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_indices_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_sync_job() :: #{
+%%   <<"dataSourceErrorCode">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"error">> => error_detail(),
+%%   <<"executionId">> => string(),
+%%   <<"metrics">> => data_source_sync_job_metrics(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type data_source_sync_job() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{}
+-type delete_user_request() :: #{}.
+
+
+%% Example:
+%% rule() :: #{
+%%   <<"excludedUsersAndGroups">> => users_and_groups(),
+%%   <<"includedUsersAndGroups">> => users_and_groups(),
+%%   <<"ruleConfiguration">> => list(),
+%%   <<"ruleType">> => list(any())
+%% }
+-type rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugins_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugins_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_data_source_sync_job_request() :: #{}
+-type stop_data_source_sync_job_request() :: #{}.
+
+%% Example:
+%% delete_plugin_response() :: #{}
+-type delete_plugin_response() :: #{}.
+
+%% Example:
+%% delete_application_response() :: #{}
+-type delete_application_response() :: #{}.
+
+%% Example:
+%% delete_user_response() :: #{}
+-type delete_user_response() :: #{}.
+
+
+%% Example:
+%% blocked_phrases_configuration_update() :: #{
+%%   <<"blockedPhrasesToCreateOrUpdate">> => list(string()()),
+%%   <<"blockedPhrasesToDelete">> => list(string()()),
+%%   <<"systemMessageOverride">> => string()
+%% }
+-type blocked_phrases_configuration_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_usefulness_feedback() :: #{
+%%   <<"comment">> => string(),
+%%   <<"reason">> => list(any()),
+%%   <<"submittedAt">> => non_neg_integer(),
+%%   <<"usefulness">> => list(any())
+%% }
+-type message_usefulness_feedback() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"attachmentsConfiguration">> => attachments_configuration(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_response() :: #{}
+-type update_application_response() :: #{}.
+
+%% Example:
+%% delete_chat_controls_configuration_response() :: #{}
+-type delete_chat_controls_configuration_response() :: #{}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_source_response() :: #{
+%%   <<"dataSourceArn">> => string(),
+%%   <<"dataSourceId">> => string()
+%% }
+-type create_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_details() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"documentId">> => string(),
+%%   <<"error">> => error_detail(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type document_details() :: #{binary() => any()}.
+
+%% Example:
+%% get_web_experience_request() :: #{}
+-type get_web_experience_request() :: #{}.
+
+
+%% Example:
+%% get_application_response() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"applicationId">> => string(),
+%%   <<"attachmentsConfiguration">> => applied_attachments_configuration(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"error">> => error_detail(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_document_request() :: #{
+%%   <<"dataSourceSyncId">> => string(),
+%%   <<"documents">> := list(delete_document()())
+%% }
+-type batch_delete_document_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_execution_payload_field() :: #{
+%%   <<"value">> => any()
+%% }
+-type action_execution_payload_field() :: #{binary() => any()}.
+
+%% Example:
+%% delete_chat_controls_configuration_request() :: #{}
+-type delete_chat_controls_configuration_request() :: #{}.
+
+
+%% Example:
+%% batch_put_document_response() :: #{
+%%   <<"failedDocuments">> => list(failed_document()())
+%% }
+-type batch_put_document_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_index_request() :: #{
+%%   <<"capacityConfiguration">> => index_capacity_configuration(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_plugin_request() :: #{
+%%   <<"authConfiguration">> => list(),
+%%   <<"displayName">> => string(),
+%%   <<"serverUrl">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type update_plugin_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_index_request() :: #{
+%%   <<"capacityConfiguration">> => index_capacity_configuration(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"documentAttributeConfigurations">> => list(document_attribute_configuration()())
+%% }
+-type update_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_response() :: #{}
+-type delete_group_response() :: #{}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string()
+%% }
+-type s3() :: #{binary() => any()}.
+
+%% Example:
+%% delete_retriever_response() :: #{}
+-type delete_retriever_response() :: #{}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% list_conversations_response() :: #{
+%%   <<"conversations">> => list(conversation()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_conversations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"userAliasesToDelete">> => list(user_alias()()),
+%%   <<"userAliasesToUpdate">> => list(user_alias()())
+%% }
+-type update_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_chat_controls_configuration_request() :: #{
+%%   <<"blockedPhrasesConfigurationUpdate">> => blocked_phrases_configuration_update(),
+%%   <<"clientToken">> => string(),
+%%   <<"responseScope">> => list(any()),
+%%   <<"topicConfigurationsToCreateOrUpdate">> => list(topic_configuration()()),
+%%   <<"topicConfigurationsToDelete">> => list(topic_configuration()())
+%% }
+-type update_chat_controls_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% action_review_payload_field() :: #{
+%%   <<"allowedValues">> => list(action_review_payload_field_allowed_value()()),
+%%   <<"displayName">> => string(),
+%%   <<"displayOrder">> => integer(),
+%%   <<"required">> => [boolean()],
+%%   <<"type">> => list(any()),
+%%   <<"value">> => any()
+%% }
+-type action_review_payload_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_source_request() :: #{
+%%   <<"configuration">> => any(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
+%%   <<"roleArn">> => string(),
+%%   <<"syncSchedule">> => string(),
+%%   <<"vpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type update_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_document_request() :: #{
+%%   <<"dataSourceSyncId">> => string(),
+%%   <<"documents">> := list(document()()),
+%%   <<"roleArn">> => string()
+%% }
+-type batch_put_document_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_review_payload_field_allowed_value() :: #{
+%%   <<"displayValue">> => any(),
+%%   <<"value">> => any()
+%% }
+-type action_review_payload_field_allowed_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_response() :: #{
+%%   <<"status">> => group_status_detail(),
+%%   <<"statusHistory">> => list(group_status_detail()())
+%% }
+-type get_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% native_index_configuration() :: #{
+%%   <<"boostingOverride">> => map(),
+%%   <<"indexId">> => string()
+%% }
+-type native_index_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_members() :: #{
+%%   <<"memberGroups">> => list(member_group()()),
+%%   <<"memberUsers">> => list(member_user()())
+%% }
+-type group_members() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_enrichment_configuration() :: #{
+%%   <<"inlineConfigurations">> => list(inline_document_enrichment_configuration()()),
+%%   <<"postExtractionHookConfiguration">> => hook_configuration(),
+%%   <<"preExtractionHookConfiguration">> => hook_configuration()
+%% }
+-type document_enrichment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_sync_jobs_response() :: #{
+%%   <<"history">> => list(data_source_sync_job()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_source_sync_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_group_request() :: #{
+%%   <<"dataSourceId">> => string()
+%% }
+-type delete_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_retrieval_rule() :: #{
+%%   <<"eligibleDataSources">> => list(eligible_data_source()())
+%% }
+-type content_retrieval_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_chat_controls_configuration_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_chat_controls_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_filter() :: #{
+%%   <<"andAllFilters">> => list(attribute_filter()()),
+%%   <<"containsAll">> => document_attribute(),
+%%   <<"containsAny">> => document_attribute(),
+%%   <<"equalsTo">> => document_attribute(),
+%%   <<"greaterThan">> => document_attribute(),
+%%   <<"greaterThanOrEquals">> => document_attribute(),
+%%   <<"lessThan">> => document_attribute(),
+%%   <<"lessThanOrEquals">> => document_attribute(),
+%%   <<"notFilter">> => attribute_filter(),
+%%   <<"orAllFilters">> => list(attribute_filter()())
+%% }
+-type attribute_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_sync_jobs_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"statusFilter">> => list(any())
+%% }
+-type list_data_source_sync_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"applications">> => list(application()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% principal_group() :: #{
+%%   <<"access">> => list(any()),
+%%   <<"membershipType">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type principal_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_chat_controls_configuration_response() :: #{
+%%   <<"blockedPhrases">> => blocked_phrases_configuration(),
+%%   <<"nextToken">> => string(),
+%%   <<"responseScope">> => list(any()),
+%%   <<"topicConfigurations">> => list(topic_configuration()())
+%% }
+-type get_chat_controls_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_summary() :: #{
+%%   <<"groupName">> => string()
+%% }
+-type group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_plugin_request() :: #{}
+-type delete_plugin_request() :: #{}.
+
+
+%% Example:
+%% create_index_response() :: #{
+%%   <<"indexArn">> => string(),
+%%   <<"indexId">> => string()
+%% }
+-type create_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% retriever() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"retrieverId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type retriever() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_document() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"error">> => error_detail(),
+%%   <<"id">> => string()
+%% }
+-type failed_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSourceId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"items">> => list(group_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_request() :: #{
+%%   <<"dataSourceId">> => string()
+%% }
+-type get_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_configuration() :: #{
+%%   <<"accessControls">> => list(access_control()()),
+%%   <<"memberRelation">> => list(any())
+%% }
+-type access_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_retriever_response() :: #{}
+-type update_retriever_response() :: #{}.
+
+
+%% Example:
+%% text_document_statistics() :: #{
+%%   <<"indexedTextBytes">> => float(),
+%%   <<"indexedTextDocumentCount">> => integer()
+%% }
+-type text_document_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% update_index_response() :: #{}
+-type update_index_response() :: #{}.
+
+
+%% Example:
+%% attachment_output() :: #{
+%%   <<"error">> => error_detail(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type attachment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% users_and_groups() :: #{
+%%   <<"userGroups">> => list(string()()),
+%%   <<"userIds">> => list(string()())
+%% }
+-type users_and_groups() :: #{binary() => any()}.
+
+%% Example:
+%% get_retriever_request() :: #{}
+-type get_retriever_request() :: #{}.
+
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"updatedEarlierThan">> := non_neg_integer()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_source_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"configuration">> => any(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSourceArn">> => string(),
+%%   <<"dataSourceId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
+%%   <<"error">> => error_detail(),
+%%   <<"indexId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"syncSchedule">> => string(),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"vpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type get_data_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
+
+
+%% Example:
+%% date_attribute_boosting_configuration() :: #{
+%%   <<"boostingDurationInSeconds">> => float(),
+%%   <<"boostingLevel">> => list(any())
+%% }
+-type date_attribute_boosting_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_index_request() :: #{}
+-type get_index_request() :: #{}.
+
+
+%% Example:
+%% eligible_data_source() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"indexId">> => string()
+%% }
+-type eligible_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_response() :: #{}
+-type create_user_response() :: #{}.
+
+
+%% Example:
+%% document() :: #{
+%%   <<"accessConfiguration">> => access_configuration(),
+%%   <<"attributes">> => list(document_attribute()()),
+%%   <<"content">> => list(),
+%%   <<"contentType">> => list(any()),
+%%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
+%%   <<"id">> => string(),
+%%   <<"title">> => string()
+%% }
+-type document() :: #{binary() => any()}.
+
+%% Example:
+%% stop_data_source_sync_job_response() :: #{}
+-type stop_data_source_sync_job_response() :: #{}.
+
+
+%% Example:
+%% saml_configuration() :: #{
+%%   <<"metadataXML">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"userGroupAttribute">> => string(),
+%%   <<"userIdAttribute">> => string()
+%% }
+-type saml_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% attachments_configuration() :: #{
+%%   <<"attachmentsControlMode">> => list(any())
+%% }
+-type attachments_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% index_statistics() :: #{
+%%   <<"textDocumentStatistics">> => text_document_statistics()
+%% }
+-type index_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_messages_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"userId">> := string()
+%% }
+-type list_messages_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
+
+%% Example:
+%% put_group_request() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"groupMembers">> := group_members(),
+%%   <<"groupName">> := string(),
+%%   <<"type">> := list(any())
+%% }
+-type put_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"userAliases">> => list(user_alias()()),
+%%   <<"userId">> := string()
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_index_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"capacityConfiguration">> => index_capacity_configuration(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"documentAttributeConfigurations">> => list(document_attribute_configuration()()),
+%%   <<"error">> => error_detail(),
+%%   <<"indexArn">> => string(),
+%%   <<"indexId">> => string(),
+%%   <<"indexStatistics">> => index_statistics(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% message() :: #{
+%%   <<"actionExecution">> => action_execution(),
+%%   <<"actionReview">> => action_review(),
+%%   <<"attachments">> => list(attachment_output()()),
+%%   <<"body">> => string(),
+%%   <<"messageId">> => string(),
+%%   <<"sourceAttribution">> => list(source_attribution()()),
+%%   <<"time">> => non_neg_integer(),
+%%   <<"type">> => list(any())
+%% }
+-type message() :: #{binary() => any()}.
+
+-type batch_delete_document_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_put_document_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type chat_sync_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    license_not_found_exception().
+
+-type create_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_plugin_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_retriever_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_web_experience_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_chat_controls_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_conversation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    license_not_found_exception().
+
+-type delete_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_plugin_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_retriever_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_web_experience_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_chat_controls_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_plugin_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_retriever_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_web_experience_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_applications_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_conversations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    license_not_found_exception().
+
+-type list_data_source_sync_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_sources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_documents_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_indices_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_messages_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    license_not_found_exception().
+
+-type list_plugins_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_retrievers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_web_experiences_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_feedback_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_data_source_sync_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_data_source_sync_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_chat_controls_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_plugin_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_retriever_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_web_experience_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -207,8 +2174,17 @@
 %% You can see the progress of the deletion, and any error messages related
 %% to the
 %% process, by using CloudWatch.
+-spec batch_delete_document(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_document_request()) ->
+    {ok, batch_delete_document_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_document_errors(), tuple()}.
 batch_delete_document(Client, ApplicationId, IndexId, Input) ->
     batch_delete_document(Client, ApplicationId, IndexId, Input, []).
+
+-spec batch_delete_document(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_document_request(), proplists:proplist()) ->
+    {ok, batch_delete_document_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_document_errors(), tuple()}.
 batch_delete_document(Client, ApplicationId, IndexId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/documents/delete"],
@@ -247,8 +2223,17 @@ batch_delete_document(Client, ApplicationId, IndexId, Input0, Options0) ->
 %% You can see the progress of the deletion, and any error messages related
 %% to the
 %% process, by using CloudWatch.
+-spec batch_put_document(aws_client:aws_client(), binary() | list(), binary() | list(), batch_put_document_request()) ->
+    {ok, batch_put_document_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_document_errors(), tuple()}.
 batch_put_document(Client, ApplicationId, IndexId, Input) ->
     batch_put_document(Client, ApplicationId, IndexId, Input, []).
+
+-spec batch_put_document(aws_client:aws_client(), binary() | list(), binary() | list(), batch_put_document_request(), proplists:proplist()) ->
+    {ok, batch_put_document_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_document_errors(), tuple()}.
 batch_put_document(Client, ApplicationId, IndexId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/documents"],
@@ -272,8 +2257,17 @@ batch_put_document(Client, ApplicationId, IndexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts or continues a non-streaming Amazon Q conversation.
+-spec chat_sync(aws_client:aws_client(), binary() | list(), chat_sync_input()) ->
+    {ok, chat_sync_output(), tuple()} |
+    {error, any()} |
+    {error, chat_sync_errors(), tuple()}.
 chat_sync(Client, ApplicationId, Input) ->
     chat_sync(Client, ApplicationId, Input, []).
+
+-spec chat_sync(aws_client:aws_client(), binary() | list(), chat_sync_input(), proplists:proplist()) ->
+    {ok, chat_sync_output(), tuple()} |
+    {error, any()} |
+    {error, chat_sync_errors(), tuple()}.
 chat_sync(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/conversations?sync"],
@@ -299,8 +2293,17 @@ chat_sync(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q application.
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
+
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
@@ -329,8 +2332,17 @@ create_application(Client, Input0, Options0) ->
 %% 200 if
 %% the data source was successfully created. Otherwise, an exception is
 %% raised.
+-spec create_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_source_request()) ->
+    {ok, create_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, ApplicationId, IndexId, Input) ->
     create_data_source(Client, ApplicationId, IndexId, Input, []).
+
+-spec create_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
+    {ok, create_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, ApplicationId, IndexId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/datasources"],
@@ -368,8 +2380,17 @@ create_data_source(Client, ApplicationId, IndexId, Input0, Options0) ->
 %% :
 %% https://docs.aws.amazon.com/amazonq/latest/api-reference/API_CreateDataSource.html
 %% API.
+-spec create_index(aws_client:aws_client(), binary() | list(), create_index_request()) ->
+    {ok, create_index_response(), tuple()} |
+    {error, any()} |
+    {error, create_index_errors(), tuple()}.
 create_index(Client, ApplicationId, Input) ->
     create_index(Client, ApplicationId, Input, []).
+
+-spec create_index(aws_client:aws_client(), binary() | list(), create_index_request(), proplists:proplist()) ->
+    {ok, create_index_response(), tuple()} |
+    {error, any()} |
+    {error, create_index_errors(), tuple()}.
 create_index(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices"],
@@ -393,8 +2414,17 @@ create_index(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q plugin.
+-spec create_plugin(aws_client:aws_client(), binary() | list(), create_plugin_request()) ->
+    {ok, create_plugin_response(), tuple()} |
+    {error, any()} |
+    {error, create_plugin_errors(), tuple()}.
 create_plugin(Client, ApplicationId, Input) ->
     create_plugin(Client, ApplicationId, Input, []).
+
+-spec create_plugin(aws_client:aws_client(), binary() | list(), create_plugin_request(), proplists:proplist()) ->
+    {ok, create_plugin_response(), tuple()} |
+    {error, any()} |
+    {error, create_plugin_errors(), tuple()}.
 create_plugin(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/plugins"],
@@ -418,8 +2448,17 @@ create_plugin(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a retriever to your Amazon Q application.
+-spec create_retriever(aws_client:aws_client(), binary() | list(), create_retriever_request()) ->
+    {ok, create_retriever_response(), tuple()} |
+    {error, any()} |
+    {error, create_retriever_errors(), tuple()}.
 create_retriever(Client, ApplicationId, Input) ->
     create_retriever(Client, ApplicationId, Input, []).
+
+-spec create_retriever(aws_client:aws_client(), binary() | list(), create_retriever_request(), proplists:proplist()) ->
+    {ok, create_retriever_response(), tuple()} |
+    {error, any()} |
+    {error, create_retriever_errors(), tuple()}.
 create_retriever(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/retrievers"],
@@ -445,8 +2484,17 @@ create_retriever(Client, ApplicationId, Input0, Options0) ->
 %% @doc Creates a universally unique identifier (UUID) mapped to a list of
 %% local user ids
 %% within an application.
+-spec create_user(aws_client:aws_client(), binary() | list(), create_user_request()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, create_user_errors(), tuple()}.
 create_user(Client, ApplicationId, Input) ->
     create_user(Client, ApplicationId, Input, []).
+
+-spec create_user(aws_client:aws_client(), binary() | list(), create_user_request(), proplists:proplist()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, create_user_errors(), tuple()}.
 create_user(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/users"],
@@ -470,8 +2518,17 @@ create_user(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q web experience.
+-spec create_web_experience(aws_client:aws_client(), binary() | list(), create_web_experience_request()) ->
+    {ok, create_web_experience_response(), tuple()} |
+    {error, any()} |
+    {error, create_web_experience_errors(), tuple()}.
 create_web_experience(Client, ApplicationId, Input) ->
     create_web_experience(Client, ApplicationId, Input, []).
+
+-spec create_web_experience(aws_client:aws_client(), binary() | list(), create_web_experience_request(), proplists:proplist()) ->
+    {ok, create_web_experience_response(), tuple()} |
+    {error, any()} |
+    {error, create_web_experience_errors(), tuple()}.
 create_web_experience(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/experiences"],
@@ -495,8 +2552,17 @@ create_web_experience(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Q application.
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
+
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -521,8 +2587,17 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Deletes chat controls configured for an existing Amazon Q
 %% application.
+-spec delete_chat_controls_configuration(aws_client:aws_client(), binary() | list(), delete_chat_controls_configuration_request()) ->
+    {ok, delete_chat_controls_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_chat_controls_configuration_errors(), tuple()}.
 delete_chat_controls_configuration(Client, ApplicationId, Input) ->
     delete_chat_controls_configuration(Client, ApplicationId, Input, []).
+
+-spec delete_chat_controls_configuration(aws_client:aws_client(), binary() | list(), delete_chat_controls_configuration_request(), proplists:proplist()) ->
+    {ok, delete_chat_controls_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_chat_controls_configuration_errors(), tuple()}.
 delete_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/chatcontrols"],
@@ -546,8 +2621,17 @@ delete_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Q web experience conversation.
+-spec delete_conversation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_conversation_request()) ->
+    {ok, delete_conversation_response(), tuple()} |
+    {error, any()} |
+    {error, delete_conversation_errors(), tuple()}.
 delete_conversation(Client, ApplicationId, ConversationId, Input) ->
     delete_conversation(Client, ApplicationId, ConversationId, Input, []).
+
+-spec delete_conversation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_conversation_request(), proplists:proplist()) ->
+    {ok, delete_conversation_response(), tuple()} |
+    {error, any()} |
+    {error, delete_conversation_errors(), tuple()}.
 delete_conversation(Client, ApplicationId, ConversationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/conversations/", aws_util:encode_uri(ConversationId), ""],
@@ -576,8 +2660,17 @@ delete_conversation(Client, ApplicationId, ConversationId, Input0, Options0) ->
 %% While the data source is being
 %% deleted, the `Status' field returned by a call to the
 %% `DescribeDataSource' API is set to `DELETING'.
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_data_source_request()) ->
+    {ok, delete_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, ApplicationId, DataSourceId, IndexId, Input) ->
     delete_data_source(Client, ApplicationId, DataSourceId, IndexId, Input, []).
+
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
+    {ok, delete_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, ApplicationId, DataSourceId, IndexId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/datasources/", aws_util:encode_uri(DataSourceId), ""],
@@ -617,8 +2710,17 @@ delete_data_source(Client, ApplicationId, DataSourceId, IndexId, Input0, Options
 %% provide an updated list of users or sub groups that belong to the
 %% &quot;Engineering&quot; group
 %% when calling `PutGroup'.
+-spec delete_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_group_request()) ->
+    {ok, delete_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, ApplicationId, GroupName, IndexId, Input) ->
     delete_group(Client, ApplicationId, GroupName, IndexId, Input, []).
+
+-spec delete_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_group_request(), proplists:proplist()) ->
+    {ok, delete_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_group_errors(), tuple()}.
 delete_group(Client, ApplicationId, GroupName, IndexId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/groups/", aws_util:encode_uri(GroupName), ""],
@@ -643,8 +2745,17 @@ delete_group(Client, ApplicationId, GroupName, IndexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Q index.
+-spec delete_index(aws_client:aws_client(), binary() | list(), binary() | list(), delete_index_request()) ->
+    {ok, delete_index_response(), tuple()} |
+    {error, any()} |
+    {error, delete_index_errors(), tuple()}.
 delete_index(Client, ApplicationId, IndexId, Input) ->
     delete_index(Client, ApplicationId, IndexId, Input, []).
+
+-spec delete_index(aws_client:aws_client(), binary() | list(), binary() | list(), delete_index_request(), proplists:proplist()) ->
+    {ok, delete_index_response(), tuple()} |
+    {error, any()} |
+    {error, delete_index_errors(), tuple()}.
 delete_index(Client, ApplicationId, IndexId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), ""],
@@ -668,8 +2779,17 @@ delete_index(Client, ApplicationId, IndexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Q plugin.
+-spec delete_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), delete_plugin_request()) ->
+    {ok, delete_plugin_response(), tuple()} |
+    {error, any()} |
+    {error, delete_plugin_errors(), tuple()}.
 delete_plugin(Client, ApplicationId, PluginId, Input) ->
     delete_plugin(Client, ApplicationId, PluginId, Input, []).
+
+-spec delete_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), delete_plugin_request(), proplists:proplist()) ->
+    {ok, delete_plugin_response(), tuple()} |
+    {error, any()} |
+    {error, delete_plugin_errors(), tuple()}.
 delete_plugin(Client, ApplicationId, PluginId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/plugins/", aws_util:encode_uri(PluginId), ""],
@@ -693,8 +2813,17 @@ delete_plugin(Client, ApplicationId, PluginId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the retriever used by an Amazon Q application.
+-spec delete_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), delete_retriever_request()) ->
+    {ok, delete_retriever_response(), tuple()} |
+    {error, any()} |
+    {error, delete_retriever_errors(), tuple()}.
 delete_retriever(Client, ApplicationId, RetrieverId, Input) ->
     delete_retriever(Client, ApplicationId, RetrieverId, Input, []).
+
+-spec delete_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), delete_retriever_request(), proplists:proplist()) ->
+    {ok, delete_retriever_response(), tuple()} |
+    {error, any()} |
+    {error, delete_retriever_errors(), tuple()}.
 delete_retriever(Client, ApplicationId, RetrieverId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/retrievers/", aws_util:encode_uri(RetrieverId), ""],
@@ -718,8 +2847,17 @@ delete_retriever(Client, ApplicationId, RetrieverId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a user by email id.
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_request()) ->
+    {ok, delete_user_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, ApplicationId, UserId, Input) ->
     delete_user(Client, ApplicationId, UserId, Input, []).
+
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
+    {ok, delete_user_response(), tuple()} |
+    {error, any()} |
+    {error, delete_user_errors(), tuple()}.
 delete_user(Client, ApplicationId, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/users/", aws_util:encode_uri(UserId), ""],
@@ -743,8 +2881,17 @@ delete_user(Client, ApplicationId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Q web experience.
+-spec delete_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), delete_web_experience_request()) ->
+    {ok, delete_web_experience_response(), tuple()} |
+    {error, any()} |
+    {error, delete_web_experience_errors(), tuple()}.
 delete_web_experience(Client, ApplicationId, WebExperienceId, Input) ->
     delete_web_experience(Client, ApplicationId, WebExperienceId, Input, []).
+
+-spec delete_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), delete_web_experience_request(), proplists:proplist()) ->
+    {ok, delete_web_experience_response(), tuple()} |
+    {error, any()} |
+    {error, delete_web_experience_errors(), tuple()}.
 delete_web_experience(Client, ApplicationId, WebExperienceId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/experiences/", aws_util:encode_uri(WebExperienceId), ""],
@@ -768,14 +2915,26 @@ delete_web_experience(Client, ApplicationId, WebExperienceId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing Amazon Q application.
+-spec get_application(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
 
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -795,14 +2954,26 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about an chat controls configured for an existing
 %% Amazon Q
 %% application.
+-spec get_chat_controls_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_chat_controls_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_chat_controls_configuration_errors(), tuple()}.
 get_chat_controls_configuration(Client, ApplicationId)
   when is_map(Client) ->
     get_chat_controls_configuration(Client, ApplicationId, #{}, #{}).
 
+-spec get_chat_controls_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_chat_controls_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_chat_controls_configuration_errors(), tuple()}.
 get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec get_chat_controls_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_chat_controls_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_chat_controls_configuration_errors(), tuple()}.
 get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/chatcontrols"],
@@ -825,14 +2996,26 @@ get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing Amazon Q data source connector.
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, ApplicationId, DataSourceId, IndexId)
   when is_map(Client) ->
     get_data_source(Client, ApplicationId, DataSourceId, IndexId, #{}, #{}).
 
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersMap, []).
 
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/datasources/", aws_util:encode_uri(DataSourceId), ""],
@@ -850,14 +3033,26 @@ get_data_source(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a group by group name.
+-spec get_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_group_errors(), tuple()}.
 get_group(Client, ApplicationId, GroupName, IndexId)
   when is_map(Client) ->
     get_group(Client, ApplicationId, GroupName, IndexId, #{}, #{}).
 
+-spec get_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_group_errors(), tuple()}.
 get_group(Client, ApplicationId, GroupName, IndexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group(Client, ApplicationId, GroupName, IndexId, QueryMap, HeadersMap, []).
 
+-spec get_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_group_errors(), tuple()}.
 get_group(Client, ApplicationId, GroupName, IndexId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/groups/", aws_util:encode_uri(GroupName), ""],
@@ -879,14 +3074,26 @@ get_group(Client, ApplicationId, GroupName, IndexId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing Amazon Q index.
+-spec get_index(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_index_response(), tuple()} |
+    {error, any()} |
+    {error, get_index_errors(), tuple()}.
 get_index(Client, ApplicationId, IndexId)
   when is_map(Client) ->
     get_index(Client, ApplicationId, IndexId, #{}, #{}).
 
+-spec get_index(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_index_response(), tuple()} |
+    {error, any()} |
+    {error, get_index_errors(), tuple()}.
 get_index(Client, ApplicationId, IndexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_index(Client, ApplicationId, IndexId, QueryMap, HeadersMap, []).
 
+-spec get_index(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_index_response(), tuple()} |
+    {error, any()} |
+    {error, get_index_errors(), tuple()}.
 get_index(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), ""],
@@ -904,14 +3111,26 @@ get_index(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing Amazon Q plugin.
+-spec get_plugin(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_plugin_response(), tuple()} |
+    {error, any()} |
+    {error, get_plugin_errors(), tuple()}.
 get_plugin(Client, ApplicationId, PluginId)
   when is_map(Client) ->
     get_plugin(Client, ApplicationId, PluginId, #{}, #{}).
 
+-spec get_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_plugin_response(), tuple()} |
+    {error, any()} |
+    {error, get_plugin_errors(), tuple()}.
 get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap, []).
 
+-spec get_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_plugin_response(), tuple()} |
+    {error, any()} |
+    {error, get_plugin_errors(), tuple()}.
 get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/plugins/", aws_util:encode_uri(PluginId), ""],
@@ -930,14 +3149,26 @@ get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about an existing retriever used by an Amazon Q
 %% application.
+-spec get_retriever(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_retriever_response(), tuple()} |
+    {error, any()} |
+    {error, get_retriever_errors(), tuple()}.
 get_retriever(Client, ApplicationId, RetrieverId)
   when is_map(Client) ->
     get_retriever(Client, ApplicationId, RetrieverId, #{}, #{}).
 
+-spec get_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_retriever_response(), tuple()} |
+    {error, any()} |
+    {error, get_retriever_errors(), tuple()}.
 get_retriever(Client, ApplicationId, RetrieverId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_retriever(Client, ApplicationId, RetrieverId, QueryMap, HeadersMap, []).
 
+-spec get_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_retriever_response(), tuple()} |
+    {error, any()} |
+    {error, get_retriever_errors(), tuple()}.
 get_retriever(Client, ApplicationId, RetrieverId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/retrievers/", aws_util:encode_uri(RetrieverId), ""],
@@ -957,14 +3188,26 @@ get_retriever(Client, ApplicationId, RetrieverId, QueryMap, HeadersMap, Options0
 %% @doc Describes the universally unique identifier (UUID) associated with a
 %% local user in a
 %% data source.
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_errors(), tuple()}.
 get_user(Client, ApplicationId, UserId)
   when is_map(Client) ->
     get_user(Client, ApplicationId, UserId, #{}, #{}).
 
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_errors(), tuple()}.
 get_user(Client, ApplicationId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user(Client, ApplicationId, UserId, QueryMap, HeadersMap, []).
 
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_errors(), tuple()}.
 get_user(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/users/", aws_util:encode_uri(UserId), ""],
@@ -982,14 +3225,26 @@ get_user(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing Amazon Q web experience.
+-spec get_web_experience(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_web_experience_response(), tuple()} |
+    {error, any()} |
+    {error, get_web_experience_errors(), tuple()}.
 get_web_experience(Client, ApplicationId, WebExperienceId)
   when is_map(Client) ->
     get_web_experience(Client, ApplicationId, WebExperienceId, #{}, #{}).
 
+-spec get_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_web_experience_response(), tuple()} |
+    {error, any()} |
+    {error, get_web_experience_errors(), tuple()}.
 get_web_experience(Client, ApplicationId, WebExperienceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_web_experience(Client, ApplicationId, WebExperienceId, QueryMap, HeadersMap, []).
 
+-spec get_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_web_experience_response(), tuple()} |
+    {error, any()} |
+    {error, get_web_experience_errors(), tuple()}.
 get_web_experience(Client, ApplicationId, WebExperienceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/experiences/", aws_util:encode_uri(WebExperienceId), ""],
@@ -1007,14 +3262,26 @@ get_web_experience(Client, ApplicationId, WebExperienceId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon Q applications.
+-spec list_applications(aws_client:aws_client()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
@@ -1037,14 +3304,26 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists one or more Amazon Q conversations.
+-spec list_conversations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_conversations_response(), tuple()} |
+    {error, any()} |
+    {error, list_conversations_errors(), tuple()}.
 list_conversations(Client, ApplicationId, UserId)
   when is_map(Client) ->
     list_conversations(Client, ApplicationId, UserId, #{}, #{}).
 
+-spec list_conversations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_conversations_response(), tuple()} |
+    {error, any()} |
+    {error, list_conversations_errors(), tuple()}.
 list_conversations(Client, ApplicationId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_conversations(Client, ApplicationId, UserId, QueryMap, HeadersMap, []).
 
+-spec list_conversations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_conversations_response(), tuple()} |
+    {error, any()} |
+    {error, list_conversations_errors(), tuple()}.
 list_conversations(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/conversations"],
@@ -1069,14 +3348,26 @@ list_conversations(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0
 
 %% @doc Get information about an Amazon Q data source connector
 %% synchronization.
+-spec list_data_source_sync_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_data_source_sync_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_source_sync_jobs_errors(), tuple()}.
 list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId)
   when is_map(Client) ->
     list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId, #{}, #{}).
 
+-spec list_data_source_sync_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_data_source_sync_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_source_sync_jobs_errors(), tuple()}.
 list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersMap, []).
 
+-spec list_data_source_sync_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_source_sync_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_source_sync_jobs_errors(), tuple()}.
 list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/datasources/", aws_util:encode_uri(DataSourceId), "/syncjobs"],
@@ -1102,14 +3393,26 @@ list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon Q data source connectors that you have created.
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_data_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, ApplicationId, IndexId)
   when is_map(Client) ->
     list_data_sources(Client, ApplicationId, IndexId, #{}, #{}).
 
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_data_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, ApplicationId, IndexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, ApplicationId, IndexId, QueryMap, HeadersMap, []).
 
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/datasources"],
@@ -1132,14 +3435,26 @@ list_data_sources(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A list of documents attached to an index.
+-spec list_documents(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_documents_response(), tuple()} |
+    {error, any()} |
+    {error, list_documents_errors(), tuple()}.
 list_documents(Client, ApplicationId, IndexId)
   when is_map(Client) ->
     list_documents(Client, ApplicationId, IndexId, #{}, #{}).
 
+-spec list_documents(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_documents_response(), tuple()} |
+    {error, any()} |
+    {error, list_documents_errors(), tuple()}.
 list_documents(Client, ApplicationId, IndexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_documents(Client, ApplicationId, IndexId, QueryMap, HeadersMap, []).
 
+-spec list_documents(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_documents_response(), tuple()} |
+    {error, any()} |
+    {error, list_documents_errors(), tuple()}.
 list_documents(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/index/", aws_util:encode_uri(IndexId), "/documents"],
@@ -1163,14 +3478,26 @@ list_documents(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a list of groups that are mapped to users.
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan)
   when is_map(Client) ->
     list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan, #{}, #{}).
 
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan, QueryMap, HeadersMap, []).
 
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_groups_errors(), tuple()}.
 list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/groups"],
@@ -1195,14 +3522,26 @@ list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon Q indices you have created.
+-spec list_indices(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_indices_response(), tuple()} |
+    {error, any()} |
+    {error, list_indices_errors(), tuple()}.
 list_indices(Client, ApplicationId)
   when is_map(Client) ->
     list_indices(Client, ApplicationId, #{}, #{}).
 
+-spec list_indices(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_indices_response(), tuple()} |
+    {error, any()} |
+    {error, list_indices_errors(), tuple()}.
 list_indices(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_indices(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_indices(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_indices_response(), tuple()} |
+    {error, any()} |
+    {error, list_indices_errors(), tuple()}.
 list_indices(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices"],
@@ -1225,14 +3564,26 @@ list_indices(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of messages associated with an Amazon Q web experience.
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_messages_response(), tuple()} |
+    {error, any()} |
+    {error, list_messages_errors(), tuple()}.
 list_messages(Client, ApplicationId, ConversationId, UserId)
   when is_map(Client) ->
     list_messages(Client, ApplicationId, ConversationId, UserId, #{}, #{}).
 
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_messages_response(), tuple()} |
+    {error, any()} |
+    {error, list_messages_errors(), tuple()}.
 list_messages(Client, ApplicationId, ConversationId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_messages(Client, ApplicationId, ConversationId, UserId, QueryMap, HeadersMap, []).
 
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_messages_response(), tuple()} |
+    {error, any()} |
+    {error, list_messages_errors(), tuple()}.
 list_messages(Client, ApplicationId, ConversationId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/conversations/", aws_util:encode_uri(ConversationId), ""],
@@ -1256,14 +3607,26 @@ list_messages(Client, ApplicationId, ConversationId, UserId, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists configured Amazon Q plugins.
+-spec list_plugins(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_plugins_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugins_errors(), tuple()}.
 list_plugins(Client, ApplicationId)
   when is_map(Client) ->
     list_plugins(Client, ApplicationId, #{}, #{}).
 
+-spec list_plugins(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_plugins_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugins_errors(), tuple()}.
 list_plugins(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_plugins(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_plugins(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_plugins_response(), tuple()} |
+    {error, any()} |
+    {error, list_plugins_errors(), tuple()}.
 list_plugins(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/plugins"],
@@ -1286,14 +3649,26 @@ list_plugins(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the retriever used by an Amazon Q application.
+-spec list_retrievers(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_retrievers_response(), tuple()} |
+    {error, any()} |
+    {error, list_retrievers_errors(), tuple()}.
 list_retrievers(Client, ApplicationId)
   when is_map(Client) ->
     list_retrievers(Client, ApplicationId, #{}, #{}).
 
+-spec list_retrievers(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_retrievers_response(), tuple()} |
+    {error, any()} |
+    {error, list_retrievers_errors(), tuple()}.
 list_retrievers(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_retrievers(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_retrievers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_retrievers_response(), tuple()} |
+    {error, any()} |
+    {error, list_retrievers_errors(), tuple()}.
 list_retrievers(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/retrievers"],
@@ -1319,14 +3694,26 @@ list_retrievers(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %%
 %% Amazon Q applications
 %% and data sources can have tags associated with them.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceARN), ""],
@@ -1344,14 +3731,26 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists one or more Amazon Q Web Experiences.
+-spec list_web_experiences(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_web_experiences_response(), tuple()} |
+    {error, any()} |
+    {error, list_web_experiences_errors(), tuple()}.
 list_web_experiences(Client, ApplicationId)
   when is_map(Client) ->
     list_web_experiences(Client, ApplicationId, #{}, #{}).
 
+-spec list_web_experiences(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_web_experiences_response(), tuple()} |
+    {error, any()} |
+    {error, list_web_experiences_errors(), tuple()}.
 list_web_experiences(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_web_experiences(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_web_experiences(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_web_experiences_response(), tuple()} |
+    {error, any()} |
+    {error, list_web_experiences_errors(), tuple()}.
 list_web_experiences(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/experiences"],
@@ -1376,8 +3775,17 @@ list_web_experiences(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% @doc Enables your end user to to provide feedback on their Amazon Q
 %% generated chat
 %% responses.
+-spec put_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_feedback_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_feedback_errors(), tuple()}.
 put_feedback(Client, ApplicationId, ConversationId, MessageId, Input) ->
     put_feedback(Client, ApplicationId, ConversationId, MessageId, Input, []).
+
+-spec put_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_feedback_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_feedback_errors(), tuple()}.
 put_feedback(Client, ApplicationId, ConversationId, MessageId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/conversations/", aws_util:encode_uri(ConversationId), "/messages/", aws_util:encode_uri(MessageId), "/feedback"],
@@ -1414,8 +3822,17 @@ put_feedback(Client, ApplicationId, ConversationId, MessageId, Input0, Options0)
 %% in research and engineering, and therefore belong in the intellectual
 %% property group,
 %% can see top-secret company documents in their Amazon Q chat results.
+-spec put_group(aws_client:aws_client(), binary() | list(), binary() | list(), put_group_request()) ->
+    {ok, put_group_response(), tuple()} |
+    {error, any()} |
+    {error, put_group_errors(), tuple()}.
 put_group(Client, ApplicationId, IndexId, Input) ->
     put_group(Client, ApplicationId, IndexId, Input, []).
+
+-spec put_group(aws_client:aws_client(), binary() | list(), binary() | list(), put_group_request(), proplists:proplist()) ->
+    {ok, put_group_response(), tuple()} |
+    {error, any()} |
+    {error, put_group_errors(), tuple()}.
 put_group(Client, ApplicationId, IndexId, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/groups"],
@@ -1442,8 +3859,17 @@ put_group(Client, ApplicationId, IndexId, Input0, Options0) ->
 %%
 %% If a synchronization job is
 %% already in progress, Amazon Q returns a `ConflictException'.
+-spec start_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_data_source_sync_job_request()) ->
+    {ok, start_data_source_sync_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_data_source_sync_job_errors(), tuple()}.
 start_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input) ->
     start_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input, []).
+
+-spec start_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_data_source_sync_job_request(), proplists:proplist()) ->
+    {ok, start_data_source_sync_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_data_source_sync_job_errors(), tuple()}.
 start_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/datasources/", aws_util:encode_uri(DataSourceId), "/startsync"],
@@ -1469,8 +3895,17 @@ start_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input0,
 %% @doc Stops an Amazon Q data source connector synchronization job already
 %% in
 %% progress.
+-spec stop_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_data_source_sync_job_request()) ->
+    {ok, stop_data_source_sync_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_data_source_sync_job_errors(), tuple()}.
 stop_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input) ->
     stop_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input, []).
+
+-spec stop_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_data_source_sync_job_request(), proplists:proplist()) ->
+    {ok, stop_data_source_sync_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_data_source_sync_job_errors(), tuple()}.
 stop_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/datasources/", aws_util:encode_uri(DataSourceId), "/stopsync"],
@@ -1499,8 +3934,17 @@ stop_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input0, 
 %%
 %% If the tag already exists, the existing value is replaced with the new
 %% value.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceARN, Input) ->
     tag_resource(Client, ResourceARN, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceARN, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceARN), ""],
@@ -1524,8 +3968,17 @@ tag_resource(Client, ResourceARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from an Amazon Q application or a data source.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceARN, Input) ->
     untag_resource(Client, ResourceARN, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceARN, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceARN), ""],
@@ -1550,8 +4003,17 @@ untag_resource(Client, ResourceARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Amazon Q application.
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
+
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -1576,8 +4038,17 @@ update_application(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Updates an set of chat controls configured for an existing Amazon Q
 %% application.
+-spec update_chat_controls_configuration(aws_client:aws_client(), binary() | list(), update_chat_controls_configuration_request()) ->
+    {ok, update_chat_controls_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_chat_controls_configuration_errors(), tuple()}.
 update_chat_controls_configuration(Client, ApplicationId, Input) ->
     update_chat_controls_configuration(Client, ApplicationId, Input, []).
+
+-spec update_chat_controls_configuration(aws_client:aws_client(), binary() | list(), update_chat_controls_configuration_request(), proplists:proplist()) ->
+    {ok, update_chat_controls_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_chat_controls_configuration_errors(), tuple()}.
 update_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/chatcontrols"],
@@ -1601,8 +4072,17 @@ update_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Amazon Q data source connector.
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_data_source_request()) ->
+    {ok, update_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, ApplicationId, DataSourceId, IndexId, Input) ->
     update_data_source(Client, ApplicationId, DataSourceId, IndexId, Input, []).
+
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
+    {ok, update_data_source_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, ApplicationId, DataSourceId, IndexId, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), "/datasources/", aws_util:encode_uri(DataSourceId), ""],
@@ -1626,8 +4106,17 @@ update_data_source(Client, ApplicationId, DataSourceId, IndexId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon Q index.
+-spec update_index(aws_client:aws_client(), binary() | list(), binary() | list(), update_index_request()) ->
+    {ok, update_index_response(), tuple()} |
+    {error, any()} |
+    {error, update_index_errors(), tuple()}.
 update_index(Client, ApplicationId, IndexId, Input) ->
     update_index(Client, ApplicationId, IndexId, Input, []).
+
+-spec update_index(aws_client:aws_client(), binary() | list(), binary() | list(), update_index_request(), proplists:proplist()) ->
+    {ok, update_index_response(), tuple()} |
+    {error, any()} |
+    {error, update_index_errors(), tuple()}.
 update_index(Client, ApplicationId, IndexId, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/indices/", aws_util:encode_uri(IndexId), ""],
@@ -1651,8 +4140,17 @@ update_index(Client, ApplicationId, IndexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon Q plugin.
+-spec update_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), update_plugin_request()) ->
+    {ok, update_plugin_response(), tuple()} |
+    {error, any()} |
+    {error, update_plugin_errors(), tuple()}.
 update_plugin(Client, ApplicationId, PluginId, Input) ->
     update_plugin(Client, ApplicationId, PluginId, Input, []).
+
+-spec update_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), update_plugin_request(), proplists:proplist()) ->
+    {ok, update_plugin_response(), tuple()} |
+    {error, any()} |
+    {error, update_plugin_errors(), tuple()}.
 update_plugin(Client, ApplicationId, PluginId, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/plugins/", aws_util:encode_uri(PluginId), ""],
@@ -1676,8 +4174,17 @@ update_plugin(Client, ApplicationId, PluginId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the retriever used for your Amazon Q application.
+-spec update_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), update_retriever_request()) ->
+    {ok, update_retriever_response(), tuple()} |
+    {error, any()} |
+    {error, update_retriever_errors(), tuple()}.
 update_retriever(Client, ApplicationId, RetrieverId, Input) ->
     update_retriever(Client, ApplicationId, RetrieverId, Input, []).
+
+-spec update_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), update_retriever_request(), proplists:proplist()) ->
+    {ok, update_retriever_response(), tuple()} |
+    {error, any()} |
+    {error, update_retriever_errors(), tuple()}.
 update_retriever(Client, ApplicationId, RetrieverId, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/retrievers/", aws_util:encode_uri(RetrieverId), ""],
@@ -1701,8 +4208,17 @@ update_retriever(Client, ApplicationId, RetrieverId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a information associated with a user id.
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_request()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_errors(), tuple()}.
 update_user(Client, ApplicationId, UserId, Input) ->
     update_user(Client, ApplicationId, UserId, Input, []).
+
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_errors(), tuple()}.
 update_user(Client, ApplicationId, UserId, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/users/", aws_util:encode_uri(UserId), ""],
@@ -1726,8 +4242,17 @@ update_user(Client, ApplicationId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon Q web experience.
+-spec update_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), update_web_experience_request()) ->
+    {ok, update_web_experience_response(), tuple()} |
+    {error, any()} |
+    {error, update_web_experience_errors(), tuple()}.
 update_web_experience(Client, ApplicationId, WebExperienceId, Input) ->
     update_web_experience(Client, ApplicationId, WebExperienceId, Input, []).
+
+-spec update_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), update_web_experience_request(), proplists:proplist()) ->
+    {ok, update_web_experience_response(), tuple()} |
+    {error, any()} |
+    {error, update_web_experience_errors(), tuple()}.
 update_web_experience(Client, ApplicationId, WebExperienceId, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/experiences/", aws_util:encode_uri(WebExperienceId), ""],
@@ -1754,7 +4279,7 @@ update_web_experience(Client, ApplicationId, WebExperienceId, Input0, Options0) 
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

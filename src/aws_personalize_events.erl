@@ -23,6 +23,154 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% action() :: #{
+%%   <<"actionId">> => string(),
+%%   <<"properties">> => string()
+%% }
+-type action() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_interaction() :: #{
+%%   <<"actionId">> => string(),
+%%   <<"eventId">> => string(),
+%%   <<"eventType">> => string(),
+%%   <<"impression">> => list(string()()),
+%%   <<"properties">> => string(),
+%%   <<"recommendationId">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"userId">> => string()
+%% }
+-type action_interaction() :: #{binary() => any()}.
+
+
+%% Example:
+%% event() :: #{
+%%   <<"eventId">> => string(),
+%%   <<"eventType">> => string(),
+%%   <<"eventValue">> => float(),
+%%   <<"impression">> => list(string()()),
+%%   <<"itemId">> => string(),
+%%   <<"metricAttribution">> => metric_attribution(),
+%%   <<"properties">> => string(),
+%%   <<"recommendationId">> => string(),
+%%   <<"sentAt">> => non_neg_integer()
+%% }
+-type event() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% item() :: #{
+%%   <<"itemId">> => string(),
+%%   <<"properties">> => string()
+%% }
+-type item() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_attribution() :: #{
+%%   <<"eventAttributionSource">> => string()
+%% }
+-type metric_attribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_action_interactions_request() :: #{
+%%   <<"actionInteractions">> := list(action_interaction()()),
+%%   <<"trackingId">> := string()
+%% }
+-type put_action_interactions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_actions_request() :: #{
+%%   <<"actions">> := list(action()()),
+%%   <<"datasetArn">> := string()
+%% }
+-type put_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_events_request() :: #{
+%%   <<"eventList">> := list(event()()),
+%%   <<"sessionId">> := string(),
+%%   <<"trackingId">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type put_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_items_request() :: #{
+%%   <<"datasetArn">> := string(),
+%%   <<"items">> := list(item()())
+%% }
+-type put_items_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_users_request() :: #{
+%%   <<"datasetArn">> := string(),
+%%   <<"users">> := list(user()())
+%% }
+-type put_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% user() :: #{
+%%   <<"properties">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+-type put_action_interactions_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_input_exception().
+
+-type put_actions_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_input_exception().
+
+-type put_events_errors() ::
+    invalid_input_exception().
+
+-type put_items_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_input_exception().
+
+-type put_users_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_input_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -40,8 +188,17 @@
 %% For more information about actions in an Actions dataset, see Actions
 %% dataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/actions-datasets.html.
+-spec put_action_interactions(aws_client:aws_client(), put_action_interactions_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_action_interactions_errors(), tuple()}.
 put_action_interactions(Client, Input) ->
     put_action_interactions(Client, Input, []).
+
+-spec put_action_interactions(aws_client:aws_client(), put_action_interactions_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_action_interactions_errors(), tuple()}.
 put_action_interactions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/action-interactions"],
@@ -69,8 +226,17 @@ put_action_interactions(Client, Input0, Options0) ->
 %% For more information see
 %% Importing actions individually:
 %% https://docs.aws.amazon.com/personalize/latest/dg/importing-actions.html.
+-spec put_actions(aws_client:aws_client(), put_actions_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_actions_errors(), tuple()}.
 put_actions(Client, Input) ->
     put_actions(Client, Input, []).
+
+-spec put_actions(aws_client:aws_client(), put_actions_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_actions_errors(), tuple()}.
 put_actions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actions"],
@@ -98,8 +264,17 @@ put_actions(Client, Input0, Options0) ->
 %% For more information see
 %% Recording item interaction events:
 %% https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html.
+-spec put_events(aws_client:aws_client(), put_events_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_events_errors(), tuple()}.
 put_events(Client, Input) ->
     put_events(Client, Input, []).
+
+-spec put_events(aws_client:aws_client(), put_events_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_events_errors(), tuple()}.
 put_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/events"],
@@ -127,8 +302,17 @@ put_events(Client, Input0, Options0) ->
 %% For more information see
 %% Importing items individually:
 %% https://docs.aws.amazon.com/personalize/latest/dg/importing-items.html.
+-spec put_items(aws_client:aws_client(), put_items_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_items_errors(), tuple()}.
 put_items(Client, Input) ->
     put_items(Client, Input, []).
+
+-spec put_items(aws_client:aws_client(), put_items_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_items_errors(), tuple()}.
 put_items(Client, Input0, Options0) ->
     Method = post,
     Path = ["/items"],
@@ -156,8 +340,17 @@ put_items(Client, Input0, Options0) ->
 %% For more information see
 %% Importing users individually:
 %% https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html.
+-spec put_users(aws_client:aws_client(), put_users_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_users_errors(), tuple()}.
 put_users(Client, Input) ->
     put_users(Client, Input, []).
+
+-spec put_users(aws_client:aws_client(), put_users_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_users_errors(), tuple()}.
 put_users(Client, Input0, Options0) ->
     Method = post,
     Path = ["/users"],
@@ -184,7 +377,7 @@ put_users(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

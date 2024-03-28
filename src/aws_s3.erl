@@ -238,6 +238,2942 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type error() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_policy_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ConfirmRemoveSelfBucketAccess">> => boolean(),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Policy">> := string()
+%% }
+-type put_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_logging_request() :: #{
+%%   <<"BucketLoggingStatus">> := bucket_logging_status(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type put_bucket_logging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_s3_bucket_destination() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"Encryption">> => inventory_encryption(),
+%%   <<"Format">> => list(any()),
+%%   <<"Prefix">> => string()
+%% }
+-type inventory_s3_bucket_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% records_event() :: #{
+%%   <<"Payload">> => binary()
+%% }
+-type records_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_metrics_configurations_output() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MetricsConfigurationList">> => list(metrics_configuration()()),
+%%   <<"NextContinuationToken">> => string()
+%% }
+-type list_bucket_metrics_configurations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_object_request() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"MFA">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type delete_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_accelerate_configuration_output() :: #{
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_bucket_accelerate_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% c_o_r_s_configuration() :: #{
+%%   <<"CORSRules">> => list(c_o_r_s_rule()())
+%% }
+-type c_o_r_s_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_ownership_controls_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_ownership_controls_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_metrics_configurations_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type list_bucket_metrics_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_key() :: #{}
+-type no_such_key() :: #{}.
+
+
+%% Example:
+%% get_bucket_policy_output() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_bucket_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"ReplicaKmsKeyID">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_versioning_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"MFA">> => string(),
+%%   <<"VersioningConfiguration">> := versioning_configuration()
+%% }
+-type put_bucket_versioning_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_torrent_output() :: #{
+%%   <<"Body">> => binary(),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type get_object_torrent_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_object_tagging_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type delete_object_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_configuration() :: #{
+%%   <<"Destination">> => inventory_destination(),
+%%   <<"Filter">> => inventory_filter(),
+%%   <<"Id">> => string(),
+%%   <<"IncludedObjectVersions">> => list(any()),
+%%   <<"IsEnabled">> => boolean(),
+%%   <<"OptionalFields">> => list(list(any())()),
+%%   <<"Schedule">> => inventory_schedule()
+%% }
+-type inventory_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_object_result() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer()
+%% }
+-type copy_object_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_access_block_configuration() :: #{
+%%   <<"BlockPublicAcls">> => boolean(),
+%%   <<"BlockPublicPolicy">> => boolean(),
+%%   <<"IgnorePublicAcls">> => boolean(),
+%%   <<"RestrictPublicBuckets">> => boolean()
+%% }
+-type public_access_block_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_accelerate_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any())
+%% }
+-type get_bucket_accelerate_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_schedule() :: #{
+%%   <<"Frequency">> => list(any())
+%% }
+-type inventory_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% write_get_object_response_request() :: #{
+%%   <<"ContentRange">> => string(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"Expiration">> => string(),
+%%   <<"RequestToken">> := string(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"Body">> => binary(),
+%%   <<"AcceptRanges">> => string(),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"VersionId">> => string(),
+%%   <<"PartsCount">> => integer(),
+%%   <<"ContentLength">> => float(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"CacheControl">> => string(),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"RequestRoute">> := string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"StatusCode">> => integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"Metadata">> => map(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"Expires">> => non_neg_integer(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"TagCount">> => integer(),
+%%   <<"Restore">> => string(),
+%%   <<"DeleteMarker">> => boolean(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"MissingMeta">> => integer(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string()
+%% }
+-type write_get_object_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_grant() :: #{
+%%   <<"Grantee">> => grantee(),
+%%   <<"Permission">> => list(any())
+%% }
+-type target_grant() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_website_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_website_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_ownership_controls_output() :: #{
+%%   <<"OwnershipControls">> => ownership_controls()
+%% }
+-type get_bucket_ownership_controls_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% ownership_controls_rule() :: #{
+%%   <<"ObjectOwnership">> => list(any())
+%% }
+-type ownership_controls_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_request_payment_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_request_payment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_public_access_block_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"PublicAccessBlockConfiguration">> := public_access_block_configuration()
+%% }
+-type put_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_tagging_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% abort_incomplete_multipart_upload() :: #{
+%%   <<"DaysAfterInitiation">> => integer()
+%% }
+-type abort_incomplete_multipart_upload() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule() :: #{
+%%   <<"AbortIncompleteMultipartUpload">> => abort_incomplete_multipart_upload(),
+%%   <<"Expiration">> => lifecycle_expiration(),
+%%   <<"Filter">> => list(),
+%%   <<"ID">> => string(),
+%%   <<"NoncurrentVersionExpiration">> => noncurrent_version_expiration(),
+%%   <<"NoncurrentVersionTransitions">> => list(noncurrent_version_transition()()),
+%%   <<"Prefix">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Transitions">> => list(transition()())
+%% }
+-type lifecycle_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_public_access_block_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_policy_status_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_policy_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_versions_request() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"KeyMarker">> => string(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"OptionalObjectAttributes">> => list(list(any())()),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionIdMarker">> => string()
+%% }
+-type list_object_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% versioning_configuration() :: #{
+%%   <<"MFADelete">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type versioning_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete() :: #{
+%%   <<"Objects">> => list(object_identifier()()),
+%%   <<"Quiet">> => boolean()
+%% }
+-type delete() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_part_output() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any())
+%% }
+-type upload_part_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_cors_request() :: #{
+%%   <<"CORSConfiguration">> := c_o_r_s_configuration(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type put_bucket_cors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_analytics_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type delete_bucket_analytics_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% head_bucket_output() :: #{
+%%   <<"AccessPointAlias">> => boolean(),
+%%   <<"BucketLocationName">> => string(),
+%%   <<"BucketLocationType">> => list(any()),
+%%   <<"BucketRegion">> => string()
+%% }
+-type head_bucket_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_intelligent_tiering_configuration_output() :: #{
+%%   <<"IntelligentTieringConfiguration">> => intelligent_tiering_configuration()
+%% }
+-type get_bucket_intelligent_tiering_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% queue_configuration() :: #{
+%%   <<"Events">> => list(list(any())()),
+%%   <<"Filter">> => notification_configuration_filter(),
+%%   <<"Id">> => string(),
+%%   <<"QueueArn">> => string()
+%% }
+-type queue_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_rule() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type filter_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type session_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_logging_output() :: #{
+%%   <<"LoggingEnabled">> => logging_enabled()
+%% }
+-type get_bucket_logging_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% redirect() :: #{
+%%   <<"HostName">> => string(),
+%%   <<"HttpRedirectCode">> => string(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"ReplaceKeyPrefixWith">> => string(),
+%%   <<"ReplaceKeyWith">> => string()
+%% }
+-type redirect() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_selection_criteria() :: #{
+%%   <<"ReplicaModifications">> => replica_modifications(),
+%%   <<"SseKmsEncryptedObjects">> => sse_kms_encrypted_objects()
+%% }
+-type source_selection_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% head_object_output() :: #{
+%%   <<"StorageClass">> => list(any()),
+%%   <<"Expiration">> => string(),
+%%   <<"AcceptRanges">> => string(),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"VersionId">> => string(),
+%%   <<"PartsCount">> => integer(),
+%%   <<"ContentLength">> => float(),
+%%   <<"WebsiteRedirectLocation">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"CacheControl">> => string(),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"Metadata">> => map(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"Expires">> => non_neg_integer(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"ArchiveStatus">> => list(any()),
+%%   <<"Restore">> => string(),
+%%   <<"DeleteMarker">> => boolean(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"MissingMeta">> => integer(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string()
+%% }
+-type head_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_tagging_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stats_event() :: #{
+%%   <<"Details">> => stats()
+%% }
+-type stats_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_replication_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ReplicationConfiguration">> := replication_configuration(),
+%%   <<"Token">> => string()
+%% }
+-type put_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_lock_configuration_output() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type put_object_lock_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_retention_output() :: #{
+%%   <<"Retention">> => object_lock_retention()
+%% }
+-type get_object_retention_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% common_prefix() :: #{
+%%   <<"Prefix">> => string()
+%% }
+-type common_prefix() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_acl_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_export_destination() :: #{
+%%   <<"S3BucketDestination">> => analytics_s3_bucket_destination()
+%% }
+-type analytics_export_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_inventory_configurations_output() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"InventoryConfigurationList">> => list(inventory_configuration()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"NextContinuationToken">> => string()
+%% }
+-type list_bucket_inventory_configurations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_legal_hold_output() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type put_object_legal_hold_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_filter() :: #{
+%%   <<"Prefix">> => string()
+%% }
+-type inventory_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_retention_output() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type put_object_retention_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_acl_request() :: #{
+%%   <<"ACL">> => list(any()),
+%%   <<"AccessControlPolicy">> => access_control_policy(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"GrantRead">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"GrantWrite">> => string(),
+%%   <<"GrantWriteACP">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_object_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"RestoreRequest">> => restore_request(),
+%%   <<"VersionId">> => string()
+%% }
+-type restore_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_part_result() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer()
+%% }
+-type copy_part_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function_configuration() :: #{
+%%   <<"Events">> => list(list(any())()),
+%%   <<"Filter">> => notification_configuration_filter(),
+%%   <<"Id">> => string(),
+%%   <<"LambdaFunctionArn">> => string()
+%% }
+-type lambda_function_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% object_not_in_active_tier_error() :: #{}
+-type object_not_in_active_tier_error() :: #{}.
+
+
+%% Example:
+%% list_objects_request() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"OptionalObjectAttributes">> => list(list(any())()),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestPayer">> => list(any())
+%% }
+-type list_objects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_inventory_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type get_bucket_inventory_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_serialization() :: #{
+%%   <<"CSV">> => csv_input(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"JSON">> => json_input(),
+%%   <<"Parquet">> => parquet_input()
+%% }
+-type input_serialization() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_part_request() :: #{
+%%   <<"Body">> => binary(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"PartNumber">> := integer(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"UploadId">> := string()
+%% }
+-type upload_part_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% grantee() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"ID">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"URI">> => string()
+%% }
+-type grantee() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_legal_hold_output() :: #{
+%%   <<"LegalHold">> => object_lock_legal_hold()
+%% }
+-type get_object_legal_hold_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% deleted_object() :: #{
+%%   <<"DeleteMarker">> => boolean(),
+%%   <<"DeleteMarkerVersionId">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type deleted_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% progress() :: #{
+%%   <<"BytesProcessed">> => float(),
+%%   <<"BytesReturned">> => float(),
+%%   <<"BytesScanned">> => float()
+%% }
+-type progress() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_inventory_configuration_output() :: #{
+%%   <<"InventoryConfiguration">> => inventory_configuration()
+%% }
+-type get_bucket_inventory_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_output() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"Expiration">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_analytics_configurations_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type list_bucket_analytics_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_configuration() :: #{
+%%   <<"Events">> => list(list(any())()),
+%%   <<"Filter">> => notification_configuration_filter(),
+%%   <<"Id">> => string(),
+%%   <<"TopicArn">> => string()
+%% }
+-type topic_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_versioning_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_versioning_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_versions_output() :: #{
+%%   <<"CommonPrefixes">> => list(common_prefix()()),
+%%   <<"DeleteMarkers">> => list(delete_marker_entry()()),
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"KeyMarker">> => string(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextKeyMarker">> => string(),
+%%   <<"NextVersionIdMarker">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"VersionIdMarker">> => string(),
+%%   <<"Versions">> => list(object_version()())
+%% }
+-type list_object_versions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_lifecycle_configuration_output() :: #{
+%%   <<"Rules">> => list(lifecycle_rule()())
+%% }
+-type get_bucket_lifecycle_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% sse_kms_encrypted_objects() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type sse_kms_encrypted_objects() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_policy_status_output() :: #{
+%%   <<"PolicyStatus">> => policy_status()
+%% }
+-type get_bucket_policy_status_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multipart_upload_output() :: #{
+%%   <<"AbortDate">> => non_neg_integer(),
+%%   <<"AbortRuleId">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"Key">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"UploadId">> => string()
+%% }
+-type create_multipart_upload_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_acl_output() :: #{
+%%   <<"Grants">> => list(grant()()),
+%%   <<"Owner">> => owner()
+%% }
+-type get_bucket_acl_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lock_rule() :: #{
+%%   <<"DefaultRetention">> => default_retention()
+%% }
+-type object_lock_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% location_info() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type location_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_ownership_controls_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_ownership_controls_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_location_output() :: #{
+%%   <<"LocationConstraint">> => list(any())
+%% }
+-type get_bucket_location_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_inventory_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type delete_bucket_inventory_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_enabled() :: #{
+%%   <<"TargetBucket">> => string(),
+%%   <<"TargetGrants">> => list(target_grant()()),
+%%   <<"TargetObjectKeyFormat">> => target_object_key_format(),
+%%   <<"TargetPrefix">> => string()
+%% }
+-type logging_enabled() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_marker_entry() :: #{
+%%   <<"IsLatest">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Owner">> => owner(),
+%%   <<"VersionId">> => string()
+%% }
+-type delete_marker_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% select_parameters() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"ExpressionType">> => list(any()),
+%%   <<"InputSerialization">> => input_serialization(),
+%%   <<"OutputSerialization">> => output_serialization()
+%% }
+-type select_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_already_owned_by_you() :: #{}
+-type bucket_already_owned_by_you() :: #{}.
+
+
+%% Example:
+%% delete_bucket_policy_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multipart_uploads_request() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"KeyMarker">> => string(),
+%%   <<"MaxUploads">> => integer(),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"UploadIdMarker">> => string()
+%% }
+-type list_multipart_uploads_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_request() :: #{
+%%   <<"StorageClass">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"Body">> => binary(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"ACL">> => list(any()),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
+%%   <<"GrantRead">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"Tagging">> => string(),
+%%   <<"WebsiteRedirectLocation">> => string(),
+%%   <<"CacheControl">> => string(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"Metadata">> => map(),
+%%   <<"GrantWriteACP">> => string(),
+%%   <<"Expires">> => non_neg_integer(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string()
+%% }
+-type put_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_version() :: #{
+%%   <<"ChecksumAlgorithm">> => list(list(any())()),
+%%   <<"ETag">> => string(),
+%%   <<"IsLatest">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Owner">> => owner(),
+%%   <<"RestoreStatus">> => restore_status(),
+%%   <<"Size">> => float(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type object_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% noncurrent_version_expiration() :: #{
+%%   <<"NewerNoncurrentVersions">> => integer(),
+%%   <<"NoncurrentDays">> => integer()
+%% }
+-type noncurrent_version_expiration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_legal_hold_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_legal_hold_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_notification_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"NotificationConfiguration">> := notification_configuration(),
+%%   <<"SkipDestinationValidation">> => boolean()
+%% }
+-type put_bucket_notification_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_range() :: #{
+%%   <<"End">> => float(),
+%%   <<"Start">> => float()
+%% }
+-type scan_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_legal_hold_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"LegalHold">> => object_lock_legal_hold(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_legal_hold_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_analytics_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type get_bucket_analytics_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_object_output() :: #{
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"RestoreOutputPath">> => string()
+%% }
+-type restore_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_session_request() :: #{
+%%   <<"SessionMode">> => list(any())
+%% }
+-type create_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% json_input() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type json_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics() :: #{
+%%   <<"EventThreshold">> => replication_time_value(),
+%%   <<"Status">> => list(any())
+%% }
+-type metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% replica_modifications() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type replica_modifications() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_encryption_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_encryption_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_time_value() :: #{
+%%   <<"Minutes">> => integer()
+%% }
+-type replication_time_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_part_copy_request() :: #{
+%%   <<"CopySource">> := string(),
+%%   <<"CopySourceIfMatch">> => string(),
+%%   <<"CopySourceIfModifiedSince">> => non_neg_integer(),
+%%   <<"CopySourceIfNoneMatch">> => string(),
+%%   <<"CopySourceIfUnmodifiedSince">> => non_neg_integer(),
+%%   <<"CopySourceRange">> => string(),
+%%   <<"CopySourceSSECustomerAlgorithm">> => string(),
+%%   <<"CopySourceSSECustomerKey">> => string(),
+%%   <<"CopySourceSSECustomerKeyMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ExpectedSourceBucketOwner">> => string(),
+%%   <<"PartNumber">> := integer(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"UploadId">> := string()
+%% }
+-type upload_part_copy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_status() :: #{
+%%   <<"IsPublic">> => boolean()
+%% }
+-type policy_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_replication_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_analytics_configurations_output() :: #{
+%%   <<"AnalyticsConfigurationList">> => list(analytics_configuration()()),
+%%   <<"ContinuationToken">> => string(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"NextContinuationToken">> => string()
+%% }
+-type list_bucket_analytics_configurations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_configuration() :: #{
+%%   <<"Role">> => string(),
+%%   <<"Rules">> => list(replication_rule()())
+%% }
+-type replication_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_tagging_output() :: #{
+%%   <<"TagSet">> => list(tag()())
+%% }
+-type get_bucket_tagging_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_identifier() :: #{
+%%   <<"Key">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type object_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% intelligent_tiering_and_operator() :: #{
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type intelligent_tiering_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_object_output() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"CopyObjectResult">> => copy_object_result(),
+%%   <<"CopySourceVersionId">> => string(),
+%%   <<"Expiration">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type copy_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_website_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_website_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% json_output() :: #{
+%%   <<"RecordDelimiter">> => string()
+%% }
+-type json_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_intelligent_tiering_configuration_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type get_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% grant() :: #{
+%%   <<"Grantee">> => grantee(),
+%%   <<"Permission">> => list(any())
+%% }
+-type grant() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_configuration_filter() :: #{
+%%   <<"Key">> => s3_key_filter()
+%% }
+-type notification_configuration_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_session_output() :: #{
+%%   <<"Credentials">> => session_credentials()
+%% }
+-type create_session_output() :: #{binary() => any()}.
+
+%% Example:
+%% parquet_input() :: #{}
+-type parquet_input() :: #{}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_tagging_output() :: #{
+%%   <<"TagSet">> => list(tag()()),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_tagging_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_attributes_output() :: #{
+%%   <<"Checksum">> => checksum(),
+%%   <<"DeleteMarker">> => boolean(),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ObjectParts">> => get_object_attributes_parts(),
+%%   <<"ObjectSize">> => float(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_attributes_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_encryption_output() :: #{
+%%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration()
+%% }
+-type get_bucket_encryption_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_cors_output() :: #{
+%%   <<"CORSRules">> => list(c_o_r_s_rule()())
+%% }
+-type get_bucket_cors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% noncurrent_version_transition() :: #{
+%%   <<"NewerNoncurrentVersions">> => integer(),
+%%   <<"NoncurrentDays">> => integer(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type noncurrent_version_transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_info() :: #{
+%%   <<"DataRedundancy">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type bucket_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_object_tagging_output() :: #{
+%%   <<"VersionId">> => string()
+%% }
+-type delete_object_tagging_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% abort_multipart_upload_output() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type abort_multipart_upload_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% select_object_content_output() :: #{
+%%   <<"Payload">> => list()
+%% }
+-type select_object_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_intelligent_tiering_configuration_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type delete_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multipart_upload_request() :: #{
+%%   <<"ACL">> => list(any()),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"CacheControl">> => string(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Expires">> => non_neg_integer(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"GrantRead">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"GrantWriteACP">> => string(),
+%%   <<"Metadata">> => map(),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"Tagging">> => string(),
+%%   <<"WebsiteRedirectLocation">> => string()
+%% }
+-type create_multipart_upload_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% csv_input() :: #{
+%%   <<"AllowQuotedRecordDelimiter">> => boolean(),
+%%   <<"Comments">> => string(),
+%%   <<"FieldDelimiter">> => string(),
+%%   <<"FileHeaderInfo">> => list(any()),
+%%   <<"QuoteCharacter">> => string(),
+%%   <<"QuoteEscapeCharacter">> => string(),
+%%   <<"RecordDelimiter">> => string()
+%% }
+-type csv_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stats() :: #{
+%%   <<"BytesProcessed">> => float(),
+%%   <<"BytesReturned">> => float(),
+%%   <<"BytesScanned">> => float()
+%% }
+-type stats() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_buckets_output() :: #{
+%%   <<"Buckets">> => list(bucket()()),
+%%   <<"Owner">> => owner()
+%% }
+-type list_buckets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bucket_configuration() :: #{
+%%   <<"Bucket">> => bucket_info(),
+%%   <<"Location">> => location_info(),
+%%   <<"LocationConstraint">> => list(any())
+%% }
+-type create_bucket_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_already_exists() :: #{}
+-type bucket_already_exists() :: #{}.
+
+
+%% Example:
+%% server_side_encryption_rule() :: #{
+%%   <<"ApplyServerSideEncryptionByDefault">> => server_side_encryption_by_default(),
+%%   <<"BucketKeyEnabled">> => boolean()
+%% }
+-type server_side_encryption_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_intelligent_tiering_configurations_output() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"IntelligentTieringConfigurationList">> => list(intelligent_tiering_configuration()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"NextContinuationToken">> => string()
+%% }
+-type list_bucket_intelligent_tiering_configurations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% initiator() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"ID">> => string()
+%% }
+-type initiator() :: #{binary() => any()}.
+
+
+%% Example:
+%% select_object_content_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Expression">> := string(),
+%%   <<"ExpressionType">> := list(any()),
+%%   <<"InputSerialization">> := input_serialization(),
+%%   <<"OutputSerialization">> := output_serialization(),
+%%   <<"RequestProgress">> => request_progress(),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"ScanRange">> => scan_range()
+%% }
+-type select_object_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% completed_part() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"PartNumber">> => integer()
+%% }
+-type completed_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_s3_bucket_destination() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"BucketAccountId">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"Prefix">> => string()
+%% }
+-type analytics_s3_bucket_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"KMSContext">> => string(),
+%%   <<"KMSKeyId">> => string()
+%% }
+-type encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_encryption_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_encryption_request() :: #{binary() => any()}.
+
+%% Example:
+%% continuation_event() :: #{}
+-type continuation_event() :: #{}.
+
+
+%% Example:
+%% s3_key_filter() :: #{
+%%   <<"FilterRules">> => list(filter_rule()())
+%% }
+-type s3_key_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_metrics_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type delete_bucket_metrics_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% intelligent_tiering_configuration() :: #{
+%%   <<"Filter">> => intelligent_tiering_filter(),
+%%   <<"Id">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tierings">> => list(tiering()())
+%% }
+-type intelligent_tiering_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redirect_all_requests_to() :: #{
+%%   <<"HostName">> => string(),
+%%   <<"Protocol">> => list(any())
+%% }
+-type redirect_all_requests_to() :: #{binary() => any()}.
+
+
+%% Example:
+%% tagging() :: #{
+%%   <<"TagSet">> => list(tag()())
+%% }
+-type tagging() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_payment_configuration() :: #{
+%%   <<"Payer">> => list(any())
+%% }
+-type request_payment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_control_translation() :: #{
+%%   <<"Owner">> => list(any())
+%% }
+-type access_control_translation() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_request_payment_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPaymentConfiguration">> := request_payment_configuration()
+%% }
+-type put_bucket_request_payment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_side_encryption_by_default() :: #{
+%%   <<"KMSMasterKeyID">> => string(),
+%%   <<"SSEAlgorithm">> => list(any())
+%% }
+-type server_side_encryption_by_default() :: #{binary() => any()}.
+
+
+%% Example:
+%% website_configuration() :: #{
+%%   <<"ErrorDocument">> => error_document(),
+%%   <<"IndexDocument">> => index_document(),
+%%   <<"RedirectAllRequestsTo">> => redirect_all_requests_to(),
+%%   <<"RoutingRules">> => list(routing_rule()())
+%% }
+-type website_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_location() :: #{
+%%   <<"S3">> => s3_location()
+%% }
+-type output_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_object_key_format() :: #{
+%%   <<"PartitionedPrefix">> => partitioned_prefix(),
+%%   <<"SimplePrefix">> => simple_prefix()
+%% }
+-type target_object_key_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_class_analysis() :: #{
+%%   <<"DataExport">> => storage_class_analysis_data_export()
+%% }
+-type storage_class_analysis() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_attributes_parts() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxParts">> => integer(),
+%%   <<"NextPartNumberMarker">> => string(),
+%%   <<"PartNumberMarker">> => string(),
+%%   <<"Parts">> => list(object_part()()),
+%%   <<"TotalPartsCount">> => integer()
+%% }
+-type get_object_attributes_parts() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objects_v2_output() :: #{
+%%   <<"CommonPrefixes">> => list(common_prefix()()),
+%%   <<"Contents">> => list(object()()),
+%%   <<"ContinuationToken">> => string(),
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"KeyCount">> => integer(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextContinuationToken">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"StartAfter">> => string()
+%% }
+-type list_objects_v2_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition() :: #{
+%%   <<"HttpErrorCodeReturnedEquals">> => string(),
+%%   <<"KeyPrefixEquals">> => string()
+%% }
+-type condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_output() :: #{
+%%   <<"ContentRange">> => string(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"Expiration">> => string(),
+%%   <<"Body">> => binary(),
+%%   <<"AcceptRanges">> => string(),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"VersionId">> => string(),
+%%   <<"PartsCount">> => integer(),
+%%   <<"ContentLength">> => float(),
+%%   <<"WebsiteRedirectLocation">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"CacheControl">> => string(),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"Metadata">> => map(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"Expires">> => non_neg_integer(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"TagCount">> => integer(),
+%%   <<"Restore">> => string(),
+%%   <<"DeleteMarker">> => boolean(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"MissingMeta">> => integer(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string()
+%% }
+-type get_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"AccessControlList">> => list(grant()()),
+%%   <<"BucketName">> => string(),
+%%   <<"CannedACL">> => list(any()),
+%%   <<"Encryption">> => encryption(),
+%%   <<"Prefix">> => string(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"Tagging">> => tagging(),
+%%   <<"UserMetadata">> => list(metadata_entry()())
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% object() :: #{
+%%   <<"ChecksumAlgorithm">> => list(list(any())()),
+%%   <<"ETag">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Owner">> => owner(),
+%%   <<"RestoreStatus">> => restore_status(),
+%%   <<"Size">> => float(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type object() :: #{binary() => any()}.
+
+
+%% Example:
+%% progress_event() :: #{
+%%   <<"Details">> => progress()
+%% }
+-type progress_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% complete_multipart_upload_output() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"Expiration">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type complete_multipart_upload_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_side_encryption_configuration() :: #{
+%%   <<"Rules">> => list(server_side_encryption_rule()())
+%% }
+-type server_side_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_acl_output() :: #{
+%%   <<"Grants">> => list(grant()()),
+%%   <<"Owner">> => owner(),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type get_object_acl_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_encryption_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ServerSideEncryptionConfiguration">> := server_side_encryption_configuration()
+%% }
+-type put_bucket_encryption_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_retention() :: #{
+%%   <<"Days">> => integer(),
+%%   <<"Mode">> => list(any()),
+%%   <<"Years">> => integer()
+%% }
+-type default_retention() :: #{binary() => any()}.
+
+
+%% Example:
+%% ownership_controls() :: #{
+%%   <<"Rules">> => list(ownership_controls_rule()())
+%% }
+-type ownership_controls() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"EventBridgeConfiguration">> => event_bridge_configuration(),
+%%   <<"LambdaFunctionConfigurations">> => list(lambda_function_configuration()()),
+%%   <<"QueueConfigurations">> => list(queue_configuration()()),
+%%   <<"TopicConfigurations">> => list(topic_configuration()())
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lock_configuration() :: #{
+%%   <<"ObjectLockEnabled">> => list(any()),
+%%   <<"Rule">> => object_lock_rule()
+%% }
+-type object_lock_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_lifecycle_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_objects_output() :: #{
+%%   <<"Deleted">> => list(deleted_object()()),
+%%   <<"Errors">> => list(error()()),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type delete_objects_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_acl_output() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type put_object_acl_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objects_output() :: #{
+%%   <<"CommonPrefixes">> => list(common_prefix()()),
+%%   <<"Contents">> => list(object()()),
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type list_objects_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% checksum() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string()
+%% }
+-type checksum() :: #{binary() => any()}.
+
+%% Example:
+%% event_bridge_configuration() :: #{}
+-type event_bridge_configuration() :: #{}.
+
+
+%% Example:
+%% get_bucket_versioning_output() :: #{
+%%   <<"MFADelete">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_bucket_versioning_output() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_bucket() :: #{}
+-type no_such_bucket() :: #{}.
+
+
+%% Example:
+%% get_bucket_metrics_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type get_bucket_metrics_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_policy_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_logging_status() :: #{
+%%   <<"LoggingEnabled">> => logging_enabled()
+%% }
+-type bucket_logging_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_lock_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_object_lock_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_object_request() :: #{
+%%   <<"StorageClass">> => list(any()),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"ExpectedSourceBucketOwner">> => string(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"CopySourceIfMatch">> => string(),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"ACL">> => list(any()),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
+%%   <<"TaggingDirective">> => list(any()),
+%%   <<"GrantRead">> => string(),
+%%   <<"CopySourceIfUnmodifiedSince">> => non_neg_integer(),
+%%   <<"Tagging">> => string(),
+%%   <<"WebsiteRedirectLocation">> => string(),
+%%   <<"CacheControl">> => string(),
+%%   <<"CopySourceSSECustomerKeyMD5">> => string(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"CopySourceSSECustomerKey">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"CopySourceIfModifiedSince">> => non_neg_integer(),
+%%   <<"Metadata">> => map(),
+%%   <<"GrantWriteACP">> => string(),
+%%   <<"Expires">> => non_neg_integer(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"CopySourceSSECustomerAlgorithm">> => string(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"CopySource">> := string(),
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"MetadataDirective">> => list(any()),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"CopySourceIfNoneMatch">> => string()
+%% }
+-type copy_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_directory_buckets_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"MaxDirectoryBuckets">> => integer()
+%% }
+-type list_directory_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_ownership_controls_request() :: #{
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"OwnershipControls">> := ownership_controls()
+%% }
+-type put_bucket_ownership_controls_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_lifecycle_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_lifecycle_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_objects_request() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"Delete">> := delete(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"MFA">> => string(),
+%%   <<"RequestPayer">> => list(any())
+%% }
+-type delete_objects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_access_block_output() :: #{
+%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration()
+%% }
+-type get_public_access_block_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_status() :: #{
+%%   <<"IsRestoreInProgress">> => boolean(),
+%%   <<"RestoreExpiryDate">> => non_neg_integer()
+%% }
+-type restore_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_and_operator() :: #{
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type analytics_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type bucket() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_marker_replication() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_marker_replication() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_encryption() :: #{
+%%   <<"SSEKMS">> => sse_kms(),
+%%   <<"SSES3">> => sse_s3()
+%% }
+-type inventory_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bucket_request() :: #{
+%%   <<"ACL">> => list(any()),
+%%   <<"CreateBucketConfiguration">> => create_bucket_configuration(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"GrantRead">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"GrantWrite">> => string(),
+%%   <<"GrantWriteACP">> => string(),
+%%   <<"ObjectLockEnabledForBucket">> => boolean(),
+%%   <<"ObjectOwnership">> => list(any())
+%% }
+-type create_bucket_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_class_analysis_data_export() :: #{
+%%   <<"Destination">> => analytics_export_destination(),
+%%   <<"OutputSchemaVersion">> => list(any())
+%% }
+-type storage_class_analysis_data_export() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_accelerate_configuration_request() :: #{
+%%   <<"AccelerateConfiguration">> := accelerate_configuration(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type put_bucket_accelerate_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% c_o_r_s_rule() :: #{
+%%   <<"AllowedHeaders">> => list(string()()),
+%%   <<"AllowedMethods">> => list(string()()),
+%%   <<"AllowedOrigins">> => list(string()()),
+%%   <<"ExposeHeaders">> => list(string()()),
+%%   <<"ID">> => string(),
+%%   <<"MaxAgeSeconds">> => integer()
+%% }
+-type c_o_r_s_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_acl_request() :: #{
+%%   <<"ACL">> => list(any()),
+%%   <<"AccessControlPolicy">> => access_control_policy(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"GrantRead">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"GrantWrite">> => string(),
+%%   <<"GrantWriteACP">> => string()
+%% }
+-type put_bucket_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% simple_prefix() :: #{}
+-type simple_prefix() :: #{}.
+
+
+%% Example:
+%% existing_object_replication() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type existing_object_replication() :: #{binary() => any()}.
+
+
+%% Example:
+%% transition() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Days">> => integer(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% index_document() :: #{
+%%   <<"Suffix">> => string()
+%% }
+-type index_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% intelligent_tiering_filter() :: #{
+%%   <<"And">> => intelligent_tiering_and_operator(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tag">> => tag()
+%% }
+-type intelligent_tiering_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_torrent_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any())
+%% }
+-type get_object_torrent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_metrics_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"MetricsConfiguration">> := metrics_configuration()
+%% }
+-type put_bucket_metrics_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_retention_request() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"Retention">> => object_lock_retention(),
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_retention_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% part() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PartNumber">> => integer(),
+%%   <<"Size">> => float()
+%% }
+-type part() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_tagging_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_part() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"PartNumber">> => integer(),
+%%   <<"Size">> => float()
+%% }
+-type object_part() :: #{binary() => any()}.
+
+%% Example:
+%% end_event() :: #{}
+-type end_event() :: #{}.
+
+
+%% Example:
+%% metadata_entry() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type metadata_entry() :: #{binary() => any()}.
+
+%% Example:
+%% sse_s3() :: #{}
+-type sse_s3() :: #{}.
+
+
+%% Example:
+%% get_bucket_logging_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_logging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_acl_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule() :: #{
+%%   <<"DeleteMarkerReplication">> => delete_marker_replication(),
+%%   <<"Destination">> => destination(),
+%%   <<"ExistingObjectReplication">> => existing_object_replication(),
+%%   <<"Filter">> => list(),
+%%   <<"ID">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"SourceSelectionCriteria">> => source_selection_criteria(),
+%%   <<"Status">> => list(any())
+%% }
+-type replication_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objects_v2_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"FetchOwner">> => boolean(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"OptionalObjectAttributes">> => list(list(any())()),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"StartAfter">> => string()
+%% }
+-type list_objects_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bucket_output() :: #{
+%%   <<"Location">> => string()
+%% }
+-type create_bucket_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_intelligent_tiering_configuration_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IntelligentTieringConfiguration">> := intelligent_tiering_configuration()
+%% }
+-type put_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination() :: #{
+%%   <<"AccessControlTranslation">> => access_control_translation(),
+%%   <<"Account">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"Metrics">> => metrics(),
+%%   <<"ReplicationTime">> => replication_time(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% head_bucket_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type head_bucket_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_expiration() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Days">> => integer(),
+%%   <<"ExpiredObjectDeleteMarker">> => boolean()
+%% }
+-type lifecycle_expiration() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_control_policy() :: #{
+%%   <<"Grants">> => list(grant()()),
+%%   <<"Owner">> => owner()
+%% }
+-type access_control_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_analytics_configuration_request() :: #{
+%%   <<"AnalyticsConfiguration">> := analytics_configuration(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type put_bucket_analytics_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lock_retention() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"RetainUntilDate">> => non_neg_integer()
+%% }
+-type object_lock_retention() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_tagging_output() :: #{
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_tagging_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_part_copy_output() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"CopyPartResult">> => copy_part_result(),
+%%   <<"CopySourceVersionId">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any())
+%% }
+-type upload_part_copy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_location_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multipart_upload() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"Initiated">> => non_neg_integer(),
+%%   <<"Initiator">> => initiator(),
+%%   <<"Key">> => string(),
+%%   <<"Owner">> => owner(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"UploadId">> => string()
+%% }
+-type multipart_upload() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_tagging_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Tagging">> := tagging()
+%% }
+-type put_bucket_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% partitioned_prefix() :: #{
+%%   <<"PartitionDateSource">> => list(any())
+%% }
+-type partitioned_prefix() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_inventory_configurations_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type list_bucket_inventory_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multipart_uploads_output() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"CommonPrefixes">> => list(common_prefix()()),
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"KeyMarker">> => string(),
+%%   <<"MaxUploads">> => integer(),
+%%   <<"NextKeyMarker">> => string(),
+%%   <<"NextUploadIdMarker">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"UploadIdMarker">> => string(),
+%%   <<"Uploads">> => list(multipart_upload()())
+%% }
+-type list_multipart_uploads_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% sse_kms() :: #{
+%%   <<"KeyId">> => string()
+%% }
+-type sse_kms() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_lock_configuration_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ObjectLockConfiguration">> => object_lock_configuration(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"Token">> => string()
+%% }
+-type put_object_lock_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_object_output() :: #{
+%%   <<"DeleteMarker">> => boolean(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type delete_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% completed_multipart_upload() :: #{
+%%   <<"Parts">> => list(completed_part()())
+%% }
+-type completed_multipart_upload() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_parts_output() :: #{
+%%   <<"AbortDate">> => non_neg_integer(),
+%%   <<"AbortRuleId">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"Initiator">> => initiator(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"MaxParts">> => integer(),
+%%   <<"NextPartNumberMarker">> => string(),
+%%   <<"Owner">> => owner(),
+%%   <<"PartNumberMarker">> => string(),
+%%   <<"Parts">> => list(part()()),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"UploadId">> => string()
+%% }
+-type list_parts_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% csv_output() :: #{
+%%   <<"FieldDelimiter">> => string(),
+%%   <<"QuoteCharacter">> => string(),
+%%   <<"QuoteEscapeCharacter">> => string(),
+%%   <<"QuoteFields">> => list(any()),
+%%   <<"RecordDelimiter">> => string()
+%% }
+-type csv_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_analytics_configuration_output() :: #{
+%%   <<"AnalyticsConfiguration">> => analytics_configuration()
+%% }
+-type get_bucket_analytics_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% not_found() :: #{}
+-type not_found() :: #{}.
+
+
+%% Example:
+%% replication_rule_and_operator() :: #{
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type replication_rule_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_retention_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_retention_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% abort_multipart_upload_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"UploadId">> := string()
+%% }
+-type abort_multipart_upload_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tiering() :: #{
+%%   <<"AccessTier">> => list(any()),
+%%   <<"Days">> => integer()
+%% }
+-type tiering() :: #{binary() => any()}.
+
+
+%% Example:
+%% head_object_request() :: #{
+%%   <<"ChecksumMode">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"IfMatch">> => string(),
+%%   <<"IfModifiedSince">> => non_neg_integer(),
+%%   <<"IfNoneMatch">> => string(),
+%%   <<"IfUnmodifiedSince">> => non_neg_integer(),
+%%   <<"PartNumber">> => integer(),
+%%   <<"Range">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type head_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_access_block_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_cors_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_cors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% glacier_job_parameters() :: #{
+%%   <<"Tier">> => list(any())
+%% }
+-type glacier_job_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_upload() :: #{}
+-type no_such_upload() :: #{}.
+
+
+%% Example:
+%% inventory_destination() :: #{
+%%   <<"S3BucketDestination">> => inventory_s3_bucket_destination()
+%% }
+-type inventory_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_parts_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"MaxParts">> => integer(),
+%%   <<"PartNumberMarker">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"UploadId">> := string()
+%% }
+-type list_parts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lock_legal_hold() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type object_lock_legal_hold() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_time() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"Time">> => replication_time_value()
+%% }
+-type replication_time() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_metrics_configuration_output() :: #{
+%%   <<"MetricsConfiguration">> => metrics_configuration()
+%% }
+-type get_bucket_metrics_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_directory_buckets_output() :: #{
+%%   <<"Buckets">> => list(bucket()()),
+%%   <<"ContinuationToken">> => string()
+%% }
+-type list_directory_buckets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_progress() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type request_progress() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_lifecycle_configuration_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"LifecycleConfiguration">> => bucket_lifecycle_configuration()
+%% }
+-type put_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_serialization() :: #{
+%%   <<"CSV">> => csv_output(),
+%%   <<"JSON">> => json_output()
+%% }
+-type output_serialization() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_request() :: #{
+%%   <<"ChecksumMode">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"IfMatch">> => string(),
+%%   <<"IfModifiedSince">> => non_neg_integer(),
+%%   <<"IfNoneMatch">> => string(),
+%%   <<"IfUnmodifiedSince">> => non_neg_integer(),
+%%   <<"PartNumber">> => integer(),
+%%   <<"Range">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"ResponseCacheControl">> => string(),
+%%   <<"ResponseContentDisposition">> => string(),
+%%   <<"ResponseContentEncoding">> => string(),
+%%   <<"ResponseContentLanguage">> => string(),
+%%   <<"ResponseContentType">> => string(),
+%%   <<"ResponseExpires">> => non_neg_integer(),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics_and_operator() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type metrics_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_website_output() :: #{
+%%   <<"ErrorDocument">> => error_document(),
+%%   <<"IndexDocument">> => index_document(),
+%%   <<"RedirectAllRequestsTo">> => redirect_all_requests_to(),
+%%   <<"RoutingRules">> => list(routing_rule()())
+%% }
+-type get_bucket_website_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_request_payment_output() :: #{
+%%   <<"Payer">> => list(any())
+%% }
+-type get_bucket_request_payment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_lifecycle_configuration() :: #{
+%%   <<"Rules">> => list(lifecycle_rule()())
+%% }
+-type bucket_lifecycle_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule() :: #{
+%%   <<"Condition">> => condition(),
+%%   <<"Redirect">> => redirect()
+%% }
+-type routing_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_object_state() :: #{
+%%   <<"AccessTier">> => list(any()),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type invalid_object_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% complete_multipart_upload_request() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"MultipartUpload">> => completed_multipart_upload(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"UploadId">> := string()
+%% }
+-type complete_multipart_upload_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_website_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"WebsiteConfiguration">> := website_configuration()
+%% }
+-type put_bucket_website_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_request() :: #{
+%%   <<"Days">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"GlacierJobParameters">> => glacier_job_parameters(),
+%%   <<"OutputLocation">> => output_location(),
+%%   <<"SelectParameters">> => select_parameters(),
+%%   <<"Tier">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type restore_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_configuration() :: #{
+%%   <<"Filter">> => list(),
+%%   <<"Id">> => string(),
+%%   <<"StorageClassAnalysis">> => storage_class_analysis()
+%% }
+-type analytics_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_replication_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_tagging_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"Tagging">> := tagging(),
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_replication_output() :: #{
+%%   <<"ReplicationConfiguration">> => replication_configuration()
+%% }
+-type get_bucket_replication_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_intelligent_tiering_configurations_request() :: #{
+%%   <<"ContinuationToken">> => string()
+%% }
+-type list_bucket_intelligent_tiering_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_notification_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_notification_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_cors_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_cors_request() :: #{binary() => any()}.
+
+%% Example:
+%% object_already_in_active_tier_error() :: #{}
+-type object_already_in_active_tier_error() :: #{}.
+
+
+%% Example:
+%% get_object_lock_configuration_output() :: #{
+%%   <<"ObjectLockConfiguration">> => object_lock_configuration()
+%% }
+-type get_object_lock_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_attributes_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"MaxParts">> => integer(),
+%%   <<"ObjectAttributes">> := list(list(any())()),
+%%   <<"PartNumberMarker">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"ID">> => string()
+%% }
+-type owner() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics_configuration() :: #{
+%%   <<"Filter">> => list(),
+%%   <<"Id">> => string()
+%% }
+-type metrics_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% accelerate_configuration() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type accelerate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_document() :: #{
+%%   <<"Key">> => string()
+%% }
+-type error_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_inventory_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"InventoryConfiguration">> := inventory_configuration()
+%% }
+-type put_bucket_inventory_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule_and_operator() :: #{
+%%   <<"ObjectSizeGreaterThan">> => float(),
+%%   <<"ObjectSizeLessThan">> => float(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type lifecycle_rule_and_operator() :: #{binary() => any()}.
+
+-type abort_multipart_upload_errors() ::
+    no_such_upload().
+
+-type copy_object_errors() ::
+    object_not_in_active_tier_error().
+
+-type create_bucket_errors() ::
+    bucket_already_exists() | 
+    bucket_already_owned_by_you().
+
+-type create_session_errors() ::
+    no_such_bucket().
+
+-type get_object_errors() ::
+    invalid_object_state() | 
+    no_such_key().
+
+-type get_object_acl_errors() ::
+    no_such_key().
+
+-type get_object_attributes_errors() ::
+    no_such_key().
+
+-type head_bucket_errors() ::
+    not_found().
+
+-type head_object_errors() ::
+    not_found().
+
+-type list_objects_errors() ::
+    no_such_bucket().
+
+-type list_objects_v2_errors() ::
+    no_such_bucket().
+
+-type put_object_acl_errors() ::
+    no_such_key().
+
+-type restore_object_errors() ::
+    object_already_in_active_tier_error().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -321,8 +3257,17 @@
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+-spec abort_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), abort_multipart_upload_request()) ->
+    {ok, abort_multipart_upload_output(), tuple()} |
+    {error, any()} |
+    {error, abort_multipart_upload_errors(), tuple()}.
 abort_multipart_upload(Client, Bucket, Key, Input) ->
     abort_multipart_upload(Client, Bucket, Key, Input, []).
+
+-spec abort_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), abort_multipart_upload_request(), proplists:proplist()) ->
+    {ok, abort_multipart_upload_output(), tuple()} |
+    {error, any()} |
+    {error, abort_multipart_upload_errors(), tuple()}.
 abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=AbortMultipartUpload"],
@@ -525,8 +3470,15 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+-spec complete_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), complete_multipart_upload_request()) ->
+    {ok, complete_multipart_upload_output(), tuple()} |
+    {error, any()}.
 complete_multipart_upload(Client, Bucket, Key, Input) ->
     complete_multipart_upload(Client, Bucket, Key, Input, []).
+
+-spec complete_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), complete_multipart_upload_request(), proplists:proplist()) ->
+    {ok, complete_multipart_upload_output(), tuple()} |
+    {error, any()}.
 complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=CompleteMultipartUpload"],
@@ -769,8 +3721,17 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
+-spec copy_object(aws_client:aws_client(), binary() | list(), binary() | list(), copy_object_request()) ->
+    {ok, copy_object_output(), tuple()} |
+    {error, any()} |
+    {error, copy_object_errors(), tuple()}.
 copy_object(Client, Bucket, Key, Input) ->
     copy_object(Client, Bucket, Key, Input, []).
+
+-spec copy_object(aws_client:aws_client(), binary() | list(), binary() | list(), copy_object_request(), proplists:proplist()) ->
+    {ok, copy_object_output(), tuple()} |
+    {error, any()} |
+    {error, copy_object_errors(), tuple()}.
 copy_object(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=CopyObject"],
@@ -1013,8 +3974,17 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
+-spec create_bucket(aws_client:aws_client(), binary() | list(), create_bucket_request()) ->
+    {ok, create_bucket_output(), tuple()} |
+    {error, any()} |
+    {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Bucket, Input) ->
     create_bucket(Client, Bucket, Input, []).
+
+-spec create_bucket(aws_client:aws_client(), binary() | list(), create_bucket_request(), proplists:proplist()) ->
+    {ok, create_bucket_output(), tuple()} |
+    {error, any()} |
+    {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), ""],
@@ -1308,8 +4278,15 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+-spec create_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), create_multipart_upload_request()) ->
+    {ok, create_multipart_upload_output(), tuple()} |
+    {error, any()}.
 create_multipart_upload(Client, Bucket, Key, Input) ->
     create_multipart_upload(Client, Bucket, Key, Input, []).
+
+-spec create_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), create_multipart_upload_request(), proplists:proplist()) ->
+    {ok, create_multipart_upload_output(), tuple()} |
+    {error, any()}.
 create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?uploads&x-id=CreateMultipartUpload"],
@@ -1493,14 +4470,26 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% Directory buckets - The HTTP Host header syntax is
 %% ```
 %% Bucket_name.s3express-az_id.region.amazonaws.com'''.
+-spec create_session(aws_client:aws_client(), binary() | list()) ->
+    {ok, create_session_output(), tuple()} |
+    {error, any()} |
+    {error, create_session_errors(), tuple()}.
 create_session(Client, Bucket)
   when is_map(Client) ->
     create_session(Client, Bucket, #{}, #{}).
 
+-spec create_session(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, create_session_output(), tuple()} |
+    {error, any()} |
+    {error, create_session_errors(), tuple()}.
 create_session(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     create_session(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec create_session(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, create_session_output(), tuple()} |
+    {error, any()} |
+    {error, create_session_errors(), tuple()}.
 create_session(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?session"],
@@ -1569,8 +4558,15 @@ create_session(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
+-spec delete_bucket(aws_client:aws_client(), binary() | list(), delete_bucket_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket(Client, Bucket, Input) ->
     delete_bucket(Client, Bucket, Input, []).
+
+-spec delete_bucket(aws_client:aws_client(), binary() | list(), delete_bucket_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), ""],
@@ -1631,8 +4627,15 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketAnalyticsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
+-spec delete_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_analytics_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_analytics_configuration(Client, Bucket, Input) ->
     delete_bucket_analytics_configuration(Client, Bucket, Input, []).
+
+-spec delete_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_analytics_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
@@ -1680,8 +4683,15 @@ delete_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% RESTOPTIONSobject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html
+-spec delete_bucket_cors(aws_client:aws_client(), binary() | list(), delete_bucket_cors_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_cors(Client, Bucket, Input) ->
     delete_bucket_cors(Client, Bucket, Input, []).
+
+-spec delete_bucket_cors(aws_client:aws_client(), binary() | list(), delete_bucket_cors_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_cors(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
@@ -1739,8 +4749,15 @@ delete_bucket_cors(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketEncryption:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html
+-spec delete_bucket_encryption(aws_client:aws_client(), binary() | list(), delete_bucket_encryption_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_encryption(Client, Bucket, Input) ->
     delete_bucket_encryption(Client, Bucket, Input, []).
+
+-spec delete_bucket_encryption(aws_client:aws_client(), binary() | list(), delete_bucket_encryption_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_encryption(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
@@ -1802,8 +4819,15 @@ delete_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %%
 %% ListBucketIntelligentTieringConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html
+-spec delete_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_intelligent_tiering_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
     delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input, []).
+
+-spec delete_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_intelligent_tiering_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
@@ -1861,8 +4885,15 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0
 %%
 %% ListBucketInventoryConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html
+-spec delete_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_inventory_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_inventory_configuration(Client, Bucket, Input) ->
     delete_bucket_inventory_configuration(Client, Bucket, Input, []).
+
+-spec delete_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_inventory_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
@@ -1920,8 +4951,15 @@ delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html
+-spec delete_bucket_lifecycle(aws_client:aws_client(), binary() | list(), delete_bucket_lifecycle_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_lifecycle(Client, Bucket, Input) ->
     delete_bucket_lifecycle(Client, Bucket, Input, []).
+
+-spec delete_bucket_lifecycle(aws_client:aws_client(), binary() | list(), delete_bucket_lifecycle_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
@@ -1986,8 +5024,15 @@ delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 %%
 %% Monitoring Metrics with Amazon CloudWatch:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html
+-spec delete_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_metrics_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_metrics_configuration(Client, Bucket, Input) ->
     delete_bucket_metrics_configuration(Client, Bucket, Input, []).
+
+-spec delete_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_metrics_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
@@ -2035,8 +5080,15 @@ delete_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
 %% `GetBucketOwnershipControls'
 %%
 %% `PutBucketOwnershipControls'
+-spec delete_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), delete_bucket_ownership_controls_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_ownership_controls(Client, Bucket, Input) ->
     delete_bucket_ownership_controls(Client, Bucket, Input, []).
+
+-spec delete_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), delete_bucket_ownership_controls_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
@@ -2139,8 +5191,15 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
+-spec delete_bucket_policy(aws_client:aws_client(), binary() | list(), delete_bucket_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_policy(Client, Bucket, Input) ->
     delete_bucket_policy(Client, Bucket, Input, []).
+
+-spec delete_bucket_policy(aws_client:aws_client(), binary() | list(), delete_bucket_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
@@ -2196,8 +5255,15 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html
+-spec delete_bucket_replication(aws_client:aws_client(), binary() | list(), delete_bucket_replication_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_replication(Client, Bucket, Input) ->
     delete_bucket_replication(Client, Bucket, Input, []).
+
+-spec delete_bucket_replication(aws_client:aws_client(), binary() | list(), delete_bucket_replication_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_replication(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
@@ -2239,8 +5305,15 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html
+-spec delete_bucket_tagging(aws_client:aws_client(), binary() | list(), delete_bucket_tagging_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_tagging(Client, Bucket, Input) ->
     delete_bucket_tagging(Client, Bucket, Input, []).
+
+-spec delete_bucket_tagging(aws_client:aws_client(), binary() | list(), delete_bucket_tagging_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
@@ -2300,8 +5373,15 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketWebsite:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html
+-spec delete_bucket_website(aws_client:aws_client(), binary() | list(), delete_bucket_website_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_website(Client, Bucket, Input) ->
     delete_bucket_website(Client, Bucket, Input, []).
+
+-spec delete_bucket_website(aws_client:aws_client(), binary() | list(), delete_bucket_website_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_bucket_website(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?website"],
@@ -2444,8 +5524,15 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %%
 %% PutObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
+-spec delete_object(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_request()) ->
+    {ok, delete_object_output(), tuple()} |
+    {error, any()}.
 delete_object(Client, Bucket, Key, Input) ->
     delete_object(Client, Bucket, Key, Input, []).
+
+-spec delete_object(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_request(), proplists:proplist()) ->
+    {ok, delete_object_output(), tuple()} |
+    {error, any()}.
 delete_object(Client, Bucket, Key, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=DeleteObject"],
@@ -2515,8 +5602,15 @@ delete_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% GetObjectTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html
+-spec delete_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_tagging_request()) ->
+    {ok, delete_object_tagging_output(), tuple()} |
+    {error, any()}.
 delete_object_tagging(Client, Bucket, Key, Input) ->
     delete_object_tagging(Client, Bucket, Key, Input, []).
+
+-spec delete_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_tagging_request(), proplists:proplist()) ->
+    {ok, delete_object_tagging_output(), tuple()} |
+    {error, any()}.
 delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
@@ -2690,8 +5784,15 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% AbortMultipartUpload:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
+-spec delete_objects(aws_client:aws_client(), binary() | list(), delete_objects_request()) ->
+    {ok, delete_objects_output(), tuple()} |
+    {error, any()}.
 delete_objects(Client, Bucket, Input) ->
     delete_objects(Client, Bucket, Input, []).
+
+-spec delete_objects(aws_client:aws_client(), binary() | list(), delete_objects_request(), proplists:proplist()) ->
+    {ok, delete_objects_output(), tuple()} |
+    {error, any()}.
 delete_objects(Client, Bucket, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "?delete&x-id=DeleteObjects"],
@@ -2765,8 +5866,15 @@ delete_objects(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketPolicyStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicyStatus.html
+-spec delete_public_access_block(aws_client:aws_client(), binary() | list(), delete_public_access_block_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_public_access_block(Client, Bucket, Input) ->
     delete_public_access_block(Client, Bucket, Input, []).
+
+-spec delete_public_access_block(aws_client:aws_client(), binary() | list(), delete_public_access_block_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_public_access_block(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
@@ -2840,14 +5948,23 @@ delete_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketAccelerateConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAccelerateConfiguration.html
+-spec get_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_accelerate_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_accelerate_configuration(Client, Bucket)
   when is_map(Client) ->
     get_bucket_accelerate_configuration(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_accelerate_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_accelerate_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?accelerate"],
@@ -2924,14 +6041,23 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Option
 %%
 %% ListObjects:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html
+-spec get_bucket_acl(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_acl_output(), tuple()} |
+    {error, any()}.
 get_bucket_acl(Client, Bucket)
   when is_map(Client) ->
     get_bucket_acl(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_acl(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_acl_output(), tuple()} |
+    {error, any()}.
 get_bucket_acl(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_acl(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_acl_output(), tuple()} |
+    {error, any()}.
 get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?acl"],
@@ -2991,14 +6117,23 @@ get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% PutBucketAnalyticsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
+-spec get_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bucket_analytics_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_analytics_configuration(Client, Bucket, Id)
   when is_map(Client) ->
     get_bucket_analytics_configuration(Client, Bucket, Id, #{}, #{}).
 
+-spec get_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_analytics_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
+-spec get_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_analytics_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics&x-id=GetBucketAnalyticsConfiguration"],
@@ -3058,14 +6193,23 @@ get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %%
 %% DeleteBucketCors:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketCors.html
+-spec get_bucket_cors(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_cors_output(), tuple()} |
+    {error, any()}.
 get_bucket_cors(Client, Bucket)
   when is_map(Client) ->
     get_bucket_cors(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_cors(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_cors_output(), tuple()} |
+    {error, any()}.
 get_bucket_cors(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_cors(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_cors_output(), tuple()} |
+    {error, any()}.
 get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
@@ -3119,14 +6263,23 @@ get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketEncryption:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html
+-spec get_bucket_encryption(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_encryption_output(), tuple()} |
+    {error, any()}.
 get_bucket_encryption(Client, Bucket)
   when is_map(Client) ->
     get_bucket_encryption(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_encryption(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_encryption_output(), tuple()} |
+    {error, any()}.
 get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_encryption(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_encryption_output(), tuple()} |
+    {error, any()}.
 get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
@@ -3183,14 +6336,23 @@ get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListBucketIntelligentTieringConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html
+-spec get_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bucket_intelligent_tiering_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_intelligent_tiering_configuration(Client, Bucket, Id)
   when is_map(Client) ->
     get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, #{}, #{}).
 
+-spec get_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_intelligent_tiering_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
+-spec get_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_intelligent_tiering_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering&x-id=GetBucketIntelligentTieringConfiguration"],
@@ -3245,14 +6407,23 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, Heade
 %%
 %% PutBucketInventoryConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html
+-spec get_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bucket_inventory_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_inventory_configuration(Client, Bucket, Id)
   when is_map(Client) ->
     get_bucket_inventory_configuration(Client, Bucket, Id, #{}, #{}).
 
+-spec get_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_inventory_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
+-spec get_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_inventory_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory&x-id=GetBucketInventoryConfiguration"],
@@ -3336,14 +6507,23 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %%
 %% DeleteBucketLifecycle:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_lifecycle_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket)
   when is_map(Client) ->
     get_bucket_lifecycle_configuration(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_lifecycle_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_lifecycle_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
@@ -3400,14 +6580,23 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options
 %%
 %% CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
+-spec get_bucket_location(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_location_output(), tuple()} |
+    {error, any()}.
 get_bucket_location(Client, Bucket)
   when is_map(Client) ->
     get_bucket_location(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_location(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_location_output(), tuple()} |
+    {error, any()}.
 get_bucket_location(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_location(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_location(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_location_output(), tuple()} |
+    {error, any()}.
 get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?location"],
@@ -3443,14 +6632,23 @@ get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% PutBucketLogging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLogging.html
+-spec get_bucket_logging(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_logging_output(), tuple()} |
+    {error, any()}.
 get_bucket_logging(Client, Bucket)
   when is_map(Client) ->
     get_bucket_logging(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_logging(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_logging_output(), tuple()} |
+    {error, any()}.
 get_bucket_logging(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_logging(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_logging_output(), tuple()} |
+    {error, any()}.
 get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?logging"],
@@ -3509,14 +6707,23 @@ get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% Monitoring Metrics with Amazon CloudWatch:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html
+-spec get_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bucket_metrics_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_metrics_configuration(Client, Bucket, Id)
   when is_map(Client) ->
     get_bucket_metrics_configuration(Client, Bucket, Id, #{}, #{}).
 
+-spec get_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_metrics_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
+-spec get_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_metrics_configuration_output(), tuple()} |
+    {error, any()}.
 get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics&x-id=GetBucketMetricsConfiguration"],
@@ -3582,14 +6789,23 @@ get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Optio
 %%
 %% PutBucketNotification:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotification.html
+-spec get_bucket_notification_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, notification_configuration(), tuple()} |
+    {error, any()}.
 get_bucket_notification_configuration(Client, Bucket)
   when is_map(Client) ->
     get_bucket_notification_configuration(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_notification_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, notification_configuration(), tuple()} |
+    {error, any()}.
 get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_notification_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, notification_configuration(), tuple()} |
+    {error, any()}.
 get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
@@ -3631,14 +6847,23 @@ get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Opti
 %% `PutBucketOwnershipControls'
 %%
 %% `DeleteBucketOwnershipControls'
+-spec get_bucket_ownership_controls(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_ownership_controls_output(), tuple()} |
+    {error, any()}.
 get_bucket_ownership_controls(Client, Bucket)
   when is_map(Client) ->
     get_bucket_ownership_controls(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_ownership_controls_output(), tuple()} |
+    {error, any()}.
 get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_ownership_controls_output(), tuple()} |
+    {error, any()}.
 get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
@@ -3745,14 +6970,23 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_policy_output(), tuple()} |
+    {error, any()}.
 get_bucket_policy(Client, Bucket)
   when is_map(Client) ->
     get_bucket_policy(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_policy_output(), tuple()} |
+    {error, any()}.
 get_bucket_policy(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_policy_output(), tuple()} |
+    {error, any()}.
 get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
@@ -3804,14 +7038,23 @@ get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeletePublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html
+-spec get_bucket_policy_status(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_policy_status_output(), tuple()} |
+    {error, any()}.
 get_bucket_policy_status(Client, Bucket)
   when is_map(Client) ->
     get_bucket_policy_status(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_policy_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_policy_status_output(), tuple()} |
+    {error, any()}.
 get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_policy_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_policy_status_output(), tuple()} |
+    {error, any()}.
 get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?policyStatus"],
@@ -3872,14 +7115,23 @@ get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_replication_output(), tuple()} |
+    {error, any()}.
 get_bucket_replication(Client, Bucket)
   when is_map(Client) ->
     get_bucket_replication(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_replication_output(), tuple()} |
+    {error, any()}.
 get_bucket_replication(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_replication_output(), tuple()} |
+    {error, any()}.
 get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
@@ -3915,14 +7167,23 @@ get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListObjects:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html
+-spec get_bucket_request_payment(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_request_payment_output(), tuple()} |
+    {error, any()}.
 get_bucket_request_payment(Client, Bucket)
   when is_map(Client) ->
     get_bucket_request_payment(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_request_payment(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_request_payment_output(), tuple()} |
+    {error, any()}.
 get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_request_payment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_request_payment_output(), tuple()} |
+    {error, any()}.
 get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?requestPayment"],
@@ -3966,14 +7227,23 @@ get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_tagging_output(), tuple()} |
+    {error, any()}.
 get_bucket_tagging(Client, Bucket)
   when is_map(Client) ->
     get_bucket_tagging(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_tagging_output(), tuple()} |
+    {error, any()}.
 get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_tagging_output(), tuple()} |
+    {error, any()}.
 get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
@@ -4019,14 +7289,23 @@ get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_versioning_output(), tuple()} |
+    {error, any()}.
 get_bucket_versioning(Client, Bucket)
   when is_map(Client) ->
     get_bucket_versioning(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_versioning_output(), tuple()} |
+    {error, any()}.
 get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_versioning_output(), tuple()} |
+    {error, any()}.
 get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?versioning"],
@@ -4073,14 +7352,23 @@ get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% PutBucketWebsite:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html
+-spec get_bucket_website(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_bucket_website_output(), tuple()} |
+    {error, any()}.
 get_bucket_website(Client, Bucket)
   when is_map(Client) ->
     get_bucket_website(Client, Bucket, #{}, #{}).
 
+-spec get_bucket_website(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_bucket_website_output(), tuple()} |
+    {error, any()}.
 get_bucket_website(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_website(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_bucket_website(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bucket_website_output(), tuple()} |
+    {error, any()}.
 get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?website"],
@@ -4279,14 +7567,26 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% GetObjectAcl:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html
+-spec get_object(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_object_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_errors(), tuple()}.
 get_object(Client, Bucket, Key)
   when is_map(Client) ->
     get_object(Client, Bucket, Key, #{}, #{}).
 
+-spec get_object(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_object_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_errors(), tuple()}.
 get_object(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
+-spec get_object(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_object_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_errors(), tuple()}.
 get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=GetObject"],
@@ -4420,14 +7720,26 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% PutObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
+-spec get_object_acl(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_object_acl_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_acl_errors(), tuple()}.
 get_object_acl(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_acl(Client, Bucket, Key, #{}, #{}).
 
+-spec get_object_acl(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_object_acl_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_acl_errors(), tuple()}.
 get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
+-spec get_object_acl(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_object_acl_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_acl_errors(), tuple()}.
 get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?acl"],
@@ -4646,14 +7958,26 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% ListParts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html
+-spec get_object_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_object_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_attributes_errors(), tuple()}.
 get_object_attributes(Client, Bucket, Key, ObjectAttributes)
   when is_map(Client) ->
     get_object_attributes(Client, Bucket, Key, ObjectAttributes, #{}, #{}).
 
+-spec get_object_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_object_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_attributes_errors(), tuple()}.
 get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMap, []).
 
+-spec get_object_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_object_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, get_object_attributes_errors(), tuple()}.
 get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?attributes"],
@@ -4718,14 +8042,23 @@ get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMa
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
+-spec get_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_object_legal_hold_output(), tuple()} |
+    {error, any()}.
 get_object_legal_hold(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_legal_hold(Client, Bucket, Key, #{}, #{}).
 
+-spec get_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_object_legal_hold_output(), tuple()} |
+    {error, any()}.
 get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
+-spec get_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_object_legal_hold_output(), tuple()} |
+    {error, any()}.
 get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?legal-hold"],
@@ -4766,14 +8099,23 @@ get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
+-spec get_object_lock_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_object_lock_configuration_output(), tuple()} |
+    {error, any()}.
 get_object_lock_configuration(Client, Bucket)
   when is_map(Client) ->
     get_object_lock_configuration(Client, Bucket, #{}, #{}).
 
+-spec get_object_lock_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_object_lock_configuration_output(), tuple()} |
+    {error, any()}.
 get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_object_lock_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_object_lock_configuration_output(), tuple()} |
+    {error, any()}.
 get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?object-lock"],
@@ -4808,14 +8150,23 @@ get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
+-spec get_object_retention(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_object_retention_output(), tuple()} |
+    {error, any()}.
 get_object_retention(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_retention(Client, Bucket, Key, #{}, #{}).
 
+-spec get_object_retention(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_object_retention_output(), tuple()} |
+    {error, any()}.
 get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
+-spec get_object_retention(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_object_retention_output(), tuple()} |
+    {error, any()}.
 get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?retention"],
@@ -4878,14 +8229,23 @@ get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% PutObjectTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html
+-spec get_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_object_tagging_output(), tuple()} |
+    {error, any()}.
 get_object_tagging(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_tagging(Client, Bucket, Key, #{}, #{}).
 
+-spec get_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_object_tagging_output(), tuple()} |
+    {error, any()}.
 get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
+-spec get_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_object_tagging_output(), tuple()} |
+    {error, any()}.
 get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
@@ -4949,14 +8309,23 @@ get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
+-spec get_object_torrent(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_object_torrent_output(), tuple()} |
+    {error, any()}.
 get_object_torrent(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_torrent(Client, Bucket, Key, #{}, #{}).
 
+-spec get_object_torrent(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_object_torrent_output(), tuple()} |
+    {error, any()}.
 get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
+-spec get_object_torrent(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_object_torrent_output(), tuple()} |
+    {error, any()}.
 get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?torrent"],
@@ -5036,14 +8405,23 @@ get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% DeletePublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html
+-spec get_public_access_block(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_public_access_block_output(), tuple()} |
+    {error, any()}.
 get_public_access_block(Client, Bucket)
   when is_map(Client) ->
     get_public_access_block(Client, Bucket, #{}, #{}).
 
+-spec get_public_access_block(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_public_access_block_output(), tuple()} |
+    {error, any()}.
 get_public_access_block(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_access_block(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec get_public_access_block(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_public_access_block_output(), tuple()} |
+    {error, any()}.
 get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
@@ -5141,8 +8519,17 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% Directory buckets - The HTTP Host header syntax is
 %% ```
 %% Bucket_name.s3express-az_id.region.amazonaws.com'''.
+-spec head_bucket(aws_client:aws_client(), binary() | list(), head_bucket_request()) ->
+    {ok, head_bucket_output(), tuple()} |
+    {error, any()} |
+    {error, head_bucket_errors(), tuple()}.
 head_bucket(Client, Bucket, Input) ->
     head_bucket(Client, Bucket, Input, []).
+
+-spec head_bucket(aws_client:aws_client(), binary() | list(), head_bucket_request(), proplists:proplist()) ->
+    {ok, head_bucket_output(), tuple()} |
+    {error, any()} |
+    {error, head_bucket_errors(), tuple()}.
 head_bucket(Client, Bucket, Input0, Options0) ->
     Method = head,
     Path = ["/", aws_util:encode_uri(Bucket), ""],
@@ -5333,8 +8720,17 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
+-spec head_object(aws_client:aws_client(), binary() | list(), binary() | list(), head_object_request()) ->
+    {ok, head_object_output(), tuple()} |
+    {error, any()} |
+    {error, head_object_errors(), tuple()}.
 head_object(Client, Bucket, Key, Input) ->
     head_object(Client, Bucket, Key, Input, []).
+
+-spec head_object(aws_client:aws_client(), binary() | list(), binary() | list(), head_object_request(), proplists:proplist()) ->
+    {ok, head_object_output(), tuple()} |
+    {error, any()} |
+    {error, head_object_errors(), tuple()}.
 head_object(Client, Bucket, Key, Input0, Options0) ->
     Method = head,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
@@ -5471,14 +8867,23 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% PutBucketAnalyticsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
+-spec list_bucket_analytics_configurations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_bucket_analytics_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_analytics_configurations(Client, Bucket)
   when is_map(Client) ->
     list_bucket_analytics_configurations(Client, Bucket, #{}, #{}).
 
+-spec list_bucket_analytics_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_bucket_analytics_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec list_bucket_analytics_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_bucket_analytics_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics&x-id=ListBucketAnalyticsConfigurations"],
@@ -5539,14 +8944,23 @@ list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
 %%
 %% GetBucketIntelligentTieringConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketIntelligentTieringConfiguration.html
+-spec list_bucket_intelligent_tiering_configurations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_bucket_intelligent_tiering_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_intelligent_tiering_configurations(Client, Bucket)
   when is_map(Client) ->
     list_bucket_intelligent_tiering_configurations(Client, Bucket, #{}, #{}).
 
+-spec list_bucket_intelligent_tiering_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_bucket_intelligent_tiering_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec list_bucket_intelligent_tiering_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_bucket_intelligent_tiering_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering&x-id=ListBucketIntelligentTieringConfigurations"],
@@ -5615,14 +9029,23 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
 %%
 %% PutBucketInventoryConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html
+-spec list_bucket_inventory_configurations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_bucket_inventory_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_inventory_configurations(Client, Bucket)
   when is_map(Client) ->
     list_bucket_inventory_configurations(Client, Bucket, #{}, #{}).
 
+-spec list_bucket_inventory_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_bucket_inventory_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec list_bucket_inventory_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_bucket_inventory_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory&x-id=ListBucketInventoryConfigurations"],
@@ -5696,14 +9119,23 @@ list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
 %%
 %% DeleteBucketMetricsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html
+-spec list_bucket_metrics_configurations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_bucket_metrics_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_metrics_configurations(Client, Bucket)
   when is_map(Client) ->
     list_bucket_metrics_configurations(Client, Bucket, #{}, #{}).
 
+-spec list_bucket_metrics_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_bucket_metrics_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec list_bucket_metrics_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_bucket_metrics_configurations_output(), tuple()} |
+    {error, any()}.
 list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics&x-id=ListBucketMetricsConfigurations"],
@@ -5739,14 +9171,23 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
 %% For information about Amazon S3 buckets, see Creating, configuring, and
 %% working with Amazon S3 buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html.
+-spec list_buckets(aws_client:aws_client()) ->
+    {ok, list_buckets_output(), tuple()} |
+    {error, any()}.
 list_buckets(Client)
   when is_map(Client) ->
     list_buckets(Client, #{}, #{}).
 
+-spec list_buckets(aws_client:aws_client(), map(), map()) ->
+    {ok, list_buckets_output(), tuple()} |
+    {error, any()}.
 list_buckets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_buckets(Client, QueryMap, HeadersMap, []).
 
+-spec list_buckets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_buckets_output(), tuple()} |
+    {error, any()}.
 list_buckets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/?x-id=ListBuckets"],
@@ -5798,14 +9239,23 @@ list_buckets(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Directory buckets - The HTTP Host header syntax is
 %% `s3express-control.region.amazonaws.com'.
+-spec list_directory_buckets(aws_client:aws_client()) ->
+    {ok, list_directory_buckets_output(), tuple()} |
+    {error, any()}.
 list_directory_buckets(Client)
   when is_map(Client) ->
     list_directory_buckets(Client, #{}, #{}).
 
+-spec list_directory_buckets(aws_client:aws_client(), map(), map()) ->
+    {ok, list_directory_buckets_output(), tuple()} |
+    {error, any()}.
 list_directory_buckets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_directory_buckets(Client, QueryMap, HeadersMap, []).
 
+-spec list_directory_buckets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_directory_buckets_output(), tuple()} |
+    {error, any()}.
 list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/?x-id=ListDirectoryBuckets"],
@@ -5950,14 +9400,23 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
 %%
 %% AbortMultipartUpload:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
+-spec list_multipart_uploads(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_multipart_uploads_output(), tuple()} |
+    {error, any()}.
 list_multipart_uploads(Client, Bucket)
   when is_map(Client) ->
     list_multipart_uploads(Client, Bucket, #{}, #{}).
 
+-spec list_multipart_uploads(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_multipart_uploads_output(), tuple()} |
+    {error, any()}.
 list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec list_multipart_uploads(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_multipart_uploads_output(), tuple()} |
+    {error, any()}.
 list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?uploads"],
@@ -6037,14 +9496,23 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
+-spec list_object_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_object_versions_output(), tuple()} |
+    {error, any()}.
 list_object_versions(Client, Bucket)
   when is_map(Client) ->
     list_object_versions(Client, Bucket, #{}, #{}).
 
+-spec list_object_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_object_versions_output(), tuple()} |
+    {error, any()}.
 list_object_versions(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_object_versions(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec list_object_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_object_versions_output(), tuple()} |
+    {error, any()}.
 list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?versions"],
@@ -6126,14 +9594,26 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListBuckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html
+-spec list_objects(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_objects_output(), tuple()} |
+    {error, any()} |
+    {error, list_objects_errors(), tuple()}.
 list_objects(Client, Bucket)
   when is_map(Client) ->
     list_objects(Client, Bucket, #{}, #{}).
 
+-spec list_objects(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_objects_output(), tuple()} |
+    {error, any()} |
+    {error, list_objects_errors(), tuple()}.
 list_objects(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_objects(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec list_objects(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_objects_output(), tuple()} |
+    {error, any()} |
+    {error, list_objects_errors(), tuple()}.
 list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), ""],
@@ -6273,14 +9753,26 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
+-spec list_objects_v2(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_objects_v2_output(), tuple()} |
+    {error, any()} |
+    {error, list_objects_v2_errors(), tuple()}.
 list_objects_v2(Client, Bucket)
   when is_map(Client) ->
     list_objects_v2(Client, Bucket, #{}, #{}).
 
+-spec list_objects_v2(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_objects_v2_output(), tuple()} |
+    {error, any()} |
+    {error, list_objects_v2_errors(), tuple()}.
 list_objects_v2(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_objects_v2(Client, Bucket, QueryMap, HeadersMap, []).
 
+-spec list_objects_v2(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_objects_v2_output(), tuple()} |
+    {error, any()} |
+    {error, list_objects_v2_errors(), tuple()}.
 list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?list-type=2"],
@@ -6427,14 +9919,23 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+-spec list_parts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_parts_output(), tuple()} |
+    {error, any()}.
 list_parts(Client, Bucket, Key, UploadId)
   when is_map(Client) ->
     list_parts(Client, Bucket, Key, UploadId, #{}, #{}).
 
+-spec list_parts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_parts_output(), tuple()} |
+    {error, any()}.
 list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, []).
 
+-spec list_parts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_parts_output(), tuple()} |
+    {error, any()}.
 list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=ListParts"],
@@ -6537,8 +10038,15 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
 %%
 %% CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
+-spec put_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list(), put_bucket_accelerate_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_accelerate_configuration(Client, Bucket, Input) ->
     put_bucket_accelerate_configuration(Client, Bucket, Input, []).
+
+-spec put_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list(), put_bucket_accelerate_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?accelerate"],
@@ -6743,8 +10251,15 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetObjectAcl:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html
+-spec put_bucket_acl(aws_client:aws_client(), binary() | list(), put_bucket_acl_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_acl(Client, Bucket, Input) ->
     put_bucket_acl(Client, Bucket, Input, []).
+
+-spec put_bucket_acl(aws_client:aws_client(), binary() | list(), put_bucket_acl_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_acl(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?acl"],
@@ -6856,8 +10371,15 @@ put_bucket_acl(Client, Bucket, Input0, Options0) ->
 %%
 %% ListBucketAnalyticsConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html
+-spec put_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), put_bucket_analytics_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_analytics_configuration(Client, Bucket, Input) ->
     put_bucket_analytics_configuration(Client, Bucket, Input, []).
+
+-spec put_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), put_bucket_analytics_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
@@ -6943,8 +10465,15 @@ put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% RESTOPTIONSobject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html
+-spec put_bucket_cors(aws_client:aws_client(), binary() | list(), put_bucket_cors_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_cors(Client, Bucket, Input) ->
     put_bucket_cors(Client, Bucket, Input, []).
+
+-spec put_bucket_cors(aws_client:aws_client(), binary() | list(), put_bucket_cors_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_cors(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
@@ -7020,8 +10549,15 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketEncryption:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html
+-spec put_bucket_encryption(aws_client:aws_client(), binary() | list(), put_bucket_encryption_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_encryption(Client, Bucket, Input) ->
     put_bucket_encryption(Client, Bucket, Input, []).
+
+-spec put_bucket_encryption(aws_client:aws_client(), binary() | list(), put_bucket_encryption_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_encryption(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
@@ -7114,8 +10650,15 @@ put_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %% Cause: You are not the owner of the specified bucket, or
 %% you do not have the `s3:PutIntelligentTieringConfiguration' bucket
 %% permission to set the configuration on the bucket.
+-spec put_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), put_bucket_intelligent_tiering_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
     put_bucket_intelligent_tiering_configuration(Client, Bucket, Input, []).
+
+-spec put_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), put_bucket_intelligent_tiering_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
@@ -7241,8 +10784,15 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 %%
 %% ListBucketInventoryConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html
+-spec put_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), put_bucket_inventory_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_inventory_configuration(Client, Bucket, Input) ->
     put_bucket_inventory_configuration(Client, Bucket, Input, []).
+
+-spec put_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), put_bucket_inventory_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
@@ -7366,8 +10916,15 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketLifecycle:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html
+-spec put_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_bucket_lifecycle_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     put_bucket_lifecycle_configuration(Client, Bucket, Input, []).
+
+-spec put_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_bucket_lifecycle_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
@@ -7481,8 +11038,15 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLogging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLogging.html
+-spec put_bucket_logging(aws_client:aws_client(), binary() | list(), put_bucket_logging_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_logging(Client, Bucket, Input) ->
     put_bucket_logging(Client, Bucket, Input, []).
+
+-spec put_bucket_logging(aws_client:aws_client(), binary() | list(), put_bucket_logging_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_logging(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?logging"],
@@ -7558,8 +11122,15 @@ put_bucket_logging(Client, Bucket, Input0, Options0) ->
 %% already reached the 1,000-configuration limit.
 %%
 %% HTTP Status Code: HTTP 400 Bad Request
+-spec put_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), put_bucket_metrics_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_metrics_configuration(Client, Bucket, Input) ->
     put_bucket_metrics_configuration(Client, Bucket, Input, []).
+
+-spec put_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), put_bucket_metrics_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
@@ -7668,8 +11239,15 @@ put_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketNotificationConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html
+-spec put_bucket_notification_configuration(aws_client:aws_client(), binary() | list(), put_bucket_notification_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_notification_configuration(Client, Bucket, Input) ->
     put_bucket_notification_configuration(Client, Bucket, Input, []).
+
+-spec put_bucket_notification_configuration(aws_client:aws_client(), binary() | list(), put_bucket_notification_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
@@ -7717,8 +11295,15 @@ put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
 %% `GetBucketOwnershipControls'
 %%
 %% `DeleteBucketOwnershipControls'
+-spec put_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), put_bucket_ownership_controls_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_ownership_controls(Client, Bucket, Input) ->
     put_bucket_ownership_controls(Client, Bucket, Input, []).
+
+-spec put_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), put_bucket_ownership_controls_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
@@ -7833,8 +11418,15 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
+-spec put_bucket_policy(aws_client:aws_client(), binary() | list(), put_bucket_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_policy(Client, Bucket, Input) ->
     put_bucket_policy(Client, Bucket, Input, []).
+
+-spec put_bucket_policy(aws_client:aws_client(), binary() | list(), put_bucket_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
@@ -7963,8 +11555,15 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html
+-spec put_bucket_replication(aws_client:aws_client(), binary() | list(), put_bucket_replication_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_replication(Client, Bucket, Input) ->
     put_bucket_replication(Client, Bucket, Input, []).
+
+-spec put_bucket_replication(aws_client:aws_client(), binary() | list(), put_bucket_replication_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_replication(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
@@ -8013,8 +11612,15 @@ put_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketRequestPayment:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketRequestPayment.html
+-spec put_bucket_request_payment(aws_client:aws_client(), binary() | list(), put_bucket_request_payment_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_request_payment(Client, Bucket, Input) ->
     put_bucket_request_payment(Client, Bucket, Input, []).
+
+-spec put_bucket_request_payment(aws_client:aws_client(), binary() | list(), put_bucket_request_payment_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?requestPayment"],
@@ -8108,8 +11714,15 @@ put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html
+-spec put_bucket_tagging(aws_client:aws_client(), binary() | list(), put_bucket_tagging_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_tagging(Client, Bucket, Input) ->
     put_bucket_tagging(Client, Bucket, Input, []).
+
+-spec put_bucket_tagging(aws_client:aws_client(), binary() | list(), put_bucket_tagging_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
@@ -8189,8 +11802,15 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketVersioning:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html
+-spec put_bucket_versioning(aws_client:aws_client(), binary() | list(), put_bucket_versioning_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_versioning(Client, Bucket, Input) ->
     put_bucket_versioning(Client, Bucket, Input, []).
+
+-spec put_bucket_versioning(aws_client:aws_client(), binary() | list(), put_bucket_versioning_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_versioning(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?versioning"],
@@ -8302,8 +11922,15 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %% in the Amazon S3 User Guide.
 %%
 %% The maximum request length is limited to 128 KB.
+-spec put_bucket_website(aws_client:aws_client(), binary() | list(), put_bucket_website_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_website(Client, Bucket, Input) ->
     put_bucket_website(Client, Bucket, Input, []).
+
+-spec put_bucket_website(aws_client:aws_client(), binary() | list(), put_bucket_website_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_bucket_website(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?website"],
@@ -8454,8 +12081,15 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
+-spec put_object(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_request()) ->
+    {ok, put_object_output(), tuple()} |
+    {error, any()}.
 put_object(Client, Bucket, Key, Input) ->
     put_object(Client, Bucket, Key, Input, []).
+
+-spec put_object(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_request(), proplists:proplist()) ->
+    {ok, put_object_output(), tuple()} |
+    {error, any()}.
 put_object(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=PutObject"],
@@ -8720,8 +12354,17 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
+-spec put_object_acl(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_acl_request()) ->
+    {ok, put_object_acl_output(), tuple()} |
+    {error, any()} |
+    {error, put_object_acl_errors(), tuple()}.
 put_object_acl(Client, Bucket, Key, Input) ->
     put_object_acl(Client, Bucket, Key, Input, []).
+
+-spec put_object_acl(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_acl_request(), proplists:proplist()) ->
+    {ok, put_object_acl_output(), tuple()} |
+    {error, any()} |
+    {error, put_object_acl_errors(), tuple()}.
 put_object_acl(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?acl"],
@@ -8782,8 +12425,15 @@ put_object_acl(Client, Bucket, Key, Input0, Options0) ->
 %% Objects: https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html.
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
+-spec put_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_legal_hold_request()) ->
+    {ok, put_object_legal_hold_output(), tuple()} |
+    {error, any()}.
 put_object_legal_hold(Client, Bucket, Key, Input) ->
     put_object_legal_hold(Client, Bucket, Key, Input, []).
+
+-spec put_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_legal_hold_request(), proplists:proplist()) ->
+    {ok, put_object_legal_hold_output(), tuple()} |
+    {error, any()}.
 put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?legal-hold"],
@@ -8850,8 +12500,15 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
 %% information, see Configuring Object
 %% Lock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-configure.html.
+-spec put_object_lock_configuration(aws_client:aws_client(), binary() | list(), put_object_lock_configuration_request()) ->
+    {ok, put_object_lock_configuration_output(), tuple()} |
+    {error, any()}.
 put_object_lock_configuration(Client, Bucket, Input) ->
     put_object_lock_configuration(Client, Bucket, Input, []).
+
+-spec put_object_lock_configuration(aws_client:aws_client(), binary() | list(), put_object_lock_configuration_request(), proplists:proplist()) ->
+    {ok, put_object_lock_configuration_output(), tuple()} |
+    {error, any()}.
 put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?object-lock"],
@@ -8910,8 +12567,15 @@ put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
 %% configuration requires the `s3:BypassGovernanceRetention' permission.
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
+-spec put_object_retention(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_retention_request()) ->
+    {ok, put_object_retention_output(), tuple()} |
+    {error, any()}.
 put_object_retention(Client, Bucket, Key, Input) ->
     put_object_retention(Client, Bucket, Key, Input, []).
+
+-spec put_object_retention(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_retention_request(), proplists:proplist()) ->
+    {ok, put_object_retention_output(), tuple()} |
+    {error, any()}.
 put_object_retention(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?retention"],
@@ -9016,8 +12680,15 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% DeleteObjectTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectTagging.html
+-spec put_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_tagging_request()) ->
+    {ok, put_object_tagging_output(), tuple()} |
+    {error, any()}.
 put_object_tagging(Client, Bucket, Key, Input) ->
     put_object_tagging(Client, Bucket, Key, Input, []).
+
+-spec put_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_tagging_request(), proplists:proplist()) ->
+    {ok, put_object_tagging_output(), tuple()} |
+    {error, any()}.
 put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
@@ -9105,8 +12776,15 @@ put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% Using Amazon S3 Block
 %% Public Access:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html
+-spec put_public_access_block(aws_client:aws_client(), binary() | list(), put_public_access_block_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_public_access_block(Client, Bucket, Input) ->
     put_public_access_block(Client, Bucket, Input, []).
+
+-spec put_public_access_block(aws_client:aws_client(), binary() | list(), put_public_access_block_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 put_public_access_block(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
@@ -9336,8 +13014,17 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketNotificationConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html
+-spec restore_object(aws_client:aws_client(), binary() | list(), binary() | list(), restore_object_request()) ->
+    {ok, restore_object_output(), tuple()} |
+    {error, any()} |
+    {error, restore_object_errors(), tuple()}.
 restore_object(Client, Bucket, Key, Input) ->
     restore_object(Client, Bucket, Key, Input, []).
+
+-spec restore_object(aws_client:aws_client(), binary() | list(), binary() | list(), restore_object_request(), proplists:proplist()) ->
+    {ok, restore_object_output(), tuple()} |
+    {error, any()} |
+    {error, restore_object_errors(), tuple()}.
 restore_object(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?restore&x-id=RestoreObject"],
@@ -9515,8 +13202,15 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% PutBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html
+-spec select_object_content(aws_client:aws_client(), binary() | list(), binary() | list(), select_object_content_request()) ->
+    {ok, select_object_content_output(), tuple()} |
+    {error, any()}.
 select_object_content(Client, Bucket, Key, Input) ->
     select_object_content(Client, Bucket, Key, Input, []).
+
+-spec select_object_content(aws_client:aws_client(), binary() | list(), binary() | list(), select_object_content_request(), proplists:proplist()) ->
+    {ok, select_object_content_output(), tuple()} |
+    {error, any()}.
 select_object_content(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?select&select-type=2&x-id=SelectObjectContent"],
@@ -9729,8 +13423,15 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+-spec upload_part(aws_client:aws_client(), binary() | list(), binary() | list(), upload_part_request()) ->
+    {ok, upload_part_output(), tuple()} |
+    {error, any()}.
 upload_part(Client, Bucket, Key, Input) ->
     upload_part(Client, Bucket, Key, Input, []).
+
+-spec upload_part(aws_client:aws_client(), binary() | list(), binary() | list(), upload_part_request(), proplists:proplist()) ->
+    {ok, upload_part_output(), tuple()} |
+    {error, any()}.
 upload_part(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=UploadPart"],
@@ -9972,8 +13673,15 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+-spec upload_part_copy(aws_client:aws_client(), binary() | list(), binary() | list(), upload_part_copy_request()) ->
+    {ok, upload_part_copy_output(), tuple()} |
+    {error, any()}.
 upload_part_copy(Client, Bucket, Key, Input) ->
     upload_part_copy(Client, Bucket, Key, Input, []).
+
+-spec upload_part_copy(aws_client:aws_client(), binary() | list(), binary() | list(), upload_part_copy_request(), proplists:proplist()) ->
+    {ok, upload_part_copy_output(), tuple()} |
+    {error, any()}.
 upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=UploadPartCopy"],
@@ -10109,8 +13817,15 @@ upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
 %% functions:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/olap-examples.html
 %% in the Amazon S3 User Guide.
+-spec write_get_object_response(aws_client:aws_client(), write_get_object_response_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 write_get_object_response(Client, Input) ->
     write_get_object_response(Client, Input, []).
+
+-spec write_get_object_response(aws_client:aws_client(), write_get_object_response_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 write_get_object_response(Client, Input0, Options0) ->
     Method = post,
     Path = ["/WriteGetObjectResponse?x-id=WriteGetObjectResponse"],
@@ -10177,7 +13892,7 @@ write_get_object_response(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -78,6 +78,1477 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% ecs_properties_override() :: #{
+%%   <<"taskProperties">> => list(task_properties_override()())
+%% }
+-type ecs_properties_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_compute_environments_response() :: #{
+%%   <<"computeEnvironments">> => list(compute_environment_detail()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_compute_environments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scheduling_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_scheduling_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_job_request() :: #{
+%%   <<"jobId">> := string(),
+%%   <<"reason">> := string()
+%% }
+-type cancel_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_metadata() :: #{
+%%   <<"labels">> => map()
+%% }
+-type eks_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_properties_override() :: #{
+%%   <<"containers">> => list(task_container_overrides()())
+%% }
+-type task_properties_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% deregister_job_definition_request() :: #{
+%%   <<"jobDefinition">> := string()
+%% }
+-type deregister_job_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% fargate_platform_configuration() :: #{
+%%   <<"platformVersion">> => string()
+%% }
+-type fargate_platform_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_definitions_response() :: #{
+%%   <<"jobDefinitions">> => list(job_definition()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_job_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_properties() :: #{
+%%   <<"command">> => list(string()()),
+%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"fargatePlatformConfiguration">> => fargate_platform_configuration(),
+%%   <<"image">> => string(),
+%%   <<"instanceType">> => string(),
+%%   <<"jobRoleArn">> => string(),
+%%   <<"linuxParameters">> => linux_parameters(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"memory">> => integer(),
+%%   <<"mountPoints">> => list(mount_point()()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"privileged">> => boolean(),
+%%   <<"readonlyRootFilesystem">> => boolean(),
+%%   <<"repositoryCredentials">> => repository_credentials(),
+%%   <<"resourceRequirements">> => list(resource_requirement()()),
+%%   <<"runtimePlatform">> => runtime_platform(),
+%%   <<"secrets">> => list(secret()()),
+%%   <<"ulimits">> => list(ulimit()()),
+%%   <<"user">> => string(),
+%%   <<"vcpus">> => integer(),
+%%   <<"volumes">> => list(volume()())
+%% }
+-type container_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_host_path() :: #{
+%%   <<"path">> => string()
+%% }
+-type eks_host_path() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_compute_environment_response() :: #{
+%%   <<"computeEnvironmentArn">> => string(),
+%%   <<"computeEnvironmentName">> => string()
+%% }
+-type create_compute_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container_environment_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type eks_container_environment_variable() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_compute_environment_request() :: #{
+%%   <<"computeEnvironment">> := string(),
+%%   <<"computeResources">> => compute_resource_update(),
+%%   <<"serviceRole">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"unmanagedvCpus">> => integer(),
+%%   <<"updatePolicy">> => update_policy()
+%% }
+-type update_compute_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_timeout() :: #{
+%%   <<"attemptDurationSeconds">> => integer()
+%% }
+-type job_timeout() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduling_policy_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"fairsharePolicy">> => fairshare_policy(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type scheduling_policy_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"arrayJobId">> => string(),
+%%   <<"filters">> => list(key_values_pair()()),
+%%   <<"jobQueue">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"multiNodeJobId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_scheduling_policy_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_scheduling_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_pull_secret() :: #{
+%%   <<"name">> => string()
+%% }
+-type image_pull_secret() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_configuration() :: #{
+%%   <<"imageIdOverride">> => string(),
+%%   <<"imageKubernetesVersion">> => string(),
+%%   <<"imageType">> => string()
+%% }
+-type ec2_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_job_definition_response() :: #{}
+-type deregister_job_definition_response() :: #{}.
+
+
+%% Example:
+%% create_scheduling_policy_request() :: #{
+%%   <<"fairsharePolicy">> => fairshare_policy(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_scheduling_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_property_override() :: #{
+%%   <<"containerOverrides">> => container_overrides(),
+%%   <<"ecsPropertiesOverride">> => ecs_properties_override(),
+%%   <<"instanceTypes">> => list(string()()),
+%%   <<"targetNodes">> => string()
+%% }
+-type node_property_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"ipv6Address">> => string(),
+%%   <<"privateIpv4Address">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container_override() :: #{
+%%   <<"args">> => list(string()()),
+%%   <<"command">> => list(string()()),
+%%   <<"env">> => list(eks_container_environment_variable()()),
+%%   <<"image">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resources">> => eks_container_resource_requirements()
+%% }
+-type eks_container_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_response() :: #{
+%%   <<"jobSummaryList">> => list(job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_scheduling_policies_response() :: #{
+%%   <<"schedulingPolicies">> => list(scheduling_policy_detail()())
+%% }
+-type describe_scheduling_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_policy() :: #{
+%%   <<"jobExecutionTimeoutMinutes">> => float(),
+%%   <<"terminateJobsOnUpdate">> => boolean()
+%% }
+-type update_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_queue_detail() :: #{
+%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()()),
+%%   <<"jobQueueArn">> => string(),
+%%   <<"jobQueueName">> => string(),
+%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()()),
+%%   <<"priority">> => integer(),
+%%   <<"schedulingPolicyArn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type job_queue_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_queue_response() :: #{}
+-type delete_job_queue_response() :: #{}.
+
+
+%% Example:
+%% ecs_properties() :: #{
+%%   <<"taskProperties">> => list(ecs_task_properties()())
+%% }
+-type ecs_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_job_definition_response() :: #{
+%%   <<"jobDefinitionArn">> => string(),
+%%   <<"jobDefinitionName">> => string(),
+%%   <<"revision">> => integer()
+%% }
+-type register_job_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_definitions_request() :: #{
+%%   <<"jobDefinitionName">> => string(),
+%%   <<"jobDefinitions">> => list(string()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type describe_job_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_compute_environment_request() :: #{
+%%   <<"computeEnvironmentName">> := string(),
+%%   <<"computeResources">> => compute_resource(),
+%%   <<"eksConfiguration">> => eks_configuration(),
+%%   <<"serviceRole">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any()),
+%%   <<"unmanagedvCpus">> => integer()
+%% }
+-type create_compute_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% mount_point() :: #{
+%%   <<"containerPath">> => string(),
+%%   <<"readOnly">> => boolean(),
+%%   <<"sourceVolume">> => string()
+%% }
+-type mount_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_container_overrides() :: #{
+%%   <<"command">> => list(string()()),
+%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"name">> => string(),
+%%   <<"resourceRequirements">> => list(resource_requirement()())
+%% }
+-type task_container_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container_detail() :: #{
+%%   <<"args">> => list(string()()),
+%%   <<"command">> => list(string()()),
+%%   <<"env">> => list(eks_container_environment_variable()()),
+%%   <<"exitCode">> => integer(),
+%%   <<"image">> => string(),
+%%   <<"imagePullPolicy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"resources">> => eks_container_resource_requirements(),
+%%   <<"securityContext">> => eks_container_security_context(),
+%%   <<"volumeMounts">> => list(eks_container_volume_mount()())
+%% }
+-type eks_container_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_properties_override() :: #{
+%%   <<"podProperties">> => eks_pod_properties_override()
+%% }
+-type eks_properties_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_scheduling_policy_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string()
+%% }
+-type create_scheduling_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_summary() :: #{
+%%   <<"arrayProperties">> => array_properties_summary(),
+%%   <<"container">> => container_summary(),
+%%   <<"createdAt">> => float(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobDefinition">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"nodeProperties">> => node_properties_summary(),
+%%   <<"startedAt">> => float(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float()
+%% }
+-type job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scheduling_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"schedulingPolicies">> => list(scheduling_policy_listing_detail()())
+%% }
+-type list_scheduling_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_compute_environment_request() :: #{
+%%   <<"computeEnvironment">> := string()
+%% }
+-type delete_compute_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_task_properties() :: #{
+%%   <<"containers">> => list(task_container_properties()()),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"ipcMode">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"pidMode">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"runtimePlatform">> => runtime_platform(),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(volume()())
+%% }
+-type ecs_task_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_container_details() :: #{
+%%   <<"command">> => list(string()()),
+%%   <<"dependsOn">> => list(task_container_dependency()()),
+%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"essential">> => boolean(),
+%%   <<"exitCode">> => integer(),
+%%   <<"image">> => string(),
+%%   <<"linuxParameters">> => linux_parameters(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"logStreamName">> => string(),
+%%   <<"mountPoints">> => list(mount_point()()),
+%%   <<"name">> => string(),
+%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"privileged">> => boolean(),
+%%   <<"readonlyRootFilesystem">> => boolean(),
+%%   <<"reason">> => string(),
+%%   <<"repositoryCredentials">> => repository_credentials(),
+%%   <<"resourceRequirements">> => list(resource_requirement()()),
+%%   <<"secrets">> => list(secret()()),
+%%   <<"ulimits">> => list(ulimit()()),
+%%   <<"user">> => string()
+%% }
+-type task_container_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_queue_response() :: #{
+%%   <<"jobQueueArn">> => string(),
+%%   <<"jobQueueName">> => string()
+%% }
+-type create_job_queue_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ulimit() :: #{
+%%   <<"hardLimit">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"softLimit">> => integer()
+%% }
+-type ulimit() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_on_exit() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"onExitCode">> => string(),
+%%   <<"onReason">> => string(),
+%%   <<"onStatusReason">> => string()
+%% }
+-type evaluate_on_exit() :: #{binary() => any()}.
+
+
+%% Example:
+%% attempt_detail() :: #{
+%%   <<"container">> => attempt_container_detail(),
+%%   <<"startedAt">> => float(),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float()
+%% }
+-type attempt_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_job_definition_request() :: #{
+%%   <<"containerProperties">> => container_properties(),
+%%   <<"ecsProperties">> => ecs_properties(),
+%%   <<"eksProperties">> => eks_properties(),
+%%   <<"jobDefinitionName">> := string(),
+%%   <<"nodeProperties">> => node_properties(),
+%%   <<"parameters">> => map(),
+%%   <<"platformCapabilities">> => list(list(any())()),
+%%   <<"propagateTags">> => boolean(),
+%%   <<"retryStrategy">> => retry_strategy(),
+%%   <<"schedulingPriority">> => integer(),
+%%   <<"tags">> => map(),
+%%   <<"timeout">> => job_timeout(),
+%%   <<"type">> := list(any())
+%% }
+-type register_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduling_policy_response() :: #{}
+-type delete_scheduling_policy_response() :: #{}.
+
+
+%% Example:
+%% submit_job_request() :: #{
+%%   <<"arrayProperties">> => array_properties(),
+%%   <<"containerOverrides">> => container_overrides(),
+%%   <<"dependsOn">> => list(job_dependency()()),
+%%   <<"ecsPropertiesOverride">> => ecs_properties_override(),
+%%   <<"eksPropertiesOverride">> => eks_properties_override(),
+%%   <<"jobDefinition">> := string(),
+%%   <<"jobName">> := string(),
+%%   <<"jobQueue">> := string(),
+%%   <<"nodeOverrides">> => node_overrides(),
+%%   <<"parameters">> => map(),
+%%   <<"propagateTags">> => boolean(),
+%%   <<"retryStrategy">> => retry_strategy(),
+%%   <<"schedulingPriorityOverride">> => integer(),
+%%   <<"shareIdentifier">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timeout">> => job_timeout()
+%% }
+-type submit_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_values_pair() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string()())
+%% }
+-type key_values_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% attempt_container_detail() :: #{
+%%   <<"containerInstanceArn">> => string(),
+%%   <<"exitCode">> => integer(),
+%%   <<"logStreamName">> => string(),
+%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"reason">> => string(),
+%%   <<"taskArn">> => string()
+%% }
+-type attempt_container_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_queue_request() :: #{
+%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()()),
+%%   <<"jobQueue">> := string(),
+%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()()),
+%%   <<"priority">> => integer(),
+%%   <<"schedulingPolicyArn">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type update_job_queue_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_task_details() :: #{
+%%   <<"containerInstanceArn">> => string(),
+%%   <<"containers">> => list(task_container_details()()),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"ipcMode">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"pidMode">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"runtimePlatform">> => runtime_platform(),
+%%   <<"taskArn">> => string(),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(volume()())
+%% }
+-type ecs_task_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_queues_response() :: #{
+%%   <<"jobQueues">> => list(job_queue_detail()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_job_queues_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_configuration() :: #{
+%%   <<"eksClusterArn">> => string(),
+%%   <<"kubernetesNamespace">> => string()
+%% }
+-type eks_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% secret() :: #{
+%%   <<"name">> => string(),
+%%   <<"valueFrom">> => string()
+%% }
+-type secret() :: #{binary() => any()}.
+
+
+%% Example:
+%% share_attributes() :: #{
+%%   <<"shareIdentifier">> => string(),
+%%   <<"weightFactor">> => float()
+%% }
+-type share_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% fairshare_policy() :: #{
+%%   <<"computeReservation">> => integer(),
+%%   <<"shareDecaySeconds">> => integer(),
+%%   <<"shareDistribution">> => list(share_attributes()())
+%% }
+-type fairshare_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_job_request() :: #{
+%%   <<"jobId">> := string(),
+%%   <<"reason">> := string()
+%% }
+-type terminate_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_volume() :: #{
+%%   <<"emptyDir">> => eks_empty_dir(),
+%%   <<"hostPath">> => eks_host_path(),
+%%   <<"name">> => string(),
+%%   <<"secret">> => eks_secret()
+%% }
+-type eks_volume() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_definition() :: #{
+%%   <<"containerOrchestrationType">> => list(any()),
+%%   <<"containerProperties">> => container_properties(),
+%%   <<"ecsProperties">> => ecs_properties(),
+%%   <<"eksProperties">> => eks_properties(),
+%%   <<"jobDefinitionArn">> => string(),
+%%   <<"jobDefinitionName">> => string(),
+%%   <<"nodeProperties">> => node_properties(),
+%%   <<"parameters">> => map(),
+%%   <<"platformCapabilities">> => list(list(any())()),
+%%   <<"propagateTags">> => boolean(),
+%%   <<"retryStrategy">> => retry_strategy(),
+%%   <<"revision">> => integer(),
+%%   <<"schedulingPriority">> => integer(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timeout">> => job_timeout(),
+%%   <<"type">> => string()
+%% }
+-type job_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_summary() :: #{
+%%   <<"exitCode">> => integer(),
+%%   <<"reason">> => string()
+%% }
+-type container_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeral_storage() :: #{
+%%   <<"sizeInGiB">> => integer()
+%% }
+-type ephemeral_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_properties() :: #{
+%%   <<"podProperties">> => eks_pod_properties()
+%% }
+-type eks_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_attempt_detail() :: #{
+%%   <<"containers">> => list(eks_attempt_container_detail()()),
+%%   <<"initContainers">> => list(eks_attempt_container_detail()()),
+%%   <<"nodeName">> => string(),
+%%   <<"podName">> => string(),
+%%   <<"startedAt">> => float(),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float()
+%% }
+-type eks_attempt_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_secret() :: #{
+%%   <<"optional">> => boolean(),
+%%   <<"secretName">> => string()
+%% }
+-type eks_secret() :: #{binary() => any()}.
+
+
+%% Example:
+%% host() :: #{
+%%   <<"sourcePath">> => string()
+%% }
+-type host() :: #{binary() => any()}.
+
+
+%% Example:
+%% compute_environment_order() :: #{
+%%   <<"computeEnvironment">> => string(),
+%%   <<"order">> => integer()
+%% }
+-type compute_environment_order() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scheduling_policy_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"fairsharePolicy">> => fairshare_policy()
+%% }
+-type update_scheduling_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% compute_resource_update() :: #{
+%%   <<"allocationStrategy">> => list(any()),
+%%   <<"bidPercentage">> => integer(),
+%%   <<"desiredvCpus">> => integer(),
+%%   <<"ec2Configuration">> => list(ec2_configuration()()),
+%%   <<"ec2KeyPair">> => string(),
+%%   <<"imageId">> => string(),
+%%   <<"instanceRole">> => string(),
+%%   <<"instanceTypes">> => list(string()()),
+%%   <<"launchTemplate">> => launch_template_specification(),
+%%   <<"maxvCpus">> => integer(),
+%%   <<"minvCpus">> => integer(),
+%%   <<"placementGroup">> => string(),
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"subnets">> => list(string()()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"updateToLatestImageVersion">> => boolean()
+%% }
+-type compute_resource_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container_security_context() :: #{
+%%   <<"allowPrivilegeEscalation">> => boolean(),
+%%   <<"privileged">> => boolean(),
+%%   <<"readOnlyRootFilesystem">> => boolean(),
+%%   <<"runAsGroup">> => float(),
+%%   <<"runAsNonRoot">> => boolean(),
+%%   <<"runAsUser">> => float()
+%% }
+-type eks_container_security_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_f_s_authorization_config() :: #{
+%%   <<"accessPointId">> => string(),
+%%   <<"iam">> => list(any())
+%% }
+-type e_f_s_authorization_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% submit_job_response() :: #{
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string()
+%% }
+-type submit_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_overrides() :: #{
+%%   <<"command">> => list(string()()),
+%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"instanceType">> => string(),
+%%   <<"memory">> => integer(),
+%%   <<"resourceRequirements">> => list(resource_requirement()()),
+%%   <<"vcpus">> => integer()
+%% }
+-type container_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_f_s_volume_configuration() :: #{
+%%   <<"authorizationConfig">> => e_f_s_authorization_config(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"rootDirectory">> => string(),
+%%   <<"transitEncryption">> => list(any()),
+%%   <<"transitEncryptionPort">> => integer()
+%% }
+-type e_f_s_volume_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_detail() :: #{
+%%   <<"command">> => list(string()()),
+%%   <<"containerInstanceArn">> => string(),
+%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"exitCode">> => integer(),
+%%   <<"fargatePlatformConfiguration">> => fargate_platform_configuration(),
+%%   <<"image">> => string(),
+%%   <<"instanceType">> => string(),
+%%   <<"jobRoleArn">> => string(),
+%%   <<"linuxParameters">> => linux_parameters(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"logStreamName">> => string(),
+%%   <<"memory">> => integer(),
+%%   <<"mountPoints">> => list(mount_point()()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"privileged">> => boolean(),
+%%   <<"readonlyRootFilesystem">> => boolean(),
+%%   <<"reason">> => string(),
+%%   <<"repositoryCredentials">> => repository_credentials(),
+%%   <<"resourceRequirements">> => list(resource_requirement()()),
+%%   <<"runtimePlatform">> => runtime_platform(),
+%%   <<"secrets">> => list(secret()()),
+%%   <<"taskArn">> => string(),
+%%   <<"ulimits">> => list(ulimit()()),
+%%   <<"user">> => string(),
+%%   <<"vcpus">> => integer(),
+%%   <<"volumes">> => list(volume()())
+%% }
+-type container_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"assignPublicIp">> => list(any())
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduling_policy_listing_detail() :: #{
+%%   <<"arn">> => string()
+%% }
+-type scheduling_policy_listing_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_compute_environments_request() :: #{
+%%   <<"computeEnvironments">> => list(string()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_compute_environments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_overrides() :: #{
+%%   <<"nodePropertyOverrides">> => list(node_property_override()()),
+%%   <<"numNodes">> => integer()
+%% }
+-type node_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% volume() :: #{
+%%   <<"efsVolumeConfiguration">> => e_f_s_volume_configuration(),
+%%   <<"host">> => host(),
+%%   <<"name">> => string()
+%% }
+-type volume() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_dependency() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type job_dependency() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% array_properties() :: #{
+%%   <<"size">> => integer()
+%% }
+-type array_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_range_property() :: #{
+%%   <<"container">> => container_properties(),
+%%   <<"ecsProperties">> => ecs_properties(),
+%%   <<"instanceTypes">> => list(string()()),
+%%   <<"targetNodes">> => string()
+%% }
+-type node_range_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_attempt_container_detail() :: #{
+%%   <<"exitCode">> => integer(),
+%%   <<"reason">> => string()
+%% }
+-type eks_attempt_container_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_jobs_response() :: #{
+%%   <<"jobs">> => list(job_detail()())
+%% }
+-type describe_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_pair() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type key_value_pair() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% runtime_platform() :: #{
+%%   <<"cpuArchitecture">> => string(),
+%%   <<"operatingSystemFamily">> => string()
+%% }
+-type runtime_platform() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_job_queue_request() :: #{
+%%   <<"jobQueue">> := string()
+%% }
+-type delete_job_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_job_response() :: #{}
+-type terminate_job_response() :: #{}.
+
+
+%% Example:
+%% eks_container_resource_requirements() :: #{
+%%   <<"limits">> => map(),
+%%   <<"requests">> => map()
+%% }
+-type eks_container_resource_requirements() :: #{binary() => any()}.
+
+
+%% Example:
+%% linux_parameters() :: #{
+%%   <<"devices">> => list(device()()),
+%%   <<"initProcessEnabled">> => boolean(),
+%%   <<"maxSwap">> => integer(),
+%%   <<"sharedMemorySize">> => integer(),
+%%   <<"swappiness">> => integer(),
+%%   <<"tmpfs">> => list(tmpfs()())
+%% }
+-type linux_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_compute_environment_response() :: #{
+%%   <<"computeEnvironmentArn">> => string(),
+%%   <<"computeEnvironmentName">> => string()
+%% }
+-type update_compute_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_details() :: #{
+%%   <<"isMainNode">> => boolean(),
+%%   <<"nodeIndex">> => integer()
+%% }
+-type node_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container_volume_mount() :: #{
+%%   <<"mountPath">> => string(),
+%%   <<"name">> => string(),
+%%   <<"readOnly">> => boolean()
+%% }
+-type eks_container_volume_mount() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_pod_properties() :: #{
+%%   <<"containers">> => list(eks_container()()),
+%%   <<"dnsPolicy">> => string(),
+%%   <<"hostNetwork">> => boolean(),
+%%   <<"imagePullSecrets">> => list(image_pull_secret()()),
+%%   <<"initContainers">> => list(eks_container()()),
+%%   <<"metadata">> => eks_metadata(),
+%%   <<"serviceAccountName">> => string(),
+%%   <<"shareProcessNamespace">> => boolean(),
+%%   <<"volumes">> => list(eks_volume()())
+%% }
+-type eks_pod_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_queue_response() :: #{
+%%   <<"jobQueueArn">> => string(),
+%%   <<"jobQueueName">> => string()
+%% }
+-type update_job_queue_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_strategy() :: #{
+%%   <<"attempts">> => integer(),
+%%   <<"evaluateOnExit">> => list(evaluate_on_exit()())
+%% }
+-type retry_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_jobs_request() :: #{
+%%   <<"jobs">> := list(string()())
+%% }
+-type describe_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% launch_template_specification() :: #{
+%%   <<"launchTemplateId">> => string(),
+%%   <<"launchTemplateName">> => string(),
+%%   <<"version">> => string()
+%% }
+-type launch_template_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_properties_summary() :: #{
+%%   <<"isMainNode">> => boolean(),
+%%   <<"nodeIndex">> => integer(),
+%%   <<"numNodes">> => integer()
+%% }
+-type node_properties_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% compute_environment_detail() :: #{
+%%   <<"computeEnvironmentArn">> => string(),
+%%   <<"computeEnvironmentName">> => string(),
+%%   <<"computeResources">> => compute_resource(),
+%%   <<"containerOrchestrationType">> => list(any()),
+%%   <<"ecsClusterArn">> => string(),
+%%   <<"eksConfiguration">> => eks_configuration(),
+%%   <<"serviceRole">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"unmanagedvCpus">> => integer(),
+%%   <<"updatePolicy">> => update_policy(),
+%%   <<"uuid">> => string()
+%% }
+-type compute_environment_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% device() :: #{
+%%   <<"containerPath">> => string(),
+%%   <<"hostPath">> => string(),
+%%   <<"permissions">> => list(list(any())())
+%% }
+-type device() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_properties_detail() :: #{
+%%   <<"podProperties">> => eks_pod_properties_detail()
+%% }
+-type eks_properties_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_queues_request() :: #{
+%%   <<"jobQueues">> => list(string()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_job_queues_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container() :: #{
+%%   <<"args">> => list(string()()),
+%%   <<"command">> => list(string()()),
+%%   <<"env">> => list(eks_container_environment_variable()()),
+%%   <<"image">> => string(),
+%%   <<"imagePullPolicy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resources">> => eks_container_resource_requirements(),
+%%   <<"securityContext">> => eks_container_security_context(),
+%%   <<"volumeMounts">> => list(eks_container_volume_mount()())
+%% }
+-type eks_container() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_detail() :: #{
+%%   <<"arrayProperties">> => array_properties_detail(),
+%%   <<"attempts">> => list(attempt_detail()()),
+%%   <<"container">> => container_detail(),
+%%   <<"createdAt">> => float(),
+%%   <<"dependsOn">> => list(job_dependency()()),
+%%   <<"ecsProperties">> => ecs_properties_detail(),
+%%   <<"eksAttempts">> => list(eks_attempt_detail()()),
+%%   <<"eksProperties">> => eks_properties_detail(),
+%%   <<"isCancelled">> => boolean(),
+%%   <<"isTerminated">> => boolean(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobDefinition">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobQueue">> => string(),
+%%   <<"nodeDetails">> => node_details(),
+%%   <<"nodeProperties">> => node_properties(),
+%%   <<"parameters">> => map(),
+%%   <<"platformCapabilities">> => list(list(any())()),
+%%   <<"propagateTags">> => boolean(),
+%%   <<"retryStrategy">> => retry_strategy(),
+%%   <<"schedulingPriority">> => integer(),
+%%   <<"shareIdentifier">> => string(),
+%%   <<"startedAt">> => float(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float(),
+%%   <<"tags">> => map(),
+%%   <<"timeout">> => job_timeout()
+%% }
+-type job_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% array_properties_detail() :: #{
+%%   <<"index">> => integer(),
+%%   <<"size">> => integer(),
+%%   <<"statusSummary">> => map()
+%% }
+-type array_properties_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_scheduling_policies_request() :: #{
+%%   <<"arns">> := list(string()())
+%% }
+-type describe_scheduling_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% array_properties_summary() :: #{
+%%   <<"index">> => integer(),
+%%   <<"size">> => integer()
+%% }
+-type array_properties_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_properties_detail() :: #{
+%%   <<"taskProperties">> => list(ecs_task_details()())
+%% }
+-type ecs_properties_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_queue_request() :: #{
+%%   <<"computeEnvironmentOrder">> := list(compute_environment_order()()),
+%%   <<"jobQueueName">> := string(),
+%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()()),
+%%   <<"priority">> := integer(),
+%%   <<"schedulingPolicyArn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_job_queue_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_configuration() :: #{
+%%   <<"logDriver">> => list(any()),
+%%   <<"options">> => map(),
+%%   <<"secretOptions">> => list(secret()())
+%% }
+-type log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_job_response() :: #{}
+-type cancel_job_response() :: #{}.
+
+%% Example:
+%% update_scheduling_policy_response() :: #{}
+-type update_scheduling_policy_response() :: #{}.
+
+
+%% Example:
+%% resource_requirement() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type resource_requirement() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_state_time_limit_action() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"maxTimeSeconds">> => integer(),
+%%   <<"reason">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type job_state_time_limit_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% compute_resource() :: #{
+%%   <<"allocationStrategy">> => list(any()),
+%%   <<"bidPercentage">> => integer(),
+%%   <<"desiredvCpus">> => integer(),
+%%   <<"ec2Configuration">> => list(ec2_configuration()()),
+%%   <<"ec2KeyPair">> => string(),
+%%   <<"imageId">> => string(),
+%%   <<"instanceRole">> => string(),
+%%   <<"instanceTypes">> => list(string()()),
+%%   <<"launchTemplate">> => launch_template_specification(),
+%%   <<"maxvCpus">> => integer(),
+%%   <<"minvCpus">> => integer(),
+%%   <<"placementGroup">> => string(),
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"spotIamFleetRole">> => string(),
+%%   <<"subnets">> => list(string()()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type compute_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_properties() :: #{
+%%   <<"mainNode">> => integer(),
+%%   <<"nodeRangeProperties">> => list(node_range_property()()),
+%%   <<"numNodes">> => integer()
+%% }
+-type node_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_empty_dir() :: #{
+%%   <<"medium">> => string(),
+%%   <<"sizeLimit">> => string()
+%% }
+-type eks_empty_dir() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_container_dependency() :: #{
+%%   <<"condition">> => string(),
+%%   <<"containerName">> => string()
+%% }
+-type task_container_dependency() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_pod_properties_override() :: #{
+%%   <<"containers">> => list(eks_container_override()()),
+%%   <<"initContainers">> => list(eks_container_override()()),
+%%   <<"metadata">> => eks_metadata()
+%% }
+-type eks_pod_properties_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% repository_credentials() :: #{
+%%   <<"credentialsParameter">> => string()
+%% }
+-type repository_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_pod_properties_detail() :: #{
+%%   <<"containers">> => list(eks_container_detail()()),
+%%   <<"dnsPolicy">> => string(),
+%%   <<"hostNetwork">> => boolean(),
+%%   <<"imagePullSecrets">> => list(image_pull_secret()()),
+%%   <<"initContainers">> => list(eks_container_detail()()),
+%%   <<"metadata">> => eks_metadata(),
+%%   <<"nodeName">> => string(),
+%%   <<"podName">> => string(),
+%%   <<"serviceAccountName">> => string(),
+%%   <<"shareProcessNamespace">> => boolean(),
+%%   <<"volumes">> => list(eks_volume()())
+%% }
+-type eks_pod_properties_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% tmpfs() :: #{
+%%   <<"containerPath">> => string(),
+%%   <<"mountOptions">> => list(string()()),
+%%   <<"size">> => integer()
+%% }
+-type tmpfs() :: #{binary() => any()}.
+
+%% Example:
+%% delete_compute_environment_response() :: #{}
+-type delete_compute_environment_response() :: #{}.
+
+
+%% Example:
+%% task_container_properties() :: #{
+%%   <<"command">> => list(string()()),
+%%   <<"dependsOn">> => list(task_container_dependency()()),
+%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"essential">> => boolean(),
+%%   <<"image">> => string(),
+%%   <<"linuxParameters">> => linux_parameters(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"mountPoints">> => list(mount_point()()),
+%%   <<"name">> => string(),
+%%   <<"privileged">> => boolean(),
+%%   <<"readonlyRootFilesystem">> => boolean(),
+%%   <<"repositoryCredentials">> => repository_credentials(),
+%%   <<"resourceRequirements">> => list(resource_requirement()()),
+%%   <<"secrets">> => list(secret()()),
+%%   <<"ulimits">> => list(ulimit()()),
+%%   <<"user">> => string()
+%% }
+-type task_container_properties() :: #{binary() => any()}.
+
+-type cancel_job_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type create_compute_environment_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type create_job_queue_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type create_scheduling_policy_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type delete_compute_environment_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type delete_job_queue_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type delete_scheduling_policy_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type deregister_job_definition_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_compute_environments_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_job_definitions_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_job_queues_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_jobs_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_scheduling_policies_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type list_jobs_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type list_scheduling_policies_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type list_tags_for_resource_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type register_job_definition_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type submit_job_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type tag_resource_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type terminate_job_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type untag_resource_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type update_compute_environment_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type update_job_queue_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type update_scheduling_policy_errors() ::
+    server_exception() | 
+    client_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -112,8 +1583,17 @@
 %% if no job is canceled. These jobs must be terminated with the
 %% `TerminateJob'
 %% operation.
+-spec cancel_job(aws_client:aws_client(), cancel_job_request()) ->
+    {ok, cancel_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Input) ->
     cancel_job(Client, Input, []).
+
+-spec cancel_job(aws_client:aws_client(), cancel_job_request(), proplists:proplist()) ->
+    {ok, cancel_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/canceljob"],
@@ -267,8 +1747,17 @@ cancel_job(Client, Input0, Options0) ->
 %% time of the
 %% infrastructure update, even if the `launchTemplate' wasn't
 %% updated.
+-spec create_compute_environment(aws_client:aws_client(), create_compute_environment_request()) ->
+    {ok, create_compute_environment_response(), tuple()} |
+    {error, any()} |
+    {error, create_compute_environment_errors(), tuple()}.
 create_compute_environment(Client, Input) ->
     create_compute_environment(Client, Input, []).
+
+-spec create_compute_environment(aws_client:aws_client(), create_compute_environment_request(), proplists:proplist()) ->
+    {ok, create_compute_environment_response(), tuple()} |
+    {error, any()} |
+    {error, create_compute_environment_errors(), tuple()}.
 create_compute_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/createcomputeenvironment"],
@@ -305,8 +1794,17 @@ create_compute_environment(Client, Input0, Options0) ->
 %% environment is associated with more than one job queue, the job queue with
 %% a higher priority
 %% is given preference for scheduling jobs to that compute environment.
+-spec create_job_queue(aws_client:aws_client(), create_job_queue_request()) ->
+    {ok, create_job_queue_response(), tuple()} |
+    {error, any()} |
+    {error, create_job_queue_errors(), tuple()}.
 create_job_queue(Client, Input) ->
     create_job_queue(Client, Input, []).
+
+-spec create_job_queue(aws_client:aws_client(), create_job_queue_request(), proplists:proplist()) ->
+    {ok, create_job_queue_response(), tuple()} |
+    {error, any()} |
+    {error, create_job_queue_errors(), tuple()}.
 create_job_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/createjobqueue"],
@@ -330,8 +1828,17 @@ create_job_queue(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Batch scheduling policy.
+-spec create_scheduling_policy(aws_client:aws_client(), create_scheduling_policy_request()) ->
+    {ok, create_scheduling_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_scheduling_policy_errors(), tuple()}.
 create_scheduling_policy(Client, Input) ->
     create_scheduling_policy(Client, Input, []).
+
+-spec create_scheduling_policy(aws_client:aws_client(), create_scheduling_policy_request(), proplists:proplist()) ->
+    {ok, create_scheduling_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_scheduling_policy_errors(), tuple()}.
 create_scheduling_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/createschedulingpolicy"],
@@ -365,8 +1872,17 @@ create_scheduling_policy(Client, Input0, Options0) ->
 %% compute environment before deleting the compute environment. If this
 %% isn't done, the compute
 %% environment enters an invalid state.
+-spec delete_compute_environment(aws_client:aws_client(), delete_compute_environment_request()) ->
+    {ok, delete_compute_environment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_compute_environment_errors(), tuple()}.
 delete_compute_environment(Client, Input) ->
     delete_compute_environment(Client, Input, []).
+
+-spec delete_compute_environment(aws_client:aws_client(), delete_compute_environment_request(), proplists:proplist()) ->
+    {ok, delete_compute_environment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_compute_environment_errors(), tuple()}.
 delete_compute_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deletecomputeenvironment"],
@@ -401,8 +1917,17 @@ delete_compute_environment(Client, Input0, Options0) ->
 %% It's not necessary to disassociate compute environments from a queue
 %% before submitting a
 %% `DeleteJobQueue' request.
+-spec delete_job_queue(aws_client:aws_client(), delete_job_queue_request()) ->
+    {ok, delete_job_queue_response(), tuple()} |
+    {error, any()} |
+    {error, delete_job_queue_errors(), tuple()}.
 delete_job_queue(Client, Input) ->
     delete_job_queue(Client, Input, []).
+
+-spec delete_job_queue(aws_client:aws_client(), delete_job_queue_request(), proplists:proplist()) ->
+    {ok, delete_job_queue_response(), tuple()} |
+    {error, any()} |
+    {error, delete_job_queue_errors(), tuple()}.
 delete_job_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deletejobqueue"],
@@ -429,8 +1954,17 @@ delete_job_queue(Client, Input0, Options0) ->
 %%
 %% You can't delete a scheduling policy that's used in any job
 %% queues.
+-spec delete_scheduling_policy(aws_client:aws_client(), delete_scheduling_policy_request()) ->
+    {ok, delete_scheduling_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scheduling_policy_errors(), tuple()}.
 delete_scheduling_policy(Client, Input) ->
     delete_scheduling_policy(Client, Input, []).
+
+-spec delete_scheduling_policy(aws_client:aws_client(), delete_scheduling_policy_request(), proplists:proplist()) ->
+    {ok, delete_scheduling_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scheduling_policy_errors(), tuple()}.
 delete_scheduling_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deleteschedulingpolicy"],
@@ -457,8 +1991,17 @@ delete_scheduling_policy(Client, Input0, Options0) ->
 %%
 %% Job definitions are permanently deleted after 180
 %% days.
+-spec deregister_job_definition(aws_client:aws_client(), deregister_job_definition_request()) ->
+    {ok, deregister_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_job_definition_errors(), tuple()}.
 deregister_job_definition(Client, Input) ->
     deregister_job_definition(Client, Input, []).
+
+-spec deregister_job_definition(aws_client:aws_client(), deregister_job_definition_request(), proplists:proplist()) ->
+    {ok, deregister_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_job_definition_errors(), tuple()}.
 deregister_job_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deregisterjobdefinition"],
@@ -487,8 +2030,17 @@ deregister_job_definition(Client, Input0, Options0) ->
 %% `DescribeComputeEnvironment' operation to determine the
 %% `ecsClusterArn' that you launch your Amazon ECS container instances
 %% into.
+-spec describe_compute_environments(aws_client:aws_client(), describe_compute_environments_request()) ->
+    {ok, describe_compute_environments_response(), tuple()} |
+    {error, any()} |
+    {error, describe_compute_environments_errors(), tuple()}.
 describe_compute_environments(Client, Input) ->
     describe_compute_environments(Client, Input, []).
+
+-spec describe_compute_environments(aws_client:aws_client(), describe_compute_environments_request(), proplists:proplist()) ->
+    {ok, describe_compute_environments_response(), tuple()} |
+    {error, any()} |
+    {error, describe_compute_environments_errors(), tuple()}.
 describe_compute_environments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describecomputeenvironments"],
@@ -515,8 +2067,17 @@ describe_compute_environments(Client, Input0, Options0) ->
 %%
 %% You can specify a `status' (such as
 %% `ACTIVE') to only return job definitions that match that status.
+-spec describe_job_definitions(aws_client:aws_client(), describe_job_definitions_request()) ->
+    {ok, describe_job_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_definitions_errors(), tuple()}.
 describe_job_definitions(Client, Input) ->
     describe_job_definitions(Client, Input, []).
+
+-spec describe_job_definitions(aws_client:aws_client(), describe_job_definitions_request(), proplists:proplist()) ->
+    {ok, describe_job_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_definitions_errors(), tuple()}.
 describe_job_definitions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describejobdefinitions"],
@@ -540,8 +2101,17 @@ describe_job_definitions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes one or more of your job queues.
+-spec describe_job_queues(aws_client:aws_client(), describe_job_queues_request()) ->
+    {ok, describe_job_queues_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_queues_errors(), tuple()}.
 describe_job_queues(Client, Input) ->
     describe_job_queues(Client, Input, []).
+
+-spec describe_job_queues(aws_client:aws_client(), describe_job_queues_request(), proplists:proplist()) ->
+    {ok, describe_job_queues_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_queues_errors(), tuple()}.
 describe_job_queues(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describejobqueues"],
@@ -565,8 +2135,17 @@ describe_job_queues(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a list of Batch jobs.
+-spec describe_jobs(aws_client:aws_client(), describe_jobs_request()) ->
+    {ok, describe_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, describe_jobs_errors(), tuple()}.
 describe_jobs(Client, Input) ->
     describe_jobs(Client, Input, []).
+
+-spec describe_jobs(aws_client:aws_client(), describe_jobs_request(), proplists:proplist()) ->
+    {ok, describe_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, describe_jobs_errors(), tuple()}.
 describe_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describejobs"],
@@ -590,8 +2169,17 @@ describe_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes one or more of your scheduling policies.
+-spec describe_scheduling_policies(aws_client:aws_client(), describe_scheduling_policies_request()) ->
+    {ok, describe_scheduling_policies_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scheduling_policies_errors(), tuple()}.
 describe_scheduling_policies(Client, Input) ->
     describe_scheduling_policies(Client, Input, []).
+
+-spec describe_scheduling_policies(aws_client:aws_client(), describe_scheduling_policies_request(), proplists:proplist()) ->
+    {ok, describe_scheduling_policies_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scheduling_policies_errors(), tuple()}.
 describe_scheduling_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describeschedulingpolicies"],
@@ -627,8 +2215,17 @@ describe_scheduling_policies(Client, Input0, Options0) ->
 %% You can filter the results by job status with the `jobStatus'
 %% parameter. If you
 %% don't specify a status, only `RUNNING' jobs are returned.
+-spec list_jobs(aws_client:aws_client(), list_jobs_request()) ->
+    {ok, list_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, Input) ->
     list_jobs(Client, Input, []).
+
+-spec list_jobs(aws_client:aws_client(), list_jobs_request(), proplists:proplist()) ->
+    {ok, list_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/listjobs"],
@@ -652,8 +2249,17 @@ list_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of Batch scheduling policies.
+-spec list_scheduling_policies(aws_client:aws_client(), list_scheduling_policies_request()) ->
+    {ok, list_scheduling_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_scheduling_policies_errors(), tuple()}.
 list_scheduling_policies(Client, Input) ->
     list_scheduling_policies(Client, Input, []).
+
+-spec list_scheduling_policies(aws_client:aws_client(), list_scheduling_policies_request(), proplists:proplist()) ->
+    {ok, list_scheduling_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_scheduling_policies_errors(), tuple()}.
 list_scheduling_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/listschedulingpolicies"],
@@ -682,14 +2288,26 @@ list_scheduling_policies(Client, Input0, Options0) ->
 %% definitions, job queues,
 %% and scheduling policies. ARNs for child jobs of array and multi-node
 %% parallel (MNP) jobs aren't supported.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -707,8 +2325,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Registers an Batch job definition.
+-spec register_job_definition(aws_client:aws_client(), register_job_definition_request()) ->
+    {ok, register_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, register_job_definition_errors(), tuple()}.
 register_job_definition(Client, Input) ->
     register_job_definition(Client, Input, []).
+
+-spec register_job_definition(aws_client:aws_client(), register_job_definition_request(), proplists:proplist()) ->
+    {ok, register_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, register_job_definition_errors(), tuple()}.
 register_job_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/registerjobdefinition"],
@@ -754,8 +2381,17 @@ register_job_definition(Client, Input0, Options0) ->
 %% This is because, after 14 days, Fargate resources might become unavailable
 %% and job might be
 %% terminated.
+-spec submit_job(aws_client:aws_client(), submit_job_request()) ->
+    {ok, submit_job_response(), tuple()} |
+    {error, any()} |
+    {error, submit_job_errors(), tuple()}.
 submit_job(Client, Input) ->
     submit_job(Client, Input, []).
+
+-spec submit_job(aws_client:aws_client(), submit_job_request(), proplists:proplist()) ->
+    {ok, submit_job_response(), tuple()} |
+    {error, any()} |
+    {error, submit_job_errors(), tuple()}.
 submit_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/submitjob"],
@@ -789,8 +2425,17 @@ submit_job(Client, Input0, Options0) ->
 %% environments, jobs, job definitions, job queues,
 %% and scheduling policies. ARNs for child jobs of array and multi-node
 %% parallel (MNP) jobs aren't supported.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -820,8 +2465,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% `FAILED'. Jobs that have not progressed to the `STARTING' state
 %% are
 %% cancelled.
+-spec terminate_job(aws_client:aws_client(), terminate_job_request()) ->
+    {ok, terminate_job_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_job_errors(), tuple()}.
 terminate_job(Client, Input) ->
     terminate_job(Client, Input, []).
+
+-spec terminate_job(aws_client:aws_client(), terminate_job_request(), proplists:proplist()) ->
+    {ok, terminate_job_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_job_errors(), tuple()}.
 terminate_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/terminatejob"],
@@ -845,8 +2499,17 @@ terminate_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes specified tags from an Batch resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -871,8 +2534,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Batch compute environment.
+-spec update_compute_environment(aws_client:aws_client(), update_compute_environment_request()) ->
+    {ok, update_compute_environment_response(), tuple()} |
+    {error, any()} |
+    {error, update_compute_environment_errors(), tuple()}.
 update_compute_environment(Client, Input) ->
     update_compute_environment(Client, Input, []).
+
+-spec update_compute_environment(aws_client:aws_client(), update_compute_environment_request(), proplists:proplist()) ->
+    {ok, update_compute_environment_response(), tuple()} |
+    {error, any()} |
+    {error, update_compute_environment_errors(), tuple()}.
 update_compute_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/updatecomputeenvironment"],
@@ -896,8 +2568,17 @@ update_compute_environment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a job queue.
+-spec update_job_queue(aws_client:aws_client(), update_job_queue_request()) ->
+    {ok, update_job_queue_response(), tuple()} |
+    {error, any()} |
+    {error, update_job_queue_errors(), tuple()}.
 update_job_queue(Client, Input) ->
     update_job_queue(Client, Input, []).
+
+-spec update_job_queue(aws_client:aws_client(), update_job_queue_request(), proplists:proplist()) ->
+    {ok, update_job_queue_response(), tuple()} |
+    {error, any()} |
+    {error, update_job_queue_errors(), tuple()}.
 update_job_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/updatejobqueue"],
@@ -921,8 +2602,17 @@ update_job_queue(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a scheduling policy.
+-spec update_scheduling_policy(aws_client:aws_client(), update_scheduling_policy_request()) ->
+    {ok, update_scheduling_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_scheduling_policy_errors(), tuple()}.
 update_scheduling_policy(Client, Input) ->
     update_scheduling_policy(Client, Input, []).
+
+-spec update_scheduling_policy(aws_client:aws_client(), update_scheduling_policy_request(), proplists:proplist()) ->
+    {ok, update_scheduling_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_scheduling_policy_errors(), tuple()}.
 update_scheduling_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/updateschedulingpolicy"],
@@ -949,7 +2639,7 @@ update_scheduling_policy(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

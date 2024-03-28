@@ -85,6 +85,681 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_template_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type create_job_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_monitoring_configuration() :: #{
+%%   <<"logUri">> => string()
+%% }
+-type s3_monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_job_template_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type delete_job_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_run() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"configurationOverrides">> => configuration_overrides(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"failureReason">> => list(any()),
+%%   <<"finishedAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"jobDriver">> => job_driver(),
+%%   <<"name">> => string(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"retryPolicyConfiguration">> => retry_policy_configuration(),
+%%   <<"retryPolicyExecution">> => retry_policy_execution(),
+%%   <<"state">> => list(any()),
+%%   <<"stateDetails">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"virtualClusterId">> => string()
+%% }
+-type job_run() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% describe_job_run_response() :: #{
+%%   <<"jobRun">> => job_run()
+%% }
+-type describe_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_monitoring_configuration() :: #{
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamNamePrefix">> => string()
+%% }
+-type cloud_watch_monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_runs_request() :: #{
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"states">> => list(list(any())())
+%% }
+-type list_job_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_template() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decryptionError">> => string(),
+%%   <<"id">> => string(),
+%%   <<"jobTemplateData">> => job_template_data(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type job_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration() :: #{
+%%   <<"classification">> => string(),
+%%   <<"configurations">> => list(configuration()()),
+%%   <<"properties">> => map()
+%% }
+-type configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% parametric_cloud_watch_monitoring_configuration() :: #{
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamNamePrefix">> => string()
+%% }
+-type parametric_cloud_watch_monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_managed_endpoint_response() :: #{
+%%   <<"endpoint">> => endpoint()
+%% }
+-type describe_managed_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitoring_configuration() :: #{
+%%   <<"cloudWatchMonitoringConfiguration">> => cloud_watch_monitoring_configuration(),
+%%   <<"containerLogRotationConfiguration">> => container_log_rotation_configuration(),
+%%   <<"persistentAppUI">> => list(any()),
+%%   <<"s3MonitoringConfiguration">> => s3_monitoring_configuration()
+%% }
+-type monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_managed_endpoint_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"virtualClusterId">> => string()
+%% }
+-type create_managed_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_cluster() :: #{
+%%   <<"arn">> => string(),
+%%   <<"containerProvider">> => container_provider(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type virtual_cluster() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_template_request() :: #{}
+-type delete_job_template_request() :: #{}.
+
+
+%% Example:
+%% parametric_s3_monitoring_configuration() :: #{
+%%   <<"logUri">> => string()
+%% }
+-type parametric_s3_monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_info() :: #{
+%%   <<"namespace">> => string()
+%% }
+-type eks_info() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_run_request() :: #{}
+-type describe_job_run_request() :: #{}.
+
+%% Example:
+%% describe_virtual_cluster_request() :: #{}
+-type describe_virtual_cluster_request() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_job_run_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"virtualClusterId">> => string()
+%% }
+-type start_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_job_run_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"virtualClusterId">> => string()
+%% }
+-type cancel_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_managed_endpoint_session_credentials_response() :: #{
+%%   <<"credentials">> => list(),
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"id">> => string()
+%% }
+-type get_managed_endpoint_session_credentials_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_parameter_configuration() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type template_parameter_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_template_request() :: #{}
+-type describe_job_template_request() :: #{}.
+
+
+%% Example:
+%% create_managed_endpoint_request() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"clientToken">> := string(),
+%%   <<"configurationOverrides">> => configuration_overrides(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"name">> := string(),
+%%   <<"releaseLabel">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := string()
+%% }
+-type create_managed_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_runs_response() :: #{
+%%   <<"jobRuns">> => list(job_run()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_runs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_managed_endpoint_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"virtualClusterId">> => string()
+%% }
+-type delete_managed_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_template_response() :: #{
+%%   <<"jobTemplate">> => job_template()
+%% }
+-type describe_job_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_log_rotation_configuration() :: #{
+%%   <<"maxFilesToKeep">> => integer(),
+%%   <<"rotationSize">> => string()
+%% }
+-type container_log_rotation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_provider() :: #{
+%%   <<"id">> => string(),
+%%   <<"info">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type container_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"arn">> => string(),
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateAuthority">> => certificate(),
+%%   <<"configurationOverrides">> => configuration_overrides(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"failureReason">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"securityGroup">> => string(),
+%%   <<"serverUrl">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"stateDetails">> => string(),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"virtualClusterId">> => string()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% parametric_configuration_overrides() :: #{
+%%   <<"applicationConfiguration">> => list(configuration()()),
+%%   <<"monitoringConfiguration">> => parametric_monitoring_configuration()
+%% }
+-type parametric_configuration_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_virtual_cluster_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type create_virtual_cluster_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateData">> => string()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_job_run_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"configurationOverrides">> => configuration_overrides(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"jobDriver">> => job_driver(),
+%%   <<"jobTemplateId">> => string(),
+%%   <<"jobTemplateParameters">> => map(),
+%%   <<"name">> => string(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"retryPolicyConfiguration">> => retry_policy_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type start_job_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_virtual_cluster_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"containerProvider">> := container_provider(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_virtual_cluster_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_templates_request() :: #{
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% parametric_monitoring_configuration() :: #{
+%%   <<"cloudWatchMonitoringConfiguration">> => parametric_cloud_watch_monitoring_configuration(),
+%%   <<"persistentAppUI">> => string(),
+%%   <<"s3MonitoringConfiguration">> => parametric_s3_monitoring_configuration()
+%% }
+-type parametric_monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_policy_execution() :: #{
+%%   <<"currentAttemptCount">> => integer()
+%% }
+-type retry_policy_execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_template_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"jobTemplateData">> := job_template_data(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_job_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_managed_endpoint_request() :: #{}
+-type describe_managed_endpoint_request() :: #{}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% job_template_data() :: #{
+%%   <<"configurationOverrides">> => parametric_configuration_overrides(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"jobDriver">> => job_driver(),
+%%   <<"jobTags">> => map(),
+%%   <<"parameterConfiguration">> => map(),
+%%   <<"releaseLabel">> => string()
+%% }
+-type job_template_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_endpoints_response() :: #{
+%%   <<"endpoints">> => list(endpoint()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_throttled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_throttled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_managed_endpoint_request() :: #{}
+-type delete_managed_endpoint_request() :: #{}.
+
+
+%% Example:
+%% list_managed_endpoints_request() :: #{
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"states">> => list(list(any())()),
+%%   <<"types">> => list(string()())
+%% }
+-type list_managed_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_virtual_cluster_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type delete_virtual_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% configuration_overrides() :: #{
+%%   <<"applicationConfiguration">> => list(configuration()()),
+%%   <<"monitoringConfiguration">> => monitoring_configuration()
+%% }
+-type configuration_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_managed_endpoint_session_credentials_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"credentialType">> := string(),
+%%   <<"durationInSeconds">> => integer(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"logContext">> => string()
+%% }
+-type get_managed_endpoint_session_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_sql_job_driver() :: #{
+%%   <<"entryPoint">> => string(),
+%%   <<"sparkSqlParameters">> => string()
+%% }
+-type spark_sql_job_driver() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_virtual_cluster_response() :: #{
+%%   <<"virtualCluster">> => virtual_cluster()
+%% }
+-type describe_virtual_cluster_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_driver() :: #{
+%%   <<"sparkSqlJobDriver">> => spark_sql_job_driver(),
+%%   <<"sparkSubmitJobDriver">> => spark_submit_job_driver()
+%% }
+-type job_driver() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_job_run_request() :: #{}
+-type cancel_job_run_request() :: #{}.
+
+
+%% Example:
+%% list_job_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"templates">> => list(job_template()())
+%% }
+-type list_job_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_policy_configuration() :: #{
+%%   <<"maxAttempts">> => integer()
+%% }
+-type retry_policy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_clusters_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"virtualClusters">> => list(virtual_cluster()())
+%% }
+-type list_virtual_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_virtual_cluster_request() :: #{}
+-type delete_virtual_cluster_request() :: #{}.
+
+
+%% Example:
+%% spark_submit_job_driver() :: #{
+%%   <<"entryPoint">> => string(),
+%%   <<"entryPointArguments">> => list(string()()),
+%%   <<"sparkSubmitParameters">> => string()
+%% }
+-type spark_submit_job_driver() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_clusters_request() :: #{
+%%   <<"containerProviderId">> => string(),
+%%   <<"containerProviderType">> => list(any()),
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"states">> => list(list(any())())
+%% }
+-type list_virtual_clusters_request() :: #{binary() => any()}.
+
+-type cancel_job_run_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type create_job_template_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_managed_endpoint_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_virtual_cluster_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_job_template_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type delete_managed_endpoint_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type delete_virtual_cluster_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type describe_job_run_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_job_template_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_managed_endpoint_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_virtual_cluster_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_managed_endpoint_session_credentials_errors() ::
+    validation_exception() | 
+    request_throttled_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_job_runs_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_job_templates_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_managed_endpoints_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_virtual_clusters_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type start_job_run_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -93,8 +768,17 @@
 %%
 %% A job run is a unit of work, such as a Spark jar, PySpark script, or
 %% SparkSQL query, that you submit to Amazon EMR on EKS.
+-spec cancel_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_job_run_request()) ->
+    {ok, cancel_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_job_run_errors(), tuple()}.
 cancel_job_run(Client, Id, VirtualClusterId, Input) ->
     cancel_job_run(Client, Id, VirtualClusterId, Input, []).
+
+-spec cancel_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_job_run_request(), proplists:proplist()) ->
+    {ok, cancel_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_job_run_errors(), tuple()}.
 cancel_job_run(Client, Id, VirtualClusterId, Input0, Options0) ->
     Method = delete,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns/", aws_util:encode_uri(Id), ""],
@@ -125,8 +809,17 @@ cancel_job_run(Client, Id, VirtualClusterId, Input0, Options0) ->
 %% repeating recurring StartJobRun API request values, enforcing certain
 %% values in StartJobRun
 %% API request.
+-spec create_job_template(aws_client:aws_client(), create_job_template_request()) ->
+    {ok, create_job_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_job_template_errors(), tuple()}.
 create_job_template(Client, Input) ->
     create_job_template(Client, Input, []).
+
+-spec create_job_template(aws_client:aws_client(), create_job_template_request(), proplists:proplist()) ->
+    {ok, create_job_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_job_template_errors(), tuple()}.
 create_job_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobtemplates"],
@@ -154,8 +847,17 @@ create_job_template(Client, Input0, Options0) ->
 %% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
 %% EMR on EKS so that Amazon EMR Studio can
 %% communicate with your virtual cluster.
+-spec create_managed_endpoint(aws_client:aws_client(), binary() | list(), create_managed_endpoint_request()) ->
+    {ok, create_managed_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_managed_endpoint_errors(), tuple()}.
 create_managed_endpoint(Client, VirtualClusterId, Input) ->
     create_managed_endpoint(Client, VirtualClusterId, Input, []).
+
+-spec create_managed_endpoint(aws_client:aws_client(), binary() | list(), create_managed_endpoint_request(), proplists:proplist()) ->
+    {ok, create_managed_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_managed_endpoint_errors(), tuple()}.
 create_managed_endpoint(Client, VirtualClusterId, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints"],
@@ -187,8 +889,17 @@ create_managed_endpoint(Client, VirtualClusterId, Input0, Options0) ->
 %% namespace. Given this relationship, you can model virtual clusters the
 %% same way you model
 %% Kubernetes namespaces to meet your requirements.
+-spec create_virtual_cluster(aws_client:aws_client(), create_virtual_cluster_request()) ->
+    {ok, create_virtual_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, create_virtual_cluster_errors(), tuple()}.
 create_virtual_cluster(Client, Input) ->
     create_virtual_cluster(Client, Input, []).
+
+-spec create_virtual_cluster(aws_client:aws_client(), create_virtual_cluster_request(), proplists:proplist()) ->
+    {ok, create_virtual_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, create_virtual_cluster_errors(), tuple()}.
 create_virtual_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters"],
@@ -219,8 +930,17 @@ create_virtual_cluster(Client, Input0, Options0) ->
 %% repeating recurring StartJobRun API request values, enforcing certain
 %% values in StartJobRun
 %% API request.
+-spec delete_job_template(aws_client:aws_client(), binary() | list(), delete_job_template_request()) ->
+    {ok, delete_job_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_job_template_errors(), tuple()}.
 delete_job_template(Client, Id, Input) ->
     delete_job_template(Client, Id, Input, []).
+
+-spec delete_job_template(aws_client:aws_client(), binary() | list(), delete_job_template_request(), proplists:proplist()) ->
+    {ok, delete_job_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_job_template_errors(), tuple()}.
 delete_job_template(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/jobtemplates/", aws_util:encode_uri(Id), ""],
@@ -248,8 +968,17 @@ delete_job_template(Client, Id, Input0, Options0) ->
 %% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
 %% EMR on EKS so that Amazon EMR Studio can
 %% communicate with your virtual cluster.
+-spec delete_managed_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), delete_managed_endpoint_request()) ->
+    {ok, delete_managed_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_managed_endpoint_errors(), tuple()}.
 delete_managed_endpoint(Client, Id, VirtualClusterId, Input) ->
     delete_managed_endpoint(Client, Id, VirtualClusterId, Input, []).
+
+-spec delete_managed_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), delete_managed_endpoint_request(), proplists:proplist()) ->
+    {ok, delete_managed_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_managed_endpoint_errors(), tuple()}.
 delete_managed_endpoint(Client, Id, VirtualClusterId, Input0, Options0) ->
     Method = delete,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints/", aws_util:encode_uri(Id), ""],
@@ -281,8 +1010,17 @@ delete_managed_endpoint(Client, Id, VirtualClusterId, Input0, Options0) ->
 %% namespace. Given this relationship, you can model virtual clusters the
 %% same way you model
 %% Kubernetes namespaces to meet your requirements.
+-spec delete_virtual_cluster(aws_client:aws_client(), binary() | list(), delete_virtual_cluster_request()) ->
+    {ok, delete_virtual_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, delete_virtual_cluster_errors(), tuple()}.
 delete_virtual_cluster(Client, Id, Input) ->
     delete_virtual_cluster(Client, Id, Input, []).
+
+-spec delete_virtual_cluster(aws_client:aws_client(), binary() | list(), delete_virtual_cluster_request(), proplists:proplist()) ->
+    {ok, delete_virtual_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, delete_virtual_cluster_errors(), tuple()}.
 delete_virtual_cluster(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/virtualclusters/", aws_util:encode_uri(Id), ""],
@@ -310,14 +1048,26 @@ delete_virtual_cluster(Client, Id, Input0, Options0) ->
 %% A job run is a unit of work, such as a
 %% Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon
 %% EMR on EKS.
+-spec describe_job_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_run_errors(), tuple()}.
 describe_job_run(Client, Id, VirtualClusterId)
   when is_map(Client) ->
     describe_job_run(Client, Id, VirtualClusterId, #{}, #{}).
 
+-spec describe_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_run_errors(), tuple()}.
 describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, []).
 
+-spec describe_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_run_errors(), tuple()}.
 describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns/", aws_util:encode_uri(Id), ""],
@@ -342,14 +1092,26 @@ describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options0)
 %% allows two use cases: avoid repeating recurring StartJobRun API request
 %% values, enforcing
 %% certain values in StartJobRun API request.
+-spec describe_job_template(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_job_template_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_template_errors(), tuple()}.
 describe_job_template(Client, Id)
   when is_map(Client) ->
     describe_job_template(Client, Id, #{}, #{}).
 
+-spec describe_job_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_job_template_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_template_errors(), tuple()}.
 describe_job_template(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_template(Client, Id, QueryMap, HeadersMap, []).
 
+-spec describe_job_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_job_template_response(), tuple()} |
+    {error, any()} |
+    {error, describe_job_template_errors(), tuple()}.
 describe_job_template(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobtemplates/", aws_util:encode_uri(Id), ""],
@@ -371,14 +1133,26 @@ describe_job_template(Client, Id, QueryMap, HeadersMap, Options0)
 %% A managed endpoint is a gateway
 %% that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR
 %% Studio can communicate with your virtual cluster.
+-spec describe_managed_endpoint(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_managed_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, describe_managed_endpoint_errors(), tuple()}.
 describe_managed_endpoint(Client, Id, VirtualClusterId)
   when is_map(Client) ->
     describe_managed_endpoint(Client, Id, VirtualClusterId, #{}, #{}).
 
+-spec describe_managed_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_managed_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, describe_managed_endpoint_errors(), tuple()}.
 describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, []).
 
+-spec describe_managed_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_managed_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, describe_managed_endpoint_errors(), tuple()}.
 describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints/", aws_util:encode_uri(Id), ""],
@@ -406,14 +1180,26 @@ describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Op
 %% you can model
 %% virtual clusters the same way you model Kubernetes namespaces to meet your
 %% requirements.
+-spec describe_virtual_cluster(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_virtual_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, describe_virtual_cluster_errors(), tuple()}.
 describe_virtual_cluster(Client, Id)
   when is_map(Client) ->
     describe_virtual_cluster(Client, Id, #{}, #{}).
 
+-spec describe_virtual_cluster(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_virtual_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, describe_virtual_cluster_errors(), tuple()}.
 describe_virtual_cluster(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, []).
 
+-spec describe_virtual_cluster(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_virtual_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, describe_virtual_cluster_errors(), tuple()}.
 describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(Id), ""],
@@ -431,8 +1217,17 @@ describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generate a session token to connect to a managed endpoint.
+-spec get_managed_endpoint_session_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), get_managed_endpoint_session_credentials_request()) ->
+    {ok, get_managed_endpoint_session_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_managed_endpoint_session_credentials_errors(), tuple()}.
 get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClusterIdentifier, Input) ->
     get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClusterIdentifier, Input, []).
+
+-spec get_managed_endpoint_session_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), get_managed_endpoint_session_credentials_request(), proplists:proplist()) ->
+    {ok, get_managed_endpoint_session_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_managed_endpoint_session_credentials_errors(), tuple()}.
 get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClusterIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterIdentifier), "/endpoints/", aws_util:encode_uri(EndpointIdentifier), "/credentials"],
@@ -460,14 +1255,26 @@ get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClus
 %% A job run is a unit of work, such as a
 %% Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon
 %% EMR on EKS.
+-spec list_job_runs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_job_runs_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_runs_errors(), tuple()}.
 list_job_runs(Client, VirtualClusterId)
   when is_map(Client) ->
     list_job_runs(Client, VirtualClusterId, #{}, #{}).
 
+-spec list_job_runs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_job_runs_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_runs_errors(), tuple()}.
 list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, []).
 
+-spec list_job_runs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_job_runs_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_runs_errors(), tuple()}.
 list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns"],
@@ -501,14 +1308,26 @@ list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
 %% allows two use cases: avoid repeating recurring StartJobRun API request
 %% values, enforcing
 %% certain values in StartJobRun API request.
+-spec list_job_templates(aws_client:aws_client()) ->
+    {ok, list_job_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_templates_errors(), tuple()}.
 list_job_templates(Client)
   when is_map(Client) ->
     list_job_templates(Client, #{}, #{}).
 
+-spec list_job_templates(aws_client:aws_client(), map(), map()) ->
+    {ok, list_job_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_templates_errors(), tuple()}.
 list_job_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_templates(Client, QueryMap, HeadersMap, []).
 
+-spec list_job_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_job_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_templates_errors(), tuple()}.
 list_job_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobtemplates"],
@@ -537,14 +1356,26 @@ list_job_templates(Client, QueryMap, HeadersMap, Options0)
 %% A managed endpoint is a gateway
 %% that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR
 %% Studio can communicate with your virtual cluster.
+-spec list_managed_endpoints(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_managed_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_managed_endpoints_errors(), tuple()}.
 list_managed_endpoints(Client, VirtualClusterId)
   when is_map(Client) ->
     list_managed_endpoints(Client, VirtualClusterId, #{}, #{}).
 
+-spec list_managed_endpoints(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_managed_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_managed_endpoints_errors(), tuple()}.
 list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, []).
 
+-spec list_managed_endpoints(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_managed_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_managed_endpoints_errors(), tuple()}.
 list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints"],
@@ -571,14 +1402,26 @@ list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags assigned to the resources.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -606,14 +1449,26 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% you can model
 %% virtual clusters the same way you model Kubernetes namespaces to meet your
 %% requirements.
+-spec list_virtual_clusters(aws_client:aws_client()) ->
+    {ok, list_virtual_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, list_virtual_clusters_errors(), tuple()}.
 list_virtual_clusters(Client)
   when is_map(Client) ->
     list_virtual_clusters(Client, #{}, #{}).
 
+-spec list_virtual_clusters(aws_client:aws_client(), map(), map()) ->
+    {ok, list_virtual_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, list_virtual_clusters_errors(), tuple()}.
 list_virtual_clusters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_clusters(Client, QueryMap, HeadersMap, []).
 
+-spec list_virtual_clusters(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_virtual_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, list_virtual_clusters_errors(), tuple()}.
 list_virtual_clusters(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/virtualclusters"],
@@ -644,8 +1499,17 @@ list_virtual_clusters(Client, QueryMap, HeadersMap, Options0)
 %%
 %% A job run is a unit of work, such as a Spark jar, PySpark script, or
 %% SparkSQL query, that you submit to Amazon EMR on EKS.
+-spec start_job_run(aws_client:aws_client(), binary() | list(), start_job_run_request()) ->
+    {ok, start_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, start_job_run_errors(), tuple()}.
 start_job_run(Client, VirtualClusterId, Input) ->
     start_job_run(Client, VirtualClusterId, Input, []).
+
+-spec start_job_run(aws_client:aws_client(), binary() | list(), start_job_run_request(), proplists:proplist()) ->
+    {ok, start_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, start_job_run_errors(), tuple()}.
 start_job_run(Client, VirtualClusterId, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns"],
@@ -686,8 +1550,17 @@ start_job_run(Client, VirtualClusterId, Input0, Options0) ->
 %% for each resource type. You can then search and filter the resources based
 %% on the tags that
 %% you add.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -711,8 +1584,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from resources.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -740,7 +1622,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

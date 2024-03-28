@@ -85,6 +85,967 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% approve_assignment_request() :: #{
+%%   <<"AssignmentId">> := string(),
+%%   <<"OverrideRejection">> => boolean(),
+%%   <<"RequesterFeedback">> => string()
+%% }
+-type approve_assignment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hit_response() :: #{
+
+%% }
+-type delete_hit_response() :: #{binary() => any()}.
+
+%% Example:
+%% notify_workers_request() :: #{
+%%   <<"MessageText">> := string(),
+%%   <<"Subject">> := string(),
+%%   <<"WorkerIds">> := list(string()())
+%% }
+-type notify_workers_request() :: #{binary() => any()}.
+
+%% Example:
+%% qualification_requirement() :: #{
+%%   <<"ActionsGuarded">> => list(any()),
+%%   <<"Comparator">> => list(any()),
+%%   <<"IntegerValues">> => list(integer()()),
+%%   <<"LocaleValues">> => list(locale()()),
+%%   <<"QualificationTypeId">> => string(),
+%%   <<"RequiredToPreview">> => boolean()
+%% }
+-type qualification_requirement() :: #{binary() => any()}.
+
+%% Example:
+%% review_policy() :: #{
+%%   <<"Parameters">> => list(policy_parameter()()),
+%%   <<"PolicyName">> => string()
+%% }
+-type review_policy() :: #{binary() => any()}.
+
+%% Example:
+%% delete_worker_block_request() :: #{
+%%   <<"Reason">> => string(),
+%%   <<"WorkerId">> := string()
+%% }
+-type delete_worker_block_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualification_type_request() :: #{
+%%   <<"QualificationTypeId">> := string()
+%% }
+-type get_qualification_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_qualification_type_request() :: #{
+%%   <<"AnswerKey">> => string(),
+%%   <<"AutoGranted">> => boolean(),
+%%   <<"AutoGrantedValue">> => integer(),
+%%   <<"Description">> := string(),
+%%   <<"Keywords">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"QualificationTypeStatus">> := list(any()),
+%%   <<"RetryDelayInSeconds">> => float(),
+%%   <<"Test">> => string(),
+%%   <<"TestDurationInSeconds">> => float()
+%% }
+-type create_qualification_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% assignment() :: #{
+%%   <<"AcceptTime">> => non_neg_integer(),
+%%   <<"Answer">> => string(),
+%%   <<"ApprovalTime">> => non_neg_integer(),
+%%   <<"AssignmentId">> => string(),
+%%   <<"AssignmentStatus">> => list(any()),
+%%   <<"AutoApprovalTime">> => non_neg_integer(),
+%%   <<"Deadline">> => non_neg_integer(),
+%%   <<"HITId">> => string(),
+%%   <<"RejectionTime">> => non_neg_integer(),
+%%   <<"RequesterFeedback">> => string(),
+%%   <<"SubmitTime">> => non_neg_integer(),
+%%   <<"WorkerId">> => string()
+%% }
+-type assignment() :: #{binary() => any()}.
+
+%% Example:
+%% reject_assignment_request() :: #{
+%%   <<"AssignmentId">> := string(),
+%%   <<"RequesterFeedback">> := string()
+%% }
+-type reject_assignment_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_balance_response() :: #{
+%%   <<"AvailableBalance">> => string(),
+%%   <<"OnHoldBalance">> => string()
+%% }
+-type get_account_balance_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_reviewable_hits_request() :: #{
+%%   <<"HITTypeId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_reviewable_hits_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_file_upload_url_response() :: #{
+%%   <<"FileUploadURL">> => string()
+%% }
+-type get_file_upload_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_qualification_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MustBeOwnedByCaller">> => boolean(),
+%%   <<"MustBeRequestable">> := boolean(),
+%%   <<"NextToken">> => string(),
+%%   <<"Query">> => string()
+%% }
+-type list_qualification_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% accept_qualification_request_request() :: #{
+%%   <<"IntegerValue">> => integer(),
+%%   <<"QualificationRequestId">> := string()
+%% }
+-type accept_qualification_request_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_hit_type_response() :: #{
+%%   <<"HITTypeId">> => string()
+%% }
+-type create_hit_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_worker_block_response() :: #{
+
+%% }
+-type create_worker_block_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_fault() :: #{
+%%   <<"Message">> => string(),
+%%   <<"TurkErrorCode">> => string()
+%% }
+-type service_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_additional_assignments_for_hit_response() :: #{
+
+%% }
+-type create_additional_assignments_for_hit_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_qualification_type_request() :: #{
+%%   <<"QualificationTypeId">> := string()
+%% }
+-type delete_qualification_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% locale() :: #{
+%%   <<"Country">> => string(),
+%%   <<"Subdivision">> => string()
+%% }
+-type locale() :: #{binary() => any()}.
+
+%% Example:
+%% review_result_detail() :: #{
+%%   <<"ActionId">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"QuestionId">> => string(),
+%%   <<"SubjectId">> => string(),
+%%   <<"SubjectType">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type review_result_detail() :: #{binary() => any()}.
+
+%% Example:
+%% list_hits_for_qualification_type_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QualificationTypeId">> := string()
+%% }
+-type list_hits_for_qualification_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_bonus_response() :: #{
+
+%% }
+-type send_bonus_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_file_upload_url_request() :: #{
+%%   <<"AssignmentId">> := string(),
+%%   <<"QuestionIdentifier">> := string()
+%% }
+-type get_file_upload_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualification_score_request() :: #{
+%%   <<"QualificationTypeId">> := string(),
+%%   <<"WorkerId">> := string()
+%% }
+-type get_qualification_score_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_hit_type_of_hit_request() :: #{
+%%   <<"HITId">> := string(),
+%%   <<"HITTypeId">> := string()
+%% }
+-type update_hit_type_of_hit_request() :: #{binary() => any()}.
+
+%% Example:
+%% approve_assignment_response() :: #{
+
+%% }
+-type approve_assignment_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_review_policy_results_for_hit_request() :: #{
+%%   <<"HITId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyLevels">> => list(list(any())()),
+%%   <<"RetrieveActions">> => boolean(),
+%%   <<"RetrieveResults">> => boolean()
+%% }
+-type list_review_policy_results_for_hit_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_worker_blocks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_worker_blocks_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_bonus_request() :: #{
+%%   <<"AssignmentId">> := string(),
+%%   <<"BonusAmount">> := string(),
+%%   <<"Reason">> := string(),
+%%   <<"UniqueRequestToken">> => string(),
+%%   <<"WorkerId">> := string()
+%% }
+-type send_bonus_request() :: #{binary() => any()}.
+
+%% Example:
+%% reject_assignment_response() :: #{
+
+%% }
+-type reject_assignment_response() :: #{binary() => any()}.
+
+%% Example:
+%% notification_specification() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"EventTypes">> => list(list(any())()),
+%%   <<"Transport">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type notification_specification() :: #{binary() => any()}.
+
+%% Example:
+%% list_bonus_payments_response() :: #{
+%%   <<"BonusPayments">> => list(bonus_payment()()),
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer()
+%% }
+-type list_bonus_payments_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_test_event_notification_request() :: #{
+%%   <<"Notification">> := notification_specification(),
+%%   <<"TestEventType">> := list(any())
+%% }
+-type send_test_event_notification_request() :: #{binary() => any()}.
+
+%% Example:
+%% notify_workers_failure_status() :: #{
+%%   <<"NotifyWorkersFailureCode">> => list(any()),
+%%   <<"NotifyWorkersFailureMessage">> => string(),
+%%   <<"WorkerId">> => string()
+%% }
+-type notify_workers_failure_status() :: #{binary() => any()}.
+
+%% Example:
+%% list_hits_for_qualification_type_response() :: #{
+%%   <<"HITs">> => list(hit()()),
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer()
+%% }
+-type list_hits_for_qualification_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_balance_request() :: #{
+
+%% }
+-type get_account_balance_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_settings_response() :: #{
+
+%% }
+-type update_notification_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% reject_qualification_request_response() :: #{
+
+%% }
+-type reject_qualification_request_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_qualification_type_response() :: #{
+%%   <<"QualificationType">> => qualification_type()
+%% }
+-type update_qualification_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_hit_response() :: #{
+%%   <<"HIT">> => hit()
+%% }
+-type get_hit_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_assignment_response() :: #{
+%%   <<"Assignment">> => assignment(),
+%%   <<"HIT">> => hit()
+%% }
+-type get_assignment_response() :: #{binary() => any()}.
+
+%% Example:
+%% reject_qualification_request_request() :: #{
+%%   <<"QualificationRequestId">> := string(),
+%%   <<"Reason">> => string()
+%% }
+-type reject_qualification_request_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_worker_block_request() :: #{
+%%   <<"Reason">> := string(),
+%%   <<"WorkerId">> := string()
+%% }
+-type create_worker_block_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_qualification_type_response() :: #{
+
+%% }
+-type delete_qualification_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_worker_blocks_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer(),
+%%   <<"WorkerBlocks">> => list(worker_block()())
+%% }
+-type list_worker_blocks_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_qualification_with_worker_response() :: #{
+
+%% }
+-type associate_qualification_with_worker_response() :: #{binary() => any()}.
+
+%% Example:
+%% qualification() :: #{
+%%   <<"GrantTime">> => non_neg_integer(),
+%%   <<"IntegerValue">> => integer(),
+%%   <<"LocaleValue">> => locale(),
+%%   <<"QualificationTypeId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"WorkerId">> => string()
+%% }
+-type qualification() :: #{binary() => any()}.
+
+%% Example:
+%% update_hit_review_status_response() :: #{
+
+%% }
+-type update_hit_review_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% notify_workers_response() :: #{
+%%   <<"NotifyWorkersFailureStatuses">> => list(notify_workers_failure_status()())
+%% }
+-type notify_workers_response() :: #{binary() => any()}.
+
+%% Example:
+%% worker_block() :: #{
+%%   <<"Reason">> => string(),
+%%   <<"WorkerId">> => string()
+%% }
+-type worker_block() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_settings_request() :: #{
+%%   <<"Active">> => boolean(),
+%%   <<"HITTypeId">> := string(),
+%%   <<"Notification">> => notification_specification()
+%% }
+-type update_notification_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% request_error() :: #{
+%%   <<"Message">> => string(),
+%%   <<"TurkErrorCode">> => string()
+%% }
+-type request_error() :: #{binary() => any()}.
+
+%% Example:
+%% accept_qualification_request_response() :: #{
+
+%% }
+-type accept_qualification_request_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_qualification_from_worker_response() :: #{
+
+%% }
+-type disassociate_qualification_from_worker_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_qualification_requests_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QualificationTypeId">> => string()
+%% }
+-type list_qualification_requests_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_expiration_for_hit_response() :: #{
+
+%% }
+-type update_expiration_for_hit_response() :: #{binary() => any()}.
+
+%% Example:
+%% hit() :: #{
+%%   <<"AssignmentDurationInSeconds">> => float(),
+%%   <<"AutoApprovalDelayInSeconds">> => float(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"HITGroupId">> => string(),
+%%   <<"HITId">> => string(),
+%%   <<"HITLayoutId">> => string(),
+%%   <<"HITReviewStatus">> => list(any()),
+%%   <<"HITStatus">> => list(any()),
+%%   <<"HITTypeId">> => string(),
+%%   <<"Keywords">> => string(),
+%%   <<"MaxAssignments">> => integer(),
+%%   <<"NumberOfAssignmentsAvailable">> => integer(),
+%%   <<"NumberOfAssignmentsCompleted">> => integer(),
+%%   <<"NumberOfAssignmentsPending">> => integer(),
+%%   <<"QualificationRequirements">> => list(qualification_requirement()()),
+%%   <<"Question">> => string(),
+%%   <<"RequesterAnnotation">> => string(),
+%%   <<"Reward">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type hit() :: #{binary() => any()}.
+
+%% Example:
+%% get_hit_request() :: #{
+%%   <<"HITId">> := string()
+%% }
+-type get_hit_request() :: #{binary() => any()}.
+
+%% Example:
+%% policy_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"MapEntries">> => list(parameter_map_entry()()),
+%%   <<"Values">> => list(string()())
+%% }
+-type policy_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% bonus_payment() :: #{
+%%   <<"AssignmentId">> => string(),
+%%   <<"BonusAmount">> => string(),
+%%   <<"GrantTime">> => non_neg_integer(),
+%%   <<"Reason">> => string(),
+%%   <<"WorkerId">> => string()
+%% }
+-type bonus_payment() :: #{binary() => any()}.
+
+%% Example:
+%% list_workers_with_qualification_type_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QualificationTypeId">> := string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_workers_with_qualification_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_bonus_payments_request() :: #{
+%%   <<"AssignmentId">> => string(),
+%%   <<"HITId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bonus_payments_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_hit_request() :: #{
+%%   <<"AssignmentDurationInSeconds">> := float(),
+%%   <<"AssignmentReviewPolicy">> => review_policy(),
+%%   <<"AutoApprovalDelayInSeconds">> => float(),
+%%   <<"Description">> := string(),
+%%   <<"HITLayoutId">> => string(),
+%%   <<"HITLayoutParameters">> => list(hit_layout_parameter()()),
+%%   <<"HITReviewPolicy">> => review_policy(),
+%%   <<"Keywords">> => string(),
+%%   <<"LifetimeInSeconds">> := float(),
+%%   <<"MaxAssignments">> => integer(),
+%%   <<"QualificationRequirements">> => list(qualification_requirement()()),
+%%   <<"Question">> => string(),
+%%   <<"RequesterAnnotation">> => string(),
+%%   <<"Reward">> := string(),
+%%   <<"Title">> := string(),
+%%   <<"UniqueRequestToken">> => string()
+%% }
+-type create_hit_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_qualification_with_worker_request() :: #{
+%%   <<"IntegerValue">> => integer(),
+%%   <<"QualificationTypeId">> := string(),
+%%   <<"SendNotification">> => boolean(),
+%%   <<"WorkerId">> := string()
+%% }
+-type associate_qualification_with_worker_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_qualification_requests_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer(),
+%%   <<"QualificationRequests">> => list(qualification_request()())
+%% }
+-type list_qualification_requests_response() :: #{binary() => any()}.
+
+%% Example:
+%% hit_layout_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type hit_layout_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% review_action_detail() :: #{
+%%   <<"ActionId">> => string(),
+%%   <<"ActionName">> => string(),
+%%   <<"CompleteTime">> => non_neg_integer(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"Result">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetType">> => string()
+%% }
+-type review_action_detail() :: #{binary() => any()}.
+
+%% Example:
+%% create_hit_with_hit_type_response() :: #{
+%%   <<"HIT">> => hit()
+%% }
+-type create_hit_with_hit_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_hits_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hits_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_test_event_notification_response() :: #{
+
+%% }
+-type send_test_event_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_hit_review_status_request() :: #{
+%%   <<"HITId">> := string(),
+%%   <<"Revert">> => boolean()
+%% }
+-type update_hit_review_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workers_with_qualification_type_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer(),
+%%   <<"Qualifications">> => list(qualification()())
+%% }
+-type list_workers_with_qualification_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_review_policy_results_for_hit_response() :: #{
+%%   <<"AssignmentReviewPolicy">> => review_policy(),
+%%   <<"AssignmentReviewReport">> => review_report(),
+%%   <<"HITId">> => string(),
+%%   <<"HITReviewPolicy">> => review_policy(),
+%%   <<"HITReviewReport">> => review_report(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_review_policy_results_for_hit_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_additional_assignments_for_hit_request() :: #{
+%%   <<"HITId">> := string(),
+%%   <<"NumberOfAdditionalAssignments">> := integer(),
+%%   <<"UniqueRequestToken">> => string()
+%% }
+-type create_additional_assignments_for_hit_request() :: #{binary() => any()}.
+
+%% Example:
+%% review_report() :: #{
+%%   <<"ReviewActions">> => list(review_action_detail()()),
+%%   <<"ReviewResults">> => list(review_result_detail()())
+%% }
+-type review_report() :: #{binary() => any()}.
+
+%% Example:
+%% get_assignment_request() :: #{
+%%   <<"AssignmentId">> := string()
+%% }
+-type get_assignment_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_assignments_for_hit_response() :: #{
+%%   <<"Assignments">> => list(assignment()()),
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer()
+%% }
+-type list_assignments_for_hit_response() :: #{binary() => any()}.
+
+%% Example:
+%% qualification_type() :: #{
+%%   <<"AnswerKey">> => string(),
+%%   <<"AutoGranted">> => boolean(),
+%%   <<"AutoGrantedValue">> => integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"IsRequestable">> => boolean(),
+%%   <<"Keywords">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"QualificationTypeId">> => string(),
+%%   <<"QualificationTypeStatus">> => list(any()),
+%%   <<"RetryDelayInSeconds">> => float(),
+%%   <<"Test">> => string(),
+%%   <<"TestDurationInSeconds">> => float()
+%% }
+-type qualification_type() :: #{binary() => any()}.
+
+%% Example:
+%% qualification_request() :: #{
+%%   <<"Answer">> => string(),
+%%   <<"QualificationRequestId">> => string(),
+%%   <<"QualificationTypeId">> => string(),
+%%   <<"SubmitTime">> => non_neg_integer(),
+%%   <<"Test">> => string(),
+%%   <<"WorkerId">> => string()
+%% }
+-type qualification_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualification_score_response() :: #{
+%%   <<"Qualification">> => qualification()
+%% }
+-type get_qualification_score_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_qualification_type_response() :: #{
+%%   <<"QualificationType">> => qualification_type()
+%% }
+-type create_qualification_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_hit_type_of_hit_response() :: #{
+
+%% }
+-type update_hit_type_of_hit_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_hit_with_hit_type_request() :: #{
+%%   <<"AssignmentReviewPolicy">> => review_policy(),
+%%   <<"HITLayoutId">> => string(),
+%%   <<"HITLayoutParameters">> => list(hit_layout_parameter()()),
+%%   <<"HITReviewPolicy">> => review_policy(),
+%%   <<"HITTypeId">> := string(),
+%%   <<"LifetimeInSeconds">> := float(),
+%%   <<"MaxAssignments">> => integer(),
+%%   <<"Question">> => string(),
+%%   <<"RequesterAnnotation">> => string(),
+%%   <<"UniqueRequestToken">> => string()
+%% }
+-type create_hit_with_hit_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hits_response() :: #{
+%%   <<"HITs">> => list(hit()()),
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer()
+%% }
+-type list_hits_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_expiration_for_hit_request() :: #{
+%%   <<"ExpireAt">> := non_neg_integer(),
+%%   <<"HITId">> := string()
+%% }
+-type update_expiration_for_hit_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hit_request() :: #{
+%%   <<"HITId">> := string()
+%% }
+-type delete_hit_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_reviewable_hits_response() :: #{
+%%   <<"HITs">> => list(hit()()),
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer()
+%% }
+-type list_reviewable_hits_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualification_type_response() :: #{
+%%   <<"QualificationType">> => qualification_type()
+%% }
+-type get_qualification_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_hit_response() :: #{
+%%   <<"HIT">> => hit()
+%% }
+-type create_hit_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_qualification_from_worker_request() :: #{
+%%   <<"QualificationTypeId">> := string(),
+%%   <<"Reason">> => string(),
+%%   <<"WorkerId">> := string()
+%% }
+-type disassociate_qualification_from_worker_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_qualification_type_request() :: #{
+%%   <<"AnswerKey">> => string(),
+%%   <<"AutoGranted">> => boolean(),
+%%   <<"AutoGrantedValue">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"QualificationTypeId">> := string(),
+%%   <<"QualificationTypeStatus">> => list(any()),
+%%   <<"RetryDelayInSeconds">> => float(),
+%%   <<"Test">> => string(),
+%%   <<"TestDurationInSeconds">> => float()
+%% }
+-type update_qualification_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_map_entry() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type parameter_map_entry() :: #{binary() => any()}.
+
+%% Example:
+%% list_assignments_for_hit_request() :: #{
+%%   <<"AssignmentStatuses">> => list(list(any())()),
+%%   <<"HITId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assignments_for_hit_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_qualification_types_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer(),
+%%   <<"QualificationTypes">> => list(qualification_type()())
+%% }
+-type list_qualification_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_hit_type_request() :: #{
+%%   <<"AssignmentDurationInSeconds">> := float(),
+%%   <<"AutoApprovalDelayInSeconds">> => float(),
+%%   <<"Description">> := string(),
+%%   <<"Keywords">> => string(),
+%%   <<"QualificationRequirements">> => list(qualification_requirement()()),
+%%   <<"Reward">> := string(),
+%%   <<"Title">> := string()
+%% }
+-type create_hit_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_worker_block_response() :: #{
+
+%% }
+-type delete_worker_block_response() :: #{binary() => any()}.
+
+-type accept_qualification_request_errors() ::
+    request_error() | 
+    service_fault().
+
+-type approve_assignment_errors() ::
+    request_error() | 
+    service_fault().
+
+-type associate_qualification_with_worker_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_additional_assignments_for_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_hit_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_hit_with_hit_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type create_worker_block_errors() ::
+    request_error() | 
+    service_fault().
+
+-type delete_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type delete_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type delete_worker_block_errors() ::
+    request_error() | 
+    service_fault().
+
+-type disassociate_qualification_from_worker_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_account_balance_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_assignment_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_file_upload_url_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_qualification_score_errors() ::
+    request_error() | 
+    service_fault().
+
+-type get_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_assignments_for_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_bonus_payments_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_hits_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_hits_for_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_qualification_requests_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_qualification_types_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_review_policy_results_for_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_reviewable_hits_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_worker_blocks_errors() ::
+    request_error() | 
+    service_fault().
+
+-type list_workers_with_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
+
+-type notify_workers_errors() ::
+    request_error() | 
+    service_fault().
+
+-type reject_assignment_errors() ::
+    request_error() | 
+    service_fault().
+
+-type reject_qualification_request_errors() ::
+    request_error() | 
+    service_fault().
+
+-type send_bonus_errors() ::
+    request_error() | 
+    service_fault().
+
+-type send_test_event_notification_errors() ::
+    request_error() | 
+    service_fault().
+
+-type update_expiration_for_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type update_hit_review_status_errors() ::
+    request_error() | 
+    service_fault().
+
+-type update_hit_type_of_hit_errors() ::
+    request_error() | 
+    service_fault().
+
+-type update_notification_settings_errors() ::
+    request_error() | 
+    service_fault().
+
+-type update_qualification_type_errors() ::
+    request_error() | 
+    service_fault().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -98,9 +1059,18 @@
 %%
 %% A successful request for the `AcceptQualificationRequest' operation
 %% returns with no errors and an empty body.
+-spec accept_qualification_request(aws_client:aws_client(), accept_qualification_request_request()) ->
+    {ok, accept_qualification_request_response(), tuple()} |
+    {error, any()} |
+    {error, accept_qualification_request_errors(), tuple()}.
 accept_qualification_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_qualification_request(Client, Input, []).
+
+-spec accept_qualification_request(aws_client:aws_client(), accept_qualification_request_request(), proplists:proplist()) ->
+    {ok, accept_qualification_request_response(), tuple()} |
+    {error, any()} |
+    {error, accept_qualification_request_errors(), tuple()}.
 accept_qualification_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptQualificationRequest">>, Input, Options).
@@ -130,9 +1100,18 @@ accept_qualification_request(Client, Input, Options)
 %% This only works on rejected assignments that were submitted within the
 %% previous 30 days
 %% and only if the assignment's related HIT has not been deleted.
+-spec approve_assignment(aws_client:aws_client(), approve_assignment_request()) ->
+    {ok, approve_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, approve_assignment_errors(), tuple()}.
 approve_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     approve_assignment(Client, Input, []).
+
+-spec approve_assignment(aws_client:aws_client(), approve_assignment_request(), proplists:proplist()) ->
+    {ok, approve_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, approve_assignment_errors(), tuple()}.
 approve_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApproveAssignment">>, Input, Options).
@@ -160,9 +1139,18 @@ approve_assignment(Client, Input, Options)
 %% request without affecting the Qualification the Worker already has, reject
 %% the
 %% request with the `RejectQualificationRequest' operation.
+-spec associate_qualification_with_worker(aws_client:aws_client(), associate_qualification_with_worker_request()) ->
+    {ok, associate_qualification_with_worker_response(), tuple()} |
+    {error, any()} |
+    {error, associate_qualification_with_worker_errors(), tuple()}.
 associate_qualification_with_worker(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_qualification_with_worker(Client, Input, []).
+
+-spec associate_qualification_with_worker(aws_client:aws_client(), associate_qualification_with_worker_request(), proplists:proplist()) ->
+    {ok, associate_qualification_with_worker_response(), tuple()} |
+    {error, any()} |
+    {error, associate_qualification_with_worker_errors(), tuple()}.
 associate_qualification_with_worker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateQualificationWithWorker">>, Input, Options).
@@ -187,9 +1175,18 @@ associate_qualification_with_worker(Client, Input, Options)
 %% to extend HITs that were created before July 22, 2015 will result in an
 %% `AWS.MechanicalTurk.HITTooOldForExtension'
 %% exception.
+-spec create_additional_assignments_for_hit(aws_client:aws_client(), create_additional_assignments_for_hit_request()) ->
+    {ok, create_additional_assignments_for_hit_response(), tuple()} |
+    {error, any()} |
+    {error, create_additional_assignments_for_hit_errors(), tuple()}.
 create_additional_assignments_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_additional_assignments_for_hit(Client, Input, []).
+
+-spec create_additional_assignments_for_hit(aws_client:aws_client(), create_additional_assignments_for_hit_request(), proplists:proplist()) ->
+    {ok, create_additional_assignments_for_hit_response(), tuple()} |
+    {error, any()} |
+    {error, create_additional_assignments_for_hit_errors(), tuple()}.
 create_additional_assignments_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAdditionalAssignmentsForHIT">>, Input, Options).
@@ -222,9 +1219,18 @@ create_additional_assignments_for_hit(Client, Input, Options)
 %% If a HIT is created with 10 or more maximum assignments, there is an
 %% additional fee. For more information, see
 %% Amazon Mechanical Turk Pricing: https://requester.mturk.com/pricing.
+-spec create_hit(aws_client:aws_client(), create_hit_request()) ->
+    {ok, create_hit_response(), tuple()} |
+    {error, any()} |
+    {error, create_hit_errors(), tuple()}.
 create_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hit(Client, Input, []).
+
+-spec create_hit(aws_client:aws_client(), create_hit_request(), proplists:proplist()) ->
+    {ok, create_hit_response(), tuple()} |
+    {error, any()} |
+    {error, create_hit_errors(), tuple()}.
 create_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHIT">>, Input, Options).
@@ -238,9 +1244,18 @@ create_hit(Client, Input, Options)
 %% If you register a HIT type with values that match an existing HIT type,
 %% the HIT type
 %% ID of the existing type will be returned.
+-spec create_hit_type(aws_client:aws_client(), create_hit_type_request()) ->
+    {ok, create_hit_type_response(), tuple()} |
+    {error, any()} |
+    {error, create_hit_type_errors(), tuple()}.
 create_hit_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hit_type(Client, Input, []).
+
+-spec create_hit_type(aws_client:aws_client(), create_hit_type_request(), proplists:proplist()) ->
+    {ok, create_hit_type_response(), tuple()} |
+    {error, any()} |
+    {error, create_hit_type_errors(), tuple()}.
 create_hit_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHITType">>, Input, Options).
@@ -266,9 +1281,18 @@ create_hit_type(Client, Input, Options)
 %% additional fee.
 %% For more information, see Amazon Mechanical Turk Pricing:
 %% https://requester.mturk.com/pricing.
+-spec create_hit_with_hit_type(aws_client:aws_client(), create_hit_with_hit_type_request()) ->
+    {ok, create_hit_with_hit_type_response(), tuple()} |
+    {error, any()} |
+    {error, create_hit_with_hit_type_errors(), tuple()}.
 create_hit_with_hit_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hit_with_hit_type(Client, Input, []).
+
+-spec create_hit_with_hit_type(aws_client:aws_client(), create_hit_with_hit_type_request(), proplists:proplist()) ->
+    {ok, create_hit_with_hit_type_response(), tuple()} |
+    {error, any()} |
+    {error, create_hit_with_hit_type_errors(), tuple()}.
 create_hit_with_hit_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHITWithHITType">>, Input, Options).
@@ -279,9 +1303,18 @@ create_hit_with_hit_type(Client, Input, Options)
 %% operation creates a new Qualification type, which is represented by a
 %% `QualificationType'
 %% data structure.
+-spec create_qualification_type(aws_client:aws_client(), create_qualification_type_request()) ->
+    {ok, create_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, create_qualification_type_errors(), tuple()}.
 create_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_qualification_type(Client, Input, []).
+
+-spec create_qualification_type(aws_client:aws_client(), create_qualification_type_request(), proplists:proplist()) ->
+    {ok, create_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, create_qualification_type_errors(), tuple()}.
 create_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateQualificationType">>, Input, Options).
@@ -291,9 +1324,18 @@ create_qualification_type(Client, Input, Options)
 %%
 %% For example, you can block a Worker who is producing poor quality work.
 %% You can block up to 100,000 Workers.
+-spec create_worker_block(aws_client:aws_client(), create_worker_block_request()) ->
+    {ok, create_worker_block_response(), tuple()} |
+    {error, any()} |
+    {error, create_worker_block_errors(), tuple()}.
 create_worker_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_worker_block(Client, Input, []).
+
+-spec create_worker_block(aws_client:aws_client(), create_worker_block_request(), proplists:proplist()) ->
+    {ok, create_worker_block_response(), tuple()} |
+    {error, any()} |
+    {error, create_worker_block_errors(), tuple()}.
 create_worker_block(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkerBlock">>, Input, Options).
@@ -323,9 +1365,18 @@ create_worker_block(Client, Input, Options)
 %%
 %% Disposing HITs can improve the performance of operations such as
 %% ListReviewableHITs and ListHITs.
+-spec delete_hit(aws_client:aws_client(), delete_hit_request()) ->
+    {ok, delete_hit_response(), tuple()} |
+    {error, any()} |
+    {error, delete_hit_errors(), tuple()}.
 delete_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hit(Client, Input, []).
+
+-spec delete_hit(aws_client:aws_client(), delete_hit_request(), proplists:proplist()) ->
+    {ok, delete_hit_response(), tuple()} |
+    {error, any()} |
+    {error, delete_hit_errors(), tuple()}.
 delete_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHIT">>, Input, Options).
@@ -348,9 +1399,18 @@ delete_hit(Client, Input, Options)
 %% may take up to 48 hours before DeleteQualificationType completes and
 %% the unique name of the Qualification type is available for reuse with
 %% CreateQualificationType.
+-spec delete_qualification_type(aws_client:aws_client(), delete_qualification_type_request()) ->
+    {ok, delete_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_qualification_type_errors(), tuple()}.
 delete_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_qualification_type(Client, Input, []).
+
+-spec delete_qualification_type(aws_client:aws_client(), delete_qualification_type_request(), proplists:proplist()) ->
+    {ok, delete_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, delete_qualification_type_errors(), tuple()}.
 delete_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteQualificationType">>, Input, Options).
@@ -363,9 +1423,18 @@ delete_qualification_type(Client, Input, Options)
 %% or invalid, this operation fails and returns the message “WorkerId is
 %% invalid.” If the specified Worker is not blocked, this operation returns
 %% successfully.
+-spec delete_worker_block(aws_client:aws_client(), delete_worker_block_request()) ->
+    {ok, delete_worker_block_response(), tuple()} |
+    {error, any()} |
+    {error, delete_worker_block_errors(), tuple()}.
 delete_worker_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_worker_block(Client, Input, []).
+
+-spec delete_worker_block(aws_client:aws_client(), delete_worker_block_request(), proplists:proplist()) ->
+    {ok, delete_worker_block_response(), tuple()} |
+    {error, any()} |
+    {error, delete_worker_block_errors(), tuple()}.
 delete_worker_block(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkerBlock">>, Input, Options).
@@ -376,9 +1445,18 @@ delete_worker_block(Client, Input, Options)
 %%
 %% You can provide a text message explaining why the Qualification was
 %% revoked. The user who had the Qualification can see this message.
+-spec disassociate_qualification_from_worker(aws_client:aws_client(), disassociate_qualification_from_worker_request()) ->
+    {ok, disassociate_qualification_from_worker_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_qualification_from_worker_errors(), tuple()}.
 disassociate_qualification_from_worker(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_qualification_from_worker(Client, Input, []).
+
+-spec disassociate_qualification_from_worker(aws_client:aws_client(), disassociate_qualification_from_worker_request(), proplists:proplist()) ->
+    {ok, disassociate_qualification_from_worker_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_qualification_from_worker_errors(), tuple()}.
 disassociate_qualification_from_worker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateQualificationFromWorker">>, Input, Options).
@@ -392,9 +1470,18 @@ disassociate_qualification_from_worker(Client, Input, Options)
 %% Note: If you have enabled AWS Billing and still have a remaining Prepaid
 %% HITs balance, this balance can be viewed on the My Account page in the
 %% Requester console.
+-spec get_account_balance(aws_client:aws_client(), get_account_balance_request()) ->
+    {ok, get_account_balance_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_balance_errors(), tuple()}.
 get_account_balance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_balance(Client, Input, []).
+
+-spec get_account_balance(aws_client:aws_client(), get_account_balance_request(), proplists:proplist()) ->
+    {ok, get_account_balance_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_balance_errors(), tuple()}.
 get_account_balance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountBalance">>, Input, Options).
@@ -402,9 +1489,18 @@ get_account_balance(Client, Input, Options)
 %% @doc
 %% The `GetAssignment' operation retrieves the details of the specified
 %% Assignment.
+-spec get_assignment(aws_client:aws_client(), get_assignment_request()) ->
+    {ok, get_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, get_assignment_errors(), tuple()}.
 get_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_assignment(Client, Input, []).
+
+-spec get_assignment(aws_client:aws_client(), get_assignment_request(), proplists:proplist()) ->
+    {ok, get_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, get_assignment_errors(), tuple()}.
 get_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAssignment">>, Input, Options).
@@ -427,18 +1523,36 @@ get_assignment(Client, Input, Options)
 %% element to be used for the QuestionForm data structure.
 %% Instead, we recommend that Requesters who want to create HITs asking
 %% Workers to upload files to use Amazon S3.
+-spec get_file_upload_url(aws_client:aws_client(), get_file_upload_url_request()) ->
+    {ok, get_file_upload_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_file_upload_url_errors(), tuple()}.
 get_file_upload_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_file_upload_url(Client, Input, []).
+
+-spec get_file_upload_url(aws_client:aws_client(), get_file_upload_url_request(), proplists:proplist()) ->
+    {ok, get_file_upload_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_file_upload_url_errors(), tuple()}.
 get_file_upload_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFileUploadURL">>, Input, Options).
 
 %% @doc
 %% The `GetHIT' operation retrieves the details of the specified HIT.
+-spec get_hit(aws_client:aws_client(), get_hit_request()) ->
+    {ok, get_hit_response(), tuple()} |
+    {error, any()} |
+    {error, get_hit_errors(), tuple()}.
 get_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hit(Client, Input, []).
+
+-spec get_hit(aws_client:aws_client(), get_hit_request(), proplists:proplist()) ->
+    {ok, get_hit_response(), tuple()} |
+    {error, any()} |
+    {error, get_hit_errors(), tuple()}.
 get_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHIT">>, Input, Options).
@@ -457,9 +1571,18 @@ get_hit(Client, Input, Options)
 %%
 %% Only the owner of a Qualification type can query the value of
 %% a Worker's Qualification of that type.
+-spec get_qualification_score(aws_client:aws_client(), get_qualification_score_request()) ->
+    {ok, get_qualification_score_response(), tuple()} |
+    {error, any()} |
+    {error, get_qualification_score_errors(), tuple()}.
 get_qualification_score(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_qualification_score(Client, Input, []).
+
+-spec get_qualification_score(aws_client:aws_client(), get_qualification_score_request(), proplists:proplist()) ->
+    {ok, get_qualification_score_response(), tuple()} |
+    {error, any()} |
+    {error, get_qualification_score_errors(), tuple()}.
 get_qualification_score(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQualificationScore">>, Input, Options).
@@ -467,9 +1590,18 @@ get_qualification_score(Client, Input, Options)
 %% @doc
 %% The `GetQualificationType'operation retrieves information about a
 %% Qualification type using its ID.
+-spec get_qualification_type(aws_client:aws_client(), get_qualification_type_request()) ->
+    {ok, get_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_qualification_type_errors(), tuple()}.
 get_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_qualification_type(Client, Input, []).
+
+-spec get_qualification_type(aws_client:aws_client(), get_qualification_type_request(), proplists:proplist()) ->
+    {ok, get_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, get_qualification_type_errors(), tuple()}.
 get_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQualificationType">>, Input, Options).
@@ -502,9 +1634,18 @@ get_qualification_type(Client, Input, Options)
 %% operation returns a single page of results. You can use the
 %% parameters
 %% of the operation to control sorting and pagination.
+-spec list_assignments_for_hit(aws_client:aws_client(), list_assignments_for_hit_request()) ->
+    {ok, list_assignments_for_hit_response(), tuple()} |
+    {error, any()} |
+    {error, list_assignments_for_hit_errors(), tuple()}.
 list_assignments_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assignments_for_hit(Client, Input, []).
+
+-spec list_assignments_for_hit(aws_client:aws_client(), list_assignments_for_hit_request(), proplists:proplist()) ->
+    {ok, list_assignments_for_hit_response(), tuple()} |
+    {error, any()} |
+    {error, list_assignments_for_hit_errors(), tuple()}.
 list_assignments_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssignmentsForHIT">>, Input, Options).
@@ -514,9 +1655,18 @@ list_assignments_for_hit(Client, Input, Options)
 %% `ListBonusPayments'
 %% operation retrieves the amounts of bonuses you have paid to Workers
 %% for a given HIT or assignment.
+-spec list_bonus_payments(aws_client:aws_client(), list_bonus_payments_request()) ->
+    {ok, list_bonus_payments_response(), tuple()} |
+    {error, any()} |
+    {error, list_bonus_payments_errors(), tuple()}.
 list_bonus_payments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_bonus_payments(Client, Input, []).
+
+-spec list_bonus_payments(aws_client:aws_client(), list_bonus_payments_request(), proplists:proplist()) ->
+    {ok, list_bonus_payments_response(), tuple()} |
+    {error, any()} |
+    {error, list_bonus_payments_errors(), tuple()}.
 list_bonus_payments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBonusPayments">>, Input, Options).
@@ -529,9 +1679,18 @@ list_bonus_payments(Client, Input, Options)
 %% The operation returns
 %% HITs of any status, except for HITs that have been deleted of with
 %% the DeleteHIT operation or that have been auto-deleted.
+-spec list_hits(aws_client:aws_client(), list_hits_request()) ->
+    {ok, list_hits_response(), tuple()} |
+    {error, any()} |
+    {error, list_hits_errors(), tuple()}.
 list_hits(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hits(Client, Input, []).
+
+-spec list_hits(aws_client:aws_client(), list_hits_request(), proplists:proplist()) ->
+    {ok, list_hits_response(), tuple()} |
+    {error, any()} |
+    {error, list_hits_errors(), tuple()}.
 list_hits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHITs">>, Input, Options).
@@ -543,9 +1702,18 @@ list_hits(Client, Input, Options)
 %% The operation returns HITs of any status, except for HITs that have been
 %% deleted
 %% with the `DeleteHIT' operation or that have been auto-deleted.
+-spec list_hits_for_qualification_type(aws_client:aws_client(), list_hits_for_qualification_type_request()) ->
+    {ok, list_hits_for_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, list_hits_for_qualification_type_errors(), tuple()}.
 list_hits_for_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hits_for_qualification_type(Client, Input, []).
+
+-spec list_hits_for_qualification_type(aws_client:aws_client(), list_hits_for_qualification_type_request(), proplists:proplist()) ->
+    {ok, list_hits_for_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, list_hits_for_qualification_type_errors(), tuple()}.
 list_hits_for_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHITsForQualificationType">>, Input, Options).
@@ -559,9 +1727,18 @@ list_hits_for_qualification_type(Client, Input, Options)
 %% The owner of the Qualification type calls this
 %% operation to poll for pending requests, and accepts them using the
 %% AcceptQualification operation.
+-spec list_qualification_requests(aws_client:aws_client(), list_qualification_requests_request()) ->
+    {ok, list_qualification_requests_response(), tuple()} |
+    {error, any()} |
+    {error, list_qualification_requests_errors(), tuple()}.
 list_qualification_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_qualification_requests(Client, Input, []).
+
+-spec list_qualification_requests(aws_client:aws_client(), list_qualification_requests_request(), proplists:proplist()) ->
+    {ok, list_qualification_requests_response(), tuple()} |
+    {error, any()} |
+    {error, list_qualification_requests_errors(), tuple()}.
 list_qualification_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQualificationRequests">>, Input, Options).
@@ -571,9 +1748,18 @@ list_qualification_requests(Client, Input, Options)
 %% `ListQualificationTypes'
 %% operation returns a list of Qualification types, filtered by
 %% an optional search term.
+-spec list_qualification_types(aws_client:aws_client(), list_qualification_types_request()) ->
+    {ok, list_qualification_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_qualification_types_errors(), tuple()}.
 list_qualification_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_qualification_types(Client, Input, []).
+
+-spec list_qualification_types(aws_client:aws_client(), list_qualification_types_request(), proplists:proplist()) ->
+    {ok, list_qualification_types_response(), tuple()} |
+    {error, any()} |
+    {error, list_qualification_types_errors(), tuple()}.
 list_qualification_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQualificationTypes">>, Input, Options).
@@ -589,9 +1775,18 @@ list_qualification_types(Client, Input, Options)
 %% see Review Policies. The ListReviewPolicyResultsForHIT operation can
 %% return results for both
 %% Assignment-level and HIT-level review results.
+-spec list_review_policy_results_for_hit(aws_client:aws_client(), list_review_policy_results_for_hit_request()) ->
+    {ok, list_review_policy_results_for_hit_response(), tuple()} |
+    {error, any()} |
+    {error, list_review_policy_results_for_hit_errors(), tuple()}.
 list_review_policy_results_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_review_policy_results_for_hit(Client, Input, []).
+
+-spec list_review_policy_results_for_hit(aws_client:aws_client(), list_review_policy_results_for_hit_request(), proplists:proplist()) ->
+    {ok, list_review_policy_results_for_hit_response(), tuple()} |
+    {error, any()} |
+    {error, list_review_policy_results_for_hit_errors(), tuple()}.
 list_review_policy_results_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReviewPolicyResultsForHIT">>, Input, Options).
@@ -601,18 +1796,36 @@ list_review_policy_results_for_hit(Client, Input, Options)
 %% equal to
 %% Reviewable or Status equal to Reviewing that belong to the Requester
 %% calling the operation.
+-spec list_reviewable_hits(aws_client:aws_client(), list_reviewable_hits_request()) ->
+    {ok, list_reviewable_hits_response(), tuple()} |
+    {error, any()} |
+    {error, list_reviewable_hits_errors(), tuple()}.
 list_reviewable_hits(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_reviewable_hits(Client, Input, []).
+
+-spec list_reviewable_hits(aws_client:aws_client(), list_reviewable_hits_request(), proplists:proplist()) ->
+    {ok, list_reviewable_hits_response(), tuple()} |
+    {error, any()} |
+    {error, list_reviewable_hits_errors(), tuple()}.
 list_reviewable_hits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReviewableHITs">>, Input, Options).
 
 %% @doc The `ListWorkersBlocks' operation retrieves a list of Workers who
 %% are blocked from working on your HITs.
+-spec list_worker_blocks(aws_client:aws_client(), list_worker_blocks_request()) ->
+    {ok, list_worker_blocks_response(), tuple()} |
+    {error, any()} |
+    {error, list_worker_blocks_errors(), tuple()}.
 list_worker_blocks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_worker_blocks(Client, Input, []).
+
+-spec list_worker_blocks(aws_client:aws_client(), list_worker_blocks_request(), proplists:proplist()) ->
+    {ok, list_worker_blocks_response(), tuple()} |
+    {error, any()} |
+    {error, list_worker_blocks_errors(), tuple()}.
 list_worker_blocks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkerBlocks">>, Input, Options).
@@ -621,9 +1834,18 @@ list_worker_blocks(Client, Input, Options)
 %% The `ListWorkersWithQualificationType' operation returns all of the
 %% Workers
 %% that have been associated with a given Qualification type.
+-spec list_workers_with_qualification_type(aws_client:aws_client(), list_workers_with_qualification_type_request()) ->
+    {ok, list_workers_with_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, list_workers_with_qualification_type_errors(), tuple()}.
 list_workers_with_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workers_with_qualification_type(Client, Input, []).
+
+-spec list_workers_with_qualification_type(aws_client:aws_client(), list_workers_with_qualification_type_request(), proplists:proplist()) ->
+    {ok, list_workers_with_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, list_workers_with_qualification_type_errors(), tuple()}.
 list_workers_with_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkersWithQualificationType">>, Input, Options).
@@ -639,9 +1861,18 @@ list_workers_with_qualification_type(Client, Input, Options)
 %% NotifyWorkers operation will send a notification email to a Worker
 %% only if you have previously approved or rejected work from the
 %% Worker.
+-spec notify_workers(aws_client:aws_client(), notify_workers_request()) ->
+    {ok, notify_workers_response(), tuple()} |
+    {error, any()} |
+    {error, notify_workers_errors(), tuple()}.
 notify_workers(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_workers(Client, Input, []).
+
+-spec notify_workers(aws_client:aws_client(), notify_workers_request(), proplists:proplist()) ->
+    {ok, notify_workers_response(), tuple()} |
+    {error, any()} |
+    {error, notify_workers_errors(), tuple()}.
 notify_workers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyWorkers">>, Input, Options).
@@ -659,9 +1890,18 @@ notify_workers(Client, Input, Options)
 %%
 %% Only the Requester who created the HIT can reject an assignment for the
 %% HIT.
+-spec reject_assignment(aws_client:aws_client(), reject_assignment_request()) ->
+    {ok, reject_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, reject_assignment_errors(), tuple()}.
 reject_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_assignment(Client, Input, []).
+
+-spec reject_assignment(aws_client:aws_client(), reject_assignment_request(), proplists:proplist()) ->
+    {ok, reject_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, reject_assignment_errors(), tuple()}.
 reject_assignment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectAssignment">>, Input, Options).
@@ -673,9 +1913,18 @@ reject_assignment(Client, Input, Options)
 %%
 %% You can provide a text message explaining why the request was
 %% rejected. The Worker who made the request can see this message.
+-spec reject_qualification_request(aws_client:aws_client(), reject_qualification_request_request()) ->
+    {ok, reject_qualification_request_response(), tuple()} |
+    {error, any()} |
+    {error, reject_qualification_request_errors(), tuple()}.
 reject_qualification_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_qualification_request(Client, Input, []).
+
+-spec reject_qualification_request(aws_client:aws_client(), reject_qualification_request_request(), proplists:proplist()) ->
+    {ok, reject_qualification_request_response(), tuple()} |
+    {error, any()} |
+    {error, reject_qualification_request_errors(), tuple()}.
 reject_qualification_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectQualificationRequest">>, Input, Options).
@@ -694,9 +1943,18 @@ reject_qualification_request(Client, Input, Options)
 %% bonus payments, similar to the HIT listing fee. This operation fails
 %% if your account does not have enough funds to pay for both the bonus
 %% and the fees.
+-spec send_bonus(aws_client:aws_client(), send_bonus_request()) ->
+    {ok, send_bonus_response(), tuple()} |
+    {error, any()} |
+    {error, send_bonus_errors(), tuple()}.
 send_bonus(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_bonus(Client, Input, []).
+
+-spec send_bonus(aws_client:aws_client(), send_bonus_request(), proplists:proplist()) ->
+    {ok, send_bonus_response(), tuple()} |
+    {error, any()} |
+    {error, send_bonus_errors(), tuple()}.
 send_bonus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendBonus">>, Input, Options).
@@ -713,9 +1971,18 @@ send_bonus(Client, Input, Options)
 %% using the website.
 %% When you call this operation, the service attempts to send the test
 %% notification immediately.
+-spec send_test_event_notification(aws_client:aws_client(), send_test_event_notification_request()) ->
+    {ok, send_test_event_notification_response(), tuple()} |
+    {error, any()} |
+    {error, send_test_event_notification_errors(), tuple()}.
 send_test_event_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_test_event_notification(Client, Input, []).
+
+-spec send_test_event_notification(aws_client:aws_client(), send_test_event_notification_request(), proplists:proplist()) ->
+    {ok, send_test_event_notification_response(), tuple()} |
+    {error, any()} |
+    {error, send_test_event_notification_errors(), tuple()}.
 send_test_event_notification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTestEventNotification">>, Input, Options).
@@ -726,9 +1993,18 @@ send_test_event_notification(Client, Input, Options)
 %%
 %% If you update it to a time in the past, the HIT will be immediately
 %% expired.
+-spec update_expiration_for_hit(aws_client:aws_client(), update_expiration_for_hit_request()) ->
+    {ok, update_expiration_for_hit_response(), tuple()} |
+    {error, any()} |
+    {error, update_expiration_for_hit_errors(), tuple()}.
 update_expiration_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_expiration_for_hit(Client, Input, []).
+
+-spec update_expiration_for_hit(aws_client:aws_client(), update_expiration_for_hit_request(), proplists:proplist()) ->
+    {ok, update_expiration_for_hit_response(), tuple()} |
+    {error, any()} |
+    {error, update_expiration_for_hit_errors(), tuple()}.
 update_expiration_for_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExpirationForHIT">>, Input, Options).
@@ -739,9 +2015,18 @@ update_expiration_for_hit(Client, Input, Options)
 %% If the status is Reviewable, this operation can update the status to
 %% Reviewing,
 %% or it can revert a Reviewing HIT back to the Reviewable status.
+-spec update_hit_review_status(aws_client:aws_client(), update_hit_review_status_request()) ->
+    {ok, update_hit_review_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_hit_review_status_errors(), tuple()}.
 update_hit_review_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hit_review_status(Client, Input, []).
+
+-spec update_hit_review_status(aws_client:aws_client(), update_hit_review_status_request(), proplists:proplist()) ->
+    {ok, update_hit_review_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_hit_review_status_errors(), tuple()}.
 update_hit_review_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHITReviewStatus">>, Input, Options).
@@ -755,9 +2040,18 @@ update_hit_review_status(Client, Input, Options)
 %% operation disassociates the HIT from its old HITType properties and
 %% associates it with the new HITType properties. The HIT takes on the
 %% properties of the new HITType in place of the old ones.
+-spec update_hit_type_of_hit(aws_client:aws_client(), update_hit_type_of_hit_request()) ->
+    {ok, update_hit_type_of_hit_response(), tuple()} |
+    {error, any()} |
+    {error, update_hit_type_of_hit_errors(), tuple()}.
 update_hit_type_of_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hit_type_of_hit(Client, Input, []).
+
+-spec update_hit_type_of_hit(aws_client:aws_client(), update_hit_type_of_hit_request(), proplists:proplist()) ->
+    {ok, update_hit_type_of_hit_response(), tuple()} |
+    {error, any()} |
+    {error, update_hit_type_of_hit_errors(), tuple()}.
 update_hit_type_of_hit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHITTypeOfHIT">>, Input, Options).
@@ -780,9 +2074,18 @@ update_hit_type_of_hit(Client, Input, Options)
 %% the HIT type must already have a notification specification,
 %% or one must be provided in the same call to
 %% `UpdateNotificationSettings'.
+-spec update_notification_settings(aws_client:aws_client(), update_notification_settings_request()) ->
+    {ok, update_notification_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_notification_settings_errors(), tuple()}.
 update_notification_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notification_settings(Client, Input, []).
+
+-spec update_notification_settings(aws_client:aws_client(), update_notification_settings_request(), proplists:proplist()) ->
+    {ok, update_notification_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_notification_settings_errors(), tuple()}.
 update_notification_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotificationSettings">>, Input, Options).
@@ -827,9 +2130,18 @@ update_notification_settings(Client, Input, Options)
 %%
 %% You can also update the AutoGranted and AutoGrantedValue
 %% attributes of the Qualification type.
+-spec update_qualification_type(aws_client:aws_client(), update_qualification_type_request()) ->
+    {ok, update_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, update_qualification_type_errors(), tuple()}.
 update_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_qualification_type(Client, Input, []).
+
+-spec update_qualification_type(aws_client:aws_client(), update_qualification_type_request(), proplists:proplist()) ->
+    {ok, update_qualification_type_response(), tuple()} |
+    {error, any()} |
+    {error, update_qualification_type_errors(), tuple()}.
 update_qualification_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateQualificationType">>, Input, Options).

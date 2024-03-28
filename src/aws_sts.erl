@@ -32,6 +32,277 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% assume_role_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"ExternalId">> => string(),
+%%   <<"Policy">> => string(),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()()),
+%%   <<"ProvidedContexts">> => list(provided_context()()),
+%%   <<"RoleArn">> := string(),
+%%   <<"RoleSessionName">> := string(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"SourceIdentity">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TokenCode">> => string(),
+%%   <<"TransitiveTagKeys">> => list(string()())
+%% }
+-type assume_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_response() :: #{
+%%   <<"AssumedRoleUser">> => assumed_role_user(),
+%%   <<"Credentials">> => credentials(),
+%%   <<"PackedPolicySize">> => integer(),
+%%   <<"SourceIdentity">> => string()
+%% }
+-type assume_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_saml_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Policy">> => string(),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()()),
+%%   <<"PrincipalArn">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"SAMLAssertion">> := string()
+%% }
+-type assume_role_with_saml_request() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_saml_response() :: #{
+%%   <<"AssumedRoleUser">> => assumed_role_user(),
+%%   <<"Audience">> => string(),
+%%   <<"Credentials">> => credentials(),
+%%   <<"Issuer">> => string(),
+%%   <<"NameQualifier">> => string(),
+%%   <<"PackedPolicySize">> => integer(),
+%%   <<"SourceIdentity">> => string(),
+%%   <<"Subject">> => string(),
+%%   <<"SubjectType">> => string()
+%% }
+-type assume_role_with_saml_response() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_web_identity_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Policy">> => string(),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()()),
+%%   <<"ProviderId">> => string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"RoleSessionName">> := string(),
+%%   <<"WebIdentityToken">> := string()
+%% }
+-type assume_role_with_web_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_web_identity_response() :: #{
+%%   <<"AssumedRoleUser">> => assumed_role_user(),
+%%   <<"Audience">> => string(),
+%%   <<"Credentials">> => credentials(),
+%%   <<"PackedPolicySize">> => integer(),
+%%   <<"Provider">> => string(),
+%%   <<"SourceIdentity">> => string(),
+%%   <<"SubjectFromWebIdentityToken">> => string()
+%% }
+-type assume_role_with_web_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% assumed_role_user() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssumedRoleId">> => string()
+%% }
+-type assumed_role_user() :: #{binary() => any()}.
+
+%% Example:
+%% credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type credentials() :: #{binary() => any()}.
+
+%% Example:
+%% decode_authorization_message_request() :: #{
+%%   <<"EncodedMessage">> := string()
+%% }
+-type decode_authorization_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% decode_authorization_message_response() :: #{
+%%   <<"DecodedMessage">> => string()
+%% }
+-type decode_authorization_message_response() :: #{binary() => any()}.
+
+%% Example:
+%% expired_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% federated_user() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FederatedUserId">> => string()
+%% }
+-type federated_user() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_key_info_request() :: #{
+%%   <<"AccessKeyId">> := string()
+%% }
+-type get_access_key_info_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_key_info_response() :: #{
+%%   <<"Account">> => string()
+%% }
+-type get_access_key_info_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_caller_identity_request() :: #{
+
+%% }
+-type get_caller_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_caller_identity_response() :: #{
+%%   <<"Account">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type get_caller_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_federation_token_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"Policy">> => string(),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type get_federation_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_federation_token_response() :: #{
+%%   <<"Credentials">> => credentials(),
+%%   <<"FederatedUser">> => federated_user(),
+%%   <<"PackedPolicySize">> => integer()
+%% }
+-type get_federation_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_token_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"TokenCode">> => string()
+%% }
+-type get_session_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_token_response() :: #{
+%%   <<"Credentials">> => credentials()
+%% }
+-type get_session_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% id_p_communication_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type id_p_communication_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% id_p_rejected_claim_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type id_p_rejected_claim_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_authorization_message_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_authorization_message_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_identity_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_identity_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% packed_policy_too_large_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type packed_policy_too_large_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_descriptor_type() :: #{
+%%   <<"arn">> => string()
+%% }
+-type policy_descriptor_type() :: #{binary() => any()}.
+
+%% Example:
+%% provided_context() :: #{
+%%   <<"ContextAssertion">> => string(),
+%%   <<"ProviderArn">> => string()
+%% }
+-type provided_context() :: #{binary() => any()}.
+
+%% Example:
+%% region_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type region_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+-type assume_role_errors() ::
+    region_disabled_exception() | 
+    packed_policy_too_large_exception() | 
+    malformed_policy_document_exception() | 
+    expired_token_exception().
+
+-type assume_role_with_saml_errors() ::
+    region_disabled_exception() | 
+    packed_policy_too_large_exception() | 
+    malformed_policy_document_exception() | 
+    invalid_identity_token_exception() | 
+    id_p_rejected_claim_exception() | 
+    expired_token_exception().
+
+-type assume_role_with_web_identity_errors() ::
+    region_disabled_exception() | 
+    packed_policy_too_large_exception() | 
+    malformed_policy_document_exception() | 
+    invalid_identity_token_exception() | 
+    id_p_rejected_claim_exception() | 
+    id_p_communication_error_exception() | 
+    expired_token_exception().
+
+-type decode_authorization_message_errors() ::
+    invalid_authorization_message_exception().
+
+-type get_federation_token_errors() ::
+    region_disabled_exception() | 
+    packed_policy_too_large_exception() | 
+    malformed_policy_document_exception().
+
+-type get_session_token_errors() ::
+    region_disabled_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -189,9 +460,18 @@
 %% The `TokenCode' is the time-based one-time password (TOTP) that the
 %% MFA device
 %% produces.
+-spec assume_role(aws_client:aws_client(), assume_role_request()) ->
+    {ok, assume_role_response(), tuple()} |
+    {error, any()} |
+    {error, assume_role_errors(), tuple()}.
 assume_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_role(Client, Input, []).
+
+-spec assume_role(aws_client:aws_client(), assume_role_request(), proplists:proplist()) ->
+    {ok, assume_role_response(), tuple()} |
+    {error, any()} |
+    {error, assume_role_errors(), tuple()}.
 assume_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssumeRole">>, Input, Options).
@@ -399,9 +679,18 @@ assume_role(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 %% in the
 %% IAM User Guide.
+-spec assume_role_with_saml(aws_client:aws_client(), assume_role_with_saml_request()) ->
+    {ok, assume_role_with_saml_response(), tuple()} |
+    {error, any()} |
+    {error, assume_role_with_saml_errors(), tuple()}.
 assume_role_with_saml(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_role_with_saml(Client, Input, []).
+
+-spec assume_role_with_saml(aws_client:aws_client(), assume_role_with_saml_request(), proplists:proplist()) ->
+    {ok, assume_role_with_saml_response(), tuple()} |
+    {error, any()} |
+    {error, assume_role_with_saml_errors(), tuple()}.
 assume_role_with_saml(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssumeRoleWithSAML">>, Input, Options).
@@ -620,9 +909,18 @@ assume_role_with_saml(Client, Input, Options)
 %% federation and shows an example of how to use web identity federation to
 %% get access
 %% to content in Amazon S3.
+-spec assume_role_with_web_identity(aws_client:aws_client(), assume_role_with_web_identity_request()) ->
+    {ok, assume_role_with_web_identity_response(), tuple()} |
+    {error, any()} |
+    {error, assume_role_with_web_identity_errors(), tuple()}.
 assume_role_with_web_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_role_with_web_identity(Client, Input, []).
+
+-spec assume_role_with_web_identity(aws_client:aws_client(), assume_role_with_web_identity_request(), proplists:proplist()) ->
+    {ok, assume_role_with_web_identity_response(), tuple()} |
+    {error, any()} |
+    {error, assume_role_with_web_identity_errors(), tuple()}.
 assume_role_with_web_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssumeRoleWithWebIdentity">>, Input, Options).
@@ -672,9 +970,18 @@ assume_role_with_web_identity(Client, Input, Options)
 %% The requested resource.
 %%
 %% The values of condition keys in the context of the user's request.
+-spec decode_authorization_message(aws_client:aws_client(), decode_authorization_message_request()) ->
+    {ok, decode_authorization_message_response(), tuple()} |
+    {error, any()} |
+    {error, decode_authorization_message_errors(), tuple()}.
 decode_authorization_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     decode_authorization_message(Client, Input, []).
+
+-spec decode_authorization_message(aws_client:aws_client(), decode_authorization_message_request(), proplists:proplist()) ->
+    {ok, decode_authorization_message_response(), tuple()} |
+    {error, any()} |
+    {error, decode_authorization_message_errors(), tuple()}.
 decode_authorization_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DecodeAuthorizationMessage">>, Input, Options).
@@ -716,9 +1023,16 @@ decode_authorization_message(Client, Input, Options)
 %% operation.
 %% Providing a deleted access key might return an error that the key
 %% doesn't exist.
+-spec get_access_key_info(aws_client:aws_client(), get_access_key_info_request()) ->
+    {ok, get_access_key_info_response(), tuple()} |
+    {error, any()}.
 get_access_key_info(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_key_info(Client, Input, []).
+
+-spec get_access_key_info(aws_client:aws_client(), get_access_key_info_request(), proplists:proplist()) ->
+    {ok, get_access_key_info_response(), tuple()} |
+    {error, any()}.
 get_access_key_info(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccessKeyInfo">>, Input, Options).
@@ -738,9 +1052,16 @@ get_access_key_info(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_access-denied-delete-mfa
 %% in the
 %% IAM User Guide.
+-spec get_caller_identity(aws_client:aws_client(), get_caller_identity_request()) ->
+    {ok, get_caller_identity_response(), tuple()} |
+    {error, any()}.
 get_caller_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_caller_identity(Client, Input, []).
+
+-spec get_caller_identity(aws_client:aws_client(), get_caller_identity_request(), proplists:proplist()) ->
+    {ok, get_caller_identity_response(), tuple()} |
+    {error, any()}.
 get_caller_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCallerIdentity">>, Input, Options).
@@ -896,9 +1217,18 @@ get_caller_identity(Client, Input, Options)
 %% and `department' are not saved as separate tags, and the session tag
 %% passed in
 %% the request takes precedence over the user tag.
+-spec get_federation_token(aws_client:aws_client(), get_federation_token_request()) ->
+    {ok, get_federation_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_federation_token_errors(), tuple()}.
 get_federation_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_federation_token(Client, Input, []).
+
+-spec get_federation_token(aws_client:aws_client(), get_federation_token_request(), proplists:proplist()) ->
+    {ok, get_federation_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_federation_token_errors(), tuple()}.
 get_federation_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFederationToken">>, Input, Options).
@@ -992,9 +1322,18 @@ get_federation_token(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken
 %% in the
 %% IAM User Guide.
+-spec get_session_token(aws_client:aws_client(), get_session_token_request()) ->
+    {ok, get_session_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_token_errors(), tuple()}.
 get_session_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_session_token(Client, Input, []).
+
+-spec get_session_token(aws_client:aws_client(), get_session_token_request(), proplists:proplist()) ->
+    {ok, get_session_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_token_errors(), tuple()}.
 get_session_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSessionToken">>, Input, Options).

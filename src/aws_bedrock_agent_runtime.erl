@@ -14,6 +14,506 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% rationale() :: #{
+%%   <<"text">> => string(),
+%%   <<"traceId">> => string()
+%% }
+-type rationale() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_configuration() :: #{
+%%   <<"maximumLength">> => integer(),
+%%   <<"stopSequences">> => list([string()]()),
+%%   <<"temperature">> => float(),
+%%   <<"topK">> => integer(),
+%%   <<"topP">> => float()
+%% }
+-type inference_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_gateway_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type bad_gateway_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% dependency_failed_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type dependency_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% citation() :: #{
+%%   <<"generatedResponsePart">> => generated_response_part(),
+%%   <<"retrievedReferences">> => list(retrieved_reference()())
+%% }
+-type citation() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_and_generate_response() :: #{
+%%   <<"citations">> => list(citation()()),
+%%   <<"output">> => retrieve_and_generate_output(),
+%%   <<"sessionId">> => string()
+%% }
+-type retrieve_and_generate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_query() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type knowledge_base_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% payload_part() :: #{
+%%   <<"attribution">> => attribution(),
+%%   <<"bytes">> => binary()
+%% }
+-type payload_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% failure_trace() :: #{
+%%   <<"failureReason">> => string(),
+%%   <<"traceId">> => string()
+%% }
+-type failure_trace() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_group_invocation_input() :: #{
+%%   <<"actionGroupName">> => string(),
+%%   <<"apiPath">> => string(),
+%%   <<"parameters">> => list(parameter()()),
+%%   <<"requestBody">> => request_body(),
+%%   <<"verb">> => string()
+%% }
+-type action_group_invocation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieved_reference() :: #{
+%%   <<"content">> => retrieval_result_content(),
+%%   <<"location">> => retrieval_result_location(),
+%%   <<"metadata">> => map()
+%% }
+-type retrieved_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_result_location() :: #{
+%%   <<"s3Location">> => retrieval_result_s3_location(),
+%%   <<"type">> => list(any())
+%% }
+-type retrieval_result_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_and_generate_session_configuration() :: #{
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type retrieve_and_generate_session_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_and_generate_request() :: #{
+%%   <<"input">> := retrieve_and_generate_input(),
+%%   <<"retrieveAndGenerateConfiguration">> => retrieve_and_generate_configuration(),
+%%   <<"sessionConfiguration">> => retrieve_and_generate_session_configuration(),
+%%   <<"sessionId">> => string()
+%% }
+-type retrieve_and_generate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_and_generate_configuration() :: #{
+%%   <<"knowledgeBaseConfiguration">> => knowledge_base_retrieve_and_generate_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type retrieve_and_generate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_result_s3_location() :: #{
+%%   <<"uri">> => [string()]
+%% }
+-type retrieval_result_s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_result_content() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type retrieval_result_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_retrieve_and_generate_configuration() :: #{
+%%   <<"generationConfiguration">> => generation_configuration(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"modelArn">> => string(),
+%%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration()
+%% }
+-type knowledge_base_retrieve_and_generate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% observation() :: #{
+%%   <<"actionGroupInvocationOutput">> => action_group_invocation_output(),
+%%   <<"finalResponse">> => final_response(),
+%%   <<"knowledgeBaseLookupOutput">> => knowledge_base_lookup_output(),
+%%   <<"repromptResponse">> => reprompt_response(),
+%%   <<"traceId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type observation() :: #{binary() => any()}.
+
+
+%% Example:
+%% span() :: #{
+%%   <<"end">> => [integer()],
+%%   <<"start">> => [integer()]
+%% }
+-type span() :: #{binary() => any()}.
+
+
+%% Example:
+%% pre_processing_parsed_response() :: #{
+%%   <<"isValid">> => [boolean()],
+%%   <<"rationale">> => string()
+%% }
+-type pre_processing_parsed_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_processing_parsed_response() :: #{
+%%   <<"text">> => string()
+%% }
+-type post_processing_parsed_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_retrieval_configuration() :: #{
+%%   <<"vectorSearchConfiguration">> => knowledge_base_vector_search_configuration()
+%% }
+-type knowledge_base_retrieval_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_response_part() :: #{
+%%   <<"span">> => span(),
+%%   <<"text">> => [string()]
+%% }
+-type text_response_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_agent_response() :: #{
+%%   <<"completion">> => list(),
+%%   <<"contentType">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type invoke_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_state() :: #{
+%%   <<"promptSessionAttributes">> => map(),
+%%   <<"sessionAttributes">> => map()
+%% }
+-type session_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% pre_processing_model_invocation_output() :: #{
+%%   <<"parsedResponse">> => pre_processing_parsed_response(),
+%%   <<"traceId">> => string()
+%% }
+-type pre_processing_model_invocation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter() :: #{
+%%   <<"name">> => [string()],
+%%   <<"type">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_and_generate_input() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type retrieve_and_generate_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% reprompt_response() :: #{
+%%   <<"source">> => list(any()),
+%%   <<"text">> => [string()]
+%% }
+-type reprompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% final_response() :: #{
+%%   <<"text">> => string()
+%% }
+-type final_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_vector_search_configuration() :: #{
+%%   <<"filter">> => list(),
+%%   <<"numberOfResults">> => [integer()],
+%%   <<"overrideSearchType">> => list(any())
+%% }
+-type knowledge_base_vector_search_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_attribute() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => any()
+%% }
+-type filter_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_invocation_input() :: #{
+%%   <<"inferenceConfiguration">> => inference_configuration(),
+%%   <<"overrideLambda">> => string(),
+%%   <<"parserMode">> => list(any()),
+%%   <<"promptCreationMode">> => list(any()),
+%%   <<"text">> => string(),
+%%   <<"traceId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type model_invocation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribution() :: #{
+%%   <<"citations">> => list(citation()())
+%% }
+-type attribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% trace_part() :: #{
+%%   <<"agentAliasId">> => string(),
+%%   <<"agentId">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"trace">> => list()
+%% }
+-type trace_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_template() :: #{
+%%   <<"textPromptTemplate">> => string()
+%% }
+-type prompt_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% generation_configuration() :: #{
+%%   <<"promptTemplate">> => prompt_template()
+%% }
+-type generation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% generated_response_part() :: #{
+%%   <<"textResponsePart">> => text_response_part()
+%% }
+-type generated_response_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_and_generate_output() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type retrieve_and_generate_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_group_invocation_output() :: #{
+%%   <<"text">> => string()
+%% }
+-type action_group_invocation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_lookup_output() :: #{
+%%   <<"retrievedReferences">> => list(retrieved_reference()())
+%% }
+-type knowledge_base_lookup_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_request() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration(),
+%%   <<"retrievalQuery">> := knowledge_base_query()
+%% }
+-type retrieve_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_agent_request() :: #{
+%%   <<"enableTrace">> => [boolean()],
+%%   <<"endSession">> => [boolean()],
+%%   <<"inputText">> := string(),
+%%   <<"sessionState">> => session_state()
+%% }
+-type invoke_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_input() :: #{
+%%   <<"actionGroupInvocationInput">> => action_group_invocation_input(),
+%%   <<"invocationType">> => list(any()),
+%%   <<"knowledgeBaseLookupInput">> => knowledge_base_lookup_input(),
+%%   <<"traceId">> => string()
+%% }
+-type invocation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_body() :: #{
+%%   <<"content">> => map()
+%% }
+-type request_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_processing_model_invocation_output() :: #{
+%%   <<"parsedResponse">> => post_processing_parsed_response(),
+%%   <<"traceId">> => string()
+%% }
+-type post_processing_model_invocation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"retrievalResults">> => list(knowledge_base_retrieval_result()())
+%% }
+-type retrieve_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_lookup_input() :: #{
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"text">> => string()
+%% }
+-type knowledge_base_lookup_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_retrieval_result() :: #{
+%%   <<"content">> => retrieval_result_content(),
+%%   <<"location">> => retrieval_result_location(),
+%%   <<"metadata">> => map(),
+%%   <<"score">> => [float()]
+%% }
+-type knowledge_base_retrieval_result() :: #{binary() => any()}.
+
+-type invoke_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type retrieve_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type retrieve_and_generate_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -45,8 +545,17 @@
 %% the agent's steps and reasoning process that led it to the response.
 %%
 %% Errors are also surfaced in the response.
+-spec invoke_agent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), invoke_agent_request()) ->
+    {ok, invoke_agent_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_agent_errors(), tuple()}.
 invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input) ->
     invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input, []).
+
+-spec invoke_agent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), invoke_agent_request(), proplists:proplist()) ->
+    {ok, invoke_agent_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_agent_errors(), tuple()}.
 invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentAliases/", aws_util:encode_uri(AgentAliasId), "/sessions/", aws_util:encode_uri(SessionId), "/text"],
@@ -87,8 +596,17 @@ invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
     end.
 
 %% @doc Queries a knowledge base and retrieves information from it.
+-spec retrieve(aws_client:aws_client(), binary() | list(), retrieve_request()) ->
+    {ok, retrieve_response(), tuple()} |
+    {error, any()} |
+    {error, retrieve_errors(), tuple()}.
 retrieve(Client, KnowledgeBaseId, Input) ->
     retrieve(Client, KnowledgeBaseId, Input, []).
+
+-spec retrieve(aws_client:aws_client(), binary() | list(), retrieve_request(), proplists:proplist()) ->
+    {ok, retrieve_response(), tuple()} |
+    {error, any()} |
+    {error, retrieve_errors(), tuple()}.
 retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/retrieve"],
@@ -115,8 +633,17 @@ retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
 %% retrieved results.
 %%
 %% The response only cites sources that are relevant to the query.
+-spec retrieve_and_generate(aws_client:aws_client(), retrieve_and_generate_request()) ->
+    {ok, retrieve_and_generate_response(), tuple()} |
+    {error, any()} |
+    {error, retrieve_and_generate_errors(), tuple()}.
 retrieve_and_generate(Client, Input) ->
     retrieve_and_generate(Client, Input, []).
+
+-spec retrieve_and_generate(aws_client:aws_client(), retrieve_and_generate_request(), proplists:proplist()) ->
+    {ok, retrieve_and_generate_response(), tuple()} |
+    {error, any()} |
+    {error, retrieve_and_generate_errors(), tuple()}.
 retrieve_and_generate(Client, Input0, Options0) ->
     Method = post,
     Path = ["/retrieveAndGenerate"],
@@ -143,7 +670,7 @@ retrieve_and_generate(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

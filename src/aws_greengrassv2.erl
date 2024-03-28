@@ -102,6 +102,1066 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% lambda_function_recipe_source() :: #{
+%%   <<"componentDependencies">> => map(),
+%%   <<"componentLambdaParameters">> => lambda_execution_parameters(),
+%%   <<"componentName">> => string(),
+%%   <<"componentPlatforms">> => list(component_platform()()),
+%%   <<"componentVersion">> => string(),
+%%   <<"lambdaArn">> => string()
+%% }
+-type lambda_function_recipe_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_component_update_policy() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"timeoutInSeconds">> => integer()
+%% }
+-type deployment_component_update_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_service_role_from_account_response() :: #{
+%%   <<"disassociatedAt">> => string()
+%% }
+-type disassociate_service_role_from_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_component_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentName">> => string(),
+%%   <<"componentVersion">> => string(),
+%%   <<"creationTimestamp">> => non_neg_integer(),
+%%   <<"status">> => cloud_component_status()
+%% }
+-type create_component_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_request() :: #{
+%%   <<"historyFilter">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"parentTargetArn">> => string(),
+%%   <<"targetArn">> => string()
+%% }
+-type list_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connectivity_info_response() :: #{
+%%   <<"message">> => string(),
+%%   <<"version">> => string()
+%% }
+-type update_connectivity_info_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_component_versions_response() :: #{
+%%   <<"componentVersions">> => list(component_version_list_item()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_component_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_component_version_artifact_request() :: #{}
+-type get_component_version_artifact_request() :: #{}.
+
+
+%% Example:
+%% disassociate_client_device_from_core_device_entry() :: #{
+%%   <<"thingName">> => string()
+%% }
+-type disassociate_client_device_from_core_device_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment() :: #{
+%%   <<"creationTimestamp">> => non_neg_integer(),
+%%   <<"deploymentId">> => string(),
+%%   <<"deploymentName">> => string(),
+%%   <<"deploymentStatus">> => list(any()),
+%%   <<"isLatestForTarget">> => boolean(),
+%%   <<"parentTargetArn">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"targetArn">> => string()
+%% }
+-type deployment() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_dependency_requirement() :: #{
+%%   <<"dependencyType">> => list(any()),
+%%   <<"versionRequirement">> => string()
+%% }
+-type component_dependency_requirement() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% lambda_execution_parameters() :: #{
+%%   <<"environmentVariables">> => map(),
+%%   <<"eventSources">> => list(lambda_event_source()()),
+%%   <<"execArgs">> => list(string()()),
+%%   <<"inputPayloadEncodingType">> => list(any()),
+%%   <<"linuxProcessParams">> => lambda_linux_process_params(),
+%%   <<"maxIdleTimeInSeconds">> => integer(),
+%%   <<"maxInstancesCount">> => integer(),
+%%   <<"maxQueueSize">> => integer(),
+%%   <<"pinned">> => boolean(),
+%%   <<"statusTimeoutInSeconds">> => integer(),
+%%   <<"timeoutInSeconds">> => integer()
+%% }
+-type lambda_execution_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_response() :: #{
+%%   <<"deployments">> => list(deployment()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_devices_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"thingGroupArn">> => string()
+%% }
+-type list_core_devices_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_volume_mount() :: #{
+%%   <<"addGroupOwner">> => boolean(),
+%%   <<"destinationPath">> => string(),
+%%   <<"permission">> => list(any()),
+%%   <<"sourcePath">> => string()
+%% }
+-type lambda_volume_mount() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_deployment_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"components">> => map(),
+%%   <<"deploymentName">> => string(),
+%%   <<"deploymentPolicies">> => deployment_policies(),
+%%   <<"iotJobConfiguration">> => deployment_io_t_job_configuration(),
+%%   <<"parentTargetArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targetArn">> := string()
+%% }
+-type create_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_core_device_response() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"coreDeviceThingName">> => string(),
+%%   <<"coreVersion">> => string(),
+%%   <<"lastStatusUpdateTimestamp">> => non_neg_integer(),
+%%   <<"platform">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type get_core_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_devices_response() :: #{
+%%   <<"coreDevices">> => list(core_device()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_core_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_core_device_request() :: #{}
+-type delete_core_device_request() :: #{}.
+
+%% Example:
+%% delete_component_request() :: #{}
+-type delete_component_request() :: #{}.
+
+
+%% Example:
+%% lambda_event_source() :: #{
+%%   <<"topic">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type lambda_event_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_response() :: #{
+%%   <<"recipe">> => binary(),
+%%   <<"recipeOutputFormat">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type get_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_resource_limits() :: #{
+%%   <<"cpus">> => float(),
+%%   <<"memory">> => float()
+%% }
+-type system_resource_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_installed_components_response() :: #{
+%%   <<"installedComponents">> => list(installed_component()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_installed_components_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% io_t_job_executions_rollout_config() :: #{
+%%   <<"exponentialRate">> => io_t_job_exponential_rollout_rate(),
+%%   <<"maximumPerMinute">> => integer()
+%% }
+-type io_t_job_executions_rollout_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% core_device() :: #{
+%%   <<"coreDeviceThingName">> => string(),
+%%   <<"lastStatusUpdateTimestamp">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type core_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_deployment_response() :: #{
+%%   <<"deploymentId">> => string(),
+%%   <<"iotJobArn">> => string(),
+%%   <<"iotJobId">> => string()
+%% }
+-type create_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% io_t_job_exponential_rollout_rate() :: #{
+%%   <<"baseRatePerMinute">> => integer(),
+%%   <<"incrementFactor">> => float(),
+%%   <<"rateIncreaseCriteria">> => io_t_job_rate_increase_criteria()
+%% }
+-type io_t_job_exponential_rollout_rate() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_role_for_account_request() :: #{}
+-type get_service_role_for_account_request() :: #{}.
+
+
+%% Example:
+%% associate_client_device_with_core_device_error_entry() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"thingName">> => string()
+%% }
+-type associate_client_device_with_core_device_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connectivity_info_request() :: #{
+%%   <<"connectivityInfo">> := list(connectivity_info()())
+%% }
+-type update_connectivity_info_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_core_device_request() :: #{}
+-type get_core_device_request() :: #{}.
+
+
+%% Example:
+%% deployment_configuration_validation_policy() :: #{
+%%   <<"timeoutInSeconds">> => integer()
+%% }
+-type deployment_configuration_validation_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_component_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_component_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% effective_deployment() :: #{
+%%   <<"coreDeviceExecutionStatus">> => list(any()),
+%%   <<"creationTimestamp">> => non_neg_integer(),
+%%   <<"deploymentId">> => string(),
+%%   <<"deploymentName">> => string(),
+%%   <<"description">> => string(),
+%%   <<"iotJobArn">> => string(),
+%%   <<"iotJobId">> => string(),
+%%   <<"modifiedTimestamp">> => non_neg_integer(),
+%%   <<"reason">> => string(),
+%%   <<"statusDetails">> => effective_deployment_status_details(),
+%%   <<"targetArn">> => string()
+%% }
+-type effective_deployment() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_already_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_already_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_deployment_request() :: #{}
+-type cancel_deployment_request() :: #{}.
+
+
+%% Example:
+%% connectivity_info() :: #{
+%%   <<"hostAddress">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => string(),
+%%   <<"portNumber">> => integer()
+%% }
+-type connectivity_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connectivity_info_response() :: #{
+%%   <<"connectivityInfo">> => list(connectivity_info()()),
+%%   <<"message">> => string()
+%% }
+-type get_connectivity_info_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% installed_component() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentVersion">> => string(),
+%%   <<"isRoot">> => boolean(),
+%%   <<"lastInstallationSource">> => string(),
+%%   <<"lastReportedTimestamp">> => non_neg_integer(),
+%%   <<"lastStatusChangeTimestamp">> => non_neg_integer(),
+%%   <<"lifecycleState">> => list(any()),
+%%   <<"lifecycleStateDetails">> => string(),
+%%   <<"lifecycleStatusCodes">> => list(string()())
+%% }
+-type installed_component() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_component_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"inlineRecipe">> => binary(),
+%%   <<"lambdaFunction">> => lambda_function_recipe_source(),
+%%   <<"tags">> => map()
+%% }
+-type create_component_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"scope">> => list(any())
+%% }
+-type list_components_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_client_device_from_core_device_response() :: #{
+%%   <<"errorEntries">> => list(disassociate_client_device_from_core_device_error_entry()())
+%% }
+-type batch_disassociate_client_device_from_core_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_latest_version() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentVersion">> => string(),
+%%   <<"creationTimestamp">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"platforms">> => list(component_platform()()),
+%%   <<"publisher">> => string()
+%% }
+-type component_latest_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_io_t_job_configuration() :: #{
+%%   <<"abortConfig">> => io_t_job_abort_config(),
+%%   <<"jobExecutionsRolloutConfig">> => io_t_job_executions_rollout_config(),
+%%   <<"timeoutConfig">> => io_t_job_timeout_config()
+%% }
+-type deployment_io_t_job_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% component() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentName">> => string(),
+%%   <<"latestVersion">> => component_latest_version()
+%% }
+-type component() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_request() :: #{}
+-type get_deployment_request() :: #{}.
+
+
+%% Example:
+%% resolved_component_version() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentName">> => string(),
+%%   <<"componentVersion">> => string(),
+%%   <<"message">> => string(),
+%%   <<"recipe">> => binary(),
+%%   <<"vendorGuidance">> => list(any())
+%% }
+-type resolved_component_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_platform() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"name">> => string()
+%% }
+-type component_platform() :: #{binary() => any()}.
+
+
+%% Example:
+%% io_t_job_rate_increase_criteria() :: #{
+%%   <<"numberOfNotifiedThings">> => integer(),
+%%   <<"numberOfSucceededThings">> => integer()
+%% }
+-type io_t_job_rate_increase_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_component_status() :: #{
+%%   <<"componentState">> => list(any()),
+%%   <<"errors">> => map(),
+%%   <<"message">> => string(),
+%%   <<"vendorGuidance">> => list(any()),
+%%   <<"vendorGuidanceMessage">> => string()
+%% }
+-type cloud_component_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_run_with() :: #{
+%%   <<"posixUser">> => string(),
+%%   <<"systemResourceLimits">> => system_resource_limits(),
+%%   <<"windowsUser">> => string()
+%% }
+-type component_run_with() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% effective_deployment_status_details() :: #{
+%%   <<"errorStack">> => list(string()()),
+%%   <<"errorTypes">> => list(string()())
+%% }
+-type effective_deployment_status_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_deployment_specification() :: #{
+%%   <<"componentVersion">> => string(),
+%%   <<"configurationUpdate">> => component_configuration_update(),
+%%   <<"runWith">> => component_run_with()
+%% }
+-type component_deployment_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_client_devices_associated_with_core_device_response() :: #{
+%%   <<"associatedClientDevices">> => list(associated_client_device()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_client_devices_associated_with_core_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connectivity_info_request() :: #{}
+-type get_connectivity_info_request() :: #{}.
+
+
+%% Example:
+%% associate_service_role_to_account_request() :: #{
+%%   <<"roleArn">> := string()
+%% }
+-type associate_service_role_to_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_policies() :: #{
+%%   <<"componentUpdatePolicy">> => deployment_component_update_policy(),
+%%   <<"configurationValidationPolicy">> => deployment_configuration_validation_policy(),
+%%   <<"failureHandlingPolicy">> => list(any())
+%% }
+-type deployment_policies() :: #{binary() => any()}.
+
+%% Example:
+%% delete_deployment_request() :: #{}
+-type delete_deployment_request() :: #{}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_configuration_update() :: #{
+%%   <<"merge">> => string(),
+%%   <<"reset">> => list(string()())
+%% }
+-type component_configuration_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_client_device_with_core_device_entry() :: #{
+%%   <<"thingName">> => string()
+%% }
+-type associate_client_device_with_core_device_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% io_t_job_timeout_config() :: #{
+%%   <<"inProgressTimeoutInMinutes">> => float()
+%% }
+-type io_t_job_timeout_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolve_component_candidates_response() :: #{
+%%   <<"resolvedComponentVersions">> => list(resolved_component_version()())
+%% }
+-type resolve_component_candidates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_client_device_from_core_device_error_entry() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"thingName">> => string()
+%% }
+-type disassociate_client_device_from_core_device_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_client_device_from_core_device_request() :: #{
+%%   <<"entries">> => list(disassociate_client_device_from_core_device_entry()())
+%% }
+-type batch_disassociate_client_device_from_core_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% io_t_job_abort_config() :: #{
+%%   <<"criteriaList">> => list(io_t_job_abort_criteria()())
+%% }
+-type io_t_job_abort_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_version_list_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentName">> => string(),
+%%   <<"componentVersion">> => string()
+%% }
+-type component_version_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_container_params() :: #{
+%%   <<"devices">> => list(lambda_device_mount()()),
+%%   <<"memorySizeInKB">> => integer(),
+%%   <<"mountROSysfs">> => boolean(),
+%%   <<"volumes">> => list(lambda_volume_mount()())
+%% }
+-type lambda_container_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% cancel_deployment_response() :: #{
+%%   <<"message">> => string()
+%% }
+-type cancel_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployment_response() :: #{
+%%   <<"components">> => map(),
+%%   <<"creationTimestamp">> => non_neg_integer(),
+%%   <<"deploymentId">> => string(),
+%%   <<"deploymentName">> => string(),
+%%   <<"deploymentPolicies">> => deployment_policies(),
+%%   <<"deploymentStatus">> => list(any()),
+%%   <<"iotJobArn">> => string(),
+%%   <<"iotJobConfiguration">> => deployment_io_t_job_configuration(),
+%%   <<"iotJobId">> => string(),
+%%   <<"isLatestForTarget">> => boolean(),
+%%   <<"parentTargetArn">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targetArn">> => string()
+%% }
+-type get_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"retryAfterSeconds">> => integer(),
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_component_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentName">> => string(),
+%%   <<"componentVersion">> => string(),
+%%   <<"creationTimestamp">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"platforms">> => list(component_platform()()),
+%%   <<"publisher">> => string(),
+%%   <<"status">> => cloud_component_status(),
+%%   <<"tags">> => map()
+%% }
+-type describe_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_effective_deployments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_effective_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_response() :: #{
+%%   <<"components">> => list(component()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_components_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_version_artifact_response() :: #{
+%%   <<"preSignedUrl">> => string()
+%% }
+-type get_component_version_artifact_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_installed_components_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"topologyFilter">> => list(any())
+%% }
+-type list_installed_components_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_client_device_with_core_device_response() :: #{
+%%   <<"errorEntries">> => list(associate_client_device_with_core_device_error_entry()())
+%% }
+-type batch_associate_client_device_with_core_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_client_devices_associated_with_core_device_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_client_devices_associated_with_core_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_client_device() :: #{
+%%   <<"associationTimestamp">> => non_neg_integer(),
+%%   <<"thingName">> => string()
+%% }
+-type associated_client_device() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_request() :: #{}
+-type describe_component_request() :: #{}.
+
+
+%% Example:
+%% component_candidate() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentVersion">> => string(),
+%%   <<"versionRequirements">> => map()
+%% }
+-type component_candidate() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_effective_deployments_response() :: #{
+%%   <<"effectiveDeployments">> => list(effective_deployment()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_effective_deployments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_linux_process_params() :: #{
+%%   <<"containerParams">> => lambda_container_params(),
+%%   <<"isolationMode">> => list(any())
+%% }
+-type lambda_linux_process_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_role_for_account_response() :: #{
+%%   <<"associatedAt">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type get_service_role_for_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_client_device_with_core_device_request() :: #{
+%%   <<"entries">> => list(associate_client_device_with_core_device_entry()())
+%% }
+-type batch_associate_client_device_with_core_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% io_t_job_abort_criteria() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"failureType">> => list(any()),
+%%   <<"minNumberOfExecutedThings">> => integer(),
+%%   <<"thresholdPercentage">> => float()
+%% }
+-type io_t_job_abort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_service_role_to_account_response() :: #{
+%%   <<"associatedAt">> => string()
+%% }
+-type associate_service_role_to_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_service_role_from_account_request() :: #{}
+-type disassociate_service_role_from_account_request() :: #{}.
+
+
+%% Example:
+%% get_component_request() :: #{
+%%   <<"recipeOutputFormat">> => list(any())
+%% }
+-type get_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolve_component_candidates_request() :: #{
+%%   <<"componentCandidates">> => list(component_candidate()()),
+%%   <<"platform">> => component_platform()
+%% }
+-type resolve_component_candidates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_device_mount() :: #{
+%%   <<"addGroupOwner">> => boolean(),
+%%   <<"path">> => string(),
+%%   <<"permission">> => list(any())
+%% }
+-type lambda_device_mount() :: #{binary() => any()}.
+
+-type associate_service_role_to_account_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type batch_associate_client_device_with_core_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_disassociate_client_device_from_core_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type cancel_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_component_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    request_already_in_progress_exception().
+
+-type create_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    request_already_in_progress_exception().
+
+-type delete_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_core_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_service_role_from_account_errors() ::
+    internal_server_exception().
+
+-type get_component_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_component_version_artifact_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_connectivity_info_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type get_core_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_role_for_account_errors() ::
+    internal_server_exception().
+
+-type list_client_devices_associated_with_core_device_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_component_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_components_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_core_devices_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_deployments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_effective_deployments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_installed_components_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type resolve_component_candidates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_connectivity_info_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -121,8 +1181,17 @@
 %% Greengrass service role:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
 %% in the IoT Greengrass Version 2 Developer Guide.
+-spec associate_service_role_to_account(aws_client:aws_client(), associate_service_role_to_account_request()) ->
+    {ok, associate_service_role_to_account_response(), tuple()} |
+    {error, any()} |
+    {error, associate_service_role_to_account_errors(), tuple()}.
 associate_service_role_to_account(Client, Input) ->
     associate_service_role_to_account(Client, Input, []).
+
+-spec associate_service_role_to_account(aws_client:aws_client(), associate_service_role_to_account_request(), proplists:proplist()) ->
+    {ok, associate_service_role_to_account_response(), tuple()} |
+    {error, any()} |
+    {error, associate_service_role_to_account_errors(), tuple()}.
 associate_service_role_to_account(Client, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/servicerole"],
@@ -167,8 +1236,17 @@ associate_service_role_to_account(Client, Input0, Options0) ->
 %% local IoT devices:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/interact-with-local-iot-devices.html
 %% in the IoT Greengrass V2 Developer Guide.
+-spec batch_associate_client_device_with_core_device(aws_client:aws_client(), binary() | list(), batch_associate_client_device_with_core_device_request()) ->
+    {ok, batch_associate_client_device_with_core_device_response(), tuple()} |
+    {error, any()} |
+    {error, batch_associate_client_device_with_core_device_errors(), tuple()}.
 batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input) ->
     batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input, []).
+
+-spec batch_associate_client_device_with_core_device(aws_client:aws_client(), binary() | list(), batch_associate_client_device_with_core_device_request(), proplists:proplist()) ->
+    {ok, batch_associate_client_device_with_core_device_response(), tuple()} |
+    {error, any()} |
+    {error, batch_associate_client_device_with_core_device_errors(), tuple()}.
 batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/associateClientDevices"],
@@ -197,8 +1275,17 @@ batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Inpu
 %% device from a core device, the client device won't be able to use
 %% cloud discovery to retrieve
 %% the core device's connectivity information and certificates.
+-spec batch_disassociate_client_device_from_core_device(aws_client:aws_client(), binary() | list(), batch_disassociate_client_device_from_core_device_request()) ->
+    {ok, batch_disassociate_client_device_from_core_device_response(), tuple()} |
+    {error, any()} |
+    {error, batch_disassociate_client_device_from_core_device_errors(), tuple()}.
 batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input) ->
     batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input, []).
+
+-spec batch_disassociate_client_device_from_core_device(aws_client:aws_client(), binary() | list(), batch_disassociate_client_device_from_core_device_request(), proplists:proplist()) ->
+    {ok, batch_disassociate_client_device_from_core_device_response(), tuple()} |
+    {error, any()} |
+    {error, batch_disassociate_client_device_from_core_device_errors(), tuple()}.
 batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/disassociateClientDevices"],
@@ -227,8 +1314,17 @@ batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, I
 %% received it. If a device already received the deployment, this operation
 %% doesn't change
 %% anything for that device.
+-spec cancel_deployment(aws_client:aws_client(), binary() | list(), cancel_deployment_request()) ->
+    {ok, cancel_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_deployment_errors(), tuple()}.
 cancel_deployment(Client, DeploymentId, Input) ->
     cancel_deployment(Client, DeploymentId, Input, []).
+
+-spec cancel_deployment(aws_client:aws_client(), binary() | list(), cancel_deployment_request(), proplists:proplist()) ->
+    {ok, cancel_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_deployment_errors(), tuple()}.
 cancel_deployment(Client, DeploymentId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), "/cancel"],
@@ -311,8 +1407,17 @@ cancel_deployment(Client, DeploymentId, Input0, Options0) ->
 %%
 %% IoT Greengrass currently supports Lambda functions on only Linux core
 %% devices.
+-spec create_component_version(aws_client:aws_client(), create_component_version_request()) ->
+    {ok, create_component_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_component_version_errors(), tuple()}.
 create_component_version(Client, Input) ->
     create_component_version(Client, Input, []).
+
+-spec create_component_version(aws_client:aws_client(), create_component_version_request(), proplists:proplist()) ->
+    {ok, create_component_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_component_version_errors(), tuple()}.
 create_component_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/createComponentVersion"],
@@ -359,8 +1464,17 @@ create_component_version(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/create-deployments.html
 %% in the
 %% IoT Greengrass V2 Developer Guide.
+-spec create_deployment(aws_client:aws_client(), create_deployment_request()) ->
+    {ok, create_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, Input) ->
     create_deployment(Client, Input, []).
+
+-spec create_deployment(aws_client:aws_client(), create_deployment_request(), proplists:proplist()) ->
+    {ok, create_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/deployments"],
@@ -392,8 +1506,17 @@ create_deployment(Client, Input0, Options0) ->
 %% component version, you can remove the component from the deployment or
 %% update the deployment
 %% to use a valid version.
+-spec delete_component(aws_client:aws_client(), binary() | list(), delete_component_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_component_errors(), tuple()}.
 delete_component(Client, Arn, Input) ->
     delete_component(Client, Arn, Input, []).
+
+-spec delete_component(aws_client:aws_client(), binary() | list(), delete_component_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_component_errors(), tuple()}.
 delete_component(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), ""],
@@ -425,8 +1548,17 @@ delete_component(Client, Arn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot/latest/apireference/API_DeleteThing.html
 %% in the
 %% IoT API Reference.
+-spec delete_core_device(aws_client:aws_client(), binary() | list(), delete_core_device_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_core_device_errors(), tuple()}.
 delete_core_device(Client, CoreDeviceThingName, Input) ->
     delete_core_device(Client, CoreDeviceThingName, Input, []).
+
+-spec delete_core_device(aws_client:aws_client(), binary() | list(), delete_core_device_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_core_device_errors(), tuple()}.
 delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), ""],
@@ -460,8 +1592,17 @@ delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
 %% devices store the deployment's configuration on the device.
 %% Additionally, core devices can
 %% roll back to a previous deployment that has been deleted.
+-spec delete_deployment(aws_client:aws_client(), binary() | list(), delete_deployment_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_deployment_errors(), tuple()}.
 delete_deployment(Client, DeploymentId, Input) ->
     delete_deployment(Client, DeploymentId, Input, []).
+
+-spec delete_deployment(aws_client:aws_client(), binary() | list(), delete_deployment_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_deployment_errors(), tuple()}.
 delete_deployment(Client, DeploymentId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), ""],
@@ -485,14 +1626,26 @@ delete_deployment(Client, DeploymentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves metadata for a version of a component.
+-spec describe_component(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_component_response(), tuple()} |
+    {error, any()} |
+    {error, describe_component_errors(), tuple()}.
 describe_component(Client, Arn)
   when is_map(Client) ->
     describe_component(Client, Arn, #{}, #{}).
 
+-spec describe_component(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_component_response(), tuple()} |
+    {error, any()} |
+    {error, describe_component_errors(), tuple()}.
 describe_component(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_component(Client, Arn, QueryMap, HeadersMap, []).
 
+-spec describe_component(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_component_response(), tuple()} |
+    {error, any()} |
+    {error, describe_component_errors(), tuple()}.
 describe_component(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/metadata"],
@@ -519,8 +1672,17 @@ describe_component(Client, Arn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
 %% in
 %% the IoT Greengrass Version 2 Developer Guide.
+-spec disassociate_service_role_from_account(aws_client:aws_client(), disassociate_service_role_from_account_request()) ->
+    {ok, disassociate_service_role_from_account_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_service_role_from_account_errors(), tuple()}.
 disassociate_service_role_from_account(Client, Input) ->
     disassociate_service_role_from_account(Client, Input, []).
+
+-spec disassociate_service_role_from_account(aws_client:aws_client(), disassociate_service_role_from_account_request(), proplists:proplist()) ->
+    {ok, disassociate_service_role_from_account_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_service_role_from_account_errors(), tuple()}.
 disassociate_service_role_from_account(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/servicerole"],
@@ -544,14 +1706,26 @@ disassociate_service_role_from_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the recipe for a version of a component.
+-spec get_component(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_component_response(), tuple()} |
+    {error, any()} |
+    {error, get_component_errors(), tuple()}.
 get_component(Client, Arn)
   when is_map(Client) ->
     get_component(Client, Arn, #{}, #{}).
 
+-spec get_component(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_component_response(), tuple()} |
+    {error, any()} |
+    {error, get_component_errors(), tuple()}.
 get_component(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component(Client, Arn, QueryMap, HeadersMap, []).
 
+-spec get_component(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_component_response(), tuple()} |
+    {error, any()} |
+    {error, get_component_errors(), tuple()}.
 get_component(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), ""],
@@ -579,14 +1753,26 @@ get_component(Client, Arn, QueryMap, HeadersMap, Options0)
 %% call this operation to identify the URL that they can use to download an
 %% artifact to
 %% install.
+-spec get_component_version_artifact(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_component_version_artifact_response(), tuple()} |
+    {error, any()} |
+    {error, get_component_version_artifact_errors(), tuple()}.
 get_component_version_artifact(Client, Arn, ArtifactName)
   when is_map(Client) ->
     get_component_version_artifact(Client, Arn, ArtifactName, #{}, #{}).
 
+-spec get_component_version_artifact(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_component_version_artifact_response(), tuple()} |
+    {error, any()} |
+    {error, get_component_version_artifact_errors(), tuple()}.
 get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, []).
 
+-spec get_component_version_artifact(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_component_version_artifact_response(), tuple()} |
+    {error, any()} |
+    {error, get_component_version_artifact_errors(), tuple()}.
 get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/artifacts/", aws_util:encode_multi_segment_uri(ArtifactName), ""],
@@ -615,14 +1801,26 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, 
 %% core devices:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/connect-client-devices.html
 %% in the IoT Greengrass Version 2 Developer Guide.
+-spec get_connectivity_info(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_connectivity_info_response(), tuple()} |
+    {error, any()} |
+    {error, get_connectivity_info_errors(), tuple()}.
 get_connectivity_info(Client, ThingName)
   when is_map(Client) ->
     get_connectivity_info(Client, ThingName, #{}, #{}).
 
+-spec get_connectivity_info(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_connectivity_info_response(), tuple()} |
+    {error, any()} |
+    {error, get_connectivity_info_errors(), tuple()}.
 get_connectivity_info(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, []).
 
+-spec get_connectivity_info(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_connectivity_info_response(), tuple()} |
+    {error, any()} |
+    {error, get_connectivity_info_errors(), tuple()}.
 get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
@@ -666,14 +1864,26 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
 %% local deployment and
 %% cloud deployment
+-spec get_core_device(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_core_device_response(), tuple()} |
+    {error, any()} |
+    {error, get_core_device_errors(), tuple()}.
 get_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
     get_core_device(Client, CoreDeviceThingName, #{}, #{}).
 
+-spec get_core_device(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_core_device_response(), tuple()} |
+    {error, any()} |
+    {error, get_core_device_errors(), tuple()}.
 get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
 
+-spec get_core_device(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_core_device_response(), tuple()} |
+    {error, any()} |
+    {error, get_core_device_errors(), tuple()}.
 get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), ""],
@@ -693,14 +1903,26 @@ get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
 %% @doc Gets a deployment.
 %%
 %% Deployments define the components that run on Greengrass core devices.
+-spec get_deployment(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, DeploymentId)
   when is_map(Client) ->
     get_deployment(Client, DeploymentId, #{}, #{}).
 
+-spec get_deployment(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, DeploymentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, DeploymentId, QueryMap, HeadersMap, []).
 
+-spec get_deployment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, DeploymentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), ""],
@@ -727,14 +1949,26 @@ get_deployment(Client, DeploymentId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
 %% in
 %% the IoT Greengrass Version 2 Developer Guide.
+-spec get_service_role_for_account(aws_client:aws_client()) ->
+    {ok, get_service_role_for_account_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_role_for_account_errors(), tuple()}.
 get_service_role_for_account(Client)
   when is_map(Client) ->
     get_service_role_for_account(Client, #{}, #{}).
 
+-spec get_service_role_for_account(aws_client:aws_client(), map(), map()) ->
+    {ok, get_service_role_for_account_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_role_for_account_errors(), tuple()}.
 get_service_role_for_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_role_for_account(Client, QueryMap, HeadersMap, []).
 
+-spec get_service_role_for_account(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_service_role_for_account_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_role_for_account_errors(), tuple()}.
 get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/servicerole"],
@@ -754,14 +1988,26 @@ get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a paginated list of client devices that are associated with
 %% a core
 %% device.
+-spec list_client_devices_associated_with_core_device(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_client_devices_associated_with_core_device_response(), tuple()} |
+    {error, any()} |
+    {error, list_client_devices_associated_with_core_device_errors(), tuple()}.
 list_client_devices_associated_with_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, #{}, #{}).
 
+-spec list_client_devices_associated_with_core_device(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_client_devices_associated_with_core_device_response(), tuple()} |
+    {error, any()} |
+    {error, list_client_devices_associated_with_core_device_errors(), tuple()}.
 list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
 
+-spec list_client_devices_associated_with_core_device(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_client_devices_associated_with_core_device_response(), tuple()} |
+    {error, any()} |
+    {error, list_client_devices_associated_with_core_device_errors(), tuple()}.
 list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/associatedClientDevices"],
@@ -787,14 +2033,26 @@ list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, Que
 %%
 %% Greater versions are listed
 %% first.
+-spec list_component_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_component_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_component_versions_errors(), tuple()}.
 list_component_versions(Client, Arn)
   when is_map(Client) ->
     list_component_versions(Client, Arn, #{}, #{}).
 
+-spec list_component_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_component_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_component_versions_errors(), tuple()}.
 list_component_versions(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_component_versions(Client, Arn, QueryMap, HeadersMap, []).
 
+-spec list_component_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_component_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_component_versions_errors(), tuple()}.
 list_component_versions(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components/", aws_util:encode_uri(Arn), "/versions"],
@@ -820,14 +2078,26 @@ list_component_versions(Client, Arn, QueryMap, HeadersMap, Options0)
 %%
 %% This list includes components that you
 %% have permission to view.
+-spec list_components(aws_client:aws_client()) ->
+    {ok, list_components_response(), tuple()} |
+    {error, any()} |
+    {error, list_components_errors(), tuple()}.
 list_components(Client)
   when is_map(Client) ->
     list_components(Client, #{}, #{}).
 
+-spec list_components(aws_client:aws_client(), map(), map()) ->
+    {ok, list_components_response(), tuple()} |
+    {error, any()} |
+    {error, list_components_errors(), tuple()}.
 list_components(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_components(Client, QueryMap, HeadersMap, []).
 
+-spec list_components(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_components_response(), tuple()} |
+    {error, any()} |
+    {error, list_components_errors(), tuple()}.
 list_components(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/components"],
@@ -877,14 +2147,26 @@ list_components(Client, QueryMap, HeadersMap, Options0)
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
 %% local deployment and
 %% cloud deployment
+-spec list_core_devices(aws_client:aws_client()) ->
+    {ok, list_core_devices_response(), tuple()} |
+    {error, any()} |
+    {error, list_core_devices_errors(), tuple()}.
 list_core_devices(Client)
   when is_map(Client) ->
     list_core_devices(Client, #{}, #{}).
 
+-spec list_core_devices(aws_client:aws_client(), map(), map()) ->
+    {ok, list_core_devices_response(), tuple()} |
+    {error, any()} |
+    {error, list_core_devices_errors(), tuple()}.
 list_core_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_core_devices(Client, QueryMap, HeadersMap, []).
 
+-spec list_core_devices(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_core_devices_response(), tuple()} |
+    {error, any()} |
+    {error, list_core_devices_errors(), tuple()}.
 list_core_devices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices"],
@@ -909,14 +2191,26 @@ list_core_devices(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of deployments.
+-spec list_deployments(aws_client:aws_client()) ->
+    {ok, list_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client)
   when is_map(Client) ->
     list_deployments(Client, #{}, #{}).
 
+-spec list_deployments(aws_client:aws_client(), map(), map()) ->
+    {ok, list_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, QueryMap, HeadersMap, []).
 
+-spec list_deployments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/deployments"],
@@ -943,14 +2237,26 @@ list_deployments(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of deployment jobs that IoT Greengrass
 %% sends to Greengrass core devices.
+-spec list_effective_deployments(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_effective_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_effective_deployments_errors(), tuple()}.
 list_effective_deployments(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_effective_deployments(Client, CoreDeviceThingName, #{}, #{}).
 
+-spec list_effective_deployments(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_effective_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_effective_deployments_errors(), tuple()}.
 list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
 
+-spec list_effective_deployments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_effective_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_effective_deployments_errors(), tuple()}.
 list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/effectiveDeployments"],
@@ -1007,14 +2313,26 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Op
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
 %% local deployment and
 %% cloud deployment
+-spec list_installed_components(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_installed_components_response(), tuple()} |
+    {error, any()} |
+    {error, list_installed_components_errors(), tuple()}.
 list_installed_components(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_installed_components(Client, CoreDeviceThingName, #{}, #{}).
 
+-spec list_installed_components(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_installed_components_response(), tuple()} |
+    {error, any()} |
+    {error, list_installed_components_errors(), tuple()}.
 list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
 
+-spec list_installed_components(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_installed_components_response(), tuple()} |
+    {error, any()} |
+    {error, list_installed_components_errors(), tuple()}.
 list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/installedComponents"],
@@ -1038,14 +2356,26 @@ list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the list of tags for an IoT Greengrass resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1090,8 +2420,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% authenticate with an
 %% IoT device certificate. For more information, see IoT Greengrass endpoints
 %% and quotas: https://docs.aws.amazon.com/general/latest/gr/greengrass.html.
+-spec resolve_component_candidates(aws_client:aws_client(), resolve_component_candidates_request()) ->
+    {ok, resolve_component_candidates_response(), tuple()} |
+    {error, any()} |
+    {error, resolve_component_candidates_errors(), tuple()}.
 resolve_component_candidates(Client, Input) ->
     resolve_component_candidates(Client, Input, []).
+
+-spec resolve_component_candidates(aws_client:aws_client(), resolve_component_candidates_request(), proplists:proplist()) ->
+    {ok, resolve_component_candidates_response(), tuple()} |
+    {error, any()} |
+    {error, resolve_component_candidates_errors(), tuple()}.
 resolve_component_candidates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/v2/resolveComponentCandidates"],
@@ -1118,8 +2457,17 @@ resolve_component_candidates(Client, Input0, Options0) ->
 %%
 %% If a tag already exists for the resource, this operation
 %% updates the tag's value.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1143,8 +2491,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from an IoT Greengrass resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1180,8 +2537,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% core devices:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/connect-client-devices.html
 %% in the IoT Greengrass Version 2 Developer Guide.
+-spec update_connectivity_info(aws_client:aws_client(), binary() | list(), update_connectivity_info_request()) ->
+    {ok, update_connectivity_info_response(), tuple()} |
+    {error, any()} |
+    {error, update_connectivity_info_errors(), tuple()}.
 update_connectivity_info(Client, ThingName, Input) ->
     update_connectivity_info(Client, ThingName, Input, []).
+
+-spec update_connectivity_info(aws_client:aws_client(), binary() | list(), update_connectivity_info_request(), proplists:proplist()) ->
+    {ok, update_connectivity_info_response(), tuple()} |
+    {error, any()} |
+    {error, update_connectivity_info_errors(), tuple()}.
 update_connectivity_info(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
@@ -1208,7 +2574,7 @@ update_connectivity_info(Client, ThingName, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

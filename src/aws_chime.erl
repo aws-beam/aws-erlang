@@ -528,13 +528,5198 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% create_media_capture_pipeline_response() :: #{
+%%   <<"MediaCapturePipeline">> => media_capture_pipeline()
+%% }
+-type create_media_capture_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_meeting_dial_out_response() :: #{
+%%   <<"TransactionId">> => string()
+%% }
+-type create_meeting_dial_out_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% events_configuration() :: #{
+%%   <<"BotId">> => string(),
+%%   <<"LambdaFunctionArn">> => string(),
+%%   <<"OutboundEventsHTTPSEndpoint">> => string()
+%% }
+-type events_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_configuration() :: #{
+%%   <<"DataRetentionInHours">> => integer(),
+%%   <<"Disabled">> => boolean(),
+%%   <<"StreamingNotificationTargets">> => list(streaming_notification_target()())
+%% }
+-type streaming_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_memberships_for_app_instance_user_request() :: #{
+%%   <<"AppInstanceUserArn">> => string(),
+%%   <<"ChimeBearer">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_memberships_for_app_instance_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% business_calling_settings() :: #{
+%%   <<"CdrBucket">> => string()
+%% }
+-type business_calling_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_channel_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type delete_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_phone_number_request() :: #{
+%%   <<"PhoneNumberIds">> := list(string()())
+%% }
+-type batch_delete_phone_number_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instances_response() :: #{
+%%   <<"AppInstances">> => list(app_instance_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_bans_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_bans_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_termination_credentials_request() :: #{
+%%   <<"Credentials">> => list(credential()())
+%% }
+-type put_voice_connector_termination_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sip_rule_request() :: #{
+%%   <<"Disabled">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"TargetApplications">> => list(sip_rule_target_application()())
+%% }
+-type update_sip_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sip_rule() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Disabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"SipRuleId">> => string(),
+%%   <<"TargetApplications">> => list(sip_rule_target_application()()),
+%%   <<"TriggerType">> => list(any()),
+%%   <<"TriggerValue">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type sip_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_moderated_by_app_instance_user_request() :: #{
+%%   <<"AppInstanceUserArn">> := string(),
+%%   <<"ChimeBearer">> => string()
+%% }
+-type describe_channel_moderated_by_app_instance_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_phone_number_order_response() :: #{
+%%   <<"PhoneNumberOrder">> => phone_number_order()
+%% }
+-type create_phone_number_order_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_instance_admin_request() :: #{}
+-type delete_app_instance_admin_request() :: #{}.
+
+
+%% Example:
+%% describe_channel_moderator_response() :: #{
+%%   <<"ChannelModerator">> => channel_moderator()
+%% }
+-type describe_channel_moderator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_user_response() :: #{
+%%   <<"UserErrors">> => list(user_error()())
+%% }
+-type batch_update_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sip_media_application_request() :: #{
+%%   <<"AwsRegion">> := string(),
+%%   <<"Endpoints">> := list(sip_media_application_endpoint()()),
+%%   <<"Name">> := string()
+%% }
+-type create_sip_media_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_instance_user_request() :: #{}
+-type delete_app_instance_user_request() :: #{}.
+
+
+%% Example:
+%% update_sip_media_application_call_response() :: #{
+%%   <<"SipMediaApplicationCall">> => sip_media_application_call()
+%% }
+-type update_sip_media_application_call_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_room_membership_response() :: #{
+%%   <<"Errors">> => list(member_error()())
+%% }
+-type batch_create_room_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_admins_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_admins_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"MemberId">> => string()
+%% }
+-type member_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sip_media_application_logging_configuration_request() :: #{
+%%   <<"SipMediaApplicationLoggingConfiguration">> => sip_media_application_logging_configuration()
+%% }
+-type put_sip_media_application_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% proxy() :: #{
+%%   <<"DefaultSessionExpiryMinutes">> => integer(),
+%%   <<"Disabled">> => boolean(),
+%%   <<"FallBackPhoneNumber">> => string(),
+%%   <<"PhoneNumberCountries">> => list(string()())
+%% }
+-type proxy() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_proxy_session_request() :: #{
+%%   <<"Capabilities">> := list(list(any())()),
+%%   <<"ExpiryMinutes">> => integer()
+%% }
+-type update_proxy_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% redact_room_message_request() :: #{}
+-type redact_room_message_request() :: #{}.
+
+
+%% Example:
+%% batch_update_phone_number_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%% }
+-type batch_update_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_account_response() :: #{
+%%   <<"Account">> => account()
+%% }
+-type get_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% redact_channel_message_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"MessageId">> => string()
+%% }
+-type redact_channel_message_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_termination_health_request() :: #{}
+-type get_voice_connector_termination_health_request() :: #{}.
+
+
+%% Example:
+%% validate_e911_address_response() :: #{
+%%   <<"Address">> => address(),
+%%   <<"AddressExternalId">> => string(),
+%%   <<"CandidateAddressList">> => list(candidate_address()()),
+%%   <<"ValidationResult">> => integer()
+%% }
+-type validate_e911_address_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_attendee_response() :: #{
+%%   <<"Attendee">> => attendee()
+%% }
+-type get_attendee_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_room_request() :: #{}
+-type delete_room_request() :: #{}.
+
+%% Example:
+%% reset_personal_pin_request() :: #{}
+-type reset_personal_pin_request() :: #{}.
+
+
+%% Example:
+%% create_channel_moderator_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelModerator">> => identity()
+%% }
+-type create_channel_moderator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_connector_response() :: #{
+%%   <<"VoiceConnector">> => voice_connector()
+%% }
+-type update_voice_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_number_orders_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumberOrders">> => list(phone_number_order()())
+%% }
+-type list_phone_number_orders_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% termination_health() :: #{
+%%   <<"Source">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type termination_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_channel_moderator_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type delete_channel_moderator_request() :: #{binary() => any()}.
+
+%% Example:
+%% redact_conversation_message_response() :: #{}
+-type redact_conversation_message_response() :: #{}.
+
+
+%% Example:
+%% room() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RoomId">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type room() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_response() :: #{
+%%   <<"ChannelArn">> => string()
+%% }
+-type create_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_instance_response() :: #{
+%%   <<"AppInstanceArn">> => string()
+%% }
+-type create_app_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_response() :: #{
+%%   <<"AppInstanceArn">> => string()
+%% }
+-type update_app_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_membership_for_app_instance_user_summary() :: #{
+%%   <<"AppInstanceUserMembershipSummary">> => app_instance_user_membership_summary(),
+%%   <<"ChannelSummary">> => channel_summary()
+%% }
+-type channel_membership_for_app_instance_user_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% participant() :: #{
+%%   <<"PhoneNumber">> => string(),
+%%   <<"ProxyPhoneNumber">> => string()
+%% }
+-type participant() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sip_media_application_request() :: #{
+%%   <<"Endpoints">> => list(sip_media_application_endpoint()()),
+%%   <<"Name">> => string()
+%% }
+-type update_sip_media_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_unsuspend_user_response() :: #{
+%%   <<"UserErrors">> => list(user_error()())
+%% }
+-type batch_unsuspend_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_voice_connector_group_request() :: #{}
+-type delete_voice_connector_group_request() :: #{}.
+
+
+%% Example:
+%% origination() :: #{
+%%   <<"Disabled">> => boolean(),
+%%   <<"Routes">> => list(origination_route()())
+%% }
+-type origination() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_room_memberships_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RoomMemberships">> => list(room_membership()())
+%% }
+-type list_room_memberships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_voice_connectors_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_voice_connectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type update_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_country() :: #{
+%%   <<"CountryCode">> => string(),
+%%   <<"SupportedPhoneNumberTypes">> => list(list(any())())
+%% }
+-type phone_number_country() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_meetings_response() :: #{
+%%   <<"Meetings">> => list(meeting()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_meetings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% geo_match_params() :: #{
+%%   <<"AreaCode">> => string(),
+%%   <<"Country">> => string()
+%% }
+-type geo_match_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_available_phone_numbers_response() :: #{
+%%   <<"E164PhoneNumbers">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_available_phone_numbers_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_request() :: #{}
+-type get_voice_connector_request() :: #{}.
+
+
+%% Example:
+%% put_voice_connector_origination_response() :: #{
+%%   <<"Origination">> => origination()
+%% }
+-type put_voice_connector_origination_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_messages_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelMessages">> => list(channel_message_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_messages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_meeting_request() :: #{
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_meeting_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_attendee_request() :: #{
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_attendee_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rooms_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Rooms">> => list(room()())
+%% }
+-type list_rooms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sip_rule_response() :: #{
+%%   <<"SipRule">> => sip_rule()
+%% }
+-type create_sip_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_phone_numbers_with_voice_connector_group_request() :: #{
+%%   <<"E164PhoneNumbers">> := list(string()()),
+%%   <<"ForceAssociate">> => boolean()
+%% }
+-type associate_phone_numbers_with_voice_connector_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_channel_membership_response() :: #{
+%%   <<"BatchChannelMemberships">> => batch_channel_memberships(),
+%%   <<"Errors">> => list(batch_create_channel_membership_error()())
+%% }
+-type batch_create_channel_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_media_capture_pipeline_response() :: #{
+%%   <<"MediaCapturePipeline">> => media_capture_pipeline()
+%% }
+-type get_media_capture_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_voice_connector_group_response() :: #{
+%%   <<"VoiceConnectorGroup">> => voice_connector_group()
+%% }
+-type create_voice_connector_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_voice_connector_termination_credentials_request() :: #{}
+-type list_voice_connector_termination_credentials_request() :: #{}.
+
+%% Example:
+%% get_account_settings_request() :: #{}
+-type get_account_settings_request() :: #{}.
+
+
+%% Example:
+%% create_meeting_with_attendees_request() :: #{
+%%   <<"Attendees">> => list(create_attendee_request_item()()),
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ExternalMeetingId">> => string(),
+%%   <<"MediaRegion">> => string(),
+%%   <<"MeetingHostId">> => string(),
+%%   <<"NotificationsConfiguration">> => meeting_notification_configuration(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_meeting_with_attendees_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_phone_number_settings_request() :: #{
+%%   <<"CallingName">> := string()
+%% }
+-type update_phone_number_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_artifacts_configuration() :: #{
+%%   <<"MuxType">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type video_artifacts_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_voice_connector_proxy_response() :: #{
+%%   <<"Proxy">> => proxy()
+%% }
+-type get_voice_connector_proxy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_admins_response() :: #{
+%%   <<"AppInstanceAdmins">> => list(app_instance_admin_summary()()),
+%%   <<"AppInstanceArn">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_admins_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_bot_request() :: #{}
+-type get_bot_request() :: #{}.
+
+%% Example:
+%% get_voice_connector_logging_configuration_request() :: #{}
+-type get_voice_connector_logging_configuration_request() :: #{}.
+
+
+%% Example:
+%% service_failure_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type service_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_account_settings_response() :: #{
+%%   <<"AccountSettings">> => account_settings()
+%% }
+-type get_account_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sip_rule_request() :: #{}
+-type delete_sip_rule_request() :: #{}.
+
+%% Example:
+%% get_voice_connector_emergency_calling_configuration_request() :: #{}
+-type get_voice_connector_emergency_calling_configuration_request() :: #{}.
+
+%% Example:
+%% restore_phone_number_request() :: #{}
+-type restore_phone_number_request() :: #{}.
+
+%% Example:
+%% start_meeting_transcription_response() :: #{}
+-type start_meeting_transcription_response() :: #{}.
+
+
+%% Example:
+%% identity() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_emergency_calling_configuration_request() :: #{
+%%   <<"EmergencyCallingConfiguration">> := emergency_calling_configuration()
+%% }
+-type put_voice_connector_emergency_calling_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% meeting() :: #{
+%%   <<"ExternalMeetingId">> => string(),
+%%   <<"MediaPlacement">> => media_placement(),
+%%   <<"MediaRegion">> => string(),
+%%   <<"MeetingId">> => string()
+%% }
+-type meeting() :: #{binary() => any()}.
+
+%% Example:
+%% get_media_capture_pipeline_request() :: #{}
+-type get_media_capture_pipeline_request() :: #{}.
+
+
+%% Example:
+%% get_voice_connector_response() :: #{
+%%   <<"VoiceConnector">> => voice_connector()
+%% }
+-type get_voice_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bot_response() :: #{
+%%   <<"Bot">> => bot()
+%% }
+-type get_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_proxy_session_response() :: #{
+%%   <<"ProxySession">> => proxy_session()
+%% }
+-type create_proxy_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_termination_request() :: #{
+%%   <<"Termination">> := termination()
+%% }
+-type put_voice_connector_termination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_moderated_by_app_instance_user_response() :: #{
+%%   <<"Channel">> => channel_moderated_by_app_instance_user_summary()
+%% }
+-type describe_channel_moderated_by_app_instance_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% logout_user_request() :: #{}
+-type logout_user_request() :: #{}.
+
+%% Example:
+%% update_account_settings_response() :: #{}
+-type update_account_settings_response() :: #{}.
+
+
+%% Example:
+%% channel_membership() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"InvitedBy">> => identity(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Member">> => identity(),
+%%   <<"Type">> => list(any())
+%% }
+-type channel_membership() :: #{binary() => any()}.
+
+
+%% Example:
+%% selected_video_streams() :: #{
+%%   <<"AttendeeIds">> => list(string()()),
+%%   <<"ExternalUserIds">> => list(string()())
+%% }
+-type selected_video_streams() :: #{binary() => any()}.
+
+
+%% Example:
+%% telephony_settings() :: #{
+%%   <<"InboundCalling">> => boolean(),
+%%   <<"OutboundCalling">> => boolean(),
+%%   <<"SMS">> => boolean()
+%% }
+-type telephony_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_association() :: #{
+%%   <<"AssociatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type phone_number_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type get_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_client_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_streaming_configuration_request() :: #{}
+-type get_voice_connector_streaming_configuration_request() :: #{}.
+
+
+%% Example:
+%% phone_number() :: #{
+%%   <<"Associations">> => list(phone_number_association()()),
+%%   <<"CallingName">> => string(),
+%%   <<"CallingNameStatus">> => list(any()),
+%%   <<"Capabilities">> => phone_number_capabilities(),
+%%   <<"Country">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"DeletionTimestamp">> => non_neg_integer(),
+%%   <<"E164PhoneNumber">> => string(),
+%%   <<"PhoneNumberId">> => string(),
+%%   <<"ProductType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type phone_number() :: #{binary() => any()}.
+
+
+%% Example:
+%% redact_channel_message_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type redact_channel_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_instance_request() :: #{}
+-type describe_app_instance_request() :: #{}.
+
+%% Example:
+%% delete_app_instance_streaming_configurations_request() :: #{}
+-type delete_app_instance_streaming_configurations_request() :: #{}.
+
+
+%% Example:
+%% termination() :: #{
+%%   <<"CallingRegions">> => list(string()()),
+%%   <<"CidrAllowedList">> => list(string()()),
+%%   <<"CpsLimit">> => integer(),
+%%   <<"DefaultPhoneNumber">> => string(),
+%%   <<"Disabled">> => boolean()
+%% }
+-type termination() :: #{binary() => any()}.
+
+%% Example:
+%% get_phone_number_order_request() :: #{}
+-type get_phone_number_order_request() :: #{}.
+
+
+%% Example:
+%% list_app_instances_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_message_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"Content">> => string(),
+%%   <<"Metadata">> => string()
+%% }
+-type update_channel_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_room_membership_request() :: #{}
+-type delete_room_membership_request() :: #{}.
+
+
+%% Example:
+%% update_phone_number_response() :: #{
+%%   <<"PhoneNumber">> => phone_number()
+%% }
+-type update_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_moderator_request() :: #{
+%%   <<"ChannelModeratorArn">> := string(),
+%%   <<"ChimeBearer">> => string()
+%% }
+-type create_channel_moderator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_request() :: #{
+%%   <<"Metadata">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type update_app_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_artifacts_configuration() :: #{
+%%   <<"MuxType">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type content_artifacts_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttled_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type throttled_client_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_events_configuration_request() :: #{}
+-type delete_events_configuration_request() :: #{}.
+
+
+%% Example:
+%% signin_delegate_group() :: #{
+%%   <<"GroupName">> => string()
+%% }
+-type signin_delegate_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_membership_response() :: #{
+%%   <<"ChannelMembership">> => channel_membership()
+%% }
+-type describe_channel_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_room_response() :: #{
+%%   <<"Room">> => room()
+%% }
+-type update_room_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_voice_connector_termination_health_response() :: #{
+%%   <<"TerminationHealth">> => termination_health()
+%% }
+-type get_voice_connector_termination_health_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_phone_numbers_with_voice_connector_request() :: #{
+%%   <<"E164PhoneNumbers">> := list(string()()),
+%%   <<"ForceAssociate">> => boolean()
+%% }
+-type associate_phone_numbers_with_voice_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_user_settings_response() :: #{
+%%   <<"UserSettings">> => user_settings()
+%% }
+-type get_user_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_ban_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"MemberArn">> := string()
+%% }
+-type create_channel_ban_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_voice_connector_origination_request() :: #{}
+-type delete_voice_connector_origination_request() :: #{}.
+
+
+%% Example:
+%% create_meeting_response() :: #{
+%%   <<"Meeting">> => meeting()
+%% }
+-type create_meeting_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_instance_user_membership_summary() :: #{
+%%   <<"ReadMarkerTimestamp">> => non_neg_integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type app_instance_user_membership_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_meeting_tags_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_meeting_tags_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_meeting_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_meeting_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_users_request() :: #{
+%%   <<"AppInstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_media_capture_pipelines_response() :: #{
+%%   <<"MediaCapturePipelines">> => list(media_capture_pipeline()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_media_capture_pipelines_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_channel_message_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"MessageId">> => string()
+%% }
+-type send_channel_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_meeting_response() :: #{
+%%   <<"Meeting">> => meeting()
+%% }
+-type get_meeting_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sip_media_applications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_sip_media_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ordered_phone_number() :: #{
+%%   <<"E164PhoneNumber">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type ordered_phone_number() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_app_instance_retention_settings_request() :: #{
+%%   <<"AppInstanceRetentionSettings">> := app_instance_retention_settings()
+%% }
+-type put_app_instance_retention_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sip_media_application_logging_configuration_response() :: #{
+%%   <<"SipMediaApplicationLoggingConfiguration">> => sip_media_application_logging_configuration()
+%% }
+-type get_sip_media_application_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_proxy_session_response() :: #{
+%%   <<"ProxySession">> => proxy_session()
+%% }
+-type update_proxy_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_phone_number_order_request() :: #{
+%%   <<"E164PhoneNumbers">> := list(string()()),
+%%   <<"ProductType">> := list(any())
+%% }
+-type create_phone_number_order_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sip_media_application_request() :: #{}
+-type delete_sip_media_application_request() :: #{}.
+
+
+%% Example:
+%% get_sip_media_application_response() :: #{
+%%   <<"SipMediaApplication">> => sip_media_application()
+%% }
+-type get_sip_media_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_meeting_transcription_request() :: #{}
+-type stop_meeting_transcription_request() :: #{}.
+
+
+%% Example:
+%% get_sip_rule_response() :: #{
+%%   <<"SipRule">> => sip_rule()
+%% }
+-type get_sip_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice_connector_settings() :: #{
+%%   <<"CdrBucket">> => string()
+%% }
+-type voice_connector_settings() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_session_request() :: #{}
+-type delete_proxy_session_request() :: #{}.
+
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"EnableMediaMetricLogs">> => boolean(),
+%%   <<"EnableSIPLogs">> => boolean()
+%% }
+-type logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_app_instance_streaming_configurations_request() :: #{}
+-type get_app_instance_streaming_configurations_request() :: #{}.
+
+
+%% Example:
+%% engine_transcribe_settings() :: #{
+%%   <<"ContentIdentificationType">> => list(any()),
+%%   <<"ContentRedactionType">> => list(any()),
+%%   <<"EnablePartialResultsStabilization">> => boolean(),
+%%   <<"IdentifyLanguage">> => boolean(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageModelName">> => string(),
+%%   <<"LanguageOptions">> => string(),
+%%   <<"PartialResultsStability">> => list(any()),
+%%   <<"PiiEntityTypes">> => string(),
+%%   <<"PreferredLanguage">> => list(any()),
+%%   <<"Region">> => list(any()),
+%%   <<"VocabularyFilterMethod">> => list(any()),
+%%   <<"VocabularyFilterName">> => string(),
+%%   <<"VocabularyFilterNames">> => string(),
+%%   <<"VocabularyName">> => string(),
+%%   <<"VocabularyNames">> => string()
+%% }
+-type engine_transcribe_settings() :: #{binary() => any()}.
+
+%% Example:
+%% delete_media_capture_pipeline_request() :: #{}
+-type delete_media_capture_pipeline_request() :: #{}.
+
+
+%% Example:
+%% restore_phone_number_response() :: #{
+%%   <<"PhoneNumber">> => phone_number()
+%% }
+-type restore_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_number_orders_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_phone_number_orders_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% meeting_notification_configuration() :: #{
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SqsQueueArn">> => string()
+%% }
+-type meeting_notification_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_moderated_by_app_instance_user_response() :: #{
+%%   <<"Channels">> => list(channel_moderated_by_app_instance_user_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_moderated_by_app_instance_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_termination_response() :: #{
+%%   <<"Termination">> => termination()
+%% }
+-type put_voice_connector_termination_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_retention_settings_response() :: #{
+%%   <<"InitiateDeletionTimestamp">> => non_neg_integer(),
+%%   <<"RetentionSettings">> => retention_settings()
+%% }
+-type put_retention_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_connector_group_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"VoiceConnectorItems">> := list(voice_connector_item()())
+%% }
+-type update_voice_connector_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attendees_response() :: #{
+%%   <<"Attendees">> => list(attendee()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attendees_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_meeting_with_attendees_response() :: #{
+%%   <<"Attendees">> => list(attendee()()),
+%%   <<"Errors">> => list(create_attendee_error()()),
+%%   <<"Meeting">> => meeting()
+%% }
+-type create_meeting_with_attendees_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_supported_phone_number_countries_response() :: #{
+%%   <<"PhoneNumberCountries">> => list(phone_number_country()())
+%% }
+-type list_supported_phone_number_countries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sip_media_application_response() :: #{
+%%   <<"SipMediaApplication">> => sip_media_application()
+%% }
+-type update_sip_media_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_moderated_by_app_instance_user_request() :: #{
+%%   <<"AppInstanceUserArn">> => string(),
+%%   <<"ChimeBearer">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_moderated_by_app_instance_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% d_n_i_s_emergency_calling_configuration() :: #{
+%%   <<"CallingCountry">> => string(),
+%%   <<"EmergencyPhoneNumber">> => string(),
+%%   <<"TestPhoneNumber">> => string()
+%% }
+-type d_n_i_s_emergency_calling_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_voice_connector_logging_configuration_response() :: #{
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type get_voice_connector_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_room_membership_request() :: #{
+%%   <<"MembershipItemList">> := list(membership_item()())
+%% }
+-type batch_create_room_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_app_instance_streaming_configurations_response() :: #{
+%%   <<"AppInstanceStreamingConfigurations">> => list(app_instance_streaming_configuration()())
+%% }
+-type get_app_instance_streaming_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% retention_settings() :: #{
+%%   <<"ConversationRetentionSettings">> => conversation_retention_settings(),
+%%   <<"RoomRetentionSettings">> => room_retention_settings()
+%% }
+-type retention_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_phone_numbers_from_voice_connector_request() :: #{
+%%   <<"E164PhoneNumbers">> := list(string()())
+%% }
+-type disassociate_phone_numbers_from_voice_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_voice_connector_proxy_request() :: #{}
+-type delete_voice_connector_proxy_request() :: #{}.
+
+
+%% Example:
+%% list_voice_connector_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VoiceConnectorGroups">> => list(voice_connector_group()())
+%% }
+-type list_voice_connector_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_phone_number_with_user_response() :: #{}
+-type associate_phone_number_with_user_response() :: #{}.
+
+
+%% Example:
+%% list_sip_rules_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SipMediaApplicationId">> => string()
+%% }
+-type list_sip_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_moderator_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type describe_channel_moderator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% transcription_configuration() :: #{
+%%   <<"EngineTranscribeMedicalSettings">> => engine_transcribe_medical_settings(),
+%%   <<"EngineTranscribeSettings">> => engine_transcribe_settings()
+%% }
+-type transcription_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% room_membership() :: #{
+%%   <<"InvitedBy">> => string(),
+%%   <<"Member">> => member(),
+%%   <<"Role">> => list(any()),
+%%   <<"RoomId">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type room_membership() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_summary() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"LastMessageTimestamp">> => non_neg_integer(),
+%%   <<"Metadata">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Privacy">> => list(any())
+%% }
+-type channel_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_app_instance_retention_settings_request() :: #{}
+-type get_app_instance_retention_settings_request() :: #{}.
+
+
+%% Example:
+%% media_capture_pipeline() :: #{
+%%   <<"ChimeSdkMeetingConfiguration">> => chime_sdk_meeting_configuration(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"MediaPipelineId">> => string(),
+%%   <<"SinkArn">> => string(),
+%%   <<"SinkType">> => list(any()),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type media_capture_pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_message_response() :: #{
+%%   <<"ChannelMessage">> => channel_message()
+%% }
+-type get_channel_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_proxy_sessions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProxySessions">> => list(proxy_session()())
+%% }
+-type list_proxy_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bots_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bots_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_membership_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type describe_channel_membership_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_meeting_request() :: #{}
+-type delete_meeting_request() :: #{}.
+
+
+%% Example:
+%% list_room_memberships_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_room_memberships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_accounts_response() :: #{
+%%   <<"Accounts">> => list(account()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_streaming_configuration_response() :: #{
+%%   <<"StreamingConfiguration">> => streaming_configuration()
+%% }
+-type put_voice_connector_streaming_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_e911_address_request() :: #{
+%%   <<"AwsAccountId">> := string(),
+%%   <<"City">> := string(),
+%%   <<"Country">> := string(),
+%%   <<"PostalCode">> := string(),
+%%   <<"State">> := string(),
+%%   <<"StreetInfo">> := string(),
+%%   <<"StreetNumber">> := string()
+%% }
+-type validate_e911_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_request() :: #{}
+-type get_user_request() :: #{}.
+
+
+%% Example:
+%% list_voice_connector_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_voice_connector_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_phone_numbers_from_voice_connector_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%% }
+-type disassociate_phone_numbers_from_voice_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_termination_request() :: #{}
+-type get_voice_connector_termination_request() :: #{}.
+
+
+%% Example:
+%% list_sip_rules_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SipRules">> => list(sip_rule()())
+%% }
+-type list_sip_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_phone_number_with_user_request() :: #{
+%%   <<"E164PhoneNumber">> := string()
+%% }
+-type associate_phone_number_with_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_phone_numbers_from_voice_connector_group_request() :: #{
+%%   <<"E164PhoneNumbers">> := list(string()())
+%% }
+-type disassociate_phone_numbers_from_voice_connector_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_instance_user_response() :: #{
+%%   <<"AppInstanceUser">> => app_instance_user()
+%% }
+-type describe_app_instance_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sip_rule_request() :: #{
+%%   <<"Disabled">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"TargetApplications">> := list(sip_rule_target_application()()),
+%%   <<"TriggerType">> := list(any()),
+%%   <<"TriggerValue">> := string()
+%% }
+-type create_sip_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% engine_transcribe_medical_settings() :: #{
+%%   <<"ContentIdentificationType">> => list(any()),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Region">> => list(any()),
+%%   <<"Specialty">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"VocabularyName">> => string()
+%% }
+-type engine_transcribe_medical_settings() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_settings_request() :: #{}
+-type get_user_settings_request() :: #{}.
+
+
+%% Example:
+%% channel_ban_summary() :: #{
+%%   <<"Member">> => identity()
+%% }
+-type channel_ban_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_streaming_configuration_request() :: #{
+%%   <<"StreamingConfiguration">> := streaming_configuration()
+%% }
+-type put_voice_connector_streaming_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_phone_number_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%% }
+-type batch_delete_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_voice_connector_streaming_configuration_response() :: #{
+%%   <<"StreamingConfiguration">> => streaming_configuration()
+%% }
+-type get_voice_connector_streaming_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% proxy_session() :: #{
+%%   <<"Capabilities">> => list(list(any())()),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"EndedTimestamp">> => non_neg_integer(),
+%%   <<"ExpiryMinutes">> => integer(),
+%%   <<"GeoMatchLevel">> => list(any()),
+%%   <<"GeoMatchParams">> => geo_match_params(),
+%%   <<"Name">> => string(),
+%%   <<"NumberSelectionBehavior">> => list(any()),
+%%   <<"Participants">> => list(participant()()),
+%%   <<"ProxySessionId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer(),
+%%   <<"VoiceConnectorId">> => string()
+%% }
+-type proxy_session() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_phone_number_order_response() :: #{
+%%   <<"PhoneNumberOrder">> => phone_number_order()
+%% }
+-type get_phone_number_order_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_instance_response() :: #{
+%%   <<"AppInstance">> => app_instance()
+%% }
+-type describe_app_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_response() :: #{
+%%   <<"Channel">> => channel()
+%% }
+-type describe_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_meeting_tags_request() :: #{}
+-type list_meeting_tags_request() :: #{}.
+
+
+%% Example:
+%% delete_channel_ban_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type delete_channel_ban_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_user_response() :: #{
+%%   <<"AppInstanceUserArn">> => string()
+%% }
+-type update_app_instance_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_room_membership_response() :: #{
+%%   <<"RoomMembership">> => room_membership()
+%% }
+-type create_room_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_users_response() :: #{
+%%   <<"AppInstanceArn">> => string(),
+%%   <<"AppInstanceUsers">> => list(app_instance_user_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_numbers_request() :: #{
+%%   <<"FilterName">> => list(any()),
+%%   <<"FilterValue">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProductType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type list_phone_numbers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_instance_summary() :: #{
+%%   <<"AppInstanceArn">> => string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type app_instance_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_voice_connector_request() :: #{
+%%   <<"AwsRegion">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"RequireEncryption">> := boolean()
+%% }
+-type create_voice_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_phone_number_request() :: #{}
+-type get_phone_number_request() :: #{}.
+
+
+%% Example:
+%% list_channel_bans_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelBans">> => list(channel_ban_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_bans_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Users">> => list(user()())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_meeting_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ExternalMeetingId">> => string(),
+%%   <<"MediaRegion">> => string(),
+%%   <<"MeetingHostId">> => string(),
+%%   <<"NotificationsConfiguration">> => meeting_notification_configuration(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_meeting_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type describe_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% account() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AccountStatus">> => list(any()),
+%%   <<"AccountType">> => list(any()),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"DefaultLicense">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"SigninDelegateGroups">> => list(signin_delegate_group()()),
+%%   <<"SupportedLicenses">> => list(list(any())())
+%% }
+-type account() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_app_instance_streaming_configurations_response() :: #{
+%%   <<"AppInstanceStreamingConfigurations">> => list(app_instance_streaming_configuration()())
+%% }
+-type put_app_instance_streaming_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_proxy_request() :: #{
+%%   <<"DefaultSessionExpiryMinutes">> := integer(),
+%%   <<"Disabled">> => boolean(),
+%%   <<"FallBackPhoneNumber">> => string(),
+%%   <<"PhoneNumberPoolCountries">> := list(string()())
+%% }
+-type put_voice_connector_proxy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_phone_numbers_with_voice_connector_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%% }
+-type associate_phone_numbers_with_voice_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_logging_configuration_request() :: #{
+%%   <<"LoggingConfiguration">> := logging_configuration()
+%% }
+-type put_voice_connector_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_memberships_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_channel_memberships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_membership_summary() :: #{
+%%   <<"Member">> => identity()
+%% }
+-type channel_membership_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_order() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"OrderedPhoneNumbers">> => list(ordered_phone_number()()),
+%%   <<"PhoneNumberOrderId">> => string(),
+%%   <<"ProductType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type phone_number_order() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_instance_user() :: #{
+%%   <<"AppInstanceUserArn">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Metadata">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type app_instance_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attendee_request_item() :: #{
+%%   <<"ExternalUserId">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_attendee_request_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_request() :: #{
+%%   <<"AppInstanceArn">> := string(),
+%%   <<"ChimeBearer">> => string(),
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"Privacy">> => list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_artifacts_configuration() :: #{
+%%   <<"MuxType">> => list(any())
+%% }
+-type audio_artifacts_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_messaging_session_endpoint_request() :: #{}
+-type get_messaging_session_endpoint_request() :: #{}.
+
+
+%% Example:
+%% list_media_capture_pipelines_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_media_capture_pipelines_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_retention_settings_request() :: #{
+%%   <<"RetentionSettings">> := retention_settings()
+%% }
+-type put_retention_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_phone_number_request() :: #{}
+-type delete_phone_number_request() :: #{}.
+
+
+%% Example:
+%% create_attendee_response() :: #{
+%%   <<"Attendee">> => attendee()
+%% }
+-type create_attendee_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_instance_streaming_configuration() :: #{
+%%   <<"AppInstanceDataType">> => list(any()),
+%%   <<"ResourceArn">> => string()
+%% }
+-type app_instance_streaming_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_signin_delegate_groups_from_account_request() :: #{
+%%   <<"GroupNames">> := list(string()())
+%% }
+-type disassociate_signin_delegate_groups_from_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_room_membership_request() :: #{
+%%   <<"Role">> => list(any())
+%% }
+-type update_room_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sip_media_application_endpoint() :: #{
+%%   <<"LambdaArn">> => string()
+%% }
+-type sip_media_application_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_phone_numbers_from_voice_connector_group_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%% }
+-type disassociate_phone_numbers_from_voice_connector_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_retention_settings() :: #{
+%%   <<"RetentionDays">> => integer()
+%% }
+-type channel_retention_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_global_settings_response() :: #{
+%%   <<"BusinessCalling">> => business_calling_settings(),
+%%   <<"VoiceConnector">> => voice_connector_settings()
+%% }
+-type get_global_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice_connector() :: #{
+%%   <<"AwsRegion">> => list(any()),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OutboundHostName">> => string(),
+%%   <<"RequireEncryption">> => boolean(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer(),
+%%   <<"VoiceConnectorArn">> => string(),
+%%   <<"VoiceConnectorId">> => string()
+%% }
+-type voice_connector() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_proxy_sessions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_proxy_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_configuration() :: #{
+%%   <<"SelectedVideoStreams">> => selected_video_streams()
+%% }
+-type source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% origination_route() :: #{
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"Priority">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"Weight">> => integer()
+%% }
+-type origination_route() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_settings_request() :: #{
+%%   <<"AccountSettings">> := account_settings()
+%% }
+-type update_account_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_memberships_for_app_instance_user_response() :: #{
+%%   <<"ChannelMemberships">> => list(channel_membership_for_app_instance_user_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_memberships_for_app_instance_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_signin_delegate_groups_with_account_response() :: #{}
+-type associate_signin_delegate_groups_with_account_response() :: #{}.
+
+
+%% Example:
+%% streaming_notification_target() :: #{
+%%   <<"NotificationTarget">> => list(any())
+%% }
+-type streaming_notification_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice_connector_item() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"VoiceConnectorId">> => string()
+%% }
+-type voice_connector_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_app_instance_retention_settings_response() :: #{
+%%   <<"AppInstanceRetentionSettings">> => app_instance_retention_settings(),
+%%   <<"InitiateDeletionTimestamp">> => non_neg_integer()
+%% }
+-type get_app_instance_retention_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_response() :: #{
+%%   <<"Channels">> => list(channel_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_membership_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"MemberArn">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_channel_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sip_media_application_logging_configuration_response() :: #{
+%%   <<"SipMediaApplicationLoggingConfiguration">> => sip_media_application_logging_configuration()
+%% }
+-type put_sip_media_application_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_connector_group_response() :: #{
+%%   <<"VoiceConnectorGroup">> => voice_connector_group()
+%% }
+-type update_voice_connector_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% chime_sdk_meeting_configuration() :: #{
+%%   <<"ArtifactsConfiguration">> => artifacts_configuration(),
+%%   <<"SourceConfiguration">> => source_configuration()
+%% }
+-type chime_sdk_meeting_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_phone_number_response() :: #{
+%%   <<"PhoneNumber">> => phone_number()
+%% }
+-type get_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_messaging_session_endpoint_response() :: #{
+%%   <<"Endpoint">> => messaging_session_endpoint()
+%% }
+-type get_messaging_session_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_voice_connector_termination_credentials_response() :: #{
+%%   <<"Usernames">> => list(string()())
+%% }
+-type list_voice_connector_termination_credentials_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Mode">> := list(any()),
+%%   <<"Name">> := string()
+%% }
+-type update_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_global_settings_request() :: #{
+%%   <<"BusinessCalling">> => business_calling_settings(),
+%%   <<"VoiceConnector">> => voice_connector_settings()
+%% }
+-type update_global_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_read_marker_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type update_channel_read_marker_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_settings_request() :: #{
+%%   <<"UserSettings">> := user_settings()
+%% }
+-type update_user_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_request() :: #{
+%%   <<"DefaultLicense">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type update_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_meeting_request() :: #{}
+-type get_meeting_request() :: #{}.
+
+
+%% Example:
+%% user_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type user_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_instance_admin() :: #{
+%%   <<"Admin">> => identity(),
+%%   <<"AppInstanceArn">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer()
+%% }
+-type app_instance_admin() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_moderated_by_app_instance_user_summary() :: #{
+%%   <<"ChannelSummary">> => channel_summary()
+%% }
+-type channel_moderated_by_app_instance_user_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_proxy_session_request() :: #{
+%%   <<"Capabilities">> := list(list(any())()),
+%%   <<"ExpiryMinutes">> => integer(),
+%%   <<"GeoMatchLevel">> => list(any()),
+%%   <<"GeoMatchParams">> => geo_match_params(),
+%%   <<"Name">> => string(),
+%%   <<"NumberSelectionBehavior">> => list(any()),
+%%   <<"ParticipantPhoneNumbers">> := list(string()())
+%% }
+-type create_proxy_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% candidate_address() :: #{
+%%   <<"city">> => string(),
+%%   <<"country">> => string(),
+%%   <<"postalCode">> => string(),
+%%   <<"postalCodePlus4">> => string(),
+%%   <<"state">> => string(),
+%%   <<"streetInfo">> => string(),
+%%   <<"streetNumber">> => string()
+%% }
+-type candidate_address() :: #{binary() => any()}.
+
+%% Example:
+%% get_sip_rule_request() :: #{}
+-type get_sip_rule_request() :: #{}.
+
+
+%% Example:
+%% channel_message() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Content">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"LastEditedTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"MessageId">> => string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Persistence">> => list(any()),
+%%   <<"Redacted">> => boolean(),
+%%   <<"Sender">> => identity(),
+%%   <<"Type">> => list(any())
+%% }
+-type channel_message() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_proxy_request() :: #{}
+-type get_voice_connector_proxy_request() :: #{}.
+
+%% Example:
+%% delete_account_request() :: #{}
+-type delete_account_request() :: #{}.
+
+%% Example:
+%% redact_conversation_message_request() :: #{}
+-type redact_conversation_message_request() :: #{}.
+
+
+%% Example:
+%% messaging_session_endpoint() :: #{
+%%   <<"Url">> => string()
+%% }
+-type messaging_session_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_message_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"MessageId">> => string()
+%% }
+-type update_channel_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sip_media_applications_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SipMediaApplications">> => list(sip_media_application()())
+%% }
+-type list_sip_media_applications_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_response() :: #{}
+-type delete_account_response() :: #{}.
+
+
+%% Example:
+%% alexa_for_business_metadata() :: #{
+%%   <<"AlexaForBusinessRoomArn">> => string(),
+%%   <<"IsAlexaForBusinessEnabled">> => boolean()
+%% }
+-type alexa_for_business_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_sip_media_application_logging_configuration_request() :: #{}
+-type get_sip_media_application_logging_configuration_request() :: #{}.
+
+
+%% Example:
+%% create_account_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type create_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invite_users_response() :: #{
+%%   <<"Invites">> => list(invite()())
+%% }
+-type invite_users_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_meeting_transcription_response() :: #{}
+-type stop_meeting_transcription_response() :: #{}.
+
+%% Example:
+%% get_room_request() :: #{}
+-type get_room_request() :: #{}.
+
+
+%% Example:
+%% sip_media_application_logging_configuration() :: #{
+%%   <<"EnableSipMediaApplicationMessageLogs">> => boolean()
+%% }
+-type sip_media_application_logging_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bots_response() :: #{
+%%   <<"Bots">> => list(bot()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bots_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_proxy_session_response() :: #{
+%%   <<"ProxySession">> => proxy_session()
+%% }
+-type get_proxy_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_attendee_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_attendee_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_channel_message_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type delete_channel_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sip_rule_response() :: #{
+%%   <<"SipRule">> => sip_rule()
+%% }
+-type update_sip_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_phone_number_from_user_request() :: #{}
+-type disassociate_phone_number_from_user_request() :: #{}.
+
+
+%% Example:
+%% put_app_instance_streaming_configurations_request() :: #{
+%%   <<"AppInstanceStreamingConfigurations">> := list(app_instance_streaming_configuration()())
+%% }
+-type put_app_instance_streaming_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_moderators_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_moderators_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attendee_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ExternalUserId">> => string()
+%% }
+-type create_attendee_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_entity_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type unprocessable_entity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_voice_connector_group_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"VoiceConnectorItems">> => list(voice_connector_item()())
+%% }
+-type create_voice_connector_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_channel_membership_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"MemberArns">> := list(string()()),
+%%   <<"Type">> => list(any())
+%% }
+-type batch_create_channel_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_room_response() :: #{
+%%   <<"Room">> => room()
+%% }
+-type get_room_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_user_request() :: #{
+%%   <<"Metadata">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type update_app_instance_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_instance_admin_response() :: #{
+%%   <<"AppInstanceAdmin">> => app_instance_admin()
+%% }
+-type describe_app_instance_admin_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sip_media_application_call_response() :: #{
+%%   <<"SipMediaApplicationCall">> => sip_media_application_call()
+%% }
+-type create_sip_media_application_call_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_capture_pipeline_request() :: #{
+%%   <<"ChimeSdkMeetingConfiguration">> => chime_sdk_meeting_configuration(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"SinkArn">> := string(),
+%%   <<"SinkType">> := list(any()),
+%%   <<"SourceArn">> := string(),
+%%   <<"SourceType">> := list(any())
+%% }
+-type create_media_capture_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_instance_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_app_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"PhoneNumberId">> => string()
+%% }
+-type phone_number_error() :: #{binary() => any()}.
+
+%% Example:
+%% get_attendee_request() :: #{}
+-type get_attendee_request() :: #{}.
+
+
+%% Example:
+%% update_phone_number_request_item() :: #{
+%%   <<"CallingName">> => string(),
+%%   <<"PhoneNumberId">> => string(),
+%%   <<"ProductType">> => list(any())
+%% }
+-type update_phone_number_request_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_membership_for_app_instance_user_request() :: #{
+%%   <<"AppInstanceUserArn">> := string(),
+%%   <<"ChimeBearer">> => string()
+%% }
+-type describe_channel_membership_for_app_instance_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_channel_membership_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type delete_channel_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_settings() :: #{
+%%   <<"DisableRemoteControl">> => boolean(),
+%%   <<"EnableDialOut">> => boolean()
+%% }
+-type account_settings() :: #{binary() => any()}.
+
+%% Example:
+%% list_attendee_tags_request() :: #{}
+-type list_attendee_tags_request() :: #{}.
+
+
+%% Example:
+%% app_instance_admin_summary() :: #{
+%%   <<"Admin">> => identity()
+%% }
+-type app_instance_admin_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_suspend_user_request() :: #{
+%%   <<"UserIdList">> := list(string()())
+%% }
+-type batch_suspend_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_messages_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"NotAfter">> => non_neg_integer(),
+%%   <<"NotBefore">> => non_neg_integer(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_channel_messages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_phone_numbers_with_voice_connector_group_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%% }
+-type associate_phone_numbers_with_voice_connector_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bot_request() :: #{
+%%   <<"Disabled">> => boolean()
+%% }
+-type update_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_channel_message_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"Content">> := string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Persistence">> := list(any()),
+%%   <<"Type">> := list(any())
+%% }
+-type send_channel_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"AlexaForBusinessMetadata">> => alexa_for_business_metadata(),
+%%   <<"LicenseType">> => list(any()),
+%%   <<"UserType">> => list(any())
+%% }
+-type update_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_request_item() :: #{
+%%   <<"AlexaForBusinessMetadata">> => alexa_for_business_metadata(),
+%%   <<"LicenseType">> => list(any()),
+%%   <<"UserId">> => string(),
+%%   <<"UserType">> => list(any())
+%% }
+-type update_user_request_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_events_configuration_request() :: #{}
+-type get_events_configuration_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_origination_request() :: #{
+%%   <<"Origination">> := origination()
+%% }
+-type put_voice_connector_origination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_voice_connector_termination_credentials_request() :: #{
+%%   <<"Usernames">> := list(string()())
+%% }
+-type delete_voice_connector_termination_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_moderators_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelModerators">> => list(channel_moderator_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_moderators_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_room_membership_request() :: #{
+%%   <<"MemberId">> := string(),
+%%   <<"Role">> => list(any())
+%% }
+-type create_room_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_room_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type create_room_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_voice_connectors_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VoiceConnectors">> => list(voice_connector()())
+%% }
+-type list_voice_connectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_message_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type get_channel_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_unsuspend_user_request() :: #{
+%%   <<"UserIdList">> := list(string()())
+%% }
+-type batch_unsuspend_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_ban_response() :: #{
+%%   <<"ChannelBan">> => channel_ban()
+%% }
+-type describe_channel_ban_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_group_request() :: #{}
+-type get_voice_connector_group_request() :: #{}.
+
+
+%% Example:
+%% voice_connector_group() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer(),
+%%   <<"VoiceConnectorGroupArn">> => string(),
+%%   <<"VoiceConnectorGroupId">> => string(),
+%%   <<"VoiceConnectorItems">> => list(voice_connector_item()())
+%% }
+-type voice_connector_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_meeting_transcription_request() :: #{
+%%   <<"TranscriptionConfiguration">> := transcription_configuration()
+%% }
+-type start_meeting_transcription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_ban() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"CreatedBy">> => identity(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Member">> => identity()
+%% }
+-type channel_ban() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rooms_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MemberId">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_rooms_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_voice_connector_origination_response() :: #{
+%%   <<"Origination">> => origination()
+%% }
+-type get_voice_connector_origination_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% user() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AlexaForBusinessMetadata">> => alexa_for_business_metadata(),
+%%   <<"DisplayName">> => string(),
+%%   <<"InvitedOn">> => non_neg_integer(),
+%%   <<"LicenseType">> => list(any()),
+%%   <<"PersonalPIN">> => string(),
+%%   <<"PrimaryEmail">> => string(),
+%%   <<"PrimaryProvisionedNumber">> => string(),
+%%   <<"RegisteredOn">> => non_neg_integer(),
+%%   <<"UserId">> => string(),
+%%   <<"UserInvitationStatus">> => list(any()),
+%%   <<"UserRegistrationStatus">> => list(any()),
+%%   <<"UserType">> => list(any())
+%% }
+-type user() :: #{binary() => any()}.
+
+
+%% Example:
+%% invite_users_request() :: #{
+%%   <<"UserEmailList">> := list(string()()),
+%%   <<"UserType">> => list(any())
+%% }
+-type invite_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_attendee_request() :: #{
+%%   <<"Attendees">> := list(create_attendee_request_item()())
+%% }
+-type batch_create_attendee_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"CreatedBy">> => identity(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"LastMessageTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Metadata">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Privacy">> => list(any())
+%% }
+-type channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_phone_number_settings_response() :: #{
+%%   <<"CallingName">> => string(),
+%%   <<"CallingNameUpdatedTimestamp">> => non_neg_integer()
+%% }
+-type get_phone_number_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_item() :: #{
+%%   <<"MemberId">> => string(),
+%%   <<"Role">> => list(any())
+%% }
+-type membership_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_request() :: #{
+%%   <<"DisplayName">> := string(),
+%%   <<"Domain">> => string()
+%% }
+-type create_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_attendee_response() :: #{
+%%   <<"Attendees">> => list(attendee()()),
+%%   <<"Errors">> => list(create_attendee_error()())
+%% }
+-type batch_create_attendee_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_instance_admin_response() :: #{
+%%   <<"AppInstanceAdmin">> => identity(),
+%%   <<"AppInstanceArn">> => string()
+%% }
+-type create_app_instance_admin_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% regenerate_security_token_response() :: #{
+%%   <<"Bot">> => bot()
+%% }
+-type regenerate_security_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_app_instance_retention_settings_response() :: #{
+%%   <<"AppInstanceRetentionSettings">> => app_instance_retention_settings(),
+%%   <<"InitiateDeletionTimestamp">> => non_neg_integer()
+%% }
+-type put_app_instance_retention_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_memberships_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelMemberships">> => list(channel_membership_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_memberships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sip_media_application_call_request() :: #{
+%%   <<"FromPhoneNumber">> := string(),
+%%   <<"SipHeaders">> => map(),
+%%   <<"ToPhoneNumber">> := string()
+%% }
+-type create_sip_media_application_call_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sip_media_application_call_request() :: #{
+%%   <<"Arguments">> := map()
+%% }
+-type update_sip_media_application_call_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attendee_tags_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_attendee_tags_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attendees_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attendees_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_instance_retention_settings() :: #{
+%%   <<"ChannelRetentionSettings">> => channel_retention_settings()
+%% }
+-type app_instance_retention_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% member() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Email">> => string(),
+%%   <<"FullName">> => string(),
+%%   <<"MemberId">> => string(),
+%%   <<"MemberType">> => list(any())
+%% }
+-type member() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserEmail">> => string(),
+%%   <<"UserType">> => list(any())
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_voice_connector_termination_request() :: #{}
+-type delete_voice_connector_termination_request() :: #{}.
+
+
+%% Example:
+%% get_voice_connector_group_response() :: #{
+%%   <<"VoiceConnectorGroup">> => voice_connector_group()
+%% }
+-type get_voice_connector_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_events_configuration_response() :: #{
+%%   <<"EventsConfiguration">> => events_configuration()
+%% }
+-type get_events_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_moderator() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"CreatedBy">> => identity(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Moderator">> => identity()
+%% }
+-type channel_moderator() :: #{binary() => any()}.
+
+
+%% Example:
+%% attendee() :: #{
+%%   <<"AttendeeId">> => string(),
+%%   <<"ExternalUserId">> => string(),
+%%   <<"JoinToken">> => string()
+%% }
+-type attendee() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_logging_configuration_response() :: #{
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type put_voice_connector_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_ban_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Member">> => identity()
+%% }
+-type create_channel_ban_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_response() :: #{
+%%   <<"Bot">> => bot()
+%% }
+-type create_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_account_response() :: #{
+%%   <<"Account">> => account()
+%% }
+-type create_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_voice_connector_response() :: #{
+%%   <<"VoiceConnector">> => voice_connector()
+%% }
+-type create_voice_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_channel_membership_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"MemberArn">> => string()
+%% }
+-type batch_create_channel_membership_error() :: #{binary() => any()}.
+
+%% Example:
+%% get_proxy_session_request() :: #{}
+-type get_proxy_session_request() :: #{}.
+
+
+%% Example:
+%% create_app_instance_admin_request() :: #{
+%%   <<"AppInstanceAdminArn">> := string()
+%% }
+-type create_app_instance_admin_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sip_media_application_call() :: #{
+%%   <<"TransactionId">> => string()
+%% }
+-type sip_media_application_call() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_personal_pin_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type reset_personal_pin_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_instance_admin_request() :: #{}
+-type describe_app_instance_admin_request() :: #{}.
+
+
+%% Example:
+%% list_phone_numbers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumbers">> => list(phone_number()())
+%% }
+-type list_phone_numbers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_connector_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"RequireEncryption">> := boolean()
+%% }
+-type update_voice_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invite() :: #{
+%%   <<"EmailAddress">> => string(),
+%%   <<"EmailStatus">> => list(any()),
+%%   <<"InviteId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type invite() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_settings() :: #{
+%%   <<"Telephony">> => telephony_settings()
+%% }
+-type user_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_read_marker_response() :: #{
+%%   <<"ChannelArn">> => string()
+%% }
+-type update_channel_read_marker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_moderator_summary() :: #{
+%%   <<"Moderator">> => identity()
+%% }
+-type channel_moderator_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_channel_memberships() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"InvitedBy">> => identity(),
+%%   <<"Members">> => list(identity()()),
+%%   <<"Type">> => list(any())
+%% }
+-type batch_channel_memberships() :: #{binary() => any()}.
+
+
+%% Example:
+%% credential() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type credential() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_room_membership_response() :: #{
+%%   <<"RoomMembership">> => room_membership()
+%% }
+-type update_room_membership_response() :: #{binary() => any()}.
+
+%% Example:
+%% logout_user_response() :: #{}
+-type logout_user_response() :: #{}.
+
+%% Example:
+%% disassociate_phone_number_from_user_response() :: #{}
+-type disassociate_phone_number_from_user_response() :: #{}.
+
+
+%% Example:
+%% associate_signin_delegate_groups_with_account_request() :: #{
+%%   <<"SigninDelegateGroups">> := list(signin_delegate_group()())
+%% }
+-type associate_signin_delegate_groups_with_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_response() :: #{
+%%   <<"ChannelArn">> => string()
+%% }
+-type update_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_instance_request() :: #{}
+-type delete_app_instance_request() :: #{}.
+
+
+%% Example:
+%% app_instance_user_summary() :: #{
+%%   <<"AppInstanceUserArn">> => string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type app_instance_user_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_capabilities() :: #{
+%%   <<"InboundCall">> => boolean(),
+%%   <<"InboundMMS">> => boolean(),
+%%   <<"InboundSMS">> => boolean(),
+%%   <<"OutboundCall">> => boolean(),
+%%   <<"OutboundMMS">> => boolean(),
+%%   <<"OutboundSMS">> => boolean()
+%% }
+-type phone_number_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_ban_request() :: #{
+%%   <<"ChimeBearer">> => string()
+%% }
+-type describe_channel_ban_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_meetings_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_meetings_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_voice_connector_streaming_configuration_request() :: #{}
+-type delete_voice_connector_streaming_configuration_request() :: #{}.
+
+%% Example:
+%% delete_voice_connector_emergency_calling_configuration_request() :: #{}
+-type delete_voice_connector_emergency_calling_configuration_request() :: #{}.
+
+%% Example:
+%% get_sip_media_application_request() :: #{}
+-type get_sip_media_application_request() :: #{}.
+
+
+%% Example:
+%% describe_channel_membership_for_app_instance_user_response() :: #{
+%%   <<"ChannelMembership">> => channel_membership_for_app_instance_user_summary()
+%% }
+-type describe_channel_membership_for_app_instance_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sip_media_application_response() :: #{
+%%   <<"SipMediaApplication">> => sip_media_application()
+%% }
+-type create_sip_media_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_proxy_response() :: #{
+%%   <<"Proxy">> => proxy()
+%% }
+-type put_voice_connector_proxy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot() :: #{
+%%   <<"BotEmail">> => string(),
+%%   <<"BotId">> => string(),
+%%   <<"BotType">> => list(any()),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Disabled">> => boolean(),
+%%   <<"DisplayName">> => string(),
+%%   <<"SecurityToken">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer(),
+%%   <<"UserId">> => string()
+%% }
+-type bot() :: #{binary() => any()}.
+
+
+%% Example:
+%% address() :: #{
+%%   <<"city">> => string(),
+%%   <<"country">> => string(),
+%%   <<"postDirectional">> => string(),
+%%   <<"postalCode">> => string(),
+%%   <<"postalCodePlus4">> => string(),
+%%   <<"preDirectional">> => string(),
+%%   <<"state">> => string(),
+%%   <<"streetName">> => string(),
+%%   <<"streetNumber">> => string(),
+%%   <<"streetSuffix">> => string()
+%% }
+-type address() :: #{binary() => any()}.
+
+
+%% Example:
+%% sip_rule_target_application() :: #{
+%%   <<"AwsRegion">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"SipMediaApplicationId">> => string()
+%% }
+-type sip_rule_target_application() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_voice_connector_emergency_calling_configuration_response() :: #{
+%%   <<"EmergencyCallingConfiguration">> => emergency_calling_configuration()
+%% }
+-type get_voice_connector_emergency_calling_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_voice_connector_request() :: #{}
+-type delete_voice_connector_request() :: #{}.
+
+
+%% Example:
+%% list_accounts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserEmail">> => string()
+%% }
+-type list_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_phone_number_request() :: #{
+%%   <<"CallingName">> => string(),
+%%   <<"ProductType">> => list(any())
+%% }
+-type update_phone_number_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_request() :: #{}
+-type get_account_request() :: #{}.
+
+%% Example:
+%% redact_room_message_response() :: #{}
+-type redact_room_message_response() :: #{}.
+
+
+%% Example:
+%% put_events_configuration_request() :: #{
+%%   <<"LambdaFunctionArn">> => string(),
+%%   <<"OutboundEventsHTTPSEndpoint">> => string()
+%% }
+-type put_events_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_retention_settings_response() :: #{
+%%   <<"InitiateDeletionTimestamp">> => non_neg_integer(),
+%%   <<"RetentionSettings">> => retention_settings()
+%% }
+-type get_retention_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_origination_request() :: #{}
+-type get_voice_connector_origination_request() :: #{}.
+
+
+%% Example:
+%% put_voice_connector_emergency_calling_configuration_response() :: #{
+%%   <<"EmergencyCallingConfiguration">> => emergency_calling_configuration()
+%% }
+-type put_voice_connector_emergency_calling_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_voice_connector_termination_response() :: #{
+%%   <<"Termination">> => termination()
+%% }
+-type get_voice_connector_termination_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attendee_request() :: #{
+%%   <<"ExternalUserId">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_attendee_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_room_request() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_room_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_request() :: #{
+%%   <<"AppInstanceArn">> := string(),
+%%   <<"ChimeBearer">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Privacy">> => list(any())
+%% }
+-type list_channels_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_instance_user_request() :: #{}
+-type describe_app_instance_user_request() :: #{}.
+
+%% Example:
+%% get_retention_settings_request() :: #{}
+-type get_retention_settings_request() :: #{}.
+
+
+%% Example:
+%% update_account_response() :: #{
+%%   <<"Account">> => account()
+%% }
+-type update_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type create_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bot_response() :: #{
+%%   <<"Bot">> => bot()
+%% }
+-type update_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_suspend_user_response() :: #{
+%%   <<"UserErrors">> => list(user_error()())
+%% }
+-type batch_suspend_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_phone_number_request() :: #{
+%%   <<"UpdatePhoneNumberRequestItems">> := list(update_phone_number_request_item()())
+%% }
+-type batch_update_phone_number_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% artifacts_configuration() :: #{
+%%   <<"Audio">> => audio_artifacts_configuration(),
+%%   <<"Content">> => content_artifacts_configuration(),
+%%   <<"Video">> => video_artifacts_configuration()
+%% }
+-type artifacts_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_message_summary() :: #{
+%%   <<"Content">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"LastEditedTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"MessageId">> => string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Redacted">> => boolean(),
+%%   <<"Sender">> => identity(),
+%%   <<"Type">> => list(any())
+%% }
+-type channel_message_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_placement() :: #{
+%%   <<"AudioFallbackUrl">> => string(),
+%%   <<"AudioHostUrl">> => string(),
+%%   <<"EventIngestionUrl">> => string(),
+%%   <<"ScreenDataUrl">> => string(),
+%%   <<"ScreenSharingUrl">> => string(),
+%%   <<"ScreenViewingUrl">> => string(),
+%%   <<"SignalingUrl">> => string(),
+%%   <<"TurnControlUrl">> => string()
+%% }
+-type media_placement() :: #{binary() => any()}.
+
+
+%% Example:
+%% sip_media_application() :: #{
+%%   <<"AwsRegion">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Endpoints">> => list(sip_media_application_endpoint()()),
+%%   <<"Name">> => string(),
+%%   <<"SipMediaApplicationId">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type sip_media_application() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_available_phone_numbers_request() :: #{
+%%   <<"AreaCode">> => string(),
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumberType">> => list(any()),
+%%   <<"State">> => string(),
+%%   <<"TollFreePrefix">> => string()
+%% }
+-type search_available_phone_numbers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_events_configuration_response() :: #{
+%%   <<"EventsConfiguration">> => events_configuration()
+%% }
+-type put_events_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_meeting_dial_out_request() :: #{
+%%   <<"FromPhoneNumber">> := string(),
+%%   <<"JoinToken">> := string(),
+%%   <<"ToPhoneNumber">> := string()
+%% }
+-type create_meeting_dial_out_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attendee_request() :: #{}
+-type delete_attendee_request() :: #{}.
+
+
+%% Example:
+%% create_room_response() :: #{
+%%   <<"Room">> => room()
+%% }
+-type create_room_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_instance_user_request() :: #{
+%%   <<"AppInstanceArn">> := string(),
+%%   <<"AppInstanceUserId">> := string(),
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_app_instance_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% room_retention_settings() :: #{
+%%   <<"RetentionDays">> => integer()
+%% }
+-type room_retention_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_supported_phone_number_countries_request() :: #{
+%%   <<"ProductType">> := list(any())
+%% }
+-type list_supported_phone_number_countries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_instance() :: #{
+%%   <<"AppInstanceArn">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Metadata">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type app_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_retention_settings() :: #{
+%%   <<"RetentionDays">> => integer()
+%% }
+-type conversation_retention_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% emergency_calling_configuration() :: #{
+%%   <<"DNIS">> => list(d_n_i_s_emergency_calling_configuration()())
+%% }
+-type emergency_calling_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"Email">> => string(),
+%%   <<"UserType">> => list(any()),
+%%   <<"Username">> => string()
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_user_request() :: #{
+%%   <<"UpdateUserRequestItems">> := list(update_user_request_item()())
+%% }
+-type batch_update_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% regenerate_security_token_request() :: #{}
+-type regenerate_security_token_request() :: #{}.
+
+%% Example:
+%% disassociate_signin_delegate_groups_from_account_response() :: #{}
+-type disassociate_signin_delegate_groups_from_account_response() :: #{}.
+
+
+%% Example:
+%% create_channel_membership_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Member">> => identity()
+%% }
+-type create_channel_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_instance_user_response() :: #{
+%%   <<"AppInstanceUserArn">> => string()
+%% }
+-type create_app_instance_user_response() :: #{binary() => any()}.
+
+-type associate_phone_number_with_user_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type associate_phone_numbers_with_voice_connector_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type associate_phone_numbers_with_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type associate_signin_delegate_groups_with_account_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type batch_create_attendee_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type batch_create_channel_membership_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type batch_create_room_membership_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type batch_delete_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type batch_suspend_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type batch_unsuspend_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type batch_update_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type batch_update_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_account_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_app_instance_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_app_instance_admin_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_attendee_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_bot_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_channel_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_channel_ban_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_channel_membership_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_channel_moderator_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_media_capture_pipeline_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_meeting_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_meeting_dial_out_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_meeting_with_attendees_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_phone_number_order_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_proxy_session_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_room_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_room_membership_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_sip_media_application_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_sip_media_application_call_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_sip_rule_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_voice_connector_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_account_errors() ::
+    bad_request_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_app_instance_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_app_instance_admin_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_app_instance_streaming_configurations_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_attendee_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_channel_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_channel_ban_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_channel_membership_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_channel_message_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_channel_moderator_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_events_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_media_capture_pipeline_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_meeting_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_proxy_session_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_room_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_room_membership_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_sip_media_application_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_sip_rule_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_emergency_calling_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_origination_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_proxy_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_streaming_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_termination_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_voice_connector_termination_credentials_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_app_instance_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_app_instance_admin_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_channel_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_channel_ban_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_channel_membership_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_channel_membership_for_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_channel_moderated_by_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_channel_moderator_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type disassociate_phone_number_from_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type disassociate_phone_numbers_from_voice_connector_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type disassociate_phone_numbers_from_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type disassociate_signin_delegate_groups_from_account_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_account_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_account_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_app_instance_retention_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_app_instance_streaming_configurations_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_attendee_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_bot_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_channel_message_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_events_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_global_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_media_capture_pipeline_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_meeting_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_messaging_session_endpoint_errors() ::
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_phone_number_order_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_phone_number_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_proxy_session_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_retention_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_room_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_sip_media_application_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_sip_media_application_logging_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_sip_rule_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_user_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_emergency_calling_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_logging_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_origination_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_proxy_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_streaming_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_termination_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_voice_connector_termination_health_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type invite_users_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_accounts_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_app_instance_admins_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_app_instance_users_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_app_instances_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_attendee_tags_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_attendees_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_bots_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_channel_bans_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_channel_memberships_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_channel_memberships_for_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_channel_messages_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_channel_moderators_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_channels_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_channels_moderated_by_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_media_capture_pipelines_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_meeting_tags_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_meetings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_phone_number_orders_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_phone_numbers_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_proxy_sessions_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_room_memberships_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_rooms_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_sip_media_applications_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_sip_rules_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_supported_phone_number_countries_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_users_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_voice_connector_groups_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_voice_connector_termination_credentials_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_voice_connectors_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type logout_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_app_instance_retention_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_app_instance_streaming_configurations_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_events_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_retention_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_sip_media_application_logging_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_emergency_calling_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_logging_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_origination_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_proxy_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_streaming_configuration_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_termination_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_voice_connector_termination_credentials_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type redact_channel_message_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type redact_conversation_message_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type redact_room_message_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type regenerate_security_token_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type reset_personal_pin_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type restore_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type search_available_phone_numbers_errors() ::
+    bad_request_exception() | 
+    access_denied_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type send_channel_message_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type start_meeting_transcription_errors() ::
+    bad_request_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type stop_meeting_transcription_errors() ::
+    bad_request_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type tag_attendee_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type tag_meeting_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type untag_attendee_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type untag_meeting_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_account_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_account_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_app_instance_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_bot_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_channel_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_channel_message_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_channel_read_marker_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_global_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_phone_number_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_phone_number_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_proxy_session_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_room_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_room_membership_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_sip_media_application_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_sip_media_application_call_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_sip_rule_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_user_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_voice_connector_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_voice_connector_group_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type validate_e911_address_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Associates a phone number with the specified Amazon Chime user.
+-spec associate_phone_number_with_user(aws_client:aws_client(), binary() | list(), binary() | list(), associate_phone_number_with_user_request()) ->
+    {ok, associate_phone_number_with_user_response(), tuple()} |
+    {error, any()} |
+    {error, associate_phone_number_with_user_errors(), tuple()}.
 associate_phone_number_with_user(Client, AccountId, UserId, Input) ->
     associate_phone_number_with_user(Client, AccountId, UserId, Input, []).
+
+-spec associate_phone_number_with_user(aws_client:aws_client(), binary() | list(), binary() | list(), associate_phone_number_with_user_request(), proplists:proplist()) ->
+    {ok, associate_phone_number_with_user_response(), tuple()} |
+    {error, any()} |
+    {error, associate_phone_number_with_user_errors(), tuple()}.
 associate_phone_number_with_user(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=associate-phone-number"],
@@ -571,8 +5756,17 @@ associate_phone_number_with_user(Client, AccountId, UserId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec associate_phone_numbers_with_voice_connector(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_request()) ->
+    {ok, associate_phone_numbers_with_voice_connector_response(), tuple()} |
+    {error, any()} |
+    {error, associate_phone_numbers_with_voice_connector_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input) ->
     associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input, []).
+
+-spec associate_phone_numbers_with_voice_connector(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_request(), proplists:proplist()) ->
+    {ok, associate_phone_numbers_with_voice_connector_response(), tuple()} |
+    {error, any()} |
+    {error, associate_phone_numbers_with_voice_connector_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=associate-phone-numbers"],
@@ -609,8 +5803,17 @@ associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, O
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec associate_phone_numbers_with_voice_connector_group(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request()) ->
+    {ok, associate_phone_numbers_with_voice_connector_group_response(), tuple()} |
+    {error, any()} |
+    {error, associate_phone_numbers_with_voice_connector_group_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
+
+-spec associate_phone_numbers_with_voice_connector_group(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request(), proplists:proplist()) ->
+    {ok, associate_phone_numbers_with_voice_connector_group_response(), tuple()} |
+    {error, any()} |
+    {error, associate_phone_numbers_with_voice_connector_group_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=associate-phone-numbers"],
@@ -635,8 +5838,17 @@ associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId
 
 %% @doc Associates the specified sign-in delegate groups with the specified
 %% Amazon Chime account.
+-spec associate_signin_delegate_groups_with_account(aws_client:aws_client(), binary() | list(), associate_signin_delegate_groups_with_account_request()) ->
+    {ok, associate_signin_delegate_groups_with_account_response(), tuple()} |
+    {error, any()} |
+    {error, associate_signin_delegate_groups_with_account_errors(), tuple()}.
 associate_signin_delegate_groups_with_account(Client, AccountId, Input) ->
     associate_signin_delegate_groups_with_account(Client, AccountId, Input, []).
+
+-spec associate_signin_delegate_groups_with_account(aws_client:aws_client(), binary() | list(), associate_signin_delegate_groups_with_account_request(), proplists:proplist()) ->
+    {ok, associate_signin_delegate_groups_with_account_response(), tuple()} |
+    {error, any()} |
+    {error, associate_signin_delegate_groups_with_account_errors(), tuple()}.
 associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "?operation=associate-signin-delegate-groups"],
@@ -679,8 +5891,17 @@ associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec batch_create_attendee(aws_client:aws_client(), binary() | list(), batch_create_attendee_request()) ->
+    {ok, batch_create_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_attendee_errors(), tuple()}.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
+
+-spec batch_create_attendee(aws_client:aws_client(), binary() | list(), batch_create_attendee_request(), proplists:proplist()) ->
+    {ok, batch_create_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_attendee_errors(), tuple()}.
 batch_create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees?operation=batch-create"],
@@ -716,8 +5937,17 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec batch_create_channel_membership(aws_client:aws_client(), binary() | list(), batch_create_channel_membership_request()) ->
+    {ok, batch_create_channel_membership_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_channel_membership_errors(), tuple()}.
 batch_create_channel_membership(Client, ChannelArn, Input) ->
     batch_create_channel_membership(Client, ChannelArn, Input, []).
+
+-spec batch_create_channel_membership(aws_client:aws_client(), binary() | list(), batch_create_channel_membership_request(), proplists:proplist()) ->
+    {ok, batch_create_channel_membership_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_channel_membership_errors(), tuple()}.
 batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships?operation=batch-create"],
@@ -748,8 +5978,17 @@ batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %% Members can be users or bots. The member role designates whether the
 %% member is a
 %% chat room administrator or a general chat room member.
+-spec batch_create_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_room_membership_request()) ->
+    {ok, batch_create_room_membership_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_room_membership_errors(), tuple()}.
 batch_create_room_membership(Client, AccountId, RoomId, Input) ->
     batch_create_room_membership(Client, AccountId, RoomId, Input, []).
+
+-spec batch_create_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_room_membership_request(), proplists:proplist()) ->
+    {ok, batch_create_room_membership_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_room_membership_errors(), tuple()}.
 batch_create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships?operation=batch-create"],
@@ -781,8 +6020,17 @@ batch_create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
 %%
 %% Phone numbers remain in the
 %% Deletion queue for 7 days before they are deleted permanently.
+-spec batch_delete_phone_number(aws_client:aws_client(), batch_delete_phone_number_request()) ->
+    {ok, batch_delete_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_phone_number_errors(), tuple()}.
 batch_delete_phone_number(Client, Input) ->
     batch_delete_phone_number(Client, Input, []).
+
+-spec batch_delete_phone_number(aws_client:aws_client(), batch_delete_phone_number_request(), proplists:proplist()) ->
+    {ok, batch_delete_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_phone_number_errors(), tuple()}.
 batch_delete_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers?operation=batch-delete"],
@@ -830,8 +6078,17 @@ batch_delete_phone_number(Client, Input0, Options0) ->
 %%
 %% To sign out users without suspending them, use the
 %% `LogoutUser' action.
+-spec batch_suspend_user(aws_client:aws_client(), binary() | list(), batch_suspend_user_request()) ->
+    {ok, batch_suspend_user_response(), tuple()} |
+    {error, any()} |
+    {error, batch_suspend_user_errors(), tuple()}.
 batch_suspend_user(Client, AccountId, Input) ->
     batch_suspend_user(Client, AccountId, Input, []).
+
+-spec batch_suspend_user(aws_client:aws_client(), binary() | list(), batch_suspend_user_request(), proplists:proplist()) ->
+    {ok, batch_suspend_user_response(), tuple()} |
+    {error, any()} |
+    {error, batch_suspend_user_errors(), tuple()}.
 batch_suspend_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=suspend"],
@@ -870,8 +6127,17 @@ batch_suspend_user(Client, AccountId, Input0, Options0) ->
 %% returned to
 %% `Registered'
 %% status. Users who are not previously suspended are ignored.
+-spec batch_unsuspend_user(aws_client:aws_client(), binary() | list(), batch_unsuspend_user_request()) ->
+    {ok, batch_unsuspend_user_response(), tuple()} |
+    {error, any()} |
+    {error, batch_unsuspend_user_errors(), tuple()}.
 batch_unsuspend_user(Client, AccountId, Input) ->
     batch_unsuspend_user(Client, AccountId, Input, []).
+
+-spec batch_unsuspend_user(aws_client:aws_client(), binary() | list(), batch_unsuspend_user_request(), proplists:proplist()) ->
+    {ok, batch_unsuspend_user_response(), tuple()} |
+    {error, any()} |
+    {error, batch_unsuspend_user_errors(), tuple()}.
 batch_unsuspend_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=unsuspend"],
@@ -907,8 +6173,17 @@ batch_unsuspend_user(Client, AccountId, Input0, Options0) ->
 %% Updates to outbound calling names can take up to 72 hours to complete.
 %% Pending updates to outbound calling names must be complete before you can
 %% request another update.
+-spec batch_update_phone_number(aws_client:aws_client(), batch_update_phone_number_request()) ->
+    {ok, batch_update_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_phone_number_errors(), tuple()}.
 batch_update_phone_number(Client, Input) ->
     batch_update_phone_number(Client, Input, []).
+
+-spec batch_update_phone_number(aws_client:aws_client(), batch_update_phone_number_request(), proplists:proplist()) ->
+    {ok, batch_update_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_phone_number_errors(), tuple()}.
 batch_update_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers?operation=batch-update"],
@@ -935,8 +6210,17 @@ batch_update_phone_number(Client, Input0, Options0) ->
 %% for up to 20 users for the specified Amazon Chime account.
 %%
 %% Currently, only `LicenseType' updates are supported for this action.
+-spec batch_update_user(aws_client:aws_client(), binary() | list(), batch_update_user_request()) ->
+    {ok, batch_update_user_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_user_errors(), tuple()}.
 batch_update_user(Client, AccountId, Input) ->
     batch_update_user(Client, AccountId, Input, []).
+
+-spec batch_update_user(aws_client:aws_client(), binary() | list(), batch_update_user_request(), proplists:proplist()) ->
+    {ok, batch_update_user_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_user_errors(), tuple()}.
 batch_update_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users"],
@@ -969,8 +6253,17 @@ batch_update_user(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html in
 %% the Amazon Chime
 %% Administration Guide.
+-spec create_account(aws_client:aws_client(), create_account_request()) ->
+    {ok, create_account_response(), tuple()} |
+    {error, any()} |
+    {error, create_account_errors(), tuple()}.
 create_account(Client, Input) ->
     create_account(Client, Input, []).
+
+-spec create_account(aws_client:aws_client(), create_account_request(), proplists:proplist()) ->
+    {ok, create_account_response(), tuple()} |
+    {error, any()} |
+    {error, create_account_errors(), tuple()}.
 create_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accounts"],
@@ -1011,8 +6304,17 @@ create_account(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_app_instance(aws_client:aws_client(), create_app_instance_request()) ->
+    {ok, create_app_instance_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_instance_errors(), tuple()}.
 create_app_instance(Client, Input) ->
     create_app_instance(Client, Input, []).
+
+-spec create_app_instance(aws_client:aws_client(), create_app_instance_request(), proplists:proplist()) ->
+    {ok, create_app_instance_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_instance_errors(), tuple()}.
 create_app_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instances"],
@@ -1058,8 +6360,17 @@ create_app_instance(Client, Input0, Options0) ->
 %%
 %% Only an `AppInstanceUser' can be promoted to an `AppInstanceAdmin'
 %% role.
+-spec create_app_instance_admin(aws_client:aws_client(), binary() | list(), create_app_instance_admin_request()) ->
+    {ok, create_app_instance_admin_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_instance_admin_errors(), tuple()}.
 create_app_instance_admin(Client, AppInstanceArn, Input) ->
     create_app_instance_admin(Client, AppInstanceArn, Input, []).
+
+-spec create_app_instance_admin(aws_client:aws_client(), binary() | list(), create_app_instance_admin_request(), proplists:proplist()) ->
+    {ok, create_app_instance_admin_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_instance_admin_errors(), tuple()}.
 create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
     Method = post,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
@@ -1098,8 +6409,17 @@ create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_app_instance_user(aws_client:aws_client(), create_app_instance_user_request()) ->
+    {ok, create_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_instance_user_errors(), tuple()}.
 create_app_instance_user(Client, Input) ->
     create_app_instance_user(Client, Input, []).
+
+-spec create_app_instance_user(aws_client:aws_client(), create_app_instance_user_request(), proplists:proplist()) ->
+    {ok, create_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_instance_user_errors(), tuple()}.
 create_app_instance_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instance-users"],
@@ -1142,8 +6462,17 @@ create_app_instance_user(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_attendee(aws_client:aws_client(), binary() | list(), create_attendee_request()) ->
+    {ok, create_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, create_attendee_errors(), tuple()}.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
+
+-spec create_attendee(aws_client:aws_client(), binary() | list(), create_attendee_request(), proplists:proplist()) ->
+    {ok, create_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, create_attendee_errors(), tuple()}.
 create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
@@ -1167,8 +6496,17 @@ create_attendee(Client, MeetingId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a bot for an Amazon Chime Enterprise account.
+-spec create_bot(aws_client:aws_client(), binary() | list(), create_bot_request()) ->
+    {ok, create_bot_response(), tuple()} |
+    {error, any()} |
+    {error, create_bot_errors(), tuple()}.
 create_bot(Client, AccountId, Input) ->
     create_bot(Client, AccountId, Input, []).
+
+-spec create_bot(aws_client:aws_client(), binary() | list(), create_bot_request(), proplists:proplist()) ->
+    {ok, create_bot_response(), tuple()} |
+    {error, any()} |
+    {error, create_bot_errors(), tuple()}.
 create_bot(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots"],
@@ -1212,8 +6550,17 @@ create_bot(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_channel(aws_client:aws_client(), create_channel_request()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
+
+-spec create_channel(aws_client:aws_client(), create_channel_request(), proplists:proplist()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
@@ -1266,8 +6613,17 @@ create_channel(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_channel_ban(aws_client:aws_client(), binary() | list(), create_channel_ban_request()) ->
+    {ok, create_channel_ban_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_ban_errors(), tuple()}.
 create_channel_ban(Client, ChannelArn, Input) ->
     create_channel_ban(Client, ChannelArn, Input, []).
+
+-spec create_channel_ban(aws_client:aws_client(), binary() | list(), create_channel_ban_request(), proplists:proplist()) ->
+    {ok, create_channel_ban_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_ban_errors(), tuple()}.
 create_channel_ban(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
@@ -1331,8 +6687,17 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_channel_membership(aws_client:aws_client(), binary() | list(), create_channel_membership_request()) ->
+    {ok, create_channel_membership_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_membership_errors(), tuple()}.
 create_channel_membership(Client, ChannelArn, Input) ->
     create_channel_membership(Client, ChannelArn, Input, []).
+
+-spec create_channel_membership(aws_client:aws_client(), binary() | list(), create_channel_membership_request(), proplists:proplist()) ->
+    {ok, create_channel_membership_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_membership_errors(), tuple()}.
 create_channel_membership(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
@@ -1387,8 +6752,17 @@ create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_channel_moderator(aws_client:aws_client(), binary() | list(), create_channel_moderator_request()) ->
+    {ok, create_channel_moderator_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_moderator_errors(), tuple()}.
 create_channel_moderator(Client, ChannelArn, Input) ->
     create_channel_moderator(Client, ChannelArn, Input, []).
+
+-spec create_channel_moderator(aws_client:aws_client(), binary() | list(), create_channel_moderator_request(), proplists:proplist()) ->
+    {ok, create_channel_moderator_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_moderator_errors(), tuple()}.
 create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
@@ -1426,8 +6800,17 @@ create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_media_capture_pipeline(aws_client:aws_client(), create_media_capture_pipeline_request()) ->
+    {ok, create_media_capture_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, create_media_capture_pipeline_errors(), tuple()}.
 create_media_capture_pipeline(Client, Input) ->
     create_media_capture_pipeline(Client, Input, []).
+
+-spec create_media_capture_pipeline(aws_client:aws_client(), create_media_capture_pipeline_request(), proplists:proplist()) ->
+    {ok, create_media_capture_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, create_media_capture_pipeline_errors(), tuple()}.
 create_media_capture_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/media-capture-pipelines"],
@@ -1473,8 +6856,17 @@ create_media_capture_pipeline(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_meeting(aws_client:aws_client(), create_meeting_request()) ->
+    {ok, create_meeting_response(), tuple()} |
+    {error, any()} |
+    {error, create_meeting_errors(), tuple()}.
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
+
+-spec create_meeting(aws_client:aws_client(), create_meeting_request(), proplists:proplist()) ->
+    {ok, create_meeting_response(), tuple()} |
+    {error, any()} |
+    {error, create_meeting_errors(), tuple()}.
 create_meeting(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings"],
@@ -1509,8 +6901,17 @@ create_meeting(Client, Input0, Options0) ->
 %% media application ID.
 %%
 %% This API is is not available in a dedicated namespace.
+-spec create_meeting_dial_out(aws_client:aws_client(), binary() | list(), create_meeting_dial_out_request()) ->
+    {ok, create_meeting_dial_out_response(), tuple()} |
+    {error, any()} |
+    {error, create_meeting_dial_out_errors(), tuple()}.
 create_meeting_dial_out(Client, MeetingId, Input) ->
     create_meeting_dial_out(Client, MeetingId, Input, []).
+
+-spec create_meeting_dial_out(aws_client:aws_client(), binary() | list(), create_meeting_dial_out_request(), proplists:proplist()) ->
+    {ok, create_meeting_dial_out_response(), tuple()} |
+    {error, any()} |
+    {error, create_meeting_dial_out_errors(), tuple()}.
 create_meeting_dial_out(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/dial-outs"],
@@ -1560,8 +6961,17 @@ create_meeting_dial_out(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_meeting_with_attendees(aws_client:aws_client(), create_meeting_with_attendees_request()) ->
+    {ok, create_meeting_with_attendees_response(), tuple()} |
+    {error, any()} |
+    {error, create_meeting_with_attendees_errors(), tuple()}.
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
+
+-spec create_meeting_with_attendees(aws_client:aws_client(), create_meeting_with_attendees_request(), proplists:proplist()) ->
+    {ok, create_meeting_with_attendees_response(), tuple()} |
+    {error, any()} |
+    {error, create_meeting_with_attendees_errors(), tuple()}.
 create_meeting_with_attendees(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings?operation=create-attendees"],
@@ -1590,8 +7000,17 @@ create_meeting_with_attendees(Client, Input0, Options0) ->
 %% product type.
 %% For numbers outside the U.S., you must use the Amazon Chime SIP Media
 %% Application Dial-In product type.
+-spec create_phone_number_order(aws_client:aws_client(), create_phone_number_order_request()) ->
+    {ok, create_phone_number_order_response(), tuple()} |
+    {error, any()} |
+    {error, create_phone_number_order_errors(), tuple()}.
 create_phone_number_order(Client, Input) ->
     create_phone_number_order(Client, Input, []).
+
+-spec create_phone_number_order(aws_client:aws_client(), create_phone_number_order_request(), proplists:proplist()) ->
+    {ok, create_phone_number_order_response(), tuple()} |
+    {error, any()} |
+    {error, create_phone_number_order_errors(), tuple()}.
 create_phone_number_order(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number-orders"],
@@ -1628,8 +7047,17 @@ create_phone_number_order(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_proxy_session(aws_client:aws_client(), binary() | list(), create_proxy_session_request()) ->
+    {ok, create_proxy_session_response(), tuple()} |
+    {error, any()} |
+    {error, create_proxy_session_errors(), tuple()}.
 create_proxy_session(Client, VoiceConnectorId, Input) ->
     create_proxy_session(Client, VoiceConnectorId, Input, []).
+
+-spec create_proxy_session(aws_client:aws_client(), binary() | list(), create_proxy_session_request(), proplists:proplist()) ->
+    {ok, create_proxy_session_response(), tuple()} |
+    {error, any()} |
+    {error, create_proxy_session_errors(), tuple()}.
 create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
@@ -1654,8 +7082,17 @@ create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
 
 %% @doc Creates a chat room for the specified Amazon Chime Enterprise
 %% account.
+-spec create_room(aws_client:aws_client(), binary() | list(), create_room_request()) ->
+    {ok, create_room_response(), tuple()} |
+    {error, any()} |
+    {error, create_room_errors(), tuple()}.
 create_room(Client, AccountId, Input) ->
     create_room(Client, AccountId, Input, []).
+
+-spec create_room(aws_client:aws_client(), binary() | list(), create_room_request(), proplists:proplist()) ->
+    {ok, create_room_response(), tuple()} |
+    {error, any()} |
+    {error, create_room_errors(), tuple()}.
 create_room(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms"],
@@ -1682,8 +7119,17 @@ create_room(Client, AccountId, Input0, Options0) ->
 %%
 %% A member can be either a user or a bot. The member role designates whether
 %% the member is a chat room administrator or a general chat room member.
+-spec create_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), create_room_membership_request()) ->
+    {ok, create_room_membership_response(), tuple()} |
+    {error, any()} |
+    {error, create_room_membership_errors(), tuple()}.
 create_room_membership(Client, AccountId, RoomId, Input) ->
     create_room_membership(Client, AccountId, RoomId, Input, []).
+
+-spec create_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), create_room_membership_request(), proplists:proplist()) ->
+    {ok, create_room_membership_response(), tuple()} |
+    {error, any()} |
+    {error, create_room_membership_errors(), tuple()}.
 create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships"],
@@ -1719,8 +7165,17 @@ create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_sip_media_application(aws_client:aws_client(), create_sip_media_application_request()) ->
+    {ok, create_sip_media_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_sip_media_application_errors(), tuple()}.
 create_sip_media_application(Client, Input) ->
     create_sip_media_application(Client, Input, []).
+
+-spec create_sip_media_application(aws_client:aws_client(), create_sip_media_application_request(), proplists:proplist()) ->
+    {ok, create_sip_media_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_sip_media_application_errors(), tuple()}.
 create_sip_media_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications"],
@@ -1758,8 +7213,17 @@ create_sip_media_application(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_sip_media_application_call(aws_client:aws_client(), binary() | list(), create_sip_media_application_call_request()) ->
+    {ok, create_sip_media_application_call_response(), tuple()} |
+    {error, any()} |
+    {error, create_sip_media_application_call_errors(), tuple()}.
 create_sip_media_application_call(Client, SipMediaApplicationId, Input) ->
     create_sip_media_application_call(Client, SipMediaApplicationId, Input, []).
+
+-spec create_sip_media_application_call(aws_client:aws_client(), binary() | list(), create_sip_media_application_call_request(), proplists:proplist()) ->
+    {ok, create_sip_media_application_call_response(), tuple()} |
+    {error, any()} |
+    {error, create_sip_media_application_call_errors(), tuple()}.
 create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls"],
@@ -1796,8 +7260,17 @@ create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_sip_rule(aws_client:aws_client(), create_sip_rule_request()) ->
+    {ok, create_sip_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_sip_rule_errors(), tuple()}.
 create_sip_rule(Client, Input) ->
     create_sip_rule(Client, Input, []).
+
+-spec create_sip_rule(aws_client:aws_client(), create_sip_rule_request(), proplists:proplist()) ->
+    {ok, create_sip_rule_response(), tuple()} |
+    {error, any()} |
+    {error, create_sip_rule_errors(), tuple()}.
 create_sip_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sip-rules"],
@@ -1821,8 +7294,17 @@ create_sip_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a user under the specified Amazon Chime account.
+-spec create_user(aws_client:aws_client(), binary() | list(), create_user_request()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, create_user_errors(), tuple()}.
 create_user(Client, AccountId, Input) ->
     create_user(Client, AccountId, Input, []).
+
+-spec create_user(aws_client:aws_client(), binary() | list(), create_user_request(), proplists:proplist()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, create_user_errors(), tuple()}.
 create_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=create"],
@@ -1867,8 +7349,17 @@ create_user(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_voice_connector(aws_client:aws_client(), create_voice_connector_request()) ->
+    {ok, create_voice_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_voice_connector_errors(), tuple()}.
 create_voice_connector(Client, Input) ->
     create_voice_connector(Client, Input, []).
+
+-spec create_voice_connector(aws_client:aws_client(), create_voice_connector_request(), proplists:proplist()) ->
+    {ok, create_voice_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_voice_connector_errors(), tuple()}.
 create_voice_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors"],
@@ -1915,8 +7406,17 @@ create_voice_connector(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec create_voice_connector_group(aws_client:aws_client(), create_voice_connector_group_request()) ->
+    {ok, create_voice_connector_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_voice_connector_group_errors(), tuple()}.
 create_voice_connector_group(Client, Input) ->
     create_voice_connector_group(Client, Input, []).
+
+-spec create_voice_connector_group(aws_client:aws_client(), create_voice_connector_group_request(), proplists:proplist()) ->
+    {ok, create_voice_connector_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_voice_connector_group_errors(), tuple()}.
 create_voice_connector_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups"],
@@ -1959,8 +7459,17 @@ create_voice_connector_group(Client, Input0, Options0) ->
 %%
 %% After 90 days, deleted accounts are permanently removed from your
 %% `Disabled' accounts list.
+-spec delete_account(aws_client:aws_client(), binary() | list(), delete_account_request()) ->
+    {ok, delete_account_response(), tuple()} |
+    {error, any()} |
+    {error, delete_account_errors(), tuple()}.
 delete_account(Client, AccountId, Input) ->
     delete_account(Client, AccountId, Input, []).
+
+-spec delete_account(aws_client:aws_client(), binary() | list(), delete_account_request(), proplists:proplist()) ->
+    {ok, delete_account_response(), tuple()} |
+    {error, any()} |
+    {error, delete_account_errors(), tuple()}.
 delete_account(Client, AccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
@@ -1997,8 +7506,17 @@ delete_account(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_app_instance(aws_client:aws_client(), binary() | list(), delete_app_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_instance_errors(), tuple()}.
 delete_app_instance(Client, AppInstanceArn, Input) ->
     delete_app_instance(Client, AppInstanceArn, Input, []).
+
+-spec delete_app_instance(aws_client:aws_client(), binary() | list(), delete_app_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_instance_errors(), tuple()}.
 delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
@@ -2037,8 +7555,17 @@ delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), delete_app_instance_admin_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_instance_admin_errors(), tuple()}.
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input) ->
     delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input, []).
+
+-spec delete_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), delete_app_instance_admin_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_instance_admin_errors(), tuple()}.
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
@@ -2074,8 +7601,17 @@ delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, O
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), delete_app_instance_streaming_configurations_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_instance_streaming_configurations_errors(), tuple()}.
 delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
     delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
+
+-spec delete_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), delete_app_instance_streaming_configurations_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_instance_streaming_configurations_errors(), tuple()}.
 delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
@@ -2111,8 +7647,17 @@ delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Opt
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_app_instance_user(aws_client:aws_client(), binary() | list(), delete_app_instance_user_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_instance_user_errors(), tuple()}.
 delete_app_instance_user(Client, AppInstanceUserArn, Input) ->
     delete_app_instance_user(Client, AppInstanceUserArn, Input, []).
+
+-spec delete_app_instance_user(aws_client:aws_client(), binary() | list(), delete_app_instance_user_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_instance_user_errors(), tuple()}.
 delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
@@ -2156,8 +7701,17 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attendee_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_attendee_errors(), tuple()}.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
+
+-spec delete_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attendee_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_attendee_errors(), tuple()}.
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
@@ -2202,8 +7756,17 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelArn, Input) ->
     delete_channel(Client, ChannelArn, Input, []).
+
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
@@ -2246,8 +7809,17 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_ban_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_ban_errors(), tuple()}.
 delete_channel_ban(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_ban(Client, ChannelArn, MemberArn, Input, []).
+
+-spec delete_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_ban_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_ban_errors(), tuple()}.
 delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
@@ -2290,8 +7862,17 @@ delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_membership_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_membership_errors(), tuple()}.
 delete_channel_membership(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_membership(Client, ChannelArn, MemberArn, Input, []).
+
+-spec delete_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_membership_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_membership_errors(), tuple()}.
 delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
@@ -2339,8 +7920,17 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_message_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_message_errors(), tuple()}.
 delete_channel_message(Client, ChannelArn, MessageId, Input) ->
     delete_channel_message(Client, ChannelArn, MessageId, Input, []).
+
+-spec delete_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_message_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_message_errors(), tuple()}.
 delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
@@ -2383,8 +7973,17 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_moderator_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_moderator_errors(), tuple()}.
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input) ->
     delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input, []).
+
+-spec delete_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_moderator_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_moderator_errors(), tuple()}.
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
@@ -2411,8 +8010,17 @@ delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Option
 
 %% @doc Deletes the events configuration that allows a bot to receive
 %% outgoing events.
+-spec delete_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_events_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_events_configuration_errors(), tuple()}.
 delete_events_configuration(Client, AccountId, BotId, Input) ->
     delete_events_configuration(Client, AccountId, BotId, Input, []).
+
+-spec delete_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_events_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_events_configuration_errors(), tuple()}.
 delete_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
@@ -2449,8 +8057,17 @@ delete_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_media_capture_pipeline(aws_client:aws_client(), binary() | list(), delete_media_capture_pipeline_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_media_capture_pipeline_errors(), tuple()}.
 delete_media_capture_pipeline(Client, MediaPipelineId, Input) ->
     delete_media_capture_pipeline(Client, MediaPipelineId, Input, []).
+
+-spec delete_media_capture_pipeline(aws_client:aws_client(), binary() | list(), delete_media_capture_pipeline_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_media_capture_pipeline_errors(), tuple()}.
 delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
     Method = delete,
     Path = ["/media-capture-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
@@ -2493,8 +8110,17 @@ delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_meeting(aws_client:aws_client(), binary() | list(), delete_meeting_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_meeting_errors(), tuple()}.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
+
+-spec delete_meeting(aws_client:aws_client(), binary() | list(), delete_meeting_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_meeting_errors(), tuple()}.
 delete_meeting(Client, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
@@ -2527,8 +8153,17 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
 %% Deleted phone numbers remain in the
 %% Deletion queue
 %% for 7 days before they are deleted permanently.
+-spec delete_phone_number(aws_client:aws_client(), binary() | list(), delete_phone_number_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_phone_number_errors(), tuple()}.
 delete_phone_number(Client, PhoneNumberId, Input) ->
     delete_phone_number(Client, PhoneNumberId, Input, []).
+
+-spec delete_phone_number(aws_client:aws_client(), binary() | list(), delete_phone_number_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_phone_number_errors(), tuple()}.
 delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = delete,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
@@ -2565,8 +8200,17 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_proxy_session_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_proxy_session_errors(), tuple()}.
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
+
+-spec delete_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_proxy_session_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_proxy_session_errors(), tuple()}.
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
@@ -2590,8 +8234,17 @@ delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a chat room in an Amazon Chime Enterprise account.
+-spec delete_room(aws_client:aws_client(), binary() | list(), binary() | list(), delete_room_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_room_errors(), tuple()}.
 delete_room(Client, AccountId, RoomId, Input) ->
     delete_room(Client, AccountId, RoomId, Input, []).
+
+-spec delete_room(aws_client:aws_client(), binary() | list(), binary() | list(), delete_room_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_room_errors(), tuple()}.
 delete_room(Client, AccountId, RoomId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
@@ -2616,8 +8269,17 @@ delete_room(Client, AccountId, RoomId, Input0, Options0) ->
 
 %% @doc Removes a member from a chat room in an Amazon Chime Enterprise
 %% account.
+-spec delete_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_room_membership_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_room_membership_errors(), tuple()}.
 delete_room_membership(Client, AccountId, MemberId, RoomId, Input) ->
     delete_room_membership(Client, AccountId, MemberId, RoomId, Input, []).
+
+-spec delete_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_room_membership_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_room_membership_errors(), tuple()}.
 delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
@@ -2653,8 +8315,17 @@ delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_sip_media_application(aws_client:aws_client(), binary() | list(), delete_sip_media_application_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_sip_media_application_errors(), tuple()}.
 delete_sip_media_application(Client, SipMediaApplicationId, Input) ->
     delete_sip_media_application(Client, SipMediaApplicationId, Input, []).
+
+-spec delete_sip_media_application(aws_client:aws_client(), binary() | list(), delete_sip_media_application_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_sip_media_application_errors(), tuple()}.
 delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
@@ -2692,8 +8363,17 @@ delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_sip_rule(aws_client:aws_client(), binary() | list(), delete_sip_rule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_sip_rule_errors(), tuple()}.
 delete_sip_rule(Client, SipRuleId, Input) ->
     delete_sip_rule(Client, SipRuleId, Input, []).
+
+-spec delete_sip_rule(aws_client:aws_client(), binary() | list(), delete_sip_rule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_sip_rule_errors(), tuple()}.
 delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Method = delete,
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
@@ -2734,8 +8414,17 @@ delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_voice_connector(aws_client:aws_client(), binary() | list(), delete_voice_connector_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_errors(), tuple()}.
 delete_voice_connector(Client, VoiceConnectorId, Input) ->
     delete_voice_connector(Client, VoiceConnectorId, Input, []).
+
+-spec delete_voice_connector(aws_client:aws_client(), binary() | list(), delete_voice_connector_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_errors(), tuple()}.
 delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
@@ -2773,8 +8462,17 @@ delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
+
+-spec delete_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
@@ -2815,8 +8513,17 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_voice_connector_group(aws_client:aws_client(), binary() | list(), delete_voice_connector_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_group_errors(), tuple()}.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
+
+-spec delete_voice_connector_group(aws_client:aws_client(), binary() | list(), delete_voice_connector_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_group_errors(), tuple()}.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
@@ -2856,8 +8563,17 @@ delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_voice_connector_origination(aws_client:aws_client(), binary() | list(), delete_voice_connector_origination_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_origination_errors(), tuple()}.
 delete_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_origination(Client, VoiceConnectorId, Input, []).
+
+-spec delete_voice_connector_origination(aws_client:aws_client(), binary() | list(), delete_voice_connector_origination_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_origination_errors(), tuple()}.
 delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
@@ -2894,8 +8610,17 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) -
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_voice_connector_proxy(aws_client:aws_client(), binary() | list(), delete_voice_connector_proxy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_proxy_errors(), tuple()}.
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
+
+-spec delete_voice_connector_proxy(aws_client:aws_client(), binary() | list(), delete_voice_connector_proxy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_proxy_errors(), tuple()}.
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
@@ -2932,8 +8657,17 @@ delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_streaming_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_streaming_configuration_errors(), tuple()}.
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
+
+-spec delete_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_streaming_configuration_errors(), tuple()}.
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
@@ -2973,8 +8707,17 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_voice_connector_termination(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_termination_errors(), tuple()}.
 delete_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination(Client, VoiceConnectorId, Input, []).
+
+-spec delete_voice_connector_termination(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_termination_errors(), tuple()}.
 delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
@@ -3011,8 +8754,17 @@ delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) -
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec delete_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_credentials_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_termination_credentials_errors(), tuple()}.
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
+
+-spec delete_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_credentials_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_voice_connector_termination_credentials_errors(), tuple()}.
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=delete"],
@@ -3048,14 +8800,26 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec describe_app_instance(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_app_instance_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_instance_errors(), tuple()}.
 describe_app_instance(Client, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance(Client, AppInstanceArn, #{}, #{}).
 
+-spec describe_app_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_app_instance_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_instance_errors(), tuple()}.
 describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
+-spec describe_app_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_app_instance_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_instance_errors(), tuple()}.
 describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
@@ -3085,14 +8849,26 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec describe_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_app_instance_admin_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_instance_admin_errors(), tuple()}.
 describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, #{}, #{}).
 
+-spec describe_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_app_instance_admin_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_instance_admin_errors(), tuple()}.
 describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap, []).
 
+-spec describe_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_app_instance_admin_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_instance_admin_errors(), tuple()}.
 describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
@@ -3122,14 +8898,26 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec describe_app_instance_user(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_instance_user_errors(), tuple()}.
 describe_app_instance_user(Client, AppInstanceUserArn)
   when is_map(Client) ->
     describe_app_instance_user(Client, AppInstanceUserArn, #{}, #{}).
 
+-spec describe_app_instance_user(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_instance_user_errors(), tuple()}.
 describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, []).
 
+-spec describe_app_instance_user(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_instance_user_errors(), tuple()}.
 describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
@@ -3165,14 +8953,26 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Opt
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec describe_channel(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_channel_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_errors(), tuple()}.
 describe_channel(Client, ChannelArn)
   when is_map(Client) ->
     describe_channel(Client, ChannelArn, #{}, #{}).
 
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_channel_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_errors(), tuple()}.
 describe_channel(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, ChannelArn, QueryMap, HeadersMap, []).
 
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_channel_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_errors(), tuple()}.
 describe_channel(Client, ChannelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
@@ -3211,14 +9011,26 @@ describe_channel(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec describe_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_channel_ban_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_ban_errors(), tuple()}.
 describe_channel_ban(Client, ChannelArn, MemberArn)
   when is_map(Client) ->
     describe_channel_ban(Client, ChannelArn, MemberArn, #{}, #{}).
 
+-spec describe_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_channel_ban_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_ban_errors(), tuple()}.
 describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, []).
 
+-spec describe_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_channel_ban_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_ban_errors(), tuple()}.
 describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
@@ -3257,14 +9069,26 @@ describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Option
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec describe_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_channel_membership_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_membership_errors(), tuple()}.
 describe_channel_membership(Client, ChannelArn, MemberArn)
   when is_map(Client) ->
     describe_channel_membership(Client, ChannelArn, MemberArn, #{}, #{}).
 
+-spec describe_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_channel_membership_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_membership_errors(), tuple()}.
 describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, []).
 
+-spec describe_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_channel_membership_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_membership_errors(), tuple()}.
 describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
@@ -3305,14 +9129,26 @@ describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec describe_channel_membership_for_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_channel_membership_for_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_membership_for_app_instance_user_errors(), tuple()}.
 describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn)
   when is_map(Client) ->
     describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, #{}, #{}).
 
+-spec describe_channel_membership_for_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_channel_membership_for_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_membership_for_app_instance_user_errors(), tuple()}.
 describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, []).
 
+-spec describe_channel_membership_for_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_channel_membership_for_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_membership_for_app_instance_user_errors(), tuple()}.
 describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-membership"],
@@ -3356,14 +9192,26 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec describe_channel_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_channel_moderated_by_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_moderated_by_app_instance_user_errors(), tuple()}.
 describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn)
   when is_map(Client) ->
     describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, #{}, #{}).
 
+-spec describe_channel_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_channel_moderated_by_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_moderated_by_app_instance_user_errors(), tuple()}.
 describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, []).
 
+-spec describe_channel_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_channel_moderated_by_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_moderated_by_app_instance_user_errors(), tuple()}.
 describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-moderated-channel"],
@@ -3406,14 +9254,26 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec describe_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_channel_moderator_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_moderator_errors(), tuple()}.
 describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn)
   when is_map(Client) ->
     describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, #{}, #{}).
 
+-spec describe_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_channel_moderator_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_moderator_errors(), tuple()}.
 describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, HeadersMap, []).
 
+-spec describe_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_channel_moderator_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_moderator_errors(), tuple()}.
 describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
@@ -3436,8 +9296,17 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, He
 
 %% @doc Disassociates the primary provisioned phone number from the specified
 %% Amazon Chime user.
+-spec disassociate_phone_number_from_user(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_phone_number_from_user_request()) ->
+    {ok, disassociate_phone_number_from_user_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_phone_number_from_user_errors(), tuple()}.
 disassociate_phone_number_from_user(Client, AccountId, UserId, Input) ->
     disassociate_phone_number_from_user(Client, AccountId, UserId, Input, []).
+
+-spec disassociate_phone_number_from_user(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_phone_number_from_user_request(), proplists:proplist()) ->
+    {ok, disassociate_phone_number_from_user_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_phone_number_from_user_errors(), tuple()}.
 disassociate_phone_number_from_user(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=disassociate-phone-number"],
@@ -3474,8 +9343,17 @@ disassociate_phone_number_from_user(Client, AccountId, UserId, Input0, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec disassociate_phone_numbers_from_voice_connector(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request()) ->
+    {ok, disassociate_phone_numbers_from_voice_connector_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_phone_numbers_from_voice_connector_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input) ->
     disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input, []).
+
+-spec disassociate_phone_numbers_from_voice_connector(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request(), proplists:proplist()) ->
+    {ok, disassociate_phone_numbers_from_voice_connector_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_phone_numbers_from_voice_connector_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=disassociate-phone-numbers"],
@@ -3512,8 +9390,17 @@ disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec disassociate_phone_numbers_from_voice_connector_group(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request()) ->
+    {ok, disassociate_phone_numbers_from_voice_connector_group_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_phone_numbers_from_voice_connector_group_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
+
+-spec disassociate_phone_numbers_from_voice_connector_group(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request(), proplists:proplist()) ->
+    {ok, disassociate_phone_numbers_from_voice_connector_group_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_phone_numbers_from_voice_connector_group_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=disassociate-phone-numbers"],
@@ -3538,8 +9425,17 @@ disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGrou
 
 %% @doc Disassociates the specified sign-in delegate groups from the
 %% specified Amazon Chime account.
+-spec disassociate_signin_delegate_groups_from_account(aws_client:aws_client(), binary() | list(), disassociate_signin_delegate_groups_from_account_request()) ->
+    {ok, disassociate_signin_delegate_groups_from_account_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_signin_delegate_groups_from_account_errors(), tuple()}.
 disassociate_signin_delegate_groups_from_account(Client, AccountId, Input) ->
     disassociate_signin_delegate_groups_from_account(Client, AccountId, Input, []).
+
+-spec disassociate_signin_delegate_groups_from_account(aws_client:aws_client(), binary() | list(), disassociate_signin_delegate_groups_from_account_request(), proplists:proplist()) ->
+    {ok, disassociate_signin_delegate_groups_from_account_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_signin_delegate_groups_from_account_errors(), tuple()}.
 disassociate_signin_delegate_groups_from_account(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "?operation=disassociate-signin-delegate-groups"],
@@ -3565,14 +9461,26 @@ disassociate_signin_delegate_groups_from_account(Client, AccountId, Input0, Opti
 %% @doc Retrieves details for the specified Amazon Chime account, such as
 %% account type and supported
 %% licenses.
+-spec get_account(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_account_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_errors(), tuple()}.
 get_account(Client, AccountId)
   when is_map(Client) ->
     get_account(Client, AccountId, #{}, #{}).
 
+-spec get_account(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_account_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_errors(), tuple()}.
 get_account(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_account(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_account_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_errors(), tuple()}.
 get_account(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
@@ -3597,14 +9505,26 @@ get_account(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% Use the Policies Page:
 %% https://docs.aws.amazon.com/chime/latest/ag/policies.html in the Amazon
 %% Chime Administration Guide.
+-spec get_account_settings(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, AccountId)
   when is_map(Client) ->
     get_account_settings(Client, AccountId, #{}, #{}).
 
+-spec get_account_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_settings(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_account_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/settings"],
@@ -3634,14 +9554,26 @@ get_account_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_app_instance_retention_settings(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_app_instance_retention_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_app_instance_retention_settings_errors(), tuple()}.
 get_app_instance_retention_settings(Client, AppInstanceArn)
   when is_map(Client) ->
     get_app_instance_retention_settings(Client, AppInstanceArn, #{}, #{}).
 
+-spec get_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_app_instance_retention_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_app_instance_retention_settings_errors(), tuple()}.
 get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
+-spec get_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_app_instance_retention_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_app_instance_retention_settings_errors(), tuple()}.
 get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
@@ -3671,14 +9603,26 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_app_instance_streaming_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, get_app_instance_streaming_configurations_errors(), tuple()}.
 get_app_instance_streaming_configurations(Client, AppInstanceArn)
   when is_map(Client) ->
     get_app_instance_streaming_configurations(Client, AppInstanceArn, #{}, #{}).
 
+-spec get_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_app_instance_streaming_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, get_app_instance_streaming_configurations_errors(), tuple()}.
 get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
+-spec get_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_app_instance_streaming_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, get_app_instance_streaming_configurations_errors(), tuple()}.
 get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
@@ -3715,14 +9659,26 @@ get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, Head
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, get_attendee_errors(), tuple()}.
 get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     get_attendee(Client, AttendeeId, MeetingId, #{}, #{}).
 
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, get_attendee_errors(), tuple()}.
 get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, []).
 
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, get_attendee_errors(), tuple()}.
 get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
@@ -3741,14 +9697,26 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves details for the specified bot, such as bot email address,
 %% bot type, status, and display name.
+-spec get_bot(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_bot_response(), tuple()} |
+    {error, any()} |
+    {error, get_bot_errors(), tuple()}.
 get_bot(Client, AccountId, BotId)
   when is_map(Client) ->
     get_bot(Client, AccountId, BotId, #{}, #{}).
 
+-spec get_bot(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_bot_response(), tuple()} |
+    {error, any()} |
+    {error, get_bot_errors(), tuple()}.
 get_bot(Client, AccountId, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, []).
 
+-spec get_bot(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_bot_response(), tuple()} |
+    {error, any()} |
+    {error, get_bot_errors(), tuple()}.
 get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
@@ -3783,14 +9751,26 @@ get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_channel_message(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_channel_message_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_message_errors(), tuple()}.
 get_channel_message(Client, ChannelArn, MessageId)
   when is_map(Client) ->
     get_channel_message(Client, ChannelArn, MessageId, #{}, #{}).
 
+-spec get_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_channel_message_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_message_errors(), tuple()}.
 get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap, []).
 
+-spec get_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_channel_message_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_message_errors(), tuple()}.
 get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
@@ -3813,14 +9793,26 @@ get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap, Options
 
 %% @doc Gets details for an events configuration that allows a bot to receive
 %% outgoing events, such as an HTTPS endpoint or Lambda function ARN.
+-spec get_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_events_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_events_configuration_errors(), tuple()}.
 get_events_configuration(Client, AccountId, BotId)
   when is_map(Client) ->
     get_events_configuration(Client, AccountId, BotId, #{}, #{}).
 
+-spec get_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_events_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_events_configuration_errors(), tuple()}.
 get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, []).
 
+-spec get_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_events_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_events_configuration_errors(), tuple()}.
 get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
@@ -3840,14 +9832,26 @@ get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, Options
 %% @doc Retrieves global settings for the administrator's AWS account,
 %% such as Amazon Chime Business
 %% Calling and Amazon Chime Voice Connector settings.
+-spec get_global_settings(aws_client:aws_client()) ->
+    {ok, get_global_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_global_settings_errors(), tuple()}.
 get_global_settings(Client)
   when is_map(Client) ->
     get_global_settings(Client, #{}, #{}).
 
+-spec get_global_settings(aws_client:aws_client(), map(), map()) ->
+    {ok, get_global_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_global_settings_errors(), tuple()}.
 get_global_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_global_settings(Client, QueryMap, HeadersMap, []).
 
+-spec get_global_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_global_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_global_settings_errors(), tuple()}.
 get_global_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings"],
@@ -3878,14 +9882,26 @@ get_global_settings(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_media_capture_pipeline(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_media_capture_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, get_media_capture_pipeline_errors(), tuple()}.
 get_media_capture_pipeline(Client, MediaPipelineId)
   when is_map(Client) ->
     get_media_capture_pipeline(Client, MediaPipelineId, #{}, #{}).
 
+-spec get_media_capture_pipeline(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_media_capture_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, get_media_capture_pipeline_errors(), tuple()}.
 get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, []).
 
+-spec get_media_capture_pipeline(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_media_capture_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, get_media_capture_pipeline_errors(), tuple()}.
 get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/media-capture-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
@@ -3924,14 +9940,26 @@ get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Option
 %% in the
 %% Amazon Chime SDK Developer Guide
 %% .
+-spec get_meeting(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_meeting_response(), tuple()} |
+    {error, any()} |
+    {error, get_meeting_errors(), tuple()}.
 get_meeting(Client, MeetingId)
   when is_map(Client) ->
     get_meeting(Client, MeetingId, #{}, #{}).
 
+-spec get_meeting(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_meeting_response(), tuple()} |
+    {error, any()} |
+    {error, get_meeting_errors(), tuple()}.
 get_meeting(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_meeting(Client, MeetingId, QueryMap, HeadersMap, []).
 
+-spec get_meeting(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_meeting_response(), tuple()} |
+    {error, any()} |
+    {error, get_meeting_errors(), tuple()}.
 get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
@@ -3961,14 +9989,26 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_messaging_session_endpoint(aws_client:aws_client()) ->
+    {ok, get_messaging_session_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_messaging_session_endpoint_errors(), tuple()}.
 get_messaging_session_endpoint(Client)
   when is_map(Client) ->
     get_messaging_session_endpoint(Client, #{}, #{}).
 
+-spec get_messaging_session_endpoint(aws_client:aws_client(), map(), map()) ->
+    {ok, get_messaging_session_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_messaging_session_endpoint_errors(), tuple()}.
 get_messaging_session_endpoint(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_messaging_session_endpoint(Client, QueryMap, HeadersMap, []).
 
+-spec get_messaging_session_endpoint(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_messaging_session_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_messaging_session_endpoint_errors(), tuple()}.
 get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/endpoints/messaging-session"],
@@ -3987,14 +10027,26 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves details for the specified phone number ID, such as
 %% associations, capabilities, and product type.
+-spec get_phone_number(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, get_phone_number_errors(), tuple()}.
 get_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
     get_phone_number(Client, PhoneNumberId, #{}, #{}).
 
+-spec get_phone_number(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, get_phone_number_errors(), tuple()}.
 get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, []).
 
+-spec get_phone_number(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, get_phone_number_errors(), tuple()}.
 get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
@@ -4014,14 +10066,26 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves details for the specified phone number order, such as the
 %% order creation timestamp, phone
 %% numbers in E.164 format, product type, and order status.
+-spec get_phone_number_order(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_phone_number_order_response(), tuple()} |
+    {error, any()} |
+    {error, get_phone_number_order_errors(), tuple()}.
 get_phone_number_order(Client, PhoneNumberOrderId)
   when is_map(Client) ->
     get_phone_number_order(Client, PhoneNumberOrderId, #{}, #{}).
 
+-spec get_phone_number_order(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_phone_number_order_response(), tuple()} |
+    {error, any()} |
+    {error, get_phone_number_order_errors(), tuple()}.
 get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, []).
 
+-spec get_phone_number_order(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_phone_number_order_response(), tuple()} |
+    {error, any()} |
+    {error, get_phone_number_order_errors(), tuple()}.
 get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-orders/", aws_util:encode_uri(PhoneNumberOrderId), ""],
@@ -4040,14 +10104,26 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options
 
 %% @doc Retrieves the phone number settings for the administrator's AWS
 %% account, such as the default outbound calling name.
+-spec get_phone_number_settings(aws_client:aws_client()) ->
+    {ok, get_phone_number_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_phone_number_settings_errors(), tuple()}.
 get_phone_number_settings(Client)
   when is_map(Client) ->
     get_phone_number_settings(Client, #{}, #{}).
 
+-spec get_phone_number_settings(aws_client:aws_client(), map(), map()) ->
+    {ok, get_phone_number_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_phone_number_settings_errors(), tuple()}.
 get_phone_number_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number_settings(Client, QueryMap, HeadersMap, []).
 
+-spec get_phone_number_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_phone_number_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_phone_number_settings_errors(), tuple()}.
 get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings/phone-number"],
@@ -4078,14 +10154,26 @@ get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_proxy_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_proxy_session_errors(), tuple()}.
 get_proxy_session(Client, ProxySessionId, VoiceConnectorId)
   when is_map(Client) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, #{}, #{}).
 
+-spec get_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_proxy_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_proxy_session_errors(), tuple()}.
 get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap, []).
 
+-spec get_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_proxy_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_proxy_session_errors(), tuple()}.
 get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
@@ -4110,14 +10198,26 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
 %% Managing Chat Retention Policies:
 %% https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html in the
 %% Amazon Chime Administration Guide.
+-spec get_retention_settings(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_retention_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_retention_settings_errors(), tuple()}.
 get_retention_settings(Client, AccountId)
   when is_map(Client) ->
     get_retention_settings(Client, AccountId, #{}, #{}).
 
+-spec get_retention_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_retention_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_retention_settings_errors(), tuple()}.
 get_retention_settings(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_retention_settings(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_retention_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_retention_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_retention_settings_errors(), tuple()}.
 get_retention_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/retention-settings"],
@@ -4136,14 +10236,26 @@ get_retention_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves room details, such as the room name, for a room in an
 %% Amazon Chime Enterprise account.
+-spec get_room(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_room_response(), tuple()} |
+    {error, any()} |
+    {error, get_room_errors(), tuple()}.
 get_room(Client, AccountId, RoomId)
   when is_map(Client) ->
     get_room(Client, AccountId, RoomId, #{}, #{}).
 
+-spec get_room(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_room_response(), tuple()} |
+    {error, any()} |
+    {error, get_room_errors(), tuple()}.
 get_room(Client, AccountId, RoomId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, []).
 
+-spec get_room(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_room_response(), tuple()} |
+    {error, any()} |
+    {error, get_room_errors(), tuple()}.
 get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
@@ -4174,14 +10286,26 @@ get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_sip_media_application(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_sip_media_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_sip_media_application_errors(), tuple()}.
 get_sip_media_application(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application(Client, SipMediaApplicationId, #{}, #{}).
 
+-spec get_sip_media_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_sip_media_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_sip_media_application_errors(), tuple()}.
 get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
 
+-spec get_sip_media_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sip_media_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_sip_media_application_errors(), tuple()}.
 get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
@@ -4212,14 +10336,26 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, O
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
 get_sip_media_application_logging_configuration(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, #{}, #{}).
 
+-spec get_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
 get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
 
+-spec get_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
 get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
@@ -4250,14 +10386,26 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_sip_rule(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_sip_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_sip_rule_errors(), tuple()}.
 get_sip_rule(Client, SipRuleId)
   when is_map(Client) ->
     get_sip_rule(Client, SipRuleId, #{}, #{}).
 
+-spec get_sip_rule(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_sip_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_sip_rule_errors(), tuple()}.
 get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, []).
 
+-spec get_sip_rule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sip_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_sip_rule_errors(), tuple()}.
 get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
@@ -4280,14 +10428,26 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
 %% To retrieve user details with an email address instead of a user ID, use
 %% the
 %% `ListUsers' action, and then filter by email address.
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_errors(), tuple()}.
 get_user(Client, AccountId, UserId)
   when is_map(Client) ->
     get_user(Client, AccountId, UserId, #{}, #{}).
 
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_errors(), tuple()}.
 get_user(Client, AccountId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user(Client, AccountId, UserId, QueryMap, HeadersMap, []).
 
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_errors(), tuple()}.
 get_user(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), ""],
@@ -4306,14 +10466,26 @@ get_user(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves settings for the specified user ID, such as any associated
 %% phone number settings.
+-spec get_user_settings(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_user_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_settings_errors(), tuple()}.
 get_user_settings(Client, AccountId, UserId)
   when is_map(Client) ->
     get_user_settings(Client, AccountId, UserId, #{}, #{}).
 
+-spec get_user_settings(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_user_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_settings_errors(), tuple()}.
 get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, []).
 
+-spec get_user_settings(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_user_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_settings_errors(), tuple()}.
 get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "/settings"],
@@ -4344,14 +10516,26 @@ get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_voice_connector(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_voice_connector_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_errors(), tuple()}.
 get_voice_connector(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector(Client, VoiceConnectorId, #{}, #{}).
 
+-spec get_voice_connector(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_voice_connector_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_errors(), tuple()}.
 get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
+-spec get_voice_connector(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_voice_connector_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_errors(), tuple()}.
 get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
@@ -4382,14 +10566,26 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, #{}, #{}).
 
+-spec get_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
+-spec get_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
@@ -4421,14 +10617,26 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_voice_connector_group(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_voice_connector_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_group_errors(), tuple()}.
 get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, #{}, #{}).
 
+-spec get_voice_connector_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_voice_connector_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_group_errors(), tuple()}.
 get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, []).
 
+-spec get_voice_connector_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_voice_connector_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_group_errors(), tuple()}.
 get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
@@ -4462,14 +10670,26 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, O
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_voice_connector_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_logging_configuration_errors(), tuple()}.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, #{}, #{}).
 
+-spec get_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_voice_connector_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_logging_configuration_errors(), tuple()}.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
+-spec get_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_voice_connector_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_logging_configuration_errors(), tuple()}.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
@@ -4500,14 +10720,26 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_voice_connector_origination(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_voice_connector_origination_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_origination_errors(), tuple()}.
 get_voice_connector_origination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_origination(Client, VoiceConnectorId, #{}, #{}).
 
+-spec get_voice_connector_origination(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_voice_connector_origination_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_origination_errors(), tuple()}.
 get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
+-spec get_voice_connector_origination(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_voice_connector_origination_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_origination_errors(), tuple()}.
 get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
@@ -4538,14 +10770,26 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_voice_connector_proxy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_voice_connector_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_proxy_errors(), tuple()}.
 get_voice_connector_proxy(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, #{}, #{}).
 
+-spec get_voice_connector_proxy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_voice_connector_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_proxy_errors(), tuple()}.
 get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
+-spec get_voice_connector_proxy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_voice_connector_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_proxy_errors(), tuple()}.
 get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
@@ -4580,14 +10824,26 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Option
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, #{}, #{}).
 
+-spec get_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
+-spec get_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
@@ -4618,14 +10874,26 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec get_voice_connector_termination(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_voice_connector_termination_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_termination_errors(), tuple()}.
 get_voice_connector_termination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination(Client, VoiceConnectorId, #{}, #{}).
 
+-spec get_voice_connector_termination(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_voice_connector_termination_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_termination_errors(), tuple()}.
 get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
+-spec get_voice_connector_termination(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_voice_connector_termination_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_termination_errors(), tuple()}.
 get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
@@ -4660,14 +10928,26 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 %% Retrieves information about the last time a SIP `OPTIONS' ping was
 %% received from
 %% your SIP infrastructure for the specified Amazon Chime Voice Connector.
+-spec get_voice_connector_termination_health(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_voice_connector_termination_health_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_termination_health_errors(), tuple()}.
 get_voice_connector_termination_health(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, #{}, #{}).
 
+-spec get_voice_connector_termination_health(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_voice_connector_termination_health_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_termination_health_errors(), tuple()}.
 get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
+-spec get_voice_connector_termination_health(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_voice_connector_termination_health_response(), tuple()} |
+    {error, any()} |
+    {error, get_voice_connector_termination_health_errors(), tuple()}.
 get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/health"],
@@ -4690,8 +10970,17 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
 %%
 %% Only `Team' account types are currently
 %% supported for this action.
+-spec invite_users(aws_client:aws_client(), binary() | list(), invite_users_request()) ->
+    {ok, invite_users_response(), tuple()} |
+    {error, any()} |
+    {error, invite_users_errors(), tuple()}.
 invite_users(Client, AccountId, Input) ->
     invite_users(Client, AccountId, Input, []).
+
+-spec invite_users(aws_client:aws_client(), binary() | list(), invite_users_request(), proplists:proplist()) ->
+    {ok, invite_users_response(), tuple()} |
+    {error, any()} |
+    {error, invite_users_errors(), tuple()}.
 invite_users(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=add"],
@@ -4721,14 +11010,26 @@ invite_users(Client, AccountId, Input0, Options0) ->
 %% by account name prefix. To find out which Amazon Chime account a user
 %% belongs to, you can
 %% filter by the user's email address, which returns one account result.
+-spec list_accounts(aws_client:aws_client()) ->
+    {ok, list_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_accounts_errors(), tuple()}.
 list_accounts(Client)
   when is_map(Client) ->
     list_accounts(Client, #{}, #{}).
 
+-spec list_accounts(aws_client:aws_client(), map(), map()) ->
+    {ok, list_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_accounts_errors(), tuple()}.
 list_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_accounts(Client, QueryMap, HeadersMap, []).
 
+-spec list_accounts(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_accounts_errors(), tuple()}.
 list_accounts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts"],
@@ -4765,14 +11066,26 @@ list_accounts(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_app_instance_admins(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_app_instance_admins_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_instance_admins_errors(), tuple()}.
 list_app_instance_admins(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_admins(Client, AppInstanceArn, #{}, #{}).
 
+-spec list_app_instance_admins(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_app_instance_admins_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_instance_admins_errors(), tuple()}.
 list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
+-spec list_app_instance_admins(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_app_instance_admins_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_instance_admins_errors(), tuple()}.
 list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
@@ -4808,14 +11121,26 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_app_instance_users(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_app_instance_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_instance_users_errors(), tuple()}.
 list_app_instance_users(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_users(Client, AppInstanceArn, #{}, #{}).
 
+-spec list_app_instance_users(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_app_instance_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_instance_users_errors(), tuple()}.
 list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
+-spec list_app_instance_users(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_app_instance_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_instance_users_errors(), tuple()}.
 list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users"],
@@ -4852,14 +11177,26 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_app_instances(aws_client:aws_client()) ->
+    {ok, list_app_instances_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_instances_errors(), tuple()}.
 list_app_instances(Client)
   when is_map(Client) ->
     list_app_instances(Client, #{}, #{}).
 
+-spec list_app_instances(aws_client:aws_client(), map(), map()) ->
+    {ok, list_app_instances_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_instances_errors(), tuple()}.
 list_app_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instances(Client, QueryMap, HeadersMap, []).
 
+-spec list_app_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_app_instances_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_instances_errors(), tuple()}.
 list_app_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances"],
@@ -4885,14 +11222,26 @@ list_app_instances(Client, QueryMap, HeadersMap, Options0)
 %%
 %% ListAttendeeTags is not supported in the Amazon Chime SDK Meetings
 %% Namespace. Update your application to remove calls to this API.
+-spec list_attendee_tags(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_attendee_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_attendee_tags_errors(), tuple()}.
 list_attendee_tags(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     list_attendee_tags(Client, AttendeeId, MeetingId, #{}, #{}).
 
+-spec list_attendee_tags(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_attendee_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_attendee_tags_errors(), tuple()}.
 list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, []).
 
+-spec list_attendee_tags(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_attendee_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_attendee_tags_errors(), tuple()}.
 list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags"],
@@ -4928,14 +11277,26 @@ list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_attendees(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_attendees_response(), tuple()} |
+    {error, any()} |
+    {error, list_attendees_errors(), tuple()}.
 list_attendees(Client, MeetingId)
   when is_map(Client) ->
     list_attendees(Client, MeetingId, #{}, #{}).
 
+-spec list_attendees(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_attendees_response(), tuple()} |
+    {error, any()} |
+    {error, list_attendees_errors(), tuple()}.
 list_attendees(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attendees(Client, MeetingId, QueryMap, HeadersMap, []).
 
+-spec list_attendees(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_attendees_response(), tuple()} |
+    {error, any()} |
+    {error, list_attendees_errors(), tuple()}.
 list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
@@ -4959,14 +11320,26 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the bots associated with the administrator's Amazon Chime
 %% Enterprise account ID.
+-spec list_bots(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_bots_response(), tuple()} |
+    {error, any()} |
+    {error, list_bots_errors(), tuple()}.
 list_bots(Client, AccountId)
   when is_map(Client) ->
     list_bots(Client, AccountId, #{}, #{}).
 
+-spec list_bots(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_bots_response(), tuple()} |
+    {error, any()} |
+    {error, list_bots_errors(), tuple()}.
 list_bots(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bots(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_bots(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_bots_response(), tuple()} |
+    {error, any()} |
+    {error, list_bots_errors(), tuple()}.
 list_bots(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots"],
@@ -5006,14 +11379,26 @@ list_bots(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_channel_bans(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_channel_bans_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_bans_errors(), tuple()}.
 list_channel_bans(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_bans(Client, ChannelArn, #{}, #{}).
 
+-spec list_channel_bans(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_channel_bans_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_bans_errors(), tuple()}.
 list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, []).
 
+-spec list_channel_bans(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_channel_bans_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_bans_errors(), tuple()}.
 list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
@@ -5057,14 +11442,26 @@ list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_channel_memberships(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_channel_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_memberships_errors(), tuple()}.
 list_channel_memberships(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_memberships(Client, ChannelArn, #{}, #{}).
 
+-spec list_channel_memberships(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_channel_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_memberships_errors(), tuple()}.
 list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, []).
 
+-spec list_channel_memberships(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_channel_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_memberships_errors(), tuple()}.
 list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
@@ -5114,14 +11511,26 @@ list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_channel_memberships_for_app_instance_user(aws_client:aws_client()) ->
+    {ok, list_channel_memberships_for_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_memberships_for_app_instance_user_errors(), tuple()}.
 list_channel_memberships_for_app_instance_user(Client)
   when is_map(Client) ->
     list_channel_memberships_for_app_instance_user(Client, #{}, #{}).
 
+-spec list_channel_memberships_for_app_instance_user(aws_client:aws_client(), map(), map()) ->
+    {ok, list_channel_memberships_for_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_memberships_for_app_instance_user_errors(), tuple()}.
 list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, []).
 
+-spec list_channel_memberships_for_app_instance_user(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_channel_memberships_for_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_memberships_for_app_instance_user_errors(), tuple()}.
 list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels?scope=app-instance-user-memberships"],
@@ -5177,14 +11586,26 @@ list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, Opt
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_channel_messages(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_channel_messages_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_messages_errors(), tuple()}.
 list_channel_messages(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_messages(Client, ChannelArn, #{}, #{}).
 
+-spec list_channel_messages(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_channel_messages_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_messages_errors(), tuple()}.
 list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, []).
 
+-spec list_channel_messages(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_channel_messages_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_messages_errors(), tuple()}.
 list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
@@ -5231,14 +11652,26 @@ list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_channel_moderators(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_channel_moderators_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_moderators_errors(), tuple()}.
 list_channel_moderators(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_moderators(Client, ChannelArn, #{}, #{}).
 
+-spec list_channel_moderators(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_channel_moderators_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_moderators_errors(), tuple()}.
 list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, []).
 
+-spec list_channel_moderators(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_channel_moderators_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_moderators_errors(), tuple()}.
 list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
@@ -5294,14 +11727,26 @@ list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_channels(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, AppInstanceArn)
   when is_map(Client) ->
     list_channels(Client, AppInstanceArn, #{}, #{}).
 
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels"],
@@ -5347,14 +11792,26 @@ list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_channels_moderated_by_app_instance_user(aws_client:aws_client()) ->
+    {ok, list_channels_moderated_by_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_moderated_by_app_instance_user_errors(), tuple()}.
 list_channels_moderated_by_app_instance_user(Client)
   when is_map(Client) ->
     list_channels_moderated_by_app_instance_user(Client, #{}, #{}).
 
+-spec list_channels_moderated_by_app_instance_user(aws_client:aws_client(), map(), map()) ->
+    {ok, list_channels_moderated_by_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_moderated_by_app_instance_user_errors(), tuple()}.
 list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, []).
 
+-spec list_channels_moderated_by_app_instance_user(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_channels_moderated_by_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_moderated_by_app_instance_user_errors(), tuple()}.
 list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels?scope=app-instance-user-moderated-channels"],
@@ -5394,14 +11851,26 @@ list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, Optio
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_media_capture_pipelines(aws_client:aws_client()) ->
+    {ok, list_media_capture_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_media_capture_pipelines_errors(), tuple()}.
 list_media_capture_pipelines(Client)
   when is_map(Client) ->
     list_media_capture_pipelines(Client, #{}, #{}).
 
+-spec list_media_capture_pipelines(aws_client:aws_client(), map(), map()) ->
+    {ok, list_media_capture_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_media_capture_pipelines_errors(), tuple()}.
 list_media_capture_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_media_capture_pipelines(Client, QueryMap, HeadersMap, []).
 
+-spec list_media_capture_pipelines(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_media_capture_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_media_capture_pipelines_errors(), tuple()}.
 list_media_capture_pipelines(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/media-capture-pipelines"],
@@ -5436,14 +11905,26 @@ list_media_capture_pipelines(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_meeting_tags(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_meeting_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_meeting_tags_errors(), tuple()}.
 list_meeting_tags(Client, MeetingId)
   when is_map(Client) ->
     list_meeting_tags(Client, MeetingId, #{}, #{}).
 
+-spec list_meeting_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_meeting_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_meeting_tags_errors(), tuple()}.
 list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, []).
 
+-spec list_meeting_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_meeting_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_meeting_tags_errors(), tuple()}.
 list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags"],
@@ -5469,14 +11950,26 @@ list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
 %% in the Amazon Chime SDK Developer Guide.
+-spec list_meetings(aws_client:aws_client()) ->
+    {ok, list_meetings_response(), tuple()} |
+    {error, any()} |
+    {error, list_meetings_errors(), tuple()}.
 list_meetings(Client)
   when is_map(Client) ->
     list_meetings(Client, #{}, #{}).
 
+-spec list_meetings(aws_client:aws_client(), map(), map()) ->
+    {ok, list_meetings_response(), tuple()} |
+    {error, any()} |
+    {error, list_meetings_errors(), tuple()}.
 list_meetings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_meetings(Client, QueryMap, HeadersMap, []).
 
+-spec list_meetings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_meetings_response(), tuple()} |
+    {error, any()} |
+    {error, list_meetings_errors(), tuple()}.
 list_meetings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings"],
@@ -5500,14 +11993,26 @@ list_meetings(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the phone number orders for the administrator's Amazon
 %% Chime account.
+-spec list_phone_number_orders(aws_client:aws_client()) ->
+    {ok, list_phone_number_orders_response(), tuple()} |
+    {error, any()} |
+    {error, list_phone_number_orders_errors(), tuple()}.
 list_phone_number_orders(Client)
   when is_map(Client) ->
     list_phone_number_orders(Client, #{}, #{}).
 
+-spec list_phone_number_orders(aws_client:aws_client(), map(), map()) ->
+    {ok, list_phone_number_orders_response(), tuple()} |
+    {error, any()} |
+    {error, list_phone_number_orders_errors(), tuple()}.
 list_phone_number_orders(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_number_orders(Client, QueryMap, HeadersMap, []).
 
+-spec list_phone_number_orders(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_phone_number_orders_response(), tuple()} |
+    {error, any()} |
+    {error, list_phone_number_orders_errors(), tuple()}.
 list_phone_number_orders(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-orders"],
@@ -5532,14 +12037,26 @@ list_phone_number_orders(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the phone numbers for the specified Amazon Chime account,
 %% Amazon Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice
 %% Connector group.
+-spec list_phone_numbers(aws_client:aws_client()) ->
+    {ok, list_phone_numbers_response(), tuple()} |
+    {error, any()} |
+    {error, list_phone_numbers_errors(), tuple()}.
 list_phone_numbers(Client)
   when is_map(Client) ->
     list_phone_numbers(Client, #{}, #{}).
 
+-spec list_phone_numbers(aws_client:aws_client(), map(), map()) ->
+    {ok, list_phone_numbers_response(), tuple()} |
+    {error, any()} |
+    {error, list_phone_numbers_errors(), tuple()}.
 list_phone_numbers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_numbers(Client, QueryMap, HeadersMap, []).
 
+-spec list_phone_numbers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_phone_numbers_response(), tuple()} |
+    {error, any()} |
+    {error, list_phone_numbers_errors(), tuple()}.
 list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers"],
@@ -5579,14 +12096,26 @@ list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_proxy_sessions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_proxy_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_proxy_sessions_errors(), tuple()}.
 list_proxy_sessions(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_proxy_sessions(Client, VoiceConnectorId, #{}, #{}).
 
+-spec list_proxy_sessions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_proxy_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_proxy_sessions_errors(), tuple()}.
 list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
+-spec list_proxy_sessions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_proxy_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_proxy_sessions_errors(), tuple()}.
 list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
@@ -5612,14 +12141,26 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the membership details for the specified room in an Amazon
 %% Chime Enterprise account,
 %% such as the members' IDs, email addresses, and names.
+-spec list_room_memberships(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_room_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_room_memberships_errors(), tuple()}.
 list_room_memberships(Client, AccountId, RoomId)
   when is_map(Client) ->
     list_room_memberships(Client, AccountId, RoomId, #{}, #{}).
 
+-spec list_room_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_room_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_room_memberships_errors(), tuple()}.
 list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap, []).
 
+-spec list_room_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_room_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_room_memberships_errors(), tuple()}.
 list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships"],
@@ -5646,14 +12187,26 @@ list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
 %%
 %% Optionally, filter the results by a member ID (user ID or bot ID) to see a
 %% list of rooms that the member belongs to.
+-spec list_rooms(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_rooms_response(), tuple()} |
+    {error, any()} |
+    {error, list_rooms_errors(), tuple()}.
 list_rooms(Client, AccountId)
   when is_map(Client) ->
     list_rooms(Client, AccountId, #{}, #{}).
 
+-spec list_rooms(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_rooms_response(), tuple()} |
+    {error, any()} |
+    {error, list_rooms_errors(), tuple()}.
 list_rooms(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rooms(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_rooms(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_rooms_response(), tuple()} |
+    {error, any()} |
+    {error, list_rooms_errors(), tuple()}.
 list_rooms(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms"],
@@ -5690,14 +12243,26 @@ list_rooms(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_sip_media_applications(aws_client:aws_client()) ->
+    {ok, list_sip_media_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_sip_media_applications_errors(), tuple()}.
 list_sip_media_applications(Client)
   when is_map(Client) ->
     list_sip_media_applications(Client, #{}, #{}).
 
+-spec list_sip_media_applications(aws_client:aws_client(), map(), map()) ->
+    {ok, list_sip_media_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_sip_media_applications_errors(), tuple()}.
 list_sip_media_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sip_media_applications(Client, QueryMap, HeadersMap, []).
 
+-spec list_sip_media_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_sip_media_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_sip_media_applications_errors(), tuple()}.
 list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications"],
@@ -5732,14 +12297,26 @@ list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_sip_rules(aws_client:aws_client()) ->
+    {ok, list_sip_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_sip_rules_errors(), tuple()}.
 list_sip_rules(Client)
   when is_map(Client) ->
     list_sip_rules(Client, #{}, #{}).
 
+-spec list_sip_rules(aws_client:aws_client(), map(), map()) ->
+    {ok, list_sip_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_sip_rules_errors(), tuple()}.
 list_sip_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sip_rules(Client, QueryMap, HeadersMap, []).
 
+-spec list_sip_rules(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_sip_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_sip_rules_errors(), tuple()}.
 list_sip_rules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-rules"],
@@ -5763,14 +12340,26 @@ list_sip_rules(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists supported phone number countries.
+-spec list_supported_phone_number_countries(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_supported_phone_number_countries_response(), tuple()} |
+    {error, any()} |
+    {error, list_supported_phone_number_countries_errors(), tuple()}.
 list_supported_phone_number_countries(Client, ProductType)
   when is_map(Client) ->
     list_supported_phone_number_countries(Client, ProductType, #{}, #{}).
 
+-spec list_supported_phone_number_countries(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_supported_phone_number_countries_response(), tuple()} |
+    {error, any()} |
+    {error, list_supported_phone_number_countries_errors(), tuple()}.
 list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap, []).
 
+-spec list_supported_phone_number_countries(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_supported_phone_number_countries_response(), tuple()} |
+    {error, any()} |
+    {error, list_supported_phone_number_countries_errors(), tuple()}.
 list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-countries"],
@@ -5809,14 +12398,26 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
@@ -5841,14 +12442,26 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 %%
 %% You can specify an email
 %% address to list only the user that the email address belongs to.
+-spec list_users(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_errors(), tuple()}.
 list_users(Client, AccountId)
   when is_map(Client) ->
     list_users(Client, AccountId, #{}, #{}).
 
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_errors(), tuple()}.
 list_users(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, list_users_errors(), tuple()}.
 list_users(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users"],
@@ -5886,14 +12499,26 @@ list_users(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_voice_connector_groups(aws_client:aws_client()) ->
+    {ok, list_voice_connector_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_voice_connector_groups_errors(), tuple()}.
 list_voice_connector_groups(Client)
   when is_map(Client) ->
     list_voice_connector_groups(Client, #{}, #{}).
 
+-spec list_voice_connector_groups(aws_client:aws_client(), map(), map()) ->
+    {ok, list_voice_connector_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_voice_connector_groups_errors(), tuple()}.
 list_voice_connector_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connector_groups(Client, QueryMap, HeadersMap, []).
 
+-spec list_voice_connector_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_voice_connector_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_voice_connector_groups_errors(), tuple()}.
 list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-groups"],
@@ -5929,14 +12554,26 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_voice_connector_termination_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, list_voice_connector_termination_credentials_errors(), tuple()}.
 list_voice_connector_termination_credentials(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, #{}, #{}).
 
+-spec list_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_voice_connector_termination_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, list_voice_connector_termination_credentials_errors(), tuple()}.
 list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
+-spec list_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_voice_connector_termination_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, list_voice_connector_termination_credentials_errors(), tuple()}.
 list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials"],
@@ -5967,14 +12604,26 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec list_voice_connectors(aws_client:aws_client()) ->
+    {ok, list_voice_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_voice_connectors_errors(), tuple()}.
 list_voice_connectors(Client)
   when is_map(Client) ->
     list_voice_connectors(Client, #{}, #{}).
 
+-spec list_voice_connectors(aws_client:aws_client(), map(), map()) ->
+    {ok, list_voice_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_voice_connectors_errors(), tuple()}.
 list_voice_connectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connectors(Client, QueryMap, HeadersMap, []).
 
+-spec list_voice_connectors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_voice_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_voice_connectors_errors(), tuple()}.
 list_voice_connectors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors"],
@@ -5998,8 +12647,17 @@ list_voice_connectors(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Logs out the specified user from all of the devices they are
 %% currently logged into.
+-spec logout_user(aws_client:aws_client(), binary() | list(), binary() | list(), logout_user_request()) ->
+    {ok, logout_user_response(), tuple()} |
+    {error, any()} |
+    {error, logout_user_errors(), tuple()}.
 logout_user(Client, AccountId, UserId, Input) ->
     logout_user(Client, AccountId, UserId, Input, []).
+
+-spec logout_user(aws_client:aws_client(), binary() | list(), binary() | list(), logout_user_request(), proplists:proplist()) ->
+    {ok, logout_user_response(), tuple()} |
+    {error, any()} |
+    {error, logout_user_errors(), tuple()}.
 logout_user(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=logout"],
@@ -6036,8 +12694,17 @@ logout_user(Client, AccountId, UserId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec put_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), put_app_instance_retention_settings_request()) ->
+    {ok, put_app_instance_retention_settings_response(), tuple()} |
+    {error, any()} |
+    {error, put_app_instance_retention_settings_errors(), tuple()}.
 put_app_instance_retention_settings(Client, AppInstanceArn, Input) ->
     put_app_instance_retention_settings(Client, AppInstanceArn, Input, []).
+
+-spec put_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), put_app_instance_retention_settings_request(), proplists:proplist()) ->
+    {ok, put_app_instance_retention_settings_response(), tuple()} |
+    {error, any()} |
+    {error, put_app_instance_retention_settings_errors(), tuple()}.
 put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
@@ -6073,8 +12740,17 @@ put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec put_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), put_app_instance_streaming_configurations_request()) ->
+    {ok, put_app_instance_streaming_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, put_app_instance_streaming_configurations_errors(), tuple()}.
 put_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
     put_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
+
+-spec put_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), put_app_instance_streaming_configurations_request(), proplists:proplist()) ->
+    {ok, put_app_instance_streaming_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, put_app_instance_streaming_configurations_errors(), tuple()}.
 put_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
@@ -6104,8 +12780,17 @@ put_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Option
 %% Choose either an HTTPS endpoint or a Lambda function ARN. For more
 %% information,
 %% see `Bot'.
+-spec put_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), put_events_configuration_request()) ->
+    {ok, put_events_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_events_configuration_errors(), tuple()}.
 put_events_configuration(Client, AccountId, BotId, Input) ->
     put_events_configuration(Client, AccountId, BotId, Input, []).
+
+-spec put_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), put_events_configuration_request(), proplists:proplist()) ->
+    {ok, put_events_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_events_configuration_errors(), tuple()}.
 put_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
@@ -6146,8 +12831,17 @@ put_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
 %% Managing Chat Retention Policies:
 %% https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html
 %% in the Amazon Chime Administration Guide.
+-spec put_retention_settings(aws_client:aws_client(), binary() | list(), put_retention_settings_request()) ->
+    {ok, put_retention_settings_response(), tuple()} |
+    {error, any()} |
+    {error, put_retention_settings_errors(), tuple()}.
 put_retention_settings(Client, AccountId, Input) ->
     put_retention_settings(Client, AccountId, Input, []).
+
+-spec put_retention_settings(aws_client:aws_client(), binary() | list(), put_retention_settings_request(), proplists:proplist()) ->
+    {ok, put_retention_settings_response(), tuple()} |
+    {error, any()} |
+    {error, put_retention_settings_errors(), tuple()}.
 put_retention_settings(Client, AccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/retention-settings"],
@@ -6184,8 +12878,17 @@ put_retention_settings(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec put_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), put_sip_media_application_logging_configuration_request()) ->
+    {ok, put_sip_media_application_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_sip_media_application_logging_configuration_errors(), tuple()}.
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input) ->
     put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input, []).
+
+-spec put_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), put_sip_media_application_logging_configuration_request(), proplists:proplist()) ->
+    {ok, put_sip_media_application_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_sip_media_application_logging_configuration_errors(), tuple()}.
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
@@ -6227,8 +12930,17 @@ put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, I
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec put_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_emergency_calling_configuration_request()) ->
+    {ok, put_voice_connector_emergency_calling_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
+
+-spec put_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
+    {ok, put_voice_connector_emergency_calling_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
@@ -6269,8 +12981,17 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec put_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_logging_configuration_request()) ->
+    {ok, put_voice_connector_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_logging_configuration_errors(), tuple()}.
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input, []).
+
+-spec put_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_logging_configuration_request(), proplists:proplist()) ->
+    {ok, put_voice_connector_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_logging_configuration_errors(), tuple()}.
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
@@ -6310,8 +13031,17 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Opti
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec put_voice_connector_origination(aws_client:aws_client(), binary() | list(), put_voice_connector_origination_request()) ->
+    {ok, put_voice_connector_origination_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_origination_errors(), tuple()}.
 put_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_origination(Client, VoiceConnectorId, Input, []).
+
+-spec put_voice_connector_origination(aws_client:aws_client(), binary() | list(), put_voice_connector_origination_request(), proplists:proplist()) ->
+    {ok, put_voice_connector_origination_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_origination_errors(), tuple()}.
 put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
@@ -6348,8 +13078,17 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec put_voice_connector_proxy(aws_client:aws_client(), binary() | list(), put_voice_connector_proxy_request()) ->
+    {ok, put_voice_connector_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_proxy_errors(), tuple()}.
 put_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     put_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
+
+-spec put_voice_connector_proxy(aws_client:aws_client(), binary() | list(), put_voice_connector_proxy_request(), proplists:proplist()) ->
+    {ok, put_voice_connector_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_proxy_errors(), tuple()}.
 put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
@@ -6391,8 +13130,17 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec put_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_streaming_configuration_request()) ->
+    {ok, put_voice_connector_streaming_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_streaming_configuration_errors(), tuple()}.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
+
+-spec put_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
+    {ok, put_voice_connector_streaming_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_streaming_configuration_errors(), tuple()}.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
@@ -6432,8 +13180,17 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Op
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec put_voice_connector_termination(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_request()) ->
+    {ok, put_voice_connector_termination_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_termination_errors(), tuple()}.
 put_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination(Client, VoiceConnectorId, Input, []).
+
+-spec put_voice_connector_termination(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_request(), proplists:proplist()) ->
+    {ok, put_voice_connector_termination_response(), tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_termination_errors(), tuple()}.
 put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
@@ -6470,8 +13227,17 @@ put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec put_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_credentials_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_termination_credentials_errors(), tuple()}.
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
+
+-spec put_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_credentials_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_voice_connector_termination_credentials_errors(), tuple()}.
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=put"],
@@ -6515,8 +13281,17 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec redact_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), redact_channel_message_request()) ->
+    {ok, redact_channel_message_response(), tuple()} |
+    {error, any()} |
+    {error, redact_channel_message_errors(), tuple()}.
 redact_channel_message(Client, ChannelArn, MessageId, Input) ->
     redact_channel_message(Client, ChannelArn, MessageId, Input, []).
+
+-spec redact_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), redact_channel_message_request(), proplists:proplist()) ->
+    {ok, redact_channel_message_response(), tuple()} |
+    {error, any()} |
+    {error, redact_channel_message_errors(), tuple()}.
 redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
@@ -6543,8 +13318,17 @@ redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 
 %% @doc Redacts the specified message from the specified Amazon Chime
 %% conversation.
+-spec redact_conversation_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), redact_conversation_message_request()) ->
+    {ok, redact_conversation_message_response(), tuple()} |
+    {error, any()} |
+    {error, redact_conversation_message_errors(), tuple()}.
 redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input) ->
     redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input, []).
+
+-spec redact_conversation_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), redact_conversation_message_request(), proplists:proplist()) ->
+    {ok, redact_conversation_message_response(), tuple()} |
+    {error, any()} |
+    {error, redact_conversation_message_errors(), tuple()}.
 redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/conversations/", aws_util:encode_uri(ConversationId), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
@@ -6569,8 +13353,17 @@ redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input0
 
 %% @doc Redacts the specified message from the specified Amazon Chime
 %% channel.
+-spec redact_room_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), redact_room_message_request()) ->
+    {ok, redact_room_message_response(), tuple()} |
+    {error, any()} |
+    {error, redact_room_message_errors(), tuple()}.
 redact_room_message(Client, AccountId, MessageId, RoomId, Input) ->
     redact_room_message(Client, AccountId, MessageId, RoomId, Input, []).
+
+-spec redact_room_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), redact_room_message_request(), proplists:proplist()) ->
+    {ok, redact_room_message_response(), tuple()} |
+    {error, any()} |
+    {error, redact_room_message_errors(), tuple()}.
 redact_room_message(Client, AccountId, MessageId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
@@ -6594,8 +13387,17 @@ redact_room_message(Client, AccountId, MessageId, RoomId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Regenerates the security token for a bot.
+-spec regenerate_security_token(aws_client:aws_client(), binary() | list(), binary() | list(), regenerate_security_token_request()) ->
+    {ok, regenerate_security_token_response(), tuple()} |
+    {error, any()} |
+    {error, regenerate_security_token_errors(), tuple()}.
 regenerate_security_token(Client, AccountId, BotId, Input) ->
     regenerate_security_token(Client, AccountId, BotId, Input, []).
+
+-spec regenerate_security_token(aws_client:aws_client(), binary() | list(), binary() | list(), regenerate_security_token_request(), proplists:proplist()) ->
+    {ok, regenerate_security_token_response(), tuple()} |
+    {error, any()} |
+    {error, regenerate_security_token_errors(), tuple()}.
 regenerate_security_token(Client, AccountId, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "?operation=regenerate-security-token"],
@@ -6623,8 +13425,17 @@ regenerate_security_token(Client, AccountId, BotId, Input0, Options0) ->
 %%
 %% Returns
 %% the `User' object with the updated personal meeting PIN.
+-spec reset_personal_pin(aws_client:aws_client(), binary() | list(), binary() | list(), reset_personal_pin_request()) ->
+    {ok, reset_personal_pin_response(), tuple()} |
+    {error, any()} |
+    {error, reset_personal_pin_errors(), tuple()}.
 reset_personal_pin(Client, AccountId, UserId, Input) ->
     reset_personal_pin(Client, AccountId, UserId, Input, []).
+
+-spec reset_personal_pin(aws_client:aws_client(), binary() | list(), binary() | list(), reset_personal_pin_request(), proplists:proplist()) ->
+    {ok, reset_personal_pin_response(), tuple()} |
+    {error, any()} |
+    {error, reset_personal_pin_errors(), tuple()}.
 reset_personal_pin(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=reset-personal-pin"],
@@ -6649,8 +13460,17 @@ reset_personal_pin(Client, AccountId, UserId, Input0, Options0) ->
 
 %% @doc Moves a phone number from the Deletion queue back into the
 %% phone number Inventory.
+-spec restore_phone_number(aws_client:aws_client(), binary() | list(), restore_phone_number_request()) ->
+    {ok, restore_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, restore_phone_number_errors(), tuple()}.
 restore_phone_number(Client, PhoneNumberId, Input) ->
     restore_phone_number(Client, PhoneNumberId, Input, []).
+
+-spec restore_phone_number(aws_client:aws_client(), binary() | list(), restore_phone_number_request(), proplists:proplist()) ->
+    {ok, restore_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, restore_phone_number_errors(), tuple()}.
 restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), "?operation=restore"],
@@ -6680,14 +13500,26 @@ restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% `State', or `TollFreePrefix'. If you provide
 %% `City', you must also provide `State'. Numbers outside the US only
 %% support the `PhoneNumberType' filter, which you must use.
+-spec search_available_phone_numbers(aws_client:aws_client()) ->
+    {ok, search_available_phone_numbers_response(), tuple()} |
+    {error, any()} |
+    {error, search_available_phone_numbers_errors(), tuple()}.
 search_available_phone_numbers(Client)
   when is_map(Client) ->
     search_available_phone_numbers(Client, #{}, #{}).
 
+-spec search_available_phone_numbers(aws_client:aws_client(), map(), map()) ->
+    {ok, search_available_phone_numbers_response(), tuple()} |
+    {error, any()} |
+    {error, search_available_phone_numbers_errors(), tuple()}.
 search_available_phone_numbers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     search_available_phone_numbers(Client, QueryMap, HeadersMap, []).
 
+-spec search_available_phone_numbers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, search_available_phone_numbers_response(), tuple()} |
+    {error, any()} |
+    {error, search_available_phone_numbers_errors(), tuple()}.
 search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/search?type=phone-numbers"],
@@ -6737,8 +13569,17 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec send_channel_message(aws_client:aws_client(), binary() | list(), send_channel_message_request()) ->
+    {ok, send_channel_message_response(), tuple()} |
+    {error, any()} |
+    {error, send_channel_message_errors(), tuple()}.
 send_channel_message(Client, ChannelArn, Input) ->
     send_channel_message(Client, ChannelArn, Input, []).
+
+-spec send_channel_message(aws_client:aws_client(), binary() | list(), send_channel_message_request(), proplists:proplist()) ->
+    {ok, send_channel_message_response(), tuple()} |
+    {error, any()} |
+    {error, send_channel_message_errors(), tuple()}.
 send_channel_message(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
@@ -6798,8 +13639,17 @@ send_channel_message(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec start_meeting_transcription(aws_client:aws_client(), binary() | list(), start_meeting_transcription_request()) ->
+    {ok, start_meeting_transcription_response(), tuple()} |
+    {error, any()} |
+    {error, start_meeting_transcription_errors(), tuple()}.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
+
+-spec start_meeting_transcription(aws_client:aws_client(), binary() | list(), start_meeting_transcription_request(), proplists:proplist()) ->
+    {ok, start_meeting_transcription_response(), tuple()} |
+    {error, any()} |
+    {error, start_meeting_transcription_errors(), tuple()}.
 start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=start"],
@@ -6835,8 +13685,17 @@ start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec stop_meeting_transcription(aws_client:aws_client(), binary() | list(), stop_meeting_transcription_request()) ->
+    {ok, stop_meeting_transcription_response(), tuple()} |
+    {error, any()} |
+    {error, stop_meeting_transcription_errors(), tuple()}.
 stop_meeting_transcription(Client, MeetingId, Input) ->
     stop_meeting_transcription(Client, MeetingId, Input, []).
+
+-spec stop_meeting_transcription(aws_client:aws_client(), binary() | list(), stop_meeting_transcription_request(), proplists:proplist()) ->
+    {ok, stop_meeting_transcription_response(), tuple()} |
+    {error, any()} |
+    {error, stop_meeting_transcription_errors(), tuple()}.
 stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=stop"],
@@ -6863,8 +13722,17 @@ stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 %%
 %% TagAttendee is not supported in the Amazon Chime SDK Meetings Namespace.
 %% Update your application to remove calls to this API.
+-spec tag_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), tag_attendee_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_attendee_errors(), tuple()}.
 tag_attendee(Client, AttendeeId, MeetingId, Input) ->
     tag_attendee(Client, AttendeeId, MeetingId, Input, []).
+
+-spec tag_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), tag_attendee_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_attendee_errors(), tuple()}.
 tag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags?operation=add"],
@@ -6900,8 +13768,17 @@ tag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec tag_meeting(aws_client:aws_client(), binary() | list(), tag_meeting_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_meeting_errors(), tuple()}.
 tag_meeting(Client, MeetingId, Input) ->
     tag_meeting(Client, MeetingId, Input, []).
+
+-spec tag_meeting(aws_client:aws_client(), binary() | list(), tag_meeting_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_meeting_errors(), tuple()}.
 tag_meeting(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags?operation=add"],
@@ -6938,8 +13815,17 @@ tag_meeting(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=tag-resource"],
@@ -6967,8 +13853,17 @@ tag_resource(Client, Input0, Options0) ->
 %%
 %% UntagAttendee is not supported in the Amazon Chime SDK Meetings Namespace.
 %% Update your application to remove calls to this API.
+-spec untag_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), untag_attendee_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_attendee_errors(), tuple()}.
 untag_attendee(Client, AttendeeId, MeetingId, Input) ->
     untag_attendee(Client, AttendeeId, MeetingId, Input, []).
+
+-spec untag_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), untag_attendee_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_attendee_errors(), tuple()}.
 untag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags?operation=delete"],
@@ -7005,8 +13900,17 @@ untag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec untag_meeting(aws_client:aws_client(), binary() | list(), untag_meeting_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_meeting_errors(), tuple()}.
 untag_meeting(Client, MeetingId, Input) ->
     untag_meeting(Client, MeetingId, Input, []).
+
+-spec untag_meeting(aws_client:aws_client(), binary() | list(), untag_meeting_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_meeting_errors(), tuple()}.
 untag_meeting(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags?operation=delete"],
@@ -7046,8 +13950,17 @@ untag_meeting(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
@@ -7074,8 +13987,17 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% Currently, only account name and default license updates are supported for
 %% this action.
+-spec update_account(aws_client:aws_client(), binary() | list(), update_account_request()) ->
+    {ok, update_account_response(), tuple()} |
+    {error, any()} |
+    {error, update_account_errors(), tuple()}.
 update_account(Client, AccountId, Input) ->
     update_account(Client, AccountId, Input, []).
+
+-spec update_account(aws_client:aws_client(), binary() | list(), update_account_request(), proplists:proplist()) ->
+    {ok, update_account_response(), tuple()} |
+    {error, any()} |
+    {error, update_account_errors(), tuple()}.
 update_account(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
@@ -7108,8 +14030,17 @@ update_account(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime/latest/ag/policies.html in the Amazon
 %% Chime Administration
 %% Guide.
+-spec update_account_settings(aws_client:aws_client(), binary() | list(), update_account_settings_request()) ->
+    {ok, update_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, AccountId, Input) ->
     update_account_settings(Client, AccountId, Input, []).
+
+-spec update_account_settings(aws_client:aws_client(), binary() | list(), update_account_settings_request(), proplists:proplist()) ->
+    {ok, update_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, AccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/settings"],
@@ -7145,8 +14076,17 @@ update_account_settings(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec update_app_instance(aws_client:aws_client(), binary() | list(), update_app_instance_request()) ->
+    {ok, update_app_instance_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_instance_errors(), tuple()}.
 update_app_instance(Client, AppInstanceArn, Input) ->
     update_app_instance(Client, AppInstanceArn, Input, []).
+
+-spec update_app_instance(aws_client:aws_client(), binary() | list(), update_app_instance_request(), proplists:proplist()) ->
+    {ok, update_app_instance_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_instance_errors(), tuple()}.
 update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
@@ -7184,8 +14124,17 @@ update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec update_app_instance_user(aws_client:aws_client(), binary() | list(), update_app_instance_user_request()) ->
+    {ok, update_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_instance_user_errors(), tuple()}.
 update_app_instance_user(Client, AppInstanceUserArn, Input) ->
     update_app_instance_user(Client, AppInstanceUserArn, Input, []).
+
+-spec update_app_instance_user(aws_client:aws_client(), binary() | list(), update_app_instance_user_request(), proplists:proplist()) ->
+    {ok, update_app_instance_user_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_instance_user_errors(), tuple()}.
 update_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
@@ -7210,8 +14159,17 @@ update_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
 
 %% @doc Updates the status of the specified bot, such as starting or stopping
 %% the bot from running in your Amazon Chime Enterprise account.
+-spec update_bot(aws_client:aws_client(), binary() | list(), binary() | list(), update_bot_request()) ->
+    {ok, update_bot_response(), tuple()} |
+    {error, any()} |
+    {error, update_bot_errors(), tuple()}.
 update_bot(Client, AccountId, BotId, Input) ->
     update_bot(Client, AccountId, BotId, Input, []).
+
+-spec update_bot(aws_client:aws_client(), binary() | list(), binary() | list(), update_bot_request(), proplists:proplist()) ->
+    {ok, update_bot_response(), tuple()} |
+    {error, any()} |
+    {error, update_bot_errors(), tuple()}.
 update_bot(Client, AccountId, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
@@ -7254,8 +14212,17 @@ update_bot(Client, AccountId, BotId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelArn, Input) ->
     update_channel(Client, ChannelArn, Input, []).
+
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request(), proplists:proplist()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
@@ -7298,8 +14265,17 @@ update_channel(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec update_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_message_request()) ->
+    {ok, update_channel_message_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_message_errors(), tuple()}.
 update_channel_message(Client, ChannelArn, MessageId, Input) ->
     update_channel_message(Client, ChannelArn, MessageId, Input, []).
+
+-spec update_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_message_request(), proplists:proplist()) ->
+    {ok, update_channel_message_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_message_errors(), tuple()}.
 update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
@@ -7342,8 +14318,17 @@ update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec update_channel_read_marker(aws_client:aws_client(), binary() | list(), update_channel_read_marker_request()) ->
+    {ok, update_channel_read_marker_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_read_marker_errors(), tuple()}.
 update_channel_read_marker(Client, ChannelArn, Input) ->
     update_channel_read_marker(Client, ChannelArn, Input, []).
+
+-spec update_channel_read_marker(aws_client:aws_client(), binary() | list(), update_channel_read_marker_request(), proplists:proplist()) ->
+    {ok, update_channel_read_marker_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_read_marker_errors(), tuple()}.
 update_channel_read_marker(Client, ChannelArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/readMarker"],
@@ -7371,8 +14356,17 @@ update_channel_read_marker(Client, ChannelArn, Input0, Options0) ->
 %% @doc Updates global settings for the administrator's AWS account, such
 %% as Amazon Chime Business Calling and Amazon Chime Voice Connector
 %% settings.
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
+
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings"],
@@ -7408,8 +14402,17 @@ update_global_settings(Client, Input0, Options0) ->
 %% Updates to outbound calling names can take 72 hours to complete. Pending
 %% updates to outbound calling names must be complete before you can request
 %% another update.
+-spec update_phone_number(aws_client:aws_client(), binary() | list(), update_phone_number_request()) ->
+    {ok, update_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, update_phone_number_errors(), tuple()}.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
+
+-spec update_phone_number(aws_client:aws_client(), binary() | list(), update_phone_number_request(), proplists:proplist()) ->
+    {ok, update_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, update_phone_number_errors(), tuple()}.
 update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
@@ -7438,8 +14441,17 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %%
 %% You can update the default outbound calling name once every seven
 %% days. Outbound calling names can take up to 72 hours to update.
+-spec update_phone_number_settings(aws_client:aws_client(), update_phone_number_settings_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_phone_number_settings_errors(), tuple()}.
 update_phone_number_settings(Client, Input) ->
     update_phone_number_settings(Client, Input, []).
+
+-spec update_phone_number_settings(aws_client:aws_client(), update_phone_number_settings_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_phone_number_settings_errors(), tuple()}.
 update_phone_number_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings/phone-number"],
@@ -7476,8 +14488,17 @@ update_phone_number_settings(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec update_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_proxy_session_request()) ->
+    {ok, update_proxy_session_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_session_errors(), tuple()}.
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
+
+-spec update_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_proxy_session_request(), proplists:proplist()) ->
+    {ok, update_proxy_session_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_session_errors(), tuple()}.
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
@@ -7502,8 +14523,17 @@ update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
 
 %% @doc Updates room details, such as the room name, for a room in an Amazon
 %% Chime Enterprise account.
+-spec update_room(aws_client:aws_client(), binary() | list(), binary() | list(), update_room_request()) ->
+    {ok, update_room_response(), tuple()} |
+    {error, any()} |
+    {error, update_room_errors(), tuple()}.
 update_room(Client, AccountId, RoomId, Input) ->
     update_room(Client, AccountId, RoomId, Input, []).
+
+-spec update_room(aws_client:aws_client(), binary() | list(), binary() | list(), update_room_request(), proplists:proplist()) ->
+    {ok, update_room_response(), tuple()} |
+    {error, any()} |
+    {error, update_room_errors(), tuple()}.
 update_room(Client, AccountId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
@@ -7534,8 +14564,17 @@ update_room(Client, AccountId, RoomId, Input0, Options0) ->
 %% administrator or a general chat room member. The member role can be
 %% updated only for
 %% user IDs.
+-spec update_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_room_membership_request()) ->
+    {ok, update_room_membership_response(), tuple()} |
+    {error, any()} |
+    {error, update_room_membership_errors(), tuple()}.
 update_room_membership(Client, AccountId, MemberId, RoomId, Input) ->
     update_room_membership(Client, AccountId, MemberId, RoomId, Input, []).
+
+-spec update_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_room_membership_request(), proplists:proplist()) ->
+    {ok, update_room_membership_response(), tuple()} |
+    {error, any()} |
+    {error, update_room_membership_errors(), tuple()}.
 update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
@@ -7571,8 +14610,17 @@ update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec update_sip_media_application(aws_client:aws_client(), binary() | list(), update_sip_media_application_request()) ->
+    {ok, update_sip_media_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_sip_media_application_errors(), tuple()}.
 update_sip_media_application(Client, SipMediaApplicationId, Input) ->
     update_sip_media_application(Client, SipMediaApplicationId, Input, []).
+
+-spec update_sip_media_application(aws_client:aws_client(), binary() | list(), update_sip_media_application_request(), proplists:proplist()) ->
+    {ok, update_sip_media_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_sip_media_application_errors(), tuple()}.
 update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
@@ -7611,8 +14659,17 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec update_sip_media_application_call(aws_client:aws_client(), binary() | list(), binary() | list(), update_sip_media_application_call_request()) ->
+    {ok, update_sip_media_application_call_response(), tuple()} |
+    {error, any()} |
+    {error, update_sip_media_application_call_errors(), tuple()}.
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input) ->
     update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input, []).
+
+-spec update_sip_media_application_call(aws_client:aws_client(), binary() | list(), binary() | list(), update_sip_media_application_call_request(), proplists:proplist()) ->
+    {ok, update_sip_media_application_call_response(), tuple()} |
+    {error, any()} |
+    {error, update_sip_media_application_call_errors(), tuple()}.
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls/", aws_util:encode_uri(TransactionId), ""],
@@ -7648,8 +14705,17 @@ update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, 
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec update_sip_rule(aws_client:aws_client(), binary() | list(), update_sip_rule_request()) ->
+    {ok, update_sip_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_sip_rule_errors(), tuple()}.
 update_sip_rule(Client, SipRuleId, Input) ->
     update_sip_rule(Client, SipRuleId, Input, []).
+
+-spec update_sip_rule(aws_client:aws_client(), binary() | list(), update_sip_rule_request(), proplists:proplist()) ->
+    {ok, update_sip_rule_response(), tuple()} |
+    {error, any()} |
+    {error, update_sip_rule_errors(), tuple()}.
 update_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
@@ -7675,8 +14741,17 @@ update_sip_rule(Client, SipRuleId, Input0, Options0) ->
 %% @doc Updates user details for a specified user ID.
 %%
 %% Currently, only `LicenseType' updates are supported for this action.
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_request()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_errors(), tuple()}.
 update_user(Client, AccountId, UserId, Input) ->
     update_user(Client, AccountId, UserId, Input, []).
+
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_errors(), tuple()}.
 update_user(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), ""],
@@ -7701,8 +14776,17 @@ update_user(Client, AccountId, UserId, Input0, Options0) ->
 
 %% @doc Updates the settings for the specified user, such as phone number
 %% settings.
+-spec update_user_settings(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_settings_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_user_settings_errors(), tuple()}.
 update_user_settings(Client, AccountId, UserId, Input) ->
     update_user_settings(Client, AccountId, UserId, Input, []).
+
+-spec update_user_settings(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_settings_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_user_settings_errors(), tuple()}.
 update_user_settings(Client, AccountId, UserId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "/settings"],
@@ -7738,8 +14822,17 @@ update_user_settings(Client, AccountId, UserId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec update_voice_connector(aws_client:aws_client(), binary() | list(), update_voice_connector_request()) ->
+    {ok, update_voice_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_voice_connector_errors(), tuple()}.
 update_voice_connector(Client, VoiceConnectorId, Input) ->
     update_voice_connector(Client, VoiceConnectorId, Input, []).
+
+-spec update_voice_connector(aws_client:aws_client(), binary() | list(), update_voice_connector_request(), proplists:proplist()) ->
+    {ok, update_voice_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_voice_connector_errors(), tuple()}.
 update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
@@ -7777,8 +14870,17 @@ update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec update_voice_connector_group(aws_client:aws_client(), binary() | list(), update_voice_connector_group_request()) ->
+    {ok, update_voice_connector_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_voice_connector_group_errors(), tuple()}.
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     update_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
+
+-spec update_voice_connector_group(aws_client:aws_client(), binary() | list(), update_voice_connector_group_request(), proplists:proplist()) ->
+    {ok, update_voice_connector_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_voice_connector_group_errors(), tuple()}.
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
@@ -7821,8 +14923,17 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
+-spec validate_e911_address(aws_client:aws_client(), validate_e911_address_request()) ->
+    {ok, validate_e911_address_response(), tuple()} |
+    {error, any()} |
+    {error, validate_e911_address_errors(), tuple()}.
 validate_e911_address(Client, Input) ->
     validate_e911_address(Client, Input, []).
+
+-spec validate_e911_address(aws_client:aws_client(), validate_e911_address_request(), proplists:proplist()) ->
+    {ok, validate_e911_address_response(), tuple()} |
+    {error, any()} |
+    {error, validate_e911_address_errors(), tuple()}.
 validate_e911_address(Client, Input0, Options0) ->
     Method = post,
     Path = ["/emergency-calling/address"],
@@ -7849,7 +14960,7 @@ validate_e911_address(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

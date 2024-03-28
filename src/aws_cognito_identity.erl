@@ -82,6 +82,611 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% get_credentials_for_identity_response() :: #{
+%%   <<"Credentials">> => credentials(),
+%%   <<"IdentityId">> => string()
+%% }
+-type get_credentials_for_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% unlink_identity_input() :: #{
+%%   <<"IdentityId">> := string(),
+%%   <<"Logins">> := map(),
+%%   <<"LoginsToRemove">> := list(string()())
+%% }
+-type unlink_identity_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_open_id_token_for_developer_identity_response() :: #{
+%%   <<"IdentityId">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_open_id_token_for_developer_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% merge_developer_identities_response() :: #{
+%%   <<"IdentityId">> => string()
+%% }
+-type merge_developer_identities_response() :: #{binary() => any()}.
+
+%% Example:
+%% developer_user_already_registered_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type developer_user_already_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_pool_input() :: #{
+%%   <<"IdentityPoolId">> := string()
+%% }
+-type describe_identity_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% identity_pool() :: #{
+%%   <<"AllowClassicFlow">> => boolean(),
+%%   <<"AllowUnauthenticatedIdentities">> => boolean(),
+%%   <<"CognitoIdentityProviders">> => list(cognito_identity_provider()()),
+%%   <<"DeveloperProviderName">> => string(),
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"IdentityPoolName">> => string(),
+%%   <<"IdentityPoolTags">> => map(),
+%%   <<"OpenIdConnectProviderARNs">> => list(string()()),
+%%   <<"SamlProviderARNs">> => list(string()()),
+%%   <<"SupportedLoginProviders">> => map()
+%% }
+-type identity_pool() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_pool_roles_response() :: #{
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"RoleMappings">> => map(),
+%%   <<"Roles">> => map()
+%% }
+-type get_identity_pool_roles_response() :: #{binary() => any()}.
+
+%% Example:
+%% unlink_developer_identity_input() :: #{
+%%   <<"DeveloperProviderName">> := string(),
+%%   <<"DeveloperUserIdentifier">> := string(),
+%%   <<"IdentityId">> := string(),
+%%   <<"IdentityPoolId">> := string()
+%% }
+-type unlink_developer_identity_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_pools_input() :: #{
+%%   <<"MaxResults">> := integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_pools_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identities_response() :: #{
+%%   <<"UnprocessedIdentityIds">> => list(unprocessed_identity_id()())
+%% }
+-type delete_identities_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_pool_roles_input() :: #{
+%%   <<"IdentityPoolId">> := string()
+%% }
+-type get_identity_pool_roles_input() :: #{binary() => any()}.
+
+%% Example:
+%% credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type credentials() :: #{binary() => any()}.
+
+%% Example:
+%% lookup_developer_identity_response() :: #{
+%%   <<"DeveloperUserIdentifierList">> => list(string()()),
+%%   <<"IdentityId">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type lookup_developer_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% unprocessed_identity_id() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"IdentityId">> => string()
+%% }
+-type unprocessed_identity_id() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_pool_roles_input() :: #{
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"RoleMappings">> => map(),
+%%   <<"Roles">> := map()
+%% }
+-type set_identity_pool_roles_input() :: #{binary() => any()}.
+
+%% Example:
+%% identity_description() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"IdentityId">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Logins">> => list(string()())
+%% }
+-type identity_description() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_pools_response() :: #{
+%%   <<"IdentityPools">> => list(identity_pool_short_description()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_pools_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_credentials_for_identity_input() :: #{
+%%   <<"CustomRoleArn">> => string(),
+%%   <<"IdentityId">> := string(),
+%%   <<"Logins">> => map()
+%% }
+-type get_credentials_for_identity_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_identity_pool_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_identity_pool_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_principal_tag_attribute_map_input() :: #{
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"IdentityProviderName">> := string(),
+%%   <<"PrincipalTags">> => map(),
+%%   <<"UseDefaults">> => boolean()
+%% }
+-type set_principal_tag_attribute_map_input() :: #{binary() => any()}.
+
+%% Example:
+%% rules_configuration_type() :: #{
+%%   <<"Rules">> => list(mapping_rule()())
+%% }
+-type rules_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% mapping_rule() :: #{
+%%   <<"Claim">> => string(),
+%%   <<"MatchType">> => list(any()),
+%%   <<"RoleARN">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type mapping_rule() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identities_input() :: #{
+%%   <<"IdentityIdsToDelete">> := list(string()())
+%% }
+-type delete_identities_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_input() :: #{
+%%   <<"IdentityId">> := string()
+%% }
+-type describe_identity_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_identities_input() :: #{
+%%   <<"HideDisabled">> => boolean(),
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"MaxResults">> := integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identities_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_open_id_token_response() :: #{
+%%   <<"IdentityId">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_open_id_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% identity_pool_short_description() :: #{
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"IdentityPoolName">> => string()
+%% }
+-type identity_pool_short_description() :: #{binary() => any()}.
+
+%% Example:
+%% role_mapping() :: #{
+%%   <<"AmbiguousRoleResolution">> => list(any()),
+%%   <<"RulesConfiguration">> => rules_configuration_type(),
+%%   <<"Type">> => list(any())
+%% }
+-type role_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% get_principal_tag_attribute_map_input() :: #{
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"IdentityProviderName">> := string()
+%% }
+-type get_principal_tag_attribute_map_input() :: #{binary() => any()}.
+
+%% Example:
+%% merge_developer_identities_input() :: #{
+%%   <<"DestinationUserIdentifier">> := string(),
+%%   <<"DeveloperProviderName">> := string(),
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"SourceUserIdentifier">> := string()
+%% }
+-type merge_developer_identities_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_principal_tag_attribute_map_response() :: #{
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"IdentityProviderName">> => string(),
+%%   <<"PrincipalTags">> => map(),
+%%   <<"UseDefaults">> => boolean()
+%% }
+-type set_principal_tag_attribute_map_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_identity_provider() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"ProviderName">> => string(),
+%%   <<"ServerSideTokenCheck">> => boolean()
+%% }
+-type cognito_identity_provider() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_pool_input() :: #{
+%%   <<"AllowClassicFlow">> => boolean(),
+%%   <<"AllowUnauthenticatedIdentities">> := boolean(),
+%%   <<"CognitoIdentityProviders">> => list(cognito_identity_provider()()),
+%%   <<"DeveloperProviderName">> => string(),
+%%   <<"IdentityPoolName">> := string(),
+%%   <<"IdentityPoolTags">> => map(),
+%%   <<"OpenIdConnectProviderARNs">> => list(string()()),
+%%   <<"SamlProviderARNs">> => list(string()()),
+%%   <<"SupportedLoginProviders">> => map()
+%% }
+-type create_identity_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% lookup_developer_identity_input() :: #{
+%%   <<"DeveloperUserIdentifier">> => string(),
+%%   <<"IdentityId">> => string(),
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type lookup_developer_identity_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_id_input() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"Logins">> => map()
+%% }
+-type get_id_input() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_open_id_token_for_developer_identity_input() :: #{
+%%   <<"IdentityId">> => string(),
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"Logins">> := map(),
+%%   <<"PrincipalTags">> => map(),
+%%   <<"TokenDuration">> => float()
+%% }
+-type get_open_id_token_for_developer_identity_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_identities_response() :: #{
+%%   <<"Identities">> => list(identity_description()()),
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identities_response() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_pool_input() :: #{
+%%   <<"IdentityPoolId">> := string()
+%% }
+-type delete_identity_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% external_service_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type external_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_open_id_token_input() :: #{
+%%   <<"IdentityId">> := string(),
+%%   <<"Logins">> => map()
+%% }
+-type get_open_id_token_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_principal_tag_attribute_map_response() :: #{
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"IdentityProviderName">> => string(),
+%%   <<"PrincipalTags">> => map(),
+%%   <<"UseDefaults">> => boolean()
+%% }
+-type get_principal_tag_attribute_map_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_id_response() :: #{
+%%   <<"IdentityId">> => string()
+%% }
+-type get_id_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_error_exception() :: #{binary() => any()}.
+
+-type create_identity_pool_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    too_many_requests_exception().
+
+-type delete_identities_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    too_many_requests_exception().
+
+-type delete_identity_pool_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_identity_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_identity_pool_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_credentials_for_identity_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    external_service_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    invalid_identity_pool_configuration_exception() | 
+    too_many_requests_exception().
+
+-type get_id_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    external_service_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_identity_pool_roles_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_open_id_token_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    external_service_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_open_id_token_for_developer_identity_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    developer_user_already_registered_exception().
+
+-type get_principal_tag_attribute_map_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_identities_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_identity_pools_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type lookup_developer_identity_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type merge_developer_identities_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type set_identity_pool_roles_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type set_principal_tag_attribute_map_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type tag_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type unlink_developer_identity_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type unlink_identity_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    external_service_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type untag_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_identity_pool_errors() ::
+    internal_error_exception() | 
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -103,9 +708,18 @@
 %% Digits: `www.digits.com'
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec create_identity_pool(aws_client:aws_client(), create_identity_pool_input()) ->
+    {ok, identity_pool(), tuple()} |
+    {error, any()} |
+    {error, create_identity_pool_errors(), tuple()}.
 create_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_pool(Client, Input, []).
+
+-spec create_identity_pool(aws_client:aws_client(), create_identity_pool_input(), proplists:proplist()) ->
+    {ok, identity_pool(), tuple()} |
+    {error, any()} |
+    {error, create_identity_pool_errors(), tuple()}.
 create_identity_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIdentityPool">>, Input, Options).
@@ -116,9 +730,18 @@ create_identity_pool(Client, Input, Options)
 %% that you want to delete.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec delete_identities(aws_client:aws_client(), delete_identities_input()) ->
+    {ok, delete_identities_response(), tuple()} |
+    {error, any()} |
+    {error, delete_identities_errors(), tuple()}.
 delete_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identities(Client, Input, []).
+
+-spec delete_identities(aws_client:aws_client(), delete_identities_input(), proplists:proplist()) ->
+    {ok, delete_identities_response(), tuple()} |
+    {error, any()} |
+    {error, delete_identities_errors(), tuple()}.
 delete_identities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentities">>, Input, Options).
@@ -129,9 +752,18 @@ delete_identities(Client, Input, Options)
 %% authenticate with the pool.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec delete_identity_pool(aws_client:aws_client(), delete_identity_pool_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_identity_pool_errors(), tuple()}.
 delete_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_pool(Client, Input, []).
+
+-spec delete_identity_pool(aws_client:aws_client(), delete_identity_pool_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_identity_pool_errors(), tuple()}.
 delete_identity_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentityPool">>, Input, Options).
@@ -141,9 +773,18 @@ delete_identity_pool(Client, Input, Options)
 %% created and any associated linked logins.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec describe_identity(aws_client:aws_client(), describe_identity_input()) ->
+    {ok, identity_description(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_errors(), tuple()}.
 describe_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_identity(Client, Input, []).
+
+-spec describe_identity(aws_client:aws_client(), describe_identity_input(), proplists:proplist()) ->
+    {ok, identity_description(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_errors(), tuple()}.
 describe_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIdentity">>, Input, Options).
@@ -153,9 +794,18 @@ describe_identity(Client, Input, Options)
 %% description, creation date, and current number of users.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec describe_identity_pool(aws_client:aws_client(), describe_identity_pool_input()) ->
+    {ok, identity_pool(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_pool_errors(), tuple()}.
 describe_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_identity_pool(Client, Input, []).
+
+-spec describe_identity_pool(aws_client:aws_client(), describe_identity_pool_input(), proplists:proplist()) ->
+    {ok, identity_pool(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_pool_errors(), tuple()}.
 describe_identity_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIdentityPool">>, Input, Options).
@@ -169,9 +819,18 @@ describe_identity_pool(Client, Input, Options)
 %% with the appropriate role for the token.
 %%
 %% This is a public API. You do not need any credentials to call this API.
+-spec get_credentials_for_identity(aws_client:aws_client(), get_credentials_for_identity_input()) ->
+    {ok, get_credentials_for_identity_response(), tuple()} |
+    {error, any()} |
+    {error, get_credentials_for_identity_errors(), tuple()}.
 get_credentials_for_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_credentials_for_identity(Client, Input, []).
+
+-spec get_credentials_for_identity(aws_client:aws_client(), get_credentials_for_identity_input(), proplists:proplist()) ->
+    {ok, get_credentials_for_identity_response(), tuple()} |
+    {error, any()} |
+    {error, get_credentials_for_identity_errors(), tuple()}.
 get_credentials_for_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCredentialsForIdentity">>, Input, Options).
@@ -182,9 +841,18 @@ get_credentials_for_identity(Client, Input, Options)
 %% implicit linked account.
 %%
 %% This is a public API. You do not need any credentials to call this API.
+-spec get_id(aws_client:aws_client(), get_id_input()) ->
+    {ok, get_id_response(), tuple()} |
+    {error, any()} |
+    {error, get_id_errors(), tuple()}.
 get_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_id(Client, Input, []).
+
+-spec get_id(aws_client:aws_client(), get_id_input(), proplists:proplist()) ->
+    {ok, get_id_response(), tuple()} |
+    {error, any()} |
+    {error, get_id_errors(), tuple()}.
 get_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetId">>, Input, Options).
@@ -192,9 +860,18 @@ get_id(Client, Input, Options)
 %% @doc Gets the roles for an identity pool.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec get_identity_pool_roles(aws_client:aws_client(), get_identity_pool_roles_input()) ->
+    {ok, get_identity_pool_roles_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_pool_roles_errors(), tuple()}.
 get_identity_pool_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_pool_roles(Client, Input, []).
+
+-spec get_identity_pool_roles(aws_client:aws_client(), get_identity_pool_roles_input(), proplists:proplist()) ->
+    {ok, get_identity_pool_roles_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_pool_roles_errors(), tuple()}.
 get_identity_pool_roles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentityPoolRoles">>, Input, Options).
@@ -208,9 +885,18 @@ get_identity_pool_roles(Client, Input, Options)
 %% The OpenID token is valid for 10 minutes.
 %%
 %% This is a public API. You do not need any credentials to call this API.
+-spec get_open_id_token(aws_client:aws_client(), get_open_id_token_input()) ->
+    {ok, get_open_id_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_open_id_token_errors(), tuple()}.
 get_open_id_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_open_id_token(Client, Input, []).
+
+-spec get_open_id_token(aws_client:aws_client(), get_open_id_token_input(), proplists:proplist()) ->
+    {ok, get_open_id_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_open_id_token_errors(), tuple()}.
 get_open_id_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpenIdToken">>, Input, Options).
@@ -241,18 +927,36 @@ get_open_id_token(Client, Input, Options)
 %% `IdentityPoolId'.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec get_open_id_token_for_developer_identity(aws_client:aws_client(), get_open_id_token_for_developer_identity_input()) ->
+    {ok, get_open_id_token_for_developer_identity_response(), tuple()} |
+    {error, any()} |
+    {error, get_open_id_token_for_developer_identity_errors(), tuple()}.
 get_open_id_token_for_developer_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_open_id_token_for_developer_identity(Client, Input, []).
+
+-spec get_open_id_token_for_developer_identity(aws_client:aws_client(), get_open_id_token_for_developer_identity_input(), proplists:proplist()) ->
+    {ok, get_open_id_token_for_developer_identity_response(), tuple()} |
+    {error, any()} |
+    {error, get_open_id_token_for_developer_identity_errors(), tuple()}.
 get_open_id_token_for_developer_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpenIdTokenForDeveloperIdentity">>, Input, Options).
 
 %% @doc Use `GetPrincipalTagAttributeMap' to list all mappings between
 %% `PrincipalTags' and user attributes.
+-spec get_principal_tag_attribute_map(aws_client:aws_client(), get_principal_tag_attribute_map_input()) ->
+    {ok, get_principal_tag_attribute_map_response(), tuple()} |
+    {error, any()} |
+    {error, get_principal_tag_attribute_map_errors(), tuple()}.
 get_principal_tag_attribute_map(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_principal_tag_attribute_map(Client, Input, []).
+
+-spec get_principal_tag_attribute_map(aws_client:aws_client(), get_principal_tag_attribute_map_input(), proplists:proplist()) ->
+    {ok, get_principal_tag_attribute_map_response(), tuple()} |
+    {error, any()} |
+    {error, get_principal_tag_attribute_map_errors(), tuple()}.
 get_principal_tag_attribute_map(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPrincipalTagAttributeMap">>, Input, Options).
@@ -260,9 +964,18 @@ get_principal_tag_attribute_map(Client, Input, Options)
 %% @doc Lists the identities in an identity pool.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec list_identities(aws_client:aws_client(), list_identities_input()) ->
+    {ok, list_identities_response(), tuple()} |
+    {error, any()} |
+    {error, list_identities_errors(), tuple()}.
 list_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identities(Client, Input, []).
+
+-spec list_identities(aws_client:aws_client(), list_identities_input(), proplists:proplist()) ->
+    {ok, list_identities_response(), tuple()} |
+    {error, any()} |
+    {error, list_identities_errors(), tuple()}.
 list_identities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentities">>, Input, Options).
@@ -270,9 +983,18 @@ list_identities(Client, Input, Options)
 %% @doc Lists all of the Cognito identity pools registered for your account.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec list_identity_pools(aws_client:aws_client(), list_identity_pools_input()) ->
+    {ok, list_identity_pools_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_pools_errors(), tuple()}.
 list_identity_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_pools(Client, Input, []).
+
+-spec list_identity_pools(aws_client:aws_client(), list_identity_pools_input(), proplists:proplist()) ->
+    {ok, list_identity_pools_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_pools_errors(), tuple()}.
 list_identity_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentityPools">>, Input, Options).
@@ -284,9 +1006,18 @@ list_identity_pools(Client, Input, Options)
 %% different ways, such as by purpose, owner, environment, or other criteria.
 %%
 %% You can use this action up to 10 times per second, per account.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -315,9 +1046,18 @@ list_tags_for_resource(Client, Input, Options)
 %% better option for higher-volume operations for user authentication.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec lookup_developer_identity(aws_client:aws_client(), lookup_developer_identity_input()) ->
+    {ok, lookup_developer_identity_response(), tuple()} |
+    {error, any()} |
+    {error, lookup_developer_identity_errors(), tuple()}.
 lookup_developer_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     lookup_developer_identity(Client, Input, []).
+
+-spec lookup_developer_identity(aws_client:aws_client(), lookup_developer_identity_input(), proplists:proplist()) ->
+    {ok, lookup_developer_identity_response(), tuple()} |
+    {error, any()} |
+    {error, lookup_developer_identity_errors(), tuple()}.
 lookup_developer_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LookupDeveloperIdentity">>, Input, Options).
@@ -344,9 +1084,18 @@ lookup_developer_identity(Client, Input, Options)
 %% Otherwise, an exception will be thrown.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec merge_developer_identities(aws_client:aws_client(), merge_developer_identities_input()) ->
+    {ok, merge_developer_identities_response(), tuple()} |
+    {error, any()} |
+    {error, merge_developer_identities_errors(), tuple()}.
 merge_developer_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_developer_identities(Client, Input, []).
+
+-spec merge_developer_identities(aws_client:aws_client(), merge_developer_identities_input(), proplists:proplist()) ->
+    {ok, merge_developer_identities_response(), tuple()} |
+    {error, any()} |
+    {error, merge_developer_identities_errors(), tuple()}.
 merge_developer_identities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergeDeveloperIdentities">>, Input, Options).
@@ -357,18 +1106,36 @@ merge_developer_identities(Client, Input, Options)
 %% action.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec set_identity_pool_roles(aws_client:aws_client(), set_identity_pool_roles_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_identity_pool_roles_errors(), tuple()}.
 set_identity_pool_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_pool_roles(Client, Input, []).
+
+-spec set_identity_pool_roles(aws_client:aws_client(), set_identity_pool_roles_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_identity_pool_roles_errors(), tuple()}.
 set_identity_pool_roles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIdentityPoolRoles">>, Input, Options).
 
 %% @doc You can use this operation to use default (username and clientID)
 %% attribute or custom attribute mappings.
+-spec set_principal_tag_attribute_map(aws_client:aws_client(), set_principal_tag_attribute_map_input()) ->
+    {ok, set_principal_tag_attribute_map_response(), tuple()} |
+    {error, any()} |
+    {error, set_principal_tag_attribute_map_errors(), tuple()}.
 set_principal_tag_attribute_map(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_principal_tag_attribute_map(Client, Input, []).
+
+-spec set_principal_tag_attribute_map(aws_client:aws_client(), set_principal_tag_attribute_map_input(), proplists:proplist()) ->
+    {ok, set_principal_tag_attribute_map_response(), tuple()} |
+    {error, any()} |
+    {error, set_principal_tag_attribute_map_errors(), tuple()}.
 set_principal_tag_attribute_map(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetPrincipalTagAttributeMap">>, Input, Options).
@@ -401,9 +1168,18 @@ set_principal_tag_attribute_map(Client, Input, Options)
 %% You can use this action up to 5 times per second, per account. An identity
 %% pool can have
 %% as many as 50 tags.
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -418,9 +1194,18 @@ tag_resource(Client, Input, Options)
 %% identifier, the Cognito identity becomes inaccessible.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec unlink_developer_identity(aws_client:aws_client(), unlink_developer_identity_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, unlink_developer_identity_errors(), tuple()}.
 unlink_developer_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     unlink_developer_identity(Client, Input, []).
+
+-spec unlink_developer_identity(aws_client:aws_client(), unlink_developer_identity_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, unlink_developer_identity_errors(), tuple()}.
 unlink_developer_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnlinkDeveloperIdentity">>, Input, Options).
@@ -433,9 +1218,18 @@ unlink_developer_identity(Client, Input, Options)
 %% this identity inaccessible.
 %%
 %% This is a public API. You do not need any credentials to call this API.
+-spec unlink_identity(aws_client:aws_client(), unlink_identity_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, unlink_identity_errors(), tuple()}.
 unlink_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     unlink_identity(Client, Input, []).
+
+-spec unlink_identity(aws_client:aws_client(), unlink_identity_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, unlink_identity_errors(), tuple()}.
 unlink_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnlinkIdentity">>, Input, Options).
@@ -445,9 +1239,18 @@ unlink_identity(Client, Input, Options)
 %%
 %% You can use
 %% this action up to 5 times per second, per account
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -455,9 +1258,18 @@ untag_resource(Client, Input, Options)
 %% @doc Updates an identity pool.
 %%
 %% You must use AWS Developer credentials to call this API.
+-spec update_identity_pool(aws_client:aws_client(), identity_pool()) ->
+    {ok, identity_pool(), tuple()} |
+    {error, any()} |
+    {error, update_identity_pool_errors(), tuple()}.
 update_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_pool(Client, Input, []).
+
+-spec update_identity_pool(aws_client:aws_client(), identity_pool(), proplists:proplist()) ->
+    {ok, identity_pool(), tuple()} |
+    {error, any()} |
+    {error, update_identity_pool_errors(), tuple()}.
 update_identity_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIdentityPool">>, Input, Options).
