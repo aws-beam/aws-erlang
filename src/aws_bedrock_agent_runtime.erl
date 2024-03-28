@@ -114,8 +114,7 @@ retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Queries a knowledge base and generates responses based on the
 %% retrieved results.
 %%
-%% The response cites up to five sources but only selects the ones that are
-%% relevant to the query.
+%% The response only cites sources that are relevant to the query.
 retrieve_and_generate(Client, Input) ->
     retrieve_and_generate(Client, Input, []).
 retrieve_and_generate(Client, Input0, Options0) ->

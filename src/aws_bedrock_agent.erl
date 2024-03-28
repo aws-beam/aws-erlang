@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc An example service, deployed with the Octane Service creator,
-%% which will echo the string
+%% @doc Describes the API operations for creating and managing Amazon Bedrock
+%% agents.
 -module(aws_bedrock_agent).
 
 -export([associate_agent_knowledge_base/4,
@@ -101,7 +101,11 @@
 %% API
 %%====================================================================
 
-%% @doc Associate a Knowledge Base to an existing Amazon Bedrock Agent
+%% @doc Associates a knowledge base with an agent.
+%%
+%% If a knowledge base is associated and its `indexState' is set to
+%% `Enabled', the agent queries the knowledge base for information to
+%% augment its response to the user.
 associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input) ->
     associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input, []).
 associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) ->
@@ -126,7 +130,30 @@ associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Bedrock Agent
+%% @doc Creates an agent that orchestrates interactions between foundation
+%% models, data sources, software applications, user conversations, and APIs
+%% to carry out tasks to help customers.
+%%
+%% Specify the following fields for security purposes.
+%%
+%% `agentResourceRoleArn' – The ARN of the role with permissions to
+%% create an agent.
+%%
+%% (Optional) `customerEncryptionKeyArn' – The ARN of a KMS key to
+%% encrypt the creation of the agent.
+%%
+%% (Optional) `idleSessionTTLinSeconds' – Specify the number of seconds
+%% for which the agent should maintain session information. After this time
+%% expires, the subsequent `InvokeAgent' request begins a new session.
+%%
+%% To override the default prompt behavior for agent orchestration and to use
+%% advanced prompts, include a `promptOverrideConfiguration' object. For
+%% more information, see Advanced prompts:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html.
+%%
+%% If you agent fails to be created, the response returns a list of
+%% `failureReasons' alongside a list of `recommendedActions' for you
+%% to troubleshoot.
 create_agent(Client, Input) ->
     create_agent(Client, Input, []).
 create_agent(Client, Input0, Options0) ->
@@ -151,7 +178,23 @@ create_agent(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Action Group for existing Amazon Bedrock Agent
+%% @doc Creates an action group for an agent.
+%%
+%% An action group represents the actions that an agent can carry out for the
+%% customer by defining the APIs that an agent can call and the logic for
+%% calling them.
+%%
+%% To allow your agent to request the user for additional information when
+%% trying to complete a task, add an action group with the
+%% `parentActionGroupSignature' field set to `AMAZON.UserInput'. You
+%% must leave the `description', `apiSchema', and
+%% `actionGroupExecutor' fields blank for this action group. During
+%% orchestration, if your agent determines that it needs to invoke an API in
+%% an action group, but doesn't have enough information to complete the
+%% API request, it will invoke this action group instead and return an
+%% Observation:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_Observation.html
+%% reprompting the user for more information.
 create_agent_action_group(Client, AgentId, AgentVersion, Input) ->
     create_agent_action_group(Client, AgentId, AgentVersion, Input, []).
 create_agent_action_group(Client, AgentId, AgentVersion, Input0, Options0) ->
@@ -176,7 +219,7 @@ create_agent_action_group(Client, AgentId, AgentVersion, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Alias for an existing Amazon Bedrock Agent
+%% @doc Creates an alias of an agent that can be used to deploy the agent.
 create_agent_alias(Client, AgentId, Input) ->
     create_agent_alias(Client, AgentId, Input, []).
 create_agent_alias(Client, AgentId, Input0, Options0) ->
@@ -201,7 +244,10 @@ create_agent_alias(Client, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new data source
+%% @doc Sets up a data source to be added to a knowledge base.
+%%
+%% You can't change the `chunkingConfiguration' after you create the
+%% data source.
 create_data_source(Client, KnowledgeBaseId, Input) ->
     create_data_source(Client, KnowledgeBaseId, Input, []).
 create_data_source(Client, KnowledgeBaseId, Input0, Options0) ->
@@ -226,7 +272,47 @@ create_data_source(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new knowledge base
+%% @doc Creates a knowledge base that contains data sources from which
+%% information can be queried and used by LLMs.
+%%
+%% To create a knowledge base, you must first set up your data sources and
+%% configure a supported vector store. For more information, see Set up your
+%% data for ingestion:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup.html.
+%%
+%% If you prefer to let Amazon Bedrock create and manage a vector store for
+%% you in Amazon OpenSearch Service, use the console. For more information,
+%% see Create a knowledge base:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-create.
+%%
+%% Provide the `name' and an optional `description'.
+%%
+%% Provide the ARN with permissions to create a knowledge base in the
+%% `roleArn' field.
+%%
+%% Provide the embedding model to use in the `embeddingModelArn' field in
+%% the `knowledgeBaseConfiguration' object.
+%%
+%% Provide the configuration for your vector store in the
+%% `storageConfiguration' object.
+%%
+%% For an Amazon OpenSearch Service database, use the
+%% `opensearchServerlessConfiguration' object. For more information, see
+%% Create a vector store in Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup-oss.html.
+%%
+%% For an Amazon Aurora database, use the `RdsConfiguration' object. For
+%% more information, see Create a vector store in Amazon Aurora:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup-rds.html.
+%%
+%% For a Pinecone database, use the `pineconeConfiguration' object. For
+%% more information, see Create a vector store in Pinecone:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup-pinecone.html.
+%%
+%% For a Redis Enterprise Cloud database, use the
+%% `redisEnterpriseCloudConfiguration' object. For more information, see
+%% Create a vector store in Redis Enterprise Cloud:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup-redis.html.
 create_knowledge_base(Client, Input) ->
     create_knowledge_base(Client, Input, []).
 create_knowledge_base(Client, Input0, Options0) ->
@@ -251,7 +337,7 @@ create_knowledge_base(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Agent for existing Amazon Bedrock Agent
+%% @doc Deletes an agent.
 delete_agent(Client, AgentId, Input) ->
     delete_agent(Client, AgentId, Input, []).
 delete_agent(Client, AgentId, Input0, Options0) ->
@@ -277,7 +363,7 @@ delete_agent(Client, AgentId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Action Group for existing Amazon Bedrock Agent.
+%% @doc Deletes an action group in an agent.
 delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input) ->
     delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input, []).
 delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, Options0) ->
@@ -303,7 +389,7 @@ delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, 
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Alias for a Amazon Bedrock Agent
+%% @doc Deletes an alias of an agent.
 delete_agent_alias(Client, AgentAliasId, AgentId, Input) ->
     delete_agent_alias(Client, AgentAliasId, AgentId, Input, []).
 delete_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
@@ -328,7 +414,7 @@ delete_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Agent version for existing Amazon Bedrock Agent
+%% @doc Deletes a version of an agent.
 delete_agent_version(Client, AgentId, AgentVersion, Input) ->
     delete_agent_version(Client, AgentId, AgentVersion, Input, []).
 delete_agent_version(Client, AgentId, AgentVersion, Input0, Options0) ->
@@ -354,7 +440,7 @@ delete_agent_version(Client, AgentId, AgentVersion, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete an existing data source
+%% @doc Deletes a data source from a knowledge base.
 delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input) ->
     delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input, []).
 delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
@@ -379,7 +465,13 @@ delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete an existing knowledge base
+%% @doc Deletes a knowledge base.
+%%
+%% Before deleting a knowledge base, you should disassociate the knowledge
+%% base from any agents that it is associated with by making a
+%% DisassociateAgentKnowledgeBase:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_DisassociateAgentKnowledgeBase.html
+%% request.
 delete_knowledge_base(Client, KnowledgeBaseId, Input) ->
     delete_knowledge_base(Client, KnowledgeBaseId, Input, []).
 delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
@@ -404,7 +496,7 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociate an existing Knowledge Base from an Amazon Bedrock Agent
+%% @doc Disassociates a knowledge base from an agent.
 disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input) ->
     disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input, []).
 disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input0, Options0) ->
@@ -429,7 +521,7 @@ disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets an Agent for existing Amazon Bedrock Agent
+%% @doc Gets information about an agent.
 get_agent(Client, AgentId)
   when is_map(Client) ->
     get_agent(Client, AgentId, #{}, #{}).
@@ -454,7 +546,7 @@ get_agent(Client, AgentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an Action Group for existing Amazon Bedrock Agent Version
+%% @doc Gets information about an action group for an agent.
 get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion)
   when is_map(Client) ->
     get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, #{}, #{}).
@@ -479,7 +571,7 @@ get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes an Alias for a Amazon Bedrock Agent
+%% @doc Gets information about an alias of an agent.
 get_agent_alias(Client, AgentAliasId, AgentId)
   when is_map(Client) ->
     get_agent_alias(Client, AgentAliasId, AgentId, #{}, #{}).
@@ -504,8 +596,7 @@ get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a knowledge base associated to an existing Amazon Bedrock Agent
-%% Version
+%% @doc Gets information about a knowledge base associated with an agent.
 get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId)
   when is_map(Client) ->
     get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, #{}, #{}).
@@ -530,7 +621,7 @@ get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an Agent version for existing Amazon Bedrock Agent
+%% @doc Gets details about a version of an agent.
 get_agent_version(Client, AgentId, AgentVersion)
   when is_map(Client) ->
     get_agent_version(Client, AgentId, AgentVersion, #{}, #{}).
@@ -555,7 +646,7 @@ get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get an existing data source
+%% @doc Gets information about a data source.
 get_data_source(Client, DataSourceId, KnowledgeBaseId)
   when is_map(Client) ->
     get_data_source(Client, DataSourceId, KnowledgeBaseId, #{}, #{}).
@@ -580,7 +671,8 @@ get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get an ingestion job
+%% @doc Gets information about a ingestion job, in which a data source is
+%% added to a knowledge base.
 get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId)
   when is_map(Client) ->
     get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, #{}, #{}).
@@ -605,7 +697,7 @@ get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get an existing knowledge base
+%% @doc Gets information about a knoweldge base.
 get_knowledge_base(Client, KnowledgeBaseId)
   when is_map(Client) ->
     get_knowledge_base(Client, KnowledgeBaseId, #{}, #{}).
@@ -630,7 +722,7 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists an Action Group for existing Amazon Bedrock Agent Version
+%% @doc Lists the action groups for an agent and information about each one.
 list_agent_action_groups(Client, AgentId, AgentVersion, Input) ->
     list_agent_action_groups(Client, AgentId, AgentVersion, Input, []).
 list_agent_action_groups(Client, AgentId, AgentVersion, Input0, Options0) ->
@@ -655,7 +747,7 @@ list_agent_action_groups(Client, AgentId, AgentVersion, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all the Aliases for an Amazon Bedrock Agent
+%% @doc Lists the aliases of an agent and information about each one.
 list_agent_aliases(Client, AgentId, Input) ->
     list_agent_aliases(Client, AgentId, Input, []).
 list_agent_aliases(Client, AgentId, Input0, Options0) ->
@@ -680,8 +772,8 @@ list_agent_aliases(Client, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List of Knowledge Bases associated to an existing Amazon Bedrock
-%% Agent Version
+%% @doc Lists knowledge bases associated with an agent and information about
+%% each one.
 list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input) ->
     list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input, []).
 list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input0, Options0) ->
@@ -706,7 +798,7 @@ list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists Agent Versions
+%% @doc Lists the versions of an agent and information about each version.
 list_agent_versions(Client, AgentId, Input) ->
     list_agent_versions(Client, AgentId, Input, []).
 list_agent_versions(Client, AgentId, Input0, Options0) ->
@@ -731,7 +823,8 @@ list_agent_versions(Client, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists Agents
+%% @doc Lists the agents belonging to an account and information about each
+%% agent.
 list_agents(Client, Input) ->
     list_agents(Client, Input, []).
 list_agents(Client, Input0, Options0) ->
@@ -756,7 +849,8 @@ list_agents(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List data sources
+%% @doc Lists the data sources in a knowledge base and information about each
+%% one.
 list_data_sources(Client, KnowledgeBaseId, Input) ->
     list_data_sources(Client, KnowledgeBaseId, Input, []).
 list_data_sources(Client, KnowledgeBaseId, Input0, Options0) ->
@@ -781,7 +875,8 @@ list_data_sources(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List ingestion jobs
+%% @doc Lists the ingestion jobs for a data source and information about each
+%% of them.
 list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input) ->
     list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input, []).
 list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
@@ -806,7 +901,8 @@ list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List Knowledge Bases
+%% @doc Lists the knowledge bases in an account and information about each of
+%% them.
 list_knowledge_bases(Client, Input) ->
     list_knowledge_bases(Client, Input, []).
 list_knowledge_bases(Client, Input0, Options0) ->
@@ -831,7 +927,7 @@ list_knowledge_bases(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List tags for a resource
+%% @doc List all the tags for the resource you specify.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -856,7 +952,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Prepares an existing Amazon Bedrock Agent to receive runtime requests
+%% @doc Creates a `DRAFT' version of the agent that can be used for
+%% internal testing.
 prepare_agent(Client, AgentId, Input) ->
     prepare_agent(Client, AgentId, Input, []).
 prepare_agent(Client, AgentId, Input0, Options0) ->
@@ -881,7 +978,8 @@ prepare_agent(Client, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Start a new ingestion job
+%% @doc Begins an ingestion job, in which a data source is added to a
+%% knowledge base.
 start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input) ->
     start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input, []).
 start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
@@ -906,7 +1004,11 @@ start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Tag a resource
+%% @doc Associate tags with a resource.
+%%
+%% For more information, see Tagging resources:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Amazon Bedrock User Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -931,7 +1033,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Untag a resource
+%% @doc Remove tags from a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -957,7 +1059,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Amazon Bedrock Agent
+%% @doc Updates the configuration of an agent.
 update_agent(Client, AgentId, Input) ->
     update_agent(Client, AgentId, Input, []).
 update_agent(Client, AgentId, Input0, Options0) ->
@@ -982,7 +1084,7 @@ update_agent(Client, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Action Group for Amazon Bedrock Agent
+%% @doc Updates the configuration for an action group for an agent.
 update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input) ->
     update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input, []).
 update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, Options0) ->
@@ -1007,7 +1109,7 @@ update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Alias for an Amazon Bedrock Agent
+%% @doc Updates configurations for an alias of an agent.
 update_agent_alias(Client, AgentAliasId, AgentId, Input) ->
     update_agent_alias(Client, AgentAliasId, AgentId, Input, []).
 update_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
@@ -1032,8 +1134,8 @@ update_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Knowledge Base associated to an Amazon Bedrock
-%% Agent
+%% @doc Updates the configuration for a knowledge base that has been
+%% associated with an agent.
 update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input) ->
     update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input, []).
 update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input0, Options0) ->
@@ -1058,7 +1160,10 @@ update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Inpu
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update an existing data source
+%% @doc Updates configurations for a data source.
+%%
+%% You can't change the `chunkingConfiguration' after you create the
+%% data source. Specify the existing `chunkingConfiguration'.
 update_data_source(Client, DataSourceId, KnowledgeBaseId, Input) ->
     update_data_source(Client, DataSourceId, KnowledgeBaseId, Input, []).
 update_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
@@ -1083,7 +1188,26 @@ update_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update an existing knowledge base
+%% @doc Updates the configuration of a knowledge base with the fields that
+%% you specify.
+%%
+%% Because all fields will be overwritten, you must include the same values
+%% for fields that you want to keep the same.
+%%
+%% You can change the following fields:
+%%
+%% `name'
+%%
+%% `description'
+%%
+%% `roleArn'
+%%
+%% You can't change the `knowledgeBaseConfiguration' or
+%% `storageConfiguration' fields, so you must specify the same
+%% configurations as when you created the knowledge base. You can send a
+%% GetKnowledgeBase:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_GetKnowledgeBase.html
+%% request and copy the same configurations.
 update_knowledge_base(Client, KnowledgeBaseId, Input) ->
     update_knowledge_base(Client, KnowledgeBaseId, Input, []).
 update_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
