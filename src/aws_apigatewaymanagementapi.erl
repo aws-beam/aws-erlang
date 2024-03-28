@@ -11,13 +11,13 @@
 %% if applicable.
 -module(aws_apigatewaymanagementapi).
 
--export([delete_connection/3,
-         delete_connection/4,
-         get_connection/2,
-         get_connection/4,
+-export([delete_connection/4,
+         delete_connection/5,
+         get_connection/3,
          get_connection/5,
-         post_to_connection/3,
-         post_to_connection/4]).
+         get_connection/6,
+         post_to_connection/4,
+         post_to_connection/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -94,20 +94,20 @@
 %%====================================================================
 
 %% @doc Delete the connection with the provided id.
--spec delete_connection(aws_client:aws_client(), binary() | list(), delete_connection_request()) ->
+-spec delete_connection(aws_client:aws_client(), list() | binary(), binary() | list(), delete_connection_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
-delete_connection(Client, ConnectionId, Input) ->
-    delete_connection(Client, ConnectionId, Input, []).
+delete_connection(Client, Stage, ConnectionId, Input) ->
+    delete_connection(Client, Stage, ConnectionId, Input, []).
 
--spec delete_connection(aws_client:aws_client(), binary() | list(), delete_connection_request(), proplists:proplist()) ->
+-spec delete_connection(aws_client:aws_client(), list() | binary(), binary() | list(), delete_connection_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
-delete_connection(Client, ConnectionId, Input0, Options0) ->
+delete_connection(Client, Stage, ConnectionId, Input0, Options0) ->
     Method = delete,
-    Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
+    Path = ["/", Stage, "/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -128,29 +128,29 @@ delete_connection(Client, ConnectionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get information about the connection with the provided id.
--spec get_connection(aws_client:aws_client(), binary() | list()) ->
+-spec get_connection(aws_client:aws_client(), list() | binary(), binary() | list()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
-get_connection(Client, ConnectionId)
+get_connection(Client, Stage, ConnectionId)
   when is_map(Client) ->
-    get_connection(Client, ConnectionId, #{}, #{}).
+    get_connection(Client, Stage, ConnectionId, #{}, #{}).
 
--spec get_connection(aws_client:aws_client(), binary() | list(), map(), map()) ->
+-spec get_connection(aws_client:aws_client(), list() | binary(), binary() | list(), map(), map()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
-get_connection(Client, ConnectionId, QueryMap, HeadersMap)
+get_connection(Client, Stage, ConnectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_connection(Client, ConnectionId, QueryMap, HeadersMap, []).
+    get_connection(Client, Stage, ConnectionId, QueryMap, HeadersMap, []).
 
--spec get_connection(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_connection(aws_client:aws_client(), list() | binary(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
-get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options0)
+get_connection(Client, Stage, ConnectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
+    Path = ["/", Stage, "/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -165,20 +165,20 @@ get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Sends the provided data to the specified connection.
--spec post_to_connection(aws_client:aws_client(), binary() | list(), post_to_connection_request()) ->
+-spec post_to_connection(aws_client:aws_client(), list() | binary(), binary() | list(), post_to_connection_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, post_to_connection_errors(), tuple()}.
-post_to_connection(Client, ConnectionId, Input) ->
-    post_to_connection(Client, ConnectionId, Input, []).
+post_to_connection(Client, Stage, ConnectionId, Input) ->
+    post_to_connection(Client, Stage, ConnectionId, Input, []).
 
--spec post_to_connection(aws_client:aws_client(), binary() | list(), post_to_connection_request(), proplists:proplist()) ->
+-spec post_to_connection(aws_client:aws_client(), list() | binary(), binary() | list(), post_to_connection_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, post_to_connection_errors(), tuple()}.
-post_to_connection(Client, ConnectionId, Input0, Options0) ->
+post_to_connection(Client, Stage, ConnectionId, Input0, Options0) ->
     Method = post,
-    Path = ["/@connections/", aws_util:encode_uri(ConnectionId), ""],
+    Path = ["/", Stage, "/@connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
