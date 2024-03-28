@@ -92,6 +92,799 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% put_channel_policy_request() :: #{
+%%   <<"Policy">> := string()
+%% }
+-type put_channel_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_request() :: #{}
+-type delete_channel_request() :: #{}.
+
+%% Example:
+%% get_channel_request() :: #{}
+-type get_channel_request() :: #{}.
+
+%% Example:
+%% put_channel_policy_response() :: #{}
+-type put_channel_policy_response() :: #{}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_endpoint_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ContainerType">> := list(any()),
+%%   <<"Description">> => string(),
+%%   <<"HlsManifests">> => list(create_hls_manifest_configuration()()),
+%%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()()),
+%%   <<"OriginEndpointName">> := string(),
+%%   <<"Segment">> => segment(),
+%%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"Tags">> => map()
+%% }
+-type create_origin_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_list_configuration() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"ChannelName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ModifiedAt">> => [non_neg_integer()]
+%% }
+-type channel_list_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"ChannelName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_group_list_configuration() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ModifiedAt">> => [non_neg_integer()]
+%% }
+-type channel_group_list_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_response() :: #{}
+-type delete_channel_response() :: #{}.
+
+
+%% Example:
+%% list_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"ManifestName">> => string(),
+%%   <<"Url">> => [string()]
+%% }
+-type list_hls_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_endpoint_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ContainerType">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
+%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"Segment">> => segment(),
+%%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"Tags">> => map()
+%% }
+-type create_origin_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
+%%   <<"ScteHls">> => scte_hls()
+%% }
+-type create_hls_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_origin_endpoint_request() :: #{
+%%   <<"ContainerType">> := list(any()),
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"HlsManifests">> => list(create_hls_manifest_configuration()()),
+%%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()()),
+%%   <<"Segment">> => segment(),
+%%   <<"StartoverWindowSeconds">> => [integer()]
+%% }
+-type update_origin_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_policy_request() :: #{}
+-type delete_channel_policy_request() :: #{}.
+
+
+%% Example:
+%% put_origin_endpoint_policy_request() :: #{
+%%   <<"Policy">> := string()
+%% }
+-type put_origin_endpoint_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_origin_endpoint_response() :: #{}
+-type delete_origin_endpoint_response() :: #{}.
+
+%% Example:
+%% delete_origin_endpoint_request() :: #{}
+-type delete_origin_endpoint_request() :: #{}.
+
+
+%% Example:
+%% get_low_latency_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
+%%   <<"ScteHls">> => scte_hls(),
+%%   <<"Url">> => [string()]
+%% }
+-type get_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
+%%   <<"ScteHls">> => scte_hls(),
+%%   <<"Url">> => [string()]
+%% }
+-type get_hls_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_channel_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment() :: #{
+%%   <<"Encryption">> => encryption(),
+%%   <<"IncludeIframeOnlyStreams">> => [boolean()],
+%%   <<"Scte">> => scte(),
+%%   <<"SegmentDurationSeconds">> => [integer()],
+%%   <<"SegmentName">> => [string()],
+%%   <<"TsIncludeDvbSubtitles">> => [boolean()],
+%%   <<"TsUseAudioRenditionGroup">> => [boolean()]
+%% }
+-type segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_endpoints_response() :: #{
+%%   <<"Items">> => list(origin_endpoint_list_configuration()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_origin_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_group_request() :: #{}
+-type delete_channel_group_request() :: #{}.
+
+%% Example:
+%% put_origin_endpoint_policy_response() :: #{}
+-type put_origin_endpoint_policy_response() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"ConflictExceptionType">> => list(any()),
+%%   <<"Message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceTypeNotFound">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_group_request() :: #{
+%%   <<"ChannelGroupName">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_origin_endpoint_policy_response() :: #{}
+-type delete_origin_endpoint_policy_response() :: #{}.
+
+%% Example:
+%% get_origin_endpoint_policy_request() :: #{}
+-type get_origin_endpoint_policy_request() :: #{}.
+
+%% Example:
+%% delete_channel_policy_response() :: #{}
+-type delete_channel_policy_response() :: #{}.
+
+
+%% Example:
+%% update_channel_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string()
+%% }
+-type update_channel_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% speke_key_provider() :: #{
+%%   <<"DrmSystems">> => list(list(any())()),
+%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
+%%   <<"ResourceId">> => [string()],
+%%   <<"RoleArn">> => [string()],
+%%   <<"Url">> => [string()]
+%% }
+-type speke_key_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption() :: #{
+%%   <<"ConstantInitializationVector">> => [string()],
+%%   <<"EncryptionMethod">> => encryption_method(),
+%%   <<"KeyRotationIntervalSeconds">> => [integer()],
+%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% }
+-type encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingest_endpoint() :: #{
+%%   <<"Id">> => [string()],
+%%   <<"Url">> => [string()]
+%% }
+-type ingest_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_group_response() :: #{}
+-type delete_channel_group_response() :: #{}.
+
+
+%% Example:
+%% create_channel_request() :: #{
+%%   <<"ChannelName">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_configuration() :: #{
+%%   <<"End">> => [non_neg_integer()],
+%%   <<"ManifestFilter">> => [string()],
+%%   <<"Start">> => [non_neg_integer()],
+%%   <<"TimeDelaySeconds">> => [integer()]
+%% }
+-type filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_policy_response() :: #{
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"ChannelName">> => [string()],
+%%   <<"Policy">> => string()
+%% }
+-type get_channel_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_response() :: #{
+%%   <<"Items">> => list(channel_list_configuration()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_channels_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_origin_endpoint_policy_request() :: #{}
+-type delete_origin_endpoint_policy_request() :: #{}.
+
+
+%% Example:
+%% update_channel_group_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"EgressDomain">> => [string()],
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"Tags">> => map()
+%% }
+-type update_channel_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string()
+%% }
+-type update_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_contract_configuration() :: #{
+%%   <<"PresetSpeke20Audio">> => list(any()),
+%%   <<"PresetSpeke20Video">> => list(any())
+%% }
+-type encryption_contract_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_groups_response() :: #{
+%%   <<"Items">> => list(channel_group_list_configuration()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_channel_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_method() :: #{
+%%   <<"CmafEncryptionMethod">> => list(any()),
+%%   <<"TsEncryptionMethod">> => list(any())
+%% }
+-type encryption_method() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte_hls() :: #{
+%%   <<"AdMarkerHls">> => list(any())
+%% }
+-type scte_hls() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ValidationExceptionType">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_low_latency_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"ManifestName">> => string(),
+%%   <<"Url">> => [string()]
+%% }
+-type list_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_group_request() :: #{}
+-type get_channel_group_request() :: #{}.
+
+
+%% Example:
+%% scte() :: #{
+%%   <<"ScteFilter">> => list(list(any())())
+%% }
+-type scte() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"ChannelName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"Tags">> => map()
+%% }
+-type get_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_origin_endpoint_request() :: #{}
+-type get_origin_endpoint_request() :: #{}.
+
+
+%% Example:
+%% update_channel_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"ChannelName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"Tags">> => map()
+%% }
+-type update_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_endpoint_list_configuration() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ContainerType">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"HlsManifests">> => list(list_hls_manifest_configuration()()),
+%%   <<"LowLatencyHlsManifests">> => list(list_low_latency_hls_manifest_configuration()()),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OriginEndpointName">> => string()
+%% }
+-type origin_endpoint_list_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_policy_request() :: #{}
+-type get_channel_policy_request() :: #{}.
+
+
+%% Example:
+%% get_channel_group_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"EgressDomain">> => [string()],
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"Tags">> => map()
+%% }
+-type get_channel_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_low_latency_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
+%%   <<"ScteHls">> => scte_hls()
+%% }
+-type create_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_group_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"EgressDomain">> => [string()],
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_origin_endpoint_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ContainerType">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
+%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"Segment">> => segment(),
+%%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"Tags">> => map()
+%% }
+-type update_origin_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_endpoints_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_origin_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_origin_endpoint_policy_response() :: #{
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type get_origin_endpoint_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_origin_endpoint_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ContainerType">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
+%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"Segment">> => segment(),
+%%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"Tags">> => map()
+%% }
+-type get_origin_endpoint_response() :: #{binary() => any()}.
+
+-type create_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_channel_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_origin_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_channel_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_channel_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_origin_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_origin_endpoint_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type get_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_channel_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_channel_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_origin_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_origin_endpoint_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_channel_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_channels_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_origin_endpoints_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception().
+
+-type put_channel_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_origin_endpoint_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception().
+
+-type untag_resource_errors() ::
+    validation_exception().
+
+-type update_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_channel_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_origin_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -105,8 +898,17 @@
 %% content. You can create only one channel with each request. We recommend
 %% that you spread out channels between channel groups, such as putting
 %% redundant channels in the same AWS Region in different channel groups.
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_request()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, ChannelGroupName, Input) ->
     create_channel(Client, ChannelGroupName, Input, []).
+
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_request(), proplists:proplist()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, ChannelGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel"],
@@ -138,8 +940,17 @@ create_channel(Client, ChannelGroupName, Input0, Options0) ->
 %% URLs for stream delivery. All channels and origin endpoints within the
 %% channel group are guaranteed to share the DNS. You can create only one
 %% channel group with each request.
+-spec create_channel_group(aws_client:aws_client(), create_channel_group_request()) ->
+    {ok, create_channel_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_group_errors(), tuple()}.
 create_channel_group(Client, Input) ->
     create_channel_group(Client, Input, []).
+
+-spec create_channel_group(aws_client:aws_client(), create_channel_group_request(), proplists:proplist()) ->
+    {ok, create_channel_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_group_errors(), tuple()}.
 create_channel_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup"],
@@ -171,8 +982,17 @@ create_channel_group(Client, Input0, Options0) ->
 %% gives players and downstream CDNs (such as Amazon CloudFront) access to
 %% the content for playback. Content can't be served from a channel until
 %% it has an endpoint. You can create only one endpoint with each request.
+-spec create_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), create_origin_endpoint_request()) ->
+    {ok, create_origin_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_origin_endpoint_errors(), tuple()}.
 create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input) ->
     create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input, []).
+
+-spec create_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), create_origin_endpoint_request(), proplists:proplist()) ->
+    {ok, create_origin_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_origin_endpoint_errors(), tuple()}.
 create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint"],
@@ -202,8 +1022,17 @@ create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input0, Options0) 
 %%
 %% You must delete the channel's origin endpoints before you can delete
 %% the channel.
+-spec delete_channel(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_request()) ->
+    {ok, delete_channel_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelGroupName, ChannelName, Input) ->
     delete_channel(Client, ChannelGroupName, ChannelName, Input, []).
+
+-spec delete_channel(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
+    {ok, delete_channel_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/"],
@@ -232,8 +1061,17 @@ delete_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
 %% before you can delete the channel group. If you delete a channel group,
 %% you'll lose access to the egress domain and will have to create a new
 %% channel group to replace it.
+-spec delete_channel_group(aws_client:aws_client(), binary() | list(), delete_channel_group_request()) ->
+    {ok, delete_channel_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_group_errors(), tuple()}.
 delete_channel_group(Client, ChannelGroupName, Input) ->
     delete_channel_group(Client, ChannelGroupName, Input, []).
+
+-spec delete_channel_group(aws_client:aws_client(), binary() | list(), delete_channel_group_request(), proplists:proplist()) ->
+    {ok, delete_channel_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_group_errors(), tuple()}.
 delete_channel_group(Client, ChannelGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), ""],
@@ -257,8 +1095,17 @@ delete_channel_group(Client, ChannelGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a channel policy.
+-spec delete_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_policy_request()) ->
+    {ok, delete_channel_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_policy_errors(), tuple()}.
 delete_channel_policy(Client, ChannelGroupName, ChannelName, Input) ->
     delete_channel_policy(Client, ChannelGroupName, ChannelName, Input, []).
+
+-spec delete_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_policy_request(), proplists:proplist()) ->
+    {ok, delete_channel_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_policy_errors(), tuple()}.
 delete_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/policy"],
@@ -286,8 +1133,17 @@ delete_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) -
 %% Delete the endpoint if it should no longer respond to playback requests.
 %% You must delete all endpoints from a channel before you can delete the
 %% channel.
+-spec delete_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_request()) ->
+    {ok, delete_origin_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_origin_endpoint_errors(), tuple()}.
 delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
+
+-spec delete_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_request(), proplists:proplist()) ->
+    {ok, delete_origin_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_origin_endpoint_errors(), tuple()}.
 delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), ""],
@@ -311,8 +1167,17 @@ delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an origin endpoint policy.
+-spec delete_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_policy_request()) ->
+    {ok, delete_origin_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_origin_endpoint_policy_errors(), tuple()}.
 delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
+
+-spec delete_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_policy_request(), proplists:proplist()) ->
+    {ok, delete_origin_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_origin_endpoint_policy_errors(), tuple()}.
 delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input0, Options0) ->
     Method = delete,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/policy"],
@@ -338,14 +1203,26 @@ delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpo
 %% @doc Retrieves the specified channel that's configured in AWS
 %% Elemental MediaPackage, including the origin endpoints that are associated
 %% with it.
+-spec get_channel(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_channel_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_errors(), tuple()}.
 get_channel(Client, ChannelGroupName, ChannelName)
   when is_map(Client) ->
     get_channel(Client, ChannelGroupName, ChannelName, #{}, #{}).
 
+-spec get_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_channel_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_errors(), tuple()}.
 get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, []).
 
+-spec get_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_channel_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_errors(), tuple()}.
 get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/"],
@@ -365,14 +1242,26 @@ get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, Options
 %% @doc Retrieves the specified channel group that's configured in AWS
 %% Elemental MediaPackage, including the channels and origin endpoints that
 %% are associated with it.
+-spec get_channel_group(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_channel_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_group_errors(), tuple()}.
 get_channel_group(Client, ChannelGroupName)
   when is_map(Client) ->
     get_channel_group(Client, ChannelGroupName, #{}, #{}).
 
+-spec get_channel_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_channel_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_group_errors(), tuple()}.
 get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap, []).
 
+-spec get_channel_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_channel_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_group_errors(), tuple()}.
 get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), ""],
@@ -394,14 +1283,26 @@ get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
 %%
 %% With policies, you can specify who has access to AWS resources and what
 %% actions they can perform on those resources.
+-spec get_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_channel_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_policy_errors(), tuple()}.
 get_channel_policy(Client, ChannelGroupName, ChannelName)
   when is_map(Client) ->
     get_channel_policy(Client, ChannelGroupName, ChannelName, #{}, #{}).
 
+-spec get_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_channel_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_policy_errors(), tuple()}.
 get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, []).
 
+-spec get_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_channel_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_policy_errors(), tuple()}.
 get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/policy"],
@@ -421,14 +1322,26 @@ get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, 
 %% @doc Retrieves the specified origin endpoint that's configured in AWS
 %% Elemental MediaPackage to obtain its playback URL and to view the
 %% packaging settings that it's currently using.
+-spec get_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_origin_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_origin_endpoint_errors(), tuple()}.
 get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName)
   when is_map(Client) ->
     get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, #{}, #{}).
 
+-spec get_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_origin_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_origin_endpoint_errors(), tuple()}.
 get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap, []).
 
+-spec get_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_origin_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_origin_endpoint_errors(), tuple()}.
 get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), ""],
@@ -447,14 +1360,26 @@ get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Q
 
 %% @doc Retrieves the specified origin endpoint policy that's configured
 %% in AWS Elemental MediaPackage.
+-spec get_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_origin_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_origin_endpoint_policy_errors(), tuple()}.
 get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName)
   when is_map(Client) ->
     get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, #{}, #{}).
 
+-spec get_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_origin_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_origin_endpoint_policy_errors(), tuple()}.
 get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap, []).
 
+-spec get_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_origin_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_origin_endpoint_policy_errors(), tuple()}.
 get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/policy"],
@@ -474,14 +1399,26 @@ get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
 %% @doc Retrieves all channel groups that are configured in AWS Elemental
 %% MediaPackage, including the channels and origin endpoints that are
 %% associated with it.
+-spec list_channel_groups(aws_client:aws_client()) ->
+    {ok, list_channel_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_groups_errors(), tuple()}.
 list_channel_groups(Client)
   when is_map(Client) ->
     list_channel_groups(Client, #{}, #{}).
 
+-spec list_channel_groups(aws_client:aws_client(), map(), map()) ->
+    {ok, list_channel_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_groups_errors(), tuple()}.
 list_channel_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_groups(Client, QueryMap, HeadersMap, []).
 
+-spec list_channel_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_channel_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_groups_errors(), tuple()}.
 list_channel_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup"],
@@ -506,14 +1443,26 @@ list_channel_groups(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves all channels in a specific channel group that are
 %% configured in AWS Elemental MediaPackage, including the origin endpoints
 %% that are associated with it.
+-spec list_channels(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, ChannelGroupName)
   when is_map(Client) ->
     list_channels(Client, ChannelGroupName, #{}, #{}).
 
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, ChannelGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, ChannelGroupName, QueryMap, HeadersMap, []).
 
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel"],
@@ -537,14 +1486,26 @@ list_channels(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves all origin endpoints in a specific channel that are
 %% configured in AWS Elemental MediaPackage.
+-spec list_origin_endpoints(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_origin_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_origin_endpoints_errors(), tuple()}.
 list_origin_endpoints(Client, ChannelGroupName, ChannelName)
   when is_map(Client) ->
     list_origin_endpoints(Client, ChannelGroupName, ChannelName, #{}, #{}).
 
+-spec list_origin_endpoints(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_origin_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_origin_endpoints_errors(), tuple()}.
 list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, []).
 
+-spec list_origin_endpoints(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_origin_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_origin_endpoints_errors(), tuple()}.
 list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint"],
@@ -567,14 +1528,26 @@ list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags assigned to a resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -596,8 +1569,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% With policies, you can specify who has access to AWS resources and what
 %% actions they can perform on those resources. You can attach only one
 %% policy with each request.
+-spec put_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), put_channel_policy_request()) ->
+    {ok, put_channel_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_channel_policy_errors(), tuple()}.
 put_channel_policy(Client, ChannelGroupName, ChannelName, Input) ->
     put_channel_policy(Client, ChannelGroupName, ChannelName, Input, []).
+
+-spec put_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), put_channel_policy_request(), proplists:proplist()) ->
+    {ok, put_channel_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_channel_policy_errors(), tuple()}.
 put_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/policy"],
@@ -623,8 +1605,17 @@ put_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
 %% @doc Attaches an IAM policy to the specified origin endpoint.
 %%
 %% You can attach only one policy with each request.
+-spec put_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_origin_endpoint_policy_request()) ->
+    {ok, put_origin_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_origin_endpoint_policy_errors(), tuple()}.
 put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
+
+-spec put_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_origin_endpoint_policy_request(), proplists:proplist()) ->
+    {ok, put_origin_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_origin_endpoint_policy_errors(), tuple()}.
 put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), "/policy"],
@@ -660,8 +1651,17 @@ put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
 %% with the resource. If you
 %% specify a tag key that is already associated with the resource, the new
 %% tag value that you specify replaces the previous value for that tag.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -685,8 +1685,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -719,8 +1728,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Any edits you make that impact the video output may not be reflected for a
 %% few minutes.
+-spec update_channel(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_request()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelGroupName, ChannelName, Input) ->
     update_channel(Client, ChannelGroupName, ChannelName, Input, []).
+
+-spec update_channel(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_request(), proplists:proplist()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/"],
@@ -753,8 +1771,17 @@ update_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
 %%
 %% Any edits you make that impact the video output may not be reflected for a
 %% few minutes.
+-spec update_channel_group(aws_client:aws_client(), binary() | list(), update_channel_group_request()) ->
+    {ok, update_channel_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_group_errors(), tuple()}.
 update_channel_group(Client, ChannelGroupName, Input) ->
     update_channel_group(Client, ChannelGroupName, Input, []).
+
+-spec update_channel_group(aws_client:aws_client(), binary() | list(), update_channel_group_request(), proplists:proplist()) ->
+    {ok, update_channel_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_group_errors(), tuple()}.
 update_channel_group(Client, ChannelGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), ""],
@@ -786,8 +1813,17 @@ update_channel_group(Client, ChannelGroupName, Input0, Options0) ->
 %%
 %% Any edits you make that impact the video output may not be reflected for a
 %% few minutes.
+-spec update_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_origin_endpoint_request()) ->
+    {ok, update_origin_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, update_origin_endpoint_errors(), tuple()}.
 update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
+
+-spec update_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_origin_endpoint_request(), proplists:proplist()) ->
+    {ok, update_origin_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, update_origin_endpoint_errors(), tuple()}.
 update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input0, Options0) ->
     Method = put,
     Path = ["/channelGroup/", aws_util:encode_uri(ChannelGroupName), "/channel/", aws_util:encode_uri(ChannelName), "/originEndpoint/", aws_util:encode_uri(OriginEndpointName), ""],
@@ -816,7 +1852,7 @@ update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

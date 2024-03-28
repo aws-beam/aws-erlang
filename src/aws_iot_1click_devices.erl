@@ -43,6 +43,332 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_devices_request() :: #{
+%%   <<"DeviceType">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_devices_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_description() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"DeviceId">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"RemainingLife">> => float(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => string()
+%% }
+-type device_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_device_state_request() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type update_device_state_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unclaim_device_request() :: #{}
+-type unclaim_device_request() :: #{}.
+
+
+%% Example:
+%% finalize_device_claim_request() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type finalize_device_claim_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_device_state_response() :: #{}
+-type update_device_state_response() :: #{}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% claim_devices_by_claim_code_request() :: #{}
+-type claim_devices_by_claim_code_request() :: #{}.
+
+
+%% Example:
+%% list_device_events_response() :: #{
+%%   <<"Events">> => list(device_event()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_device_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% initiate_device_claim_response() :: #{
+%%   <<"State">> => string()
+%% }
+-type initiate_device_claim_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_events_request() :: #{
+%%   <<"FromTimeStamp">> := non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ToTimeStamp">> := non_neg_integer()
+%% }
+-type list_device_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_methods_request() :: #{}
+-type get_device_methods_request() :: #{}.
+
+%% Example:
+%% initiate_device_claim_request() :: #{}
+-type initiate_device_claim_request() :: #{}.
+
+%% Example:
+%% describe_device_request() :: #{}
+-type describe_device_request() :: #{}.
+
+
+%% Example:
+%% finalize_device_claim_response() :: #{
+%%   <<"State">> => string()
+%% }
+-type finalize_device_claim_response() :: #{binary() => any()}.
+
+%% Example:
+%% attributes() :: #{}
+-type attributes() :: #{}.
+
+
+%% Example:
+%% get_device_methods_response() :: #{
+%%   <<"DeviceMethods">> => list(device_method()())
+%% }
+-type get_device_methods_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_devices_response() :: #{
+%%   <<"Devices">> => list(device_description()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_devices_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_device_method_request() :: #{
+%%   <<"DeviceMethod">> => device_method(),
+%%   <<"DeviceMethodParameters">> => string()
+%% }
+-type invoke_device_method_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% claim_devices_by_claim_code_response() :: #{
+%%   <<"ClaimCode">> => string(),
+%%   <<"Total">> => integer()
+%% }
+-type claim_devices_by_claim_code_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_event() :: #{
+%%   <<"Device">> => device(),
+%%   <<"StdEvent">> => string()
+%% }
+-type device_event() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% unclaim_device_response() :: #{
+%%   <<"State">> => string()
+%% }
+-type unclaim_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% device() :: #{
+%%   <<"Attributes">> => attributes(),
+%%   <<"DeviceId">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type device() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_device_method_response() :: #{
+%%   <<"DeviceMethodResponse">> => string()
+%% }
+-type invoke_device_method_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% precondition_failed_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type precondition_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% range_not_satisfiable_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type range_not_satisfiable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_conflict_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type resource_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_method() :: #{
+%%   <<"DeviceType">> => string(),
+%%   <<"MethodName">> => string()
+%% }
+-type device_method() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_device_response() :: #{
+%%   <<"DeviceDescription">> => device_description()
+%% }
+-type describe_device_response() :: #{binary() => any()}.
+
+-type claim_devices_by_claim_code_errors() ::
+    invalid_request_exception() | 
+    forbidden_exception() | 
+    internal_failure_exception().
+
+-type describe_device_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type finalize_device_claim_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_device_methods_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type initiate_device_claim_errors() ::
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type invoke_device_method_errors() ::
+    resource_conflict_exception() | 
+    range_not_satisfiable_exception() | 
+    precondition_failed_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_device_events_errors() ::
+    range_not_satisfiable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_devices_errors() ::
+    range_not_satisfiable_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type unclaim_device_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_device_state_errors() ::
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -50,8 +376,17 @@
 %% @doc Adds device(s) to your account (i.e., claim one or more devices) if
 %% and only if you
 %% received a claim code with the device(s).
+-spec claim_devices_by_claim_code(aws_client:aws_client(), binary() | list(), claim_devices_by_claim_code_request()) ->
+    {ok, claim_devices_by_claim_code_response(), tuple()} |
+    {error, any()} |
+    {error, claim_devices_by_claim_code_errors(), tuple()}.
 claim_devices_by_claim_code(Client, ClaimCode, Input) ->
     claim_devices_by_claim_code(Client, ClaimCode, Input, []).
+
+-spec claim_devices_by_claim_code(aws_client:aws_client(), binary() | list(), claim_devices_by_claim_code_request(), proplists:proplist()) ->
+    {ok, claim_devices_by_claim_code_response(), tuple()} |
+    {error, any()} |
+    {error, claim_devices_by_claim_code_errors(), tuple()}.
 claim_devices_by_claim_code(Client, ClaimCode, Input0, Options0) ->
     Method = put,
     Path = ["/claims/", aws_util:encode_uri(ClaimCode), ""],
@@ -77,14 +412,26 @@ claim_devices_by_claim_code(Client, ClaimCode, Input0, Options0) ->
 %% @doc Given a device ID, returns a DescribeDeviceResponse object describing
 %% the
 %% details of the device.
+-spec describe_device(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_device_response(), tuple()} |
+    {error, any()} |
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, DeviceId)
   when is_map(Client) ->
     describe_device(Client, DeviceId, #{}, #{}).
 
+-spec describe_device(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_device_response(), tuple()} |
+    {error, any()} |
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, DeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_device(Client, DeviceId, QueryMap, HeadersMap, []).
 
+-spec describe_device(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_device_response(), tuple()} |
+    {error, any()} |
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, DeviceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), ""],
@@ -108,8 +455,17 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap, Options0)
 %% event,
 %% and finalizing the claim. For a device of type button, a device event can
 %% be published by simply clicking the device.
+-spec finalize_device_claim(aws_client:aws_client(), binary() | list(), finalize_device_claim_request()) ->
+    {ok, finalize_device_claim_response(), tuple()} |
+    {error, any()} |
+    {error, finalize_device_claim_errors(), tuple()}.
 finalize_device_claim(Client, DeviceId, Input) ->
     finalize_device_claim(Client, DeviceId, Input, []).
+
+-spec finalize_device_claim(aws_client:aws_client(), binary() | list(), finalize_device_claim_request(), proplists:proplist()) ->
+    {ok, finalize_device_claim_response(), tuple()} |
+    {error, any()} |
+    {error, finalize_device_claim_errors(), tuple()}.
 finalize_device_claim(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/finalize-claim"],
@@ -134,14 +490,26 @@ finalize_device_claim(Client, DeviceId, Input0, Options0) ->
 
 %% @doc Given a device ID, returns the invokable methods associated with the
 %% device.
+-spec get_device_methods(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_device_methods_response(), tuple()} |
+    {error, any()} |
+    {error, get_device_methods_errors(), tuple()}.
 get_device_methods(Client, DeviceId)
   when is_map(Client) ->
     get_device_methods(Client, DeviceId, #{}, #{}).
 
+-spec get_device_methods(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_device_methods_response(), tuple()} |
+    {error, any()} |
+    {error, get_device_methods_errors(), tuple()}.
 get_device_methods(Client, DeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_methods(Client, DeviceId, QueryMap, HeadersMap, []).
 
+-spec get_device_methods(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_device_methods_response(), tuple()} |
+    {error, any()} |
+    {error, get_device_methods_errors(), tuple()}.
 get_device_methods(Client, DeviceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/methods"],
@@ -165,8 +533,17 @@ get_device_methods(Client, DeviceId, QueryMap, HeadersMap, Options0)
 %% event,
 %% and finalizing the claim. For a device of type button, a device event can
 %% be published by simply clicking the device.
+-spec initiate_device_claim(aws_client:aws_client(), binary() | list(), initiate_device_claim_request()) ->
+    {ok, initiate_device_claim_response(), tuple()} |
+    {error, any()} |
+    {error, initiate_device_claim_errors(), tuple()}.
 initiate_device_claim(Client, DeviceId, Input) ->
     initiate_device_claim(Client, DeviceId, Input, []).
+
+-spec initiate_device_claim(aws_client:aws_client(), binary() | list(), initiate_device_claim_request(), proplists:proplist()) ->
+    {ok, initiate_device_claim_response(), tuple()} |
+    {error, any()} |
+    {error, initiate_device_claim_errors(), tuple()}.
 initiate_device_claim(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/initiate-claim"],
@@ -194,8 +571,17 @@ initiate_device_claim(Client, DeviceId, Input0, Options0) ->
 %% parameters).
 %%
 %% See the &quot;Example POST&quot; code snippet below.
+-spec invoke_device_method(aws_client:aws_client(), binary() | list(), invoke_device_method_request()) ->
+    {ok, invoke_device_method_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_device_method_errors(), tuple()}.
 invoke_device_method(Client, DeviceId, Input) ->
     invoke_device_method(Client, DeviceId, Input, []).
+
+-spec invoke_device_method(aws_client:aws_client(), binary() | list(), invoke_device_method_request(), proplists:proplist()) ->
+    {ok, invoke_device_method_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_device_method_errors(), tuple()}.
 invoke_device_method(Client, DeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/methods"],
@@ -221,14 +607,26 @@ invoke_device_method(Client, DeviceId, Input0, Options0) ->
 %% @doc Using a device ID, returns a DeviceEventsResponse object containing
 %% an
 %% array of events for the device.
+-spec list_device_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_device_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_device_events_errors(), tuple()}.
 list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp)
   when is_map(Client) ->
     list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, #{}, #{}).
 
+-spec list_device_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_device_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_device_events_errors(), tuple()}.
 list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap, []).
 
+-spec list_device_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_device_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_device_events_errors(), tuple()}.
 list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/events"],
@@ -254,14 +652,26 @@ list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, Heade
 
 %% @doc Lists the 1-Click compatible devices associated with your AWS
 %% account.
+-spec list_devices(aws_client:aws_client()) ->
+    {ok, list_devices_response(), tuple()} |
+    {error, any()} |
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client)
   when is_map(Client) ->
     list_devices(Client, #{}, #{}).
 
+-spec list_devices(aws_client:aws_client(), map(), map()) ->
+    {ok, list_devices_response(), tuple()} |
+    {error, any()} |
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices(Client, QueryMap, HeadersMap, []).
 
+-spec list_devices(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_devices_response(), tuple()} |
+    {error, any()} |
+    {error, list_devices_errors(), tuple()}.
 list_devices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices"],
@@ -285,14 +695,26 @@ list_devices(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags associated with the specified resource ARN.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -315,8 +737,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits
 %% for the maximum number of tags allowed per
 %% resource.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -340,8 +771,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a device from your AWS account using its device ID.
+-spec unclaim_device(aws_client:aws_client(), binary() | list(), unclaim_device_request()) ->
+    {ok, unclaim_device_response(), tuple()} |
+    {error, any()} |
+    {error, unclaim_device_errors(), tuple()}.
 unclaim_device(Client, DeviceId, Input) ->
     unclaim_device(Client, DeviceId, Input, []).
+
+-spec unclaim_device(aws_client:aws_client(), binary() | list(), unclaim_device_request(), proplists:proplist()) ->
+    {ok, unclaim_device_response(), tuple()} |
+    {error, any()} |
+    {error, unclaim_device_errors(), tuple()}.
 unclaim_device(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/unclaim"],
@@ -367,8 +807,17 @@ unclaim_device(Client, DeviceId, Input0, Options0) ->
 %% @doc Using tag keys, deletes the tags (key/value pairs) associated with
 %% the specified
 %% resource ARN.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -394,8 +843,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Using a Boolean value (true or false), this operation
 %% enables or disables the device given a device ID.
+-spec update_device_state(aws_client:aws_client(), binary() | list(), update_device_state_request()) ->
+    {ok, update_device_state_response(), tuple()} |
+    {error, any()} |
+    {error, update_device_state_errors(), tuple()}.
 update_device_state(Client, DeviceId, Input) ->
     update_device_state(Client, DeviceId, Input, []).
+
+-spec update_device_state(aws_client:aws_client(), binary() | list(), update_device_state_request(), proplists:proplist()) ->
+    {ok, update_device_state_response(), tuple()} |
+    {error, any()} |
+    {error, update_device_state_errors(), tuple()}.
 update_device_state(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), "/state"],
@@ -422,7 +880,7 @@ update_device_state(Client, DeviceId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

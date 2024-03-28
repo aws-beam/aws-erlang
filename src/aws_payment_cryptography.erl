@@ -76,6 +76,667 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% export_tr31_key_block() :: #{
+%%   <<"WrappingKeyIdentifier">> => string()
+%% }
+-type export_tr31_key_block() :: #{binary() => any()}.
+
+%% Example:
+%% get_alias_output() :: #{
+%%   <<"Alias">> => alias()
+%% }
+-type get_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_alias_input() :: #{
+%%   <<"AliasName">> := string()
+%% }
+-type get_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% key_modes_of_use() :: #{
+%%   <<"Decrypt">> => [boolean()],
+%%   <<"DeriveKey">> => [boolean()],
+%%   <<"Encrypt">> => [boolean()],
+%%   <<"Generate">> => [boolean()],
+%%   <<"NoRestrictions">> => [boolean()],
+%%   <<"Sign">> => [boolean()],
+%%   <<"Unwrap">> => [boolean()],
+%%   <<"Verify">> => [boolean()],
+%%   <<"Wrap">> => [boolean()]
+%% }
+-type key_modes_of_use() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_for_export_input() :: #{
+%%   <<"KeyMaterialType">> := string(),
+%%   <<"SigningKeyAlgorithm">> := string()
+%% }
+-type get_parameters_for_export_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_keys_input() :: #{
+%%   <<"KeyState">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_keys_input() :: #{binary() => any()}.
+
+%% Example:
+%% key_summary() :: #{
+%%   <<"Enabled">> => [boolean()],
+%%   <<"Exportable">> => [boolean()],
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyAttributes">> => key_attributes(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"KeyState">> => string()
+%% }
+-type key_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stop_key_usage_input() :: #{
+%%   <<"KeyIdentifier">> := string()
+%% }
+-type stop_key_usage_input() :: #{binary() => any()}.
+
+%% Example:
+%% import_tr34_key_block() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"ImportToken">> => string(),
+%%   <<"KeyBlockFormat">> => string(),
+%%   <<"RandomNonce">> => string(),
+%%   <<"SigningKeyCertificate">> => string(),
+%%   <<"WrappedKeyBlock">> => string()
+%% }
+-type import_tr34_key_block() :: #{binary() => any()}.
+
+%% Example:
+%% import_key_input() :: #{
+%%   <<"Enabled">> => [boolean()],
+%%   <<"KeyCheckValueAlgorithm">> => string(),
+%%   <<"KeyMaterial">> := list(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type import_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% import_key_cryptogram() :: #{
+%%   <<"Exportable">> => [boolean()],
+%%   <<"ImportToken">> => string(),
+%%   <<"KeyAttributes">> => key_attributes(),
+%%   <<"WrappedKeyCryptogram">> => string(),
+%%   <<"WrappingSpec">> => string()
+%% }
+-type import_key_cryptogram() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_for_export_output() :: #{
+%%   <<"ExportToken">> => string(),
+%%   <<"ParametersValidUntilTimestamp">> => non_neg_integer(),
+%%   <<"SigningKeyAlgorithm">> => string(),
+%%   <<"SigningKeyCertificate">> => string(),
+%%   <<"SigningKeyCertificateChain">> => string()
+%% }
+-type get_parameters_for_export_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_key_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type delete_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_key_usage_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type stop_key_usage_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_output() :: #{
+%%   <<"Aliases">> => list(alias()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_aliases_output() :: #{binary() => any()}.
+
+%% Example:
+%% restore_key_input() :: #{
+%%   <<"KeyIdentifier">> := string()
+%% }
+-type restore_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_for_import_output() :: #{
+%%   <<"ImportToken">> => string(),
+%%   <<"ParametersValidUntilTimestamp">> => non_neg_integer(),
+%%   <<"WrappingKeyAlgorithm">> => string(),
+%%   <<"WrappingKeyCertificate">> => string(),
+%%   <<"WrappingKeyCertificateChain">> => string()
+%% }
+-type get_parameters_for_import_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_key_usage_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type start_key_usage_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% export_key_cryptogram() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"WrappingKeyCertificate">> => string(),
+%%   <<"WrappingSpec">> => string()
+%% }
+-type export_key_cryptogram() :: #{binary() => any()}.
+
+%% Example:
+%% wrapped_key() :: #{
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"KeyCheckValueAlgorithm">> => string(),
+%%   <<"KeyMaterial">> => string(),
+%%   <<"WrappedKeyMaterialFormat">> => string(),
+%%   <<"WrappingKeyArn">> => string()
+%% }
+-type wrapped_key() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alias_input() :: #{
+%%   <<"AliasName">> := string()
+%% }
+-type delete_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% export_attributes() :: #{
+%%   <<"ExportDukptInitialKey">> => export_dukpt_initial_key(),
+%%   <<"KeyCheckValueAlgorithm">> => string()
+%% }
+-type export_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_input() :: #{
+%%   <<"KeyIdentifier">> := string()
+%% }
+-type get_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"ResourceId">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_input() :: #{
+%%   <<"Enabled">> => [boolean()],
+%%   <<"Exportable">> := [boolean()],
+%%   <<"KeyAttributes">> := key_attributes(),
+%%   <<"KeyCheckValueAlgorithm">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_alias_output() :: #{
+%%   <<"Alias">> => alias()
+%% }
+-type create_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% import_tr31_key_block() :: #{
+%%   <<"WrappedKeyBlock">> => string(),
+%%   <<"WrappingKeyIdentifier">> => string()
+%% }
+-type import_tr31_key_block() :: #{binary() => any()}.
+
+%% Example:
+%% update_alias_output() :: #{
+%%   <<"Alias">> => alias()
+%% }
+-type update_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_alias_input() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"KeyArn">> => string()
+%% }
+-type update_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_key_usage_input() :: #{
+%%   <<"KeyIdentifier">> := string()
+%% }
+-type start_key_usage_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_aliases_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% key_attributes() :: #{
+%%   <<"KeyAlgorithm">> => string(),
+%%   <<"KeyClass">> => string(),
+%%   <<"KeyModesOfUse">> => key_modes_of_use(),
+%%   <<"KeyUsage">> => string()
+%% }
+-type key_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% delete_key_input() :: #{
+%%   <<"DeleteKeyInDays">> => [integer()],
+%%   <<"KeyIdentifier">> := string()
+%% }
+-type delete_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% export_key_input() :: #{
+%%   <<"ExportAttributes">> => export_attributes(),
+%%   <<"ExportKeyIdentifier">> := string(),
+%%   <<"KeyMaterial">> := list()
+%% }
+-type export_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_public_key_certificate_input() :: #{
+%%   <<"KeyIdentifier">> := string()
+%% }
+-type get_public_key_certificate_input() :: #{binary() => any()}.
+
+%% Example:
+%% alias() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"KeyArn">> => string()
+%% }
+-type alias() :: #{binary() => any()}.
+
+%% Example:
+%% import_key_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type import_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% export_tr34_key_block() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"ExportToken">> => string(),
+%%   <<"KeyBlockFormat">> => string(),
+%%   <<"RandomNonce">> => string(),
+%%   <<"WrappingKeyCertificate">> => string()
+%% }
+-type export_tr34_key_block() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_certificate_public_key() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"KeyAttributes">> => key_attributes(),
+%%   <<"PublicKeyCertificate">> => string()
+%% }
+-type trusted_certificate_public_key() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_for_import_input() :: #{
+%%   <<"KeyMaterialType">> := string(),
+%%   <<"WrappingKeyAlgorithm">> := string()
+%% }
+-type get_parameters_for_import_input() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% key() :: #{
+%%   <<"CreateTimestamp">> => non_neg_integer(),
+%%   <<"DeletePendingTimestamp">> => non_neg_integer(),
+%%   <<"DeleteTimestamp">> => non_neg_integer(),
+%%   <<"Enabled">> => [boolean()],
+%%   <<"Exportable">> => [boolean()],
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyAttributes">> => key_attributes(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"KeyCheckValueAlgorithm">> => string(),
+%%   <<"KeyOrigin">> => string(),
+%%   <<"KeyState">> => string(),
+%%   <<"UsageStartTimestamp">> => non_neg_integer(),
+%%   <<"UsageStopTimestamp">> => non_neg_integer()
+%% }
+-type key() :: #{binary() => any()}.
+
+%% Example:
+%% list_keys_output() :: #{
+%%   <<"Keys">> => list(key_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_keys_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_alias_input() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"KeyArn">> => string()
+%% }
+-type create_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alias_output() :: #{
+
+%% }
+-type delete_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% export_key_output() :: #{
+%%   <<"WrappedKey">> => wrapped_key()
+%% }
+-type export_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% export_dukpt_initial_key() :: #{
+%%   <<"KeySerialNumber">> => string()
+%% }
+-type export_dukpt_initial_key() :: #{binary() => any()}.
+
+%% Example:
+%% restore_key_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type restore_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% root_certificate_public_key() :: #{
+%%   <<"KeyAttributes">> => key_attributes(),
+%%   <<"PublicKeyCertificate">> => string()
+%% }
+-type root_certificate_public_key() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type get_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type create_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_public_key_certificate_output() :: #{
+%%   <<"KeyCertificate">> => string(),
+%%   <<"KeyCertificateChain">> => string()
+%% }
+-type get_public_key_certificate_output() :: #{binary() => any()}.
+
+-type create_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type export_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_parameters_for_export_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_parameters_for_import_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_public_key_certificate_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type import_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_aliases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type list_keys_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type restore_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_key_usage_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_key_usage_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -113,9 +774,18 @@
 %% `ListAliases'
 %%
 %% `UpdateAlias'
+-spec create_alias(aws_client:aws_client(), create_alias_input()) ->
+    {ok, create_alias_output(), tuple()} |
+    {error, any()} |
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
+
+-spec create_alias(aws_client:aws_client(), create_alias_input(), proplists:proplist()) ->
+    {ok, create_alias_output(), tuple()} |
+    {error, any()} |
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
@@ -158,9 +828,18 @@ create_alias(Client, Input, Options)
 %% `GetKey'
 %%
 %% `ListKeys'
+-spec create_key(aws_client:aws_client(), create_key_input()) ->
+    {ok, create_key_output(), tuple()} |
+    {error, any()} |
+    {error, create_key_errors(), tuple()}.
 create_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key(Client, Input, []).
+
+-spec create_key(aws_client:aws_client(), create_key_input(), proplists:proplist()) ->
+    {ok, create_key_output(), tuple()} |
+    {error, any()} |
+    {error, create_key_errors(), tuple()}.
 create_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateKey">>, Input, Options).
@@ -185,9 +864,18 @@ create_key(Client, Input, Options)
 %% `ListAliases'
 %%
 %% `UpdateAlias'
+-spec delete_alias(aws_client:aws_client(), delete_alias_input()) ->
+    {ok, delete_alias_output(), tuple()} |
+    {error, any()} |
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
+
+-spec delete_alias(aws_client:aws_client(), delete_alias_input(), proplists:proplist()) ->
+    {ok, delete_alias_output(), tuple()} |
+    {error, any()} |
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlias">>, Input, Options).
@@ -222,9 +910,18 @@ delete_alias(Client, Input, Options)
 %% `StartKeyUsage'
 %%
 %% `StopKeyUsage'
+-spec delete_key(aws_client:aws_client(), delete_key_input()) ->
+    {ok, delete_key_output(), tuple()} |
+    {error, any()} |
+    {error, delete_key_errors(), tuple()}.
 delete_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_key(Client, Input, []).
+
+-spec delete_key(aws_client:aws_client(), delete_key_input(), proplists:proplist()) ->
+    {ok, delete_key_output(), tuple()} |
+    {error, any()} |
+    {error, delete_key_errors(), tuple()}.
 delete_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteKey">>, Input, Options).
@@ -376,9 +1073,18 @@ delete_key(Client, Input, Options)
 %% `GetParametersForExport'
 %%
 %% `ImportKey'
+-spec export_key(aws_client:aws_client(), export_key_input()) ->
+    {ok, export_key_output(), tuple()} |
+    {error, any()} |
+    {error, export_key_errors(), tuple()}.
 export_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_key(Client, Input, []).
+
+-spec export_key(aws_client:aws_client(), export_key_input(), proplists:proplist()) ->
+    {ok, export_key_output(), tuple()} |
+    {error, any()} |
+    {error, export_key_errors(), tuple()}.
 export_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportKey">>, Input, Options).
@@ -398,9 +1104,18 @@ export_key(Client, Input, Options)
 %% `ListAliases'
 %%
 %% `UpdateAlias'
+-spec get_alias(aws_client:aws_client(), get_alias_input()) ->
+    {ok, get_alias_output(), tuple()} |
+    {error, any()} |
+    {error, get_alias_errors(), tuple()}.
 get_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_alias(Client, Input, []).
+
+-spec get_alias(aws_client:aws_client(), get_alias_input(), proplists:proplist()) ->
+    {ok, get_alias_output(), tuple()} |
+    {error, any()} |
+    {error, get_alias_errors(), tuple()}.
 get_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAlias">>, Input, Options).
@@ -419,9 +1134,18 @@ get_alias(Client, Input, Options)
 %% `DeleteKey'
 %%
 %% `ListKeys'
+-spec get_key(aws_client:aws_client(), get_key_input()) ->
+    {ok, get_key_output(), tuple()} |
+    {error, any()} |
+    {error, get_key_errors(), tuple()}.
 get_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key(Client, Input, []).
+
+-spec get_key(aws_client:aws_client(), get_key_input(), proplists:proplist()) ->
+    {ok, get_key_output(), tuple()} |
+    {error, any()} |
+    {error, get_key_errors(), tuple()}.
 get_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKey">>, Input, Options).
@@ -443,9 +1167,18 @@ get_key(Client, Input, Options)
 %% `ExportKey'
 %%
 %% `GetParametersForImport'
+-spec get_parameters_for_export(aws_client:aws_client(), get_parameters_for_export_input()) ->
+    {ok, get_parameters_for_export_output(), tuple()} |
+    {error, any()} |
+    {error, get_parameters_for_export_errors(), tuple()}.
 get_parameters_for_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_for_export(Client, Input, []).
+
+-spec get_parameters_for_export(aws_client:aws_client(), get_parameters_for_export_input(), proplists:proplist()) ->
+    {ok, get_parameters_for_export_output(), tuple()} |
+    {error, any()} |
+    {error, get_parameters_for_export_errors(), tuple()}.
 get_parameters_for_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParametersForExport">>, Input, Options).
@@ -467,9 +1200,18 @@ get_parameters_for_export(Client, Input, Options)
 %% `GetParametersForExport'
 %%
 %% `ImportKey'
+-spec get_parameters_for_import(aws_client:aws_client(), get_parameters_for_import_input()) ->
+    {ok, get_parameters_for_import_output(), tuple()} |
+    {error, any()} |
+    {error, get_parameters_for_import_errors(), tuple()}.
 get_parameters_for_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_for_import(Client, Input, []).
+
+-spec get_parameters_for_import(aws_client:aws_client(), get_parameters_for_import_input(), proplists:proplist()) ->
+    {ok, get_parameters_for_import_output(), tuple()} |
+    {error, any()} |
+    {error, get_parameters_for_import_errors(), tuple()}.
 get_parameters_for_import(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParametersForImport">>, Input, Options).
@@ -486,9 +1228,18 @@ get_parameters_for_import(Client, Input, Options)
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
+-spec get_public_key_certificate(aws_client:aws_client(), get_public_key_certificate_input()) ->
+    {ok, get_public_key_certificate_output(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_certificate_errors(), tuple()}.
 get_public_key_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_public_key_certificate(Client, Input, []).
+
+-spec get_public_key_certificate(aws_client:aws_client(), get_public_key_certificate_input(), proplists:proplist()) ->
+    {ok, get_public_key_certificate_output(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_certificate_errors(), tuple()}.
 get_public_key_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPublicKeyCertificate">>, Input, Options).
@@ -658,9 +1409,18 @@ get_public_key_certificate(Client, Input, Options)
 %% `ExportKey'
 %%
 %% `GetParametersForImport'
+-spec import_key(aws_client:aws_client(), import_key_input()) ->
+    {ok, import_key_output(), tuple()} |
+    {error, any()} |
+    {error, import_key_errors(), tuple()}.
 import_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_key(Client, Input, []).
+
+-spec import_key(aws_client:aws_client(), import_key_input(), proplists:proplist()) ->
+    {ok, import_key_output(), tuple()} |
+    {error, any()} |
+    {error, import_key_errors(), tuple()}.
 import_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportKey">>, Input, Options).
@@ -692,9 +1452,18 @@ import_key(Client, Input, Options)
 %% `GetAlias'
 %%
 %% `UpdateAlias'
+-spec list_aliases(aws_client:aws_client(), list_aliases_input()) ->
+    {ok, list_aliases_output(), tuple()} |
+    {error, any()} |
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
+
+-spec list_aliases(aws_client:aws_client(), list_aliases_input(), proplists:proplist()) ->
+    {ok, list_aliases_output(), tuple()} |
+    {error, any()} |
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAliases">>, Input, Options).
@@ -722,9 +1491,18 @@ list_aliases(Client, Input, Options)
 %% `DeleteKey'
 %%
 %% `GetKey'
+-spec list_keys(aws_client:aws_client(), list_keys_input()) ->
+    {ok, list_keys_output(), tuple()} |
+    {error, any()} |
+    {error, list_keys_errors(), tuple()}.
 list_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_keys(Client, Input, []).
+
+-spec list_keys(aws_client:aws_client(), list_keys_input(), proplists:proplist()) ->
+    {ok, list_keys_output(), tuple()} |
+    {error, any()} |
+    {error, list_keys_errors(), tuple()}.
 list_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListKeys">>, Input, Options).
@@ -747,9 +1525,18 @@ list_keys(Client, Input, Options)
 %% `TagResource'
 %%
 %% `UntagResource'
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -774,9 +1561,18 @@ list_tags_for_resource(Client, Input, Options)
 %% `StartKeyUsage'
 %%
 %% `StopKeyUsage'
+-spec restore_key(aws_client:aws_client(), restore_key_input()) ->
+    {ok, restore_key_output(), tuple()} |
+    {error, any()} |
+    {error, restore_key_errors(), tuple()}.
 restore_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_key(Client, Input, []).
+
+-spec restore_key(aws_client:aws_client(), restore_key_input(), proplists:proplist()) ->
+    {ok, restore_key_output(), tuple()} |
+    {error, any()} |
+    {error, restore_key_errors(), tuple()}.
 restore_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreKey">>, Input, Options).
@@ -791,9 +1587,18 @@ restore_key(Client, Input, Options)
 %% Related operations:
 %%
 %% `StopKeyUsage'
+-spec start_key_usage(aws_client:aws_client(), start_key_usage_input()) ->
+    {ok, start_key_usage_output(), tuple()} |
+    {error, any()} |
+    {error, start_key_usage_errors(), tuple()}.
 start_key_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_key_usage(Client, Input, []).
+
+-spec start_key_usage(aws_client:aws_client(), start_key_usage_input(), proplists:proplist()) ->
+    {ok, start_key_usage_output(), tuple()} |
+    {error, any()} |
+    {error, start_key_usage_errors(), tuple()}.
 start_key_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartKeyUsage">>, Input, Options).
@@ -812,9 +1617,18 @@ start_key_usage(Client, Input, Options)
 %% `DeleteKey'
 %%
 %% `StartKeyUsage'
+-spec stop_key_usage(aws_client:aws_client(), stop_key_usage_input()) ->
+    {ok, stop_key_usage_output(), tuple()} |
+    {error, any()} |
+    {error, stop_key_usage_errors(), tuple()}.
 stop_key_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_key_usage(Client, Input, []).
+
+-spec stop_key_usage(aws_client:aws_client(), stop_key_usage_input(), proplists:proplist()) ->
+    {ok, stop_key_usage_output(), tuple()} |
+    {error, any()} |
+    {error, stop_key_usage_errors(), tuple()}.
 stop_key_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopKeyUsage">>, Input, Options).
@@ -840,9 +1654,18 @@ stop_key_usage(Client, Input, Options)
 %% `ListTagsForResource'
 %%
 %% `UntagResource'
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -860,9 +1683,18 @@ tag_resource(Client, Input, Options)
 %% `ListTagsForResource'
 %%
 %% `TagResource'
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -887,9 +1719,18 @@ untag_resource(Client, Input, Options)
 %% `GetAlias'
 %%
 %% `ListAliases'
+-spec update_alias(aws_client:aws_client(), update_alias_input()) ->
+    {ok, update_alias_output(), tuple()} |
+    {error, any()} |
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
+
+-spec update_alias(aws_client:aws_client(), update_alias_input(), proplists:proplist()) ->
+    {ok, update_alias_output(), tuple()} |
+    {error, any()} |
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAlias">>, Input, Options).

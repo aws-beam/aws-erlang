@@ -256,6 +256,2218 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_functions_by_code_signing_config_response() :: #{
+%%   <<"FunctionArns">> => list(string()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_functions_by_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_usage() :: #{
+%%   <<"FunctionCount">> => float(),
+%%   <<"TotalCodeSize">> => float()
+%% }
+-type account_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_event_invoke_config() :: #{
+%%   <<"DestinationConfig">> => destination_config(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"MaximumEventAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer()
+%% }
+-type function_event_invoke_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_aliases_response() :: #{
+%%   <<"Aliases">> => list(alias_configuration()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_aliases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_media_type_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type unsupported_media_type_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_disabled_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type kms_disabled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_aliases_request() :: #{
+%%   <<"FunctionVersion">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_code() :: #{
+%%   <<"ImageUri">> => string(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string(),
+%%   <<"S3ObjectVersion">> => string(),
+%%   <<"ZipFile">> => binary()
+%% }
+-type function_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_security_group_id_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_security_group_id_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_source_mapping_request() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"BisectBatchOnFunctionError">> => boolean(),
+%%   <<"DestinationConfig">> => destination_config(),
+%%   <<"DocumentDBEventSourceConfig">> => document_db_event_source_config(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"FilterCriteria">> => filter_criteria(),
+%%   <<"FunctionName">> => string(),
+%%   <<"FunctionResponseTypes">> => list(list(any())()),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"MaximumRecordAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"ParallelizationFactor">> => integer(),
+%%   <<"ScalingConfig">> => scaling_config(),
+%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()()),
+%%   <<"TumblingWindowInSeconds">> => integer()
+%% }
+-type update_event_source_mapping_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_version_config() :: #{
+%%   <<"Error">> => runtime_version_error(),
+%%   <<"RuntimeVersionArn">> => string()
+%% }
+-type runtime_version_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start() :: #{
+%%   <<"ApplyOn">> => list(any())
+%% }
+-type snap_start() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_code_signing_config_request() :: #{}
+-type get_code_signing_config_request() :: #{}.
+
+
+%% Example:
+%% remove_layer_version_permission_request() :: #{
+%%   <<"RevisionId">> => string()
+%% }
+-type remove_layer_version_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_function_code_signing_config_request() :: #{}
+-type delete_function_code_signing_config_request() :: #{}.
+
+
+%% Example:
+%% environment_response() :: #{
+%%   <<"Error">> => environment_error(),
+%%   <<"Variables">> => map()
+%% }
+-type environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_concurrency_config_list_item() :: #{
+%%   <<"AllocatedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"AvailableProvisionedConcurrentExecutions">> => integer(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"LastModified">> => string(),
+%%   <<"RequestedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type provisioned_concurrency_config_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_alias_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FunctionVersion">> => string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"RoutingConfig">> => alias_routing_configuration()
+%% }
+-type update_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_response() :: #{
+%%   <<"Functions">> => list(function_configuration()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_functions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_concurrency_request() :: #{
+%%   <<"ReservedConcurrentExecutions">> := integer()
+%% }
+-type put_function_concurrency_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_length_exceeded_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type policy_length_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provisioned_concurrency_configs_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"ProvisionedConcurrencyConfigs">> => list(provisioned_concurrency_config_list_item()())
+%% }
+-type list_provisioned_concurrency_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_signing_configs_response() :: #{
+%%   <<"CodeSigningConfigs">> => list(code_signing_config()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_code_signing_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% amazon_managed_kafka_event_source_config() :: #{
+%%   <<"ConsumerGroupId">> => string()
+%% }
+-type amazon_managed_kafka_event_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_with_response_stream_response() :: #{
+%%   <<"EventStream">> => list(),
+%%   <<"ExecutedVersion">> => string(),
+%%   <<"ResponseStreamContentType">> => string(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type invoke_with_response_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_criteria() :: #{
+%%   <<"Filters">> => list(filter()())
+%% }
+-type filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_code_location() :: #{
+%%   <<"ImageUri">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"RepositoryType">> => string(),
+%%   <<"ResolvedImageUri">> => string()
+%% }
+-type function_code_location() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_settings_request() :: #{}
+-type get_account_settings_request() :: #{}.
+
+
+%% Example:
+%% create_alias_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FunctionVersion">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RoutingConfig">> => alias_routing_configuration()
+%% }
+-type create_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_layer_version_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type get_layer_version_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_account_settings_response() :: #{
+%%   <<"AccountLimit">> => account_limit(),
+%%   <<"AccountUsage">> => account_usage()
+%% }
+-type get_account_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_policy_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_layer_version_response() :: #{
+%%   <<"CompatibleArchitectures">> => list(list(any())()),
+%%   <<"CompatibleRuntimes">> => list(list(any())()),
+%%   <<"Content">> => layer_version_content_output(),
+%%   <<"CreatedDate">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LayerArn">> => string(),
+%%   <<"LayerVersionArn">> => string(),
+%%   <<"LicenseInfo">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type get_layer_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_event_invoke_config_request() :: #{
+%%   <<"DestinationConfig">> => destination_config(),
+%%   <<"MaximumEventAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"Qualifier">> => string()
+%% }
+-type put_function_event_invoke_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_async_request() :: #{
+%%   <<"InvokeArgs">> := binary()
+%% }
+-type invoke_async_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_layers_response() :: #{
+%%   <<"Layers">> => list(layers_list_item()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_layers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_access_configuration() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"URI">> => string()
+%% }
+-type source_access_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_layer_version_policy_request() :: #{}
+-type get_layer_version_policy_request() :: #{}.
+
+
+%% Example:
+%% list_code_signing_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_code_signing_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% layer_version_content_output() :: #{
+%%   <<"CodeSha256">> => string(),
+%%   <<"CodeSize">> => float(),
+%%   <<"Location">> => string(),
+%%   <<"SigningJobArn">> => string(),
+%%   <<"SigningProfileVersionArn">> => string()
+%% }
+-type layer_version_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_response() :: #{
+%%   <<"ExecutedVersion">> => string(),
+%%   <<"FunctionError">> => string(),
+%%   <<"LogResult">> => string(),
+%%   <<"Payload">> => binary(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type invocation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_function_url_config_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type delete_function_url_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_access_denied_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type ec2_access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_function_url_config_request() :: #{
+%%   <<"AuthType">> => list(any()),
+%%   <<"Cors">> => cors(),
+%%   <<"InvokeMode">> => list(any()),
+%%   <<"Qualifier">> => string()
+%% }
+-type update_function_url_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_managed_kafka_event_source_config() :: #{
+%%   <<"ConsumerGroupId">> => string()
+%% }
+-type self_managed_kafka_event_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start_not_ready_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type snap_start_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_configuration_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_function_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_response() :: #{
+%%   <<"Code">> => function_code_location(),
+%%   <<"Concurrency">> => concurrency(),
+%%   <<"Configuration">> => function_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type get_function_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_config() :: #{
+%%   <<"ApplicationLogLevel">> => list(any()),
+%%   <<"LogFormat">> => list(any()),
+%%   <<"LogGroup">> => string(),
+%%   <<"SystemLogLevel">> => list(any())
+%% }
+-type logging_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_function_concurrency_request() :: #{}
+-type delete_function_concurrency_request() :: #{}.
+
+
+%% Example:
+%% image_config() :: #{
+%%   <<"Command">> => list(string()()),
+%%   <<"EntryPoint">> => list(string()()),
+%%   <<"WorkingDirectory">> => string()
+%% }
+-type image_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_function_url_config_response() :: #{
+%%   <<"AuthType">> => list(any()),
+%%   <<"Cors">> => cors(),
+%%   <<"CreationTime">> => string(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionUrl">> => string(),
+%%   <<"InvokeMode">> => list(any()),
+%%   <<"LastModifiedTime">> => string()
+%% }
+-type update_function_url_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Reason">> => list(any()),
+%%   <<"Type">> => string(),
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_function_code_signing_config_request() :: #{}
+-type get_function_code_signing_config_request() :: #{}.
+
+
+%% Example:
+%% destination_config() :: #{
+%%   <<"OnFailure">> => on_failure(),
+%%   <<"OnSuccess">> => on_success()
+%% }
+-type destination_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start_timeout_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type snap_start_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_provisioned_concurrency_config_request() :: #{
+%%   <<"ProvisionedConcurrentExecutions">> := integer(),
+%%   <<"Qualifier">> := string()
+%% }
+-type put_provisioned_concurrency_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_layer_version_request() :: #{}
+-type delete_layer_version_request() :: #{}.
+
+
+%% Example:
+%% create_code_signing_config_response() :: #{
+%%   <<"CodeSigningConfig">> => code_signing_config()
+%% }
+-type create_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_response_stream_update() :: #{
+%%   <<"Payload">> => binary()
+%% }
+-type invoke_response_stream_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_event_invoke_configs_response() :: #{
+%%   <<"FunctionEventInvokeConfigs">> => list(function_event_invoke_config()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_function_event_invoke_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_concurrency_response() :: #{
+%%   <<"ReservedConcurrentExecutions">> => integer()
+%% }
+-type get_function_concurrency_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_source_mapping_request() :: #{}
+-type delete_event_source_mapping_request() :: #{}.
+
+
+%% Example:
+%% recursive_invocation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type recursive_invocation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_runtime_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_runtime_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_function_concurrency_request() :: #{}
+-type get_function_concurrency_request() :: #{}.
+
+%% Example:
+%% get_alias_request() :: #{}
+-type get_alias_request() :: #{}.
+
+
+%% Example:
+%% on_failure() :: #{
+%%   <<"Destination">> => string()
+%% }
+-type on_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_source_mappings_response() :: #{
+%%   <<"EventSourceMappings">> => list(event_source_mapping_configuration()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_event_source_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_runtime_management_config_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_runtime_management_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_content_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_request_content_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_runtime_management_config_request() :: #{
+%%   <<"Qualifier">> => string(),
+%%   <<"RuntimeVersionArn">> => string(),
+%%   <<"UpdateRuntimeOn">> := list(any())
+%% }
+-type put_runtime_management_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_layer_version_response() :: #{
+%%   <<"CompatibleArchitectures">> => list(list(any())()),
+%%   <<"CompatibleRuntimes">> => list(list(any())()),
+%%   <<"Content">> => layer_version_content_output(),
+%%   <<"CreatedDate">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LayerArn">> => string(),
+%%   <<"LayerVersionArn">> => string(),
+%%   <<"LicenseInfo">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type publish_layer_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_db_event_source_config() :: #{
+%%   <<"CollectionName">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"FullDocument">> => list(any())
+%% }
+-type document_db_event_source_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_code_signing_config_request() :: #{}
+-type delete_code_signing_config_request() :: #{}.
+
+
+%% Example:
+%% create_function_url_config_response() :: #{
+%%   <<"AuthType">> => list(any()),
+%%   <<"Cors">> => cors(),
+%%   <<"CreationTime">> => string(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionUrl">> => string(),
+%%   <<"InvokeMode">> => list(any())
+%% }
+-type create_function_url_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_signing_config_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type code_signing_config_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment() :: #{
+%%   <<"Variables">> => map()
+%% }
+-type environment() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_function_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type delete_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_version_request() :: #{
+%%   <<"CodeSha256">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type publish_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_code_signing_config_response() :: #{
+%%   <<"CodeSigningConfigArn">> => string(),
+%%   <<"FunctionName">> => string()
+%% }
+-type put_function_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% alias_configuration() :: #{
+%%   <<"AliasArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FunctionVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"RoutingConfig">> => alias_routing_configuration()
+%% }
+-type alias_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_function_code_request() :: #{
+%%   <<"Architectures">> => list(list(any())()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageUri">> => string(),
+%%   <<"Publish">> => boolean(),
+%%   <<"RevisionId">> => string(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string(),
+%%   <<"S3ObjectVersion">> => string(),
+%%   <<"ZipFile">> => binary()
+%% }
+-type update_function_code_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_signing_config_request() :: #{
+%%   <<"AllowedPublishers">> := allowed_publishers(),
+%%   <<"CodeSigningPolicies">> => code_signing_policies(),
+%%   <<"Description">> => string()
+%% }
+-type create_code_signing_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_source_mapping_configuration() :: #{
+%%   <<"AmazonManagedKafkaEventSourceConfig">> => amazon_managed_kafka_event_source_config(),
+%%   <<"BatchSize">> => integer(),
+%%   <<"BisectBatchOnFunctionError">> => boolean(),
+%%   <<"DestinationConfig">> => destination_config(),
+%%   <<"DocumentDBEventSourceConfig">> => document_db_event_source_config(),
+%%   <<"EventSourceArn">> => string(),
+%%   <<"FilterCriteria">> => filter_criteria(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionResponseTypes">> => list(list(any())()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastProcessingResult">> => string(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"MaximumRecordAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"ParallelizationFactor">> => integer(),
+%%   <<"Queues">> => list(string()()),
+%%   <<"ScalingConfig">> => scaling_config(),
+%%   <<"SelfManagedEventSource">> => self_managed_event_source(),
+%%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
+%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()()),
+%%   <<"StartingPosition">> => list(any()),
+%%   <<"StartingPositionTimestamp">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"StateTransitionReason">> => string(),
+%%   <<"Topics">> => list(string()()),
+%%   <<"TumblingWindowInSeconds">> => integer(),
+%%   <<"UUID">> => string()
+%% }
+-type event_source_mapping_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_source_mapping_request() :: #{
+%%   <<"AmazonManagedKafkaEventSourceConfig">> => amazon_managed_kafka_event_source_config(),
+%%   <<"BatchSize">> => integer(),
+%%   <<"BisectBatchOnFunctionError">> => boolean(),
+%%   <<"DestinationConfig">> => destination_config(),
+%%   <<"DocumentDBEventSourceConfig">> => document_db_event_source_config(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventSourceArn">> => string(),
+%%   <<"FilterCriteria">> => filter_criteria(),
+%%   <<"FunctionName">> := string(),
+%%   <<"FunctionResponseTypes">> => list(list(any())()),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"MaximumRecordAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"ParallelizationFactor">> => integer(),
+%%   <<"Queues">> => list(string()()),
+%%   <<"ScalingConfig">> => scaling_config(),
+%%   <<"SelfManagedEventSource">> => self_managed_event_source(),
+%%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
+%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()()),
+%%   <<"StartingPosition">> => list(any()),
+%%   <<"StartingPositionTimestamp">> => non_neg_integer(),
+%%   <<"Topics">> => list(string()()),
+%%   <<"TumblingWindowInSeconds">> => integer()
+%% }
+-type create_event_source_mapping_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_function_url_config_request() :: #{
+%%   <<"AuthType">> := list(any()),
+%%   <<"Cors">> => cors(),
+%%   <<"InvokeMode">> => list(any()),
+%%   <<"Qualifier">> => string()
+%% }
+-type create_function_url_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% layer() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CodeSize">> => float(),
+%%   <<"SigningJobArn">> => string(),
+%%   <<"SigningProfileVersionArn">> => string()
+%% }
+-type layer() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_provisioned_concurrency_config_response() :: #{
+%%   <<"AllocatedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"AvailableProvisionedConcurrentExecutions">> => integer(),
+%%   <<"LastModified">> => string(),
+%%   <<"RequestedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type get_provisioned_concurrency_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_config() :: #{
+%%   <<"Ipv6AllowedForDualStack">> => boolean(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type vpc_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_layer_version_request() :: #{
+%%   <<"CompatibleArchitectures">> => list(list(any())()),
+%%   <<"CompatibleRuntimes">> => list(list(any())()),
+%%   <<"Content">> := layer_version_content_input(),
+%%   <<"Description">> => string(),
+%%   <<"LicenseInfo">> => string()
+%% }
+-type publish_layer_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% subnet_ip_address_limit_reached_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type subnet_ip_address_limit_reached_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_permission_request() :: #{
+%%   <<"Qualifier">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type remove_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_limit() :: #{
+%%   <<"CodeSizeUnzipped">> => float(),
+%%   <<"CodeSizeZipped">> => float(),
+%%   <<"ConcurrentExecutions">> => integer(),
+%%   <<"TotalCodeSize">> => float(),
+%%   <<"UnreservedConcurrentExecutions">> => integer()
+%% }
+-type account_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_function_event_invoke_config_request() :: #{
+%%   <<"DestinationConfig">> => destination_config(),
+%%   <<"MaximumEventAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"Qualifier">> => string()
+%% }
+-type update_function_event_invoke_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_code_signing_config_response() :: #{}
+-type delete_code_signing_config_response() :: #{}.
+
+
+%% Example:
+%% file_system_config() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"LocalMountPath">> => string()
+%% }
+-type file_system_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% tracing_config() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type tracing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_layer_version_by_arn_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type get_layer_version_by_arn_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_verification_failed_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type code_verification_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeral_storage() :: #{
+%%   <<"Size">> => integer()
+%% }
+-type ephemeral_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_provisioned_concurrency_config_response() :: #{
+%%   <<"AllocatedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"AvailableProvisionedConcurrentExecutions">> => integer(),
+%%   <<"LastModified">> => string(),
+%%   <<"RequestedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type put_provisioned_concurrency_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Pattern">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% layer_versions_list_item() :: #{
+%%   <<"CompatibleArchitectures">> => list(list(any())()),
+%%   <<"CompatibleRuntimes">> => list(list(any())()),
+%%   <<"CreatedDate">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LayerVersionArn">> => string(),
+%%   <<"LicenseInfo">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type layer_versions_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_layer_versions_response() :: #{
+%%   <<"LayerVersions">> => list(layer_versions_list_item()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_layer_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_async_response() :: #{
+%%   <<"Status">> => integer()
+%% }
+-type invoke_async_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_versions_by_function_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_versions_by_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_too_large_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type request_too_large_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% scaling_config() :: #{
+%%   <<"MaximumConcurrency">> => integer()
+%% }
+-type scaling_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_provisioned_concurrency_config_request() :: #{
+%%   <<"Qualifier">> := string()
+%% }
+-type get_provisioned_concurrency_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_request() :: #{
+%%   <<"FunctionVersion">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MasterRegion">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_functions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_layer_version_permission_request() :: #{
+%%   <<"Action">> := string(),
+%%   <<"OrganizationId">> => string(),
+%%   <<"Principal">> := string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"StatementId">> := string()
+%% }
+-type add_layer_version_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_by_code_signing_config_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_functions_by_code_signing_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_source_mappings_request() :: #{
+%%   <<"EventSourceArn">> => string(),
+%%   <<"FunctionName">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_event_source_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_access_denied_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type kms_access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_code_signing_config_request() :: #{
+%%   <<"AllowedPublishers">> => allowed_publishers(),
+%%   <<"CodeSigningPolicies">> => code_signing_policies(),
+%%   <<"Description">> => string()
+%% }
+-type update_code_signing_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_code_signing_config_request() :: #{
+%%   <<"CodeSigningConfigArn">> := string()
+%% }
+-type put_function_code_signing_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_layer_version_permission_response() :: #{
+%%   <<"RevisionId">> => string(),
+%%   <<"Statement">> => string()
+%% }
+-type add_layer_version_permission_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_source_mapping_request() :: #{}
+-type get_event_source_mapping_request() :: #{}.
+
+
+%% Example:
+%% invocation_request() :: #{
+%%   <<"ClientContext">> => string(),
+%%   <<"InvocationType">> => list(any()),
+%%   <<"LogType">> => list(any()),
+%%   <<"Payload">> => binary(),
+%%   <<"Qualifier">> => string()
+%% }
+-type invocation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_zip_file_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_zip_file_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_with_response_stream_complete_event() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorDetails">> => string(),
+%%   <<"LogResult">> => string()
+%% }
+-type invoke_with_response_stream_complete_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type kms_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_with_response_stream_request() :: #{
+%%   <<"ClientContext">> => string(),
+%%   <<"InvocationType">> => list(any()),
+%%   <<"LogType">> => list(any()),
+%%   <<"Payload">> => binary(),
+%%   <<"Qualifier">> => string()
+%% }
+-type invoke_with_response_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_url_config_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_function_url_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_code_signing_config_response() :: #{
+%%   <<"CodeSigningConfig">> => code_signing_config()
+%% }
+-type update_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dead_letter_config() :: #{
+%%   <<"TargetArn">> => string()
+%% }
+-type dead_letter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_f_s_mount_timeout_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_f_s_mount_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_provisioned_concurrency_config_request() :: #{
+%%   <<"Qualifier">> := string()
+%% }
+-type delete_provisioned_concurrency_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_config_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type image_config_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_layers_request() :: #{
+%%   <<"CompatibleArchitecture">> => list(any()),
+%%   <<"CompatibleRuntime">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_layers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_concurrency_config_not_found_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type provisioned_concurrency_config_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_signing_config_response() :: #{
+%%   <<"CodeSigningConfig">> => code_signing_config()
+%% }
+-type get_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_version_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type runtime_version_error() :: #{binary() => any()}.
+
+%% Example:
+%% get_layer_version_request() :: #{}
+-type get_layer_version_request() :: #{}.
+
+
+%% Example:
+%% function_configuration() :: #{
+%%   <<"Environment">> => environment_response(),
+%%   <<"MemorySize">> => integer(),
+%%   <<"EphemeralStorage">> => ephemeral_storage(),
+%%   <<"Version">> => string(),
+%%   <<"CodeSize">> => float(),
+%%   <<"Architectures">> => list(list(any())()),
+%%   <<"FileSystemConfigs">> => list(file_system_config()()),
+%%   <<"LastUpdateStatusReasonCode">> => list(any()),
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"PackageType">> => list(any()),
+%%   <<"LastModified">> => string(),
+%%   <<"Layers">> => list(layer()()),
+%%   <<"FunctionArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"VpcConfig">> => vpc_config_response(),
+%%   <<"ImageConfigResponse">> => image_config_response(),
+%%   <<"LastUpdateStatus">> => list(any()),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"Timeout">> => integer(),
+%%   <<"MasterArn">> => string(),
+%%   <<"SnapStart">> => snap_start_response(),
+%%   <<"CodeSha256">> => string(),
+%%   <<"StateReason">> => string(),
+%%   <<"RuntimeVersionConfig">> => runtime_version_config(),
+%%   <<"Role">> => string(),
+%%   <<"LoggingConfig">> => logging_config(),
+%%   <<"StateReasonCode">> => list(any()),
+%%   <<"RevisionId">> => string(),
+%%   <<"FunctionName">> => string(),
+%%   <<"LastUpdateStatusReason">> => string(),
+%%   <<"SigningJobArn">> => string(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"TracingConfig">> => tracing_config_response(),
+%%   <<"Description">> => string(),
+%%   <<"SigningProfileVersionArn">> => string(),
+%%   <<"Handler">> => string()
+%% }
+-type function_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_f_s_mount_connectivity_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_f_s_mount_connectivity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_runtime_management_config_response() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"RuntimeVersionArn">> => string(),
+%%   <<"UpdateRuntimeOn">> => list(any())
+%% }
+-type get_runtime_management_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_runtime_management_config_response() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"RuntimeVersionArn">> => string(),
+%%   <<"UpdateRuntimeOn">> => list(any())
+%% }
+-type put_runtime_management_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_n_i_limit_reached_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_n_i_limit_reached_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_url_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_function_url_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_layer_versions_request() :: #{
+%%   <<"CompatibleArchitecture">> => list(any()),
+%%   <<"CompatibleRuntime">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_layer_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_function_event_invoke_config_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type delete_function_event_invoke_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_f_s_mount_failure_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_f_s_mount_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cors() :: #{
+%%   <<"AllowCredentials">> => boolean(),
+%%   <<"AllowHeaders">> => list(string()()),
+%%   <<"AllowMethods">> => list(string()()),
+%%   <<"AllowOrigins">> => list(string()()),
+%%   <<"ExposeHeaders">> => list(string()()),
+%%   <<"MaxAge">> => integer()
+%% }
+-type cors() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_url_config() :: #{
+%%   <<"AuthType">> => list(any()),
+%%   <<"Cors">> => cors(),
+%%   <<"CreationTime">> => string(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionUrl">> => string(),
+%%   <<"InvokeMode">> => list(any()),
+%%   <<"LastModifiedTime">> => string()
+%% }
+-type function_url_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% on_success() :: #{
+%%   <<"Destination">> => string()
+%% }
+-type on_success() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_managed_event_source() :: #{
+%%   <<"Endpoints">> => map()
+%% }
+-type self_managed_event_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_function_configuration_request() :: #{
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"Description">> => string(),
+%%   <<"Environment">> => environment(),
+%%   <<"EphemeralStorage">> => ephemeral_storage(),
+%%   <<"FileSystemConfigs">> => list(file_system_config()()),
+%%   <<"Handler">> => string(),
+%%   <<"ImageConfig">> => image_config(),
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"Layers">> => list(string()()),
+%%   <<"LoggingConfig">> => logging_config(),
+%%   <<"MemorySize">> => integer(),
+%%   <<"RevisionId">> => string(),
+%%   <<"Role">> => string(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"SnapStart">> => snap_start(),
+%%   <<"Timeout">> => integer(),
+%%   <<"TracingConfig">> => tracing_config(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type update_function_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_code_signing_config_response() :: #{
+%%   <<"CodeSigningConfigArn">> => string(),
+%%   <<"FunctionName">> => string()
+%% }
+-type get_function_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_code_signature_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_code_signature_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_url_configs_response() :: #{
+%%   <<"FunctionUrlConfigs">> => list(function_url_config()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_function_url_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% allowed_publishers() :: #{
+%%   <<"SigningProfileVersionArns">> => list(string()())
+%% }
+-type allowed_publishers() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_versions_by_function_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Versions">> => list(function_configuration()())
+%% }
+-type list_versions_by_function_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_config_response() :: #{
+%%   <<"Ipv6AllowedForDualStack">> => boolean(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_unexpected_exception() :: #{
+%%   <<"EC2ErrorCode">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type ec2_unexpected_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_url_config_response() :: #{
+%%   <<"AuthType">> => list(any()),
+%%   <<"Cors">> => cors(),
+%%   <<"CreationTime">> => string(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionUrl">> => string(),
+%%   <<"InvokeMode">> => list(any()),
+%%   <<"LastModifiedTime">> => string()
+%% }
+-type get_function_url_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_event_invoke_config_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_function_event_invoke_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_function_request() :: #{
+%%   <<"Architectures">> => list(list(any())()),
+%%   <<"Code">> := function_code(),
+%%   <<"CodeSigningConfigArn">> => string(),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"Description">> => string(),
+%%   <<"Environment">> => environment(),
+%%   <<"EphemeralStorage">> => ephemeral_storage(),
+%%   <<"FileSystemConfigs">> => list(file_system_config()()),
+%%   <<"FunctionName">> := string(),
+%%   <<"Handler">> => string(),
+%%   <<"ImageConfig">> => image_config(),
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"Layers">> => list(string()()),
+%%   <<"LoggingConfig">> => logging_config(),
+%%   <<"MemorySize">> => integer(),
+%%   <<"PackageType">> => list(any()),
+%%   <<"Publish">> => boolean(),
+%%   <<"Role">> := string(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"SnapStart">> => snap_start(),
+%%   <<"Tags">> => map(),
+%%   <<"Timeout">> => integer(),
+%%   <<"TracingConfig">> => tracing_config(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type create_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type environment_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_throttled_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type ec2_throttled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_request() :: #{}
+-type list_tags_request() :: #{}.
+
+
+%% Example:
+%% e_f_s_i_o_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_f_s_i_o_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_invalid_state_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type kms_invalid_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% layers_list_item() :: #{
+%%   <<"LatestMatchingVersion">> => layer_versions_list_item(),
+%%   <<"LayerArn">> => string(),
+%%   <<"LayerName">> => string()
+%% }
+-type layers_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% alias_routing_configuration() :: #{
+%%   <<"AdditionalVersionWeights">> => map()
+%% }
+-type alias_routing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_config_response() :: #{
+%%   <<"Error">> => image_config_error(),
+%%   <<"ImageConfig">> => image_config()
+%% }
+-type image_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_subnet_id_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_subnet_id_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start_response() :: #{
+%%   <<"ApplyOn">> => list(any()),
+%%   <<"OptimizationStatus">> => list(any())
+%% }
+-type snap_start_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_storage_exceeded_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type code_storage_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% layer_version_content_input() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string(),
+%%   <<"S3ObjectVersion">> => string(),
+%%   <<"ZipFile">> => binary()
+%% }
+-type layer_version_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_ready_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type resource_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_signing_policies() :: #{
+%%   <<"UntrustedArtifactOnDeployment">> => list(any())
+%% }
+-type code_signing_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% precondition_failed_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type precondition_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_event_invoke_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_function_event_invoke_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_conflict_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type resource_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% concurrency() :: #{
+%%   <<"ReservedConcurrentExecutions">> => integer()
+%% }
+-type concurrency() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alias_request() :: #{}
+-type delete_alias_request() :: #{}.
+
+
+%% Example:
+%% list_provisioned_concurrency_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_provisioned_concurrency_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_permission_request() :: #{
+%%   <<"Action">> := string(),
+%%   <<"EventSourceToken">> => string(),
+%%   <<"FunctionUrlAuthType">> => list(any()),
+%%   <<"Principal">> := string(),
+%%   <<"PrincipalOrgID">> => string(),
+%%   <<"Qualifier">> => string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"SourceAccount">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"StatementId">> := string()
+%% }
+-type add_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tracing_config_response() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type tracing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type snap_start_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_permission_response() :: #{
+%%   <<"Statement">> => string()
+%% }
+-type add_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_signing_config() :: #{
+%%   <<"AllowedPublishers">> => allowed_publishers(),
+%%   <<"CodeSigningConfigArn">> => string(),
+%%   <<"CodeSigningConfigId">> => string(),
+%%   <<"CodeSigningPolicies">> => code_signing_policies(),
+%%   <<"Description">> => string(),
+%%   <<"LastModified">> => string()
+%% }
+-type code_signing_config() :: #{binary() => any()}.
+
+-type add_layer_version_permission_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    policy_length_exceeded_exception().
+
+-type add_permission_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    policy_length_exceeded_exception().
+
+-type create_alias_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_code_signing_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception().
+
+-type create_event_source_mapping_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_function_errors() ::
+    resource_conflict_exception() | 
+    code_storage_exceeded_exception() | 
+    invalid_code_signature_exception() | 
+    code_verification_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_function_url_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_alias_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
+-type delete_code_signing_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type delete_event_source_mapping_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type delete_function_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_function_code_signing_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_function_concurrency_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_function_event_invoke_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_function_url_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_layer_version_errors() ::
+    service_exception() | 
+    too_many_requests_exception().
+
+-type delete_provisioned_concurrency_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_account_settings_errors() ::
+    service_exception() | 
+    too_many_requests_exception().
+
+-type get_alias_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_code_signing_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type get_event_source_mapping_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_code_signing_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_concurrency_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_configuration_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_event_invoke_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_function_url_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_layer_version_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_layer_version_by_arn_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_layer_version_policy_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_policy_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_provisioned_concurrency_config_errors() ::
+    provisioned_concurrency_config_not_found_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_runtime_management_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type invoke_errors() ::
+    snap_start_exception() | 
+    resource_conflict_exception() | 
+    resource_not_ready_exception() | 
+    invalid_subnet_id_exception() | 
+    kms_invalid_state_exception() | 
+    e_f_s_i_o_exception() | 
+    ec2_throttled_exception() | 
+    ec2_unexpected_exception() | 
+    e_f_s_mount_failure_exception() | 
+    e_n_i_limit_reached_exception() | 
+    e_f_s_mount_connectivity_exception() | 
+    e_f_s_mount_timeout_exception() | 
+    kms_not_found_exception() | 
+    invalid_zip_file_exception() | 
+    kms_access_denied_exception() | 
+    request_too_large_exception() | 
+    subnet_ip_address_limit_reached_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_content_exception() | 
+    invalid_runtime_exception() | 
+    recursive_invocation_exception() | 
+    snap_start_timeout_exception() | 
+    too_many_requests_exception() | 
+    snap_start_not_ready_exception() | 
+    ec2_access_denied_exception() | 
+    invalid_security_group_id_exception() | 
+    kms_disabled_exception() | 
+    unsupported_media_type_exception().
+
+-type invoke_async_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_content_exception() | 
+    invalid_runtime_exception().
+
+-type invoke_with_response_stream_errors() ::
+    snap_start_exception() | 
+    resource_conflict_exception() | 
+    resource_not_ready_exception() | 
+    invalid_subnet_id_exception() | 
+    kms_invalid_state_exception() | 
+    e_f_s_i_o_exception() | 
+    ec2_throttled_exception() | 
+    ec2_unexpected_exception() | 
+    e_f_s_mount_failure_exception() | 
+    e_n_i_limit_reached_exception() | 
+    e_f_s_mount_connectivity_exception() | 
+    e_f_s_mount_timeout_exception() | 
+    kms_not_found_exception() | 
+    invalid_zip_file_exception() | 
+    kms_access_denied_exception() | 
+    request_too_large_exception() | 
+    subnet_ip_address_limit_reached_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_content_exception() | 
+    invalid_runtime_exception() | 
+    recursive_invocation_exception() | 
+    snap_start_timeout_exception() | 
+    too_many_requests_exception() | 
+    snap_start_not_ready_exception() | 
+    ec2_access_denied_exception() | 
+    invalid_security_group_id_exception() | 
+    kms_disabled_exception() | 
+    unsupported_media_type_exception().
+
+-type list_aliases_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_code_signing_configs_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_event_source_mappings_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_function_event_invoke_configs_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_function_url_configs_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_functions_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
+-type list_functions_by_code_signing_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type list_layer_versions_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_layers_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    too_many_requests_exception().
+
+-type list_provisioned_concurrency_configs_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_versions_by_function_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type publish_layer_version_errors() ::
+    code_storage_exceeded_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type publish_version_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    code_storage_exceeded_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_function_code_signing_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_function_concurrency_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_function_event_invoke_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_provisioned_concurrency_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_runtime_management_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type remove_layer_version_permission_errors() ::
+    precondition_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type remove_permission_errors() ::
+    precondition_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type tag_resource_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type untag_resource_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_alias_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_code_signing_config_errors() ::
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type update_event_source_mapping_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type update_function_code_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    code_storage_exceeded_exception() | 
+    invalid_code_signature_exception() | 
+    code_verification_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_function_configuration_errors() ::
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    invalid_code_signature_exception() | 
+    code_verification_failed_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_function_event_invoke_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_function_url_config_errors() ::
+    resource_conflict_exception() | 
+    service_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -273,8 +2485,17 @@
 %% To revoke permission, call `RemoveLayerVersionPermission' with the
 %% statement ID that you
 %% specified when you added it.
+-spec add_layer_version_permission(aws_client:aws_client(), binary() | list(), binary() | list(), add_layer_version_permission_request()) ->
+    {ok, add_layer_version_permission_response(), tuple()} |
+    {error, any()} |
+    {error, add_layer_version_permission_errors(), tuple()}.
 add_layer_version_permission(Client, LayerName, VersionNumber, Input) ->
     add_layer_version_permission(Client, LayerName, VersionNumber, Input, []).
+
+-spec add_layer_version_permission(aws_client:aws_client(), binary() | list(), binary() | list(), add_layer_version_permission_request(), proplists:proplist()) ->
+    {ok, add_layer_version_permission_response(), tuple()} |
+    {error, any()} |
+    {error, add_layer_version_permission_errors(), tuple()}.
 add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0) ->
     Method = post,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy"],
@@ -327,8 +2548,17 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0)
 %% the function. For more information
 %% about function policies, see Using resource-based policies for Lambda:
 %% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html.
+-spec add_permission(aws_client:aws_client(), binary() | list(), add_permission_request()) ->
+    {ok, add_permission_response(), tuple()} |
+    {error, any()} |
+    {error, add_permission_errors(), tuple()}.
 add_permission(Client, FunctionName, Input) ->
     add_permission(Client, FunctionName, Input, []).
+
+-spec add_permission(aws_client:aws_client(), binary() | list(), add_permission_request(), proplists:proplist()) ->
+    {ok, add_permission_response(), tuple()} |
+    {error, any()} |
+    {error, add_permission_errors(), tuple()}.
 add_permission(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy"],
@@ -366,8 +2596,17 @@ add_permission(Client, FunctionName, Input0, Options0) ->
 %% `RoutingConfig' parameter to specify a second version and the
 %% percentage of invocation requests that
 %% it receives.
+-spec create_alias(aws_client:aws_client(), binary() | list(), create_alias_request()) ->
+    {ok, alias_configuration(), tuple()} |
+    {error, any()} |
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, FunctionName, Input) ->
     create_alias(Client, FunctionName, Input, []).
+
+-spec create_alias(aws_client:aws_client(), binary() | list(), create_alias_request(), proplists:proplist()) ->
+    {ok, alias_configuration(), tuple()} |
+    {error, any()} |
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases"],
@@ -398,8 +2637,17 @@ create_alias(Client, FunctionName, Input0, Options0) ->
 %% allowed signing profiles and defines the code-signing validation policy
 %% (action to be taken if deployment
 %% validation checks fail).
+-spec create_code_signing_config(aws_client:aws_client(), create_code_signing_config_request()) ->
+    {ok, create_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_code_signing_config_errors(), tuple()}.
 create_code_signing_config(Client, Input) ->
     create_code_signing_config(Client, Input, []).
+
+-spec create_code_signing_config(aws_client:aws_client(), create_code_signing_config_request(), proplists:proplist()) ->
+    {ok, create_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_code_signing_config_errors(), tuple()}.
 create_code_signing_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-04-22/code-signing-configs"],
@@ -491,8 +2739,17 @@ create_code_signing_config(Client, Input0, Options0) ->
 %%
 %% Amazon DocumentDB:
 %% https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html#docdb-configuration
+-spec create_event_source_mapping(aws_client:aws_client(), create_event_source_mapping_request()) ->
+    {ok, event_source_mapping_configuration(), tuple()} |
+    {error, any()} |
+    {error, create_event_source_mapping_errors(), tuple()}.
 create_event_source_mapping(Client, Input) ->
     create_event_source_mapping(Client, Input, []).
+
+-spec create_event_source_mapping(aws_client:aws_client(), create_event_source_mapping_request(), proplists:proplist()) ->
+    {ok, event_source_mapping_configuration(), tuple()} |
+    {error, any()} |
+    {error, create_event_source_mapping_errors(), tuple()}.
 create_event_source_mapping(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/event-source-mappings"],
@@ -601,8 +2858,17 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% information, see Invoking Lambda
 %% functions:
 %% https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html.
+-spec create_function(aws_client:aws_client(), create_function_request()) ->
+    {ok, function_configuration(), tuple()} |
+    {error, any()} |
+    {error, create_function_errors(), tuple()}.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
+
+-spec create_function(aws_client:aws_client(), create_function_request(), proplists:proplist()) ->
+    {ok, function_configuration(), tuple()} |
+    {error, any()} |
+    {error, create_function_errors(), tuple()}.
 create_function(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions"],
@@ -630,8 +2896,17 @@ create_function(Client, Input0, Options0) ->
 %%
 %% A function URL is
 %% a dedicated HTTP(S) endpoint that you can use to invoke your function.
+-spec create_function_url_config(aws_client:aws_client(), binary() | list(), create_function_url_config_request()) ->
+    {ok, create_function_url_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_function_url_config_errors(), tuple()}.
 create_function_url_config(Client, FunctionName, Input) ->
     create_function_url_config(Client, FunctionName, Input, []).
+
+-spec create_function_url_config(aws_client:aws_client(), binary() | list(), create_function_url_config_request(), proplists:proplist()) ->
+    {ok, create_function_url_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_function_url_config_errors(), tuple()}.
 create_function_url_config(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
@@ -657,8 +2932,17 @@ create_function_url_config(Client, FunctionName, Input0, Options0) ->
 
 %% @doc Deletes a Lambda function alias:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
+-spec delete_alias(aws_client:aws_client(), binary() | list(), binary() | list(), delete_alias_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, FunctionName, Name, Input) ->
     delete_alias(Client, FunctionName, Name, Input, []).
+
+-spec delete_alias(aws_client:aws_client(), binary() | list(), binary() | list(), delete_alias_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, FunctionName, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
@@ -685,8 +2969,17 @@ delete_alias(Client, FunctionName, Name, Input0, Options0) ->
 %%
 %% You can delete the code signing configuration only if no function is
 %% using it.
+-spec delete_code_signing_config(aws_client:aws_client(), binary() | list(), delete_code_signing_config_request()) ->
+    {ok, delete_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, delete_code_signing_config_errors(), tuple()}.
 delete_code_signing_config(Client, CodeSigningConfigArn, Input) ->
     delete_code_signing_config(Client, CodeSigningConfigArn, Input, []).
+
+-spec delete_code_signing_config(aws_client:aws_client(), binary() | list(), delete_code_signing_config_request(), proplists:proplist()) ->
+    {ok, delete_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, delete_code_signing_config_errors(), tuple()}.
 delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
@@ -719,8 +3012,17 @@ delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% When you delete an event source mapping, it enters a `Deleting' state
 %% and might not be completely
 %% deleted for several seconds.
+-spec delete_event_source_mapping(aws_client:aws_client(), binary() | list(), delete_event_source_mapping_request()) ->
+    {ok, event_source_mapping_configuration(), tuple()} |
+    {error, any()} |
+    {error, delete_event_source_mapping_errors(), tuple()}.
 delete_event_source_mapping(Client, UUID, Input) ->
     delete_event_source_mapping(Client, UUID, Input, []).
+
+-spec delete_event_source_mapping(aws_client:aws_client(), binary() | list(), delete_event_source_mapping_request(), proplists:proplist()) ->
+    {ok, event_source_mapping_configuration(), tuple()} |
+    {error, any()} |
+    {error, delete_event_source_mapping_errors(), tuple()}.
 delete_event_source_mapping(Client, UUID, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
@@ -755,8 +3057,17 @@ delete_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% invoke your function
 %% directly, delete the trigger in the service where you originally
 %% configured it.
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_errors(), tuple()}.
 delete_function(Client, FunctionName, Input) ->
     delete_function(Client, FunctionName, Input, []).
+
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_errors(), tuple()}.
 delete_function(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), ""],
@@ -781,8 +3092,17 @@ delete_function(Client, FunctionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the code signing configuration from the function.
+-spec delete_function_code_signing_config(aws_client:aws_client(), binary() | list(), delete_function_code_signing_config_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_code_signing_config_errors(), tuple()}.
 delete_function_code_signing_config(Client, FunctionName, Input) ->
     delete_function_code_signing_config(Client, FunctionName, Input, []).
+
+-spec delete_function_code_signing_config(aws_client:aws_client(), binary() | list(), delete_function_code_signing_config_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_code_signing_config_errors(), tuple()}.
 delete_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
@@ -806,8 +3126,17 @@ delete_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a concurrent execution limit from a function.
+-spec delete_function_concurrency(aws_client:aws_client(), binary() | list(), delete_function_concurrency_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_concurrency_errors(), tuple()}.
 delete_function_concurrency(Client, FunctionName, Input) ->
     delete_function_concurrency(Client, FunctionName, Input, []).
+
+-spec delete_function_concurrency(aws_client:aws_client(), binary() | list(), delete_function_concurrency_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_concurrency_errors(), tuple()}.
 delete_function_concurrency(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-10-31/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
@@ -835,8 +3164,17 @@ delete_function_concurrency(Client, FunctionName, Input0, Options0) ->
 %%
 %% To configure options for asynchronous invocation, use
 %% `PutFunctionEventInvokeConfig'.
+-spec delete_function_event_invoke_config(aws_client:aws_client(), binary() | list(), delete_function_event_invoke_config_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_event_invoke_config_errors(), tuple()}.
 delete_function_event_invoke_config(Client, FunctionName, Input) ->
     delete_function_event_invoke_config(Client, FunctionName, Input, []).
+
+-spec delete_function_event_invoke_config(aws_client:aws_client(), binary() | list(), delete_function_event_invoke_config_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_event_invoke_config_errors(), tuple()}.
 delete_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
@@ -865,8 +3203,17 @@ delete_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
 %% When you delete a function URL, you
 %% can't recover it. Creating a new function URL results in a different
 %% URL address.
+-spec delete_function_url_config(aws_client:aws_client(), binary() | list(), delete_function_url_config_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_url_config_errors(), tuple()}.
 delete_function_url_config(Client, FunctionName, Input) ->
     delete_function_url_config(Client, FunctionName, Input, []).
+
+-spec delete_function_url_config(aws_client:aws_client(), binary() | list(), delete_function_url_config_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_function_url_config_errors(), tuple()}.
 delete_function_url_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
@@ -897,8 +3244,17 @@ delete_function_url_config(Client, FunctionName, Input0, Options0) ->
 %% Deleted versions can no longer be viewed or added to functions. To avoid
 %% breaking functions, a copy of the version remains in Lambda until no
 %% functions refer to it.
+-spec delete_layer_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_layer_version_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_layer_version_errors(), tuple()}.
 delete_layer_version(Client, LayerName, VersionNumber, Input) ->
     delete_layer_version(Client, LayerName, VersionNumber, Input, []).
+
+-spec delete_layer_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_layer_version_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_layer_version_errors(), tuple()}.
 delete_layer_version(Client, LayerName, VersionNumber, Input0, Options0) ->
     Method = delete,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), ""],
@@ -922,8 +3278,17 @@ delete_layer_version(Client, LayerName, VersionNumber, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the provisioned concurrency configuration for a function.
+-spec delete_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), delete_provisioned_concurrency_config_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_provisioned_concurrency_config_errors(), tuple()}.
 delete_provisioned_concurrency_config(Client, FunctionName, Input) ->
     delete_provisioned_concurrency_config(Client, FunctionName, Input, []).
+
+-spec delete_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), delete_provisioned_concurrency_config_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_provisioned_concurrency_config_errors(), tuple()}.
 delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
@@ -950,14 +3315,26 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
 %% @doc Retrieves details about your account's limits:
 %% https://docs.aws.amazon.com/lambda/latest/dg/limits.html and usage in an
 %% Amazon Web Services Region.
+-spec get_account_settings(aws_client:aws_client()) ->
+    {ok, get_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client)
   when is_map(Client) ->
     get_account_settings(Client, #{}, #{}).
 
+-spec get_account_settings(aws_client:aws_client(), map(), map()) ->
+    {ok, get_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_settings(Client, QueryMap, HeadersMap, []).
 
+-spec get_account_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2016-08-19/account-settings"],
@@ -976,14 +3353,26 @@ get_account_settings(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns details about a Lambda function alias:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
+-spec get_alias(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, alias_configuration(), tuple()} |
+    {error, any()} |
+    {error, get_alias_errors(), tuple()}.
 get_alias(Client, FunctionName, Name)
   when is_map(Client) ->
     get_alias(Client, FunctionName, Name, #{}, #{}).
 
+-spec get_alias(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, alias_configuration(), tuple()} |
+    {error, any()} |
+    {error, get_alias_errors(), tuple()}.
 get_alias(Client, FunctionName, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, []).
 
+-spec get_alias(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, alias_configuration(), tuple()} |
+    {error, any()} |
+    {error, get_alias_errors(), tuple()}.
 get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
@@ -1001,14 +3390,26 @@ get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the specified code signing configuration.
+-spec get_code_signing_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_code_signing_config_errors(), tuple()}.
 get_code_signing_config(Client, CodeSigningConfigArn)
   when is_map(Client) ->
     get_code_signing_config(Client, CodeSigningConfigArn, #{}, #{}).
 
+-spec get_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_code_signing_config_errors(), tuple()}.
 get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, []).
 
+-spec get_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_code_signing_config_errors(), tuple()}.
 get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
@@ -1029,14 +3430,26 @@ get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Opti
 %%
 %% You can get the identifier of a mapping from the output of
 %% `ListEventSourceMappings'.
+-spec get_event_source_mapping(aws_client:aws_client(), binary() | list()) ->
+    {ok, event_source_mapping_configuration(), tuple()} |
+    {error, any()} |
+    {error, get_event_source_mapping_errors(), tuple()}.
 get_event_source_mapping(Client, UUID)
   when is_map(Client) ->
     get_event_source_mapping(Client, UUID, #{}, #{}).
 
+-spec get_event_source_mapping(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, event_source_mapping_configuration(), tuple()} |
+    {error, any()} |
+    {error, get_event_source_mapping_errors(), tuple()}.
 get_event_source_mapping(Client, UUID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, []).
 
+-spec get_event_source_mapping(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, event_source_mapping_configuration(), tuple()} |
+    {error, any()} |
+    {error, get_event_source_mapping_errors(), tuple()}.
 get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
@@ -1060,14 +3473,26 @@ get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, Options0)
 %% If you specify a function version, only details that are specific to that
 %% version are
 %% returned.
+-spec get_function(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_function_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_errors(), tuple()}.
 get_function(Client, FunctionName)
   when is_map(Client) ->
     get_function(Client, FunctionName, #{}, #{}).
 
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_function_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_errors(), tuple()}.
 get_function(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_function_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_errors(), tuple()}.
 get_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), ""],
@@ -1089,14 +3514,26 @@ get_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the code signing configuration for the specified function.
+-spec get_function_code_signing_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_function_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_code_signing_config_errors(), tuple()}.
 get_function_code_signing_config(Client, FunctionName)
   when is_map(Client) ->
     get_function_code_signing_config(Client, FunctionName, #{}, #{}).
 
+-spec get_function_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_function_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_code_signing_config_errors(), tuple()}.
 get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec get_function_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_function_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_code_signing_config_errors(), tuple()}.
 get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
@@ -1118,14 +3555,26 @@ get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, Opt
 %%
 %% To set a concurrency limit for a
 %% function, use `PutFunctionConcurrency'.
+-spec get_function_concurrency(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_function_concurrency_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_concurrency_errors(), tuple()}.
 get_function_concurrency(Client, FunctionName)
   when is_map(Client) ->
     get_function_concurrency(Client, FunctionName, #{}, #{}).
 
+-spec get_function_concurrency(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_function_concurrency_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_concurrency_errors(), tuple()}.
 get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec get_function_concurrency(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_function_concurrency_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_concurrency_errors(), tuple()}.
 get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
@@ -1151,14 +3600,26 @@ get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %%
 %% To get all of a function's details, including function-level settings,
 %% use `GetFunction'.
+-spec get_function_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, function_configuration(), tuple()} |
+    {error, any()} |
+    {error, get_function_configuration_errors(), tuple()}.
 get_function_configuration(Client, FunctionName)
   when is_map(Client) ->
     get_function_configuration(Client, FunctionName, #{}, #{}).
 
+-spec get_function_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, function_configuration(), tuple()} |
+    {error, any()} |
+    {error, get_function_configuration_errors(), tuple()}.
 get_function_configuration(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec get_function_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, function_configuration(), tuple()} |
+    {error, any()} |
+    {error, get_function_configuration_errors(), tuple()}.
 get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/configuration"],
@@ -1184,14 +3645,26 @@ get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %%
 %% To configure options for asynchronous invocation, use
 %% `PutFunctionEventInvokeConfig'.
+-spec get_function_event_invoke_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, function_event_invoke_config(), tuple()} |
+    {error, any()} |
+    {error, get_function_event_invoke_config_errors(), tuple()}.
 get_function_event_invoke_config(Client, FunctionName)
   when is_map(Client) ->
     get_function_event_invoke_config(Client, FunctionName, #{}, #{}).
 
+-spec get_function_event_invoke_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, function_event_invoke_config(), tuple()} |
+    {error, any()} |
+    {error, get_function_event_invoke_config_errors(), tuple()}.
 get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec get_function_event_invoke_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, function_event_invoke_config(), tuple()} |
+    {error, any()} |
+    {error, get_function_event_invoke_config_errors(), tuple()}.
 get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
@@ -1213,14 +3686,26 @@ get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details about a Lambda function URL.
+-spec get_function_url_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_function_url_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_url_config_errors(), tuple()}.
 get_function_url_config(Client, FunctionName)
   when is_map(Client) ->
     get_function_url_config(Client, FunctionName, #{}, #{}).
 
+-spec get_function_url_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_function_url_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_url_config_errors(), tuple()}.
 get_function_url_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_url_config(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec get_function_url_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_function_url_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_url_config_errors(), tuple()}.
 get_function_url_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
@@ -1246,14 +3731,26 @@ get_function_url_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html,
 %% with a link to download the layer archive
 %% that's valid for 10 minutes.
+-spec get_layer_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_layer_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_layer_version_errors(), tuple()}.
 get_layer_version(Client, LayerName, VersionNumber)
   when is_map(Client) ->
     get_layer_version(Client, LayerName, VersionNumber, #{}, #{}).
 
+-spec get_layer_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_layer_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_layer_version_errors(), tuple()}.
 get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, []).
 
+-spec get_layer_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_layer_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_layer_version_errors(), tuple()}.
 get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), ""],
@@ -1275,14 +3772,26 @@ get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Option
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html,
 %% with a link to download the layer archive
 %% that's valid for 10 minutes.
+-spec get_layer_version_by_arn(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_layer_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_layer_version_by_arn_errors(), tuple()}.
 get_layer_version_by_arn(Client, Arn)
   when is_map(Client) ->
     get_layer_version_by_arn(Client, Arn, #{}, #{}).
 
+-spec get_layer_version_by_arn(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_layer_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_layer_version_by_arn_errors(), tuple()}.
 get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, []).
 
+-spec get_layer_version_by_arn(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_layer_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_layer_version_by_arn_errors(), tuple()}.
 get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers?find=LayerVersion"],
@@ -1308,14 +3817,26 @@ get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html.
 %%
 %% For more information, see `AddLayerVersionPermission'.
+-spec get_layer_version_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_layer_version_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_layer_version_policy_errors(), tuple()}.
 get_layer_version_policy(Client, LayerName, VersionNumber)
   when is_map(Client) ->
     get_layer_version_policy(Client, LayerName, VersionNumber, #{}, #{}).
 
+-spec get_layer_version_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_layer_version_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_layer_version_policy_errors(), tuple()}.
 get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap, []).
 
+-spec get_layer_version_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_layer_version_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_layer_version_policy_errors(), tuple()}.
 get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy"],
@@ -1335,14 +3856,26 @@ get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap,
 %% @doc Returns the resource-based IAM policy:
 %% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
 %% for a function, version, or alias.
+-spec get_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, FunctionName)
   when is_map(Client) ->
     get_policy(Client, FunctionName, #{}, #{}).
 
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
 get_policy(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy"],
@@ -1365,14 +3898,26 @@ get_policy(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the provisioned concurrency configuration for a
 %% function's alias or version.
+-spec get_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_provisioned_concurrency_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_provisioned_concurrency_config_errors(), tuple()}.
 get_provisioned_concurrency_config(Client, FunctionName, Qualifier)
   when is_map(Client) ->
     get_provisioned_concurrency_config(Client, FunctionName, Qualifier, #{}, #{}).
 
+-spec get_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_provisioned_concurrency_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_provisioned_concurrency_config_errors(), tuple()}.
 get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, []).
 
+-spec get_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_provisioned_concurrency_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_provisioned_concurrency_config_errors(), tuple()}.
 get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
@@ -1402,14 +3947,26 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
 %% this includes the runtime update mode and `null' is returned for the
 %% ARN. For more information, see Runtime updates:
 %% https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html.
+-spec get_runtime_management_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_runtime_management_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_runtime_management_config_errors(), tuple()}.
 get_runtime_management_config(Client, FunctionName)
   when is_map(Client) ->
     get_runtime_management_config(Client, FunctionName, #{}, #{}).
 
+-spec get_runtime_management_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_runtime_management_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_runtime_management_config_errors(), tuple()}.
 get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec get_runtime_management_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_runtime_management_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_runtime_management_config_errors(), tuple()}.
 get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-07-20/functions/", aws_util:encode_uri(FunctionName), "/runtime-management-config"],
@@ -1492,8 +4049,17 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Option
 %% permissions for cross-account invocations, see Granting function
 %% access to other accounts:
 %% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html#permissions-resource-xaccountinvoke.
+-spec invoke(aws_client:aws_client(), binary() | list(), invocation_request()) ->
+    {ok, invocation_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_errors(), tuple()}.
 invoke(Client, FunctionName, Input) ->
     invoke(Client, FunctionName, Input, []).
+
+-spec invoke(aws_client:aws_client(), binary() | list(), invocation_request(), proplists:proplist()) ->
+    {ok, invocation_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_errors(), tuple()}.
 invoke(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/invocations"],
@@ -1547,8 +4113,17 @@ invoke(Client, FunctionName, Input0, Options0) ->
 %% If you do use the InvokeAsync action, note that it doesn't support the
 %% use of X-Ray active tracing. Trace ID is not
 %% propagated to the function, even if X-Ray active tracing is turned on.
+-spec invoke_async(aws_client:aws_client(), binary() | list(), invoke_async_request()) ->
+    {ok, invoke_async_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_async_errors(), tuple()}.
 invoke_async(Client, FunctionName, Input) ->
     invoke_async(Client, FunctionName, Input, []).
+
+-spec invoke_async(aws_client:aws_client(), binary() | list(), invoke_async_request(), proplists:proplist()) ->
+    {ok, invoke_async_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_async_errors(), tuple()}.
 invoke_async(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2014-11-13/functions/", aws_util:encode_uri(FunctionName), "/invoke-async"],
@@ -1584,8 +4159,17 @@ invoke_async(Client, FunctionName, Input0, Options0) ->
 %% permissions for cross-account invocations, see Granting function
 %% access to other accounts:
 %% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html#permissions-resource-xaccountinvoke.
+-spec invoke_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_with_response_stream_request()) ->
+    {ok, invoke_with_response_stream_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_with_response_stream_errors(), tuple()}.
 invoke_with_response_stream(Client, FunctionName, Input) ->
     invoke_with_response_stream(Client, FunctionName, Input, []).
+
+-spec invoke_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_with_response_stream_request(), proplists:proplist()) ->
+    {ok, invoke_with_response_stream_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_with_response_stream_errors(), tuple()}.
 invoke_with_response_stream(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-11-15/functions/", aws_util:encode_uri(FunctionName), "/response-streaming-invocations"],
@@ -1633,14 +4217,26 @@ invoke_with_response_stream(Client, FunctionName, Input0, Options0) ->
 %% @doc Returns a list of aliases:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html
 %% for a Lambda function.
+-spec list_aliases(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, FunctionName)
   when is_map(Client) ->
     list_aliases(Client, FunctionName, #{}, #{}).
 
+-spec list_aliases(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_aliases(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec list_aliases(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases"],
@@ -1670,14 +4266,26 @@ list_aliases(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %% A request returns up to 10,000 configurations per
 %% call. You can use the `MaxItems' parameter to return fewer
 %% configurations per call.
+-spec list_code_signing_configs(aws_client:aws_client()) ->
+    {ok, list_code_signing_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_signing_configs_errors(), tuple()}.
 list_code_signing_configs(Client)
   when is_map(Client) ->
     list_code_signing_configs(Client, #{}, #{}).
 
+-spec list_code_signing_configs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_code_signing_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_signing_configs_errors(), tuple()}.
 list_code_signing_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_code_signing_configs(Client, QueryMap, HeadersMap, []).
 
+-spec list_code_signing_configs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_code_signing_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_signing_configs_errors(), tuple()}.
 list_code_signing_configs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-04-22/code-signing-configs"],
@@ -1703,14 +4311,26 @@ list_code_signing_configs(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Specify an `EventSourceArn' to show only event source mappings for a
 %% single event source.
+-spec list_event_source_mappings(aws_client:aws_client()) ->
+    {ok, list_event_source_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_source_mappings_errors(), tuple()}.
 list_event_source_mappings(Client)
   when is_map(Client) ->
     list_event_source_mappings(Client, #{}, #{}).
 
+-spec list_event_source_mappings(aws_client:aws_client(), map(), map()) ->
+    {ok, list_event_source_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_source_mappings_errors(), tuple()}.
 list_event_source_mappings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_source_mappings(Client, QueryMap, HeadersMap, []).
 
+-spec list_event_source_mappings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_event_source_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_source_mappings_errors(), tuple()}.
 list_event_source_mappings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/event-source-mappings"],
@@ -1739,14 +4359,26 @@ list_event_source_mappings(Client, QueryMap, HeadersMap, Options0)
 %%
 %% To configure options for asynchronous invocation, use
 %% `PutFunctionEventInvokeConfig'.
+-spec list_function_event_invoke_configs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_function_event_invoke_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_function_event_invoke_configs_errors(), tuple()}.
 list_function_event_invoke_configs(Client, FunctionName)
   when is_map(Client) ->
     list_function_event_invoke_configs(Client, FunctionName, #{}, #{}).
 
+-spec list_function_event_invoke_configs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_function_event_invoke_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_function_event_invoke_configs_errors(), tuple()}.
 list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec list_function_event_invoke_configs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_function_event_invoke_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_function_event_invoke_configs_errors(), tuple()}.
 list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config/list"],
@@ -1769,14 +4401,26 @@ list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of Lambda function URLs for the specified function.
+-spec list_function_url_configs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_function_url_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_function_url_configs_errors(), tuple()}.
 list_function_url_configs(Client, FunctionName)
   when is_map(Client) ->
     list_function_url_configs(Client, FunctionName, #{}, #{}).
 
+-spec list_function_url_configs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_function_url_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_function_url_configs_errors(), tuple()}.
 list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec list_function_url_configs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_function_url_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_function_url_configs_errors(), tuple()}.
 list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/urls"],
@@ -1814,14 +4458,26 @@ list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %% LastUpdateStatus, LastUpdateStatusReason,
 %% LastUpdateStatusReasonCode, RuntimeVersionConfig) for a function or
 %% version, use `GetFunction'.
+-spec list_functions(aws_client:aws_client()) ->
+    {ok, list_functions_response(), tuple()} |
+    {error, any()} |
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client)
   when is_map(Client) ->
     list_functions(Client, #{}, #{}).
 
+-spec list_functions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_functions_response(), tuple()} |
+    {error, any()} |
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions(Client, QueryMap, HeadersMap, []).
 
+-spec list_functions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_functions_response(), tuple()} |
+    {error, any()} |
+    {error, list_functions_errors(), tuple()}.
 list_functions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions"],
@@ -1849,14 +4505,26 @@ list_functions(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You can use this method prior to deleting a
 %% code signing configuration, to verify that no functions are using it.
+-spec list_functions_by_code_signing_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_functions_by_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, list_functions_by_code_signing_config_errors(), tuple()}.
 list_functions_by_code_signing_config(Client, CodeSigningConfigArn)
   when is_map(Client) ->
     list_functions_by_code_signing_config(Client, CodeSigningConfigArn, #{}, #{}).
 
+-spec list_functions_by_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_functions_by_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, list_functions_by_code_signing_config_errors(), tuple()}.
 list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, []).
 
+-spec list_functions_by_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_functions_by_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, list_functions_by_code_signing_config_errors(), tuple()}.
 list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), "/functions"],
@@ -1889,14 +4557,26 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, He
 %% versions that indicate that they're compatible with that runtime.
 %% Specify a compatible architecture to include only
 %% layer versions that are compatible with that architecture.
+-spec list_layer_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_layer_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_layer_versions_errors(), tuple()}.
 list_layer_versions(Client, LayerName)
   when is_map(Client) ->
     list_layer_versions(Client, LayerName, #{}, #{}).
 
+-spec list_layer_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_layer_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_layer_versions_errors(), tuple()}.
 list_layer_versions(Client, LayerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_layer_versions(Client, LayerName, QueryMap, HeadersMap, []).
 
+-spec list_layer_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_layer_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_layer_versions_errors(), tuple()}.
 list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions"],
@@ -1934,14 +4614,26 @@ list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options0)
 %% compatible with
 %% that instruction set architecture:
 %% https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html.
+-spec list_layers(aws_client:aws_client()) ->
+    {ok, list_layers_response(), tuple()} |
+    {error, any()} |
+    {error, list_layers_errors(), tuple()}.
 list_layers(Client)
   when is_map(Client) ->
     list_layers(Client, #{}, #{}).
 
+-spec list_layers(aws_client:aws_client(), map(), map()) ->
+    {ok, list_layers_response(), tuple()} |
+    {error, any()} |
+    {error, list_layers_errors(), tuple()}.
 list_layers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_layers(Client, QueryMap, HeadersMap, []).
 
+-spec list_layers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_layers_response(), tuple()} |
+    {error, any()} |
+    {error, list_layers_errors(), tuple()}.
 list_layers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers"],
@@ -1967,14 +4659,26 @@ list_layers(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of provisioned concurrency configurations for a
 %% function.
+-spec list_provisioned_concurrency_configs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_provisioned_concurrency_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_provisioned_concurrency_configs_errors(), tuple()}.
 list_provisioned_concurrency_configs(Client, FunctionName)
   when is_map(Client) ->
     list_provisioned_concurrency_configs(Client, FunctionName, #{}, #{}).
 
+-spec list_provisioned_concurrency_configs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_provisioned_concurrency_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_provisioned_concurrency_configs_errors(), tuple()}.
 list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec list_provisioned_concurrency_configs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_provisioned_concurrency_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_provisioned_concurrency_configs_errors(), tuple()}.
 list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency?List=ALL"],
@@ -2001,14 +4705,26 @@ list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap,
 %%
 %% You can
 %% also view tags with `GetFunction'.
+-spec list_tags(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Resource)
   when is_map(Client) ->
     list_tags(Client, Resource, #{}, #{}).
 
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Resource, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, Resource, QueryMap, HeadersMap, []).
 
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Resource, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
@@ -2030,14 +4746,26 @@ list_tags(Client, Resource, QueryMap, HeadersMap, Options0)
 %% with the version-specific configuration of each.
 %%
 %% Lambda returns up to 50 versions per call.
+-spec list_versions_by_function(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_versions_by_function_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_by_function_errors(), tuple()}.
 list_versions_by_function(Client, FunctionName)
   when is_map(Client) ->
     list_versions_by_function(Client, FunctionName, #{}, #{}).
 
+-spec list_versions_by_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_versions_by_function_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_by_function_errors(), tuple()}.
 list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, []).
 
+-spec list_versions_by_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_versions_by_function_response(), tuple()} |
+    {error, any()} |
+    {error, list_versions_by_function_errors(), tuple()}.
 list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/versions"],
@@ -2069,8 +4797,17 @@ list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %%
 %% Add layers to your function with `CreateFunction' or
 %% `UpdateFunctionConfiguration'.
+-spec publish_layer_version(aws_client:aws_client(), binary() | list(), publish_layer_version_request()) ->
+    {ok, publish_layer_version_response(), tuple()} |
+    {error, any()} |
+    {error, publish_layer_version_errors(), tuple()}.
 publish_layer_version(Client, LayerName, Input) ->
     publish_layer_version(Client, LayerName, Input, []).
+
+-spec publish_layer_version(aws_client:aws_client(), binary() | list(), publish_layer_version_request(), proplists:proplist()) ->
+    {ok, publish_layer_version_response(), tuple()} |
+    {error, any()} |
+    {error, publish_layer_version_errors(), tuple()}.
 publish_layer_version(Client, LayerName, Input0, Options0) ->
     Method = post,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions"],
@@ -2109,8 +4846,17 @@ publish_layer_version(Client, LayerName, Input0, Options0) ->
 %%
 %% Clients can invoke versions directly or with an alias. To create an alias,
 %% use `CreateAlias'.
+-spec publish_version(aws_client:aws_client(), binary() | list(), publish_version_request()) ->
+    {ok, function_configuration(), tuple()} |
+    {error, any()} |
+    {error, publish_version_errors(), tuple()}.
 publish_version(Client, FunctionName, Input) ->
     publish_version(Client, FunctionName, Input, []).
+
+-spec publish_version(aws_client:aws_client(), binary() | list(), publish_version_request(), proplists:proplist()) ->
+    {ok, function_configuration(), tuple()} |
+    {error, any()} |
+    {error, publish_version_errors(), tuple()}.
 publish_version(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/versions"],
@@ -2137,8 +4883,17 @@ publish_version(Client, FunctionName, Input0, Options0) ->
 %%
 %% Changes to the code signing configuration take effect the
 %% next time a user tries to deploy a code package to the function.
+-spec put_function_code_signing_config(aws_client:aws_client(), binary() | list(), put_function_code_signing_config_request()) ->
+    {ok, put_function_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, put_function_code_signing_config_errors(), tuple()}.
 put_function_code_signing_config(Client, FunctionName, Input) ->
     put_function_code_signing_config(Client, FunctionName, Input, []).
+
+-spec put_function_code_signing_config(aws_client:aws_client(), binary() | list(), put_function_code_signing_config_request(), proplists:proplist()) ->
+    {ok, put_function_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, put_function_code_signing_config_errors(), tuple()}.
 put_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
@@ -2180,8 +4935,17 @@ put_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
 %% functions that aren't configured with a per-function limit. For more
 %% information, see Lambda function scaling:
 %% https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html.
+-spec put_function_concurrency(aws_client:aws_client(), binary() | list(), put_function_concurrency_request()) ->
+    {ok, concurrency(), tuple()} |
+    {error, any()} |
+    {error, put_function_concurrency_errors(), tuple()}.
 put_function_concurrency(Client, FunctionName, Input) ->
     put_function_concurrency(Client, FunctionName, Input, []).
+
+-spec put_function_concurrency(aws_client:aws_client(), binary() | list(), put_function_concurrency_request(), proplists:proplist()) ->
+    {ok, concurrency(), tuple()} |
+    {error, any()} |
+    {error, put_function_concurrency_errors(), tuple()}.
 put_function_concurrency(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2017-10-31/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
@@ -2231,8 +4995,17 @@ put_function_concurrency(Client, FunctionName, Input0, Options0) ->
 %% that fail all processing attempts (on-failure). You can configure
 %% destinations in addition to or instead of a
 %% dead-letter queue.
+-spec put_function_event_invoke_config(aws_client:aws_client(), binary() | list(), put_function_event_invoke_config_request()) ->
+    {ok, function_event_invoke_config(), tuple()} |
+    {error, any()} |
+    {error, put_function_event_invoke_config_errors(), tuple()}.
 put_function_event_invoke_config(Client, FunctionName, Input) ->
     put_function_event_invoke_config(Client, FunctionName, Input, []).
+
+-spec put_function_event_invoke_config(aws_client:aws_client(), binary() | list(), put_function_event_invoke_config_request(), proplists:proplist()) ->
+    {ok, function_event_invoke_config(), tuple()} |
+    {error, any()} |
+    {error, put_function_event_invoke_config_errors(), tuple()}.
 put_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
@@ -2258,8 +5031,17 @@ put_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
 
 %% @doc Adds a provisioned concurrency configuration to a function's
 %% alias or version.
+-spec put_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), put_provisioned_concurrency_config_request()) ->
+    {ok, put_provisioned_concurrency_config_response(), tuple()} |
+    {error, any()} |
+    {error, put_provisioned_concurrency_config_errors(), tuple()}.
 put_provisioned_concurrency_config(Client, FunctionName, Input) ->
     put_provisioned_concurrency_config(Client, FunctionName, Input, []).
+
+-spec put_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), put_provisioned_concurrency_config_request(), proplists:proplist()) ->
+    {ok, put_provisioned_concurrency_config_response(), tuple()} |
+    {error, any()} |
+    {error, put_provisioned_concurrency_config_errors(), tuple()}.
 put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
@@ -2289,8 +5071,17 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
 %% For more information,
 %% see Runtime updates:
 %% https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html.
+-spec put_runtime_management_config(aws_client:aws_client(), binary() | list(), put_runtime_management_config_request()) ->
+    {ok, put_runtime_management_config_response(), tuple()} |
+    {error, any()} |
+    {error, put_runtime_management_config_errors(), tuple()}.
 put_runtime_management_config(Client, FunctionName, Input) ->
     put_runtime_management_config(Client, FunctionName, Input, []).
+
+-spec put_runtime_management_config(aws_client:aws_client(), binary() | list(), put_runtime_management_config_request(), proplists:proplist()) ->
+    {ok, put_runtime_management_config_response(), tuple()} |
+    {error, any()} |
+    {error, put_runtime_management_config_errors(), tuple()}.
 put_runtime_management_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2021-07-20/functions/", aws_util:encode_uri(FunctionName), "/runtime-management-config"],
@@ -2321,8 +5112,17 @@ put_runtime_management_config(Client, FunctionName, Input0, Options0) ->
 %%
 %% For more information, see
 %% `AddLayerVersionPermission'.
+-spec remove_layer_version_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), remove_layer_version_permission_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, remove_layer_version_permission_errors(), tuple()}.
 remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input) ->
     remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input, []).
+
+-spec remove_layer_version_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), remove_layer_version_permission_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, remove_layer_version_permission_errors(), tuple()}.
 remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input0, Options0) ->
     Method = delete,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy/", aws_util:encode_uri(StatementId), ""],
@@ -2351,8 +5151,17 @@ remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, I
 %%
 %% You
 %% can get the ID of the statement from the output of `GetPolicy'.
+-spec remove_permission(aws_client:aws_client(), binary() | list(), binary() | list(), remove_permission_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, FunctionName, StatementId, Input) ->
     remove_permission(Client, FunctionName, StatementId, Input, []).
+
+-spec remove_permission(aws_client:aws_client(), binary() | list(), binary() | list(), remove_permission_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, FunctionName, StatementId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy/", aws_util:encode_uri(StatementId), ""],
@@ -2379,8 +5188,17 @@ remove_permission(Client, FunctionName, StatementId, Input0, Options0) ->
 
 %% @doc Adds tags: https://docs.aws.amazon.com/lambda/latest/dg/tagging.html
 %% to a function.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Resource, Input) ->
     tag_resource(Client, Resource, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Resource, Input0, Options0) ->
     Method = post,
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
@@ -2405,8 +5223,17 @@ tag_resource(Client, Resource, Input0, Options0) ->
 
 %% @doc Removes tags:
 %% https://docs.aws.amazon.com/lambda/latest/dg/tagging.html from a function.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Resource, Input) ->
     untag_resource(Client, Resource, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Resource, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
@@ -2432,8 +5259,17 @@ untag_resource(Client, Resource, Input0, Options0) ->
 
 %% @doc Updates the configuration of a Lambda function alias:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
+-spec update_alias(aws_client:aws_client(), binary() | list(), binary() | list(), update_alias_request()) ->
+    {ok, alias_configuration(), tuple()} |
+    {error, any()} |
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, FunctionName, Name, Input) ->
     update_alias(Client, FunctionName, Name, Input, []).
+
+-spec update_alias(aws_client:aws_client(), binary() | list(), binary() | list(), update_alias_request(), proplists:proplist()) ->
+    {ok, alias_configuration(), tuple()} |
+    {error, any()} |
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, FunctionName, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
@@ -2460,8 +5296,17 @@ update_alias(Client, FunctionName, Name, Input0, Options0) ->
 %%
 %% Changes to the code signing configuration take effect the next time a
 %% user tries to deploy a code package to the function.
+-spec update_code_signing_config(aws_client:aws_client(), binary() | list(), update_code_signing_config_request()) ->
+    {ok, update_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_code_signing_config_errors(), tuple()}.
 update_code_signing_config(Client, CodeSigningConfigArn, Input) ->
     update_code_signing_config(Client, CodeSigningConfigArn, Input, []).
+
+-spec update_code_signing_config(aws_client:aws_client(), binary() | list(), update_code_signing_config_request(), proplists:proplist()) ->
+    {ok, update_code_signing_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_code_signing_config_errors(), tuple()}.
 update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
     Method = put,
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
@@ -2554,8 +5399,17 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %%
 %% Amazon DocumentDB:
 %% https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html#docdb-configuration
+-spec update_event_source_mapping(aws_client:aws_client(), binary() | list(), update_event_source_mapping_request()) ->
+    {ok, event_source_mapping_configuration(), tuple()} |
+    {error, any()} |
+    {error, update_event_source_mapping_errors(), tuple()}.
 update_event_source_mapping(Client, UUID, Input) ->
     update_event_source_mapping(Client, UUID, Input, []).
+
+-spec update_event_source_mapping(aws_client:aws_client(), binary() | list(), update_event_source_mapping_request(), proplists:proplist()) ->
+    {ok, event_source_mapping_configuration(), tuple()} |
+    {error, any()} |
+    {error, update_event_source_mapping_errors(), tuple()}.
 update_event_source_mapping(Client, UUID, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
@@ -2612,8 +5466,17 @@ update_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% Amazon ECR, if you update the image tag to a new image, Lambda does not
 %% automatically
 %% update the function.
+-spec update_function_code(aws_client:aws_client(), binary() | list(), update_function_code_request()) ->
+    {ok, function_configuration(), tuple()} |
+    {error, any()} |
+    {error, update_function_code_errors(), tuple()}.
 update_function_code(Client, FunctionName, Input) ->
     update_function_code(Client, FunctionName, Input, []).
+
+-spec update_function_code(aws_client:aws_client(), binary() | list(), update_function_code_request(), proplists:proplist()) ->
+    {ok, function_configuration(), tuple()} |
+    {error, any()} |
+    {error, update_function_code_errors(), tuple()}.
 update_function_code(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/code"],
@@ -2661,8 +5524,17 @@ update_function_code(Client, FunctionName, Input0, Options0) ->
 %% grant invoke permissions
 %% to an Amazon Web Services account or Amazon Web Service, use
 %% `AddPermission'.
+-spec update_function_configuration(aws_client:aws_client(), binary() | list(), update_function_configuration_request()) ->
+    {ok, function_configuration(), tuple()} |
+    {error, any()} |
+    {error, update_function_configuration_errors(), tuple()}.
 update_function_configuration(Client, FunctionName, Input) ->
     update_function_configuration(Client, FunctionName, Input, []).
+
+-spec update_function_configuration(aws_client:aws_client(), binary() | list(), update_function_configuration_request(), proplists:proplist()) ->
+    {ok, function_configuration(), tuple()} |
+    {error, any()} |
+    {error, update_function_configuration_errors(), tuple()}.
 update_function_configuration(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/configuration"],
@@ -2690,8 +5562,17 @@ update_function_configuration(Client, FunctionName, Input0, Options0) ->
 %%
 %% To configure options for asynchronous invocation, use
 %% `PutFunctionEventInvokeConfig'.
+-spec update_function_event_invoke_config(aws_client:aws_client(), binary() | list(), update_function_event_invoke_config_request()) ->
+    {ok, function_event_invoke_config(), tuple()} |
+    {error, any()} |
+    {error, update_function_event_invoke_config_errors(), tuple()}.
 update_function_event_invoke_config(Client, FunctionName, Input) ->
     update_function_event_invoke_config(Client, FunctionName, Input, []).
+
+-spec update_function_event_invoke_config(aws_client:aws_client(), binary() | list(), update_function_event_invoke_config_request(), proplists:proplist()) ->
+    {ok, function_event_invoke_config(), tuple()} |
+    {error, any()} |
+    {error, update_function_event_invoke_config_errors(), tuple()}.
 update_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
@@ -2716,8 +5597,17 @@ update_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration for a Lambda function URL.
+-spec update_function_url_config(aws_client:aws_client(), binary() | list(), update_function_url_config_request()) ->
+    {ok, update_function_url_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_function_url_config_errors(), tuple()}.
 update_function_url_config(Client, FunctionName, Input) ->
     update_function_url_config(Client, FunctionName, Input, []).
+
+-spec update_function_url_config(aws_client:aws_client(), binary() | list(), update_function_url_config_request(), proplists:proplist()) ->
+    {ok, update_function_url_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_function_url_config_errors(), tuple()}.
 update_function_url_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
@@ -2745,7 +5635,7 @@ update_function_url_config(Client, FunctionName, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

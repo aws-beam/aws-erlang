@@ -31,6 +31,421 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% stop_product_subscription_request() :: #{
+%%   <<"Domain">> => [string()],
+%%   <<"IdentityProvider">> := list(),
+%%   <<"Product">> := [string()],
+%%   <<"Username">> := [string()]
+%% }
+-type stop_product_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_user_request() :: #{
+%%   <<"Domain">> => [string()],
+%%   <<"IdentityProvider">> := list(),
+%%   <<"InstanceId">> := [string()],
+%%   <<"Username">> := [string()]
+%% }
+-type disassociate_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_providers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_identity_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_product_subscriptions_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"IdentityProvider">> := list(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Product">> := [string()]
+%% }
+-type list_product_subscriptions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_user_summary() :: #{
+%%   <<"AssociationDate">> => [string()],
+%%   <<"DisassociationDate">> => [string()],
+%%   <<"Domain">> => [string()],
+%%   <<"IdentityProvider">> => list(),
+%%   <<"InstanceId">> => [string()],
+%%   <<"Status">> => [string()],
+%%   <<"StatusMessage">> => [string()],
+%%   <<"Username">> => [string()]
+%% }
+-type instance_user_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_settings() :: #{
+%%   <<"AddSubnets">> => list(string()()),
+%%   <<"RemoveSubnets">> => list(string()()),
+%%   <<"SecurityGroupId">> => string()
+%% }
+-type update_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% deregister_identity_provider_request() :: #{
+%%   <<"IdentityProvider">> := list(),
+%%   <<"Product">> := [string()]
+%% }
+-type deregister_identity_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_associations_response() :: #{
+%%   <<"InstanceUserSummaries">> => list(instance_user_summary()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_user_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_identity_provider_settings_response() :: #{
+%%   <<"IdentityProviderSummary">> := identity_provider_summary()
+%% }
+-type update_identity_provider_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_identity_provider_response() :: #{
+%%   <<"IdentityProviderSummary">> := identity_provider_summary()
+%% }
+-type register_identity_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% settings() :: #{
+%%   <<"SecurityGroupId">> => string(),
+%%   <<"Subnets">> => list(string()())
+%% }
+-type settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_product_subscription_response() :: #{
+%%   <<"ProductUserSummary">> := product_user_summary()
+%% }
+-type stop_product_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_user_response() :: #{
+%%   <<"InstanceUserSummary">> := instance_user_summary()
+%% }
+-type disassociate_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_user_response() :: #{
+%%   <<"InstanceUserSummary">> := instance_user_summary()
+%% }
+-type associate_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% product_user_summary() :: #{
+%%   <<"Domain">> => [string()],
+%%   <<"IdentityProvider">> => list(),
+%%   <<"Product">> => [string()],
+%%   <<"Status">> => [string()],
+%%   <<"StatusMessage">> => [string()],
+%%   <<"SubscriptionEndDate">> => [string()],
+%%   <<"SubscriptionStartDate">> => [string()],
+%%   <<"Username">> => [string()]
+%% }
+-type product_user_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_provider_summary() :: #{
+%%   <<"FailureMessage">> => [string()],
+%%   <<"IdentityProvider">> => list(),
+%%   <<"Product">> => [string()],
+%%   <<"Settings">> => settings(),
+%%   <<"Status">> => [string()]
+%% }
+-type identity_provider_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instances_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Attribute">> => [string()],
+%%   <<"Operation">> => [string()],
+%%   <<"Value">> => [string()]
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_product_subscriptions_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"ProductUserSummaries">> => list(product_user_summary()())
+%% }
+-type list_product_subscriptions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instances_response() :: #{
+%%   <<"InstanceSummaries">> => list(instance_summary()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_instances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_identity_provider_settings_request() :: #{
+%%   <<"IdentityProvider">> := list(),
+%%   <<"Product">> := [string()],
+%%   <<"UpdateSettings">> := update_settings()
+%% }
+-type update_identity_provider_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_identity_provider_request() :: #{
+%%   <<"IdentityProvider">> := list(),
+%%   <<"Product">> := [string()],
+%%   <<"Settings">> => settings()
+%% }
+-type register_identity_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% deregister_identity_provider_response() :: #{
+%%   <<"IdentityProviderSummary">> := identity_provider_summary()
+%% }
+-type deregister_identity_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_providers_response() :: #{
+%%   <<"IdentityProviderSummaries">> := list(identity_provider_summary()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_identity_providers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_summary() :: #{
+%%   <<"InstanceId">> => [string()],
+%%   <<"LastStatusCheckDate">> => [string()],
+%%   <<"Products">> => list([string()]()),
+%%   <<"Status">> => [string()],
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type instance_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_product_subscription_request() :: #{
+%%   <<"Domain">> => [string()],
+%%   <<"IdentityProvider">> := list(),
+%%   <<"Product">> := [string()],
+%%   <<"Username">> := [string()]
+%% }
+-type start_product_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_product_subscription_response() :: #{
+%%   <<"ProductUserSummary">> := product_user_summary()
+%% }
+-type start_product_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_user_request() :: #{
+%%   <<"Domain">> => [string()],
+%%   <<"IdentityProvider">> := list(),
+%%   <<"InstanceId">> := [string()],
+%%   <<"Username">> := [string()]
+%% }
+-type associate_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_associations_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"IdentityProvider">> := list(),
+%%   <<"InstanceId">> := [string()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_user_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% active_directory_identity_provider() :: #{
+%%   <<"DirectoryId">> => [string()]
+%% }
+-type active_directory_identity_provider() :: #{binary() => any()}.
+
+-type associate_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type deregister_identity_provider_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_user_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_identity_providers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_instances_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_product_subscriptions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_user_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type register_identity_provider_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_product_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_product_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_identity_provider_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -46,8 +461,17 @@
 %% monthly charges:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html
 %% in the Amazon Web Services Billing User Guide.
+-spec associate_user(aws_client:aws_client(), associate_user_request()) ->
+    {ok, associate_user_response(), tuple()} |
+    {error, any()} |
+    {error, associate_user_errors(), tuple()}.
 associate_user(Client, Input) ->
     associate_user(Client, Input, []).
+
+-spec associate_user(aws_client:aws_client(), associate_user_request(), proplists:proplist()) ->
+    {ok, associate_user_response(), tuple()} |
+    {error, any()} |
+    {error, associate_user_errors(), tuple()}.
 associate_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/AssociateUser"],
@@ -72,8 +496,17 @@ associate_user(Client, Input0, Options0) ->
 
 %% @doc Deregisters the identity provider from providing user-based
 %% subscriptions.
+-spec deregister_identity_provider(aws_client:aws_client(), deregister_identity_provider_request()) ->
+    {ok, deregister_identity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_identity_provider_errors(), tuple()}.
 deregister_identity_provider(Client, Input) ->
     deregister_identity_provider(Client, Input, []).
+
+-spec deregister_identity_provider(aws_client:aws_client(), deregister_identity_provider_request(), proplists:proplist()) ->
+    {ok, deregister_identity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_identity_provider_errors(), tuple()}.
 deregister_identity_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identity-provider/DeregisterIdentityProvider"],
@@ -98,8 +531,17 @@ deregister_identity_provider(Client, Input0, Options0) ->
 
 %% @doc Disassociates the user from an EC2 instance providing user-based
 %% subscriptions.
+-spec disassociate_user(aws_client:aws_client(), disassociate_user_request()) ->
+    {ok, disassociate_user_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_user_errors(), tuple()}.
 disassociate_user(Client, Input) ->
     disassociate_user(Client, Input, []).
+
+-spec disassociate_user(aws_client:aws_client(), disassociate_user_request(), proplists:proplist()) ->
+    {ok, disassociate_user_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_user_errors(), tuple()}.
 disassociate_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/DisassociateUser"],
@@ -123,8 +565,17 @@ disassociate_user(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the identity providers for user-based subscriptions.
+-spec list_identity_providers(aws_client:aws_client(), list_identity_providers_request()) ->
+    {ok, list_identity_providers_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_providers_errors(), tuple()}.
 list_identity_providers(Client, Input) ->
     list_identity_providers(Client, Input, []).
+
+-spec list_identity_providers(aws_client:aws_client(), list_identity_providers_request(), proplists:proplist()) ->
+    {ok, list_identity_providers_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_providers_errors(), tuple()}.
 list_identity_providers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identity-provider/ListIdentityProviders"],
@@ -148,8 +599,17 @@ list_identity_providers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the EC2 instances providing user-based subscriptions.
+-spec list_instances(aws_client:aws_client(), list_instances_request()) ->
+    {ok, list_instances_response(), tuple()} |
+    {error, any()} |
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, Input) ->
     list_instances(Client, Input, []).
+
+-spec list_instances(aws_client:aws_client(), list_instances_request(), proplists:proplist()) ->
+    {ok, list_instances_response(), tuple()} |
+    {error, any()} |
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, Input0, Options0) ->
     Method = post,
     Path = ["/instance/ListInstances"],
@@ -174,8 +634,17 @@ list_instances(Client, Input0, Options0) ->
 
 %% @doc Lists the user-based subscription products available from an identity
 %% provider.
+-spec list_product_subscriptions(aws_client:aws_client(), list_product_subscriptions_request()) ->
+    {ok, list_product_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_product_subscriptions_errors(), tuple()}.
 list_product_subscriptions(Client, Input) ->
     list_product_subscriptions(Client, Input, []).
+
+-spec list_product_subscriptions(aws_client:aws_client(), list_product_subscriptions_request(), proplists:proplist()) ->
+    {ok, list_product_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_product_subscriptions_errors(), tuple()}.
 list_product_subscriptions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/ListProductSubscriptions"],
@@ -199,8 +668,17 @@ list_product_subscriptions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists user associations for an identity provider.
+-spec list_user_associations(aws_client:aws_client(), list_user_associations_request()) ->
+    {ok, list_user_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_associations_errors(), tuple()}.
 list_user_associations(Client, Input) ->
     list_user_associations(Client, Input, []).
+
+-spec list_user_associations(aws_client:aws_client(), list_user_associations_request(), proplists:proplist()) ->
+    {ok, list_user_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_associations_errors(), tuple()}.
 list_user_associations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/ListUserAssociations"],
@@ -224,8 +702,17 @@ list_user_associations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Registers an identity provider for user-based subscriptions.
+-spec register_identity_provider(aws_client:aws_client(), register_identity_provider_request()) ->
+    {ok, register_identity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, register_identity_provider_errors(), tuple()}.
 register_identity_provider(Client, Input) ->
     register_identity_provider(Client, Input, []).
+
+-spec register_identity_provider(aws_client:aws_client(), register_identity_provider_request(), proplists:proplist()) ->
+    {ok, register_identity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, register_identity_provider_errors(), tuple()}.
 register_identity_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identity-provider/RegisterIdentityProvider"],
@@ -259,8 +746,17 @@ register_identity_provider(Client, Input0, Options0) ->
 %% monthly charges:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html
 %% in the Amazon Web Services Billing User Guide.
+-spec start_product_subscription(aws_client:aws_client(), start_product_subscription_request()) ->
+    {ok, start_product_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, start_product_subscription_errors(), tuple()}.
 start_product_subscription(Client, Input) ->
     start_product_subscription(Client, Input, []).
+
+-spec start_product_subscription(aws_client:aws_client(), start_product_subscription_request(), proplists:proplist()) ->
+    {ok, start_product_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, start_product_subscription_errors(), tuple()}.
 start_product_subscription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/StartProductSubscription"],
@@ -285,8 +781,17 @@ start_product_subscription(Client, Input0, Options0) ->
 
 %% @doc Stops a product subscription for a user with the specified identity
 %% provider.
+-spec stop_product_subscription(aws_client:aws_client(), stop_product_subscription_request()) ->
+    {ok, stop_product_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, stop_product_subscription_errors(), tuple()}.
 stop_product_subscription(Client, Input) ->
     stop_product_subscription(Client, Input, []).
+
+-spec stop_product_subscription(aws_client:aws_client(), stop_product_subscription_request(), proplists:proplist()) ->
+    {ok, stop_product_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, stop_product_subscription_errors(), tuple()}.
 stop_product_subscription(Client, Input0, Options0) ->
     Method = post,
     Path = ["/user/StopProductSubscription"],
@@ -312,8 +817,17 @@ stop_product_subscription(Client, Input0, Options0) ->
 %% @doc Updates additional product configuration settings for the registered
 %% identity
 %% provider.
+-spec update_identity_provider_settings(aws_client:aws_client(), update_identity_provider_settings_request()) ->
+    {ok, update_identity_provider_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_identity_provider_settings_errors(), tuple()}.
 update_identity_provider_settings(Client, Input) ->
     update_identity_provider_settings(Client, Input, []).
+
+-spec update_identity_provider_settings(aws_client:aws_client(), update_identity_provider_settings_request(), proplists:proplist()) ->
+    {ok, update_identity_provider_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_identity_provider_settings_errors(), tuple()}.
 update_identity_provider_settings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identity-provider/UpdateIdentityProviderSettings"],
@@ -340,7 +854,7 @@ update_identity_provider_settings(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

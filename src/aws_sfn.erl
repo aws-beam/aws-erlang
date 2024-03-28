@@ -113,6 +113,1455 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% state_machine_version_list_item() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"stateMachineVersionArn">> => string()
+%% }
+-type state_machine_version_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% describe_state_machine_for_execution_input() :: #{
+%%   <<"executionArn">> := string()
+%% }
+-type describe_state_machine_for_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_executions_output() :: #{
+%%   <<"executions">> => list(execution_list_item()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_executions_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type resource_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_type_not_supported() :: #{
+%%   <<"message">> => string()
+%% }
+-type state_machine_type_not_supported() :: #{binary() => any()}.
+
+%% Example:
+%% execution_does_not_exist() :: #{
+%%   <<"message">> => string()
+%% }
+-type execution_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machine_aliases_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"stateMachineArn">> := string()
+%% }
+-type list_state_machine_aliases_input() :: #{binary() => any()}.
+
+%% Example:
+%% execution_succeeded_event_details() :: #{
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => history_event_execution_data_details()
+%% }
+-type execution_succeeded_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% missing_required_parameter() :: #{
+%%   <<"message">> => string()
+%% }
+-type missing_required_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_alias_list_item() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"stateMachineAliasArn">> => string()
+%% }
+-type state_machine_alias_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_events_execution_data_details() :: #{
+%%   <<"included">> => boolean()
+%% }
+-type cloud_watch_events_execution_data_details() :: #{binary() => any()}.
+
+%% Example:
+%% describe_execution_input() :: #{
+%%   <<"executionArn">> := string()
+%% }
+-type describe_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_execution_output() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"executionArn">> => string(),
+%%   <<"input">> => string(),
+%%   <<"inputDetails">> => cloud_watch_events_execution_data_details(),
+%%   <<"mapRunArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => cloud_watch_events_execution_data_details(),
+%%   <<"redriveCount">> => integer(),
+%%   <<"redriveDate">> => non_neg_integer(),
+%%   <<"redriveStatus">> => list(any()),
+%%   <<"redriveStatusReason">> => string(),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"stateMachineAliasArn">> => string(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"stateMachineVersionArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"stopDate">> => non_neg_integer(),
+%%   <<"traceHeader">> => string()
+%% }
+-type describe_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_state_machine_alias_output() :: #{
+%%   <<"updateDate">> => non_neg_integer()
+%% }
+-type update_state_machine_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_output() :: #{
+
+%% }
+-type delete_state_machine_output() :: #{binary() => any()}.
+
+%% Example:
+%% map_run_item_counts() :: #{
+%%   <<"aborted">> => float(),
+%%   <<"failed">> => float(),
+%%   <<"failuresNotRedrivable">> => float(),
+%%   <<"pending">> => float(),
+%%   <<"pendingRedrive">> => float(),
+%%   <<"resultsWritten">> => float(),
+%%   <<"running">> => float(),
+%%   <<"succeeded">> => float(),
+%%   <<"timedOut">> => float(),
+%%   <<"total">> => float()
+%% }
+-type map_run_item_counts() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_version_output() :: #{
+
+%% }
+-type delete_state_machine_version_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machine_aliases_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"stateMachineAliases">> => list(state_machine_alias_list_item()())
+%% }
+-type list_state_machine_aliases_output() :: #{binary() => any()}.
+
+%% Example:
+%% task_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% describe_state_machine_input() :: #{
+%%   <<"stateMachineArn">> := string()
+%% }
+-type describe_state_machine_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_state_machine_alias_input() :: #{
+%%   <<"stateMachineAliasArn">> := string()
+%% }
+-type describe_state_machine_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_execution_output() :: #{
+%%   <<"executionArn">> => string(),
+%%   <<"startDate">> => non_neg_integer()
+%% }
+-type start_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% map_run_started_event_details() :: #{
+%%   <<"mapRunArn">> => string()
+%% }
+-type map_run_started_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tracing_configuration() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tracing_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machines_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"stateMachines">> => list(state_machine_list_item()())
+%% }
+-type list_state_machines_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_state_machine_alias_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"routingConfiguration">> := list(routing_configuration_list_item()())
+%% }
+-type create_state_machine_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_output() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_output() :: #{binary() => any()}.
+
+%% Example:
+%% map_run_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type map_run_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_failure_output() :: #{
+
+%% }
+-type send_task_failure_output() :: #{binary() => any()}.
+
+%% Example:
+%% activity_schedule_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type activity_schedule_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% state_entered_event_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"inputDetails">> => history_event_execution_data_details(),
+%%   <<"name">> => string()
+%% }
+-type state_entered_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_token() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_token() :: #{binary() => any()}.
+
+%% Example:
+%% delete_activity_input() :: #{
+%%   <<"activityArn">> := string()
+%% }
+-type delete_activity_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_alias_input() :: #{
+%%   <<"stateMachineAliasArn">> := string()
+%% }
+-type delete_state_machine_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_list_item() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type state_machine_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% create_state_machine_output() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"stateMachineVersionArn">> => string()
+%% }
+-type create_state_machine_output() :: #{binary() => any()}.
+
+%% Example:
+%% execution_aborted_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type execution_aborted_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% execution_redriven_event_details() :: #{
+%%   <<"redriveCount">> => integer()
+%% }
+-type execution_redriven_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_start_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type lambda_function_start_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type lambda_function_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% describe_state_machine_alias_output() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"routingConfiguration">> => list(routing_configuration_list_item()()),
+%%   <<"stateMachineAliasArn">> => string(),
+%%   <<"updateDate">> => non_neg_integer()
+%% }
+-type describe_state_machine_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% redrive_execution_output() :: #{
+%%   <<"redriveDate">> => non_neg_integer()
+%% }
+-type redrive_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_sync_execution_output() :: #{
+%%   <<"billingDetails">> => billing_details(),
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"executionArn">> => string(),
+%%   <<"input">> => string(),
+%%   <<"inputDetails">> => cloud_watch_events_execution_data_details(),
+%%   <<"name">> => string(),
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => cloud_watch_events_execution_data_details(),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"stopDate">> => non_neg_integer(),
+%%   <<"traceHeader">> => string()
+%% }
+-type start_sync_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_failure_input() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type send_task_failure_input() :: #{binary() => any()}.
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"destinations">> => list(log_destination()()),
+%%   <<"includeExecutionData">> => boolean(),
+%%   <<"level">> => list(any())
+%% }
+-type logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_activity_task_output() :: #{
+%%   <<"input">> => string(),
+%%   <<"taskToken">> => string()
+%% }
+-type get_activity_task_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_activity_output() :: #{
+%%   <<"activityArn">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type describe_activity_output() :: #{binary() => any()}.
+
+%% Example:
+%% task_timed_out_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_timed_out_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% history_event_execution_data_details() :: #{
+%%   <<"truncated">> => boolean()
+%% }
+-type history_event_execution_data_details() :: #{binary() => any()}.
+
+%% Example:
+%% update_map_run_output() :: #{
+
+%% }
+-type update_map_run_output() :: #{binary() => any()}.
+
+%% Example:
+%% task_started_event_details() :: #{
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_started_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_activity_output() :: #{
+
+%% }
+-type delete_activity_output() :: #{binary() => any()}.
+
+%% Example:
+%% redrive_execution_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"executionArn">> := string()
+%% }
+-type redrive_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_execution_history_input() :: #{
+%%   <<"executionArn">> := string(),
+%%   <<"includeExecutionData">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reverseOrder">> => boolean()
+%% }
+-type get_execution_history_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_state_machine_for_execution_output() :: #{
+%%   <<"definition">> => string(),
+%%   <<"label">> => string(),
+%%   <<"loggingConfiguration">> => logging_configuration(),
+%%   <<"mapRunArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"tracingConfiguration">> => tracing_configuration(),
+%%   <<"updateDate">> => non_neg_integer()
+%% }
+-type describe_state_machine_for_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_execution_history_output() :: #{
+%%   <<"events">> => list(history_event()()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_execution_history_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machines_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_state_machines_input() :: #{binary() => any()}.
+
+%% Example:
+%% inspection_data_request() :: #{
+%%   <<"body">> => string(),
+%%   <<"headers">> => string(),
+%%   <<"method">> => string(),
+%%   <<"protocol">> => string(),
+%%   <<"url">> => string()
+%% }
+-type inspection_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type state_machine_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% execution_not_redrivable() :: #{
+%%   <<"message">> => string()
+%% }
+-type execution_not_redrivable() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_success_output() :: #{
+
+%% }
+-type send_task_success_output() :: #{binary() => any()}.
+
+%% Example:
+%% activity_succeeded_event_details() :: #{
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => history_event_execution_data_details()
+%% }
+-type activity_succeeded_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% task_timed_out() :: #{
+%%   <<"message">> => string()
+%% }
+-type task_timed_out() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_heartbeat_input() :: #{
+%%   <<"taskToken">> := string()
+%% }
+-type send_task_heartbeat_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% task_succeeded_event_details() :: #{
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => history_event_execution_data_details(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_succeeded_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% inspection_data() :: #{
+%%   <<"afterInputPath">> => string(),
+%%   <<"afterParameters">> => string(),
+%%   <<"afterResultPath">> => string(),
+%%   <<"afterResultSelector">> => string(),
+%%   <<"input">> => string(),
+%%   <<"request">> => inspection_data_request(),
+%%   <<"response">> => inspection_data_response(),
+%%   <<"result">> => string()
+%% }
+-type inspection_data() :: #{binary() => any()}.
+
+%% Example:
+%% publish_state_machine_version_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"stateMachineArn">> := string()
+%% }
+-type publish_state_machine_version_input() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_schedule_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type lambda_function_schedule_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% log_destination() :: #{
+%%   <<"cloudWatchLogsLogGroup">> => cloud_watch_logs_log_group()
+%% }
+-type log_destination() :: #{binary() => any()}.
+
+%% Example:
+%% execution_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type execution_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% get_activity_task_input() :: #{
+%%   <<"activityArn">> := string(),
+%%   <<"workerName">> => string()
+%% }
+-type get_activity_task_input() :: #{binary() => any()}.
+
+%% Example:
+%% state_exited_event_details() :: #{
+%%   <<"name">> => string(),
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => history_event_execution_data_details()
+%% }
+-type state_exited_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% create_state_machine_input() :: #{
+%%   <<"definition">> := string(),
+%%   <<"loggingConfiguration">> => logging_configuration(),
+%%   <<"name">> := string(),
+%%   <<"publish">> => boolean(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"tracingConfiguration">> => tracing_configuration(),
+%%   <<"type">> => list(any()),
+%%   <<"versionDescription">> => string()
+%% }
+-type create_state_machine_input() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs_log_group() :: #{
+%%   <<"logGroupArn">> => string()
+%% }
+-type cloud_watch_logs_log_group() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_alias_output() :: #{
+
+%% }
+-type delete_state_machine_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% activity_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type activity_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% create_activity_input() :: #{
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_activity_input() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_succeeded_event_details() :: #{
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => history_event_execution_data_details()
+%% }
+-type lambda_function_succeeded_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% execution_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type execution_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_timed_out_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type lambda_function_timed_out_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_scheduled_event_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"inputDetails">> => history_event_execution_data_details(),
+%%   <<"resource">> => string(),
+%%   <<"taskCredentials">> => task_credentials(),
+%%   <<"timeoutInSeconds">> => float()
+%% }
+-type lambda_function_scheduled_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% task_submit_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_submit_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_state_machine_output() :: #{
+%%   <<"revisionId">> => string(),
+%%   <<"stateMachineVersionArn">> => string(),
+%%   <<"updateDate">> => non_neg_integer()
+%% }
+-type update_state_machine_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_activity_input() :: #{
+%%   <<"activityArn">> := string()
+%% }
+-type describe_activity_input() :: #{binary() => any()}.
+
+%% Example:
+%% tracing_configuration() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type tracing_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% stop_execution_output() :: #{
+%%   <<"stopDate">> => non_neg_integer()
+%% }
+-type stop_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% activity_worker_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type activity_worker_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% execution_timed_out_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type execution_timed_out_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% billing_details() :: #{
+%%   <<"billedDurationInMilliseconds">> => float(),
+%%   <<"billedMemoryUsedInMB">> => float()
+%% }
+-type billing_details() :: #{binary() => any()}.
+
+%% Example:
+%% execution_started_event_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"inputDetails">> => history_event_execution_data_details(),
+%%   <<"roleArn">> => string(),
+%%   <<"stateMachineAliasArn">> => string(),
+%%   <<"stateMachineVersionArn">> => string()
+%% }
+-type execution_started_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% history_event() :: #{
+%%   <<"taskSubmittedEventDetails">> => task_submitted_event_details(),
+%%   <<"type">> => list(any()),
+%%   <<"executionSucceededEventDetails">> => execution_succeeded_event_details(),
+%%   <<"lambdaFunctionFailedEventDetails">> => lambda_function_failed_event_details(),
+%%   <<"activityStartedEventDetails">> => activity_started_event_details(),
+%%   <<"activityScheduleFailedEventDetails">> => activity_schedule_failed_event_details(),
+%%   <<"mapIterationStartedEventDetails">> => map_iteration_event_details(),
+%%   <<"taskSucceededEventDetails">> => task_succeeded_event_details(),
+%%   <<"activityFailedEventDetails">> => activity_failed_event_details(),
+%%   <<"taskStartFailedEventDetails">> => task_start_failed_event_details(),
+%%   <<"stateExitedEventDetails">> => state_exited_event_details(),
+%%   <<"activityTimedOutEventDetails">> => activity_timed_out_event_details(),
+%%   <<"id">> => float(),
+%%   <<"lambdaFunctionSucceededEventDetails">> => lambda_function_succeeded_event_details(),
+%%   <<"mapRunRedrivenEventDetails">> => map_run_redriven_event_details(),
+%%   <<"lambdaFunctionScheduleFailedEventDetails">> => lambda_function_schedule_failed_event_details(),
+%%   <<"mapStateStartedEventDetails">> => map_state_started_event_details(),
+%%   <<"lambdaFunctionStartFailedEventDetails">> => lambda_function_start_failed_event_details(),
+%%   <<"taskSubmitFailedEventDetails">> => task_submit_failed_event_details(),
+%%   <<"executionTimedOutEventDetails">> => execution_timed_out_event_details(),
+%%   <<"lambdaFunctionTimedOutEventDetails">> => lambda_function_timed_out_event_details(),
+%%   <<"taskStartedEventDetails">> => task_started_event_details(),
+%%   <<"executionAbortedEventDetails">> => execution_aborted_event_details(),
+%%   <<"lambdaFunctionScheduledEventDetails">> => lambda_function_scheduled_event_details(),
+%%   <<"taskFailedEventDetails">> => task_failed_event_details(),
+%%   <<"stateEnteredEventDetails">> => state_entered_event_details(),
+%%   <<"executionFailedEventDetails">> => execution_failed_event_details(),
+%%   <<"mapIterationSucceededEventDetails">> => map_iteration_event_details(),
+%%   <<"mapRunStartedEventDetails">> => map_run_started_event_details(),
+%%   <<"executionStartedEventDetails">> => execution_started_event_details(),
+%%   <<"taskTimedOutEventDetails">> => task_timed_out_event_details(),
+%%   <<"executionRedrivenEventDetails">> => execution_redriven_event_details(),
+%%   <<"activitySucceededEventDetails">> => activity_succeeded_event_details(),
+%%   <<"mapRunFailedEventDetails">> => map_run_failed_event_details(),
+%%   <<"activityScheduledEventDetails">> => activity_scheduled_event_details(),
+%%   <<"taskScheduledEventDetails">> => task_scheduled_event_details(),
+%%   <<"mapIterationAbortedEventDetails">> => map_iteration_event_details(),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"mapIterationFailedEventDetails">> => map_iteration_event_details(),
+%%   <<"previousEventId">> => float()
+%% }
+-type history_event() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type state_machine_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% map_iteration_event_details() :: #{
+%%   <<"index">> => integer(),
+%%   <<"name">> => string()
+%% }
+-type map_iteration_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% update_state_machine_alias_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"routingConfiguration">> => list(routing_configuration_list_item()()),
+%%   <<"stateMachineAliasArn">> := string()
+%% }
+-type update_state_machine_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% task_start_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_start_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% map_run_execution_counts() :: #{
+%%   <<"aborted">> => float(),
+%%   <<"failed">> => float(),
+%%   <<"failuresNotRedrivable">> => float(),
+%%   <<"pending">> => float(),
+%%   <<"pendingRedrive">> => float(),
+%%   <<"resultsWritten">> => float(),
+%%   <<"running">> => float(),
+%%   <<"succeeded">> => float(),
+%%   <<"timedOut">> => float(),
+%%   <<"total">> => float()
+%% }
+-type map_run_execution_counts() :: #{binary() => any()}.
+
+%% Example:
+%% update_state_machine_input() :: #{
+%%   <<"definition">> => string(),
+%%   <<"loggingConfiguration">> => logging_configuration(),
+%%   <<"publish">> => boolean(),
+%%   <<"roleArn">> => string(),
+%%   <<"stateMachineArn">> := string(),
+%%   <<"tracingConfiguration">> => tracing_configuration(),
+%%   <<"versionDescription">> => string()
+%% }
+-type update_state_machine_input() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_does_not_exist() :: #{
+%%   <<"message">> => string()
+%% }
+-type state_machine_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% map_state_started_event_details() :: #{
+%%   <<"length">> => integer()
+%% }
+-type map_state_started_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% map_run_list_item() :: #{
+%%   <<"executionArn">> => string(),
+%%   <<"mapRunArn">> => string(),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"stopDate">> => non_neg_integer()
+%% }
+-type map_run_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% activity_list_item() :: #{
+%%   <<"activityArn">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type activity_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_definition() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_definition() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_input() :: #{
+%%   <<"stateMachineArn">> := string()
+%% }
+-type delete_state_machine_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_map_runs_input() :: #{
+%%   <<"executionArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_map_runs_input() :: #{binary() => any()}.
+
+%% Example:
+%% task_does_not_exist() :: #{
+%%   <<"message">> => string()
+%% }
+-type task_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% execution_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type execution_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% create_activity_output() :: #{
+%%   <<"activityArn">> => string(),
+%%   <<"creationDate">> => non_neg_integer()
+%% }
+-type create_activity_output() :: #{binary() => any()}.
+
+%% Example:
+%% activity_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type activity_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_name() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_name() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% task_submitted_event_details() :: #{
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => history_event_execution_data_details(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_submitted_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% map_run_redriven_event_details() :: #{
+%%   <<"mapRunArn">> => string(),
+%%   <<"redriveCount">> => integer()
+%% }
+-type map_run_redriven_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% test_state_output() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"inspectionData">> => inspection_data(),
+%%   <<"nextState">> => string(),
+%%   <<"output">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type test_state_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_map_run_input() :: #{
+%%   <<"mapRunArn">> := string(),
+%%   <<"maxConcurrency">> => integer(),
+%%   <<"toleratedFailureCount">> => float(),
+%%   <<"toleratedFailurePercentage">> => float()
+%% }
+-type update_map_run_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_sync_execution_input() :: #{
+%%   <<"input">> => string(),
+%%   <<"name">> => string(),
+%%   <<"stateMachineArn">> := string(),
+%%   <<"traceHeader">> => string()
+%% }
+-type start_sync_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_success_input() :: #{
+%%   <<"output">> := string(),
+%%   <<"taskToken">> := string()
+%% }
+-type send_task_success_input() :: #{binary() => any()}.
+
+%% Example:
+%% routing_configuration_list_item() :: #{
+%%   <<"stateMachineVersionArn">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type routing_configuration_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% execution_list_item() :: #{
+%%   <<"executionArn">> => string(),
+%%   <<"itemCount">> => integer(),
+%%   <<"mapRunArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"redriveCount">> => integer(),
+%%   <<"redriveDate">> => non_neg_integer(),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"stateMachineAliasArn">> => string(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"stateMachineVersionArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"stopDate">> => non_neg_integer()
+%% }
+-type execution_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% activity_scheduled_event_details() :: #{
+%%   <<"heartbeatInSeconds">> => float(),
+%%   <<"input">> => string(),
+%%   <<"inputDetails">> => history_event_execution_data_details(),
+%%   <<"resource">> => string(),
+%%   <<"timeoutInSeconds">> => float()
+%% }
+-type activity_scheduled_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% activity_timed_out_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type activity_timed_out_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% task_credentials() :: #{
+%%   <<"roleArn">> => string()
+%% }
+-type task_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_heartbeat_output() :: #{
+
+%% }
+-type send_task_heartbeat_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_state_machine_alias_output() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"stateMachineAliasArn">> => string()
+%% }
+-type create_state_machine_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_map_run_output() :: #{
+%%   <<"executionArn">> => string(),
+%%   <<"executionCounts">> => map_run_execution_counts(),
+%%   <<"itemCounts">> => map_run_item_counts(),
+%%   <<"mapRunArn">> => string(),
+%%   <<"maxConcurrency">> => integer(),
+%%   <<"redriveCount">> => integer(),
+%%   <<"redriveDate">> => non_neg_integer(),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stopDate">> => non_neg_integer(),
+%%   <<"toleratedFailureCount">> => float(),
+%%   <<"toleratedFailurePercentage">> => float()
+%% }
+-type describe_map_run_output() :: #{binary() => any()}.
+
+%% Example:
+%% test_state_input() :: #{
+%%   <<"definition">> := string(),
+%%   <<"input">> => string(),
+%%   <<"inspectionLevel">> => list(any()),
+%%   <<"revealSecrets">> => boolean(),
+%%   <<"roleArn">> := string()
+%% }
+-type test_state_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_logging_configuration() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machine_versions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"stateMachineArn">> := string()
+%% }
+-type list_state_machine_versions_input() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_deleting() :: #{
+%%   <<"message">> => string()
+%% }
+-type state_machine_deleting() :: #{binary() => any()}.
+
+%% Example:
+%% list_activities_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_activities_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machine_versions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"stateMachineVersions">> => list(state_machine_version_list_item()())
+%% }
+-type list_state_machine_versions_output() :: #{binary() => any()}.
+
+%% Example:
+%% activity_does_not_exist() :: #{
+%%   <<"message">> => string()
+%% }
+-type activity_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_version_input() :: #{
+%%   <<"stateMachineVersionArn">> := string()
+%% }
+-type delete_state_machine_version_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_activities_output() :: #{
+%%   <<"activities">> => list(activity_list_item()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_activities_output() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type too_many_tags() :: #{binary() => any()}.
+
+%% Example:
+%% activity_started_event_details() :: #{
+%%   <<"workerName">> => string()
+%% }
+-type activity_started_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% list_map_runs_output() :: #{
+%%   <<"mapRuns">> => list(map_run_list_item()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_map_runs_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_executions_input() :: #{
+%%   <<"mapRunArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"redriveFilter">> => list(any()),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"statusFilter">> => list(any())
+%% }
+-type list_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% inspection_data_response() :: #{
+%%   <<"body">> => string(),
+%%   <<"headers">> => string(),
+%%   <<"protocol">> => string(),
+%%   <<"statusCode">> => string(),
+%%   <<"statusMessage">> => string()
+%% }
+-type inspection_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_execution_input() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% task_scheduled_event_details() :: #{
+%%   <<"heartbeatInSeconds">> => float(),
+%%   <<"parameters">> => string(),
+%%   <<"region">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"taskCredentials">> => task_credentials(),
+%%   <<"timeoutInSeconds">> => float()
+%% }
+-type task_scheduled_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% publish_state_machine_version_output() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"stateMachineVersionArn">> => string()
+%% }
+-type publish_state_machine_version_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_execution_input() :: #{
+%%   <<"input">> => string(),
+%%   <<"name">> => string(),
+%%   <<"stateMachineArn">> := string(),
+%%   <<"traceHeader">> => string()
+%% }
+-type start_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_map_run_input() :: #{
+%%   <<"mapRunArn">> := string()
+%% }
+-type describe_map_run_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn() :: #{binary() => any()}.
+
+%% Example:
+%% stop_execution_input() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"executionArn">> := string()
+%% }
+-type stop_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_state_machine_output() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"definition">> => string(),
+%%   <<"description">> => string(),
+%%   <<"label">> => string(),
+%%   <<"loggingConfiguration">> => logging_configuration(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tracingConfiguration">> => tracing_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type describe_state_machine_output() :: #{binary() => any()}.
+
+-type create_activity_errors() ::
+    too_many_tags() | 
+    invalid_name() | 
+    activity_limit_exceeded().
+
+-type create_state_machine_errors() ::
+    invalid_arn() | 
+    too_many_tags() | 
+    state_machine_deleting() | 
+    invalid_logging_configuration() | 
+    validation_exception() | 
+    invalid_name() | 
+    invalid_definition() | 
+    state_machine_limit_exceeded() | 
+    conflict_exception() | 
+    state_machine_already_exists() | 
+    invalid_tracing_configuration() | 
+    state_machine_type_not_supported().
+
+-type create_state_machine_alias_errors() ::
+    invalid_arn() | 
+    state_machine_deleting() | 
+    validation_exception() | 
+    invalid_name() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_activity_errors() ::
+    invalid_arn().
+
+-type delete_state_machine_errors() ::
+    invalid_arn() | 
+    validation_exception().
+
+-type delete_state_machine_alias_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_state_machine_version_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    conflict_exception().
+
+-type describe_activity_errors() ::
+    invalid_arn() | 
+    activity_does_not_exist().
+
+-type describe_execution_errors() ::
+    invalid_arn() | 
+    execution_does_not_exist().
+
+-type describe_map_run_errors() ::
+    invalid_arn() | 
+    resource_not_found().
+
+-type describe_state_machine_errors() ::
+    invalid_arn() | 
+    state_machine_does_not_exist().
+
+-type describe_state_machine_alias_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    resource_not_found().
+
+-type describe_state_machine_for_execution_errors() ::
+    invalid_arn() | 
+    execution_does_not_exist().
+
+-type get_activity_task_errors() ::
+    invalid_arn() | 
+    activity_does_not_exist() | 
+    activity_worker_limit_exceeded().
+
+-type get_execution_history_errors() ::
+    invalid_arn() | 
+    invalid_token() | 
+    execution_does_not_exist().
+
+-type list_activities_errors() ::
+    invalid_token().
+
+-type list_executions_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    state_machine_does_not_exist() | 
+    invalid_token() | 
+    state_machine_type_not_supported() | 
+    resource_not_found().
+
+-type list_map_runs_errors() ::
+    invalid_arn() | 
+    invalid_token() | 
+    execution_does_not_exist().
+
+-type list_state_machine_aliases_errors() ::
+    invalid_arn() | 
+    state_machine_deleting() | 
+    state_machine_does_not_exist() | 
+    invalid_token() | 
+    resource_not_found().
+
+-type list_state_machine_versions_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    invalid_token().
+
+-type list_state_machines_errors() ::
+    invalid_token().
+
+-type list_tags_for_resource_errors() ::
+    invalid_arn() | 
+    resource_not_found().
+
+-type publish_state_machine_version_errors() ::
+    invalid_arn() | 
+    state_machine_deleting() | 
+    validation_exception() | 
+    state_machine_does_not_exist() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type redrive_execution_errors() ::
+    invalid_arn() | 
+    execution_limit_exceeded() | 
+    execution_not_redrivable() | 
+    execution_does_not_exist().
+
+-type send_task_failure_errors() ::
+    task_does_not_exist() | 
+    task_timed_out() | 
+    invalid_token().
+
+-type send_task_heartbeat_errors() ::
+    task_does_not_exist() | 
+    task_timed_out() | 
+    invalid_token().
+
+-type send_task_success_errors() ::
+    task_does_not_exist() | 
+    task_timed_out() | 
+    invalid_token() | 
+    invalid_output().
+
+-type start_execution_errors() ::
+    invalid_arn() | 
+    invalid_execution_input() | 
+    state_machine_deleting() | 
+    validation_exception() | 
+    invalid_name() | 
+    execution_already_exists() | 
+    state_machine_does_not_exist() | 
+    execution_limit_exceeded().
+
+-type start_sync_execution_errors() ::
+    invalid_arn() | 
+    invalid_execution_input() | 
+    state_machine_deleting() | 
+    invalid_name() | 
+    state_machine_does_not_exist() | 
+    state_machine_type_not_supported().
+
+-type stop_execution_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    execution_does_not_exist().
+
+-type tag_resource_errors() ::
+    invalid_arn() | 
+    too_many_tags() | 
+    resource_not_found().
+
+-type test_state_errors() ::
+    invalid_arn() | 
+    invalid_execution_input() | 
+    validation_exception() | 
+    invalid_definition().
+
+-type untag_resource_errors() ::
+    invalid_arn() | 
+    resource_not_found().
+
+-type update_map_run_errors() ::
+    invalid_arn() | 
+    validation_exception() | 
+    resource_not_found().
+
+-type update_state_machine_errors() ::
+    invalid_arn() | 
+    state_machine_deleting() | 
+    invalid_logging_configuration() | 
+    validation_exception() | 
+    invalid_definition() | 
+    state_machine_does_not_exist() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    invalid_tracing_configuration() | 
+    missing_required_parameter().
+
+-type update_state_machine_alias_errors() ::
+    invalid_arn() | 
+    state_machine_deleting() | 
+    validation_exception() | 
+    conflict_exception() | 
+    resource_not_found().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -141,9 +1590,18 @@
 %% idempotent request of the previous. In this case, `tags' will not be
 %% updated,
 %% even if they are different.
+-spec create_activity(aws_client:aws_client(), create_activity_input()) ->
+    {ok, create_activity_output(), tuple()} |
+    {error, any()} |
+    {error, create_activity_errors(), tuple()}.
 create_activity(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_activity(Client, Input, []).
+
+-spec create_activity(aws_client:aws_client(), create_activity_input(), proplists:proplist()) ->
+    {ok, create_activity_output(), tuple()} |
+    {error, any()} |
+    {error, create_activity_errors(), tuple()}.
 create_activity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateActivity">>, Input, Options).
@@ -182,9 +1640,18 @@ create_activity(Client, Input, Options)
 %% it as an idempotent request of the previous. In this case, `roleArn'
 %% and
 %% `tags' will not be updated, even if they are different.
+-spec create_state_machine(aws_client:aws_client(), create_state_machine_input()) ->
+    {ok, create_state_machine_output(), tuple()} |
+    {error, any()} |
+    {error, create_state_machine_errors(), tuple()}.
 create_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_state_machine(Client, Input, []).
+
+-spec create_state_machine(aws_client:aws_client(), create_state_machine_input(), proplists:proplist()) ->
+    {ok, create_state_machine_output(), tuple()} |
+    {error, any()} |
+    {error, create_state_machine_errors(), tuple()}.
 create_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStateMachine">>, Input, Options).
@@ -235,17 +1702,35 @@ create_state_machine(Client, Input, Options)
 %% `UpdateStateMachineAlias'
 %%
 %% `DeleteStateMachineAlias'
+-spec create_state_machine_alias(aws_client:aws_client(), create_state_machine_alias_input()) ->
+    {ok, create_state_machine_alias_output(), tuple()} |
+    {error, any()} |
+    {error, create_state_machine_alias_errors(), tuple()}.
 create_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_state_machine_alias(Client, Input, []).
+
+-spec create_state_machine_alias(aws_client:aws_client(), create_state_machine_alias_input(), proplists:proplist()) ->
+    {ok, create_state_machine_alias_output(), tuple()} |
+    {error, any()} |
+    {error, create_state_machine_alias_errors(), tuple()}.
 create_state_machine_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStateMachineAlias">>, Input, Options).
 
 %% @doc Deletes an activity.
+-spec delete_activity(aws_client:aws_client(), delete_activity_input()) ->
+    {ok, delete_activity_output(), tuple()} |
+    {error, any()} |
+    {error, delete_activity_errors(), tuple()}.
 delete_activity(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_activity(Client, Input, []).
+
+-spec delete_activity(aws_client:aws_client(), delete_activity_input(), proplists:proplist()) ->
+    {ok, delete_activity_output(), tuple()} |
+    {error, any()} |
+    {error, delete_activity_errors(), tuple()}.
 delete_activity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteActivity">>, Input, Options).
@@ -288,9 +1773,18 @@ delete_activity(Client, Input, Options)
 %% less than a minute). Running executions may emit logs after
 %% `DeleteStateMachine'
 %% API is called.
+-spec delete_state_machine(aws_client:aws_client(), delete_state_machine_input()) ->
+    {ok, delete_state_machine_output(), tuple()} |
+    {error, any()} |
+    {error, delete_state_machine_errors(), tuple()}.
 delete_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine(Client, Input, []).
+
+-spec delete_state_machine(aws_client:aws_client(), delete_state_machine_input(), proplists:proplist()) ->
+    {ok, delete_state_machine_output(), tuple()} |
+    {error, any()} |
+    {error, delete_state_machine_errors(), tuple()}.
 delete_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStateMachine">>, Input, Options).
@@ -313,9 +1807,18 @@ delete_state_machine(Client, Input, Options)
 %% `ListStateMachineAliases'
 %%
 %% `UpdateStateMachineAlias'
+-spec delete_state_machine_alias(aws_client:aws_client(), delete_state_machine_alias_input()) ->
+    {ok, delete_state_machine_alias_output(), tuple()} |
+    {error, any()} |
+    {error, delete_state_machine_alias_errors(), tuple()}.
 delete_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine_alias(Client, Input, []).
+
+-spec delete_state_machine_alias(aws_client:aws_client(), delete_state_machine_alias_input(), proplists:proplist()) ->
+    {ok, delete_state_machine_alias_output(), tuple()} |
+    {error, any()} |
+    {error, delete_state_machine_alias_errors(), tuple()}.
 delete_state_machine_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStateMachineAlias">>, Input, Options).
@@ -343,9 +1846,18 @@ delete_state_machine_alias(Client, Input, Options)
 %% `PublishStateMachineVersion'
 %%
 %% `ListStateMachineVersions'
+-spec delete_state_machine_version(aws_client:aws_client(), delete_state_machine_version_input()) ->
+    {ok, delete_state_machine_version_output(), tuple()} |
+    {error, any()} |
+    {error, delete_state_machine_version_errors(), tuple()}.
 delete_state_machine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine_version(Client, Input, []).
+
+-spec delete_state_machine_version(aws_client:aws_client(), delete_state_machine_version_input(), proplists:proplist()) ->
+    {ok, delete_state_machine_version_output(), tuple()} |
+    {error, any()} |
+    {error, delete_state_machine_version_errors(), tuple()}.
 delete_state_machine_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStateMachineVersion">>, Input, Options).
@@ -354,9 +1866,18 @@ delete_state_machine_version(Client, Input, Options)
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
+-spec describe_activity(aws_client:aws_client(), describe_activity_input()) ->
+    {ok, describe_activity_output(), tuple()} |
+    {error, any()} |
+    {error, describe_activity_errors(), tuple()}.
 describe_activity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_activity(Client, Input, []).
+
+-spec describe_activity(aws_client:aws_client(), describe_activity_input(), proplists:proplist()) ->
+    {ok, describe_activity_output(), tuple()} |
+    {error, any()} |
+    {error, describe_activity_errors(), tuple()}.
 describe_activity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeActivity">>, Input, Options).
@@ -381,9 +1902,18 @@ describe_activity(Client, Input, Options)
 %%
 %% Executions of an `EXPRESS' state machine aren't supported by
 %% `DescribeExecution' unless a Map Run dispatched them.
+-spec describe_execution(aws_client:aws_client(), describe_execution_input()) ->
+    {ok, describe_execution_output(), tuple()} |
+    {error, any()} |
+    {error, describe_execution_errors(), tuple()}.
 describe_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_execution(Client, Input, []).
+
+-spec describe_execution(aws_client:aws_client(), describe_execution_input(), proplists:proplist()) ->
+    {ok, describe_execution_output(), tuple()} |
+    {error, any()} |
+    {error, describe_execution_errors(), tuple()}.
 describe_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExecution">>, Input, Options).
@@ -397,9 +1927,18 @@ describe_execution(Client, Input, Options)
 %% that Map Run. For more information, see Examining Map Run:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html
 %% in the Step Functions Developer Guide.
+-spec describe_map_run(aws_client:aws_client(), describe_map_run_input()) ->
+    {ok, describe_map_run_output(), tuple()} |
+    {error, any()} |
+    {error, describe_map_run_errors(), tuple()}.
 describe_map_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_map_run(Client, Input, []).
+
+-spec describe_map_run(aws_client:aws_client(), describe_map_run_input(), proplists:proplist()) ->
+    {ok, describe_map_run_output(), tuple()} |
+    {error, any()} |
+    {error, describe_map_run_errors(), tuple()}.
 describe_map_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMapRun">>, Input, Options).
@@ -440,9 +1979,18 @@ describe_map_run(Client, Input, Options)
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
+-spec describe_state_machine(aws_client:aws_client(), describe_state_machine_input()) ->
+    {ok, describe_state_machine_output(), tuple()} |
+    {error, any()} |
+    {error, describe_state_machine_errors(), tuple()}.
 describe_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_state_machine(Client, Input, []).
+
+-spec describe_state_machine(aws_client:aws_client(), describe_state_machine_input(), proplists:proplist()) ->
+    {ok, describe_state_machine_output(), tuple()} |
+    {error, any()} |
+    {error, describe_state_machine_errors(), tuple()}.
 describe_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStateMachine">>, Input, Options).
@@ -459,9 +2007,18 @@ describe_state_machine(Client, Input, Options)
 %% `UpdateStateMachineAlias'
 %%
 %% `DeleteStateMachineAlias'
+-spec describe_state_machine_alias(aws_client:aws_client(), describe_state_machine_alias_input()) ->
+    {ok, describe_state_machine_alias_output(), tuple()} |
+    {error, any()} |
+    {error, describe_state_machine_alias_errors(), tuple()}.
 describe_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_state_machine_alias(Client, Input, []).
+
+-spec describe_state_machine_alias(aws_client:aws_client(), describe_state_machine_alias_input(), proplists:proplist()) ->
+    {ok, describe_state_machine_alias_output(), tuple()} |
+    {error, any()} |
+    {error, describe_state_machine_alias_errors(), tuple()}.
 describe_state_machine_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStateMachineAlias">>, Input, Options).
@@ -480,9 +2037,18 @@ describe_state_machine_alias(Client, Input, Options)
 %% may not reflect very recent updates and changes.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
+-spec describe_state_machine_for_execution(aws_client:aws_client(), describe_state_machine_for_execution_input()) ->
+    {ok, describe_state_machine_for_execution_output(), tuple()} |
+    {error, any()} |
+    {error, describe_state_machine_for_execution_errors(), tuple()}.
 describe_state_machine_for_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_state_machine_for_execution(Client, Input, []).
+
+-spec describe_state_machine_for_execution(aws_client:aws_client(), describe_state_machine_for_execution_input(), proplists:proplist()) ->
+    {ok, describe_state_machine_for_execution_output(), tuple()} |
+    {error, any()} |
+    {error, describe_state_machine_for_execution_errors(), tuple()}.
 describe_state_machine_for_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStateMachineForExecution">>, Input, Options).
@@ -512,9 +2078,18 @@ describe_state_machine_for_execution(Client, Input, Options)
 %% Latency When Polling for Activity Tasks:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html
 %% in the Step Functions Developer Guide.
+-spec get_activity_task(aws_client:aws_client(), get_activity_task_input()) ->
+    {ok, get_activity_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_activity_task_errors(), tuple()}.
 get_activity_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_activity_task(Client, Input, []).
+
+-spec get_activity_task(aws_client:aws_client(), get_activity_task_input(), proplists:proplist()) ->
+    {ok, get_activity_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_activity_task_errors(), tuple()}.
 get_activity_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetActivityTask">>, Input, Options).
@@ -534,9 +2109,18 @@ get_activity_task(Client, Input, Options)
 %% InvalidToken error.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
+-spec get_execution_history(aws_client:aws_client(), get_execution_history_input()) ->
+    {ok, get_execution_history_output(), tuple()} |
+    {error, any()} |
+    {error, get_execution_history_errors(), tuple()}.
 get_execution_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_execution_history(Client, Input, []).
+
+-spec get_execution_history(aws_client:aws_client(), get_execution_history_input(), proplists:proplist()) ->
+    {ok, get_execution_history_output(), tuple()} |
+    {error, any()} |
+    {error, get_execution_history_errors(), tuple()}.
 get_execution_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetExecutionHistory">>, Input, Options).
@@ -552,9 +2136,18 @@ get_execution_history(Client, Input, Options)
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
+-spec list_activities(aws_client:aws_client(), list_activities_input()) ->
+    {ok, list_activities_output(), tuple()} |
+    {error, any()} |
+    {error, list_activities_errors(), tuple()}.
 list_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_activities(Client, Input, []).
+
+-spec list_activities(aws_client:aws_client(), list_activities_input(), proplists:proplist()) ->
+    {ok, list_activities_output(), tuple()} |
+    {error, any()} |
+    {error, list_activities_errors(), tuple()}.
 list_activities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActivities">>, Input, Options).
@@ -588,9 +2181,18 @@ list_activities(Client, Input, Options)
 %% may not reflect very recent updates and changes.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
+-spec list_executions(aws_client:aws_client(), list_executions_input()) ->
+    {ok, list_executions_output(), tuple()} |
+    {error, any()} |
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_executions(Client, Input, []).
+
+-spec list_executions(aws_client:aws_client(), list_executions_input(), proplists:proplist()) ->
+    {ok, list_executions_output(), tuple()} |
+    {error, any()} |
+    {error, list_executions_errors(), tuple()}.
 list_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExecutions">>, Input, Options).
@@ -600,9 +2202,18 @@ list_executions(Client, Input, Options)
 %%
 %% Use this API action to obtain Map Run ARNs, and then call
 %% `DescribeMapRun' to obtain more information, if needed.
+-spec list_map_runs(aws_client:aws_client(), list_map_runs_input()) ->
+    {ok, list_map_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_map_runs_errors(), tuple()}.
 list_map_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_map_runs(Client, Input, []).
+
+-spec list_map_runs(aws_client:aws_client(), list_map_runs_input(), proplists:proplist()) ->
+    {ok, list_map_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_map_runs_errors(), tuple()}.
 list_map_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMapRuns">>, Input, Options).
@@ -634,9 +2245,18 @@ list_map_runs(Client, Input, Options)
 %% `UpdateStateMachineAlias'
 %%
 %% `DeleteStateMachineAlias'
+-spec list_state_machine_aliases(aws_client:aws_client(), list_state_machine_aliases_input()) ->
+    {ok, list_state_machine_aliases_output(), tuple()} |
+    {error, any()} |
+    {error, list_state_machine_aliases_errors(), tuple()}.
 list_state_machine_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_state_machine_aliases(Client, Input, []).
+
+-spec list_state_machine_aliases(aws_client:aws_client(), list_state_machine_aliases_input(), proplists:proplist()) ->
+    {ok, list_state_machine_aliases_output(), tuple()} |
+    {error, any()} |
+    {error, list_state_machine_aliases_errors(), tuple()}.
 list_state_machine_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStateMachineAliases">>, Input, Options).
@@ -659,9 +2279,18 @@ list_state_machine_aliases(Client, Input, Options)
 %% `PublishStateMachineVersion'
 %%
 %% `DeleteStateMachineVersion'
+-spec list_state_machine_versions(aws_client:aws_client(), list_state_machine_versions_input()) ->
+    {ok, list_state_machine_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_state_machine_versions_errors(), tuple()}.
 list_state_machine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_state_machine_versions(Client, Input, []).
+
+-spec list_state_machine_versions(aws_client:aws_client(), list_state_machine_versions_input(), proplists:proplist()) ->
+    {ok, list_state_machine_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_state_machine_versions_errors(), tuple()}.
 list_state_machine_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStateMachineVersions">>, Input, Options).
@@ -677,9 +2306,18 @@ list_state_machine_versions(Client, Input, Options)
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
+-spec list_state_machines(aws_client:aws_client(), list_state_machines_input()) ->
+    {ok, list_state_machines_output(), tuple()} |
+    {error, any()} |
+    {error, list_state_machines_errors(), tuple()}.
 list_state_machines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_state_machines(Client, Input, []).
+
+-spec list_state_machines(aws_client:aws_client(), list_state_machines_input(), proplists:proplist()) ->
+    {ok, list_state_machines_output(), tuple()} |
+    {error, any()} |
+    {error, list_state_machines_errors(), tuple()}.
 list_state_machines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStateMachines">>, Input, Options).
@@ -688,9 +2326,18 @@ list_state_machines(Client, Input, Options)
 %%
 %% Tags may only contain Unicode letters, digits, white space, or these
 %% symbols: `_ . : / = + - @'.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -726,9 +2373,18 @@ list_tags_for_resource(Client, Input, Options)
 %% `DeleteStateMachineVersion'
 %%
 %% `ListStateMachineVersions'
+-spec publish_state_machine_version(aws_client:aws_client(), publish_state_machine_version_input()) ->
+    {ok, publish_state_machine_version_output(), tuple()} |
+    {error, any()} |
+    {error, publish_state_machine_version_errors(), tuple()}.
 publish_state_machine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish_state_machine_version(Client, Input, []).
+
+-spec publish_state_machine_version(aws_client:aws_client(), publish_state_machine_version_input(), proplists:proplist()) ->
+    {ok, publish_state_machine_version_output(), tuple()} |
+    {error, any()} |
+    {error, publish_state_machine_version_errors(), tuple()}.
 publish_state_machine_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PublishStateMachineVersion">>, Input, Options).
@@ -788,9 +2444,18 @@ publish_state_machine_version(Client, Input, Options)
 %% workflow execution contains less than 24,999 events to accommodate the
 %% `ExecutionRedriven' history event and at least one other history
 %% event.
+-spec redrive_execution(aws_client:aws_client(), redrive_execution_input()) ->
+    {ok, redrive_execution_output(), tuple()} |
+    {error, any()} |
+    {error, redrive_execution_errors(), tuple()}.
 redrive_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     redrive_execution(Client, Input, []).
+
+-spec redrive_execution(aws_client:aws_client(), redrive_execution_input(), proplists:proplist()) ->
+    {ok, redrive_execution_output(), tuple()} |
+    {error, any()} |
+    {error, redrive_execution_errors(), tuple()}.
 redrive_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RedriveExecution">>, Input, Options).
@@ -800,9 +2465,18 @@ redrive_execution(Client, Input, Options)
 %% pattern, and optionally Task states using the job run:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync
 %% pattern to report that the task identified by the `taskToken' failed.
+-spec send_task_failure(aws_client:aws_client(), send_task_failure_input()) ->
+    {ok, send_task_failure_output(), tuple()} |
+    {error, any()} |
+    {error, send_task_failure_errors(), tuple()}.
 send_task_failure(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_failure(Client, Input, []).
+
+-spec send_task_failure(aws_client:aws_client(), send_task_failure_input(), proplists:proplist()) ->
+    {ok, send_task_failure_output(), tuple()} |
+    {error, any()} |
+    {error, send_task_failure_errors(), tuple()}.
 send_task_failure(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTaskFailure">>, Input, Options).
@@ -836,9 +2510,18 @@ send_task_failure(Client, Input, Options)
 %% `SendTaskHeartbeat' requests received. Use `HeartbeatSeconds' to
 %% configure the timeout interval
 %% for heartbeats.
+-spec send_task_heartbeat(aws_client:aws_client(), send_task_heartbeat_input()) ->
+    {ok, send_task_heartbeat_output(), tuple()} |
+    {error, any()} |
+    {error, send_task_heartbeat_errors(), tuple()}.
 send_task_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_heartbeat(Client, Input, []).
+
+-spec send_task_heartbeat(aws_client:aws_client(), send_task_heartbeat_input(), proplists:proplist()) ->
+    {ok, send_task_heartbeat_output(), tuple()} |
+    {error, any()} |
+    {error, send_task_heartbeat_errors(), tuple()}.
 send_task_heartbeat(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTaskHeartbeat">>, Input, Options).
@@ -850,9 +2533,18 @@ send_task_heartbeat(Client, Input, Options)
 %% pattern to report that the task identified by the `taskToken'
 %% completed
 %% successfully.
+-spec send_task_success(aws_client:aws_client(), send_task_success_input()) ->
+    {ok, send_task_success_output(), tuple()} |
+    {error, any()} |
+    {error, send_task_success_errors(), tuple()}.
 send_task_success(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_success(Client, Input, []).
+
+-spec send_task_success(aws_client:aws_client(), send_task_success_input(), proplists:proplist()) ->
+    {ok, send_task_success_output(), tuple()} |
+    {error, any()} |
+    {error, send_task_success_errors(), tuple()}.
 send_task_success(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTaskSuccess">>, Input, Options).
@@ -907,9 +2599,18 @@ send_task_success(Client, Input, Options)
 %% `400 ExecutionAlreadyExists' error. You can reuse names after 90 days.
 %%
 %% `StartExecution' isn't idempotent for `EXPRESS' workflows.
+-spec start_execution(aws_client:aws_client(), start_execution_input()) ->
+    {ok, start_execution_output(), tuple()} |
+    {error, any()} |
+    {error, start_execution_errors(), tuple()}.
 start_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_execution(Client, Input, []).
+
+-spec start_execution(aws_client:aws_client(), start_execution_input(), proplists:proplist()) ->
+    {ok, start_execution_output(), tuple()} |
+    {error, any()} |
+    {error, start_execution_errors(), tuple()}.
 start_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartExecution">>, Input, Options).
@@ -929,9 +2630,18 @@ start_execution(Client, Input, Options)
 %% configuration.
 %%
 %% This API action isn't logged in CloudTrail.
+-spec start_sync_execution(aws_client:aws_client(), start_sync_execution_input()) ->
+    {ok, start_sync_execution_output(), tuple()} |
+    {error, any()} |
+    {error, start_sync_execution_errors(), tuple()}.
 start_sync_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_sync_execution(Client, Input, []).
+
+-spec start_sync_execution(aws_client:aws_client(), start_sync_execution_input(), proplists:proplist()) ->
+    {ok, start_sync_execution_output(), tuple()} |
+    {error, any()} |
+    {error, start_sync_execution_errors(), tuple()}.
 start_sync_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSyncExecution">>, Input, Options).
@@ -939,9 +2649,18 @@ start_sync_execution(Client, Input, Options)
 %% @doc Stops an execution.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
+-spec stop_execution(aws_client:aws_client(), stop_execution_input()) ->
+    {ok, stop_execution_output(), tuple()} |
+    {error, any()} |
+    {error, stop_execution_errors(), tuple()}.
 stop_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_execution(Client, Input, []).
+
+-spec stop_execution(aws_client:aws_client(), stop_execution_input(), proplists:proplist()) ->
+    {ok, stop_execution_output(), tuple()} |
+    {error, any()} |
+    {error, stop_execution_errors(), tuple()}.
 stop_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopExecution">>, Input, Options).
@@ -958,9 +2677,18 @@ stop_execution(Client, Input, Options)
 %%
 %% Tags may only contain Unicode letters, digits, white space, or these
 %% symbols: `_ . : / = + - @'.
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1025,26 +2753,53 @@ tag_resource(Client, Input, Options)
 %% or Map:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-map-state.html
 %% states.
+-spec test_state(aws_client:aws_client(), test_state_input()) ->
+    {ok, test_state_output(), tuple()} |
+    {error, any()} |
+    {error, test_state_errors(), tuple()}.
 test_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_state(Client, Input, []).
+
+-spec test_state(aws_client:aws_client(), test_state_input(), proplists:proplist()) ->
+    {ok, test_state_output(), tuple()} |
+    {error, any()} |
+    {error, test_state_errors(), tuple()}.
 test_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestState">>, Input, Options).
 
 %% @doc Remove a tag from a Step Functions resource
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates an in-progress Map Run's configuration to include changes
 %% to the settings that control maximum concurrency and Map Run failure.
+-spec update_map_run(aws_client:aws_client(), update_map_run_input()) ->
+    {ok, update_map_run_output(), tuple()} |
+    {error, any()} |
+    {error, update_map_run_errors(), tuple()}.
 update_map_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_map_run(Client, Input, []).
+
+-spec update_map_run(aws_client:aws_client(), update_map_run_input(), proplists:proplist()) ->
+    {ok, update_map_run_output(), tuple()} |
+    {error, any()} |
+    {error, update_map_run_errors(), tuple()}.
 update_map_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMapRun">>, Input, Options).
@@ -1107,9 +2862,18 @@ update_map_run(Client, Input, Options)
 %% you
 %% call `UpdateStateMachine' may use the previous state machine
 %% `definition' and `roleArn'.
+-spec update_state_machine(aws_client:aws_client(), update_state_machine_input()) ->
+    {ok, update_state_machine_output(), tuple()} |
+    {error, any()} |
+    {error, update_state_machine_errors(), tuple()}.
 update_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_state_machine(Client, Input, []).
+
+-spec update_state_machine(aws_client:aws_client(), update_state_machine_input(), proplists:proplist()) ->
+    {ok, update_state_machine_output(), tuple()} |
+    {error, any()} |
+    {error, update_state_machine_errors(), tuple()}.
 update_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStateMachine">>, Input, Options).
@@ -1144,9 +2908,18 @@ update_state_machine(Client, Input, Options)
 %% `ListStateMachineAliases'
 %%
 %% `DeleteStateMachineAlias'
+-spec update_state_machine_alias(aws_client:aws_client(), update_state_machine_alias_input()) ->
+    {ok, update_state_machine_alias_output(), tuple()} |
+    {error, any()} |
+    {error, update_state_machine_alias_errors(), tuple()}.
 update_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_state_machine_alias(Client, Input, []).
+
+-spec update_state_machine_alias(aws_client:aws_client(), update_state_machine_alias_input(), proplists:proplist()) ->
+    {ok, update_state_machine_alias_output(), tuple()} |
+    {error, any()} |
+    {error, update_state_machine_alias_errors(), tuple()}.
 update_state_machine_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStateMachineAlias">>, Input, Options).

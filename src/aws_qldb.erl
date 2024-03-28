@@ -55,6 +55,512 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_revision_response() :: #{
+%%   <<"Proof">> => value_holder(),
+%%   <<"Revision">> => value_holder()
+%% }
+-type get_revision_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_journal_s3_exports_for_ledger_response() :: #{
+%%   <<"JournalS3Exports">> => list(journal_s3_export_description()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_journal_s3_exports_for_ledger_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_journal_to_s3_request() :: #{
+%%   <<"ExclusiveEndTime">> := non_neg_integer(),
+%%   <<"InclusiveStartTime">> := non_neg_integer(),
+%%   <<"OutputFormat">> => list(any()),
+%%   <<"RoleArn">> := string(),
+%%   <<"S3ExportConfiguration">> := s3_export_configuration()
+%% }
+-type export_journal_to_s3_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_journal_kinesis_stream_request() :: #{}
+-type cancel_journal_kinesis_stream_request() :: #{}.
+
+
+%% Example:
+%% list_journal_kinesis_streams_for_ledger_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_journal_kinesis_streams_for_ledger_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_precondition_not_met_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_precondition_not_met_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_ledger_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"EncryptionDescription">> => ledger_encryption_description(),
+%%   <<"Name">> => string(),
+%%   <<"PermissionsMode">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_ledger_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% journal_kinesis_stream_description() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ErrorCause">> => list(any()),
+%%   <<"ExclusiveEndTime">> => non_neg_integer(),
+%%   <<"InclusiveStartTime">> => non_neg_integer(),
+%%   <<"KinesisConfiguration">> => kinesis_configuration(),
+%%   <<"LedgerName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type journal_kinesis_stream_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_revision_request() :: #{
+%%   <<"BlockAddress">> := value_holder(),
+%%   <<"DigestTipAddress">> => value_holder(),
+%%   <<"DocumentId">> := string()
+%% }
+-type get_revision_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_block_request() :: #{
+%%   <<"BlockAddress">> := value_holder(),
+%%   <<"DigestTipAddress">> => value_holder()
+%% }
+-type get_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_encryption_configuration() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"ObjectEncryptionType">> => list(any())
+%% }
+-type s3_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ledger_summary() :: #{
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type ledger_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ledgers_response() :: #{
+%%   <<"Ledgers">> => list(ledger_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ledgers_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_digest_request() :: #{}
+-type get_digest_request() :: #{}.
+
+
+%% Example:
+%% update_ledger_request() :: #{
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"KmsKey">> => string()
+%% }
+-type update_ledger_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% journal_s3_export_description() :: #{
+%%   <<"ExclusiveEndTime">> => non_neg_integer(),
+%%   <<"ExportCreationTime">> => non_neg_integer(),
+%%   <<"ExportId">> => string(),
+%%   <<"InclusiveStartTime">> => non_neg_integer(),
+%%   <<"LedgerName">> => string(),
+%%   <<"OutputFormat">> => list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"S3ExportConfiguration">> => s3_export_configuration(),
+%%   <<"Status">> => list(any())
+%% }
+-type journal_s3_export_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ledger_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PermissionsMode">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type create_ledger_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_journal_kinesis_streams_for_ledger_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Streams">> => list(journal_kinesis_stream_description()())
+%% }
+-type list_journal_kinesis_streams_for_ledger_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_digest_response() :: #{
+%%   <<"Digest">> => binary(),
+%%   <<"DigestTipAddress">> => value_holder()
+%% }
+-type get_digest_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_journal_to_kinesis_request() :: #{
+%%   <<"ExclusiveEndTime">> => non_neg_integer(),
+%%   <<"InclusiveStartTime">> := non_neg_integer(),
+%%   <<"KinesisConfiguration">> := kinesis_configuration(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StreamName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type stream_journal_to_kinesis_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ledger_request() :: #{}
+-type delete_ledger_request() :: #{}.
+
+
+%% Example:
+%% s3_export_configuration() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"EncryptionConfiguration">> => s3_encryption_configuration(),
+%%   <<"Prefix">> => string()
+%% }
+-type s3_export_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_journal_kinesis_stream_response() :: #{
+%%   <<"StreamId">> => string()
+%% }
+-type cancel_journal_kinesis_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ledger_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"EncryptionDescription">> => ledger_encryption_description(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type update_ledger_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_configuration() :: #{
+%%   <<"AggregationEnabled">> => boolean(),
+%%   <<"StreamArn">> => string()
+%% }
+-type kinesis_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ledger_permissions_mode_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PermissionsMode">> => list(any())
+%% }
+-type update_ledger_permissions_mode_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_journal_s3_exports_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_journal_s3_exports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_journal_s3_export_response() :: #{
+%%   <<"ExportDescription">> => journal_s3_export_description()
+%% }
+-type describe_journal_s3_export_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_block_response() :: #{
+%%   <<"Block">> => value_holder(),
+%%   <<"Proof">> => value_holder()
+%% }
+-type get_block_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_journal_s3_exports_for_ledger_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_journal_s3_exports_for_ledger_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_journal_s3_exports_response() :: #{
+%%   <<"JournalS3Exports">> => list(journal_s3_export_description()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_journal_s3_exports_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% value_holder() :: #{
+%%   <<"IonText">> => string()
+%% }
+-type value_holder() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_journal_to_kinesis_response() :: #{
+%%   <<"StreamId">> => string()
+%% }
+-type stream_journal_to_kinesis_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ParameterName">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% create_ledger_request() :: #{
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"KmsKey">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"PermissionsMode">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_ledger_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_journal_to_s3_response() :: #{
+%%   <<"ExportId">> => string()
+%% }
+-type export_journal_to_s3_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_journal_kinesis_stream_response() :: #{
+%%   <<"Stream">> => journal_kinesis_stream_description()
+%% }
+-type describe_journal_kinesis_stream_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ledger_request() :: #{}
+-type describe_ledger_request() :: #{}.
+
+%% Example:
+%% describe_journal_s3_export_request() :: #{}
+-type describe_journal_s3_export_request() :: #{}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ledger_permissions_mode_request() :: #{
+%%   <<"PermissionsMode">> := list(any())
+%% }
+-type update_ledger_permissions_mode_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ledger_encryption_description() :: #{
+%%   <<"EncryptionStatus">> => list(any()),
+%%   <<"InaccessibleKmsKeyDateTime">> => non_neg_integer(),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type ledger_encryption_description() :: #{binary() => any()}.
+
+%% Example:
+%% describe_journal_kinesis_stream_request() :: #{}
+-type describe_journal_kinesis_stream_request() :: #{}.
+
+
+%% Example:
+%% list_ledgers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ledgers_request() :: #{binary() => any()}.
+
+-type cancel_journal_kinesis_stream_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type create_ledger_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    resource_in_use_exception().
+
+-type delete_ledger_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    resource_precondition_not_met_exception().
+
+-type describe_journal_kinesis_stream_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type describe_journal_s3_export_errors() ::
+    resource_not_found_exception().
+
+-type describe_ledger_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type export_journal_to_s3_errors() ::
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type get_block_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type get_digest_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type get_revision_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type list_journal_kinesis_streams_for_ledger_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type list_tags_for_resource_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type stream_journal_to_kinesis_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    resource_precondition_not_met_exception().
+
+-type tag_resource_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type update_ledger_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type update_ledger_permissions_mode_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -69,8 +575,17 @@
 %% subject to a 7-day retention period, so they are automatically deleted
 %% after this limit
 %% expires.
+-spec cancel_journal_kinesis_stream(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_journal_kinesis_stream_request()) ->
+    {ok, cancel_journal_kinesis_stream_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_journal_kinesis_stream_errors(), tuple()}.
 cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input) ->
     cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input, []).
+
+-spec cancel_journal_kinesis_stream(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_journal_kinesis_stream_request(), proplists:proplist()) ->
+    {ok, cancel_journal_kinesis_stream_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_journal_kinesis_stream_errors(), tuple()}.
 cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options0) ->
     Method = delete,
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams/", aws_util:encode_uri(StreamId), ""],
@@ -95,8 +610,17 @@ cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options0) ->
 
 %% @doc Creates a new ledger in your Amazon Web Services account in the
 %% current Region.
+-spec create_ledger(aws_client:aws_client(), create_ledger_request()) ->
+    {ok, create_ledger_response(), tuple()} |
+    {error, any()} |
+    {error, create_ledger_errors(), tuple()}.
 create_ledger(Client, Input) ->
     create_ledger(Client, Input, []).
+
+-spec create_ledger(aws_client:aws_client(), create_ledger_request(), proplists:proplist()) ->
+    {ok, create_ledger_response(), tuple()} |
+    {error, any()} |
+    {error, create_ledger_errors(), tuple()}.
 create_ledger(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers"],
@@ -127,8 +651,17 @@ create_ledger(Client, Input0, Options0) ->
 %% can delete the
 %% ledger. You can disable it by calling the `UpdateLedger' operation to
 %% set this parameter to `false'.
+-spec delete_ledger(aws_client:aws_client(), binary() | list(), delete_ledger_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_ledger_errors(), tuple()}.
 delete_ledger(Client, Name, Input) ->
     delete_ledger(Client, Name, Input, []).
+
+-spec delete_ledger(aws_client:aws_client(), binary() | list(), delete_ledger_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_ledger_errors(), tuple()}.
 delete_ledger(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
@@ -165,14 +698,26 @@ delete_ledger(Client, Name, Input0, Options0) ->
 %% https://docs.aws.amazon.com/qldb/latest/developerguide/streams.create.html#streams.create.states.expiration
 %% in the Amazon QLDB Developer
 %% Guide.
+-spec describe_journal_kinesis_stream(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_journal_kinesis_stream_response(), tuple()} |
+    {error, any()} |
+    {error, describe_journal_kinesis_stream_errors(), tuple()}.
 describe_journal_kinesis_stream(Client, LedgerName, StreamId)
   when is_map(Client) ->
     describe_journal_kinesis_stream(Client, LedgerName, StreamId, #{}, #{}).
 
+-spec describe_journal_kinesis_stream(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_journal_kinesis_stream_response(), tuple()} |
+    {error, any()} |
+    {error, describe_journal_kinesis_stream_errors(), tuple()}.
 describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap, []).
 
+-spec describe_journal_kinesis_stream(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_journal_kinesis_stream_response(), tuple()} |
+    {error, any()} |
+    {error, describe_journal_kinesis_stream_errors(), tuple()}.
 describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams/", aws_util:encode_uri(StreamId), ""],
@@ -207,14 +752,26 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersM
 %%
 %% If the ledger with the given `Name' doesn't exist, then throws
 %% `ResourceNotFoundException'.
+-spec describe_journal_s3_export(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_journal_s3_export_response(), tuple()} |
+    {error, any()} |
+    {error, describe_journal_s3_export_errors(), tuple()}.
 describe_journal_s3_export(Client, ExportId, Name)
   when is_map(Client) ->
     describe_journal_s3_export(Client, ExportId, Name, #{}, #{}).
 
+-spec describe_journal_s3_export(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_journal_s3_export_response(), tuple()} |
+    {error, any()} |
+    {error, describe_journal_s3_export_errors(), tuple()}.
 describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, []).
 
+-spec describe_journal_s3_export(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_journal_s3_export_response(), tuple()} |
+    {error, any()} |
+    {error, describe_journal_s3_export_errors(), tuple()}.
 describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports/", aws_util:encode_uri(ExportId), ""],
@@ -234,14 +791,26 @@ describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, Options
 %% @doc Returns information about a ledger, including its state, permissions
 %% mode, encryption at
 %% rest settings, and when it was created.
+-spec describe_ledger(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_ledger_response(), tuple()} |
+    {error, any()} |
+    {error, describe_ledger_errors(), tuple()}.
 describe_ledger(Client, Name)
   when is_map(Client) ->
     describe_ledger(Client, Name, #{}, #{}).
 
+-spec describe_ledger(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_ledger_response(), tuple()} |
+    {error, any()} |
+    {error, describe_ledger_errors(), tuple()}.
 describe_ledger(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ledger(Client, Name, QueryMap, HeadersMap, []).
 
+-spec describe_ledger(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_ledger_response(), tuple()} |
+    {error, any()} |
+    {error, describe_ledger_errors(), tuple()}.
 describe_ledger(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
@@ -275,8 +844,17 @@ describe_ledger(Client, Name, QueryMap, HeadersMap, Options0)
 %% You can initiate up to two concurrent journal export requests for each
 %% ledger. Beyond
 %% this limit, journal export requests throw `LimitExceededException'.
+-spec export_journal_to_s3(aws_client:aws_client(), binary() | list(), export_journal_to_s3_request()) ->
+    {ok, export_journal_to_s3_response(), tuple()} |
+    {error, any()} |
+    {error, export_journal_to_s3_errors(), tuple()}.
 export_journal_to_s3(Client, Name, Input) ->
     export_journal_to_s3(Client, Name, Input, []).
+
+-spec export_journal_to_s3(aws_client:aws_client(), binary() | list(), export_journal_to_s3_request(), proplists:proplist()) ->
+    {ok, export_journal_to_s3_response(), tuple()} |
+    {error, any()} |
+    {error, export_journal_to_s3_errors(), tuple()}.
 export_journal_to_s3(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports"],
@@ -318,8 +896,17 @@ export_journal_to_s3(Client, Name, Input0, Options0) ->
 %%
 %% If no block exists with the specified address, then throws
 %% `InvalidParameterException'.
+-spec get_block(aws_client:aws_client(), binary() | list(), get_block_request()) ->
+    {ok, get_block_response(), tuple()} |
+    {error, any()} |
+    {error, get_block_errors(), tuple()}.
 get_block(Client, Name, Input) ->
     get_block(Client, Name, Input, []).
+
+-spec get_block(aws_client:aws_client(), binary() | list(), get_block_request(), proplists:proplist()) ->
+    {ok, get_block_response(), tuple()} |
+    {error, any()} |
+    {error, get_block_errors(), tuple()}.
 get_block(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/block"],
@@ -347,8 +934,17 @@ get_block(Client, Name, Input0, Options0) ->
 %%
 %% The
 %% response includes a 256-bit hash value and a block address.
+-spec get_digest(aws_client:aws_client(), binary() | list(), get_digest_request()) ->
+    {ok, get_digest_response(), tuple()} |
+    {error, any()} |
+    {error, get_digest_errors(), tuple()}.
 get_digest(Client, Name, Input) ->
     get_digest(Client, Name, Input, []).
+
+-spec get_digest(aws_client:aws_client(), binary() | list(), get_digest_request(), proplists:proplist()) ->
+    {ok, get_digest_response(), tuple()} |
+    {error, any()} |
+    {error, get_digest_errors(), tuple()}.
 get_digest(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/digest"],
@@ -378,8 +974,17 @@ get_digest(Client, Name, Input0, Options0) ->
 %% returns a proof of the specified revision for verification if
 %% `DigestTipAddress'
 %% is provided.
+-spec get_revision(aws_client:aws_client(), binary() | list(), get_revision_request()) ->
+    {ok, get_revision_response(), tuple()} |
+    {error, any()} |
+    {error, get_revision_errors(), tuple()}.
 get_revision(Client, Name, Input) ->
     get_revision(Client, Name, Input, []).
+
+-spec get_revision(aws_client:aws_client(), binary() | list(), get_revision_request(), proplists:proplist()) ->
+    {ok, get_revision_response(), tuple()} |
+    {error, any()} |
+    {error, get_revision_errors(), tuple()}.
 get_revision(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/revision"],
@@ -416,14 +1021,26 @@ get_revision(Client, Name, Input0, Options0) ->
 %% you can retrieve all the items by calling
 %% `ListJournalKinesisStreamsForLedger'
 %% multiple times.
+-spec list_journal_kinesis_streams_for_ledger(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_journal_kinesis_streams_for_ledger_response(), tuple()} |
+    {error, any()} |
+    {error, list_journal_kinesis_streams_for_ledger_errors(), tuple()}.
 list_journal_kinesis_streams_for_ledger(Client, LedgerName)
   when is_map(Client) ->
     list_journal_kinesis_streams_for_ledger(Client, LedgerName, #{}, #{}).
 
+-spec list_journal_kinesis_streams_for_ledger(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_journal_kinesis_streams_for_ledger_response(), tuple()} |
+    {error, any()} |
+    {error, list_journal_kinesis_streams_for_ledger_errors(), tuple()}.
 list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap, []).
 
+-spec list_journal_kinesis_streams_for_ledger(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_journal_kinesis_streams_for_ledger_response(), tuple()} |
+    {error, any()} |
+    {error, list_journal_kinesis_streams_for_ledger_errors(), tuple()}.
 list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams"],
@@ -460,14 +1077,23 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap
 %% https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration
 %% in the Amazon QLDB Developer
 %% Guide.
+-spec list_journal_s3_exports(aws_client:aws_client()) ->
+    {ok, list_journal_s3_exports_response(), tuple()} |
+    {error, any()}.
 list_journal_s3_exports(Client)
   when is_map(Client) ->
     list_journal_s3_exports(Client, #{}, #{}).
 
+-spec list_journal_s3_exports(aws_client:aws_client(), map(), map()) ->
+    {ok, list_journal_s3_exports_response(), tuple()} |
+    {error, any()}.
 list_journal_s3_exports(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journal_s3_exports(Client, QueryMap, HeadersMap, []).
 
+-spec list_journal_s3_exports(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_journal_s3_exports_response(), tuple()} |
+    {error, any()}.
 list_journal_s3_exports(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/journal-s3-exports"],
@@ -502,14 +1128,23 @@ list_journal_s3_exports(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration
 %% in the Amazon QLDB Developer
 %% Guide.
+-spec list_journal_s3_exports_for_ledger(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_journal_s3_exports_for_ledger_response(), tuple()} |
+    {error, any()}.
 list_journal_s3_exports_for_ledger(Client, Name)
   when is_map(Client) ->
     list_journal_s3_exports_for_ledger(Client, Name, #{}, #{}).
 
+-spec list_journal_s3_exports_for_ledger(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_journal_s3_exports_for_ledger_response(), tuple()} |
+    {error, any()}.
 list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, []).
 
+-spec list_journal_s3_exports_for_ledger(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_journal_s3_exports_for_ledger_response(), tuple()} |
+    {error, any()}.
 list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/journal-s3-exports"],
@@ -539,14 +1174,23 @@ list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, Options0)
 %% so that
 %% you can retrieve all the items by calling `ListLedgers' multiple
 %% times.
+-spec list_ledgers(aws_client:aws_client()) ->
+    {ok, list_ledgers_response(), tuple()} |
+    {error, any()}.
 list_ledgers(Client)
   when is_map(Client) ->
     list_ledgers(Client, #{}, #{}).
 
+-spec list_ledgers(aws_client:aws_client(), map(), map()) ->
+    {ok, list_ledgers_response(), tuple()} |
+    {error, any()}.
 list_ledgers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ledgers(Client, QueryMap, HeadersMap, []).
 
+-spec list_ledgers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_ledgers_response(), tuple()} |
+    {error, any()}.
 list_ledgers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ledgers"],
@@ -569,14 +1213,26 @@ list_ledgers(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns all tags for a specified Amazon QLDB resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -599,8 +1255,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% document revision that is committed to the ledger's journal and
 %% delivers the data to a
 %% specified Amazon Kinesis Data Streams resource.
+-spec stream_journal_to_kinesis(aws_client:aws_client(), binary() | list(), stream_journal_to_kinesis_request()) ->
+    {ok, stream_journal_to_kinesis_response(), tuple()} |
+    {error, any()} |
+    {error, stream_journal_to_kinesis_errors(), tuple()}.
 stream_journal_to_kinesis(Client, LedgerName, Input) ->
     stream_journal_to_kinesis(Client, LedgerName, Input, []).
+
+-spec stream_journal_to_kinesis(aws_client:aws_client(), binary() | list(), stream_journal_to_kinesis_request(), proplists:proplist()) ->
+    {ok, stream_journal_to_kinesis_response(), tuple()} |
+    {error, any()} |
+    {error, stream_journal_to_kinesis_errors(), tuple()}.
 stream_journal_to_kinesis(Client, LedgerName, Input0, Options0) ->
     Method = post,
     Path = ["/ledgers/", aws_util:encode_uri(LedgerName), "/journal-kinesis-streams"],
@@ -628,8 +1293,17 @@ stream_journal_to_kinesis(Client, LedgerName, Input0, Options0) ->
 %% A resource can have up to 50 tags. If you try to create more than 50 tags
 %% for a
 %% resource, your request fails and returns an error.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -656,8 +1330,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% You can specify up to 50
 %% tag keys to remove.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -682,8 +1365,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates properties on a ledger.
+-spec update_ledger(aws_client:aws_client(), binary() | list(), update_ledger_request()) ->
+    {ok, update_ledger_response(), tuple()} |
+    {error, any()} |
+    {error, update_ledger_errors(), tuple()}.
 update_ledger(Client, Name, Input) ->
     update_ledger(Client, Name, Input, []).
+
+-spec update_ledger(aws_client:aws_client(), binary() | list(), update_ledger_request(), proplists:proplist()) ->
+    {ok, update_ledger_response(), tuple()} |
+    {error, any()} |
+    {error, update_ledger_errors(), tuple()}.
 update_ledger(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/ledgers/", aws_util:encode_uri(Name), ""],
@@ -715,8 +1407,17 @@ update_ledger(Client, Name, Input0, Options0) ->
 %% https://docs.aws.amazon.com/qldb/latest/developerguide/ledger-management.basics.html#ledger-mgmt.basics.update-permissions.migrating
 %% in the Amazon QLDB
 %% Developer Guide.
+-spec update_ledger_permissions_mode(aws_client:aws_client(), binary() | list(), update_ledger_permissions_mode_request()) ->
+    {ok, update_ledger_permissions_mode_response(), tuple()} |
+    {error, any()} |
+    {error, update_ledger_permissions_mode_errors(), tuple()}.
 update_ledger_permissions_mode(Client, Name, Input) ->
     update_ledger_permissions_mode(Client, Name, Input, []).
+
+-spec update_ledger_permissions_mode(aws_client:aws_client(), binary() | list(), update_ledger_permissions_mode_request(), proplists:proplist()) ->
+    {ok, update_ledger_permissions_mode_response(), tuple()} |
+    {error, any()} |
+    {error, update_ledger_permissions_mode_errors(), tuple()}.
 update_ledger_permissions_mode(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/ledgers/", aws_util:encode_uri(Name), "/permissions-mode"],
@@ -743,7 +1444,7 @@ update_ledger_permissions_mode(Client, Name, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

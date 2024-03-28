@@ -69,6 +69,249 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorization_pending_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type authorization_pending_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_token_request() :: #{
+%%   <<"clientId">> := string(),
+%%   <<"clientSecret">> := string(),
+%%   <<"code">> => string(),
+%%   <<"deviceCode">> => string(),
+%%   <<"grantType">> := string(),
+%%   <<"redirectUri">> => string(),
+%%   <<"refreshToken">> => string(),
+%%   <<"scope">> => list(string()())
+%% }
+-type create_token_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_token_response() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"expiresIn">> => integer(),
+%%   <<"idToken">> => string(),
+%%   <<"refreshToken">> => string(),
+%%   <<"tokenType">> => string()
+%% }
+-type create_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_token_with_iam_request() :: #{
+%%   <<"assertion">> => string(),
+%%   <<"clientId">> := string(),
+%%   <<"code">> => string(),
+%%   <<"grantType">> := string(),
+%%   <<"redirectUri">> => string(),
+%%   <<"refreshToken">> => string(),
+%%   <<"requestedTokenType">> => string(),
+%%   <<"scope">> => list(string()()),
+%%   <<"subjectToken">> => string(),
+%%   <<"subjectTokenType">> => string()
+%% }
+-type create_token_with_iam_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_token_with_iam_response() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"expiresIn">> => integer(),
+%%   <<"idToken">> => string(),
+%%   <<"issuedTokenType">> => string(),
+%%   <<"refreshToken">> => string(),
+%%   <<"scope">> => list(string()()),
+%%   <<"tokenType">> => string()
+%% }
+-type create_token_with_iam_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% expired_token_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type expired_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_client_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type invalid_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_client_metadata_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type invalid_client_metadata_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_grant_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type invalid_grant_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_region_exception() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string(),
+%%   <<"region">> => string()
+%% }
+-type invalid_request_region_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_scope_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type invalid_scope_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_client_request() :: #{
+%%   <<"clientName">> := string(),
+%%   <<"clientType">> := string(),
+%%   <<"scopes">> => list(string()())
+%% }
+-type register_client_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_client_response() :: #{
+%%   <<"authorizationEndpoint">> => string(),
+%%   <<"clientId">> => string(),
+%%   <<"clientIdIssuedAt">> => float(),
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretExpiresAt">> => float(),
+%%   <<"tokenEndpoint">> => string()
+%% }
+-type register_client_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% slow_down_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type slow_down_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_device_authorization_request() :: #{
+%%   <<"clientId">> := string(),
+%%   <<"clientSecret">> := string(),
+%%   <<"startUrl">> := string()
+%% }
+-type start_device_authorization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_device_authorization_response() :: #{
+%%   <<"deviceCode">> => string(),
+%%   <<"expiresIn">> => integer(),
+%%   <<"interval">> => integer(),
+%%   <<"userCode">> => string(),
+%%   <<"verificationUri">> => string(),
+%%   <<"verificationUriComplete">> => string()
+%% }
+-type start_device_authorization_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_client_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type unauthorized_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_grant_type_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type unsupported_grant_type_exception() :: #{binary() => any()}.
+
+-type create_token_errors() ::
+    unsupported_grant_type_exception() | 
+    unauthorized_client_exception() | 
+    slow_down_exception() | 
+    invalid_scope_exception() | 
+    invalid_request_exception() | 
+    invalid_grant_exception() | 
+    invalid_client_exception() | 
+    internal_server_exception() | 
+    expired_token_exception() | 
+    authorization_pending_exception() | 
+    access_denied_exception().
+
+-type create_token_with_iam_errors() ::
+    unsupported_grant_type_exception() | 
+    unauthorized_client_exception() | 
+    slow_down_exception() | 
+    invalid_scope_exception() | 
+    invalid_request_region_exception() | 
+    invalid_request_exception() | 
+    invalid_grant_exception() | 
+    invalid_client_exception() | 
+    internal_server_exception() | 
+    expired_token_exception() | 
+    authorization_pending_exception() | 
+    access_denied_exception().
+
+-type register_client_errors() ::
+    invalid_scope_exception() | 
+    invalid_request_exception() | 
+    invalid_client_metadata_exception() | 
+    internal_server_exception().
+
+-type start_device_authorization_errors() ::
+    unauthorized_client_exception() | 
+    slow_down_exception() | 
+    invalid_request_exception() | 
+    invalid_client_exception() | 
+    internal_server_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -81,8 +324,17 @@
 %% assigned
 %% AWS accounts or to access application APIs using `bearer'
 %% authentication.
+-spec create_token(aws_client:aws_client(), create_token_request()) ->
+    {ok, create_token_response(), tuple()} |
+    {error, any()} |
+    {error, create_token_errors(), tuple()}.
 create_token(Client, Input) ->
     create_token(Client, Input, []).
+
+-spec create_token(aws_client:aws_client(), create_token_request(), proplists:proplist()) ->
+    {ok, create_token_response(), tuple()} |
+    {error, any()} |
+    {error, create_token_errors(), tuple()}.
 create_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/token"],
@@ -113,8 +365,17 @@ create_token(Client, Input0, Options0) ->
 %% for the assigned AWS accounts or to access application APIs using
 %% `bearer'
 %% authentication.
+-spec create_token_with_iam(aws_client:aws_client(), create_token_with_iam_request()) ->
+    {ok, create_token_with_iam_response(), tuple()} |
+    {error, any()} |
+    {error, create_token_with_iam_errors(), tuple()}.
 create_token_with_iam(Client, Input) ->
     create_token_with_iam(Client, Input, []).
+
+-spec create_token_with_iam(aws_client:aws_client(), create_token_with_iam_request(), proplists:proplist()) ->
+    {ok, create_token_with_iam_response(), tuple()} |
+    {error, any()} |
+    {error, create_token_with_iam_errors(), tuple()}.
 create_token_with_iam(Client, Input0, Options0) ->
     Method = post,
     Path = ["/token?aws_iam=t"],
@@ -142,8 +403,17 @@ create_token_with_iam(Client, Input0, Options0) ->
 %% This allows clients to initiate device authorization.
 %% The output should be persisted for reuse through many authentication
 %% requests.
+-spec register_client(aws_client:aws_client(), register_client_request()) ->
+    {ok, register_client_response(), tuple()} |
+    {error, any()} |
+    {error, register_client_errors(), tuple()}.
 register_client(Client, Input) ->
     register_client(Client, Input, []).
+
+-spec register_client(aws_client:aws_client(), register_client_request(), proplists:proplist()) ->
+    {ok, register_client_response(), tuple()} |
+    {error, any()} |
+    {error, register_client_errors(), tuple()}.
 register_client(Client, Input0, Options0) ->
     Method = post,
     Path = ["/client/register"],
@@ -169,8 +439,17 @@ register_client(Client, Input0, Options0) ->
 %% @doc Initiates device authorization by requesting a pair of verification
 %% codes from the
 %% authorization service.
+-spec start_device_authorization(aws_client:aws_client(), start_device_authorization_request()) ->
+    {ok, start_device_authorization_response(), tuple()} |
+    {error, any()} |
+    {error, start_device_authorization_errors(), tuple()}.
 start_device_authorization(Client, Input) ->
     start_device_authorization(Client, Input, []).
+
+-spec start_device_authorization(aws_client:aws_client(), start_device_authorization_request(), proplists:proplist()) ->
+    {ok, start_device_authorization_response(), tuple()} |
+    {error, any()} |
+    {error, start_device_authorization_errors(), tuple()}.
 start_device_authorization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/device_authorization"],
@@ -197,7 +476,7 @@ start_device_authorization(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

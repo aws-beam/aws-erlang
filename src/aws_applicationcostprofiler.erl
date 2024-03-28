@@ -33,6 +33,202 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_report_definition_request() :: #{}
+-type delete_report_definition_request() :: #{}.
+
+
+%% Example:
+%% delete_report_definition_result() :: #{
+%%   <<"reportId">> => string()
+%% }
+-type delete_report_definition_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_report_definition_request() :: #{}
+-type get_report_definition_request() :: #{}.
+
+
+%% Example:
+%% get_report_definition_result() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destinationS3Location">> => s3_location(),
+%%   <<"format">> => list(any()),
+%%   <<"lastUpdated">> => non_neg_integer(),
+%%   <<"reportDescription">> => string(),
+%%   <<"reportFrequency">> => list(any()),
+%%   <<"reportId">> => string()
+%% }
+-type get_report_definition_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_application_usage_request() :: #{
+%%   <<"sourceS3Location">> := source_s3_location()
+%% }
+-type import_application_usage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_application_usage_result() :: #{
+%%   <<"importId">> => string()
+%% }
+-type import_application_usage_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_definitions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_report_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_definitions_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reportDefinitions">> => list(report_definition()())
+%% }
+-type list_report_definitions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_report_definition_request() :: #{
+%%   <<"destinationS3Location">> := s3_location(),
+%%   <<"format">> := list(any()),
+%%   <<"reportDescription">> := string(),
+%%   <<"reportFrequency">> := list(any()),
+%%   <<"reportId">> := string()
+%% }
+-type put_report_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_report_definition_result() :: #{
+%%   <<"reportId">> => string()
+%% }
+-type put_report_definition_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_definition() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destinationS3Location">> => s3_location(),
+%%   <<"format">> => list(any()),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"reportDescription">> => string(),
+%%   <<"reportFrequency">> => list(any()),
+%%   <<"reportId">> => string()
+%% }
+-type report_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string(),
+%%   <<"region">> => list(any())
+%% }
+-type source_s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_report_definition_request() :: #{
+%%   <<"destinationS3Location">> := s3_location(),
+%%   <<"format">> := list(any()),
+%%   <<"reportDescription">> := string(),
+%%   <<"reportFrequency">> := list(any())
+%% }
+-type update_report_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_report_definition_result() :: #{
+%%   <<"reportId">> => string()
+%% }
+-type update_report_definition_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+-type delete_report_definition_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_report_definition_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type import_application_usage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_report_definitions_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_report_definition_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_report_definition_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -42,8 +238,17 @@
 %%
 %% This stops the report from being
 %% generated.
+-spec delete_report_definition(aws_client:aws_client(), binary() | list(), delete_report_definition_request()) ->
+    {ok, delete_report_definition_result(), tuple()} |
+    {error, any()} |
+    {error, delete_report_definition_errors(), tuple()}.
 delete_report_definition(Client, ReportId, Input) ->
     delete_report_definition(Client, ReportId, Input, []).
+
+-spec delete_report_definition(aws_client:aws_client(), binary() | list(), delete_report_definition_request(), proplists:proplist()) ->
+    {ok, delete_report_definition_result(), tuple()} |
+    {error, any()} |
+    {error, delete_report_definition_errors(), tuple()}.
 delete_report_definition(Client, ReportId, Input0, Options0) ->
     Method = delete,
     Path = ["/reportDefinition/", aws_util:encode_uri(ReportId), ""],
@@ -68,14 +273,26 @@ delete_report_definition(Client, ReportId, Input0, Options0) ->
 
 %% @doc Retrieves the definition of a report already configured in AWS
 %% Application Cost Profiler.
+-spec get_report_definition(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_report_definition_result(), tuple()} |
+    {error, any()} |
+    {error, get_report_definition_errors(), tuple()}.
 get_report_definition(Client, ReportId)
   when is_map(Client) ->
     get_report_definition(Client, ReportId, #{}, #{}).
 
+-spec get_report_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_report_definition_result(), tuple()} |
+    {error, any()} |
+    {error, get_report_definition_errors(), tuple()}.
 get_report_definition(Client, ReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_report_definition(Client, ReportId, QueryMap, HeadersMap, []).
 
+-spec get_report_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_report_definition_result(), tuple()} |
+    {error, any()} |
+    {error, get_report_definition_errors(), tuple()}.
 get_report_definition(Client, ReportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reportDefinition/", aws_util:encode_uri(ReportId), ""],
@@ -100,8 +317,17 @@ get_report_definition(Client, ReportId, QueryMap, HeadersMap, Options0)
 %% copies the object from your S3 bucket to an S3 bucket owned by Amazon for
 %% processing
 %% asynchronously.
+-spec import_application_usage(aws_client:aws_client(), import_application_usage_request()) ->
+    {ok, import_application_usage_result(), tuple()} |
+    {error, any()} |
+    {error, import_application_usage_errors(), tuple()}.
 import_application_usage(Client, Input) ->
     import_application_usage(Client, Input, []).
+
+-spec import_application_usage(aws_client:aws_client(), import_application_usage_request(), proplists:proplist()) ->
+    {ok, import_application_usage_result(), tuple()} |
+    {error, any()} |
+    {error, import_application_usage_errors(), tuple()}.
 import_application_usage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/importApplicationUsage"],
@@ -128,14 +354,26 @@ import_application_usage(Client, Input0, Options0) ->
 %% account.
 %%
 %% The maximum number of reports is one.
+-spec list_report_definitions(aws_client:aws_client()) ->
+    {ok, list_report_definitions_result(), tuple()} |
+    {error, any()} |
+    {error, list_report_definitions_errors(), tuple()}.
 list_report_definitions(Client)
   when is_map(Client) ->
     list_report_definitions(Client, #{}, #{}).
 
+-spec list_report_definitions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_report_definitions_result(), tuple()} |
+    {error, any()} |
+    {error, list_report_definitions_errors(), tuple()}.
 list_report_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_report_definitions(Client, QueryMap, HeadersMap, []).
 
+-spec list_report_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_report_definitions_result(), tuple()} |
+    {error, any()} |
+    {error, list_report_definitions_errors(), tuple()}.
 list_report_definitions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/reportDefinition"],
@@ -159,8 +397,17 @@ list_report_definitions(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Creates the report definition for a report in Application Cost
 %% Profiler.
+-spec put_report_definition(aws_client:aws_client(), put_report_definition_request()) ->
+    {ok, put_report_definition_result(), tuple()} |
+    {error, any()} |
+    {error, put_report_definition_errors(), tuple()}.
 put_report_definition(Client, Input) ->
     put_report_definition(Client, Input, []).
+
+-spec put_report_definition(aws_client:aws_client(), put_report_definition_request(), proplists:proplist()) ->
+    {ok, put_report_definition_result(), tuple()} |
+    {error, any()} |
+    {error, put_report_definition_errors(), tuple()}.
 put_report_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reportDefinition"],
@@ -184,8 +431,17 @@ put_report_definition(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates existing report in AWS Application Cost Profiler.
+-spec update_report_definition(aws_client:aws_client(), binary() | list(), update_report_definition_request()) ->
+    {ok, update_report_definition_result(), tuple()} |
+    {error, any()} |
+    {error, update_report_definition_errors(), tuple()}.
 update_report_definition(Client, ReportId, Input) ->
     update_report_definition(Client, ReportId, Input, []).
+
+-spec update_report_definition(aws_client:aws_client(), binary() | list(), update_report_definition_request(), proplists:proplist()) ->
+    {ok, update_report_definition_result(), tuple()} |
+    {error, any()} |
+    {error, update_report_definition_errors(), tuple()}.
 update_report_definition(Client, ReportId, Input0, Options0) ->
     Method = put,
     Path = ["/reportDefinition/", aws_util:encode_uri(ReportId), ""],
@@ -212,7 +468,7 @@ update_report_definition(Client, ReportId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

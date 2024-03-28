@@ -19,6 +19,326 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% client_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type client_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% clip_fragment_selector() :: #{
+%%   <<"FragmentSelectorType">> => list(any()),
+%%   <<"TimestampRange">> => clip_timestamp_range()
+%% }
+-type clip_fragment_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% clip_timestamp_range() :: #{
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"StartTimestamp">> => non_neg_integer()
+%% }
+-type clip_timestamp_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_fragment_selector() :: #{
+%%   <<"FragmentSelectorType">> => list(any()),
+%%   <<"TimestampRange">> => dash_timestamp_range()
+%% }
+-type dash_fragment_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_timestamp_range() :: #{
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"StartTimestamp">> => non_neg_integer()
+%% }
+-type dash_timestamp_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% fragment() :: #{
+%%   <<"FragmentLengthInMilliseconds">> => float(),
+%%   <<"FragmentNumber">> => string(),
+%%   <<"FragmentSizeInBytes">> => float(),
+%%   <<"ProducerTimestamp">> => non_neg_integer(),
+%%   <<"ServerTimestamp">> => non_neg_integer()
+%% }
+-type fragment() :: #{binary() => any()}.
+
+
+%% Example:
+%% fragment_selector() :: #{
+%%   <<"FragmentSelectorType">> => list(any()),
+%%   <<"TimestampRange">> => timestamp_range()
+%% }
+-type fragment_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_clip_input() :: #{
+%%   <<"ClipFragmentSelector">> := clip_fragment_selector(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type get_clip_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_clip_output() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Payload">> => binary()
+%% }
+-type get_clip_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dash_streaming_session_url_input() :: #{
+%%   <<"DASHFragmentSelector">> => dash_fragment_selector(),
+%%   <<"DisplayFragmentNumber">> => list(any()),
+%%   <<"DisplayFragmentTimestamp">> => list(any()),
+%%   <<"Expires">> => integer(),
+%%   <<"MaxManifestFragmentResults">> => float(),
+%%   <<"PlaybackMode">> => list(any()),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type get_dash_streaming_session_url_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dash_streaming_session_url_output() :: #{
+%%   <<"DASHStreamingSessionURL">> => string()
+%% }
+-type get_dash_streaming_session_url_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_hls_streaming_session_url_input() :: #{
+%%   <<"ContainerFormat">> => list(any()),
+%%   <<"DiscontinuityMode">> => list(any()),
+%%   <<"DisplayFragmentTimestamp">> => list(any()),
+%%   <<"Expires">> => integer(),
+%%   <<"HLSFragmentSelector">> => hls_fragment_selector(),
+%%   <<"MaxMediaPlaylistFragmentResults">> => float(),
+%%   <<"PlaybackMode">> => list(any()),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type get_hls_streaming_session_url_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_hls_streaming_session_url_output() :: #{
+%%   <<"HLSStreamingSessionURL">> => string()
+%% }
+-type get_hls_streaming_session_url_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_images_input() :: #{
+%%   <<"EndTimestamp">> := non_neg_integer(),
+%%   <<"Format">> := list(any()),
+%%   <<"FormatConfig">> => map(),
+%%   <<"HeightPixels">> => integer(),
+%%   <<"ImageSelectorType">> := list(any()),
+%%   <<"MaxResults">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"SamplingInterval">> => integer(),
+%%   <<"StartTimestamp">> := non_neg_integer(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"WidthPixels">> => integer()
+%% }
+-type get_images_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_images_output() :: #{
+%%   <<"Images">> => list(image()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_images_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_media_for_fragment_list_input() :: #{
+%%   <<"Fragments">> := list(string()()),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type get_media_for_fragment_list_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_media_for_fragment_list_output() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Payload">> => binary()
+%% }
+-type get_media_for_fragment_list_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_fragment_selector() :: #{
+%%   <<"FragmentSelectorType">> => list(any()),
+%%   <<"TimestampRange">> => hls_timestamp_range()
+%% }
+-type hls_fragment_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_timestamp_range() :: #{
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"StartTimestamp">> => non_neg_integer()
+%% }
+-type hls_timestamp_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% image() :: #{
+%%   <<"Error">> => list(any()),
+%%   <<"ImageContent">> => string(),
+%%   <<"TimeStamp">> => non_neg_integer()
+%% }
+-type image() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_argument_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_argument_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_codec_private_data_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_codec_private_data_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_media_frame_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_media_frame_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fragments_input() :: #{
+%%   <<"FragmentSelector">> => fragment_selector(),
+%%   <<"MaxResults">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type list_fragments_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fragments_output() :: #{
+%%   <<"Fragments">> => list(fragment()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_fragments_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_codec_private_data_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type missing_codec_private_data_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_data_retention_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_data_retention_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% timestamp_range() :: #{
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"StartTimestamp">> => non_neg_integer()
+%% }
+-type timestamp_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_stream_media_type_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_stream_media_type_exception() :: #{binary() => any()}.
+
+-type get_clip_errors() ::
+    unsupported_stream_media_type_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    no_data_retention_exception() | 
+    missing_codec_private_data_exception() | 
+    invalid_media_frame_exception() | 
+    invalid_codec_private_data_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
+-type get_dash_streaming_session_url_errors() ::
+    unsupported_stream_media_type_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    no_data_retention_exception() | 
+    missing_codec_private_data_exception() | 
+    invalid_codec_private_data_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
+-type get_hls_streaming_session_url_errors() ::
+    unsupported_stream_media_type_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    no_data_retention_exception() | 
+    missing_codec_private_data_exception() | 
+    invalid_codec_private_data_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
+-type get_images_errors() ::
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    no_data_retention_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
+-type get_media_for_fragment_list_errors() ::
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
+-type list_fragments_errors() ::
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -76,8 +396,17 @@
 %% Amazon Web Services
 %% Pricing: https://aws.amazon.com/pricing/. Charges for outgoing Amazon Web
 %% Services data apply.
+-spec get_clip(aws_client:aws_client(), get_clip_input()) ->
+    {ok, get_clip_output(), tuple()} |
+    {error, any()} |
+    {error, get_clip_errors(), tuple()}.
 get_clip(Client, Input) ->
     get_clip(Client, Input, []).
+
+-spec get_clip(aws_client:aws_client(), get_clip_input(), proplists:proplist()) ->
+    {ok, get_clip_output(), tuple()} |
+    {error, any()} |
+    {error, get_clip_errors(), tuple()}.
 get_clip(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getClip"],
@@ -279,8 +608,17 @@ get_clip(Client, Input0, Options0) ->
 %% For more information, see the Errors section at
 %% the bottom of this topic, as well as Common Errors:
 %% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
+-spec get_dash_streaming_session_url(aws_client:aws_client(), get_dash_streaming_session_url_input()) ->
+    {ok, get_dash_streaming_session_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_dash_streaming_session_url_errors(), tuple()}.
 get_dash_streaming_session_url(Client, Input) ->
     get_dash_streaming_session_url(Client, Input, []).
+
+-spec get_dash_streaming_session_url(aws_client:aws_client(), get_dash_streaming_session_url_input(), proplists:proplist()) ->
+    {ok, get_dash_streaming_session_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_dash_streaming_session_url_errors(), tuple()}.
 get_dash_streaming_session_url(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getDASHStreamingSessionURL"],
@@ -507,8 +845,17 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %% For more information, see the Errors section at
 %% the bottom of this topic, as well as Common Errors:
 %% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
+-spec get_hls_streaming_session_url(aws_client:aws_client(), get_hls_streaming_session_url_input()) ->
+    {ok, get_hls_streaming_session_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_hls_streaming_session_url_errors(), tuple()}.
 get_hls_streaming_session_url(Client, Input) ->
     get_hls_streaming_session_url(Client, Input, []).
+
+-spec get_hls_streaming_session_url(aws_client:aws_client(), get_hls_streaming_session_url_input(), proplists:proplist()) ->
+    {ok, get_hls_streaming_session_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_hls_streaming_session_url_errors(), tuple()}.
 get_hls_streaming_session_url(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getHLSStreamingSessionURL"],
@@ -534,8 +881,17 @@ get_hls_streaming_session_url(Client, Input0, Options0) ->
 %% @doc Retrieves a list of images corresponding to each timestamp for a
 %% given time range,
 %% sampling interval, and image format configuration.
+-spec get_images(aws_client:aws_client(), get_images_input()) ->
+    {ok, get_images_output(), tuple()} |
+    {error, any()} |
+    {error, get_images_errors(), tuple()}.
 get_images(Client, Input) ->
     get_images(Client, Input, []).
+
+-spec get_images(aws_client:aws_client(), get_images_input(), proplists:proplist()) ->
+    {ok, get_images_output(), tuple()} |
+    {error, any()} |
+    {error, get_images_errors(), tuple()}.
 get_images(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getImages"],
@@ -594,8 +950,17 @@ get_images(Client, Input0, Options0) ->
 %% For more information, see the Errors section at
 %% the bottom of this topic, as well as Common Errors:
 %% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
+-spec get_media_for_fragment_list(aws_client:aws_client(), get_media_for_fragment_list_input()) ->
+    {ok, get_media_for_fragment_list_output(), tuple()} |
+    {error, any()} |
+    {error, get_media_for_fragment_list_errors(), tuple()}.
 get_media_for_fragment_list(Client, Input) ->
     get_media_for_fragment_list(Client, Input, []).
+
+-spec get_media_for_fragment_list(aws_client:aws_client(), get_media_for_fragment_list_input(), proplists:proplist()) ->
+    {ok, get_media_for_fragment_list_output(), tuple()} |
+    {error, any()} |
+    {error, get_media_for_fragment_list_errors(), tuple()}.
 get_media_for_fragment_list(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getMediaForFragmentList"],
@@ -674,8 +1039,17 @@ get_media_for_fragment_list(Client, Input0, Options0) ->
 %% For more information, see the Errors section at
 %% the bottom of this topic, as well as Common Errors:
 %% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
+-spec list_fragments(aws_client:aws_client(), list_fragments_input()) ->
+    {ok, list_fragments_output(), tuple()} |
+    {error, any()} |
+    {error, list_fragments_errors(), tuple()}.
 list_fragments(Client, Input) ->
     list_fragments(Client, Input, []).
+
+-spec list_fragments(aws_client:aws_client(), list_fragments_input(), proplists:proplist()) ->
+    {ok, list_fragments_output(), tuple()} |
+    {error, any()} |
+    {error, list_fragments_errors(), tuple()}.
 list_fragments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listFragments"],
@@ -702,7 +1076,7 @@ list_fragments(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

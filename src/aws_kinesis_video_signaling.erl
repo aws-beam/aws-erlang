@@ -15,6 +15,106 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% client_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type client_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_ice_server_config_request() :: #{
+%%   <<"ChannelARN">> := string(),
+%%   <<"ClientId">> => string(),
+%%   <<"Service">> => list(any()),
+%%   <<"Username">> => string()
+%% }
+-type get_ice_server_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_ice_server_config_response() :: #{
+%%   <<"IceServerList">> => list(ice_server()())
+%% }
+-type get_ice_server_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ice_server() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Ttl">> => integer(),
+%%   <<"Uris">> => list(string()()),
+%%   <<"Username">> => string()
+%% }
+-type ice_server() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_argument_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_argument_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_client_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_alexa_offer_to_master_request() :: #{
+%%   <<"ChannelARN">> := string(),
+%%   <<"MessagePayload">> := string(),
+%%   <<"SenderClientId">> := string()
+%% }
+-type send_alexa_offer_to_master_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_alexa_offer_to_master_response() :: #{
+%%   <<"Answer">> => string()
+%% }
+-type send_alexa_offer_to_master_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_expired_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type session_expired_exception() :: #{binary() => any()}.
+
+-type get_ice_server_config_errors() ::
+    session_expired_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    invalid_client_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
+-type send_alexa_offer_to_master_errors() ::
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -47,8 +147,17 @@
 %% must specify either a signaling channel ARN or the client ID in order to
 %% invoke this
 %% API.
+-spec get_ice_server_config(aws_client:aws_client(), get_ice_server_config_request()) ->
+    {ok, get_ice_server_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_ice_server_config_errors(), tuple()}.
 get_ice_server_config(Client, Input) ->
     get_ice_server_config(Client, Input, []).
+
+-spec get_ice_server_config(aws_client:aws_client(), get_ice_server_config_request(), proplists:proplist()) ->
+    {ok, get_ice_server_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_ice_server_config_errors(), tuple()}.
 get_ice_server_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/get-ice-server-config"],
@@ -84,8 +193,17 @@ get_ice_server_config(Client, Input0, Options0) ->
 %% connected to the signaling channel, redelivery requests are made until the
 %% message
 %% expires.
+-spec send_alexa_offer_to_master(aws_client:aws_client(), send_alexa_offer_to_master_request()) ->
+    {ok, send_alexa_offer_to_master_response(), tuple()} |
+    {error, any()} |
+    {error, send_alexa_offer_to_master_errors(), tuple()}.
 send_alexa_offer_to_master(Client, Input) ->
     send_alexa_offer_to_master(Client, Input, []).
+
+-spec send_alexa_offer_to_master(aws_client:aws_client(), send_alexa_offer_to_master_request(), proplists:proplist()) ->
+    {ok, send_alexa_offer_to_master_response(), tuple()} |
+    {error, any()} |
+    {error, send_alexa_offer_to_master_errors(), tuple()}.
 send_alexa_offer_to_master(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/send-alexa-offer-to-master"],
@@ -112,7 +230,7 @@ send_alexa_offer_to_master(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

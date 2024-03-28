@@ -244,6 +244,2659 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_restore_testing_plans_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_restore_testing_plans_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_job() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ReportDestination">> => report_destination(),
+%%   <<"ReportJobId">> => string(),
+%%   <<"ReportPlanArn">> => string(),
+%%   <<"ReportTemplate">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type report_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point_member() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type recovery_point_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_parameter_value_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type missing_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_backup_plan_output() :: #{
+%%   <<"BackupPlanArn">> => string(),
+%%   <<"BackupPlanId">> => string(),
+%%   <<"DeletionDate">> => non_neg_integer(),
+%%   <<"VersionId">> => string()
+%% }
+-type delete_backup_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_plan_input() :: #{
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"BackupPlanName">> => string(),
+%%   <<"Rules">> => list(backup_rule_input()())
+%% }
+-type backup_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_plans_list_member() :: #{
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"BackupPlanArn">> => string(),
+%%   <<"BackupPlanId">> => string(),
+%%   <<"BackupPlanName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"DeletionDate">> => non_neg_integer(),
+%%   <<"LastExecutionDate">> => non_neg_integer(),
+%%   <<"VersionId">> => string()
+%% }
+-type backup_plans_list_member() :: #{binary() => any()}.
+
+%% Example:
+%% get_restore_job_metadata_input() :: #{}
+-type get_restore_job_metadata_input() :: #{}.
+
+%% Example:
+%% get_restore_testing_plan_input() :: #{}
+-type get_restore_testing_plan_input() :: #{}.
+
+
+%% Example:
+%% describe_recovery_point_input() :: #{
+%%   <<"BackupVaultAccountId">> => string()
+%% }
+-type describe_recovery_point_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_vaults_output() :: #{
+%%   <<"BackupVaultList">> => list(backup_vault_list_member()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_vaults_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_point_lifecycle_input() :: #{
+%%   <<"Lifecycle">> => lifecycle()
+%% }
+-type update_recovery_point_lifecycle_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point_creator() :: #{
+%%   <<"BackupPlanArn">> => string(),
+%%   <<"BackupPlanId">> => string(),
+%%   <<"BackupPlanVersion">> => string(),
+%%   <<"BackupRuleId">> => string()
+%% }
+-type recovery_point_creator() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_backup_job_input() :: #{
+%%   <<"BackupOptions">> => map(),
+%%   <<"BackupVaultName">> := string(),
+%%   <<"CompleteWindowMinutes">> => float(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"RecoveryPointTags">> => map(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"StartWindowMinutes">> => float()
+%% }
+-type start_backup_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_job() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BackupSizeInBytes">> => float(),
+%%   <<"ChildJobsInState">> => map(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CompositeMemberIdentifier">> => string(),
+%%   <<"CopyJobId">> => string(),
+%%   <<"CreatedBy">> => recovery_point_creator(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DestinationBackupVaultArn">> => string(),
+%%   <<"DestinationRecoveryPointArn">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"MessageCategory">> => string(),
+%%   <<"NumberOfChildJobs">> => float(),
+%%   <<"ParentJobId">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SourceBackupVaultArn">> => string(),
+%%   <<"SourceRecoveryPointArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type copy_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_resources_by_backup_vault_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(protected_resource()())
+%% }
+-type list_protected_resources_by_backup_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_report_plan_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ReportPlanArn">> => string(),
+%%   <<"ReportPlanName">> => string()
+%% }
+-type create_report_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_restore_testing_selection_input() :: #{
+%%   <<"CreatorRequestId">> => [string()],
+%%   <<"RestoreTestingSelection">> := restore_testing_selection_for_create()
+%% }
+-type create_restore_testing_selection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_region_settings_output() :: #{
+%%   <<"ResourceTypeManagementPreference">> => map(),
+%%   <<"ResourceTypeOptInPreference">> => map()
+%% }
+-type describe_region_settings_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_restore_testing_plan_input() :: #{}
+-type delete_restore_testing_plan_input() :: #{}.
+
+
+%% Example:
+%% create_backup_plan_output() :: #{
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"BackupPlanArn">> => string(),
+%%   <<"BackupPlanId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"VersionId">> => string()
+%% }
+-type create_backup_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_restore_job_input() :: #{
+%%   <<"CopySourceTagsToRestoredResource">> => boolean(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"Metadata">> := map(),
+%%   <<"RecoveryPointArn">> := string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type start_restore_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_plan() :: #{
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"BackupPlanName">> => string(),
+%%   <<"Rules">> => list(backup_rule()())
+%% }
+-type backup_plan() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point_by_backup_vault() :: #{
+%%   <<"BackupSizeInBytes">> => float(),
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CalculatedLifecycle">> => calculated_lifecycle(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CompositeMemberIdentifier">> => string(),
+%%   <<"CreatedBy">> => recovery_point_creator(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IsEncrypted">> => boolean(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"LastRestoreTime">> => non_neg_integer(),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"ParentRecoveryPointArn">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SourceBackupVaultArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VaultType">> => list(any())
+%% }
+-type recovery_point_by_backup_vault() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_selection_for_list() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"IamRoleArn">> => [string()],
+%%   <<"ProtectedResourceType">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"RestoreTestingSelectionName">> => [string()],
+%%   <<"ValidationWindowHours">> => integer()
+%% }
+-type restore_testing_selection_for_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_jobs_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReportJobs">> => list(report_job()())
+%% }
+-type list_report_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backup_plan_input() :: #{
+%%   <<"VersionId">> => string()
+%% }
+-type get_backup_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_report_job_output() :: #{
+%%   <<"ReportJobId">> => string()
+%% }
+-type start_report_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_plan_templates_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plan_templates_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_restore_job_metadata_output() :: #{
+%%   <<"Metadata">> => map(),
+%%   <<"RestoreJobId">> => string()
+%% }
+-type get_restore_job_metadata_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backup_plan_from_json_output() :: #{
+%%   <<"BackupPlan">> => backup_plan()
+%% }
+-type get_backup_plan_from_json_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% already_exists_exception() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_plan_for_list() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"LastExecutionTime">> => [non_neg_integer()],
+%%   <<"LastUpdateTime">> => [non_neg_integer()],
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"ScheduleExpression">> => [string()],
+%%   <<"ScheduleExpressionTimezone">> => [string()],
+%%   <<"StartWindowHours">> => integer()
+%% }
+-type restore_testing_plan_for_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_plan_for_update() :: #{
+%%   <<"RecoveryPointSelection">> => restore_testing_recovery_point_selection(),
+%%   <<"ScheduleExpression">> => [string()],
+%%   <<"ScheduleExpressionTimezone">> => [string()],
+%%   <<"StartWindowHours">> => integer()
+%% }
+-type restore_testing_plan_for_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_plan() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentStatus">> => string(),
+%%   <<"LastAttemptedExecutionTime">> => non_neg_integer(),
+%%   <<"LastSuccessfulExecutionTime">> => non_neg_integer(),
+%%   <<"ReportDeliveryChannel">> => report_delivery_channel(),
+%%   <<"ReportPlanArn">> => string(),
+%%   <<"ReportPlanDescription">> => string(),
+%%   <<"ReportPlanName">> => string(),
+%%   <<"ReportSetting">> => report_setting()
+%% }
+-type report_plan() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_destination() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3Keys">> => list(string()())
+%% }
+-type report_destination() :: #{binary() => any()}.
+
+%% Example:
+%% describe_global_settings_input() :: #{}
+-type describe_global_settings_input() :: #{}.
+
+%% Example:
+%% disassociate_recovery_point_input() :: #{}
+-type disassociate_recovery_point_input() :: #{}.
+
+
+%% Example:
+%% protected_resource() :: #{
+%%   <<"LastBackupTime">> => non_neg_integer(),
+%%   <<"LastBackupVaultArn">> => string(),
+%%   <<"LastRecoveryPointArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type protected_resource() :: #{binary() => any()}.
+
+%% Example:
+%% stop_backup_job_input() :: #{}
+-type stop_backup_job_input() :: #{}.
+
+
+%% Example:
+%% create_backup_vault_input() :: #{
+%%   <<"BackupVaultTags">> => map(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"EncryptionKeyArn">> => string()
+%% }
+-type create_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backup_plan_output() :: #{
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"BackupPlan">> => backup_plan(),
+%%   <<"BackupPlanArn">> => string(),
+%%   <<"BackupPlanId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"DeletionDate">> => non_neg_integer(),
+%%   <<"LastExecutionDate">> => non_neg_integer(),
+%%   <<"VersionId">> => string()
+%% }
+-type get_backup_plan_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_framework_input() :: #{}
+-type describe_framework_input() :: #{}.
+
+
+%% Example:
+%% list_backup_plans_output() :: #{
+%%   <<"BackupPlansList">> => list(backup_plans_list_member()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plans_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_selections_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_selections_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_job_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Count">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type restore_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backup_vault_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer()
+%% }
+-type create_backup_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_restore_testing_plan_output() :: #{
+%%   <<"RestoreTestingPlan">> => restore_testing_plan_for_get()
+%% }
+-type get_restore_testing_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition_parameter() :: #{
+%%   <<"ConditionKey">> => string(),
+%%   <<"ConditionValue">> => string()
+%% }
+-type condition_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_legal_hold_input() :: #{
+%%   <<"Description">> := string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"RecoveryPointSelection">> => recovery_point_selection(),
+%%   <<"Tags">> => map(),
+%%   <<"Title">> := string()
+%% }
+-type create_legal_hold_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_selection_input() :: #{}
+-type delete_backup_selection_input() :: #{}.
+
+
+%% Example:
+%% restore_jobs_list_member() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BackupSizeInBytes">> => float(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => restore_job_creator(),
+%%   <<"CreatedResourceArn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DeletionStatus">> => list(any()),
+%%   <<"DeletionStatusMessage">> => string(),
+%%   <<"ExpectedCompletionTimeMinutes">> => float(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"PercentDone">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"RecoveryPointCreationDate">> => non_neg_integer(),
+%%   <<"ResourceType">> => string(),
+%%   <<"RestoreJobId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"ValidationStatus">> => list(any()),
+%%   <<"ValidationStatusMessage">> => string()
+%% }
+-type restore_jobs_list_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_testing_plans_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"RestoreTestingPlans">> => list(restore_testing_plan_for_list()())
+%% }
+-type list_restore_testing_plans_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_jobs_input() :: #{
+%%   <<"ByCreationAfter">> => non_neg_integer(),
+%%   <<"ByCreationBefore">> => non_neg_integer(),
+%%   <<"ByReportPlanName">> => string(),
+%%   <<"ByStatus">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_report_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_backup_vault_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"LockDate">> => non_neg_integer(),
+%%   <<"Locked">> => boolean(),
+%%   <<"MaxRetentionDays">> => float(),
+%%   <<"MinRetentionDays">> => float(),
+%%   <<"NumberOfRecoveryPoints">> => float(),
+%%   <<"VaultType">> => list(any())
+%% }
+-type describe_backup_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_testing_selections_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_restore_testing_selections_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_job_summaries_input() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MessageCategory">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_backup_job_summaries_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_backup_vault_notifications_input() :: #{
+%%   <<"BackupVaultEvents">> := list(list(any())()),
+%%   <<"SNSTopicArn">> := string()
+%% }
+-type put_backup_vault_notifications_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_protected_resource_input() :: #{}
+-type describe_protected_resource_input() :: #{}.
+
+%% Example:
+%% cancel_legal_hold_output() :: #{}
+-type cancel_legal_hold_output() :: #{}.
+
+
+%% Example:
+%% control_scope() :: #{
+%%   <<"ComplianceResourceIds">> => list(string()()),
+%%   <<"ComplianceResourceTypes">> => list(string()()),
+%%   <<"Tags">> => map()
+%% }
+-type control_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_legal_hold_output() :: #{
+%%   <<"CancelDescription">> => string(),
+%%   <<"CancellationDate">> => non_neg_integer(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LegalHoldArn">> => string(),
+%%   <<"LegalHoldId">> => string(),
+%%   <<"RecoveryPointSelection">> => recovery_point_selection(),
+%%   <<"RetainRecordUntil">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type get_legal_hold_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% framework_control() :: #{
+%%   <<"ControlInputParameters">> => list(control_input_parameter()()),
+%%   <<"ControlName">> => string(),
+%%   <<"ControlScope">> => control_scope()
+%% }
+-type framework_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_jobs_output() :: #{
+%%   <<"BackupJobs">> => list(backup_job()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_jobs_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_backup_plan_from_template_input() :: #{}
+-type get_backup_plan_from_template_input() :: #{}.
+
+
+%% Example:
+%% export_backup_plan_template_output() :: #{
+%%   <<"BackupPlanTemplateJson">> => string()
+%% }
+-type export_backup_plan_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_backup_plan_input() :: #{
+%%   <<"BackupPlan">> := backup_plan_input()
+%% }
+-type update_backup_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_plans_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReportPlans">> => list(report_plan()())
+%% }
+-type list_report_plans_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_selection() :: #{
+%%   <<"Conditions">> => conditions(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"ListOfTags">> => list(condition()()),
+%%   <<"NotResources">> => list(string()()),
+%%   <<"Resources">> => list(string()()),
+%%   <<"SelectionName">> => string()
+%% }
+-type backup_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_region_settings_input() :: #{
+%%   <<"ResourceTypeManagementPreference">> => map(),
+%%   <<"ResourceTypeOptInPreference">> => map()
+%% }
+-type update_region_settings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_legal_holds_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_legal_holds_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle() :: #{
+%%   <<"DeleteAfterDays">> => float(),
+%%   <<"MoveToColdStorageAfterDays">> => float(),
+%%   <<"OptInToArchiveForSupportedResources">> => boolean()
+%% }
+-type lifecycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_points_by_legal_hold_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recovery_points_by_legal_hold_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backup_selection_output() :: #{
+%%   <<"BackupPlanId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"SelectionId">> => string()
+%% }
+-type create_backup_selection_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_restore_testing_selection_input() :: #{}
+-type get_restore_testing_selection_input() :: #{}.
+
+
+%% Example:
+%% protected_resource_conditions() :: #{
+%%   <<"StringEquals">> => list(key_value()()),
+%%   <<"StringNotEquals">> => list(key_value()())
+%% }
+-type protected_resource_conditions() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_input_parameter() :: #{
+%%   <<"ParameterName">> => string(),
+%%   <<"ParameterValue">> => string()
+%% }
+-type control_input_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculated_lifecycle() :: #{
+%%   <<"DeleteAt">> => non_neg_integer(),
+%%   <<"MoveToColdStorageAt">> => non_neg_integer()
+%% }
+-type calculated_lifecycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_action() :: #{
+%%   <<"DestinationBackupVaultArn">> => string(),
+%%   <<"Lifecycle">> => lifecycle()
+%% }
+-type copy_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_framework_input() :: #{
+%%   <<"FrameworkControls">> => list(framework_control()()),
+%%   <<"FrameworkDescription">> => string(),
+%%   <<"IdempotencyToken">> => string()
+%% }
+-type update_framework_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_restore_testing_inferred_metadata_input() :: #{
+%%   <<"BackupVaultAccountId">> => [string()],
+%%   <<"BackupVaultName">> := [string()],
+%%   <<"RecoveryPointArn">> := [string()]
+%% }
+-type get_restore_testing_inferred_metadata_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_backup_vault_access_policy_input() :: #{}
+-type get_backup_vault_access_policy_input() :: #{}.
+
+
+%% Example:
+%% list_report_plans_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_report_plans_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backup_selection_input() :: #{
+%%   <<"BackupSelection">> := backup_selection(),
+%%   <<"CreatorRequestId">> => string()
+%% }
+-type create_backup_selection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_backup_vault_access_policy_input() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type put_backup_vault_access_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_jobs_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RestoreJobs">> => list(restore_jobs_list_member()())
+%% }
+-type list_restore_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_restore_job_output() :: #{
+%%   <<"RestoreJobId">> => string()
+%% }
+-type start_restore_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_job_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Count">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MessageCategory">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type copy_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_restore_testing_selection_input() :: #{}
+-type delete_restore_testing_selection_input() :: #{}.
+
+
+%% Example:
+%% list_recovery_points_by_resource_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecoveryPoints">> => list(recovery_point_by_resource()())
+%% }
+-type list_recovery_points_by_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_selections_output() :: #{
+%%   <<"BackupSelectionsList">> => list(backup_selections_list_member()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_selections_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_plan_for_get() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"CreatorRequestId">> => [string()],
+%%   <<"LastExecutionTime">> => [non_neg_integer()],
+%%   <<"LastUpdateTime">> => [non_neg_integer()],
+%%   <<"RecoveryPointSelection">> => restore_testing_recovery_point_selection(),
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"ScheduleExpression">> => [string()],
+%%   <<"ScheduleExpressionTimezone">> => [string()],
+%%   <<"StartWindowHours">> => integer()
+%% }
+-type restore_testing_plan_for_get() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_restore_testing_selection_output() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"RestoreTestingSelectionName">> => [string()],
+%%   <<"UpdateTime">> => [non_neg_integer()]
+%% }
+-type update_restore_testing_selection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_restore_job_output() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BackupSizeInBytes">> => float(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => restore_job_creator(),
+%%   <<"CreatedResourceArn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DeletionStatus">> => list(any()),
+%%   <<"DeletionStatusMessage">> => string(),
+%%   <<"ExpectedCompletionTimeMinutes">> => float(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"PercentDone">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"RecoveryPointCreationDate">> => non_neg_integer(),
+%%   <<"ResourceType">> => string(),
+%%   <<"RestoreJobId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"ValidationStatus">> => list(any()),
+%%   <<"ValidationStatusMessage">> => string()
+%% }
+-type describe_restore_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_selection_for_update() :: #{
+%%   <<"IamRoleArn">> => [string()],
+%%   <<"ProtectedResourceArns">> => list(string()()),
+%%   <<"ProtectedResourceConditions">> => protected_resource_conditions(),
+%%   <<"RestoreMetadataOverrides">> => map(),
+%%   <<"ValidationWindowHours">> => integer()
+%% }
+-type restore_testing_selection_for_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_copy_job_output() :: #{
+%%   <<"CopyJobId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"IsParent">> => boolean()
+%% }
+-type start_copy_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_job_summaries_input() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_restore_job_summaries_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_recovery_point_from_parent_input() :: #{}
+-type disassociate_recovery_point_from_parent_input() :: #{}.
+
+
+%% Example:
+%% describe_backup_job_output() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BackupJobId">> => string(),
+%%   <<"BackupOptions">> => map(),
+%%   <<"BackupSizeInBytes">> => float(),
+%%   <<"BackupType">> => string(),
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"BytesTransferred">> => float(),
+%%   <<"ChildJobsInState">> => map(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => recovery_point_creator(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"ExpectedCompletionDate">> => non_neg_integer(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"InitiationDate">> => non_neg_integer(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"MessageCategory">> => string(),
+%%   <<"NumberOfChildJobs">> => float(),
+%%   <<"ParentJobId">> => string(),
+%%   <<"PercentDone">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StartBy">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type describe_backup_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_selections_list_member() :: #{
+%%   <<"BackupPlanId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"SelectionId">> => string(),
+%%   <<"SelectionName">> => string()
+%% }
+-type backup_selections_list_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_framework_output() :: #{
+%%   <<"FrameworkArn">> => string(),
+%%   <<"FrameworkName">> => string()
+%% }
+-type create_framework_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_copy_job_summaries_output() :: #{
+%%   <<"AggregationPeriod">> => string(),
+%%   <<"CopyJobSummaries">> => list(copy_job_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_copy_job_summaries_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_global_settings_output() :: #{
+%%   <<"GlobalSettings">> => map(),
+%%   <<"LastUpdateTime">> => non_neg_integer()
+%% }
+-type describe_global_settings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_supported_resource_types_output() :: #{
+%%   <<"ResourceTypes">> => list(string()())
+%% }
+-type get_supported_resource_types_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_recovery_point_selection() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"ExcludeVaults">> => list(string()()),
+%%   <<"IncludeVaults">> => list(string()()),
+%%   <<"RecoveryPointTypes">> => list(list(any())()),
+%%   <<"SelectionWindowDays">> => integer()
+%% }
+-type restore_testing_recovery_point_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% dependency_failure_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type dependency_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_restore_testing_selection_output() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"RestoreTestingSelectionName">> => [string()]
+%% }
+-type create_restore_testing_selection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_report_job_output() :: #{
+%%   <<"ReportJob">> => report_job()
+%% }
+-type describe_report_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_restore_testing_inferred_metadata_output() :: #{
+%%   <<"InferredMetadata">> => map()
+%% }
+-type get_restore_testing_inferred_metadata_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backup_vault_notifications_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultEvents">> => list(list(any())()),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"SNSTopicArn">> => string()
+%% }
+-type get_backup_vault_notifications_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_backup_setting() :: #{
+%%   <<"BackupOptions">> => map(),
+%%   <<"ResourceType">> => string()
+%% }
+-type advanced_backup_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point_selection() :: #{
+%%   <<"DateRange">> => date_range(),
+%%   <<"ResourceIdentifiers">> => list(string()()),
+%%   <<"VaultNames">> => list(string()())
+%% }
+-type recovery_point_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditions() :: #{
+%%   <<"StringEquals">> => list(condition_parameter()()),
+%%   <<"StringLike">> => list(condition_parameter()()),
+%%   <<"StringNotEquals">> => list(condition_parameter()()),
+%%   <<"StringNotLike">> => list(condition_parameter()())
+%% }
+-type conditions() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_restore_testing_plan_input() :: #{
+%%   <<"RestoreTestingPlan">> := restore_testing_plan_for_update()
+%% }
+-type update_restore_testing_plan_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_vault_input() :: #{}
+-type delete_backup_vault_input() :: #{}.
+
+
+%% Example:
+%% get_backup_vault_access_policy_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type get_backup_vault_access_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_restore_testing_selection_output() :: #{
+%%   <<"RestoreTestingSelection">> => restore_testing_selection_for_get()
+%% }
+-type get_restore_testing_selection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_delivery_channel() :: #{
+%%   <<"Formats">> => list(string()()),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3KeyPrefix">> => string()
+%% }
+-type report_delivery_channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_resources_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(protected_resource()())
+%% }
+-type list_protected_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_framework_input() :: #{}
+-type delete_framework_input() :: #{}.
+
+%% Example:
+%% delete_backup_vault_notifications_input() :: #{}
+-type delete_backup_vault_notifications_input() :: #{}.
+
+
+%% Example:
+%% condition() :: #{
+%%   <<"ConditionKey">> => string(),
+%%   <<"ConditionType">> => list(any()),
+%%   <<"ConditionValue">> => string()
+%% }
+-type condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_resource_state_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_resource_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_plan_versions_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plan_versions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_jobs_input() :: #{
+%%   <<"ByAccountId">> => string(),
+%%   <<"ByCompleteAfter">> => non_neg_integer(),
+%%   <<"ByCompleteBefore">> => non_neg_integer(),
+%%   <<"ByCreatedAfter">> => non_neg_integer(),
+%%   <<"ByCreatedBefore">> => non_neg_integer(),
+%%   <<"ByResourceType">> => string(),
+%%   <<"ByRestoreTestingPlanArn">> => string(),
+%%   <<"ByStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_restore_jobs_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_backup_selection_input() :: #{}
+-type get_backup_selection_input() :: #{}.
+
+
+%% Example:
+%% get_backup_selection_output() :: #{
+%%   <<"BackupPlanId">> => string(),
+%%   <<"BackupSelection">> => backup_selection(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"SelectionId">> => string()
+%% }
+-type get_backup_selection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point_by_resource() :: #{
+%%   <<"BackupSizeBytes">> => float(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"ParentRecoveryPointArn">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VaultType">> => list(any())
+%% }
+-type recovery_point_by_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_setting() :: #{
+%%   <<"Accounts">> => list(string()()),
+%%   <<"FrameworkArns">> => list(string()()),
+%%   <<"NumberOfFrameworks">> => integer(),
+%%   <<"OrganizationUnits">> => list(string()()),
+%%   <<"Regions">> => list(string()()),
+%%   <<"ReportTemplate">> => string()
+%% }
+-type report_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_points_by_backup_vault_input() :: #{
+%%   <<"BackupVaultAccountId">> => string(),
+%%   <<"ByBackupPlanId">> => string(),
+%%   <<"ByCreatedAfter">> => non_neg_integer(),
+%%   <<"ByCreatedBefore">> => non_neg_integer(),
+%%   <<"ByParentRecoveryPointArn">> => string(),
+%%   <<"ByResourceArn">> => string(),
+%%   <<"ByResourceType">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recovery_points_by_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% framework() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentStatus">> => string(),
+%%   <<"FrameworkArn">> => string(),
+%%   <<"FrameworkDescription">> => string(),
+%%   <<"FrameworkName">> => string(),
+%%   <<"NumberOfControls">> => integer()
+%% }
+-type framework() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_selection_for_create() :: #{
+%%   <<"IamRoleArn">> => [string()],
+%%   <<"ProtectedResourceArns">> => list(string()()),
+%%   <<"ProtectedResourceConditions">> => protected_resource_conditions(),
+%%   <<"ProtectedResourceType">> => [string()],
+%%   <<"RestoreMetadataOverrides">> => map(),
+%%   <<"RestoreTestingSelectionName">> => [string()],
+%%   <<"ValidationWindowHours">> => integer()
+%% }
+-type restore_testing_selection_for_create() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_frameworks_output() :: #{
+%%   <<"Frameworks">> => list(framework()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_frameworks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_vault_list_member() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"LockDate">> => non_neg_integer(),
+%%   <<"Locked">> => boolean(),
+%%   <<"MaxRetentionDays">> => float(),
+%%   <<"MinRetentionDays">> => float(),
+%%   <<"NumberOfRecoveryPoints">> => float()
+%% }
+-type backup_vault_list_member() :: #{binary() => any()}.
+
+%% Example:
+%% describe_copy_job_input() :: #{}
+-type describe_copy_job_input() :: #{}.
+
+
+%% Example:
+%% list_copy_job_summaries_input() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MessageCategory">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_copy_job_summaries_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_legal_holds_output() :: #{
+%%   <<"LegalHolds">> => list(legal_hold()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_legal_holds_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_vault_access_policy_input() :: #{}
+-type delete_backup_vault_access_policy_input() :: #{}.
+
+
+%% Example:
+%% backup_rule() :: #{
+%%   <<"CompletionWindowMinutes">> => float(),
+%%   <<"CopyActions">> => list(copy_action()()),
+%%   <<"EnableContinuousBackup">> => boolean(),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"RecoveryPointTags">> => map(),
+%%   <<"RuleId">> => string(),
+%%   <<"RuleName">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"ScheduleExpressionTimezone">> => string(),
+%%   <<"StartWindowMinutes">> => float(),
+%%   <<"TargetBackupVaultName">> => string()
+%% }
+-type backup_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backup_plan_from_template_output() :: #{
+%%   <<"BackupPlanDocument">> => backup_plan()
+%% }
+-type get_backup_plan_from_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_report_plan_input() :: #{
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"ReportDeliveryChannel">> => report_delivery_channel(),
+%%   <<"ReportPlanDescription">> => string(),
+%%   <<"ReportSetting">> => report_setting()
+%% }
+-type update_report_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"TagKeyList">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_report_plan_input() :: #{}
+-type describe_report_plan_input() :: #{}.
+
+
+%% Example:
+%% list_recovery_points_by_resource_input() :: #{
+%%   <<"ManagedByAWSBackupOnly">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recovery_points_by_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_points_by_legal_hold_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecoveryPoints">> => list(recovery_point_member()())
+%% }
+-type list_recovery_points_by_legal_hold_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_legal_hold_output() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LegalHoldArn">> => string(),
+%%   <<"LegalHoldId">> => string(),
+%%   <<"RecoveryPointSelection">> => recovery_point_selection(),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type create_legal_hold_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_global_settings_input() :: #{
+%%   <<"GlobalSettings">> => map()
+%% }
+-type update_global_settings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_copy_jobs_input() :: #{
+%%   <<"ByAccountId">> => string(),
+%%   <<"ByCompleteAfter">> => non_neg_integer(),
+%%   <<"ByCompleteBefore">> => non_neg_integer(),
+%%   <<"ByCreatedAfter">> => non_neg_integer(),
+%%   <<"ByCreatedBefore">> => non_neg_integer(),
+%%   <<"ByDestinationVaultArn">> => string(),
+%%   <<"ByMessageCategory">> => string(),
+%%   <<"ByParentJobId">> => string(),
+%%   <<"ByResourceArn">> => string(),
+%%   <<"ByResourceType">> => string(),
+%%   <<"ByState">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_copy_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_point_restore_metadata_input() :: #{
+%%   <<"BackupVaultAccountId">> => string()
+%% }
+-type get_recovery_point_restore_metadata_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_jobs_input() :: #{
+%%   <<"ByAccountId">> => string(),
+%%   <<"ByBackupVaultName">> => string(),
+%%   <<"ByCompleteAfter">> => non_neg_integer(),
+%%   <<"ByCompleteBefore">> => non_neg_integer(),
+%%   <<"ByCreatedAfter">> => non_neg_integer(),
+%%   <<"ByCreatedBefore">> => non_neg_integer(),
+%%   <<"ByMessageCategory">> => string(),
+%%   <<"ByParentJobId">> => string(),
+%%   <<"ByResourceArn">> => string(),
+%%   <<"ByResourceType">> => string(),
+%%   <<"ByState">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_copy_job_input() :: #{
+%%   <<"DestinationBackupVaultArn">> := string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"RecoveryPointArn">> := string(),
+%%   <<"SourceBackupVaultName">> := string()
+%% }
+-type start_copy_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_report_plan_input() :: #{}
+-type delete_report_plan_input() :: #{}.
+
+
+%% Example:
+%% start_backup_job_output() :: #{
+%%   <<"BackupJobId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"RecoveryPointArn">> => string()
+%% }
+-type start_backup_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_jobs_by_protected_resource_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RestoreJobs">> => list(restore_jobs_list_member()())
+%% }
+-type list_restore_jobs_by_protected_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_backup_vault_notifications_input() :: #{}
+-type get_backup_vault_notifications_input() :: #{}.
+
+
+%% Example:
+%% create_framework_input() :: #{
+%%   <<"FrameworkControls">> := list(framework_control()()),
+%%   <<"FrameworkDescription">> => string(),
+%%   <<"FrameworkName">> := string(),
+%%   <<"FrameworkTags">> => map(),
+%%   <<"IdempotencyToken">> => string()
+%% }
+-type create_framework_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backup_plan_input() :: #{
+%%   <<"BackupPlan">> := backup_plan_input(),
+%%   <<"BackupPlanTags">> => map(),
+%%   <<"CreatorRequestId">> => string()
+%% }
+-type create_backup_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_tags_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_backup_vault_input() :: #{
+%%   <<"BackupVaultAccountId">> => string()
+%% }
+-type describe_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_copy_jobs_output() :: #{
+%%   <<"CopyJobs">> => list(copy_job()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_copy_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_vaults_input() :: #{
+%%   <<"ByShared">> => boolean(),
+%%   <<"ByVaultType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_vaults_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_resources_by_backup_vault_input() :: #{
+%%   <<"BackupVaultAccountId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_protected_resources_by_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_job_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Count">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MessageCategory">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type backup_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_protected_resource_output() :: #{
+%%   <<"LastBackupTime">> => non_neg_integer(),
+%%   <<"LastBackupVaultArn">> => string(),
+%%   <<"LastRecoveryPointArn">> => string(),
+%%   <<"LatestRestoreExecutionTimeMinutes">> => float(),
+%%   <<"LatestRestoreJobCreationDate">> => non_neg_integer(),
+%%   <<"LatestRestoreRecoveryPointCreationDate">> => non_neg_integer(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type describe_protected_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_job_creator() :: #{
+%%   <<"RestoreTestingPlanArn">> => string()
+%% }
+-type restore_job_creator() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_logically_air_gapped_backup_vault_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"VaultState">> => list(any())
+%% }
+-type create_logically_air_gapped_backup_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_rule_input() :: #{
+%%   <<"CompletionWindowMinutes">> => float(),
+%%   <<"CopyActions">> => list(copy_action()()),
+%%   <<"EnableContinuousBackup">> => boolean(),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"RecoveryPointTags">> => map(),
+%%   <<"RuleName">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"ScheduleExpressionTimezone">> => string(),
+%%   <<"StartWindowMinutes">> => float(),
+%%   <<"TargetBackupVaultName">> => string()
+%% }
+-type backup_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_plan_for_create() :: #{
+%%   <<"RecoveryPointSelection">> => restore_testing_recovery_point_selection(),
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"ScheduleExpression">> => [string()],
+%%   <<"ScheduleExpressionTimezone">> => [string()],
+%%   <<"StartWindowHours">> => integer()
+%% }
+-type restore_testing_plan_for_create() :: #{binary() => any()}.
+
+
+%% Example:
+%% legal_hold() :: #{
+%%   <<"CancellationDate">> => non_neg_integer(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LegalHoldArn">> => string(),
+%%   <<"LegalHoldId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type legal_hold() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_plan_versions_output() :: #{
+%%   <<"BackupPlanVersionsList">> => list(backup_plans_list_member()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plan_versions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_framework_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FrameworkArn">> => string(),
+%%   <<"FrameworkName">> => string()
+%% }
+-type update_framework_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_frameworks_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_frameworks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_plan_templates_list_member() :: #{
+%%   <<"BackupPlanTemplateId">> => string(),
+%%   <<"BackupPlanTemplateName">> => string()
+%% }
+-type backup_plan_templates_list_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_job_summaries_output() :: #{
+%%   <<"AggregationPeriod">> => string(),
+%%   <<"BackupJobSummaries">> => list(backup_job_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_job_summaries_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_points_by_backup_vault_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecoveryPoints">> => list(recovery_point_by_backup_vault()())
+%% }
+-type list_recovery_points_by_backup_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value() :: #{
+%%   <<"Key">> => [string()],
+%%   <<"Value">> => [string()]
+%% }
+-type key_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_report_job_input() :: #{
+%%   <<"IdempotencyToken">> => string()
+%% }
+-type start_report_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_report_plan_input() :: #{
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"ReportDeliveryChannel">> := report_delivery_channel(),
+%%   <<"ReportPlanDescription">> => string(),
+%%   <<"ReportPlanName">> := string(),
+%%   <<"ReportPlanTags">> => map(),
+%%   <<"ReportSetting">> := report_setting()
+%% }
+-type create_report_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_job() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BackupJobId">> => string(),
+%%   <<"BackupOptions">> => map(),
+%%   <<"BackupSizeInBytes">> => float(),
+%%   <<"BackupType">> => string(),
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"BytesTransferred">> => float(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => recovery_point_creator(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"ExpectedCompletionDate">> => non_neg_integer(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"InitiationDate">> => non_neg_integer(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"MessageCategory">> => string(),
+%%   <<"ParentJobId">> => string(),
+%%   <<"PercentDone">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StartBy">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type backup_job() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_plan_input() :: #{}
+-type delete_backup_plan_input() :: #{}.
+
+%% Example:
+%% describe_region_settings_input() :: #{}
+-type describe_region_settings_input() :: #{}.
+
+
+%% Example:
+%% list_restore_jobs_by_protected_resource_input() :: #{
+%%   <<"ByRecoveryPointCreationDateAfter">> => non_neg_integer(),
+%%   <<"ByRecoveryPointCreationDateBefore">> => non_neg_integer(),
+%%   <<"ByStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_restore_jobs_by_protected_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backup_plan_from_json_input() :: #{
+%%   <<"BackupPlanTemplateJson">> := string()
+%% }
+-type get_backup_plan_from_json_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_job_summaries_output() :: #{
+%%   <<"AggregationPeriod">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"RestoreJobSummaries">> => list(restore_job_summary()())
+%% }
+-type list_restore_job_summaries_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_framework_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentStatus">> => string(),
+%%   <<"FrameworkArn">> => string(),
+%%   <<"FrameworkControls">> => list(framework_control()()),
+%%   <<"FrameworkDescription">> => string(),
+%%   <<"FrameworkName">> => string(),
+%%   <<"FrameworkStatus">> => string(),
+%%   <<"IdempotencyToken">> => string()
+%% }
+-type describe_framework_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_report_job_input() :: #{}
+-type describe_report_job_input() :: #{}.
+
+%% Example:
+%% export_backup_plan_template_input() :: #{}
+-type export_backup_plan_template_input() :: #{}.
+
+
+%% Example:
+%% update_restore_testing_plan_output() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"UpdateTime">> => [non_neg_integer()]
+%% }
+-type update_restore_testing_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_range() :: #{
+%%   <<"FromDate">> => non_neg_integer(),
+%%   <<"ToDate">> => non_neg_integer()
+%% }
+-type date_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_point_lifecycle_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"CalculatedLifecycle">> => calculated_lifecycle(),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"RecoveryPointArn">> => string()
+%% }
+-type update_recovery_point_lifecycle_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_testing_selections_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"RestoreTestingSelections">> => list(restore_testing_selection_for_list()())
+%% }
+-type list_restore_testing_selections_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_recovery_point_output() :: #{
+%%   <<"BackupSizeInBytes">> => float(),
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CalculatedLifecycle">> => calculated_lifecycle(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CompositeMemberIdentifier">> => string(),
+%%   <<"CreatedBy">> => recovery_point_creator(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IsEncrypted">> => boolean(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"LastRestoreTime">> => non_neg_integer(),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"ParentRecoveryPointArn">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SourceBackupVaultArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"VaultType">> => list(any())
+%% }
+-type describe_recovery_point_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_copy_job_output() :: #{
+%%   <<"CopyJob">> => copy_job()
+%% }
+-type describe_copy_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_legal_hold_input() :: #{
+%%   <<"CancelDescription">> := string(),
+%%   <<"RetainRecordInDays">> => float()
+%% }
+-type cancel_legal_hold_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_restore_testing_plan_input() :: #{
+%%   <<"CreatorRequestId">> => [string()],
+%%   <<"RestoreTestingPlan">> := restore_testing_plan_for_create(),
+%%   <<"Tags">> => map()
+%% }
+-type create_restore_testing_plan_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_legal_hold_input() :: #{}
+-type get_legal_hold_input() :: #{}.
+
+
+%% Example:
+%% restore_testing_selection_for_get() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"CreatorRequestId">> => [string()],
+%%   <<"IamRoleArn">> => [string()],
+%%   <<"ProtectedResourceArns">> => list(string()()),
+%%   <<"ProtectedResourceConditions">> => protected_resource_conditions(),
+%%   <<"ProtectedResourceType">> => [string()],
+%%   <<"RestoreMetadataOverrides">> => map(),
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"RestoreTestingSelectionName">> => [string()],
+%%   <<"ValidationWindowHours">> => integer()
+%% }
+-type restore_testing_selection_for_get() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_point_restore_metadata_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"RestoreMetadata">> => map()
+%% }
+-type get_recovery_point_restore_metadata_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_restore_testing_plan_output() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()]
+%% }
+-type create_restore_testing_plan_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_vault_lock_configuration_input() :: #{}
+-type delete_backup_vault_lock_configuration_input() :: #{}.
+
+
+%% Example:
+%% list_protected_resources_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_protected_resources_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recovery_point_input() :: #{}
+-type delete_recovery_point_input() :: #{}.
+
+
+%% Example:
+%% update_report_plan_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ReportPlanArn">> => string(),
+%%   <<"ReportPlanName">> => string()
+%% }
+-type update_report_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_plan_templates_output() :: #{
+%%   <<"BackupPlanTemplatesList">> => list(backup_plan_templates_list_member()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plan_templates_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_plans_input() :: #{
+%%   <<"IncludeDeleted">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plans_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_backup_job_input() :: #{}
+-type describe_backup_job_input() :: #{}.
+
+
+%% Example:
+%% create_logically_air_gapped_backup_vault_input() :: #{
+%%   <<"BackupVaultTags">> => map(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"MaxRetentionDays">> := float(),
+%%   <<"MinRetentionDays">> := float()
+%% }
+-type create_logically_air_gapped_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_report_plan_output() :: #{
+%%   <<"ReportPlan">> => report_plan()
+%% }
+-type describe_report_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_restore_testing_selection_input() :: #{
+%%   <<"RestoreTestingSelection">> := restore_testing_selection_for_update()
+%% }
+-type update_restore_testing_selection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_backup_vault_lock_configuration_input() :: #{
+%%   <<"ChangeableForDays">> => float(),
+%%   <<"MaxRetentionDays">> => float(),
+%%   <<"MinRetentionDays">> => float()
+%% }
+-type put_backup_vault_lock_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_restore_job_input() :: #{}
+-type describe_restore_job_input() :: #{}.
+
+
+%% Example:
+%% update_backup_plan_output() :: #{
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"BackupPlanArn">> => string(),
+%%   <<"BackupPlanId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"VersionId">> => string()
+%% }
+-type update_backup_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_restore_validation_result_input() :: #{
+%%   <<"ValidationStatus">> := list(any()),
+%%   <<"ValidationStatusMessage">> => string()
+%% }
+-type put_restore_validation_result_input() :: #{binary() => any()}.
+
+-type cancel_legal_hold_errors() ::
+    invalid_resource_state_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type create_backup_plan_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_backup_selection_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_backup_vault_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_framework_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_legal_hold_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception().
+
+-type create_logically_air_gapped_backup_vault_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_report_plan_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_restore_testing_plan_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type create_restore_testing_selection_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_selection_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_vault_access_policy_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_vault_lock_configuration_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_backup_vault_notifications_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_framework_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_recovery_point_errors() ::
+    invalid_resource_state_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_report_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_restore_testing_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type delete_restore_testing_selection_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type describe_backup_job_errors() ::
+    service_unavailable_exception() | 
+    dependency_failure_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_backup_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_copy_job_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_framework_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_global_settings_errors() ::
+    service_unavailable_exception() | 
+    invalid_request_exception().
+
+-type describe_protected_resource_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_recovery_point_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_region_settings_errors() ::
+    service_unavailable_exception().
+
+-type describe_report_job_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_report_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_restore_job_errors() ::
+    service_unavailable_exception() | 
+    dependency_failure_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type disassociate_recovery_point_errors() ::
+    invalid_resource_state_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type disassociate_recovery_point_from_parent_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type export_backup_plan_template_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_plan_from_json_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_plan_from_template_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_selection_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_vault_access_policy_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_backup_vault_notifications_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_legal_hold_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_recovery_point_restore_metadata_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_restore_job_metadata_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_restore_testing_inferred_metadata_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_restore_testing_plan_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_restore_testing_selection_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_supported_resource_types_errors() ::
+    service_unavailable_exception().
+
+-type list_backup_job_summaries_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_backup_jobs_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_backup_plan_templates_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_backup_plan_versions_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_backup_plans_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_backup_selections_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_backup_vaults_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_copy_job_summaries_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_copy_jobs_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_frameworks_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_legal_holds_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_protected_resources_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_protected_resources_by_backup_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type list_recovery_points_by_backup_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_recovery_points_by_legal_hold_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception().
+
+-type list_recovery_points_by_resource_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_report_jobs_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type list_report_plans_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_restore_job_summaries_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_restore_jobs_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_restore_jobs_by_protected_resource_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_restore_testing_plans_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_restore_testing_selections_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type put_backup_vault_access_policy_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type put_backup_vault_lock_configuration_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type put_backup_vault_notifications_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type put_restore_validation_result_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type start_backup_job_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type start_copy_job_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type start_report_job_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type start_restore_job_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type stop_backup_job_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type untag_resource_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type update_backup_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type update_framework_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    already_exists_exception() | 
+    missing_parameter_value_exception().
+
+-type update_global_settings_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    missing_parameter_value_exception().
+
+-type update_recovery_point_lifecycle_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type update_region_settings_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception().
+
+-type update_report_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    missing_parameter_value_exception().
+
+-type update_restore_testing_plan_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    missing_parameter_value_exception().
+
+-type update_restore_testing_selection_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    missing_parameter_value_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -251,8 +2904,17 @@
 %% @doc This action removes the specified legal hold on a recovery point.
 %%
 %% This action can only be performed by a user with sufficient permissions.
+-spec cancel_legal_hold(aws_client:aws_client(), binary() | list(), cancel_legal_hold_input()) ->
+    {ok, cancel_legal_hold_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_legal_hold_errors(), tuple()}.
 cancel_legal_hold(Client, LegalHoldId, Input) ->
     cancel_legal_hold(Client, LegalHoldId, Input, []).
+
+-spec cancel_legal_hold(aws_client:aws_client(), binary() | list(), cancel_legal_hold_input(), proplists:proplist()) ->
+    {ok, cancel_legal_hold_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_legal_hold_errors(), tuple()}.
 cancel_legal_hold(Client, LegalHoldId, Input0, Options0) ->
     Method = delete,
     Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), ""],
@@ -286,8 +2948,17 @@ cancel_legal_hold(Client, LegalHoldId, Input0, Options0) ->
 %% If you call `CreateBackupPlan' with a plan that already exists, you
 %% receive
 %% an `AlreadyExistsException' exception.
+-spec create_backup_plan(aws_client:aws_client(), create_backup_plan_input()) ->
+    {ok, create_backup_plan_output(), tuple()} |
+    {error, any()} |
+    {error, create_backup_plan_errors(), tuple()}.
 create_backup_plan(Client, Input) ->
     create_backup_plan(Client, Input, []).
+
+-spec create_backup_plan(aws_client:aws_client(), create_backup_plan_input(), proplists:proplist()) ->
+    {ok, create_backup_plan_output(), tuple()} |
+    {error, any()} |
+    {error, create_backup_plan_errors(), tuple()}.
 create_backup_plan(Client, Input0, Options0) ->
     Method = put,
     Path = ["/backup/plans"],
@@ -315,8 +2986,17 @@ create_backup_plan(Client, Input0, Options0) ->
 %%
 %% For examples, see Assigning resources programmatically:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/assigning-resources.html#assigning-resources-json.
+-spec create_backup_selection(aws_client:aws_client(), binary() | list(), create_backup_selection_input()) ->
+    {ok, create_backup_selection_output(), tuple()} |
+    {error, any()} |
+    {error, create_backup_selection_errors(), tuple()}.
 create_backup_selection(Client, BackupPlanId, Input) ->
     create_backup_selection(Client, BackupPlanId, Input, []).
+
+-spec create_backup_selection(aws_client:aws_client(), binary() | list(), create_backup_selection_input(), proplists:proplist()) ->
+    {ok, create_backup_selection_output(), tuple()} |
+    {error, any()} |
+    {error, create_backup_selection_errors(), tuple()}.
 create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
     Method = put,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections"],
@@ -349,8 +3029,17 @@ create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
 %% Do not include sensitive data, such as passport numbers, in the name of a
 %% backup
 %% vault.
+-spec create_backup_vault(aws_client:aws_client(), binary() | list(), create_backup_vault_input()) ->
+    {ok, create_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, create_backup_vault_errors(), tuple()}.
 create_backup_vault(Client, BackupVaultName, Input) ->
     create_backup_vault(Client, BackupVaultName, Input, []).
+
+-spec create_backup_vault(aws_client:aws_client(), binary() | list(), create_backup_vault_input(), proplists:proplist()) ->
+    {ok, create_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, create_backup_vault_errors(), tuple()}.
 create_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
@@ -381,8 +3070,17 @@ create_backup_vault(Client, BackupVaultName, Input0, Options0) ->
 %% controls to define your policies, you can evaluate whether your backup
 %% practices comply
 %% with your policies and which resources are not yet in compliance.
+-spec create_framework(aws_client:aws_client(), create_framework_input()) ->
+    {ok, create_framework_output(), tuple()} |
+    {error, any()} |
+    {error, create_framework_errors(), tuple()}.
 create_framework(Client, Input) ->
     create_framework(Client, Input, []).
+
+-spec create_framework(aws_client:aws_client(), create_framework_input(), proplists:proplist()) ->
+    {ok, create_framework_output(), tuple()} |
+    {error, any()} |
+    {error, create_framework_errors(), tuple()}.
 create_framework(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/frameworks"],
@@ -413,8 +3111,17 @@ create_framework(Client, Input0, Options0) ->
 %% legal hold. Any actions to delete or disassociate a recovery point will
 %% fail with
 %% an error if one or more active legal holds are on the recovery point.
+-spec create_legal_hold(aws_client:aws_client(), create_legal_hold_input()) ->
+    {ok, create_legal_hold_output(), tuple()} |
+    {error, any()} |
+    {error, create_legal_hold_errors(), tuple()}.
 create_legal_hold(Client, Input) ->
     create_legal_hold(Client, Input, []).
+
+-spec create_legal_hold(aws_client:aws_client(), create_legal_hold_input(), proplists:proplist()) ->
+    {ok, create_legal_hold_output(), tuple()} |
+    {error, any()} |
+    {error, create_legal_hold_errors(), tuple()}.
 create_legal_hold(Client, Input0, Options0) ->
     Method = post,
     Path = ["/legal-holds"],
@@ -449,8 +3156,17 @@ create_legal_hold(Client, Input0, Options0) ->
 %% Do not include sensitive data, such as passport numbers, in the name of a
 %% backup
 %% vault.
+-spec create_logically_air_gapped_backup_vault(aws_client:aws_client(), binary() | list(), create_logically_air_gapped_backup_vault_input()) ->
+    {ok, create_logically_air_gapped_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, create_logically_air_gapped_backup_vault_errors(), tuple()}.
 create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input) ->
     create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input, []).
+
+-spec create_logically_air_gapped_backup_vault(aws_client:aws_client(), binary() | list(), create_logically_air_gapped_backup_vault_input(), proplists:proplist()) ->
+    {ok, create_logically_air_gapped_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, create_logically_air_gapped_backup_vault_errors(), tuple()}.
 create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/logically-air-gapped-backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
@@ -481,8 +3197,17 @@ create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input0, Option
 %% If you call `CreateReportPlan' with a plan that already exists, you
 %% receive
 %% an `AlreadyExistsException' exception.
+-spec create_report_plan(aws_client:aws_client(), create_report_plan_input()) ->
+    {ok, create_report_plan_output(), tuple()} |
+    {error, any()} |
+    {error, create_report_plan_errors(), tuple()}.
 create_report_plan(Client, Input) ->
     create_report_plan(Client, Input, []).
+
+-spec create_report_plan(aws_client:aws_client(), create_report_plan_input(), proplists:proplist()) ->
+    {ok, create_report_plan_output(), tuple()} |
+    {error, any()} |
+    {error, create_report_plan_errors(), tuple()}.
 create_report_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/report-plans"],
@@ -511,8 +3236,17 @@ create_report_plan(Client, Input0, Options0) ->
 %%
 %% You must include the parameter RestoreTestingPlan. You may
 %% optionally include CreatorRequestId and Tags.
+-spec create_restore_testing_plan(aws_client:aws_client(), create_restore_testing_plan_input()) ->
+    {ok, create_restore_testing_plan_output(), tuple()} |
+    {error, any()} |
+    {error, create_restore_testing_plan_errors(), tuple()}.
 create_restore_testing_plan(Client, Input) ->
     create_restore_testing_plan(Client, Input, []).
+
+-spec create_restore_testing_plan(aws_client:aws_client(), create_restore_testing_plan_input(), proplists:proplist()) ->
+    {ok, create_restore_testing_plan_output(), tuple()} |
+    {error, any()} |
+    {error, create_restore_testing_plan_errors(), tuple()}.
 create_restore_testing_plan(Client, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans"],
@@ -559,8 +3293,17 @@ create_restore_testing_plan(Client, Input0, Options0) ->
 %%
 %% Cannot select by both protected resource types AND specific ARNs.
 %% Request will fail if both are included.
+-spec create_restore_testing_selection(aws_client:aws_client(), binary() | list(), create_restore_testing_selection_input()) ->
+    {ok, create_restore_testing_selection_output(), tuple()} |
+    {error, any()} |
+    {error, create_restore_testing_selection_errors(), tuple()}.
 create_restore_testing_selection(Client, RestoreTestingPlanName, Input) ->
     create_restore_testing_selection(Client, RestoreTestingPlanName, Input, []).
+
+-spec create_restore_testing_selection(aws_client:aws_client(), binary() | list(), create_restore_testing_selection_input(), proplists:proplist()) ->
+    {ok, create_restore_testing_selection_output(), tuple()} |
+    {error, any()} |
+    {error, create_restore_testing_selection_errors(), tuple()}.
 create_restore_testing_selection(Client, RestoreTestingPlanName, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections"],
@@ -589,8 +3332,17 @@ create_restore_testing_selection(Client, RestoreTestingPlanName, Input0, Options
 %% of resources have been deleted. Deleting a backup plan deletes the current
 %% version of a
 %% backup plan. Previous versions, if any, will still exist.
+-spec delete_backup_plan(aws_client:aws_client(), binary() | list(), delete_backup_plan_input()) ->
+    {ok, delete_backup_plan_output(), tuple()} |
+    {error, any()} |
+    {error, delete_backup_plan_errors(), tuple()}.
 delete_backup_plan(Client, BackupPlanId, Input) ->
     delete_backup_plan(Client, BackupPlanId, Input, []).
+
+-spec delete_backup_plan(aws_client:aws_client(), binary() | list(), delete_backup_plan_input(), proplists:proplist()) ->
+    {ok, delete_backup_plan_output(), tuple()} |
+    {error, any()} |
+    {error, delete_backup_plan_errors(), tuple()}.
 delete_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     Method = delete,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
@@ -616,8 +3368,17 @@ delete_backup_plan(Client, BackupPlanId, Input0, Options0) ->
 %% @doc Deletes the resource selection associated with a backup plan that is
 %% specified by the
 %% `SelectionId'.
+-spec delete_backup_selection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backup_selection_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_selection_errors(), tuple()}.
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input) ->
     delete_backup_selection(Client, BackupPlanId, SelectionId, Input, []).
+
+-spec delete_backup_selection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backup_selection_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_selection_errors(), tuple()}.
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options0) ->
     Method = delete,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
@@ -644,8 +3405,17 @@ delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options0) ->
 %%
 %% A vault can be deleted only if it is
 %% empty.
+-spec delete_backup_vault(aws_client:aws_client(), binary() | list(), delete_backup_vault_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_vault_errors(), tuple()}.
 delete_backup_vault(Client, BackupVaultName, Input) ->
     delete_backup_vault(Client, BackupVaultName, Input, []).
+
+-spec delete_backup_vault(aws_client:aws_client(), binary() | list(), delete_backup_vault_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_vault_errors(), tuple()}.
 delete_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
@@ -670,8 +3440,17 @@ delete_backup_vault(Client, BackupVaultName, Input0, Options0) ->
 
 %% @doc Deletes the policy document that manages permissions on a backup
 %% vault.
+-spec delete_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), delete_backup_vault_access_policy_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_vault_access_policy_errors(), tuple()}.
 delete_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     delete_backup_vault_access_policy(Client, BackupVaultName, Input, []).
+
+-spec delete_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), delete_backup_vault_access_policy_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_vault_access_policy_errors(), tuple()}.
 delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
@@ -706,8 +3485,17 @@ delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/vault-lock.html in
 %% the
 %% Backup Developer Guide.
+-spec delete_backup_vault_lock_configuration(aws_client:aws_client(), binary() | list(), delete_backup_vault_lock_configuration_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_vault_lock_configuration_errors(), tuple()}.
 delete_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     delete_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
+
+-spec delete_backup_vault_lock_configuration(aws_client:aws_client(), binary() | list(), delete_backup_vault_lock_configuration_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_vault_lock_configuration_errors(), tuple()}.
 delete_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/vault-lock"],
@@ -731,8 +3519,17 @@ delete_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes event notifications for the specified backup vault.
+-spec delete_backup_vault_notifications(aws_client:aws_client(), binary() | list(), delete_backup_vault_notifications_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_vault_notifications_errors(), tuple()}.
 delete_backup_vault_notifications(Client, BackupVaultName, Input) ->
     delete_backup_vault_notifications(Client, BackupVaultName, Input, []).
+
+-spec delete_backup_vault_notifications(aws_client:aws_client(), binary() | list(), delete_backup_vault_notifications_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_vault_notifications_errors(), tuple()}.
 delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
@@ -756,8 +3553,17 @@ delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the framework specified by a framework name.
+-spec delete_framework(aws_client:aws_client(), binary() | list(), delete_framework_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_framework_errors(), tuple()}.
 delete_framework(Client, FrameworkName, Input) ->
     delete_framework(Client, FrameworkName, Input, []).
+
+-spec delete_framework(aws_client:aws_client(), binary() | list(), delete_framework_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_framework_errors(), tuple()}.
 delete_framework(Client, FrameworkName, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
@@ -803,8 +3609,17 @@ delete_framework(Client, FrameworkName, Input0, Options0) ->
 %% If the user or role is deleted or the permission within the role is
 %% removed,
 %% the deletion will not be successful and will enter an `EXPIRED' state.
+-spec delete_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), delete_recovery_point_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_recovery_point_errors(), tuple()}.
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
+
+-spec delete_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), delete_recovery_point_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_recovery_point_errors(), tuple()}.
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
@@ -828,8 +3643,17 @@ delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the report plan specified by a report plan name.
+-spec delete_report_plan(aws_client:aws_client(), binary() | list(), delete_report_plan_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_report_plan_errors(), tuple()}.
 delete_report_plan(Client, ReportPlanName, Input) ->
     delete_report_plan(Client, ReportPlanName, Input, []).
+
+-spec delete_report_plan(aws_client:aws_client(), binary() | list(), delete_report_plan_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_report_plan_errors(), tuple()}.
 delete_report_plan(Client, ReportPlanName, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
@@ -856,8 +3680,17 @@ delete_report_plan(Client, ReportPlanName, Input0, Options0) ->
 %%
 %% Deletion can only successfully occur if all associated
 %% restore testing selections are deleted first.
+-spec delete_restore_testing_plan(aws_client:aws_client(), binary() | list(), delete_restore_testing_plan_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_restore_testing_plan_errors(), tuple()}.
 delete_restore_testing_plan(Client, RestoreTestingPlanName, Input) ->
     delete_restore_testing_plan(Client, RestoreTestingPlanName, Input, []).
+
+-spec delete_restore_testing_plan(aws_client:aws_client(), binary() | list(), delete_restore_testing_plan_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_restore_testing_plan_errors(), tuple()}.
 delete_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
     Method = delete,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
@@ -885,8 +3718,17 @@ delete_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
 %%
 %% All testing selections associated with a restore testing plan must
 %% be deleted before the restore testing plan can be deleted.
+-spec delete_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_restore_testing_selection_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_restore_testing_selection_errors(), tuple()}.
 delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input) ->
     delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input, []).
+
+-spec delete_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_restore_testing_selection_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_restore_testing_selection_errors(), tuple()}.
 delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input0, Options0) ->
     Method = delete,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
@@ -910,14 +3752,26 @@ delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingS
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns backup job details for the specified `BackupJobId'.
+-spec describe_backup_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_backup_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_backup_job_errors(), tuple()}.
 describe_backup_job(Client, BackupJobId)
   when is_map(Client) ->
     describe_backup_job(Client, BackupJobId, #{}, #{}).
 
+-spec describe_backup_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_backup_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_backup_job_errors(), tuple()}.
 describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, []).
 
+-spec describe_backup_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_backup_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_backup_job_errors(), tuple()}.
 describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
@@ -935,14 +3789,26 @@ describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata about a backup vault specified by its name.
+-spec describe_backup_vault(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, describe_backup_vault_errors(), tuple()}.
 describe_backup_vault(Client, BackupVaultName)
   when is_map(Client) ->
     describe_backup_vault(Client, BackupVaultName, #{}, #{}).
 
+-spec describe_backup_vault(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, describe_backup_vault_errors(), tuple()}.
 describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
+-spec describe_backup_vault(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, describe_backup_vault_errors(), tuple()}.
 describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
@@ -964,14 +3830,26 @@ describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata associated with creating a copy of a resource.
+-spec describe_copy_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_copy_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_copy_job_errors(), tuple()}.
 describe_copy_job(Client, CopyJobId)
   when is_map(Client) ->
     describe_copy_job(Client, CopyJobId, #{}, #{}).
 
+-spec describe_copy_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_copy_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_copy_job_errors(), tuple()}.
 describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, []).
 
+-spec describe_copy_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_copy_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_copy_job_errors(), tuple()}.
 describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/copy-jobs/", aws_util:encode_uri(CopyJobId), ""],
@@ -989,14 +3867,26 @@ describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the framework details for the specified `FrameworkName'.
+-spec describe_framework(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_framework_output(), tuple()} |
+    {error, any()} |
+    {error, describe_framework_errors(), tuple()}.
 describe_framework(Client, FrameworkName)
   when is_map(Client) ->
     describe_framework(Client, FrameworkName, #{}, #{}).
 
+-spec describe_framework(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_framework_output(), tuple()} |
+    {error, any()} |
+    {error, describe_framework_errors(), tuple()}.
 describe_framework(Client, FrameworkName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_framework(Client, FrameworkName, QueryMap, HeadersMap, []).
 
+-spec describe_framework(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_framework_output(), tuple()} |
+    {error, any()} |
+    {error, describe_framework_errors(), tuple()}.
 describe_framework(Client, FrameworkName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
@@ -1019,14 +3909,26 @@ describe_framework(Client, FrameworkName, QueryMap, HeadersMap, Options0)
 %% Returns an error if the account is not a member of an Organizations
 %% organization.
 %% Example: `describe-global-settings --region us-west-2'
+-spec describe_global_settings(aws_client:aws_client()) ->
+    {ok, describe_global_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_global_settings_errors(), tuple()}.
 describe_global_settings(Client)
   when is_map(Client) ->
     describe_global_settings(Client, #{}, #{}).
 
+-spec describe_global_settings(aws_client:aws_client(), map(), map()) ->
+    {ok, describe_global_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_global_settings_errors(), tuple()}.
 describe_global_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_global_settings(Client, QueryMap, HeadersMap, []).
 
+-spec describe_global_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, describe_global_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_global_settings_errors(), tuple()}.
 describe_global_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-settings"],
@@ -1048,14 +3950,26 @@ describe_global_settings(Client, QueryMap, HeadersMap, Options0)
 %% its Amazon Resource Name (ARN), and the Amazon Web Services service type
 %% of the saved
 %% resource.
+-spec describe_protected_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_protected_resource_output(), tuple()} |
+    {error, any()} |
+    {error, describe_protected_resource_errors(), tuple()}.
 describe_protected_resource(Client, ResourceArn)
   when is_map(Client) ->
     describe_protected_resource(Client, ResourceArn, #{}, #{}).
 
+-spec describe_protected_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_protected_resource_output(), tuple()} |
+    {error, any()} |
+    {error, describe_protected_resource_errors(), tuple()}.
 describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec describe_protected_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_protected_resource_output(), tuple()} |
+    {error, any()} |
+    {error, describe_protected_resource_errors(), tuple()}.
 describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), ""],
@@ -1075,14 +3989,26 @@ describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Returns metadata associated with a recovery point, including ID,
 %% status, encryption, and
 %% lifecycle.
+-spec describe_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_recovery_point_output(), tuple()} |
+    {error, any()} |
+    {error, describe_recovery_point_errors(), tuple()}.
 describe_recovery_point(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
     describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
 
+-spec describe_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_recovery_point_output(), tuple()} |
+    {error, any()} |
+    {error, describe_recovery_point_errors(), tuple()}.
 describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
 
+-spec describe_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_recovery_point_output(), tuple()} |
+    {error, any()} |
+    {error, describe_recovery_point_errors(), tuple()}.
 describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
@@ -1112,14 +4038,26 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, Hea
 %% plan. Otherwise,
 %% Backup does not try to protect that service's resources in this
 %% Region.
+-spec describe_region_settings(aws_client:aws_client()) ->
+    {ok, describe_region_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_region_settings_errors(), tuple()}.
 describe_region_settings(Client)
   when is_map(Client) ->
     describe_region_settings(Client, #{}, #{}).
 
+-spec describe_region_settings(aws_client:aws_client(), map(), map()) ->
+    {ok, describe_region_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_region_settings_errors(), tuple()}.
 describe_region_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_region_settings(Client, QueryMap, HeadersMap, []).
 
+-spec describe_region_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, describe_region_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_region_settings_errors(), tuple()}.
 describe_region_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account-settings"],
@@ -1139,14 +4077,26 @@ describe_region_settings(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns the details associated with creating a report as specified by
 %% its
 %% `ReportJobId'.
+-spec describe_report_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_report_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_report_job_errors(), tuple()}.
 describe_report_job(Client, ReportJobId)
   when is_map(Client) ->
     describe_report_job(Client, ReportJobId, #{}, #{}).
 
+-spec describe_report_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_report_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_report_job_errors(), tuple()}.
 describe_report_job(Client, ReportJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_report_job(Client, ReportJobId, QueryMap, HeadersMap, []).
 
+-spec describe_report_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_report_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_report_job_errors(), tuple()}.
 describe_report_job(Client, ReportJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-jobs/", aws_util:encode_uri(ReportJobId), ""],
@@ -1165,14 +4115,26 @@ describe_report_job(Client, ReportJobId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of all report plans for an Amazon Web Services account
 %% and Amazon Web Services Region.
+-spec describe_report_plan(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_report_plan_output(), tuple()} |
+    {error, any()} |
+    {error, describe_report_plan_errors(), tuple()}.
 describe_report_plan(Client, ReportPlanName)
   when is_map(Client) ->
     describe_report_plan(Client, ReportPlanName, #{}, #{}).
 
+-spec describe_report_plan(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_report_plan_output(), tuple()} |
+    {error, any()} |
+    {error, describe_report_plan_errors(), tuple()}.
 describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap, []).
 
+-spec describe_report_plan(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_report_plan_output(), tuple()} |
+    {error, any()} |
+    {error, describe_report_plan_errors(), tuple()}.
 describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
@@ -1191,14 +4153,26 @@ describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns metadata associated with a restore job that is specified by a
 %% job ID.
+-spec describe_restore_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_restore_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_restore_job_errors(), tuple()}.
 describe_restore_job(Client, RestoreJobId)
   when is_map(Client) ->
     describe_restore_job(Client, RestoreJobId, #{}, #{}).
 
+-spec describe_restore_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_restore_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_restore_job_errors(), tuple()}.
 describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, []).
 
+-spec describe_restore_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_restore_job_output(), tuple()} |
+    {error, any()} |
+    {error, describe_restore_job_errors(), tuple()}.
 describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), ""],
@@ -1225,8 +4199,17 @@ describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
 %% lifecycle that you specified in your original backup plan.
 %%
 %% Does not support snapshot backup recovery points.
+-spec disassociate_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_recovery_point_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_recovery_point_errors(), tuple()}.
 disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
+
+-spec disassociate_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_recovery_point_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_recovery_point_errors(), tuple()}.
 disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = post,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/disassociate"],
@@ -1253,8 +4236,17 @@ disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, O
 %% relationship
 %% between the specified recovery point and its parent (composite) recovery
 %% point.
+-spec disassociate_recovery_point_from_parent(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_recovery_point_from_parent_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_recovery_point_from_parent_errors(), tuple()}.
 disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input) ->
     disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input, []).
+
+-spec disassociate_recovery_point_from_parent(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_recovery_point_from_parent_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_recovery_point_from_parent_errors(), tuple()}.
 disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/parentAssociation"],
@@ -1279,14 +4271,26 @@ disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointAr
 
 %% @doc Returns the backup plan that is specified by the plan ID as a backup
 %% template.
+-spec export_backup_plan_template(aws_client:aws_client(), binary() | list()) ->
+    {ok, export_backup_plan_template_output(), tuple()} |
+    {error, any()} |
+    {error, export_backup_plan_template_errors(), tuple()}.
 export_backup_plan_template(Client, BackupPlanId)
   when is_map(Client) ->
     export_backup_plan_template(Client, BackupPlanId, #{}, #{}).
 
+-spec export_backup_plan_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, export_backup_plan_template_output(), tuple()} |
+    {error, any()} |
+    {error, export_backup_plan_template_errors(), tuple()}.
 export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
+-spec export_backup_plan_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, export_backup_plan_template_output(), tuple()} |
+    {error, any()} |
+    {error, export_backup_plan_template_errors(), tuple()}.
 export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/toTemplate"],
@@ -1309,14 +4313,26 @@ export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options0
 %% The
 %% details are the body of a backup plan in JSON format, in addition to plan
 %% metadata.
+-spec get_backup_plan(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_backup_plan_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_plan_errors(), tuple()}.
 get_backup_plan(Client, BackupPlanId)
   when is_map(Client) ->
     get_backup_plan(Client, BackupPlanId, #{}, #{}).
 
+-spec get_backup_plan(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_backup_plan_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_plan_errors(), tuple()}.
 get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
+-spec get_backup_plan(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_backup_plan_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_plan_errors(), tuple()}.
 get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
@@ -1338,8 +4354,17 @@ get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a valid JSON document specifying a backup plan or an error.
+-spec get_backup_plan_from_json(aws_client:aws_client(), get_backup_plan_from_json_input()) ->
+    {ok, get_backup_plan_from_json_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_plan_from_json_errors(), tuple()}.
 get_backup_plan_from_json(Client, Input) ->
     get_backup_plan_from_json(Client, Input, []).
+
+-spec get_backup_plan_from_json(aws_client:aws_client(), get_backup_plan_from_json_input(), proplists:proplist()) ->
+    {ok, get_backup_plan_from_json_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_plan_from_json_errors(), tuple()}.
 get_backup_plan_from_json(Client, Input0, Options0) ->
     Method = post,
     Path = ["/backup/template/json/toPlan"],
@@ -1364,14 +4389,26 @@ get_backup_plan_from_json(Client, Input0, Options0) ->
 
 %% @doc Returns the template specified by its `templateId' as a backup
 %% plan.
+-spec get_backup_plan_from_template(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_backup_plan_from_template_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_plan_from_template_errors(), tuple()}.
 get_backup_plan_from_template(Client, BackupPlanTemplateId)
   when is_map(Client) ->
     get_backup_plan_from_template(Client, BackupPlanTemplateId, #{}, #{}).
 
+-spec get_backup_plan_from_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_backup_plan_from_template_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_plan_from_template_errors(), tuple()}.
 get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap, []).
 
+-spec get_backup_plan_from_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_backup_plan_from_template_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_plan_from_template_errors(), tuple()}.
 get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/template/plans/", aws_util:encode_uri(BackupPlanTemplateId), "/toPlan"],
@@ -1391,14 +4428,26 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap
 %% @doc Returns selection metadata and a document in JSON format that
 %% specifies a list of
 %% resources that are associated with a backup plan.
+-spec get_backup_selection(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_backup_selection_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_selection_errors(), tuple()}.
 get_backup_selection(Client, BackupPlanId, SelectionId)
   when is_map(Client) ->
     get_backup_selection(Client, BackupPlanId, SelectionId, #{}, #{}).
 
+-spec get_backup_selection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_backup_selection_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_selection_errors(), tuple()}.
 get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, []).
 
+-spec get_backup_selection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_backup_selection_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_selection_errors(), tuple()}.
 get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
@@ -1418,14 +4467,26 @@ get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, Op
 %% @doc Returns the access policy document that is associated with the named
 %% backup
 %% vault.
+-spec get_backup_vault_access_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_backup_vault_access_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_vault_access_policy_errors(), tuple()}.
 get_backup_vault_access_policy(Client, BackupVaultName)
   when is_map(Client) ->
     get_backup_vault_access_policy(Client, BackupVaultName, #{}, #{}).
 
+-spec get_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_backup_vault_access_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_vault_access_policy_errors(), tuple()}.
 get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
+-spec get_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_backup_vault_access_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_vault_access_policy_errors(), tuple()}.
 get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
@@ -1443,14 +4504,26 @@ get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns event notifications for the specified backup vault.
+-spec get_backup_vault_notifications(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_backup_vault_notifications_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_vault_notifications_errors(), tuple()}.
 get_backup_vault_notifications(Client, BackupVaultName)
   when is_map(Client) ->
     get_backup_vault_notifications(Client, BackupVaultName, #{}, #{}).
 
+-spec get_backup_vault_notifications(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_backup_vault_notifications_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_vault_notifications_errors(), tuple()}.
 get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
+-spec get_backup_vault_notifications(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_backup_vault_notifications_output(), tuple()} |
+    {error, any()} |
+    {error, get_backup_vault_notifications_errors(), tuple()}.
 get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
@@ -1471,14 +4544,26 @@ get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, Op
 %%
 %% The details are the
 %% body of a legal hold in JSON format, in addition to metadata.
+-spec get_legal_hold(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_legal_hold_output(), tuple()} |
+    {error, any()} |
+    {error, get_legal_hold_errors(), tuple()}.
 get_legal_hold(Client, LegalHoldId)
   when is_map(Client) ->
     get_legal_hold(Client, LegalHoldId, #{}, #{}).
 
+-spec get_legal_hold(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_legal_hold_output(), tuple()} |
+    {error, any()} |
+    {error, get_legal_hold_errors(), tuple()}.
 get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, []).
 
+-spec get_legal_hold(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_legal_hold_output(), tuple()} |
+    {error, any()} |
+    {error, get_legal_hold_errors(), tuple()}.
 get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), ""],
@@ -1497,14 +4582,26 @@ get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a set of metadata key-value pairs that were used to create
 %% the backup.
+-spec get_recovery_point_restore_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_recovery_point_restore_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_point_restore_metadata_errors(), tuple()}.
 get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
     get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
 
+-spec get_recovery_point_restore_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_recovery_point_restore_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_point_restore_metadata_errors(), tuple()}.
 get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
 
+-spec get_recovery_point_restore_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_recovery_point_restore_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_point_restore_metadata_errors(), tuple()}.
 get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/restore-metadata"],
@@ -1526,14 +4623,26 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Q
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This request returns the metadata for the specified restore job.
+-spec get_restore_job_metadata(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_restore_job_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_job_metadata_errors(), tuple()}.
 get_restore_job_metadata(Client, RestoreJobId)
   when is_map(Client) ->
     get_restore_job_metadata(Client, RestoreJobId, #{}, #{}).
 
+-spec get_restore_job_metadata(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_restore_job_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_job_metadata_errors(), tuple()}.
 get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, []).
 
+-spec get_restore_job_metadata(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_restore_job_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_job_metadata_errors(), tuple()}.
 get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), "/metadata"],
@@ -1556,14 +4665,26 @@ get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
 %% `BackupVaultName'
 %% and `RecoveryPointArn' are required parameters.
 %% `BackupVaultAccountId' is an optional parameter.
+-spec get_restore_testing_inferred_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_restore_testing_inferred_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_testing_inferred_metadata_errors(), tuple()}.
 get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
     get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
 
+-spec get_restore_testing_inferred_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_restore_testing_inferred_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_testing_inferred_metadata_errors(), tuple()}.
 get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
 
+-spec get_restore_testing_inferred_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_restore_testing_inferred_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_testing_inferred_metadata_errors(), tuple()}.
 get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/inferred-metadata"],
@@ -1591,14 +4712,26 @@ get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn,
 %%
 %% The details are the body of a restore testing plan
 %% in JSON format, in addition to plan metadata.
+-spec get_restore_testing_plan(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_restore_testing_plan_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_testing_plan_errors(), tuple()}.
 get_restore_testing_plan(Client, RestoreTestingPlanName)
   when is_map(Client) ->
     get_restore_testing_plan(Client, RestoreTestingPlanName, #{}, #{}).
 
+-spec get_restore_testing_plan(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_restore_testing_plan_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_testing_plan_errors(), tuple()}.
 get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, []).
 
+-spec get_restore_testing_plan(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_restore_testing_plan_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_testing_plan_errors(), tuple()}.
 get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
@@ -1617,14 +4750,26 @@ get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, O
 
 %% @doc Returns RestoreTestingSelection, which displays resources
 %% and elements of the restore testing plan.
+-spec get_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_restore_testing_selection_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_testing_selection_errors(), tuple()}.
 get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName)
   when is_map(Client) ->
     get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, #{}, #{}).
 
+-spec get_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_restore_testing_selection_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_testing_selection_errors(), tuple()}.
 get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, QueryMap, HeadersMap, []).
 
+-spec get_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_restore_testing_selection_output(), tuple()} |
+    {error, any()} |
+    {error, get_restore_testing_selection_errors(), tuple()}.
 get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
@@ -1642,14 +4787,26 @@ get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSele
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the Amazon Web Services resource types supported by Backup.
+-spec get_supported_resource_types(aws_client:aws_client()) ->
+    {ok, get_supported_resource_types_output(), tuple()} |
+    {error, any()} |
+    {error, get_supported_resource_types_errors(), tuple()}.
 get_supported_resource_types(Client)
   when is_map(Client) ->
     get_supported_resource_types(Client, #{}, #{}).
 
+-spec get_supported_resource_types(aws_client:aws_client(), map(), map()) ->
+    {ok, get_supported_resource_types_output(), tuple()} |
+    {error, any()} |
+    {error, get_supported_resource_types_errors(), tuple()}.
 get_supported_resource_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_supported_resource_types(Client, QueryMap, HeadersMap, []).
 
+-spec get_supported_resource_types(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_supported_resource_types_output(), tuple()} |
+    {error, any()} |
+    {error, get_supported_resource_types_errors(), tuple()}.
 get_supported_resource_types(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/supported-resource-types"],
@@ -1677,14 +4834,26 @@ get_supported_resource_types(Client, QueryMap, HeadersMap, Options0)
 %% This request returns a summary that contains
 %% Region, Account, State, ResourceType, MessageCategory,
 %% StartTime, EndTime, and Count of included jobs.
+-spec list_backup_job_summaries(aws_client:aws_client()) ->
+    {ok, list_backup_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_job_summaries_errors(), tuple()}.
 list_backup_job_summaries(Client)
   when is_map(Client) ->
     list_backup_job_summaries(Client, #{}, #{}).
 
+-spec list_backup_job_summaries(aws_client:aws_client(), map(), map()) ->
+    {ok, list_backup_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_job_summaries_errors(), tuple()}.
 list_backup_job_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_job_summaries(Client, QueryMap, HeadersMap, []).
 
+-spec list_backup_job_summaries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_backup_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_job_summaries_errors(), tuple()}.
 list_backup_job_summaries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/backup-job-summaries"],
@@ -1717,14 +4886,26 @@ list_backup_job_summaries(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For a longer period of time, consider using these monitoring tools:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html.
+-spec list_backup_jobs(aws_client:aws_client()) ->
+    {ok, list_backup_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_jobs_errors(), tuple()}.
 list_backup_jobs(Client)
   when is_map(Client) ->
     list_backup_jobs(Client, #{}, #{}).
 
+-spec list_backup_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_backup_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_jobs_errors(), tuple()}.
 list_backup_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_jobs(Client, QueryMap, HeadersMap, []).
 
+-spec list_backup_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_backup_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_jobs_errors(), tuple()}.
 list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-jobs"],
@@ -1760,14 +4941,26 @@ list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns metadata of your saved backup plan templates, including the
 %% template ID, name,
 %% and the creation and deletion dates.
+-spec list_backup_plan_templates(aws_client:aws_client()) ->
+    {ok, list_backup_plan_templates_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_plan_templates_errors(), tuple()}.
 list_backup_plan_templates(Client)
   when is_map(Client) ->
     list_backup_plan_templates(Client, #{}, #{}).
 
+-spec list_backup_plan_templates(aws_client:aws_client(), map(), map()) ->
+    {ok, list_backup_plan_templates_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_plan_templates_errors(), tuple()}.
 list_backup_plan_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plan_templates(Client, QueryMap, HeadersMap, []).
 
+-spec list_backup_plan_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_backup_plan_templates_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_plan_templates_errors(), tuple()}.
 list_backup_plan_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/template/plans"],
@@ -1792,14 +4985,26 @@ list_backup_plan_templates(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns version metadata of your backup plans, including Amazon
 %% Resource Names (ARNs),
 %% backup plan IDs, creation and deletion dates, plan names, and version IDs.
+-spec list_backup_plan_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_backup_plan_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_plan_versions_errors(), tuple()}.
 list_backup_plan_versions(Client, BackupPlanId)
   when is_map(Client) ->
     list_backup_plan_versions(Client, BackupPlanId, #{}, #{}).
 
+-spec list_backup_plan_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_backup_plan_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_plan_versions_errors(), tuple()}.
 list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
+-spec list_backup_plan_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_backup_plan_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_plan_versions_errors(), tuple()}.
 list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/versions"],
@@ -1828,14 +5033,26 @@ list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
 %% contains information such as Amazon Resource Names (ARNs), plan IDs,
 %% creation and deletion
 %% dates, version IDs, plan names, and creator request IDs.
+-spec list_backup_plans(aws_client:aws_client()) ->
+    {ok, list_backup_plans_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_plans_errors(), tuple()}.
 list_backup_plans(Client)
   when is_map(Client) ->
     list_backup_plans(Client, #{}, #{}).
 
+-spec list_backup_plans(aws_client:aws_client(), map(), map()) ->
+    {ok, list_backup_plans_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_plans_errors(), tuple()}.
 list_backup_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plans(Client, QueryMap, HeadersMap, []).
 
+-spec list_backup_plans(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_backup_plans_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_plans_errors(), tuple()}.
 list_backup_plans(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans"],
@@ -1861,14 +5078,26 @@ list_backup_plans(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns an array containing metadata of the resources associated with
 %% the target backup
 %% plan.
+-spec list_backup_selections(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_backup_selections_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_selections_errors(), tuple()}.
 list_backup_selections(Client, BackupPlanId)
   when is_map(Client) ->
     list_backup_selections(Client, BackupPlanId, #{}, #{}).
 
+-spec list_backup_selections(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_backup_selections_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_selections_errors(), tuple()}.
 list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
+-spec list_backup_selections(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_backup_selections_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_selections_errors(), tuple()}.
 list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections"],
@@ -1893,14 +5122,26 @@ list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of recovery point storage containers along with
 %% information about
 %% them.
+-spec list_backup_vaults(aws_client:aws_client()) ->
+    {ok, list_backup_vaults_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_vaults_errors(), tuple()}.
 list_backup_vaults(Client)
   when is_map(Client) ->
     list_backup_vaults(Client, #{}, #{}).
 
+-spec list_backup_vaults(aws_client:aws_client(), map(), map()) ->
+    {ok, list_backup_vaults_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_vaults_errors(), tuple()}.
 list_backup_vaults(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_vaults(Client, QueryMap, HeadersMap, []).
 
+-spec list_backup_vaults(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_backup_vaults_output(), tuple()} |
+    {error, any()} |
+    {error, list_backup_vaults_errors(), tuple()}.
 list_backup_vaults(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults"],
@@ -1935,14 +5176,26 @@ list_backup_vaults(Client, QueryMap, HeadersMap, Options0)
 %% This request returns a summary that contains
 %% Region, Account, State, RestourceType, MessageCategory,
 %% StartTime, EndTime, and Count of included jobs.
+-spec list_copy_job_summaries(aws_client:aws_client()) ->
+    {ok, list_copy_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_copy_job_summaries_errors(), tuple()}.
 list_copy_job_summaries(Client)
   when is_map(Client) ->
     list_copy_job_summaries(Client, #{}, #{}).
 
+-spec list_copy_job_summaries(aws_client:aws_client(), map(), map()) ->
+    {ok, list_copy_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_copy_job_summaries_errors(), tuple()}.
 list_copy_job_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_copy_job_summaries(Client, QueryMap, HeadersMap, []).
 
+-spec list_copy_job_summaries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_copy_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_copy_job_summaries_errors(), tuple()}.
 list_copy_job_summaries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/copy-job-summaries"],
@@ -1970,14 +5223,26 @@ list_copy_job_summaries(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata about your copy jobs.
+-spec list_copy_jobs(aws_client:aws_client()) ->
+    {ok, list_copy_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_copy_jobs_errors(), tuple()}.
 list_copy_jobs(Client)
   when is_map(Client) ->
     list_copy_jobs(Client, #{}, #{}).
 
+-spec list_copy_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_copy_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_copy_jobs_errors(), tuple()}.
 list_copy_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_copy_jobs(Client, QueryMap, HeadersMap, []).
 
+-spec list_copy_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_copy_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_copy_jobs_errors(), tuple()}.
 list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/copy-jobs"],
@@ -2012,14 +5277,26 @@ list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of all frameworks for an Amazon Web Services account
 %% and Amazon Web Services Region.
+-spec list_frameworks(aws_client:aws_client()) ->
+    {ok, list_frameworks_output(), tuple()} |
+    {error, any()} |
+    {error, list_frameworks_errors(), tuple()}.
 list_frameworks(Client)
   when is_map(Client) ->
     list_frameworks(Client, #{}, #{}).
 
+-spec list_frameworks(aws_client:aws_client(), map(), map()) ->
+    {ok, list_frameworks_output(), tuple()} |
+    {error, any()} |
+    {error, list_frameworks_errors(), tuple()}.
 list_frameworks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_frameworks(Client, QueryMap, HeadersMap, []).
 
+-spec list_frameworks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_frameworks_output(), tuple()} |
+    {error, any()} |
+    {error, list_frameworks_errors(), tuple()}.
 list_frameworks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/frameworks"],
@@ -2042,14 +5319,26 @@ list_frameworks(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This action returns metadata about active and previous legal holds.
+-spec list_legal_holds(aws_client:aws_client()) ->
+    {ok, list_legal_holds_output(), tuple()} |
+    {error, any()} |
+    {error, list_legal_holds_errors(), tuple()}.
 list_legal_holds(Client)
   when is_map(Client) ->
     list_legal_holds(Client, #{}, #{}).
 
+-spec list_legal_holds(aws_client:aws_client(), map(), map()) ->
+    {ok, list_legal_holds_output(), tuple()} |
+    {error, any()} |
+    {error, list_legal_holds_errors(), tuple()}.
 list_legal_holds(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_legal_holds(Client, QueryMap, HeadersMap, []).
 
+-spec list_legal_holds(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_legal_holds_output(), tuple()} |
+    {error, any()} |
+    {error, list_legal_holds_errors(), tuple()}.
 list_legal_holds(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/legal-holds"],
@@ -2076,14 +5365,26 @@ list_legal_holds(Client, QueryMap, HeadersMap, Options0)
 %% the time the resource was saved, an Amazon Resource Name (ARN) of the
 %% resource, and a
 %% resource type.
+-spec list_protected_resources(aws_client:aws_client()) ->
+    {ok, list_protected_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_resources_errors(), tuple()}.
 list_protected_resources(Client)
   when is_map(Client) ->
     list_protected_resources(Client, #{}, #{}).
 
+-spec list_protected_resources(aws_client:aws_client(), map(), map()) ->
+    {ok, list_protected_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_resources_errors(), tuple()}.
 list_protected_resources(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_protected_resources(Client, QueryMap, HeadersMap, []).
 
+-spec list_protected_resources(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_protected_resources_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_resources_errors(), tuple()}.
 list_protected_resources(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources"],
@@ -2107,14 +5408,26 @@ list_protected_resources(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc This request lists the protected resources corresponding to each
 %% backup vault.
+-spec list_protected_resources_by_backup_vault(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_protected_resources_by_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_resources_by_backup_vault_errors(), tuple()}.
 list_protected_resources_by_backup_vault(Client, BackupVaultName)
   when is_map(Client) ->
     list_protected_resources_by_backup_vault(Client, BackupVaultName, #{}, #{}).
 
+-spec list_protected_resources_by_backup_vault(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_protected_resources_by_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_resources_by_backup_vault_errors(), tuple()}.
 list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
+-spec list_protected_resources_by_backup_vault(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_protected_resources_by_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_resources_by_backup_vault_errors(), tuple()}.
 list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/resources"],
@@ -2139,14 +5452,26 @@ list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, Head
 
 %% @doc Returns detailed information about the recovery points stored in a
 %% backup vault.
+-spec list_recovery_points_by_backup_vault(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_recovery_points_by_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_points_by_backup_vault_errors(), tuple()}.
 list_recovery_points_by_backup_vault(Client, BackupVaultName)
   when is_map(Client) ->
     list_recovery_points_by_backup_vault(Client, BackupVaultName, #{}, #{}).
 
+-spec list_recovery_points_by_backup_vault(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_recovery_points_by_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_points_by_backup_vault_errors(), tuple()}.
 list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
+-spec list_recovery_points_by_backup_vault(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_recovery_points_by_backup_vault_output(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_points_by_backup_vault_errors(), tuple()}.
 list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points"],
@@ -2178,14 +5503,26 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersM
 %% @doc This action returns recovery point ARNs (Amazon Resource Names) of
 %% the
 %% specified legal hold.
+-spec list_recovery_points_by_legal_hold(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_recovery_points_by_legal_hold_output(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_points_by_legal_hold_errors(), tuple()}.
 list_recovery_points_by_legal_hold(Client, LegalHoldId)
   when is_map(Client) ->
     list_recovery_points_by_legal_hold(Client, LegalHoldId, #{}, #{}).
 
+-spec list_recovery_points_by_legal_hold(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_recovery_points_by_legal_hold_output(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_points_by_legal_hold_errors(), tuple()}.
 list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, []).
 
+-spec list_recovery_points_by_legal_hold(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_recovery_points_by_legal_hold_output(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_points_by_legal_hold_errors(), tuple()}.
 list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), "/recovery-points"],
@@ -2213,14 +5550,26 @@ list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Op
 %%
 %% For Amazon EFS and Amazon EC2, this action only lists recovery points
 %% created by Backup.
+-spec list_recovery_points_by_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_recovery_points_by_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_points_by_resource_errors(), tuple()}.
 list_recovery_points_by_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_recovery_points_by_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_recovery_points_by_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_recovery_points_by_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_points_by_resource_errors(), tuple()}.
 list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_recovery_points_by_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_recovery_points_by_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_points_by_resource_errors(), tuple()}.
 list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/recovery-points"],
@@ -2244,14 +5593,26 @@ list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details about your report jobs.
+-spec list_report_jobs(aws_client:aws_client()) ->
+    {ok, list_report_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_report_jobs_errors(), tuple()}.
 list_report_jobs(Client)
   when is_map(Client) ->
     list_report_jobs(Client, #{}, #{}).
 
+-spec list_report_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_report_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_report_jobs_errors(), tuple()}.
 list_report_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_report_jobs(Client, QueryMap, HeadersMap, []).
 
+-spec list_report_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_report_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_report_jobs_errors(), tuple()}.
 list_report_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-jobs"],
@@ -2281,14 +5642,26 @@ list_report_jobs(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For detailed information about a single report
 %% plan, use `DescribeReportPlan'.
+-spec list_report_plans(aws_client:aws_client()) ->
+    {ok, list_report_plans_output(), tuple()} |
+    {error, any()} |
+    {error, list_report_plans_errors(), tuple()}.
 list_report_plans(Client)
   when is_map(Client) ->
     list_report_plans(Client, #{}, #{}).
 
+-spec list_report_plans(aws_client:aws_client(), map(), map()) ->
+    {ok, list_report_plans_output(), tuple()} |
+    {error, any()} |
+    {error, list_report_plans_errors(), tuple()}.
 list_report_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_report_plans(Client, QueryMap, HeadersMap, []).
 
+-spec list_report_plans(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_report_plans_output(), tuple()} |
+    {error, any()} |
+    {error, list_report_plans_errors(), tuple()}.
 list_report_plans(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/report-plans"],
@@ -2321,14 +5694,26 @@ list_report_plans(Client, QueryMap, HeadersMap, Options0)
 %% This request returns a summary that contains
 %% Region, Account, State, RestourceType, MessageCategory,
 %% StartTime, EndTime, and Count of included jobs.
+-spec list_restore_job_summaries(aws_client:aws_client()) ->
+    {ok, list_restore_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_job_summaries_errors(), tuple()}.
 list_restore_job_summaries(Client)
   when is_map(Client) ->
     list_restore_job_summaries(Client, #{}, #{}).
 
+-spec list_restore_job_summaries(aws_client:aws_client(), map(), map()) ->
+    {ok, list_restore_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_job_summaries_errors(), tuple()}.
 list_restore_job_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_job_summaries(Client, QueryMap, HeadersMap, []).
 
+-spec list_restore_job_summaries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_restore_job_summaries_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_job_summaries_errors(), tuple()}.
 list_restore_job_summaries(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/audit/restore-job-summaries"],
@@ -2357,14 +5742,26 @@ list_restore_job_summaries(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of jobs that Backup initiated to restore a saved
 %% resource,
 %% including details about the recovery process.
+-spec list_restore_jobs(aws_client:aws_client()) ->
+    {ok, list_restore_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_jobs_errors(), tuple()}.
 list_restore_jobs(Client)
   when is_map(Client) ->
     list_restore_jobs(Client, #{}, #{}).
 
+-spec list_restore_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_restore_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_jobs_errors(), tuple()}.
 list_restore_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_jobs(Client, QueryMap, HeadersMap, []).
 
+-spec list_restore_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_restore_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_jobs_errors(), tuple()}.
 list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-jobs"],
@@ -2401,14 +5798,26 @@ list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
 %% `NextToken', `ByStatus', `MaxResults',
 %% `ByRecoveryPointCreationDateAfter' , and
 %% `ByRecoveryPointCreationDateBefore'.
+-spec list_restore_jobs_by_protected_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_restore_jobs_by_protected_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_jobs_by_protected_resource_errors(), tuple()}.
 list_restore_jobs_by_protected_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_restore_jobs_by_protected_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_restore_jobs_by_protected_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_restore_jobs_by_protected_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_jobs_by_protected_resource_errors(), tuple()}.
 list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_restore_jobs_by_protected_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_restore_jobs_by_protected_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_jobs_by_protected_resource_errors(), tuple()}.
 list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/restore-jobs"],
@@ -2434,14 +5843,26 @@ list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of restore testing plans.
+-spec list_restore_testing_plans(aws_client:aws_client()) ->
+    {ok, list_restore_testing_plans_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_testing_plans_errors(), tuple()}.
 list_restore_testing_plans(Client)
   when is_map(Client) ->
     list_restore_testing_plans(Client, #{}, #{}).
 
+-spec list_restore_testing_plans(aws_client:aws_client(), map(), map()) ->
+    {ok, list_restore_testing_plans_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_testing_plans_errors(), tuple()}.
 list_restore_testing_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_testing_plans(Client, QueryMap, HeadersMap, []).
 
+-spec list_restore_testing_plans(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_restore_testing_plans_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_testing_plans_errors(), tuple()}.
 list_restore_testing_plans(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans"],
@@ -2467,14 +5888,26 @@ list_restore_testing_plans(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Can be filtered
 %% by `MaxResults' and `RestoreTestingPlanName'.
+-spec list_restore_testing_selections(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_restore_testing_selections_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_testing_selections_errors(), tuple()}.
 list_restore_testing_selections(Client, RestoreTestingPlanName)
   when is_map(Client) ->
     list_restore_testing_selections(Client, RestoreTestingPlanName, #{}, #{}).
 
+-spec list_restore_testing_selections(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_restore_testing_selections_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_testing_selections_errors(), tuple()}.
 list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, HeadersMap, []).
 
+-spec list_restore_testing_selections(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_restore_testing_selections_output(), tuple()} |
+    {error, any()} |
+    {error, list_restore_testing_selections_errors(), tuple()}.
 list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections"],
@@ -2506,14 +5939,26 @@ list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, Header
 %% availability by resource:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#features-by-resource
 %% table.
+-spec list_tags(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ResourceArn)
   when is_map(Client) ->
     list_tags(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2541,8 +5986,17 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% Requires a backup vault name and an access policy document in JSON
 %% format.
+-spec put_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), put_backup_vault_access_policy_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_backup_vault_access_policy_errors(), tuple()}.
 put_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     put_backup_vault_access_policy(Client, BackupVaultName, Input, []).
+
+-spec put_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), put_backup_vault_access_policy_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_backup_vault_access_policy_errors(), tuple()}.
 put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
@@ -2584,8 +6038,17 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 %% how Backup Vault Lock relates to these regulations, see the
 %% Cohasset Associates
 %% Compliance Assessment.: samples/cohassetreport.zip
+-spec put_backup_vault_lock_configuration(aws_client:aws_client(), binary() | list(), put_backup_vault_lock_configuration_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_backup_vault_lock_configuration_errors(), tuple()}.
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     put_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
+
+-spec put_backup_vault_lock_configuration(aws_client:aws_client(), binary() | list(), put_backup_vault_lock_configuration_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_backup_vault_lock_configuration_errors(), tuple()}.
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/vault-lock"],
@@ -2610,8 +6073,17 @@ put_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) -
 
 %% @doc Turns on notifications on a backup vault for the specified topic and
 %% events.
+-spec put_backup_vault_notifications(aws_client:aws_client(), binary() | list(), put_backup_vault_notifications_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_backup_vault_notifications_errors(), tuple()}.
 put_backup_vault_notifications(Client, BackupVaultName, Input) ->
     put_backup_vault_notifications(Client, BackupVaultName, Input, []).
+
+-spec put_backup_vault_notifications(aws_client:aws_client(), binary() | list(), put_backup_vault_notifications_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_backup_vault_notifications_errors(), tuple()}.
 put_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
@@ -2640,8 +6112,17 @@ put_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
 %% `RestoreJobId' and `ValidationStatus'
 %% are required. Optionally, you can input a
 %% `ValidationStatusMessage'.
+-spec put_restore_validation_result(aws_client:aws_client(), binary() | list(), put_restore_validation_result_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_restore_validation_result_errors(), tuple()}.
 put_restore_validation_result(Client, RestoreJobId, Input) ->
     put_restore_validation_result(Client, RestoreJobId, Input, []).
+
+-spec put_restore_validation_result(aws_client:aws_client(), binary() | list(), put_restore_validation_result_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_restore_validation_result_errors(), tuple()}.
 put_restore_validation_result(Client, RestoreJobId, Input0, Options0) ->
     Method = put,
     Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), "/validations"],
@@ -2665,8 +6146,17 @@ put_restore_validation_result(Client, RestoreJobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts an on-demand backup job for the specified resource.
+-spec start_backup_job(aws_client:aws_client(), start_backup_job_input()) ->
+    {ok, start_backup_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_backup_job_errors(), tuple()}.
 start_backup_job(Client, Input) ->
     start_backup_job(Client, Input, []).
+
+-spec start_backup_job(aws_client:aws_client(), start_backup_job_input(), proplists:proplist()) ->
+    {ok, start_backup_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_backup_job_errors(), tuple()}.
 start_backup_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/backup-jobs"],
@@ -2692,8 +6182,17 @@ start_backup_job(Client, Input0, Options0) ->
 %% @doc Starts a job to create a one-time copy of the specified resource.
 %%
 %% Does not support continuous backups.
+-spec start_copy_job(aws_client:aws_client(), start_copy_job_input()) ->
+    {ok, start_copy_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_copy_job_errors(), tuple()}.
 start_copy_job(Client, Input) ->
     start_copy_job(Client, Input, []).
+
+-spec start_copy_job(aws_client:aws_client(), start_copy_job_input(), proplists:proplist()) ->
+    {ok, start_copy_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_copy_job_errors(), tuple()}.
 start_copy_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/copy-jobs"],
@@ -2717,8 +6216,17 @@ start_copy_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts an on-demand report job for the specified report plan.
+-spec start_report_job(aws_client:aws_client(), binary() | list(), start_report_job_input()) ->
+    {ok, start_report_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_report_job_errors(), tuple()}.
 start_report_job(Client, ReportPlanName, Input) ->
     start_report_job(Client, ReportPlanName, Input, []).
+
+-spec start_report_job(aws_client:aws_client(), binary() | list(), start_report_job_input(), proplists:proplist()) ->
+    {ok, start_report_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_report_job_errors(), tuple()}.
 start_report_job(Client, ReportPlanName, Input0, Options0) ->
     Method = post,
     Path = ["/audit/report-jobs/", aws_util:encode_uri(ReportPlanName), ""],
@@ -2743,8 +6251,17 @@ start_report_job(Client, ReportPlanName, Input0, Options0) ->
 
 %% @doc Recovers the saved resource identified by an Amazon Resource Name
 %% (ARN).
+-spec start_restore_job(aws_client:aws_client(), start_restore_job_input()) ->
+    {ok, start_restore_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_restore_job_errors(), tuple()}.
 start_restore_job(Client, Input) ->
     start_restore_job(Client, Input, []).
+
+-spec start_restore_job(aws_client:aws_client(), start_restore_job_input(), proplists:proplist()) ->
+    {ok, start_restore_job_output(), tuple()} |
+    {error, any()} |
+    {error, start_restore_job_errors(), tuple()}.
 start_restore_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/restore-jobs"],
@@ -2775,8 +6292,17 @@ start_restore_job(Client, Input0, Options0) ->
 %% , Amazon FSx for OpenZFS, Amazon DocumentDB (with MongoDB compatibility),
 %% Amazon RDS, Amazon Aurora,
 %% and Amazon Neptune.
+-spec stop_backup_job(aws_client:aws_client(), binary() | list(), stop_backup_job_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_backup_job_errors(), tuple()}.
 stop_backup_job(Client, BackupJobId, Input) ->
     stop_backup_job(Client, BackupJobId, Input, []).
+
+-spec stop_backup_job(aws_client:aws_client(), binary() | list(), stop_backup_job_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_backup_job_errors(), tuple()}.
 stop_backup_job(Client, BackupJobId, Input0, Options0) ->
     Method = post,
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
@@ -2802,8 +6328,17 @@ stop_backup_job(Client, BackupJobId, Input0, Options0) ->
 %% @doc Assigns a set of key-value pairs to a recovery point, backup plan, or
 %% backup vault
 %% identified by an Amazon Resource Name (ARN).
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2829,8 +6364,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes a set of key-value pairs from a recovery point, backup plan,
 %% or backup vault
 %% identified by an Amazon Resource Name (ARN)
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/untag/", aws_util:encode_uri(ResourceArn), ""],
@@ -2859,8 +6403,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% The new version is uniquely identified by a
 %% `VersionId'.
+-spec update_backup_plan(aws_client:aws_client(), binary() | list(), update_backup_plan_input()) ->
+    {ok, update_backup_plan_output(), tuple()} |
+    {error, any()} |
+    {error, update_backup_plan_errors(), tuple()}.
 update_backup_plan(Client, BackupPlanId, Input) ->
     update_backup_plan(Client, BackupPlanId, Input, []).
+
+-spec update_backup_plan(aws_client:aws_client(), binary() | list(), update_backup_plan_input(), proplists:proplist()) ->
+    {ok, update_backup_plan_output(), tuple()} |
+    {error, any()} |
+    {error, update_backup_plan_errors(), tuple()}.
 update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     Method = post,
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
@@ -2886,8 +6439,17 @@ update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
 %% @doc Updates an existing framework identified by its `FrameworkName'
 %% with the
 %% input document in JSON format.
+-spec update_framework(aws_client:aws_client(), binary() | list(), update_framework_input()) ->
+    {ok, update_framework_output(), tuple()} |
+    {error, any()} |
+    {error, update_framework_errors(), tuple()}.
 update_framework(Client, FrameworkName, Input) ->
     update_framework(Client, FrameworkName, Input, []).
+
+-spec update_framework(aws_client:aws_client(), binary() | list(), update_framework_input(), proplists:proplist()) ->
+    {ok, update_framework_output(), tuple()} |
+    {error, any()} |
+    {error, update_framework_errors(), tuple()}.
 update_framework(Client, FrameworkName, Input0, Options0) ->
     Method = put,
     Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
@@ -2916,8 +6478,17 @@ update_framework(Client, FrameworkName, Input0, Options0) ->
 %% Returns an error if the account is not an Organizations management
 %% account. Use the
 %% `DescribeGlobalSettings' API to determine the current settings.
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
+
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/global-settings"],
@@ -2965,8 +6536,17 @@ update_global_settings(Client, Input0, Options0) ->
 %% other resource types.
 %%
 %% This operation does not support continuous backups.
+-spec update_recovery_point_lifecycle(aws_client:aws_client(), binary() | list(), binary() | list(), update_recovery_point_lifecycle_input()) ->
+    {ok, update_recovery_point_lifecycle_output(), tuple()} |
+    {error, any()} |
+    {error, update_recovery_point_lifecycle_errors(), tuple()}.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) ->
     update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input, []).
+
+-spec update_recovery_point_lifecycle(aws_client:aws_client(), binary() | list(), binary() | list(), update_recovery_point_lifecycle_input(), proplists:proplist()) ->
+    {ok, update_recovery_point_lifecycle_output(), tuple()} |
+    {error, any()} |
+    {error, update_recovery_point_lifecycle_errors(), tuple()}.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = post,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
@@ -2995,8 +6575,17 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 %% the `DescribeRegionSettings' API to determine the resource types that
 %% are
 %% supported.
+-spec update_region_settings(aws_client:aws_client(), update_region_settings_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_region_settings_errors(), tuple()}.
 update_region_settings(Client, Input) ->
     update_region_settings(Client, Input, []).
+
+-spec update_region_settings(aws_client:aws_client(), update_region_settings_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_region_settings_errors(), tuple()}.
 update_region_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/account-settings"],
@@ -3022,8 +6611,17 @@ update_region_settings(Client, Input0, Options0) ->
 %% @doc Updates an existing report plan identified by its
 %% `ReportPlanName' with the
 %% input document in JSON format.
+-spec update_report_plan(aws_client:aws_client(), binary() | list(), update_report_plan_input()) ->
+    {ok, update_report_plan_output(), tuple()} |
+    {error, any()} |
+    {error, update_report_plan_errors(), tuple()}.
 update_report_plan(Client, ReportPlanName, Input) ->
     update_report_plan(Client, ReportPlanName, Input, []).
+
+-spec update_report_plan(aws_client:aws_client(), binary() | list(), update_report_plan_input(), proplists:proplist()) ->
+    {ok, update_report_plan_output(), tuple()} |
+    {error, any()} |
+    {error, update_report_plan_errors(), tuple()}.
 update_report_plan(Client, ReportPlanName, Input0, Options0) ->
     Method = put,
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
@@ -3063,8 +6661,17 @@ update_report_plan(Client, ReportPlanName, Input0, Options0) ->
 %% `RecoveryPointTypes'
 %%
 %% `SelectionWindowDays'
+-spec update_restore_testing_plan(aws_client:aws_client(), binary() | list(), update_restore_testing_plan_input()) ->
+    {ok, update_restore_testing_plan_output(), tuple()} |
+    {error, any()} |
+    {error, update_restore_testing_plan_errors(), tuple()}.
 update_restore_testing_plan(Client, RestoreTestingPlanName, Input) ->
     update_restore_testing_plan(Client, RestoreTestingPlanName, Input, []).
+
+-spec update_restore_testing_plan(aws_client:aws_client(), binary() | list(), update_restore_testing_plan_input(), proplists:proplist()) ->
+    {ok, update_restore_testing_plan_output(), tuple()} |
+    {error, any()} |
+    {error, update_restore_testing_plan_errors(), tuple()}.
 update_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
@@ -3095,8 +6702,17 @@ update_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
 %% has `ProtectedResourceArns', requesting an update with the
 %% parameter `ProtectedResourceConditions' will be
 %% unsuccessful.
+-spec update_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), update_restore_testing_selection_input()) ->
+    {ok, update_restore_testing_selection_output(), tuple()} |
+    {error, any()} |
+    {error, update_restore_testing_selection_errors(), tuple()}.
 update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input) ->
     update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input, []).
+
+-spec update_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), update_restore_testing_selection_input(), proplists:proplist()) ->
+    {ok, update_restore_testing_selection_output(), tuple()} |
+    {error, any()} |
+    {error, update_restore_testing_selection_errors(), tuple()}.
 update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input0, Options0) ->
     Method = put,
     Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
@@ -3123,7 +6739,7 @@ update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingS
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

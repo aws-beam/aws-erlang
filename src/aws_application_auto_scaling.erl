@@ -100,6 +100,530 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% step_adjustment() :: #{
+%%   <<"MetricIntervalLowerBound">> => float(),
+%%   <<"MetricIntervalUpperBound">> => float(),
+%%   <<"ScalingAdjustment">> => integer()
+%% }
+-type step_adjustment() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyNames">> => list(string()()),
+%%   <<"ResourceId">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type describe_scaling_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_action_response() :: #{
+
+%% }
+-type delete_scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% alarm() :: #{
+%%   <<"AlarmARN">> => string(),
+%%   <<"AlarmName">> => string()
+%% }
+-type alarm() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_scaling_policy_configuration() :: #{
+%%   <<"CustomizedMetricSpecification">> => customized_metric_specification(),
+%%   <<"DisableScaleIn">> => boolean(),
+%%   <<"PredefinedMetricSpecification">> => predefined_metric_specification(),
+%%   <<"ScaleInCooldown">> => integer(),
+%%   <<"ScaleOutCooldown">> => integer(),
+%%   <<"TargetValue">> => float()
+%% }
+-type target_tracking_scaling_policy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_scalable_target_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type deregister_scalable_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_policy() :: #{
+%%   <<"Alarms">> => list(alarm()()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"PolicyARN">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyType">> => list(any()),
+%%   <<"ResourceId">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ServiceNamespace">> => list(any()),
+%%   <<"StepScalingPolicyConfiguration">> => step_scaling_policy_configuration(),
+%%   <<"TargetTrackingScalingPolicyConfiguration">> => target_tracking_scaling_policy_configuration()
+%% }
+-type scaling_policy() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scheduled_actions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduledActions">> => list(scheduled_action()())
+%% }
+-type describe_scheduled_actions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scheduled_actions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ScheduledActionNames">> => list(string()()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type describe_scheduled_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% customized_metric_specification() :: #{
+%%   <<"Dimensions">> => list(metric_dimension()()),
+%%   <<"MetricName">> => string(),
+%%   <<"Metrics">> => list(target_tracking_metric_data_query()()),
+%%   <<"Namespace">> => string(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Unit">> => string()
+%% }
+-type customized_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_activities_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScalingActivities">> => list(scaling_activity()())
+%% }
+-type describe_scaling_activities_response() :: #{binary() => any()}.
+
+%% Example:
+%% suspended_state() :: #{
+%%   <<"DynamicScalingInSuspended">> => boolean(),
+%%   <<"DynamicScalingOutSuspended">> => boolean(),
+%%   <<"ScheduledScalingSuspended">> => boolean()
+%% }
+-type suspended_state() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_metric_stat() :: #{
+%%   <<"Metric">> => target_tracking_metric(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => string()
+%% }
+-type target_tracking_metric_stat() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_action() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ScalableTargetAction">> => scalable_target_action(),
+%%   <<"Schedule">> => string(),
+%%   <<"ScheduledActionARN">> => string(),
+%%   <<"ScheduledActionName">> => string(),
+%%   <<"ServiceNamespace">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Timezone">> => string()
+%% }
+-type scheduled_action() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_activity() :: #{
+%%   <<"ActivityId">> => string(),
+%%   <<"Cause">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Details">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"NotScaledReasons">> => list(not_scaled_reason()()),
+%%   <<"ResourceId">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ServiceNamespace">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"StatusCode">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type scaling_activity() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_scalable_target_request() :: #{
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer(),
+%%   <<"ResourceId">> := string(),
+%%   <<"RoleARN">> => string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ServiceNamespace">> := list(any()),
+%%   <<"SuspendedState">> => suspended_state(),
+%%   <<"Tags">> => map()
+%% }
+-type register_scalable_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% step_scaling_policy_configuration() :: #{
+%%   <<"AdjustmentType">> => list(any()),
+%%   <<"Cooldown">> => integer(),
+%%   <<"MetricAggregationType">> => list(any()),
+%%   <<"MinAdjustmentMagnitude">> => integer(),
+%%   <<"StepAdjustments">> => list(step_adjustment()())
+%% }
+-type step_scaling_policy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_activities_request() :: #{
+%%   <<"IncludeNotScaledActivities">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type describe_scaling_activities_request() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_metric() :: #{
+%%   <<"Dimensions">> => list(target_tracking_metric_dimension()()),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string()
+%% }
+-type target_tracking_metric() :: #{binary() => any()}.
+
+%% Example:
+%% metric_dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type metric_dimension() :: #{binary() => any()}.
+
+%% Example:
+%% put_scaling_policy_response() :: #{
+%%   <<"Alarms">> => list(alarm()()),
+%%   <<"PolicyARN">> => string()
+%% }
+-type put_scaling_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% scalable_target_action() :: #{
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer()
+%% }
+-type scalable_target_action() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scalable_targets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceIds">> => list(string()()),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type describe_scalable_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScalingPolicies">> => list(scaling_policy()())
+%% }
+-type describe_scaling_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scaling_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type delete_scaling_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_scheduled_action_request() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ScalableTargetAction">> => scalable_target_action(),
+%%   <<"Schedule">> => string(),
+%%   <<"ScheduledActionName">> := string(),
+%%   <<"ServiceNamespace">> := list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Timezone">> => string()
+%% }
+-type put_scheduled_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% object_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type object_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_scheduled_action_response() :: #{
+
+%% }
+-type put_scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% predefined_metric_specification() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predefined_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% scalable_target() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer(),
+%%   <<"ResourceId">> => string(),
+%%   <<"RoleARN">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ScalableTargetARN">> => string(),
+%%   <<"ServiceNamespace">> => list(any()),
+%%   <<"SuspendedState">> => suspended_state()
+%% }
+-type scalable_target() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_update_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_update_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_scaling_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"PolicyType">> => list(any()),
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ServiceNamespace">> := list(any()),
+%%   <<"StepScalingPolicyConfiguration">> => step_scaling_policy_configuration(),
+%%   <<"TargetTrackingScalingPolicyConfiguration">> => target_tracking_scaling_policy_configuration()
+%% }
+-type put_scaling_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scaling_policy_response() :: #{
+
+%% }
+-type delete_scaling_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_action_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ScheduledActionName">> := string(),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type delete_scheduled_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_metric_dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type target_tracking_metric_dimension() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scalable_targets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScalableTargets">> => list(scalable_target()())
+%% }
+-type describe_scalable_targets_response() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_metric_data_query() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"MetricStat">> => target_tracking_metric_stat(),
+%%   <<"ReturnData">> => boolean()
+%% }
+-type target_tracking_metric_data_query() :: #{binary() => any()}.
+
+%% Example:
+%% not_scaled_reason() :: #{
+%%   <<"Code">> => string(),
+%%   <<"CurrentCapacity">> => integer(),
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer()
+%% }
+-type not_scaled_reason() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_scalable_target_response() :: #{
+
+%% }
+-type deregister_scalable_target_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% failed_resource_access_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type failed_resource_access_exception() :: #{binary() => any()}.
+
+%% Example:
+%% register_scalable_target_response() :: #{
+%%   <<"ScalableTargetARN">> => string()
+%% }
+-type register_scalable_target_response() :: #{binary() => any()}.
+
+-type delete_scaling_policy_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_scheduled_action_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception().
+
+-type deregister_scalable_target_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception().
+
+-type describe_scalable_targets_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_exception().
+
+-type describe_scaling_activities_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_exception().
+
+-type describe_scaling_policies_errors() ::
+    failed_resource_access_exception() | 
+    validation_exception() | 
+    concurrent_update_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_exception().
+
+-type describe_scheduled_actions_errors() ::
+    validation_exception() | 
+    concurrent_update_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception().
+
+-type put_scaling_policy_errors() ::
+    failed_resource_access_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_update_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception().
+
+-type put_scheduled_action_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_update_exception() | 
+    object_not_found_exception() | 
+    internal_service_exception().
+
+-type register_scalable_target_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_update_exception() | 
+    internal_service_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -119,9 +643,18 @@
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/create-target-tracking-policy-cli.html#delete-target-tracking-policy
 %% in the
 %% Application Auto Scaling User Guide.
+-spec delete_scaling_policy(aws_client:aws_client(), delete_scaling_policy_request()) ->
+    {ok, delete_scaling_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scaling_policy_errors(), tuple()}.
 delete_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_policy(Client, Input, []).
+
+-spec delete_scaling_policy(aws_client:aws_client(), delete_scaling_policy_request(), proplists:proplist()) ->
+    {ok, delete_scaling_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scaling_policy_errors(), tuple()}.
 delete_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScalingPolicy">>, Input, Options).
@@ -132,9 +665,18 @@ delete_scaling_policy(Client, Input, Options)
 %% For more information, see Delete a scheduled action:
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-additional-cli-commands.html#delete-scheduled-action
 %% in the Application Auto Scaling User Guide.
+-spec delete_scheduled_action(aws_client:aws_client(), delete_scheduled_action_request()) ->
+    {ok, delete_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_action(Client, Input, []).
+
+-spec delete_scheduled_action(aws_client:aws_client(), delete_scheduled_action_request(), proplists:proplist()) ->
+    {ok, delete_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScheduledAction">>, Input, Options).
@@ -149,9 +691,18 @@ delete_scheduled_action(Client, Input, Options)
 %% Deregistering a scalable target deletes the scaling policies and the
 %% scheduled
 %% actions that are associated with it.
+-spec deregister_scalable_target(aws_client:aws_client(), deregister_scalable_target_request()) ->
+    {ok, deregister_scalable_target_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_scalable_target_errors(), tuple()}.
 deregister_scalable_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_scalable_target(Client, Input, []).
+
+-spec deregister_scalable_target(aws_client:aws_client(), deregister_scalable_target_request(), proplists:proplist()) ->
+    {ok, deregister_scalable_target_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_scalable_target_errors(), tuple()}.
 deregister_scalable_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterScalableTarget">>, Input, Options).
@@ -161,9 +712,18 @@ deregister_scalable_target(Client, Input, Options)
 %%
 %% You can filter the results using `ResourceIds' and
 %% `ScalableDimension'.
+-spec describe_scalable_targets(aws_client:aws_client(), describe_scalable_targets_request()) ->
+    {ok, describe_scalable_targets_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scalable_targets_errors(), tuple()}.
 describe_scalable_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scalable_targets(Client, Input, []).
+
+-spec describe_scalable_targets(aws_client:aws_client(), describe_scalable_targets_request(), proplists:proplist()) ->
+    {ok, describe_scalable_targets_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scalable_targets_errors(), tuple()}.
 describe_scalable_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalableTargets">>, Input, Options).
@@ -178,9 +738,18 @@ describe_scalable_targets(Client, Input, Options)
 %% For information about viewing scaling activities using the Amazon Web
 %% Services CLI, see Scaling activities for Application Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scaling-activities.html.
+-spec describe_scaling_activities(aws_client:aws_client(), describe_scaling_activities_request()) ->
+    {ok, describe_scaling_activities_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scaling_activities_errors(), tuple()}.
 describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
+
+-spec describe_scaling_activities(aws_client:aws_client(), describe_scaling_activities_request(), proplists:proplist()) ->
+    {ok, describe_scaling_activities_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scaling_activities_errors(), tuple()}.
 describe_scaling_activities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingActivities">>, Input, Options).
@@ -196,9 +765,18 @@ describe_scaling_activities(Client, Input, Options)
 %% and Step scaling policies:
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html
 %% in the Application Auto Scaling User Guide.
+-spec describe_scaling_policies(aws_client:aws_client(), describe_scaling_policies_request()) ->
+    {ok, describe_scaling_policies_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scaling_policies_errors(), tuple()}.
 describe_scaling_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_policies(Client, Input, []).
+
+-spec describe_scaling_policies(aws_client:aws_client(), describe_scaling_policies_request(), proplists:proplist()) ->
+    {ok, describe_scaling_policies_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scaling_policies_errors(), tuple()}.
 describe_scaling_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingPolicies">>, Input, Options).
@@ -215,9 +793,18 @@ describe_scaling_policies(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-additional-cli-commands.html
 %% in the
 %% Application Auto Scaling User Guide.
+-spec describe_scheduled_actions(aws_client:aws_client(), describe_scheduled_actions_request()) ->
+    {ok, describe_scheduled_actions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scheduled_actions_errors(), tuple()}.
 describe_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_actions(Client, Input, []).
+
+-spec describe_scheduled_actions(aws_client:aws_client(), describe_scheduled_actions_request(), proplists:proplist()) ->
+    {ok, describe_scheduled_actions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scheduled_actions_errors(), tuple()}.
 describe_scheduled_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledActions">>, Input, Options).
@@ -229,9 +816,18 @@ describe_scheduled_actions(Client, Input, Options)
 %% Tagging Amazon Web Services
 %% resources: https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html
 %% in the Amazon Web Services General Reference.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -286,9 +882,18 @@ list_tags_for_resource(Client, Input, Options)
 %% use scaling policies. Any scaling policies that were specified for the
 %% scalable target
 %% are deleted.
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_request()) ->
+    {ok, put_scaling_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
+
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_request(), proplists:proplist()) ->
+    {ok, put_scaling_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScalingPolicy">>, Input, Options).
@@ -322,9 +927,18 @@ put_scaling_policy(Client, Input, Options)
 %% run scheduled actions. Any scheduled actions that were specified for the
 %% scalable target
 %% are deleted.
+-spec put_scheduled_action(aws_client:aws_client(), put_scheduled_action_request()) ->
+    {ok, put_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, put_scheduled_action_errors(), tuple()}.
 put_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scheduled_action(Client, Input, []).
+
+-spec put_scheduled_action(aws_client:aws_client(), put_scheduled_action_request(), proplists:proplist()) ->
+    {ok, put_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, put_scheduled_action_errors(), tuple()}.
 put_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScheduledAction">>, Input, Options).
@@ -391,9 +1005,18 @@ put_scheduled_action(Client, Input, Options)
 %% you don't
 %% include the `MinCapacity' or `MaxCapacity' request
 %% parameters.
+-spec register_scalable_target(aws_client:aws_client(), register_scalable_target_request()) ->
+    {ok, register_scalable_target_response(), tuple()} |
+    {error, any()} |
+    {error, register_scalable_target_errors(), tuple()}.
 register_scalable_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_scalable_target(Client, Input, []).
+
+-spec register_scalable_target(aws_client:aws_client(), register_scalable_target_request(), proplists:proplist()) ->
+    {ok, register_scalable_target_response(), tuple()} |
+    {error, any()} |
+    {error, register_scalable_target_errors(), tuple()}.
 register_scalable_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterScalableTarget">>, Input, Options).
@@ -424,9 +1047,18 @@ register_scalable_target(Client, Input, Options)
 %% for Application Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/resource-tagging-support.html
 %% in the Application Auto Scaling User Guide.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -435,9 +1067,18 @@ tag_resource(Client, Input, Options)
 %%
 %% To delete a tag, specify the tag key and
 %% the Application Auto Scaling scalable target.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

@@ -44,13 +44,520 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% delete_schedule_group_output() :: #{}
+-type delete_schedule_group_output() :: #{}.
+
+%% Example:
+%% delete_schedule_output() :: #{}
+-type delete_schedule_output() :: #{}.
+
+%% Example:
+%% get_schedule_group_input() :: #{}
+-type get_schedule_group_input() :: #{}.
+
+
+%% Example:
+%% schedule_group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModificationDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string()
+%% }
+-type schedule_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_pipeline_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type sage_maker_pipeline_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% flexible_time_window() :: #{
+%%   <<"MaximumWindowInMinutes">> => integer(),
+%%   <<"Mode">> => string()
+%% }
+-type flexible_time_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_schedule_output() :: #{
+%%   <<"ActionAfterCompletion">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"FlexibleTimeWindow">> => flexible_time_window(),
+%%   <<"GroupName">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"LastModificationDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"ScheduleExpressionTimezone">> => string(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"Target">> => target()
+%% }
+-type get_schedule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_schedule_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type delete_schedule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_schedule_output() :: #{
+%%   <<"ScheduleArn">> := string()
+%% }
+-type update_schedule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% target() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"EcsParameters">> => ecs_parameters(),
+%%   <<"EventBridgeParameters">> => event_bridge_parameters(),
+%%   <<"Input">> => string(),
+%%   <<"KinesisParameters">> => kinesis_parameters(),
+%%   <<"RetryPolicy">> => retry_policy(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SageMakerPipelineParameters">> => sage_maker_pipeline_parameters(),
+%%   <<"SqsParameters">> => sqs_parameters()
+%% }
+-type target() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_schedule_group_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModificationDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string()
+%% }
+-type get_schedule_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schedule_groups_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduleGroups">> := list(schedule_group_summary()())
+%% }
+-type list_schedule_groups_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_summary() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type target_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_schedule_input() :: #{
+%%   <<"ActionAfterCompletion">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"FlexibleTimeWindow">> := flexible_time_window(),
+%%   <<"GroupName">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"ScheduleExpression">> := string(),
+%%   <<"ScheduleExpressionTimezone">> => string(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"Target">> := target()
+%% }
+-type update_schedule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_pipeline_parameters() :: #{
+%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter()())
+%% }
+-type sage_maker_pipeline_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% sqs_parameters() :: #{
+%%   <<"MessageGroupId">> => string()
+%% }
+-type sqs_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"GroupName">> => string(),
+%%   <<"LastModificationDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Target">> => target_summary()
+%% }
+-type schedule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_bridge_parameters() :: #{
+%%   <<"DetailType">> => string(),
+%%   <<"Source">> => string()
+%% }
+-type event_bridge_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schedule_input() :: #{
+%%   <<"ActionAfterCompletion">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"FlexibleTimeWindow">> := flexible_time_window(),
+%%   <<"GroupName">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"ScheduleExpression">> := string(),
+%%   <<"ScheduleExpressionTimezone">> => string(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"Target">> := target()
+%% }
+-type create_schedule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_schedule_group_input() :: #{
+%%   <<"ClientToken">> => string()
+%% }
+-type delete_schedule_group_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_schedule_input() :: #{
+%%   <<"GroupName">> => string()
+%% }
+-type get_schedule_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_strategy_item() :: #{
+%%   <<"base">> => integer(),
+%%   <<"capacityProvider">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type capacity_provider_strategy_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% placement_constraint() :: #{
+%%   <<"expression">> => string(),
+%%   <<"type">> => string()
+%% }
+-type placement_constraint() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schedule_group_output() :: #{
+%%   <<"ScheduleGroupArn">> := string()
+%% }
+-type create_schedule_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schedule_groups_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_schedule_groups_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schedules_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Schedules">> := list(schedule_summary()())
+%% }
+-type list_schedules_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% dead_letter_config() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type dead_letter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% list_schedules_input() :: #{
+%%   <<"GroupName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"State">> => string()
+%% }
+-type list_schedules_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schedule_output() :: #{
+%%   <<"ScheduleArn">> := string()
+%% }
+-type create_schedule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_vpc_configuration() :: #{
+%%   <<"AssignPublicIp">> => string(),
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"Subnets">> => list(string()())
+%% }
+-type aws_vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_parameters() :: #{
+%%   <<"PartitionKey">> => string()
+%% }
+-type kinesis_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schedule_group_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_schedule_group_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_policy() :: #{
+%%   <<"MaximumEventAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer()
+%% }
+-type retry_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% placement_strategy() :: #{
+%%   <<"field">> => string(),
+%%   <<"type">> => string()
+%% }
+-type placement_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_parameters() :: #{
+%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"EnableECSManagedTags">> => boolean(),
+%%   <<"EnableExecuteCommand">> => boolean(),
+%%   <<"Group">> => string(),
+%%   <<"LaunchType">> => string(),
+%%   <<"NetworkConfiguration">> => network_configuration(),
+%%   <<"PlacementConstraints">> => list(placement_constraint()()),
+%%   <<"PlacementStrategy">> => list(placement_strategy()()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"PropagateTags">> => string(),
+%%   <<"ReferenceId">> => string(),
+%%   <<"Tags">> => list(map()()),
+%%   <<"TaskCount">> => integer(),
+%%   <<"TaskDefinitionArn">> => string()
+%% }
+-type ecs_parameters() :: #{binary() => any()}.
+
+-type create_schedule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_schedule_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_schedule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_schedule_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_schedule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_schedule_group_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_schedule_groups_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_schedules_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_schedule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Creates the specified schedule.
+-spec create_schedule(aws_client:aws_client(), binary() | list(), create_schedule_input()) ->
+    {ok, create_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, create_schedule_errors(), tuple()}.
 create_schedule(Client, Name, Input) ->
     create_schedule(Client, Name, Input, []).
+
+-spec create_schedule(aws_client:aws_client(), binary() | list(), create_schedule_input(), proplists:proplist()) ->
+    {ok, create_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, create_schedule_errors(), tuple()}.
 create_schedule(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],
@@ -74,8 +581,17 @@ create_schedule(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates the specified schedule group.
+-spec create_schedule_group(aws_client:aws_client(), binary() | list(), create_schedule_group_input()) ->
+    {ok, create_schedule_group_output(), tuple()} |
+    {error, any()} |
+    {error, create_schedule_group_errors(), tuple()}.
 create_schedule_group(Client, Name, Input) ->
     create_schedule_group(Client, Name, Input, []).
+
+-spec create_schedule_group(aws_client:aws_client(), binary() | list(), create_schedule_group_input(), proplists:proplist()) ->
+    {ok, create_schedule_group_output(), tuple()} |
+    {error, any()} |
+    {error, create_schedule_group_errors(), tuple()}.
 create_schedule_group(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/schedule-groups/", aws_util:encode_uri(Name), ""],
@@ -99,8 +615,17 @@ create_schedule_group(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified schedule.
+-spec delete_schedule(aws_client:aws_client(), binary() | list(), delete_schedule_input()) ->
+    {ok, delete_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, delete_schedule_errors(), tuple()}.
 delete_schedule(Client, Name, Input) ->
     delete_schedule(Client, Name, Input, []).
+
+-spec delete_schedule(aws_client:aws_client(), binary() | list(), delete_schedule_input(), proplists:proplist()) ->
+    {ok, delete_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, delete_schedule_errors(), tuple()}.
 delete_schedule(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],
@@ -137,8 +662,17 @@ delete_schedule(Client, Name, Input0, Options0) ->
 %% until the schedule group and its associated schedules are deleted.
 %%
 %% This operation is eventually consistent.
+-spec delete_schedule_group(aws_client:aws_client(), binary() | list(), delete_schedule_group_input()) ->
+    {ok, delete_schedule_group_output(), tuple()} |
+    {error, any()} |
+    {error, delete_schedule_group_errors(), tuple()}.
 delete_schedule_group(Client, Name, Input) ->
     delete_schedule_group(Client, Name, Input, []).
+
+-spec delete_schedule_group(aws_client:aws_client(), binary() | list(), delete_schedule_group_input(), proplists:proplist()) ->
+    {ok, delete_schedule_group_output(), tuple()} |
+    {error, any()} |
+    {error, delete_schedule_group_errors(), tuple()}.
 delete_schedule_group(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/schedule-groups/", aws_util:encode_uri(Name), ""],
@@ -163,14 +697,26 @@ delete_schedule_group(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the specified schedule.
+-spec get_schedule(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, get_schedule_errors(), tuple()}.
 get_schedule(Client, Name)
   when is_map(Client) ->
     get_schedule(Client, Name, #{}, #{}).
 
+-spec get_schedule(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, get_schedule_errors(), tuple()}.
 get_schedule(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schedule(Client, Name, QueryMap, HeadersMap, []).
 
+-spec get_schedule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, get_schedule_errors(), tuple()}.
 get_schedule(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],
@@ -192,14 +738,26 @@ get_schedule(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the specified schedule group.
+-spec get_schedule_group(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_schedule_group_output(), tuple()} |
+    {error, any()} |
+    {error, get_schedule_group_errors(), tuple()}.
 get_schedule_group(Client, Name)
   when is_map(Client) ->
     get_schedule_group(Client, Name, #{}, #{}).
 
+-spec get_schedule_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_schedule_group_output(), tuple()} |
+    {error, any()} |
+    {error, get_schedule_group_errors(), tuple()}.
 get_schedule_group(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schedule_group(Client, Name, QueryMap, HeadersMap, []).
 
+-spec get_schedule_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_schedule_group_output(), tuple()} |
+    {error, any()} |
+    {error, get_schedule_group_errors(), tuple()}.
 get_schedule_group(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schedule-groups/", aws_util:encode_uri(Name), ""],
@@ -217,14 +775,26 @@ get_schedule_group(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of your schedule groups.
+-spec list_schedule_groups(aws_client:aws_client()) ->
+    {ok, list_schedule_groups_output(), tuple()} |
+    {error, any()} |
+    {error, list_schedule_groups_errors(), tuple()}.
 list_schedule_groups(Client)
   when is_map(Client) ->
     list_schedule_groups(Client, #{}, #{}).
 
+-spec list_schedule_groups(aws_client:aws_client(), map(), map()) ->
+    {ok, list_schedule_groups_output(), tuple()} |
+    {error, any()} |
+    {error, list_schedule_groups_errors(), tuple()}.
 list_schedule_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schedule_groups(Client, QueryMap, HeadersMap, []).
 
+-spec list_schedule_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_schedule_groups_output(), tuple()} |
+    {error, any()} |
+    {error, list_schedule_groups_errors(), tuple()}.
 list_schedule_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schedule-groups"],
@@ -248,14 +818,26 @@ list_schedule_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of your EventBridge Scheduler schedules.
+-spec list_schedules(aws_client:aws_client()) ->
+    {ok, list_schedules_output(), tuple()} |
+    {error, any()} |
+    {error, list_schedules_errors(), tuple()}.
 list_schedules(Client)
   when is_map(Client) ->
     list_schedules(Client, #{}, #{}).
 
+-spec list_schedules(aws_client:aws_client(), map(), map()) ->
+    {ok, list_schedules_output(), tuple()} |
+    {error, any()} |
+    {error, list_schedules_errors(), tuple()}.
 list_schedules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schedules(Client, QueryMap, HeadersMap, []).
 
+-spec list_schedules(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_schedules_output(), tuple()} |
+    {error, any()} |
+    {error, list_schedules_errors(), tuple()}.
 list_schedules(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/schedules"],
@@ -281,14 +863,26 @@ list_schedules(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags associated with the Scheduler resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -309,8 +903,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% EventBridge Scheduler resource.
 %%
 %% You can only assign tags to schedule groups.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -335,8 +938,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes one or more tags from the specified EventBridge Scheduler
 %% schedule group.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -372,8 +984,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Before calling this operation, we recommend that you call the
 %% `GetSchedule' API operation and make a note of all optional parameters
 %% for your `UpdateSchedule' call.
+-spec update_schedule(aws_client:aws_client(), binary() | list(), update_schedule_input()) ->
+    {ok, update_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, update_schedule_errors(), tuple()}.
 update_schedule(Client, Name, Input) ->
     update_schedule(Client, Name, Input, []).
+
+-spec update_schedule(aws_client:aws_client(), binary() | list(), update_schedule_input(), proplists:proplist()) ->
+    {ok, update_schedule_output(), tuple()} |
+    {error, any()} |
+    {error, update_schedule_errors(), tuple()}.
 update_schedule(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/schedules/", aws_util:encode_uri(Name), ""],
@@ -400,7 +1021,7 @@ update_schedule(Client, Name, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

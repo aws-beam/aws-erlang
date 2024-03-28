@@ -143,13 +143,1457 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% start_content_upload_response() :: #{
+%%   <<"headersToInclude">> := map(),
+%%   <<"uploadId">> := string(),
+%%   <<"url">> := string(),
+%%   <<"urlExpiry">> := [non_neg_integer()]
+%% }
+-type start_content_upload_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_knowledge_base_template_uri_request() :: #{
+%%   <<"templateUri">> := string()
+%% }
+-type update_knowledge_base_template_uri_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_feedback_request() :: #{
+%%   <<"contentFeedback">> := list(),
+%%   <<"targetId">> := string(),
+%%   <<"targetType">> := string()
+%% }
+-type put_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_assistant_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> := list(result_data()())
+%% }
+-type query_assistant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_summary() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_quick_response_response() :: #{
+%%   <<"quickResponse">> => quick_response_data()
+%% }
+-type create_quick_response_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_session_response() :: #{
+%%   <<"session">> => session_data()
+%% }
+-type get_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_summary() :: #{
+%%   <<"details">> => list(),
+%%   <<"reference">> => list()
+%% }
+-type data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_quick_responses_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchExpression">> := quick_response_search_expression()
+%% }
+-type search_quick_responses_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% quick_response_search_expression() :: #{
+%%   <<"filters">> => list(quick_response_filter_field()()),
+%%   <<"orderOnField">> => quick_response_order_field(),
+%%   <<"queries">> => list(quick_response_query_field()())
+%% }
+-type quick_response_search_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% highlight() :: #{
+%%   <<"beginOffsetInclusive">> => integer(),
+%%   <<"endOffsetExclusive">> => integer()
+%% }
+-type highlight() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_integrations_configuration() :: #{
+%%   <<"appIntegrationArn">> => string(),
+%%   <<"objectFields">> => list(string()())
+%% }
+-type app_integrations_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contents_response() :: #{
+%%   <<"contentSummaries">> := list(content_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_response_filter_field() :: #{
+%%   <<"includeNoExistence">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"values">> => list(string()())
+%% }
+-type quick_response_filter_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_source_configuration() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"source">> => string()
+%% }
+-type external_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_data() :: #{
+%%   <<"data">> => data_summary(),
+%%   <<"document">> => document(),
+%%   <<"recommendationId">> => string(),
+%%   <<"relevanceLevel">> => string(),
+%%   <<"relevanceScore">> => float(),
+%%   <<"type">> => string()
+%% }
+-type recommendation_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contents_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contents_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_knowledge_base_template_uri_response() :: #{}
+-type remove_knowledge_base_template_uri_response() :: #{}.
+
+%% Example:
+%% delete_assistant_association_request() :: #{}
+-type delete_assistant_association_request() :: #{}.
+
+
+%% Example:
+%% get_content_summary_response() :: #{
+%%   <<"contentSummary">> => content_summary()
+%% }
+-type get_content_summary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% assistant_integration_configuration() :: #{
+%%   <<"topicIntegrationArn">> => string()
+%% }
+-type assistant_integration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_data() :: #{
+%%   <<"excerpt">> => document_text(),
+%%   <<"title">> => document_text()
+%% }
+-type text_data() :: #{binary() => any()}.
+
+%% Example:
+%% delete_knowledge_base_response() :: #{}
+-type delete_knowledge_base_response() :: #{}.
+
+
+%% Example:
+%% create_content_response() :: #{
+%%   <<"content">> => content_data()
+%% }
+-type create_content_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_assistant_response() :: #{
+%%   <<"assistant">> => assistant_data()
+%% }
+-type get_assistant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommendations_response() :: #{
+%%   <<"recommendations">> := list(recommendation_data()()),
+%%   <<"triggers">> => list(recommendation_trigger()())
+%% }
+-type get_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_timeout_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type request_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_feedback_response() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"contentFeedback">> => list(),
+%%   <<"targetId">> => string(),
+%%   <<"targetType">> => string()
+%% }
+-type put_feedback_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"externalSourceConfiguration">> => external_source_configuration(),
+%%   <<"importJobType">> := string(),
+%%   <<"metadata">> => map(),
+%%   <<"uploadId">> := string()
+%% }
+-type start_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_knowledge_base_response() :: #{
+%%   <<"knowledgeBase">> => knowledge_base_data()
+%% }
+-type create_knowledge_base_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_assistant_association_response() :: #{
+%%   <<"assistantAssociation">> => assistant_association_data()
+%% }
+-type get_assistant_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_quick_response_request() :: #{
+%%   <<"channels">> => list(string()()),
+%%   <<"clientToken">> => string(),
+%%   <<"content">> := list(),
+%%   <<"contentType">> => string(),
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"language">> => string(),
+%%   <<"name">> := string(),
+%%   <<"shortcutKey">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_quick_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_configuration() :: #{
+%%   <<"instanceId">> => string()
+%% }
+-type connect_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_content_response() :: #{
+%%   <<"contentSummaries">> := list(content_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type search_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{}
+-type get_session_request() :: #{}.
+
+
+%% Example:
+%% assistant_capability_configuration() :: #{
+%%   <<"type">> => string()
+%% }
+-type assistant_capability_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quick_responses_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_quick_responses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% generative_reference() :: #{
+%%   <<"generationId">> => string(),
+%%   <<"modelId">> => string()
+%% }
+-type generative_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_content_upload_request() :: #{
+%%   <<"contentType">> := string(),
+%%   <<"presignedUrlTimeToLive">> => integer()
+%% }
+-type start_content_upload_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_assistant_request() :: #{}
+-type delete_assistant_request() :: #{}.
+
+
+%% Example:
+%% create_session_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_knowledge_base_template_uri_response() :: #{
+%%   <<"knowledgeBase">> => knowledge_base_data()
+%% }
+-type update_knowledge_base_template_uri_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_knowledge_base_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseType">> := string(),
+%%   <<"name">> := string(),
+%%   <<"renderingConfiguration">> => rendering_configuration(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"sourceConfiguration">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type create_knowledge_base_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"knowledgeBaseType">> => string(),
+%%   <<"name">> => string(),
+%%   <<"renderingConfiguration">> => rendering_configuration(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"sourceConfiguration">> => list(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type knowledge_base_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quick_responses_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"quickResponseSummaries">> => list(quick_response_summary()())
+%% }
+-type list_quick_responses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_bases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_knowledge_bases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_job_data() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"externalSourceConfiguration">> => external_source_configuration(),
+%%   <<"failedRecordReport">> => string(),
+%%   <<"importJobId">> => string(),
+%%   <<"importJobType">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"metadata">> => map(),
+%%   <<"status">> => string(),
+%%   <<"uploadId">> => string(),
+%%   <<"url">> => string(),
+%%   <<"urlExpiry">> => [non_neg_integer()]
+%% }
+-type import_job_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_data() :: #{
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"knowledgeBaseType">> => string(),
+%%   <<"lastContentModificationTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"renderingConfiguration">> => rendering_configuration(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"sourceConfiguration">> => list(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type knowledge_base_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% assistant_association_data() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantAssociationArn">> => string(),
+%%   <<"assistantAssociationId">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"associationData">> => list(),
+%%   <<"associationType">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type assistant_association_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_text() :: #{
+%%   <<"highlights">> => list(highlight()()),
+%%   <<"text">> => string()
+%% }
+-type document_text() :: #{binary() => any()}.
+
+%% Example:
+%% get_assistant_request() :: #{}
+-type get_assistant_request() :: #{}.
+
+%% Example:
+%% delete_assistant_response() :: #{}
+-type delete_assistant_response() :: #{}.
+
+
+%% Example:
+%% quick_response_contents() :: #{
+%%   <<"markdown">> => list(),
+%%   <<"plainText">> => list()
+%% }
+-type quick_response_contents() :: #{binary() => any()}.
+
+%% Example:
+%% delete_import_job_request() :: #{}
+-type delete_import_job_request() :: #{}.
+
+
+%% Example:
+%% assistant_data() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"capabilityConfiguration">> => assistant_capability_configuration(),
+%%   <<"description">> => string(),
+%%   <<"integrationConfiguration">> => assistant_integration_configuration(),
+%%   <<"name">> => string(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type assistant_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assistant_response() :: #{
+%%   <<"assistant">> => assistant_data()
+%% }
+-type create_assistant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_response_summary() :: #{
+%%   <<"channels">> => list(string()()),
+%%   <<"contentType">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"quickResponseArn">> => string(),
+%%   <<"quickResponseId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type quick_response_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_quick_response_response() :: #{
+%%   <<"quickResponse">> => quick_response_data()
+%% }
+-type get_quick_response_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_import_job_request() :: #{}
+-type get_import_job_request() :: #{}.
+
+
+%% Example:
+%% create_assistant_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := string()
+%% }
+-type create_assistant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommendations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"waitTimeSeconds">> => integer()
+%% }
+-type get_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_recommendation_trigger_data() :: #{
+%%   <<"text">> => string()
+%% }
+-type query_recommendation_trigger_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessionSummaries">> := list(session_summary()())
+%% }
+-type search_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% notify_recommendations_received_response() :: #{
+%%   <<"errors">> => list(notify_recommendations_received_error()()),
+%%   <<"recommendationIds">> => list(string()())
+%% }
+-type notify_recommendations_received_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quick_response_request() :: #{
+%%   <<"channels">> => list(string()()),
+%%   <<"content">> => list(),
+%%   <<"contentType">> => string(),
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"language">> => string(),
+%%   <<"name">> => string(),
+%%   <<"removeDescription">> => [boolean()],
+%%   <<"removeGroupingConfiguration">> => [boolean()],
+%%   <<"removeShortcutKey">> => [boolean()],
+%%   <<"shortcutKey">> => string()
+%% }
+-type update_quick_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_response_data() :: #{
+%%   <<"channels">> => list(string()()),
+%%   <<"contentType">> => string(),
+%%   <<"contents">> => quick_response_contents(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"language">> => string(),
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"quickResponseArn">> => string(),
+%%   <<"quickResponseId">> => string(),
+%%   <<"shortcutKey">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type quick_response_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_association_data() :: #{
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string()
+%% }
+-type knowledge_base_association_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_condition_item() :: #{
+%%   <<"comparator">> => string(),
+%%   <<"field">> => string(),
+%%   <<"value">> => string()
+%% }
+-type query_condition_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assistant_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assistant_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_knowledge_base_request() :: #{}
+-type delete_knowledge_base_request() :: #{}.
+
+
+%% Example:
+%% update_quick_response_response() :: #{
+%%   <<"quickResponse">> => quick_response_data()
+%% }
+-type update_quick_response_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% assistant_summary() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"capabilityConfiguration">> => assistant_capability_configuration(),
+%%   <<"description">> => string(),
+%%   <<"integrationConfiguration">> => assistant_integration_configuration(),
+%%   <<"name">> => string(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type assistant_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% generative_content_feedback_data() :: #{
+%%   <<"relevance">> => string()
+%% }
+-type generative_content_feedback_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_expression() :: #{
+%%   <<"filters">> => list(filter()())
+%% }
+-type search_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"field">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"value">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_content_data_details() :: #{
+%%   <<"id">> => string(),
+%%   <<"rankingData">> => ranking_data(),
+%%   <<"textData">> => text_data(),
+%%   <<"type">> => string()
+%% }
+-type source_content_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_side_encryption_configuration() :: #{
+%%   <<"kmsKeyId">> => string()
+%% }
+-type server_side_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_data() :: #{
+%%   <<"description">> => string(),
+%%   <<"integrationConfiguration">> => session_integration_configuration(),
+%%   <<"name">> => string(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type session_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_sessions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchExpression">> := search_expression()
+%% }
+-type search_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_jobs_response() :: #{
+%%   <<"importJobSummaries">> => list(import_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_knowledge_base_template_uri_request() :: #{}
+-type remove_knowledge_base_template_uri_request() :: #{}.
+
+
+%% Example:
+%% generative_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"rankingData">> => ranking_data(),
+%%   <<"references">> => list(data_summary()())
+%% }
+-type generative_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_quick_responses_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(quick_response_search_result_data()())
+%% }
+-type search_quick_responses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% notify_recommendations_received_error() :: #{
+%%   <<"message">> => string(),
+%%   <<"recommendationId">> => string()
+%% }
+-type notify_recommendations_received_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_import_job_response() :: #{
+%%   <<"importJob">> => import_job_data()
+%% }
+-type get_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_content_response() :: #{
+%%   <<"content">> => content_data()
+%% }
+-type update_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_quick_response_request() :: #{}
+-type get_quick_response_request() :: #{}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assistant_association_response() :: #{
+%%   <<"assistantAssociation">> => assistant_association_data()
+%% }
+-type create_assistant_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_content_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> := string(),
+%%   <<"overrideLinkOutUri">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"title">> => string(),
+%%   <<"uploadId">> := string()
+%% }
+-type create_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% import_job_summary() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"externalSourceConfiguration">> => external_source_configuration(),
+%%   <<"importJobId">> => string(),
+%%   <<"importJobType">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"metadata">> => map(),
+%%   <<"status">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type import_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_assistant_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryCondition">> => list(list()()),
+%%   <<"queryText">> := string(),
+%%   <<"sessionId">> => string()
+%% }
+-type query_assistant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_response_search_result_data() :: #{
+%%   <<"attributesInterpolated">> => list(string()()),
+%%   <<"attributesNotInterpolated">> => list(string()()),
+%%   <<"channels">> => list(string()()),
+%%   <<"contentType">> => string(),
+%%   <<"contents">> => quick_response_contents(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"language">> => string(),
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"quickResponseArn">> => string(),
+%%   <<"quickResponseId">> => string(),
+%%   <<"shortcutKey">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type quick_response_search_result_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% rendering_configuration() :: #{
+%%   <<"templateUri">> => string()
+%% }
+-type rendering_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_content_request() :: #{}
+-type delete_content_request() :: #{}.
+
+%% Example:
+%% get_content_request() :: #{}
+-type get_content_request() :: #{}.
+
+%% Example:
+%% delete_quick_response_request() :: #{}
+-type delete_quick_response_request() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% content_reference() :: #{
+%%   <<"contentArn">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string()
+%% }
+-type content_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_data() :: #{
+%%   <<"contentArn">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"contentType">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"linkOutUri">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string(),
+%%   <<"urlExpiry">> => [non_neg_integer()]
+%% }
+-type content_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_summary() :: #{
+%%   <<"contentArn">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"contentType">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"title">> => string()
+%% }
+-type content_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_content_response() :: #{
+%%   <<"content">> => content_data()
+%% }
+-type get_content_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_data_details() :: #{
+%%   <<"rankingData">> => ranking_data(),
+%%   <<"textData">> => text_data()
+%% }
+-type content_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_trigger() :: #{
+%%   <<"data">> => list(),
+%%   <<"id">> => string(),
+%%   <<"recommendationIds">> => list(string()()),
+%%   <<"source">> => string(),
+%%   <<"type">> => string()
+%% }
+-type recommendation_trigger() :: #{binary() => any()}.
+
+
+%% Example:
+%% notify_recommendations_received_request() :: #{
+%%   <<"recommendationIds">> := list(string()())
+%% }
+-type notify_recommendations_received_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_bases_response() :: #{
+%%   <<"knowledgeBaseSummaries">> := list(knowledge_base_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_knowledge_bases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_knowledge_base_response() :: #{
+%%   <<"knowledgeBase">> => knowledge_base_data()
+%% }
+-type get_knowledge_base_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assistant_associations_response() :: #{
+%%   <<"assistantAssociationSummaries">> := list(assistant_association_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assistant_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% result_data() :: #{
+%%   <<"data">> => data_summary(),
+%%   <<"document">> => document(),
+%%   <<"relevanceScore">> => float(),
+%%   <<"resultId">> => string(),
+%%   <<"type">> => string()
+%% }
+-type result_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_job_response() :: #{
+%%   <<"importJob">> => import_job_data()
+%% }
+-type start_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_content_request() :: #{
+%%   <<"metadata">> => map(),
+%%   <<"overrideLinkOutUri">> => string(),
+%%   <<"removeOverrideLinkOutUri">> => [boolean()],
+%%   <<"revisionId">> => string(),
+%%   <<"title">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type update_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% assistant_association_summary() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantAssociationArn">> => string(),
+%%   <<"assistantAssociationId">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"associationData">> => list(),
+%%   <<"associationType">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type assistant_association_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_content_summary_request() :: #{}
+-type get_content_summary_request() :: #{}.
+
+
+%% Example:
+%% quick_response_query_field() :: #{
+%%   <<"allowFuzziness">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"priority">> => string(),
+%%   <<"values">> => list(string()())
+%% }
+-type quick_response_query_field() :: #{binary() => any()}.
+
+%% Example:
+%% get_assistant_association_request() :: #{}
+-type get_assistant_association_request() :: #{}.
+
+%% Example:
+%% delete_content_response() :: #{}
+-type delete_content_response() :: #{}.
+
+%% Example:
+%% get_knowledge_base_request() :: #{}
+-type get_knowledge_base_request() :: #{}.
+
+
+%% Example:
+%% quick_response_order_field() :: #{
+%%   <<"name">> => string(),
+%%   <<"order">> => string()
+%% }
+-type quick_response_order_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assistants_response() :: #{
+%%   <<"assistantSummaries">> := list(assistant_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assistants_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_quick_response_response() :: #{}
+-type delete_quick_response_response() :: #{}.
+
+
+%% Example:
+%% search_content_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchExpression">> := search_expression()
+%% }
+-type search_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ranking_data() :: #{
+%%   <<"relevanceLevel">> => string(),
+%%   <<"relevanceScore">> => float()
+%% }
+-type ranking_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% grouping_configuration() :: #{
+%%   <<"criteria">> => string(),
+%%   <<"values">> => list(string()())
+%% }
+-type grouping_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assistant_association_request() :: #{
+%%   <<"association">> := list(),
+%%   <<"associationType">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_assistant_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_session_response() :: #{
+%%   <<"session">> => session_data()
+%% }
+-type create_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% precondition_failed_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type precondition_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_assistant_association_response() :: #{}
+-type delete_assistant_association_response() :: #{}.
+
+
+%% Example:
+%% document() :: #{
+%%   <<"contentReference">> => content_reference(),
+%%   <<"excerpt">> => document_text(),
+%%   <<"title">> => document_text()
+%% }
+-type document() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assistants_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assistants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_integration_configuration() :: #{
+%%   <<"topicIntegrationArn">> => string()
+%% }
+-type session_integration_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_import_job_response() :: #{}
+-type delete_import_job_response() :: #{}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => [string()]
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+-type create_assistant_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_assistant_association_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_content_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_knowledge_base_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_quick_response_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_session_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_assistant_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_assistant_association_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_content_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type delete_import_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_knowledge_base_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_quick_response_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_assistant_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_assistant_association_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_content_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_content_summary_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_import_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_knowledge_base_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_quick_response_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_recommendations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_session_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_assistant_associations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_assistants_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_contents_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_import_jobs_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_knowledge_bases_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_quick_responses_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception().
+
+-type notify_recommendations_received_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type put_feedback_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type query_assistant_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type remove_knowledge_base_template_uri_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type search_content_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type search_quick_responses_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type search_sessions_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type start_content_upload_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type start_import_job_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    resource_not_found_exception().
+
+-type update_content_errors() ::
+    precondition_failed_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_knowledge_base_template_uri_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_quick_response_errors() ::
+    precondition_failed_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Creates an Amazon Q in Connect assistant.
+-spec create_assistant(aws_client:aws_client(), create_assistant_request()) ->
+    {ok, create_assistant_response(), tuple()} |
+    {error, any()} |
+    {error, create_assistant_errors(), tuple()}.
 create_assistant(Client, Input) ->
     create_assistant(Client, Input, []).
+
+-spec create_assistant(aws_client:aws_client(), create_assistant_request(), proplists:proplist()) ->
+    {ok, create_assistant_response(), tuple()} |
+    {error, any()} |
+    {error, create_assistant_errors(), tuple()}.
 create_assistant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assistants"],
@@ -179,8 +1623,17 @@ create_assistant(Client, Input0, Options0) ->
 %% only supported association is with a knowledge base. An assistant can have
 %% only a single
 %% association.
+-spec create_assistant_association(aws_client:aws_client(), binary() | list(), create_assistant_association_request()) ->
+    {ok, create_assistant_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_assistant_association_errors(), tuple()}.
 create_assistant_association(Client, AssistantId, Input) ->
     create_assistant_association(Client, AssistantId, Input, []).
+
+-spec create_assistant_association(aws_client:aws_client(), binary() | list(), create_assistant_association_request(), proplists:proplist()) ->
+    {ok, create_assistant_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_assistant_association_errors(), tuple()}.
 create_assistant_association(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations"],
@@ -209,8 +1662,17 @@ create_assistant_association(Client, AssistantId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_StartContentUpload.html
 %% to
 %% upload an asset.
+-spec create_content(aws_client:aws_client(), binary() | list(), create_content_request()) ->
+    {ok, create_content_response(), tuple()} |
+    {error, any()} |
+    {error, create_content_errors(), tuple()}.
 create_content(Client, KnowledgeBaseId, Input) ->
     create_content(Client, KnowledgeBaseId, Input, []).
+
+-spec create_content(aws_client:aws_client(), binary() | list(), create_content_request(), proplists:proplist()) ->
+    {ok, create_content_response(), tuple()} |
+    {error, any()} |
+    {error, create_content_errors(), tuple()}.
 create_content(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents"],
@@ -259,8 +1721,17 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 %% one.
 %%
 %% Call CreateKnowledgeBase.
+-spec create_knowledge_base(aws_client:aws_client(), create_knowledge_base_request()) ->
+    {ok, create_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, create_knowledge_base_errors(), tuple()}.
 create_knowledge_base(Client, Input) ->
     create_knowledge_base(Client, Input, []).
+
+-spec create_knowledge_base(aws_client:aws_client(), create_knowledge_base_request(), proplists:proplist()) ->
+    {ok, create_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, create_knowledge_base_errors(), tuple()}.
 create_knowledge_base(Client, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases"],
@@ -284,8 +1755,17 @@ create_knowledge_base(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q quick response.
+-spec create_quick_response(aws_client:aws_client(), binary() | list(), create_quick_response_request()) ->
+    {ok, create_quick_response_response(), tuple()} |
+    {error, any()} |
+    {error, create_quick_response_errors(), tuple()}.
 create_quick_response(Client, KnowledgeBaseId, Input) ->
     create_quick_response(Client, KnowledgeBaseId, Input, []).
+
+-spec create_quick_response(aws_client:aws_client(), binary() | list(), create_quick_response_request(), proplists:proplist()) ->
+    {ok, create_quick_response_response(), tuple()} |
+    {error, any()} |
+    {error, create_quick_response_errors(), tuple()}.
 create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses"],
@@ -314,8 +1794,17 @@ create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
 %% recommendations. Amazon Connect creates a new Amazon Q session for each
 %% contact on which
 %% Amazon Q is enabled.
+-spec create_session(aws_client:aws_client(), binary() | list(), create_session_request()) ->
+    {ok, create_session_response(), tuple()} |
+    {error, any()} |
+    {error, create_session_errors(), tuple()}.
 create_session(Client, AssistantId, Input) ->
     create_session(Client, AssistantId, Input, []).
+
+-spec create_session(aws_client:aws_client(), binary() | list(), create_session_request(), proplists:proplist()) ->
+    {ok, create_session_response(), tuple()} |
+    {error, any()} |
+    {error, create_session_errors(), tuple()}.
 create_session(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions"],
@@ -339,8 +1828,17 @@ create_session(Client, AssistantId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an assistant.
+-spec delete_assistant(aws_client:aws_client(), binary() | list(), delete_assistant_request()) ->
+    {ok, delete_assistant_response(), tuple()} |
+    {error, any()} |
+    {error, delete_assistant_errors(), tuple()}.
 delete_assistant(Client, AssistantId, Input) ->
     delete_assistant(Client, AssistantId, Input, []).
+
+-spec delete_assistant(aws_client:aws_client(), binary() | list(), delete_assistant_request(), proplists:proplist()) ->
+    {ok, delete_assistant_response(), tuple()} |
+    {error, any()} |
+    {error, delete_assistant_errors(), tuple()}.
 delete_assistant(Client, AssistantId, Input0, Options0) ->
     Method = delete,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), ""],
@@ -364,8 +1862,17 @@ delete_assistant(Client, AssistantId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an assistant association.
+-spec delete_assistant_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_assistant_association_request()) ->
+    {ok, delete_assistant_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_assistant_association_errors(), tuple()}.
 delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input) ->
     delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input, []).
+
+-spec delete_assistant_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_assistant_association_request(), proplists:proplist()) ->
+    {ok, delete_assistant_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_assistant_association_errors(), tuple()}.
 delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input0, Options0) ->
     Method = delete,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations/", aws_util:encode_uri(AssistantAssociationId), ""],
@@ -389,8 +1896,17 @@ delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the content.
+-spec delete_content(aws_client:aws_client(), binary() | list(), binary() | list(), delete_content_request()) ->
+    {ok, delete_content_response(), tuple()} |
+    {error, any()} |
+    {error, delete_content_errors(), tuple()}.
 delete_content(Client, ContentId, KnowledgeBaseId, Input) ->
     delete_content(Client, ContentId, KnowledgeBaseId, Input, []).
+
+-spec delete_content(aws_client:aws_client(), binary() | list(), binary() | list(), delete_content_request(), proplists:proplist()) ->
+    {ok, delete_content_response(), tuple()} |
+    {error, any()} |
+    {error, delete_content_errors(), tuple()}.
 delete_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), ""],
@@ -414,8 +1930,17 @@ delete_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the quick response import job.
+-spec delete_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), delete_import_job_request()) ->
+    {ok, delete_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, delete_import_job_errors(), tuple()}.
 delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input) ->
     delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input, []).
+
+-spec delete_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), delete_import_job_request(), proplists:proplist()) ->
+    {ok, delete_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, delete_import_job_errors(), tuple()}.
 delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs/", aws_util:encode_uri(ImportJobId), ""],
@@ -454,8 +1979,17 @@ delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% in the Amazon AppIntegrations API
 %% Reference.
+-spec delete_knowledge_base(aws_client:aws_client(), binary() | list(), delete_knowledge_base_request()) ->
+    {ok, delete_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, delete_knowledge_base_errors(), tuple()}.
 delete_knowledge_base(Client, KnowledgeBaseId, Input) ->
     delete_knowledge_base(Client, KnowledgeBaseId, Input, []).
+
+-spec delete_knowledge_base(aws_client:aws_client(), binary() | list(), delete_knowledge_base_request(), proplists:proplist()) ->
+    {ok, delete_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, delete_knowledge_base_errors(), tuple()}.
 delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), ""],
@@ -479,8 +2013,17 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a quick response.
+-spec delete_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), delete_quick_response_request()) ->
+    {ok, delete_quick_response_response(), tuple()} |
+    {error, any()} |
+    {error, delete_quick_response_errors(), tuple()}.
 delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input) ->
     delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input, []).
+
+-spec delete_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), delete_quick_response_request(), proplists:proplist()) ->
+    {ok, delete_quick_response_response(), tuple()} |
+    {error, any()} |
+    {error, delete_quick_response_errors(), tuple()}.
 delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
@@ -504,14 +2047,26 @@ delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an assistant.
+-spec get_assistant(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_assistant_response(), tuple()} |
+    {error, any()} |
+    {error, get_assistant_errors(), tuple()}.
 get_assistant(Client, AssistantId)
   when is_map(Client) ->
     get_assistant(Client, AssistantId, #{}, #{}).
 
+-spec get_assistant(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_assistant_response(), tuple()} |
+    {error, any()} |
+    {error, get_assistant_errors(), tuple()}.
 get_assistant(Client, AssistantId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assistant(Client, AssistantId, QueryMap, HeadersMap, []).
 
+-spec get_assistant(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_assistant_response(), tuple()} |
+    {error, any()} |
+    {error, get_assistant_errors(), tuple()}.
 get_assistant(Client, AssistantId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), ""],
@@ -529,14 +2084,26 @@ get_assistant(Client, AssistantId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an assistant association.
+-spec get_assistant_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_assistant_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_assistant_association_errors(), tuple()}.
 get_assistant_association(Client, AssistantAssociationId, AssistantId)
   when is_map(Client) ->
     get_assistant_association(Client, AssistantAssociationId, AssistantId, #{}, #{}).
 
+-spec get_assistant_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_assistant_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_assistant_association_errors(), tuple()}.
 get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap, HeadersMap, []).
 
+-spec get_assistant_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_assistant_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_assistant_association_errors(), tuple()}.
 get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations/", aws_util:encode_uri(AssistantAssociationId), ""],
@@ -555,14 +2122,26 @@ get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap,
 
 %% @doc Retrieves content, including a pre-signed URL to download the
 %% content.
+-spec get_content(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_content_errors(), tuple()}.
 get_content(Client, ContentId, KnowledgeBaseId)
   when is_map(Client) ->
     get_content(Client, ContentId, KnowledgeBaseId, #{}, #{}).
 
+-spec get_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_content_errors(), tuple()}.
 get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
+-spec get_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_content_errors(), tuple()}.
 get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), ""],
@@ -580,14 +2159,26 @@ get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves summary information about the content.
+-spec get_content_summary(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_content_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_content_summary_errors(), tuple()}.
 get_content_summary(Client, ContentId, KnowledgeBaseId)
   when is_map(Client) ->
     get_content_summary(Client, ContentId, KnowledgeBaseId, #{}, #{}).
 
+-spec get_content_summary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_content_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_content_summary_errors(), tuple()}.
 get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
+-spec get_content_summary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_content_summary_response(), tuple()} |
+    {error, any()} |
+    {error, get_content_summary_errors(), tuple()}.
 get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), "/summary"],
@@ -605,14 +2196,26 @@ get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the started import job.
+-spec get_import_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, ImportJobId, KnowledgeBaseId)
   when is_map(Client) ->
     get_import_job(Client, ImportJobId, KnowledgeBaseId, #{}, #{}).
 
+-spec get_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
+-spec get_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs/", aws_util:encode_uri(ImportJobId), ""],
@@ -630,14 +2233,26 @@ get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the knowledge base.
+-spec get_knowledge_base(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, get_knowledge_base_errors(), tuple()}.
 get_knowledge_base(Client, KnowledgeBaseId)
   when is_map(Client) ->
     get_knowledge_base(Client, KnowledgeBaseId, #{}, #{}).
 
+-spec get_knowledge_base(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, get_knowledge_base_errors(), tuple()}.
 get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
+-spec get_knowledge_base(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_knowledge_base_response(), tuple()} |
+    {error, any()} |
+    {error, get_knowledge_base_errors(), tuple()}.
 get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), ""],
@@ -655,14 +2270,26 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the quick response.
+-spec get_quick_response(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_quick_response_response(), tuple()} |
+    {error, any()} |
+    {error, get_quick_response_errors(), tuple()}.
 get_quick_response(Client, KnowledgeBaseId, QuickResponseId)
   when is_map(Client) ->
     get_quick_response(Client, KnowledgeBaseId, QuickResponseId, #{}, #{}).
 
+-spec get_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_quick_response_response(), tuple()} |
+    {error, any()} |
+    {error, get_quick_response_errors(), tuple()}.
 get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMap, []).
 
+-spec get_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_quick_response_response(), tuple()} |
+    {error, any()} |
+    {error, get_quick_response_errors(), tuple()}.
 get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
@@ -690,14 +2317,26 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMa
 %% recommendations already available. To perform a manual query against an
 %% assistant, use QueryAssistant:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_QueryAssistant.html.
+-spec get_recommendations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommendations_errors(), tuple()}.
 get_recommendations(Client, AssistantId, SessionId)
   when is_map(Client) ->
     get_recommendations(Client, AssistantId, SessionId, #{}, #{}).
 
+-spec get_recommendations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommendations_errors(), tuple()}.
 get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap, []).
 
+-spec get_recommendations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_recommendations_errors(), tuple()}.
 get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/recommendations"],
@@ -720,14 +2359,26 @@ get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information for a specified session.
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
 get_session(Client, AssistantId, SessionId)
   when is_map(Client) ->
     get_session(Client, AssistantId, SessionId, #{}, #{}).
 
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
 get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap, []).
 
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
 get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), ""],
@@ -745,14 +2396,26 @@ get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about assistant associations.
+-spec list_assistant_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_assistant_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_assistant_associations_errors(), tuple()}.
 list_assistant_associations(Client, AssistantId)
   when is_map(Client) ->
     list_assistant_associations(Client, AssistantId, #{}, #{}).
 
+-spec list_assistant_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_assistant_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_assistant_associations_errors(), tuple()}.
 list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap, []).
 
+-spec list_assistant_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_assistant_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_assistant_associations_errors(), tuple()}.
 list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/associations"],
@@ -775,14 +2438,26 @@ list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about assistants.
+-spec list_assistants(aws_client:aws_client()) ->
+    {ok, list_assistants_response(), tuple()} |
+    {error, any()} |
+    {error, list_assistants_errors(), tuple()}.
 list_assistants(Client)
   when is_map(Client) ->
     list_assistants(Client, #{}, #{}).
 
+-spec list_assistants(aws_client:aws_client(), map(), map()) ->
+    {ok, list_assistants_response(), tuple()} |
+    {error, any()} |
+    {error, list_assistants_errors(), tuple()}.
 list_assistants(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assistants(Client, QueryMap, HeadersMap, []).
 
+-spec list_assistants(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_assistants_response(), tuple()} |
+    {error, any()} |
+    {error, list_assistants_errors(), tuple()}.
 list_assistants(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants"],
@@ -805,14 +2480,26 @@ list_assistants(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the content.
+-spec list_contents(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_contents_response(), tuple()} |
+    {error, any()} |
+    {error, list_contents_errors(), tuple()}.
 list_contents(Client, KnowledgeBaseId)
   when is_map(Client) ->
     list_contents(Client, KnowledgeBaseId, #{}, #{}).
 
+-spec list_contents(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_contents_response(), tuple()} |
+    {error, any()} |
+    {error, list_contents_errors(), tuple()}.
 list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
+-spec list_contents(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_contents_response(), tuple()} |
+    {error, any()} |
+    {error, list_contents_errors(), tuple()}.
 list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents"],
@@ -835,14 +2522,26 @@ list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about import jobs.
+-spec list_import_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_import_jobs_errors(), tuple()}.
 list_import_jobs(Client, KnowledgeBaseId)
   when is_map(Client) ->
     list_import_jobs(Client, KnowledgeBaseId, #{}, #{}).
 
+-spec list_import_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_import_jobs_errors(), tuple()}.
 list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
+-spec list_import_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_import_jobs_errors(), tuple()}.
 list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs"],
@@ -865,14 +2564,26 @@ list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the knowledge bases.
+-spec list_knowledge_bases(aws_client:aws_client()) ->
+    {ok, list_knowledge_bases_response(), tuple()} |
+    {error, any()} |
+    {error, list_knowledge_bases_errors(), tuple()}.
 list_knowledge_bases(Client)
   when is_map(Client) ->
     list_knowledge_bases(Client, #{}, #{}).
 
+-spec list_knowledge_bases(aws_client:aws_client(), map(), map()) ->
+    {ok, list_knowledge_bases_response(), tuple()} |
+    {error, any()} |
+    {error, list_knowledge_bases_errors(), tuple()}.
 list_knowledge_bases(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_knowledge_bases(Client, QueryMap, HeadersMap, []).
 
+-spec list_knowledge_bases(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_knowledge_bases_response(), tuple()} |
+    {error, any()} |
+    {error, list_knowledge_bases_errors(), tuple()}.
 list_knowledge_bases(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases"],
@@ -895,14 +2606,26 @@ list_knowledge_bases(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about quick response.
+-spec list_quick_responses(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_quick_responses_response(), tuple()} |
+    {error, any()} |
+    {error, list_quick_responses_errors(), tuple()}.
 list_quick_responses(Client, KnowledgeBaseId)
   when is_map(Client) ->
     list_quick_responses(Client, KnowledgeBaseId, #{}, #{}).
 
+-spec list_quick_responses(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_quick_responses_response(), tuple()} |
+    {error, any()} |
+    {error, list_quick_responses_errors(), tuple()}.
 list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
+-spec list_quick_responses(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_quick_responses_response(), tuple()} |
+    {error, any()} |
+    {error, list_quick_responses_errors(), tuple()}.
 list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses"],
@@ -925,14 +2648,26 @@ list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -957,8 +2692,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_GetRecommendations.html
 %% and a `waitTimeSeconds' input for long-polling
 %% behavior and avoiding duplicate recommendations.
+-spec notify_recommendations_received(aws_client:aws_client(), binary() | list(), binary() | list(), notify_recommendations_received_request()) ->
+    {ok, notify_recommendations_received_response(), tuple()} |
+    {error, any()} |
+    {error, notify_recommendations_received_errors(), tuple()}.
 notify_recommendations_received(Client, AssistantId, SessionId, Input) ->
     notify_recommendations_received(Client, AssistantId, SessionId, Input, []).
+
+-spec notify_recommendations_received(aws_client:aws_client(), binary() | list(), binary() | list(), notify_recommendations_received_request(), proplists:proplist()) ->
+    {ok, notify_recommendations_received_response(), tuple()} |
+    {error, any()} |
+    {error, notify_recommendations_received_errors(), tuple()}.
 notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/recommendations/notify"],
@@ -985,8 +2729,17 @@ notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0
 %% target.
 %%
 %% This API only supports generative targets.
+-spec put_feedback(aws_client:aws_client(), binary() | list(), put_feedback_request()) ->
+    {ok, put_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, put_feedback_errors(), tuple()}.
 put_feedback(Client, AssistantId, Input) ->
     put_feedback(Client, AssistantId, Input, []).
+
+-spec put_feedback(aws_client:aws_client(), binary() | list(), put_feedback_request(), proplists:proplist()) ->
+    {ok, put_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, put_feedback_errors(), tuple()}.
 put_feedback(Client, AssistantId, Input0, Options0) ->
     Method = put,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/feedback"],
@@ -1014,8 +2767,17 @@ put_feedback(Client, AssistantId, Input0, Options0) ->
 %% To retrieve recommendations for
 %% an assistant, use GetRecommendations:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_GetRecommendations.html.
+-spec query_assistant(aws_client:aws_client(), binary() | list(), query_assistant_request()) ->
+    {ok, query_assistant_response(), tuple()} |
+    {error, any()} |
+    {error, query_assistant_errors(), tuple()}.
 query_assistant(Client, AssistantId, Input) ->
     query_assistant(Client, AssistantId, Input, []).
+
+-spec query_assistant(aws_client:aws_client(), binary() | list(), query_assistant_request(), proplists:proplist()) ->
+    {ok, query_assistant_response(), tuple()} |
+    {error, any()} |
+    {error, query_assistant_errors(), tuple()}.
 query_assistant(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/query"],
@@ -1039,8 +2801,17 @@ query_assistant(Client, AssistantId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a URI template from a knowledge base.
+-spec remove_knowledge_base_template_uri(aws_client:aws_client(), binary() | list(), remove_knowledge_base_template_uri_request()) ->
+    {ok, remove_knowledge_base_template_uri_response(), tuple()} |
+    {error, any()} |
+    {error, remove_knowledge_base_template_uri_errors(), tuple()}.
 remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input) ->
     remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input, []).
+
+-spec remove_knowledge_base_template_uri(aws_client:aws_client(), binary() | list(), remove_knowledge_base_template_uri_request(), proplists:proplist()) ->
+    {ok, remove_knowledge_base_template_uri_response(), tuple()} |
+    {error, any()} |
+    {error, remove_knowledge_base_template_uri_errors(), tuple()}.
 remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/templateUri"],
@@ -1067,8 +2838,17 @@ remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
 %%
 %% Can be used to get a specific content
 %% resource by its name.
+-spec search_content(aws_client:aws_client(), binary() | list(), search_content_request()) ->
+    {ok, search_content_response(), tuple()} |
+    {error, any()} |
+    {error, search_content_errors(), tuple()}.
 search_content(Client, KnowledgeBaseId, Input) ->
     search_content(Client, KnowledgeBaseId, Input, []).
+
+-spec search_content(aws_client:aws_client(), binary() | list(), search_content_request(), proplists:proplist()) ->
+    {ok, search_content_response(), tuple()} |
+    {error, any()} |
+    {error, search_content_errors(), tuple()}.
 search_content(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/search"],
@@ -1095,8 +2875,17 @@ search_content(Client, KnowledgeBaseId, Input0, Options0) ->
 
 %% @doc Searches existing Amazon Q quick responses in an Amazon Q knowledge
 %% base.
+-spec search_quick_responses(aws_client:aws_client(), binary() | list(), search_quick_responses_request()) ->
+    {ok, search_quick_responses_response(), tuple()} |
+    {error, any()} |
+    {error, search_quick_responses_errors(), tuple()}.
 search_quick_responses(Client, KnowledgeBaseId, Input) ->
     search_quick_responses(Client, KnowledgeBaseId, Input, []).
+
+-spec search_quick_responses(aws_client:aws_client(), binary() | list(), search_quick_responses_request(), proplists:proplist()) ->
+    {ok, search_quick_responses_response(), tuple()} |
+    {error, any()} |
+    {error, search_quick_responses_errors(), tuple()}.
 search_quick_responses(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/search/quickResponses"],
@@ -1122,8 +2911,17 @@ search_quick_responses(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for sessions.
+-spec search_sessions(aws_client:aws_client(), binary() | list(), search_sessions_request()) ->
+    {ok, search_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, search_sessions_errors(), tuple()}.
 search_sessions(Client, AssistantId, Input) ->
     search_sessions(Client, AssistantId, Input, []).
+
+-spec search_sessions(aws_client:aws_client(), binary() | list(), search_sessions_request(), proplists:proplist()) ->
+    {ok, search_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, search_sessions_errors(), tuple()}.
 search_sessions(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/searchSessions"],
@@ -1159,8 +2957,17 @@ search_sessions(Client, AssistantId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_UpdateContent.html
 %% to modify an existing resource. You can only upload content to a
 %% knowledge base of type CUSTOM.
+-spec start_content_upload(aws_client:aws_client(), binary() | list(), start_content_upload_request()) ->
+    {ok, start_content_upload_response(), tuple()} |
+    {error, any()} |
+    {error, start_content_upload_errors(), tuple()}.
 start_content_upload(Client, KnowledgeBaseId, Input) ->
     start_content_upload(Client, KnowledgeBaseId, Input, []).
+
+-spec start_content_upload(aws_client:aws_client(), binary() | list(), start_content_upload_request(), proplists:proplist()) ->
+    {ok, start_content_upload_response(), tuple()} |
+    {error, any()} |
+    {error, start_content_upload_errors(), tuple()}.
 start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/upload"],
@@ -1195,8 +3002,17 @@ start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
 %% including the quick responses. For information about how to format the csv
 %% file for importing quick responses, see Import quick responses:
 %% https://docs.aws.amazon.com/console/connect/quick-responses/add-data.
+-spec start_import_job(aws_client:aws_client(), binary() | list(), start_import_job_request()) ->
+    {ok, start_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_import_job_errors(), tuple()}.
 start_import_job(Client, KnowledgeBaseId, Input) ->
     start_import_job(Client, KnowledgeBaseId, Input, []).
+
+-spec start_import_job(aws_client:aws_client(), binary() | list(), start_import_job_request(), proplists:proplist()) ->
+    {ok, start_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_import_job_errors(), tuple()}.
 start_import_job(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs"],
@@ -1220,8 +3036,17 @@ start_import_job(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds the specified tags to the specified resource.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1245,8 +3070,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1271,8 +3105,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information about the content.
+-spec update_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_content_request()) ->
+    {ok, update_content_response(), tuple()} |
+    {error, any()} |
+    {error, update_content_errors(), tuple()}.
 update_content(Client, ContentId, KnowledgeBaseId, Input) ->
     update_content(Client, ContentId, KnowledgeBaseId, Input, []).
+
+-spec update_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_content_request(), proplists:proplist()) ->
+    {ok, update_content_response(), tuple()} |
+    {error, any()} |
+    {error, update_content_errors(), tuple()}.
 update_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), ""],
@@ -1304,8 +3147,17 @@ update_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 %% ingest a Salesforce
 %% article, it has an `Id' value, and you can set the template URI to
 %% `https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*${Id}*/view'.
+-spec update_knowledge_base_template_uri(aws_client:aws_client(), binary() | list(), update_knowledge_base_template_uri_request()) ->
+    {ok, update_knowledge_base_template_uri_response(), tuple()} |
+    {error, any()} |
+    {error, update_knowledge_base_template_uri_errors(), tuple()}.
 update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input) ->
     update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input, []).
+
+-spec update_knowledge_base_template_uri(aws_client:aws_client(), binary() | list(), update_knowledge_base_template_uri_request(), proplists:proplist()) ->
+    {ok, update_knowledge_base_template_uri_response(), tuple()} |
+    {error, any()} |
+    {error, update_knowledge_base_template_uri_errors(), tuple()}.
 update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/templateUri"],
@@ -1329,8 +3181,17 @@ update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Amazon Q quick response.
+-spec update_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), update_quick_response_request()) ->
+    {ok, update_quick_response_response(), tuple()} |
+    {error, any()} |
+    {error, update_quick_response_errors(), tuple()}.
 update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input) ->
     update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input, []).
+
+-spec update_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), update_quick_response_request(), proplists:proplist()) ->
+    {ok, update_quick_response_response(), tuple()} |
+    {error, any()} |
+    {error, update_quick_response_errors(), tuple()}.
 update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
@@ -1357,7 +3218,7 @@ update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

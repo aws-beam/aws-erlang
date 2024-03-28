@@ -55,6 +55,406 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_monitors_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"state">> => [string()]
+%% }
+-type list_monitors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_monitor_output() :: #{
+%%   <<"aggregationPeriod">> => float(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"monitorArn">> => string(),
+%%   <<"monitorName">> => string(),
+%%   <<"probes">> => list(probe()()),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type get_monitor_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_monitors_output() :: #{
+%%   <<"monitors">> => list(monitor_summary()()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_monitors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_monitor_probe_input() :: #{
+%%   <<"destination">> => string(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"packetSize">> => integer(),
+%%   <<"probeTags">> => map(),
+%%   <<"protocol">> => list(any()),
+%%   <<"sourceArn">> => string()
+%% }
+-type create_monitor_probe_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_probe_output() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destination">> => string(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"packetSize">> => integer(),
+%%   <<"probeArn">> => string(),
+%%   <<"probeId">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"sourceArn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"vpcId">> => string()
+%% }
+-type update_probe_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_monitor_output() :: #{}
+-type delete_monitor_output() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_monitor_input() :: #{}
+-type delete_monitor_input() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_probe_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"probe">> := probe_input(),
+%%   <<"tags">> => map()
+%% }
+-type create_probe_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_probe_input() :: #{}
+-type delete_probe_input() :: #{}.
+
+%% Example:
+%% get_probe_input() :: #{}
+-type get_probe_input() :: #{}.
+
+%% Example:
+%% get_monitor_input() :: #{}
+-type get_monitor_input() :: #{}.
+
+
+%% Example:
+%% create_probe_output() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destination">> => string(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"packetSize">> => integer(),
+%%   <<"probeArn">> => string(),
+%%   <<"probeId">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"sourceArn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"vpcId">> => string()
+%% }
+-type create_probe_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_probe_output() :: #{}
+-type delete_probe_output() :: #{}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_probe_input() :: #{
+%%   <<"destination">> => string(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"packetSize">> => integer(),
+%%   <<"protocol">> => list(any()),
+%%   <<"state">> => list(any())
+%% }
+-type update_probe_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% probe_input() :: #{
+%%   <<"destination">> => string(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"packetSize">> => integer(),
+%%   <<"protocol">> => list(any()),
+%%   <<"sourceArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type probe_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_monitor_input() :: #{
+%%   <<"aggregationPeriod">> := float()
+%% }
+-type update_monitor_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% probe() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destination">> => string(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"packetSize">> => integer(),
+%%   <<"probeArn">> => string(),
+%%   <<"probeId">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"sourceArn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"vpcId">> => string()
+%% }
+-type probe() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_probe_output() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destination">> => string(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"packetSize">> => integer(),
+%%   <<"probeArn">> => string(),
+%%   <<"probeId">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"sourceArn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"vpcId">> => string()
+%% }
+-type get_probe_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_monitor_output() :: #{
+%%   <<"aggregationPeriod">> => float(),
+%%   <<"monitorArn">> => string(),
+%%   <<"monitorName">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_monitor_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitor_summary() :: #{
+%%   <<"aggregationPeriod">> => float(),
+%%   <<"monitorArn">> => string(),
+%%   <<"monitorName">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type monitor_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_monitor_output() :: #{
+%%   <<"aggregationPeriod">> => float(),
+%%   <<"monitorArn">> => string(),
+%%   <<"monitorName">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type update_monitor_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_monitor_input() :: #{
+%%   <<"aggregationPeriod">> => float(),
+%%   <<"clientToken">> => [string()],
+%%   <<"monitorName">> := string(),
+%%   <<"probes">> => list(create_monitor_probe_input()()),
+%%   <<"tags">> => map()
+%% }
+-type create_monitor_input() :: #{binary() => any()}.
+
+-type create_monitor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_probe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type delete_monitor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_probe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_monitor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_probe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_monitors_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_monitor_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_probe_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -65,8 +465,17 @@
 %% traffic between your source Amazon Web Services VPC subnets and your
 %% destination IP addresses. Each probe then aggregates and sends metrics to
 %% Amazon CloudWatch.
+-spec create_monitor(aws_client:aws_client(), create_monitor_input()) ->
+    {ok, create_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, create_monitor_errors(), tuple()}.
 create_monitor(Client, Input) ->
     create_monitor(Client, Input, []).
+
+-spec create_monitor(aws_client:aws_client(), create_monitor_input(), proplists:proplist()) ->
+    {ok, create_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, create_monitor_errors(), tuple()}.
 create_monitor(Client, Input0, Options0) ->
     Method = post,
     Path = ["/monitors"],
@@ -93,8 +502,17 @@ create_monitor(Client, Input0, Options0) ->
 %%
 %% Once you create a probe, and it begins monitoring your network traffic,
 %% you'll incur billing charges for that probe.
+-spec create_probe(aws_client:aws_client(), binary() | list(), create_probe_input()) ->
+    {ok, create_probe_output(), tuple()} |
+    {error, any()} |
+    {error, create_probe_errors(), tuple()}.
 create_probe(Client, MonitorName, Input) ->
     create_probe(Client, MonitorName, Input, []).
+
+-spec create_probe(aws_client:aws_client(), binary() | list(), create_probe_input(), proplists:proplist()) ->
+    {ok, create_probe_output(), tuple()} |
+    {error, any()} |
+    {error, create_probe_errors(), tuple()}.
 create_probe(Client, MonitorName, Input0, Options0) ->
     Method = post,
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), "/probes"],
@@ -118,8 +536,17 @@ create_probe(Client, MonitorName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a specified monitor.
+-spec delete_monitor(aws_client:aws_client(), binary() | list(), delete_monitor_input()) ->
+    {ok, delete_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, delete_monitor_errors(), tuple()}.
 delete_monitor(Client, MonitorName, Input) ->
     delete_monitor(Client, MonitorName, Input, []).
+
+-spec delete_monitor(aws_client:aws_client(), binary() | list(), delete_monitor_input(), proplists:proplist()) ->
+    {ok, delete_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, delete_monitor_errors(), tuple()}.
 delete_monitor(Client, MonitorName, Input0, Options0) ->
     Method = delete,
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), ""],
@@ -146,8 +573,17 @@ delete_monitor(Client, MonitorName, Input0, Options0) ->
 %%
 %% Once a probe is deleted you'll no longer incur any billing fees for
 %% that probe.
+-spec delete_probe(aws_client:aws_client(), binary() | list(), binary() | list(), delete_probe_input()) ->
+    {ok, delete_probe_output(), tuple()} |
+    {error, any()} |
+    {error, delete_probe_errors(), tuple()}.
 delete_probe(Client, MonitorName, ProbeId, Input) ->
     delete_probe(Client, MonitorName, ProbeId, Input, []).
+
+-spec delete_probe(aws_client:aws_client(), binary() | list(), binary() | list(), delete_probe_input(), proplists:proplist()) ->
+    {ok, delete_probe_output(), tuple()} |
+    {error, any()} |
+    {error, delete_probe_errors(), tuple()}.
 delete_probe(Client, MonitorName, ProbeId, Input0, Options0) ->
     Method = delete,
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), "/probes/", aws_util:encode_uri(ProbeId), ""],
@@ -171,14 +607,26 @@ delete_probe(Client, MonitorName, ProbeId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns details about a specific monitor.
+-spec get_monitor(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_monitor_errors(), tuple()}.
 get_monitor(Client, MonitorName)
   when is_map(Client) ->
     get_monitor(Client, MonitorName, #{}, #{}).
 
+-spec get_monitor(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_monitor_errors(), tuple()}.
 get_monitor(Client, MonitorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_monitor(Client, MonitorName, QueryMap, HeadersMap, []).
 
+-spec get_monitor(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_monitor_errors(), tuple()}.
 get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), ""],
@@ -198,14 +646,26 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
 %% @doc Returns the details about a probe.
 %%
 %% You'll need both the `monitorName' and `probeId'.
+-spec get_probe(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_probe_output(), tuple()} |
+    {error, any()} |
+    {error, get_probe_errors(), tuple()}.
 get_probe(Client, MonitorName, ProbeId)
   when is_map(Client) ->
     get_probe(Client, MonitorName, ProbeId, #{}, #{}).
 
+-spec get_probe(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_probe_output(), tuple()} |
+    {error, any()} |
+    {error, get_probe_errors(), tuple()}.
 get_probe(Client, MonitorName, ProbeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_probe(Client, MonitorName, ProbeId, QueryMap, HeadersMap, []).
 
+-spec get_probe(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_probe_output(), tuple()} |
+    {error, any()} |
+    {error, get_probe_errors(), tuple()}.
 get_probe(Client, MonitorName, ProbeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), "/probes/", aws_util:encode_uri(ProbeId), ""],
@@ -223,14 +683,26 @@ get_probe(Client, MonitorName, ProbeId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all of your monitors.
+-spec list_monitors(aws_client:aws_client()) ->
+    {ok, list_monitors_output(), tuple()} |
+    {error, any()} |
+    {error, list_monitors_errors(), tuple()}.
 list_monitors(Client)
   when is_map(Client) ->
     list_monitors(Client, #{}, #{}).
 
+-spec list_monitors(aws_client:aws_client(), map(), map()) ->
+    {ok, list_monitors_output(), tuple()} |
+    {error, any()} |
+    {error, list_monitors_errors(), tuple()}.
 list_monitors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_monitors(Client, QueryMap, HeadersMap, []).
 
+-spec list_monitors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_monitors_output(), tuple()} |
+    {error, any()} |
+    {error, list_monitors_errors(), tuple()}.
 list_monitors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/monitors"],
@@ -254,14 +726,26 @@ list_monitors(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags assigned to this resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -279,8 +763,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds key-value pairs to a monitor or probe.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -304,8 +797,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a key-value pair from a monitor or probe.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -333,8 +835,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Monitors support an `aggregationPeriod' of either `30' or `60'
 %% seconds.
+-spec update_monitor(aws_client:aws_client(), binary() | list(), update_monitor_input()) ->
+    {ok, update_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, update_monitor_errors(), tuple()}.
 update_monitor(Client, MonitorName, Input) ->
     update_monitor(Client, MonitorName, Input, []).
+
+-spec update_monitor(aws_client:aws_client(), binary() | list(), update_monitor_input(), proplists:proplist()) ->
+    {ok, update_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, update_monitor_errors(), tuple()}.
 update_monitor(Client, MonitorName, Input0, Options0) ->
     Method = patch,
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), ""],
@@ -362,8 +873,17 @@ update_monitor(Client, MonitorName, Input0, Options0) ->
 %% This action requires both the `monitorName' and `probeId'
 %% parameters. Run `ListMonitors' to get a list of monitor names. Run
 %% `GetMonitor' to get a list of probes and probe IDs.
+-spec update_probe(aws_client:aws_client(), binary() | list(), binary() | list(), update_probe_input()) ->
+    {ok, update_probe_output(), tuple()} |
+    {error, any()} |
+    {error, update_probe_errors(), tuple()}.
 update_probe(Client, MonitorName, ProbeId, Input) ->
     update_probe(Client, MonitorName, ProbeId, Input, []).
+
+-spec update_probe(aws_client:aws_client(), binary() | list(), binary() | list(), update_probe_input(), proplists:proplist()) ->
+    {ok, update_probe_output(), tuple()} |
+    {error, any()} |
+    {error, update_probe_errors(), tuple()}.
 update_probe(Client, MonitorName, ProbeId, Input0, Options0) ->
     Method = patch,
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), "/probes/", aws_util:encode_uri(ProbeId), ""],
@@ -390,7 +910,7 @@ update_probe(Client, MonitorName, ProbeId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

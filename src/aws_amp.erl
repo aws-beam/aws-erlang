@@ -98,6 +98,775 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_alert_manager_definition_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"data">> => binary()
+%% }
+-type put_alert_manager_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rule_groups_namespaces_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"ruleGroupsNamespaces">> => list(rule_groups_namespace_summary()())
+%% }
+-type list_rule_groups_namespaces_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% list_scrapers_request() :: #{
+%%   <<"filters">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_scrapers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_groups_namespace_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type rule_groups_namespace_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_groups_namespace_description() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"data">> => binary(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => rule_groups_namespace_status(),
+%%   <<"tags">> => map()
+%% }
+-type rule_groups_namespace_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_status() :: #{
+%%   <<"statusCode">> => string()
+%% }
+-type workspace_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% scraper_status() :: #{
+%%   <<"statusCode">> => string()
+%% }
+-type scraper_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_summary() :: #{
+%%   <<"alias">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"status">> => workspace_status(),
+%%   <<"tags">> => map(),
+%%   <<"workspaceId">> => string()
+%% }
+-type workspace_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_scraper_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"scraperId">> => string(),
+%%   <<"status">> => scraper_status(),
+%%   <<"tags">> => map()
+%% }
+-type create_scraper_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_configuration_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"logGroupArn">> => string(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"status">> => logging_configuration_status(),
+%%   <<"workspace">> => string()
+%% }
+-type logging_configuration_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"logGroupArn">> => string()
+%% }
+-type update_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rule_groups_namespace_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => rule_groups_namespace_status(),
+%%   <<"tags">> => map()
+%% }
+-type create_rule_groups_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_alert_manager_definition_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_alert_manager_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"logGroupArn">> => string()
+%% }
+-type create_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_rule_groups_namespace_response() :: #{
+%%   <<"ruleGroupsNamespace">> => rule_groups_namespace_description()
+%% }
+-type describe_rule_groups_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_rule_groups_namespace_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => rule_groups_namespace_status(),
+%%   <<"tags">> => map()
+%% }
+-type put_rule_groups_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_alias_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"clientToken">> => string()
+%% }
+-type update_workspace_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_workspace_response() :: #{
+%%   <<"workspace">> => workspace_description()
+%% }
+-type describe_workspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_default_scraper_configuration_request() :: #{}
+-type get_default_scraper_configuration_request() :: #{}.
+
+
+%% Example:
+%% delete_rule_groups_namespace_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_rule_groups_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_groups_namespace_request() :: #{}
+-type describe_rule_groups_namespace_request() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_logging_configuration_response() :: #{
+%%   <<"status">> => logging_configuration_status()
+%% }
+-type create_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_logging_configuration_request() :: #{}
+-type describe_logging_configuration_request() :: #{}.
+
+
+%% Example:
+%% logging_configuration_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type logging_configuration_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_scraper_response() :: #{
+%%   <<"scraper">> => scraper_description()
+%% }
+-type describe_scraper_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_scraper_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_scraper_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_configuration() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()())
+%% }
+-type eks_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_request() :: #{}
+-type describe_workspace_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workspace_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_groups_namespace_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => rule_groups_namespace_status(),
+%%   <<"tags">> => map()
+%% }
+-type rule_groups_namespace_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rule_groups_namespace_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"data">> => binary(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_rule_groups_namespace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_alert_manager_definition_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"data">> => binary()
+%% }
+-type create_alert_manager_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_description() :: #{
+%%   <<"alias">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"prometheusEndpoint">> => string(),
+%%   <<"status">> => workspace_status(),
+%%   <<"tags">> => map(),
+%%   <<"workspaceId">> => string()
+%% }
+-type workspace_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"status">> => workspace_status(),
+%%   <<"tags">> => map(),
+%%   <<"workspaceId">> => string()
+%% }
+-type create_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspaces_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workspaces">> => list(workspace_summary()())
+%% }
+-type list_workspaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_default_scraper_configuration_response() :: #{
+%%   <<"configuration">> => [binary()]
+%% }
+-type get_default_scraper_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% scraper_description() :: #{
+%%   <<"alias">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"destination">> => list(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"roleArn">> => string(),
+%%   <<"scrapeConfiguration">> => list(),
+%%   <<"scraperId">> => string(),
+%%   <<"source">> => list(),
+%%   <<"status">> => scraper_status(),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type scraper_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% put_alert_manager_definition_response() :: #{
+%%   <<"status">> => alert_manager_definition_status()
+%% }
+-type put_alert_manager_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% alert_manager_definition_description() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"data">> => binary(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"status">> => alert_manager_definition_status()
+%% }
+-type alert_manager_definition_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_scraper_response() :: #{
+%%   <<"scraperId">> => string(),
+%%   <<"status">> => scraper_status()
+%% }
+-type delete_scraper_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_workspaces_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_workspaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_logging_configuration_response() :: #{
+%%   <<"loggingConfiguration">> => logging_configuration_metadata()
+%% }
+-type describe_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% amp_configuration() :: #{
+%%   <<"workspaceArn">> => string()
+%% }
+-type amp_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_scraper_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"destination">> := list(),
+%%   <<"scrapeConfiguration">> := list(),
+%%   <<"source">> := list(),
+%%   <<"tags">> => map()
+%% }
+-type create_scraper_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_alert_manager_definition_response() :: #{
+%%   <<"status">> => alert_manager_definition_status()
+%% }
+-type create_alert_manager_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_alert_manager_definition_request() :: #{}
+-type describe_alert_manager_definition_request() :: #{}.
+
+
+%% Example:
+%% describe_alert_manager_definition_response() :: #{
+%%   <<"alertManagerDefinition">> => alert_manager_definition_description()
+%% }
+-type describe_alert_manager_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scraper_request() :: #{}
+-type describe_scraper_request() :: #{}.
+
+
+%% Example:
+%% delete_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_rule_groups_namespace_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"data">> => binary()
+%% }
+-type put_rule_groups_namespace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scrapers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scrapers">> => list(scraper_summary()())
+%% }
+-type list_scrapers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_logging_configuration_response() :: #{
+%%   <<"status">> => logging_configuration_status()
+%% }
+-type update_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rule_groups_namespaces_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_rule_groups_namespaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% alert_manager_definition_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type alert_manager_definition_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% scraper_summary() :: #{
+%%   <<"alias">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"destination">> => list(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"roleArn">> => string(),
+%%   <<"scraperId">> => string(),
+%%   <<"source">> => list(),
+%%   <<"status">> => scraper_status(),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type scraper_summary() :: #{binary() => any()}.
+
+-type create_alert_manager_definition_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_rule_groups_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_scraper_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_workspace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_alert_manager_definition_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_rule_groups_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_scraper_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_workspace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_alert_manager_definition_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_rule_groups_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_scraper_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_workspace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_default_scraper_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_rule_groups_namespaces_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_scrapers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_workspaces_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type put_alert_manager_definition_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_rule_groups_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_workspace_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -109,8 +878,17 @@
 %% If a workspace already has an alert manager definition, don't
 %% use this operation to update it. Instead, use
 %% `PutAlertManagerDefinition'.
+-spec create_alert_manager_definition(aws_client:aws_client(), binary() | list(), create_alert_manager_definition_request()) ->
+    {ok, create_alert_manager_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_alert_manager_definition_errors(), tuple()}.
 create_alert_manager_definition(Client, WorkspaceId, Input) ->
     create_alert_manager_definition(Client, WorkspaceId, Input, []).
+
+-spec create_alert_manager_definition(aws_client:aws_client(), binary() | list(), create_alert_manager_definition_request(), proplists:proplist()) ->
+    {ok, create_alert_manager_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_alert_manager_definition_errors(), tuple()}.
 create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
@@ -139,8 +917,17 @@ create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 %%
 %% Use this operation to set the CloudWatch log group to which
 %% the logs will be published to.
+-spec create_logging_configuration(aws_client:aws_client(), binary() | list(), create_logging_configuration_request()) ->
+    {ok, create_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_logging_configuration_errors(), tuple()}.
 create_logging_configuration(Client, WorkspaceId, Input) ->
     create_logging_configuration(Client, WorkspaceId, Input, []).
+
+-spec create_logging_configuration(aws_client:aws_client(), binary() | list(), create_logging_configuration_request(), proplists:proplist()) ->
+    {ok, create_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_logging_configuration_errors(), tuple()}.
 create_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
@@ -173,8 +960,17 @@ create_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
 %% Use this operation only to create new rule groups namespaces. To update an
 %% existing
 %% rule groups namespace, use `PutRuleGroupsNamespace'.
+-spec create_rule_groups_namespace(aws_client:aws_client(), binary() | list(), create_rule_groups_namespace_request()) ->
+    {ok, create_rule_groups_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_rule_groups_namespace_errors(), tuple()}.
 create_rule_groups_namespace(Client, WorkspaceId, Input) ->
     create_rule_groups_namespace(Client, WorkspaceId, Input, []).
+
+-spec create_rule_groups_namespace(aws_client:aws_client(), binary() | list(), create_rule_groups_namespace_request(), proplists:proplist()) ->
+    {ok, create_rule_groups_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_rule_groups_namespace_errors(), tuple()}.
 create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces"],
@@ -232,8 +1028,17 @@ create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector.html
 %% in the Amazon Managed Service for Prometheus User
 %% Guide.
+-spec create_scraper(aws_client:aws_client(), create_scraper_request()) ->
+    {ok, create_scraper_response(), tuple()} |
+    {error, any()} |
+    {error, create_scraper_errors(), tuple()}.
 create_scraper(Client, Input) ->
     create_scraper(Client, Input, []).
+
+-spec create_scraper(aws_client:aws_client(), create_scraper_request(), proplists:proplist()) ->
+    {ok, create_scraper_response(), tuple()} |
+    {error, any()} |
+    {error, create_scraper_errors(), tuple()}.
 create_scraper(Client, Input0, Options0) ->
     Method = post,
     Path = ["/scrapers"],
@@ -262,8 +1067,17 @@ create_scraper(Client, Input0, Options0) ->
 %% storage and querying of Prometheus metrics. You can have one or more
 %% workspaces in each
 %% Region in your account.
+-spec create_workspace(aws_client:aws_client(), create_workspace_request()) ->
+    {ok, create_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_errors(), tuple()}.
 create_workspace(Client, Input) ->
     create_workspace(Client, Input, []).
+
+-spec create_workspace(aws_client:aws_client(), create_workspace_request(), proplists:proplist()) ->
+    {ok, create_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_errors(), tuple()}.
 create_workspace(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces"],
@@ -287,8 +1101,17 @@ create_workspace(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the alert manager definition from a workspace.
+-spec delete_alert_manager_definition(aws_client:aws_client(), binary() | list(), delete_alert_manager_definition_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_alert_manager_definition_errors(), tuple()}.
 delete_alert_manager_definition(Client, WorkspaceId, Input) ->
     delete_alert_manager_definition(Client, WorkspaceId, Input, []).
+
+-spec delete_alert_manager_definition(aws_client:aws_client(), binary() | list(), delete_alert_manager_definition_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_alert_manager_definition_errors(), tuple()}.
 delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
@@ -313,8 +1136,17 @@ delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the logging configuration for a workspace.
+-spec delete_logging_configuration(aws_client:aws_client(), binary() | list(), delete_logging_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, WorkspaceId, Input) ->
     delete_logging_configuration(Client, WorkspaceId, Input, []).
+
+-spec delete_logging_configuration(aws_client:aws_client(), binary() | list(), delete_logging_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
@@ -340,8 +1172,17 @@ delete_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
 
 %% @doc Deletes one rule groups namespace and its associated rule groups
 %% definition.
+-spec delete_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_rule_groups_namespace_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_rule_groups_namespace_errors(), tuple()}.
 delete_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
     delete_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
+
+-spec delete_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_rule_groups_namespace_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_rule_groups_namespace_errors(), tuple()}.
 delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
@@ -368,8 +1209,17 @@ delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
 %% @doc The `DeleteScraper' operation deletes one scraper, and stops any
 %% metrics
 %% collection that the scraper performs.
+-spec delete_scraper(aws_client:aws_client(), binary() | list(), delete_scraper_request()) ->
+    {ok, delete_scraper_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scraper_errors(), tuple()}.
 delete_scraper(Client, ScraperId, Input) ->
     delete_scraper(Client, ScraperId, Input, []).
+
+-spec delete_scraper(aws_client:aws_client(), binary() | list(), delete_scraper_request(), proplists:proplist()) ->
+    {ok, delete_scraper_response(), tuple()} |
+    {error, any()} |
+    {error, delete_scraper_errors(), tuple()}.
 delete_scraper(Client, ScraperId, Input0, Options0) ->
     Method = delete,
     Path = ["/scrapers/", aws_util:encode_uri(ScraperId), ""],
@@ -398,8 +1248,17 @@ delete_scraper(Client, ScraperId, Input0, Options0) ->
 %% When you delete a workspace, the data that has been ingested into it is
 %% not
 %% immediately deleted. It will be permanently deleted within one month.
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_workspace_errors(), tuple()}.
 delete_workspace(Client, WorkspaceId, Input) ->
     delete_workspace(Client, WorkspaceId, Input, []).
+
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_workspace_errors(), tuple()}.
 delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
@@ -426,14 +1285,26 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
 %% @doc Retrieves the full information about the alert manager definition for
 %% a
 %% workspace.
+-spec describe_alert_manager_definition(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_alert_manager_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_alert_manager_definition_errors(), tuple()}.
 describe_alert_manager_definition(Client, WorkspaceId)
   when is_map(Client) ->
     describe_alert_manager_definition(Client, WorkspaceId, #{}, #{}).
 
+-spec describe_alert_manager_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_alert_manager_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_alert_manager_definition_errors(), tuple()}.
 describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec describe_alert_manager_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_alert_manager_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_alert_manager_definition_errors(), tuple()}.
 describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
@@ -453,14 +1324,26 @@ describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Opt
 %% @doc Returns complete information about the current logging configuration
 %% of the
 %% workspace.
+-spec describe_logging_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_logging_configuration_errors(), tuple()}.
 describe_logging_configuration(Client, WorkspaceId)
   when is_map(Client) ->
     describe_logging_configuration(Client, WorkspaceId, #{}, #{}).
 
+-spec describe_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_logging_configuration_errors(), tuple()}.
 describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec describe_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_logging_configuration_errors(), tuple()}.
 describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
@@ -481,14 +1364,26 @@ describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Option
 %%
 %% To retrieve a list of
 %% rule groups namespaces, use `ListRuleGroupsNamespaces'.
+-spec describe_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_rule_groups_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_rule_groups_namespace_errors(), tuple()}.
 describe_rule_groups_namespace(Client, Name, WorkspaceId)
   when is_map(Client) ->
     describe_rule_groups_namespace(Client, Name, WorkspaceId, #{}, #{}).
 
+-spec describe_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_rule_groups_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_rule_groups_namespace_errors(), tuple()}.
 describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec describe_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_rule_groups_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_rule_groups_namespace_errors(), tuple()}.
 describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
@@ -508,14 +1403,26 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, 
 %% @doc The `DescribeScraper' operation displays information about an
 %% existing
 %% scraper.
+-spec describe_scraper(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_scraper_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scraper_errors(), tuple()}.
 describe_scraper(Client, ScraperId)
   when is_map(Client) ->
     describe_scraper(Client, ScraperId, #{}, #{}).
 
+-spec describe_scraper(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_scraper_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scraper_errors(), tuple()}.
 describe_scraper(Client, ScraperId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_scraper(Client, ScraperId, QueryMap, HeadersMap, []).
 
+-spec describe_scraper(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_scraper_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scraper_errors(), tuple()}.
 describe_scraper(Client, ScraperId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/scrapers/", aws_util:encode_uri(ScraperId), ""],
@@ -533,14 +1440,26 @@ describe_scraper(Client, ScraperId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about an existing workspace.
+-spec describe_workspace(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
 describe_workspace(Client, WorkspaceId)
   when is_map(Client) ->
     describe_workspace(Client, WorkspaceId, #{}, #{}).
 
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
 describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
 describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
@@ -560,14 +1479,26 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 %% @doc The `GetDefaultScraperConfiguration' operation returns the
 %% default
 %% scraper configuration used when Amazon EKS creates a scraper for you.
+-spec get_default_scraper_configuration(aws_client:aws_client()) ->
+    {ok, get_default_scraper_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_default_scraper_configuration_errors(), tuple()}.
 get_default_scraper_configuration(Client)
   when is_map(Client) ->
     get_default_scraper_configuration(Client, #{}, #{}).
 
+-spec get_default_scraper_configuration(aws_client:aws_client(), map(), map()) ->
+    {ok, get_default_scraper_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_default_scraper_configuration_errors(), tuple()}.
 get_default_scraper_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_default_scraper_configuration(Client, QueryMap, HeadersMap, []).
 
+-spec get_default_scraper_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_default_scraper_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_default_scraper_configuration_errors(), tuple()}.
 get_default_scraper_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/scraperconfiguration"],
@@ -585,14 +1516,26 @@ get_default_scraper_configuration(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of rule groups namespaces in a workspace.
+-spec list_rule_groups_namespaces(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_rule_groups_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_rule_groups_namespaces_errors(), tuple()}.
 list_rule_groups_namespaces(Client, WorkspaceId)
   when is_map(Client) ->
     list_rule_groups_namespaces(Client, WorkspaceId, #{}, #{}).
 
+-spec list_rule_groups_namespaces(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_rule_groups_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_rule_groups_namespaces_errors(), tuple()}.
 list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec list_rule_groups_namespaces(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_rule_groups_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_rule_groups_namespaces_errors(), tuple()}.
 list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces"],
@@ -620,14 +1563,26 @@ list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 %%
 %% This includes scrapers being created or deleted. You can optionally
 %% filter the returned list.
+-spec list_scrapers(aws_client:aws_client()) ->
+    {ok, list_scrapers_response(), tuple()} |
+    {error, any()} |
+    {error, list_scrapers_errors(), tuple()}.
 list_scrapers(Client)
   when is_map(Client) ->
     list_scrapers(Client, #{}, #{}).
 
+-spec list_scrapers(aws_client:aws_client(), map(), map()) ->
+    {ok, list_scrapers_response(), tuple()} |
+    {error, any()} |
+    {error, list_scrapers_errors(), tuple()}.
 list_scrapers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_scrapers(Client, QueryMap, HeadersMap, []).
 
+-spec list_scrapers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_scrapers_response(), tuple()} |
+    {error, any()} |
+    {error, list_scrapers_errors(), tuple()}.
 list_scrapers(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/scrapers"],
@@ -656,14 +1611,26 @@ list_scrapers(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Currently, the only resources that can be
 %% tagged are workspaces and rule groups namespaces.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -685,14 +1652,26 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% This includes
 %% workspaces being created or deleted.
+-spec list_workspaces(aws_client:aws_client()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
 list_workspaces(Client)
   when is_map(Client) ->
     list_workspaces(Client, #{}, #{}).
 
+-spec list_workspaces(aws_client:aws_client(), map(), map()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
 list_workspaces(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workspaces(Client, QueryMap, HeadersMap, []).
 
+-spec list_workspaces(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
 list_workspaces(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces"],
@@ -721,8 +1700,17 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
 %% already have an alert manager definition, don't use this operation to
 %% create it.
 %% Instead, use `CreateAlertManagerDefinition'.
+-spec put_alert_manager_definition(aws_client:aws_client(), binary() | list(), put_alert_manager_definition_request()) ->
+    {ok, put_alert_manager_definition_response(), tuple()} |
+    {error, any()} |
+    {error, put_alert_manager_definition_errors(), tuple()}.
 put_alert_manager_definition(Client, WorkspaceId, Input) ->
     put_alert_manager_definition(Client, WorkspaceId, Input, []).
+
+-spec put_alert_manager_definition(aws_client:aws_client(), binary() | list(), put_alert_manager_definition_request(), proplists:proplist()) ->
+    {ok, put_alert_manager_definition_response(), tuple()} |
+    {error, any()} |
+    {error, put_alert_manager_definition_errors(), tuple()}.
 put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
@@ -759,8 +1747,17 @@ put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 %% You can't use this operation to add tags to an existing rule groups
 %% namespace.
 %% Instead, use `TagResource'.
+-spec put_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), put_rule_groups_namespace_request()) ->
+    {ok, put_rule_groups_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, put_rule_groups_namespace_errors(), tuple()}.
 put_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
     put_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
+
+-spec put_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), put_rule_groups_namespace_request(), proplists:proplist()) ->
+    {ok, put_rule_groups_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, put_rule_groups_namespace_errors(), tuple()}.
 put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
@@ -797,8 +1794,17 @@ put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
 %% with the resource, the new tag value that you specify replaces the
 %% previous value for
 %% that tag.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -826,8 +1832,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% The only resources
 %% that can be tagged are workspaces and rule groups namespaces.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -853,8 +1868,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates the log group ARN or the workspace ID of the current logging
 %% configuration.
+-spec update_logging_configuration(aws_client:aws_client(), binary() | list(), update_logging_configuration_request()) ->
+    {ok, update_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_logging_configuration_errors(), tuple()}.
 update_logging_configuration(Client, WorkspaceId, Input) ->
     update_logging_configuration(Client, WorkspaceId, Input, []).
+
+-spec update_logging_configuration(aws_client:aws_client(), binary() | list(), update_logging_configuration_request(), proplists:proplist()) ->
+    {ok, update_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_logging_configuration_errors(), tuple()}.
 update_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
@@ -878,8 +1902,17 @@ update_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the alias of an existing workspace.
+-spec update_workspace_alias(aws_client:aws_client(), binary() | list(), update_workspace_alias_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_workspace_alias_errors(), tuple()}.
 update_workspace_alias(Client, WorkspaceId, Input) ->
     update_workspace_alias(Client, WorkspaceId, Input, []).
+
+-spec update_workspace_alias(aws_client:aws_client(), binary() | list(), update_workspace_alias_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_workspace_alias_errors(), tuple()}.
 update_workspace_alias(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alias"],
@@ -906,7 +1939,7 @@ update_workspace_alias(Client, WorkspaceId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

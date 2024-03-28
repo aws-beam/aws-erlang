@@ -26,6 +26,65 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% entitlement() :: #{
+%%   <<"CustomerIdentifier">> => string(),
+%%   <<"Dimension">> => string(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"ProductCode">> => string(),
+%%   <<"Value">> => entitlement_value()
+%% }
+-type entitlement() :: #{binary() => any()}.
+
+%% Example:
+%% entitlement_value() :: #{
+%%   <<"BooleanValue">> => boolean(),
+%%   <<"DoubleValue">> => float(),
+%%   <<"IntegerValue">> => integer(),
+%%   <<"StringValue">> => string()
+%% }
+-type entitlement_value() :: #{binary() => any()}.
+
+%% Example:
+%% get_entitlements_request() :: #{
+%%   <<"Filter">> => map(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProductCode">> := string()
+%% }
+-type get_entitlements_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_entitlements_result() :: #{
+%%   <<"Entitlements">> => list(entitlement()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_entitlements_result() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_service_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+-type get_entitlements_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -34,9 +93,18 @@
 %%
 %% The results can be
 %% filtered based on customer identifier or product dimensions.
+-spec get_entitlements(aws_client:aws_client(), get_entitlements_request()) ->
+    {ok, get_entitlements_result(), tuple()} |
+    {error, any()} |
+    {error, get_entitlements_errors(), tuple()}.
 get_entitlements(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_entitlements(Client, Input, []).
+
+-spec get_entitlements(aws_client:aws_client(), get_entitlements_request(), proplists:proplist()) ->
+    {ok, get_entitlements_result(), tuple()} |
+    {error, any()} |
+    {error, get_entitlements_errors(), tuple()}.
 get_entitlements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEntitlements">>, Input, Options).

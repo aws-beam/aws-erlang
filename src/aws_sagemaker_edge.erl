@@ -14,13 +14,157 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% checksum() :: #{
+%%   <<"Sum">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type checksum() :: #{binary() => any()}.
+
+
+%% Example:
+%% definition() :: #{
+%%   <<"Checksum">> => checksum(),
+%%   <<"ModelHandle">> => string(),
+%%   <<"S3Url">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_model() :: #{
+%%   <<"DesiredState">> => list(any()),
+%%   <<"ModelHandle">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelVersion">> => string(),
+%%   <<"RollbackFailureReason">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type deployment_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_result() :: #{
+%%   <<"DeploymentEndTime">> => non_neg_integer(),
+%%   <<"DeploymentModels">> => list(deployment_model()()),
+%%   <<"DeploymentName">> => string(),
+%%   <<"DeploymentStartTime">> => non_neg_integer(),
+%%   <<"DeploymentStatus">> => string(),
+%%   <<"DeploymentStatusMessage">> => string()
+%% }
+-type deployment_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% edge_deployment() :: #{
+%%   <<"Definitions">> => list(definition()()),
+%%   <<"DeploymentName">> => string(),
+%%   <<"FailureHandlingPolicy">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type edge_deployment() :: #{binary() => any()}.
+
+
+%% Example:
+%% edge_metric() :: #{
+%%   <<"Dimension">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Value">> => float()
+%% }
+-type edge_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployments_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"DeviceName">> := string()
+%% }
+-type get_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployments_result() :: #{
+%%   <<"Deployments">> => list(edge_deployment()())
+%% }
+-type get_deployments_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_device_registration_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"DeviceName">> := string()
+%% }
+-type get_device_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_device_registration_result() :: #{
+%%   <<"CacheTTL">> => string(),
+%%   <<"DeviceRegistration">> => string()
+%% }
+-type get_device_registration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% model() :: #{
+%%   <<"LatestInference">> => non_neg_integer(),
+%%   <<"LatestSampleTime">> => non_neg_integer(),
+%%   <<"ModelMetrics">> => list(edge_metric()()),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelVersion">> => string()
+%% }
+-type model() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_heartbeat_request() :: #{
+%%   <<"AgentMetrics">> => list(edge_metric()()),
+%%   <<"AgentVersion">> := string(),
+%%   <<"DeploymentResult">> => deployment_result(),
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"DeviceName">> := string(),
+%%   <<"Models">> => list(model()())
+%% }
+-type send_heartbeat_request() :: #{binary() => any()}.
+
+-type get_deployments_errors() ::
+    internal_service_exception().
+
+-type get_device_registration_errors() ::
+    internal_service_exception().
+
+-type send_heartbeat_errors() ::
+    internal_service_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Use to get the active deployments from a device.
+-spec get_deployments(aws_client:aws_client(), get_deployments_request()) ->
+    {ok, get_deployments_result(), tuple()} |
+    {error, any()} |
+    {error, get_deployments_errors(), tuple()}.
 get_deployments(Client, Input) ->
     get_deployments(Client, Input, []).
+
+-spec get_deployments(aws_client:aws_client(), get_deployments_request(), proplists:proplist()) ->
+    {ok, get_deployments_result(), tuple()} |
+    {error, any()} |
+    {error, get_deployments_errors(), tuple()}.
 get_deployments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetDeployments"],
@@ -44,8 +188,17 @@ get_deployments(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use to check if a device is registered with SageMaker Edge Manager.
+-spec get_device_registration(aws_client:aws_client(), get_device_registration_request()) ->
+    {ok, get_device_registration_result(), tuple()} |
+    {error, any()} |
+    {error, get_device_registration_errors(), tuple()}.
 get_device_registration(Client, Input) ->
     get_device_registration(Client, Input, []).
+
+-spec get_device_registration(aws_client:aws_client(), get_device_registration_request(), proplists:proplist()) ->
+    {ok, get_device_registration_result(), tuple()} |
+    {error, any()} |
+    {error, get_device_registration_errors(), tuple()}.
 get_device_registration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetDeviceRegistration"],
@@ -70,8 +223,17 @@ get_device_registration(Client, Input0, Options0) ->
 
 %% @doc Use to get the current status of devices registered on SageMaker Edge
 %% Manager.
+-spec send_heartbeat(aws_client:aws_client(), send_heartbeat_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, send_heartbeat_errors(), tuple()}.
 send_heartbeat(Client, Input) ->
     send_heartbeat(Client, Input, []).
+
+-spec send_heartbeat(aws_client:aws_client(), send_heartbeat_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, send_heartbeat_errors(), tuple()}.
 send_heartbeat(Client, Input0, Options0) ->
     Method = post,
     Path = ["/SendHeartbeat"],
@@ -98,7 +260,7 @@ send_heartbeat(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

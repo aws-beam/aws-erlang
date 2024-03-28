@@ -119,6 +119,1104 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% set_sms_attributes_response() :: #{
+
+%% }
+-type set_sms_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_platform_endpoint_input() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"CustomUserData">> => string(),
+%%   <<"PlatformApplicationArn">> := string(),
+%%   <<"Token">> := string()
+%% }
+-type create_platform_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% kms_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_subscription_response() :: #{
+%%   <<"SubscriptionArn">> => string()
+%% }
+-type confirm_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_origination_numbers_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumbers">> => list(phone_number_information()())
+%% }
+-type list_origination_numbers_result() :: #{binary() => any()}.
+
+%% Example:
+%% phone_number_information() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Iso2CountryCode">> => string(),
+%%   <<"NumberCapabilities">> => list(list(any())()),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"RouteType">> => list(any()),
+%%   <<"Status">> => string()
+%% }
+-type phone_number_information() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% platform_application_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type platform_application_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsubscribe_input() :: #{
+%%   <<"SubscriptionArn">> := string()
+%% }
+-type unsubscribe_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_topic_input() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"DataProtectionPolicy">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_topic_input() :: #{binary() => any()}.
+
+%% Example:
+%% kms_opt_in_required() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_opt_in_required() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sms_sandbox_phone_number_input() :: #{
+%%   <<"PhoneNumber">> := string()
+%% }
+-type delete_sms_sandbox_phone_number_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_platform_applications_input() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_platform_applications_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_attributes_response() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type get_subscription_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_topic_input() :: #{
+%%   <<"TopicArn">> := string()
+%% }
+-type delete_topic_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_topic_attributes_input() :: #{
+%%   <<"TopicArn">> := string()
+%% }
+-type get_topic_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% platform_application() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"PlatformApplicationArn">> => string()
+%% }
+-type platform_application() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_platform_application_response() :: #{
+%%   <<"PlatformApplicationArn">> => string()
+%% }
+-type create_platform_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% kms_throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_attributes_input() :: #{
+%%   <<"EndpointArn">> := string()
+%% }
+-type get_endpoint_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_batch_entry_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_batch_entry_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscriptions_by_topic_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Subscriptions">> => list(subscription()())
+%% }
+-type list_subscriptions_by_topic_response() :: #{binary() => any()}.
+
+%% Example:
+%% message_attribute_value() :: #{
+%%   <<"BinaryValue">> => binary(),
+%%   <<"DataType">> => string(),
+%%   <<"StringValue">> => string()
+%% }
+-type message_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% check_if_phone_number_is_opted_out_input() :: #{
+%%   <<"phoneNumber">> := string()
+%% }
+-type check_if_phone_number_is_opted_out_input() :: #{binary() => any()}.
+
+%% Example:
+%% replay_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replay_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_phone_numbers_opted_out_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"phoneNumbers">> => list(string()())
+%% }
+-type list_phone_numbers_opted_out_response() :: #{binary() => any()}.
+
+%% Example:
+%% opt_in_phone_number_response() :: #{
+
+%% }
+-type opt_in_phone_number_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_sms_sandbox_phone_number_input() :: #{
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"PhoneNumber">> := string()
+%% }
+-type create_sms_sandbox_phone_number_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_sms_sandbox_phone_number_result() :: #{
+
+%% }
+-type create_sms_sandbox_phone_number_result() :: #{binary() => any()}.
+
+%% Example:
+%% user_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscriptions_input() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_subscriptions_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_topic_attributes_input() :: #{
+%%   <<"AttributeName">> := string(),
+%%   <<"AttributeValue">> => string(),
+%%   <<"TopicArn">> := string()
+%% }
+-type set_topic_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_platform_application_attributes_input() :: #{
+%%   <<"PlatformApplicationArn">> := string()
+%% }
+-type get_platform_application_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_sms_sandbox_phone_numbers_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumbers">> => list(sms_sandbox_phone_number()())
+%% }
+-type list_sms_sandbox_phone_numbers_result() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_platform_application_attributes_input() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"PlatformApplicationArn">> := string()
+%% }
+-type set_platform_application_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_result_error_entry() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"SenderFault">> => boolean()
+%% }
+-type batch_result_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% publish_batch_response() :: #{
+%%   <<"Failed">> => list(batch_result_error_entry()()),
+%%   <<"Successful">> => list(publish_batch_result_entry()())
+%% }
+-type publish_batch_response() :: #{binary() => any()}.
+
+%% Example:
+%% verify_sms_sandbox_phone_number_input() :: #{
+%%   <<"OneTimePassword">> := string(),
+%%   <<"PhoneNumber">> := string()
+%% }
+-type verify_sms_sandbox_phone_number_input() :: #{binary() => any()}.
+
+%% Example:
+%% publish_batch_request_entry() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"MessageAttributes">> => map(),
+%%   <<"MessageDeduplicationId">> => string(),
+%%   <<"MessageGroupId">> => string(),
+%%   <<"MessageStructure">> => string(),
+%%   <<"Subject">> => string()
+%% }
+-type publish_batch_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% create_topic_response() :: #{
+%%   <<"TopicArn">> => string()
+%% }
+-type create_topic_response() :: #{binary() => any()}.
+
+%% Example:
+%% topic_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type topic_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_security_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_security_exception() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_subscription_input() :: #{
+%%   <<"AuthenticateOnUnsubscribe">> => string(),
+%%   <<"Token">> := string(),
+%%   <<"TopicArn">> := string()
+%% }
+-type confirm_subscription_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_platform_application_input() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"Name">> := string(),
+%%   <<"Platform">> := string()
+%% }
+-type create_platform_application_input() :: #{binary() => any()}.
+
+%% Example:
+%% throttled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_attributes_input() :: #{
+%%   <<"SubscriptionArn">> := string()
+%% }
+-type get_subscription_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% subscribe_input() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Endpoint">> => string(),
+%%   <<"Protocol">> := string(),
+%%   <<"ReturnSubscriptionArn">> => boolean(),
+%%   <<"TopicArn">> := string()
+%% }
+-type subscribe_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% opted_out_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type opted_out_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sms_sandbox_phone_number() :: #{
+%%   <<"PhoneNumber">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type sms_sandbox_phone_number() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscriptions_by_topic_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TopicArn">> := string()
+%% }
+-type list_subscriptions_by_topic_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_sms_sandbox_phone_numbers_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_sms_sandbox_phone_numbers_input() :: #{binary() => any()}.
+
+%% Example:
+%% topic() :: #{
+%%   <<"TopicArn">> => string()
+%% }
+-type topic() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_attributes_response() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type get_endpoint_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sms_attributes_input() :: #{
+%%   <<"attributes">> => list(string()())
+%% }
+-type get_sms_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_topics_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Topics">> => list(topic()())
+%% }
+-type list_topics_response() :: #{binary() => any()}.
+
+%% Example:
+%% verification_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type verification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type endpoint_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% remove_permission_input() :: #{
+%%   <<"Label">> := string(),
+%%   <<"TopicArn">> := string()
+%% }
+-type remove_permission_input() :: #{binary() => any()}.
+
+%% Example:
+%% publish_batch_result_entry() :: #{
+%%   <<"Id">> => string(),
+%%   <<"MessageId">> => string(),
+%%   <<"SequenceNumber">> => string()
+%% }
+-type publish_batch_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% get_sms_sandbox_account_status_result() :: #{
+%%   <<"IsInSandbox">> => boolean()
+%% }
+-type get_sms_sandbox_account_status_result() :: #{binary() => any()}.
+
+%% Example:
+%% empty_batch_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type empty_batch_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"EndpointArn">> => string()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% kms_access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% verify_sms_sandbox_phone_number_result() :: #{
+
+%% }
+-type verify_sms_sandbox_phone_number_result() :: #{binary() => any()}.
+
+%% Example:
+%% kms_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_entry_ids_not_distinct_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type batch_entry_ids_not_distinct_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_sms_attributes_input() :: #{
+%%   <<"attributes">> := map()
+%% }
+-type set_sms_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_platform_applications_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PlatformApplications">> => list(platform_application()())
+%% }
+-type list_platform_applications_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_subscription_attributes_input() :: #{
+%%   <<"AttributeName">> := string(),
+%%   <<"AttributeValue">> => string(),
+%%   <<"SubscriptionArn">> := string()
+%% }
+-type set_subscription_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_input() :: #{
+%%   <<"EndpointArn">> := string()
+%% }
+-type delete_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% subscribe_response() :: #{
+%%   <<"SubscriptionArn">> => string()
+%% }
+-type subscribe_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% subscription() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"Protocol">> => string(),
+%%   <<"SubscriptionArn">> => string(),
+%%   <<"TopicArn">> => string()
+%% }
+-type subscription() :: #{binary() => any()}.
+
+%% Example:
+%% list_phone_numbers_opted_out_input() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_phone_numbers_opted_out_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscriptions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Subscriptions">> => list(subscription()())
+%% }
+-type list_subscriptions_response() :: #{binary() => any()}.
+
+%% Example:
+%% publish_response() :: #{
+%%   <<"MessageId">> => string(),
+%%   <<"SequenceNumber">> => string()
+%% }
+-type publish_response() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type authorization_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% check_if_phone_number_is_opted_out_response() :: #{
+%%   <<"isOptedOut">> => boolean()
+%% }
+-type check_if_phone_number_is_opted_out_response() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_access_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_access_exception() :: #{binary() => any()}.
+
+%% Example:
+%% add_permission_input() :: #{
+%%   <<"AWSAccountId">> := list(string()()),
+%%   <<"ActionName">> := list(string()()),
+%%   <<"Label">> := string(),
+%%   <<"TopicArn">> := string()
+%% }
+-type add_permission_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_protection_policy_response() :: #{
+%%   <<"DataProtectionPolicy">> => string()
+%% }
+-type get_data_protection_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_origination_numbers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_origination_numbers_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_endpoint_attributes_input() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"EndpointArn">> := string()
+%% }
+-type set_endpoint_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% publish_input() :: #{
+%%   <<"Message">> := string(),
+%%   <<"MessageAttributes">> => map(),
+%%   <<"MessageDeduplicationId">> => string(),
+%%   <<"MessageGroupId">> => string(),
+%%   <<"MessageStructure">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"Subject">> => string(),
+%%   <<"TargetArn">> => string(),
+%%   <<"TopicArn">> => string()
+%% }
+-type publish_input() :: #{binary() => any()}.
+
+%% Example:
+%% filter_policy_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type filter_policy_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_response() :: #{
+%%   <<"EndpointArn">> => string()
+%% }
+-type create_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoints_by_platform_application_response() :: #{
+%%   <<"Endpoints">> => list(endpoint()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoints_by_platform_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_topic_attributes_response() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type get_topic_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_topics_input() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_topics_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_data_protection_policy_input() :: #{
+%%   <<"DataProtectionPolicy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_data_protection_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sms_sandbox_phone_number_result() :: #{
+
+%% }
+-type delete_sms_sandbox_phone_number_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_sms_attributes_response() :: #{
+%%   <<"attributes">> => map()
+%% }
+-type get_sms_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sms_sandbox_account_status_input() :: #{
+
+%% }
+-type get_sms_sandbox_account_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% stale_tag_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type stale_tag_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoints_by_platform_application_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PlatformApplicationArn">> := string()
+%% }
+-type list_endpoints_by_platform_application_input() :: #{binary() => any()}.
+
+%% Example:
+%% opt_in_phone_number_input() :: #{
+%%   <<"phoneNumber">> := string()
+%% }
+-type opt_in_phone_number_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_platform_application_attributes_response() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type get_platform_application_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_entries_in_batch_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_entries_in_batch_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_request_too_long_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type batch_request_too_long_exception() :: #{binary() => any()}.
+
+%% Example:
+%% publish_batch_input() :: #{
+%%   <<"PublishBatchRequestEntries">> := list(publish_batch_request_entry()()),
+%%   <<"TopicArn">> := string()
+%% }
+-type publish_batch_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_protection_policy_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_data_protection_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_platform_application_input() :: #{
+%%   <<"PlatformApplicationArn">> := string()
+%% }
+-type delete_platform_application_input() :: #{binary() => any()}.
+
+-type add_permission_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type check_if_phone_number_is_opted_out_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type confirm_subscription_errors() ::
+    internal_error_exception() | 
+    subscription_limit_exceeded_exception() | 
+    filter_policy_limit_exceeded_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    replay_limit_exceeded_exception().
+
+-type create_platform_application_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type create_platform_endpoint_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type create_sms_sandbox_phone_number_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    opted_out_exception() | 
+    throttled_exception() | 
+    user_error_exception().
+
+-type create_topic_errors() ::
+    internal_error_exception() | 
+    stale_tag_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    tag_limit_exceeded_exception() | 
+    invalid_security_exception() | 
+    topic_limit_exceeded_exception() | 
+    tag_policy_exception().
+
+-type delete_endpoint_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type delete_platform_application_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type delete_sms_sandbox_phone_number_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception() | 
+    user_error_exception().
+
+-type delete_topic_errors() ::
+    internal_error_exception() | 
+    stale_tag_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_state_exception() | 
+    tag_policy_exception().
+
+-type get_data_protection_policy_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception().
+
+-type get_endpoint_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type get_platform_application_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type get_sms_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type get_sms_sandbox_account_status_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    throttled_exception().
+
+-type get_subscription_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type get_topic_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception().
+
+-type list_endpoints_by_platform_application_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type list_origination_numbers_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type list_phone_numbers_opted_out_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type list_platform_applications_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type list_sms_sandbox_phone_numbers_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
+
+-type list_subscriptions_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type list_subscriptions_by_topic_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    concurrent_access_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    tag_policy_exception().
+
+-type list_topics_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception().
+
+-type opt_in_phone_number_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type publish_errors() ::
+    internal_error_exception() | 
+    kms_invalid_state_exception() | 
+    authorization_error_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    kms_not_found_exception() | 
+    kms_access_denied_exception() | 
+    endpoint_disabled_exception() | 
+    not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_security_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    platform_application_disabled_exception() | 
+    kms_disabled_exception().
+
+-type publish_batch_errors() ::
+    batch_request_too_long_exception() | 
+    internal_error_exception() | 
+    too_many_entries_in_batch_request_exception() | 
+    kms_invalid_state_exception() | 
+    authorization_error_exception() | 
+    validation_exception() | 
+    batch_entry_ids_not_distinct_exception() | 
+    invalid_parameter_exception() | 
+    kms_not_found_exception() | 
+    kms_access_denied_exception() | 
+    empty_batch_request_exception() | 
+    endpoint_disabled_exception() | 
+    not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_security_exception() | 
+    invalid_batch_entry_id_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    platform_application_disabled_exception() | 
+    kms_disabled_exception().
+
+-type put_data_protection_policy_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception().
+
+-type remove_permission_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type set_endpoint_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type set_platform_application_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception().
+
+-type set_sms_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    throttled_exception().
+
+-type set_subscription_attributes_errors() ::
+    internal_error_exception() | 
+    filter_policy_limit_exceeded_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    replay_limit_exceeded_exception().
+
+-type set_topic_attributes_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception().
+
+-type subscribe_errors() ::
+    internal_error_exception() | 
+    subscription_limit_exceeded_exception() | 
+    filter_policy_limit_exceeded_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception() | 
+    replay_limit_exceeded_exception().
+
+-type tag_resource_errors() ::
+    stale_tag_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    tag_limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    tag_policy_exception().
+
+-type unsubscribe_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    not_found_exception() | 
+    invalid_security_exception().
+
+-type untag_resource_errors() ::
+    stale_tag_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    tag_limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    tag_policy_exception().
+
+-type verify_sms_sandbox_phone_number_errors() ::
+    internal_error_exception() | 
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    verification_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -131,9 +1229,18 @@
 %% permissions to
 %% the `AddPermission', `RemovePermission', and
 %% `SetTopicAttributes' actions in your IAM policy.
+-spec add_permission(aws_client:aws_client(), add_permission_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, add_permission_errors(), tuple()}.
 add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_permission(Client, Input, []).
+
+-spec add_permission(aws_client:aws_client(), add_permission_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, add_permission_errors(), tuple()}.
 add_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddPermission">>, Input, Options).
@@ -147,9 +1254,18 @@ add_permission(Client, Input, Options)
 %%
 %% To resume sending messages, you can opt in the number by using the
 %% `OptInPhoneNumber' action.
+-spec check_if_phone_number_is_opted_out(aws_client:aws_client(), check_if_phone_number_is_opted_out_input()) ->
+    {ok, check_if_phone_number_is_opted_out_response(), tuple()} |
+    {error, any()} |
+    {error, check_if_phone_number_is_opted_out_errors(), tuple()}.
 check_if_phone_number_is_opted_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_if_phone_number_is_opted_out(Client, Input, []).
+
+-spec check_if_phone_number_is_opted_out(aws_client:aws_client(), check_if_phone_number_is_opted_out_input(), proplists:proplist()) ->
+    {ok, check_if_phone_number_is_opted_out_response(), tuple()} |
+    {error, any()} |
+    {error, check_if_phone_number_is_opted_out_errors(), tuple()}.
 check_if_phone_number_is_opted_out(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckIfPhoneNumberIsOptedOut">>, Input, Options).
@@ -164,9 +1280,18 @@ check_if_phone_number_is_opted_out(Client, Input, Options)
 %% requires an AWS signature only when the `AuthenticateOnUnsubscribe'
 %% flag is
 %% set to &quot;true&quot;.
+-spec confirm_subscription(aws_client:aws_client(), confirm_subscription_input()) ->
+    {ok, confirm_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, confirm_subscription_errors(), tuple()}.
 confirm_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_subscription(Client, Input, []).
+
+-spec confirm_subscription(aws_client:aws_client(), confirm_subscription_input(), proplists:proplist()) ->
+    {ok, confirm_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, confirm_subscription_errors(), tuple()}.
 confirm_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmSubscription">>, Input, Options).
@@ -226,9 +1351,18 @@ confirm_subscription(Client, Input, Options)
 %% You can use the returned `PlatformApplicationArn' as an attribute for
 %% the
 %% `CreatePlatformEndpoint' action.
+-spec create_platform_application(aws_client:aws_client(), create_platform_application_input()) ->
+    {ok, create_platform_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_platform_application_errors(), tuple()}.
 create_platform_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_platform_application(Client, Input, []).
+
+-spec create_platform_application(aws_client:aws_client(), create_platform_application_input(), proplists:proplist()) ->
+    {ok, create_platform_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_platform_application_errors(), tuple()}.
 create_platform_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlatformApplication">>, Input, Options).
@@ -256,9 +1390,18 @@ create_platform_application(Client, Input, Options)
 %% more information, see Creating an Amazon SNS Endpoint for
 %% Baidu:
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html.
+-spec create_platform_endpoint(aws_client:aws_client(), create_platform_endpoint_input()) ->
+    {ok, create_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_platform_endpoint_errors(), tuple()}.
 create_platform_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_platform_endpoint(Client, Input, []).
+
+-spec create_platform_endpoint(aws_client:aws_client(), create_platform_endpoint_input(), proplists:proplist()) ->
+    {ok, create_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_platform_endpoint_errors(), tuple()}.
 create_platform_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlatformEndpoint">>, Input, Options).
@@ -280,9 +1423,18 @@ create_platform_endpoint(Client, Input, Options)
 %% see SMS sandbox:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in
 %% the Amazon SNS Developer Guide.
+-spec create_sms_sandbox_phone_number(aws_client:aws_client(), create_sms_sandbox_phone_number_input()) ->
+    {ok, create_sms_sandbox_phone_number_result(), tuple()} |
+    {error, any()} |
+    {error, create_sms_sandbox_phone_number_errors(), tuple()}.
 create_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_sms_sandbox_phone_number(Client, Input, []).
+
+-spec create_sms_sandbox_phone_number(aws_client:aws_client(), create_sms_sandbox_phone_number_input(), proplists:proplist()) ->
+    {ok, create_sms_sandbox_phone_number_result(), tuple()} |
+    {error, any()} |
+    {error, create_sms_sandbox_phone_number_errors(), tuple()}.
 create_sms_sandbox_phone_number(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSMSSandboxPhoneNumber">>, Input, Options).
@@ -297,9 +1449,18 @@ create_sms_sandbox_phone_number(Client, Input, Options)
 %% idempotent, so if the requester already owns a topic with the specified
 %% name, that
 %% topic's ARN is returned without creating a new topic.
+-spec create_topic(aws_client:aws_client(), create_topic_input()) ->
+    {ok, create_topic_response(), tuple()} |
+    {error, any()} |
+    {error, create_topic_errors(), tuple()}.
 create_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_topic(Client, Input, []).
+
+-spec create_topic(aws_client:aws_client(), create_topic_input(), proplists:proplist()) ->
+    {ok, create_topic_response(), tuple()} |
+    {error, any()} |
+    {error, create_topic_errors(), tuple()}.
 create_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTopic">>, Input, Options).
@@ -314,9 +1475,18 @@ create_topic(Client, Input, Options)
 %% When you delete an endpoint that is also subscribed to a topic, then you
 %% must also
 %% unsubscribe the endpoint from the topic.
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
+
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpoint">>, Input, Options).
@@ -329,9 +1499,18 @@ delete_endpoint(Client, Input, Options)
 %% Using Amazon SNS
 %% Mobile Push Notifications:
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
+-spec delete_platform_application(aws_client:aws_client(), delete_platform_application_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_platform_application_errors(), tuple()}.
 delete_platform_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_platform_application(Client, Input, []).
+
+-spec delete_platform_application(aws_client:aws_client(), delete_platform_application_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_platform_application_errors(), tuple()}.
 delete_platform_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePlatformApplication">>, Input, Options).
@@ -353,9 +1532,18 @@ delete_platform_application(Client, Input, Options)
 %% see SMS sandbox:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in
 %% the Amazon SNS Developer Guide.
+-spec delete_sms_sandbox_phone_number(aws_client:aws_client(), delete_sms_sandbox_phone_number_input()) ->
+    {ok, delete_sms_sandbox_phone_number_result(), tuple()} |
+    {error, any()} |
+    {error, delete_sms_sandbox_phone_number_errors(), tuple()}.
 delete_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_sms_sandbox_phone_number(Client, Input, []).
+
+-spec delete_sms_sandbox_phone_number(aws_client:aws_client(), delete_sms_sandbox_phone_number_input(), proplists:proplist()) ->
+    {ok, delete_sms_sandbox_phone_number_result(), tuple()} |
+    {error, any()} |
+    {error, delete_sms_sandbox_phone_number_errors(), tuple()}.
 delete_sms_sandbox_phone_number(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSMSSandboxPhoneNumber">>, Input, Options).
@@ -368,9 +1556,18 @@ delete_sms_sandbox_phone_number(Client, Input, Options)
 %% is idempotent, so deleting a topic that does not exist does not result in
 %% an
 %% error.
+-spec delete_topic(aws_client:aws_client(), delete_topic_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_topic_errors(), tuple()}.
 delete_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_topic(Client, Input, []).
+
+-spec delete_topic(aws_client:aws_client(), delete_topic_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_topic_errors(), tuple()}.
 delete_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTopic">>, Input, Options).
@@ -378,9 +1575,18 @@ delete_topic(Client, Input, Options)
 %% @doc Retrieves the specified inline `DataProtectionPolicy' document
 %% that is
 %% stored in the specified Amazon SNS topic.
+-spec get_data_protection_policy(aws_client:aws_client(), get_data_protection_policy_input()) ->
+    {ok, get_data_protection_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_protection_policy_errors(), tuple()}.
 get_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_protection_policy(Client, Input, []).
+
+-spec get_data_protection_policy(aws_client:aws_client(), get_data_protection_policy_input(), proplists:proplist()) ->
+    {ok, get_data_protection_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_protection_policy_errors(), tuple()}.
 get_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataProtectionPolicy">>, Input, Options).
@@ -392,9 +1598,18 @@ get_data_protection_policy(Client, Input, Options)
 %% For more
 %% information, see Using Amazon SNS Mobile Push Notifications:
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
+-spec get_endpoint_attributes(aws_client:aws_client(), get_endpoint_attributes_input()) ->
+    {ok, get_endpoint_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_endpoint_attributes_errors(), tuple()}.
 get_endpoint_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_endpoint_attributes(Client, Input, []).
+
+-spec get_endpoint_attributes(aws_client:aws_client(), get_endpoint_attributes_input(), proplists:proplist()) ->
+    {ok, get_endpoint_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_endpoint_attributes_errors(), tuple()}.
 get_endpoint_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEndpointAttributes">>, Input, Options).
@@ -406,9 +1621,18 @@ get_endpoint_attributes(Client, Input, Options)
 %% For more
 %% information, see Using Amazon SNS Mobile Push Notifications:
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
+-spec get_platform_application_attributes(aws_client:aws_client(), get_platform_application_attributes_input()) ->
+    {ok, get_platform_application_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_platform_application_attributes_errors(), tuple()}.
 get_platform_application_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_platform_application_attributes(Client, Input, []).
+
+-spec get_platform_application_attributes(aws_client:aws_client(), get_platform_application_attributes_input(), proplists:proplist()) ->
+    {ok, get_platform_application_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_platform_application_attributes_errors(), tuple()}.
 get_platform_application_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPlatformApplicationAttributes">>, Input, Options).
@@ -417,9 +1641,18 @@ get_platform_application_attributes(Client, Input, Options)
 %% Services account.
 %%
 %% These settings are set with the `SetSMSAttributes' action.
+-spec get_sms_attributes(aws_client:aws_client(), get_sms_attributes_input()) ->
+    {ok, get_sms_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_sms_attributes_errors(), tuple()}.
 get_sms_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sms_attributes(Client, Input, []).
+
+-spec get_sms_attributes(aws_client:aws_client(), get_sms_attributes_input(), proplists:proplist()) ->
+    {ok, get_sms_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_sms_attributes_errors(), tuple()}.
 get_sms_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSMSAttributes">>, Input, Options).
@@ -441,17 +1674,35 @@ get_sms_attributes(Client, Input, Options)
 %% see SMS sandbox:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in
 %% the Amazon SNS Developer Guide.
+-spec get_sms_sandbox_account_status(aws_client:aws_client(), get_sms_sandbox_account_status_input()) ->
+    {ok, get_sms_sandbox_account_status_result(), tuple()} |
+    {error, any()} |
+    {error, get_sms_sandbox_account_status_errors(), tuple()}.
 get_sms_sandbox_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sms_sandbox_account_status(Client, Input, []).
+
+-spec get_sms_sandbox_account_status(aws_client:aws_client(), get_sms_sandbox_account_status_input(), proplists:proplist()) ->
+    {ok, get_sms_sandbox_account_status_result(), tuple()} |
+    {error, any()} |
+    {error, get_sms_sandbox_account_status_errors(), tuple()}.
 get_sms_sandbox_account_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSMSSandboxAccountStatus">>, Input, Options).
 
 %% @doc Returns all of the properties of a subscription.
+-spec get_subscription_attributes(aws_client:aws_client(), get_subscription_attributes_input()) ->
+    {ok, get_subscription_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_attributes_errors(), tuple()}.
 get_subscription_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_subscription_attributes(Client, Input, []).
+
+-spec get_subscription_attributes(aws_client:aws_client(), get_subscription_attributes_input(), proplists:proplist()) ->
+    {ok, get_subscription_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_attributes_errors(), tuple()}.
 get_subscription_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSubscriptionAttributes">>, Input, Options).
@@ -460,9 +1711,18 @@ get_subscription_attributes(Client, Input, Options)
 %%
 %% Topic properties returned might differ based
 %% on the authorization of the user.
+-spec get_topic_attributes(aws_client:aws_client(), get_topic_attributes_input()) ->
+    {ok, get_topic_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_topic_attributes_errors(), tuple()}.
 get_topic_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_topic_attributes(Client, Input, []).
+
+-spec get_topic_attributes(aws_client:aws_client(), get_topic_attributes_input(), proplists:proplist()) ->
+    {ok, get_topic_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, get_topic_attributes_errors(), tuple()}.
 get_topic_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTopicAttributes">>, Input, Options).
@@ -486,9 +1746,18 @@ get_topic_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
+-spec list_endpoints_by_platform_application(aws_client:aws_client(), list_endpoints_by_platform_application_input()) ->
+    {ok, list_endpoints_by_platform_application_response(), tuple()} |
+    {error, any()} |
+    {error, list_endpoints_by_platform_application_errors(), tuple()}.
 list_endpoints_by_platform_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoints_by_platform_application(Client, Input, []).
+
+-spec list_endpoints_by_platform_application(aws_client:aws_client(), list_endpoints_by_platform_application_input(), proplists:proplist()) ->
+    {ok, list_endpoints_by_platform_application_response(), tuple()} |
+    {error, any()} |
+    {error, list_endpoints_by_platform_application_errors(), tuple()}.
 list_endpoints_by_platform_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEndpointsByPlatformApplication">>, Input, Options).
@@ -500,9 +1769,18 @@ list_endpoints_by_platform_application(Client, Input, Options)
 %% https://docs.aws.amazon.com/sns/latest/dg/channels-sms-originating-identities-origination-numbers.html
 %% in the Amazon SNS Developer
 %% Guide.
+-spec list_origination_numbers(aws_client:aws_client(), list_origination_numbers_request()) ->
+    {ok, list_origination_numbers_result(), tuple()} |
+    {error, any()} |
+    {error, list_origination_numbers_errors(), tuple()}.
 list_origination_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_origination_numbers(Client, Input, []).
+
+-spec list_origination_numbers(aws_client:aws_client(), list_origination_numbers_request(), proplists:proplist()) ->
+    {ok, list_origination_numbers_result(), tuple()} |
+    {error, any()} |
+    {error, list_origination_numbers_errors(), tuple()}.
 list_origination_numbers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOriginationNumbers">>, Input, Options).
@@ -520,9 +1798,18 @@ list_origination_numbers(Client, Input, Options)
 %% the next page, you call `ListPhoneNumbersOptedOut' again using the
 %% `NextToken' string received from the previous call. When there are no
 %% more records to return, `NextToken' will be null.
+-spec list_phone_numbers_opted_out(aws_client:aws_client(), list_phone_numbers_opted_out_input()) ->
+    {ok, list_phone_numbers_opted_out_response(), tuple()} |
+    {error, any()} |
+    {error, list_phone_numbers_opted_out_errors(), tuple()}.
 list_phone_numbers_opted_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_phone_numbers_opted_out(Client, Input, []).
+
+-spec list_phone_numbers_opted_out(aws_client:aws_client(), list_phone_numbers_opted_out_input(), proplists:proplist()) ->
+    {ok, list_phone_numbers_opted_out_response(), tuple()} |
+    {error, any()} |
+    {error, list_phone_numbers_opted_out_errors(), tuple()}.
 list_phone_numbers_opted_out(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPhoneNumbersOptedOut">>, Input, Options).
@@ -546,9 +1833,18 @@ list_phone_numbers_opted_out(Client, Input, Options)
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 %%
 %% This action is throttled at 15 transactions per second (TPS).
+-spec list_platform_applications(aws_client:aws_client(), list_platform_applications_input()) ->
+    {ok, list_platform_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_platform_applications_errors(), tuple()}.
 list_platform_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_platform_applications(Client, Input, []).
+
+-spec list_platform_applications(aws_client:aws_client(), list_platform_applications_input(), proplists:proplist()) ->
+    {ok, list_platform_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_platform_applications_errors(), tuple()}.
 list_platform_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPlatformApplications">>, Input, Options).
@@ -570,9 +1866,18 @@ list_platform_applications(Client, Input, Options)
 %% see SMS sandbox:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in
 %% the Amazon SNS Developer Guide.
+-spec list_sms_sandbox_phone_numbers(aws_client:aws_client(), list_sms_sandbox_phone_numbers_input()) ->
+    {ok, list_sms_sandbox_phone_numbers_result(), tuple()} |
+    {error, any()} |
+    {error, list_sms_sandbox_phone_numbers_errors(), tuple()}.
 list_sms_sandbox_phone_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sms_sandbox_phone_numbers(Client, Input, []).
+
+-spec list_sms_sandbox_phone_numbers(aws_client:aws_client(), list_sms_sandbox_phone_numbers_input(), proplists:proplist()) ->
+    {ok, list_sms_sandbox_phone_numbers_result(), tuple()} |
+    {error, any()} |
+    {error, list_sms_sandbox_phone_numbers_errors(), tuple()}.
 list_sms_sandbox_phone_numbers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSMSSandboxPhoneNumbers">>, Input, Options).
@@ -586,9 +1891,18 @@ list_sms_sandbox_phone_numbers(Client, Input, Options)
 %% `ListSubscriptions' call to get further results.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
+-spec list_subscriptions(aws_client:aws_client(), list_subscriptions_input()) ->
+    {ok, list_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_errors(), tuple()}.
 list_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscriptions(Client, Input, []).
+
+-spec list_subscriptions(aws_client:aws_client(), list_subscriptions_input(), proplists:proplist()) ->
+    {ok, list_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_errors(), tuple()}.
 list_subscriptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSubscriptions">>, Input, Options).
@@ -601,9 +1915,18 @@ list_subscriptions(Client, Input, Options)
 %% a new `ListSubscriptionsByTopic' call to get further results.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
+-spec list_subscriptions_by_topic(aws_client:aws_client(), list_subscriptions_by_topic_input()) ->
+    {ok, list_subscriptions_by_topic_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_by_topic_errors(), tuple()}.
 list_subscriptions_by_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscriptions_by_topic(Client, Input, []).
+
+-spec list_subscriptions_by_topic(aws_client:aws_client(), list_subscriptions_by_topic_input(), proplists:proplist()) ->
+    {ok, list_subscriptions_by_topic_response(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_by_topic_errors(), tuple()}.
 list_subscriptions_by_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSubscriptionsByTopic">>, Input, Options).
@@ -613,9 +1936,18 @@ list_subscriptions_by_topic(Client, Input, Options)
 %% For an overview, see Amazon SNS Tags:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html in the
 %% Amazon Simple Notification Service Developer Guide.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -629,9 +1961,18 @@ list_tags_for_resource(Client, Input, Options)
 %% further results.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
+-spec list_topics(aws_client:aws_client(), list_topics_input()) ->
+    {ok, list_topics_response(), tuple()} |
+    {error, any()} |
+    {error, list_topics_errors(), tuple()}.
 list_topics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_topics(Client, Input, []).
+
+-spec list_topics(aws_client:aws_client(), list_topics_input(), proplists:proplist()) ->
+    {ok, list_topics_response(), tuple()} |
+    {error, any()} |
+    {error, list_topics_errors(), tuple()}.
 list_topics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTopics">>, Input, Options).
@@ -641,9 +1982,18 @@ list_topics(Client, Input, Options)
 %% resume sending SMS messages to the number.
 %%
 %% You can opt in a phone number only once every 30 days.
+-spec opt_in_phone_number(aws_client:aws_client(), opt_in_phone_number_input()) ->
+    {ok, opt_in_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, opt_in_phone_number_errors(), tuple()}.
 opt_in_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     opt_in_phone_number(Client, Input, []).
+
+-spec opt_in_phone_number(aws_client:aws_client(), opt_in_phone_number_input(), proplists:proplist()) ->
+    {ok, opt_in_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, opt_in_phone_number_errors(), tuple()}.
 opt_in_phone_number(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"OptInPhoneNumber">>, Input, Options).
@@ -677,9 +2027,18 @@ opt_in_phone_number(Client, Input, Options)
 %%
 %% You can publish messages only to topics and endpoints in the same
 %% Amazon Web Services Region.
+-spec publish(aws_client:aws_client(), publish_input()) ->
+    {ok, publish_response(), tuple()} |
+    {error, any()} |
+    {error, publish_errors(), tuple()}.
 publish(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish(Client, Input, []).
+
+-spec publish(aws_client:aws_client(), publish_input(), proplists:proplist()) ->
+    {ok, publish_response(), tuple()} |
+    {error, any()} |
+    {error, publish_errors(), tuple()}.
 publish(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Publish">>, Input, Options).
@@ -724,9 +2083,18 @@ publish(Client, Input, Options)
 %% When a `messageId' is returned, the batch message is saved and Amazon
 %% SNS
 %% immediately delivers the message to subscribers.
+-spec publish_batch(aws_client:aws_client(), publish_batch_input()) ->
+    {ok, publish_batch_response(), tuple()} |
+    {error, any()} |
+    {error, publish_batch_errors(), tuple()}.
 publish_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish_batch(Client, Input, []).
+
+-spec publish_batch(aws_client:aws_client(), publish_batch_input(), proplists:proplist()) ->
+    {ok, publish_batch_response(), tuple()} |
+    {error, any()} |
+    {error, publish_batch_errors(), tuple()}.
 publish_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PublishBatch">>, Input, Options).
@@ -734,9 +2102,18 @@ publish_batch(Client, Input, Options)
 %% @doc Adds or updates an inline policy document that is stored in the
 %% specified Amazon SNS
 %% topic.
+-spec put_data_protection_policy(aws_client:aws_client(), put_data_protection_policy_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_data_protection_policy_errors(), tuple()}.
 put_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_data_protection_policy(Client, Input, []).
+
+-spec put_data_protection_policy(aws_client:aws_client(), put_data_protection_policy_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_data_protection_policy_errors(), tuple()}.
 put_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDataProtectionPolicy">>, Input, Options).
@@ -747,9 +2124,18 @@ put_data_protection_policy(Client, Input, Options)
 %% permissions to
 %% the `AddPermission', `RemovePermission', and
 %% `SetTopicAttributes' actions in your IAM policy.
+-spec remove_permission(aws_client:aws_client(), remove_permission_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
+
+-spec remove_permission(aws_client:aws_client(), remove_permission_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemovePermission">>, Input, Options).
@@ -761,9 +2147,18 @@ remove_permission(Client, Input, Options)
 %% For more
 %% information, see Using Amazon SNS Mobile Push Notifications:
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
+-spec set_endpoint_attributes(aws_client:aws_client(), set_endpoint_attributes_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_endpoint_attributes_errors(), tuple()}.
 set_endpoint_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_endpoint_attributes(Client, Input, []).
+
+-spec set_endpoint_attributes(aws_client:aws_client(), set_endpoint_attributes_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_endpoint_attributes_errors(), tuple()}.
 set_endpoint_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetEndpointAttributes">>, Input, Options).
@@ -780,9 +2175,18 @@ set_endpoint_attributes(Client, Input, Options)
 %% Attributes for
 %% Message Delivery Status:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html.
+-spec set_platform_application_attributes(aws_client:aws_client(), set_platform_application_attributes_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_platform_application_attributes_errors(), tuple()}.
 set_platform_application_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_platform_application_attributes(Client, Input, []).
+
+-spec set_platform_application_attributes(aws_client:aws_client(), set_platform_application_attributes_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_platform_application_attributes_errors(), tuple()}.
 set_platform_application_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetPlatformApplicationAttributes">>, Input, Options).
@@ -801,9 +2205,18 @@ set_platform_application_attributes(Client, Input, Options)
 %% To use this operation, you must grant the Amazon SNS service principal
 %% (`sns.amazonaws.com') permission to perform the
 %% `s3:ListBucket' action.
+-spec set_sms_attributes(aws_client:aws_client(), set_sms_attributes_input()) ->
+    {ok, set_sms_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, set_sms_attributes_errors(), tuple()}.
 set_sms_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_sms_attributes(Client, Input, []).
+
+-spec set_sms_attributes(aws_client:aws_client(), set_sms_attributes_input(), proplists:proplist()) ->
+    {ok, set_sms_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, set_sms_attributes_errors(), tuple()}.
 set_sms_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSMSAttributes">>, Input, Options).
@@ -811,9 +2224,18 @@ set_sms_attributes(Client, Input, Options)
 %% @doc Allows a subscription owner to set an attribute of the subscription
 %% to a new
 %% value.
+-spec set_subscription_attributes(aws_client:aws_client(), set_subscription_attributes_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_subscription_attributes_errors(), tuple()}.
 set_subscription_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_subscription_attributes(Client, Input, []).
+
+-spec set_subscription_attributes(aws_client:aws_client(), set_subscription_attributes_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_subscription_attributes_errors(), tuple()}.
 set_subscription_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSubscriptionAttributes">>, Input, Options).
@@ -824,9 +2246,18 @@ set_subscription_attributes(Client, Input, Options)
 %% permissions to
 %% the `AddPermission', `RemovePermission', and
 %% `SetTopicAttributes' actions in your IAM policy.
+-spec set_topic_attributes(aws_client:aws_client(), set_topic_attributes_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_topic_attributes_errors(), tuple()}.
 set_topic_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_topic_attributes(Client, Input, []).
+
+-spec set_topic_attributes(aws_client:aws_client(), set_topic_attributes_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_topic_attributes_errors(), tuple()}.
 set_topic_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTopicAttributes">>, Input, Options).
@@ -842,9 +2273,18 @@ set_topic_attributes(Client, Input, Options)
 %% subscription response. Confirmation tokens are valid for two days.
 %%
 %% This action is throttled at 100 transactions per second (TPS).
+-spec subscribe(aws_client:aws_client(), subscribe_input()) ->
+    {ok, subscribe_response(), tuple()} |
+    {error, any()} |
+    {error, subscribe_errors(), tuple()}.
 subscribe(Client, Input)
   when is_map(Client), is_map(Input) ->
     subscribe(Client, Input, []).
+
+-spec subscribe(aws_client:aws_client(), subscribe_input(), proplists:proplist()) ->
+    {ok, subscribe_response(), tuple()} |
+    {error, any()} |
+    {error, subscribe_errors(), tuple()}.
 subscribe(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Subscribe">>, Input, Options).
@@ -873,9 +2313,18 @@ subscribe(Client, Input, Options)
 %% your application requires a higher throughput, file a technical support
 %% request:
 %% https://console.aws.amazon.com/support/home#/case/create?issueType=technical.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -899,9 +2348,18 @@ tag_resource(Client, Input, Options)
 %% signature.
 %%
 %% This action is throttled at 100 transactions per second (TPS).
+-spec unsubscribe(aws_client:aws_client(), unsubscribe_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, unsubscribe_errors(), tuple()}.
 unsubscribe(Client, Input)
   when is_map(Client), is_map(Input) ->
     unsubscribe(Client, Input, []).
+
+-spec unsubscribe(aws_client:aws_client(), unsubscribe_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, unsubscribe_errors(), tuple()}.
 unsubscribe(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Unsubscribe">>, Input, Options).
@@ -911,9 +2369,18 @@ unsubscribe(Client, Input, Options)
 %% For an overview, see Amazon SNS Tags:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html in the
 %% Amazon SNS Developer Guide.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -935,9 +2402,18 @@ untag_resource(Client, Input, Options)
 %% see SMS sandbox:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in
 %% the Amazon SNS Developer Guide.
+-spec verify_sms_sandbox_phone_number(aws_client:aws_client(), verify_sms_sandbox_phone_number_input()) ->
+    {ok, verify_sms_sandbox_phone_number_result(), tuple()} |
+    {error, any()} |
+    {error, verify_sms_sandbox_phone_number_errors(), tuple()}.
 verify_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_sms_sandbox_phone_number(Client, Input, []).
+
+-spec verify_sms_sandbox_phone_number(aws_client:aws_client(), verify_sms_sandbox_phone_number_input(), proplists:proplist()) ->
+    {ok, verify_sms_sandbox_phone_number_result(), tuple()} |
+    {error, any()} |
+    {error, verify_sms_sandbox_phone_number_errors(), tuple()}.
 verify_sms_sandbox_phone_number(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifySMSSandboxPhoneNumber">>, Input, Options).

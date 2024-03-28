@@ -23,6 +23,258 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% compliance_details() :: #{
+%%   <<"ComplianceStatus">> => boolean(),
+%%   <<"KeysWithNoncompliantValues">> => list(string()()),
+%%   <<"NoncompliantKeys">> => list(string()())
+%% }
+-type compliance_details() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% constraint_violation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type constraint_violation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_report_creation_input() :: #{
+
+%% }
+-type describe_report_creation_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_report_creation_output() :: #{
+%%   <<"ErrorMessage">> => string(),
+%%   <<"S3Location">> => string(),
+%%   <<"StartDate">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type describe_report_creation_output() :: #{binary() => any()}.
+
+%% Example:
+%% failure_info() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type failure_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_compliance_summary_input() :: #{
+%%   <<"GroupBy">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"PaginationToken">> => string(),
+%%   <<"RegionFilters">> => list(string()()),
+%%   <<"ResourceTypeFilters">> => list(string()()),
+%%   <<"TagKeyFilters">> => list(string()()),
+%%   <<"TargetIdFilters">> => list(string()())
+%% }
+-type get_compliance_summary_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_compliance_summary_output() :: #{
+%%   <<"PaginationToken">> => string(),
+%%   <<"SummaryList">> => list(summary()())
+%% }
+-type get_compliance_summary_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_resources_input() :: #{
+%%   <<"ExcludeCompliantResources">> => boolean(),
+%%   <<"IncludeComplianceDetails">> => boolean(),
+%%   <<"PaginationToken">> => string(),
+%%   <<"ResourceARNList">> => list(string()()),
+%%   <<"ResourceTypeFilters">> => list(string()()),
+%%   <<"ResourcesPerPage">> => integer(),
+%%   <<"TagFilters">> => list(tag_filter()()),
+%%   <<"TagsPerPage">> => integer()
+%% }
+-type get_resources_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resources_output() :: #{
+%%   <<"PaginationToken">> => string(),
+%%   <<"ResourceTagMappingList">> => list(resource_tag_mapping()())
+%% }
+-type get_resources_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_tag_keys_input() :: #{
+%%   <<"PaginationToken">> => string()
+%% }
+-type get_tag_keys_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_tag_keys_output() :: #{
+%%   <<"PaginationToken">> => string(),
+%%   <<"TagKeys">> => list(string()())
+%% }
+-type get_tag_keys_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_tag_values_input() :: #{
+%%   <<"Key">> := string(),
+%%   <<"PaginationToken">> => string()
+%% }
+-type get_tag_values_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_tag_values_output() :: #{
+%%   <<"PaginationToken">> => string(),
+%%   <<"TagValues">> => list(string()())
+%% }
+-type get_tag_values_output() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pagination_token_expired_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type pagination_token_expired_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag_mapping() :: #{
+%%   <<"ComplianceDetails">> => compliance_details(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type resource_tag_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% start_report_creation_input() :: #{
+%%   <<"S3Bucket">> := string()
+%% }
+-type start_report_creation_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_report_creation_output() :: #{
+
+%% }
+-type start_report_creation_output() :: #{binary() => any()}.
+
+%% Example:
+%% summary() :: #{
+%%   <<"LastUpdated">> => string(),
+%%   <<"NonCompliantResources">> => float(),
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetIdType">> => list(any())
+%% }
+-type summary() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type tag_filter() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resources_input() :: #{
+%%   <<"ResourceARNList">> := list(string()()),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resources_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resources_output() :: #{
+%%   <<"FailedResourcesMap">> => map()
+%% }
+-type tag_resources_output() :: #{binary() => any()}.
+
+%% Example:
+%% throttled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resources_input() :: #{
+%%   <<"ResourceARNList">> := list(string()()),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resources_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resources_output() :: #{
+%%   <<"FailedResourcesMap">> => map()
+%% }
+-type untag_resources_output() :: #{binary() => any()}.
+
+-type describe_report_creation_errors() ::
+    throttled_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    constraint_violation_exception().
+
+-type get_compliance_summary_errors() ::
+    throttled_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    constraint_violation_exception().
+
+-type get_resources_errors() ::
+    throttled_exception() | 
+    pagination_token_expired_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
+-type get_tag_keys_errors() ::
+    throttled_exception() | 
+    pagination_token_expired_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
+-type get_tag_values_errors() ::
+    throttled_exception() | 
+    pagination_token_expired_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
+-type start_report_creation_errors() ::
+    throttled_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception().
+
+-type tag_resources_errors() ::
+    throttled_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
+-type untag_resources_errors() ::
+    throttled_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -31,9 +283,18 @@
 %%
 %% You can call this operation only from the organization's
 %% management account and from the us-east-1 Region.
+-spec describe_report_creation(aws_client:aws_client(), describe_report_creation_input()) ->
+    {ok, describe_report_creation_output(), tuple()} |
+    {error, any()} |
+    {error, describe_report_creation_errors(), tuple()}.
 describe_report_creation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_report_creation(Client, Input, []).
+
+-spec describe_report_creation(aws_client:aws_client(), describe_report_creation_input(), proplists:proplist()) ->
+    {ok, describe_report_creation_output(), tuple()} |
+    {error, any()} |
+    {error, describe_report_creation_errors(), tuple()}.
 describe_report_creation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReportCreation">>, Input, Options).
@@ -60,9 +321,18 @@ describe_report_creation(Client, Input, Options)
 %% recieve a `null' value. A null value for `PaginationToken'
 %% indicates that
 %% there are no more results waiting to be returned.
+-spec get_compliance_summary(aws_client:aws_client(), get_compliance_summary_input()) ->
+    {ok, get_compliance_summary_output(), tuple()} |
+    {error, any()} |
+    {error, get_compliance_summary_errors(), tuple()}.
 get_compliance_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_summary(Client, Input, []).
+
+-spec get_compliance_summary(aws_client:aws_client(), get_compliance_summary_input(), proplists:proplist()) ->
+    {ok, get_compliance_summary_output(), tuple()} |
+    {error, any()} |
+    {error, get_compliance_summary_errors(), tuple()}.
 get_compliance_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComplianceSummary">>, Input, Options).
@@ -95,9 +365,18 @@ get_compliance_summary(Client, Input, Options)
 %% recieve a `null' value. A null value for `PaginationToken'
 %% indicates that
 %% there are no more results waiting to be returned.
+-spec get_resources(aws_client:aws_client(), get_resources_input()) ->
+    {ok, get_resources_output(), tuple()} |
+    {error, any()} |
+    {error, get_resources_errors(), tuple()}.
 get_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resources(Client, Input, []).
+
+-spec get_resources(aws_client:aws_client(), get_resources_input(), proplists:proplist()) ->
+    {ok, get_resources_output(), tuple()} |
+    {error, any()} |
+    {error, get_resources_errors(), tuple()}.
 get_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResources">>, Input, Options).
@@ -116,9 +395,18 @@ get_resources(Client, Input, Options)
 %% recieve a `null' value. A null value for `PaginationToken'
 %% indicates that
 %% there are no more results waiting to be returned.
+-spec get_tag_keys(aws_client:aws_client(), get_tag_keys_input()) ->
+    {ok, get_tag_keys_output(), tuple()} |
+    {error, any()} |
+    {error, get_tag_keys_errors(), tuple()}.
 get_tag_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tag_keys(Client, Input, []).
+
+-spec get_tag_keys(aws_client:aws_client(), get_tag_keys_input(), proplists:proplist()) ->
+    {ok, get_tag_keys_output(), tuple()} |
+    {error, any()} |
+    {error, get_tag_keys_errors(), tuple()}.
 get_tag_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTagKeys">>, Input, Options).
@@ -137,9 +425,18 @@ get_tag_keys(Client, Input, Options)
 %% recieve a `null' value. A null value for `PaginationToken'
 %% indicates that
 %% there are no more results waiting to be returned.
+-spec get_tag_values(aws_client:aws_client(), get_tag_values_input()) ->
+    {ok, get_tag_values_output(), tuple()} |
+    {error, any()} |
+    {error, get_tag_values_errors(), tuple()}.
 get_tag_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tag_values(Client, Input, []).
+
+-spec get_tag_values(aws_client:aws_client(), get_tag_values_input(), proplists:proplist()) ->
+    {ok, get_tag_values_output(), tuple()} |
+    {error, any()} |
+    {error, get_tag_values_errors(), tuple()}.
 get_tag_values(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTagValues">>, Input, Options).
@@ -158,9 +455,18 @@ get_tag_values(Client, Input, Options)
 %%
 %% You can call this operation only from the organization's
 %% management account and from the us-east-1 Region.
+-spec start_report_creation(aws_client:aws_client(), start_report_creation_input()) ->
+    {ok, start_report_creation_output(), tuple()} |
+    {error, any()} |
+    {error, start_report_creation_errors(), tuple()}.
 start_report_creation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_report_creation(Client, Input, []).
+
+-spec start_report_creation(aws_client:aws_client(), start_report_creation_input(), proplists:proplist()) ->
+    {ok, start_report_creation_output(), tuple()} |
+    {error, any()} |
+    {error, start_report_creation_errors(), tuple()}.
 start_report_creation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReportCreation">>, Input, Options).
@@ -215,9 +521,18 @@ start_report_creation(Client, Input, Options)
 %% `tag:TagResource'
 %%
 %% `ec2:CreateTags'
+-spec tag_resources(aws_client:aws_client(), tag_resources_input()) ->
+    {ok, tag_resources_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resources_errors(), tuple()}.
 tag_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resources(Client, Input, []).
+
+-spec tag_resources(aws_client:aws_client(), tag_resources_input(), proplists:proplist()) ->
+    {ok, tag_resources_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resources_errors(), tuple()}.
 tag_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResources">>, Input, Options).
@@ -255,9 +570,18 @@ tag_resources(Client, Input, Options)
 %% `tag:UntagResource'
 %%
 %% `ec2:DeleteTags'
+-spec untag_resources(aws_client:aws_client(), untag_resources_input()) ->
+    {ok, untag_resources_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resources_errors(), tuple()}.
 untag_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resources(Client, Input, []).
+
+-spec untag_resources(aws_client:aws_client(), untag_resources_input(), proplists:proplist()) ->
+    {ok, untag_resources_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resources_errors(), tuple()}.
 untag_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResources">>, Input, Options).

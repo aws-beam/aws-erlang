@@ -126,6 +126,506 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% describe_node_association_status_response() :: #{
+%%   <<"EngineAttributes">> => list(engine_attribute()()),
+%%   <<"NodeAssociationStatus">> => list(any())
+%% }
+-type describe_node_association_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_server_engine_attribute_response() :: #{
+%%   <<"EngineAttribute">> => engine_attribute(),
+%%   <<"ServerName">> => string()
+%% }
+-type export_server_engine_attribute_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_node_response() :: #{
+%%   <<"NodeAssociationStatusToken">> => string()
+%% }
+-type associate_node_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_server_response() :: #{
+%%   <<"Server">> => server()
+%% }
+-type update_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_server_request() :: #{
+%%   <<"BackupRetentionCount">> => integer(),
+%%   <<"DisableAutomatedBackup">> => boolean(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ServerName">> := string()
+%% }
+-type update_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_maintenance_request() :: #{
+%%   <<"EngineAttributes">> => list(engine_attribute()()),
+%%   <<"ServerName">> := string()
+%% }
+-type start_maintenance_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_server_engine_attributes_request() :: #{
+%%   <<"AttributeName">> := string(),
+%%   <<"AttributeValue">> => string(),
+%%   <<"ServerName">> := string()
+%% }
+-type update_server_engine_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_server_response() :: #{
+%%   <<"Server">> => server()
+%% }
+-type restore_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_server_request() :: #{
+%%   <<"AssociatePublicIpAddress">> => boolean(),
+%%   <<"BackupId">> => string(),
+%%   <<"BackupRetentionCount">> => integer(),
+%%   <<"CustomCertificate">> => string(),
+%%   <<"CustomDomain">> => string(),
+%%   <<"CustomPrivateKey">> => string(),
+%%   <<"DisableAutomatedBackup">> => boolean(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineAttributes">> => list(engine_attribute()()),
+%%   <<"EngineModel">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"InstanceProfileArn">> := string(),
+%%   <<"InstanceType">> := string(),
+%%   <<"KeyPair">> => string(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"ServerName">> := string(),
+%%   <<"ServiceRoleArn">> := string(),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_server_request() :: #{
+%%   <<"BackupId">> := string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"KeyPair">> => string(),
+%%   <<"ServerName">> := string()
+%% }
+-type restore_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% engine_attribute() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type engine_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_backups_request() :: #{
+%%   <<"BackupId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServerName">> => string()
+%% }
+-type describe_backups_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% create_server_response() :: #{
+%%   <<"Server">> => server()
+%% }
+-type create_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_response() :: #{
+
+%% }
+-type delete_backup_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_node_association_status_request() :: #{
+%%   <<"NodeAssociationStatusToken">> := string(),
+%%   <<"ServerName">> := string()
+%% }
+-type describe_node_association_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_attributes_response() :: #{
+%%   <<"Attributes">> => list(account_attribute()())
+%% }
+-type describe_account_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_server_engine_attribute_request() :: #{
+%%   <<"ExportAttributeName">> := string(),
+%%   <<"InputAttributes">> => list(engine_attribute()()),
+%%   <<"ServerName">> := string()
+%% }
+-type export_server_engine_attribute_request() :: #{binary() => any()}.
+
+%% Example:
+%% backup() :: #{
+%%   <<"BackupArn">> => string(),
+%%   <<"BackupId">> => string(),
+%%   <<"BackupType">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineModel">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"InstanceProfileArn">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"KeyPair">> => string(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"S3DataSize">> => integer(),
+%%   <<"S3DataUrl">> => string(),
+%%   <<"S3LogUrl">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"ServerName">> => string(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDescription">> => string(),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"ToolsVersion">> => string(),
+%%   <<"UserArn">> => string()
+%% }
+-type backup() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServerName">> := string()
+%% }
+-type describe_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_node_request() :: #{
+%%   <<"EngineAttributes">> => list(engine_attribute()()),
+%%   <<"NodeName">> := string(),
+%%   <<"ServerName">> := string()
+%% }
+-type disassociate_node_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_server_response() :: #{
+
+%% }
+-type delete_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_server_engine_attributes_response() :: #{
+%%   <<"Server">> => server()
+%% }
+-type update_server_engine_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% server() :: #{
+%%   <<"AssociatePublicIpAddress">> => boolean(),
+%%   <<"BackupRetentionCount">> => integer(),
+%%   <<"CloudFormationStackArn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CustomDomain">> => string(),
+%%   <<"DisableAutomatedBackup">> => boolean(),
+%%   <<"Endpoint">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineAttributes">> => list(engine_attribute()()),
+%%   <<"EngineModel">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"InstanceProfileArn">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"KeyPair">> => string(),
+%%   <<"MaintenanceStatus">> => list(any()),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"ServerArn">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type server() :: #{binary() => any()}.
+
+%% Example:
+%% describe_servers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServerName">> => string()
+%% }
+-type describe_servers_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_node_request() :: #{
+%%   <<"EngineAttributes">> := list(engine_attribute()()),
+%%   <<"NodeName">> := string(),
+%%   <<"ServerName">> := string()
+%% }
+-type associate_node_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_servers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Servers">> => list(server()())
+%% }
+-type describe_servers_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_maintenance_response() :: #{
+%%   <<"Server">> => server()
+%% }
+-type start_maintenance_response() :: #{binary() => any()}.
+
+%% Example:
+%% account_attribute() :: #{
+%%   <<"Maximum">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"Used">> => integer()
+%% }
+-type account_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_backups_response() :: #{
+%%   <<"Backups">> => list(backup()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_backups_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_request() :: #{
+%%   <<"BackupId">> := string()
+%% }
+-type delete_backup_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_backup_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ServerName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_backup_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_node_response() :: #{
+%%   <<"NodeAssociationStatusToken">> => string()
+%% }
+-type disassociate_node_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% server_event() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"LogUrl">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ServerName">> => string()
+%% }
+-type server_event() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_attributes_request() :: #{
+
+%% }
+-type describe_account_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_backup_response() :: #{
+%%   <<"Backup">> => backup()
+%% }
+-type create_backup_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ServerEvents">> => list(server_event()())
+%% }
+-type describe_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_server_request() :: #{
+%%   <<"ServerName">> := string()
+%% }
+-type delete_server_request() :: #{binary() => any()}.
+
+-type associate_node_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type create_backup_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type create_server_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type delete_backup_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type delete_server_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type describe_backups_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception().
+
+-type describe_events_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception().
+
+-type describe_node_association_status_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type describe_servers_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_node_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type export_server_engine_attribute_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type restore_server_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type start_maintenance_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type update_server_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type update_server_engine_attributes_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -157,9 +657,18 @@
 %% The AssociateNode API call can be integrated into Auto Scaling
 %% configurations, AWS Cloudformation templates, or the user data of a
 %% server's instance.
+-spec associate_node(aws_client:aws_client(), associate_node_request()) ->
+    {ok, associate_node_response(), tuple()} |
+    {error, any()} |
+    {error, associate_node_errors(), tuple()}.
 associate_node(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_node(Client, Input, []).
+
+-spec associate_node(aws_client:aws_client(), associate_node_request(), proplists:proplist()) ->
+    {ok, associate_node_response(), tuple()} |
+    {error, any()} |
+    {error, associate_node_errors(), tuple()}.
 associate_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateNode">>, Input, Options).
@@ -184,9 +693,18 @@ associate_node(Client, Input, Options)
 %% A `ResourceNotFoundException' is thrown when the server is not found.
 %% A `ValidationException' is thrown when parameters of the request are
 %% not valid.
+-spec create_backup(aws_client:aws_client(), create_backup_request()) ->
+    {ok, create_backup_response(), tuple()} |
+    {error, any()} |
+    {error, create_backup_errors(), tuple()}.
 create_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_backup(Client, Input, []).
+
+-spec create_backup(aws_client:aws_client(), create_backup_request(), proplists:proplist()) ->
+    {ok, create_backup_response(), tuple()} |
+    {error, any()} |
+    {error, create_backup_errors(), tuple()}.
 create_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBackup">>, Input, Options).
@@ -229,9 +747,18 @@ create_backup(Client, Input, Options)
 %% or CA-signed certificate and private key, specify values for
 %% `CustomDomain',
 %% `CustomCertificate', and `CustomPrivateKey'.
+-spec create_server(aws_client:aws_client(), create_server_request()) ->
+    {ok, create_server_response(), tuple()} |
+    {error, any()} |
+    {error, create_server_errors(), tuple()}.
 create_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_server(Client, Input, []).
+
+-spec create_server(aws_client:aws_client(), create_server_request(), proplists:proplist()) ->
+    {ok, create_server_response(), tuple()} |
+    {error, any()} |
+    {error, create_server_errors(), tuple()}.
 create_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServer">>, Input, Options).
@@ -248,9 +775,18 @@ create_server(Client, Input, Options)
 %% exist.
 %% A `ValidationException' is thrown when parameters of the request are
 %% not valid.
+-spec delete_backup(aws_client:aws_client(), delete_backup_request()) ->
+    {ok, delete_backup_response(), tuple()} |
+    {error, any()} |
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
+
+-spec delete_backup(aws_client:aws_client(), delete_backup_request(), proplists:proplist()) ->
+    {ok, delete_backup_response(), tuple()} |
+    {error, any()} |
+    {error, delete_backup_errors(), tuple()}.
 delete_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBackup">>, Input, Options).
@@ -273,9 +809,18 @@ delete_backup(Client, Input, Options)
 %% exist.
 %% A `ValidationException' is raised when parameters of the request are
 %% not valid.
+-spec delete_server(aws_client:aws_client(), delete_server_request()) ->
+    {ok, delete_server_response(), tuple()} |
+    {error, any()} |
+    {error, delete_server_errors(), tuple()}.
 delete_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_server(Client, Input, []).
+
+-spec delete_server(aws_client:aws_client(), delete_server_request(), proplists:proplist()) ->
+    {ok, delete_server_response(), tuple()} |
+    {error, any()} |
+    {error, delete_server_errors(), tuple()}.
 delete_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServer">>, Input, Options).
@@ -284,9 +829,16 @@ delete_server(Client, Input, Options)
 %% Describes your OpsWorks-CM account attributes.
 %%
 %% This operation is synchronous.
+-spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_request()) ->
+    {ok, describe_account_attributes_response(), tuple()} |
+    {error, any()}.
 describe_account_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_attributes(Client, Input, []).
+
+-spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_request(), proplists:proplist()) ->
+    {ok, describe_account_attributes_response(), tuple()} |
+    {error, any()}.
 describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
@@ -304,9 +856,18 @@ describe_account_attributes(Client, Input, Options)
 %% exist.
 %% A `ValidationException' is raised when parameters of the request are
 %% not valid.
+-spec describe_backups(aws_client:aws_client(), describe_backups_request()) ->
+    {ok, describe_backups_response(), tuple()} |
+    {error, any()} |
+    {error, describe_backups_errors(), tuple()}.
 describe_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backups(Client, Input, []).
+
+-spec describe_backups(aws_client:aws_client(), describe_backups_request(), proplists:proplist()) ->
+    {ok, describe_backups_response(), tuple()} |
+    {error, any()} |
+    {error, describe_backups_errors(), tuple()}.
 describe_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBackups">>, Input, Options).
@@ -322,9 +883,18 @@ describe_backups(Client, Input, Options)
 %% exist.
 %% A `ValidationException' is raised when parameters of the request are
 %% not valid.
+-spec describe_events(aws_client:aws_client(), describe_events_request()) ->
+    {ok, describe_events_response(), tuple()} |
+    {error, any()} |
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
+
+-spec describe_events(aws_client:aws_client(), describe_events_request(), proplists:proplist()) ->
+    {ok, describe_events_response(), tuple()} |
+    {error, any()} |
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
@@ -337,9 +907,18 @@ describe_events(Client, Input, Options)
 %% disassociation request with the specified token is found,
 %% or when the server does not exist. A `ValidationException' is raised
 %% when parameters of the request are not valid.
+-spec describe_node_association_status(aws_client:aws_client(), describe_node_association_status_request()) ->
+    {ok, describe_node_association_status_response(), tuple()} |
+    {error, any()} |
+    {error, describe_node_association_status_errors(), tuple()}.
 describe_node_association_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_node_association_status(Client, Input, []).
+
+-spec describe_node_association_status(aws_client:aws_client(), describe_node_association_status_request(), proplists:proplist()) ->
+    {ok, describe_node_association_status_response(), tuple()} |
+    {error, any()} |
+    {error, describe_node_association_status_errors(), tuple()}.
 describe_node_association_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNodeAssociationStatus">>, Input, Options).
@@ -357,9 +936,18 @@ describe_node_association_status(Client, Input, Options)
 %% exist.
 %% A `ValidationException' is raised when parameters of the request are
 %% not valid.
+-spec describe_servers(aws_client:aws_client(), describe_servers_request()) ->
+    {ok, describe_servers_response(), tuple()} |
+    {error, any()} |
+    {error, describe_servers_errors(), tuple()}.
 describe_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_servers(Client, Input, []).
+
+-spec describe_servers(aws_client:aws_client(), describe_servers_request(), proplists:proplist()) ->
+    {ok, describe_servers_response(), tuple()} |
+    {error, any()} |
+    {error, describe_servers_errors(), tuple()}.
 describe_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServers">>, Input, Options).
@@ -379,9 +967,18 @@ describe_servers(Client, Input, Options)
 %% exist.
 %% A `ValidationException' is raised when parameters of the request are
 %% not valid.
+-spec disassociate_node(aws_client:aws_client(), disassociate_node_request()) ->
+    {ok, disassociate_node_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_node_errors(), tuple()}.
 disassociate_node(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_node(Client, Input, []).
+
+-spec disassociate_node(aws_client:aws_client(), disassociate_node_request(), proplists:proplist()) ->
+    {ok, disassociate_node_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_node_errors(), tuple()}.
 disassociate_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateNode">>, Input, Options).
@@ -401,9 +998,18 @@ disassociate_node(Client, Input, Options)
 %% An `InvalidStateException' is thrown when the server is in any of the
 %% following states: CREATING, TERMINATED,
 %% FAILED or DELETING.
+-spec export_server_engine_attribute(aws_client:aws_client(), export_server_engine_attribute_request()) ->
+    {ok, export_server_engine_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, export_server_engine_attribute_errors(), tuple()}.
 export_server_engine_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_server_engine_attribute(Client, Input, []).
+
+-spec export_server_engine_attribute(aws_client:aws_client(), export_server_engine_attribute_request(), proplists:proplist()) ->
+    {ok, export_server_engine_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, export_server_engine_attribute_errors(), tuple()}.
 export_server_engine_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportServerEngineAttribute">>, Input, Options).
@@ -411,9 +1017,18 @@ export_server_engine_attribute(Client, Input, Options)
 %% @doc Returns a list of tags that are applied to the specified AWS OpsWorks
 %% for Chef Automate or
 %% AWS OpsWorks for Puppet Enterprise servers or backups.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -439,9 +1054,18 @@ list_tags_for_resource(Client, Input, Options)
 %% state. A `ResourceNotFoundException' is thrown
 %% when the server does not exist. A `ValidationException' is raised when
 %% parameters of the request are not valid.
+-spec restore_server(aws_client:aws_client(), restore_server_request()) ->
+    {ok, restore_server_response(), tuple()} |
+    {error, any()} |
+    {error, restore_server_errors(), tuple()}.
 restore_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_server(Client, Input, []).
+
+-spec restore_server(aws_client:aws_client(), restore_server_request(), proplists:proplist()) ->
+    {ok, restore_server_response(), tuple()} |
+    {error, any()} |
+    {error, restore_server_errors(), tuple()}.
 restore_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreServer">>, Input, Options).
@@ -460,26 +1084,53 @@ restore_server(Client, Input, Options)
 %% A `ResourceNotFoundException' is thrown when the server does not
 %% exist. A `ValidationException' is raised when parameters of the
 %% request are not valid.
+-spec start_maintenance(aws_client:aws_client(), start_maintenance_request()) ->
+    {ok, start_maintenance_response(), tuple()} |
+    {error, any()} |
+    {error, start_maintenance_errors(), tuple()}.
 start_maintenance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_maintenance(Client, Input, []).
+
+-spec start_maintenance(aws_client:aws_client(), start_maintenance_request(), proplists:proplist()) ->
+    {ok, start_maintenance_response(), tuple()} |
+    {error, any()} |
+    {error, start_maintenance_errors(), tuple()}.
 start_maintenance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMaintenance">>, Input, Options).
 
 %% @doc Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
 %% Puppet Enterprise server, or to server backups.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes specified tags from an AWS OpsWorks-CM server or backup.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -488,9 +1139,18 @@ untag_resource(Client, Input, Options)
 %% Updates settings for a server.
 %%
 %% This operation is synchronous.
+-spec update_server(aws_client:aws_client(), update_server_request()) ->
+    {ok, update_server_response(), tuple()} |
+    {error, any()} |
+    {error, update_server_errors(), tuple()}.
 update_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_server(Client, Input, []).
+
+-spec update_server(aws_client:aws_client(), update_server_request(), proplists:proplist()) ->
+    {ok, update_server_response(), tuple()} |
+    {error, any()} |
+    {error, update_server_errors(), tuple()}.
 update_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServer">>, Input, Options).
@@ -513,9 +1173,18 @@ update_server(Client, Input, Options)
 %% A `ResourceNotFoundException' is thrown when the server does not
 %% exist. A `ValidationException' is raised when parameters of the
 %% request are not valid.
+-spec update_server_engine_attributes(aws_client:aws_client(), update_server_engine_attributes_request()) ->
+    {ok, update_server_engine_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, update_server_engine_attributes_errors(), tuple()}.
 update_server_engine_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_server_engine_attributes(Client, Input, []).
+
+-spec update_server_engine_attributes(aws_client:aws_client(), update_server_engine_attributes_request(), proplists:proplist()) ->
+    {ok, update_server_engine_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, update_server_engine_attributes_errors(), tuple()}.
 update_server_engine_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServerEngineAttributes">>, Input, Options).

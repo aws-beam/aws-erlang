@@ -13,6 +13,167 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% internal_dependency_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_dependency_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_failure() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_stream_failure() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_stream_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_endpoint_async_input() :: #{
+%%   <<"Accept">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"CustomAttributes">> => string(),
+%%   <<"InferenceId">> => string(),
+%%   <<"InputLocation">> := string(),
+%%   <<"InvocationTimeoutSeconds">> => integer(),
+%%   <<"RequestTTLSeconds">> => integer()
+%% }
+-type invoke_endpoint_async_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_endpoint_async_output() :: #{
+%%   <<"FailureLocation">> => string(),
+%%   <<"InferenceId">> => string(),
+%%   <<"OutputLocation">> => string()
+%% }
+-type invoke_endpoint_async_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_endpoint_input() :: #{
+%%   <<"Accept">> => string(),
+%%   <<"Body">> := binary(),
+%%   <<"ContentType">> => string(),
+%%   <<"CustomAttributes">> => string(),
+%%   <<"EnableExplanations">> => string(),
+%%   <<"InferenceComponentName">> => string(),
+%%   <<"InferenceId">> => string(),
+%%   <<"TargetContainerHostname">> => string(),
+%%   <<"TargetModel">> => string(),
+%%   <<"TargetVariant">> => string()
+%% }
+-type invoke_endpoint_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_endpoint_output() :: #{
+%%   <<"Body">> => binary(),
+%%   <<"ContentType">> => string(),
+%%   <<"CustomAttributes">> => string(),
+%%   <<"InvokedProductionVariant">> => string()
+%% }
+-type invoke_endpoint_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_endpoint_with_response_stream_input() :: #{
+%%   <<"Accept">> => string(),
+%%   <<"Body">> := binary(),
+%%   <<"ContentType">> => string(),
+%%   <<"CustomAttributes">> => string(),
+%%   <<"InferenceComponentName">> => string(),
+%%   <<"InferenceId">> => string(),
+%%   <<"TargetContainerHostname">> => string(),
+%%   <<"TargetVariant">> => string()
+%% }
+-type invoke_endpoint_with_response_stream_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_endpoint_with_response_stream_output() :: #{
+%%   <<"Body">> => list(),
+%%   <<"ContentType">> => string(),
+%%   <<"CustomAttributes">> => string(),
+%%   <<"InvokedProductionVariant">> => string()
+%% }
+-type invoke_endpoint_with_response_stream_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_error() :: #{
+%%   <<"LogStreamArn">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"OriginalMessage">> => string(),
+%%   <<"OriginalStatusCode">> => integer()
+%% }
+-type model_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_not_ready_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type model_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_stream_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type model_stream_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% payload_part() :: #{
+%%   <<"Bytes">> => binary()
+%% }
+-type payload_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_error() :: #{binary() => any()}.
+
+-type invoke_endpoint_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    model_not_ready_exception() | 
+    model_error() | 
+    internal_failure() | 
+    internal_dependency_exception().
+
+-type invoke_endpoint_async_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    internal_failure().
+
+-type invoke_endpoint_with_response_stream_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    model_stream_error() | 
+    model_error() | 
+    internal_stream_failure() | 
+    internal_failure().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -52,8 +213,17 @@
 %% not contain the account ID, but Amazon SageMaker determines the account ID
 %% from
 %% the authentication token that is supplied by the caller.
+-spec invoke_endpoint(aws_client:aws_client(), binary() | list(), invoke_endpoint_input()) ->
+    {ok, invoke_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, invoke_endpoint_errors(), tuple()}.
 invoke_endpoint(Client, EndpointName, Input) ->
     invoke_endpoint(Client, EndpointName, Input, []).
+
+-spec invoke_endpoint(aws_client:aws_client(), binary() | list(), invoke_endpoint_input(), proplists:proplist()) ->
+    {ok, invoke_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, invoke_endpoint_errors(), tuple()}.
 invoke_endpoint(Client, EndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/invocations"],
@@ -129,8 +299,17 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
 %% Requests (Amazon Web Services Signature Version 4):
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
 %% in the Amazon S3 API Reference.
+-spec invoke_endpoint_async(aws_client:aws_client(), binary() | list(), invoke_endpoint_async_input()) ->
+    {ok, invoke_endpoint_async_output(), tuple()} |
+    {error, any()} |
+    {error, invoke_endpoint_async_errors(), tuple()}.
 invoke_endpoint_async(Client, EndpointName, Input) ->
     invoke_endpoint_async(Client, EndpointName, Input, []).
+
+-spec invoke_endpoint_async(aws_client:aws_client(), binary() | list(), invoke_endpoint_async_input(), proplists:proplist()) ->
+    {ok, invoke_endpoint_async_output(), tuple()} |
+    {error, any()} |
+    {error, invoke_endpoint_async_errors(), tuple()}.
 invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/async-invocations"],
@@ -222,8 +401,17 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
 %% in the
 %% Amazon S3 API Reference.
+-spec invoke_endpoint_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_endpoint_with_response_stream_input()) ->
+    {ok, invoke_endpoint_with_response_stream_output(), tuple()} |
+    {error, any()} |
+    {error, invoke_endpoint_with_response_stream_errors(), tuple()}.
 invoke_endpoint_with_response_stream(Client, EndpointName, Input) ->
     invoke_endpoint_with_response_stream(Client, EndpointName, Input, []).
+
+-spec invoke_endpoint_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_endpoint_with_response_stream_input(), proplists:proplist()) ->
+    {ok, invoke_endpoint_with_response_stream_output(), tuple()} |
+    {error, any()} |
+    {error, invoke_endpoint_with_response_stream_errors(), tuple()}.
 invoke_endpoint_with_response_stream(Client, EndpointName, Input0, Options0) ->
     Method = post,
     Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/invocations-response-stream"],
@@ -276,7 +464,7 @@ invoke_endpoint_with_response_stream(Client, EndpointName, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -36,71 +36,527 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_instance_input() :: #{
+%%   <<"allocatedStorage">> := integer(),
+%%   <<"bucket">> => string(),
+%%   <<"dbInstanceType">> := list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"name">> := string(),
+%%   <<"organization">> => string(),
+%%   <<"password">> := string(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"tags">> => map(),
+%%   <<"username">> => string(),
+%%   <<"vpcSecurityGroupIds">> := list(string()()),
+%%   <<"vpcSubnetIds">> := list(string()())
+%% }
+-type create_db_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_instance_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"availabilityZone">> => [string()],
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"name">> => string(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"secondaryAvailabilityZone">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()()),
+%%   <<"vpcSubnetIds">> => list(string()())
+%% }
+-type create_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_parameter_group_input() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> := string(),
+%%   <<"parameters">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type create_db_parameter_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_parameter_group_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"parameters">> => list()
+%% }
+-type create_db_parameter_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_summary() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type db_instance_summary() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type db_parameter_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_input() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type delete_db_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"availabilityZone">> => [string()],
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"name">> => string(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"secondaryAvailabilityZone">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()()),
+%%   <<"vpcSubnetIds">> => list(string()())
+%% }
+-type delete_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_instance_input() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_db_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_instance_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"availabilityZone">> => [string()],
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"name">> => string(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"secondaryAvailabilityZone">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()()),
+%%   <<"vpcSubnetIds">> => list(string()())
+%% }
+-type get_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_parameter_group_input() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_db_parameter_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_parameter_group_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"parameters">> => list()
+%% }
+-type get_db_parameter_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% influx_dbv2_parameters() :: #{
+%%   <<"fluxLogEnabled">> => [boolean()],
+%%   <<"logLevel">> => list(any()),
+%%   <<"metricsDisabled">> => [boolean()],
+%%   <<"noTasks">> => [boolean()],
+%%   <<"queryConcurrency">> => [integer()],
+%%   <<"queryQueueSize">> => [integer()],
+%%   <<"tracingType">> => list(any())
+%% }
+-type influx_dbv2_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_instances_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_instances_output() :: #{
+%%   <<"items">> => list(db_instance_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_parameter_groups_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_parameter_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_parameter_groups_output() :: #{
+%%   <<"items">> => list(db_parameter_group_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_parameter_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% log_delivery_configuration() :: #{
+%%   <<"s3Configuration">> => s3_configuration()
+%% }
+-type log_delivery_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_configuration() :: #{
+%%   <<"bucketName">> => [string()],
+%%   <<"enabled">> => [boolean()]
+%% }
+-type s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_db_instance_input() :: #{
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"identifier">> := string(),
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration()
+%% }
+-type update_db_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_db_instance_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"availabilityZone">> => [string()],
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"name">> => string(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"secondaryAvailabilityZone">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()()),
+%%   <<"vpcSubnetIds">> => list(string()())
+%% }
+-type update_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+-type create_db_instance_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_db_parameter_group_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_db_instance_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_db_instance_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_db_parameter_group_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_db_instances_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_db_parameter_groups_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    resource_not_found_exception().
+
+-type update_db_instance_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Creates a new Timestream for InfluxDB DB instance.
+-spec create_db_instance(aws_client:aws_client(), create_db_instance_input()) ->
+    {ok, create_db_instance_output(), tuple()} |
+    {error, any()} |
+    {error, create_db_instance_errors(), tuple()}.
 create_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_instance(Client, Input, []).
+
+-spec create_db_instance(aws_client:aws_client(), create_db_instance_input(), proplists:proplist()) ->
+    {ok, create_db_instance_output(), tuple()} |
+    {error, any()} |
+    {error, create_db_instance_errors(), tuple()}.
 create_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDbInstance">>, Input, Options).
 
 %% @doc Creates a new Timestream for InfluxDB DB parameter group to associate
 %% with DB instances.
+-spec create_db_parameter_group(aws_client:aws_client(), create_db_parameter_group_input()) ->
+    {ok, create_db_parameter_group_output(), tuple()} |
+    {error, any()} |
+    {error, create_db_parameter_group_errors(), tuple()}.
 create_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_parameter_group(Client, Input, []).
+
+-spec create_db_parameter_group(aws_client:aws_client(), create_db_parameter_group_input(), proplists:proplist()) ->
+    {ok, create_db_parameter_group_output(), tuple()} |
+    {error, any()} |
+    {error, create_db_parameter_group_errors(), tuple()}.
 create_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDbParameterGroup">>, Input, Options).
 
 %% @doc Deletes a Timestream for InfluxDB DB instance.
+-spec delete_db_instance(aws_client:aws_client(), delete_db_instance_input()) ->
+    {ok, delete_db_instance_output(), tuple()} |
+    {error, any()} |
+    {error, delete_db_instance_errors(), tuple()}.
 delete_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_instance(Client, Input, []).
+
+-spec delete_db_instance(aws_client:aws_client(), delete_db_instance_input(), proplists:proplist()) ->
+    {ok, delete_db_instance_output(), tuple()} |
+    {error, any()} |
+    {error, delete_db_instance_errors(), tuple()}.
 delete_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDbInstance">>, Input, Options).
 
 %% @doc Returns a Timestream for InfluxDB DB instance.
+-spec get_db_instance(aws_client:aws_client(), get_db_instance_input()) ->
+    {ok, get_db_instance_output(), tuple()} |
+    {error, any()} |
+    {error, get_db_instance_errors(), tuple()}.
 get_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_db_instance(Client, Input, []).
+
+-spec get_db_instance(aws_client:aws_client(), get_db_instance_input(), proplists:proplist()) ->
+    {ok, get_db_instance_output(), tuple()} |
+    {error, any()} |
+    {error, get_db_instance_errors(), tuple()}.
 get_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDbInstance">>, Input, Options).
 
 %% @doc Returns a Timestream for InfluxDB DB parameter group.
+-spec get_db_parameter_group(aws_client:aws_client(), get_db_parameter_group_input()) ->
+    {ok, get_db_parameter_group_output(), tuple()} |
+    {error, any()} |
+    {error, get_db_parameter_group_errors(), tuple()}.
 get_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_db_parameter_group(Client, Input, []).
+
+-spec get_db_parameter_group(aws_client:aws_client(), get_db_parameter_group_input(), proplists:proplist()) ->
+    {ok, get_db_parameter_group_output(), tuple()} |
+    {error, any()} |
+    {error, get_db_parameter_group_errors(), tuple()}.
 get_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDbParameterGroup">>, Input, Options).
 
 %% @doc Returns a list of Timestream for InfluxDB DB instances.
+-spec list_db_instances(aws_client:aws_client(), list_db_instances_input()) ->
+    {ok, list_db_instances_output(), tuple()} |
+    {error, any()} |
+    {error, list_db_instances_errors(), tuple()}.
 list_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_db_instances(Client, Input, []).
+
+-spec list_db_instances(aws_client:aws_client(), list_db_instances_input(), proplists:proplist()) ->
+    {ok, list_db_instances_output(), tuple()} |
+    {error, any()} |
+    {error, list_db_instances_errors(), tuple()}.
 list_db_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDbInstances">>, Input, Options).
 
 %% @doc Returns a list of Timestream for InfluxDB DB parameter groups.
+-spec list_db_parameter_groups(aws_client:aws_client(), list_db_parameter_groups_input()) ->
+    {ok, list_db_parameter_groups_output(), tuple()} |
+    {error, any()} |
+    {error, list_db_parameter_groups_errors(), tuple()}.
 list_db_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_db_parameter_groups(Client, Input, []).
+
+-spec list_db_parameter_groups(aws_client:aws_client(), list_db_parameter_groups_input(), proplists:proplist()) ->
+    {ok, list_db_parameter_groups_output(), tuple()} |
+    {error, any()} |
+    {error, list_db_parameter_groups_errors(), tuple()}.
 list_db_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDbParameterGroups">>, Input, Options).
 
 %% @doc A list of tags applied to the resource.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -109,25 +565,52 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% You can use tags to categorize and track your Timestream for InfluxDB
 %% resources.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes the tag from the specified resource.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates a Timestream for InfluxDB DB instance.
+-spec update_db_instance(aws_client:aws_client(), update_db_instance_input()) ->
+    {ok, update_db_instance_output(), tuple()} |
+    {error, any()} |
+    {error, update_db_instance_errors(), tuple()}.
 update_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_db_instance(Client, Input, []).
+
+-spec update_db_instance(aws_client:aws_client(), update_db_instance_input(), proplists:proplist()) ->
+    {ok, update_db_instance_output(), tuple()} |
+    {error, any()} |
+    {error, update_db_instance_errors(), tuple()}.
 update_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDbInstance">>, Input, Options).

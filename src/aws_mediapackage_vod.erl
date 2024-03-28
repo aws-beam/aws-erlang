@@ -48,14 +48,652 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_packaging_configuration_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CmafPackage">> => cmaf_package(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"DashPackage">> => dash_package(),
+%%   <<"HlsPackage">> => hls_package(),
+%%   <<"Id">> => string(),
+%%   <<"MssPackage">> => mss_package(),
+%%   <<"PackagingGroupId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_packaging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_packaging_configuration_request() :: #{
+%%   <<"CmafPackage">> => cmaf_package(),
+%%   <<"DashPackage">> => dash_package(),
+%%   <<"HlsPackage">> => hls_package(),
+%%   <<"Id">> := string(),
+%%   <<"MssPackage">> => mss_package(),
+%%   <<"PackagingGroupId">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_packaging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_packaging_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PackagingGroupId">> => string()
+%% }
+-type list_packaging_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_packaging_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_packaging_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"EgressEndpoints">> => list(egress_endpoint()()),
+%%   <<"Id">> => string(),
+%%   <<"PackagingGroupId">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceRoleArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_asset_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_packaging_group_request() :: #{}
+-type delete_packaging_group_request() :: #{}.
+
+
+%% Example:
+%% packaging_group() :: #{
+%%   <<"ApproximateAssetCount">> => integer(),
+%%   <<"Arn">> => string(),
+%%   <<"Authorization">> => authorization(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"Id">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type packaging_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"PackagingGroupId">> := string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"SourceArn">> := string(),
+%%   <<"SourceRoleArn">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_manifest() :: #{
+%%   <<"AdMarkers">> => list(any()),
+%%   <<"IncludeIframeOnlyStream">> => boolean(),
+%%   <<"ManifestName">> => string(),
+%%   <<"ProgramDateTimeIntervalSeconds">> => integer(),
+%%   <<"RepeatExtXKey">> => boolean(),
+%%   <<"StreamSelection">> => stream_selection()
+%% }
+-type hls_manifest() :: #{binary() => any()}.
+
+%% Example:
+%% delete_packaging_group_response() :: #{}
+-type delete_packaging_group_response() :: #{}.
+
+
+%% Example:
+%% authorization() :: #{
+%%   <<"CdnIdentifierSecret">> => string(),
+%%   <<"SecretsRoleArn">> => string()
+%% }
+-type authorization() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_encryption() :: #{
+%%   <<"ConstantInitializationVector">> => string(),
+%%   <<"EncryptionMethod">> => list(any()),
+%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% }
+-type hls_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% cmaf_package() :: #{
+%%   <<"Encryption">> => cmaf_encryption(),
+%%   <<"HlsManifests">> => list(hls_manifest()()),
+%%   <<"IncludeEncoderConfigurationInSegments">> => boolean(),
+%%   <<"SegmentDurationSeconds">> => integer()
+%% }
+-type cmaf_package() :: #{binary() => any()}.
+
+%% Example:
+%% delete_packaging_configuration_response() :: #{}
+-type delete_packaging_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_packaging_group_request() :: #{
+%%   <<"Authorization">> => authorization()
+%% }
+-type update_packaging_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_packaging_group_response() :: #{
+%%   <<"ApproximateAssetCount">> => integer(),
+%%   <<"Arn">> => string(),
+%%   <<"Authorization">> => authorization(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"Id">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_packaging_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_packaging_group_request() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"Id">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_packaging_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% speke_key_provider() :: #{
+%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SystemIds">> => list(string()()),
+%%   <<"Url">> => string()
+%% }
+-type speke_key_provider() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_response() :: #{}
+-type delete_asset_response() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_package() :: #{
+%%   <<"Encryption">> => hls_encryption(),
+%%   <<"HlsManifests">> => list(hls_manifest()()),
+%%   <<"IncludeDvbSubtitles">> => boolean(),
+%%   <<"SegmentDurationSeconds">> => integer(),
+%%   <<"UseAudioRenditionGroup">> => boolean()
+%% }
+-type hls_package() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_package() :: #{
+%%   <<"DashManifests">> => list(dash_manifest()()),
+%%   <<"Encryption">> => dash_encryption(),
+%%   <<"IncludeEncoderConfigurationInSegments">> => boolean(),
+%%   <<"IncludeIframeOnlyStream">> => boolean(),
+%%   <<"PeriodTriggers">> => list(list(any())()),
+%%   <<"SegmentDurationSeconds">> => integer(),
+%%   <<"SegmentTemplateFormat">> => list(any())
+%% }
+-type dash_package() :: #{binary() => any()}.
+
+
+%% Example:
+%% packaging_configuration() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CmafPackage">> => cmaf_package(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"DashPackage">> => dash_package(),
+%%   <<"HlsPackage">> => hls_package(),
+%%   <<"Id">> => string(),
+%%   <<"MssPackage">> => mss_package(),
+%%   <<"PackagingGroupId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type packaging_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_packaging_configurations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PackagingConfigurations">> => list(packaging_configuration()())
+%% }
+-type list_packaging_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_packaging_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Authorization">> => authorization(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"Id">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_packaging_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_selection() :: #{
+%%   <<"MaxVideoBitsPerSecond">> => integer(),
+%%   <<"MinVideoBitsPerSecond">> => integer(),
+%%   <<"StreamOrder">> => list(any())
+%% }
+-type stream_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_manifest() :: #{
+%%   <<"ManifestLayout">> => list(any()),
+%%   <<"ManifestName">> => string(),
+%%   <<"MinBufferTimeSeconds">> => integer(),
+%%   <<"Profile">> => list(any()),
+%%   <<"ScteMarkersSource">> => list(any()),
+%%   <<"StreamSelection">> => stream_selection()
+%% }
+-type dash_manifest() :: #{binary() => any()}.
+
+
+%% Example:
+%% egress_endpoint() :: #{
+%%   <<"PackagingConfigurationId">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type egress_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_contract_configuration() :: #{
+%%   <<"PresetSpeke20Audio">> => list(any()),
+%%   <<"PresetSpeke20Video">> => list(any())
+%% }
+-type encryption_contract_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% egress_access_logs() :: #{
+%%   <<"LogGroupName">> => string()
+%% }
+-type egress_access_logs() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_encryption() :: #{
+%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% }
+-type dash_encryption() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_request() :: #{}
+-type delete_asset_request() :: #{}.
+
+
+%% Example:
+%% create_packaging_configuration_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CmafPackage">> => cmaf_package(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"DashPackage">> => dash_package(),
+%%   <<"HlsPackage">> => hls_package(),
+%%   <<"Id">> => string(),
+%%   <<"MssPackage">> => mss_package(),
+%%   <<"PackagingGroupId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_packaging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_shallow() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"PackagingGroupId">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceRoleArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type asset_shallow() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_entity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unprocessable_entity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"EgressEndpoints">> => list(egress_endpoint()()),
+%%   <<"Id">> => string(),
+%%   <<"PackagingGroupId">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceRoleArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cmaf_encryption() :: #{
+%%   <<"ConstantInitializationVector">> => string(),
+%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% }
+-type cmaf_encryption() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_packaging_configuration_request() :: #{}
+-type describe_packaging_configuration_request() :: #{}.
+
+
+%% Example:
+%% list_assets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PackagingGroupId">> => string()
+%% }
+-type list_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% mss_manifest() :: #{
+%%   <<"ManifestName">> => string(),
+%%   <<"StreamSelection">> => stream_selection()
+%% }
+-type mss_manifest() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_logs_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Authorization">> => authorization(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"Id">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type configure_logs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_logs_request() :: #{
+%%   <<"EgressAccessLogs">> => egress_access_logs()
+%% }
+-type configure_logs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% mss_encryption() :: #{
+%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% }
+-type mss_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assets_response() :: #{
+%%   <<"Assets">> => list(asset_shallow()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assets_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_asset_request() :: #{}
+-type describe_asset_request() :: #{}.
+
+
+%% Example:
+%% list_packaging_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PackagingGroups">> => list(packaging_group()())
+%% }
+-type list_packaging_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_packaging_group_request() :: #{}
+-type describe_packaging_group_request() :: #{}.
+
+%% Example:
+%% delete_packaging_configuration_request() :: #{}
+-type delete_packaging_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_packaging_group_response() :: #{
+%%   <<"ApproximateAssetCount">> => integer(),
+%%   <<"Arn">> => string(),
+%%   <<"Authorization">> => authorization(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"Id">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_packaging_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% mss_package() :: #{
+%%   <<"Encryption">> => mss_encryption(),
+%%   <<"MssManifests">> => list(mss_manifest()()),
+%%   <<"SegmentDurationSeconds">> => integer()
+%% }
+-type mss_package() :: #{binary() => any()}.
+
+-type configure_logs_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_asset_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_packaging_configuration_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_packaging_group_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_asset_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_packaging_configuration_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_packaging_group_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_asset_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_packaging_configuration_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type describe_packaging_group_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_assets_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_packaging_configurations_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_packaging_groups_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_packaging_group_errors() ::
+    internal_server_error_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Changes the packaging group's properities to configure log
 %% subscription
+-spec configure_logs(aws_client:aws_client(), binary() | list(), configure_logs_request()) ->
+    {ok, configure_logs_response(), tuple()} |
+    {error, any()} |
+    {error, configure_logs_errors(), tuple()}.
 configure_logs(Client, Id, Input) ->
     configure_logs(Client, Id, Input, []).
+
+-spec configure_logs(aws_client:aws_client(), binary() | list(), configure_logs_request(), proplists:proplist()) ->
+    {ok, configure_logs_response(), tuple()} |
+    {error, any()} |
+    {error, configure_logs_errors(), tuple()}.
 configure_logs(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/packaging_groups/", aws_util:encode_uri(Id), "/configure_logs"],
@@ -79,8 +717,17 @@ configure_logs(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MediaPackage VOD Asset resource.
+-spec create_asset(aws_client:aws_client(), create_asset_request()) ->
+    {ok, create_asset_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_errors(), tuple()}.
 create_asset(Client, Input) ->
     create_asset(Client, Input, []).
+
+-spec create_asset(aws_client:aws_client(), create_asset_request(), proplists:proplist()) ->
+    {ok, create_asset_response(), tuple()} |
+    {error, any()} |
+    {error, create_asset_errors(), tuple()}.
 create_asset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assets"],
@@ -104,8 +751,17 @@ create_asset(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MediaPackage VOD PackagingConfiguration resource.
+-spec create_packaging_configuration(aws_client:aws_client(), create_packaging_configuration_request()) ->
+    {ok, create_packaging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_packaging_configuration_errors(), tuple()}.
 create_packaging_configuration(Client, Input) ->
     create_packaging_configuration(Client, Input, []).
+
+-spec create_packaging_configuration(aws_client:aws_client(), create_packaging_configuration_request(), proplists:proplist()) ->
+    {ok, create_packaging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_packaging_configuration_errors(), tuple()}.
 create_packaging_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/packaging_configurations"],
@@ -129,8 +785,17 @@ create_packaging_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MediaPackage VOD PackagingGroup resource.
+-spec create_packaging_group(aws_client:aws_client(), create_packaging_group_request()) ->
+    {ok, create_packaging_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_packaging_group_errors(), tuple()}.
 create_packaging_group(Client, Input) ->
     create_packaging_group(Client, Input, []).
+
+-spec create_packaging_group(aws_client:aws_client(), create_packaging_group_request(), proplists:proplist()) ->
+    {ok, create_packaging_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_packaging_group_errors(), tuple()}.
 create_packaging_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/packaging_groups"],
@@ -154,8 +819,17 @@ create_packaging_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing MediaPackage VOD Asset resource.
+-spec delete_asset(aws_client:aws_client(), binary() | list(), delete_asset_request()) ->
+    {ok, delete_asset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, Id, Input) ->
     delete_asset(Client, Id, Input, []).
+
+-spec delete_asset(aws_client:aws_client(), binary() | list(), delete_asset_request(), proplists:proplist()) ->
+    {ok, delete_asset_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/assets/", aws_util:encode_uri(Id), ""],
@@ -179,8 +853,17 @@ delete_asset(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a MediaPackage VOD PackagingConfiguration resource.
+-spec delete_packaging_configuration(aws_client:aws_client(), binary() | list(), delete_packaging_configuration_request()) ->
+    {ok, delete_packaging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_packaging_configuration_errors(), tuple()}.
 delete_packaging_configuration(Client, Id, Input) ->
     delete_packaging_configuration(Client, Id, Input, []).
+
+-spec delete_packaging_configuration(aws_client:aws_client(), binary() | list(), delete_packaging_configuration_request(), proplists:proplist()) ->
+    {ok, delete_packaging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_packaging_configuration_errors(), tuple()}.
 delete_packaging_configuration(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/packaging_configurations/", aws_util:encode_uri(Id), ""],
@@ -204,8 +887,17 @@ delete_packaging_configuration(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a MediaPackage VOD PackagingGroup resource.
+-spec delete_packaging_group(aws_client:aws_client(), binary() | list(), delete_packaging_group_request()) ->
+    {ok, delete_packaging_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_packaging_group_errors(), tuple()}.
 delete_packaging_group(Client, Id, Input) ->
     delete_packaging_group(Client, Id, Input, []).
+
+-spec delete_packaging_group(aws_client:aws_client(), binary() | list(), delete_packaging_group_request(), proplists:proplist()) ->
+    {ok, delete_packaging_group_response(), tuple()} |
+    {error, any()} |
+    {error, delete_packaging_group_errors(), tuple()}.
 delete_packaging_group(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/packaging_groups/", aws_util:encode_uri(Id), ""],
@@ -229,14 +921,26 @@ delete_packaging_group(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a description of a MediaPackage VOD Asset resource.
+-spec describe_asset(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_asset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_errors(), tuple()}.
 describe_asset(Client, Id)
   when is_map(Client) ->
     describe_asset(Client, Id, #{}, #{}).
 
+-spec describe_asset(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_asset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_errors(), tuple()}.
 describe_asset(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset(Client, Id, QueryMap, HeadersMap, []).
 
+-spec describe_asset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_asset_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_errors(), tuple()}.
 describe_asset(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(Id), ""],
@@ -255,14 +959,26 @@ describe_asset(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a description of a MediaPackage VOD PackagingConfiguration
 %% resource.
+-spec describe_packaging_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_packaging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_packaging_configuration_errors(), tuple()}.
 describe_packaging_configuration(Client, Id)
   when is_map(Client) ->
     describe_packaging_configuration(Client, Id, #{}, #{}).
 
+-spec describe_packaging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_packaging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_packaging_configuration_errors(), tuple()}.
 describe_packaging_configuration(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_packaging_configuration(Client, Id, QueryMap, HeadersMap, []).
 
+-spec describe_packaging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_packaging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_packaging_configuration_errors(), tuple()}.
 describe_packaging_configuration(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packaging_configurations/", aws_util:encode_uri(Id), ""],
@@ -280,14 +996,26 @@ describe_packaging_configuration(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a description of a MediaPackage VOD PackagingGroup resource.
+-spec describe_packaging_group(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_packaging_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_packaging_group_errors(), tuple()}.
 describe_packaging_group(Client, Id)
   when is_map(Client) ->
     describe_packaging_group(Client, Id, #{}, #{}).
 
+-spec describe_packaging_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_packaging_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_packaging_group_errors(), tuple()}.
 describe_packaging_group(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_packaging_group(Client, Id, QueryMap, HeadersMap, []).
 
+-spec describe_packaging_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_packaging_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_packaging_group_errors(), tuple()}.
 describe_packaging_group(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packaging_groups/", aws_util:encode_uri(Id), ""],
@@ -305,14 +1033,26 @@ describe_packaging_group(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of MediaPackage VOD Asset resources.
+-spec list_assets(aws_client:aws_client()) ->
+    {ok, list_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client)
   when is_map(Client) ->
     list_assets(Client, #{}, #{}).
 
+-spec list_assets(aws_client:aws_client(), map(), map()) ->
+    {ok, list_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assets(Client, QueryMap, HeadersMap, []).
 
+-spec list_assets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_assets_response(), tuple()} |
+    {error, any()} |
+    {error, list_assets_errors(), tuple()}.
 list_assets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets"],
@@ -337,14 +1077,26 @@ list_assets(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a collection of MediaPackage VOD PackagingConfiguration
 %% resources.
+-spec list_packaging_configurations(aws_client:aws_client()) ->
+    {ok, list_packaging_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_packaging_configurations_errors(), tuple()}.
 list_packaging_configurations(Client)
   when is_map(Client) ->
     list_packaging_configurations(Client, #{}, #{}).
 
+-spec list_packaging_configurations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_packaging_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_packaging_configurations_errors(), tuple()}.
 list_packaging_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packaging_configurations(Client, QueryMap, HeadersMap, []).
 
+-spec list_packaging_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_packaging_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_packaging_configurations_errors(), tuple()}.
 list_packaging_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packaging_configurations"],
@@ -368,14 +1120,26 @@ list_packaging_configurations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of MediaPackage VOD PackagingGroup resources.
+-spec list_packaging_groups(aws_client:aws_client()) ->
+    {ok, list_packaging_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_packaging_groups_errors(), tuple()}.
 list_packaging_groups(Client)
   when is_map(Client) ->
     list_packaging_groups(Client, #{}, #{}).
 
+-spec list_packaging_groups(aws_client:aws_client(), map(), map()) ->
+    {ok, list_packaging_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_packaging_groups_errors(), tuple()}.
 list_packaging_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packaging_groups(Client, QueryMap, HeadersMap, []).
 
+-spec list_packaging_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_packaging_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_packaging_groups_errors(), tuple()}.
 list_packaging_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packaging_groups"],
@@ -398,14 +1162,23 @@ list_packaging_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the tags assigned to the specified resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -425,8 +1198,15 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Adds tags to the specified resource.
 %%
 %% You can specify one or more tags to add.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -452,8 +1232,15 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes tags from the specified resource.
 %%
 %% You can specify one or more tags to remove.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -481,8 +1268,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% You can't change the id attribute or any other system-generated
 %% attributes.
+-spec update_packaging_group(aws_client:aws_client(), binary() | list(), update_packaging_group_request()) ->
+    {ok, update_packaging_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_packaging_group_errors(), tuple()}.
 update_packaging_group(Client, Id, Input) ->
     update_packaging_group(Client, Id, Input, []).
+
+-spec update_packaging_group(aws_client:aws_client(), binary() | list(), update_packaging_group_request(), proplists:proplist()) ->
+    {ok, update_packaging_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_packaging_group_errors(), tuple()}.
 update_packaging_group(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/packaging_groups/", aws_util:encode_uri(Id), ""],
@@ -509,7 +1305,7 @@ update_packaging_group(Client, Id, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

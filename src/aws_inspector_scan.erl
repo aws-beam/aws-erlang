@@ -10,6 +10,69 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any()),
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_sbom_request() :: #{
+%%   <<"outputFormat">> => list(any()),
+%%   <<"sbom">> := any()
+%% }
+-type scan_sbom_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_sbom_response() :: #{
+%%   <<"sbom">> => any()
+%% }
+-type scan_sbom_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+-type scan_sbom_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -19,8 +82,17 @@
 %%
 %% You can generate compatible SBOMs for your resources using the Amazon
 %% Inspector SBOM generator: .
+-spec scan_sbom(aws_client:aws_client(), scan_sbom_request()) ->
+    {ok, scan_sbom_response(), tuple()} |
+    {error, any()} |
+    {error, scan_sbom_errors(), tuple()}.
 scan_sbom(Client, Input) ->
     scan_sbom(Client, Input, []).
+
+-spec scan_sbom(aws_client:aws_client(), scan_sbom_request(), proplists:proplist()) ->
+    {ok, scan_sbom_response(), tuple()} |
+    {error, any()} |
+    {error, scan_sbom_errors(), tuple()}.
 scan_sbom(Client, Input0, Options0) ->
     Method = post,
     Path = ["/scan/sbom"],
@@ -47,7 +119,7 @@ scan_sbom(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

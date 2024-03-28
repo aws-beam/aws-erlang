@@ -284,6 +284,941 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_extensions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_extensions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% applications() :: #{
+%%   <<"Items">> => list(application()()),
+%%   <<"NextToken">> => string()
+%% }
+-type applications() :: #{binary() => any()}.
+
+%% Example:
+%% stop_deployment_request() :: #{}
+-type stop_deployment_request() :: #{}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension() :: #{
+%%   <<"Actions">> => map(),
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type extension() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_summary() :: #{
+%%   <<"CompletedAt">> => non_neg_integer(),
+%%   <<"ConfigurationName">> => string(),
+%%   <<"ConfigurationVersion">> => string(),
+%%   <<"DeploymentDurationInMinutes">> => integer(),
+%%   <<"DeploymentNumber">> => integer(),
+%%   <<"FinalBakeTimeInMinutes">> => integer(),
+%%   <<"GrowthFactor">> => float(),
+%%   <<"GrowthType">> => list(any()),
+%%   <<"PercentageComplete">> => float(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"VersionLabel">> => string()
+%% }
+-type deployment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension_associations() :: #{
+%%   <<"Items">> => list(extension_association_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type extension_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"AppliedExtensions">> => list(applied_extension()()),
+%%   <<"CompletedAt">> => non_neg_integer(),
+%%   <<"ConfigurationLocationUri">> => string(),
+%%   <<"ConfigurationName">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
+%%   <<"ConfigurationVersion">> => string(),
+%%   <<"DeploymentDurationInMinutes">> => integer(),
+%%   <<"DeploymentNumber">> => integer(),
+%%   <<"DeploymentStrategyId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EventLog">> => list(deployment_event()()),
+%%   <<"FinalBakeTimeInMinutes">> => integer(),
+%%   <<"GrowthFactor">> => float(),
+%%   <<"GrowthType">> => list(any()),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"PercentageComplete">> => float(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"VersionLabel">> => string()
+%% }
+-type deployment() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_configuration_detail() :: #{
+%%   <<"Constraint">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"Reason">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type invalid_configuration_detail() :: #{binary() => any()}.
+
+%% Example:
+%% delete_deployment_strategy_request() :: #{}
+-type delete_deployment_strategy_request() :: #{}.
+
+
+%% Example:
+%% get_configuration_request() :: #{
+%%   <<"ClientConfigurationVersion">> => string(),
+%%   <<"ClientId">> := string()
+%% }
+-type get_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_configuration_request() :: #{
+%%   <<"ConfigurationVersion">> := string()
+%% }
+-type validate_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_tags() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type resource_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_hosted_configuration_version_request() :: #{
+%%   <<"Content">> := binary(),
+%%   <<"ContentType">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"LatestVersionNumber">> => integer(),
+%%   <<"VersionLabel">> => string()
+%% }
+-type create_hosted_configuration_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_request() :: #{}
+-type get_environment_request() :: #{}.
+
+
+%% Example:
+%% update_configuration_profile_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RetrievalRoleArn">> => string(),
+%%   <<"Validators">> => list(validator()())
+%% }
+-type update_configuration_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_deployment_strategy_request() :: #{
+%%   <<"DeploymentDurationInMinutes">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"FinalBakeTimeInMinutes">> => integer(),
+%%   <<"GrowthFactor">> => float(),
+%%   <<"GrowthType">> => list(any())
+%% }
+-type update_deployment_strategy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_strategy() :: #{
+%%   <<"DeploymentDurationInMinutes">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"FinalBakeTimeInMinutes">> => integer(),
+%%   <<"GrowthFactor">> => float(),
+%%   <<"GrowthType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReplicateTo">> => list(any())
+%% }
+-type deployment_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration() :: #{
+%%   <<"ConfigurationVersion">> => string(),
+%%   <<"Content">> => binary(),
+%%   <<"ContentType">> => string()
+%% }
+-type configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension_association_summary() :: #{
+%%   <<"ExtensionArn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type extension_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_configuration_versions() :: #{
+%%   <<"Items">> => list(hosted_configuration_version_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type hosted_configuration_versions() :: #{binary() => any()}.
+
+
+%% Example:
+%% applied_extension() :: #{
+%%   <<"ExtensionAssociationId">> => string(),
+%%   <<"ExtensionId">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type applied_extension() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitor() :: #{
+%%   <<"AlarmArn">> => string(),
+%%   <<"AlarmRoleArn">> => string()
+%% }
+-type monitor() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type extension_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hosted_configuration_version_request() :: #{}
+-type delete_hosted_configuration_version_request() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% payload_too_large_exception() :: #{
+%%   <<"Limit">> => float(),
+%%   <<"Measure">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"Size">> => float()
+%% }
+-type payload_too_large_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Monitors">> => list(monitor()()),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type environment() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_request() :: #{}
+-type get_deployment_request() :: #{}.
+
+%% Example:
+%% delete_configuration_profile_request() :: #{}
+-type delete_configuration_profile_request() :: #{}.
+
+
+%% Example:
+%% application() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type application() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_extension_association_request() :: #{
+%%   <<"Parameters">> => map()
+%% }
+-type update_extension_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Dynamic">> => boolean(),
+%%   <<"Required">> => boolean()
+%% }
+-type parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_deployment_strategy_request() :: #{
+%%   <<"DeploymentDurationInMinutes">> := integer(),
+%%   <<"Description">> => string(),
+%%   <<"FinalBakeTimeInMinutes">> => integer(),
+%%   <<"GrowthFactor">> := float(),
+%%   <<"GrowthType">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"ReplicateTo">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_deployment_strategy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_profile() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RetrievalRoleArn">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Validators">> => list(validator()())
+%% }
+-type configuration_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_extension_request() :: #{
+%%   <<"VersionNumber">> => integer()
+%% }
+-type get_extension_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_hosted_configuration_version_request() :: #{}
+-type get_hosted_configuration_version_request() :: #{}.
+
+
+%% Example:
+%% action_invocation() :: #{
+%%   <<"ActionName">> => string(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ExtensionIdentifier">> => string(),
+%%   <<"InvocationId">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Uri">> => string()
+%% }
+-type action_invocation() :: #{binary() => any()}.
+
+
+%% Example:
+%% environments() :: #{
+%%   <<"Items">> => list(environment()()),
+%%   <<"NextToken">> => string()
+%% }
+-type environments() :: #{binary() => any()}.
+
+%% Example:
+%% get_configuration_profile_request() :: #{}
+-type get_configuration_profile_request() :: #{}.
+
+%% Example:
+%% get_deployment_strategy_request() :: #{}
+-type get_deployment_strategy_request() :: #{}.
+
+
+%% Example:
+%% deployment_strategies() :: #{
+%%   <<"Items">> => list(deployment_strategy()()),
+%%   <<"NextToken">> => string()
+%% }
+-type deployment_strategies() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_configuration_version_summary() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"VersionLabel">> => string(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type hosted_configuration_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type list_configuration_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_request() :: #{}
+-type delete_environment_request() :: #{}.
+
+
+%% Example:
+%% create_extension_association_request() :: #{
+%%   <<"ExtensionIdentifier">> := string(),
+%%   <<"ExtensionVersionNumber">> => integer(),
+%%   <<"Parameters">> => map(),
+%%   <<"ResourceIdentifier">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_extension_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_profiles() :: #{
+%%   <<"Items">> => list(configuration_profile_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type configuration_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Uri">> => string()
+%% }
+-type action() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% extensions() :: #{
+%%   <<"Items">> => list(extension_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type extensions() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configuration_profile_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LocationUri">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RetrievalRoleArn">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => string(),
+%%   <<"Validators">> => list(validator()())
+%% }
+-type create_configuration_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_extension_associations_request() :: #{
+%%   <<"ExtensionIdentifier">> => string(),
+%%   <<"ExtensionVersionNumber">> => integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceIdentifier">> => string()
+%% }
+-type list_extension_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_extension_association_request() :: #{}
+-type get_extension_association_request() :: #{}.
+
+
+%% Example:
+%% create_extension_request() :: #{
+%%   <<"Actions">> := map(),
+%%   <<"Description">> => string(),
+%%   <<"LatestVersionNumber">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"Parameters">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type create_extension_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_strategies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_deployment_strategies_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_extension_association_request() :: #{}
+-type delete_extension_association_request() :: #{}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Details">> => list(),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_configuration_version() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
+%%   <<"Content">> => binary(),
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"VersionLabel">> => string(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type hosted_configuration_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% validator() :: #{
+%%   <<"Content">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type validator() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_extension_request() :: #{
+%%   <<"Actions">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type update_extension_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Monitors">> => list(monitor()()),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_event() :: #{
+%%   <<"ActionInvocations">> => list(action_invocation()()),
+%%   <<"Description">> => string(),
+%%   <<"EventType">> => list(any()),
+%%   <<"OccurredAt">> => non_neg_integer(),
+%%   <<"TriggeredBy">> => list(any())
+%% }
+-type deployment_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Monitors">> => list(monitor()()),
+%%   <<"Name">> => string()
+%% }
+-type update_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_extension_request() :: #{
+%%   <<"VersionNumber">> => integer()
+%% }
+-type delete_extension_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_profile_summary() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"ValidatorTypes">> => list(list(any())())
+%% }
+-type configuration_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployments() :: #{
+%%   <<"Items">> => list(deployment_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type deployments() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
+
+
+%% Example:
+%% start_deployment_request() :: #{
+%%   <<"ConfigurationProfileId">> := string(),
+%%   <<"ConfigurationVersion">> := string(),
+%%   <<"DeploymentStrategyId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"DynamicExtensionParameters">> => map(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type start_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_hosted_configuration_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VersionLabel">> => string()
+%% }
+-type list_hosted_configuration_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension_association() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ExtensionArn">> => string(),
+%%   <<"ExtensionVersionNumber">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type extension_association() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
+-type create_application_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_configuration_profile_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_deployment_strategy_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
+
+-type create_environment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_extension_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_extension_association_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type create_hosted_configuration_version_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    payload_too_large_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_application_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_configuration_profile_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_deployment_strategy_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_environment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_extension_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_extension_association_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_hosted_configuration_version_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_application_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_configuration_profile_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_deployment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_deployment_strategy_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_extension_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_extension_association_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_hosted_configuration_version_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_applications_errors() ::
+    bad_request_exception() | 
+    internal_server_exception().
+
+-type list_configuration_profiles_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_deployment_strategies_errors() ::
+    bad_request_exception() | 
+    internal_server_exception().
+
+-type list_deployments_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_environments_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_extension_associations_errors() ::
+    bad_request_exception() | 
+    internal_server_exception().
+
+-type list_extensions_errors() ::
+    bad_request_exception() | 
+    internal_server_exception().
+
+-type list_hosted_configuration_versions_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_deployment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_deployment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_application_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_configuration_profile_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_deployment_strategy_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_environment_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_extension_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_extension_association_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type validate_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -298,8 +1233,17 @@
 %% MyMobileApp to organize and manage configuration data for a mobile
 %% application installed by
 %% your users.
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
+    {ok, application(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
+
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
+    {ok, application(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
@@ -362,8 +1306,17 @@ create_application(Client, Input0, Options0) ->
 %% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-and-profile.html
 %% in the AppConfig
 %% User Guide.
+-spec create_configuration_profile(aws_client:aws_client(), binary() | list(), create_configuration_profile_request()) ->
+    {ok, configuration_profile(), tuple()} |
+    {error, any()} |
+    {error, create_configuration_profile_errors(), tuple()}.
 create_configuration_profile(Client, ApplicationId, Input) ->
     create_configuration_profile(Client, ApplicationId, Input, []).
+
+-spec create_configuration_profile(aws_client:aws_client(), binary() | list(), create_configuration_profile_request(), proplists:proplist()) ->
+    {ok, configuration_profile(), tuple()} |
+    {error, any()} |
+    {error, create_configuration_profile_errors(), tuple()}.
 create_configuration_profile(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
@@ -394,8 +1347,17 @@ create_configuration_profile(Client, ApplicationId, Input0, Options0) ->
 %% duration required, a percentage of targets to receive the deployment
 %% during each interval,
 %% an algorithm that defines how percentage grows, and bake time.
+-spec create_deployment_strategy(aws_client:aws_client(), create_deployment_strategy_request()) ->
+    {ok, deployment_strategy(), tuple()} |
+    {error, any()} |
+    {error, create_deployment_strategy_errors(), tuple()}.
 create_deployment_strategy(Client, Input) ->
     create_deployment_strategy(Client, Input, []).
+
+-spec create_deployment_strategy(aws_client:aws_client(), create_deployment_strategy_request(), proplists:proplist()) ->
+    {ok, deployment_strategy(), tuple()} |
+    {error, any()} |
+    {error, create_deployment_strategy_errors(), tuple()}.
 create_deployment_strategy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deploymentstrategies"],
@@ -431,8 +1393,17 @@ create_deployment_strategy(Client, Input0, Options0) ->
 %% configuration deployment. If an alarm is triggered, the system rolls back
 %% the
 %% configuration.
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_request()) ->
+    {ok, environment(), tuple()} |
+    {error, any()} |
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, ApplicationId, Input) ->
     create_environment(Client, ApplicationId, Input, []).
+
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_request(), proplists:proplist()) ->
+    {ok, environment(), tuple()} |
+    {error, any()} |
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
@@ -488,8 +1459,17 @@ create_environment(Client, ApplicationId, Input0, Options0) ->
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
+-spec create_extension(aws_client:aws_client(), create_extension_request()) ->
+    {ok, extension(), tuple()} |
+    {error, any()} |
+    {error, create_extension_errors(), tuple()}.
 create_extension(Client, Input) ->
     create_extension(Client, Input, []).
+
+-spec create_extension(aws_client:aws_client(), create_extension_request(), proplists:proplist()) ->
+    {ok, extension(), tuple()} |
+    {error, any()} |
+    {error, create_extension_errors(), tuple()}.
 create_extension(Client, Input0, Options0) ->
     Method = post,
     Path = ["/extensions"],
@@ -535,8 +1515,17 @@ create_extension(Client, Input0, Options0) ->
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
+-spec create_extension_association(aws_client:aws_client(), create_extension_association_request()) ->
+    {ok, extension_association(), tuple()} |
+    {error, any()} |
+    {error, create_extension_association_errors(), tuple()}.
 create_extension_association(Client, Input) ->
     create_extension_association(Client, Input, []).
+
+-spec create_extension_association(aws_client:aws_client(), create_extension_association_request(), proplists:proplist()) ->
+    {ok, extension_association(), tuple()} |
+    {error, any()} |
+    {error, create_extension_association_errors(), tuple()}.
 create_extension_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/extensionassociations"],
@@ -561,8 +1550,17 @@ create_extension_association(Client, Input0, Options0) ->
 
 %% @doc Creates a new configuration in the AppConfig hosted configuration
 %% store.
+-spec create_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_hosted_configuration_version_request()) ->
+    {ok, hosted_configuration_version(), tuple()} |
+    {error, any()} |
+    {error, create_hosted_configuration_version_errors(), tuple()}.
 create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input) ->
     create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input, []).
+
+-spec create_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_hosted_configuration_version_request(), proplists:proplist()) ->
+    {ok, hosted_configuration_version(), tuple()} |
+    {error, any()} |
+    {error, create_hosted_configuration_version_errors(), tuple()}.
 create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
@@ -616,8 +1614,17 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
 %%
 %% Deleting an application does not delete a configuration from a
 %% host.
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
+
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -644,8 +1651,17 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 %%
 %% Deleting a configuration profile does not delete a
 %% configuration from a host.
+-spec delete_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configuration_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_configuration_profile_errors(), tuple()}.
 delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) ->
     delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
+
+-spec delete_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configuration_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_configuration_profile_errors(), tuple()}.
 delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
@@ -672,8 +1688,17 @@ delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
 %%
 %% Deleting a deployment strategy does not delete a
 %% configuration from a host.
+-spec delete_deployment_strategy(aws_client:aws_client(), binary() | list(), delete_deployment_strategy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_deployment_strategy_errors(), tuple()}.
 delete_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     delete_deployment_strategy(Client, DeploymentStrategyId, Input, []).
+
+-spec delete_deployment_strategy(aws_client:aws_client(), binary() | list(), delete_deployment_strategy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_deployment_strategy_errors(), tuple()}.
 delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
     Method = delete,
     Path = ["/deployementstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
@@ -700,8 +1725,17 @@ delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
 %%
 %% Deleting an environment does not delete a configuration from a
 %% host.
+-spec delete_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, ApplicationId, EnvironmentId, Input) ->
     delete_environment(Client, ApplicationId, EnvironmentId, Input, []).
+
+-spec delete_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -728,8 +1762,17 @@ delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 %%
 %% You must delete all associations to an
 %% extension before you delete the extension.
+-spec delete_extension(aws_client:aws_client(), binary() | list(), delete_extension_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_extension_errors(), tuple()}.
 delete_extension(Client, ExtensionIdentifier, Input) ->
     delete_extension(Client, ExtensionIdentifier, Input, []).
+
+-spec delete_extension(aws_client:aws_client(), binary() | list(), delete_extension_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_extension_errors(), tuple()}.
 delete_extension(Client, ExtensionIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
@@ -757,8 +1800,17 @@ delete_extension(Client, ExtensionIdentifier, Input0, Options0) ->
 %%
 %% This action doesn't delete extensions defined in the
 %% association.
+-spec delete_extension_association(aws_client:aws_client(), binary() | list(), delete_extension_association_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_extension_association_errors(), tuple()}.
 delete_extension_association(Client, ExtensionAssociationId, Input) ->
     delete_extension_association(Client, ExtensionAssociationId, Input, []).
+
+-spec delete_extension_association(aws_client:aws_client(), binary() | list(), delete_extension_association_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_extension_association_errors(), tuple()}.
 delete_extension_association(Client, ExtensionAssociationId, Input0, Options0) ->
     Method = delete,
     Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
@@ -784,8 +1836,17 @@ delete_extension_association(Client, ExtensionAssociationId, Input0, Options0) -
 %% @doc Deletes a version of a configuration from the AppConfig hosted
 %% configuration
 %% store.
+-spec delete_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_hosted_configuration_version_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_hosted_configuration_version_errors(), tuple()}.
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input) ->
     delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input, []).
+
+-spec delete_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_hosted_configuration_version_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_hosted_configuration_version_errors(), tuple()}.
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
@@ -809,14 +1870,26 @@ delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an application.
+-spec get_application(aws_client:aws_client(), binary() | list()) ->
+    {ok, application(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
 
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, application(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, application(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -847,14 +1920,26 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %%
 %% `GetConfiguration' is a priced call. For more information, see
 %% Pricing: https://aws.amazon.com/systems-manager/pricing/.
+-spec get_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, configuration(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_errors(), tuple()}.
 get_configuration(Client, Application, Configuration, Environment, ClientId)
   when is_map(Client) ->
     get_configuration(Client, Application, Configuration, Environment, ClientId, #{}, #{}).
 
+-spec get_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, configuration(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_errors(), tuple()}.
 get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap, []).
 
+-spec get_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, configuration(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_errors(), tuple()}.
 get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(Application), "/environments/", aws_util:encode_uri(Environment), "/configurations/", aws_util:encode_uri(Configuration), ""],
@@ -894,14 +1979,26 @@ get_configuration(Client, Application, Configuration, Environment, ClientId, Que
     end.
 
 %% @doc Retrieves information about a configuration profile.
+-spec get_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, configuration_profile(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_profile_errors(), tuple()}.
 get_configuration_profile(Client, ApplicationId, ConfigurationProfileId)
   when is_map(Client) ->
     get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, #{}, #{}).
 
+-spec get_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, configuration_profile(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_profile_errors(), tuple()}.
 get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, []).
 
+-spec get_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, configuration_profile(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_profile_errors(), tuple()}.
 get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
@@ -919,14 +2016,26 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a configuration deployment.
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, deployment(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId)
   when is_map(Client) ->
     get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, #{}, #{}).
 
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, deployment(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap, []).
 
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, deployment(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
@@ -953,14 +2062,26 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap,
 %% receive the deployment during each interval, an algorithm that defines how
 %% percentage
 %% grows, and bake time.
+-spec get_deployment_strategy(aws_client:aws_client(), binary() | list()) ->
+    {ok, deployment_strategy(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_strategy_errors(), tuple()}.
 get_deployment_strategy(Client, DeploymentStrategyId)
   when is_map(Client) ->
     get_deployment_strategy(Client, DeploymentStrategyId, #{}, #{}).
 
+-spec get_deployment_strategy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, deployment_strategy(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_strategy_errors(), tuple()}.
 get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, []).
 
+-spec get_deployment_strategy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, deployment_strategy(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_strategy_errors(), tuple()}.
 get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
@@ -987,14 +2108,26 @@ get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Opti
 %% alarms for an environment. If
 %% an alarm is triggered during a deployment, AppConfig roles back the
 %% configuration.
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, environment(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, ApplicationId, EnvironmentId)
   when is_map(Client) ->
     get_environment(Client, ApplicationId, EnvironmentId, #{}, #{}).
 
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, environment(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, []).
 
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, environment(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -1012,14 +2145,26 @@ get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about an AppConfig extension.
+-spec get_extension(aws_client:aws_client(), binary() | list()) ->
+    {ok, extension(), tuple()} |
+    {error, any()} |
+    {error, get_extension_errors(), tuple()}.
 get_extension(Client, ExtensionIdentifier)
   when is_map(Client) ->
     get_extension(Client, ExtensionIdentifier, #{}, #{}).
 
+-spec get_extension(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, extension(), tuple()} |
+    {error, any()} |
+    {error, get_extension_errors(), tuple()}.
 get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_extension(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, extension(), tuple()} |
+    {error, any()} |
+    {error, get_extension_errors(), tuple()}.
 get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
@@ -1047,14 +2192,26 @@ get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, Options0)
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
+-spec get_extension_association(aws_client:aws_client(), binary() | list()) ->
+    {ok, extension_association(), tuple()} |
+    {error, any()} |
+    {error, get_extension_association_errors(), tuple()}.
 get_extension_association(Client, ExtensionAssociationId)
   when is_map(Client) ->
     get_extension_association(Client, ExtensionAssociationId, #{}, #{}).
 
+-spec get_extension_association(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, extension_association(), tuple()} |
+    {error, any()} |
+    {error, get_extension_association_errors(), tuple()}.
 get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap, []).
 
+-spec get_extension_association(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, extension_association(), tuple()} |
+    {error, any()} |
+    {error, get_extension_association_errors(), tuple()}.
 get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
@@ -1072,14 +2229,26 @@ get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a specific configuration version.
+-spec get_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, hosted_configuration_version(), tuple()} |
+    {error, any()} |
+    {error, get_hosted_configuration_version_errors(), tuple()}.
 get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber)
   when is_map(Client) ->
     get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, #{}, #{}).
 
+-spec get_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, hosted_configuration_version(), tuple()} |
+    {error, any()} |
+    {error, get_hosted_configuration_version_errors(), tuple()}.
 get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap, []).
 
+-spec get_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, hosted_configuration_version(), tuple()} |
+    {error, any()} |
+    {error, get_hosted_configuration_version_errors(), tuple()}.
 get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions/", aws_util:encode_uri(VersionNumber), ""],
@@ -1119,14 +2288,26 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
     end.
 
 %% @doc Lists all applications in your Amazon Web Services account.
+-spec list_applications(aws_client:aws_client()) ->
+    {ok, applications(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
+    {ok, applications(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, applications(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
@@ -1149,14 +2330,26 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the configuration profiles for an application.
+-spec list_configuration_profiles(aws_client:aws_client(), binary() | list()) ->
+    {ok, configuration_profiles(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_profiles_errors(), tuple()}.
 list_configuration_profiles(Client, ApplicationId)
   when is_map(Client) ->
     list_configuration_profiles(Client, ApplicationId, #{}, #{}).
 
+-spec list_configuration_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, configuration_profiles(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_profiles_errors(), tuple()}.
 list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_configuration_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, configuration_profiles(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_profiles_errors(), tuple()}.
 list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles"],
@@ -1180,14 +2373,26 @@ list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists deployment strategies.
+-spec list_deployment_strategies(aws_client:aws_client()) ->
+    {ok, deployment_strategies(), tuple()} |
+    {error, any()} |
+    {error, list_deployment_strategies_errors(), tuple()}.
 list_deployment_strategies(Client)
   when is_map(Client) ->
     list_deployment_strategies(Client, #{}, #{}).
 
+-spec list_deployment_strategies(aws_client:aws_client(), map(), map()) ->
+    {ok, deployment_strategies(), tuple()} |
+    {error, any()} |
+    {error, list_deployment_strategies_errors(), tuple()}.
 list_deployment_strategies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployment_strategies(Client, QueryMap, HeadersMap, []).
 
+-spec list_deployment_strategies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, deployment_strategies(), tuple()} |
+    {error, any()} |
+    {error, list_deployment_strategies_errors(), tuple()}.
 list_deployment_strategies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/deploymentstrategies"],
@@ -1211,14 +2416,26 @@ list_deployment_strategies(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the deployments for an environment in descending deployment
 %% number order.
+-spec list_deployments(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, deployments(), tuple()} |
+    {error, any()} |
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, ApplicationId, EnvironmentId)
   when is_map(Client) ->
     list_deployments(Client, ApplicationId, EnvironmentId, #{}, #{}).
 
+-spec list_deployments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, deployments(), tuple()} |
+    {error, any()} |
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, []).
 
+-spec list_deployments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, deployments(), tuple()} |
+    {error, any()} |
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
@@ -1241,14 +2458,26 @@ list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the environments for an application.
+-spec list_environments(aws_client:aws_client(), binary() | list()) ->
+    {ok, environments(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, ApplicationId)
   when is_map(Client) ->
     list_environments(Client, ApplicationId, #{}, #{}).
 
+-spec list_environments(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, environments(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_environments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, environments(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
@@ -1277,14 +2506,26 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
+-spec list_extension_associations(aws_client:aws_client()) ->
+    {ok, extension_associations(), tuple()} |
+    {error, any()} |
+    {error, list_extension_associations_errors(), tuple()}.
 list_extension_associations(Client)
   when is_map(Client) ->
     list_extension_associations(Client, #{}, #{}).
 
+-spec list_extension_associations(aws_client:aws_client(), map(), map()) ->
+    {ok, extension_associations(), tuple()} |
+    {error, any()} |
+    {error, list_extension_associations_errors(), tuple()}.
 list_extension_associations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_extension_associations(Client, QueryMap, HeadersMap, []).
 
+-spec list_extension_associations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, extension_associations(), tuple()} |
+    {error, any()} |
+    {error, list_extension_associations_errors(), tuple()}.
 list_extension_associations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensionassociations"],
@@ -1317,14 +2558,26 @@ list_extension_associations(Client, QueryMap, HeadersMap, Options0)
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
+-spec list_extensions(aws_client:aws_client()) ->
+    {ok, extensions(), tuple()} |
+    {error, any()} |
+    {error, list_extensions_errors(), tuple()}.
 list_extensions(Client)
   when is_map(Client) ->
     list_extensions(Client, #{}, #{}).
 
+-spec list_extensions(aws_client:aws_client(), map(), map()) ->
+    {ok, extensions(), tuple()} |
+    {error, any()} |
+    {error, list_extensions_errors(), tuple()}.
 list_extensions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_extensions(Client, QueryMap, HeadersMap, []).
 
+-spec list_extensions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, extensions(), tuple()} |
+    {error, any()} |
+    {error, list_extensions_errors(), tuple()}.
 list_extensions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/extensions"],
@@ -1350,14 +2603,26 @@ list_extensions(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists configurations stored in the AppConfig hosted configuration
 %% store by
 %% version.
+-spec list_hosted_configuration_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, hosted_configuration_versions(), tuple()} |
+    {error, any()} |
+    {error, list_hosted_configuration_versions_errors(), tuple()}.
 list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId)
   when is_map(Client) ->
     list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, #{}, #{}).
 
+-spec list_hosted_configuration_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, hosted_configuration_versions(), tuple()} |
+    {error, any()} |
+    {error, list_hosted_configuration_versions_errors(), tuple()}.
 list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, []).
 
+-spec list_hosted_configuration_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, hosted_configuration_versions(), tuple()} |
+    {error, any()} |
+    {error, list_hosted_configuration_versions_errors(), tuple()}.
 list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/hostedconfigurationversions"],
@@ -1381,14 +2646,26 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the list of key-value tags assigned to the resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, resource_tags(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, resource_tags(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, resource_tags(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1406,8 +2683,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts a deployment.
+-spec start_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), start_deployment_request()) ->
+    {ok, deployment(), tuple()} |
+    {error, any()} |
+    {error, start_deployment_errors(), tuple()}.
 start_deployment(Client, ApplicationId, EnvironmentId, Input) ->
     start_deployment(Client, ApplicationId, EnvironmentId, Input, []).
+
+-spec start_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), start_deployment_request(), proplists:proplist()) ->
+    {ok, deployment(), tuple()} |
+    {error, any()} |
+    {error, start_deployment_errors(), tuple()}.
 start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments"],
@@ -1435,8 +2721,17 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 %% This API action works only on deployments that have a status of
 %% `DEPLOYING'. This action moves the deployment to a status of
 %% `ROLLED_BACK'.
+-spec stop_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_deployment_request()) ->
+    {ok, deployment(), tuple()} |
+    {error, any()} |
+    {error, stop_deployment_errors(), tuple()}.
 stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input) ->
     stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input, []).
+
+-spec stop_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_deployment_request(), proplists:proplist()) ->
+    {ok, deployment(), tuple()} |
+    {error, any()} |
+    {error, stop_deployment_errors(), tuple()}.
 stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), "/deployments/", aws_util:encode_uri(DeploymentNumber), ""],
@@ -1465,8 +2760,17 @@ stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, 
 %% your AppConfig resources. Each tag consists of a key and an optional
 %% value, both
 %% of which you define. You can specify a maximum of 50 tags for a resource.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1490,8 +2794,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a tag key and value from an AppConfig resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1516,8 +2829,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an application.
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
+    {ok, application(), tuple()} |
+    {error, any()} |
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
+
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
+    {ok, application(), tuple()} |
+    {error, any()} |
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -1541,8 +2863,17 @@ update_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a configuration profile.
+-spec update_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_configuration_profile_request()) ->
+    {ok, configuration_profile(), tuple()} |
+    {error, any()} |
+    {error, update_configuration_profile_errors(), tuple()}.
 update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) ->
     update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
+
+-spec update_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_configuration_profile_request(), proplists:proplist()) ->
+    {ok, configuration_profile(), tuple()} |
+    {error, any()} |
+    {error, update_configuration_profile_errors(), tuple()}.
 update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), ""],
@@ -1566,8 +2897,17 @@ update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a deployment strategy.
+-spec update_deployment_strategy(aws_client:aws_client(), binary() | list(), update_deployment_strategy_request()) ->
+    {ok, deployment_strategy(), tuple()} |
+    {error, any()} |
+    {error, update_deployment_strategy_errors(), tuple()}.
 update_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     update_deployment_strategy(Client, DeploymentStrategyId, Input, []).
+
+-spec update_deployment_strategy(aws_client:aws_client(), binary() | list(), update_deployment_strategy_request(), proplists:proplist()) ->
+    {ok, deployment_strategy(), tuple()} |
+    {error, any()} |
+    {error, update_deployment_strategy_errors(), tuple()}.
 update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
     Method = patch,
     Path = ["/deploymentstrategies/", aws_util:encode_uri(DeploymentStrategyId), ""],
@@ -1591,8 +2931,17 @@ update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an environment.
+-spec update_environment(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_request()) ->
+    {ok, environment(), tuple()} |
+    {error, any()} |
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, ApplicationId, EnvironmentId, Input) ->
     update_environment(Client, ApplicationId, EnvironmentId, Input, []).
+
+-spec update_environment(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_request(), proplists:proplist()) ->
+    {ok, environment(), tuple()} |
+    {error, any()} |
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -1622,8 +2971,17 @@ update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
+-spec update_extension(aws_client:aws_client(), binary() | list(), update_extension_request()) ->
+    {ok, extension(), tuple()} |
+    {error, any()} |
+    {error, update_extension_errors(), tuple()}.
 update_extension(Client, ExtensionIdentifier, Input) ->
     update_extension(Client, ExtensionIdentifier, Input, []).
+
+-spec update_extension(aws_client:aws_client(), binary() | list(), update_extension_request(), proplists:proplist()) ->
+    {ok, extension(), tuple()} |
+    {error, any()} |
+    {error, update_extension_errors(), tuple()}.
 update_extension(Client, ExtensionIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
@@ -1653,8 +3011,17 @@ update_extension(Client, ExtensionIdentifier, Input0, Options0) ->
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
+-spec update_extension_association(aws_client:aws_client(), binary() | list(), update_extension_association_request()) ->
+    {ok, extension_association(), tuple()} |
+    {error, any()} |
+    {error, update_extension_association_errors(), tuple()}.
 update_extension_association(Client, ExtensionAssociationId, Input) ->
     update_extension_association(Client, ExtensionAssociationId, Input, []).
+
+-spec update_extension_association(aws_client:aws_client(), binary() | list(), update_extension_association_request(), proplists:proplist()) ->
+    {ok, extension_association(), tuple()} |
+    {error, any()} |
+    {error, update_extension_association_errors(), tuple()}.
 update_extension_association(Client, ExtensionAssociationId, Input0, Options0) ->
     Method = patch,
     Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
@@ -1679,8 +3046,17 @@ update_extension_association(Client, ExtensionAssociationId, Input0, Options0) -
 
 %% @doc Uses the validators in a configuration profile to validate a
 %% configuration.
+-spec validate_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), validate_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, validate_configuration_errors(), tuple()}.
 validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input) ->
     validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input, []).
+
+-spec validate_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), validate_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, validate_configuration_errors(), tuple()}.
 validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/configurationprofiles/", aws_util:encode_uri(ConfigurationProfileId), "/validators"],
@@ -1708,7 +3084,7 @@ validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input0, Op
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

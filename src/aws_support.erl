@@ -102,6 +102,536 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% describe_communications_request() :: #{
+%%   <<"afterTime">> => string(),
+%%   <<"beforeTime">> => string(),
+%%   <<"caseId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_communications_request() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_category_specific_summary() :: #{
+%%   <<"costOptimizing">> => trusted_advisor_cost_optimizing_summary()
+%% }
+-type trusted_advisor_category_specific_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_severity_levels_request() :: #{
+%%   <<"language">> => string()
+%% }
+-type describe_severity_levels_request() :: #{binary() => any()}.
+
+%% Example:
+%% supported_language() :: #{
+%%   <<"code">> => string(),
+%%   <<"display">> => string(),
+%%   <<"language">> => string()
+%% }
+-type supported_language() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type attachment_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% communication() :: #{
+%%   <<"attachmentSet">> => list(attachment_details()()),
+%%   <<"body">> => string(),
+%%   <<"caseId">> => string(),
+%%   <<"submittedBy">> => string(),
+%%   <<"timeCreated">> => string()
+%% }
+-type communication() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_trusted_advisor_check_request() :: #{
+%%   <<"checkId">> := string()
+%% }
+-type refresh_trusted_advisor_check_request() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_check_refresh_status() :: #{
+%%   <<"checkId">> => string(),
+%%   <<"millisUntilNextRefreshable">> => float(),
+%%   <<"status">> => string()
+%% }
+-type trusted_advisor_check_refresh_status() :: #{binary() => any()}.
+
+%% Example:
+%% add_attachments_to_set_request() :: #{
+%%   <<"attachmentSetId">> => string(),
+%%   <<"attachments">> := list(attachment()())
+%% }
+-type add_attachments_to_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_services_request() :: #{
+%%   <<"language">> => string(),
+%%   <<"serviceCodeList">> => list(string()())
+%% }
+-type describe_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_case_request() :: #{
+%%   <<"attachmentSetId">> => string(),
+%%   <<"categoryCode">> => string(),
+%%   <<"ccEmailAddresses">> => list(string()()),
+%%   <<"communicationBody">> := string(),
+%%   <<"issueType">> => string(),
+%%   <<"language">> => string(),
+%%   <<"serviceCode">> => string(),
+%%   <<"severityCode">> => string(),
+%%   <<"subject">> := string()
+%% }
+-type create_case_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_check_result_request() :: #{
+%%   <<"checkId">> := string(),
+%%   <<"language">> => string()
+%% }
+-type describe_trusted_advisor_check_result_request() :: #{binary() => any()}.
+
+%% Example:
+%% case_id_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type case_id_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% date_interval() :: #{
+%%   <<"endDateTime">> => string(),
+%%   <<"startDateTime">> => string()
+%% }
+-type date_interval() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_check_summaries_request() :: #{
+%%   <<"checkIds">> := list(string()())
+%% }
+-type describe_trusted_advisor_check_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% recent_case_communications() :: #{
+%%   <<"communications">> => list(communication()()),
+%%   <<"nextToken">> => string()
+%% }
+-type recent_case_communications() :: #{binary() => any()}.
+
+%% Example:
+%% attachment() :: #{
+%%   <<"data">> => binary(),
+%%   <<"fileName">> => string()
+%% }
+-type attachment() :: #{binary() => any()}.
+
+%% Example:
+%% create_case_response() :: #{
+%%   <<"caseId">> => string()
+%% }
+-type create_case_response() :: #{binary() => any()}.
+
+%% Example:
+%% service() :: #{
+%%   <<"categories">> => list(category()()),
+%%   <<"code">> => string(),
+%%   <<"name">> => string()
+%% }
+-type service() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_check_refresh_statuses_response() :: #{
+%%   <<"statuses">> => list(trusted_advisor_check_refresh_status()())
+%% }
+-type describe_trusted_advisor_check_refresh_statuses_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_checks_request() :: #{
+%%   <<"language">> := string()
+%% }
+-type describe_trusted_advisor_checks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_supported_languages_request() :: #{
+%%   <<"categoryCode">> := string(),
+%%   <<"issueType">> := string(),
+%%   <<"serviceCode">> := string()
+%% }
+-type describe_supported_languages_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_attachments_to_set_response() :: #{
+%%   <<"attachmentSetId">> => string(),
+%%   <<"expiryTime">> => string()
+%% }
+-type add_attachments_to_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_check_description() :: #{
+%%   <<"category">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => list(string()()),
+%%   <<"name">> => string()
+%% }
+-type trusted_advisor_check_description() :: #{binary() => any()}.
+
+%% Example:
+%% describe_services_response() :: #{
+%%   <<"services">> => list(service()())
+%% }
+-type describe_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attachment_request() :: #{
+%%   <<"attachmentId">> := string()
+%% }
+-type describe_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_checks_response() :: #{
+%%   <<"checks">> => list(trusted_advisor_check_description()())
+%% }
+-type describe_trusted_advisor_checks_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_communication_to_case_request() :: #{
+%%   <<"attachmentSetId">> => string(),
+%%   <<"caseId">> => string(),
+%%   <<"ccEmailAddresses">> => list(string()()),
+%%   <<"communicationBody">> := string()
+%% }
+-type add_communication_to_case_request() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_resource_detail() :: #{
+%%   <<"isSuppressed">> => boolean(),
+%%   <<"metadata">> => list(string()()),
+%%   <<"region">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type trusted_advisor_resource_detail() :: #{binary() => any()}.
+
+%% Example:
+%% case_creation_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type case_creation_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_details() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"fileName">> => string()
+%% }
+-type attachment_details() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_set_expired() :: #{
+%%   <<"message">> => string()
+%% }
+-type attachment_set_expired() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_check_refresh_statuses_request() :: #{
+%%   <<"checkIds">> := list(string()())
+%% }
+-type describe_trusted_advisor_check_refresh_statuses_request() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_trusted_advisor_check_response() :: #{
+%%   <<"status">> => trusted_advisor_check_refresh_status()
+%% }
+-type refresh_trusted_advisor_check_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_severity_levels_response() :: #{
+%%   <<"severityLevels">> => list(severity_level()())
+%% }
+-type describe_severity_levels_response() :: #{binary() => any()}.
+
+%% Example:
+%% resolve_case_request() :: #{
+%%   <<"caseId">> => string()
+%% }
+-type resolve_case_request() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_cost_optimizing_summary() :: #{
+%%   <<"estimatedMonthlySavings">> => float(),
+%%   <<"estimatedPercentMonthlySavings">> => float()
+%% }
+-type trusted_advisor_cost_optimizing_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cases_response() :: #{
+%%   <<"cases">> => list(case_details()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_cases_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_create_case_options_response() :: #{
+%%   <<"communicationTypes">> => list(communication_type_options()()),
+%%   <<"languageAvailability">> => string()
+%% }
+-type describe_create_case_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_supported_languages_response() :: #{
+%%   <<"supportedLanguages">> => list(supported_language()())
+%% }
+-type describe_supported_languages_response() :: #{binary() => any()}.
+
+%% Example:
+%% case_details() :: #{
+%%   <<"caseId">> => string(),
+%%   <<"categoryCode">> => string(),
+%%   <<"ccEmailAddresses">> => list(string()()),
+%%   <<"displayId">> => string(),
+%%   <<"language">> => string(),
+%%   <<"recentCommunications">> => recent_case_communications(),
+%%   <<"serviceCode">> => string(),
+%%   <<"severityCode">> => string(),
+%%   <<"status">> => string(),
+%%   <<"subject">> => string(),
+%%   <<"submittedBy">> => string(),
+%%   <<"timeCreated">> => string()
+%% }
+-type case_details() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_check_result() :: #{
+%%   <<"categorySpecificSummary">> => trusted_advisor_category_specific_summary(),
+%%   <<"checkId">> => string(),
+%%   <<"flaggedResources">> => list(trusted_advisor_resource_detail()()),
+%%   <<"resourcesSummary">> => trusted_advisor_resources_summary(),
+%%   <<"status">> => string(),
+%%   <<"timestamp">> => string()
+%% }
+-type trusted_advisor_check_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_check_result_response() :: #{
+%%   <<"result">> => trusted_advisor_check_result()
+%% }
+-type describe_trusted_advisor_check_result_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_create_case_options_request() :: #{
+%%   <<"categoryCode">> := string(),
+%%   <<"issueType">> := string(),
+%%   <<"language">> := string(),
+%%   <<"serviceCode">> := string()
+%% }
+-type describe_create_case_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_communications_response() :: #{
+%%   <<"communications">> => list(communication()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_communications_response() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_set_id_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type attachment_set_id_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attachment_response() :: #{
+%%   <<"attachment">> => attachment()
+%% }
+-type describe_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_communication_to_case_response() :: #{
+%%   <<"result">> => boolean()
+%% }
+-type add_communication_to_case_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cases_request() :: #{
+%%   <<"afterTime">> => string(),
+%%   <<"beforeTime">> => string(),
+%%   <<"caseIdList">> => list(string()()),
+%%   <<"displayId">> => string(),
+%%   <<"includeCommunications">> => boolean(),
+%%   <<"includeResolvedCases">> => boolean(),
+%%   <<"language">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_cases_request() :: #{binary() => any()}.
+
+%% Example:
+%% communication_type_options() :: #{
+%%   <<"datesWithoutSupport">> => list(date_interval()()),
+%%   <<"supportedHours">> => list(supported_hour()()),
+%%   <<"type">> => string()
+%% }
+-type communication_type_options() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_check_summaries_response() :: #{
+%%   <<"summaries">> => list(trusted_advisor_check_summary()())
+%% }
+-type describe_trusted_advisor_check_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% supported_hour() :: #{
+%%   <<"endTime">> => string(),
+%%   <<"startTime">> => string()
+%% }
+-type supported_hour() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_resources_summary() :: #{
+%%   <<"resourcesFlagged">> => float(),
+%%   <<"resourcesIgnored">> => float(),
+%%   <<"resourcesProcessed">> => float(),
+%%   <<"resourcesSuppressed">> => float()
+%% }
+-type trusted_advisor_resources_summary() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% severity_level() :: #{
+%%   <<"code">> => string(),
+%%   <<"name">> => string()
+%% }
+-type severity_level() :: #{binary() => any()}.
+
+%% Example:
+%% category() :: #{
+%%   <<"code">> => string(),
+%%   <<"name">> => string()
+%% }
+-type category() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_set_size_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type attachment_set_size_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_check_summary() :: #{
+%%   <<"categorySpecificSummary">> => trusted_advisor_category_specific_summary(),
+%%   <<"checkId">> => string(),
+%%   <<"hasFlaggedResources">> => boolean(),
+%%   <<"resourcesSummary">> => trusted_advisor_resources_summary(),
+%%   <<"status">> => string(),
+%%   <<"timestamp">> => string()
+%% }
+-type trusted_advisor_check_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resolve_case_response() :: #{
+%%   <<"finalCaseStatus">> => string(),
+%%   <<"initialCaseStatus">> => string()
+%% }
+-type resolve_case_response() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_id_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type attachment_id_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attachment_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type describe_attachment_limit_exceeded() :: #{binary() => any()}.
+
+-type add_attachments_to_set_errors() ::
+    attachment_set_size_limit_exceeded() | 
+    internal_server_error() | 
+    attachment_set_id_not_found() | 
+    attachment_set_expired() | 
+    attachment_limit_exceeded().
+
+-type add_communication_to_case_errors() ::
+    internal_server_error() | 
+    attachment_set_id_not_found() | 
+    attachment_set_expired() | 
+    case_id_not_found().
+
+-type create_case_errors() ::
+    internal_server_error() | 
+    attachment_set_id_not_found() | 
+    attachment_set_expired() | 
+    case_creation_limit_exceeded().
+
+-type describe_attachment_errors() ::
+    describe_attachment_limit_exceeded() | 
+    attachment_id_not_found() | 
+    internal_server_error().
+
+-type describe_cases_errors() ::
+    internal_server_error() | 
+    case_id_not_found().
+
+-type describe_communications_errors() ::
+    internal_server_error() | 
+    case_id_not_found().
+
+-type describe_create_case_options_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type describe_services_errors() ::
+    internal_server_error().
+
+-type describe_severity_levels_errors() ::
+    internal_server_error().
+
+-type describe_supported_languages_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type describe_trusted_advisor_check_refresh_statuses_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type describe_trusted_advisor_check_result_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type describe_trusted_advisor_check_summaries_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type describe_trusted_advisor_checks_errors() ::
+    throttling_exception() | 
+    internal_server_error().
+
+-type refresh_trusted_advisor_check_errors() ::
+    internal_server_error().
+
+-type resolve_case_errors() ::
+    internal_server_error() | 
+    case_id_not_found().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -124,9 +654,18 @@
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+-spec add_attachments_to_set(aws_client:aws_client(), add_attachments_to_set_request()) ->
+    {ok, add_attachments_to_set_response(), tuple()} |
+    {error, any()} |
+    {error, add_attachments_to_set_errors(), tuple()}.
 add_attachments_to_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_attachments_to_set(Client, Input, []).
+
+-spec add_attachments_to_set(aws_client:aws_client(), add_attachments_to_set_request(), proplists:proplist()) ->
+    {ok, add_attachments_to_set_response(), tuple()} |
+    {error, any()} |
+    {error, add_attachments_to_set_errors(), tuple()}.
 add_attachments_to_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddAttachmentsToSet">>, Input, Options).
@@ -152,9 +691,18 @@ add_attachments_to_set(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+-spec add_communication_to_case(aws_client:aws_client(), add_communication_to_case_request()) ->
+    {ok, add_communication_to_case_response(), tuple()} |
+    {error, any()} |
+    {error, add_communication_to_case_errors(), tuple()}.
 add_communication_to_case(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_communication_to_case(Client, Input, []).
+
+-spec add_communication_to_case(aws_client:aws_client(), add_communication_to_case_request(), proplists:proplist()) ->
+    {ok, add_communication_to_case_response(), tuple()} |
+    {error, any()} |
+    {error, add_communication_to_case_errors(), tuple()}.
 add_communication_to_case(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCommunicationToCase">>, Input, Options).
@@ -199,9 +747,18 @@ add_communication_to_case(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+-spec create_case(aws_client:aws_client(), create_case_request()) ->
+    {ok, create_case_response(), tuple()} |
+    {error, any()} |
+    {error, create_case_errors(), tuple()}.
 create_case(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_case(Client, Input, []).
+
+-spec create_case(aws_client:aws_client(), create_case_request(), proplists:proplist()) ->
+    {ok, create_case_response(), tuple()} |
+    {error, any()} |
+    {error, create_case_errors(), tuple()}.
 create_case(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCase">>, Input, Options).
@@ -227,9 +784,18 @@ create_case(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+-spec describe_attachment(aws_client:aws_client(), describe_attachment_request()) ->
+    {ok, describe_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_attachment_errors(), tuple()}.
 describe_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_attachment(Client, Input, []).
+
+-spec describe_attachment(aws_client:aws_client(), describe_attachment_request(), proplists:proplist()) ->
+    {ok, describe_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_attachment_errors(), tuple()}.
 describe_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAttachment">>, Input, Options).
@@ -266,9 +832,18 @@ describe_attachment(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+-spec describe_cases(aws_client:aws_client(), describe_cases_request()) ->
+    {ok, describe_cases_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cases_errors(), tuple()}.
 describe_cases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cases(Client, Input, []).
+
+-spec describe_cases(aws_client:aws_client(), describe_cases_request(), proplists:proplist()) ->
+    {ok, describe_cases_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cases_errors(), tuple()}.
 describe_cases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCases">>, Input, Options).
@@ -301,9 +876,18 @@ describe_cases(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+-spec describe_communications(aws_client:aws_client(), describe_communications_request()) ->
+    {ok, describe_communications_response(), tuple()} |
+    {error, any()} |
+    {error, describe_communications_errors(), tuple()}.
 describe_communications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_communications(Client, Input, []).
+
+-spec describe_communications(aws_client:aws_client(), describe_communications_request(), proplists:proplist()) ->
+    {ok, describe_communications_response(), tuple()} |
+    {error, any()} |
+    {error, describe_communications_errors(), tuple()}.
 describe_communications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCommunications">>, Input, Options).
@@ -326,9 +910,18 @@ describe_communications(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+-spec describe_create_case_options(aws_client:aws_client(), describe_create_case_options_request()) ->
+    {ok, describe_create_case_options_response(), tuple()} |
+    {error, any()} |
+    {error, describe_create_case_options_errors(), tuple()}.
 describe_create_case_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_create_case_options(Client, Input, []).
+
+-spec describe_create_case_options(aws_client:aws_client(), describe_create_case_options_request(), proplists:proplist()) ->
+    {ok, describe_create_case_options_response(), tuple()} |
+    {error, any()} |
+    {error, describe_create_case_options_errors(), tuple()}.
 describe_create_case_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCreateCaseOptions">>, Input, Options).
@@ -363,9 +956,18 @@ describe_create_case_options(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+-spec describe_services(aws_client:aws_client(), describe_services_request()) ->
+    {ok, describe_services_response(), tuple()} |
+    {error, any()} |
+    {error, describe_services_errors(), tuple()}.
 describe_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_services(Client, Input, []).
+
+-spec describe_services(aws_client:aws_client(), describe_services_request(), proplists:proplist()) ->
+    {ok, describe_services_response(), tuple()} |
+    {error, any()} |
+    {error, describe_services_errors(), tuple()}.
 describe_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServices">>, Input, Options).
@@ -388,9 +990,18 @@ describe_services(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+-spec describe_severity_levels(aws_client:aws_client(), describe_severity_levels_request()) ->
+    {ok, describe_severity_levels_response(), tuple()} |
+    {error, any()} |
+    {error, describe_severity_levels_errors(), tuple()}.
 describe_severity_levels(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_severity_levels(Client, Input, []).
+
+-spec describe_severity_levels(aws_client:aws_client(), describe_severity_levels_request(), proplists:proplist()) ->
+    {ok, describe_severity_levels_response(), tuple()} |
+    {error, any()} |
+    {error, describe_severity_levels_errors(), tuple()}.
 describe_severity_levels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSeverityLevels">>, Input, Options).
@@ -413,9 +1024,18 @@ describe_severity_levels(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+-spec describe_supported_languages(aws_client:aws_client(), describe_supported_languages_request()) ->
+    {ok, describe_supported_languages_response(), tuple()} |
+    {error, any()} |
+    {error, describe_supported_languages_errors(), tuple()}.
 describe_supported_languages(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_supported_languages(Client, Input, []).
+
+-spec describe_supported_languages(aws_client:aws_client(), describe_supported_languages_request(), proplists:proplist()) ->
+    {ok, describe_supported_languages_response(), tuple()} |
+    {error, any()} |
+    {error, describe_supported_languages_errors(), tuple()}.
 describe_supported_languages(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSupportedLanguages">>, Input, Options).
@@ -453,9 +1073,18 @@ describe_supported_languages(Client, Input, Options)
 %% API:
 %% https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint
 %% in the Amazon Web Services Support User Guide.
+-spec describe_trusted_advisor_check_refresh_statuses(aws_client:aws_client(), describe_trusted_advisor_check_refresh_statuses_request()) ->
+    {ok, describe_trusted_advisor_check_refresh_statuses_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trusted_advisor_check_refresh_statuses_errors(), tuple()}.
 describe_trusted_advisor_check_refresh_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_refresh_statuses(Client, Input, []).
+
+-spec describe_trusted_advisor_check_refresh_statuses(aws_client:aws_client(), describe_trusted_advisor_check_refresh_statuses_request(), proplists:proplist()) ->
+    {ok, describe_trusted_advisor_check_refresh_statuses_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trusted_advisor_check_refresh_statuses_errors(), tuple()}.
 describe_trusted_advisor_check_refresh_statuses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustedAdvisorCheckRefreshStatuses">>, Input, Options).
@@ -507,9 +1136,18 @@ describe_trusted_advisor_check_refresh_statuses(Client, Input, Options)
 %% API:
 %% https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint
 %% in the Amazon Web Services Support User Guide.
+-spec describe_trusted_advisor_check_result(aws_client:aws_client(), describe_trusted_advisor_check_result_request()) ->
+    {ok, describe_trusted_advisor_check_result_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trusted_advisor_check_result_errors(), tuple()}.
 describe_trusted_advisor_check_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_result(Client, Input, []).
+
+-spec describe_trusted_advisor_check_result(aws_client:aws_client(), describe_trusted_advisor_check_result_request(), proplists:proplist()) ->
+    {ok, describe_trusted_advisor_check_result_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trusted_advisor_check_result_errors(), tuple()}.
 describe_trusted_advisor_check_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustedAdvisorCheckResult">>, Input, Options).
@@ -543,9 +1181,18 @@ describe_trusted_advisor_check_result(Client, Input, Options)
 %% API:
 %% https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint
 %% in the Amazon Web Services Support User Guide.
+-spec describe_trusted_advisor_check_summaries(aws_client:aws_client(), describe_trusted_advisor_check_summaries_request()) ->
+    {ok, describe_trusted_advisor_check_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trusted_advisor_check_summaries_errors(), tuple()}.
 describe_trusted_advisor_check_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_summaries(Client, Input, []).
+
+-spec describe_trusted_advisor_check_summaries(aws_client:aws_client(), describe_trusted_advisor_check_summaries_request(), proplists:proplist()) ->
+    {ok, describe_trusted_advisor_check_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trusted_advisor_check_summaries_errors(), tuple()}.
 describe_trusted_advisor_check_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustedAdvisorCheckSummaries">>, Input, Options).
@@ -583,9 +1230,18 @@ describe_trusted_advisor_check_summaries(Client, Input, Options)
 %% API:
 %% https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint
 %% in the Amazon Web Services Support User Guide.
+-spec describe_trusted_advisor_checks(aws_client:aws_client(), describe_trusted_advisor_checks_request()) ->
+    {ok, describe_trusted_advisor_checks_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trusted_advisor_checks_errors(), tuple()}.
 describe_trusted_advisor_checks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_checks(Client, Input, []).
+
+-spec describe_trusted_advisor_checks(aws_client:aws_client(), describe_trusted_advisor_checks_request(), proplists:proplist()) ->
+    {ok, describe_trusted_advisor_checks_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trusted_advisor_checks_errors(), tuple()}.
 describe_trusted_advisor_checks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustedAdvisorChecks">>, Input, Options).
@@ -623,9 +1279,18 @@ describe_trusted_advisor_checks(Client, Input, Options)
 %% API:
 %% https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint
 %% in the Amazon Web Services Support User Guide.
+-spec refresh_trusted_advisor_check(aws_client:aws_client(), refresh_trusted_advisor_check_request()) ->
+    {ok, refresh_trusted_advisor_check_response(), tuple()} |
+    {error, any()} |
+    {error, refresh_trusted_advisor_check_errors(), tuple()}.
 refresh_trusted_advisor_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_trusted_advisor_check(Client, Input, []).
+
+-spec refresh_trusted_advisor_check(aws_client:aws_client(), refresh_trusted_advisor_check_request(), proplists:proplist()) ->
+    {ok, refresh_trusted_advisor_check_response(), tuple()} |
+    {error, any()} |
+    {error, refresh_trusted_advisor_check_errors(), tuple()}.
 refresh_trusted_advisor_check(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RefreshTrustedAdvisorCheck">>, Input, Options).
@@ -645,9 +1310,18 @@ refresh_trusted_advisor_check(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+-spec resolve_case(aws_client:aws_client(), resolve_case_request()) ->
+    {ok, resolve_case_response(), tuple()} |
+    {error, any()} |
+    {error, resolve_case_errors(), tuple()}.
 resolve_case(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_case(Client, Input, []).
+
+-spec resolve_case(aws_client:aws_client(), resolve_case_request(), proplists:proplist()) ->
+    {ok, resolve_case_response(), tuple()} |
+    {error, any()} |
+    {error, resolve_case_errors(), tuple()}.
 resolve_case(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResolveCase">>, Input, Options).

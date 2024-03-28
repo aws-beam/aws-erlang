@@ -47,6 +47,485 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% service_vpc_endpoint() :: #{
+%%   <<"ServiceName">> => list(any()),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type service_vpc_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline()
+%% }
+-type get_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipelines_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Pipelines">> => list(pipeline_summary()())
+%% }
+-type list_pipelines_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline()
+%% }
+-type update_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipelines_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pipelines_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% create_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline()
+%% }
+-type create_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_pipeline_change_progress_response() :: #{
+%%   <<"ChangeProgressStatuses">> => list(change_progress_status()())
+%% }
+-type get_pipeline_change_progress_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline() :: #{
+%%   <<"BufferOptions">> => buffer_options(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"IngestEndpointUrls">> => list(string()()),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"LogPublishingOptions">> => log_publishing_options(),
+%%   <<"MaxUnits">> => integer(),
+%%   <<"MinUnits">> => integer(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineConfigurationBody">> => string(),
+%%   <<"PipelineName">> => string(),
+%%   <<"ServiceVpcEndpoints">> => list(service_vpc_endpoint()()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => pipeline_status_reason(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcEndpoints">> => list(vpc_endpoint()())
+%% }
+-type pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline()
+%% }
+-type start_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_progress_status() :: #{
+%%   <<"ChangeProgressStages">> => list(change_progress_stage()()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalNumberOfStages">> => integer()
+%% }
+-type change_progress_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_log_destination() :: #{
+%%   <<"LogGroup">> => string()
+%% }
+-type cloud_watch_log_destination() :: #{binary() => any()}.
+
+%% Example:
+%% start_pipeline_request() :: #{}
+-type start_pipeline_request() :: #{}.
+
+
+%% Example:
+%% buffer_options() :: #{
+%%   <<"PersistentBufferEnabled">> => boolean()
+%% }
+-type buffer_options() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_blueprints_request() :: #{}
+-type list_pipeline_blueprints_request() :: #{}.
+
+
+%% Example:
+%% list_pipeline_blueprints_response() :: #{
+%%   <<"Blueprints">> => list(pipeline_blueprint_summary()())
+%% }
+-type list_pipeline_blueprints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pipeline_request() :: #{
+%%   <<"BufferOptions">> => buffer_options(),
+%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"LogPublishingOptions">> => log_publishing_options(),
+%%   <<"MaxUnits">> := integer(),
+%%   <<"MinUnits">> := integer(),
+%%   <<"PipelineConfigurationBody">> := string(),
+%%   <<"PipelineName">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcOptions">> => vpc_options()
+%% }
+-type create_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipeline_request() :: #{
+%%   <<"BufferOptions">> => buffer_options(),
+%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"LogPublishingOptions">> => log_publishing_options(),
+%%   <<"MaxUnits">> => integer(),
+%%   <<"MinUnits">> => integer(),
+%%   <<"PipelineConfigurationBody">> => string()
+%% }
+-type update_pipeline_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_blueprint_request() :: #{}
+-type get_pipeline_blueprint_request() :: #{}.
+
+%% Example:
+%% delete_pipeline_request() :: #{}
+-type delete_pipeline_request() :: #{}.
+
+
+%% Example:
+%% get_pipeline_blueprint_response() :: #{
+%%   <<"Blueprint">> => pipeline_blueprint()
+%% }
+-type get_pipeline_blueprint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_change_progress_request() :: #{}
+-type get_pipeline_change_progress_request() :: #{}.
+
+
+%% Example:
+%% pipeline_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"MaxUnits">> => integer(),
+%%   <<"MinUnits">> => integer(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => pipeline_status_reason(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type pipeline_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_at_rest_options() :: #{
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type encryption_at_rest_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_endpoint() :: #{
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcId">> => string(),
+%%   <<"VpcOptions">> => vpc_options()
+%% }
+-type vpc_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_blueprint() :: #{
+%%   <<"BlueprintName">> => string(),
+%%   <<"PipelineConfigurationBody">> => string()
+%% }
+-type pipeline_blueprint() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_publishing_options() :: #{
+%%   <<"CloudWatchLogDestination">> => cloud_watch_log_destination(),
+%%   <<"IsLoggingEnabled">> => boolean()
+%% }
+-type log_publishing_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_blueprint_summary() :: #{
+%%   <<"BlueprintName">> => string()
+%% }
+-type pipeline_blueprint_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pipeline_request() :: #{}
+-type stop_pipeline_request() :: #{}.
+
+
+%% Example:
+%% change_progress_stage() :: #{
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type change_progress_stage() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_message() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% stop_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline()
+%% }
+-type stop_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_pipeline_response() :: #{
+%%   <<"Errors">> => list(validation_message()()),
+%%   <<"isValid">> => boolean()
+%% }
+-type validate_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_request() :: #{}
+-type get_pipeline_request() :: #{}.
+
+
+%% Example:
+%% pipeline_status_reason() :: #{
+%%   <<"Description">> => string()
+%% }
+-type pipeline_status_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_options() :: #{
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type vpc_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_pipeline_request() :: #{
+%%   <<"PipelineConfigurationBody">> := string()
+%% }
+-type validate_pipeline_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_response() :: #{}
+-type delete_pipeline_response() :: #{}.
+
+
+%% Example:
+%% invalid_pagination_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pagination_token_exception() :: #{binary() => any()}.
+
+-type create_pipeline_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type delete_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type get_pipeline_blueprint_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type get_pipeline_change_progress_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_pipeline_blueprints_errors() ::
+    invalid_pagination_token_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception().
+
+-type list_pipelines_errors() ::
+    invalid_pagination_token_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type start_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type update_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type validate_pipeline_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -55,8 +534,17 @@
 %%
 %% For more information, see Creating Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html.
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request()) ->
+    {ok, create_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
+
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request(), proplists:proplist()) ->
+    {ok, create_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/createPipeline"],
@@ -83,8 +571,17 @@ create_pipeline(Client, Input0, Options0) ->
 %%
 %% For more information, see Deleting Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/delete-pipeline.html.
+-spec delete_pipeline(aws_client:aws_client(), binary() | list(), delete_pipeline_request()) ->
+    {ok, delete_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, PipelineName, Input) ->
     delete_pipeline(Client, PipelineName, Input, []).
+
+-spec delete_pipeline(aws_client:aws_client(), binary() | list(), delete_pipeline_request(), proplists:proplist()) ->
+    {ok, delete_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = delete,
     Path = ["/2022-01-01/osis/deletePipeline/", aws_util:encode_uri(PipelineName), ""],
@@ -108,14 +605,26 @@ delete_pipeline(Client, PipelineName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an OpenSearch Ingestion pipeline.
+-spec get_pipeline(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_errors(), tuple()}.
 get_pipeline(Client, PipelineName)
   when is_map(Client) ->
     get_pipeline(Client, PipelineName, #{}, #{}).
 
+-spec get_pipeline(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_errors(), tuple()}.
 get_pipeline(Client, PipelineName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pipeline(Client, PipelineName, QueryMap, HeadersMap, []).
 
+-spec get_pipeline(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_errors(), tuple()}.
 get_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/getPipeline/", aws_util:encode_uri(PipelineName), ""],
@@ -141,14 +650,26 @@ get_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
 %% information, see Using
 %% blueprints to create a pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint.
+-spec get_pipeline_blueprint(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_pipeline_blueprint_response(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_blueprint_errors(), tuple()}.
 get_pipeline_blueprint(Client, BlueprintName)
   when is_map(Client) ->
     get_pipeline_blueprint(Client, BlueprintName, #{}, #{}).
 
+-spec get_pipeline_blueprint(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_pipeline_blueprint_response(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_blueprint_errors(), tuple()}.
 get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, []).
 
+-spec get_pipeline_blueprint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_pipeline_blueprint_response(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_blueprint_errors(), tuple()}.
 get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/getPipelineBlueprint/", aws_util:encode_uri(BlueprintName), ""],
@@ -175,14 +696,26 @@ get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, Options0)
 %%
 %% For more information, see Tracking the status of pipeline creation:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#get-pipeline-progress.
+-spec get_pipeline_change_progress(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_pipeline_change_progress_response(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_change_progress_errors(), tuple()}.
 get_pipeline_change_progress(Client, PipelineName)
   when is_map(Client) ->
     get_pipeline_change_progress(Client, PipelineName, #{}, #{}).
 
+-spec get_pipeline_change_progress(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_pipeline_change_progress_response(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_change_progress_errors(), tuple()}.
 get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, []).
 
+-spec get_pipeline_change_progress(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_pipeline_change_progress_response(), tuple()} |
+    {error, any()} |
+    {error, get_pipeline_change_progress_errors(), tuple()}.
 get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/getPipelineChangeProgress/", aws_util:encode_uri(PipelineName), ""],
@@ -204,8 +737,17 @@ get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, Options
 %% For more information, see
 %% Using blueprints to create a pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint.
+-spec list_pipeline_blueprints(aws_client:aws_client(), list_pipeline_blueprints_request()) ->
+    {ok, list_pipeline_blueprints_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_blueprints_errors(), tuple()}.
 list_pipeline_blueprints(Client, Input) ->
     list_pipeline_blueprints(Client, Input, []).
+
+-spec list_pipeline_blueprints(aws_client:aws_client(), list_pipeline_blueprints_request(), proplists:proplist()) ->
+    {ok, list_pipeline_blueprints_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_blueprints_errors(), tuple()}.
 list_pipeline_blueprints(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/listPipelineBlueprints"],
@@ -234,14 +776,26 @@ list_pipeline_blueprints(Client, Input0, Options0) ->
 %% For
 %% more information, see Viewing Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/list-pipeline.html.
+-spec list_pipelines(aws_client:aws_client()) ->
+    {ok, list_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client)
   when is_map(Client) ->
     list_pipelines(Client, #{}, #{}).
 
+-spec list_pipelines(aws_client:aws_client(), map(), map()) ->
+    {ok, list_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pipelines(Client, QueryMap, HeadersMap, []).
 
+-spec list_pipelines(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
 list_pipelines(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/listPipelines"],
@@ -269,14 +823,26 @@ list_pipelines(Client, QueryMap, HeadersMap, Options0)
 %% For more information,
 %% see Tagging Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
     list_tags_for_resource(Client, Arn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2022-01-01/osis/listTagsForResource"],
@@ -301,8 +867,17 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 %%
 %% For more information, see Starting an OpenSearch Ingestion pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/pipeline--stop-start.html#pipeline--start.
+-spec start_pipeline(aws_client:aws_client(), binary() | list(), start_pipeline_request()) ->
+    {ok, start_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, start_pipeline_errors(), tuple()}.
 start_pipeline(Client, PipelineName, Input) ->
     start_pipeline(Client, PipelineName, Input, []).
+
+-spec start_pipeline(aws_client:aws_client(), binary() | list(), start_pipeline_request(), proplists:proplist()) ->
+    {ok, start_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, start_pipeline_errors(), tuple()}.
 start_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = put,
     Path = ["/2022-01-01/osis/startPipeline/", aws_util:encode_uri(PipelineName), ""],
@@ -329,8 +904,17 @@ start_pipeline(Client, PipelineName, Input0, Options0) ->
 %%
 %% For more information, see Stopping an OpenSearch Ingestion pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/pipeline--stop-start.html#pipeline--stop.
+-spec stop_pipeline(aws_client:aws_client(), binary() | list(), stop_pipeline_request()) ->
+    {ok, stop_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, stop_pipeline_errors(), tuple()}.
 stop_pipeline(Client, PipelineName, Input) ->
     stop_pipeline(Client, PipelineName, Input, []).
+
+-spec stop_pipeline(aws_client:aws_client(), binary() | list(), stop_pipeline_request(), proplists:proplist()) ->
+    {ok, stop_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, stop_pipeline_errors(), tuple()}.
 stop_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = put,
     Path = ["/2022-01-01/osis/stopPipeline/", aws_util:encode_uri(PipelineName), ""],
@@ -357,8 +941,17 @@ stop_pipeline(Client, PipelineName, Input0, Options0) ->
 %%
 %% For more information, see Tagging Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/tagResource"],
@@ -387,8 +980,17 @@ tag_resource(Client, Input0, Options0) ->
 %% For more information, see Tagging Amazon
 %% OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/untagResource"],
@@ -416,8 +1018,17 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% For more information, see Updating Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/update-pipeline.html.
+-spec update_pipeline(aws_client:aws_client(), binary() | list(), update_pipeline_request()) ->
+    {ok, update_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, PipelineName, Input) ->
     update_pipeline(Client, PipelineName, Input, []).
+
+-spec update_pipeline(aws_client:aws_client(), binary() | list(), update_pipeline_request(), proplists:proplist()) ->
+    {ok, update_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = put,
     Path = ["/2022-01-01/osis/updatePipeline/", aws_util:encode_uri(PipelineName), ""],
@@ -447,8 +1058,17 @@ update_pipeline(Client, PipelineName, Input0, Options0) ->
 %% more information, see Creating Amazon OpenSearch
 %% Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html.
+-spec validate_pipeline(aws_client:aws_client(), validate_pipeline_request()) ->
+    {ok, validate_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, validate_pipeline_errors(), tuple()}.
 validate_pipeline(Client, Input) ->
     validate_pipeline(Client, Input, []).
+
+-spec validate_pipeline(aws_client:aws_client(), validate_pipeline_request(), proplists:proplist()) ->
+    {ok, validate_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, validate_pipeline_errors(), tuple()}.
 validate_pipeline(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2022-01-01/osis/validatePipeline"],
@@ -475,7 +1095,7 @@ validate_pipeline(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

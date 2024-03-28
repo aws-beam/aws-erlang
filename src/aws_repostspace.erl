@@ -43,13 +43,324 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_space_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> => string(),
+%%   <<"subdomain">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"tier">> := list(any()),
+%%   <<"userKMSKey">> => string()
+%% }
+-type create_space_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_space_output() :: #{
+%%   <<"spaceId">> => string()
+%% }
+-type create_space_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_space_input() :: #{}
+-type delete_space_input() :: #{}.
+
+%% Example:
+%% deregister_admin_input() :: #{}
+-type deregister_admin_input() :: #{}.
+
+%% Example:
+%% get_space_input() :: #{}
+-type get_space_input() :: #{}.
+
+
+%% Example:
+%% get_space_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientId">> => string(),
+%%   <<"configurationStatus">> => list(any()),
+%%   <<"contentSize">> => float(),
+%%   <<"createDateTime">> => [non_neg_integer()],
+%%   <<"customerRoleArn">> => string(),
+%%   <<"deleteDateTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"groupAdmins">> => list(string()()),
+%%   <<"name">> => string(),
+%%   <<"randomDomain">> => string(),
+%%   <<"spaceId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"storageLimit">> => float(),
+%%   <<"tier">> => list(any()),
+%%   <<"userAdmins">> => list(string()()),
+%%   <<"userCount">> => integer(),
+%%   <<"userKMSKey">> => string(),
+%%   <<"vanityDomain">> => string(),
+%%   <<"vanityDomainStatus">> => list(any())
+%% }
+-type get_space_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_spaces_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_spaces_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_spaces_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"spaces">> => list(space_data()())
+%% }
+-type list_spaces_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_admin_input() :: #{}
+-type register_admin_input() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_invites_input() :: #{
+%%   <<"accessorIds">> := list(string()()),
+%%   <<"body">> := string(),
+%%   <<"title">> := string()
+%% }
+-type send_invites_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% space_data() :: #{
+%%   <<"arn">> => string(),
+%%   <<"configurationStatus">> => list(any()),
+%%   <<"contentSize">> => float(),
+%%   <<"createDateTime">> => [non_neg_integer()],
+%%   <<"deleteDateTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"randomDomain">> => string(),
+%%   <<"spaceId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"storageLimit">> => float(),
+%%   <<"tier">> => list(any()),
+%%   <<"userCount">> => integer(),
+%%   <<"userKMSKey">> => string(),
+%%   <<"vanityDomain">> => string(),
+%%   <<"vanityDomainStatus">> => list(any())
+%% }
+-type space_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_space_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tier">> => list(any())
+%% }
+-type update_space_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+-type create_space_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_space_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type deregister_admin_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_space_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_spaces_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type register_admin_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type send_invites_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_space_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Creates an AWS re:Post Private private re:Post.
+-spec create_space(aws_client:aws_client(), create_space_input()) ->
+    {ok, create_space_output(), tuple()} |
+    {error, any()} |
+    {error, create_space_errors(), tuple()}.
 create_space(Client, Input) ->
     create_space(Client, Input, []).
+
+-spec create_space(aws_client:aws_client(), create_space_input(), proplists:proplist()) ->
+    {ok, create_space_output(), tuple()} |
+    {error, any()} |
+    {error, create_space_errors(), tuple()}.
 create_space(Client, Input0, Options0) ->
     Method = post,
     Path = ["/spaces"],
@@ -73,8 +384,17 @@ create_space(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an AWS re:Post Private private re:Post.
+-spec delete_space(aws_client:aws_client(), binary() | list(), delete_space_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_space_errors(), tuple()}.
 delete_space(Client, SpaceId, Input) ->
     delete_space(Client, SpaceId, Input, []).
+
+-spec delete_space(aws_client:aws_client(), binary() | list(), delete_space_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_space_errors(), tuple()}.
 delete_space(Client, SpaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/spaces/", aws_util:encode_uri(SpaceId), ""],
@@ -99,8 +419,17 @@ delete_space(Client, SpaceId, Input0, Options0) ->
 
 %% @doc Removes the user or group from the list of administrators of the
 %% private re:Post.
+-spec deregister_admin(aws_client:aws_client(), binary() | list(), binary() | list(), deregister_admin_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, deregister_admin_errors(), tuple()}.
 deregister_admin(Client, AdminId, SpaceId, Input) ->
     deregister_admin(Client, AdminId, SpaceId, Input, []).
+
+-spec deregister_admin(aws_client:aws_client(), binary() | list(), binary() | list(), deregister_admin_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, deregister_admin_errors(), tuple()}.
 deregister_admin(Client, AdminId, SpaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/admins/", aws_util:encode_uri(AdminId), ""],
@@ -124,14 +453,26 @@ deregister_admin(Client, AdminId, SpaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays information about the AWS re:Post Private private re:Post.
+-spec get_space(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_space_output(), tuple()} |
+    {error, any()} |
+    {error, get_space_errors(), tuple()}.
 get_space(Client, SpaceId)
   when is_map(Client) ->
     get_space(Client, SpaceId, #{}, #{}).
 
+-spec get_space(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_space_output(), tuple()} |
+    {error, any()} |
+    {error, get_space_errors(), tuple()}.
 get_space(Client, SpaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_space(Client, SpaceId, QueryMap, HeadersMap, []).
 
+-spec get_space(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_space_output(), tuple()} |
+    {error, any()} |
+    {error, get_space_errors(), tuple()}.
 get_space(Client, SpaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/spaces/", aws_util:encode_uri(SpaceId), ""],
@@ -150,14 +491,26 @@ get_space(Client, SpaceId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of AWS re:Post Private private re:Posts in the account
 %% with some information about each private re:Post.
+-spec list_spaces(aws_client:aws_client()) ->
+    {ok, list_spaces_output(), tuple()} |
+    {error, any()} |
+    {error, list_spaces_errors(), tuple()}.
 list_spaces(Client)
   when is_map(Client) ->
     list_spaces(Client, #{}, #{}).
 
+-spec list_spaces(aws_client:aws_client(), map(), map()) ->
+    {ok, list_spaces_output(), tuple()} |
+    {error, any()} |
+    {error, list_spaces_errors(), tuple()}.
 list_spaces(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_spaces(Client, QueryMap, HeadersMap, []).
 
+-spec list_spaces(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_spaces_output(), tuple()} |
+    {error, any()} |
+    {error, list_spaces_errors(), tuple()}.
 list_spaces(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/spaces"],
@@ -183,14 +536,26 @@ list_spaces(Client, QueryMap, HeadersMap, Options0)
 %% resource specified by the resourceArn.
 %%
 %% The only resource that can be tagged is a private re:Post.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -209,8 +574,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Adds a user or group to the list of administrators of the private
 %% re:Post.
+-spec register_admin(aws_client:aws_client(), binary() | list(), binary() | list(), register_admin_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, register_admin_errors(), tuple()}.
 register_admin(Client, AdminId, SpaceId, Input) ->
     register_admin(Client, AdminId, SpaceId, Input, []).
+
+-spec register_admin(aws_client:aws_client(), binary() | list(), binary() | list(), register_admin_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, register_admin_errors(), tuple()}.
 register_admin(Client, AdminId, SpaceId, Input0, Options0) ->
     Method = post,
     Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/admins/", aws_util:encode_uri(AdminId), ""],
@@ -234,8 +608,17 @@ register_admin(Client, AdminId, SpaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sends an invitation email to selected users and groups.
+-spec send_invites(aws_client:aws_client(), binary() | list(), send_invites_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, send_invites_errors(), tuple()}.
 send_invites(Client, SpaceId, Input) ->
     send_invites(Client, SpaceId, Input, []).
+
+-spec send_invites(aws_client:aws_client(), binary() | list(), send_invites_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, send_invites_errors(), tuple()}.
 send_invites(Client, SpaceId, Input0, Options0) ->
     Method = post,
     Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/invite"],
@@ -265,8 +648,17 @@ send_invites(Client, SpaceId, Input0, Options0) ->
 %% list of tags that are associated with the resource. If you specify a tag
 %% key that’s already associated with the resource, the new tag value that
 %% you specify replaces the previous value for that tag.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -291,8 +683,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes the association of the tag with the AWS re:Post Private
 %% resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -317,8 +718,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modifies an existing AWS re:Post Private private re:Post.
+-spec update_space(aws_client:aws_client(), binary() | list(), update_space_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_space_errors(), tuple()}.
 update_space(Client, SpaceId, Input) ->
     update_space(Client, SpaceId, Input, []).
+
+-spec update_space(aws_client:aws_client(), binary() | list(), update_space_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_space_errors(), tuple()}.
 update_space(Client, SpaceId, Input0, Options0) ->
     Method = put,
     Path = ["/spaces/", aws_util:encode_uri(SpaceId), ""],
@@ -345,7 +755,7 @@ update_space(Client, SpaceId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

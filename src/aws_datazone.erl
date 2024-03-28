@@ -251,6 +251,3819 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% asset_revision() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type asset_revision() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_profile_input() :: #{
+%%   <<"status">> := list(any())
+%% }
+-type update_group_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_domain_output() :: #{
+%%   <<"description">> => [string()],
+%%   <<"domainExecutionRole">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => [string()],
+%%   <<"singleSignOn">> => single_sign_on()
+%% }
+-type update_domain_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"externalIdentifier">> => string(),
+%%   <<"formsInput">> => list(form_input()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"predictionConfiguration">> => prediction_configuration(),
+%%   <<"typeIdentifier">> := string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type create_asset_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_user_profiles_output() :: #{
+%%   <<"items">> => list(user_profile_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type search_user_profiles_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_item() :: #{
+%%   <<"additionalAttributes">> => asset_item_additional_attributes(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"externalIdentifier">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"identifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type asset_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% business_name_generation_configuration() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type business_name_generation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_credential_configuration() :: #{
+%%   <<"secretManagerArn">> => [string()]
+%% }
+-type redshift_credential_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_glossary_term_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"glossaryId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations()
+%% }
+-type update_glossary_term_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_blueprint_configurations_output() :: #{
+%%   <<"items">> => list(environment_blueprint_configuration_item()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_blueprint_configurations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_runs_output() :: #{
+%%   <<"items">> => list(data_source_run_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_source_runs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_run_configuration_input() :: #{
+%%   <<"dataAccessRole">> => [string()],
+%%   <<"redshiftCredentialConfiguration">> => redshift_credential_configuration(),
+%%   <<"redshiftStorage">> => list(),
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
+%% }
+-type redshift_run_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_runs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_data_source_runs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_type_input() :: #{
+%%   <<"revision">> => string()
+%% }
+-type get_asset_type_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_sort() :: #{
+%%   <<"attribute">> => string(),
+%%   <<"order">> => list(any())
+%% }
+-type search_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"retainPermissions">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListing">> => subscribed_listing(),
+%%   <<"subscribedPrincipal">> => list(),
+%%   <<"subscriptionRequestId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type subscription_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_target_form() :: #{
+%%   <<"content">> => [string()],
+%%   <<"formName">> => string()
+%% }
+-type subscription_target_form() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_project_memberships_output() :: #{
+%%   <<"members">> => list(project_member()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_project_memberships_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_profile_input() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"userParameters">> => list(environment_parameter()())
+%% }
+-type update_environment_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscription_target_output() :: #{
+%%   <<"applicableAssetTypes">> => list(string()()),
+%%   <<"authorizedPrincipals">> => list(string()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"manageAccessRole">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()()),
+%%   <<"type">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type update_subscription_target_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_subscription_request_input() :: #{
+%%   <<"decisionComment">> => string()
+%% }
+-type reject_subscription_request_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_profile_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_group_profile_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_input() :: #{}
+-type get_domain_input() :: #{}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_form_type_output() :: #{}
+-type delete_form_type_output() :: #{}.
+
+
+%% Example:
+%% asset_listing_details() :: #{
+%%   <<"listingId">> => string(),
+%%   <<"listingStatus">> => list(any())
+%% }
+-type asset_listing_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment() :: #{
+%%   <<"deploymentId">> => [string()],
+%%   <<"deploymentStatus">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"failureReason">> => environment_error(),
+%%   <<"isDeploymentComplete">> => [boolean()],
+%%   <<"messages">> => list(string()())
+%% }
+-type deployment() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_environment_output() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"deploymentProperties">> => deployment_properties(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentActions">> => list(configurable_environment_action()()),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentProfileId">> => string(),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"lastDeployment">> => deployment(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"provisionedResources">> => list(resource()()),
+%%   <<"provisioningProperties">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter()())
+%% }
+-type get_environment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_project_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"name">> => string()
+%% }
+-type update_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_source_input() :: #{}
+-type get_data_source_input() :: #{}.
+
+
+%% Example:
+%% project_member() :: #{
+%%   <<"designation">> => list(any()),
+%%   <<"memberDetails">> => list()
+%% }
+-type project_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"failureReasons">> => list(project_deletion_error()()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectStatus">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type project_summary() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% project_deletion_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type project_deletion_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_listing_change_set_output() :: #{
+%%   <<"listingId">> => string(),
+%%   <<"listingRevision">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_listing_change_set_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_profile_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_group_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_input() :: #{
+%%   <<"description">> => [string()],
+%%   <<"environmentProfileIdentifier">> := string(),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"name">> := [string()],
+%%   <<"projectIdentifier">> := string(),
+%%   <<"userParameters">> => list(environment_parameter()())
+%% }
+-type create_environment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_profile_output() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter()())
+%% }
+-type update_environment_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% term_relations() :: #{
+%%   <<"classifies">> => list(string()()),
+%%   <<"isA">> => list(string()())
+%% }
+-type term_relations() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_target_input() :: #{}
+-type get_subscription_target_input() :: #{}.
+
+
+%% Example:
+%% domain_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"managedAccountId">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"portalUrl">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type domain_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_target_output() :: #{
+%%   <<"applicableAssetTypes">> => list(string()()),
+%%   <<"authorizedPrincipals">> => list(string()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"manageAccessRole">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()()),
+%%   <<"type">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type create_subscription_target_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_request_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"requestReason">> := string(),
+%%   <<"subscribedListings">> := list(subscribed_listing_input()()),
+%%   <<"subscribedPrincipals">> := list(list()())
+%% }
+-type create_subscription_request_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_source_input() :: #{
+%%   <<"assetFormsInput">> => list(form_input()()),
+%%   <<"clientToken">> => [string()],
+%%   <<"configuration">> => list(),
+%%   <<"description">> => string(),
+%%   <<"enableSetting">> => list(any()),
+%%   <<"environmentIdentifier">> := [string()],
+%%   <<"name">> := string(),
+%%   <<"projectIdentifier">> := [string()],
+%%   <<"publishOnImport">> => [boolean()],
+%%   <<"recommendation">> => recommendation_configuration(),
+%%   <<"schedule">> => schedule_configuration(),
+%%   <<"type">> := string()
+%% }
+-type create_data_source_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_form_type_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"model">> := list(),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_form_type_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_product_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"dataProductItems">> => list(data_product_item()()),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type data_product_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_summary() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentProfileId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type environment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_resource() :: #{
+%%   <<"id">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type notification_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_run_activity() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataAssetId">> => [string()],
+%%   <<"dataAssetStatus">> => list(any()),
+%%   <<"dataSourceRunId">> => string(),
+%%   <<"database">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"projectId">> => string(),
+%%   <<"technicalDescription">> => string(),
+%%   <<"technicalName">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type data_source_run_activity() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_input() :: #{}
+-type delete_environment_input() :: #{}.
+
+
+%% Example:
+%% search_input() :: #{
+%%   <<"additionalAttributes">> => list(list(any())()),
+%%   <<"filters">> => list(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owningProjectIdentifier">> => string(),
+%%   <<"searchIn">> => list(search_in_item()()),
+%%   <<"searchScope">> := list(any()),
+%%   <<"searchText">> => string(),
+%%   <<"sort">> => search_sort()
+%% }
+-type search_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% single_sign_on() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"userAssignment">> => list(any())
+%% }
+-type single_sign_on() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"externalIdentifier">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"formsOutput">> => list(form_output()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"listing">> => asset_listing_details(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"predictionConfiguration">> => prediction_configuration(),
+%%   <<"readOnlyFormsOutput">> => list(form_output()()),
+%%   <<"revision">> => string(),
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type create_asset_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_grants_output() :: #{
+%%   <<"items">> => list(subscription_grant_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscription_grants_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_subscription_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"retainPermissions">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListing">> => subscribed_listing(),
+%%   <<"subscribedPrincipal">> => list(),
+%%   <<"subscriptionRequestId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type revoke_subscription_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_user_profile_output() :: #{
+%%   <<"details">> => list(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type get_user_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_details() :: #{
+%%   <<"userId">> => [string()]
+%% }
+-type user_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_profile_summary() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type group_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_revision_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"formsInput">> => list(form_input()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"name">> := string(),
+%%   <<"predictionConfiguration">> => prediction_configuration(),
+%%   <<"typeRevision">> => string()
+%% }
+-type create_asset_revision_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscription_request_input() :: #{
+%%   <<"requestReason">> := string()
+%% }
+-type update_subscription_request_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_listing_input() :: #{
+%%   <<"listingRevision">> => string()
+%% }
+-type get_listing_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"failureReasons">> => list(project_deletion_error()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"projectStatus">> => list(any())
+%% }
+-type create_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_blueprint_configuration_input() :: #{}
+-type get_environment_blueprint_configuration_input() :: #{}.
+
+
+%% Example:
+%% subscription_target_summary() :: #{
+%%   <<"applicableAssetTypes">> => list(string()()),
+%%   <<"authorizedPrincipals">> => list(string()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"manageAccessRole">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()()),
+%%   <<"type">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type subscription_target_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_subscription_input() :: #{
+%%   <<"retainPermissions">> => [boolean()]
+%% }
+-type revoke_subscription_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_types_input() :: #{
+%%   <<"filters">> => list(),
+%%   <<"managed">> := [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchIn">> => list(search_in_item()()),
+%%   <<"searchScope">> := list(any()),
+%%   <<"searchText">> => string(),
+%%   <<"sort">> => search_sort()
+%% }
+-type search_types_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_source_run_input() :: #{}
+-type get_data_source_run_input() :: #{}.
+
+
+%% Example:
+%% subscription_grant_summary() :: #{
+%%   <<"assets">> => list(subscribed_asset()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"grantedEntity">> => list(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type subscription_grant_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_source_output() :: #{
+%%   <<"assetFormsOutput">> => list(form_output()()),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"enableSetting">> => list(any()),
+%%   <<"environmentId">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"id">> => string(),
+%%   <<"lastRunAssetCount">> => [integer()],
+%%   <<"lastRunAt">> => non_neg_integer(),
+%%   <<"lastRunErrorMessage">> => data_source_error_message(),
+%%   <<"lastRunStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"publishOnImport">> => [boolean()],
+%%   <<"recommendation">> => recommendation_configuration(),
+%%   <<"schedule">> => schedule_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_data_source_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notifications_input() :: #{
+%%   <<"afterTimestamp">> => [non_neg_integer()],
+%%   <<"beforeTimestamp">> => [non_neg_integer()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"subjects">> => list([string()]()),
+%%   <<"taskStatus">> => list(any()),
+%%   <<"type">> := list(any())
+%% }
+-type list_notifications_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_serverless_storage() :: #{
+%%   <<"workgroupName">> => [string()]
+%% }
+-type redshift_serverless_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscriptions_input() :: #{
+%%   <<"approverProjectId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListingId">> => string(),
+%%   <<"subscriptionRequestIdentifier">> => string()
+%% }
+-type list_subscriptions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_profile_input() :: #{
+%%   <<"status">> := list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type update_user_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_type_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"formsOutput">> => map(),
+%%   <<"name">> => string(),
+%%   <<"originDomainId">> => string(),
+%%   <<"originProjectId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_asset_type_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_blueprint_configurations_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_blueprint_configurations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_input() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"environmentBlueprintIdentifier">> => string(),
+%%   <<"environmentProfileIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => [string()],
+%%   <<"nextToken">> => string(),
+%%   <<"projectIdentifier">> := string(),
+%%   <<"provider">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type list_environments_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_item_additional_attributes() :: #{
+%%   <<"formsOutput">> => list(form_output()()),
+%%   <<"readOnlyFormsOutput">> => list(form_output()())
+%% }
+-type asset_item_additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_blueprint_configuration_item() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainId">> => string(),
+%%   <<"enabledRegions">> => list(string()()),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningRoleArn">> => string(),
+%%   <<"regionalParameters">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type environment_blueprint_configuration_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_data_source_run_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSourceConfigurationSnapshot">> => [string()],
+%%   <<"dataSourceId">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"id">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"runStatisticsForAssets">> => run_statistics_for_assets(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type start_data_source_run_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_choice() :: #{
+%%   <<"predictionChoices">> => list([integer()]()),
+%%   <<"predictionTarget">> => [string()]
+%% }
+-type reject_choice() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_run_activities_output() :: #{
+%%   <<"items">> => list(data_source_run_activity()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_source_run_activities_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_predictions_output() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetRevision">> => string(),
+%%   <<"domainId">> => string()
+%% }
+-type reject_predictions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"domainExecutionRole">> := string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> := [string()],
+%%   <<"singleSignOn">> => single_sign_on(),
+%%   <<"tags">> => map()
+%% }
+-type create_domain_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscription_target_input() :: #{}
+-type delete_subscription_target_input() :: #{}.
+
+%% Example:
+%% get_subscription_request_details_input() :: #{}
+-type get_subscription_request_details_input() :: #{}.
+
+
+%% Example:
+%% data_source_error_message() :: #{
+%%   <<"errorDetail">> => [string()],
+%%   <<"errorType">> => list(any())
+%% }
+-type data_source_error_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_cluster_storage() :: #{
+%%   <<"clusterName">> => [string()]
+%% }
+-type redshift_cluster_storage() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_type_output() :: #{}
+-type delete_asset_type_output() :: #{}.
+
+
+%% Example:
+%% reject_rule() :: #{
+%%   <<"rule">> => list(any()),
+%%   <<"threshold">> => [float()]
+%% }
+-type reject_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_user_profile_input() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type get_user_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% glossary_term_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"glossaryId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type glossary_term_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_target_name_map() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"targetName">> => [string()]
+%% }
+-type asset_target_name_map() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_environment_blueprint_configuration_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainId">> => string(),
+%%   <<"enabledRegions">> => list(string()()),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningRoleArn">> => string(),
+%%   <<"regionalParameters">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type put_environment_blueprint_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_grant_input() :: #{
+%%   <<"assetTargetNames">> => list(asset_target_name_map()()),
+%%   <<"clientToken">> => [string()],
+%%   <<"environmentIdentifier">> := string(),
+%%   <<"grantedEntity">> := list(),
+%%   <<"subscriptionTargetIdentifier">> := string()
+%% }
+-type create_subscription_grant_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_profile_input() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"description">> => string(),
+%%   <<"environmentBlueprintIdentifier">> := string(),
+%%   <<"name">> := string(),
+%%   <<"projectIdentifier">> := string(),
+%%   <<"userParameters">> => list(environment_parameter()())
+%% }
+-type create_environment_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_output() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"deploymentProperties">> => deployment_properties(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentActions">> => list(configurable_environment_action()()),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentProfileId">> => string(),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"lastDeployment">> => deployment(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"provisionedResources">> => list(resource()()),
+%%   <<"provisioningProperties">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter()())
+%% }
+-type create_environment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_user_profile_details() :: #{
+%%   <<"arn">> => [string()]
+%% }
+-type iam_user_profile_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_predictions_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"rejectChoices">> => list(reject_choice()()),
+%%   <<"rejectRule">> => reject_rule(),
+%%   <<"revision">> => string()
+%% }
+-type reject_predictions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_output() :: #{
+%%   <<"items">> => list(list()()),
+%%   <<"nextToken">> => string(),
+%%   <<"totalMatchCount">> => [integer()]
+%% }
+-type search_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_grant_input() :: #{}
+-type get_subscription_grant_input() :: #{}.
+
+
+%% Example:
+%% create_user_profile_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"userIdentifier">> := string(),
+%%   <<"userType">> => list(any())
+%% }
+-type create_user_profile_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_blueprint_configuration_input() :: #{}
+-type delete_environment_blueprint_configuration_input() :: #{}.
+
+
+%% Example:
+%% subscribed_listing() :: #{
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"item">> => list(),
+%%   <<"name">> => string(),
+%%   <<"ownerProjectId">> => string(),
+%%   <<"ownerProjectName">> => [string()],
+%%   <<"revision">> => string()
+%% }
+-type subscribed_listing() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_form_type_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"originDomainId">> => string(),
+%%   <<"originProjectId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type create_form_type_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_target_input() :: #{
+%%   <<"applicableAssetTypes">> := list(string()()),
+%%   <<"authorizedPrincipals">> := list(string()()),
+%%   <<"clientToken">> => [string()],
+%%   <<"manageAccessRole">> := [string()],
+%%   <<"name">> := string(),
+%%   <<"provider">> => [string()],
+%%   <<"subscriptionTargetConfig">> := list(subscription_target_form()()),
+%%   <<"type">> := [string()]
+%% }
+-type create_subscription_target_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_source_input() :: #{
+%%   <<"assetFormsInput">> => list(form_input()()),
+%%   <<"configuration">> => list(),
+%%   <<"description">> => string(),
+%%   <<"enableSetting">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"publishOnImport">> => [boolean()],
+%%   <<"recommendation">> => recommendation_configuration(),
+%%   <<"schedule">> => schedule_configuration()
+%% }
+-type update_data_source_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_entry_input() :: #{
+%%   <<"required">> => [boolean()],
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type form_entry_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_listing() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetRevision">> => string(),
+%%   <<"assetType">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"forms">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"owningProjectId">> => string()
+%% }
+-type asset_listing() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_domain_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"skipDeletionCheck">> => [boolean()]
+%% }
+-type delete_domain_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_parameter() :: #{
+%%   <<"defaultValue">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"fieldType">> => [string()],
+%%   <<"isEditable">> => [boolean()],
+%%   <<"isOptional">> => [boolean()],
+%%   <<"keyName">> => [string()]
+%% }
+-type custom_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_input() :: #{
+%%   <<"revision">> => string()
+%% }
+-type get_asset_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_profile_output() :: #{
+%%   <<"details">> => list(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type update_user_profile_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_membership_output() :: #{}
+-type create_project_membership_output() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glossary_output() :: #{}
+-type delete_glossary_output() :: #{}.
+
+
+%% Example:
+%% get_glossary_term_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"glossaryId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_glossary_term_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_output() :: #{
+%%   <<"items">> => list(domain_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domains_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_output() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"deploymentProperties">> => deployment_properties(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentActions">> => list(configurable_environment_action()()),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentProfileId">> => string(),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"lastDeployment">> => deployment(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"provisionedResources">> => list(resource()()),
+%%   <<"provisioningProperties">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter()())
+%% }
+-type update_environment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_source_output() :: #{
+%%   <<"assetFormsOutput">> => list(form_output()()),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"enableSetting">> => list(any()),
+%%   <<"environmentId">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"id">> => string(),
+%%   <<"lastRunAt">> => non_neg_integer(),
+%%   <<"lastRunErrorMessage">> => data_source_error_message(),
+%%   <<"lastRunStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"publishOnImport">> => [boolean()],
+%%   <<"recommendation">> => recommendation_configuration(),
+%%   <<"schedule">> => schedule_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type create_data_source_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_iam_portal_login_url_output() :: #{
+%%   <<"authCodeUrl">> => [string()],
+%%   <<"userProfileId">> => [string()]
+%% }
+-type get_iam_portal_login_url_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% accept_rule() :: #{
+%%   <<"rule">> => list(any()),
+%%   <<"threshold">> => [float()]
+%% }
+-type accept_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_data_source_output() :: #{
+%%   <<"assetFormsOutput">> => list(form_output()()),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"enableSetting">> => list(any()),
+%%   <<"environmentId">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"id">> => string(),
+%%   <<"lastRunAt">> => non_neg_integer(),
+%%   <<"lastRunErrorMessage">> => data_source_error_message(),
+%%   <<"lastRunStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"publishOnImport">> => [boolean()],
+%%   <<"schedule">> => schedule_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type delete_data_source_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_glossary_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_glossary_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_listing_item_additional_attributes() :: #{
+%%   <<"forms">> => string()
+%% }
+-type asset_listing_item_additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_blueprints_input() :: #{
+%%   <<"managed">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_blueprints_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sources_input() :: #{
+%%   <<"environmentIdentifier">> => [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectIdentifier">> := [string()],
+%%   <<"status">> => list(any()),
+%%   <<"type">> => string()
+%% }
+-type list_data_sources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_projects_output() :: #{
+%%   <<"items">> => list(project_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_projects_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_profile_output() :: #{
+%%   <<"details">> => list(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type create_user_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_user_profiles_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchText">> => string(),
+%%   <<"userType">> := list(any())
+%% }
+-type search_user_profiles_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_subscription_request_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decisionComment">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"requestReason">> => string(),
+%%   <<"reviewerId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListings">> => list(subscribed_listing()()),
+%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type reject_subscription_request_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic() :: #{
+%%   <<"resource">> => notification_resource(),
+%%   <<"role">> => list(any()),
+%%   <<"subject">> => [string()]
+%% }
+-type topic() :: #{binary() => any()}.
+
+
+%% Example:
+%% configurable_environment_action() :: #{
+%%   <<"auth">> => list(any()),
+%%   <<"parameters">> => list(configurable_action_parameter()()),
+%%   <<"type">> => [string()]
+%% }
+-type configurable_environment_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_domain_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => [string()],
+%%   <<"domainExecutionRole">> => string(),
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => [string()],
+%%   <<"portalUrl">> => [string()],
+%%   <<"singleSignOn">> => single_sign_on(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type get_domain_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_listings_output() :: #{
+%%   <<"items">> => list(list()()),
+%%   <<"nextToken">> => string(),
+%%   <<"totalMatchCount">> => [integer()]
+%% }
+-type search_listings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% prediction_configuration() :: #{
+%%   <<"businessNameGeneration">> => business_name_generation_configuration()
+%% }
+-type prediction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_blueprint_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"provisioningProperties">> => list(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type environment_blueprint_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_input() :: #{}
+-type get_environment_input() :: #{}.
+
+
+%% Example:
+%% create_glossary_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_glossary_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_revision_input() :: #{
+%%   <<"identifier">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type listing_revision_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_output() :: #{
+%%   <<"items">> => list(environment_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environments_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_statistics_for_assets() :: #{
+%%   <<"added">> => [integer()],
+%%   <<"failed">> => [integer()],
+%%   <<"skipped">> => [integer()],
+%%   <<"unchanged">> => [integer()],
+%%   <<"updated">> => [integer()]
+%% }
+-type run_statistics_for_assets() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscription_grant_status_output() :: #{
+%%   <<"assets">> => list(subscribed_asset()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"grantedEntity">> => list(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type update_subscription_grant_status_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_input() :: #{
+%%   <<"description">> => [string()],
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"name">> => [string()]
+%% }
+-type update_environment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_targets_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_subscription_targets_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscription_request_input() :: #{}
+-type delete_subscription_request_input() :: #{}.
+
+
+%% Example:
+%% asset_type_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"formsOutput">> => map(),
+%%   <<"name">> => string(),
+%%   <<"originDomainId">> => string(),
+%%   <<"originProjectId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type asset_type_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_run_configuration_input() :: #{
+%%   <<"dataAccessRole">> => [string()],
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
+%% }
+-type glue_run_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_run_activities_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_data_source_run_activities_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glossary_input() :: #{}
+-type delete_glossary_input() :: #{}.
+
+
+%% Example:
+%% create_subscription_grant_output() :: #{
+%%   <<"assets">> => list(subscribed_asset()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"grantedEntity">> => list(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type create_subscription_grant_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glossary_term_output() :: #{}
+-type delete_glossary_term_output() :: #{}.
+
+
+%% Example:
+%% list_subscription_requests_input() :: #{
+%%   <<"approverProjectId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListingId">> => string()
+%% }
+-type list_subscription_requests_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_type_data() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"imports">> => list(import()()),
+%%   <<"model">> => list(),
+%%   <<"name">> => string(),
+%%   <<"originDomainId">> => string(),
+%%   <<"originProjectId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type form_type_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_project() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type subscribed_project() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_environment_profile_output() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter()())
+%% }
+-type get_environment_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_glossary_term_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"glossaryId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations()
+%% }
+-type create_glossary_term_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_profile_input() :: #{}
+-type get_environment_profile_input() :: #{}.
+
+
+%% Example:
+%% create_environment_profile_output() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter()())
+%% }
+-type create_environment_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_listings_input() :: #{
+%%   <<"additionalAttributes">> => list(list(any())()),
+%%   <<"filters">> => list(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchIn">> => list(search_in_item()()),
+%%   <<"searchText">> => [string()],
+%%   <<"sort">> => search_sort()
+%% }
+-type search_listings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_expression() :: #{
+%%   <<"expression">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type filter_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% glossary_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type glossary_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_grants_input() :: #{
+%%   <<"environmentId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"subscribedListingId">> => string(),
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string()
+%% }
+-type list_subscription_grants_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"attribute">> => string(),
+%%   <<"value">> => [string()]
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_type_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"formsOutput">> => map(),
+%%   <<"name">> => string(),
+%%   <<"originDomainId">> => string(),
+%%   <<"originProjectId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type create_asset_type_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_data_source_run_input() :: #{
+%%   <<"clientToken">> => [string()]
+%% }
+-type start_data_source_run_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_in_item() :: #{
+%%   <<"attribute">> => string()
+%% }
+-type search_in_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_subscription_target_output() :: #{
+%%   <<"applicableAssetTypes">> => list(string()()),
+%%   <<"authorizedPrincipals">> => list(string()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"manageAccessRole">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()()),
+%%   <<"type">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_subscription_target_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_revision_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"externalIdentifier">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"formsOutput">> => list(form_output()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"listing">> => asset_listing_details(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"predictionConfiguration">> => prediction_configuration(),
+%%   <<"readOnlyFormsOutput">> => list(form_output()()),
+%%   <<"revision">> => string(),
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type create_asset_revision_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_project_membership_input() :: #{
+%%   <<"member">> := list()
+%% }
+-type delete_project_membership_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_profiles_input() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"environmentBlueprintIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectIdentifier">> => string()
+%% }
+-type list_environment_profiles_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_source_output() :: #{
+%%   <<"assetFormsOutput">> => list(form_output()()),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"enableSetting">> => list(any()),
+%%   <<"environmentId">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"id">> => string(),
+%%   <<"lastRunAt">> => non_neg_integer(),
+%%   <<"lastRunErrorMessage">> => data_source_error_message(),
+%%   <<"lastRunStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"publishOnImport">> => [boolean()],
+%%   <<"recommendation">> => recommendation_configuration(),
+%%   <<"schedule">> => schedule_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_data_source_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"name">> := string()
+%% }
+-type create_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscription_grant_input() :: #{}
+-type delete_subscription_grant_input() :: #{}.
+
+
+%% Example:
+%% get_environment_blueprint_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"deploymentProperties">> => deployment_properties(),
+%%   <<"description">> => string(),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"provisioningProperties">> => list(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter()())
+%% }
+-type get_environment_blueprint_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_form_type_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"imports">> => list(import()()),
+%%   <<"model">> => list(),
+%%   <<"name">> => string(),
+%%   <<"originDomainId">> => string(),
+%%   <<"originProjectId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_form_type_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_output() :: #{
+%%   <<"actionLink">> => string(),
+%%   <<"creationTimestamp">> => [non_neg_integer()],
+%%   <<"domainIdentifier">> => string(),
+%%   <<"identifier">> => string(),
+%%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
+%%   <<"message">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"title">> => string(),
+%%   <<"topic">> => topic(),
+%%   <<"type">> => list(any())
+%% }
+-type notification_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_glossary_term_input() :: #{
+%%   <<"glossaryIdentifier">> => string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations()
+%% }
+-type update_glossary_term_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_environment_blueprint_configuration_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainId">> => string(),
+%%   <<"enabledRegions">> => list(string()()),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningRoleArn">> => string(),
+%%   <<"regionalParameters">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_environment_blueprint_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"domainExecutionRole">> => string(),
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"portalUrl">> => [string()],
+%%   <<"singleSignOn">> => single_sign_on(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_domain_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_type_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"formsInput">> := map(),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string()
+%% }
+-type create_asset_type_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_subscription_input() :: #{}
+-type cancel_subscription_input() :: #{}.
+
+
+%% Example:
+%% cancel_subscription_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"retainPermissions">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListing">> => subscribed_listing(),
+%%   <<"subscribedPrincipal">> => list(),
+%%   <<"subscriptionRequestId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type cancel_subscription_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% sso_user_profile_details() :: #{
+%%   <<"firstName">> => string(),
+%%   <<"lastName">> => string(),
+%%   <<"username">> => string()
+%% }
+-type sso_user_profile_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_targets_output() :: #{
+%%   <<"items">> => list(subscription_target_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscription_targets_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_input() :: #{}
+-type delete_asset_input() :: #{}.
+
+%% Example:
+%% delete_project_membership_output() :: #{}
+-type delete_project_membership_output() :: #{}.
+
+
+%% Example:
+%% data_source_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSourceId">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"enableSetting">> => list(any()),
+%%   <<"environmentId">> => string(),
+%%   <<"lastRunAssetCount">> => [integer()],
+%%   <<"lastRunAt">> => non_neg_integer(),
+%%   <<"lastRunErrorMessage">> => data_source_error_message(),
+%%   <<"lastRunStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"schedule">> => schedule_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type data_source_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_listing_item() :: #{
+%%   <<"additionalAttributes">> => asset_listing_item_additional_attributes(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"entityRevision">> => string(),
+%%   <<"entityType">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"listingCreatedBy">> => string(),
+%%   <<"listingId">> => string(),
+%%   <<"listingRevision">> => string(),
+%%   <<"listingUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string()
+%% }
+-type asset_listing_item() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_blueprint_configuration_output() :: #{}
+-type delete_environment_blueprint_configuration_output() :: #{}.
+
+
+%% Example:
+%% search_group_profiles_input() :: #{
+%%   <<"groupType">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchText">> => string()
+%% }
+-type search_group_profiles_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_blueprints_output() :: #{
+%%   <<"items">> => list(environment_blueprint_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_blueprints_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_output() :: #{}
+-type delete_asset_output() :: #{}.
+
+%% Example:
+%% get_iam_portal_login_url_input() :: #{}
+-type get_iam_portal_login_url_input() :: #{}.
+
+
+%% Example:
+%% list_notifications_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"notifications">> => list(notification_output()())
+%% }
+-type list_notifications_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_project_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"failureReasons">> => list(project_deletion_error()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"projectStatus">> => list(any())
+%% }
+-type update_project_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_product_item() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"itemId">> => string()
+%% }
+-type data_product_item() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glossary_term_input() :: #{}
+-type delete_glossary_term_input() :: #{}.
+
+
+%% Example:
+%% create_group_profile_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"groupIdentifier">> := string()
+%% }
+-type create_group_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_profile_summary() :: #{
+%%   <<"details">> => list(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type user_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_run_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSourceId">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"id">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"runStatisticsForAssets">> => run_statistics_for_assets(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type data_source_run_summary() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% accept_predictions_input() :: #{
+%%   <<"acceptChoices">> => list(accept_choice()()),
+%%   <<"acceptRule">> => accept_rule(),
+%%   <<"clientToken">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type accept_predictions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_projects_input() :: #{
+%%   <<"groupIdentifier">> => [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"userIdentifier">> => [string()]
+%% }
+-type list_projects_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_profile_summary() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type environment_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_request_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decisionComment">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"requestReason">> => string(),
+%%   <<"reviewerId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListings">> => list(subscribed_listing()()),
+%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type subscription_request_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% accept_predictions_output() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type accept_predictions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_asset_listing() :: #{
+%%   <<"entityId">> => string(),
+%%   <<"entityRevision">> => string(),
+%%   <<"entityType">> => string(),
+%%   <<"forms">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()())
+%% }
+-type subscribed_asset_listing() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_listing_change_set_input() :: #{
+%%   <<"action">> := list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"entityIdentifier">> := string(),
+%%   <<"entityRevision">> => string(),
+%%   <<"entityType">> := list(any())
+%% }
+-type create_listing_change_set_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% relational_filter_configuration() :: #{
+%%   <<"databaseName">> => [string()],
+%%   <<"filterExpressions">> => list(filter_expression()()),
+%%   <<"schemaName">> => [string()]
+%% }
+-type relational_filter_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_form_type_input() :: #{}
+-type delete_form_type_input() :: #{}.
+
+
+%% Example:
+%% accept_subscription_request_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decisionComment">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"requestReason">> => string(),
+%%   <<"reviewerId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListings">> => list(subscribed_listing()()),
+%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type accept_subscription_request_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscription_request_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decisionComment">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"requestReason">> => string(),
+%%   <<"reviewerId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListings">> => list(subscribed_listing()()),
+%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type update_subscription_request_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% cloud_formation_properties() :: #{
+%%   <<"templateUrl">> => [string()]
+%% }
+-type cloud_formation_properties() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_type_input() :: #{}
+-type delete_asset_type_input() :: #{}.
+
+
+%% Example:
+%% schedule_configuration() :: #{
+%%   <<"schedule">> => string(),
+%%   <<"timezone">> => list(any())
+%% }
+-type schedule_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_glossary_input() :: #{}
+-type get_glossary_input() :: #{}.
+
+
+%% Example:
+%% recommendation_configuration() :: #{
+%%   <<"enableBusinessNameGeneration">> => [boolean()]
+%% }
+-type recommendation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_project_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"failureReasons">> => list(project_deletion_error()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"projectStatus">> => list(any())
+%% }
+-type get_project_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_listing_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"item">> => list(),
+%%   <<"listingRevision">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_listing_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_profile_input() :: #{}
+-type get_group_profile_input() :: #{}.
+
+
+%% Example:
+%% list_environment_profiles_output() :: #{
+%%   <<"items">> => list(environment_profile_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_profiles_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_source_run_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSourceConfigurationSnapshot">> => [string()],
+%%   <<"dataSourceId">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"id">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"runStatisticsForAssets">> => run_statistics_for_assets(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_data_source_run_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_glossary_term_input() :: #{}
+-type get_glossary_term_input() :: #{}.
+
+%% Example:
+%% get_project_input() :: #{}
+-type get_project_input() :: #{}.
+
+%% Example:
+%% delete_project_output() :: #{}
+-type delete_project_output() :: #{}.
+
+
+%% Example:
+%% delete_project_input() :: #{
+%%   <<"skipDeletionCheck">> => [boolean()]
+%% }
+-type delete_project_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% accept_choice() :: #{
+%%   <<"predictionChoice">> => [integer()],
+%%   <<"predictionTarget">> => [string()]
+%% }
+-type accept_choice() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_revision() :: #{
+%%   <<"id">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type listing_revision() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_asset() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetRevision">> => string(),
+%%   <<"failureCause">> => failure_cause(),
+%%   <<"failureTimestamp">> => [non_neg_integer()],
+%%   <<"grantedTimestamp">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"targetName">> => [string()]
+%% }
+-type subscribed_asset() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_project_memberships_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_project_memberships_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_subscription_grant_output() :: #{
+%%   <<"assets">> => list(subscribed_asset()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"grantedEntity">> => list(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_subscription_grant_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_run_configuration_output() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"dataAccessRole">> => [string()],
+%%   <<"region">> => [string()],
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
+%% }
+-type glue_run_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_project_input() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type subscribed_project_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscription_grant_status_input() :: #{
+%%   <<"failureCause">> => failure_cause(),
+%%   <<"status">> := list(any()),
+%%   <<"targetName">> => [string()]
+%% }
+-type update_subscription_grant_status_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_output() :: #{
+%%   <<"content">> => [string()],
+%%   <<"formName">> => string(),
+%%   <<"typeName">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type form_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_properties() :: #{
+%%   <<"endTimeoutMinutes">> => [integer()],
+%%   <<"startTimeoutMinutes">> => [integer()]
+%% }
+-type deployment_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_subscription_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"retainPermissions">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListing">> => subscribed_listing(),
+%%   <<"subscribedPrincipal">> => list(),
+%%   <<"subscriptionRequestId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_subscription_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_listing_input() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type subscribed_listing_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% failure_cause() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type failure_cause() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_revisions_output() :: #{
+%%   <<"items">> => list(asset_revision()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_revisions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_details() :: #{
+%%   <<"groupId">> => [string()]
+%% }
+-type group_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type environment_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% detailed_glossary_term() :: #{
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string()
+%% }
+-type detailed_glossary_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_membership_input() :: #{
+%%   <<"designation">> := list(any()),
+%%   <<"member">> := list()
+%% }
+-type create_project_membership_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_domain_output() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type delete_domain_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_listing_input() :: #{}
+-type delete_listing_input() :: #{}.
+
+
+%% Example:
+%% get_form_type_input() :: #{
+%%   <<"revision">> => string()
+%% }
+-type get_form_type_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_subscription_request_details_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decisionComment">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"requestReason">> => string(),
+%%   <<"reviewerId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListings">> => list(subscribed_listing()()),
+%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_subscription_request_details_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_entry_output() :: #{
+%%   <<"required">> => [boolean()],
+%%   <<"typeName">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type form_entry_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_glossary_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_glossary_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_domains_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_blueprint_input() :: #{}
+-type get_environment_blueprint_input() :: #{}.
+
+
+%% Example:
+%% list_data_sources_output() :: #{
+%%   <<"items">> => list(data_source_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_sources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"externalIdentifier">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"formsOutput">> => list(form_output()()),
+%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"listing">> => asset_listing_details(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"readOnlyFormsOutput">> => list(form_output()()),
+%%   <<"revision">> => string(),
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type get_asset_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_parameter() :: #{
+%%   <<"name">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type environment_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% import() :: #{
+%%   <<"name">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type import() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_types_output() :: #{
+%%   <<"items">> => list(list()()),
+%%   <<"nextToken">> => string(),
+%%   <<"totalMatchCount">> => [integer()]
+%% }
+-type search_types_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_data_source_input() :: #{
+%%   <<"clientToken">> => [string()]
+%% }
+-type delete_data_source_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_request_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decisionComment">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"requestReason">> => string(),
+%%   <<"reviewerId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListings">> => list(subscribed_listing()()),
+%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type create_subscription_request_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% accept_subscription_request_input() :: #{
+%%   <<"decisionComment">> => string()
+%% }
+-type accept_subscription_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_input() :: #{}
+-type get_subscription_input() :: #{}.
+
+
+%% Example:
+%% list_subscription_requests_output() :: #{
+%%   <<"items">> => list(subscription_request_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscription_requests_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_glossary_term_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"glossaryIdentifier">> := string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> := string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations()
+%% }
+-type create_glossary_term_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_glossary_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_glossary_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_profile_input() :: #{}
+-type delete_environment_profile_input() :: #{}.
+
+
+%% Example:
+%% create_group_profile_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_group_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_group_profiles_output() :: #{
+%%   <<"items">> => list(group_profile_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type search_group_profiles_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscriptions_output() :: #{
+%%   <<"items">> => list(subscription_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscriptions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscription_target_input() :: #{
+%%   <<"applicableAssetTypes">> => list(string()()),
+%%   <<"authorizedPrincipals">> => list(string()()),
+%%   <<"manageAccessRole">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()())
+%% }
+-type update_subscription_target_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_revisions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_revisions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_domain_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"domainExecutionRole">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"singleSignOn">> => single_sign_on()
+%% }
+-type update_domain_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_subscription_grant_output() :: #{
+%%   <<"assets">> => list(subscribed_asset()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"grantedEntity">> => list(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type delete_subscription_grant_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_listing_output() :: #{}
+-type delete_listing_output() :: #{}.
+
+
+%% Example:
+%% form_input() :: #{
+%%   <<"content">> => [string()],
+%%   <<"formName">> => string(),
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type form_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_glossary_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_glossary_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% configurable_action_parameter() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type configurable_action_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"name">> => [string()],
+%%   <<"provider">> => [string()],
+%%   <<"type">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_run_configuration_output() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"dataAccessRole">> => [string()],
+%%   <<"redshiftCredentialConfiguration">> => redshift_credential_configuration(),
+%%   <<"redshiftStorage">> => list(),
+%%   <<"region">> => [string()],
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
+%% }
+-type redshift_run_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_environment_blueprint_configuration_input() :: #{
+%%   <<"enabledRegions">> := list(string()()),
+%%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningRoleArn">> => string(),
+%%   <<"regionalParameters">> => map()
+%% }
+-type put_environment_blueprint_configuration_input() :: #{binary() => any()}.
+
+-type accept_predictions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type accept_subscription_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type cancel_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_asset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_asset_revision_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_asset_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_environment_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_form_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_glossary_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_glossary_term_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_group_profile_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_listing_change_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_project_membership_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_subscription_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_subscription_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_subscription_target_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_user_profile_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_asset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_asset_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_environment_blueprint_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_environment_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_form_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_glossary_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_glossary_term_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_listing_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_project_membership_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type delete_subscription_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_subscription_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_subscription_target_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_asset_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_asset_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_data_source_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_blueprint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_blueprint_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_form_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_glossary_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_glossary_term_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_group_profile_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_iam_portal_login_url_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_listing_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_subscription_grant_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_subscription_request_details_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_subscription_target_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_user_profile_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_asset_revisions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_source_run_activities_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_data_source_runs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_data_sources_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_domains_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_environment_blueprint_configurations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_environment_blueprints_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_environment_profiles_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_environments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_notifications_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_project_memberships_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_projects_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_subscription_grants_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_subscription_requests_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_subscription_targets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_subscriptions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_environment_blueprint_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type reject_predictions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type reject_subscription_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type revoke_subscription_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type search_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type search_group_profiles_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type search_listings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type search_types_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type search_user_profiles_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_data_source_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type update_environment_profile_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_glossary_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_glossary_term_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_group_profile_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_subscription_grant_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_subscription_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_subscription_target_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_user_profile_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -258,8 +4071,17 @@
 %% @doc Accepts automatically generated business-friendly metadata for your
 %% Amazon DataZone
 %% assets.
+-spec accept_predictions(aws_client:aws_client(), binary() | list(), binary() | list(), accept_predictions_input()) ->
+    {ok, accept_predictions_output(), tuple()} |
+    {error, any()} |
+    {error, accept_predictions_errors(), tuple()}.
 accept_predictions(Client, DomainIdentifier, Identifier, Input) ->
     accept_predictions(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec accept_predictions(aws_client:aws_client(), binary() | list(), binary() | list(), accept_predictions_input(), proplists:proplist()) ->
+    {ok, accept_predictions_output(), tuple()} |
+    {error, any()} |
+    {error, accept_predictions_errors(), tuple()}.
 accept_predictions(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(Identifier), "/accept-predictions"],
@@ -284,8 +4106,17 @@ accept_predictions(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Accepts a subscription request to a specific asset.
+-spec accept_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), accept_subscription_request_input()) ->
+    {ok, accept_subscription_request_output(), tuple()} |
+    {error, any()} |
+    {error, accept_subscription_request_errors(), tuple()}.
 accept_subscription_request(Client, DomainIdentifier, Identifier, Input) ->
     accept_subscription_request(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec accept_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), accept_subscription_request_input(), proplists:proplist()) ->
+    {ok, accept_subscription_request_output(), tuple()} |
+    {error, any()} |
+    {error, accept_subscription_request_errors(), tuple()}.
 accept_subscription_request(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-requests/", aws_util:encode_uri(Identifier), "/accept"],
@@ -309,8 +4140,17 @@ accept_subscription_request(Client, DomainIdentifier, Identifier, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the subscription to the specified asset.
+-spec cancel_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_subscription_input()) ->
+    {ok, cancel_subscription_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_subscription_errors(), tuple()}.
 cancel_subscription(Client, DomainIdentifier, Identifier, Input) ->
     cancel_subscription(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec cancel_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_subscription_input(), proplists:proplist()) ->
+    {ok, cancel_subscription_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_subscription_errors(), tuple()}.
 cancel_subscription(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscriptions/", aws_util:encode_uri(Identifier), "/cancel"],
@@ -334,8 +4174,17 @@ cancel_subscription(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an asset in Amazon DataZone catalog.
+-spec create_asset(aws_client:aws_client(), binary() | list(), create_asset_input()) ->
+    {ok, create_asset_output(), tuple()} |
+    {error, any()} |
+    {error, create_asset_errors(), tuple()}.
 create_asset(Client, DomainIdentifier, Input) ->
     create_asset(Client, DomainIdentifier, Input, []).
+
+-spec create_asset(aws_client:aws_client(), binary() | list(), create_asset_input(), proplists:proplist()) ->
+    {ok, create_asset_output(), tuple()} |
+    {error, any()} |
+    {error, create_asset_errors(), tuple()}.
 create_asset(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets"],
@@ -359,8 +4208,17 @@ create_asset(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a revision of the asset.
+-spec create_asset_revision(aws_client:aws_client(), binary() | list(), binary() | list(), create_asset_revision_input()) ->
+    {ok, create_asset_revision_output(), tuple()} |
+    {error, any()} |
+    {error, create_asset_revision_errors(), tuple()}.
 create_asset_revision(Client, DomainIdentifier, Identifier, Input) ->
     create_asset_revision(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec create_asset_revision(aws_client:aws_client(), binary() | list(), binary() | list(), create_asset_revision_input(), proplists:proplist()) ->
+    {ok, create_asset_revision_output(), tuple()} |
+    {error, any()} |
+    {error, create_asset_revision_errors(), tuple()}.
 create_asset_revision(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(Identifier), "/revisions"],
@@ -384,8 +4242,17 @@ create_asset_revision(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a custom asset type.
+-spec create_asset_type(aws_client:aws_client(), binary() | list(), create_asset_type_input()) ->
+    {ok, create_asset_type_output(), tuple()} |
+    {error, any()} |
+    {error, create_asset_type_errors(), tuple()}.
 create_asset_type(Client, DomainIdentifier, Input) ->
     create_asset_type(Client, DomainIdentifier, Input, []).
+
+-spec create_asset_type(aws_client:aws_client(), binary() | list(), create_asset_type_input(), proplists:proplist()) ->
+    {ok, create_asset_type_output(), tuple()} |
+    {error, any()} |
+    {error, create_asset_type_errors(), tuple()}.
 create_asset_type(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/asset-types"],
@@ -409,8 +4276,17 @@ create_asset_type(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon DataZone data source.
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_input()) ->
+    {ok, create_data_source_output(), tuple()} |
+    {error, any()} |
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, DomainIdentifier, Input) ->
     create_data_source(Client, DomainIdentifier, Input, []).
+
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_input(), proplists:proplist()) ->
+    {ok, create_data_source_output(), tuple()} |
+    {error, any()} |
+    {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-sources"],
@@ -434,8 +4310,17 @@ create_data_source(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon DataZone domain.
+-spec create_domain(aws_client:aws_client(), create_domain_input()) ->
+    {ok, create_domain_output(), tuple()} |
+    {error, any()} |
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
+
+-spec create_domain(aws_client:aws_client(), create_domain_input(), proplists:proplist()) ->
+    {ok, create_domain_output(), tuple()} |
+    {error, any()} |
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains"],
@@ -459,8 +4344,17 @@ create_domain(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create an Amazon DataZone environment.
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_input()) ->
+    {ok, create_environment_output(), tuple()} |
+    {error, any()} |
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, DomainIdentifier, Input) ->
     create_environment(Client, DomainIdentifier, Input, []).
+
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_input(), proplists:proplist()) ->
+    {ok, create_environment_output(), tuple()} |
+    {error, any()} |
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments"],
@@ -484,8 +4378,17 @@ create_environment(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon DataZone environment profile.
+-spec create_environment_profile(aws_client:aws_client(), binary() | list(), create_environment_profile_input()) ->
+    {ok, create_environment_profile_output(), tuple()} |
+    {error, any()} |
+    {error, create_environment_profile_errors(), tuple()}.
 create_environment_profile(Client, DomainIdentifier, Input) ->
     create_environment_profile(Client, DomainIdentifier, Input, []).
+
+-spec create_environment_profile(aws_client:aws_client(), binary() | list(), create_environment_profile_input(), proplists:proplist()) ->
+    {ok, create_environment_profile_output(), tuple()} |
+    {error, any()} |
+    {error, create_environment_profile_errors(), tuple()}.
 create_environment_profile(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-profiles"],
@@ -509,8 +4412,17 @@ create_environment_profile(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a metadata form type.
+-spec create_form_type(aws_client:aws_client(), binary() | list(), create_form_type_input()) ->
+    {ok, create_form_type_output(), tuple()} |
+    {error, any()} |
+    {error, create_form_type_errors(), tuple()}.
 create_form_type(Client, DomainIdentifier, Input) ->
     create_form_type(Client, DomainIdentifier, Input, []).
+
+-spec create_form_type(aws_client:aws_client(), binary() | list(), create_form_type_input(), proplists:proplist()) ->
+    {ok, create_form_type_output(), tuple()} |
+    {error, any()} |
+    {error, create_form_type_errors(), tuple()}.
 create_form_type(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/form-types"],
@@ -534,8 +4446,17 @@ create_form_type(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon DataZone business glossary.
+-spec create_glossary(aws_client:aws_client(), binary() | list(), create_glossary_input()) ->
+    {ok, create_glossary_output(), tuple()} |
+    {error, any()} |
+    {error, create_glossary_errors(), tuple()}.
 create_glossary(Client, DomainIdentifier, Input) ->
     create_glossary(Client, DomainIdentifier, Input, []).
+
+-spec create_glossary(aws_client:aws_client(), binary() | list(), create_glossary_input(), proplists:proplist()) ->
+    {ok, create_glossary_output(), tuple()} |
+    {error, any()} |
+    {error, create_glossary_errors(), tuple()}.
 create_glossary(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/glossaries"],
@@ -559,8 +4480,17 @@ create_glossary(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a business glossary term.
+-spec create_glossary_term(aws_client:aws_client(), binary() | list(), create_glossary_term_input()) ->
+    {ok, create_glossary_term_output(), tuple()} |
+    {error, any()} |
+    {error, create_glossary_term_errors(), tuple()}.
 create_glossary_term(Client, DomainIdentifier, Input) ->
     create_glossary_term(Client, DomainIdentifier, Input, []).
+
+-spec create_glossary_term(aws_client:aws_client(), binary() | list(), create_glossary_term_input(), proplists:proplist()) ->
+    {ok, create_glossary_term_output(), tuple()} |
+    {error, any()} |
+    {error, create_glossary_term_errors(), tuple()}.
 create_glossary_term(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/glossary-terms"],
@@ -584,8 +4514,17 @@ create_glossary_term(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a group profile in Amazon DataZone.
+-spec create_group_profile(aws_client:aws_client(), binary() | list(), create_group_profile_input()) ->
+    {ok, create_group_profile_output(), tuple()} |
+    {error, any()} |
+    {error, create_group_profile_errors(), tuple()}.
 create_group_profile(Client, DomainIdentifier, Input) ->
     create_group_profile(Client, DomainIdentifier, Input, []).
+
+-spec create_group_profile(aws_client:aws_client(), binary() | list(), create_group_profile_input(), proplists:proplist()) ->
+    {ok, create_group_profile_output(), tuple()} |
+    {error, any()} |
+    {error, create_group_profile_errors(), tuple()}.
 create_group_profile(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/group-profiles"],
@@ -609,8 +4548,17 @@ create_group_profile(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
+-spec create_listing_change_set(aws_client:aws_client(), binary() | list(), create_listing_change_set_input()) ->
+    {ok, create_listing_change_set_output(), tuple()} |
+    {error, any()} |
+    {error, create_listing_change_set_errors(), tuple()}.
 create_listing_change_set(Client, DomainIdentifier, Input) ->
     create_listing_change_set(Client, DomainIdentifier, Input, []).
+
+-spec create_listing_change_set(aws_client:aws_client(), binary() | list(), create_listing_change_set_input(), proplists:proplist()) ->
+    {ok, create_listing_change_set_output(), tuple()} |
+    {error, any()} |
+    {error, create_listing_change_set_errors(), tuple()}.
 create_listing_change_set(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/listings/change-set"],
@@ -634,8 +4582,17 @@ create_listing_change_set(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon DataZone project.
+-spec create_project(aws_client:aws_client(), binary() | list(), create_project_input()) ->
+    {ok, create_project_output(), tuple()} |
+    {error, any()} |
+    {error, create_project_errors(), tuple()}.
 create_project(Client, DomainIdentifier, Input) ->
     create_project(Client, DomainIdentifier, Input, []).
+
+-spec create_project(aws_client:aws_client(), binary() | list(), create_project_input(), proplists:proplist()) ->
+    {ok, create_project_output(), tuple()} |
+    {error, any()} |
+    {error, create_project_errors(), tuple()}.
 create_project(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects"],
@@ -659,8 +4616,17 @@ create_project(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a project membership in Amazon DataZone.
+-spec create_project_membership(aws_client:aws_client(), binary() | list(), binary() | list(), create_project_membership_input()) ->
+    {ok, create_project_membership_output(), tuple()} |
+    {error, any()} |
+    {error, create_project_membership_errors(), tuple()}.
 create_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input) ->
     create_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input, []).
+
+-spec create_project_membership(aws_client:aws_client(), binary() | list(), binary() | list(), create_project_membership_input(), proplists:proplist()) ->
+    {ok, create_project_membership_output(), tuple()} |
+    {error, any()} |
+    {error, create_project_membership_errors(), tuple()}.
 create_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects/", aws_util:encode_uri(ProjectIdentifier), "/createMembership"],
@@ -684,8 +4650,17 @@ create_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input0, O
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a subsscription grant in Amazon DataZone.
+-spec create_subscription_grant(aws_client:aws_client(), binary() | list(), create_subscription_grant_input()) ->
+    {ok, create_subscription_grant_output(), tuple()} |
+    {error, any()} |
+    {error, create_subscription_grant_errors(), tuple()}.
 create_subscription_grant(Client, DomainIdentifier, Input) ->
     create_subscription_grant(Client, DomainIdentifier, Input, []).
+
+-spec create_subscription_grant(aws_client:aws_client(), binary() | list(), create_subscription_grant_input(), proplists:proplist()) ->
+    {ok, create_subscription_grant_output(), tuple()} |
+    {error, any()} |
+    {error, create_subscription_grant_errors(), tuple()}.
 create_subscription_grant(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-grants"],
@@ -709,8 +4684,17 @@ create_subscription_grant(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a subscription request in Amazon DataZone.
+-spec create_subscription_request(aws_client:aws_client(), binary() | list(), create_subscription_request_input()) ->
+    {ok, create_subscription_request_output(), tuple()} |
+    {error, any()} |
+    {error, create_subscription_request_errors(), tuple()}.
 create_subscription_request(Client, DomainIdentifier, Input) ->
     create_subscription_request(Client, DomainIdentifier, Input, []).
+
+-spec create_subscription_request(aws_client:aws_client(), binary() | list(), create_subscription_request_input(), proplists:proplist()) ->
+    {ok, create_subscription_request_output(), tuple()} |
+    {error, any()} |
+    {error, create_subscription_request_errors(), tuple()}.
 create_subscription_request(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-requests"],
@@ -734,8 +4718,17 @@ create_subscription_request(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a subscription target in Amazon DataZone.
+-spec create_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), create_subscription_target_input()) ->
+    {ok, create_subscription_target_output(), tuple()} |
+    {error, any()} |
+    {error, create_subscription_target_errors(), tuple()}.
 create_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Input) ->
     create_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Input, []).
+
+-spec create_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), create_subscription_target_input(), proplists:proplist()) ->
+    {ok, create_subscription_target_output(), tuple()} |
+    {error, any()} |
+    {error, create_subscription_target_errors(), tuple()}.
 create_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/subscription-targets"],
@@ -759,8 +4752,17 @@ create_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Inpu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a user profile in Amazon DataZone.
+-spec create_user_profile(aws_client:aws_client(), binary() | list(), create_user_profile_input()) ->
+    {ok, create_user_profile_output(), tuple()} |
+    {error, any()} |
+    {error, create_user_profile_errors(), tuple()}.
 create_user_profile(Client, DomainIdentifier, Input) ->
     create_user_profile(Client, DomainIdentifier, Input, []).
+
+-spec create_user_profile(aws_client:aws_client(), binary() | list(), create_user_profile_input(), proplists:proplist()) ->
+    {ok, create_user_profile_output(), tuple()} |
+    {error, any()} |
+    {error, create_user_profile_errors(), tuple()}.
 create_user_profile(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/user-profiles"],
@@ -784,8 +4786,17 @@ create_user_profile(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delets an asset in Amazon DataZone.
+-spec delete_asset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_input()) ->
+    {ok, delete_asset_output(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, DomainIdentifier, Identifier, Input) ->
     delete_asset(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_asset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_input(), proplists:proplist()) ->
+    {ok, delete_asset_output(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(Identifier), ""],
@@ -809,8 +4820,17 @@ delete_asset(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an asset type in Amazon DataZone.
+-spec delete_asset_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_type_input()) ->
+    {ok, delete_asset_type_output(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_type_errors(), tuple()}.
 delete_asset_type(Client, DomainIdentifier, Identifier, Input) ->
     delete_asset_type(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_asset_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_type_input(), proplists:proplist()) ->
+    {ok, delete_asset_type_output(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_type_errors(), tuple()}.
 delete_asset_type(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/asset-types/", aws_util:encode_uri(Identifier), ""],
@@ -834,8 +4854,17 @@ delete_asset_type(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a data source in Amazon DataZone.
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_input()) ->
+    {ok, delete_data_source_output(), tuple()} |
+    {error, any()} |
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, DomainIdentifier, Identifier, Input) ->
     delete_data_source(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_input(), proplists:proplist()) ->
+    {ok, delete_data_source_output(), tuple()} |
+    {error, any()} |
+    {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-sources/", aws_util:encode_uri(Identifier), ""],
@@ -860,8 +4889,17 @@ delete_data_source(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Amazon DataZone domain.
+-spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_input()) ->
+    {ok, delete_domain_output(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Identifier, Input) ->
     delete_domain(Client, Identifier, Input, []).
+
+-spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_input(), proplists:proplist()) ->
+    {ok, delete_domain_output(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(Identifier), ""],
@@ -887,8 +4925,17 @@ delete_domain(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an environment in Amazon DataZone.
+-spec delete_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, DomainIdentifier, Identifier, Input) ->
     delete_environment(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(Identifier), ""],
@@ -912,8 +4959,17 @@ delete_environment(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the blueprint configuration in Amazon DataZone.
+-spec delete_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_blueprint_configuration_input()) ->
+    {ok, delete_environment_blueprint_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_blueprint_configuration_errors(), tuple()}.
 delete_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, Input) ->
     delete_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, Input, []).
+
+-spec delete_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_blueprint_configuration_input(), proplists:proplist()) ->
+    {ok, delete_environment_blueprint_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_blueprint_configuration_errors(), tuple()}.
 delete_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-blueprint-configurations/", aws_util:encode_uri(EnvironmentBlueprintIdentifier), ""],
@@ -937,8 +4993,17 @@ delete_environment_blueprint_configuration(Client, DomainIdentifier, Environment
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an environment profile in Amazon DataZone.
+-spec delete_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_profile_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_environment_profile_errors(), tuple()}.
 delete_environment_profile(Client, DomainIdentifier, Identifier, Input) ->
     delete_environment_profile(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_profile_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_environment_profile_errors(), tuple()}.
 delete_environment_profile(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-profiles/", aws_util:encode_uri(Identifier), ""],
@@ -962,8 +5027,17 @@ delete_environment_profile(Client, DomainIdentifier, Identifier, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delets and metadata form type in Amazon DataZone.
+-spec delete_form_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_form_type_input()) ->
+    {ok, delete_form_type_output(), tuple()} |
+    {error, any()} |
+    {error, delete_form_type_errors(), tuple()}.
 delete_form_type(Client, DomainIdentifier, FormTypeIdentifier, Input) ->
     delete_form_type(Client, DomainIdentifier, FormTypeIdentifier, Input, []).
+
+-spec delete_form_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_form_type_input(), proplists:proplist()) ->
+    {ok, delete_form_type_output(), tuple()} |
+    {error, any()} |
+    {error, delete_form_type_errors(), tuple()}.
 delete_form_type(Client, DomainIdentifier, FormTypeIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/form-types/", aws_util:encode_uri(FormTypeIdentifier), ""],
@@ -987,8 +5061,17 @@ delete_form_type(Client, DomainIdentifier, FormTypeIdentifier, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a business glossary in Amazon DataZone.
+-spec delete_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), delete_glossary_input()) ->
+    {ok, delete_glossary_output(), tuple()} |
+    {error, any()} |
+    {error, delete_glossary_errors(), tuple()}.
 delete_glossary(Client, DomainIdentifier, Identifier, Input) ->
     delete_glossary(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), delete_glossary_input(), proplists:proplist()) ->
+    {ok, delete_glossary_output(), tuple()} |
+    {error, any()} |
+    {error, delete_glossary_errors(), tuple()}.
 delete_glossary(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/glossaries/", aws_util:encode_uri(Identifier), ""],
@@ -1012,8 +5095,17 @@ delete_glossary(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a business glossary term in Amazon DataZone.
+-spec delete_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), delete_glossary_term_input()) ->
+    {ok, delete_glossary_term_output(), tuple()} |
+    {error, any()} |
+    {error, delete_glossary_term_errors(), tuple()}.
 delete_glossary_term(Client, DomainIdentifier, Identifier, Input) ->
     delete_glossary_term(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), delete_glossary_term_input(), proplists:proplist()) ->
+    {ok, delete_glossary_term_output(), tuple()} |
+    {error, any()} |
+    {error, delete_glossary_term_errors(), tuple()}.
 delete_glossary_term(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/glossary-terms/", aws_util:encode_uri(Identifier), ""],
@@ -1037,8 +5129,17 @@ delete_glossary_term(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
+-spec delete_listing(aws_client:aws_client(), binary() | list(), binary() | list(), delete_listing_input()) ->
+    {ok, delete_listing_output(), tuple()} |
+    {error, any()} |
+    {error, delete_listing_errors(), tuple()}.
 delete_listing(Client, DomainIdentifier, Identifier, Input) ->
     delete_listing(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_listing(aws_client:aws_client(), binary() | list(), binary() | list(), delete_listing_input(), proplists:proplist()) ->
+    {ok, delete_listing_output(), tuple()} |
+    {error, any()} |
+    {error, delete_listing_errors(), tuple()}.
 delete_listing(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/listings/", aws_util:encode_uri(Identifier), ""],
@@ -1062,8 +5163,17 @@ delete_listing(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a project in Amazon DataZone.
+-spec delete_project(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_input()) ->
+    {ok, delete_project_output(), tuple()} |
+    {error, any()} |
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, DomainIdentifier, Identifier, Input) ->
     delete_project(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_project(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_input(), proplists:proplist()) ->
+    {ok, delete_project_output(), tuple()} |
+    {error, any()} |
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects/", aws_util:encode_uri(Identifier), ""],
@@ -1088,8 +5198,17 @@ delete_project(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes project membership in Amazon DataZone.
+-spec delete_project_membership(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_membership_input()) ->
+    {ok, delete_project_membership_output(), tuple()} |
+    {error, any()} |
+    {error, delete_project_membership_errors(), tuple()}.
 delete_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input) ->
     delete_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input, []).
+
+-spec delete_project_membership(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_membership_input(), proplists:proplist()) ->
+    {ok, delete_project_membership_output(), tuple()} |
+    {error, any()} |
+    {error, delete_project_membership_errors(), tuple()}.
 delete_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects/", aws_util:encode_uri(ProjectIdentifier), "/deleteMembership"],
@@ -1113,8 +5232,17 @@ delete_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input0, O
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes and subscription grant in Amazon DataZone.
+-spec delete_subscription_grant(aws_client:aws_client(), binary() | list(), binary() | list(), delete_subscription_grant_input()) ->
+    {ok, delete_subscription_grant_output(), tuple()} |
+    {error, any()} |
+    {error, delete_subscription_grant_errors(), tuple()}.
 delete_subscription_grant(Client, DomainIdentifier, Identifier, Input) ->
     delete_subscription_grant(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_subscription_grant(aws_client:aws_client(), binary() | list(), binary() | list(), delete_subscription_grant_input(), proplists:proplist()) ->
+    {ok, delete_subscription_grant_output(), tuple()} |
+    {error, any()} |
+    {error, delete_subscription_grant_errors(), tuple()}.
 delete_subscription_grant(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-grants/", aws_util:encode_uri(Identifier), ""],
@@ -1138,8 +5266,17 @@ delete_subscription_grant(Client, DomainIdentifier, Identifier, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a subscription request in Amazon DataZone.
+-spec delete_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), delete_subscription_request_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_subscription_request_errors(), tuple()}.
 delete_subscription_request(Client, DomainIdentifier, Identifier, Input) ->
     delete_subscription_request(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), delete_subscription_request_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_subscription_request_errors(), tuple()}.
 delete_subscription_request(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-requests/", aws_util:encode_uri(Identifier), ""],
@@ -1163,8 +5300,17 @@ delete_subscription_request(Client, DomainIdentifier, Identifier, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a subscription target in Amazon DataZone.
+-spec delete_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_subscription_target_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_subscription_target_errors(), tuple()}.
 delete_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input) ->
     delete_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input, []).
+
+-spec delete_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_subscription_target_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_subscription_target_errors(), tuple()}.
 delete_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/subscription-targets/", aws_util:encode_uri(Identifier), ""],
@@ -1188,14 +5334,26 @@ delete_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Iden
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone asset.
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_asset_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_errors(), tuple()}.
 get_asset(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_asset(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_asset_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_errors(), tuple()}.
 get_asset(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_asset_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_errors(), tuple()}.
 get_asset(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(Identifier), ""],
@@ -1217,14 +5375,26 @@ get_asset(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone asset type.
+-spec get_asset_type(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_asset_type_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_type_errors(), tuple()}.
 get_asset_type(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_asset_type(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_asset_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_asset_type_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_type_errors(), tuple()}.
 get_asset_type(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_type(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_asset_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_asset_type_output(), tuple()} |
+    {error, any()} |
+    {error, get_asset_type_errors(), tuple()}.
 get_asset_type(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/asset-types/", aws_util:encode_uri(Identifier), ""],
@@ -1246,14 +5416,26 @@ get_asset_type(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone data source.
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_data_source_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_data_source(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_source_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_source_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_source_errors(), tuple()}.
 get_data_source(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-sources/", aws_util:encode_uri(Identifier), ""],
@@ -1271,14 +5453,26 @@ get_data_source(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone data source run.
+-spec get_data_source_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_data_source_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_source_run_errors(), tuple()}.
 get_data_source_run(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_data_source_run(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_data_source_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_source_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_source_run_errors(), tuple()}.
 get_data_source_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_data_source_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_source_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_source_run_errors(), tuple()}.
 get_data_source_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-source-runs/", aws_util:encode_uri(Identifier), ""],
@@ -1296,14 +5490,26 @@ get_data_source_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone domain.
+-spec get_domain(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_domain_output(), tuple()} |
+    {error, any()} |
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, Identifier)
   when is_map(Client) ->
     get_domain(Client, Identifier, #{}, #{}).
 
+-spec get_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_domain_output(), tuple()} |
+    {error, any()} |
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain(Client, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_domain_output(), tuple()} |
+    {error, any()} |
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(Identifier), ""],
@@ -1321,14 +5527,26 @@ get_domain(Client, Identifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone environment.
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_environment_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_environment(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_environment_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_environment_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(Identifier), ""],
@@ -1346,14 +5564,26 @@ get_environment(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone blueprint.
+-spec get_environment_blueprint(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_environment_blueprint_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_blueprint_errors(), tuple()}.
 get_environment_blueprint(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_environment_blueprint(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_environment_blueprint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_environment_blueprint_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_blueprint_errors(), tuple()}.
 get_environment_blueprint(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment_blueprint(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_environment_blueprint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_environment_blueprint_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_blueprint_errors(), tuple()}.
 get_environment_blueprint(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-blueprints/", aws_util:encode_uri(Identifier), ""],
@@ -1371,14 +5601,26 @@ get_environment_blueprint(Client, DomainIdentifier, Identifier, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the blueprint configuration in Amazon DataZone.
+-spec get_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_environment_blueprint_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_blueprint_configuration_errors(), tuple()}.
 get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier)
   when is_map(Client) ->
     get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, #{}, #{}).
 
+-spec get_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_environment_blueprint_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_blueprint_configuration_errors(), tuple()}.
 get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_environment_blueprint_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_blueprint_configuration_errors(), tuple()}.
 get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-blueprint-configurations/", aws_util:encode_uri(EnvironmentBlueprintIdentifier), ""],
@@ -1396,14 +5638,26 @@ get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlu
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an evinronment profile in Amazon DataZone.
+-spec get_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_environment_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_profile_errors(), tuple()}.
 get_environment_profile(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_environment_profile(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_environment_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_profile_errors(), tuple()}.
 get_environment_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_environment_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_profile_errors(), tuple()}.
 get_environment_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-profiles/", aws_util:encode_uri(Identifier), ""],
@@ -1421,14 +5675,26 @@ get_environment_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a metadata form type in Amazon DataZone.
+-spec get_form_type(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_form_type_output(), tuple()} |
+    {error, any()} |
+    {error, get_form_type_errors(), tuple()}.
 get_form_type(Client, DomainIdentifier, FormTypeIdentifier)
   when is_map(Client) ->
     get_form_type(Client, DomainIdentifier, FormTypeIdentifier, #{}, #{}).
 
+-spec get_form_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_form_type_output(), tuple()} |
+    {error, any()} |
+    {error, get_form_type_errors(), tuple()}.
 get_form_type(Client, DomainIdentifier, FormTypeIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_form_type(Client, DomainIdentifier, FormTypeIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_form_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_form_type_output(), tuple()} |
+    {error, any()} |
+    {error, get_form_type_errors(), tuple()}.
 get_form_type(Client, DomainIdentifier, FormTypeIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/form-types/", aws_util:encode_uri(FormTypeIdentifier), ""],
@@ -1450,14 +5716,26 @@ get_form_type(Client, DomainIdentifier, FormTypeIdentifier, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a business glossary in Amazon DataZone.
+-spec get_glossary(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_glossary_output(), tuple()} |
+    {error, any()} |
+    {error, get_glossary_errors(), tuple()}.
 get_glossary(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_glossary(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_glossary_output(), tuple()} |
+    {error, any()} |
+    {error, get_glossary_errors(), tuple()}.
 get_glossary(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_glossary(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_glossary_output(), tuple()} |
+    {error, any()} |
+    {error, get_glossary_errors(), tuple()}.
 get_glossary(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/glossaries/", aws_util:encode_uri(Identifier), ""],
@@ -1475,14 +5753,26 @@ get_glossary(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a business glossary term in Amazon DataZone.
+-spec get_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_glossary_term_output(), tuple()} |
+    {error, any()} |
+    {error, get_glossary_term_errors(), tuple()}.
 get_glossary_term(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_glossary_term(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_glossary_term_output(), tuple()} |
+    {error, any()} |
+    {error, get_glossary_term_errors(), tuple()}.
 get_glossary_term(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_glossary_term(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_glossary_term_output(), tuple()} |
+    {error, any()} |
+    {error, get_glossary_term_errors(), tuple()}.
 get_glossary_term(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/glossary-terms/", aws_util:encode_uri(Identifier), ""],
@@ -1500,14 +5790,26 @@ get_glossary_term(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a group profile in Amazon DataZone.
+-spec get_group_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_group_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_group_profile_errors(), tuple()}.
 get_group_profile(Client, DomainIdentifier, GroupIdentifier)
   when is_map(Client) ->
     get_group_profile(Client, DomainIdentifier, GroupIdentifier, #{}, #{}).
 
+-spec get_group_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_group_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_group_profile_errors(), tuple()}.
 get_group_profile(Client, DomainIdentifier, GroupIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group_profile(Client, DomainIdentifier, GroupIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_group_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_group_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_group_profile_errors(), tuple()}.
 get_group_profile(Client, DomainIdentifier, GroupIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/group-profiles/", aws_util:encode_uri(GroupIdentifier), ""],
@@ -1525,8 +5827,17 @@ get_group_profile(Client, DomainIdentifier, GroupIdentifier, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the data portal URL for the specified Amazon DataZone domain.
+-spec get_iam_portal_login_url(aws_client:aws_client(), binary() | list(), get_iam_portal_login_url_input()) ->
+    {ok, get_iam_portal_login_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_iam_portal_login_url_errors(), tuple()}.
 get_iam_portal_login_url(Client, DomainIdentifier, Input) ->
     get_iam_portal_login_url(Client, DomainIdentifier, Input, []).
+
+-spec get_iam_portal_login_url(aws_client:aws_client(), binary() | list(), get_iam_portal_login_url_input(), proplists:proplist()) ->
+    {ok, get_iam_portal_login_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_iam_portal_login_url_errors(), tuple()}.
 get_iam_portal_login_url(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/get-portal-login-url"],
@@ -1550,14 +5861,26 @@ get_iam_portal_login_url(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
+-spec get_listing(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_listing_output(), tuple()} |
+    {error, any()} |
+    {error, get_listing_errors(), tuple()}.
 get_listing(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_listing(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_listing(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_listing_output(), tuple()} |
+    {error, any()} |
+    {error, get_listing_errors(), tuple()}.
 get_listing(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_listing(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_listing(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_listing_output(), tuple()} |
+    {error, any()} |
+    {error, get_listing_errors(), tuple()}.
 get_listing(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/listings/", aws_util:encode_uri(Identifier), ""],
@@ -1579,14 +5902,26 @@ get_listing(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a project in Amazon DataZone.
+-spec get_project(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_project_output(), tuple()} |
+    {error, any()} |
+    {error, get_project_errors(), tuple()}.
 get_project(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_project(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_project(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_project_output(), tuple()} |
+    {error, any()} |
+    {error, get_project_errors(), tuple()}.
 get_project(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_project(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_project(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_project_output(), tuple()} |
+    {error, any()} |
+    {error, get_project_errors(), tuple()}.
 get_project(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects/", aws_util:encode_uri(Identifier), ""],
@@ -1604,14 +5939,26 @@ get_project(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a subscription in Amazon DataZone.
+-spec get_subscription(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_subscription_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_errors(), tuple()}.
 get_subscription(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_subscription(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_subscription_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_errors(), tuple()}.
 get_subscription(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_subscription_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_errors(), tuple()}.
 get_subscription(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscriptions/", aws_util:encode_uri(Identifier), ""],
@@ -1629,14 +5976,26 @@ get_subscription(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the subscription grant in Amazon DataZone.
+-spec get_subscription_grant(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_subscription_grant_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_grant_errors(), tuple()}.
 get_subscription_grant(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_subscription_grant(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_subscription_grant(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_subscription_grant_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_grant_errors(), tuple()}.
 get_subscription_grant(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_grant(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_subscription_grant(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_subscription_grant_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_grant_errors(), tuple()}.
 get_subscription_grant(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-grants/", aws_util:encode_uri(Identifier), ""],
@@ -1654,14 +6013,26 @@ get_subscription_grant(Client, DomainIdentifier, Identifier, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the details of the specified subscription request.
+-spec get_subscription_request_details(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_subscription_request_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_request_details_errors(), tuple()}.
 get_subscription_request_details(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_subscription_request_details(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec get_subscription_request_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_subscription_request_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_request_details_errors(), tuple()}.
 get_subscription_request_details(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_request_details(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_subscription_request_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_subscription_request_details_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_request_details_errors(), tuple()}.
 get_subscription_request_details(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-requests/", aws_util:encode_uri(Identifier), ""],
@@ -1679,14 +6050,26 @@ get_subscription_request_details(Client, DomainIdentifier, Identifier, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the subscription target in Amazon DataZone.
+-spec get_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_subscription_target_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_target_errors(), tuple()}.
 get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier)
   when is_map(Client) ->
     get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, #{}, #{}).
 
+-spec get_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_subscription_target_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_target_errors(), tuple()}.
 get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec get_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_subscription_target_output(), tuple()} |
+    {error, any()} |
+    {error, get_subscription_target_errors(), tuple()}.
 get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/subscription-targets/", aws_util:encode_uri(Identifier), ""],
@@ -1704,14 +6087,26 @@ get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identif
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a user profile in Amazon DataZone.
+-spec get_user_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_user_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_user_profile_errors(), tuple()}.
 get_user_profile(Client, DomainIdentifier, UserIdentifier)
   when is_map(Client) ->
     get_user_profile(Client, DomainIdentifier, UserIdentifier, #{}, #{}).
 
+-spec get_user_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_user_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_user_profile_errors(), tuple()}.
 get_user_profile(Client, DomainIdentifier, UserIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_profile(Client, DomainIdentifier, UserIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_user_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_user_profile_output(), tuple()} |
+    {error, any()} |
+    {error, get_user_profile_errors(), tuple()}.
 get_user_profile(Client, DomainIdentifier, UserIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/user-profiles/", aws_util:encode_uri(UserIdentifier), ""],
@@ -1733,14 +6128,26 @@ get_user_profile(Client, DomainIdentifier, UserIdentifier, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the revisions for the asset.
+-spec list_asset_revisions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_asset_revisions_output(), tuple()} |
+    {error, any()} |
+    {error, list_asset_revisions_errors(), tuple()}.
 list_asset_revisions(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     list_asset_revisions(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec list_asset_revisions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_asset_revisions_output(), tuple()} |
+    {error, any()} |
+    {error, list_asset_revisions_errors(), tuple()}.
 list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec list_asset_revisions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_asset_revisions_output(), tuple()} |
+    {error, any()} |
+    {error, list_asset_revisions_errors(), tuple()}.
 list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(Identifier), "/revisions"],
@@ -1763,14 +6170,26 @@ list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists data source run activities.
+-spec list_data_source_run_activities(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_data_source_run_activities_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_source_run_activities_errors(), tuple()}.
 list_data_source_run_activities(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     list_data_source_run_activities(Client, DomainIdentifier, Identifier, #{}, #{}).
 
+-spec list_data_source_run_activities(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_data_source_run_activities_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_source_run_activities_errors(), tuple()}.
 list_data_source_run_activities(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_source_run_activities(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
+-spec list_data_source_run_activities(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_source_run_activities_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_source_run_activities_errors(), tuple()}.
 list_data_source_run_activities(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-source-runs/", aws_util:encode_uri(Identifier), "/activities"],
@@ -1794,14 +6213,26 @@ list_data_source_run_activities(Client, DomainIdentifier, Identifier, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists data source runs in Amazon DataZone.
+-spec list_data_source_runs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_data_source_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_source_runs_errors(), tuple()}.
 list_data_source_runs(Client, DataSourceIdentifier, DomainIdentifier)
   when is_map(Client) ->
     list_data_source_runs(Client, DataSourceIdentifier, DomainIdentifier, #{}, #{}).
 
+-spec list_data_source_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_data_source_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_source_runs_errors(), tuple()}.
 list_data_source_runs(Client, DataSourceIdentifier, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_source_runs(Client, DataSourceIdentifier, DomainIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_data_source_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_source_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_source_runs_errors(), tuple()}.
 list_data_source_runs(Client, DataSourceIdentifier, DomainIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-sources/", aws_util:encode_uri(DataSourceIdentifier), "/runs"],
@@ -1825,14 +6256,26 @@ list_data_source_runs(Client, DataSourceIdentifier, DomainIdentifier, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists data sources in Amazon DataZone.
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_data_sources_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, DomainIdentifier, ProjectIdentifier)
   when is_map(Client) ->
     list_data_sources(Client, DomainIdentifier, ProjectIdentifier, #{}, #{}).
 
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_data_sources_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_sources_output(), tuple()} |
+    {error, any()} |
+    {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-sources"],
@@ -1860,14 +6303,26 @@ list_data_sources(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon DataZone domains.
+-spec list_domains(aws_client:aws_client()) ->
+    {ok, list_domains_output(), tuple()} |
+    {error, any()} |
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client)
   when is_map(Client) ->
     list_domains(Client, #{}, #{}).
 
+-spec list_domains(aws_client:aws_client(), map(), map()) ->
+    {ok, list_domains_output(), tuple()} |
+    {error, any()} |
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domains(Client, QueryMap, HeadersMap, []).
 
+-spec list_domains(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_domains_output(), tuple()} |
+    {error, any()} |
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains"],
@@ -1891,14 +6346,26 @@ list_domains(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists blueprint configurations for a Amazon DataZone environment.
+-spec list_environment_blueprint_configurations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_environment_blueprint_configurations_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_blueprint_configurations_errors(), tuple()}.
 list_environment_blueprint_configurations(Client, DomainIdentifier)
   when is_map(Client) ->
     list_environment_blueprint_configurations(Client, DomainIdentifier, #{}, #{}).
 
+-spec list_environment_blueprint_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_environment_blueprint_configurations_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_blueprint_configurations_errors(), tuple()}.
 list_environment_blueprint_configurations(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environment_blueprint_configurations(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_environment_blueprint_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_environment_blueprint_configurations_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_blueprint_configurations_errors(), tuple()}.
 list_environment_blueprint_configurations(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-blueprint-configurations"],
@@ -1921,14 +6388,26 @@ list_environment_blueprint_configurations(Client, DomainIdentifier, QueryMap, He
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists blueprints in an Amazon DataZone environment.
+-spec list_environment_blueprints(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_environment_blueprints_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_blueprints_errors(), tuple()}.
 list_environment_blueprints(Client, DomainIdentifier)
   when is_map(Client) ->
     list_environment_blueprints(Client, DomainIdentifier, #{}, #{}).
 
+-spec list_environment_blueprints(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_environment_blueprints_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_blueprints_errors(), tuple()}.
 list_environment_blueprints(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environment_blueprints(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_environment_blueprints(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_environment_blueprints_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_blueprints_errors(), tuple()}.
 list_environment_blueprints(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-blueprints"],
@@ -1953,14 +6432,26 @@ list_environment_blueprints(Client, DomainIdentifier, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon DataZone environment profiles.
+-spec list_environment_profiles(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_environment_profiles_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_profiles_errors(), tuple()}.
 list_environment_profiles(Client, DomainIdentifier)
   when is_map(Client) ->
     list_environment_profiles(Client, DomainIdentifier, #{}, #{}).
 
+-spec list_environment_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_environment_profiles_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_profiles_errors(), tuple()}.
 list_environment_profiles(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environment_profiles(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_environment_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_environment_profiles_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_profiles_errors(), tuple()}.
 list_environment_profiles(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-profiles"],
@@ -1988,14 +6479,26 @@ list_environment_profiles(Client, DomainIdentifier, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon DataZone environments.
+-spec list_environments(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_environments_output(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, DomainIdentifier, ProjectIdentifier)
   when is_map(Client) ->
     list_environments(Client, DomainIdentifier, ProjectIdentifier, #{}, #{}).
 
+-spec list_environments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_environments_output(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_environments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_environments_output(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments"],
@@ -2026,14 +6529,26 @@ list_environments(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all Amazon DataZone notifications.
+-spec list_notifications(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_notifications_output(), tuple()} |
+    {error, any()} |
+    {error, list_notifications_errors(), tuple()}.
 list_notifications(Client, DomainIdentifier, Type)
   when is_map(Client) ->
     list_notifications(Client, DomainIdentifier, Type, #{}, #{}).
 
+-spec list_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_notifications_output(), tuple()} |
+    {error, any()} |
+    {error, list_notifications_errors(), tuple()}.
 list_notifications(Client, DomainIdentifier, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_notifications(Client, DomainIdentifier, Type, QueryMap, HeadersMap, []).
 
+-spec list_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_notifications_output(), tuple()} |
+    {error, any()} |
+    {error, list_notifications_errors(), tuple()}.
 list_notifications(Client, DomainIdentifier, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notifications"],
@@ -2061,14 +6576,26 @@ list_notifications(Client, DomainIdentifier, Type, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all members of the specified project.
+-spec list_project_memberships(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_project_memberships_output(), tuple()} |
+    {error, any()} |
+    {error, list_project_memberships_errors(), tuple()}.
 list_project_memberships(Client, DomainIdentifier, ProjectIdentifier)
   when is_map(Client) ->
     list_project_memberships(Client, DomainIdentifier, ProjectIdentifier, #{}, #{}).
 
+-spec list_project_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_project_memberships_output(), tuple()} |
+    {error, any()} |
+    {error, list_project_memberships_errors(), tuple()}.
 list_project_memberships(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_project_memberships(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_project_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_project_memberships_output(), tuple()} |
+    {error, any()} |
+    {error, list_project_memberships_errors(), tuple()}.
 list_project_memberships(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects/", aws_util:encode_uri(ProjectIdentifier), "/memberships"],
@@ -2093,14 +6620,26 @@ list_project_memberships(Client, DomainIdentifier, ProjectIdentifier, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon DataZone projects.
+-spec list_projects(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_projects_output(), tuple()} |
+    {error, any()} |
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, DomainIdentifier)
   when is_map(Client) ->
     list_projects(Client, DomainIdentifier, #{}, #{}).
 
+-spec list_projects(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_projects_output(), tuple()} |
+    {error, any()} |
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_projects(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_projects_output(), tuple()} |
+    {error, any()} |
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects"],
@@ -2126,14 +6665,26 @@ list_projects(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists subscription grants.
+-spec list_subscription_grants(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_subscription_grants_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscription_grants_errors(), tuple()}.
 list_subscription_grants(Client, DomainIdentifier)
   when is_map(Client) ->
     list_subscription_grants(Client, DomainIdentifier, #{}, #{}).
 
+-spec list_subscription_grants(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_subscription_grants_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscription_grants_errors(), tuple()}.
 list_subscription_grants(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscription_grants(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_subscription_grants(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_subscription_grants_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscription_grants_errors(), tuple()}.
 list_subscription_grants(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-grants"],
@@ -2162,14 +6713,26 @@ list_subscription_grants(Client, DomainIdentifier, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon DataZone subscription requests.
+-spec list_subscription_requests(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_subscription_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscription_requests_errors(), tuple()}.
 list_subscription_requests(Client, DomainIdentifier)
   when is_map(Client) ->
     list_subscription_requests(Client, DomainIdentifier, #{}, #{}).
 
+-spec list_subscription_requests(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_subscription_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscription_requests_errors(), tuple()}.
 list_subscription_requests(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscription_requests(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_subscription_requests(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_subscription_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscription_requests_errors(), tuple()}.
 list_subscription_requests(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-requests"],
@@ -2198,14 +6761,26 @@ list_subscription_requests(Client, DomainIdentifier, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists subscription targets in Amazon DataZone.
+-spec list_subscription_targets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_subscription_targets_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscription_targets_errors(), tuple()}.
 list_subscription_targets(Client, DomainIdentifier, EnvironmentIdentifier)
   when is_map(Client) ->
     list_subscription_targets(Client, DomainIdentifier, EnvironmentIdentifier, #{}, #{}).
 
+-spec list_subscription_targets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_subscription_targets_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscription_targets_errors(), tuple()}.
 list_subscription_targets(Client, DomainIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscription_targets(Client, DomainIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_subscription_targets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_subscription_targets_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscription_targets_errors(), tuple()}.
 list_subscription_targets(Client, DomainIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/subscription-targets"],
@@ -2230,14 +6805,26 @@ list_subscription_targets(Client, DomainIdentifier, EnvironmentIdentifier, Query
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists subscriptions in Amazon DataZone.
+-spec list_subscriptions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_subscriptions_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_errors(), tuple()}.
 list_subscriptions(Client, DomainIdentifier)
   when is_map(Client) ->
     list_subscriptions(Client, DomainIdentifier, #{}, #{}).
 
+-spec list_subscriptions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_subscriptions_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_errors(), tuple()}.
 list_subscriptions(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscriptions(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_subscriptions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_subscriptions_output(), tuple()} |
+    {error, any()} |
+    {error, list_subscriptions_errors(), tuple()}.
 list_subscriptions(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscriptions"],
@@ -2267,14 +6854,26 @@ list_subscriptions(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists tags for the specified resource in Amazon DataZone.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2293,8 +6892,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Writes the configuration for the specified environment blueprint in
 %% Amazon DataZone.
+-spec put_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), put_environment_blueprint_configuration_input()) ->
+    {ok, put_environment_blueprint_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_environment_blueprint_configuration_errors(), tuple()}.
 put_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, Input) ->
     put_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, Input, []).
+
+-spec put_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), put_environment_blueprint_configuration_input(), proplists:proplist()) ->
+    {ok, put_environment_blueprint_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_environment_blueprint_configuration_errors(), tuple()}.
 put_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-blueprint-configurations/", aws_util:encode_uri(EnvironmentBlueprintIdentifier), ""],
@@ -2320,8 +6928,17 @@ put_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlu
 %% @doc Rejects automatically generated business-friendly metadata for your
 %% Amazon DataZone
 %% assets.
+-spec reject_predictions(aws_client:aws_client(), binary() | list(), binary() | list(), reject_predictions_input()) ->
+    {ok, reject_predictions_output(), tuple()} |
+    {error, any()} |
+    {error, reject_predictions_errors(), tuple()}.
 reject_predictions(Client, DomainIdentifier, Identifier, Input) ->
     reject_predictions(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec reject_predictions(aws_client:aws_client(), binary() | list(), binary() | list(), reject_predictions_input(), proplists:proplist()) ->
+    {ok, reject_predictions_output(), tuple()} |
+    {error, any()} |
+    {error, reject_predictions_errors(), tuple()}.
 reject_predictions(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(Identifier), "/reject-predictions"],
@@ -2346,8 +6963,17 @@ reject_predictions(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Rejects the specified subscription request.
+-spec reject_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), reject_subscription_request_input()) ->
+    {ok, reject_subscription_request_output(), tuple()} |
+    {error, any()} |
+    {error, reject_subscription_request_errors(), tuple()}.
 reject_subscription_request(Client, DomainIdentifier, Identifier, Input) ->
     reject_subscription_request(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec reject_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), reject_subscription_request_input(), proplists:proplist()) ->
+    {ok, reject_subscription_request_output(), tuple()} |
+    {error, any()} |
+    {error, reject_subscription_request_errors(), tuple()}.
 reject_subscription_request(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-requests/", aws_util:encode_uri(Identifier), "/reject"],
@@ -2371,8 +6997,17 @@ reject_subscription_request(Client, DomainIdentifier, Identifier, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Revokes a specified subscription in Amazon DataZone.
+-spec revoke_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_subscription_input()) ->
+    {ok, revoke_subscription_output(), tuple()} |
+    {error, any()} |
+    {error, revoke_subscription_errors(), tuple()}.
 revoke_subscription(Client, DomainIdentifier, Identifier, Input) ->
     revoke_subscription(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec revoke_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_subscription_input(), proplists:proplist()) ->
+    {ok, revoke_subscription_output(), tuple()} |
+    {error, any()} |
+    {error, revoke_subscription_errors(), tuple()}.
 revoke_subscription(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscriptions/", aws_util:encode_uri(Identifier), "/revoke"],
@@ -2396,8 +7031,17 @@ revoke_subscription(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for assets in Amazon DataZone.
+-spec search(aws_client:aws_client(), binary() | list(), search_input()) ->
+    {ok, search_output(), tuple()} |
+    {error, any()} |
+    {error, search_errors(), tuple()}.
 search(Client, DomainIdentifier, Input) ->
     search(Client, DomainIdentifier, Input, []).
+
+-spec search(aws_client:aws_client(), binary() | list(), search_input(), proplists:proplist()) ->
+    {ok, search_output(), tuple()} |
+    {error, any()} |
+    {error, search_errors(), tuple()}.
 search(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/search"],
@@ -2421,8 +7065,17 @@ search(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches group profiles in Amazon DataZone.
+-spec search_group_profiles(aws_client:aws_client(), binary() | list(), search_group_profiles_input()) ->
+    {ok, search_group_profiles_output(), tuple()} |
+    {error, any()} |
+    {error, search_group_profiles_errors(), tuple()}.
 search_group_profiles(Client, DomainIdentifier, Input) ->
     search_group_profiles(Client, DomainIdentifier, Input, []).
+
+-spec search_group_profiles(aws_client:aws_client(), binary() | list(), search_group_profiles_input(), proplists:proplist()) ->
+    {ok, search_group_profiles_output(), tuple()} |
+    {error, any()} |
+    {error, search_group_profiles_errors(), tuple()}.
 search_group_profiles(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/search-group-profiles"],
@@ -2446,8 +7099,17 @@ search_group_profiles(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches listings in Amazon DataZone.
+-spec search_listings(aws_client:aws_client(), binary() | list(), search_listings_input()) ->
+    {ok, search_listings_output(), tuple()} |
+    {error, any()} |
+    {error, search_listings_errors(), tuple()}.
 search_listings(Client, DomainIdentifier, Input) ->
     search_listings(Client, DomainIdentifier, Input, []).
+
+-spec search_listings(aws_client:aws_client(), binary() | list(), search_listings_input(), proplists:proplist()) ->
+    {ok, search_listings_output(), tuple()} |
+    {error, any()} |
+    {error, search_listings_errors(), tuple()}.
 search_listings(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/listings/search"],
@@ -2471,8 +7133,17 @@ search_listings(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for types in Amazon DataZone.
+-spec search_types(aws_client:aws_client(), binary() | list(), search_types_input()) ->
+    {ok, search_types_output(), tuple()} |
+    {error, any()} |
+    {error, search_types_errors(), tuple()}.
 search_types(Client, DomainIdentifier, Input) ->
     search_types(Client, DomainIdentifier, Input, []).
+
+-spec search_types(aws_client:aws_client(), binary() | list(), search_types_input(), proplists:proplist()) ->
+    {ok, search_types_output(), tuple()} |
+    {error, any()} |
+    {error, search_types_errors(), tuple()}.
 search_types(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/types-search"],
@@ -2496,8 +7167,17 @@ search_types(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches user profiles in Amazon DataZone.
+-spec search_user_profiles(aws_client:aws_client(), binary() | list(), search_user_profiles_input()) ->
+    {ok, search_user_profiles_output(), tuple()} |
+    {error, any()} |
+    {error, search_user_profiles_errors(), tuple()}.
 search_user_profiles(Client, DomainIdentifier, Input) ->
     search_user_profiles(Client, DomainIdentifier, Input, []).
+
+-spec search_user_profiles(aws_client:aws_client(), binary() | list(), search_user_profiles_input(), proplists:proplist()) ->
+    {ok, search_user_profiles_output(), tuple()} |
+    {error, any()} |
+    {error, search_user_profiles_errors(), tuple()}.
 search_user_profiles(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/search-user-profiles"],
@@ -2521,8 +7201,17 @@ search_user_profiles(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Start the run of the specified data source in Amazon DataZone.
+-spec start_data_source_run(aws_client:aws_client(), binary() | list(), binary() | list(), start_data_source_run_input()) ->
+    {ok, start_data_source_run_output(), tuple()} |
+    {error, any()} |
+    {error, start_data_source_run_errors(), tuple()}.
 start_data_source_run(Client, DataSourceIdentifier, DomainIdentifier, Input) ->
     start_data_source_run(Client, DataSourceIdentifier, DomainIdentifier, Input, []).
+
+-spec start_data_source_run(aws_client:aws_client(), binary() | list(), binary() | list(), start_data_source_run_input(), proplists:proplist()) ->
+    {ok, start_data_source_run_output(), tuple()} |
+    {error, any()} |
+    {error, start_data_source_run_errors(), tuple()}.
 start_data_source_run(Client, DataSourceIdentifier, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-sources/", aws_util:encode_uri(DataSourceIdentifier), "/runs"],
@@ -2546,8 +7235,17 @@ start_data_source_run(Client, DataSourceIdentifier, DomainIdentifier, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tags a resource in Amazon DataZone.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2571,8 +7269,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Untags a resource in Amazon DataZone.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2597,8 +7304,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified data source in Amazon DataZone.
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_input()) ->
+    {ok, update_data_source_output(), tuple()} |
+    {error, any()} |
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, DomainIdentifier, Identifier, Input) ->
     update_data_source(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_input(), proplists:proplist()) ->
+    {ok, update_data_source_output(), tuple()} |
+    {error, any()} |
+    {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-sources/", aws_util:encode_uri(Identifier), ""],
@@ -2622,8 +7338,17 @@ update_data_source(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Amazon DataZone domain.
+-spec update_domain(aws_client:aws_client(), binary() | list(), update_domain_input()) ->
+    {ok, update_domain_output(), tuple()} |
+    {error, any()} |
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, Identifier, Input) ->
     update_domain(Client, Identifier, Input, []).
+
+-spec update_domain(aws_client:aws_client(), binary() | list(), update_domain_input(), proplists:proplist()) ->
+    {ok, update_domain_output(), tuple()} |
+    {error, any()} |
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, Identifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(Identifier), ""],
@@ -2648,8 +7373,17 @@ update_domain(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified environment in Amazon DataZone.
+-spec update_environment(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_input()) ->
+    {ok, update_environment_output(), tuple()} |
+    {error, any()} |
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, DomainIdentifier, Identifier, Input) ->
     update_environment(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_environment(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_input(), proplists:proplist()) ->
+    {ok, update_environment_output(), tuple()} |
+    {error, any()} |
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(Identifier), ""],
@@ -2673,8 +7407,17 @@ update_environment(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified environment profile in Amazon DataZone.
+-spec update_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_profile_input()) ->
+    {ok, update_environment_profile_output(), tuple()} |
+    {error, any()} |
+    {error, update_environment_profile_errors(), tuple()}.
 update_environment_profile(Client, DomainIdentifier, Identifier, Input) ->
     update_environment_profile(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_profile_input(), proplists:proplist()) ->
+    {ok, update_environment_profile_output(), tuple()} |
+    {error, any()} |
+    {error, update_environment_profile_errors(), tuple()}.
 update_environment_profile(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environment-profiles/", aws_util:encode_uri(Identifier), ""],
@@ -2698,8 +7441,17 @@ update_environment_profile(Client, DomainIdentifier, Identifier, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the business glossary in Amazon DataZone.
+-spec update_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), update_glossary_input()) ->
+    {ok, update_glossary_output(), tuple()} |
+    {error, any()} |
+    {error, update_glossary_errors(), tuple()}.
 update_glossary(Client, DomainIdentifier, Identifier, Input) ->
     update_glossary(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), update_glossary_input(), proplists:proplist()) ->
+    {ok, update_glossary_output(), tuple()} |
+    {error, any()} |
+    {error, update_glossary_errors(), tuple()}.
 update_glossary(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/glossaries/", aws_util:encode_uri(Identifier), ""],
@@ -2723,8 +7475,17 @@ update_glossary(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a business glossary term in Amazon DataZone.
+-spec update_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), update_glossary_term_input()) ->
+    {ok, update_glossary_term_output(), tuple()} |
+    {error, any()} |
+    {error, update_glossary_term_errors(), tuple()}.
 update_glossary_term(Client, DomainIdentifier, Identifier, Input) ->
     update_glossary_term(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), update_glossary_term_input(), proplists:proplist()) ->
+    {ok, update_glossary_term_output(), tuple()} |
+    {error, any()} |
+    {error, update_glossary_term_errors(), tuple()}.
 update_glossary_term(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/glossary-terms/", aws_util:encode_uri(Identifier), ""],
@@ -2748,8 +7509,17 @@ update_glossary_term(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified group profile in Amazon DataZone.
+-spec update_group_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_group_profile_input()) ->
+    {ok, update_group_profile_output(), tuple()} |
+    {error, any()} |
+    {error, update_group_profile_errors(), tuple()}.
 update_group_profile(Client, DomainIdentifier, GroupIdentifier, Input) ->
     update_group_profile(Client, DomainIdentifier, GroupIdentifier, Input, []).
+
+-spec update_group_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_group_profile_input(), proplists:proplist()) ->
+    {ok, update_group_profile_output(), tuple()} |
+    {error, any()} |
+    {error, update_group_profile_errors(), tuple()}.
 update_group_profile(Client, DomainIdentifier, GroupIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/group-profiles/", aws_util:encode_uri(GroupIdentifier), ""],
@@ -2773,8 +7543,17 @@ update_group_profile(Client, DomainIdentifier, GroupIdentifier, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified project in Amazon DataZone.
+-spec update_project(aws_client:aws_client(), binary() | list(), binary() | list(), update_project_input()) ->
+    {ok, update_project_output(), tuple()} |
+    {error, any()} |
+    {error, update_project_errors(), tuple()}.
 update_project(Client, DomainIdentifier, Identifier, Input) ->
     update_project(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_project(aws_client:aws_client(), binary() | list(), binary() | list(), update_project_input(), proplists:proplist()) ->
+    {ok, update_project_output(), tuple()} |
+    {error, any()} |
+    {error, update_project_errors(), tuple()}.
 update_project(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/projects/", aws_util:encode_uri(Identifier), ""],
@@ -2799,8 +7578,17 @@ update_project(Client, DomainIdentifier, Identifier, Input0, Options0) ->
 
 %% @doc Updates the status of the specified subscription grant status in
 %% Amazon DataZone.
+-spec update_subscription_grant_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_subscription_grant_status_input()) ->
+    {ok, update_subscription_grant_status_output(), tuple()} |
+    {error, any()} |
+    {error, update_subscription_grant_status_errors(), tuple()}.
 update_subscription_grant_status(Client, AssetIdentifier, DomainIdentifier, Identifier, Input) ->
     update_subscription_grant_status(Client, AssetIdentifier, DomainIdentifier, Identifier, Input, []).
+
+-spec update_subscription_grant_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_subscription_grant_status_input(), proplists:proplist()) ->
+    {ok, update_subscription_grant_status_output(), tuple()} |
+    {error, any()} |
+    {error, update_subscription_grant_status_errors(), tuple()}.
 update_subscription_grant_status(Client, AssetIdentifier, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-grants/", aws_util:encode_uri(Identifier), "/status/", aws_util:encode_uri(AssetIdentifier), ""],
@@ -2824,8 +7612,17 @@ update_subscription_grant_status(Client, AssetIdentifier, DomainIdentifier, Iden
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a specified subscription request in Amazon DataZone.
+-spec update_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), update_subscription_request_input()) ->
+    {ok, update_subscription_request_output(), tuple()} |
+    {error, any()} |
+    {error, update_subscription_request_errors(), tuple()}.
 update_subscription_request(Client, DomainIdentifier, Identifier, Input) ->
     update_subscription_request(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), update_subscription_request_input(), proplists:proplist()) ->
+    {ok, update_subscription_request_output(), tuple()} |
+    {error, any()} |
+    {error, update_subscription_request_errors(), tuple()}.
 update_subscription_request(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-requests/", aws_util:encode_uri(Identifier), ""],
@@ -2849,8 +7646,17 @@ update_subscription_request(Client, DomainIdentifier, Identifier, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified subscription target in Amazon DataZone.
+-spec update_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_subscription_target_input()) ->
+    {ok, update_subscription_target_output(), tuple()} |
+    {error, any()} |
+    {error, update_subscription_target_errors(), tuple()}.
 update_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input) ->
     update_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input, []).
+
+-spec update_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_subscription_target_input(), proplists:proplist()) ->
+    {ok, update_subscription_target_output(), tuple()} |
+    {error, any()} |
+    {error, update_subscription_target_errors(), tuple()}.
 update_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/subscription-targets/", aws_util:encode_uri(Identifier), ""],
@@ -2874,8 +7680,17 @@ update_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Iden
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified user profile in Amazon DataZone.
+-spec update_user_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_profile_input()) ->
+    {ok, update_user_profile_output(), tuple()} |
+    {error, any()} |
+    {error, update_user_profile_errors(), tuple()}.
 update_user_profile(Client, DomainIdentifier, UserIdentifier, Input) ->
     update_user_profile(Client, DomainIdentifier, UserIdentifier, Input, []).
+
+-spec update_user_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_profile_input(), proplists:proplist()) ->
+    {ok, update_user_profile_output(), tuple()} |
+    {error, any()} |
+    {error, update_user_profile_errors(), tuple()}.
 update_user_profile(Client, DomainIdentifier, UserIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/user-profiles/", aws_util:encode_uri(UserIdentifier), ""],
@@ -2902,7 +7717,7 @@ update_user_profile(Client, DomainIdentifier, UserIdentifier, Input0, Options0) 
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

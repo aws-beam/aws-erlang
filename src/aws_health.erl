@@ -110,6 +110,444 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% describe_events_for_organization_response() :: #{
+%%   <<"events">> => list(organization_event()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_events_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_locale() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_locale() :: #{binary() => any()}.
+
+%% Example:
+%% account_entity_aggregate() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"count">> => integer(),
+%%   <<"statuses">> => map()
+%% }
+-type account_entity_aggregate() :: #{binary() => any()}.
+
+%% Example:
+%% organization_event_filter() :: #{
+%%   <<"awsAccountIds">> => list(string()()),
+%%   <<"endTime">> => date_time_range(),
+%%   <<"entityArns">> => list(string()()),
+%%   <<"entityValues">> => list(string()()),
+%%   <<"eventStatusCodes">> => list(list(any())()),
+%%   <<"eventTypeCategories">> => list(list(any())()),
+%%   <<"eventTypeCodes">> => list(string()()),
+%%   <<"lastUpdatedTime">> => date_time_range(),
+%%   <<"regions">> => list(string()()),
+%%   <<"services">> => list(string()()),
+%%   <<"startTime">> => date_time_range()
+%% }
+-type organization_event_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_details_for_organization_request() :: #{
+%%   <<"locale">> => string(),
+%%   <<"organizationEventDetailFilters">> := list(event_account_filter()())
+%% }
+-type describe_event_details_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_affected_accounts_for_organization_response() :: #{
+%%   <<"affectedAccounts">> => list(string()()),
+%%   <<"eventScopeCode">> => list(any()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_affected_accounts_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pagination_token() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pagination_token() :: #{binary() => any()}.
+
+%% Example:
+%% affected_entity() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"entityArn">> => string(),
+%%   <<"entityUrl">> => string(),
+%%   <<"entityValue">> => string(),
+%%   <<"eventArn">> => string(),
+%%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"statusCode">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type affected_entity() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_aggregates_response() :: #{
+%%   <<"entityAggregates">> => list(entity_aggregate()())
+%% }
+-type describe_entity_aggregates_response() :: #{binary() => any()}.
+
+%% Example:
+%% event_details() :: #{
+%%   <<"event">> => event(),
+%%   <<"eventDescription">> => event_description(),
+%%   <<"eventMetadata">> => map()
+%% }
+-type event_details() :: #{binary() => any()}.
+
+%% Example:
+%% organization_event_details_error_item() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"errorName">> => string(),
+%%   <<"eventArn">> => string()
+%% }
+-type organization_event_details_error_item() :: #{binary() => any()}.
+
+%% Example:
+%% organization_event_details() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"event">> => event(),
+%%   <<"eventDescription">> => event_description(),
+%%   <<"eventMetadata">> => map()
+%% }
+-type organization_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% entity_filter() :: #{
+%%   <<"entityArns">> => list(string()()),
+%%   <<"entityValues">> => list(string()()),
+%%   <<"eventArns">> => list(string()()),
+%%   <<"lastUpdatedTimes">> => list(date_time_range()()),
+%%   <<"statusCodes">> => list(list(any())()),
+%%   <<"tags">> => list(map()())
+%% }
+-type entity_filter() :: #{binary() => any()}.
+
+%% Example:
+%% event_description() :: #{
+%%   <<"latestDescription">> => string()
+%% }
+-type event_description() :: #{binary() => any()}.
+
+%% Example:
+%% describe_affected_entities_for_organization_request() :: #{
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"organizationEntityAccountFilters">> => list(entity_account_filter()()),
+%%   <<"organizationEntityFilters">> => list(event_account_filter()())
+%% }
+-type describe_affected_entities_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_affected_entities_for_organization_response() :: #{
+%%   <<"entities">> => list(affected_entity()()),
+%%   <<"failedSet">> => list(organization_affected_entities_error_item()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_affected_entities_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% event_account_filter() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"eventArn">> => string()
+%% }
+-type event_account_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_aggregates_for_organization_response() :: #{
+%%   <<"organizationEntityAggregates">> => list(organization_entity_aggregate()())
+%% }
+-type describe_entity_aggregates_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_aggregates_for_organization_request() :: #{
+%%   <<"awsAccountIds">> => list(string()()),
+%%   <<"eventArns">> := list(string()())
+%% }
+-type describe_entity_aggregates_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_details_request() :: #{
+%%   <<"eventArns">> := list(string()()),
+%%   <<"locale">> => string()
+%% }
+-type describe_event_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_types_response() :: #{
+%%   <<"eventTypes">> => list(event_type()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_event_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_aggregates_request() :: #{
+%%   <<"eventArns">> => list(string()())
+%% }
+-type describe_entity_aggregates_request() :: #{binary() => any()}.
+
+%% Example:
+%% entity_aggregate() :: #{
+%%   <<"count">> => integer(),
+%%   <<"eventArn">> => string(),
+%%   <<"statuses">> => map()
+%% }
+-type entity_aggregate() :: #{binary() => any()}.
+
+%% Example:
+%% describe_affected_entities_response() :: #{
+%%   <<"entities">> => list(affected_entity()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_affected_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_health_service_status_for_organization_response() :: #{
+%%   <<"healthServiceAccessStatusForOrganization">> => string()
+%% }
+-type describe_health_service_status_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% organization_entity_aggregate() :: #{
+%%   <<"accounts">> => list(account_entity_aggregate()()),
+%%   <<"count">> => integer(),
+%%   <<"eventArn">> => string(),
+%%   <<"statuses">> => map()
+%% }
+-type organization_entity_aggregate() :: #{binary() => any()}.
+
+%% Example:
+%% describe_affected_accounts_for_organization_request() :: #{
+%%   <<"eventArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_affected_accounts_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% entity_account_filter() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"eventArn">> => string(),
+%%   <<"statusCodes">> => list(list(any())())
+%% }
+-type entity_account_filter() :: #{binary() => any()}.
+
+%% Example:
+%% organization_affected_entities_error_item() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"errorName">> => string(),
+%%   <<"eventArn">> => string()
+%% }
+-type organization_affected_entities_error_item() :: #{binary() => any()}.
+
+%% Example:
+%% date_time_range() :: #{
+%%   <<"from">> => non_neg_integer(),
+%%   <<"to">> => non_neg_integer()
+%% }
+-type date_time_range() :: #{binary() => any()}.
+
+%% Example:
+%% event_filter() :: #{
+%%   <<"availabilityZones">> => list(string()()),
+%%   <<"endTimes">> => list(date_time_range()()),
+%%   <<"entityArns">> => list(string()()),
+%%   <<"entityValues">> => list(string()()),
+%%   <<"eventArns">> => list(string()()),
+%%   <<"eventStatusCodes">> => list(list(any())()),
+%%   <<"eventTypeCategories">> => list(list(any())()),
+%%   <<"eventTypeCodes">> => list(string()()),
+%%   <<"lastUpdatedTimes">> => list(date_time_range()()),
+%%   <<"regions">> => list(string()()),
+%%   <<"services">> => list(string()()),
+%%   <<"startTimes">> => list(date_time_range()()),
+%%   <<"tags">> => list(map()())
+%% }
+-type event_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_aggregates_request() :: #{
+%%   <<"aggregateField">> := list(any()),
+%%   <<"filter">> => event_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_event_aggregates_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_for_organization_request() :: #{
+%%   <<"filter">> => organization_event_filter(),
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_events_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"arn">> => string(),
+%%   <<"availabilityZone">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"eventScopeCode">> => list(any()),
+%%   <<"eventTypeCategory">> => list(any()),
+%%   <<"eventTypeCode">> => string(),
+%%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"region">> => string(),
+%%   <<"service">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"statusCode">> => list(any())
+%% }
+-type event() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_request() :: #{
+%%   <<"filter">> => event_filter(),
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_aggregates_response() :: #{
+%%   <<"eventAggregates">> => list(event_aggregate()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_event_aggregates_response() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% event_type_filter() :: #{
+%%   <<"eventTypeCategories">> => list(list(any())()),
+%%   <<"eventTypeCodes">> => list(string()()),
+%%   <<"services">> => list(string()())
+%% }
+-type event_type_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_details_for_organization_response() :: #{
+%%   <<"failedSet">> => list(organization_event_details_error_item()()),
+%%   <<"successfulSet">> => list(organization_event_details()())
+%% }
+-type describe_event_details_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_types_request() :: #{
+%%   <<"filter">> => event_type_filter(),
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_event_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% event_type() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"code">> => string(),
+%%   <<"service">> => string()
+%% }
+-type event_type() :: #{binary() => any()}.
+
+%% Example:
+%% organization_event() :: #{
+%%   <<"arn">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"eventScopeCode">> => list(any()),
+%%   <<"eventTypeCategory">> => list(any()),
+%%   <<"eventTypeCode">> => string(),
+%%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"region">> => string(),
+%%   <<"service">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"statusCode">> => list(any())
+%% }
+-type organization_event() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_details_response() :: #{
+%%   <<"failedSet">> => list(event_details_error_item()()),
+%%   <<"successfulSet">> => list(event_details()())
+%% }
+-type describe_event_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% event_details_error_item() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"errorName">> => string(),
+%%   <<"eventArn">> => string()
+%% }
+-type event_details_error_item() :: #{binary() => any()}.
+
+%% Example:
+%% event_aggregate() :: #{
+%%   <<"aggregateValue">> => string(),
+%%   <<"count">> => integer()
+%% }
+-type event_aggregate() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_response() :: #{
+%%   <<"events">> => list(event()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_affected_entities_request() :: #{
+%%   <<"filter">> := entity_filter(),
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_affected_entities_request() :: #{binary() => any()}.
+
+-type describe_affected_accounts_for_organization_errors() ::
+    invalid_pagination_token().
+
+-type describe_affected_entities_errors() ::
+    invalid_pagination_token() | 
+    unsupported_locale().
+
+-type describe_affected_entities_for_organization_errors() ::
+    invalid_pagination_token() | 
+    unsupported_locale().
+
+-type describe_event_aggregates_errors() ::
+    invalid_pagination_token().
+
+-type describe_event_details_errors() ::
+    unsupported_locale().
+
+-type describe_event_details_for_organization_errors() ::
+    unsupported_locale().
+
+-type describe_event_types_errors() ::
+    invalid_pagination_token() | 
+    unsupported_locale().
+
+-type describe_events_errors() ::
+    invalid_pagination_token() | 
+    unsupported_locale().
+
+-type describe_events_for_organization_errors() ::
+    invalid_pagination_token() | 
+    unsupported_locale().
+
+-type disable_health_service_access_for_organization_errors() ::
+    concurrent_modification_exception().
+
+-type enable_health_service_access_for_organization_errors() ::
+    concurrent_modification_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -132,9 +570,18 @@
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
+-spec describe_affected_accounts_for_organization(aws_client:aws_client(), describe_affected_accounts_for_organization_request()) ->
+    {ok, describe_affected_accounts_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_affected_accounts_for_organization_errors(), tuple()}.
 describe_affected_accounts_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_accounts_for_organization(Client, Input, []).
+
+-spec describe_affected_accounts_for_organization(aws_client:aws_client(), describe_affected_accounts_for_organization_request(), proplists:proplist()) ->
+    {ok, describe_affected_accounts_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_affected_accounts_for_organization_errors(), tuple()}.
 describe_affected_accounts_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAffectedAccountsForOrganization">>, Input, Options).
@@ -160,9 +607,18 @@ describe_affected_accounts_for_organization(Client, Input, Options)
 %% information, see Resource- and action-based conditions:
 %% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
 %% in the Health User Guide.
+-spec describe_affected_entities(aws_client:aws_client(), describe_affected_entities_request()) ->
+    {ok, describe_affected_entities_response(), tuple()} |
+    {error, any()} |
+    {error, describe_affected_entities_errors(), tuple()}.
 describe_affected_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_entities(Client, Input, []).
+
+-spec describe_affected_entities(aws_client:aws_client(), describe_affected_entities_request(), proplists:proplist()) ->
+    {ok, describe_affected_entities_response(), tuple()} |
+    {error, any()} |
+    {error, describe_affected_entities_errors(), tuple()}.
 describe_affected_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAffectedEntities">>, Input, Options).
@@ -196,27 +652,50 @@ describe_affected_entities(Client, Input, Options)
 %% information, see Resource- and action-based conditions:
 %% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
 %% in the Health User Guide.
+-spec describe_affected_entities_for_organization(aws_client:aws_client(), describe_affected_entities_for_organization_request()) ->
+    {ok, describe_affected_entities_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_affected_entities_for_organization_errors(), tuple()}.
 describe_affected_entities_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_entities_for_organization(Client, Input, []).
+
+-spec describe_affected_entities_for_organization(aws_client:aws_client(), describe_affected_entities_for_organization_request(), proplists:proplist()) ->
+    {ok, describe_affected_entities_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_affected_entities_for_organization_errors(), tuple()}.
 describe_affected_entities_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAffectedEntitiesForOrganization">>, Input, Options).
 
 %% @doc Returns the number of entities that are affected by each of the
 %% specified events.
+-spec describe_entity_aggregates(aws_client:aws_client(), describe_entity_aggregates_request()) ->
+    {ok, describe_entity_aggregates_response(), tuple()} |
+    {error, any()}.
 describe_entity_aggregates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entity_aggregates(Client, Input, []).
+
+-spec describe_entity_aggregates(aws_client:aws_client(), describe_entity_aggregates_request(), proplists:proplist()) ->
+    {ok, describe_entity_aggregates_response(), tuple()} |
+    {error, any()}.
 describe_entity_aggregates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEntityAggregates">>, Input, Options).
 
 %% @doc Returns a list of entity aggregates for your Organizations that are
 %% affected by each of the specified events.
+-spec describe_entity_aggregates_for_organization(aws_client:aws_client(), describe_entity_aggregates_for_organization_request()) ->
+    {ok, describe_entity_aggregates_for_organization_response(), tuple()} |
+    {error, any()}.
 describe_entity_aggregates_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entity_aggregates_for_organization(Client, Input, []).
+
+-spec describe_entity_aggregates_for_organization(aws_client:aws_client(), describe_entity_aggregates_for_organization_request(), proplists:proplist()) ->
+    {ok, describe_entity_aggregates_for_organization_response(), tuple()} |
+    {error, any()}.
 describe_entity_aggregates_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEntityAggregatesForOrganization">>, Input, Options).
@@ -230,9 +709,18 @@ describe_entity_aggregates_for_organization(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
+-spec describe_event_aggregates(aws_client:aws_client(), describe_event_aggregates_request()) ->
+    {ok, describe_event_aggregates_response(), tuple()} |
+    {error, any()} |
+    {error, describe_event_aggregates_errors(), tuple()}.
 describe_event_aggregates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_aggregates(Client, Input, []).
+
+-spec describe_event_aggregates(aws_client:aws_client(), describe_event_aggregates_request(), proplists:proplist()) ->
+    {ok, describe_event_aggregates_response(), tuple()} |
+    {error, any()} |
+    {error, describe_event_aggregates_errors(), tuple()}.
 describe_event_aggregates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventAggregates">>, Input, Options).
@@ -259,9 +747,18 @@ describe_event_aggregates(Client, Input, Options)
 %% information, see Resource- and action-based conditions:
 %% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
 %% in the Health User Guide.
+-spec describe_event_details(aws_client:aws_client(), describe_event_details_request()) ->
+    {ok, describe_event_details_response(), tuple()} |
+    {error, any()} |
+    {error, describe_event_details_errors(), tuple()}.
 describe_event_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_details(Client, Input, []).
+
+-spec describe_event_details(aws_client:aws_client(), describe_event_details_request(), proplists:proplist()) ->
+    {ok, describe_event_details_response(), tuple()} |
+    {error, any()} |
+    {error, describe_event_details_errors(), tuple()}.
 describe_event_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventDetails">>, Input, Options).
@@ -317,9 +814,18 @@ describe_event_details(Client, Input, Options)
 %% information, see Resource- and action-based conditions:
 %% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
 %% in the Health User Guide.
+-spec describe_event_details_for_organization(aws_client:aws_client(), describe_event_details_for_organization_request()) ->
+    {ok, describe_event_details_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_event_details_for_organization_errors(), tuple()}.
 describe_event_details_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_details_for_organization(Client, Input, []).
+
+-spec describe_event_details_for_organization(aws_client:aws_client(), describe_event_details_for_organization_request(), proplists:proplist()) ->
+    {ok, describe_event_details_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_event_details_for_organization_errors(), tuple()}.
 describe_event_details_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventDetailsForOrganization">>, Input, Options).
@@ -339,9 +845,18 @@ describe_event_details_for_organization(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
+-spec describe_event_types(aws_client:aws_client(), describe_event_types_request()) ->
+    {ok, describe_event_types_response(), tuple()} |
+    {error, any()} |
+    {error, describe_event_types_errors(), tuple()}.
 describe_event_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_types(Client, Input, []).
+
+-spec describe_event_types(aws_client:aws_client(), describe_event_types_request(), proplists:proplist()) ->
+    {ok, describe_event_types_response(), tuple()} |
+    {error, any()} |
+    {error, describe_event_types_errors(), tuple()}.
 describe_event_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventTypes">>, Input, Options).
@@ -378,9 +893,18 @@ describe_event_types(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
+-spec describe_events(aws_client:aws_client(), describe_events_request()) ->
+    {ok, describe_events_response(), tuple()} |
+    {error, any()} |
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
+
+-spec describe_events(aws_client:aws_client(), describe_events_request(), proplists:proplist()) ->
+    {ok, describe_events_response(), tuple()} |
+    {error, any()} |
+    {error, describe_events_errors(), tuple()}.
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
@@ -426,9 +950,18 @@ describe_events(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
+-spec describe_events_for_organization(aws_client:aws_client(), describe_events_for_organization_request()) ->
+    {ok, describe_events_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_events_for_organization_errors(), tuple()}.
 describe_events_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events_for_organization(Client, Input, []).
+
+-spec describe_events_for_organization(aws_client:aws_client(), describe_events_for_organization_request(), proplists:proplist()) ->
+    {ok, describe_events_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_events_for_organization_errors(), tuple()}.
 describe_events_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventsForOrganization">>, Input, Options).
@@ -439,9 +972,16 @@ describe_events_for_organization(Client, Input, Options)
 %%
 %% To call this operation, you must use the organization's
 %% management account.
+-spec describe_health_service_status_for_organization(aws_client:aws_client(), #{}) ->
+    {ok, describe_health_service_status_for_organization_response(), tuple()} |
+    {error, any()}.
 describe_health_service_status_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_health_service_status_for_organization(Client, Input, []).
+
+-spec describe_health_service_status_for_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, describe_health_service_status_for_organization_response(), tuple()} |
+    {error, any()}.
 describe_health_service_status_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHealthServiceStatusForOrganization">>, Input, Options).
@@ -475,9 +1015,18 @@ describe_health_service_status_for_organization(Client, Input, Options)
 %% returns
 %% an error. Health continues to aggregate health events for your
 %% Amazon Web Services account.
+-spec disable_health_service_access_for_organization(aws_client:aws_client(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_health_service_access_for_organization_errors(), tuple()}.
 disable_health_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_health_service_access_for_organization(Client, Input, []).
+
+-spec disable_health_service_access_for_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_health_service_access_for_organization_errors(), tuple()}.
 disable_health_service_access_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableHealthServiceAccessForOrganization">>, Input, Options).
@@ -515,9 +1064,18 @@ disable_health_service_access_for_organization(Client, Input, Options)
 %% Health events:
 %% https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html in the
 %% Health User Guide.
+-spec enable_health_service_access_for_organization(aws_client:aws_client(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_health_service_access_for_organization_errors(), tuple()}.
 enable_health_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_health_service_access_for_organization(Client, Input, []).
+
+-spec enable_health_service_access_for_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_health_service_access_for_organization_errors(), tuple()}.
 enable_health_service_access_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableHealthServiceAccessForOrganization">>, Input, Options).

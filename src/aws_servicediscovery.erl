@@ -74,6 +74,894 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% update_public_dns_namespace_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type update_public_dns_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% dns_properties() :: #{
+%%   <<"HostedZoneId">> => string(),
+%%   <<"SOA">> => s_o_a()
+%% }
+-type dns_properties() :: #{binary() => any()}.
+
+%% Example:
+%% operation() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Targets">> => map(),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdateDate">> => non_neg_integer()
+%% }
+-type operation() :: #{binary() => any()}.
+
+%% Example:
+%% delete_namespace_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type delete_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% private_dns_properties_mutable() :: #{
+%%   <<"SOA">> => s_o_a()
+%% }
+-type private_dns_properties_mutable() :: #{binary() => any()}.
+
+%% Example:
+%% create_http_namespace_request() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_http_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_private_dns_namespace_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type update_private_dns_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_http_namespace_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type update_http_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% private_dns_namespace_properties() :: #{
+%%   <<"DnsProperties">> => private_dns_properties_mutable()
+%% }
+-type private_dns_namespace_properties() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_input() :: #{binary() => any()}.
+
+%% Example:
+%% custom_health_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type custom_health_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_response() :: #{
+%%   <<"Service">> => service()
+%% }
+-type get_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_change() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DnsConfig">> => dns_config_change(),
+%%   <<"HealthCheckConfig">> => health_check_config()
+%% }
+-type service_change() :: #{binary() => any()}.
+
+%% Example:
+%% http_instance_summary() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"HealthStatus">> => list(any()),
+%%   <<"InstanceId">> => string(),
+%%   <<"NamespaceName">> => string(),
+%%   <<"ServiceName">> => string()
+%% }
+-type http_instance_summary() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_namespaces_request() :: #{
+%%   <<"Filters">> => list(namespace_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_namespaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% private_dns_properties_mutable_change() :: #{
+%%   <<"SOA">> => s_o_a_change()
+%% }
+-type private_dns_properties_mutable_change() :: #{binary() => any()}.
+
+%% Example:
+%% namespace_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Properties">> => namespace_properties(),
+%%   <<"ServiceCount">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type namespace_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_instance_custom_health_status_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"ServiceId">> := string(),
+%%   <<"Status">> := list(any())
+%% }
+-type update_instance_custom_health_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% get_instances_health_status_request() :: #{
+%%   <<"Instances">> => list(string()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceId">> := string()
+%% }
+-type get_instances_health_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_public_dns_namespace_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type create_public_dns_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_operation_response() :: #{
+%%   <<"Operation">> => operation()
+%% }
+-type get_operation_response() :: #{binary() => any()}.
+
+%% Example:
+%% public_dns_properties_mutable_change() :: #{
+%%   <<"SOA">> => s_o_a_change()
+%% }
+-type public_dns_properties_mutable_change() :: #{binary() => any()}.
+
+%% Example:
+%% discover_instances_response() :: #{
+%%   <<"Instances">> => list(http_instance_summary()()),
+%%   <<"InstancesRevision">> => float()
+%% }
+-type discover_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% public_dns_properties_mutable() :: #{
+%%   <<"SOA">> => s_o_a()
+%% }
+-type public_dns_properties_mutable() :: #{binary() => any()}.
+
+%% Example:
+%% public_dns_namespace_properties() :: #{
+%%   <<"DnsProperties">> => public_dns_properties_mutable()
+%% }
+-type public_dns_namespace_properties() :: #{binary() => any()}.
+
+%% Example:
+%% service() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DnsConfig">> => dns_config(),
+%%   <<"HealthCheckConfig">> => health_check_config(),
+%%   <<"HealthCheckCustomConfig">> => health_check_custom_config(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NamespaceId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type service() :: #{binary() => any()}.
+
+%% Example:
+%% operation_summary() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type operation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% discover_instances_request() :: #{
+%%   <<"HealthStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NamespaceName">> := string(),
+%%   <<"OptionalParameters">> => map(),
+%%   <<"QueryParameters">> => map(),
+%%   <<"ServiceName">> := string()
+%% }
+-type discover_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% private_dns_namespace_properties_change() :: #{
+%%   <<"DnsProperties">> => private_dns_properties_mutable_change()
+%% }
+-type private_dns_namespace_properties_change() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_instance_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"ServiceId">> := string()
+%% }
+-type deregister_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_private_dns_namespace_request() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Properties">> => private_dns_namespace_properties(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Vpc">> := string()
+%% }
+-type create_private_dns_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type get_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"ServiceId">> := string()
+%% }
+-type get_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_request() :: #{
+%%   <<"Filters">> => list(service_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_namespace_response() :: #{
+%%   <<"Namespace">> => namespace()
+%% }
+-type get_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% health_check_custom_config() :: #{
+%%   <<"FailureThreshold">> => integer()
+%% }
+-type health_check_custom_config() :: #{binary() => any()}.
+
+%% Example:
+%% namespace_properties() :: #{
+%%   <<"DnsProperties">> => dns_properties(),
+%%   <<"HttpProperties">> => http_properties()
+%% }
+-type namespace_properties() :: #{binary() => any()}.
+
+%% Example:
+%% list_operations_request() :: #{
+%%   <<"Filters">> => list(operation_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_operations_request() :: #{binary() => any()}.
+
+%% Example:
+%% public_dns_namespace_change() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Properties">> => public_dns_namespace_properties_change()
+%% }
+-type public_dns_namespace_change() :: #{binary() => any()}.
+
+%% Example:
+%% s_o_a() :: #{
+%%   <<"TTL">> => float()
+%% }
+-type s_o_a() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_filter() :: #{
+%%   <<"Condition">> => list(any()),
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type service_filter() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% create_private_dns_namespace_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type create_private_dns_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% discover_instances_revision_response() :: #{
+%%   <<"InstancesRevision">> => float()
+%% }
+-type discover_instances_revision_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Services">> => list(service_summary()())
+%% }
+-type list_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_operation_request() :: #{
+%%   <<"OperationId">> := string()
+%% }
+-type get_operation_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DnsConfig">> => dns_config(),
+%%   <<"HealthCheckConfig">> => health_check_config(),
+%%   <<"HealthCheckCustomConfig">> => health_check_custom_config(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type service_summary() :: #{binary() => any()}.
+
+%% Example:
+%% private_dns_namespace_change() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Properties">> => private_dns_namespace_properties_change()
+%% }
+-type private_dns_namespace_change() :: #{binary() => any()}.
+
+%% Example:
+%% s_o_a_change() :: #{
+%%   <<"TTL">> => float()
+%% }
+-type s_o_a_change() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_request() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DnsConfig">> => dns_config(),
+%%   <<"HealthCheckConfig">> => health_check_config(),
+%%   <<"HealthCheckCustomConfig">> => health_check_custom_config(),
+%%   <<"Name">> := string(),
+%%   <<"NamespaceId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Type">> => list(any())
+%% }
+-type create_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_response() :: #{
+%%   <<"Instance">> => instance()
+%% }
+-type get_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_instance_request() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"ServiceId">> := string()
+%% }
+-type register_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_request() :: #{
+%%   <<"DuplicateOperationId">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type duplicate_request() :: #{binary() => any()}.
+
+%% Example:
+%% discover_instances_revision_request() :: #{
+%%   <<"NamespaceName">> := string(),
+%%   <<"ServiceName">> := string()
+%% }
+-type discover_instances_revision_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% service_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% update_http_namespace_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"Namespace">> := http_namespace_change(),
+%%   <<"UpdaterRequestId">> => string()
+%% }
+-type update_http_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% dns_config() :: #{
+%%   <<"DnsRecords">> => list(dns_record()()),
+%%   <<"NamespaceId">> => string(),
+%%   <<"RoutingPolicy">> => list(any())
+%% }
+-type dns_config() :: #{binary() => any()}.
+
+%% Example:
+%% http_namespace_change() :: #{
+%%   <<"Description">> => string()
+%% }
+-type http_namespace_change() :: #{binary() => any()}.
+
+%% Example:
+%% register_instance_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type register_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_public_dns_namespace_request() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Properties">> => public_dns_namespace_properties(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_public_dns_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instances_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceId">> := string()
+%% }
+-type list_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% namespace_filter() :: #{
+%%   <<"Condition">> => list(any()),
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type namespace_filter() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"Service">> := service_change()
+%% }
+-type update_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instances_response() :: #{
+%%   <<"Instances">> => list(instance_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% namespace_already_exists() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"NamespaceId">> => string()
+%% }
+-type namespace_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% http_properties() :: #{
+%%   <<"HttpName">> => string()
+%% }
+-type http_properties() :: #{binary() => any()}.
+
+%% Example:
+%% dns_record() :: #{
+%%   <<"TTL">> => float(),
+%%   <<"Type">> => list(any())
+%% }
+-type dns_record() :: #{binary() => any()}.
+
+%% Example:
+%% list_operations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Operations">> => list(operation_summary()())
+%% }
+-type list_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% instance() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type instance() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% request_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type request_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% get_instances_health_status_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => map()
+%% }
+-type get_instances_health_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_http_namespace_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type create_http_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type delete_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% health_check_config() :: #{
+%%   <<"FailureThreshold">> => integer(),
+%%   <<"ResourcePath">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type health_check_config() :: #{binary() => any()}.
+
+%% Example:
+%% instance_summary() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Id">> => string()
+%% }
+-type instance_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_namespaces_response() :: #{
+%%   <<"Namespaces">> => list(namespace_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_namespaces_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_namespace_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type delete_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% dns_config_change() :: #{
+%%   <<"DnsRecords">> => list(dns_record()())
+%% }
+-type dns_config_change() :: #{binary() => any()}.
+
+%% Example:
+%% namespace_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type namespace_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% update_private_dns_namespace_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"Namespace">> := private_dns_namespace_change(),
+%%   <<"UpdaterRequestId">> => string()
+%% }
+-type update_private_dns_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type instance_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type update_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_response() :: #{
+
+%% }
+-type delete_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_instance_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type deregister_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_response() :: #{
+%%   <<"Service">> => service()
+%% }
+-type create_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% service_already_exists() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ServiceId">> => string()
+%% }
+-type service_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% namespace() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Properties">> => namespace_properties(),
+%%   <<"ServiceCount">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type namespace() :: #{binary() => any()}.
+
+%% Example:
+%% public_dns_namespace_properties_change() :: #{
+%%   <<"DnsProperties">> => public_dns_properties_mutable_change()
+%% }
+-type public_dns_namespace_properties_change() :: #{binary() => any()}.
+
+%% Example:
+%% operation_filter() :: #{
+%%   <<"Condition">> => list(any()),
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type operation_filter() :: #{binary() => any()}.
+
+%% Example:
+%% update_public_dns_namespace_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"Namespace">> := public_dns_namespace_change(),
+%%   <<"UpdaterRequestId">> => string()
+%% }
+-type update_public_dns_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_namespace_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type get_namespace_request() :: #{binary() => any()}.
+
+-type create_http_namespace_errors() ::
+    too_many_tags_exception() | 
+    resource_limit_exceeded() | 
+    namespace_already_exists() | 
+    duplicate_request() | 
+    invalid_input().
+
+-type create_private_dns_namespace_errors() ::
+    too_many_tags_exception() | 
+    resource_limit_exceeded() | 
+    namespace_already_exists() | 
+    duplicate_request() | 
+    invalid_input().
+
+-type create_public_dns_namespace_errors() ::
+    too_many_tags_exception() | 
+    resource_limit_exceeded() | 
+    namespace_already_exists() | 
+    duplicate_request() | 
+    invalid_input().
+
+-type create_service_errors() ::
+    too_many_tags_exception() | 
+    service_already_exists() | 
+    resource_limit_exceeded() | 
+    namespace_not_found() | 
+    invalid_input().
+
+-type delete_namespace_errors() ::
+    namespace_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type delete_service_errors() ::
+    service_not_found() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type deregister_instance_errors() ::
+    instance_not_found() | 
+    service_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type discover_instances_errors() ::
+    namespace_not_found() | 
+    request_limit_exceeded() | 
+    service_not_found() | 
+    invalid_input().
+
+-type discover_instances_revision_errors() ::
+    namespace_not_found() | 
+    request_limit_exceeded() | 
+    service_not_found() | 
+    invalid_input().
+
+-type get_instance_errors() ::
+    instance_not_found() | 
+    service_not_found() | 
+    invalid_input().
+
+-type get_instances_health_status_errors() ::
+    instance_not_found() | 
+    service_not_found() | 
+    invalid_input().
+
+-type get_namespace_errors() ::
+    namespace_not_found() | 
+    invalid_input().
+
+-type get_operation_errors() ::
+    operation_not_found() | 
+    invalid_input().
+
+-type get_service_errors() ::
+    service_not_found() | 
+    invalid_input().
+
+-type list_instances_errors() ::
+    service_not_found() | 
+    invalid_input().
+
+-type list_namespaces_errors() ::
+    invalid_input().
+
+-type list_operations_errors() ::
+    invalid_input().
+
+-type list_services_errors() ::
+    invalid_input().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception() | 
+    invalid_input().
+
+-type register_instance_errors() ::
+    resource_limit_exceeded() | 
+    service_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    invalid_input().
+
+-type untag_resource_errors() ::
+    resource_not_found_exception() | 
+    invalid_input().
+
+-type update_http_namespace_errors() ::
+    namespace_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type update_instance_custom_health_status_errors() ::
+    instance_not_found() | 
+    service_not_found() | 
+    custom_health_not_found() | 
+    invalid_input().
+
+-type update_private_dns_namespace_errors() ::
+    namespace_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type update_public_dns_namespace_errors() ::
+    namespace_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type update_service_errors() ::
+    service_not_found() | 
+    duplicate_request() | 
+    invalid_input().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -90,9 +978,18 @@
 %% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
 %% the
 %% Cloud Map Developer Guide.
+-spec create_http_namespace(aws_client:aws_client(), create_http_namespace_request()) ->
+    {ok, create_http_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_http_namespace_errors(), tuple()}.
 create_http_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_http_namespace(Client, Input, []).
+
+-spec create_http_namespace(aws_client:aws_client(), create_http_namespace_request(), proplists:proplist()) ->
+    {ok, create_http_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_http_namespace_errors(), tuple()}.
 create_http_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHttpNamespace">>, Input, Options).
@@ -115,9 +1012,18 @@ create_http_namespace(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
 %% the
 %% Cloud Map Developer Guide.
+-spec create_private_dns_namespace(aws_client:aws_client(), create_private_dns_namespace_request()) ->
+    {ok, create_private_dns_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_private_dns_namespace_errors(), tuple()}.
 create_private_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_private_dns_namespace(Client, Input, []).
+
+-spec create_private_dns_namespace(aws_client:aws_client(), create_private_dns_namespace_request(), proplists:proplist()) ->
+    {ok, create_private_dns_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_private_dns_namespace_errors(), tuple()}.
 create_private_dns_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePrivateDnsNamespace">>, Input, Options).
@@ -142,9 +1048,18 @@ create_private_dns_namespace(Client, Input, Options)
 %%
 %% The `CreatePublicDnsNamespace' API operation is not supported in the
 %% Amazon Web Services GovCloud (US) Regions.
+-spec create_public_dns_namespace(aws_client:aws_client(), create_public_dns_namespace_request()) ->
+    {ok, create_public_dns_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_public_dns_namespace_errors(), tuple()}.
 create_public_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_public_dns_namespace(Client, Input, []).
+
+-spec create_public_dns_namespace(aws_client:aws_client(), create_public_dns_namespace_request(), proplists:proplist()) ->
+    {ok, create_public_dns_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, create_public_dns_namespace_errors(), tuple()}.
 create_public_dns_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePublicDnsNamespace">>, Input, Options).
@@ -181,9 +1096,18 @@ create_public_dns_namespace(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
 %% the
 %% Cloud Map Developer Guide.
+-spec create_service(aws_client:aws_client(), create_service_request()) ->
+    {ok, create_service_response(), tuple()} |
+    {error, any()} |
+    {error, create_service_errors(), tuple()}.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
+
+-spec create_service(aws_client:aws_client(), create_service_request(), proplists:proplist()) ->
+    {ok, create_service_response(), tuple()} |
+    {error, any()} |
+    {error, create_service_errors(), tuple()}.
 create_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateService">>, Input, Options).
@@ -192,9 +1116,18 @@ create_service(Client, Input, Options)
 %%
 %% If the namespace still contains one or more
 %% services, the request fails.
+-spec delete_namespace(aws_client:aws_client(), delete_namespace_request()) ->
+    {ok, delete_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_namespace(Client, Input, []).
+
+-spec delete_namespace(aws_client:aws_client(), delete_namespace_request(), proplists:proplist()) ->
+    {ok, delete_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNamespace">>, Input, Options).
@@ -203,9 +1136,18 @@ delete_namespace(Client, Input, Options)
 %%
 %% If the service still contains one or more registered instances,
 %% the request fails.
+-spec delete_service(aws_client:aws_client(), delete_service_request()) ->
+    {ok, delete_service_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
+
+-spec delete_service(aws_client:aws_client(), delete_service_request(), proplists:proplist()) ->
+    {ok, delete_service_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteService">>, Input, Options).
@@ -213,9 +1155,18 @@ delete_service(Client, Input, Options)
 %% @doc Deletes the Amazon Route 53 DNS records and health check, if any,
 %% that Cloud Map created for the
 %% specified instance.
+-spec deregister_instance(aws_client:aws_client(), deregister_instance_request()) ->
+    {ok, deregister_instance_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_instance_errors(), tuple()}.
 deregister_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_instance(Client, Input, []).
+
+-spec deregister_instance(aws_client:aws_client(), deregister_instance_request(), proplists:proplist()) ->
+    {ok, deregister_instance_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_instance_errors(), tuple()}.
 deregister_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterInstance">>, Input, Options).
@@ -229,25 +1180,52 @@ deregister_instance(Client, Input, Options)
 %% distribute traffic evenly across instances. For public and private DNS
 %% namespaces, you can also
 %% use DNS queries to discover instances.
+-spec discover_instances(aws_client:aws_client(), discover_instances_request()) ->
+    {ok, discover_instances_response(), tuple()} |
+    {error, any()} |
+    {error, discover_instances_errors(), tuple()}.
 discover_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_instances(Client, Input, []).
+
+-spec discover_instances(aws_client:aws_client(), discover_instances_request(), proplists:proplist()) ->
+    {ok, discover_instances_response(), tuple()} |
+    {error, any()} |
+    {error, discover_instances_errors(), tuple()}.
 discover_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverInstances">>, Input, Options).
 
 %% @doc Discovers the increasing revision associated with an instance.
+-spec discover_instances_revision(aws_client:aws_client(), discover_instances_revision_request()) ->
+    {ok, discover_instances_revision_response(), tuple()} |
+    {error, any()} |
+    {error, discover_instances_revision_errors(), tuple()}.
 discover_instances_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_instances_revision(Client, Input, []).
+
+-spec discover_instances_revision(aws_client:aws_client(), discover_instances_revision_request(), proplists:proplist()) ->
+    {ok, discover_instances_revision_response(), tuple()} |
+    {error, any()} |
+    {error, discover_instances_revision_errors(), tuple()}.
 discover_instances_revision(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverInstancesRevision">>, Input, Options).
 
 %% @doc Gets information about a specified instance.
+-spec get_instance(aws_client:aws_client(), get_instance_request()) ->
+    {ok, get_instance_response(), tuple()} |
+    {error, any()} |
+    {error, get_instance_errors(), tuple()}.
 get_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance(Client, Input, []).
+
+-spec get_instance(aws_client:aws_client(), get_instance_request(), proplists:proplist()) ->
+    {ok, get_instance_response(), tuple()} |
+    {error, any()} |
+    {error, get_instance_errors(), tuple()}.
 get_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstance">>, Input, Options).
@@ -260,17 +1238,35 @@ get_instance(Client, Input, Options)
 %% There's a brief delay between when you register an instance and when
 %% the health status for
 %% the instance is available.
+-spec get_instances_health_status(aws_client:aws_client(), get_instances_health_status_request()) ->
+    {ok, get_instances_health_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_instances_health_status_errors(), tuple()}.
 get_instances_health_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instances_health_status(Client, Input, []).
+
+-spec get_instances_health_status(aws_client:aws_client(), get_instances_health_status_request(), proplists:proplist()) ->
+    {ok, get_instances_health_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_instances_health_status_errors(), tuple()}.
 get_instances_health_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstancesHealthStatus">>, Input, Options).
 
 %% @doc Gets information about a namespace.
+-spec get_namespace(aws_client:aws_client(), get_namespace_request()) ->
+    {ok, get_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, get_namespace_errors(), tuple()}.
 get_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_namespace(Client, Input, []).
+
+-spec get_namespace(aws_client:aws_client(), get_namespace_request(), proplists:proplist()) ->
+    {ok, get_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, get_namespace_errors(), tuple()}.
 get_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNamespace">>, Input, Options).
@@ -282,17 +1278,35 @@ get_namespace(Client, Input, Options)
 %% To get a list of operations that match specified criteria, see
 %% ListOperations:
 %% https://docs.aws.amazon.com/cloud-map/latest/api/API_ListOperations.html.
+-spec get_operation(aws_client:aws_client(), get_operation_request()) ->
+    {ok, get_operation_response(), tuple()} |
+    {error, any()} |
+    {error, get_operation_errors(), tuple()}.
 get_operation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operation(Client, Input, []).
+
+-spec get_operation(aws_client:aws_client(), get_operation_request(), proplists:proplist()) ->
+    {ok, get_operation_response(), tuple()} |
+    {error, any()} |
+    {error, get_operation_errors(), tuple()}.
 get_operation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOperation">>, Input, Options).
 
 %% @doc Gets the settings for a specified service.
+-spec get_service(aws_client:aws_client(), get_service_request()) ->
+    {ok, get_service_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_errors(), tuple()}.
 get_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service(Client, Input, []).
+
+-spec get_service(aws_client:aws_client(), get_service_request(), proplists:proplist()) ->
+    {ok, get_service_response(), tuple()} |
+    {error, any()} |
+    {error, get_service_errors(), tuple()}.
 get_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetService">>, Input, Options).
@@ -300,26 +1314,53 @@ get_service(Client, Input, Options)
 %% @doc Lists summary information about the instances that you registered by
 %% using a specified
 %% service.
+-spec list_instances(aws_client:aws_client(), list_instances_request()) ->
+    {ok, list_instances_response(), tuple()} |
+    {error, any()} |
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instances(Client, Input, []).
+
+-spec list_instances(aws_client:aws_client(), list_instances_request(), proplists:proplist()) ->
+    {ok, list_instances_response(), tuple()} |
+    {error, any()} |
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstances">>, Input, Options).
 
 %% @doc Lists summary information about the namespaces that were created by
 %% the current Amazon Web Services account.
+-spec list_namespaces(aws_client:aws_client(), list_namespaces_request()) ->
+    {ok, list_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_namespaces(Client, Input, []).
+
+-spec list_namespaces(aws_client:aws_client(), list_namespaces_request(), proplists:proplist()) ->
+    {ok, list_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNamespaces">>, Input, Options).
 
 %% @doc Lists operations that match the criteria that you specify.
+-spec list_operations(aws_client:aws_client(), list_operations_request()) ->
+    {ok, list_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_operations_errors(), tuple()}.
 list_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_operations(Client, Input, []).
+
+-spec list_operations(aws_client:aws_client(), list_operations_request(), proplists:proplist()) ->
+    {ok, list_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_operations_errors(), tuple()}.
 list_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOperations">>, Input, Options).
@@ -327,17 +1368,35 @@ list_operations(Client, Input, Options)
 %% @doc Lists summary information for all the services that are associated
 %% with one or more
 %% specified namespaces.
+-spec list_services(aws_client:aws_client(), list_services_request()) ->
+    {ok, list_services_response(), tuple()} |
+    {error, any()} |
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
+
+-spec list_services(aws_client:aws_client(), list_services_request(), proplists:proplist()) ->
+    {ok, list_services_response(), tuple()} |
+    {error, any()} |
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServices">>, Input, Options).
 
 %% @doc Lists tags for the specified resource.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -387,34 +1446,70 @@ list_tags_for_resource(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
 %% the
 %% Cloud Map Developer Guide.
+-spec register_instance(aws_client:aws_client(), register_instance_request()) ->
+    {ok, register_instance_response(), tuple()} |
+    {error, any()} |
+    {error, register_instance_errors(), tuple()}.
 register_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instance(Client, Input, []).
+
+-spec register_instance(aws_client:aws_client(), register_instance_request(), proplists:proplist()) ->
+    {ok, register_instance_response(), tuple()} |
+    {error, any()} |
+    {error, register_instance_errors(), tuple()}.
 register_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterInstance">>, Input, Options).
 
 %% @doc Adds one or more tags to the specified resource.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes one or more tags from the specified resource.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates an HTTP
 %% namespace.
+-spec update_http_namespace(aws_client:aws_client(), update_http_namespace_request()) ->
+    {ok, update_http_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, update_http_namespace_errors(), tuple()}.
 update_http_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_http_namespace(Client, Input, []).
+
+-spec update_http_namespace(aws_client:aws_client(), update_http_namespace_request(), proplists:proplist()) ->
+    {ok, update_http_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, update_http_namespace_errors(), tuple()}.
 update_http_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHttpNamespace">>, Input, Options).
@@ -433,27 +1528,54 @@ update_http_namespace(Client, Input, Options)
 %%
 %% For more information, see HealthCheckCustomConfig:
 %% https://docs.aws.amazon.com/cloud-map/latest/api/API_HealthCheckCustomConfig.html.
+-spec update_instance_custom_health_status(aws_client:aws_client(), update_instance_custom_health_status_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_instance_custom_health_status_errors(), tuple()}.
 update_instance_custom_health_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance_custom_health_status(Client, Input, []).
+
+-spec update_instance_custom_health_status(aws_client:aws_client(), update_instance_custom_health_status_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_instance_custom_health_status_errors(), tuple()}.
 update_instance_custom_health_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInstanceCustomHealthStatus">>, Input, Options).
 
 %% @doc Updates a private DNS
 %% namespace.
+-spec update_private_dns_namespace(aws_client:aws_client(), update_private_dns_namespace_request()) ->
+    {ok, update_private_dns_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, update_private_dns_namespace_errors(), tuple()}.
 update_private_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_private_dns_namespace(Client, Input, []).
+
+-spec update_private_dns_namespace(aws_client:aws_client(), update_private_dns_namespace_request(), proplists:proplist()) ->
+    {ok, update_private_dns_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, update_private_dns_namespace_errors(), tuple()}.
 update_private_dns_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePrivateDnsNamespace">>, Input, Options).
 
 %% @doc Updates a public DNS
 %% namespace.
+-spec update_public_dns_namespace(aws_client:aws_client(), update_public_dns_namespace_request()) ->
+    {ok, update_public_dns_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, update_public_dns_namespace_errors(), tuple()}.
 update_public_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_public_dns_namespace(Client, Input, []).
+
+-spec update_public_dns_namespace(aws_client:aws_client(), update_public_dns_namespace_request(), proplists:proplist()) ->
+    {ok, update_public_dns_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, update_public_dns_namespace_errors(), tuple()}.
 update_public_dns_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePublicDnsNamespace">>, Input, Options).
@@ -483,9 +1605,18 @@ update_public_dns_namespace(Client, Input, Options)
 %% corresponding settings
 %% in all the records and health checks that were created by using the
 %% specified service.
+-spec update_service(aws_client:aws_client(), update_service_request()) ->
+    {ok, update_service_response(), tuple()} |
+    {error, any()} |
+    {error, update_service_errors(), tuple()}.
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
+
+-spec update_service(aws_client:aws_client(), update_service_request(), proplists:proplist()) ->
+    {ok, update_service_response(), tuple()} |
+    {error, any()} |
+    {error, update_service_errors(), tuple()}.
 update_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateService">>, Input, Options).

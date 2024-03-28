@@ -159,6 +159,858 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% administrator() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"DelegationTime">> => non_neg_integer(),
+%%   <<"GraphArn">> => string()
+%% }
+-type administrator() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_organization_configuration_request() :: #{
+%%   <<"GraphArn">> := string()
+%% }
+-type describe_organization_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_members_response() :: #{
+%%   <<"MemberDetails">> => list(member_detail()()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%% }
+-type get_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% new_aso_detail() :: #{
+%%   <<"Aso">> => string(),
+%%   <<"IsNewForEntireAccount">> => boolean()
+%% }
+-type new_aso_detail() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% filter_criteria() :: #{
+%%   <<"CreatedTime">> => date_filter(),
+%%   <<"EntityArn">> => string_filter(),
+%%   <<"Severity">> => string_filter(),
+%%   <<"State">> => string_filter(),
+%%   <<"Status">> => string_filter()
+%% }
+-type filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasource_packages_request() :: #{
+%%   <<"GraphArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasource_packages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_graph_request() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type create_graph_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% new_user_agent_detail() :: #{
+%%   <<"IsNewForEntireAccount">> => boolean(),
+%%   <<"UserAgent">> => string()
+%% }
+-type new_user_agent_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_datasource_packages_request() :: #{
+%%   <<"DatasourcePackages">> := list(list(any())()),
+%%   <<"GraphArn">> := string()
+%% }
+-type update_datasource_packages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_investigation_request() :: #{
+%%   <<"EntityArn">> := string(),
+%%   <<"GraphArn">> := string(),
+%%   <<"ScopeEndTime">> := non_neg_integer(),
+%%   <<"ScopeStartTime">> := non_neg_integer()
+%% }
+-type start_investigation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_investigation_response() :: #{
+%%   <<"InvestigationId">> => string()
+%% }
+-type start_investigation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_graphs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_graphs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_members_response() :: #{
+%%   <<"AccountIds">> => list(string()()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%% }
+-type delete_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_investigations_response() :: #{
+%%   <<"InvestigationDetails">> => list(investigation_detail()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_investigations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% related_finding_group_detail() :: #{
+%%   <<"Id">> => string()
+%% }
+-type related_finding_group_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_organization_configuration_response() :: #{
+%%   <<"AutoEnable">> => boolean()
+%% }
+-type describe_organization_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_investigations_request() :: #{
+%%   <<"FilterCriteria">> => filter_criteria(),
+%%   <<"GraphArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortCriteria">> => sort_criteria()
+%% }
+-type list_investigations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_members_request() :: #{
+%%   <<"AccountIds">> := list(string()()),
+%%   <<"GraphArn">> := string()
+%% }
+-type get_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_members_request() :: #{
+%%   <<"Accounts">> := list(account()()),
+%%   <<"DisableEmailNotification">> => boolean(),
+%%   <<"GraphArn">> := string(),
+%%   <<"Message">> => string()
+%% }
+-type create_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% graph() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer()
+%% }
+-type graph() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_graph_member_datasources_response() :: #{
+%%   <<"MemberDatasources">> => list(membership_datasources()()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%% }
+-type batch_get_graph_member_datasources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Resources">> => list(string()())
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_members_request() :: #{
+%%   <<"AccountIds">> := list(string()()),
+%%   <<"GraphArn">> := string()
+%% }
+-type delete_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% timestamp_for_collection() :: #{
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type timestamp_for_collection() :: #{binary() => any()}.
+
+
+%% Example:
+%% account() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"EmailAddress">> => string()
+%% }
+-type account() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessed_graph() :: #{
+%%   <<"GraphArn">> => string(),
+%%   <<"Reason">> => string()
+%% }
+-type unprocessed_graph() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_membership_datasources_response() :: #{
+%%   <<"MembershipDatasources">> => list(membership_datasources()()),
+%%   <<"UnprocessedGraphs">> => list(unprocessed_graph()())
+%% }
+-type batch_get_membership_datasources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_graph_member_datasources_request() :: #{
+%%   <<"AccountIds">> := list(string()()),
+%%   <<"GraphArn">> := string()
+%% }
+-type batch_get_graph_member_datasources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_investigation_state_request() :: #{
+%%   <<"GraphArn">> := string(),
+%%   <<"InvestigationId">> := string(),
+%%   <<"State">> := list(any())
+%% }
+-type update_investigation_state_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_filter() :: #{
+%%   <<"EndInclusive">> => non_neg_integer(),
+%%   <<"StartInclusive">> => non_neg_integer()
+%% }
+-type date_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_invitation_request() :: #{
+%%   <<"GraphArn">> := string()
+%% }
+-type reject_invitation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_detail() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EntityArn">> => string(),
+%%   <<"EntityType">> => list(any()),
+%%   <<"InvestigationId">> => string(),
+%%   <<"Severity">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type investigation_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% impossible_travel_detail() :: #{
+%%   <<"EndingIpAddress">> => string(),
+%%   <<"EndingLocation">> => string(),
+%%   <<"HourlyTimeDelta">> => integer(),
+%%   <<"StartingIpAddress">> => string(),
+%%   <<"StartingLocation">> => string()
+%% }
+-type impossible_travel_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_graph_request() :: #{
+%%   <<"GraphArn">> := string()
+%% }
+-type delete_graph_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_membership_datasources_request() :: #{
+%%   <<"GraphArns">> := list(string()())
+%% }
+-type batch_get_membership_datasources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_organization_configuration_request() :: #{
+%%   <<"AutoEnable">> => boolean(),
+%%   <<"GraphArn">> := string()
+%% }
+-type update_organization_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_organization_admin_account_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type enable_organization_admin_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_graphs_response() :: #{
+%%   <<"GraphList">> => list(graph()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_graphs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% datasource_package_usage_info() :: #{
+%%   <<"VolumeUsageInBytes">> => float(),
+%%   <<"VolumeUsageUpdateTime">> => non_neg_integer()
+%% }
+-type datasource_package_usage_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasource_packages_response() :: #{
+%%   <<"DatasourcePackages">> => map(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasource_packages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_datasources() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"DatasourcePackageIngestHistory">> => map(),
+%%   <<"GraphArn">> => string()
+%% }
+-type membership_datasources() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_admin_accounts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_organization_admin_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort_criteria() :: #{
+%%   <<"Field">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorCodeReason">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"SubErrorCode">> => list(any()),
+%%   <<"SubErrorCodeReason">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% new_geolocation_detail() :: #{
+%%   <<"IpAddress">> => string(),
+%%   <<"IsNewForEntireAccount">> => boolean(),
+%%   <<"Location">> => string()
+%% }
+-type new_geolocation_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% accept_invitation_request() :: #{
+%%   <<"GraphArn">> := string()
+%% }
+-type accept_invitation_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% create_graph_response() :: #{
+%%   <<"GraphArn">> => string()
+%% }
+-type create_graph_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_request() :: #{
+%%   <<"GraphArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_response() :: #{
+%%   <<"MemberDetails">> => list(member_detail()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_investigation_request() :: #{
+%%   <<"GraphArn">> := string(),
+%%   <<"InvestigationId">> := string()
+%% }
+-type get_investigation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_investigation_response() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EntityArn">> => string(),
+%%   <<"EntityType">> => list(any()),
+%%   <<"GraphArn">> => string(),
+%%   <<"InvestigationId">> => string(),
+%%   <<"ScopeEndTime">> => non_neg_integer(),
+%%   <<"ScopeStartTime">> => non_neg_integer(),
+%%   <<"Severity">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_investigation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorCodeReason">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_invitations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invitations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% indicator_detail() :: #{
+%%   <<"FlaggedIpAddressDetail">> => flagged_ip_address_detail(),
+%%   <<"ImpossibleTravelDetail">> => impossible_travel_detail(),
+%%   <<"NewAsoDetail">> => new_aso_detail(),
+%%   <<"NewGeolocationDetail">> => new_geolocation_detail(),
+%%   <<"NewUserAgentDetail">> => new_user_agent_detail(),
+%%   <<"RelatedFindingDetail">> => related_finding_detail(),
+%%   <<"RelatedFindingGroupDetail">> => related_finding_group_detail(),
+%%   <<"TTPsObservedDetail">> => t_t_ps_observed_detail()
+%% }
+-type indicator_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_filter() :: #{
+%%   <<"Value">> => string()
+%% }
+-type string_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% flagged_ip_address_detail() :: #{
+%%   <<"IpAddress">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type flagged_ip_address_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% related_finding_detail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type related_finding_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessed_account() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Reason">> => string()
+%% }
+-type unprocessed_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_monitoring_member_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"GraphArn">> := string()
+%% }
+-type start_monitoring_member_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indicators_response() :: #{
+%%   <<"GraphArn">> => string(),
+%%   <<"Indicators">> => list(indicator()()),
+%%   <<"InvestigationId">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_indicators_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% datasource_package_ingest_detail() :: #{
+%%   <<"DatasourcePackageIngestState">> => list(any()),
+%%   <<"LastIngestStateChange">> => map()
+%% }
+-type datasource_package_ingest_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_admin_accounts_response() :: #{
+%%   <<"Administrators">> => list(administrator()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_organization_admin_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indicators_request() :: #{
+%%   <<"GraphArn">> := string(),
+%%   <<"IndicatorType">> => list(any()),
+%%   <<"InvestigationId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_indicators_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_membership_request() :: #{
+%%   <<"GraphArn">> := string()
+%% }
+-type disassociate_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% t_t_ps_observed_detail() :: #{
+%%   <<"APIFailureCount">> => float(),
+%%   <<"APIName">> => string(),
+%%   <<"APISuccessCount">> => float(),
+%%   <<"IpAddress">> => string(),
+%%   <<"Procedure">> => string(),
+%%   <<"Tactic">> => string(),
+%%   <<"Technique">> => string()
+%% }
+-type t_t_ps_observed_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_members_response() :: #{
+%%   <<"Members">> => list(member_detail()()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%% }
+-type create_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_detail() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AdministratorId">> => string(),
+%%   <<"DatasourcePackageIngestStates">> => map(),
+%%   <<"DisabledReason">> => list(any()),
+%%   <<"EmailAddress">> => string(),
+%%   <<"GraphArn">> => string(),
+%%   <<"InvitationType">> => list(any()),
+%%   <<"InvitedTime">> => non_neg_integer(),
+%%   <<"MasterId">> => string(),
+%%   <<"PercentOfGraphUtilization">> => float(),
+%%   <<"PercentOfGraphUtilizationUpdatedTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTime">> => non_neg_integer(),
+%%   <<"VolumeUsageByDatasourcePackage">> => map(),
+%%   <<"VolumeUsageInBytes">> => float(),
+%%   <<"VolumeUsageUpdatedTime">> => non_neg_integer()
+%% }
+-type member_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invitations_response() :: #{
+%%   <<"Invitations">> => list(member_detail()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invitations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% indicator() :: #{
+%%   <<"IndicatorDetail">> => indicator_detail(),
+%%   <<"IndicatorType">> => list(any())
+%% }
+-type indicator() :: #{binary() => any()}.
+
+-type accept_invitation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_get_graph_member_datasources_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type batch_get_membership_datasources_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_graph_errors() ::
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_members_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type delete_graph_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_members_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_organization_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
+
+-type disable_organization_admin_account_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
+
+-type disassociate_membership_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type enable_organization_admin_account_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
+
+-type get_investigation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_members_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_datasource_packages_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_graphs_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_indicators_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_investigations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_invitations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_members_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_organization_admin_accounts_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type reject_invitation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_investigation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type start_monitoring_member_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_datasource_packages_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type update_investigation_state_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_organization_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    too_many_requests_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -171,8 +1023,17 @@
 %% The request provides the ARN of behavior graph.
 %%
 %% The member account status in the graph must be `INVITED'.
+-spec accept_invitation(aws_client:aws_client(), accept_invitation_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
+
+-spec accept_invitation(aws_client:aws_client(), accept_invitation_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/invitation"],
@@ -196,8 +1057,17 @@ accept_invitation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets data source package information for the behavior graph.
+-spec batch_get_graph_member_datasources(aws_client:aws_client(), batch_get_graph_member_datasources_request()) ->
+    {ok, batch_get_graph_member_datasources_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_graph_member_datasources_errors(), tuple()}.
 batch_get_graph_member_datasources(Client, Input) ->
     batch_get_graph_member_datasources(Client, Input, []).
+
+-spec batch_get_graph_member_datasources(aws_client:aws_client(), batch_get_graph_member_datasources_request(), proplists:proplist()) ->
+    {ok, batch_get_graph_member_datasources_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_graph_member_datasources_errors(), tuple()}.
 batch_get_graph_member_datasources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/datasources/get"],
@@ -221,8 +1091,17 @@ batch_get_graph_member_datasources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information on the data source package history for an account.
+-spec batch_get_membership_datasources(aws_client:aws_client(), batch_get_membership_datasources_request()) ->
+    {ok, batch_get_membership_datasources_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_membership_datasources_errors(), tuple()}.
 batch_get_membership_datasources(Client, Input) ->
     batch_get_membership_datasources(Client, Input, []).
+
+-spec batch_get_membership_datasources(aws_client:aws_client(), batch_get_membership_datasources_request(), proplists:proplist()) ->
+    {ok, batch_get_membership_datasources_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_membership_datasources_errors(), tuple()}.
 batch_get_membership_datasources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/membership/datasources/get"],
@@ -265,8 +1144,17 @@ batch_get_membership_datasources(Client, Input0, Options0) ->
 %% account, it
 %% always returns the same behavior graph ARN. It does not create a new
 %% behavior graph.
+-spec create_graph(aws_client:aws_client(), create_graph_request()) ->
+    {ok, create_graph_response(), tuple()} |
+    {error, any()} |
+    {error, create_graph_errors(), tuple()}.
 create_graph(Client, Input) ->
     create_graph(Client, Input, []).
+
+-spec create_graph(aws_client:aws_client(), create_graph_request(), proplists:proplist()) ->
+    {ok, create_graph_response(), tuple()} |
+    {error, any()} |
+    {error, create_graph_errors(), tuple()}.
 create_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph"],
@@ -333,8 +1221,17 @@ create_graph(Client, Input0, Options0) ->
 %% includes accounts that were already invited to be member accounts in the
 %% behavior
 %% graph.
+-spec create_members(aws_client:aws_client(), create_members_request()) ->
+    {ok, create_members_response(), tuple()} |
+    {error, any()} |
+    {error, create_members_errors(), tuple()}.
 create_members(Client, Input) ->
     create_members(Client, Input, []).
+
+-spec create_members(aws_client:aws_client(), create_members_request(), proplists:proplist()) ->
+    {ok, create_members_response(), tuple()} |
+    {error, any()} |
+    {error, create_members_errors(), tuple()}.
 create_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members"],
@@ -366,8 +1263,17 @@ create_members(Client, Input0, Options0) ->
 %% `DeleteGraph' can only be called by the administrator account for a
 %% behavior
 %% graph.
+-spec delete_graph(aws_client:aws_client(), delete_graph_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_graph_errors(), tuple()}.
 delete_graph(Client, Input) ->
     delete_graph(Client, Input, []).
+
+-spec delete_graph(aws_client:aws_client(), delete_graph_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_graph_errors(), tuple()}.
 delete_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/removal"],
@@ -415,8 +1321,17 @@ delete_graph(Client, Input0, Options0) ->
 %% account from the behavior graph. To disable a behavior graph, the
 %% administrator account
 %% uses the `DeleteGraph' API method.
+-spec delete_members(aws_client:aws_client(), delete_members_request()) ->
+    {ok, delete_members_response(), tuple()} |
+    {error, any()} |
+    {error, delete_members_errors(), tuple()}.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
+
+-spec delete_members(aws_client:aws_client(), delete_members_request(), proplists:proplist()) ->
+    {ok, delete_members_response(), tuple()} |
+    {error, any()} |
+    {error, delete_members_errors(), tuple()}.
 delete_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/removal"],
@@ -448,8 +1363,17 @@ delete_members(Client, Input0, Options0) ->
 %%
 %% Can only be called by the Detective administrator account for the
 %% organization.
+-spec describe_organization_configuration(aws_client:aws_client(), describe_organization_configuration_request()) ->
+    {ok, describe_organization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, Input) ->
     describe_organization_configuration(Client, Input, []).
+
+-spec describe_organization_configuration(aws_client:aws_client(), describe_organization_configuration_request(), proplists:proplist()) ->
+    {ok, describe_organization_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/describeOrganizationConfiguration"],
@@ -487,8 +1411,17 @@ describe_organization_configuration(Client, Input0, Options0) ->
 %% removes the Detective administrator account in all Regions, except for
 %% Regions where the Detective administrator account is the organization
 %% management account.
+-spec disable_organization_admin_account(aws_client:aws_client(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
+
+-spec disable_organization_admin_account(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/disableAdminAccount"],
@@ -523,8 +1456,17 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 %% administrator account determines which organization accounts to enable or
 %% disable as member
 %% accounts.
+-spec disassociate_membership(aws_client:aws_client(), disassociate_membership_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_membership_errors(), tuple()}.
 disassociate_membership(Client, Input) ->
     disassociate_membership(Client, Input, []).
+
+-spec disassociate_membership(aws_client:aws_client(), disassociate_membership_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_membership_errors(), tuple()}.
 disassociate_membership(Client, Input0, Options0) ->
     Method = post,
     Path = ["/membership/removal"],
@@ -568,8 +1510,17 @@ disassociate_membership(Client, Input0, Options0) ->
 %% make that account the delegated administrator account for Detective. The
 %% organization management account cannot be the delegated administrator
 %% account.
+-spec enable_organization_admin_account(aws_client:aws_client(), enable_organization_admin_account_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
+
+-spec enable_organization_admin_account(aws_client:aws_client(), enable_organization_admin_account_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/enableAdminAccount"],
@@ -600,8 +1551,17 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% identify malicious activity or a security incident. `GetInvestigation'
 %% returns the investigation results of an investigation for a behavior
 %% graph.
+-spec get_investigation(aws_client:aws_client(), get_investigation_request()) ->
+    {ok, get_investigation_response(), tuple()} |
+    {error, any()} |
+    {error, get_investigation_errors(), tuple()}.
 get_investigation(Client, Input) ->
     get_investigation(Client, Input, []).
+
+-spec get_investigation(aws_client:aws_client(), get_investigation_request(), proplists:proplist()) ->
+    {ok, get_investigation_response(), tuple()} |
+    {error, any()} |
+    {error, get_investigation_errors(), tuple()}.
 get_investigation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/getInvestigation"],
@@ -627,8 +1587,17 @@ get_investigation(Client, Input0, Options0) ->
 %% @doc Returns the membership details for specified member accounts for a
 %% behavior
 %% graph.
+-spec get_members(aws_client:aws_client(), get_members_request()) ->
+    {ok, get_members_response(), tuple()} |
+    {error, any()} |
+    {error, get_members_errors(), tuple()}.
 get_members(Client, Input) ->
     get_members(Client, Input, []).
+
+-spec get_members(aws_client:aws_client(), get_members_request(), proplists:proplist()) ->
+    {ok, get_members_response(), tuple()} |
+    {error, any()} |
+    {error, get_members_errors(), tuple()}.
 get_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/get"],
@@ -652,8 +1621,17 @@ get_members(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists data source packages in the behavior graph.
+-spec list_datasource_packages(aws_client:aws_client(), list_datasource_packages_request()) ->
+    {ok, list_datasource_packages_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasource_packages_errors(), tuple()}.
 list_datasource_packages(Client, Input) ->
     list_datasource_packages(Client, Input, []).
+
+-spec list_datasource_packages(aws_client:aws_client(), list_datasource_packages_request(), proplists:proplist()) ->
+    {ok, list_datasource_packages_response(), tuple()} |
+    {error, any()} |
+    {error, list_datasource_packages_errors(), tuple()}.
 list_datasource_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/datasources/list"],
@@ -685,8 +1663,17 @@ list_datasource_packages(Client, Input0, Options0) ->
 %% Because an account can currently only be the administrator of one behavior
 %% graph within
 %% a Region, the results always contain a single behavior graph.
+-spec list_graphs(aws_client:aws_client(), list_graphs_request()) ->
+    {ok, list_graphs_response(), tuple()} |
+    {error, any()} |
+    {error, list_graphs_errors(), tuple()}.
 list_graphs(Client, Input) ->
     list_graphs(Client, Input, []).
+
+-spec list_graphs(aws_client:aws_client(), list_graphs_request(), proplists:proplist()) ->
+    {ok, list_graphs_response(), tuple()} |
+    {error, any()} |
+    {error, list_graphs_errors(), tuple()}.
 list_graphs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graphs/list"],
@@ -714,8 +1701,17 @@ list_graphs(Client, Input0, Options0) ->
 %% You can use the information from the indicators to determine if an IAM
 %% user and/or IAM role is involved in an unusual activity that could
 %% indicate malicious behavior and its impact.
+-spec list_indicators(aws_client:aws_client(), list_indicators_request()) ->
+    {ok, list_indicators_response(), tuple()} |
+    {error, any()} |
+    {error, list_indicators_errors(), tuple()}.
 list_indicators(Client, Input) ->
     list_indicators(Client, Input, []).
+
+-spec list_indicators(aws_client:aws_client(), list_indicators_request(), proplists:proplist()) ->
+    {ok, list_indicators_response(), tuple()} |
+    {error, any()} |
+    {error, list_indicators_errors(), tuple()}.
 list_indicators(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/listIndicators"],
@@ -748,8 +1744,17 @@ list_indicators(Client, Input0, Options0) ->
 %% incident.
 %% `ListInvestigations' lists all active Detective
 %% investigations.
+-spec list_investigations(aws_client:aws_client(), list_investigations_request()) ->
+    {ok, list_investigations_response(), tuple()} |
+    {error, any()} |
+    {error, list_investigations_errors(), tuple()}.
 list_investigations(Client, Input) ->
     list_investigations(Client, Input, []).
+
+-spec list_investigations(aws_client:aws_client(), list_investigations_request(), proplists:proplist()) ->
+    {ok, list_investigations_response(), tuple()} |
+    {error, any()} |
+    {error, list_investigations_errors(), tuple()}.
 list_investigations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/listInvestigations"],
@@ -786,8 +1791,17 @@ list_investigations(Client, Input0, Options0) ->
 %% invitation. The results also do not include behavior graphs that the
 %% member account
 %% resigned from or was removed from.
+-spec list_invitations(aws_client:aws_client(), list_invitations_request()) ->
+    {ok, list_invitations_response(), tuple()} |
+    {error, any()} |
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, Input) ->
     list_invitations(Client, Input, []).
+
+-spec list_invitations(aws_client:aws_client(), list_invitations_request(), proplists:proplist()) ->
+    {ok, list_invitations_response(), tuple()} |
+    {error, any()} |
+    {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitations/list"],
@@ -820,8 +1834,17 @@ list_invitations(Client, Input0, Options0) ->
 %% organization accounts
 %% that the Detective administrator account has not enabled as member
 %% accounts.
+-spec list_members(aws_client:aws_client(), list_members_request()) ->
+    {ok, list_members_response(), tuple()} |
+    {error, any()} |
+    {error, list_members_errors(), tuple()}.
 list_members(Client, Input) ->
     list_members(Client, Input, []).
+
+-spec list_members(aws_client:aws_client(), list_members_request(), proplists:proplist()) ->
+    {ok, list_members_response(), tuple()} |
+    {error, any()} |
+    {error, list_members_errors(), tuple()}.
 list_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/list"],
@@ -848,8 +1871,17 @@ list_members(Client, Input0, Options0) ->
 %% organization.
 %%
 %% Can only be called by the organization management account.
+-spec list_organization_admin_accounts(aws_client:aws_client(), list_organization_admin_accounts_request()) ->
+    {ok, list_organization_admin_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client, Input) ->
     list_organization_admin_accounts(Client, Input, []).
+
+-spec list_organization_admin_accounts(aws_client:aws_client(), list_organization_admin_accounts_request(), proplists:proplist()) ->
+    {ok, list_organization_admin_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/adminAccountslist"],
@@ -873,14 +1905,26 @@ list_organization_admin_accounts(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the tag values that are assigned to a behavior graph.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -908,8 +1952,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% organization behavior graph. In the organization behavior graph,
 %% organization accounts do
 %% not receive an invitation.
+-spec reject_invitation(aws_client:aws_client(), reject_invitation_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, reject_invitation_errors(), tuple()}.
 reject_invitation(Client, Input) ->
     reject_invitation(Client, Input, []).
+
+-spec reject_invitation(aws_client:aws_client(), reject_invitation_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, reject_invitation_errors(), tuple()}.
 reject_invitation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitation/removal"],
@@ -940,8 +1993,17 @@ reject_invitation(Client, Input0, Options0) ->
 %% identify malicious activity or a security incident.
 %% `StartInvestigation' initiates an investigation on an entity in a
 %% behavior graph.
+-spec start_investigation(aws_client:aws_client(), start_investigation_request()) ->
+    {ok, start_investigation_response(), tuple()} |
+    {error, any()} |
+    {error, start_investigation_errors(), tuple()}.
 start_investigation(Client, Input) ->
     start_investigation(Client, Input, []).
+
+-spec start_investigation(aws_client:aws_client(), start_investigation_request(), proplists:proplist()) ->
+    {ok, start_investigation_response(), tuple()} |
+    {error, any()} |
+    {error, start_investigation_errors(), tuple()}.
 start_investigation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/startInvestigation"],
@@ -975,8 +2037,17 @@ start_investigation(Client, Input0, Options0) ->
 %%
 %% If Detective cannot enable the member account, the status remains
 %% `ACCEPTED_BUT_DISABLED'.
+-spec start_monitoring_member(aws_client:aws_client(), start_monitoring_member_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_monitoring_member_errors(), tuple()}.
 start_monitoring_member(Client, Input) ->
     start_monitoring_member(Client, Input, []).
+
+-spec start_monitoring_member(aws_client:aws_client(), start_monitoring_member_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_monitoring_member_errors(), tuple()}.
 start_monitoring_member(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/member/monitoringstate"],
@@ -1000,8 +2071,17 @@ start_monitoring_member(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies tag values to a behavior graph.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1025,8 +2105,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a behavior graph.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1051,8 +2140,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a data source packages for the behavior graph.
+-spec update_datasource_packages(aws_client:aws_client(), update_datasource_packages_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_datasource_packages_errors(), tuple()}.
 update_datasource_packages(Client, Input) ->
     update_datasource_packages(Client, Input, []).
+
+-spec update_datasource_packages(aws_client:aws_client(), update_datasource_packages_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_datasource_packages_errors(), tuple()}.
 update_datasource_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/datasources/update"],
@@ -1076,8 +2174,17 @@ update_datasource_packages(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the state of an investigation.
+-spec update_investigation_state(aws_client:aws_client(), update_investigation_state_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_investigation_state_errors(), tuple()}.
 update_investigation_state(Client, Input) ->
     update_investigation_state(Client, Input, []).
+
+-spec update_investigation_state(aws_client:aws_client(), update_investigation_state_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_investigation_state_errors(), tuple()}.
 update_investigation_state(Client, Input0, Options0) ->
     Method = post,
     Path = ["/investigations/updateInvestigationState"],
@@ -1105,8 +2212,17 @@ update_investigation_state(Client, Input0, Options0) ->
 %%
 %% Can only be called by the Detective administrator account for the
 %% organization.
+-spec update_organization_configuration(aws_client:aws_client(), update_organization_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
+
+-spec update_organization_configuration(aws_client:aws_client(), update_organization_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/orgs/updateOrganizationConfiguration"],
@@ -1133,7 +2249,7 @@ update_organization_configuration(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

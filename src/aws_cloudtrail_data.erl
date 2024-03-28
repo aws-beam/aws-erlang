@@ -21,6 +21,100 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% audit_event() :: #{
+%%   <<"eventData">> => [string()],
+%%   <<"eventDataChecksum">> => [string()],
+%%   <<"id">> => string()
+%% }
+-type audit_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% audit_event_result_entry() :: #{
+%%   <<"eventID">> => string(),
+%%   <<"id">> => string()
+%% }
+-type audit_event_result_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_insufficient_permission() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type channel_insufficient_permission() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_not_found() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type channel_not_found() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_unsupported_schema() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type channel_unsupported_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% duplicated_audit_event_id() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type duplicated_audit_event_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_channel_arn() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_channel_arn() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_audit_events_request() :: #{
+%%   <<"auditEvents">> := list(audit_event()()),
+%%   <<"channelArn">> := string(),
+%%   <<"externalId">> => string()
+%% }
+-type put_audit_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_audit_events_response() :: #{
+%%   <<"failed">> := list(result_error_entry()()),
+%%   <<"successful">> := list(audit_event_result_entry()())
+%% }
+-type put_audit_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% result_error_entry() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"id">> => string()
+%% }
+-type result_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+-type put_audit_events_errors() ::
+    unsupported_operation_exception() | 
+    invalid_channel_arn() | 
+    duplicated_audit_event_id() | 
+    channel_unsupported_schema() | 
+    channel_not_found() | 
+    channel_insufficient_permission().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -32,8 +126,17 @@
 %% payload) of events that you want CloudTrail to ingest. You
 %% can add up to 100 of these events (or up to 1 MB) per `PutAuditEvents'
 %% request.
+-spec put_audit_events(aws_client:aws_client(), put_audit_events_request()) ->
+    {ok, put_audit_events_response(), tuple()} |
+    {error, any()} |
+    {error, put_audit_events_errors(), tuple()}.
 put_audit_events(Client, Input) ->
     put_audit_events(Client, Input, []).
+
+-spec put_audit_events(aws_client:aws_client(), put_audit_events_request(), proplists:proplist()) ->
+    {ok, put_audit_events_response(), tuple()} |
+    {error, any()} |
+    {error, put_audit_events_errors(), tuple()}.
 put_audit_events(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutAuditEvents"],
@@ -62,7 +165,7 @@ put_audit_events(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

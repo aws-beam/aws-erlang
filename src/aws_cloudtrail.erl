@@ -137,6 +137,2188 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% get_trail_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_trail_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_request() :: #{
+%%   <<"Channel">> := string()
+%% }
+-type delete_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_max_results_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_max_results_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disable_federation_request() :: #{
+%%   <<"EventDataStore">> := string()
+%% }
+-type disable_federation_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_request() :: #{
+%%   <<"Channel">> := string()
+%% }
+-type get_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_event_data_store_ingestion_response() :: #{
+
+%% }
+-type start_event_data_store_ingestion_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trail_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_trail_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_response() :: #{
+%%   <<"DeliveryS3Uri">> => string(),
+%%   <<"DeliveryStatus">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"QueryId">> => string(),
+%%   <<"QueryStatistics">> => query_statistics_for_describe_query(),
+%%   <<"QueryStatus">> => list(any()),
+%%   <<"QueryString">> => string()
+%% }
+-type describe_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_organization_management_account_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_organization_management_account_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_type_not_supported_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_type_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trail_not_provided_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trail_not_provided_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_registered_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stop_import_request() :: #{
+%%   <<"ImportId">> := string()
+%% }
+-type stop_import_request() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs_delivery_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cloud_watch_logs_delivery_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_channel_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Destinations">> => list(destination()()),
+%%   <<"Name">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_federation_response() :: #{
+%%   <<"EventDataStoreArn">> => string(),
+%%   <<"FederationStatus">> => list(any())
+%% }
+-type disable_federation_response() :: #{binary() => any()}.
+
+%% Example:
+%% delegated_admin_account_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delegated_admin_account_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_encryption_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type insufficient_encryption_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_results_response() :: #{
+%%   <<"ErrorMessage">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueryResultRows">> => list(list(map()())()),
+%%   <<"QueryStatistics">> => query_statistics(),
+%%   <<"QueryStatus">> => list(any())
+%% }
+-type get_query_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_event_data_store_ingestion_request() :: #{
+%%   <<"EventDataStore">> := string()
+%% }
+-type stop_event_data_store_ingestion_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_organization_delegated_admin_request() :: #{
+%%   <<"DelegatedAdminAccountId">> := string()
+%% }
+-type deregister_organization_delegated_admin_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_organization_delegated_admin_response() :: #{
+
+%% }
+-type register_organization_delegated_admin_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_response() :: #{
+
+%% }
+-type delete_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_data_store_response() :: #{
+
+%% }
+-type delete_event_data_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_import_response() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Destinations">> => list(string()()),
+%%   <<"EndEventTime">> => non_neg_integer(),
+%%   <<"ImportId">> => string(),
+%%   <<"ImportSource">> => import_source(),
+%%   <<"ImportStatistics">> => import_statistics(),
+%%   <<"ImportStatus">> => list(any()),
+%%   <<"StartEventTime">> => non_neg_integer(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type get_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% channel_exists_for_e_d_s_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type channel_exists_for_e_d_s_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_public_keys_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PublicKeyList">> => list(public_key()())
+%% }
+-type list_public_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_id_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type query_id_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_key_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_key_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_bucket_does_not_exist_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type s3_bucket_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% event_data_store_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type event_data_store_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_results_request() :: #{
+%%   <<"EventDataStore">> => string(),
+%%   <<"MaxQueryResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueryId">> := string()
+%% }
+-type get_query_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_trail_request() :: #{
+%%   <<"CloudWatchLogsLogGroupArn">> => string(),
+%%   <<"CloudWatchLogsRoleArn">> => string(),
+%%   <<"EnableLogFileValidation">> => boolean(),
+%%   <<"IncludeGlobalServiceEvents">> => boolean(),
+%%   <<"IsMultiRegionTrail">> => boolean(),
+%%   <<"IsOrganizationTrail">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"S3BucketName">> := string(),
+%%   <<"S3KeyPrefix">> => string(),
+%%   <<"SnsTopicName">> => string(),
+%%   <<"TagsList">> => list(tag()())
+%% }
+-type create_trail_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trails_request() :: #{
+%%   <<"includeShadowTrails">> => boolean(),
+%%   <<"trailNameList">> => list(string()())
+%% }
+-type describe_trails_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trail_response() :: #{
+
+%% }
+-type delete_trail_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_trail_response() :: #{
+%%   <<"CloudWatchLogsLogGroupArn">> => string(),
+%%   <<"CloudWatchLogsRoleArn">> => string(),
+%%   <<"IncludeGlobalServiceEvents">> => boolean(),
+%%   <<"IsMultiRegionTrail">> => boolean(),
+%%   <<"IsOrganizationTrail">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LogFileValidationEnabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3KeyPrefix">> => string(),
+%%   <<"SnsTopicARN">> => string(),
+%%   <<"SnsTopicName">> => string(),
+%%   <<"TrailARN">> => string()
+%% }
+-type update_trail_response() :: #{binary() => any()}.
+
+%% Example:
+%% lookup_events_response() :: #{
+%%   <<"Events">> => list(event()()),
+%%   <<"NextToken">> => string()
+%% }
+-type lookup_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_event_data_store_response() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"BillingMode">> => list(any()),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"EventDataStoreArn">> => string(),
+%%   <<"FederationRoleArn">> => string(),
+%%   <<"FederationStatus">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MultiRegionEnabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"OrganizationEnabled">> => boolean(),
+%%   <<"RetentionPeriod">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TerminationProtectionEnabled">> => boolean(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type update_event_data_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_status() :: #{
+%%   <<"LatestIngestionAttemptEventID">> => string(),
+%%   <<"LatestIngestionAttemptTime">> => non_neg_integer(),
+%%   <<"LatestIngestionErrorCode">> => string(),
+%%   <<"LatestIngestionSuccessEventID">> => string(),
+%%   <<"LatestIngestionSuccessTime">> => non_neg_integer()
+%% }
+-type ingestion_status() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_s3_bucket_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_s3_bucket_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceTagList">> => list(resource_tag()())
+%% }
+-type list_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% event_data_store_arn_invalid_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type event_data_store_arn_invalid_exception() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_response() :: #{
+
+%% }
+-type add_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_request() :: #{
+%%   <<"EventDataStore">> => string(),
+%%   <<"QueryAlias">> => string(),
+%%   <<"QueryId">> => string()
+%% }
+-type describe_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_trail_request() :: #{
+%%   <<"CloudWatchLogsLogGroupArn">> => string(),
+%%   <<"CloudWatchLogsRoleArn">> => string(),
+%%   <<"EnableLogFileValidation">> => boolean(),
+%%   <<"IncludeGlobalServiceEvents">> => boolean(),
+%%   <<"IsMultiRegionTrail">> => boolean(),
+%%   <<"IsOrganizationTrail">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3KeyPrefix">> => string(),
+%%   <<"SnsTopicName">> => string()
+%% }
+-type update_trail_request() :: #{binary() => any()}.
+
+%% Example:
+%% channel_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type channel_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% channel_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type channel_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_home_region_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_home_region_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_query_request() :: #{
+%%   <<"DeliveryS3Uri">> => string(),
+%%   <<"QueryAlias">> => string(),
+%%   <<"QueryParameters">> => list(string()()),
+%%   <<"QueryStatement">> => string()
+%% }
+-type start_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_sns_topic_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type insufficient_sns_topic_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_query_response() :: #{
+%%   <<"QueryId">> => string(),
+%%   <<"QueryStatus">> => list(any())
+%% }
+-type cancel_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% imports_list_item() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Destinations">> => list(string()()),
+%%   <<"ImportId">> => string(),
+%%   <<"ImportStatus">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type imports_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% import_statistics() :: #{
+%%   <<"EventsCompleted">> => float(),
+%%   <<"FailedEntries">> => float(),
+%%   <<"FilesCompleted">> => float(),
+%%   <<"PrefixesCompleted">> => float(),
+%%   <<"PrefixesFound">> => float()
+%% }
+-type import_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% list_queries_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Queries">> => list(query()())
+%% }
+-type list_queries_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_parameter_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_tag_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_insights_metric_data_response() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"EventName">> => string(),
+%%   <<"EventSource">> => string(),
+%%   <<"InsightType">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"Timestamps">> => list(non_neg_integer()()),
+%%   <<"Values">> => list(float()())
+%% }
+-type list_insights_metric_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_s3_prefix_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_s3_prefix_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trail_info() :: #{
+%%   <<"HomeRegion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"TrailARN">> => string()
+%% }
+-type trail_info() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_number_of_trails_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type maximum_number_of_trails_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% no_management_account_s_l_r_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_management_account_s_l_r_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_event_selectors_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_event_selectors_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_federation_request() :: #{
+%%   <<"EventDataStore">> := string(),
+%%   <<"FederationRoleArn">> := string()
+%% }
+-type enable_federation_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_combination_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_combination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% advanced_event_selector() :: #{
+%%   <<"FieldSelectors">> => list(advanced_field_selector()()),
+%%   <<"Name">> => string()
+%% }
+-type advanced_event_selector() :: #{binary() => any()}.
+
+%% Example:
+%% list_public_keys_request() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type list_public_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_imports_response() :: #{
+%%   <<"Imports">> => list(imports_list_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_imports_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_event_data_store_response() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"BillingMode">> => list(any()),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"EventDataStoreArn">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MultiRegionEnabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"OrganizationEnabled">> => boolean(),
+%%   <<"RetentionPeriod">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TerminationProtectionEnabled">> => boolean(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type restore_event_data_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_query_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_query_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_source_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_source_exception() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"TagsList">> := list(tag()())
+%% }
+-type add_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_event_category_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_event_category_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_has_ongoing_import_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_has_ongoing_import_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_logging_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type start_logging_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_logging_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type stop_logging_request() :: #{binary() => any()}.
+
+%% Example:
+%% insight_not_enabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type insight_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% inactive_query_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type inactive_query_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_query_request() :: #{
+%%   <<"EventDataStore">> => string(),
+%%   <<"QueryId">> := string()
+%% }
+-type cancel_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% organization_not_in_all_features_mode_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organization_not_in_all_features_mode_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_event_data_store_ingestion_request() :: #{
+%%   <<"EventDataStore">> := string()
+%% }
+-type start_event_data_store_ingestion_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_time_range_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_time_range_exception() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_dependency_service_access_permission_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type insufficient_dependency_service_access_permission_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_event_data_store_category_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_event_data_store_category_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_queries_request() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EventDataStore">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueryStatus">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type list_queries_request() :: #{binary() => any()}.
+
+%% Example:
+%% event_selector() :: #{
+%%   <<"DataResources">> => list(data_resource()()),
+%%   <<"ExcludeManagementEventSources">> => list(string()()),
+%%   <<"IncludeManagementEvents">> => boolean(),
+%%   <<"ReadWriteType">> => list(any())
+%% }
+-type event_selector() :: #{binary() => any()}.
+
+%% Example:
+%% event_data_store_federation_enabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type event_data_store_federation_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lookup_attribute() :: #{
+%%   <<"AttributeKey">> => list(any()),
+%%   <<"AttributeValue">> => string()
+%% }
+-type lookup_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_not_registered_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_not_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_data_store_response() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"BillingMode">> => list(any()),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"EventDataStoreArn">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MultiRegionEnabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"OrganizationEnabled">> => boolean(),
+%%   <<"RetentionPeriod">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TagsList">> => list(tag()()),
+%%   <<"TerminationProtectionEnabled">> => boolean(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type create_event_data_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_event_data_store_request() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"BillingMode">> => list(any()),
+%%   <<"EventDataStore">> := string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MultiRegionEnabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"OrganizationEnabled">> => boolean(),
+%%   <<"RetentionPeriod">> => integer(),
+%%   <<"TerminationProtectionEnabled">> => boolean()
+%% }
+-type update_event_data_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% trail_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trail_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% insight_selector() :: #{
+%%   <<"InsightType">> => list(any())
+%% }
+-type insight_selector() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_organization_delegated_admin_response() :: #{
+
+%% }
+-type deregister_organization_delegated_admin_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_statistics_for_describe_query() :: #{
+%%   <<"BytesScanned">> => float(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EventsMatched">> => float(),
+%%   <<"EventsScanned">> => float(),
+%%   <<"ExecutionTimeInMillis">> => integer()
+%% }
+-type query_statistics_for_describe_query() :: #{binary() => any()}.
+
+%% Example:
+%% list_trails_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_trails_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_event_data_store_ingestion_response() :: #{
+
+%% }
+-type stop_event_data_store_ingestion_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_data_store_request() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"BillingMode">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MultiRegionEnabled">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"OrganizationEnabled">> => boolean(),
+%%   <<"RetentionPeriod">> => integer(),
+%%   <<"StartIngestion">> => boolean(),
+%%   <<"TagsList">> => list(tag()()),
+%%   <<"TerminationProtectionEnabled">> => boolean()
+%% }
+-type create_event_data_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_channel_request() :: #{
+%%   <<"Destinations">> := list(destination()()),
+%%   <<"Name">> := string(),
+%%   <<"Source">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_import_request() :: #{
+%%   <<"ImportId">> := string()
+%% }
+-type get_import_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_data_store_response() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"BillingMode">> => list(any()),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"EventDataStoreArn">> => string(),
+%%   <<"FederationRoleArn">> => string(),
+%%   <<"FederationStatus">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MultiRegionEnabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"OrganizationEnabled">> => boolean(),
+%%   <<"RetentionPeriod">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TerminationProtectionEnabled">> => boolean(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type get_event_data_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cloud_watch_logs_role_arn_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_cloud_watch_logs_role_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_trail_status_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_trail_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% trail_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trail_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_response() :: #{
+
+%% }
+-type remove_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_data_stores_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_data_stores_request() :: #{binary() => any()}.
+
+%% Example:
+%% account_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_insights_metric_data_request() :: #{
+%%   <<"DataType">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"EventName">> := string(),
+%%   <<"EventSource">> := string(),
+%%   <<"InsightType">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type list_insights_metric_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% organizations_not_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organizations_not_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_permitted_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_not_permitted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_channels_response() :: #{
+%%   <<"Channels">> => list(channel()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_response() :: #{binary() => any()}.
+
+%% Example:
+%% public_key() :: #{
+%%   <<"Fingerprint">> => string(),
+%%   <<"ValidityEndTime">> => non_neg_integer(),
+%%   <<"ValidityStartTime">> => non_neg_integer(),
+%%   <<"Value">> => binary()
+%% }
+-type public_key() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy_not_valid_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_policy_not_valid_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tags_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type tags_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_channel_request() :: #{
+%%   <<"Channel">> := string(),
+%%   <<"Destinations">> => list(destination()()),
+%%   <<"Name">> => string()
+%% }
+-type update_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_import_failures_request() :: #{
+%%   <<"ImportId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_import_failures_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_data_store_request() :: #{
+%%   <<"EventDataStore">> := string()
+%% }
+-type get_event_data_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_selectors_request() :: #{
+%%   <<"TrailName">> := string()
+%% }
+-type get_event_selectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_logging_response() :: #{
+
+%% }
+-type start_logging_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_import_failures_response() :: #{
+%%   <<"Failures">> => list(import_failure_list_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_import_failures_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_event_data_store_request() :: #{
+%%   <<"EventDataStore">> := string()
+%% }
+-type restore_event_data_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type import_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag() :: #{
+%%   <<"ResourceId">> => string(),
+%%   <<"TagsList">> => list(tag()())
+%% }
+-type resource_tag() :: #{binary() => any()}.
+
+%% Example:
+%% not_organization_master_account_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_organization_master_account_exception() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"CloudTrailEvent">> => string(),
+%%   <<"EventId">> => string(),
+%%   <<"EventName">> => string(),
+%%   <<"EventSource">> => string(),
+%%   <<"EventTime">> => non_neg_integer(),
+%%   <<"ReadOnly">> => string(),
+%%   <<"Resources">> => list(resource()()),
+%%   <<"Username">> => string()
+%% }
+-type event() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_trail_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_trail_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_s3_bucket_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type insufficient_s3_bucket_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_import_source() :: #{
+%%   <<"S3BucketAccessRoleArn">> => string(),
+%%   <<"S3BucketRegion">> => string(),
+%%   <<"S3LocationUri">> => string()
+%% }
+-type s3_import_source() :: #{binary() => any()}.
+
+%% Example:
+%% start_query_response() :: #{
+%%   <<"QueryId">> => string()
+%% }
+-type start_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cloud_watch_logs_log_group_arn_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_cloud_watch_logs_log_group_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_insight_selectors_response() :: #{
+%%   <<"EventDataStoreArn">> => string(),
+%%   <<"InsightSelectors">> => list(insight_selector()()),
+%%   <<"InsightsDestination">> => string(),
+%%   <<"TrailARN">> => string()
+%% }
+-type get_insight_selectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_insight_selectors_response() :: #{
+%%   <<"EventDataStoreArn">> => string(),
+%%   <<"InsightSelectors">> => list(insight_selector()()),
+%%   <<"InsightsDestination">> => string(),
+%%   <<"TrailARN">> => string()
+%% }
+-type put_insight_selectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"ResourcePolicy">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_trail_invalid_client_token_id_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cloud_trail_invalid_client_token_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% inactive_event_data_store_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type inactive_event_data_store_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stop_import_response() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Destinations">> => list(string()()),
+%%   <<"EndEventTime">> => non_neg_integer(),
+%%   <<"ImportId">> => string(),
+%%   <<"ImportSource">> => import_source(),
+%%   <<"ImportStatistics">> => import_statistics(),
+%%   <<"ImportStatus">> => list(any()),
+%%   <<"StartEventTime">> => non_neg_integer(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type stop_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_import_source_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_import_source_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stop_logging_response() :: #{
+
+%% }
+-type stop_logging_response() :: #{binary() => any()}.
+
+%% Example:
+%% max_concurrent_queries_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type max_concurrent_queries_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_key_disabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_key_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% channel_arn_invalid_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type channel_arn_invalid_exception() :: #{binary() => any()}.
+
+%% Example:
+%% event_data_store() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"EventDataStoreArn">> => string(),
+%%   <<"MultiRegionEnabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"OrganizationEnabled">> => boolean(),
+%%   <<"RetentionPeriod">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TerminationProtectionEnabled">> => boolean(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type event_data_store() :: #{binary() => any()}.
+
+%% Example:
+%% kms_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_event_selectors_response() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"EventSelectors">> => list(event_selector()()),
+%%   <<"TrailARN">> => string()
+%% }
+-type put_event_selectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination() :: #{
+%%   <<"Location">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type destination() :: #{binary() => any()}.
+
+%% Example:
+%% lookup_events_request() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EventCategory">> => list(any()),
+%%   <<"LookupAttributes">> => list(lookup_attribute()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type lookup_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_organization_delegated_admin_request() :: #{
+%%   <<"MemberAccountId">> := string()
+%% }
+-type register_organization_delegated_admin_request() :: #{binary() => any()}.
+
+%% Example:
+%% event_data_store_termination_protected_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type event_data_store_termination_protected_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_kms_key_id_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_kms_key_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_insight_selectors_request() :: #{
+%%   <<"EventDataStore">> => string(),
+%%   <<"TrailName">> => string()
+%% }
+-type get_insight_selectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% channel() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type channel() :: #{binary() => any()}.
+
+%% Example:
+%% event_data_store_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type event_data_store_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_imports_request() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"ImportStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_imports_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_insight_selectors_request() :: #{
+%%   <<"EventDataStore">> => string(),
+%%   <<"InsightSelectors">> := list(insight_selector()()),
+%%   <<"InsightsDestination">> => string(),
+%%   <<"TrailName">> => string()
+%% }
+-type put_insight_selectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% advanced_field_selector() :: #{
+%%   <<"EndsWith">> => list(string()()),
+%%   <<"Equals">> => list(string()()),
+%%   <<"Field">> => string(),
+%%   <<"NotEndsWith">> => list(string()()),
+%%   <<"NotEquals">> => list(string()()),
+%%   <<"NotStartsWith">> => list(string()()),
+%%   <<"StartsWith">> => list(string()())
+%% }
+-type advanced_field_selector() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_data_stores_response() :: #{
+%%   <<"EventDataStores">> => list(event_data_store()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_data_stores_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_trails_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Trails">> => list(trail_info()())
+%% }
+-type list_trails_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_resource() :: #{
+%%   <<"Type">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type data_resource() :: #{binary() => any()}.
+
+%% Example:
+%% cannot_delegate_management_account_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cannot_delegate_management_account_exception() :: #{binary() => any()}.
+
+%% Example:
+%% query_statistics() :: #{
+%%   <<"BytesScanned">> => float(),
+%%   <<"ResultsCount">> => integer(),
+%%   <<"TotalResultsCount">> => integer()
+%% }
+-type query_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% event_data_store_has_ongoing_import_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type event_data_store_has_ongoing_import_exception() :: #{binary() => any()}.
+
+%% Example:
+%% source_config() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"ApplyToAllRegions">> => boolean()
+%% }
+-type source_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Destinations">> => list(destination()()),
+%%   <<"IngestionStatus">> => ingestion_status(),
+%%   <<"Name">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"SourceConfig">> => source_config()
+%% }
+-type get_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% channel_max_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type channel_max_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_event_selectors_request() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"EventSelectors">> => list(event_selector()()),
+%%   <<"TrailName">> := string()
+%% }
+-type put_event_selectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_date_range_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_date_range_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_source() :: #{
+%%   <<"S3">> => s3_import_source()
+%% }
+-type import_source() :: #{binary() => any()}.
+
+%% Example:
+%% import_failure_list_item() :: #{
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ErrorType">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Location">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type import_failure_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_lookup_attributes_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_lookup_attributes_exception() :: #{binary() => any()}.
+
+%% Example:
+%% event_data_store_max_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type event_data_store_max_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trail() :: #{
+%%   <<"CloudWatchLogsLogGroupArn">> => string(),
+%%   <<"CloudWatchLogsRoleArn">> => string(),
+%%   <<"HasCustomEventSelectors">> => boolean(),
+%%   <<"HasInsightSelectors">> => boolean(),
+%%   <<"HomeRegion">> => string(),
+%%   <<"IncludeGlobalServiceEvents">> => boolean(),
+%%   <<"IsMultiRegionTrail">> => boolean(),
+%%   <<"IsOrganizationTrail">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LogFileValidationEnabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3KeyPrefix">> => string(),
+%%   <<"SnsTopicARN">> => string(),
+%%   <<"SnsTopicName">> => string(),
+%%   <<"TrailARN">> => string()
+%% }
+-type trail() :: #{binary() => any()}.
+
+%% Example:
+%% query() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"QueryId">> => string(),
+%%   <<"QueryStatus">> => list(any())
+%% }
+-type query() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_event_data_store_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_event_data_store_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_trail_access_not_enabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cloud_trail_access_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_channel_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Destinations">> => list(destination()()),
+%%   <<"Name">> => string(),
+%%   <<"Source">> => string()
+%% }
+-type update_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_data_store_request() :: #{
+%%   <<"EventDataStore">> := string()
+%% }
+-type delete_event_data_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_trail_arn_invalid_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cloud_trail_arn_invalid_exception() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"TagsList">> := list(tag()())
+%% }
+-type remove_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceIdList">> := list(string()())
+%% }
+-type list_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_arn_not_valid_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_arn_not_valid_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_insight_selectors_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_insight_selectors_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_channels_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sns_topic_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_sns_topic_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_query_statement_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_query_statement_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_trail_status_response() :: #{
+%%   <<"IsLogging">> => boolean(),
+%%   <<"LatestCloudWatchLogsDeliveryError">> => string(),
+%%   <<"LatestCloudWatchLogsDeliveryTime">> => non_neg_integer(),
+%%   <<"LatestDeliveryAttemptSucceeded">> => string(),
+%%   <<"LatestDeliveryAttemptTime">> => string(),
+%%   <<"LatestDeliveryError">> => string(),
+%%   <<"LatestDeliveryTime">> => non_neg_integer(),
+%%   <<"LatestDigestDeliveryError">> => string(),
+%%   <<"LatestDigestDeliveryTime">> => non_neg_integer(),
+%%   <<"LatestNotificationAttemptSucceeded">> => string(),
+%%   <<"LatestNotificationAttemptTime">> => string(),
+%%   <<"LatestNotificationError">> => string(),
+%%   <<"LatestNotificationTime">> => non_neg_integer(),
+%%   <<"StartLoggingTime">> => non_neg_integer(),
+%%   <<"StopLoggingTime">> => non_neg_integer(),
+%%   <<"TimeLoggingStarted">> => string(),
+%%   <<"TimeLoggingStopped">> => string()
+%% }
+-type get_trail_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_import_request() :: #{
+%%   <<"Destinations">> => list(string()()),
+%%   <<"EndEventTime">> => non_neg_integer(),
+%%   <<"ImportId">> => string(),
+%%   <<"ImportSource">> => import_source(),
+%%   <<"StartEventTime">> => non_neg_integer()
+%% }
+-type start_import_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_import_response() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Destinations">> => list(string()()),
+%%   <<"EndEventTime">> => non_neg_integer(),
+%%   <<"ImportId">> => string(),
+%%   <<"ImportSource">> => import_source(),
+%%   <<"ImportStatus">> => list(any()),
+%%   <<"StartEventTime">> => non_neg_integer(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type start_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_selectors_response() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"EventSelectors">> => list(event_selector()()),
+%%   <<"TrailARN">> => string()
+%% }
+-type get_event_selectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_trail_response() :: #{
+%%   <<"CloudWatchLogsLogGroupArn">> => string(),
+%%   <<"CloudWatchLogsRoleArn">> => string(),
+%%   <<"IncludeGlobalServiceEvents">> => boolean(),
+%%   <<"IsMultiRegionTrail">> => boolean(),
+%%   <<"IsOrganizationTrail">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LogFileValidationEnabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3KeyPrefix">> => string(),
+%%   <<"SnsTopicARN">> => string(),
+%%   <<"SnsTopicName">> => string(),
+%%   <<"TrailARN">> => string()
+%% }
+-type create_trail_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trails_response() :: #{
+%%   <<"trailList">> => list(trail()())
+%% }
+-type describe_trails_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_trail_response() :: #{
+%%   <<"Trail">> => trail()
+%% }
+-type get_trail_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_federation_response() :: #{
+%%   <<"EventDataStoreArn">> => string(),
+%%   <<"FederationRoleArn">> => string(),
+%%   <<"FederationStatus">> => list(any())
+%% }
+-type enable_federation_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource() :: #{
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+-type add_tags_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    event_data_store_not_found_exception() | 
+    channel_arn_invalid_exception() | 
+    inactive_event_data_store_exception() | 
+    invalid_trail_name_exception() | 
+    not_organization_master_account_exception() | 
+    tags_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    invalid_tag_parameter_exception() | 
+    channel_not_found_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception() | 
+    resource_type_not_supported_exception().
+
+-type cancel_query_errors() ::
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    inactive_event_data_store_exception() | 
+    operation_not_permitted_exception() | 
+    inactive_query_exception() | 
+    conflict_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    query_id_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type create_channel_errors() ::
+    channel_max_limit_exceeded_exception() | 
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    inactive_event_data_store_exception() | 
+    tags_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_event_data_store_category_exception() | 
+    invalid_source_exception() | 
+    invalid_tag_parameter_exception() | 
+    channel_already_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
+-type create_event_data_store_errors() ::
+    cloud_trail_access_not_enabled_exception() | 
+    event_data_store_max_limit_exceeded_exception() | 
+    invalid_kms_key_id_exception() | 
+    kms_exception() | 
+    invalid_parameter_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    organizations_not_in_use_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    conflict_exception() | 
+    invalid_event_selectors_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    invalid_tag_parameter_exception() | 
+    event_data_store_already_exists_exception() | 
+    kms_key_not_found_exception() | 
+    insufficient_encryption_policy_exception() | 
+    unsupported_operation_exception().
+
+-type create_trail_errors() ::
+    invalid_sns_topic_name_exception() | 
+    cloud_trail_access_not_enabled_exception() | 
+    invalid_kms_key_id_exception() | 
+    throttling_exception() | 
+    kms_exception() | 
+    kms_key_disabled_exception() | 
+    invalid_parameter_exception() | 
+    cloud_trail_invalid_client_token_id_exception() | 
+    invalid_cloud_watch_logs_log_group_arn_exception() | 
+    insufficient_s3_bucket_policy_exception() | 
+    invalid_trail_name_exception() | 
+    not_organization_master_account_exception() | 
+    tags_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    organizations_not_in_use_exception() | 
+    invalid_cloud_watch_logs_role_arn_exception() | 
+    trail_already_exists_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    conflict_exception() | 
+    invalid_parameter_combination_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    maximum_number_of_trails_exceeded_exception() | 
+    invalid_s3_prefix_exception() | 
+    invalid_tag_parameter_exception() | 
+    insufficient_sns_topic_policy_exception() | 
+    invalid_s3_bucket_name_exception() | 
+    s3_bucket_does_not_exist_exception() | 
+    kms_key_not_found_exception() | 
+    insufficient_encryption_policy_exception() | 
+    cloud_watch_logs_delivery_unavailable_exception() | 
+    unsupported_operation_exception() | 
+    trail_not_provided_exception().
+
+-type delete_channel_errors() ::
+    channel_arn_invalid_exception() | 
+    operation_not_permitted_exception() | 
+    channel_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type delete_event_data_store_errors() ::
+    event_data_store_has_ongoing_import_exception() | 
+    event_data_store_not_found_exception() | 
+    event_data_store_termination_protected_exception() | 
+    invalid_parameter_exception() | 
+    inactive_event_data_store_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    event_data_store_federation_enabled_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    conflict_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    channel_exists_for_e_d_s_exception() | 
+    unsupported_operation_exception().
+
+-type delete_resource_policy_errors() ::
+    resource_arn_not_valid_exception() | 
+    resource_policy_not_found_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception() | 
+    resource_type_not_supported_exception().
+
+-type delete_trail_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    throttling_exception() | 
+    invalid_trail_name_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    trail_not_found_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    conflict_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    invalid_home_region_exception() | 
+    unsupported_operation_exception().
+
+-type deregister_organization_delegated_admin_errors() ::
+    cloud_trail_access_not_enabled_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    organizations_not_in_use_exception() | 
+    account_not_found_exception() | 
+    account_not_registered_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    conflict_exception() | 
+    unsupported_operation_exception() | 
+    not_organization_management_account_exception().
+
+-type describe_query_errors() ::
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    inactive_event_data_store_exception() | 
+    operation_not_permitted_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    query_id_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type describe_trails_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    invalid_trail_name_exception() | 
+    operation_not_permitted_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    unsupported_operation_exception().
+
+-type disable_federation_errors() ::
+    cloud_trail_access_not_enabled_exception() | 
+    event_data_store_not_found_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    inactive_event_data_store_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    organizations_not_in_use_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
+-type enable_federation_errors() ::
+    cloud_trail_access_not_enabled_exception() | 
+    event_data_store_not_found_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    inactive_event_data_store_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    organizations_not_in_use_exception() | 
+    event_data_store_federation_enabled_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
+-type get_channel_errors() ::
+    channel_arn_invalid_exception() | 
+    operation_not_permitted_exception() | 
+    channel_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type get_event_data_store_errors() ::
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
+-type get_event_selectors_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    invalid_trail_name_exception() | 
+    operation_not_permitted_exception() | 
+    trail_not_found_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    unsupported_operation_exception().
+
+-type get_import_errors() ::
+    invalid_parameter_exception() | 
+    import_not_found_exception() | 
+    operation_not_permitted_exception() | 
+    unsupported_operation_exception().
+
+-type get_insight_selectors_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_trail_name_exception() | 
+    operation_not_permitted_exception() | 
+    trail_not_found_exception() | 
+    insight_not_enabled_exception() | 
+    invalid_parameter_combination_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    unsupported_operation_exception().
+
+-type get_query_results_errors() ::
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    inactive_event_data_store_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_next_token_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    query_id_not_found_exception() | 
+    insufficient_encryption_policy_exception() | 
+    unsupported_operation_exception() | 
+    invalid_max_results_exception().
+
+-type get_resource_policy_errors() ::
+    resource_arn_not_valid_exception() | 
+    resource_policy_not_found_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception() | 
+    resource_type_not_supported_exception().
+
+-type get_trail_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    invalid_trail_name_exception() | 
+    operation_not_permitted_exception() | 
+    trail_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type get_trail_status_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    invalid_trail_name_exception() | 
+    operation_not_permitted_exception() | 
+    trail_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type list_channels_errors() ::
+    operation_not_permitted_exception() | 
+    invalid_next_token_exception() | 
+    unsupported_operation_exception().
+
+-type list_event_data_stores_errors() ::
+    operation_not_permitted_exception() | 
+    invalid_next_token_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    unsupported_operation_exception() | 
+    invalid_max_results_exception().
+
+-type list_import_failures_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_next_token_exception() | 
+    unsupported_operation_exception().
+
+-type list_imports_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_next_token_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
+-type list_insights_metric_data_errors() ::
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    unsupported_operation_exception().
+
+-type list_public_keys_errors() ::
+    invalid_token_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_time_range_exception() | 
+    unsupported_operation_exception().
+
+-type list_queries_errors() ::
+    invalid_date_range_exception() | 
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    inactive_event_data_store_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_next_token_exception() | 
+    invalid_query_status_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception() | 
+    invalid_max_results_exception().
+
+-type list_tags_errors() ::
+    invalid_token_exception() | 
+    cloud_trail_arn_invalid_exception() | 
+    event_data_store_not_found_exception() | 
+    channel_arn_invalid_exception() | 
+    inactive_event_data_store_exception() | 
+    invalid_trail_name_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception() | 
+    resource_type_not_supported_exception().
+
+-type list_trails_errors() ::
+    operation_not_permitted_exception() | 
+    unsupported_operation_exception().
+
+-type lookup_events_errors() ::
+    invalid_lookup_attributes_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_next_token_exception() | 
+    invalid_time_range_exception() | 
+    invalid_event_category_exception() | 
+    unsupported_operation_exception() | 
+    invalid_max_results_exception().
+
+-type put_event_selectors_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    throttling_exception() | 
+    invalid_trail_name_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    trail_not_found_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    conflict_exception() | 
+    invalid_event_selectors_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    invalid_home_region_exception() | 
+    unsupported_operation_exception().
+
+-type put_insight_selectors_errors() ::
+    invalid_insight_selectors_exception() | 
+    cloud_trail_arn_invalid_exception() | 
+    throttling_exception() | 
+    kms_exception() | 
+    invalid_parameter_exception() | 
+    insufficient_s3_bucket_policy_exception() | 
+    invalid_trail_name_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    trail_not_found_exception() | 
+    invalid_parameter_combination_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    invalid_home_region_exception() | 
+    s3_bucket_does_not_exist_exception() | 
+    insufficient_encryption_policy_exception() | 
+    unsupported_operation_exception().
+
+-type put_resource_policy_errors() ::
+    resource_arn_not_valid_exception() | 
+    resource_policy_not_valid_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception() | 
+    resource_type_not_supported_exception().
+
+-type register_organization_delegated_admin_errors() ::
+    cloud_trail_access_not_enabled_exception() | 
+    cannot_delegate_management_account_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    organizations_not_in_use_exception() | 
+    account_not_found_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    conflict_exception() | 
+    delegated_admin_account_limit_exceeded_exception() | 
+    account_registered_exception() | 
+    unsupported_operation_exception() | 
+    not_organization_management_account_exception().
+
+-type remove_tags_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    event_data_store_not_found_exception() | 
+    channel_arn_invalid_exception() | 
+    inactive_event_data_store_exception() | 
+    invalid_trail_name_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    invalid_tag_parameter_exception() | 
+    channel_not_found_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception() | 
+    resource_type_not_supported_exception().
+
+-type restore_event_data_store_errors() ::
+    cloud_trail_access_not_enabled_exception() | 
+    invalid_event_data_store_status_exception() | 
+    event_data_store_max_limit_exceeded_exception() | 
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    organizations_not_in_use_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
+-type start_event_data_store_ingestion_errors() ::
+    invalid_event_data_store_status_exception() | 
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_event_data_store_category_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
+-type start_import_errors() ::
+    invalid_event_data_store_status_exception() | 
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    invalid_import_source_exception() | 
+    inactive_event_data_store_exception() | 
+    import_not_found_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_event_data_store_category_exception() | 
+    account_has_ongoing_import_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    insufficient_encryption_policy_exception() | 
+    unsupported_operation_exception().
+
+-type start_logging_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    throttling_exception() | 
+    invalid_trail_name_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    trail_not_found_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    conflict_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    invalid_home_region_exception() | 
+    unsupported_operation_exception().
+
+-type start_query_errors() ::
+    invalid_query_statement_exception() | 
+    event_data_store_not_found_exception() | 
+    max_concurrent_queries_exception() | 
+    invalid_parameter_exception() | 
+    inactive_event_data_store_exception() | 
+    insufficient_s3_bucket_policy_exception() | 
+    operation_not_permitted_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    invalid_s3_prefix_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    invalid_s3_bucket_name_exception() | 
+    s3_bucket_does_not_exist_exception() | 
+    insufficient_encryption_policy_exception() | 
+    unsupported_operation_exception().
+
+-type stop_event_data_store_ingestion_errors() ::
+    invalid_event_data_store_status_exception() | 
+    event_data_store_not_found_exception() | 
+    invalid_parameter_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_event_data_store_category_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
+-type stop_import_errors() ::
+    invalid_parameter_exception() | 
+    import_not_found_exception() | 
+    operation_not_permitted_exception() | 
+    unsupported_operation_exception().
+
+-type stop_logging_errors() ::
+    cloud_trail_arn_invalid_exception() | 
+    throttling_exception() | 
+    invalid_trail_name_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    trail_not_found_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    conflict_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    invalid_home_region_exception() | 
+    unsupported_operation_exception().
+
+-type update_channel_errors() ::
+    event_data_store_not_found_exception() | 
+    channel_arn_invalid_exception() | 
+    invalid_parameter_exception() | 
+    inactive_event_data_store_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_event_data_store_category_exception() | 
+    channel_not_found_exception() | 
+    channel_already_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    unsupported_operation_exception().
+
+-type update_event_data_store_errors() ::
+    invalid_insight_selectors_exception() | 
+    cloud_trail_access_not_enabled_exception() | 
+    event_data_store_has_ongoing_import_exception() | 
+    event_data_store_not_found_exception() | 
+    invalid_kms_key_id_exception() | 
+    kms_exception() | 
+    invalid_parameter_exception() | 
+    inactive_event_data_store_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    organizations_not_in_use_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    invalid_event_selectors_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    event_data_store_arn_invalid_exception() | 
+    event_data_store_already_exists_exception() | 
+    kms_key_not_found_exception() | 
+    insufficient_encryption_policy_exception() | 
+    unsupported_operation_exception().
+
+-type update_trail_errors() ::
+    invalid_sns_topic_name_exception() | 
+    cloud_trail_arn_invalid_exception() | 
+    cloud_trail_access_not_enabled_exception() | 
+    invalid_kms_key_id_exception() | 
+    throttling_exception() | 
+    kms_exception() | 
+    kms_key_disabled_exception() | 
+    invalid_parameter_exception() | 
+    cloud_trail_invalid_client_token_id_exception() | 
+    invalid_cloud_watch_logs_log_group_arn_exception() | 
+    insufficient_s3_bucket_policy_exception() | 
+    invalid_trail_name_exception() | 
+    not_organization_master_account_exception() | 
+    operation_not_permitted_exception() | 
+    organizations_not_in_use_exception() | 
+    trail_not_found_exception() | 
+    invalid_cloud_watch_logs_role_arn_exception() | 
+    insufficient_dependency_service_access_permission_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    conflict_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_event_selectors_exception() | 
+    no_management_account_s_l_r_exists_exception() | 
+    invalid_s3_prefix_exception() | 
+    insufficient_sns_topic_policy_exception() | 
+    invalid_home_region_exception() | 
+    invalid_s3_bucket_name_exception() | 
+    s3_bucket_does_not_exist_exception() | 
+    kms_key_not_found_exception() | 
+    insufficient_encryption_policy_exception() | 
+    cloud_watch_logs_delivery_unavailable_exception() | 
+    unsupported_operation_exception() | 
+    trail_not_provided_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -155,9 +2337,18 @@
 %% Amazon Web Services Regions only from the Region in which the trail or
 %% event data store
 %% was created (also known as its home Region).
+-spec add_tags(aws_client:aws_client(), add_tags_request()) ->
+    {ok, add_tags_response(), tuple()} |
+    {error, any()} |
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
+
+-spec add_tags(aws_client:aws_client(), add_tags_request(), proplists:proplist()) ->
+    {ok, add_tags_response(), tuple()} |
+    {error, any()} |
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
@@ -170,9 +2361,18 @@ add_tags(Client, Input, Options)
 %% The ID of the query that you want to cancel is also required. When you run
 %% `CancelQuery', the query status might show as `CANCELLED' even if
 %% the operation is not yet finished.
+-spec cancel_query(aws_client:aws_client(), cancel_query_request()) ->
+    {ok, cancel_query_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_query_errors(), tuple()}.
 cancel_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_query(Client, Input, []).
+
+-spec cancel_query(aws_client:aws_client(), cancel_query_request(), proplists:proplist()) ->
+    {ok, cancel_query_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_query_errors(), tuple()}.
 cancel_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelQuery">>, Input, Options).
@@ -183,34 +2383,70 @@ cancel_query(Client, Input, Options)
 %% After you create a channel, a CloudTrail Lake event data store can log
 %% events
 %% from the partner or source that you specify.
+-spec create_channel(aws_client:aws_client(), create_channel_request()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_channel(Client, Input, []).
+
+-spec create_channel(aws_client:aws_client(), create_channel_request(), proplists:proplist()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateChannel">>, Input, Options).
 
 %% @doc Creates a new event data store.
+-spec create_event_data_store(aws_client:aws_client(), create_event_data_store_request()) ->
+    {ok, create_event_data_store_response(), tuple()} |
+    {error, any()} |
+    {error, create_event_data_store_errors(), tuple()}.
 create_event_data_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_data_store(Client, Input, []).
+
+-spec create_event_data_store(aws_client:aws_client(), create_event_data_store_request(), proplists:proplist()) ->
+    {ok, create_event_data_store_response(), tuple()} |
+    {error, any()} |
+    {error, create_event_data_store_errors(), tuple()}.
 create_event_data_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventDataStore">>, Input, Options).
 
 %% @doc Creates a trail that specifies the settings for delivery of log data
 %% to an Amazon S3 bucket.
+-spec create_trail(aws_client:aws_client(), create_trail_request()) ->
+    {ok, create_trail_response(), tuple()} |
+    {error, any()} |
+    {error, create_trail_errors(), tuple()}.
 create_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trail(Client, Input, []).
+
+-spec create_trail(aws_client:aws_client(), create_trail_request(), proplists:proplist()) ->
+    {ok, create_trail_response(), tuple()} |
+    {error, any()} |
+    {error, create_trail_errors(), tuple()}.
 create_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrail">>, Input, Options).
 
 %% @doc Deletes a channel.
+-spec delete_channel(aws_client:aws_client(), delete_channel_request()) ->
+    {ok, delete_channel_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_channel(Client, Input, []).
+
+-spec delete_channel(aws_client:aws_client(), delete_channel_request(), proplists:proplist()) ->
+    {ok, delete_channel_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteChannel">>, Input, Options).
@@ -235,18 +2471,36 @@ delete_channel(Client, Input, Options)
 %% queries that are using an event data store in a `PENDING_DELETION'
 %% state. An
 %% event data store in the `PENDING_DELETION' state does not incur costs.
+-spec delete_event_data_store(aws_client:aws_client(), delete_event_data_store_request()) ->
+    {ok, delete_event_data_store_response(), tuple()} |
+    {error, any()} |
+    {error, delete_event_data_store_errors(), tuple()}.
 delete_event_data_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_data_store(Client, Input, []).
+
+-spec delete_event_data_store(aws_client:aws_client(), delete_event_data_store_request(), proplists:proplist()) ->
+    {ok, delete_event_data_store_response(), tuple()} |
+    {error, any()} |
+    {error, delete_event_data_store_errors(), tuple()}.
 delete_event_data_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventDataStore">>, Input, Options).
 
 %% @doc
 %% Deletes the resource-based policy attached to the CloudTrail channel.
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -257,9 +2511,18 @@ delete_resource_policy(Client, Input, Options)
 %% created. `DeleteTrail' cannot be called on the shadow trails
 %% (replicated trails
 %% in other Regions) of a trail that is enabled in all Regions.
+-spec delete_trail(aws_client:aws_client(), delete_trail_request()) ->
+    {ok, delete_trail_response(), tuple()} |
+    {error, any()} |
+    {error, delete_trail_errors(), tuple()}.
 delete_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trail(Client, Input, []).
+
+-spec delete_trail(aws_client:aws_client(), delete_trail_request(), proplists:proplist()) ->
+    {ok, delete_trail_response(), tuple()} |
+    {error, any()} |
+    {error, delete_trail_errors(), tuple()}.
 delete_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrail">>, Input, Options).
@@ -267,9 +2530,18 @@ delete_trail(Client, Input, Options)
 %% @doc Removes CloudTrail delegated administrator permissions from a member
 %% account in
 %% an organization.
+-spec deregister_organization_delegated_admin(aws_client:aws_client(), deregister_organization_delegated_admin_request()) ->
+    {ok, deregister_organization_delegated_admin_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_organization_delegated_admin_errors(), tuple()}.
 deregister_organization_delegated_admin(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_organization_delegated_admin(Client, Input, []).
+
+-spec deregister_organization_delegated_admin(aws_client:aws_client(), deregister_organization_delegated_admin_request(), proplists:proplist()) ->
+    {ok, deregister_organization_delegated_admin_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_organization_delegated_admin_errors(), tuple()}.
 deregister_organization_delegated_admin(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterOrganizationDelegatedAdmin">>, Input, Options).
@@ -285,9 +2557,18 @@ deregister_organization_delegated_admin(Client, Input, Options)
 %% the `QueryAlias' parameter returns information about the last query
 %% run for the
 %% alias.
+-spec describe_query(aws_client:aws_client(), describe_query_request()) ->
+    {ok, describe_query_response(), tuple()} |
+    {error, any()} |
+    {error, describe_query_errors(), tuple()}.
 describe_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query(Client, Input, []).
+
+-spec describe_query(aws_client:aws_client(), describe_query_request(), proplists:proplist()) ->
+    {ok, describe_query_response(), tuple()} |
+    {error, any()} |
+    {error, describe_query_errors(), tuple()}.
 describe_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeQuery">>, Input, Options).
@@ -295,9 +2576,18 @@ describe_query(Client, Input, Options)
 %% @doc Retrieves settings for one or more trails associated with the current
 %% Region for your
 %% account.
+-spec describe_trails(aws_client:aws_client(), describe_trails_request()) ->
+    {ok, describe_trails_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trails_errors(), tuple()}.
 describe_trails(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trails(Client, Input, []).
+
+-spec describe_trails(aws_client:aws_client(), describe_trails_request(), proplists:proplist()) ->
+    {ok, describe_trails_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trails_errors(), tuple()}.
 describe_trails(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrails">>, Input, Options).
@@ -312,9 +2602,18 @@ describe_trails(Client, Input, Options)
 %%
 %% No CloudTrail Lake data is deleted when you disable federation and you can
 %% continue to run queries in CloudTrail Lake.
+-spec disable_federation(aws_client:aws_client(), disable_federation_request()) ->
+    {ok, disable_federation_response(), tuple()} |
+    {error, any()} |
+    {error, disable_federation_errors(), tuple()}.
 disable_federation(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_federation(Client, Input, []).
+
+-spec disable_federation(aws_client:aws_client(), disable_federation_request(), proplists:proplist()) ->
+    {ok, disable_federation_response(), tuple()} |
+    {error, any()} |
+    {error, disable_federation_errors(), tuple()}.
 disable_federation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableFederation">>, Input, Options).
@@ -345,17 +2644,35 @@ disable_federation(Client, Input, Options)
 %% For more information about Lake query federation, see Federate an event
 %% data store:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-federation.html.
+-spec enable_federation(aws_client:aws_client(), enable_federation_request()) ->
+    {ok, enable_federation_response(), tuple()} |
+    {error, any()} |
+    {error, enable_federation_errors(), tuple()}.
 enable_federation(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_federation(Client, Input, []).
+
+-spec enable_federation(aws_client:aws_client(), enable_federation_request(), proplists:proplist()) ->
+    {ok, enable_federation_response(), tuple()} |
+    {error, any()} |
+    {error, enable_federation_errors(), tuple()}.
 enable_federation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableFederation">>, Input, Options).
 
 %% @doc Returns information about a specific channel.
+-spec get_channel(aws_client:aws_client(), get_channel_request()) ->
+    {ok, get_channel_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_errors(), tuple()}.
 get_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_channel(Client, Input, []).
+
+-spec get_channel(aws_client:aws_client(), get_channel_request(), proplists:proplist()) ->
+    {ok, get_channel_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_errors(), tuple()}.
 get_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetChannel">>, Input, Options).
@@ -363,9 +2680,18 @@ get_channel(Client, Input, Options)
 %% @doc Returns information about an event data store specified as either an
 %% ARN or the ID
 %% portion of the ARN.
+-spec get_event_data_store(aws_client:aws_client(), get_event_data_store_request()) ->
+    {ok, get_event_data_store_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_data_store_errors(), tuple()}.
 get_event_data_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_data_store(Client, Input, []).
+
+-spec get_event_data_store(aws_client:aws_client(), get_event_data_store_request(), proplists:proplist()) ->
+    {ok, get_event_data_store_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_data_store_errors(), tuple()}.
 get_event_data_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEventDataStore">>, Input, Options).
@@ -395,17 +2721,35 @@ get_event_data_store(Client, Input, Options)
 %%
 %% Logging data events:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html
+-spec get_event_selectors(aws_client:aws_client(), get_event_selectors_request()) ->
+    {ok, get_event_selectors_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_selectors_errors(), tuple()}.
 get_event_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_selectors(Client, Input, []).
+
+-spec get_event_selectors(aws_client:aws_client(), get_event_selectors_request(), proplists:proplist()) ->
+    {ok, get_event_selectors_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_selectors_errors(), tuple()}.
 get_event_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEventSelectors">>, Input, Options).
 
 %% @doc Returns information about a specific import.
+-spec get_import(aws_client:aws_client(), get_import_request()) ->
+    {ok, get_import_response(), tuple()} |
+    {error, any()} |
+    {error, get_import_errors(), tuple()}.
 get_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_import(Client, Input, []).
+
+-spec get_import(aws_client:aws_client(), get_import_request(), proplists:proplist()) ->
+    {ok, get_import_response(), tuple()} |
+    {error, any()} |
+    {error, get_import_errors(), tuple()}.
 get_import(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetImport">>, Input, Options).
@@ -429,9 +2773,18 @@ get_import(Client, Input, Options)
 %% For more information, see Logging CloudTrail Insights events:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html
 %% in the CloudTrail User Guide.
+-spec get_insight_selectors(aws_client:aws_client(), get_insight_selectors_request()) ->
+    {ok, get_insight_selectors_response(), tuple()} |
+    {error, any()} |
+    {error, get_insight_selectors_errors(), tuple()}.
 get_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_insight_selectors(Client, Input, []).
+
+-spec get_insight_selectors(aws_client:aws_client(), get_insight_selectors_request(), proplists:proplist()) ->
+    {ok, get_insight_selectors_response(), tuple()} |
+    {error, any()} |
+    {error, get_insight_selectors_errors(), tuple()}.
 get_insight_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInsightSelectors">>, Input, Options).
@@ -440,9 +2793,18 @@ get_insight_selectors(Client, Input, Options)
 %%
 %% You must specify the `QueryID' value
 %% returned by the `StartQuery' operation.
+-spec get_query_results(aws_client:aws_client(), get_query_results_request()) ->
+    {ok, get_query_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_query_results_errors(), tuple()}.
 get_query_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_results(Client, Input, []).
+
+-spec get_query_results(aws_client:aws_client(), get_query_results_request(), proplists:proplist()) ->
+    {ok, get_query_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_query_results_errors(), tuple()}.
 get_query_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryResults">>, Input, Options).
@@ -450,17 +2812,35 @@ get_query_results(Client, Input, Options)
 %% @doc
 %% Retrieves the JSON text of the resource-based policy document attached to
 %% the CloudTrail channel.
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
+
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
 
 %% @doc Returns settings information for a specified trail.
+-spec get_trail(aws_client:aws_client(), get_trail_request()) ->
+    {ok, get_trail_response(), tuple()} |
+    {error, any()} |
+    {error, get_trail_errors(), tuple()}.
 get_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trail(Client, Input, []).
+
+-spec get_trail(aws_client:aws_client(), get_trail_request(), proplists:proplist()) ->
+    {ok, get_trail_response(), tuple()} |
+    {error, any()} |
+    {error, get_trail_errors(), tuple()}.
 get_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrail">>, Input, Options).
@@ -475,17 +2855,35 @@ get_trail(Client, Input, Options)
 %% Region. To return trail status from all Regions, you must call the
 %% operation on each
 %% Region.
+-spec get_trail_status(aws_client:aws_client(), get_trail_status_request()) ->
+    {ok, get_trail_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_trail_status_errors(), tuple()}.
 get_trail_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trail_status(Client, Input, []).
+
+-spec get_trail_status(aws_client:aws_client(), get_trail_status_request(), proplists:proplist()) ->
+    {ok, get_trail_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_trail_status_errors(), tuple()}.
 get_trail_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrailStatus">>, Input, Options).
 
 %% @doc Lists the channels in the current account, and their source names.
+-spec list_channels(aws_client:aws_client(), list_channels_request()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_channels(Client, Input, []).
+
+-spec list_channels(aws_client:aws_client(), list_channels_request(), proplists:proplist()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
 list_channels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListChannels">>, Input, Options).
@@ -493,26 +2891,53 @@ list_channels(Client, Input, Options)
 %% @doc Returns information about all event data stores in the account, in
 %% the current
 %% Region.
+-spec list_event_data_stores(aws_client:aws_client(), list_event_data_stores_request()) ->
+    {ok, list_event_data_stores_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_data_stores_errors(), tuple()}.
 list_event_data_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_data_stores(Client, Input, []).
+
+-spec list_event_data_stores(aws_client:aws_client(), list_event_data_stores_request(), proplists:proplist()) ->
+    {ok, list_event_data_stores_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_data_stores_errors(), tuple()}.
 list_event_data_stores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventDataStores">>, Input, Options).
 
 %% @doc Returns a list of failures for the specified import.
+-spec list_import_failures(aws_client:aws_client(), list_import_failures_request()) ->
+    {ok, list_import_failures_response(), tuple()} |
+    {error, any()} |
+    {error, list_import_failures_errors(), tuple()}.
 list_import_failures(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_import_failures(Client, Input, []).
+
+-spec list_import_failures(aws_client:aws_client(), list_import_failures_request(), proplists:proplist()) ->
+    {ok, list_import_failures_response(), tuple()} |
+    {error, any()} |
+    {error, list_import_failures_errors(), tuple()}.
 list_import_failures(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImportFailures">>, Input, Options).
 
 %% @doc Returns information on all imports, or a select set of imports by
 %% `ImportStatus' or `Destination'.
+-spec list_imports(aws_client:aws_client(), list_imports_request()) ->
+    {ok, list_imports_response(), tuple()} |
+    {error, any()} |
+    {error, list_imports_errors(), tuple()}.
 list_imports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_imports(Client, Input, []).
+
+-spec list_imports(aws_client:aws_client(), list_imports_request(), proplists:proplist()) ->
+    {ok, list_imports_response(), tuple()} |
+    {error, any()} |
+    {error, list_imports_errors(), tuple()}.
 list_imports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImports">>, Input, Options).
@@ -541,9 +2966,18 @@ list_imports(Client, Input, Options)
 %% `cloudtrail:LookupEvents' action. To use this operation,
 %% you must have permissions to perform the `cloudtrail:LookupEvents'
 %% action.
+-spec list_insights_metric_data(aws_client:aws_client(), list_insights_metric_data_request()) ->
+    {ok, list_insights_metric_data_response(), tuple()} |
+    {error, any()} |
+    {error, list_insights_metric_data_errors(), tuple()}.
 list_insights_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_insights_metric_data(Client, Input, []).
+
+-spec list_insights_metric_data(aws_client:aws_client(), list_insights_metric_data_request(), proplists:proplist()) ->
+    {ok, list_insights_metric_data_response(), tuple()} |
+    {error, any()} |
+    {error, list_insights_metric_data_errors(), tuple()}.
 list_insights_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInsightsMetricData">>, Input, Options).
@@ -562,9 +2996,18 @@ list_insights_metric_data(Client, Input, Options)
 %% from a specific Region, you must look in the same Region for its
 %% corresponding public
 %% key.
+-spec list_public_keys(aws_client:aws_client(), list_public_keys_request()) ->
+    {ok, list_public_keys_response(), tuple()} |
+    {error, any()} |
+    {error, list_public_keys_errors(), tuple()}.
 list_public_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_public_keys(Client, Input, []).
+
+-spec list_public_keys(aws_client:aws_client(), list_public_keys_request(), proplists:proplist()) ->
+    {ok, list_public_keys_response(), tuple()} |
+    {error, any()} |
+    {error, list_public_keys_errors(), tuple()}.
 list_public_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPublicKeys">>, Input, Options).
@@ -580,26 +3023,53 @@ list_public_keys(Client, Input, Options)
 %% `QueryStatus' include `QUEUED', `RUNNING',
 %% `FINISHED', `FAILED', `TIMED_OUT', or
 %% `CANCELLED'.
+-spec list_queries(aws_client:aws_client(), list_queries_request()) ->
+    {ok, list_queries_response(), tuple()} |
+    {error, any()} |
+    {error, list_queries_errors(), tuple()}.
 list_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_queries(Client, Input, []).
+
+-spec list_queries(aws_client:aws_client(), list_queries_request(), proplists:proplist()) ->
+    {ok, list_queries_response(), tuple()} |
+    {error, any()} |
+    {error, list_queries_errors(), tuple()}.
 list_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQueries">>, Input, Options).
 
 %% @doc Lists the tags for the specified trails, event data stores, or
 %% channels in the current Region.
+-spec list_tags(aws_client:aws_client(), list_tags_request()) ->
+    {ok, list_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
+
+-spec list_tags(aws_client:aws_client(), list_tags_request(), proplists:proplist()) ->
+    {ok, list_tags_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_errors(), tuple()}.
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
 
 %% @doc Lists trails that are in the current account.
+-spec list_trails(aws_client:aws_client(), list_trails_request()) ->
+    {ok, list_trails_response(), tuple()} |
+    {error, any()} |
+    {error, list_trails_errors(), tuple()}.
 list_trails(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_trails(Client, Input, []).
+
+-spec list_trails(aws_client:aws_client(), list_trails_request(), proplists:proplist()) ->
+    {ok, list_trails_response(), tuple()} |
+    {error, any()} |
+    {error, list_trails_errors(), tuple()}.
 list_trails(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrails">>, Input, Options).
@@ -653,9 +3123,18 @@ list_trails(Client, Input, Options)
 %% The rate of lookup requests is limited to two per second, per account, per
 %% Region. If
 %% this limit is exceeded, a throttling error occurs.
+-spec lookup_events(aws_client:aws_client(), lookup_events_request()) ->
+    {ok, lookup_events_response(), tuple()} |
+    {error, any()} |
+    {error, lookup_events_errors(), tuple()}.
 lookup_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     lookup_events(Client, Input, []).
+
+-spec lookup_events(aws_client:aws_client(), lookup_events_request(), proplists:proplist()) ->
+    {ok, lookup_events_response(), tuple()} |
+    {error, any()} |
+    {error, lookup_events_errors(), tuple()}.
 lookup_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LookupEvents">>, Input, Options).
@@ -733,9 +3212,18 @@ lookup_events(Client, Input, Options)
 %% selectors, see Logging data events:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html
 %% in the CloudTrail User Guide.
+-spec put_event_selectors(aws_client:aws_client(), put_event_selectors_request()) ->
+    {ok, put_event_selectors_response(), tuple()} |
+    {error, any()} |
+    {error, put_event_selectors_errors(), tuple()}.
 put_event_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_event_selectors(Client, Input, []).
+
+-spec put_event_selectors(aws_client:aws_client(), put_event_selectors_request(), proplists:proplist()) ->
+    {ok, put_event_selectors_response(), tuple()} |
+    {error, any()} |
+    {error, put_event_selectors_errors(), tuple()}.
 put_event_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEventSelectors">>, Input, Options).
@@ -780,9 +3268,18 @@ put_event_selectors(Client, Input, Options)
 %% For more information, see Logging CloudTrail Insights events:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html
 %% in the CloudTrail User Guide.
+-spec put_insight_selectors(aws_client:aws_client(), put_insight_selectors_request()) ->
+    {ok, put_insight_selectors_response(), tuple()} |
+    {error, any()} |
+    {error, put_insight_selectors_errors(), tuple()}.
 put_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_insight_selectors(Client, Input, []).
+
+-spec put_insight_selectors(aws_client:aws_client(), put_insight_selectors_request(), proplists:proplist()) ->
+    {ok, put_insight_selectors_response(), tuple()} |
+    {error, any()} |
+    {error, put_insight_selectors_errors(), tuple()}.
 put_insight_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInsightSelectors">>, Input, Options).
@@ -796,9 +3293,18 @@ put_insight_selectors(Client, Input, Options)
 %% CloudTrail resource-based policy examples:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html
 %% in the CloudTrail User Guide.
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -806,18 +3312,36 @@ put_resource_policy(Client, Input, Options)
 %% @doc Registers an organization’s member account as the CloudTrail
 %% delegated administrator:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-delegated-administrator.html.
+-spec register_organization_delegated_admin(aws_client:aws_client(), register_organization_delegated_admin_request()) ->
+    {ok, register_organization_delegated_admin_response(), tuple()} |
+    {error, any()} |
+    {error, register_organization_delegated_admin_errors(), tuple()}.
 register_organization_delegated_admin(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_organization_delegated_admin(Client, Input, []).
+
+-spec register_organization_delegated_admin(aws_client:aws_client(), register_organization_delegated_admin_request(), proplists:proplist()) ->
+    {ok, register_organization_delegated_admin_response(), tuple()} |
+    {error, any()} |
+    {error, register_organization_delegated_admin_errors(), tuple()}.
 register_organization_delegated_admin(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterOrganizationDelegatedAdmin">>, Input, Options).
 
 %% @doc Removes the specified tags from a trail, event data store, or
 %% channel.
+-spec remove_tags(aws_client:aws_client(), remove_tags_request()) ->
+    {ok, remove_tags_response(), tuple()} |
+    {error, any()} |
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
+
+-spec remove_tags(aws_client:aws_client(), remove_tags_request(), proplists:proplist()) ->
+    {ok, remove_tags_response(), tuple()} |
+    {error, any()} |
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
@@ -830,9 +3354,18 @@ remove_tags(Client, Input, Options)
 %% seven-day wait period after deletion. Restoring an event data store can
 %% take several
 %% minutes, depending on the size of the event data store.
+-spec restore_event_data_store(aws_client:aws_client(), restore_event_data_store_request()) ->
+    {ok, restore_event_data_store_response(), tuple()} |
+    {error, any()} |
+    {error, restore_event_data_store_errors(), tuple()}.
 restore_event_data_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_event_data_store(Client, Input, []).
+
+-spec restore_event_data_store(aws_client:aws_client(), restore_event_data_store_request(), proplists:proplist()) ->
+    {ok, restore_event_data_store_response(), tuple()} |
+    {error, any()} |
+    {error, restore_event_data_store_errors(), tuple()}.
 restore_event_data_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreEventDataStore">>, Input, Options).
@@ -844,9 +3377,18 @@ restore_event_data_store(Client, Input, Options)
 %% `STOPPED_INGESTION'
 %% and the `eventCategory' must be `Management', `Data', or
 %% `ConfigurationItem'.
+-spec start_event_data_store_ingestion(aws_client:aws_client(), start_event_data_store_ingestion_request()) ->
+    {ok, start_event_data_store_ingestion_response(), tuple()} |
+    {error, any()} |
+    {error, start_event_data_store_ingestion_errors(), tuple()}.
 start_event_data_store_ingestion(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_event_data_store_ingestion(Client, Input, []).
+
+-spec start_event_data_store_ingestion(aws_client:aws_client(), start_event_data_store_ingestion_request(), proplists:proplist()) ->
+    {ok, start_event_data_store_ingestion_response(), tuple()} |
+    {error, any()} |
+    {error, start_event_data_store_ingestion_errors(), tuple()}.
 start_event_data_store_ingestion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEventDataStoreIngestion">>, Input, Options).
@@ -882,9 +3424,18 @@ start_event_data_store_ingestion(Client, Input, Options)
 %% management account to import trail events. You cannot use the delegated
 %% administrator
 %% account for the organization.
+-spec start_import(aws_client:aws_client(), start_import_request()) ->
+    {ok, start_import_response(), tuple()} |
+    {error, any()} |
+    {error, start_import_errors(), tuple()}.
 start_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_import(Client, Input, []).
+
+-spec start_import(aws_client:aws_client(), start_import_request(), proplists:proplist()) ->
+    {ok, start_import_response(), tuple()} |
+    {error, any()} |
+    {error, start_import_errors(), tuple()}.
 start_import(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartImport">>, Input, Options).
@@ -898,9 +3449,18 @@ start_import(Client, Input, Options)
 %% shadow trails
 %% (replicated trails in other Regions) of a trail that is enabled in all
 %% Regions.
+-spec start_logging(aws_client:aws_client(), start_logging_request()) ->
+    {ok, start_logging_response(), tuple()} |
+    {error, any()} |
+    {error, start_logging_errors(), tuple()}.
 start_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_logging(Client, Input, []).
+
+-spec start_logging(aws_client:aws_client(), start_logging_request(), proplists:proplist()) ->
+    {ok, start_logging_response(), tuple()} |
+    {error, any()} |
+    {error, start_logging_errors(), tuple()}.
 start_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLogging">>, Input, Options).
@@ -918,9 +3478,18 @@ start_logging(Client, Input, Options)
 %% current release,
 %% the `QueryAlias' and `QueryParameters' parameters are used only
 %% for the queries that populate the CloudTrail Lake dashboards.
+-spec start_query(aws_client:aws_client(), start_query_request()) ->
+    {ok, start_query_response(), tuple()} |
+    {error, any()} |
+    {error, start_query_errors(), tuple()}.
 start_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_query(Client, Input, []).
+
+-spec start_query(aws_client:aws_client(), start_query_request(), proplists:proplist()) ->
+    {ok, start_query_response(), tuple()} |
+    {error, any()} |
+    {error, start_query_errors(), tuple()}.
 start_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartQuery">>, Input, Options).
@@ -931,17 +3500,35 @@ start_query(Client, Input, Options)
 %% To stop ingestion, the event data store `Status' must be `ENABLED'
 %% and the `eventCategory' must be `Management', `Data', or
 %% `ConfigurationItem'.
+-spec stop_event_data_store_ingestion(aws_client:aws_client(), stop_event_data_store_ingestion_request()) ->
+    {ok, stop_event_data_store_ingestion_response(), tuple()} |
+    {error, any()} |
+    {error, stop_event_data_store_ingestion_errors(), tuple()}.
 stop_event_data_store_ingestion(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_event_data_store_ingestion(Client, Input, []).
+
+-spec stop_event_data_store_ingestion(aws_client:aws_client(), stop_event_data_store_ingestion_request(), proplists:proplist()) ->
+    {ok, stop_event_data_store_ingestion_response(), tuple()} |
+    {error, any()} |
+    {error, stop_event_data_store_ingestion_errors(), tuple()}.
 stop_event_data_store_ingestion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopEventDataStoreIngestion">>, Input, Options).
 
 %% @doc Stops a specified import.
+-spec stop_import(aws_client:aws_client(), stop_import_request()) ->
+    {ok, stop_import_response(), tuple()} |
+    {error, any()} |
+    {error, stop_import_errors(), tuple()}.
 stop_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_import(Client, Input, []).
+
+-spec stop_import(aws_client:aws_client(), stop_import_request(), proplists:proplist()) ->
+    {ok, stop_import_response(), tuple()} |
+    {error, any()} |
+    {error, stop_import_errors(), tuple()}.
 stop_import(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopImport">>, Input, Options).
@@ -960,17 +3547,35 @@ stop_import(Client, Input, Options)
 %% operation cannot be called on the shadow trails (replicated trails in
 %% other Regions) of a
 %% trail enabled in all Regions.
+-spec stop_logging(aws_client:aws_client(), stop_logging_request()) ->
+    {ok, stop_logging_response(), tuple()} |
+    {error, any()} |
+    {error, stop_logging_errors(), tuple()}.
 stop_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_logging(Client, Input, []).
+
+-spec stop_logging(aws_client:aws_client(), stop_logging_request(), proplists:proplist()) ->
+    {ok, stop_logging_response(), tuple()} |
+    {error, any()} |
+    {error, stop_logging_errors(), tuple()}.
 stop_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopLogging">>, Input, Options).
 
 %% @doc Updates a channel specified by a required channel ARN or UUID.
+-spec update_channel(aws_client:aws_client(), update_channel_request()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_channel(Client, Input, []).
+
+-spec update_channel(aws_client:aws_client(), update_channel_request(), proplists:proplist()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
 update_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateChannel">>, Input, Options).
@@ -999,9 +3604,18 @@ update_channel(Client, Input, Options)
 %% items, Audit Manager evidence, or non-Amazon Web Services events,
 %% `AdvancedEventSelectors' includes events of that type in your event
 %% data store.
+-spec update_event_data_store(aws_client:aws_client(), update_event_data_store_request()) ->
+    {ok, update_event_data_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_event_data_store_errors(), tuple()}.
 update_event_data_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_event_data_store(Client, Input, []).
+
+-spec update_event_data_store(aws_client:aws_client(), update_event_data_store_request(), proplists:proplist()) ->
+    {ok, update_event_data_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_event_data_store_errors(), tuple()}.
 update_event_data_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEventDataStore">>, Input, Options).
@@ -1019,9 +3633,18 @@ update_event_data_store(Client, Input, Options)
 %% which the
 %% trail was created; otherwise, an `InvalidHomeRegionException' is
 %% thrown.
+-spec update_trail(aws_client:aws_client(), update_trail_request()) ->
+    {ok, update_trail_response(), tuple()} |
+    {error, any()} |
+    {error, update_trail_errors(), tuple()}.
 update_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trail(Client, Input, []).
+
+-spec update_trail(aws_client:aws_client(), update_trail_request(), proplists:proplist()) ->
+    {ok, update_trail_response(), tuple()} |
+    {error, any()} |
+    {error, update_trail_errors(), tuple()}.
 update_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrail">>, Input, Options).

@@ -50,6 +50,640 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% update_attendee_capabilities_response() :: #{
+%%   <<"Attendee">> => attendee()
+%% }
+-type update_attendee_capabilities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% notifications_configuration() :: #{
+%%   <<"LambdaFunctionArn">> => string(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SqsQueueArn">> => string()
+%% }
+-type notifications_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_attendee_response() :: #{
+%%   <<"Attendee">> => attendee()
+%% }
+-type get_attendee_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% create_meeting_with_attendees_request() :: #{
+%%   <<"Attendees">> := list(create_attendee_request_item()()),
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ExternalMeetingId">> := string(),
+%%   <<"MediaRegion">> := string(),
+%%   <<"MeetingFeatures">> => meeting_features_configuration(),
+%%   <<"MeetingHostId">> => string(),
+%%   <<"NotificationsConfiguration">> => notifications_configuration(),
+%%   <<"PrimaryMeetingId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TenantIds">> => list(string()())
+%% }
+-type create_meeting_with_attendees_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_failure_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type service_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% meeting() :: #{
+%%   <<"ExternalMeetingId">> => string(),
+%%   <<"MediaPlacement">> => media_placement(),
+%%   <<"MediaRegion">> => string(),
+%%   <<"MeetingArn">> => string(),
+%%   <<"MeetingFeatures">> => meeting_features_configuration(),
+%%   <<"MeetingHostId">> => string(),
+%%   <<"MeetingId">> => string(),
+%%   <<"PrimaryMeetingId">> => string(),
+%%   <<"TenantIds">> => list(string()())
+%% }
+-type meeting() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_meeting_response() :: #{
+%%   <<"Meeting">> => meeting()
+%% }
+-type create_meeting_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_meeting_response() :: #{
+%%   <<"Meeting">> => meeting()
+%% }
+-type get_meeting_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_meeting_transcription_request() :: #{}
+-type stop_meeting_transcription_request() :: #{}.
+
+
+%% Example:
+%% attendee_features() :: #{
+%%   <<"MaxCount">> => integer()
+%% }
+-type attendee_features() :: #{binary() => any()}.
+
+
+%% Example:
+%% engine_transcribe_settings() :: #{
+%%   <<"ContentIdentificationType">> => list(any()),
+%%   <<"ContentRedactionType">> => list(any()),
+%%   <<"EnablePartialResultsStabilization">> => boolean(),
+%%   <<"IdentifyLanguage">> => boolean(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageModelName">> => string(),
+%%   <<"LanguageOptions">> => string(),
+%%   <<"PartialResultsStability">> => list(any()),
+%%   <<"PiiEntityTypes">> => string(),
+%%   <<"PreferredLanguage">> => list(any()),
+%%   <<"Region">> => list(any()),
+%%   <<"VocabularyFilterMethod">> => list(any()),
+%%   <<"VocabularyFilterName">> => string(),
+%%   <<"VocabularyFilterNames">> => string(),
+%%   <<"VocabularyName">> => string(),
+%%   <<"VocabularyNames">> => string()
+%% }
+-type engine_transcribe_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attendees_response() :: #{
+%%   <<"Attendees">> => list(attendee()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attendees_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_meeting_with_attendees_response() :: #{
+%%   <<"Attendees">> => list(attendee()()),
+%%   <<"Errors">> => list(create_attendee_error()()),
+%%   <<"Meeting">> => meeting()
+%% }
+-type create_meeting_with_attendees_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% transcription_configuration() :: #{
+%%   <<"EngineTranscribeMedicalSettings">> => engine_transcribe_medical_settings(),
+%%   <<"EngineTranscribeSettings">> => engine_transcribe_settings()
+%% }
+-type transcription_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_meeting_request() :: #{}
+-type delete_meeting_request() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_features() :: #{
+%%   <<"EchoReduction">> => list(any())
+%% }
+-type audio_features() :: #{binary() => any()}.
+
+
+%% Example:
+%% engine_transcribe_medical_settings() :: #{
+%%   <<"ContentIdentificationType">> => list(any()),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Region">> => list(any()),
+%%   <<"Specialty">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"VocabularyName">> => string()
+%% }
+-type engine_transcribe_medical_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_meeting_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ExternalMeetingId">> := string(),
+%%   <<"MediaRegion">> := string(),
+%%   <<"MeetingFeatures">> => meeting_features_configuration(),
+%%   <<"MeetingHostId">> => string(),
+%%   <<"NotificationsConfiguration">> => notifications_configuration(),
+%%   <<"PrimaryMeetingId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TenantIds">> => list(string()())
+%% }
+-type create_meeting_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attendee_request_item() :: #{
+%%   <<"Capabilities">> => attendee_capabilities(),
+%%   <<"ExternalUserId">> => string()
+%% }
+-type create_attendee_request_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attendee_response() :: #{
+%%   <<"Attendee">> => attendee()
+%% }
+-type create_attendee_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% attendee_capabilities() :: #{
+%%   <<"Audio">> => list(any()),
+%%   <<"Content">> => list(any()),
+%%   <<"Video">> => list(any())
+%% }
+-type attendee_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"RetryAfterSeconds">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_meeting_request() :: #{}
+-type get_meeting_request() :: #{}.
+
+
+%% Example:
+%% create_attendee_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ExternalUserId">> => string()
+%% }
+-type create_attendee_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_entity_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type unprocessable_entity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% get_attendee_request() :: #{}
+-type get_attendee_request() :: #{}.
+
+
+%% Example:
+%% attendee_id_item() :: #{
+%%   <<"AttendeeId">> => string()
+%% }
+-type attendee_id_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% meeting_features_configuration() :: #{
+%%   <<"Attendee">> => attendee_features(),
+%%   <<"Audio">> => audio_features(),
+%%   <<"Content">> => content_features(),
+%%   <<"Video">> => video_features()
+%% }
+-type meeting_features_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_features() :: #{
+%%   <<"MaxResolution">> => list(any())
+%% }
+-type content_features() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_attendee_capabilities_request() :: #{
+%%   <<"Capabilities">> := attendee_capabilities()
+%% }
+-type update_attendee_capabilities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_meeting_transcription_request() :: #{
+%%   <<"TranscriptionConfiguration">> := transcription_configuration()
+%% }
+-type start_meeting_transcription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_attendee_request() :: #{
+%%   <<"Attendees">> := list(create_attendee_request_item()())
+%% }
+-type batch_create_attendee_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_attendee_response() :: #{
+%%   <<"Attendees">> => list(attendee()()),
+%%   <<"Errors">> => list(create_attendee_error()())
+%% }
+-type batch_create_attendee_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attendees_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attendees_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_attendee_capabilities_except_request() :: #{
+%%   <<"Capabilities">> := attendee_capabilities(),
+%%   <<"ExcludedAttendeeIds">> := list(attendee_id_item()())
+%% }
+-type batch_update_attendee_capabilities_except_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_features() :: #{
+%%   <<"MaxResolution">> => list(any())
+%% }
+-type video_features() :: #{binary() => any()}.
+
+
+%% Example:
+%% attendee() :: #{
+%%   <<"AttendeeId">> => string(),
+%%   <<"Capabilities">> => attendee_capabilities(),
+%%   <<"ExternalUserId">> => string(),
+%%   <<"JoinToken">> => string()
+%% }
+-type attendee() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attendee_request() :: #{
+%%   <<"Capabilities">> => attendee_capabilities(),
+%%   <<"ExternalUserId">> := string()
+%% }
+-type create_attendee_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_placement() :: #{
+%%   <<"AudioFallbackUrl">> => string(),
+%%   <<"AudioHostUrl">> => string(),
+%%   <<"EventIngestionUrl">> => string(),
+%%   <<"ScreenDataUrl">> => string(),
+%%   <<"ScreenSharingUrl">> => string(),
+%%   <<"ScreenViewingUrl">> => string(),
+%%   <<"SignalingUrl">> => string(),
+%%   <<"TurnControlUrl">> => string()
+%% }
+-type media_placement() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attendee_request() :: #{}
+-type delete_attendee_request() :: #{}.
+
+-type batch_create_attendee_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type batch_update_attendee_capabilities_except_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type create_attendee_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type create_meeting_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type create_meeting_with_attendees_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type delete_attendee_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type delete_meeting_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type get_attendee_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type get_meeting_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type list_attendees_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type start_meeting_transcription_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type stop_meeting_transcription_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    unprocessable_entity_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
+-type update_attendee_capabilities_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    forbidden_exception() | 
+    service_failure_exception() | 
+    unauthorized_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -60,8 +694,17 @@
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
 %% Amazon Chime Developer Guide.
+-spec batch_create_attendee(aws_client:aws_client(), binary() | list(), batch_create_attendee_request()) ->
+    {ok, batch_create_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_attendee_errors(), tuple()}.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
+
+-spec batch_create_attendee(aws_client:aws_client(), binary() | list(), batch_create_attendee_request(), proplists:proplist()) ->
+    {ok, batch_create_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_attendee_errors(), tuple()}.
 batch_create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees?operation=batch-create"],
@@ -124,8 +767,17 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 %% and if the attendee turned on their video or content streams, remote
 %% attendees can receive those streams, but only after media renegotiation
 %% between the client and the Amazon Chime back-end server.
+-spec batch_update_attendee_capabilities_except(aws_client:aws_client(), binary() | list(), batch_update_attendee_capabilities_except_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, batch_update_attendee_capabilities_except_errors(), tuple()}.
 batch_update_attendee_capabilities_except(Client, MeetingId, Input) ->
     batch_update_attendee_capabilities_except(Client, MeetingId, Input, []).
+
+-spec batch_update_attendee_capabilities_except(aws_client:aws_client(), binary() | list(), batch_update_attendee_capabilities_except_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, batch_update_attendee_capabilities_except_errors(), tuple()}.
 batch_update_attendee_capabilities_except(Client, MeetingId, Input0, Options0) ->
     Method = put,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/capabilities?operation=batch-update-except"],
@@ -156,8 +808,17 @@ batch_update_attendee_capabilities_except(Client, MeetingId, Input0, Options0) -
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the
 %% Amazon Chime Developer Guide.
+-spec create_attendee(aws_client:aws_client(), binary() | list(), create_attendee_request()) ->
+    {ok, create_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, create_attendee_errors(), tuple()}.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
+
+-spec create_attendee(aws_client:aws_client(), binary() | list(), create_attendee_request(), proplists:proplist()) ->
+    {ok, create_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, create_attendee_errors(), tuple()}.
 create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
@@ -192,8 +853,17 @@ create_attendee(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the
 %% Amazon Chime Developer Guide.
+-spec create_meeting(aws_client:aws_client(), create_meeting_request()) ->
+    {ok, create_meeting_response(), tuple()} |
+    {error, any()} |
+    {error, create_meeting_errors(), tuple()}.
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
+
+-spec create_meeting(aws_client:aws_client(), create_meeting_request(), proplists:proplist()) ->
+    {ok, create_meeting_response(), tuple()} |
+    {error, any()} |
+    {error, create_meeting_errors(), tuple()}.
 create_meeting(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings"],
@@ -228,8 +898,17 @@ create_meeting(Client, Input0, Options0) ->
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
+-spec create_meeting_with_attendees(aws_client:aws_client(), create_meeting_with_attendees_request()) ->
+    {ok, create_meeting_with_attendees_response(), tuple()} |
+    {error, any()} |
+    {error, create_meeting_with_attendees_errors(), tuple()}.
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
+
+-spec create_meeting_with_attendees(aws_client:aws_client(), create_meeting_with_attendees_request(), proplists:proplist()) ->
+    {ok, create_meeting_with_attendees_response(), tuple()} |
+    {error, any()} |
+    {error, create_meeting_with_attendees_errors(), tuple()}.
 create_meeting_with_attendees(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings?operation=create-attendees"],
@@ -261,8 +940,17 @@ create_meeting_with_attendees(Client, Input0, Options0) ->
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
+-spec delete_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attendee_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_attendee_errors(), tuple()}.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
+
+-spec delete_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attendee_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_attendee_errors(), tuple()}.
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
@@ -293,8 +981,17 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
 %% Amazon Chime Developer Guide.
+-spec delete_meeting(aws_client:aws_client(), binary() | list(), delete_meeting_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_meeting_errors(), tuple()}.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
+
+-spec delete_meeting(aws_client:aws_client(), binary() | list(), delete_meeting_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_meeting_errors(), tuple()}.
 delete_meeting(Client, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
@@ -325,14 +1022,26 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, get_attendee_errors(), tuple()}.
 get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     get_attendee(Client, AttendeeId, MeetingId, #{}, #{}).
 
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, get_attendee_errors(), tuple()}.
 get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, []).
 
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_attendee_response(), tuple()} |
+    {error, any()} |
+    {error, get_attendee_errors(), tuple()}.
 get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
@@ -356,14 +1065,26 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
+-spec get_meeting(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_meeting_response(), tuple()} |
+    {error, any()} |
+    {error, get_meeting_errors(), tuple()}.
 get_meeting(Client, MeetingId)
   when is_map(Client) ->
     get_meeting(Client, MeetingId, #{}, #{}).
 
+-spec get_meeting(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_meeting_response(), tuple()} |
+    {error, any()} |
+    {error, get_meeting_errors(), tuple()}.
 get_meeting(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_meeting(Client, MeetingId, QueryMap, HeadersMap, []).
 
+-spec get_meeting(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_meeting_response(), tuple()} |
+    {error, any()} |
+    {error, get_meeting_errors(), tuple()}.
 get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
@@ -387,14 +1108,26 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
+-spec list_attendees(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_attendees_response(), tuple()} |
+    {error, any()} |
+    {error, list_attendees_errors(), tuple()}.
 list_attendees(Client, MeetingId)
   when is_map(Client) ->
     list_attendees(Client, MeetingId, #{}, #{}).
 
+-spec list_attendees(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_attendees_response(), tuple()} |
+    {error, any()} |
+    {error, list_attendees_errors(), tuple()}.
 list_attendees(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attendees(Client, MeetingId, QueryMap, HeadersMap, []).
 
+-spec list_attendees(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_attendees_response(), tuple()} |
+    {error, any()} |
+    {error, list_attendees_errors(), tuple()}.
 list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
@@ -417,14 +1150,26 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the tags available for the specified resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
@@ -478,8 +1223,17 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 %% content to develop and
 %% improve AWS AI/ML services by configuring an AI services opt out policy
 %% using Amazon Web Services Organizations.
+-spec start_meeting_transcription(aws_client:aws_client(), binary() | list(), start_meeting_transcription_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_meeting_transcription_errors(), tuple()}.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
+
+-spec start_meeting_transcription(aws_client:aws_client(), binary() | list(), start_meeting_transcription_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_meeting_transcription_errors(), tuple()}.
 start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=start"],
@@ -525,8 +1279,17 @@ start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 %% content to develop and
 %% improve Amazon Web Services AI/ML services by configuring an AI services
 %% opt out policy using Amazon Web Services Organizations.
+-spec stop_meeting_transcription(aws_client:aws_client(), binary() | list(), stop_meeting_transcription_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_meeting_transcription_errors(), tuple()}.
 stop_meeting_transcription(Client, MeetingId, Input) ->
     stop_meeting_transcription(Client, MeetingId, Input, []).
+
+-spec stop_meeting_transcription(aws_client:aws_client(), binary() | list(), stop_meeting_transcription_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_meeting_transcription_errors(), tuple()}.
 stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=stop"],
@@ -550,8 +1313,17 @@ stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The resource that supports tags.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=tag-resource"],
@@ -601,8 +1373,17 @@ tag_resource(Client, Input0, Options0) ->
 %% `tag:UntagResource'
 %%
 %% `ChimeSDKMeetings:DeleteTags'
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
@@ -664,8 +1445,17 @@ untag_resource(Client, Input0, Options0) ->
 %% and if the attendee turned on their video or content streams, remote
 %% attendees can receive those streams, but only after media renegotiation
 %% between the client and the Amazon Chime back-end server.
+-spec update_attendee_capabilities(aws_client:aws_client(), binary() | list(), binary() | list(), update_attendee_capabilities_request()) ->
+    {ok, update_attendee_capabilities_response(), tuple()} |
+    {error, any()} |
+    {error, update_attendee_capabilities_errors(), tuple()}.
 update_attendee_capabilities(Client, AttendeeId, MeetingId, Input) ->
     update_attendee_capabilities(Client, AttendeeId, MeetingId, Input, []).
+
+-spec update_attendee_capabilities(aws_client:aws_client(), binary() | list(), binary() | list(), update_attendee_capabilities_request(), proplists:proplist()) ->
+    {ok, update_attendee_capabilities_response(), tuple()} |
+    {error, any()} |
+    {error, update_attendee_capabilities_errors(), tuple()}.
 update_attendee_capabilities(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = put,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/capabilities"],
@@ -692,7 +1482,7 @@ update_attendee_capabilities(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

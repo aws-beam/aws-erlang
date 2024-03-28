@@ -100,6 +100,705 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% describe_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DeletedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LastAccessedDate">> => non_neg_integer(),
+%%   <<"LastChangedDate">> => non_neg_integer(),
+%%   <<"LastRotatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextRotationDate">> => non_neg_integer(),
+%%   <<"OwningService">> => string(),
+%%   <<"PrimaryRegion">> => string(),
+%%   <<"ReplicationStatus">> => list(replication_status_type()()),
+%%   <<"RotationEnabled">> => boolean(),
+%%   <<"RotationLambdaARN">> => string(),
+%%   <<"RotationRules">> => rotation_rules_type(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VersionIdsToStages">> => map()
+%% }
+-type describe_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_errors_entry() :: #{
+%%   <<"CheckName">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type validation_errors_entry() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"SecretId">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_regions_from_replication_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"ReplicationStatus">> => list(replication_status_type()())
+%% }
+-type remove_regions_from_replication_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_secret_version_stage_request() :: #{
+%%   <<"MoveToVersionId">> => string(),
+%%   <<"RemoveFromVersionId">> => string(),
+%%   <<"SecretId">> := string(),
+%%   <<"VersionStage">> := string()
+%% }
+-type update_secret_version_stage_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_secret_request() :: #{
+%%   <<"ForceDeleteWithoutRecovery">> => boolean(),
+%%   <<"RecoveryWindowInDays">> => float(),
+%%   <<"SecretId">> := string()
+%% }
+-type delete_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% decryption_failure() :: #{
+%%   <<"Message">> => string()
+%% }
+-type decryption_failure() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_rotate_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type cancel_rotate_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_failure() :: #{
+%%   <<"Message">> => string()
+%% }
+-type encryption_failure() :: #{binary() => any()}.
+
+%% Example:
+%% list_secrets_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"IncludePlannedDeletion">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_secrets_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_secret_version_stage_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_secret_version_stage_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_secrets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecretList">> => list(secret_list_entry()())
+%% }
+-type list_secrets_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_random_password_response() :: #{
+%%   <<"RandomPassword">> => string()
+%% }
+-type get_random_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"SecretId">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% validate_resource_policy_request() :: #{
+%%   <<"ResourcePolicy">> := string(),
+%%   <<"SecretId">> => string()
+%% }
+-type validate_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"DeletionDate">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type delete_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_secret_value_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SecretIdList">> => list(string()())
+%% }
+-type batch_get_secret_value_request() :: #{binary() => any()}.
+
+%% Example:
+%% validate_resource_policy_response() :: #{
+%%   <<"PolicyValidationPassed">> => boolean(),
+%%   <<"ValidationErrors">> => list(validation_errors_entry()())
+%% }
+-type validate_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type restore_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_rotate_secret_request() :: #{
+%%   <<"SecretId">> := string()
+%% }
+-type cancel_rotate_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rotate_secret_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"RotateImmediately">> => boolean(),
+%%   <<"RotationLambdaARN">> => string(),
+%%   <<"RotationRules">> => rotation_rules_type(),
+%%   <<"SecretId">> := string()
+%% }
+-type rotate_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_secret_value_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VersionId">> => string(),
+%%   <<"VersionStages">> => list(string()())
+%% }
+-type put_secret_value_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% remove_regions_from_replication_request() :: #{
+%%   <<"RemoveReplicaRegions">> := list(string()()),
+%%   <<"SecretId">> := string()
+%% }
+-type remove_regions_from_replication_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_replication_to_replica_request() :: #{
+%%   <<"SecretId">> := string()
+%% }
+-type stop_replication_to_replica_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_secret_request() :: #{
+%%   <<"SecretId">> := string()
+%% }
+-type describe_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_secret_version_ids_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(secret_versions_list_entry()())
+%% }
+-type list_secret_version_ids_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_secret_value_response() :: #{
+%%   <<"Errors">> => list(api_error_type()()),
+%%   <<"NextToken">> => string(),
+%%   <<"SecretValues">> => list(secret_value_entry()())
+%% }
+-type batch_get_secret_value_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type update_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"SecretId">> := string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_secret_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SecretBinary">> => binary(),
+%%   <<"SecretId">> := string(),
+%%   <<"SecretString">> => string()
+%% }
+-type update_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% replicate_secret_to_regions_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"ReplicationStatus">> => list(replication_status_type()())
+%% }
+-type replicate_secret_to_regions_response() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% replication_status_type() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LastAccessedDate">> => non_neg_integer(),
+%%   <<"Region">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type replication_status_type() :: #{binary() => any()}.
+
+%% Example:
+%% put_secret_value_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"SecretBinary">> => binary(),
+%%   <<"SecretId">> := string(),
+%%   <<"SecretString">> => string(),
+%%   <<"VersionStages">> => list(string()())
+%% }
+-type put_secret_value_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_replication_to_replica_response() :: #{
+%%   <<"ARN">> => string()
+%% }
+-type stop_replication_to_replica_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"BlockPublicPolicy">> => boolean(),
+%%   <<"ResourcePolicy">> := string(),
+%%   <<"SecretId">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% replica_region_type() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type replica_region_type() :: #{binary() => any()}.
+
+%% Example:
+%% get_random_password_request() :: #{
+%%   <<"ExcludeCharacters">> => string(),
+%%   <<"ExcludeLowercase">> => boolean(),
+%%   <<"ExcludeNumbers">> => boolean(),
+%%   <<"ExcludePunctuation">> => boolean(),
+%%   <<"ExcludeUppercase">> => boolean(),
+%%   <<"IncludeSpace">> => boolean(),
+%%   <<"PasswordLength">> => float(),
+%%   <<"RequireEachIncludedType">> => boolean()
+%% }
+-type get_random_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_secret_value_request() :: #{
+%%   <<"SecretId">> := string(),
+%%   <<"VersionId">> => string(),
+%%   <<"VersionStage">> => string()
+%% }
+-type get_secret_value_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_secret_value_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecretBinary">> => binary(),
+%%   <<"SecretString">> => string(),
+%%   <<"VersionId">> => string(),
+%%   <<"VersionStages">> => list(string()())
+%% }
+-type get_secret_value_response() :: #{binary() => any()}.
+
+%% Example:
+%% api_error_type() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"SecretId">> => string()
+%% }
+-type api_error_type() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error() :: #{binary() => any()}.
+
+%% Example:
+%% secret_value_entry() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecretBinary">> => binary(),
+%%   <<"SecretString">> => string(),
+%%   <<"VersionId">> => string(),
+%%   <<"VersionStages">> => list(string()())
+%% }
+-type secret_value_entry() :: #{binary() => any()}.
+
+%% Example:
+%% create_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReplicationStatus">> => list(replication_status_type()()),
+%%   <<"VersionId">> => string()
+%% }
+-type create_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_secret_version_ids_request() :: #{
+%%   <<"IncludeDeprecated">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SecretId">> := string()
+%% }
+-type list_secret_version_ids_request() :: #{binary() => any()}.
+
+%% Example:
+%% secret_list_entry() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DeletedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LastAccessedDate">> => non_neg_integer(),
+%%   <<"LastChangedDate">> => non_neg_integer(),
+%%   <<"LastRotatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextRotationDate">> => non_neg_integer(),
+%%   <<"OwningService">> => string(),
+%%   <<"PrimaryRegion">> => string(),
+%%   <<"RotationEnabled">> => boolean(),
+%%   <<"RotationLambdaARN">> => string(),
+%%   <<"RotationRules">> => rotation_rules_type(),
+%%   <<"SecretVersionsToStages">> => map(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type secret_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% secret_versions_list_entry() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"KmsKeyIds">> => list(string()()),
+%%   <<"LastAccessedDate">> => non_neg_integer(),
+%%   <<"VersionId">> => string(),
+%%   <<"VersionStages">> => list(string()())
+%% }
+-type secret_versions_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rotation_rules_type() :: #{
+%%   <<"AutomaticallyAfterDays">> => float(),
+%%   <<"Duration">> => string(),
+%%   <<"ScheduleExpression">> => string()
+%% }
+-type rotation_rules_type() :: #{binary() => any()}.
+
+%% Example:
+%% public_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type public_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"SecretId">> := string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_secret_request() :: #{
+%%   <<"SecretId">> := string()
+%% }
+-type restore_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% precondition_not_met_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type precondition_not_met_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rotate_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type rotate_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% replicate_secret_to_regions_request() :: #{
+%%   <<"AddReplicaRegions">> := list(replica_region_type()()),
+%%   <<"ForceOverwriteReplicaSecret">> => boolean(),
+%%   <<"SecretId">> := string()
+%% }
+-type replicate_secret_to_regions_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_secret_request() :: #{
+%%   <<"AddReplicaRegions">> => list(replica_region_type()()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ForceOverwriteReplicaSecret">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"SecretBinary">> => binary(),
+%%   <<"SecretString">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_secret_request() :: #{binary() => any()}.
+
+-type batch_get_secret_value_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    decryption_failure().
+
+-type cancel_rotate_secret_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type create_secret_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    resource_exists_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    encryption_failure() | 
+    decryption_failure().
+
+-type delete_resource_policy_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type delete_secret_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_secret_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    resource_not_found_exception().
+
+-type get_random_password_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception().
+
+-type get_resource_policy_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type get_secret_value_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    decryption_failure().
+
+-type list_secret_version_ids_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception().
+
+-type list_secrets_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    invalid_request_exception().
+
+-type put_resource_policy_errors() ::
+    public_policy_exception() | 
+    malformed_policy_document_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type put_secret_value_errors() ::
+    limit_exceeded_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    resource_exists_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    encryption_failure() | 
+    decryption_failure().
+
+-type remove_regions_from_replication_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type replicate_secret_to_regions_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type restore_secret_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type rotate_secret_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type stop_replication_to_replica_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type update_secret_errors() ::
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    resource_exists_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    encryption_failure() | 
+    decryption_failure().
+
+-type update_secret_version_stage_errors() ::
+    limit_exceeded_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type validate_resource_policy_errors() ::
+    malformed_policy_document_exception() | 
+    internal_service_error() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -134,9 +833,18 @@
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec batch_get_secret_value(aws_client:aws_client(), batch_get_secret_value_request()) ->
+    {ok, batch_get_secret_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_secret_value_errors(), tuple()}.
 batch_get_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_secret_value(Client, Input, []).
+
+-spec batch_get_secret_value(aws_client:aws_client(), batch_get_secret_value_request(), proplists:proplist()) ->
+    {ok, batch_get_secret_value_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_secret_value_errors(), tuple()}.
 batch_get_secret_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetSecretValue">>, Input, Options).
@@ -175,9 +883,18 @@ batch_get_secret_value(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec cancel_rotate_secret(aws_client:aws_client(), cancel_rotate_secret_request()) ->
+    {ok, cancel_rotate_secret_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_rotate_secret_errors(), tuple()}.
 cancel_rotate_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_rotate_secret(Client, Input, []).
+
+-spec cancel_rotate_secret(aws_client:aws_client(), cancel_rotate_secret_request(), proplists:proplist()) ->
+    {ok, cancel_rotate_secret_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_rotate_secret_errors(), tuple()}.
 cancel_rotate_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelRotateSecret">>, Input, Options).
@@ -256,9 +973,18 @@ cancel_rotate_secret(Client, Input, Options)
 %% To encrypt the secret with a KMS key other than `aws/secretsmanager',
 %% you need `kms:GenerateDataKey' and `kms:Decrypt' permission to the
 %% key.
+-spec create_secret(aws_client:aws_client(), create_secret_request()) ->
+    {ok, create_secret_response(), tuple()} |
+    {error, any()} |
+    {error, create_secret_errors(), tuple()}.
 create_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_secret(Client, Input, []).
+
+-spec create_secret(aws_client:aws_client(), create_secret_request(), proplists:proplist()) ->
+    {ok, create_secret_response(), tuple()} |
+    {error, any()} |
+    {error, create_secret_errors(), tuple()}.
 create_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSecret">>, Input, Options).
@@ -282,9 +1008,18 @@ create_secret(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -350,9 +1085,18 @@ delete_resource_policy(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec delete_secret(aws_client:aws_client(), delete_secret_request()) ->
+    {ok, delete_secret_response(), tuple()} |
+    {error, any()} |
+    {error, delete_secret_errors(), tuple()}.
 delete_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_secret(Client, Input, []).
+
+-spec delete_secret(aws_client:aws_client(), delete_secret_request(), proplists:proplist()) ->
+    {ok, delete_secret_response(), tuple()} |
+    {error, any()} |
+    {error, delete_secret_errors(), tuple()}.
 delete_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSecret">>, Input, Options).
@@ -376,9 +1120,18 @@ delete_secret(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec describe_secret(aws_client:aws_client(), describe_secret_request()) ->
+    {ok, describe_secret_response(), tuple()} |
+    {error, any()} |
+    {error, describe_secret_errors(), tuple()}.
 describe_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_secret(Client, Input, []).
+
+-spec describe_secret(aws_client:aws_client(), describe_secret_request(), proplists:proplist()) ->
+    {ok, describe_secret_response(), tuple()} |
+    {error, any()} |
+    {error, describe_secret_errors(), tuple()}.
 describe_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSecret">>, Input, Options).
@@ -403,9 +1156,18 @@ describe_secret(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec get_random_password(aws_client:aws_client(), get_random_password_request()) ->
+    {ok, get_random_password_response(), tuple()} |
+    {error, any()} |
+    {error, get_random_password_errors(), tuple()}.
 get_random_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_random_password(Client, Input, []).
+
+-spec get_random_password(aws_client:aws_client(), get_random_password_request(), proplists:proplist()) ->
+    {ok, get_random_password_response(), tuple()} |
+    {error, any()} |
+    {error, get_random_password_errors(), tuple()}.
 get_random_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRandomPassword">>, Input, Options).
@@ -433,9 +1195,18 @@ get_random_password(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
+
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
@@ -479,9 +1250,18 @@ get_resource_policy(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec get_secret_value(aws_client:aws_client(), get_secret_value_request()) ->
+    {ok, get_secret_value_response(), tuple()} |
+    {error, any()} |
+    {error, get_secret_value_errors(), tuple()}.
 get_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_secret_value(Client, Input, []).
+
+-spec get_secret_value(aws_client:aws_client(), get_secret_value_request(), proplists:proplist()) ->
+    {ok, get_secret_value_response(), tuple()} |
+    {error, any()} |
+    {error, get_secret_value_errors(), tuple()}.
 get_secret_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSecretValue">>, Input, Options).
@@ -509,9 +1289,18 @@ get_secret_value(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec list_secret_version_ids(aws_client:aws_client(), list_secret_version_ids_request()) ->
+    {ok, list_secret_version_ids_response(), tuple()} |
+    {error, any()} |
+    {error, list_secret_version_ids_errors(), tuple()}.
 list_secret_version_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_secret_version_ids(Client, Input, []).
+
+-spec list_secret_version_ids(aws_client:aws_client(), list_secret_version_ids_request(), proplists:proplist()) ->
+    {ok, list_secret_version_ids_response(), tuple()} |
+    {error, any()} |
+    {error, list_secret_version_ids_errors(), tuple()}.
 list_secret_version_ids(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSecretVersionIds">>, Input, Options).
@@ -549,9 +1338,18 @@ list_secret_version_ids(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec list_secrets(aws_client:aws_client(), list_secrets_request()) ->
+    {ok, list_secrets_response(), tuple()} |
+    {error, any()} |
+    {error, list_secrets_errors(), tuple()}.
 list_secrets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_secrets(Client, Input, []).
+
+-spec list_secrets(aws_client:aws_client(), list_secrets_request(), proplists:proplist()) ->
+    {ok, list_secrets_response(), tuple()} |
+    {error, any()} |
+    {error, list_secrets_errors(), tuple()}.
 list_secrets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSecrets">>, Input, Options).
@@ -581,9 +1379,18 @@ list_secrets(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -644,9 +1451,18 @@ put_resource_policy(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec put_secret_value(aws_client:aws_client(), put_secret_value_request()) ->
+    {ok, put_secret_value_response(), tuple()} |
+    {error, any()} |
+    {error, put_secret_value_errors(), tuple()}.
 put_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_secret_value(Client, Input, []).
+
+-spec put_secret_value(aws_client:aws_client(), put_secret_value_request(), proplists:proplist()) ->
+    {ok, put_secret_value_response(), tuple()} |
+    {error, any()} |
+    {error, put_secret_value_errors(), tuple()}.
 put_secret_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSecretValue">>, Input, Options).
@@ -668,9 +1484,18 @@ put_secret_value(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec remove_regions_from_replication(aws_client:aws_client(), remove_regions_from_replication_request()) ->
+    {ok, remove_regions_from_replication_response(), tuple()} |
+    {error, any()} |
+    {error, remove_regions_from_replication_errors(), tuple()}.
 remove_regions_from_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_regions_from_replication(Client, Input, []).
+
+-spec remove_regions_from_replication(aws_client:aws_client(), remove_regions_from_replication_request(), proplists:proplist()) ->
+    {ok, remove_regions_from_replication_response(), tuple()} |
+    {error, any()} |
+    {error, remove_regions_from_replication_errors(), tuple()}.
 remove_regions_from_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRegionsFromReplication">>, Input, Options).
@@ -698,9 +1523,18 @@ remove_regions_from_replication(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec replicate_secret_to_regions(aws_client:aws_client(), replicate_secret_to_regions_request()) ->
+    {ok, replicate_secret_to_regions_response(), tuple()} |
+    {error, any()} |
+    {error, replicate_secret_to_regions_errors(), tuple()}.
 replicate_secret_to_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     replicate_secret_to_regions(Client, Input, []).
+
+-spec replicate_secret_to_regions(aws_client:aws_client(), replicate_secret_to_regions_request(), proplists:proplist()) ->
+    {ok, replicate_secret_to_regions_response(), tuple()} |
+    {error, any()} |
+    {error, replicate_secret_to_regions_errors(), tuple()}.
 replicate_secret_to_regions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReplicateSecretToRegions">>, Input, Options).
@@ -725,9 +1559,18 @@ replicate_secret_to_regions(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec restore_secret(aws_client:aws_client(), restore_secret_request()) ->
+    {ok, restore_secret_response(), tuple()} |
+    {error, any()} |
+    {error, restore_secret_errors(), tuple()}.
 restore_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_secret(Client, Input, []).
+
+-spec restore_secret(aws_client:aws_client(), restore_secret_request(), proplists:proplist()) ->
+    {ok, restore_secret_response(), tuple()} |
+    {error, any()} |
+    {error, restore_secret_errors(), tuple()}.
 restore_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreSecret">>, Input, Options).
@@ -778,9 +1621,18 @@ restore_secret(Client, Input, Options)
 %% For more information, see
 %% Permissions for rotation:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets-required-permissions-function.html.
+-spec rotate_secret(aws_client:aws_client(), rotate_secret_request()) ->
+    {ok, rotate_secret_response(), tuple()} |
+    {error, any()} |
+    {error, rotate_secret_errors(), tuple()}.
 rotate_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     rotate_secret(Client, Input, []).
+
+-spec rotate_secret(aws_client:aws_client(), rotate_secret_request(), proplists:proplist()) ->
+    {ok, rotate_secret_response(), tuple()} |
+    {error, any()} |
+    {error, rotate_secret_errors(), tuple()}.
 rotate_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RotateSecret">>, Input, Options).
@@ -805,9 +1657,18 @@ rotate_secret(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec stop_replication_to_replica(aws_client:aws_client(), stop_replication_to_replica_request()) ->
+    {ok, stop_replication_to_replica_response(), tuple()} |
+    {error, any()} |
+    {error, stop_replication_to_replica_errors(), tuple()}.
 stop_replication_to_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication_to_replica(Client, Input, []).
+
+-spec stop_replication_to_replica(aws_client:aws_client(), stop_replication_to_replica_request(), proplists:proplist()) ->
+    {ok, stop_replication_to_replica_response(), tuple()} |
+    {error, any()} |
+    {error, stop_replication_to_replica_errors(), tuple()}.
 stop_replication_to_replica(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopReplicationToReplica">>, Input, Options).
@@ -845,9 +1706,18 @@ stop_replication_to_replica(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -880,9 +1750,18 @@ tag_resource(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -948,9 +1827,18 @@ untag_resource(Client, Input, Options)
 %% more information, see
 %% Secret encryption and decryption:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/security-encryption.html.
+-spec update_secret(aws_client:aws_client(), update_secret_request()) ->
+    {ok, update_secret_response(), tuple()} |
+    {error, any()} |
+    {error, update_secret_errors(), tuple()}.
 update_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret(Client, Input, []).
+
+-spec update_secret(aws_client:aws_client(), update_secret_request(), proplists:proplist()) ->
+    {ok, update_secret_response(), tuple()} |
+    {error, any()} |
+    {error, update_secret_errors(), tuple()}.
 update_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSecret">>, Input, Options).
@@ -999,9 +1887,18 @@ update_secret(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec update_secret_version_stage(aws_client:aws_client(), update_secret_version_stage_request()) ->
+    {ok, update_secret_version_stage_response(), tuple()} |
+    {error, any()} |
+    {error, update_secret_version_stage_errors(), tuple()}.
 update_secret_version_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret_version_stage(Client, Input, []).
+
+-spec update_secret_version_stage(aws_client:aws_client(), update_secret_version_stage_request(), proplists:proplist()) ->
+    {ok, update_secret_version_stage_response(), tuple()} |
+    {error, any()} |
+    {error, update_secret_version_stage_errors(), tuple()}.
 update_secret_version_stage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSecretVersionStage">>, Input, Options).
@@ -1039,9 +1936,18 @@ update_secret_version_stage(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec validate_resource_policy(aws_client:aws_client(), validate_resource_policy_request()) ->
+    {ok, validate_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, validate_resource_policy_errors(), tuple()}.
 validate_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_resource_policy(Client, Input, []).
+
+-spec validate_resource_policy(aws_client:aws_client(), validate_resource_policy_request(), proplists:proplist()) ->
+    {ok, validate_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, validate_resource_policy_errors(), tuple()}.
 validate_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ValidateResourcePolicy">>, Input, Options).

@@ -71,6 +71,623 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% repository_association_summary() :: #{
+%%   <<"AssociationArn">> => string(),
+%%   <<"AssociationId">> => string(),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"LastUpdatedTimeStamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type repository_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_recommendation_feedback_request() :: #{
+%%   <<"RecommendationId">> := string(),
+%%   <<"UserId">> => string()
+%% }
+-type describe_recommendation_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% repository_association() :: #{
+%%   <<"AssociationArn">> => string(),
+%%   <<"AssociationId">> => string(),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"CreatedTimeStamp">> => non_neg_integer(),
+%%   <<"KMSKeyDetails">> => kms_key_details(),
+%%   <<"LastUpdatedTimeStamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"S3RepositoryDetails">> => s3_repository_details(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type repository_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_metadata() :: #{
+%%   <<"EventInfo">> => event_info(),
+%%   <<"RequestId">> => string(),
+%%   <<"Requester">> => string(),
+%%   <<"VendorName">> => list(any())
+%% }
+-type request_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% repository_analysis() :: #{
+%%   <<"RepositoryHead">> => repository_head_source_code_type(),
+%%   <<"SourceCodeType">> => source_code_type()
+%% }
+-type repository_analysis() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_reviews_response() :: #{
+%%   <<"CodeReviewSummaries">> => list(code_review_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_code_reviews_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_feedback_summary() :: #{
+%%   <<"Reactions">> => list(list(any())()),
+%%   <<"RecommendationId">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type recommendation_feedback_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review() :: #{
+%%   <<"AnalysisTypes">> => list(list(any())()),
+%%   <<"AssociationArn">> => string(),
+%%   <<"CodeReviewArn">> => string(),
+%%   <<"ConfigFileState">> => list(any()),
+%%   <<"CreatedTimeStamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimeStamp">> => non_neg_integer(),
+%%   <<"Metrics">> => metrics(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"PullRequestId">> => string(),
+%%   <<"RepositoryName">> => string(),
+%%   <<"SourceCodeType">> => source_code_type(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type code_review() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_repository_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"KMSKeyDetails">> => kms_key_details(),
+%%   <<"Repository">> := repository(),
+%%   <<"Tags">> => map()
+%% }
+-type associate_repository_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_code_review_response() :: #{
+%%   <<"CodeReview">> => code_review()
+%% }
+-type describe_code_review_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_repository_association_response() :: #{
+%%   <<"RepositoryAssociation">> => repository_association(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_repository_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics_summary() :: #{
+%%   <<"FindingsCount">> => float(),
+%%   <<"MeteredLinesOfCodeCount">> => float(),
+%%   <<"SuppressedLinesOfCodeCount">> => float()
+%% }
+-type metrics_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_recommendation_feedback_response() :: #{
+%%   <<"RecommendationFeedback">> => recommendation_feedback()
+%% }
+-type describe_recommendation_feedback_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_repository_request() :: #{}
+-type disassociate_repository_request() :: #{}.
+
+
+%% Example:
+%% list_repository_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Names">> => list(string()()),
+%%   <<"NextToken">> => string(),
+%%   <<"Owners">> => list(string()()),
+%%   <<"ProviderTypes">> => list(list(any())()),
+%%   <<"States">> => list(list(any())())
+%% }
+-type list_repository_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_repository() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type s3_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics() :: #{
+%%   <<"FindingsCount">> => float(),
+%%   <<"MeteredLinesOfCodeCount">> => float(),
+%%   <<"SuppressedLinesOfCodeCount">> => float()
+%% }
+-type metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% third_party_source_repository() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string()
+%% }
+-type third_party_source_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_feedback() :: #{
+%%   <<"CodeReviewArn">> => string(),
+%%   <<"CreatedTimeStamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimeStamp">> => non_neg_integer(),
+%%   <<"Reactions">> => list(list(any())()),
+%%   <<"RecommendationId">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type recommendation_feedback() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% repository() :: #{
+%%   <<"Bitbucket">> => third_party_source_repository(),
+%%   <<"CodeCommit">> => code_commit_repository(),
+%%   <<"GitHubEnterpriseServer">> => third_party_source_repository(),
+%%   <<"S3Bucket">> => s3_repository()
+%% }
+-type repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% branch_diff_source_code_type() :: #{
+%%   <<"DestinationBranchName">> => string(),
+%%   <<"SourceBranchName">> => string()
+%% }
+-type branch_diff_source_code_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review_type() :: #{
+%%   <<"AnalysisTypes">> => list(list(any())()),
+%%   <<"RepositoryAnalysis">> => repository_analysis()
+%% }
+-type code_review_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_review_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RepositoryAssociationArn">> := string(),
+%%   <<"Type">> := code_review_type()
+%% }
+-type create_code_review_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_repository() :: #{
+%%   <<"Details">> => s3_repository_details(),
+%%   <<"Name">> => string()
+%% }
+-type s3_bucket_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_repository_response() :: #{
+%%   <<"RepositoryAssociation">> => repository_association(),
+%%   <<"Tags">> => map()
+%% }
+-type associate_repository_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_review_response() :: #{
+%%   <<"CodeReview">> => code_review()
+%% }
+-type create_code_review_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_recommendation_feedback_response() :: #{}
+-type put_recommendation_feedback_response() :: #{}.
+
+
+%% Example:
+%% rule_metadata() :: #{
+%%   <<"LongDescription">> => string(),
+%%   <<"RuleId">> => string(),
+%%   <<"RuleName">> => string(),
+%%   <<"RuleTags">> => list(string()()),
+%%   <<"ShortDescription">> => string()
+%% }
+-type rule_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_code_type() :: #{
+%%   <<"BranchDiff">> => branch_diff_source_code_type(),
+%%   <<"CommitDiff">> => commit_diff_source_code_type(),
+%%   <<"RepositoryHead">> => repository_head_source_code_type(),
+%%   <<"RequestMetadata">> => request_metadata(),
+%%   <<"S3BucketRepository">> => s3_bucket_repository()
+%% }
+-type source_code_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review_summary() :: #{
+%%   <<"CodeReviewArn">> => string(),
+%%   <<"CreatedTimeStamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimeStamp">> => non_neg_integer(),
+%%   <<"MetricsSummary">> => metrics_summary(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"PullRequestId">> => string(),
+%%   <<"RepositoryName">> => string(),
+%%   <<"SourceCodeType">> => source_code_type(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type code_review_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_repository_response() :: #{
+%%   <<"RepositoryAssociation">> => repository_association(),
+%%   <<"Tags">> => map()
+%% }
+-type disassociate_repository_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% commit_diff_source_code_type() :: #{
+%%   <<"DestinationCommit">> => string(),
+%%   <<"MergeBaseCommit">> => string(),
+%%   <<"SourceCommit">> => string()
+%% }
+-type commit_diff_source_code_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_artifacts() :: #{
+%%   <<"BuildArtifactsObjectKey">> => string(),
+%%   <<"SourceCodeArtifactsObjectKey">> => string()
+%% }
+-type code_artifacts() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_repository_details() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"CodeArtifacts">> => code_artifacts()
+%% }
+-type s3_repository_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_recommendation_feedback_request() :: #{
+%%   <<"CodeReviewArn">> := string(),
+%%   <<"Reactions">> := list(list(any())()),
+%%   <<"RecommendationId">> := string()
+%% }
+-type put_recommendation_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% list_code_reviews_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProviderTypes">> => list(list(any())()),
+%%   <<"RepositoryNames">> => list(string()()),
+%%   <<"States">> => list(list(any())()),
+%%   <<"Type">> := list(any())
+%% }
+-type list_code_reviews_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_key_details() :: #{
+%%   <<"EncryptionOption">> => list(any()),
+%%   <<"KMSKeyId">> => string()
+%% }
+-type kms_key_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendation_feedback_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RecommendationIds">> => list(string()()),
+%%   <<"UserIds">> => list(string()())
+%% }
+-type list_recommendation_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% repository_head_source_code_type() :: #{
+%%   <<"BranchName">> => string()
+%% }
+-type repository_head_source_code_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_repository_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RepositoryAssociationSummaries">> => list(repository_association_summary()())
+%% }
+-type list_repository_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_commit_repository() :: #{
+%%   <<"Name">> => string()
+%% }
+-type code_commit_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EndLine">> => integer(),
+%%   <<"FilePath">> => string(),
+%%   <<"RecommendationCategory">> => list(any()),
+%%   <<"RecommendationId">> => string(),
+%%   <<"RuleMetadata">> => rule_metadata(),
+%%   <<"Severity">> => list(any()),
+%%   <<"StartLine">> => integer()
+%% }
+-type recommendation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendation_feedback_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecommendationFeedbackSummaries">> => list(recommendation_feedback_summary()())
+%% }
+-type list_recommendation_feedback_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_code_review_request() :: #{}
+-type describe_code_review_request() :: #{}.
+
+
+%% Example:
+%% list_recommendations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecommendationSummaries">> => list(recommendation_summary()())
+%% }
+-type list_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_info() :: #{
+%%   <<"Name">> => string(),
+%%   <<"State">> => string()
+%% }
+-type event_info() :: #{binary() => any()}.
+
+%% Example:
+%% describe_repository_association_request() :: #{}
+-type describe_repository_association_request() :: #{}.
+
+
+%% Example:
+%% list_recommendations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recommendations_request() :: #{binary() => any()}.
+
+-type associate_repository_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_code_review_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_code_review_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_recommendation_feedback_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_repository_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type disassociate_repository_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
+
+-type list_code_reviews_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_recommendation_feedback_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_recommendations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_repository_associations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_recommendation_feedback_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -110,8 +727,17 @@
 %% CodeGuru Reviewer:
 %% https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-with-guru.html
 %% in the CodeGuru Reviewer User Guide.
+-spec associate_repository(aws_client:aws_client(), associate_repository_request()) ->
+    {ok, associate_repository_response(), tuple()} |
+    {error, any()} |
+    {error, associate_repository_errors(), tuple()}.
 associate_repository(Client, Input) ->
     associate_repository(Client, Input, []).
+
+-spec associate_repository(aws_client:aws_client(), associate_repository_request(), proplists:proplist()) ->
+    {ok, associate_repository_response(), tuple()} |
+    {error, any()} |
+    {error, associate_repository_errors(), tuple()}.
 associate_repository(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associations"],
@@ -143,8 +769,17 @@ associate_repository(Client, Input0, Options0) ->
 %% specified branch in an associated repository. `PullRequest' code
 %% reviews are
 %% automatically triggered by a pull request.
+-spec create_code_review(aws_client:aws_client(), create_code_review_request()) ->
+    {ok, create_code_review_response(), tuple()} |
+    {error, any()} |
+    {error, create_code_review_errors(), tuple()}.
 create_code_review(Client, Input) ->
     create_code_review(Client, Input, []).
+
+-spec create_code_review(aws_client:aws_client(), create_code_review_request(), proplists:proplist()) ->
+    {ok, create_code_review_response(), tuple()} |
+    {error, any()} |
+    {error, create_code_review_errors(), tuple()}.
 create_code_review(Client, Input0, Options0) ->
     Method = post,
     Path = ["/codereviews"],
@@ -169,14 +804,26 @@ create_code_review(Client, Input0, Options0) ->
 
 %% @doc Returns the metadata associated with the code review along with its
 %% status.
+-spec describe_code_review(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_code_review_response(), tuple()} |
+    {error, any()} |
+    {error, describe_code_review_errors(), tuple()}.
 describe_code_review(Client, CodeReviewArn)
   when is_map(Client) ->
     describe_code_review(Client, CodeReviewArn, #{}, #{}).
 
+-spec describe_code_review(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_code_review_response(), tuple()} |
+    {error, any()} |
+    {error, describe_code_review_errors(), tuple()}.
 describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap, []).
 
+-spec describe_code_review(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_code_review_response(), tuple()} |
+    {error, any()} |
+    {error, describe_code_review_errors(), tuple()}.
 describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/codereviews/", aws_util:encode_uri(CodeReviewArn), ""],
@@ -195,14 +842,26 @@ describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes the customer feedback for a CodeGuru Reviewer
 %% recommendation.
+-spec describe_recommendation_feedback(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_recommendation_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, describe_recommendation_feedback_errors(), tuple()}.
 describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId)
   when is_map(Client) ->
     describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, #{}, #{}).
 
+-spec describe_recommendation_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_recommendation_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, describe_recommendation_feedback_errors(), tuple()}.
 describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryMap, HeadersMap, []).
 
+-spec describe_recommendation_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_recommendation_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, describe_recommendation_feedback_errors(), tuple()}.
 describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/feedback/", aws_util:encode_uri(CodeReviewArn), ""],
@@ -228,14 +887,26 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryM
 %% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html
 %% object that contains information about the requested
 %% repository association.
+-spec describe_repository_association(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_repository_association_response(), tuple()} |
+    {error, any()} |
+    {error, describe_repository_association_errors(), tuple()}.
 describe_repository_association(Client, AssociationArn)
   when is_map(Client) ->
     describe_repository_association(Client, AssociationArn, #{}, #{}).
 
+-spec describe_repository_association(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_repository_association_response(), tuple()} |
+    {error, any()} |
+    {error, describe_repository_association_errors(), tuple()}.
 describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap, []).
 
+-spec describe_repository_association(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_repository_association_response(), tuple()} |
+    {error, any()} |
+    {error, describe_repository_association_errors(), tuple()}.
 describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/associations/", aws_util:encode_uri(AssociationArn), ""],
@@ -254,8 +925,17 @@ describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap, Op
 
 %% @doc Removes the association between Amazon CodeGuru Reviewer and a
 %% repository.
+-spec disassociate_repository(aws_client:aws_client(), binary() | list(), disassociate_repository_request()) ->
+    {ok, disassociate_repository_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_repository_errors(), tuple()}.
 disassociate_repository(Client, AssociationArn, Input) ->
     disassociate_repository(Client, AssociationArn, Input, []).
+
+-spec disassociate_repository(aws_client:aws_client(), binary() | list(), disassociate_repository_request(), proplists:proplist()) ->
+    {ok, disassociate_repository_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_repository_errors(), tuple()}.
 disassociate_repository(Client, AssociationArn, Input0, Options0) ->
     Method = delete,
     Path = ["/associations/", aws_util:encode_uri(AssociationArn), ""],
@@ -280,14 +960,26 @@ disassociate_repository(Client, AssociationArn, Input0, Options0) ->
 
 %% @doc Lists all the code reviews that the customer has created in the past
 %% 90 days.
+-spec list_code_reviews(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_code_reviews_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_reviews_errors(), tuple()}.
 list_code_reviews(Client, Type)
   when is_map(Client) ->
     list_code_reviews(Client, Type, #{}, #{}).
 
+-spec list_code_reviews(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_code_reviews_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_reviews_errors(), tuple()}.
 list_code_reviews(Client, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_code_reviews(Client, Type, QueryMap, HeadersMap, []).
 
+-spec list_code_reviews(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_code_reviews_response(), tuple()} |
+    {error, any()} |
+    {error, list_code_reviews_errors(), tuple()}.
 list_code_reviews(Client, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/codereviews"],
@@ -317,14 +1009,26 @@ list_code_reviews(Client, Type, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RecommendationFeedbackSummary.html
 %% objects that contain customer recommendation
 %% feedback for all CodeGuru Reviewer users.
+-spec list_recommendation_feedback(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_recommendation_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendation_feedback_errors(), tuple()}.
 list_recommendation_feedback(Client, CodeReviewArn)
   when is_map(Client) ->
     list_recommendation_feedback(Client, CodeReviewArn, #{}, #{}).
 
+-spec list_recommendation_feedback(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_recommendation_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendation_feedback_errors(), tuple()}.
 list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap, []).
 
+-spec list_recommendation_feedback(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_recommendation_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendation_feedback_errors(), tuple()}.
 list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/feedback/", aws_util:encode_uri(CodeReviewArn), "/RecommendationFeedback"],
@@ -349,14 +1053,26 @@ list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the list of all recommendations for a completed code review.
+-spec list_recommendations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, CodeReviewArn)
   when is_map(Client) ->
     list_recommendations(Client, CodeReviewArn, #{}, #{}).
 
+-spec list_recommendations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, []).
 
+-spec list_recommendations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/codereviews/", aws_util:encode_uri(CodeReviewArn), "/Recommendations"],
@@ -391,14 +1107,26 @@ list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-State,
 %% and Owner:
 %% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Owner.
+-spec list_repository_associations(aws_client:aws_client()) ->
+    {ok, list_repository_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_repository_associations_errors(), tuple()}.
 list_repository_associations(Client)
   when is_map(Client) ->
     list_repository_associations(Client, #{}, #{}).
 
+-spec list_repository_associations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_repository_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_repository_associations_errors(), tuple()}.
 list_repository_associations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_repository_associations(Client, QueryMap, HeadersMap, []).
 
+-spec list_repository_associations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_repository_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_repository_associations_errors(), tuple()}.
 list_repository_associations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/associations"],
@@ -426,14 +1154,26 @@ list_repository_associations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the list of tags associated with an associated repository
 %% resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -454,8 +1194,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% When this API is called again with
 %% different reactions the previous feedback is overwritten.
+-spec put_recommendation_feedback(aws_client:aws_client(), put_recommendation_feedback_request()) ->
+    {ok, put_recommendation_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, put_recommendation_feedback_errors(), tuple()}.
 put_recommendation_feedback(Client, Input) ->
     put_recommendation_feedback(Client, Input, []).
+
+-spec put_recommendation_feedback(aws_client:aws_client(), put_recommendation_feedback_request(), proplists:proplist()) ->
+    {ok, put_recommendation_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, put_recommendation_feedback_errors(), tuple()}.
 put_recommendation_feedback(Client, Input0, Options0) ->
     Method = put,
     Path = ["/feedback"],
@@ -479,8 +1228,17 @@ put_recommendation_feedback(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds one or more tags to an associated repository.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -504,8 +1262,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from an associated repository.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -533,7 +1300,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

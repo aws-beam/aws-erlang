@@ -44,6 +44,143 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% account_info() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"accountName">> => string(),
+%%   <<"emailAddress">> => string()
+%% }
+-type account_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_role_credentials_request() :: #{
+%%   <<"accessToken">> := string(),
+%%   <<"accountId">> := string(),
+%%   <<"roleName">> := string()
+%% }
+-type get_role_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_role_credentials_response() :: #{
+%%   <<"roleCredentials">> => role_credentials()
+%% }
+-type get_role_credentials_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_roles_request() :: #{
+%%   <<"accessToken">> := string(),
+%%   <<"accountId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_account_roles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_roles_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"roleList">> => list(role_info()())
+%% }
+-type list_account_roles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_accounts_request() :: #{
+%%   <<"accessToken">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_accounts_response() :: #{
+%%   <<"accountList">> => list(account_info()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logout_request() :: #{
+%%   <<"accessToken">> := string()
+%% }
+-type logout_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% role_credentials() :: #{
+%%   <<"accessKeyId">> => string(),
+%%   <<"expiration">> => float(),
+%%   <<"secretAccessKey">> => string(),
+%%   <<"sessionToken">> => string()
+%% }
+-type role_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% role_info() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"roleName">> => string()
+%% }
+-type role_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+-type get_role_credentials_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception().
+
+-type list_account_roles_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception().
+
+-type list_accounts_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception().
+
+-type logout_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    invalid_request_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -51,14 +188,26 @@
 %% @doc Returns the STS short-term credentials for a given role name that is
 %% assigned to the
 %% user.
+-spec get_role_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_role_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_role_credentials_errors(), tuple()}.
 get_role_credentials(Client, AccountId, RoleName, AccessToken)
   when is_map(Client) ->
     get_role_credentials(Client, AccountId, RoleName, AccessToken, #{}, #{}).
 
+-spec get_role_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_role_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_role_credentials_errors(), tuple()}.
 get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, HeadersMap, []).
 
+-spec get_role_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_role_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_role_credentials_errors(), tuple()}.
 get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/federation/credentials"],
@@ -86,14 +235,26 @@ get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, Headers
 
 %% @doc Lists all roles that are assigned to the user for a given AWS
 %% account.
+-spec list_account_roles(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_account_roles_response(), tuple()} |
+    {error, any()} |
+    {error, list_account_roles_errors(), tuple()}.
 list_account_roles(Client, AccountId, AccessToken)
   when is_map(Client) ->
     list_account_roles(Client, AccountId, AccessToken, #{}, #{}).
 
+-spec list_account_roles(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_account_roles_response(), tuple()} |
+    {error, any()} |
+    {error, list_account_roles_errors(), tuple()}.
 list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap, []).
 
+-spec list_account_roles(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_account_roles_response(), tuple()} |
+    {error, any()} |
+    {error, list_account_roles_errors(), tuple()}.
 list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assignment/roles"],
@@ -128,14 +289,26 @@ list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap, Options
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers
 %% in the IAM Identity Center User Guide. This operation
 %% returns a paginated response.
+-spec list_accounts(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_accounts_errors(), tuple()}.
 list_accounts(Client, AccessToken)
   when is_map(Client) ->
     list_accounts(Client, AccessToken, #{}, #{}).
 
+-spec list_accounts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_accounts_errors(), tuple()}.
 list_accounts(Client, AccessToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_accounts(Client, AccessToken, QueryMap, HeadersMap, []).
 
+-spec list_accounts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_accounts_errors(), tuple()}.
 list_accounts(Client, AccessToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assignment/accounts"],
@@ -185,8 +358,17 @@ list_accounts(Client, AccessToken, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/authconcept.html
 %% in the IAM Identity Center User
 %% Guide.
+-spec logout(aws_client:aws_client(), logout_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, logout_errors(), tuple()}.
 logout(Client, Input) ->
     logout(Client, Input, []).
+
+-spec logout(aws_client:aws_client(), logout_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, logout_errors(), tuple()}.
 logout(Client, Input0, Options0) ->
     Method = post,
     Path = ["/logout"],
@@ -215,7 +397,7 @@ logout(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

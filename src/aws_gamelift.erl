@@ -283,6 +283,2949 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% update_game_server_input() :: #{
+%%   <<"GameServerData">> => string(),
+%%   <<"GameServerGroupName">> := string(),
+%%   <<"GameServerId">> := string(),
+%%   <<"HealthCheck">> => list(any()),
+%%   <<"UtilizationStatus">> => list(any())
+%% }
+-type update_game_server_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_fleet_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_fleet_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_game_server_group_input() :: #{
+%%   <<"BalancingStrategy">> => list(any()),
+%%   <<"GameServerGroupName">> := string(),
+%%   <<"GameServerProtectionPolicy">> => list(any()),
+%%   <<"InstanceDefinitions">> => list(instance_definition()()),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_game_server_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_compute_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Location">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_compute_input() :: #{binary() => any()}.
+
+%% Example:
+%% fleet_utilization() :: #{
+%%   <<"ActiveGameSessionCount">> => integer(),
+%%   <<"ActiveServerProcessCount">> => integer(),
+%%   <<"CurrentPlayerSessionCount">> => integer(),
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"MaximumPlayerSessionCount">> => integer()
+%% }
+-type fleet_utilization() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_port_settings_output() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string()
+%% }
+-type update_fleet_port_settings_output() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_compute_output() :: #{
+
+%% }
+-type deregister_compute_output() :: #{binary() => any()}.
+
+%% Example:
+%% game_session_connection_info() :: #{
+%%   <<"DnsName">> => string(),
+%%   <<"GameSessionArn">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"MatchedPlayerSessions">> => list(matched_player_session()()),
+%%   <<"Port">> => integer()
+%% }
+-type game_session_connection_info() :: #{binary() => any()}.
+
+%% Example:
+%% describe_matchmaking_input() :: #{
+%%   <<"TicketIds">> := list(string()())
+%% }
+-type describe_matchmaking_input() :: #{binary() => any()}.
+
+%% Example:
+%% instance_access() :: #{
+%%   <<"Credentials">> => instance_credentials(),
+%%   <<"FleetId">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"OperatingSystem">> => list(any())
+%% }
+-type instance_access() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_locations_output() :: #{
+%%   <<"Locations">> => list(location_model()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_locations_output() :: #{binary() => any()}.
+
+%% Example:
+%% player_latency() :: #{
+%%   <<"LatencyInMilliseconds">> => float(),
+%%   <<"PlayerId">> => string(),
+%%   <<"RegionIdentifier">> => string()
+%% }
+-type player_latency() :: #{binary() => any()}.
+
+%% Example:
+%% tagging_failed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type tagging_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% game_server_instance() :: #{
+%%   <<"GameServerGroupArn">> => string(),
+%%   <<"GameServerGroupName">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceStatus">> => list(any())
+%% }
+-type game_server_instance() :: #{binary() => any()}.
+
+%% Example:
+%% list_compute_output() :: #{
+%%   <<"ComputeList">> => list(compute()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_compute_output() :: #{binary() => any()}.
+
+%% Example:
+%% priority_configuration() :: #{
+%%   <<"LocationOrder">> => list(string()()),
+%%   <<"PriorityOrder">> => list(list(any())())
+%% }
+-type priority_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_port_settings_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"Location">> => string()
+%% }
+-type describe_fleet_port_settings_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_input() :: #{
+%%   <<"LocationName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_location_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_script_input() :: #{
+%%   <<"ScriptId">> := string()
+%% }
+-type delete_script_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_scaling_policy_output() :: #{
+%%   <<"Name">> => string()
+%% }
+-type put_scaling_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% resolve_alias_input() :: #{
+%%   <<"AliasId">> := string()
+%% }
+-type resolve_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% matched_player_session() :: #{
+%%   <<"PlayerId">> => string(),
+%%   <<"PlayerSessionId">> => string()
+%% }
+-type matched_player_session() :: #{binary() => any()}.
+
+%% Example:
+%% create_game_server_group_output() :: #{
+%%   <<"GameServerGroup">> => game_server_group()
+%% }
+-type create_game_server_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_script_output() :: #{
+%%   <<"Script">> => script()
+%% }
+-type describe_script_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_server_group_input() :: #{
+%%   <<"GameServerGroupName">> := string()
+%% }
+-type describe_game_server_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_location_capacity_output() :: #{
+%%   <<"FleetCapacity">> => fleet_capacity()
+%% }
+-type describe_fleet_location_capacity_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleets_output() :: #{
+%%   <<"FleetIds">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_fleets_output() :: #{binary() => any()}.
+
+%% Example:
+%% instance_credentials() :: #{
+%%   <<"Secret">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type instance_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_location_attributes_output() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"LocationAttributes">> => list(location_attributes()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_location_attributes_output() :: #{binary() => any()}.
+
+%% Example:
+%% build() :: #{
+%%   <<"BuildArn">> => string(),
+%%   <<"BuildId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OperatingSystem">> => list(any()),
+%%   <<"ServerSdkVersion">> => string(),
+%%   <<"SizeOnDisk">> => float(),
+%%   <<"Status">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type build() :: #{binary() => any()}.
+
+%% Example:
+%% instance_definition() :: #{
+%%   <<"InstanceType">> => list(any()),
+%%   <<"WeightedCapacity">> => string()
+%% }
+-type instance_definition() :: #{binary() => any()}.
+
+%% Example:
+%% delete_matchmaking_rule_set_output() :: #{
+
+%% }
+-type delete_matchmaking_rule_set_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_matchmaking_output() :: #{
+%%   <<"MatchmakingTicket">> => matchmaking_ticket()
+%% }
+-type start_matchmaking_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_compute_output() :: #{
+%%   <<"Compute">> => compute()
+%% }
+-type describe_compute_output() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% game_server_group() :: #{
+%%   <<"AutoScalingGroupArn">> => string(),
+%%   <<"BalancingStrategy">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"GameServerGroupArn">> => string(),
+%%   <<"GameServerGroupName">> => string(),
+%%   <<"GameServerProtectionPolicy">> => list(any()),
+%%   <<"InstanceDefinitions">> => list(instance_definition()()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"SuspendedActions">> => list(list(any())())
+%% }
+-type game_server_group() :: #{binary() => any()}.
+
+%% Example:
+%% resume_game_server_group_input() :: #{
+%%   <<"GameServerGroupName">> := string(),
+%%   <<"ResumeActions">> := list(list(any())())
+%% }
+-type resume_game_server_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_location_attributes_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Locations">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_location_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fleet_locations_output() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"LocationStates">> => list(location_state()())
+%% }
+-type delete_fleet_locations_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_location_capacity_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"Location">> := string()
+%% }
+-type describe_fleet_location_capacity_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_session_queues_output() :: #{
+%%   <<"GameSessionQueues">> => list(game_session_queue()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_game_session_queues_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_player_sessions_output() :: #{
+%%   <<"PlayerSessions">> => list(player_session()())
+%% }
+-type create_player_sessions_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_matchmaking_configuration_input() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_matchmaking_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_build_output() :: #{
+%%   <<"Build">> => build()
+%% }
+-type update_build_output() :: #{binary() => any()}.
+
+%% Example:
+%% validate_matchmaking_rule_set_output() :: #{
+%%   <<"Valid">> => boolean()
+%% }
+-type validate_matchmaking_rule_set_output() :: #{binary() => any()}.
+
+%% Example:
+%% compute() :: #{
+%%   <<"ComputeArn">> => string(),
+%%   <<"ComputeName">> => string(),
+%%   <<"ComputeStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DnsName">> => string(),
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"GameLiftServiceSdkEndpoint">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"OperatingSystem">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type compute() :: #{binary() => any()}.
+
+%% Example:
+%% delete_game_session_queue_output() :: #{
+
+%% }
+-type delete_game_session_queue_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_peering_connection_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"PeerVpcAwsAccountId">> := string(),
+%%   <<"PeerVpcId">> := string()
+%% }
+-type create_vpc_peering_connection_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_location_utilization_output() :: #{
+%%   <<"FleetUtilization">> => fleet_utilization()
+%% }
+-type describe_fleet_location_utilization_output() :: #{binary() => any()}.
+
+%% Example:
+%% matchmaking_configuration() :: #{
+%%   <<"AcceptanceRequired">> => boolean(),
+%%   <<"AcceptanceTimeoutSeconds">> => integer(),
+%%   <<"AdditionalPlayerCount">> => integer(),
+%%   <<"BackfillMode">> => list(any()),
+%%   <<"ConfigurationArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomEventData">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FlexMatchMode">> => list(any()),
+%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameSessionData">> => string(),
+%%   <<"GameSessionQueueArns">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"NotificationTarget">> => string(),
+%%   <<"RequestTimeoutSeconds">> => integer(),
+%%   <<"RuleSetArn">> => string(),
+%%   <<"RuleSetName">> => string()
+%% }
+-type matchmaking_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_peering_authorizations_output() :: #{
+%%   <<"VpcPeeringAuthorizations">> => list(vpc_peering_authorization()())
+%% }
+-type describe_vpc_peering_authorizations_output() :: #{binary() => any()}.
+
+%% Example:
+%% suspend_game_server_group_input() :: #{
+%%   <<"GameServerGroupName">> := string(),
+%%   <<"SuspendActions">> := list(list(any())())
+%% }
+-type suspend_game_server_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% game_server_group_auto_scaling_policy() :: #{
+%%   <<"EstimatedInstanceWarmup">> => integer(),
+%%   <<"TargetTrackingConfiguration">> => target_tracking_configuration()
+%% }
+-type game_server_group_auto_scaling_policy() :: #{binary() => any()}.
+
+%% Example:
+%% runtime_configuration() :: #{
+%%   <<"GameSessionActivationTimeoutSeconds">> => integer(),
+%%   <<"MaxConcurrentGameSessionActivations">> => integer(),
+%%   <<"ServerProcesses">> => list(server_process()())
+%% }
+-type runtime_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% player_session() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DnsName">> => string(),
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"GameSessionId">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"PlayerData">> => string(),
+%%   <<"PlayerId">> => string(),
+%%   <<"PlayerSessionId">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TerminationTime">> => non_neg_integer()
+%% }
+-type player_session() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fleet_input() :: #{
+%%   <<"FleetId">> := string()
+%% }
+-type delete_fleet_input() :: #{binary() => any()}.
+
+%% Example:
+%% player() :: #{
+%%   <<"LatencyInMs">> => map(),
+%%   <<"PlayerAttributes">> => map(),
+%%   <<"PlayerId">> => string(),
+%%   <<"Team">> => string()
+%% }
+-type player() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_attributes_input() :: #{
+%%   <<"AnywhereConfiguration">> => anywhere_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"FleetId">> := string(),
+%%   <<"MetricGroups">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"NewGameSessionProtectionPolicy">> => list(any()),
+%%   <<"ResourceCreationLimitPolicy">> => resource_creation_limit_policy()
+%% }
+-type update_fleet_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_runtime_configuration_output() :: #{
+%%   <<"RuntimeConfiguration">> => runtime_configuration()
+%% }
+-type describe_runtime_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_output() :: #{
+%%   <<"Aliases">> => list(alias()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_aliases_output() :: #{binary() => any()}.
+
+%% Example:
+%% out_of_capacity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type out_of_capacity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_policy() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"MetricName">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"PolicyType">> => list(any()),
+%%   <<"ScalingAdjustment">> => integer(),
+%%   <<"ScalingAdjustmentType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetConfiguration">> => target_configuration(),
+%%   <<"Threshold">> => float(),
+%%   <<"UpdateStatus">> => list(any())
+%% }
+-type scaling_policy() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_peering_connections_output() :: #{
+%%   <<"VpcPeeringConnections">> => list(vpc_peering_connection()())
+%% }
+-type describe_vpc_peering_connections_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_builds_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_builds_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_game_session_log_url_output() :: #{
+%%   <<"PreSignedUrl">> => string()
+%% }
+-type get_game_session_log_url_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_matchmaking_configuration_output() :: #{
+%%   <<"Configuration">> => matchmaking_configuration()
+%% }
+-type update_matchmaking_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_server_group_output() :: #{
+%%   <<"GameServerGroup">> => game_server_group()
+%% }
+-type describe_game_server_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ec2_instance_limits_input() :: #{
+%%   <<"EC2InstanceType">> => list(any()),
+%%   <<"Location">> => string()
+%% }
+-type describe_ec2_instance_limits_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_port_settings_output() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"InboundPermissions">> => list(ip_permission()()),
+%%   <<"Location">> => string(),
+%%   <<"UpdateStatus">> => list(any())
+%% }
+-type describe_fleet_port_settings_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_peering_connections_input() :: #{
+%%   <<"FleetId">> => string()
+%% }
+-type describe_vpc_peering_connections_input() :: #{binary() => any()}.
+
+%% Example:
+%% placed_player_session() :: #{
+%%   <<"PlayerId">> => string(),
+%%   <<"PlayerSessionId">> => string()
+%% }
+-type placed_player_session() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_game_server_input() :: #{
+%%   <<"GameServerGroupName">> := string(),
+%%   <<"GameServerId">> := string()
+%% }
+-type deregister_game_server_input() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% desired_player_session() :: #{
+%%   <<"PlayerData">> => string(),
+%%   <<"PlayerId">> => string()
+%% }
+-type desired_player_session() :: #{binary() => any()}.
+
+%% Example:
+%% start_game_session_placement_output() :: #{
+%%   <<"GameSessionPlacement">> => game_session_placement()
+%% }
+-type start_game_session_placement_output() :: #{binary() => any()}.
+
+%% Example:
+%% fleet_capacity_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type fleet_capacity_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_matchmaking_rule_set_input() :: #{
+%%   <<"Name">> := string(),
+%%   <<"RuleSetBody">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_matchmaking_rule_set_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_server_input() :: #{
+%%   <<"GameServerGroupName">> := string(),
+%%   <<"GameServerId">> := string()
+%% }
+-type describe_game_server_input() :: #{binary() => any()}.
+
+%% Example:
+%% fleet_capacity() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"InstanceCounts">> => ec2_instance_counts(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"Location">> => string()
+%% }
+-type fleet_capacity() :: #{binary() => any()}.
+
+%% Example:
+%% put_scaling_policy_input() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"FleetId">> := string(),
+%%   <<"MetricName">> := list(any()),
+%%   <<"Name">> := string(),
+%%   <<"PolicyType">> => list(any()),
+%%   <<"ScalingAdjustment">> => integer(),
+%%   <<"ScalingAdjustmentType">> => list(any()),
+%%   <<"TargetConfiguration">> => target_configuration(),
+%%   <<"Threshold">> => float()
+%% }
+-type put_scaling_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_scripts_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_scripts_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_port_settings_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"InboundPermissionAuthorizations">> => list(ip_permission()()),
+%%   <<"InboundPermissionRevocations">> => list(ip_permission()())
+%% }
+-type update_fleet_port_settings_input() :: #{binary() => any()}.
+
+%% Example:
+%% accept_match_input() :: #{
+%%   <<"AcceptanceType">> := list(any()),
+%%   <<"PlayerIds">> := list(string()()),
+%%   <<"TicketId">> := string()
+%% }
+-type accept_match_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_game_session_placement_input() :: #{
+%%   <<"PlacementId">> := string()
+%% }
+-type stop_game_session_placement_input() :: #{binary() => any()}.
+
+%% Example:
+%% location_configuration() :: #{
+%%   <<"Location">> => string()
+%% }
+-type location_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% server_process() :: #{
+%%   <<"ConcurrentExecutions">> => integer(),
+%%   <<"LaunchPath">> => string(),
+%%   <<"Parameters">> => string()
+%% }
+-type server_process() :: #{binary() => any()}.
+
+%% Example:
+%% location_state() :: #{
+%%   <<"Location">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type location_state() :: #{binary() => any()}.
+
+%% Example:
+%% create_game_session_output() :: #{
+%%   <<"GameSession">> => game_session()
+%% }
+-type create_game_session_output() :: #{binary() => any()}.
+
+%% Example:
+%% resolve_alias_output() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string()
+%% }
+-type resolve_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_location_utilization_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"Location">> := string()
+%% }
+-type describe_fleet_location_utilization_input() :: #{binary() => any()}.
+
+%% Example:
+%% request_upload_credentials_output() :: #{
+%%   <<"StorageLocation">> => s3_location(),
+%%   <<"UploadCredentials">> => aws_credentials()
+%% }
+-type request_upload_credentials_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_matchmaking_configurations_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Names">> => list(string()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RuleSetName">> => string()
+%% }
+-type describe_matchmaking_configurations_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_game_server_output() :: #{
+%%   <<"GameServer">> => game_server()
+%% }
+-type register_game_server_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alias_input() :: #{
+%%   <<"AliasId">> := string()
+%% }
+-type delete_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_game_server_group_output() :: #{
+%%   <<"GameServerGroup">> => game_server_group()
+%% }
+-type update_game_server_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% request_upload_credentials_input() :: #{
+%%   <<"BuildId">> := string()
+%% }
+-type request_upload_credentials_input() :: #{binary() => any()}.
+
+%% Example:
+%% game_session_queue() :: #{
+%%   <<"CustomEventData">> => string(),
+%%   <<"Destinations">> => list(game_session_queue_destination()()),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"GameSessionQueueArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NotificationTarget">> => string(),
+%%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()()),
+%%   <<"PriorityConfiguration">> => priority_configuration(),
+%%   <<"TimeoutInSeconds">> => integer()
+%% }
+-type game_session_queue() :: #{binary() => any()}.
+
+%% Example:
+%% accept_match_output() :: #{
+
+%% }
+-type accept_match_output() :: #{binary() => any()}.
+
+%% Example:
+%% location_attributes() :: #{
+%%   <<"LocationState">> => location_state(),
+%%   <<"StoppedActions">> => list(list(any())()),
+%%   <<"UpdateStatus">> => list(any())
+%% }
+-type location_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% claim_game_server_input() :: #{
+%%   <<"FilterOption">> => claim_filter_option(),
+%%   <<"GameServerData">> => string(),
+%%   <<"GameServerGroupName">> := string(),
+%%   <<"GameServerId">> => string()
+%% }
+-type claim_game_server_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_game_server_groups_output() :: #{
+%%   <<"GameServerGroups">> => list(game_server_group()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_game_server_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_peering_authorization_input() :: #{
+%%   <<"GameLiftAwsAccountId">> := string(),
+%%   <<"PeerVpcId">> := string()
+%% }
+-type delete_vpc_peering_authorization_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_peering_connection_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"VpcPeeringConnectionId">> := string()
+%% }
+-type delete_vpc_peering_connection_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_utilization_output() :: #{
+%%   <<"FleetUtilization">> => list(fleet_utilization()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_utilization_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_script_input() :: #{
+%%   <<"ScriptId">> := string()
+%% }
+-type describe_script_input() :: #{binary() => any()}.
+
+%% Example:
+%% search_game_sessions_input() :: #{
+%%   <<"AliasId">> => string(),
+%%   <<"FilterExpression">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Location">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortExpression">> => string()
+%% }
+-type search_game_sessions_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_script_output() :: #{
+%%   <<"Script">> => script()
+%% }
+-type update_script_output() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_game_session_queue_input() :: #{
+%%   <<"CustomEventData">> => string(),
+%%   <<"Destinations">> => list(game_session_queue_destination()()),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"NotificationTarget">> => string(),
+%%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()()),
+%%   <<"PriorityConfiguration">> => priority_configuration(),
+%%   <<"TimeoutInSeconds">> => integer()
+%% }
+-type update_game_session_queue_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_location_input() :: #{
+%%   <<"LocationName">> := string()
+%% }
+-type delete_location_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_capacity_input() :: #{
+%%   <<"FleetIds">> => list(string()()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_capacity_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_compute_access_output() :: #{
+%%   <<"ComputeArn">> => string(),
+%%   <<"ComputeName">> => string(),
+%%   <<"Credentials">> => aws_credentials(),
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string()
+%% }
+-type get_compute_access_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_matchmaking_rule_sets_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Names">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_matchmaking_rule_sets_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_sessions_output() :: #{
+%%   <<"GameSessions">> => list(game_session()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_game_sessions_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_events_input() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FleetId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type describe_fleet_events_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_matchmaking_output() :: #{
+%%   <<"TicketList">> => list(matchmaking_ticket()())
+%% }
+-type describe_matchmaking_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_alias_input() :: #{
+%%   <<"AliasId">> := string()
+%% }
+-type describe_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_runtime_configuration_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"RuntimeConfiguration">> := runtime_configuration()
+%% }
+-type update_runtime_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_alias_output() :: #{
+%%   <<"Alias">> => alias()
+%% }
+-type create_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_game_session_queue_output() :: #{
+%%   <<"GameSessionQueue">> => game_session_queue()
+%% }
+-type update_game_session_queue_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_capacity_input() :: #{
+%%   <<"DesiredInstances">> => integer(),
+%%   <<"FleetId">> := string(),
+%%   <<"Location">> => string(),
+%%   <<"MaxSize">> => integer(),
+%%   <<"MinSize">> => integer()
+%% }
+-type update_fleet_capacity_input() :: #{binary() => any()}.
+
+%% Example:
+%% idempotent_parameter_mismatch_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_player_session_input() :: #{
+%%   <<"GameSessionId">> := string(),
+%%   <<"PlayerData">> => string(),
+%%   <<"PlayerId">> := string()
+%% }
+-type create_player_session_input() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_instance_counts() :: #{
+%%   <<"ACTIVE">> => integer(),
+%%   <<"DESIRED">> => integer(),
+%%   <<"IDLE">> => integer(),
+%%   <<"MAXIMUM">> => integer(),
+%%   <<"MINIMUM">> => integer(),
+%%   <<"PENDING">> => integer(),
+%%   <<"TERMINATING">> => integer()
+%% }
+-type ec2_instance_counts() :: #{binary() => any()}.
+
+%% Example:
+%% update_alias_output() :: #{
+%%   <<"Alias">> => alias()
+%% }
+-type update_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fleet_locations_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"Locations">> := list(string()())
+%% }
+-type delete_fleet_locations_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_build_input() :: #{
+%%   <<"BuildId">> := string()
+%% }
+-type describe_build_input() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% player_latency_policy() :: #{
+%%   <<"MaximumIndividualPlayerLatencyMilliseconds">> => integer(),
+%%   <<"PolicyDurationSeconds">> => integer()
+%% }
+-type player_latency_policy() :: #{binary() => any()}.
+
+%% Example:
+%% update_build_input() :: #{
+%%   <<"BuildId">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type update_build_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_compute_output() :: #{
+%%   <<"Compute">> => compute()
+%% }
+-type register_compute_output() :: #{binary() => any()}.
+
+%% Example:
+%% ip_permission() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"IpRange">> => string(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"ToPort">> => integer()
+%% }
+-type ip_permission() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_locations_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"Locations">> := list(location_configuration()())
+%% }
+-type create_fleet_locations_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_script_input() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ScriptId">> := string(),
+%%   <<"StorageLocation">> => s3_location(),
+%%   <<"Version">> => string(),
+%%   <<"ZipFile">> => binary()
+%% }
+-type update_script_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_peering_connection_output() :: #{
+
+%% }
+-type delete_vpc_peering_connection_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_sessions_input() :: #{
+%%   <<"AliasId">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"GameSessionId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Location">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusFilter">> => string()
+%% }
+-type describe_game_sessions_input() :: #{binary() => any()}.
+
+%% Example:
+%% filter_configuration() :: #{
+%%   <<"AllowedLocations">> => list(string()())
+%% }
+-type filter_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_matchmaking_rule_set_output() :: #{
+%%   <<"RuleSet">> => matchmaking_rule_set()
+%% }
+-type create_matchmaking_rule_set_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_matchmaking_configuration_input() :: #{
+%%   <<"AcceptanceRequired">> := boolean(),
+%%   <<"AcceptanceTimeoutSeconds">> => integer(),
+%%   <<"AdditionalPlayerCount">> => integer(),
+%%   <<"BackfillMode">> => list(any()),
+%%   <<"CustomEventData">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FlexMatchMode">> => list(any()),
+%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameSessionData">> => string(),
+%%   <<"GameSessionQueueArns">> => list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"NotificationTarget">> => string(),
+%%   <<"RequestTimeoutSeconds">> := integer(),
+%%   <<"RuleSetName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_matchmaking_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_game_session_placement_input() :: #{
+%%   <<"DesiredPlayerSessions">> => list(desired_player_session()()),
+%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameSessionData">> => string(),
+%%   <<"GameSessionName">> => string(),
+%%   <<"GameSessionQueueName">> := string(),
+%%   <<"MaximumPlayerSessionCount">> := integer(),
+%%   <<"PlacementId">> := string(),
+%%   <<"PlayerLatencies">> => list(player_latency()())
+%% }
+-type start_game_session_placement_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_session_placement_input() :: #{
+%%   <<"PlacementId">> := string()
+%% }
+-type describe_game_session_placement_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_locations_output() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"LocationStates">> => list(location_state()())
+%% }
+-type create_fleet_locations_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_matchmaking_input() :: #{
+%%   <<"TicketId">> := string()
+%% }
+-type stop_matchmaking_input() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_peering_authorization() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"GameLiftAwsAccountId">> => string(),
+%%   <<"PeerVpcAwsAccountId">> => string(),
+%%   <<"PeerVpcId">> => string()
+%% }
+-type vpc_peering_authorization() :: #{binary() => any()}.
+
+%% Example:
+%% describe_runtime_configuration_input() :: #{
+%%   <<"FleetId">> := string()
+%% }
+-type describe_runtime_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_alias_input() :: #{
+%%   <<"AliasId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoutingStrategy">> => routing_strategy()
+%% }
+-type update_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_matchmaking_configuration_output() :: #{
+
+%% }
+-type delete_matchmaking_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_compute_access_input() :: #{
+%%   <<"ComputeName">> := string(),
+%%   <<"FleetId">> := string()
+%% }
+-type get_compute_access_input() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_value() :: #{
+%%   <<"N">> => float(),
+%%   <<"S">> => string(),
+%%   <<"SDM">> => map(),
+%%   <<"SL">> => list(string()())
+%% }
+-type attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% create_matchmaking_configuration_output() :: #{
+%%   <<"Configuration">> => matchmaking_configuration()
+%% }
+-type create_matchmaking_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% anywhere_configuration() :: #{
+%%   <<"Cost">> => string()
+%% }
+-type anywhere_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"ObjectVersion">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% delete_build_input() :: #{
+%%   <<"BuildId">> := string()
+%% }
+-type delete_build_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_player_sessions_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PlayerSessions">> => list(player_session()())
+%% }
+-type describe_player_sessions_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instances_output() :: #{
+%%   <<"Instances">> => list(instance()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"RoutingStrategyType">> => list(any())
+%% }
+-type list_aliases_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_utilization_input() :: #{
+%%   <<"FleetIds">> => list(string()()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_utilization_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_access_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type get_instance_access_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_output() :: #{
+%%   <<"FleetAttributes">> => fleet_attributes(),
+%%   <<"LocationStates">> => list(location_state()())
+%% }
+-type create_fleet_output() :: #{binary() => any()}.
+
+%% Example:
+%% fleet_attributes() :: #{
+%%   <<"AnywhereConfiguration">> => anywhere_configuration(),
+%%   <<"BuildArn">> => string(),
+%%   <<"BuildId">> => string(),
+%%   <<"CertificateConfiguration">> => certificate_configuration(),
+%%   <<"ComputeType">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"FleetType">> => list(any()),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"InstanceRoleCredentialsProvider">> => list(any()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LogPaths">> => list(string()()),
+%%   <<"MetricGroups">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"NewGameSessionProtectionPolicy">> => list(any()),
+%%   <<"OperatingSystem">> => list(any()),
+%%   <<"ResourceCreationLimitPolicy">> => resource_creation_limit_policy(),
+%%   <<"ScriptArn">> => string(),
+%%   <<"ScriptId">> => string(),
+%%   <<"ServerLaunchParameters">> => string(),
+%%   <<"ServerLaunchPath">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StoppedActions">> => list(list(any())()),
+%%   <<"TerminationTime">> => non_neg_integer()
+%% }
+-type fleet_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% list_game_server_groups_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_game_server_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_player_sessions_input() :: #{
+%%   <<"GameSessionId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PlayerId">> => string(),
+%%   <<"PlayerSessionId">> => string(),
+%%   <<"PlayerSessionStatusFilter">> => string()
+%% }
+-type describe_player_sessions_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_game_session_input() :: #{
+%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameSessionId">> := string(),
+%%   <<"MaximumPlayerSessionCount">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"PlayerSessionCreationPolicy">> => list(any()),
+%%   <<"ProtectionPolicy">> => list(any())
+%% }
+-type update_game_session_input() :: #{binary() => any()}.
+
+%% Example:
+%% matchmaking_ticket() :: #{
+%%   <<"ConfigurationArn">> => string(),
+%%   <<"ConfigurationName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EstimatedWaitTime">> => integer(),
+%%   <<"GameSessionConnectionInfo">> => game_session_connection_info(),
+%%   <<"Players">> => list(player()()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"StatusReason">> => string(),
+%%   <<"TicketId">> => string()
+%% }
+-type matchmaking_ticket() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_capacity_output() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type update_fleet_capacity_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_game_server_output() :: #{
+%%   <<"GameServer">> => game_server()
+%% }
+-type update_game_server_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_game_session_queue_input() :: #{
+%%   <<"CustomEventData">> => string(),
+%%   <<"Destinations">> => list(game_session_queue_destination()()),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"NotificationTarget">> => string(),
+%%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()()),
+%%   <<"PriorityConfiguration">> => priority_configuration(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TimeoutInSeconds">> => integer()
+%% }
+-type create_game_session_queue_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_session_details_input() :: #{
+%%   <<"AliasId">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"GameSessionId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Location">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusFilter">> => string()
+%% }
+-type describe_game_session_details_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_fleet_actions_output() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string()
+%% }
+-type start_fleet_actions_output() :: #{binary() => any()}.
+
+%% Example:
+%% validate_matchmaking_rule_set_input() :: #{
+%%   <<"RuleSetBody">> := string()
+%% }
+-type validate_matchmaking_rule_set_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleets_input() :: #{
+%%   <<"BuildId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ScriptId">> => string()
+%% }
+-type list_fleets_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_game_servers_input() :: #{
+%%   <<"GameServerGroupName">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_game_servers_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_input() :: #{
+%%   <<"AnywhereConfiguration">> => anywhere_configuration(),
+%%   <<"BuildId">> => string(),
+%%   <<"CertificateConfiguration">> => certificate_configuration(),
+%%   <<"ComputeType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"EC2InboundPermissions">> => list(ip_permission()()),
+%%   <<"EC2InstanceType">> => list(any()),
+%%   <<"FleetType">> => list(any()),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"InstanceRoleCredentialsProvider">> => list(any()),
+%%   <<"Locations">> => list(location_configuration()()),
+%%   <<"LogPaths">> => list(string()()),
+%%   <<"MetricGroups">> => list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"NewGameSessionProtectionPolicy">> => list(any()),
+%%   <<"PeerVpcAwsAccountId">> => string(),
+%%   <<"PeerVpcId">> => string(),
+%%   <<"ResourceCreationLimitPolicy">> => resource_creation_limit_policy(),
+%%   <<"RuntimeConfiguration">> => runtime_configuration(),
+%%   <<"ScriptId">> => string(),
+%%   <<"ServerLaunchParameters">> => string(),
+%%   <<"ServerLaunchPath">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_fleet_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_matchmaking_input() :: #{
+%%   <<"ConfigurationName">> := string(),
+%%   <<"Players">> := list(player()()),
+%%   <<"TicketId">> => string()
+%% }
+-type start_matchmaking_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_fleet_actions_output() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string()
+%% }
+-type stop_fleet_actions_output() :: #{binary() => any()}.
+
+%% Example:
+%% claim_filter_option() :: #{
+%%   <<"InstanceStatuses">> => list(list(any())())
+%% }
+-type claim_filter_option() :: #{binary() => any()}.
+
+%% Example:
+%% delete_game_session_queue_input() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_game_session_queue_input() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_compute_input() :: #{
+%%   <<"ComputeName">> := string(),
+%%   <<"FleetId">> := string()
+%% }
+-type deregister_compute_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_events_output() :: #{
+%%   <<"Events">> => list(event()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_events_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_peering_authorization_output() :: #{
+%%   <<"VpcPeeringAuthorization">> => vpc_peering_authorization()
+%% }
+-type create_vpc_peering_authorization_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_game_session_queue_output() :: #{
+%%   <<"GameSessionQueue">> => game_session_queue()
+%% }
+-type create_game_session_queue_output() :: #{binary() => any()}.
+
+%% Example:
+%% location_model() :: #{
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationName">> => string()
+%% }
+-type location_model() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"EventCode">> => list(any()),
+%%   <<"EventId">> => string(),
+%%   <<"EventTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"PreSignedLogUrl">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type event() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instances_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Location">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_server_output() :: #{
+%%   <<"GameServer">> => game_server()
+%% }
+-type describe_game_server_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_peering_authorization_input() :: #{
+%%   <<"GameLiftAwsAccountId">> := string(),
+%%   <<"PeerVpcId">> := string()
+%% }
+-type create_vpc_peering_authorization_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_session_queues_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Names">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_game_session_queues_input() :: #{binary() => any()}.
+
+%% Example:
+%% search_game_sessions_output() :: #{
+%%   <<"GameSessions">> => list(game_session()()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_game_sessions_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_match_backfill_output() :: #{
+%%   <<"MatchmakingTicket">> => matchmaking_ticket()
+%% }
+-type start_match_backfill_output() :: #{binary() => any()}.
+
+%% Example:
+%% alias() :: #{
+%%   <<"AliasArn">> => string(),
+%%   <<"AliasId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RoutingStrategy">> => routing_strategy()
+%% }
+-type alias() :: #{binary() => any()}.
+
+%% Example:
+%% update_runtime_configuration_output() :: #{
+%%   <<"RuntimeConfiguration">> => runtime_configuration()
+%% }
+-type update_runtime_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% instance() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DnsName">> => string(),
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"OperatingSystem">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type instance() :: #{binary() => any()}.
+
+%% Example:
+%% get_game_session_log_url_input() :: #{
+%%   <<"GameSessionId">> := string()
+%% }
+-type get_game_session_log_url_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_fleet_actions_input() :: #{
+%%   <<"Actions">> := list(list(any())()),
+%%   <<"FleetId">> := string(),
+%%   <<"Location">> => string()
+%% }
+-type start_fleet_actions_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_matchmaking_configuration_input() :: #{
+%%   <<"AcceptanceRequired">> => boolean(),
+%%   <<"AcceptanceTimeoutSeconds">> => integer(),
+%%   <<"AdditionalPlayerCount">> => integer(),
+%%   <<"BackfillMode">> => list(any()),
+%%   <<"CustomEventData">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FlexMatchMode">> => list(any()),
+%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameSessionData">> => string(),
+%%   <<"GameSessionQueueArns">> => list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"NotificationTarget">> => string(),
+%%   <<"RequestTimeoutSeconds">> => integer(),
+%%   <<"RuleSetName">> => string()
+%% }
+-type update_matchmaking_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% resume_game_server_group_output() :: #{
+%%   <<"GameServerGroup">> => game_server_group()
+%% }
+-type resume_game_server_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_peering_authorization_output() :: #{
+
+%% }
+-type delete_vpc_peering_authorization_output() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_region_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_region_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_scripts_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Scripts">> => list(script()())
+%% }
+-type list_scripts_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_game_server_group_input() :: #{
+%%   <<"DeleteOption">> => list(any()),
+%%   <<"GameServerGroupName">> := string()
+%% }
+-type delete_game_server_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% game_session_full_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type game_session_full_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% aws_credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type aws_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% describe_matchmaking_rule_sets_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleSets">> => list(matchmaking_rule_set()())
+%% }
+-type describe_matchmaking_rule_sets_output() :: #{binary() => any()}.
+
+%% Example:
+%% game_property() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type game_property() :: #{binary() => any()}.
+
+%% Example:
+%% suspend_game_server_group_output() :: #{
+%%   <<"GameServerGroup">> => game_server_group()
+%% }
+-type suspend_game_server_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_access_output() :: #{
+%%   <<"InstanceAccess">> => instance_access()
+%% }
+-type get_instance_access_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_attributes_input() :: #{
+%%   <<"FleetIds">> => list(string()()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_output() :: #{
+%%   <<"Location">> => location_model()
+%% }
+-type create_location_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_game_session_input() :: #{
+%%   <<"AliasId">> => string(),
+%%   <<"CreatorId">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameSessionData">> => string(),
+%%   <<"GameSessionId">> => string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"MaximumPlayerSessionCount">> := integer(),
+%%   <<"Name">> => string()
+%% }
+-type create_game_session_input() :: #{binary() => any()}.
+
+%% Example:
+%% routing_strategy() :: #{
+%%   <<"FleetId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type routing_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% game_session_queue_destination() :: #{
+%%   <<"DestinationArn">> => string()
+%% }
+-type game_session_queue_destination() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_server_instances_output() :: #{
+%%   <<"GameServerInstances">> => list(game_server_instance()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_game_server_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_compute_auth_token_output() :: #{
+%%   <<"AuthToken">> => string(),
+%%   <<"ComputeArn">> => string(),
+%%   <<"ComputeName">> => string(),
+%%   <<"ExpirationTimestamp">> => non_neg_integer(),
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string()
+%% }
+-type get_compute_auth_token_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ec2_instance_limits_output() :: #{
+%%   <<"EC2InstanceLimits">> => list(ec2_instance_limit()())
+%% }
+-type describe_ec2_instance_limits_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_game_server_group_output() :: #{
+%%   <<"GameServerGroup">> => game_server_group()
+%% }
+-type delete_game_server_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_build_output() :: #{
+%%   <<"Build">> => build()
+%% }
+-type describe_build_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scaling_policy_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type delete_scaling_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_capacity_output() :: #{
+%%   <<"FleetCapacity">> => list(fleet_capacity()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_capacity_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_locations_input() :: #{
+%%   <<"Filters">> => list(list(any())()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_locations_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_attributes_output() :: #{
+%%   <<"FleetAttributes">> => list(fleet_attributes()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_attributes_output() :: #{binary() => any()}.
+
+%% Example:
+%% script() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ScriptArn">> => string(),
+%%   <<"ScriptId">> => string(),
+%%   <<"SizeOnDisk">> => float(),
+%%   <<"StorageLocation">> => s3_location(),
+%%   <<"Version">> => string()
+%% }
+-type script() :: #{binary() => any()}.
+
+%% Example:
+%% resource_creation_limit_policy() :: #{
+%%   <<"NewGameSessionsPerCreator">> => integer(),
+%%   <<"PolicyPeriodInMinutes">> => integer()
+%% }
+-type resource_creation_limit_policy() :: #{binary() => any()}.
+
+%% Example:
+%% game_server() :: #{
+%%   <<"ClaimStatus">> => list(any()),
+%%   <<"ConnectionInfo">> => string(),
+%%   <<"GameServerData">> => string(),
+%%   <<"GameServerGroupArn">> => string(),
+%%   <<"GameServerGroupName">> => string(),
+%%   <<"GameServerId">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LastClaimTime">> => non_neg_integer(),
+%%   <<"LastHealthCheckTime">> => non_neg_integer(),
+%%   <<"RegistrationTime">> => non_neg_integer(),
+%%   <<"UtilizationStatus">> => list(any())
+%% }
+-type game_server() :: #{binary() => any()}.
+
+%% Example:
+%% create_player_session_output() :: #{
+%%   <<"PlayerSession">> => player_session()
+%% }
+-type create_player_session_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_alias_output() :: #{
+%%   <<"Alias">> => alias()
+%% }
+-type describe_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_session_placement_output() :: #{
+%%   <<"GameSessionPlacement">> => game_session_placement()
+%% }
+-type describe_game_session_placement_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_game_session_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_game_session_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% register_compute_input() :: #{
+%%   <<"CertificatePath">> => string(),
+%%   <<"ComputeName">> := string(),
+%%   <<"DnsName">> => string(),
+%%   <<"FleetId">> := string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type register_compute_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_location_output() :: #{
+
+%% }
+-type delete_location_output() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stop_matchmaking_output() :: #{
+
+%% }
+-type stop_matchmaking_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_alias_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RoutingStrategy">> := routing_strategy(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_match_backfill_input() :: #{
+%%   <<"ConfigurationName">> := string(),
+%%   <<"GameSessionArn">> => string(),
+%%   <<"Players">> := list(player()()),
+%%   <<"TicketId">> => string()
+%% }
+-type start_match_backfill_input() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_instance_limit() :: #{
+%%   <<"CurrentInstances">> => integer(),
+%%   <<"EC2InstanceType">> => list(any()),
+%%   <<"InstanceLimit">> => integer(),
+%%   <<"Location">> => string()
+%% }
+-type ec2_instance_limit() :: #{binary() => any()}.
+
+%% Example:
+%% get_compute_auth_token_input() :: #{
+%%   <<"ComputeName">> := string(),
+%%   <<"FleetId">> := string()
+%% }
+-type get_compute_auth_token_input() :: #{binary() => any()}.
+
+%% Example:
+%% target_configuration() :: #{
+%%   <<"TargetValue">> => float()
+%% }
+-type target_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% launch_template_specification() :: #{
+%%   <<"LaunchTemplateId">> => string(),
+%%   <<"LaunchTemplateName">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type launch_template_specification() :: #{binary() => any()}.
+
+%% Example:
+%% claim_game_server_output() :: #{
+%%   <<"GameServer">> => game_server()
+%% }
+-type claim_game_server_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_policies_input() :: #{
+%%   <<"FleetId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Location">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusFilter">> => list(any())
+%% }
+-type describe_scaling_policies_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_game_servers_output() :: #{
+%%   <<"GameServers">> => list(game_server()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_game_servers_output() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_peering_connection_status() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type vpc_peering_connection_status() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_policies_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScalingPolicies">> => list(scaling_policy()())
+%% }
+-type describe_scaling_policies_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_matchmaking_rule_set_input() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_matchmaking_rule_set_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_build_input() :: #{
+%%   <<"Name">> => string(),
+%%   <<"OperatingSystem">> => list(any()),
+%%   <<"ServerSdkVersion">> => string(),
+%%   <<"StorageLocation">> => s3_location(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Version">> => string()
+%% }
+-type create_build_input() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_peering_connection() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"GameLiftVpcId">> => string(),
+%%   <<"IpV4CidrBlock">> => string(),
+%%   <<"PeerVpcId">> => string(),
+%%   <<"Status">> => vpc_peering_connection_status(),
+%%   <<"VpcPeeringConnectionId">> => string()
+%% }
+-type vpc_peering_connection() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_attributes_output() :: #{
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string()
+%% }
+-type update_fleet_attributes_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_build_output() :: #{
+%%   <<"Build">> => build(),
+%%   <<"StorageLocation">> => s3_location(),
+%%   <<"UploadCredentials">> => aws_credentials()
+%% }
+-type create_build_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_session_details_output() :: #{
+%%   <<"GameSessionDetails">> => list(game_session_detail()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_game_session_details_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_peering_connection_output() :: #{
+
+%% }
+-type create_vpc_peering_connection_output() :: #{binary() => any()}.
+
+%% Example:
+%% game_session_detail() :: #{
+%%   <<"GameSession">> => game_session(),
+%%   <<"ProtectionPolicy">> => list(any())
+%% }
+-type game_session_detail() :: #{binary() => any()}.
+
+%% Example:
+%% stop_game_session_placement_output() :: #{
+%%   <<"GameSessionPlacement">> => game_session_placement()
+%% }
+-type stop_game_session_placement_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_peering_authorizations_input() :: #{
+
+%% }
+-type describe_vpc_peering_authorizations_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_game_server_group_input() :: #{
+%%   <<"AutoScalingPolicy">> => game_server_group_auto_scaling_policy(),
+%%   <<"BalancingStrategy">> => list(any()),
+%%   <<"GameServerGroupName">> := string(),
+%%   <<"GameServerProtectionPolicy">> => list(any()),
+%%   <<"InstanceDefinitions">> := list(instance_definition()()),
+%%   <<"LaunchTemplate">> := launch_template_specification(),
+%%   <<"MaxSize">> := integer(),
+%%   <<"MinSize">> := integer(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcSubnets">> => list(string()())
+%% }
+-type create_game_server_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_fleet_actions_input() :: #{
+%%   <<"Actions">> := list(list(any())()),
+%%   <<"FleetId">> := string(),
+%%   <<"Location">> => string()
+%% }
+-type stop_fleet_actions_input() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_configuration() :: #{
+%%   <<"CertificateType">> => list(any())
+%% }
+-type certificate_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% matchmaking_rule_set() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"RuleSetArn">> => string(),
+%%   <<"RuleSetBody">> => string(),
+%%   <<"RuleSetName">> => string()
+%% }
+-type matchmaking_rule_set() :: #{binary() => any()}.
+
+%% Example:
+%% describe_compute_input() :: #{
+%%   <<"ComputeName">> := string(),
+%%   <<"FleetId">> := string()
+%% }
+-type describe_compute_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_game_server_input() :: #{
+%%   <<"ConnectionInfo">> => string(),
+%%   <<"GameServerData">> => string(),
+%%   <<"GameServerGroupName">> := string(),
+%%   <<"GameServerId">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type register_game_server_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_player_sessions_input() :: #{
+%%   <<"GameSessionId">> := string(),
+%%   <<"PlayerDataMap">> => map(),
+%%   <<"PlayerIds">> := list(string()())
+%% }
+-type create_player_sessions_input() :: #{binary() => any()}.
+
+%% Example:
+%% game_session_placement() :: #{
+%%   <<"DnsName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameSessionArn">> => string(),
+%%   <<"GameSessionData">> => string(),
+%%   <<"GameSessionId">> => string(),
+%%   <<"GameSessionName">> => string(),
+%%   <<"GameSessionQueueName">> => string(),
+%%   <<"GameSessionRegion">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"MatchmakerData">> => string(),
+%%   <<"MaximumPlayerSessionCount">> => integer(),
+%%   <<"PlacedPlayerSessions">> => list(placed_player_session()()),
+%%   <<"PlacementId">> => string(),
+%%   <<"PlayerLatencies">> => list(player_latency()()),
+%%   <<"Port">> => integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type game_session_placement() :: #{binary() => any()}.
+
+%% Example:
+%% game_session() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CreatorId">> => string(),
+%%   <<"CurrentPlayerSessionCount">> => integer(),
+%%   <<"DnsName">> => string(),
+%%   <<"FleetArn">> => string(),
+%%   <<"FleetId">> => string(),
+%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameSessionData">> => string(),
+%%   <<"GameSessionId">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"MatchmakerData">> => string(),
+%%   <<"MaximumPlayerSessionCount">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"PlayerSessionCreationPolicy">> => list(any()),
+%%   <<"Port">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"TerminationTime">> => non_neg_integer()
+%% }
+-type game_session() :: #{binary() => any()}.
+
+%% Example:
+%% update_game_session_output() :: #{
+%%   <<"GameSession">> => game_session()
+%% }
+-type update_game_session_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_builds_output() :: #{
+%%   <<"Builds">> => list(build()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_builds_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_script_input() :: #{
+%%   <<"Name">> => string(),
+%%   <<"StorageLocation">> => s3_location(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Version">> => string(),
+%%   <<"ZipFile">> => binary()
+%% }
+-type create_script_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_script_output() :: #{
+%%   <<"Script">> => script()
+%% }
+-type create_script_output() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_configuration() :: #{
+%%   <<"TargetValue">> => float()
+%% }
+-type target_tracking_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_matchmaking_configurations_output() :: #{
+%%   <<"Configurations">> => list(matchmaking_configuration()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_matchmaking_configurations_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_game_server_instances_input() :: #{
+%%   <<"GameServerGroupName">> := string(),
+%%   <<"InstanceIds">> => list(string()()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_game_server_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% terminal_routing_strategy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type terminal_routing_strategy_exception() :: #{binary() => any()}.
+
+-type accept_match_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type claim_game_server_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    out_of_capacity_exception() | 
+    unauthorized_exception().
+
+-type create_alias_errors() ::
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_build_errors() ::
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_fleet_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_fleet_locations_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type create_game_server_group_errors() ::
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type create_game_session_errors() ::
+    terminal_routing_strategy_exception() | 
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    fleet_capacity_exceeded_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type create_game_session_queue_errors() ::
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_location_errors() ::
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_matchmaking_configuration_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type create_matchmaking_rule_set_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type create_player_session_errors() ::
+    terminal_routing_strategy_exception() | 
+    invalid_game_session_status_exception() | 
+    game_session_full_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type create_player_sessions_errors() ::
+    terminal_routing_strategy_exception() | 
+    invalid_game_session_status_exception() | 
+    game_session_full_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type create_script_errors() ::
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type create_vpc_peering_authorization_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type create_vpc_peering_connection_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_alias_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type delete_build_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type delete_fleet_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception() | 
+    invalid_fleet_status_exception().
+
+-type delete_fleet_locations_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_game_server_group_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_game_session_queue_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type delete_location_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_matchmaking_configuration_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type delete_matchmaking_rule_set_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type delete_scaling_policy_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_script_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    tagging_failed_exception().
+
+-type delete_vpc_peering_authorization_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type delete_vpc_peering_connection_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type deregister_compute_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type deregister_game_server_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_alias_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_build_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_compute_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_ec2_instance_limits_errors() ::
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_attributes_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_capacity_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_events_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_location_attributes_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_location_capacity_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_location_utilization_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_port_settings_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_fleet_utilization_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_server_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_server_group_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_server_instances_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_session_details_errors() ::
+    terminal_routing_strategy_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_session_placement_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_session_queues_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_game_sessions_errors() ::
+    terminal_routing_strategy_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_instances_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_matchmaking_errors() ::
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type describe_matchmaking_configurations_errors() ::
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type describe_matchmaking_rule_sets_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type describe_player_sessions_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_runtime_configuration_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_scaling_policies_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_script_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_vpc_peering_authorizations_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type describe_vpc_peering_connections_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type get_compute_access_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type get_compute_auth_token_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type get_game_session_log_url_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type get_instance_access_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_aliases_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_builds_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_compute_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_fleets_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_game_server_groups_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_game_servers_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_locations_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_scripts_errors() ::
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type list_tags_for_resource_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type put_scaling_policy_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type register_compute_errors() ::
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type register_game_server_errors() ::
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type request_upload_credentials_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type resolve_alias_errors() ::
+    terminal_routing_strategy_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type resume_game_server_group_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type search_game_sessions_errors() ::
+    terminal_routing_strategy_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type start_fleet_actions_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type start_game_session_placement_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type start_match_backfill_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type start_matchmaking_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type stop_fleet_actions_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type stop_game_session_placement_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type stop_matchmaking_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type suspend_game_server_group_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type tag_resource_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type untag_resource_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    tagging_failed_exception().
+
+-type update_alias_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_build_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_fleet_attributes_errors() ::
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type update_fleet_capacity_errors() ::
+    limit_exceeded_exception() | 
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type update_fleet_port_settings_errors() ::
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type update_game_server_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_game_server_group_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_game_session_errors() ::
+    invalid_game_session_status_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    conflict_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_game_session_queue_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type update_matchmaking_configuration_errors() ::
+    unsupported_region_exception() | 
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
+-type update_runtime_configuration_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception() | 
+    invalid_fleet_status_exception().
+
+-type update_script_errors() ::
+    not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    unauthorized_exception().
+
+-type validate_matchmaking_rule_set_errors() ::
+    unsupported_region_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -333,9 +3276,18 @@
 %% FlexMatch events:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html
 %% (reference)
+-spec accept_match(aws_client:aws_client(), accept_match_input()) ->
+    {ok, accept_match_output(), tuple()} |
+    {error, any()} |
+    {error, accept_match_errors(), tuple()}.
 accept_match(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_match(Client, Input, []).
+
+-spec accept_match(aws_client:aws_client(), accept_match_input(), proplists:proplist()) ->
+    {ok, accept_match_output(), tuple()} |
+    {error, any()} |
+    {error, accept_match_errors(), tuple()}.
 accept_match(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptMatch">>, Input, Options).
@@ -398,9 +3350,18 @@ accept_match(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec claim_game_server(aws_client:aws_client(), claim_game_server_input()) ->
+    {ok, claim_game_server_output(), tuple()} |
+    {error, any()} |
+    {error, claim_game_server_errors(), tuple()}.
 claim_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     claim_game_server(Client, Input, []).
+
+-spec claim_game_server(aws_client:aws_client(), claim_game_server_input(), proplists:proplist()) ->
+    {ok, claim_game_server_output(), tuple()} |
+    {error, any()} |
+    {error, claim_game_server_errors(), tuple()}.
 claim_game_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ClaimGameServer">>, Input, Options).
@@ -437,9 +3398,18 @@ claim_game_server(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec create_alias(aws_client:aws_client(), create_alias_input()) ->
+    {ok, create_alias_output(), tuple()} |
+    {error, any()} |
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
+
+-spec create_alias(aws_client:aws_client(), create_alias_input(), proplists:proplist()) ->
+    {ok, create_alias_output(), tuple()} |
+    {error, any()} |
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
@@ -498,9 +3468,18 @@ create_alias(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec create_build(aws_client:aws_client(), create_build_input()) ->
+    {ok, create_build_output(), tuple()} |
+    {error, any()} |
+    {error, create_build_errors(), tuple()}.
 create_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_build(Client, Input, []).
+
+-spec create_build(aws_client:aws_client(), create_build_input(), proplists:proplist()) ->
+    {ok, create_build_output(), tuple()} |
+    {error, any()} |
+    {error, create_build_errors(), tuple()}.
 create_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBuild">>, Input, Options).
@@ -576,9 +3555,18 @@ create_build(Client, Input, Options)
 %%
 %% Multi-location fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec create_fleet(aws_client:aws_client(), create_fleet_input()) ->
+    {ok, create_fleet_output(), tuple()} |
+    {error, any()} |
+    {error, create_fleet_errors(), tuple()}.
 create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
+
+-spec create_fleet(aws_client:aws_client(), create_fleet_input(), proplists:proplist()) ->
+    {ok, create_fleet_output(), tuple()} |
+    {error, any()} |
+    {error, create_fleet_errors(), tuple()}.
 create_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFleet">>, Input, Options).
@@ -619,9 +3607,18 @@ create_fleet(Client, Input, Options)
 %%
 %% Multi-location fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec create_fleet_locations(aws_client:aws_client(), create_fleet_locations_input()) ->
+    {ok, create_fleet_locations_output(), tuple()} |
+    {error, any()} |
+    {error, create_fleet_locations_errors(), tuple()}.
 create_fleet_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet_locations(Client, Input, []).
+
+-spec create_fleet_locations(aws_client:aws_client(), create_fleet_locations_input(), proplists:proplist()) ->
+    {ok, create_fleet_locations_output(), tuple()} |
+    {error, any()} |
+    {error, create_fleet_locations_errors(), tuple()}.
 create_fleet_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFleetLocations">>, Input, Options).
@@ -689,9 +3686,18 @@ create_fleet_locations(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec create_game_server_group(aws_client:aws_client(), create_game_server_group_input()) ->
+    {ok, create_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, create_game_server_group_errors(), tuple()}.
 create_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_server_group(Client, Input, []).
+
+-spec create_game_server_group(aws_client:aws_client(), create_game_server_group_input(), proplists:proplist()) ->
+    {ok, create_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, create_game_server_group_errors(), tuple()}.
 create_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGameServerGroup">>, Input, Options).
@@ -757,9 +3763,18 @@ create_game_server_group(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec create_game_session(aws_client:aws_client(), create_game_session_input()) ->
+    {ok, create_game_session_output(), tuple()} |
+    {error, any()} |
+    {error, create_game_session_errors(), tuple()}.
 create_game_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_session(Client, Input, []).
+
+-spec create_game_session(aws_client:aws_client(), create_game_session_input(), proplists:proplist()) ->
+    {ok, create_game_session_output(), tuple()} |
+    {error, any()} |
+    {error, create_game_session_errors(), tuple()}.
 create_game_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGameSession">>, Input, Options).
@@ -839,17 +3854,35 @@ create_game_session(Client, Input, Options)
 %% |
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec create_game_session_queue(aws_client:aws_client(), create_game_session_queue_input()) ->
+    {ok, create_game_session_queue_output(), tuple()} |
+    {error, any()} |
+    {error, create_game_session_queue_errors(), tuple()}.
 create_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_session_queue(Client, Input, []).
+
+-spec create_game_session_queue(aws_client:aws_client(), create_game_session_queue_input(), proplists:proplist()) ->
+    {ok, create_game_session_queue_output(), tuple()} |
+    {error, any()} |
+    {error, create_game_session_queue_errors(), tuple()}.
 create_game_session_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGameSessionQueue">>, Input, Options).
 
 %% @doc Creates a custom location for use in an Anywhere fleet.
+-spec create_location(aws_client:aws_client(), create_location_input()) ->
+    {ok, create_location_output(), tuple()} |
+    {error, any()} |
+    {error, create_location_errors(), tuple()}.
 create_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location(Client, Input, []).
+
+-spec create_location(aws_client:aws_client(), create_location_input(), proplists:proplist()) ->
+    {ok, create_location_output(), tuple()} |
+    {error, any()} |
+    {error, create_location_errors(), tuple()}.
 create_location(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocation">>, Input, Options).
@@ -894,9 +3927,18 @@ create_location(Client, Input, Options)
 %% Set up FlexMatch event
 %% notification:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html
+-spec create_matchmaking_configuration(aws_client:aws_client(), create_matchmaking_configuration_input()) ->
+    {ok, create_matchmaking_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, create_matchmaking_configuration_errors(), tuple()}.
 create_matchmaking_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_matchmaking_configuration(Client, Input, []).
+
+-spec create_matchmaking_configuration(aws_client:aws_client(), create_matchmaking_configuration_input(), proplists:proplist()) ->
+    {ok, create_matchmaking_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, create_matchmaking_configuration_errors(), tuple()}.
 create_matchmaking_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMatchmakingConfiguration">>, Input, Options).
@@ -933,9 +3975,18 @@ create_matchmaking_configuration(Client, Input, Options)
 %% Matchmaking with
 %% FlexMatch:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-intro.html
+-spec create_matchmaking_rule_set(aws_client:aws_client(), create_matchmaking_rule_set_input()) ->
+    {ok, create_matchmaking_rule_set_output(), tuple()} |
+    {error, any()} |
+    {error, create_matchmaking_rule_set_errors(), tuple()}.
 create_matchmaking_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_matchmaking_rule_set(Client, Input, []).
+
+-spec create_matchmaking_rule_set(aws_client:aws_client(), create_matchmaking_rule_set_input(), proplists:proplist()) ->
+    {ok, create_matchmaking_rule_set_output(), tuple()} |
+    {error, any()} |
+    {error, create_matchmaking_rule_set_errors(), tuple()}.
 create_matchmaking_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMatchmakingRuleSet">>, Input, Options).
@@ -972,9 +4023,18 @@ create_matchmaking_rule_set(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec create_player_session(aws_client:aws_client(), create_player_session_input()) ->
+    {ok, create_player_session_output(), tuple()} |
+    {error, any()} |
+    {error, create_player_session_errors(), tuple()}.
 create_player_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_player_session(Client, Input, []).
+
+-spec create_player_session(aws_client:aws_client(), create_player_session_input(), proplists:proplist()) ->
+    {ok, create_player_session_output(), tuple()} |
+    {error, any()} |
+    {error, create_player_session_errors(), tuple()}.
 create_player_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlayerSession">>, Input, Options).
@@ -1010,9 +4070,18 @@ create_player_session(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec create_player_sessions(aws_client:aws_client(), create_player_sessions_input()) ->
+    {ok, create_player_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, create_player_sessions_errors(), tuple()}.
 create_player_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_player_sessions(Client, Input, []).
+
+-spec create_player_sessions(aws_client:aws_client(), create_player_sessions_input(), proplists:proplist()) ->
+    {ok, create_player_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, create_player_sessions_errors(), tuple()}.
 create_player_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlayerSessions">>, Input, Options).
@@ -1064,9 +4133,18 @@ create_player_sessions(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec create_script(aws_client:aws_client(), create_script_input()) ->
+    {ok, create_script_output(), tuple()} |
+    {error, any()} |
+    {error, create_script_errors(), tuple()}.
 create_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_script(Client, Input, []).
+
+-spec create_script(aws_client:aws_client(), create_script_input(), proplists:proplist()) ->
+    {ok, create_script_output(), tuple()} |
+    {error, any()} |
+    {error, create_script_errors(), tuple()}.
 create_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateScript">>, Input, Options).
@@ -1120,9 +4198,18 @@ create_script(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec create_vpc_peering_authorization(aws_client:aws_client(), create_vpc_peering_authorization_input()) ->
+    {ok, create_vpc_peering_authorization_output(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_peering_authorization_errors(), tuple()}.
 create_vpc_peering_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_peering_authorization(Client, Input, []).
+
+-spec create_vpc_peering_authorization(aws_client:aws_client(), create_vpc_peering_authorization_input(), proplists:proplist()) ->
+    {ok, create_vpc_peering_authorization_output(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_peering_authorization_errors(), tuple()}.
 create_vpc_peering_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpcPeeringAuthorization">>, Input, Options).
@@ -1174,9 +4261,18 @@ create_vpc_peering_authorization(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec create_vpc_peering_connection(aws_client:aws_client(), create_vpc_peering_connection_input()) ->
+    {ok, create_vpc_peering_connection_output(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_peering_connection_errors(), tuple()}.
 create_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_peering_connection(Client, Input, []).
+
+-spec create_vpc_peering_connection(aws_client:aws_client(), create_vpc_peering_connection_input(), proplists:proplist()) ->
+    {ok, create_vpc_peering_connection_output(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_peering_connection_errors(), tuple()}.
 create_vpc_peering_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpcPeeringConnection">>, Input, Options).
@@ -1192,9 +4288,18 @@ create_vpc_peering_connection(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec delete_alias(aws_client:aws_client(), delete_alias_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
+
+-spec delete_alias(aws_client:aws_client(), delete_alias_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlias">>, Input, Options).
@@ -1217,9 +4322,18 @@ delete_alias(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec delete_build(aws_client:aws_client(), delete_build_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_build_errors(), tuple()}.
 delete_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_build(Client, Input, []).
+
+-spec delete_build(aws_client:aws_client(), delete_build_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_build_errors(), tuple()}.
 delete_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBuild">>, Input, Options).
@@ -1250,9 +4364,18 @@ delete_build(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_fleet_errors(), tuple()}.
 delete_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet(Client, Input, []).
+
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_fleet_errors(), tuple()}.
 delete_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleet">>, Input, Options).
@@ -1278,9 +4401,18 @@ delete_fleet(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec delete_fleet_locations(aws_client:aws_client(), delete_fleet_locations_input()) ->
+    {ok, delete_fleet_locations_output(), tuple()} |
+    {error, any()} |
+    {error, delete_fleet_locations_errors(), tuple()}.
 delete_fleet_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet_locations(Client, Input, []).
+
+-spec delete_fleet_locations(aws_client:aws_client(), delete_fleet_locations_input(), proplists:proplist()) ->
+    {ok, delete_fleet_locations_output(), tuple()} |
+    {error, any()} |
+    {error, delete_fleet_locations_errors(), tuple()}.
 delete_fleet_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleetLocations">>, Input, Options).
@@ -1326,9 +4458,18 @@ delete_fleet_locations(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec delete_game_server_group(aws_client:aws_client(), delete_game_server_group_input()) ->
+    {ok, delete_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, delete_game_server_group_errors(), tuple()}.
 delete_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_game_server_group(Client, Input, []).
+
+-spec delete_game_server_group(aws_client:aws_client(), delete_game_server_group_input(), proplists:proplist()) ->
+    {ok, delete_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, delete_game_server_group_errors(), tuple()}.
 delete_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGameServerGroup">>, Input, Options).
@@ -1340,9 +4481,18 @@ delete_game_server_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html
 %% requests that reference the queue will fail. To
 %% delete a queue, specify the queue name.
+-spec delete_game_session_queue(aws_client:aws_client(), delete_game_session_queue_input()) ->
+    {ok, delete_game_session_queue_output(), tuple()} |
+    {error, any()} |
+    {error, delete_game_session_queue_errors(), tuple()}.
 delete_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_game_session_queue(Client, Input, []).
+
+-spec delete_game_session_queue(aws_client:aws_client(), delete_game_session_queue_input(), proplists:proplist()) ->
+    {ok, delete_game_session_queue_output(), tuple()} |
+    {error, any()} |
+    {error, delete_game_session_queue_errors(), tuple()}.
 delete_game_session_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGameSessionQueue">>, Input, Options).
@@ -1354,9 +4504,18 @@ delete_game_session_queue(Client, Input, Options)
 %% location and deregister the location if it is in use. For more
 %% information, see DeregisterCompute:
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DeregisterCompute.html.
+-spec delete_location(aws_client:aws_client(), delete_location_input()) ->
+    {ok, delete_location_output(), tuple()} |
+    {error, any()} |
+    {error, delete_location_errors(), tuple()}.
 delete_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_location(Client, Input, []).
+
+-spec delete_location(aws_client:aws_client(), delete_location_input(), proplists:proplist()) ->
+    {ok, delete_location_output(), tuple()} |
+    {error, any()} |
+    {error, delete_location_errors(), tuple()}.
 delete_location(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLocation">>, Input, Options).
@@ -1367,9 +4526,18 @@ delete_location(Client, Input, Options)
 %% configuration name. A matchmaking configuration cannot be deleted if it is
 %% being used in
 %% any active matchmaking tickets.
+-spec delete_matchmaking_configuration(aws_client:aws_client(), delete_matchmaking_configuration_input()) ->
+    {ok, delete_matchmaking_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_matchmaking_configuration_errors(), tuple()}.
 delete_matchmaking_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_matchmaking_configuration(Client, Input, []).
+
+-spec delete_matchmaking_configuration(aws_client:aws_client(), delete_matchmaking_configuration_input(), proplists:proplist()) ->
+    {ok, delete_matchmaking_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_matchmaking_configuration_errors(), tuple()}.
 delete_matchmaking_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMatchmakingConfiguration">>, Input, Options).
@@ -1386,9 +4554,18 @@ delete_matchmaking_configuration(Client, Input, Options)
 %% Build a rule
 %% set:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html
+-spec delete_matchmaking_rule_set(aws_client:aws_client(), delete_matchmaking_rule_set_input()) ->
+    {ok, delete_matchmaking_rule_set_output(), tuple()} |
+    {error, any()} |
+    {error, delete_matchmaking_rule_set_errors(), tuple()}.
 delete_matchmaking_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_matchmaking_rule_set(Client, Input, []).
+
+-spec delete_matchmaking_rule_set(aws_client:aws_client(), delete_matchmaking_rule_set_input(), proplists:proplist()) ->
+    {ok, delete_matchmaking_rule_set_output(), tuple()} |
+    {error, any()} |
+    {error, delete_matchmaking_rule_set_errors(), tuple()}.
 delete_matchmaking_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMatchmakingRuleSet">>, Input, Options).
@@ -1404,9 +4581,18 @@ delete_matchmaking_rule_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_StopFleetActions.html.
 %% This operation suspends all policies for the
 %% fleet.
+-spec delete_scaling_policy(aws_client:aws_client(), delete_scaling_policy_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_scaling_policy_errors(), tuple()}.
 delete_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_policy(Client, Input, []).
+
+-spec delete_scaling_policy(aws_client:aws_client(), delete_scaling_policy_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_scaling_policy_errors(), tuple()}.
 delete_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScalingPolicy">>, Input, Options).
@@ -1435,9 +4621,18 @@ delete_scaling_policy(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec delete_script(aws_client:aws_client(), delete_script_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_script_errors(), tuple()}.
 delete_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_script(Client, Input, []).
+
+-spec delete_script(aws_client:aws_client(), delete_script_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_script_errors(), tuple()}.
 delete_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScript">>, Input, Options).
@@ -1452,9 +4647,18 @@ delete_script(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec delete_vpc_peering_authorization(aws_client:aws_client(), delete_vpc_peering_authorization_input()) ->
+    {ok, delete_vpc_peering_authorization_output(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_peering_authorization_errors(), tuple()}.
 delete_vpc_peering_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_peering_authorization(Client, Input, []).
+
+-spec delete_vpc_peering_authorization(aws_client:aws_client(), delete_vpc_peering_authorization_input(), proplists:proplist()) ->
+    {ok, delete_vpc_peering_authorization_output(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_peering_authorization_errors(), tuple()}.
 delete_vpc_peering_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpcPeeringAuthorization">>, Input, Options).
@@ -1474,9 +4678,18 @@ delete_vpc_peering_authorization(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec delete_vpc_peering_connection(aws_client:aws_client(), delete_vpc_peering_connection_input()) ->
+    {ok, delete_vpc_peering_connection_output(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_peering_connection_errors(), tuple()}.
 delete_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_peering_connection(Client, Input, []).
+
+-spec delete_vpc_peering_connection(aws_client:aws_client(), delete_vpc_peering_connection_input(), proplists:proplist()) ->
+    {ok, delete_vpc_peering_connection_output(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_peering_connection_errors(), tuple()}.
 delete_vpc_peering_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpcPeeringConnection">>, Input, Options).
@@ -1485,9 +4698,18 @@ delete_vpc_peering_connection(Client, Input, Options)
 %%
 %% Deregistered computes can no
 %% longer host game sessions through Amazon GameLift.
+-spec deregister_compute(aws_client:aws_client(), deregister_compute_input()) ->
+    {ok, deregister_compute_output(), tuple()} |
+    {error, any()} |
+    {error, deregister_compute_errors(), tuple()}.
 deregister_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_compute(Client, Input, []).
+
+-spec deregister_compute(aws_client:aws_client(), deregister_compute_input(), proplists:proplist()) ->
+    {ok, deregister_compute_output(), tuple()} |
+    {error, any()} |
+    {error, deregister_compute_errors(), tuple()}.
 deregister_compute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterCompute">>, Input, Options).
@@ -1513,9 +4735,18 @@ deregister_compute(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec deregister_game_server(aws_client:aws_client(), deregister_game_server_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, deregister_game_server_errors(), tuple()}.
 deregister_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_game_server(Client, Input, []).
+
+-spec deregister_game_server(aws_client:aws_client(), deregister_game_server_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, deregister_game_server_errors(), tuple()}.
 deregister_game_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterGameServer">>, Input, Options).
@@ -1534,9 +4765,18 @@ deregister_game_server(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec describe_alias(aws_client:aws_client(), describe_alias_input()) ->
+    {ok, describe_alias_output(), tuple()} |
+    {error, any()} |
+    {error, describe_alias_errors(), tuple()}.
 describe_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alias(Client, Input, []).
+
+-spec describe_alias(aws_client:aws_client(), describe_alias_input(), proplists:proplist()) ->
+    {ok, describe_alias_output(), tuple()} |
+    {error, any()} |
+    {error, describe_alias_errors(), tuple()}.
 describe_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAlias">>, Input, Options).
@@ -1555,9 +4795,18 @@ describe_alias(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec describe_build(aws_client:aws_client(), describe_build_input()) ->
+    {ok, describe_build_output(), tuple()} |
+    {error, any()} |
+    {error, describe_build_errors(), tuple()}.
 describe_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_build(Client, Input, []).
+
+-spec describe_build(aws_client:aws_client(), describe_build_input(), proplists:proplist()) ->
+    {ok, describe_build_output(), tuple()} |
+    {error, any()} |
+    {error, describe_build_errors(), tuple()}.
 describe_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBuild">>, Input, Options).
@@ -1577,9 +4826,18 @@ describe_build(Client, Input, Options)
 %% managed EC2 fleets, this operation returns the fleet's EC2 instances.
 %% For Anywhere
 %% fleets, this operation returns the fleet's registered computes.
+-spec describe_compute(aws_client:aws_client(), describe_compute_input()) ->
+    {ok, describe_compute_output(), tuple()} |
+    {error, any()} |
+    {error, describe_compute_errors(), tuple()}.
 describe_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compute(Client, Input, []).
+
+-spec describe_compute(aws_client:aws_client(), describe_compute_input(), proplists:proplist()) ->
+    {ok, describe_compute_output(), tuple()} |
+    {error, any()} |
+    {error, describe_compute_errors(), tuple()}.
 describe_compute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCompute">>, Input, Options).
@@ -1648,9 +4906,18 @@ describe_compute(Client, Input, Options)
 %%
 %% Setting up Amazon GameLift fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec describe_ec2_instance_limits(aws_client:aws_client(), describe_ec2_instance_limits_input()) ->
+    {ok, describe_ec2_instance_limits_output(), tuple()} |
+    {error, any()} |
+    {error, describe_ec2_instance_limits_errors(), tuple()}.
 describe_ec2_instance_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ec2_instance_limits(Client, Input, []).
+
+-spec describe_ec2_instance_limits(aws_client:aws_client(), describe_ec2_instance_limits_input(), proplists:proplist()) ->
+    {ok, describe_ec2_instance_limits_output(), tuple()} |
+    {error, any()} |
+    {error, describe_ec2_instance_limits_errors(), tuple()}.
 describe_ec2_instance_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEC2InstanceLimits">>, Input, Options).
@@ -1685,9 +4952,18 @@ describe_ec2_instance_limits(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec describe_fleet_attributes(aws_client:aws_client(), describe_fleet_attributes_input()) ->
+    {ok, describe_fleet_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_attributes_errors(), tuple()}.
 describe_fleet_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_attributes(Client, Input, []).
+
+-spec describe_fleet_attributes(aws_client:aws_client(), describe_fleet_attributes_input(), proplists:proplist()) ->
+    {ok, describe_fleet_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_attributes_errors(), tuple()}.
 describe_fleet_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAttributes">>, Input, Options).
@@ -1734,9 +5010,18 @@ describe_fleet_attributes(Client, Input, Options)
 %%
 %% GameLift metrics for fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
+-spec describe_fleet_capacity(aws_client:aws_client(), describe_fleet_capacity_input()) ->
+    {ok, describe_fleet_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_capacity_errors(), tuple()}.
 describe_fleet_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_capacity(Client, Input, []).
+
+-spec describe_fleet_capacity(aws_client:aws_client(), describe_fleet_capacity_input(), proplists:proplist()) ->
+    {ok, describe_fleet_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_capacity_errors(), tuple()}.
 describe_fleet_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetCapacity">>, Input, Options).
@@ -1762,9 +5047,18 @@ describe_fleet_capacity(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec describe_fleet_events(aws_client:aws_client(), describe_fleet_events_input()) ->
+    {ok, describe_fleet_events_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_events_errors(), tuple()}.
 describe_fleet_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_events(Client, Input, []).
+
+-spec describe_fleet_events(aws_client:aws_client(), describe_fleet_events_input(), proplists:proplist()) ->
+    {ok, describe_fleet_events_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_events_errors(), tuple()}.
 describe_fleet_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetEvents">>, Input, Options).
@@ -1800,9 +5094,18 @@ describe_fleet_events(Client, Input, Options)
 %% Setting
 %% up Amazon GameLift fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec describe_fleet_location_attributes(aws_client:aws_client(), describe_fleet_location_attributes_input()) ->
+    {ok, describe_fleet_location_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_location_attributes_errors(), tuple()}.
 describe_fleet_location_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_attributes(Client, Input, []).
+
+-spec describe_fleet_location_attributes(aws_client:aws_client(), describe_fleet_location_attributes_input(), proplists:proplist()) ->
+    {ok, describe_fleet_location_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_location_attributes_errors(), tuple()}.
 describe_fleet_location_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetLocationAttributes">>, Input, Options).
@@ -1832,9 +5135,18 @@ describe_fleet_location_attributes(Client, Input, Options)
 %%
 %% GameLift metrics for fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
+-spec describe_fleet_location_capacity(aws_client:aws_client(), describe_fleet_location_capacity_input()) ->
+    {ok, describe_fleet_location_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_location_capacity_errors(), tuple()}.
 describe_fleet_location_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_capacity(Client, Input, []).
+
+-spec describe_fleet_location_capacity(aws_client:aws_client(), describe_fleet_location_capacity_input(), proplists:proplist()) ->
+    {ok, describe_fleet_location_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_location_capacity_errors(), tuple()}.
 describe_fleet_location_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetLocationCapacity">>, Input, Options).
@@ -1863,9 +5175,18 @@ describe_fleet_location_capacity(Client, Input, Options)
 %%
 %% GameLift metrics for fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
+-spec describe_fleet_location_utilization(aws_client:aws_client(), describe_fleet_location_utilization_input()) ->
+    {ok, describe_fleet_location_utilization_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_location_utilization_errors(), tuple()}.
 describe_fleet_location_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_utilization(Client, Input, []).
+
+-spec describe_fleet_location_utilization(aws_client:aws_client(), describe_fleet_location_utilization_input(), proplists:proplist()) ->
+    {ok, describe_fleet_location_utilization_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_location_utilization_errors(), tuple()}.
 describe_fleet_location_utilization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetLocationUtilization">>, Input, Options).
@@ -1900,9 +5221,18 @@ describe_fleet_location_utilization(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec describe_fleet_port_settings(aws_client:aws_client(), describe_fleet_port_settings_input()) ->
+    {ok, describe_fleet_port_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_port_settings_errors(), tuple()}.
 describe_fleet_port_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_port_settings(Client, Input, []).
+
+-spec describe_fleet_port_settings(aws_client:aws_client(), describe_fleet_port_settings_input(), proplists:proplist()) ->
+    {ok, describe_fleet_port_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_port_settings_errors(), tuple()}.
 describe_fleet_port_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetPortSettings">>, Input, Options).
@@ -1950,9 +5280,18 @@ describe_fleet_port_settings(Client, Input, Options)
 %%
 %% GameLift Metrics for Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
+-spec describe_fleet_utilization(aws_client:aws_client(), describe_fleet_utilization_input()) ->
+    {ok, describe_fleet_utilization_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_utilization_errors(), tuple()}.
 describe_fleet_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_utilization(Client, Input, []).
+
+-spec describe_fleet_utilization(aws_client:aws_client(), describe_fleet_utilization_input(), proplists:proplist()) ->
+    {ok, describe_fleet_utilization_output(), tuple()} |
+    {error, any()} |
+    {error, describe_fleet_utilization_errors(), tuple()}.
 describe_fleet_utilization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetUtilization">>, Input, Options).
@@ -1975,9 +5314,18 @@ describe_fleet_utilization(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec describe_game_server(aws_client:aws_client(), describe_game_server_input()) ->
+    {ok, describe_game_server_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_server_errors(), tuple()}.
 describe_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server(Client, Input, []).
+
+-spec describe_game_server(aws_client:aws_client(), describe_game_server_input(), proplists:proplist()) ->
+    {ok, describe_game_server_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_server_errors(), tuple()}.
 describe_game_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameServer">>, Input, Options).
@@ -2004,9 +5352,18 @@ describe_game_server(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec describe_game_server_group(aws_client:aws_client(), describe_game_server_group_input()) ->
+    {ok, describe_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_server_group_errors(), tuple()}.
 describe_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server_group(Client, Input, []).
+
+-spec describe_game_server_group(aws_client:aws_client(), describe_game_server_group_input(), proplists:proplist()) ->
+    {ok, describe_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_server_group_errors(), tuple()}.
 describe_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameServerGroup">>, Input, Options).
@@ -2045,9 +5402,18 @@ describe_game_server_group(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec describe_game_server_instances(aws_client:aws_client(), describe_game_server_instances_input()) ->
+    {ok, describe_game_server_instances_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_server_instances_errors(), tuple()}.
 describe_game_server_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server_instances(Client, Input, []).
+
+-spec describe_game_server_instances(aws_client:aws_client(), describe_game_server_instances_input(), proplists:proplist()) ->
+    {ok, describe_game_server_instances_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_server_instances_errors(), tuple()}.
 describe_game_server_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameServerInstances">>, Input, Options).
@@ -2095,9 +5461,18 @@ describe_game_server_instances(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec describe_game_session_details(aws_client:aws_client(), describe_game_session_details_input()) ->
+    {ok, describe_game_session_details_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_session_details_errors(), tuple()}.
 describe_game_session_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_session_details(Client, Input, []).
+
+-spec describe_game_session_details(aws_client:aws_client(), describe_game_session_details_input(), proplists:proplist()) ->
+    {ok, describe_game_session_details_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_session_details_errors(), tuple()}.
 describe_game_session_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameSessionDetails">>, Input, Options).
@@ -2117,9 +5492,18 @@ describe_game_session_details(Client, Input, Options)
 %% FlexMatch or queues. Continuously polling with
 %% `DescribeGameSessionPlacement'
 %% should only be used for games in development with low game session usage.
+-spec describe_game_session_placement(aws_client:aws_client(), describe_game_session_placement_input()) ->
+    {ok, describe_game_session_placement_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_session_placement_errors(), tuple()}.
 describe_game_session_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_session_placement(Client, Input, []).
+
+-spec describe_game_session_placement(aws_client:aws_client(), describe_game_session_placement_input(), proplists:proplist()) ->
+    {ok, describe_game_session_placement_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_session_placement_errors(), tuple()}.
 describe_game_session_placement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameSessionPlacement">>, Input, Options).
@@ -2137,9 +5521,18 @@ describe_game_session_placement(Client, Input, Options)
 %%
 %% View Your Queues:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-console.html
+-spec describe_game_session_queues(aws_client:aws_client(), describe_game_session_queues_input()) ->
+    {ok, describe_game_session_queues_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_session_queues_errors(), tuple()}.
 describe_game_session_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_session_queues(Client, Input, []).
+
+-spec describe_game_session_queues(aws_client:aws_client(), describe_game_session_queues_input(), proplists:proplist()) ->
+    {ok, describe_game_session_queues_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_session_queues_errors(), tuple()}.
 describe_game_session_queues(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameSessionQueues">>, Input, Options).
@@ -2197,9 +5590,18 @@ describe_game_session_queues(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec describe_game_sessions(aws_client:aws_client(), describe_game_sessions_input()) ->
+    {ok, describe_game_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_sessions_errors(), tuple()}.
 describe_game_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_sessions(Client, Input, []).
+
+-spec describe_game_sessions(aws_client:aws_client(), describe_game_sessions_input(), proplists:proplist()) ->
+    {ok, describe_game_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, describe_game_sessions_errors(), tuple()}.
 describe_game_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameSessions">>, Input, Options).
@@ -2252,9 +5654,18 @@ describe_game_sessions(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec describe_instances(aws_client:aws_client(), describe_instances_input()) ->
+    {ok, describe_instances_output(), tuple()} |
+    {error, any()} |
+    {error, describe_instances_errors(), tuple()}.
 describe_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances(Client, Input, []).
+
+-spec describe_instances(aws_client:aws_client(), describe_instances_input(), proplists:proplist()) ->
+    {ok, describe_instances_output(), tuple()} |
+    {error, any()} |
+    {error, describe_instances_errors(), tuple()}.
 describe_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstances">>, Input, Options).
@@ -2288,9 +5699,18 @@ describe_instances(Client, Input, Options)
 %% Set Up FlexMatch event
 %% notification:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html
+-spec describe_matchmaking(aws_client:aws_client(), describe_matchmaking_input()) ->
+    {ok, describe_matchmaking_output(), tuple()} |
+    {error, any()} |
+    {error, describe_matchmaking_errors(), tuple()}.
 describe_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_matchmaking(Client, Input, []).
+
+-spec describe_matchmaking(aws_client:aws_client(), describe_matchmaking_input(), proplists:proplist()) ->
+    {ok, describe_matchmaking_output(), tuple()} |
+    {error, any()} |
+    {error, describe_matchmaking_errors(), tuple()}.
 describe_matchmaking(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMatchmaking">>, Input, Options).
@@ -2313,9 +5733,18 @@ describe_matchmaking(Client, Input, Options)
 %%
 %% Setting up FlexMatch matchmakers:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/matchmaker-build.html
+-spec describe_matchmaking_configurations(aws_client:aws_client(), describe_matchmaking_configurations_input()) ->
+    {ok, describe_matchmaking_configurations_output(), tuple()} |
+    {error, any()} |
+    {error, describe_matchmaking_configurations_errors(), tuple()}.
 describe_matchmaking_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_matchmaking_configurations(Client, Input, []).
+
+-spec describe_matchmaking_configurations(aws_client:aws_client(), describe_matchmaking_configurations_input(), proplists:proplist()) ->
+    {ok, describe_matchmaking_configurations_output(), tuple()} |
+    {error, any()} |
+    {error, describe_matchmaking_configurations_errors(), tuple()}.
 describe_matchmaking_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMatchmakingConfigurations">>, Input, Options).
@@ -2335,9 +5764,18 @@ describe_matchmaking_configurations(Client, Input, Options)
 %% Build a rule
 %% set:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html
+-spec describe_matchmaking_rule_sets(aws_client:aws_client(), describe_matchmaking_rule_sets_input()) ->
+    {ok, describe_matchmaking_rule_sets_output(), tuple()} |
+    {error, any()} |
+    {error, describe_matchmaking_rule_sets_errors(), tuple()}.
 describe_matchmaking_rule_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_matchmaking_rule_sets(Client, Input, []).
+
+-spec describe_matchmaking_rule_sets(aws_client:aws_client(), describe_matchmaking_rule_sets_input(), proplists:proplist()) ->
+    {ok, describe_matchmaking_rule_sets_output(), tuple()} |
+    {error, any()} |
+    {error, describe_matchmaking_rule_sets_errors(), tuple()}.
 describe_matchmaking_rule_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMatchmakingRuleSets">>, Input, Options).
@@ -2373,9 +5811,18 @@ describe_matchmaking_rule_sets(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec describe_player_sessions(aws_client:aws_client(), describe_player_sessions_input()) ->
+    {ok, describe_player_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, describe_player_sessions_errors(), tuple()}.
 describe_player_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_player_sessions(Client, Input, []).
+
+-spec describe_player_sessions(aws_client:aws_client(), describe_player_sessions_input(), proplists:proplist()) ->
+    {ok, describe_player_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, describe_player_sessions_errors(), tuple()}.
 describe_player_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePlayerSessions">>, Input, Options).
@@ -2404,9 +5851,18 @@ describe_player_sessions(Client, Input, Options)
 %% Running multiple
 %% processes on a fleet:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-multiprocess.html
+-spec describe_runtime_configuration(aws_client:aws_client(), describe_runtime_configuration_input()) ->
+    {ok, describe_runtime_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, describe_runtime_configuration_errors(), tuple()}.
 describe_runtime_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_runtime_configuration(Client, Input, []).
+
+-spec describe_runtime_configuration(aws_client:aws_client(), describe_runtime_configuration_input(), proplists:proplist()) ->
+    {ok, describe_runtime_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, describe_runtime_configuration_errors(), tuple()}.
 describe_runtime_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRuntimeConfiguration">>, Input, Options).
@@ -2424,9 +5880,18 @@ describe_runtime_configuration(Client, Input, Options)
 %% A fleet may have all of its scaling policies suspended. This operation
 %% does not affect
 %% the status of the scaling policies, which remains ACTIVE.
+-spec describe_scaling_policies(aws_client:aws_client(), describe_scaling_policies_input()) ->
+    {ok, describe_scaling_policies_output(), tuple()} |
+    {error, any()} |
+    {error, describe_scaling_policies_errors(), tuple()}.
 describe_scaling_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_policies(Client, Input, []).
+
+-spec describe_scaling_policies(aws_client:aws_client(), describe_scaling_policies_input(), proplists:proplist()) ->
+    {ok, describe_scaling_policies_output(), tuple()} |
+    {error, any()} |
+    {error, describe_scaling_policies_errors(), tuple()}.
 describe_scaling_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingPolicies">>, Input, Options).
@@ -2446,9 +5911,18 @@ describe_scaling_policies(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec describe_script(aws_client:aws_client(), describe_script_input()) ->
+    {ok, describe_script_output(), tuple()} |
+    {error, any()} |
+    {error, describe_script_errors(), tuple()}.
 describe_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_script(Client, Input, []).
+
+-spec describe_script(aws_client:aws_client(), describe_script_input(), proplists:proplist()) ->
+    {ok, describe_script_output(), tuple()} |
+    {error, any()} |
+    {error, describe_script_errors(), tuple()}.
 describe_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScript">>, Input, Options).
@@ -2464,9 +5938,18 @@ describe_script(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec describe_vpc_peering_authorizations(aws_client:aws_client(), describe_vpc_peering_authorizations_input()) ->
+    {ok, describe_vpc_peering_authorizations_output(), tuple()} |
+    {error, any()} |
+    {error, describe_vpc_peering_authorizations_errors(), tuple()}.
 describe_vpc_peering_authorizations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_peering_authorizations(Client, Input, []).
+
+-spec describe_vpc_peering_authorizations(aws_client:aws_client(), describe_vpc_peering_authorizations_input(), proplists:proplist()) ->
+    {ok, describe_vpc_peering_authorizations_output(), tuple()} |
+    {error, any()} |
+    {error, describe_vpc_peering_authorizations_errors(), tuple()}.
 describe_vpc_peering_authorizations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcPeeringAuthorizations">>, Input, Options).
@@ -2490,9 +5973,18 @@ describe_vpc_peering_authorizations(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec describe_vpc_peering_connections(aws_client:aws_client(), describe_vpc_peering_connections_input()) ->
+    {ok, describe_vpc_peering_connections_output(), tuple()} |
+    {error, any()} |
+    {error, describe_vpc_peering_connections_errors(), tuple()}.
 describe_vpc_peering_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_peering_connections(Client, Input, []).
+
+-spec describe_vpc_peering_connections(aws_client:aws_client(), describe_vpc_peering_connections_input(), proplists:proplist()) ->
+    {ok, describe_vpc_peering_connections_output(), tuple()} |
+    {error, any()} |
+    {error, describe_vpc_peering_connections_errors(), tuple()}.
 describe_vpc_peering_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcPeeringConnections">>, Input, Options).
@@ -2529,9 +6021,18 @@ describe_vpc_peering_connections(Client, Input, Options)
 %% Debug fleet
 %% issues:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html
+-spec get_compute_access(aws_client:aws_client(), get_compute_access_input()) ->
+    {ok, get_compute_access_output(), tuple()} |
+    {error, any()} |
+    {error, get_compute_access_errors(), tuple()}.
 get_compute_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compute_access(Client, Input, []).
+
+-spec get_compute_access(aws_client:aws_client(), get_compute_access_input(), proplists:proplist()) ->
+    {ok, get_compute_access_output(), tuple()} |
+    {error, any()} |
+    {error, get_compute_access_errors(), tuple()}.
 get_compute_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComputeAccess">>, Input, Options).
@@ -2564,9 +6065,18 @@ get_compute_access(Client, Input, Options)
 %% reference guides:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-serversdk.html
 %% (for version 5.x)
+-spec get_compute_auth_token(aws_client:aws_client(), get_compute_auth_token_input()) ->
+    {ok, get_compute_auth_token_output(), tuple()} |
+    {error, any()} |
+    {error, get_compute_auth_token_errors(), tuple()}.
 get_compute_auth_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compute_auth_token(Client, Input, []).
+
+-spec get_compute_auth_token(aws_client:aws_client(), get_compute_auth_token_input(), proplists:proplist()) ->
+    {ok, get_compute_auth_token_output(), tuple()} |
+    {error, any()} |
+    {error, get_compute_auth_token_errors(), tuple()}.
 get_compute_auth_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComputeAuthToken">>, Input, Options).
@@ -2587,9 +6097,18 @@ get_compute_auth_token(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec get_game_session_log_url(aws_client:aws_client(), get_game_session_log_url_input()) ->
+    {ok, get_game_session_log_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_game_session_log_url_errors(), tuple()}.
 get_game_session_log_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_game_session_log_url(Client, Input, []).
+
+-spec get_game_session_log_url(aws_client:aws_client(), get_game_session_log_url_input(), proplists:proplist()) ->
+    {ok, get_game_session_log_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_game_session_log_url_errors(), tuple()}.
 get_game_session_log_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGameSessionLogUrl">>, Input, Options).
@@ -2641,9 +6160,18 @@ get_game_session_log_url(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec get_instance_access(aws_client:aws_client(), get_instance_access_input()) ->
+    {ok, get_instance_access_output(), tuple()} |
+    {error, any()} |
+    {error, get_instance_access_errors(), tuple()}.
 get_instance_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_access(Client, Input, []).
+
+-spec get_instance_access(aws_client:aws_client(), get_instance_access_input(), proplists:proplist()) ->
+    {ok, get_instance_access_output(), tuple()} |
+    {error, any()} |
+    {error, get_instance_access_errors(), tuple()}.
 get_instance_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceAccess">>, Input, Options).
@@ -2661,9 +6189,18 @@ get_instance_access(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec list_aliases(aws_client:aws_client(), list_aliases_input()) ->
+    {ok, list_aliases_output(), tuple()} |
+    {error, any()} |
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
+
+-spec list_aliases(aws_client:aws_client(), list_aliases_input(), proplists:proplist()) ->
+    {ok, list_aliases_output(), tuple()} |
+    {error, any()} |
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAliases">>, Input, Options).
@@ -2687,9 +6224,18 @@ list_aliases(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec list_builds(aws_client:aws_client(), list_builds_input()) ->
+    {ok, list_builds_output(), tuple()} |
+    {error, any()} |
+    {error, list_builds_errors(), tuple()}.
 list_builds(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_builds(Client, Input, []).
+
+-spec list_builds(aws_client:aws_client(), list_builds_input(), proplists:proplist()) ->
+    {ok, list_builds_output(), tuple()} |
+    {error, any()} |
+    {error, list_builds_errors(), tuple()}.
 list_builds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBuilds">>, Input, Options).
@@ -2710,9 +6256,18 @@ list_builds(Client, Input, Options)
 %% For managed EC2 fleets, it returns a list of EC2 instances. For Anywhere
 %% fleets, it
 %% returns a list of registered compute names.
+-spec list_compute(aws_client:aws_client(), list_compute_input()) ->
+    {ok, list_compute_output(), tuple()} |
+    {error, any()} |
+    {error, list_compute_errors(), tuple()}.
 list_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compute(Client, Input, []).
+
+-spec list_compute(aws_client:aws_client(), list_compute_input(), proplists:proplist()) ->
+    {ok, list_compute_output(), tuple()} |
+    {error, any()} |
+    {error, list_compute_errors(), tuple()}.
 list_compute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCompute">>, Input, Options).
@@ -2759,17 +6314,35 @@ list_compute(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec list_fleets(aws_client:aws_client(), list_fleets_input()) ->
+    {ok, list_fleets_output(), tuple()} |
+    {error, any()} |
+    {error, list_fleets_errors(), tuple()}.
 list_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets(Client, Input, []).
+
+-spec list_fleets(aws_client:aws_client(), list_fleets_input(), proplists:proplist()) ->
+    {ok, list_fleets_output(), tuple()} |
+    {error, any()} |
+    {error, list_fleets_errors(), tuple()}.
 list_fleets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFleets">>, Input, Options).
 
 %% @doc Lists a game server groups.
+-spec list_game_server_groups(aws_client:aws_client(), list_game_server_groups_input()) ->
+    {ok, list_game_server_groups_output(), tuple()} |
+    {error, any()} |
+    {error, list_game_server_groups_errors(), tuple()}.
 list_game_server_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_game_server_groups(Client, Input, []).
+
+-spec list_game_server_groups(aws_client:aws_client(), list_game_server_groups_input(), proplists:proplist()) ->
+    {ok, list_game_server_groups_output(), tuple()} |
+    {error, any()} |
+    {error, list_game_server_groups_errors(), tuple()}.
 list_game_server_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGameServerGroups">>, Input, Options).
@@ -2790,17 +6363,35 @@ list_game_server_groups(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec list_game_servers(aws_client:aws_client(), list_game_servers_input()) ->
+    {ok, list_game_servers_output(), tuple()} |
+    {error, any()} |
+    {error, list_game_servers_errors(), tuple()}.
 list_game_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_game_servers(Client, Input, []).
+
+-spec list_game_servers(aws_client:aws_client(), list_game_servers_input(), proplists:proplist()) ->
+    {ok, list_game_servers_output(), tuple()} |
+    {error, any()} |
+    {error, list_game_servers_errors(), tuple()}.
 list_game_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGameServers">>, Input, Options).
 
 %% @doc Lists all custom and Amazon Web Services locations.
+-spec list_locations(aws_client:aws_client(), list_locations_input()) ->
+    {ok, list_locations_output(), tuple()} |
+    {error, any()} |
+    {error, list_locations_errors(), tuple()}.
 list_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_locations(Client, Input, []).
+
+-spec list_locations(aws_client:aws_client(), list_locations_input(), proplists:proplist()) ->
+    {ok, list_locations_output(), tuple()} |
+    {error, any()} |
+    {error, list_locations_errors(), tuple()}.
 list_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLocations">>, Input, Options).
@@ -2818,9 +6409,18 @@ list_locations(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec list_scripts(aws_client:aws_client(), list_scripts_input()) ->
+    {ok, list_scripts_output(), tuple()} |
+    {error, any()} |
+    {error, list_scripts_errors(), tuple()}.
 list_scripts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_scripts(Client, Input, []).
+
+-spec list_scripts(aws_client:aws_client(), list_scripts_input(), proplists:proplist()) ->
+    {ok, list_scripts_output(), tuple()} |
+    {error, any()} |
+    {error, list_scripts_errors(), tuple()}.
 list_scripts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListScripts">>, Input, Options).
@@ -2848,9 +6448,18 @@ list_scripts(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2960,9 +6569,18 @@ list_tags_for_resource(Client, Input, Options)
 %% auto-scaling actions are temporarily suspended, the new policy will be in
 %% force once the
 %% fleet actions are restarted.
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_input()) ->
+    {ok, put_scaling_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
+
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_input(), proplists:proplist()) ->
+    {ok, put_scaling_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScalingPolicy">>, Input, Options).
@@ -3003,9 +6621,18 @@ put_scaling_policy(Client, Input, Options)
 %% reference guides:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-serversdk.html
 %% (for version 5.x)
+-spec register_compute(aws_client:aws_client(), register_compute_input()) ->
+    {ok, register_compute_output(), tuple()} |
+    {error, any()} |
+    {error, register_compute_errors(), tuple()}.
 register_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_compute(Client, Input, []).
+
+-spec register_compute(aws_client:aws_client(), register_compute_input(), proplists:proplist()) ->
+    {ok, register_compute_output(), tuple()} |
+    {error, any()} |
+    {error, register_compute_errors(), tuple()}.
 register_compute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterCompute">>, Input, Options).
@@ -3043,9 +6670,18 @@ register_compute(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec register_game_server(aws_client:aws_client(), register_game_server_input()) ->
+    {ok, register_game_server_output(), tuple()} |
+    {error, any()} |
+    {error, register_game_server_errors(), tuple()}.
 register_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_game_server(Client, Input, []).
+
+-spec register_game_server(aws_client:aws_client(), register_game_server_input(), proplists:proplist()) ->
+    {ok, register_game_server_output(), tuple()} |
+    {error, any()} |
+    {error, register_game_server_errors(), tuple()}.
 register_game_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterGameServer">>, Input, Options).
@@ -3070,9 +6706,18 @@ register_game_server(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec request_upload_credentials(aws_client:aws_client(), request_upload_credentials_input()) ->
+    {ok, request_upload_credentials_output(), tuple()} |
+    {error, any()} |
+    {error, request_upload_credentials_errors(), tuple()}.
 request_upload_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_upload_credentials(Client, Input, []).
+
+-spec request_upload_credentials(aws_client:aws_client(), request_upload_credentials_input(), proplists:proplist()) ->
+    {ok, request_upload_credentials_output(), tuple()} |
+    {error, any()} |
+    {error, request_upload_credentials_errors(), tuple()}.
 request_upload_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RequestUploadCredentials">>, Input, Options).
@@ -3083,9 +6728,18 @@ request_upload_credentials(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec resolve_alias(aws_client:aws_client(), resolve_alias_input()) ->
+    {ok, resolve_alias_output(), tuple()} |
+    {error, any()} |
+    {error, resolve_alias_errors(), tuple()}.
 resolve_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_alias(Client, Input, []).
+
+-spec resolve_alias(aws_client:aws_client(), resolve_alias_input(), proplists:proplist()) ->
+    {ok, resolve_alias_output(), tuple()} |
+    {error, any()} |
+    {error, resolve_alias_errors(), tuple()}.
 resolve_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResolveAlias">>, Input, Options).
@@ -3119,9 +6773,18 @@ resolve_alias(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec resume_game_server_group(aws_client:aws_client(), resume_game_server_group_input()) ->
+    {ok, resume_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, resume_game_server_group_errors(), tuple()}.
 resume_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_game_server_group(Client, Input, []).
+
+-spec resume_game_server_group(aws_client:aws_client(), resume_game_server_group_input(), proplists:proplist()) ->
+    {ok, resume_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, resume_game_server_group_errors(), tuple()}.
 resume_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeGameServerGroup">>, Input, Options).
@@ -3224,9 +6887,18 @@ resume_game_server_group(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec search_game_sessions(aws_client:aws_client(), search_game_sessions_input()) ->
+    {ok, search_game_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, search_game_sessions_errors(), tuple()}.
 search_game_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_game_sessions(Client, Input, []).
+
+-spec search_game_sessions(aws_client:aws_client(), search_game_sessions_input(), proplists:proplist()) ->
+    {ok, search_game_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, search_game_sessions_errors(), tuple()}.
 search_game_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchGameSessions">>, Input, Options).
@@ -3261,9 +6933,18 @@ search_game_sessions(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec start_fleet_actions(aws_client:aws_client(), start_fleet_actions_input()) ->
+    {ok, start_fleet_actions_output(), tuple()} |
+    {error, any()} |
+    {error, start_fleet_actions_errors(), tuple()}.
 start_fleet_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_fleet_actions(Client, Input, []).
+
+-spec start_fleet_actions(aws_client:aws_client(), start_fleet_actions_input(), proplists:proplist()) ->
+    {ok, start_fleet_actions_output(), tuple()} |
+    {error, any()} |
+    {error, start_fleet_actions_errors(), tuple()}.
 start_fleet_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFleetActions">>, Input, Options).
@@ -3329,9 +7010,18 @@ start_fleet_actions(Client, Input, Options)
 %% and Region are referenced. If the placement request times out, you can
 %% resubmit the
 %% request or retry it with a different queue.
+-spec start_game_session_placement(aws_client:aws_client(), start_game_session_placement_input()) ->
+    {ok, start_game_session_placement_output(), tuple()} |
+    {error, any()} |
+    {error, start_game_session_placement_errors(), tuple()}.
 start_game_session_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_game_session_placement(Client, Input, []).
+
+-spec start_game_session_placement(aws_client:aws_client(), start_game_session_placement_input(), proplists:proplist()) ->
+    {ok, start_game_session_placement_output(), tuple()} |
+    {error, any()} |
+    {error, start_game_session_placement_errors(), tuple()}.
 start_game_session_placement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartGameSessionPlacement">>, Input, Options).
@@ -3397,9 +7087,18 @@ start_game_session_placement(Client, Input, Options)
 %%
 %% How Amazon GameLift FlexMatch works:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html
+-spec start_match_backfill(aws_client:aws_client(), start_match_backfill_input()) ->
+    {ok, start_match_backfill_output(), tuple()} |
+    {error, any()} |
+    {error, start_match_backfill_errors(), tuple()}.
 start_match_backfill(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_match_backfill(Client, Input, []).
+
+-spec start_match_backfill(aws_client:aws_client(), start_match_backfill_input(), proplists:proplist()) ->
+    {ok, start_match_backfill_output(), tuple()} |
+    {error, any()} |
+    {error, start_match_backfill_errors(), tuple()}.
 start_match_backfill(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMatchBackfill">>, Input, Options).
@@ -3447,9 +7146,18 @@ start_match_backfill(Client, Input, Options)
 %%
 %% How Amazon GameLift FlexMatch works:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html
+-spec start_matchmaking(aws_client:aws_client(), start_matchmaking_input()) ->
+    {ok, start_matchmaking_output(), tuple()} |
+    {error, any()} |
+    {error, start_matchmaking_errors(), tuple()}.
 start_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_matchmaking(Client, Input, []).
+
+-spec start_matchmaking(aws_client:aws_client(), start_matchmaking_input(), proplists:proplist()) ->
+    {ok, start_matchmaking_output(), tuple()} |
+    {error, any()} |
+    {error, start_matchmaking_errors(), tuple()}.
 start_matchmaking(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMatchmaking">>, Input, Options).
@@ -3489,9 +7197,18 @@ start_matchmaking(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec stop_fleet_actions(aws_client:aws_client(), stop_fleet_actions_input()) ->
+    {ok, stop_fleet_actions_output(), tuple()} |
+    {error, any()} |
+    {error, stop_fleet_actions_errors(), tuple()}.
 stop_fleet_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_fleet_actions(Client, Input, []).
+
+-spec stop_fleet_actions(aws_client:aws_client(), stop_fleet_actions_input(), proplists:proplist()) ->
+    {ok, stop_fleet_actions_output(), tuple()} |
+    {error, any()} |
+    {error, stop_fleet_actions_errors(), tuple()}.
 stop_fleet_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopFleetActions">>, Input, Options).
@@ -3502,9 +7219,18 @@ stop_fleet_actions(Client, Input, Options)
 %% placement, provide the placement ID values. If successful, the placement
 %% is moved to
 %% `CANCELLED' status.
+-spec stop_game_session_placement(aws_client:aws_client(), stop_game_session_placement_input()) ->
+    {ok, stop_game_session_placement_output(), tuple()} |
+    {error, any()} |
+    {error, stop_game_session_placement_errors(), tuple()}.
 stop_game_session_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_game_session_placement(Client, Input, []).
+
+-spec stop_game_session_placement(aws_client:aws_client(), stop_game_session_placement_input(), proplists:proplist()) ->
+    {ok, stop_game_session_placement_output(), tuple()} |
+    {error, any()} |
+    {error, stop_game_session_placement_errors(), tuple()}.
 stop_game_session_placement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopGameSessionPlacement">>, Input, Options).
@@ -3534,9 +7260,18 @@ stop_game_session_placement(Client, Input, Options)
 %%
 %% Add FlexMatch to a game client:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html
+-spec stop_matchmaking(aws_client:aws_client(), stop_matchmaking_input()) ->
+    {ok, stop_matchmaking_output(), tuple()} |
+    {error, any()} |
+    {error, stop_matchmaking_errors(), tuple()}.
 stop_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_matchmaking(Client, Input, []).
+
+-spec stop_matchmaking(aws_client:aws_client(), stop_matchmaking_input(), proplists:proplist()) ->
+    {ok, stop_matchmaking_output(), tuple()} |
+    {error, any()} |
+    {error, stop_matchmaking_errors(), tuple()}.
 stop_matchmaking(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopMatchmaking">>, Input, Options).
@@ -3576,9 +7311,18 @@ stop_matchmaking(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec suspend_game_server_group(aws_client:aws_client(), suspend_game_server_group_input()) ->
+    {ok, suspend_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, suspend_game_server_group_errors(), tuple()}.
 suspend_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     suspend_game_server_group(Client, Input, []).
+
+-spec suspend_game_server_group(aws_client:aws_client(), suspend_game_server_group_input(), proplists:proplist()) ->
+    {ok, suspend_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, suspend_game_server_group_errors(), tuple()}.
 suspend_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SuspendGameServerGroup">>, Input, Options).
@@ -3611,9 +7355,18 @@ suspend_game_server_group(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3645,9 +7398,18 @@ tag_resource(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3665,9 +7427,18 @@ untag_resource(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec update_alias(aws_client:aws_client(), update_alias_input()) ->
+    {ok, update_alias_output(), tuple()} |
+    {error, any()} |
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
+
+-spec update_alias(aws_client:aws_client(), update_alias_input(), proplists:proplist()) ->
+    {ok, update_alias_output(), tuple()} |
+    {error, any()} |
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAlias">>, Input, Options).
@@ -3688,9 +7459,18 @@ update_alias(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec update_build(aws_client:aws_client(), update_build_input()) ->
+    {ok, update_build_output(), tuple()} |
+    {error, any()} |
+    {error, update_build_errors(), tuple()}.
 update_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_build(Client, Input, []).
+
+-spec update_build(aws_client:aws_client(), update_build_input(), proplists:proplist()) ->
+    {ok, update_build_output(), tuple()} |
+    {error, any()} |
+    {error, update_build_errors(), tuple()}.
 update_build(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBuild">>, Input, Options).
@@ -3710,9 +7490,18 @@ update_build(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec update_fleet_attributes(aws_client:aws_client(), update_fleet_attributes_input()) ->
+    {ok, update_fleet_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, update_fleet_attributes_errors(), tuple()}.
 update_fleet_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_attributes(Client, Input, []).
+
+-spec update_fleet_attributes(aws_client:aws_client(), update_fleet_attributes_input(), proplists:proplist()) ->
+    {ok, update_fleet_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, update_fleet_attributes_errors(), tuple()}.
 update_fleet_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFleetAttributes">>, Input, Options).
@@ -3777,9 +7566,18 @@ update_fleet_attributes(Client, Input, Options)
 %% Scaling fleet
 %% capacity:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-manage-capacity.html
+-spec update_fleet_capacity(aws_client:aws_client(), update_fleet_capacity_input()) ->
+    {ok, update_fleet_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, update_fleet_capacity_errors(), tuple()}.
 update_fleet_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_capacity(Client, Input, []).
+
+-spec update_fleet_capacity(aws_client:aws_client(), update_fleet_capacity_input(), proplists:proplist()) ->
+    {ok, update_fleet_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, update_fleet_capacity_errors(), tuple()}.
 update_fleet_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFleetCapacity">>, Input, Options).
@@ -3808,9 +7606,18 @@ update_fleet_capacity(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec update_fleet_port_settings(aws_client:aws_client(), update_fleet_port_settings_input()) ->
+    {ok, update_fleet_port_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_fleet_port_settings_errors(), tuple()}.
 update_fleet_port_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_port_settings(Client, Input, []).
+
+-spec update_fleet_port_settings(aws_client:aws_client(), update_fleet_port_settings_input(), proplists:proplist()) ->
+    {ok, update_fleet_port_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_fleet_port_settings_errors(), tuple()}.
 update_fleet_port_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFleetPortSettings">>, Input, Options).
@@ -3858,9 +7665,18 @@ update_fleet_port_settings(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec update_game_server(aws_client:aws_client(), update_game_server_input()) ->
+    {ok, update_game_server_output(), tuple()} |
+    {error, any()} |
+    {error, update_game_server_errors(), tuple()}.
 update_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_server(Client, Input, []).
+
+-spec update_game_server(aws_client:aws_client(), update_game_server_input(), proplists:proplist()) ->
+    {ok, update_game_server_output(), tuple()} |
+    {error, any()} |
+    {error, update_game_server_errors(), tuple()}.
 update_game_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGameServer">>, Input, Options).
@@ -3889,9 +7705,18 @@ update_game_server(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
+-spec update_game_server_group(aws_client:aws_client(), update_game_server_group_input()) ->
+    {ok, update_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, update_game_server_group_errors(), tuple()}.
 update_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_server_group(Client, Input, []).
+
+-spec update_game_server_group(aws_client:aws_client(), update_game_server_group_input(), proplists:proplist()) ->
+    {ok, update_game_server_group_output(), tuple()} |
+    {error, any()} |
+    {error, update_game_server_group_errors(), tuple()}.
 update_game_server_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGameServerGroup">>, Input, Options).
@@ -3906,9 +7731,18 @@ update_game_server_group(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec update_game_session(aws_client:aws_client(), update_game_session_input()) ->
+    {ok, update_game_session_output(), tuple()} |
+    {error, any()} |
+    {error, update_game_session_errors(), tuple()}.
 update_game_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_session(Client, Input, []).
+
+-spec update_game_session(aws_client:aws_client(), update_game_session_input(), proplists:proplist()) ->
+    {ok, update_game_session_output(), tuple()} |
+    {error, any()} |
+    {error, update_game_session_errors(), tuple()}.
 update_game_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGameSession">>, Input, Options).
@@ -3926,9 +7760,18 @@ update_game_session(Client, Input, Options)
 %%
 %% Using Multi-Region Queues:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-intro.html
+-spec update_game_session_queue(aws_client:aws_client(), update_game_session_queue_input()) ->
+    {ok, update_game_session_queue_output(), tuple()} |
+    {error, any()} |
+    {error, update_game_session_queue_errors(), tuple()}.
 update_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_session_queue(Client, Input, []).
+
+-spec update_game_session_queue(aws_client:aws_client(), update_game_session_queue_input(), proplists:proplist()) ->
+    {ok, update_game_session_queue_output(), tuple()} |
+    {error, any()} |
+    {error, update_game_session_queue_errors(), tuple()}.
 update_game_session_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGameSessionQueue">>, Input, Options).
@@ -3945,9 +7788,18 @@ update_game_session_queue(Client, Input, Options)
 %% Design a FlexMatch
 %% matchmaker:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html
+-spec update_matchmaking_configuration(aws_client:aws_client(), update_matchmaking_configuration_input()) ->
+    {ok, update_matchmaking_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_matchmaking_configuration_errors(), tuple()}.
 update_matchmaking_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_matchmaking_configuration(Client, Input, []).
+
+-spec update_matchmaking_configuration(aws_client:aws_client(), update_matchmaking_configuration_input(), proplists:proplist()) ->
+    {ok, update_matchmaking_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_matchmaking_configuration_errors(), tuple()}.
 update_matchmaking_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMatchmakingConfiguration">>, Input, Options).
@@ -3980,9 +7832,18 @@ update_matchmaking_configuration(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
+-spec update_runtime_configuration(aws_client:aws_client(), update_runtime_configuration_input()) ->
+    {ok, update_runtime_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_runtime_configuration_errors(), tuple()}.
 update_runtime_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_runtime_configuration(Client, Input, []).
+
+-spec update_runtime_configuration(aws_client:aws_client(), update_runtime_configuration_input(), proplists:proplist()) ->
+    {ok, update_runtime_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_runtime_configuration_errors(), tuple()}.
 update_runtime_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuntimeConfiguration">>, Input, Options).
@@ -4016,9 +7877,18 @@ update_runtime_configuration(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
+-spec update_script(aws_client:aws_client(), update_script_input()) ->
+    {ok, update_script_output(), tuple()} |
+    {error, any()} |
+    {error, update_script_errors(), tuple()}.
 update_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_script(Client, Input, []).
+
+-spec update_script(aws_client:aws_client(), update_script_input(), proplists:proplist()) ->
+    {ok, update_script_output(), tuple()} |
+    {error, any()} |
+    {error, update_script_errors(), tuple()}.
 update_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateScript">>, Input, Options).
@@ -4035,9 +7905,18 @@ update_script(Client, Input, Options)
 %% Build a rule
 %% set:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html
+-spec validate_matchmaking_rule_set(aws_client:aws_client(), validate_matchmaking_rule_set_input()) ->
+    {ok, validate_matchmaking_rule_set_output(), tuple()} |
+    {error, any()} |
+    {error, validate_matchmaking_rule_set_errors(), tuple()}.
 validate_matchmaking_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_matchmaking_rule_set(Client, Input, []).
+
+-spec validate_matchmaking_rule_set(aws_client:aws_client(), validate_matchmaking_rule_set_input(), proplists:proplist()) ->
+    {ok, validate_matchmaking_rule_set_output(), tuple()} |
+    {error, any()} |
+    {error, validate_matchmaking_rule_set_errors(), tuple()}.
 validate_matchmaking_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ValidateMatchmakingRuleSet">>, Input, Options).

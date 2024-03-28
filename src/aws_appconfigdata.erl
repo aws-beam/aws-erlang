@@ -82,6 +82,93 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Details">> => list(),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_latest_configuration_request() :: #{
+%%   <<"ConfigurationToken">> := string()
+%% }
+-type get_latest_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_latest_configuration_response() :: #{
+%%   <<"Configuration">> => binary(),
+%%   <<"ContentType">> => string(),
+%%   <<"NextPollConfigurationToken">> => string(),
+%%   <<"NextPollIntervalInSeconds">> => integer(),
+%%   <<"VersionLabel">> => string()
+%% }
+-type get_latest_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_detail() :: #{
+%%   <<"Problem">> => string()
+%% }
+-type invalid_parameter_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ReferencedBy">> => map(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_configuration_session_request() :: #{
+%%   <<"ApplicationIdentifier">> := string(),
+%%   <<"ConfigurationProfileIdentifier">> := string(),
+%%   <<"EnvironmentIdentifier">> := string(),
+%%   <<"RequiredMinimumPollIntervalInSeconds">> => integer()
+%% }
+-type start_configuration_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_configuration_session_response() :: #{
+%%   <<"InitialConfigurationToken">> => string()
+%% }
+-type start_configuration_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+-type get_latest_configuration_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception().
+
+-type start_configuration_session_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -108,14 +195,26 @@
 %%
 %% `GetLatestConfiguration' is a priced call. For more information, see
 %% Pricing: https://aws.amazon.com/systems-manager/pricing/.
+-spec get_latest_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_latest_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_latest_configuration_errors(), tuple()}.
 get_latest_configuration(Client, ConfigurationToken)
   when is_map(Client) ->
     get_latest_configuration(Client, ConfigurationToken, #{}, #{}).
 
+-spec get_latest_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_latest_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_latest_configuration_errors(), tuple()}.
 get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap, []).
 
+-spec get_latest_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_latest_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_latest_configuration_errors(), tuple()}.
 get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration"],
@@ -165,8 +264,17 @@ get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap, Optio
 %% configuration:
 %% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-retrieving-the-configuration
 %% in the AppConfig User Guide.
+-spec start_configuration_session(aws_client:aws_client(), start_configuration_session_request()) ->
+    {ok, start_configuration_session_response(), tuple()} |
+    {error, any()} |
+    {error, start_configuration_session_errors(), tuple()}.
 start_configuration_session(Client, Input) ->
     start_configuration_session(Client, Input, []).
+
+-spec start_configuration_session(aws_client:aws_client(), start_configuration_session_request(), proplists:proplist()) ->
+    {ok, start_configuration_session_response(), tuple()} |
+    {error, any()} |
+    {error, start_configuration_session_errors(), tuple()}.
 start_configuration_session(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationsessions"],
@@ -193,7 +301,7 @@ start_configuration_session(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

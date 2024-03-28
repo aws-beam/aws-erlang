@@ -147,6 +147,1876 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% step_adjustment() :: #{
+%%   <<"MetricIntervalLowerBound">> => float(),
+%%   <<"MetricIntervalUpperBound">> => float(),
+%%   <<"ScalingAdjustment">> => integer()
+%% }
+-type step_adjustment() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lifecycle_hooks_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"LifecycleHookNames">> => list(string()())
+%% }
+-type describe_lifecycle_hooks_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metric_collection_types_answer() :: #{
+%%   <<"Granularities">> => list(metric_granularity_type()()),
+%%   <<"Metrics">> => list(metric_collection_type()())
+%% }
+-type describe_metric_collection_types_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_limits_answer() :: #{
+%%   <<"MaxNumberOfAutoScalingGroups">> => integer(),
+%%   <<"MaxNumberOfLaunchConfigurations">> => integer(),
+%%   <<"NumberOfAutoScalingGroups">> => integer(),
+%%   <<"NumberOfLaunchConfigurations">> => integer()
+%% }
+-type describe_account_limits_answer() :: #{binary() => any()}.
+
+%% Example:
+%% adjustment_type() :: #{
+%%   <<"AdjustmentType">> => string()
+%% }
+-type adjustment_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancers_request() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_load_balancers_request() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_metric_specification() :: #{
+%%   <<"CustomizedCapacityMetricSpecification">> => predictive_scaling_customized_capacity_metric(),
+%%   <<"CustomizedLoadMetricSpecification">> => predictive_scaling_customized_load_metric(),
+%%   <<"CustomizedScalingMetricSpecification">> => predictive_scaling_customized_scaling_metric(),
+%%   <<"PredefinedLoadMetricSpecification">> => predictive_scaling_predefined_load_metric(),
+%%   <<"PredefinedMetricPairSpecification">> => predictive_scaling_predefined_metric_pair(),
+%%   <<"PredefinedScalingMetricSpecification">> => predictive_scaling_predefined_scaling_metric(),
+%%   <<"TargetValue">> => float()
+%% }
+-type predictive_scaling_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_instance_refresh_answer() :: #{
+%%   <<"InstanceRefreshId">> => string()
+%% }
+-type rollback_instance_refresh_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notification_configurations_type() :: #{
+%%   <<"AutoScalingGroupNames">> => list(string()()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_notification_configurations_type() :: #{binary() => any()}.
+
+%% Example:
+%% policy_arn_type() :: #{
+%%   <<"Alarms">> => list(alarm()()),
+%%   <<"PolicyARN">> => string()
+%% }
+-type policy_arn_type() :: #{binary() => any()}.
+
+%% Example:
+%% instance_refresh() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"DesiredConfiguration">> => desired_configuration(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InstanceRefreshId">> => string(),
+%%   <<"InstancesToUpdate">> => integer(),
+%%   <<"PercentageComplete">> => integer(),
+%%   <<"Preferences">> => refresh_preferences(),
+%%   <<"ProgressDetails">> => instance_refresh_progress_details(),
+%%   <<"RollbackDetails">> => rollback_details(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type instance_refresh() :: #{binary() => any()}.
+
+%% Example:
+%% create_launch_configuration_type() :: #{
+%%   <<"AssociatePublicIpAddress">> => boolean(),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"ClassicLinkVPCId">> => string(),
+%%   <<"ClassicLinkVPCSecurityGroups">> => list(string()()),
+%%   <<"EbsOptimized">> => boolean(),
+%%   <<"IamInstanceProfile">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceMonitoring">> => instance_monitoring(),
+%%   <<"InstanceType">> => string(),
+%%   <<"KernelId">> => string(),
+%%   <<"KeyName">> => string(),
+%%   <<"LaunchConfigurationName">> := string(),
+%%   <<"MetadataOptions">> => instance_metadata_options(),
+%%   <<"PlacementTenancy">> => string(),
+%%   <<"RamdiskId">> => string(),
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SpotPrice">> => string(),
+%%   <<"UserData">> => string()
+%% }
+-type create_launch_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_warm_pool_answer() :: #{
+
+%% }
+-type delete_warm_pool_answer() :: #{binary() => any()}.
+
+%% Example:
+%% instance_refresh_progress_details() :: #{
+%%   <<"LivePoolProgress">> => instance_refresh_live_pool_progress(),
+%%   <<"WarmPoolProgress">> => instance_refresh_warm_pool_progress()
+%% }
+-type instance_refresh_progress_details() :: #{binary() => any()}.
+
+%% Example:
+%% tags_type() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag_description()())
+%% }
+-type tags_type() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_source_identifier() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type traffic_source_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% exit_standby_query() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceIds">> => list(string()())
+%% }
+-type exit_standby_query() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_type() :: #{
+%%   <<"Tags">> := list(tag()())
+%% }
+-type delete_tags_type() :: #{binary() => any()}.
+
+%% Example:
+%% start_instance_refresh_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"DesiredConfiguration">> => desired_configuration(),
+%%   <<"Preferences">> => refresh_preferences(),
+%%   <<"Strategy">> => list(any())
+%% }
+-type start_instance_refresh_type() :: #{binary() => any()}.
+
+%% Example:
+%% process_type() :: #{
+%%   <<"ProcessName">> => string()
+%% }
+-type process_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scheduled_actions_type() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduledActionNames">> => list(string()()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type describe_scheduled_actions_type() :: #{binary() => any()}.
+
+%% Example:
+%% block_device_mapping() :: #{
+%%   <<"DeviceName">> => string(),
+%%   <<"Ebs">> => ebs(),
+%%   <<"NoDevice">> => boolean(),
+%%   <<"VirtualName">> => string()
+%% }
+-type block_device_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% metric() :: #{
+%%   <<"Dimensions">> => list(metric_dimension()()),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string()
+%% }
+-type metric() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_predefined_metric_pair() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predictive_scaling_predefined_metric_pair() :: #{binary() => any()}.
+
+%% Example:
+%% enter_standby_answer() :: #{
+%%   <<"Activities">> => list(activity()())
+%% }
+-type enter_standby_answer() :: #{binary() => any()}.
+
+%% Example:
+%% instance_reuse_policy() :: #{
+%%   <<"ReuseOnScaleIn">> => boolean()
+%% }
+-type instance_reuse_policy() :: #{binary() => any()}.
+
+%% Example:
+%% alarm() :: #{
+%%   <<"AlarmARN">> => string(),
+%%   <<"AlarmName">> => string()
+%% }
+-type alarm() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_source_state() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"State">> => string(),
+%%   <<"TrafficSource">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type traffic_source_state() :: #{binary() => any()}.
+
+%% Example:
+%% metric_granularity_type() :: #{
+%%   <<"Granularity">> => string()
+%% }
+-type metric_granularity_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_warm_pool_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_warm_pool_type() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_hook() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"DefaultResult">> => string(),
+%%   <<"GlobalTimeout">> => integer(),
+%%   <<"HeartbeatTimeout">> => integer(),
+%%   <<"LifecycleHookName">> => string(),
+%%   <<"LifecycleTransition">> => string(),
+%%   <<"NotificationMetadata">> => string(),
+%%   <<"NotificationTargetARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type lifecycle_hook() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_traffic_sources_request() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TrafficSourceType">> => string()
+%% }
+-type describe_traffic_sources_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_auto_scaling_group_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ForceDelete">> => boolean()
+%% }
+-type delete_auto_scaling_group_type() :: #{binary() => any()}.
+
+%% Example:
+%% record_lifecycle_action_heartbeat_answer() :: #{
+
+%% }
+-type record_lifecycle_action_heartbeat_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lifecycle_hooks_answer() :: #{
+%%   <<"LifecycleHooks">> => list(lifecycle_hook()())
+%% }
+-type describe_lifecycle_hooks_answer() :: #{binary() => any()}.
+
+%% Example:
+%% put_lifecycle_hook_answer() :: #{
+
+%% }
+-type put_lifecycle_hook_answer() :: #{binary() => any()}.
+
+%% Example:
+%% memory_gi_b_per_v_cpu_request() :: #{
+%%   <<"Max">> => float(),
+%%   <<"Min">> => float()
+%% }
+-type memory_gi_b_per_v_cpu_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_instance_refresh_answer() :: #{
+%%   <<"InstanceRefreshId">> => string()
+%% }
+-type cancel_instance_refresh_answer() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_policy() :: #{
+%%   <<"AdjustmentType">> => string(),
+%%   <<"Alarms">> => list(alarm()()),
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"Cooldown">> => integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EstimatedInstanceWarmup">> => integer(),
+%%   <<"MetricAggregationType">> => string(),
+%%   <<"MinAdjustmentMagnitude">> => integer(),
+%%   <<"MinAdjustmentStep">> => integer(),
+%%   <<"PolicyARN">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyType">> => string(),
+%%   <<"PredictiveScalingConfiguration">> => predictive_scaling_configuration(),
+%%   <<"ScalingAdjustment">> => integer(),
+%%   <<"StepAdjustments">> => list(step_adjustment()()),
+%%   <<"TargetTrackingConfiguration">> => target_tracking_configuration()
+%% }
+-type scaling_policy() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notification_configurations_answer() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotificationConfigurations">> := list(notification_configuration()())
+%% }
+-type describe_notification_configurations_answer() :: #{binary() => any()}.
+
+%% Example:
+%% instance_maintenance_policy() :: #{
+%%   <<"MaxHealthyPercentage">> => integer(),
+%%   <<"MinHealthyPercentage">> => integer()
+%% }
+-type instance_maintenance_policy() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_actions_type() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduledUpdateGroupActions">> => list(scheduled_update_group_action()())
+%% }
+-type scheduled_actions_type() :: #{binary() => any()}.
+
+%% Example:
+%% attach_load_balancers_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"LoadBalancerNames">> := list(string()())
+%% }
+-type attach_load_balancers_type() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_hook_specification() :: #{
+%%   <<"DefaultResult">> => string(),
+%%   <<"HeartbeatTimeout">> => integer(),
+%%   <<"LifecycleHookName">> => string(),
+%%   <<"LifecycleTransition">> => string(),
+%%   <<"NotificationMetadata">> => string(),
+%%   <<"NotificationTargetARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type lifecycle_hook_specification() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_target_groups_response() :: #{
+%%   <<"LoadBalancerTargetGroups">> => list(load_balancer_target_group_state()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_load_balancer_target_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_process_query() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ScalingProcesses">> => list(string()())
+%% }
+-type scaling_process_query() :: #{binary() => any()}.
+
+%% Example:
+%% launch_configuration_names_type() :: #{
+%%   <<"LaunchConfigurationNames">> => list(string()()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type launch_configuration_names_type() :: #{binary() => any()}.
+
+%% Example:
+%% attach_load_balancers_result_type() :: #{
+
+%% }
+-type attach_load_balancers_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% detach_instances_answer() :: #{
+%%   <<"Activities">> => list(activity()())
+%% }
+-type detach_instances_answer() :: #{binary() => any()}.
+
+%% Example:
+%% enabled_metric() :: #{
+%%   <<"Granularity">> => string(),
+%%   <<"Metric">> => string()
+%% }
+-type enabled_metric() :: #{binary() => any()}.
+
+%% Example:
+%% get_predictive_scaling_forecast_answer() :: #{
+%%   <<"CapacityForecast">> := capacity_forecast(),
+%%   <<"LoadForecast">> := list(load_forecast()()),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type get_predictive_scaling_forecast_answer() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_activity_in_progress_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type scaling_activity_in_progress_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_policies_type() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyNames">> => list(string()()),
+%%   <<"PolicyTypes">> => list(string()())
+%% }
+-type describe_policies_type() :: #{binary() => any()}.
+
+%% Example:
+%% mixed_instances_policy() :: #{
+%%   <<"InstancesDistribution">> => instances_distribution(),
+%%   <<"LaunchTemplate">> => launch_template()
+%% }
+-type mixed_instances_policy() :: #{binary() => any()}.
+
+%% Example:
+%% launch_configurations_type() :: #{
+%%   <<"LaunchConfigurations">> := list(launch_configuration()()),
+%%   <<"NextToken">> => string()
+%% }
+-type launch_configurations_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notification_configuration_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"TopicARN">> := string()
+%% }
+-type delete_notification_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_predefined_load_metric() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predictive_scaling_predefined_load_metric() :: #{binary() => any()}.
+
+%% Example:
+%% customized_metric_specification() :: #{
+%%   <<"Dimensions">> => list(metric_dimension()()),
+%%   <<"MetricName">> => string(),
+%%   <<"Metrics">> => list(target_tracking_metric_data_query()()),
+%%   <<"Namespace">> => string(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Unit">> => string()
+%% }
+-type customized_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group_names_type() :: #{
+%%   <<"AutoScalingGroupNames">> => list(string()()),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type auto_scaling_group_names_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_traffic_sources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrafficSources">> => list(traffic_source_state()())
+%% }
+-type describe_traffic_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_refreshes_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceRefreshIds">> => list(string()()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_refreshes_type() :: #{binary() => any()}.
+
+%% Example:
+%% put_notification_configuration_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"NotificationTypes">> := list(string()()),
+%%   <<"TopicARN">> := string()
+%% }
+-type put_notification_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% policies_type() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScalingPolicies">> => list(scaling_policy()())
+%% }
+-type policies_type() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_instance_refresh_type() :: #{
+%%   <<"AutoScalingGroupName">> := string()
+%% }
+-type cancel_instance_refresh_type() :: #{binary() => any()}.
+
+%% Example:
+%% execute_policy_type() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"BreachThreshold">> => float(),
+%%   <<"HonorCooldown">> => boolean(),
+%%   <<"MetricValue">> => float(),
+%%   <<"PolicyName">> := string()
+%% }
+-type execute_policy_type() :: #{binary() => any()}.
+
+%% Example:
+%% detach_load_balancers_result_type() :: #{
+
+%% }
+-type detach_load_balancers_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% active_instance_refresh_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type active_instance_refresh_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_predefined_scaling_metric() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predictive_scaling_predefined_scaling_metric() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_customized_load_metric() :: #{
+%%   <<"MetricDataQueries">> => list(metric_data_query()())
+%% }
+-type predictive_scaling_customized_load_metric() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_type() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_tags_type() :: #{binary() => any()}.
+
+%% Example:
+%% warm_pool_configuration() :: #{
+%%   <<"InstanceReusePolicy">> => instance_reuse_policy(),
+%%   <<"MaxGroupPreparedCapacity">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"PoolState">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type warm_pool_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% v_cpu_count_request() :: #{
+%%   <<"Max">> => integer(),
+%%   <<"Min">> => integer()
+%% }
+-type v_cpu_count_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_instance_in_auto_scaling_group_type() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"ShouldDecrementDesiredCapacity">> := boolean()
+%% }
+-type terminate_instance_in_auto_scaling_group_type() :: #{binary() => any()}.
+
+%% Example:
+%% complete_lifecycle_action_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LifecycleActionResult">> := string(),
+%%   <<"LifecycleActionToken">> => string(),
+%%   <<"LifecycleHookName">> := string()
+%% }
+-type complete_lifecycle_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% activity() :: #{
+%%   <<"ActivityId">> => string(),
+%%   <<"AutoScalingGroupARN">> => string(),
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"AutoScalingGroupState">> => string(),
+%%   <<"Cause">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Details">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Progress">> => integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"StatusCode">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type activity() :: #{binary() => any()}.
+
+%% Example:
+%% instances_distribution() :: #{
+%%   <<"OnDemandAllocationStrategy">> => string(),
+%%   <<"OnDemandBaseCapacity">> => integer(),
+%%   <<"OnDemandPercentageAboveBaseCapacity">> => integer(),
+%%   <<"SpotAllocationStrategy">> => string(),
+%%   <<"SpotInstancePools">> => integer(),
+%%   <<"SpotMaxPrice">> => string()
+%% }
+-type instances_distribution() :: #{binary() => any()}.
+
+%% Example:
+%% attach_traffic_sources_result_type() :: #{
+
+%% }
+-type attach_traffic_sources_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancers_response() :: #{
+%%   <<"LoadBalancers">> => list(load_balancer_state()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_load_balancers_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"PropagateAtLaunch">> => boolean(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_update_group_action() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"DesiredCapacity">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxSize">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"Recurrence">> => string(),
+%%   <<"ScheduledActionARN">> => string(),
+%%   <<"ScheduledActionName">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Time">> => non_neg_integer(),
+%%   <<"TimeZone">> => string()
+%% }
+-type scheduled_update_group_action() :: #{binary() => any()}.
+
+%% Example:
+%% load_forecast() :: #{
+%%   <<"MetricSpecification">> => predictive_scaling_metric_specification(),
+%%   <<"Timestamps">> => list(non_neg_integer()()),
+%%   <<"Values">> => list(float()())
+%% }
+-type load_forecast() :: #{binary() => any()}.
+
+%% Example:
+%% irreversible_instance_refresh_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type irreversible_instance_refresh_fault() :: #{binary() => any()}.
+
+%% Example:
+%% record_lifecycle_action_heartbeat_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LifecycleActionToken">> => string(),
+%%   <<"LifecycleHookName">> := string()
+%% }
+-type record_lifecycle_action_heartbeat_type() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_count_request() :: #{
+%%   <<"Max">> => integer(),
+%%   <<"Min">> => integer()
+%% }
+-type accelerator_count_request() :: #{binary() => any()}.
+
+%% Example:
+%% metric_data_query() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"MetricStat">> => metric_stat(),
+%%   <<"ReturnData">> => boolean()
+%% }
+-type metric_data_query() :: #{binary() => any()}.
+
+%% Example:
+%% ebs() :: #{
+%%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"Encrypted">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"Throughput">> => integer(),
+%%   <<"VolumeSize">> => integer(),
+%%   <<"VolumeType">> => string()
+%% }
+-type ebs() :: #{binary() => any()}.
+
+%% Example:
+%% put_scheduled_update_group_action_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"DesiredCapacity">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxSize">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"Recurrence">> => string(),
+%%   <<"ScheduledActionName">> := string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Time">> => non_neg_integer(),
+%%   <<"TimeZone">> => string()
+%% }
+-type put_scheduled_update_group_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% tag_description() :: #{
+%%   <<"Key">> => string(),
+%%   <<"PropagateAtLaunch">> => boolean(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag_description() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_metric_stat() :: #{
+%%   <<"Metric">> => metric(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => string()
+%% }
+-type target_tracking_metric_stat() :: #{binary() => any()}.
+
+%% Example:
+%% detach_traffic_sources_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"TrafficSources">> := list(traffic_source_identifier()())
+%% }
+-type detach_traffic_sources_type() :: #{binary() => any()}.
+
+%% Example:
+%% detach_load_balancers_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"LoadBalancerNames">> := list(string()())
+%% }
+-type detach_load_balancers_type() :: #{binary() => any()}.
+
+%% Example:
+%% resource_contention_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_contention_fault() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_instance_details() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"HealthStatus">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"LaunchConfigurationName">> => string(),
+%%   <<"LaunchTemplate">> => launch_template_specification(),
+%%   <<"LifecycleState">> => string(),
+%%   <<"ProtectedFromScaleIn">> => boolean(),
+%%   <<"WeightedCapacity">> => string()
+%% }
+-type auto_scaling_instance_details() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_state() :: #{
+%%   <<"LoadBalancerName">> => string(),
+%%   <<"State">> => string()
+%% }
+-type load_balancer_state() :: #{binary() => any()}.
+
+%% Example:
+%% attach_traffic_sources_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"TrafficSources">> := list(traffic_source_identifier()())
+%% }
+-type attach_traffic_sources_type() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_customized_scaling_metric() :: #{
+%%   <<"MetricDataQueries">> => list(metric_data_query()())
+%% }
+-type predictive_scaling_customized_scaling_metric() :: #{binary() => any()}.
+
+%% Example:
+%% suspended_process() :: #{
+%%   <<"ProcessName">> => string(),
+%%   <<"SuspensionReason">> => string()
+%% }
+-type suspended_process() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_update_group_action_request() :: #{
+%%   <<"DesiredCapacity">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxSize">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"Recurrence">> => string(),
+%%   <<"ScheduledActionName">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TimeZone">> => string()
+%% }
+-type scheduled_update_group_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% enter_standby_query() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceIds">> => list(string()()),
+%%   <<"ShouldDecrementDesiredCapacity">> := boolean()
+%% }
+-type enter_standby_query() :: #{binary() => any()}.
+
+%% Example:
+%% complete_lifecycle_action_answer() :: #{
+
+%% }
+-type complete_lifecycle_action_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lifecycle_hook_types_answer() :: #{
+%%   <<"LifecycleHookTypes">> => list(string()())
+%% }
+-type describe_lifecycle_hook_types_answer() :: #{binary() => any()}.
+
+%% Example:
+%% detach_load_balancer_target_groups_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"TargetGroupARNs">> := list(string()())
+%% }
+-type detach_load_balancer_target_groups_type() :: #{binary() => any()}.
+
+%% Example:
+%% put_lifecycle_hook_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"DefaultResult">> => string(),
+%%   <<"HeartbeatTimeout">> => integer(),
+%%   <<"LifecycleHookName">> := string(),
+%%   <<"LifecycleTransition">> => string(),
+%%   <<"NotificationMetadata">> => string(),
+%%   <<"NotificationTargetARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type put_lifecycle_hook_type() :: #{binary() => any()}.
+
+%% Example:
+%% launch_template_overrides() :: #{
+%%   <<"InstanceRequirements">> => instance_requirements(),
+%%   <<"InstanceType">> => string(),
+%%   <<"LaunchTemplateSpecification">> => launch_template_specification(),
+%%   <<"WeightedCapacity">> => string()
+%% }
+-type launch_template_overrides() :: #{binary() => any()}.
+
+%% Example:
+%% describe_termination_policy_types_answer() :: #{
+%%   <<"TerminationPolicyTypes">> => list(string()())
+%% }
+-type describe_termination_policy_types_answer() :: #{binary() => any()}.
+
+%% Example:
+%% create_or_update_tags_type() :: #{
+%%   <<"Tags">> := list(tag()())
+%% }
+-type create_or_update_tags_type() :: #{binary() => any()}.
+
+%% Example:
+%% failed_scheduled_update_group_action_request() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ScheduledActionName">> => string()
+%% }
+-type failed_scheduled_update_group_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% metric_dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type metric_dimension() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_scaling_group_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"CapacityRebalance">> => boolean(),
+%%   <<"Context">> => string(),
+%%   <<"DefaultCooldown">> => integer(),
+%%   <<"DefaultInstanceWarmup">> => integer(),
+%%   <<"DesiredCapacity">> => integer(),
+%%   <<"DesiredCapacityType">> => string(),
+%%   <<"HealthCheckGracePeriod">> => integer(),
+%%   <<"HealthCheckType">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceMaintenancePolicy">> => instance_maintenance_policy(),
+%%   <<"LaunchConfigurationName">> => string(),
+%%   <<"LaunchTemplate">> => launch_template_specification(),
+%%   <<"LifecycleHookSpecificationList">> => list(lifecycle_hook_specification()()),
+%%   <<"LoadBalancerNames">> => list(string()()),
+%%   <<"MaxInstanceLifetime">> => integer(),
+%%   <<"MaxSize">> := integer(),
+%%   <<"MinSize">> := integer(),
+%%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
+%%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
+%%   <<"PlacementGroup">> => string(),
+%%   <<"ServiceLinkedRoleARN">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetGroupARNs">> => list(string()()),
+%%   <<"TerminationPolicies">> => list(string()()),
+%%   <<"TrafficSources">> => list(traffic_source_identifier()()),
+%%   <<"VPCZoneIdentifier">> => string()
+%% }
+-type create_auto_scaling_group_type() :: #{binary() => any()}.
+
+%% Example:
+%% get_predictive_scaling_forecast_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"PolicyName">> := string(),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_predictive_scaling_forecast_type() :: #{binary() => any()}.
+
+%% Example:
+%% network_bandwidth_gbps_request() :: #{
+%%   <<"Max">> => float(),
+%%   <<"Min">> => float()
+%% }
+-type network_bandwidth_gbps_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_warm_pool_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceReusePolicy">> => instance_reuse_policy(),
+%%   <<"MaxGroupPreparedCapacity">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"PoolState">> => list(any())
+%% }
+-type put_warm_pool_type() :: #{binary() => any()}.
+
+%% Example:
+%% start_instance_refresh_answer() :: #{
+%%   <<"InstanceRefreshId">> => string()
+%% }
+-type start_instance_refresh_answer() :: #{binary() => any()}.
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"NotificationType">> => string(),
+%%   <<"TopicARN">> => string()
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_fault() :: #{binary() => any()}.
+
+%% Example:
+%% instance_refresh_warm_pool_progress() :: #{
+%%   <<"InstancesToUpdate">> => integer(),
+%%   <<"PercentageComplete">> => integer()
+%% }
+-type instance_refresh_warm_pool_progress() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_scheduled_action_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ScheduledActionNames">> := list(string()())
+%% }
+-type batch_delete_scheduled_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% exit_standby_answer() :: #{
+%%   <<"Activities">> => list(activity()())
+%% }
+-type exit_standby_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_adjustment_types_answer() :: #{
+%%   <<"AdjustmentTypes">> => list(adjustment_type()())
+%% }
+-type describe_adjustment_types_answer() :: #{binary() => any()}.
+
+%% Example:
+%% already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% launch_configuration_name_type() :: #{
+%%   <<"LaunchConfigurationName">> := string()
+%% }
+-type launch_configuration_name_type() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_total_memory_mi_b_request() :: #{
+%%   <<"Max">> => integer(),
+%%   <<"Min">> => integer()
+%% }
+-type accelerator_total_memory_mi_b_request() :: #{binary() => any()}.
+
+%% Example:
+%% activity_type() :: #{
+%%   <<"Activity">> => activity()
+%% }
+-type activity_type() :: #{binary() => any()}.
+
+%% Example:
+%% processes_type() :: #{
+%%   <<"Processes">> => list(process_type()())
+%% }
+-type processes_type() :: #{binary() => any()}.
+
+%% Example:
+%% detach_traffic_sources_result_type() :: #{
+
+%% }
+-type detach_traffic_sources_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_warm_pool_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ForceDelete">> => boolean()
+%% }
+-type delete_warm_pool_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_warm_pool_answer() :: #{
+%%   <<"Instances">> => list(instance()()),
+%%   <<"NextToken">> => string(),
+%%   <<"WarmPoolConfiguration">> => warm_pool_configuration()
+%% }
+-type describe_warm_pool_answer() :: #{binary() => any()}.
+
+%% Example:
+%% instance() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"HealthStatus">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"LaunchConfigurationName">> => string(),
+%%   <<"LaunchTemplate">> => launch_template_specification(),
+%%   <<"LifecycleState">> => list(any()),
+%%   <<"ProtectedFromScaleIn">> => boolean(),
+%%   <<"WeightedCapacity">> => string()
+%% }
+-type instance() :: #{binary() => any()}.
+
+%% Example:
+%% detach_instances_query() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceIds">> => list(string()()),
+%%   <<"ShouldDecrementDesiredCapacity">> := boolean()
+%% }
+-type detach_instances_query() :: #{binary() => any()}.
+
+%% Example:
+%% instance_metadata_options() :: #{
+%%   <<"HttpEndpoint">> => list(any()),
+%%   <<"HttpPutResponseHopLimit">> => integer(),
+%%   <<"HttpTokens">> => list(any())
+%% }
+-type instance_metadata_options() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_target_group_state() :: #{
+%%   <<"LoadBalancerTargetGroupARN">> => string(),
+%%   <<"State">> => string()
+%% }
+-type load_balancer_target_group_state() :: #{binary() => any()}.
+
+%% Example:
+%% predefined_metric_specification() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predefined_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% metric_stat() :: #{
+%%   <<"Metric">> => metric(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => string()
+%% }
+-type metric_stat() :: #{binary() => any()}.
+
+%% Example:
+%% activities_type() :: #{
+%%   <<"Activities">> := list(activity()()),
+%%   <<"NextToken">> => string()
+%% }
+-type activities_type() :: #{binary() => any()}.
+
+%% Example:
+%% attach_instances_query() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceIds">> => list(string()())
+%% }
+-type attach_instances_query() :: #{binary() => any()}.
+
+%% Example:
+%% instance_requirements() :: #{
+%%   <<"AcceleratorCount">> => accelerator_count_request(),
+%%   <<"AcceleratorManufacturers">> => list(list(any())()),
+%%   <<"AcceleratorNames">> => list(list(any())()),
+%%   <<"AcceleratorTotalMemoryMiB">> => accelerator_total_memory_mi_b_request(),
+%%   <<"AcceleratorTypes">> => list(list(any())()),
+%%   <<"AllowedInstanceTypes">> => list(string()()),
+%%   <<"BareMetal">> => list(any()),
+%%   <<"BaselineEbsBandwidthMbps">> => baseline_ebs_bandwidth_mbps_request(),
+%%   <<"BurstablePerformance">> => list(any()),
+%%   <<"CpuManufacturers">> => list(list(any())()),
+%%   <<"ExcludedInstanceTypes">> => list(string()()),
+%%   <<"InstanceGenerations">> => list(list(any())()),
+%%   <<"LocalStorage">> => list(any()),
+%%   <<"LocalStorageTypes">> => list(list(any())()),
+%%   <<"MaxSpotPriceAsPercentageOfOptimalOnDemandPrice">> => integer(),
+%%   <<"MemoryGiBPerVCpu">> => memory_gi_b_per_v_cpu_request(),
+%%   <<"MemoryMiB">> => memory_mi_b_request(),
+%%   <<"NetworkBandwidthGbps">> => network_bandwidth_gbps_request(),
+%%   <<"NetworkInterfaceCount">> => network_interface_count_request(),
+%%   <<"OnDemandMaxPricePercentageOverLowestPrice">> => integer(),
+%%   <<"RequireHibernateSupport">> => boolean(),
+%%   <<"SpotMaxPricePercentageOverLowestPrice">> => integer(),
+%%   <<"TotalLocalStorageGB">> => total_local_storage_g_b_request(),
+%%   <<"VCpuCount">> => v_cpu_count_request()
+%% }
+-type instance_requirements() :: #{binary() => any()}.
+
+%% Example:
+%% instance_monitoring() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type instance_monitoring() :: #{binary() => any()}.
+
+%% Example:
+%% set_desired_capacity_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"DesiredCapacity">> := integer(),
+%%   <<"HonorCooldown">> => boolean()
+%% }
+-type set_desired_capacity_type() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group() :: #{
+%%   <<"ServiceLinkedRoleARN">> => string(),
+%%   <<"Instances">> => list(instance()()),
+%%   <<"MaxSize">> => integer(),
+%%   <<"SuspendedProcesses">> => list(suspended_process()()),
+%%   <<"EnabledMetrics">> => list(enabled_metric()()),
+%%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
+%%   <<"TargetGroupARNs">> => list(string()()),
+%%   <<"TerminationPolicies">> => list(string()()),
+%%   <<"LaunchConfigurationName">> => string(),
+%%   <<"DesiredCapacityType">> => string(),
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"VPCZoneIdentifier">> => string(),
+%%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
+%%   <<"AutoScalingGroupARN">> => string(),
+%%   <<"PlacementGroup">> => string(),
+%%   <<"HealthCheckType">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"MaxInstanceLifetime">> => integer(),
+%%   <<"HealthCheckGracePeriod">> => integer(),
+%%   <<"LaunchTemplate">> => launch_template_specification(),
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"LoadBalancerNames">> => list(string()()),
+%%   <<"Tags">> => list(tag_description()()),
+%%   <<"CapacityRebalance">> => boolean(),
+%%   <<"TrafficSources">> => list(traffic_source_identifier()()),
+%%   <<"InstanceMaintenancePolicy">> => instance_maintenance_policy(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DefaultCooldown">> => integer(),
+%%   <<"WarmPoolConfiguration">> => warm_pool_configuration(),
+%%   <<"Status">> => string(),
+%%   <<"PredictedCapacity">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"DesiredCapacity">> => integer(),
+%%   <<"DefaultInstanceWarmup">> => integer(),
+%%   <<"WarmPoolSize">> => integer()
+%% }
+-type auto_scaling_group() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_scheduled_update_group_action_answer() :: #{
+%%   <<"FailedScheduledUpdateGroupActions">> => list(failed_scheduled_update_group_action_request()())
+%% }
+-type batch_put_scheduled_update_group_action_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_scaling_notification_types_answer() :: #{
+%%   <<"AutoScalingNotificationTypes">> => list(string()())
+%% }
+-type describe_auto_scaling_notification_types_answer() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_preferences() :: #{
+%%   <<"AlarmSpecification">> => alarm_specification(),
+%%   <<"AutoRollback">> => boolean(),
+%%   <<"CheckpointDelay">> => integer(),
+%%   <<"CheckpointPercentages">> => list(integer()()),
+%%   <<"InstanceWarmup">> => integer(),
+%%   <<"MaxHealthyPercentage">> => integer(),
+%%   <<"MinHealthyPercentage">> => integer(),
+%%   <<"ScaleInProtectedInstances">> => list(any()),
+%%   <<"SkipMatching">> => boolean(),
+%%   <<"StandbyInstances">> => list(any())
+%% }
+-type refresh_preferences() :: #{binary() => any()}.
+
+%% Example:
+%% launch_template() :: #{
+%%   <<"LaunchTemplateSpecification">> => launch_template_specification(),
+%%   <<"Overrides">> => list(launch_template_overrides()())
+%% }
+-type launch_template() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_scheduled_update_group_action_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ScheduledUpdateGroupActions">> := list(scheduled_update_group_action_request()())
+%% }
+-type batch_put_scheduled_update_group_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_refreshes_answer() :: #{
+%%   <<"InstanceRefreshes">> => list(instance_refresh()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_refreshes_answer() :: #{binary() => any()}.
+
+%% Example:
+%% put_warm_pool_answer() :: #{
+
+%% }
+-type put_warm_pool_answer() :: #{binary() => any()}.
+
+%% Example:
+%% update_auto_scaling_group_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"CapacityRebalance">> => boolean(),
+%%   <<"Context">> => string(),
+%%   <<"DefaultCooldown">> => integer(),
+%%   <<"DefaultInstanceWarmup">> => integer(),
+%%   <<"DesiredCapacity">> => integer(),
+%%   <<"DesiredCapacityType">> => string(),
+%%   <<"HealthCheckGracePeriod">> => integer(),
+%%   <<"HealthCheckType">> => string(),
+%%   <<"InstanceMaintenancePolicy">> => instance_maintenance_policy(),
+%%   <<"LaunchConfigurationName">> => string(),
+%%   <<"LaunchTemplate">> => launch_template_specification(),
+%%   <<"MaxInstanceLifetime">> => integer(),
+%%   <<"MaxSize">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
+%%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
+%%   <<"PlacementGroup">> => string(),
+%%   <<"ServiceLinkedRoleARN">> => string(),
+%%   <<"TerminationPolicies">> => list(string()()),
+%%   <<"VPCZoneIdentifier">> => string()
+%% }
+-type update_auto_scaling_group_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_target_groups_request() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_load_balancer_target_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_refresh_in_progress_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type instance_refresh_in_progress_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_action_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ScheduledActionName">> := string()
+%% }
+-type delete_scheduled_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% launch_configuration() :: #{
+%%   <<"AssociatePublicIpAddress">> => boolean(),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"ClassicLinkVPCId">> => string(),
+%%   <<"ClassicLinkVPCSecurityGroups">> => list(string()()),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EbsOptimized">> => boolean(),
+%%   <<"IamInstanceProfile">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"InstanceMonitoring">> => instance_monitoring(),
+%%   <<"InstanceType">> => string(),
+%%   <<"KernelId">> => string(),
+%%   <<"KeyName">> => string(),
+%%   <<"LaunchConfigurationARN">> => string(),
+%%   <<"LaunchConfigurationName">> => string(),
+%%   <<"MetadataOptions">> => instance_metadata_options(),
+%%   <<"PlacementTenancy">> => string(),
+%%   <<"RamdiskId">> => string(),
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SpotPrice">> => string(),
+%%   <<"UserData">> => string()
+%% }
+-type launch_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% attach_load_balancer_target_groups_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"TargetGroupARNs">> := list(string()())
+%% }
+-type attach_load_balancer_target_groups_type() :: #{binary() => any()}.
+
+%% Example:
+%% launch_template_specification() :: #{
+%%   <<"LaunchTemplateId">> => string(),
+%%   <<"LaunchTemplateName">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type launch_template_specification() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_details() :: #{
+%%   <<"InstancesToUpdateOnRollback">> => integer(),
+%%   <<"PercentageCompleteOnRollback">> => integer(),
+%%   <<"ProgressDetailsOnRollback">> => instance_refresh_progress_details(),
+%%   <<"RollbackReason">> => string(),
+%%   <<"RollbackStartTime">> => non_neg_integer()
+%% }
+-type rollback_details() :: #{binary() => any()}.
+
+%% Example:
+%% set_instance_protection_query() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceIds">> := list(string()()),
+%%   <<"ProtectedFromScaleIn">> := boolean()
+%% }
+-type set_instance_protection_query() :: #{binary() => any()}.
+
+%% Example:
+%% memory_mi_b_request() :: #{
+%%   <<"Max">> => integer(),
+%%   <<"Min">> => integer()
+%% }
+-type memory_mi_b_request() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface_count_request() :: #{
+%%   <<"Max">> => integer(),
+%%   <<"Min">> => integer()
+%% }
+-type network_interface_count_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_instance_health_query() :: #{
+%%   <<"HealthStatus">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"ShouldRespectGracePeriod">> => boolean()
+%% }
+-type set_instance_health_query() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_hook_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"LifecycleHookName">> := string()
+%% }
+-type delete_lifecycle_hook_type() :: #{binary() => any()}.
+
+%% Example:
+%% disable_metrics_collection_query() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"Metrics">> => list(string()())
+%% }
+-type disable_metrics_collection_query() :: #{binary() => any()}.
+
+%% Example:
+%% total_local_storage_g_b_request() :: #{
+%%   <<"Max">> => float(),
+%%   <<"Min">> => float()
+%% }
+-type total_local_storage_g_b_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_linked_role_failure() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_linked_role_failure() :: #{binary() => any()}.
+
+%% Example:
+%% set_instance_protection_answer() :: #{
+
+%% }
+-type set_instance_protection_answer() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_customized_capacity_metric() :: #{
+%%   <<"MetricDataQueries">> => list(metric_data_query()())
+%% }
+-type predictive_scaling_customized_capacity_metric() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_instance_refresh_type() :: #{
+%%   <<"AutoScalingGroupName">> := string()
+%% }
+-type rollback_instance_refresh_type() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_metric_data_query() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"MetricStat">> => target_tracking_metric_stat(),
+%%   <<"ReturnData">> => boolean()
+%% }
+-type target_tracking_metric_data_query() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_forecast() :: #{
+%%   <<"Timestamps">> => list(non_neg_integer()()),
+%%   <<"Values">> => list(float()())
+%% }
+-type capacity_forecast() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_instances_type() :: #{
+%%   <<"AutoScalingInstances">> => list(auto_scaling_instance_details()()),
+%%   <<"NextToken">> => string()
+%% }
+-type auto_scaling_instances_type() :: #{binary() => any()}.
+
+%% Example:
+%% detach_load_balancer_target_groups_result_type() :: #{
+
+%% }
+-type detach_load_balancer_target_groups_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% alarm_specification() :: #{
+%%   <<"Alarms">> => list(string()())
+%% }
+-type alarm_specification() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_activities_type() :: #{
+%%   <<"ActivityIds">> => list(string()()),
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"IncludeDeletedGroups">> => boolean(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_scaling_activities_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_hook_answer() :: #{
+
+%% }
+-type delete_lifecycle_hook_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_scaling_instances_type() :: #{
+%%   <<"InstanceIds">> => list(string()()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_auto_scaling_instances_type() :: #{binary() => any()}.
+
+%% Example:
+%% instance_refresh_live_pool_progress() :: #{
+%%   <<"InstancesToUpdate">> => integer(),
+%%   <<"PercentageComplete">> => integer()
+%% }
+-type instance_refresh_live_pool_progress() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_groups_type() :: #{
+%%   <<"AutoScalingGroups">> := list(auto_scaling_group()()),
+%%   <<"NextToken">> => string()
+%% }
+-type auto_scaling_groups_type() :: #{binary() => any()}.
+
+%% Example:
+%% metric_collection_type() :: #{
+%%   <<"Metric">> => string()
+%% }
+-type metric_collection_type() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_scheduled_action_answer() :: #{
+%%   <<"FailedScheduledActions">> => list(failed_scheduled_update_group_action_request()())
+%% }
+-type batch_delete_scheduled_action_answer() :: #{binary() => any()}.
+
+%% Example:
+%% enable_metrics_collection_query() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"Granularity">> := string(),
+%%   <<"Metrics">> => list(string()())
+%% }
+-type enable_metrics_collection_query() :: #{binary() => any()}.
+
+%% Example:
+%% desired_configuration() :: #{
+%%   <<"LaunchTemplate">> => launch_template_specification(),
+%%   <<"MixedInstancesPolicy">> => mixed_instances_policy()
+%% }
+-type desired_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_next_token() :: #{binary() => any()}.
+
+%% Example:
+%% baseline_ebs_bandwidth_mbps_request() :: #{
+%%   <<"Max">> => integer(),
+%%   <<"Min">> => integer()
+%% }
+-type baseline_ebs_bandwidth_mbps_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_scaling_policy_type() :: #{
+%%   <<"AdjustmentType">> => string(),
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"Cooldown">> => integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EstimatedInstanceWarmup">> => integer(),
+%%   <<"MetricAggregationType">> => string(),
+%%   <<"MinAdjustmentMagnitude">> => integer(),
+%%   <<"MinAdjustmentStep">> => integer(),
+%%   <<"PolicyName">> := string(),
+%%   <<"PolicyType">> => string(),
+%%   <<"PredictiveScalingConfiguration">> => predictive_scaling_configuration(),
+%%   <<"ScalingAdjustment">> => integer(),
+%%   <<"StepAdjustments">> => list(step_adjustment()()),
+%%   <<"TargetTrackingConfiguration">> => target_tracking_configuration()
+%% }
+-type put_scaling_policy_type() :: #{binary() => any()}.
+
+%% Example:
+%% attach_load_balancer_target_groups_result_type() :: #{
+
+%% }
+-type attach_load_balancer_target_groups_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_configuration() :: #{
+%%   <<"MaxCapacityBreachBehavior">> => list(any()),
+%%   <<"MaxCapacityBuffer">> => integer(),
+%%   <<"MetricSpecifications">> => list(predictive_scaling_metric_specification()()),
+%%   <<"Mode">> => list(any()),
+%%   <<"SchedulingBufferTime">> => integer()
+%% }
+-type predictive_scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_configuration() :: #{
+%%   <<"CustomizedMetricSpecification">> => customized_metric_specification(),
+%%   <<"DisableScaleIn">> => boolean(),
+%%   <<"PredefinedMetricSpecification">> => predefined_metric_specification(),
+%%   <<"TargetValue">> => float()
+%% }
+-type target_tracking_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_type() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type delete_policy_type() :: #{binary() => any()}.
+
+-type attach_instances_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type attach_load_balancer_target_groups_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type attach_load_balancers_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type attach_traffic_sources_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type batch_delete_scheduled_action_errors() ::
+    resource_contention_fault().
+
+-type batch_put_scheduled_update_group_action_errors() ::
+    already_exists_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type cancel_instance_refresh_errors() ::
+    resource_contention_fault() | 
+    active_instance_refresh_not_found_fault() | 
+    limit_exceeded_fault().
+
+-type complete_lifecycle_action_errors() ::
+    resource_contention_fault().
+
+-type create_auto_scaling_group_errors() ::
+    service_linked_role_failure() | 
+    already_exists_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type create_launch_configuration_errors() ::
+    already_exists_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type create_or_update_tags_errors() ::
+    already_exists_fault() | 
+    resource_in_use_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type delete_auto_scaling_group_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault().
+
+-type delete_launch_configuration_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault().
+
+-type delete_lifecycle_hook_errors() ::
+    resource_contention_fault().
+
+-type delete_notification_configuration_errors() ::
+    resource_contention_fault().
+
+-type delete_policy_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type delete_scheduled_action_errors() ::
+    resource_contention_fault().
+
+-type delete_tags_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault().
+
+-type delete_warm_pool_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault() | 
+    limit_exceeded_fault().
+
+-type describe_account_limits_errors() ::
+    resource_contention_fault().
+
+-type describe_adjustment_types_errors() ::
+    resource_contention_fault().
+
+-type describe_auto_scaling_groups_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_auto_scaling_instances_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_auto_scaling_notification_types_errors() ::
+    resource_contention_fault().
+
+-type describe_instance_refreshes_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_launch_configurations_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_lifecycle_hook_types_errors() ::
+    resource_contention_fault().
+
+-type describe_lifecycle_hooks_errors() ::
+    resource_contention_fault().
+
+-type describe_load_balancer_target_groups_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_load_balancers_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_metric_collection_types_errors() ::
+    resource_contention_fault().
+
+-type describe_notification_configurations_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_policies_errors() ::
+    invalid_next_token() | 
+    service_linked_role_failure() | 
+    resource_contention_fault().
+
+-type describe_scaling_activities_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_scaling_process_types_errors() ::
+    resource_contention_fault().
+
+-type describe_scheduled_actions_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_tags_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_termination_policy_types_errors() ::
+    resource_contention_fault().
+
+-type describe_traffic_sources_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault().
+
+-type describe_warm_pool_errors() ::
+    invalid_next_token() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type detach_instances_errors() ::
+    resource_contention_fault().
+
+-type detach_load_balancer_target_groups_errors() ::
+    resource_contention_fault().
+
+-type detach_load_balancers_errors() ::
+    resource_contention_fault().
+
+-type detach_traffic_sources_errors() ::
+    resource_contention_fault().
+
+-type disable_metrics_collection_errors() ::
+    resource_contention_fault().
+
+-type enable_metrics_collection_errors() ::
+    resource_contention_fault().
+
+-type enter_standby_errors() ::
+    resource_contention_fault().
+
+-type execute_policy_errors() ::
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault().
+
+-type exit_standby_errors() ::
+    resource_contention_fault().
+
+-type get_predictive_scaling_forecast_errors() ::
+    resource_contention_fault().
+
+-type put_lifecycle_hook_errors() ::
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type put_notification_configuration_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type put_scaling_policy_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type put_scheduled_update_group_action_errors() ::
+    already_exists_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type put_warm_pool_errors() ::
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type record_lifecycle_action_heartbeat_errors() ::
+    resource_contention_fault().
+
+-type resume_processes_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault().
+
+-type rollback_instance_refresh_errors() ::
+    resource_contention_fault() | 
+    irreversible_instance_refresh_fault() | 
+    active_instance_refresh_not_found_fault() | 
+    limit_exceeded_fault().
+
+-type set_desired_capacity_errors() ::
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault().
+
+-type set_instance_health_errors() ::
+    resource_contention_fault().
+
+-type set_instance_protection_errors() ::
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type start_instance_refresh_errors() ::
+    instance_refresh_in_progress_fault() | 
+    resource_contention_fault() | 
+    limit_exceeded_fault().
+
+-type suspend_processes_errors() ::
+    resource_in_use_fault() | 
+    resource_contention_fault().
+
+-type terminate_instance_in_auto_scaling_group_errors() ::
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault().
+
+-type update_auto_scaling_group_errors() ::
+    service_linked_role_failure() | 
+    resource_contention_fault() | 
+    scaling_activity_in_progress_fault().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -172,9 +2042,18 @@
 %% your Auto Scaling group:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec attach_instances(aws_client:aws_client(), attach_instances_query()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, attach_instances_errors(), tuple()}.
 attach_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_instances(Client, Input, []).
+
+-spec attach_instances(aws_client:aws_client(), attach_instances_query(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, attach_instances_errors(), tuple()}.
 attach_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachInstances">>, Input, Options).
@@ -219,9 +2098,18 @@ attach_instances(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
+-spec attach_load_balancer_target_groups(aws_client:aws_client(), attach_load_balancer_target_groups_type()) ->
+    {ok, attach_load_balancer_target_groups_result_type(), tuple()} |
+    {error, any()} |
+    {error, attach_load_balancer_target_groups_errors(), tuple()}.
 attach_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancer_target_groups(Client, Input, []).
+
+-spec attach_load_balancer_target_groups(aws_client:aws_client(), attach_load_balancer_target_groups_type(), proplists:proplist()) ->
+    {ok, attach_load_balancer_target_groups_result_type(), tuple()} |
+    {error, any()} |
+    {error, attach_load_balancer_target_groups_errors(), tuple()}.
 attach_load_balancer_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachLoadBalancerTargetGroups">>, Input, Options).
@@ -255,9 +2143,18 @@ attach_load_balancer_target_groups(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
+-spec attach_load_balancers(aws_client:aws_client(), attach_load_balancers_type()) ->
+    {ok, attach_load_balancers_result_type(), tuple()} |
+    {error, any()} |
+    {error, attach_load_balancers_errors(), tuple()}.
 attach_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancers(Client, Input, []).
+
+-spec attach_load_balancers(aws_client:aws_client(), attach_load_balancers_type(), proplists:proplist()) ->
+    {ok, attach_load_balancers_result_type(), tuple()} |
+    {error, any()} |
+    {error, attach_load_balancers_errors(), tuple()}.
 attach_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachLoadBalancers">>, Input, Options).
@@ -287,27 +2184,54 @@ attach_load_balancers(Client, Input, Options)
 %% and your Auto Scaling
 %% group. To detach a traffic source from the Auto Scaling group, call the
 %% `DetachTrafficSources' API.
+-spec attach_traffic_sources(aws_client:aws_client(), attach_traffic_sources_type()) ->
+    {ok, attach_traffic_sources_result_type(), tuple()} |
+    {error, any()} |
+    {error, attach_traffic_sources_errors(), tuple()}.
 attach_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_traffic_sources(Client, Input, []).
+
+-spec attach_traffic_sources(aws_client:aws_client(), attach_traffic_sources_type(), proplists:proplist()) ->
+    {ok, attach_traffic_sources_result_type(), tuple()} |
+    {error, any()} |
+    {error, attach_traffic_sources_errors(), tuple()}.
 attach_traffic_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachTrafficSources">>, Input, Options).
 
 %% @doc Deletes one or more scheduled actions for the specified Auto Scaling
 %% group.
+-spec batch_delete_scheduled_action(aws_client:aws_client(), batch_delete_scheduled_action_type()) ->
+    {ok, batch_delete_scheduled_action_answer(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_scheduled_action_errors(), tuple()}.
 batch_delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_scheduled_action(Client, Input, []).
+
+-spec batch_delete_scheduled_action(aws_client:aws_client(), batch_delete_scheduled_action_type(), proplists:proplist()) ->
+    {ok, batch_delete_scheduled_action_answer(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_scheduled_action_errors(), tuple()}.
 batch_delete_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteScheduledAction">>, Input, Options).
 
 %% @doc Creates or updates one or more scheduled scaling actions for an Auto
 %% Scaling group.
+-spec batch_put_scheduled_update_group_action(aws_client:aws_client(), batch_put_scheduled_update_group_action_type()) ->
+    {ok, batch_put_scheduled_update_group_action_answer(), tuple()} |
+    {error, any()} |
+    {error, batch_put_scheduled_update_group_action_errors(), tuple()}.
 batch_put_scheduled_update_group_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_put_scheduled_update_group_action(Client, Input, []).
+
+-spec batch_put_scheduled_update_group_action(aws_client:aws_client(), batch_put_scheduled_update_group_action_type(), proplists:proplist()) ->
+    {ok, batch_put_scheduled_update_group_action_answer(), tuple()} |
+    {error, any()} |
+    {error, batch_put_scheduled_update_group_action_errors(), tuple()}.
 batch_put_scheduled_update_group_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchPutScheduledUpdateGroupAction">>, Input, Options).
@@ -328,9 +2252,18 @@ batch_put_scheduled_update_group_action(Client, Input, Options)
 %% When you cancel an instance refresh, this does not roll back any changes
 %% that it made.
 %% Use the `RollbackInstanceRefresh' API to roll back instead.
+-spec cancel_instance_refresh(aws_client:aws_client(), cancel_instance_refresh_type()) ->
+    {ok, cancel_instance_refresh_answer(), tuple()} |
+    {error, any()} |
+    {error, cancel_instance_refresh_errors(), tuple()}.
 cancel_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_instance_refresh(Client, Input, []).
+
+-spec cancel_instance_refresh(aws_client:aws_client(), cancel_instance_refresh_type(), proplists:proplist()) ->
+    {ok, cancel_instance_refresh_answer(), tuple()} |
+    {error, any()} |
+    {error, cancel_instance_refresh_errors(), tuple()}.
 cancel_instance_refresh(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelInstanceRefresh">>, Input, Options).
@@ -373,9 +2306,18 @@ cancel_instance_refresh(Client, Input, Options)
 %% action:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/completing-lifecycle-hooks.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec complete_lifecycle_action(aws_client:aws_client(), complete_lifecycle_action_type()) ->
+    {ok, complete_lifecycle_action_answer(), tuple()} |
+    {error, any()} |
+    {error, complete_lifecycle_action_errors(), tuple()}.
 complete_lifecycle_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     complete_lifecycle_action(Client, Input, []).
+
+-spec complete_lifecycle_action(aws_client:aws_client(), complete_lifecycle_action_type(), proplists:proplist()) ->
+    {ok, complete_lifecycle_action_answer(), tuple()} |
+    {error, any()} |
+    {error, complete_lifecycle_action_errors(), tuple()}.
 complete_lifecycle_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompleteLifecycleAction">>, Input, Options).
@@ -407,9 +2349,18 @@ complete_lifecycle_action(Client, Input, Options)
 %% that defines weights for the instance types, you must specify these sizes
 %% with the same
 %% units that you use for weighting instances.
+-spec create_auto_scaling_group(aws_client:aws_client(), create_auto_scaling_group_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_auto_scaling_group_errors(), tuple()}.
 create_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_scaling_group(Client, Input, []).
+
+-spec create_auto_scaling_group(aws_client:aws_client(), create_auto_scaling_group_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_auto_scaling_group_errors(), tuple()}.
 create_auto_scaling_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoScalingGroup">>, Input, Options).
@@ -439,9 +2390,18 @@ create_auto_scaling_group(Client, Input, Options)
 %% For information about using launch templates, see Launch templates:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-templates.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec create_launch_configuration(aws_client:aws_client(), create_launch_configuration_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_launch_configuration_errors(), tuple()}.
 create_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_launch_configuration(Client, Input, []).
+
+-spec create_launch_configuration(aws_client:aws_client(), create_launch_configuration_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_launch_configuration_errors(), tuple()}.
 create_launch_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLaunchConfiguration">>, Input, Options).
@@ -456,9 +2416,18 @@ create_launch_configuration(Client, Input, Options)
 %% instances:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-tagging.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec create_or_update_tags(aws_client:aws_client(), create_or_update_tags_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_or_update_tags_errors(), tuple()}.
 create_or_update_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_or_update_tags(Client, Input, []).
+
+-spec create_or_update_tags(aws_client:aws_client(), create_or_update_tags_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_or_update_tags_errors(), tuple()}.
 create_or_update_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOrUpdateTags">>, Input, Options).
@@ -494,9 +2463,18 @@ create_or_update_tags(Client, Input, Options)
 %% infrastructure:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-process-shutdown.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec delete_auto_scaling_group(aws_client:aws_client(), delete_auto_scaling_group_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_auto_scaling_group_errors(), tuple()}.
 delete_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_auto_scaling_group(Client, Input, []).
+
+-spec delete_auto_scaling_group(aws_client:aws_client(), delete_auto_scaling_group_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_auto_scaling_group_errors(), tuple()}.
 delete_auto_scaling_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAutoScalingGroup">>, Input, Options).
@@ -506,9 +2484,18 @@ delete_auto_scaling_group(Client, Input, Options)
 %% The launch configuration must not be attached to an Auto Scaling group.
 %% When this call
 %% completes, the launch configuration is no longer available for use.
+-spec delete_launch_configuration(aws_client:aws_client(), launch_configuration_name_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_launch_configuration_errors(), tuple()}.
 delete_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_launch_configuration(Client, Input, []).
+
+-spec delete_launch_configuration(aws_client:aws_client(), launch_configuration_name_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_launch_configuration_errors(), tuple()}.
 delete_launch_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLaunchConfiguration">>, Input, Options).
@@ -518,17 +2505,35 @@ delete_launch_configuration(Client, Input, Options)
 %% If there are any outstanding lifecycle actions, they are completed first
 %% (`ABANDON' for launching instances, `CONTINUE' for terminating
 %% instances).
+-spec delete_lifecycle_hook(aws_client:aws_client(), delete_lifecycle_hook_type()) ->
+    {ok, delete_lifecycle_hook_answer(), tuple()} |
+    {error, any()} |
+    {error, delete_lifecycle_hook_errors(), tuple()}.
 delete_lifecycle_hook(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lifecycle_hook(Client, Input, []).
+
+-spec delete_lifecycle_hook(aws_client:aws_client(), delete_lifecycle_hook_type(), proplists:proplist()) ->
+    {ok, delete_lifecycle_hook_answer(), tuple()} |
+    {error, any()} |
+    {error, delete_lifecycle_hook_errors(), tuple()}.
 delete_lifecycle_hook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLifecycleHook">>, Input, Options).
 
 %% @doc Deletes the specified notification.
+-spec delete_notification_configuration(aws_client:aws_client(), delete_notification_configuration_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_notification_configuration_errors(), tuple()}.
 delete_notification_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notification_configuration(Client, Input, []).
+
+-spec delete_notification_configuration(aws_client:aws_client(), delete_notification_configuration_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_notification_configuration_errors(), tuple()}.
 delete_notification_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNotificationConfiguration">>, Input, Options).
@@ -545,25 +2550,52 @@ delete_notification_configuration(Client, Input, Options)
 %% policy:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/deleting-scaling-policy.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec delete_policy(aws_client:aws_client(), delete_policy_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
+
+-spec delete_policy(aws_client:aws_client(), delete_policy_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
 
 %% @doc Deletes the specified scheduled action.
+-spec delete_scheduled_action(aws_client:aws_client(), delete_scheduled_action_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_action(Client, Input, []).
+
+-spec delete_scheduled_action(aws_client:aws_client(), delete_scheduled_action_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_scheduled_action_errors(), tuple()}.
 delete_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScheduledAction">>, Input, Options).
 
 %% @doc Deletes the specified tags.
+-spec delete_tags(aws_client:aws_client(), delete_tags_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
+
+-spec delete_tags(aws_client:aws_client(), delete_tags_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
@@ -574,9 +2606,18 @@ delete_tags(Client, Input, Options)
 %% Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec delete_warm_pool(aws_client:aws_client(), delete_warm_pool_type()) ->
+    {ok, delete_warm_pool_answer(), tuple()} |
+    {error, any()} |
+    {error, delete_warm_pool_errors(), tuple()}.
 delete_warm_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_warm_pool(Client, Input, []).
+
+-spec delete_warm_pool(aws_client:aws_client(), delete_warm_pool_type(), proplists:proplist()) ->
+    {ok, delete_warm_pool_answer(), tuple()} |
+    {error, any()} |
+    {error, delete_warm_pool_errors(), tuple()}.
 delete_warm_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWarmPool">>, Input, Options).
@@ -592,9 +2633,18 @@ delete_warm_pool(Client, Input, Options)
 %% Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-quotas.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec describe_account_limits(aws_client:aws_client(), #{}) ->
+    {ok, describe_account_limits_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_account_limits_errors(), tuple()}.
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
+
+-spec describe_account_limits(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, describe_account_limits_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_account_limits_errors(), tuple()}.
 describe_account_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountLimits">>, Input, Options).
@@ -610,9 +2660,18 @@ describe_account_limits(Client, Input, Options)
 %% `ExactCapacity'
 %%
 %% `PercentChangeInCapacity'
+-spec describe_adjustment_types(aws_client:aws_client(), #{}) ->
+    {ok, describe_adjustment_types_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_adjustment_types_errors(), tuple()}.
 describe_adjustment_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_adjustment_types(Client, Input, []).
+
+-spec describe_adjustment_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, describe_adjustment_types_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_adjustment_types_errors(), tuple()}.
 describe_adjustment_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAdjustmentTypes">>, Input, Options).
@@ -632,27 +2691,54 @@ describe_adjustment_types(Client, Input, Options)
 %% groups. To retrieve
 %% information about the instances in a warm pool, you must call the
 %% `DescribeWarmPool' API.
+-spec describe_auto_scaling_groups(aws_client:aws_client(), auto_scaling_group_names_type()) ->
+    {ok, auto_scaling_groups_type(), tuple()} |
+    {error, any()} |
+    {error, describe_auto_scaling_groups_errors(), tuple()}.
 describe_auto_scaling_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_groups(Client, Input, []).
+
+-spec describe_auto_scaling_groups(aws_client:aws_client(), auto_scaling_group_names_type(), proplists:proplist()) ->
+    {ok, auto_scaling_groups_type(), tuple()} |
+    {error, any()} |
+    {error, describe_auto_scaling_groups_errors(), tuple()}.
 describe_auto_scaling_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoScalingGroups">>, Input, Options).
 
 %% @doc Gets information about the Auto Scaling instances in the account and
 %% Region.
+-spec describe_auto_scaling_instances(aws_client:aws_client(), describe_auto_scaling_instances_type()) ->
+    {ok, auto_scaling_instances_type(), tuple()} |
+    {error, any()} |
+    {error, describe_auto_scaling_instances_errors(), tuple()}.
 describe_auto_scaling_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_instances(Client, Input, []).
+
+-spec describe_auto_scaling_instances(aws_client:aws_client(), describe_auto_scaling_instances_type(), proplists:proplist()) ->
+    {ok, auto_scaling_instances_type(), tuple()} |
+    {error, any()} |
+    {error, describe_auto_scaling_instances_errors(), tuple()}.
 describe_auto_scaling_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoScalingInstances">>, Input, Options).
 
 %% @doc Describes the notification types that are supported by Amazon EC2
 %% Auto Scaling.
+-spec describe_auto_scaling_notification_types(aws_client:aws_client(), #{}) ->
+    {ok, describe_auto_scaling_notification_types_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_auto_scaling_notification_types_errors(), tuple()}.
 describe_auto_scaling_notification_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_notification_types(Client, Input, []).
+
+-spec describe_auto_scaling_notification_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, describe_auto_scaling_notification_types_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_auto_scaling_notification_types_errors(), tuple()}.
 describe_auto_scaling_notification_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoScalingNotificationTypes">>, Input, Options).
@@ -679,18 +2765,36 @@ describe_auto_scaling_notification_types(Client, Input, Options)
 %% is initiated while an instance refresh is in progress, Amazon EC2 Auto
 %% Scaling also returns information
 %% about the rollback of the instance refresh.
+-spec describe_instance_refreshes(aws_client:aws_client(), describe_instance_refreshes_type()) ->
+    {ok, describe_instance_refreshes_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_instance_refreshes_errors(), tuple()}.
 describe_instance_refreshes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_refreshes(Client, Input, []).
+
+-spec describe_instance_refreshes(aws_client:aws_client(), describe_instance_refreshes_type(), proplists:proplist()) ->
+    {ok, describe_instance_refreshes_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_instance_refreshes_errors(), tuple()}.
 describe_instance_refreshes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceRefreshes">>, Input, Options).
 
 %% @doc Gets information about the launch configurations in the account and
 %% Region.
+-spec describe_launch_configurations(aws_client:aws_client(), launch_configuration_names_type()) ->
+    {ok, launch_configurations_type(), tuple()} |
+    {error, any()} |
+    {error, describe_launch_configurations_errors(), tuple()}.
 describe_launch_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_launch_configurations(Client, Input, []).
+
+-spec describe_launch_configurations(aws_client:aws_client(), launch_configuration_names_type(), proplists:proplist()) ->
+    {ok, launch_configurations_type(), tuple()} |
+    {error, any()} |
+    {error, describe_launch_configurations_errors(), tuple()}.
 describe_launch_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLaunchConfigurations">>, Input, Options).
@@ -702,18 +2806,36 @@ describe_launch_configurations(Client, Input, Options)
 %% `autoscaling:EC2_INSTANCE_LAUNCHING'
 %%
 %% `autoscaling:EC2_INSTANCE_TERMINATING'
+-spec describe_lifecycle_hook_types(aws_client:aws_client(), #{}) ->
+    {ok, describe_lifecycle_hook_types_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_lifecycle_hook_types_errors(), tuple()}.
 describe_lifecycle_hook_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lifecycle_hook_types(Client, Input, []).
+
+-spec describe_lifecycle_hook_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, describe_lifecycle_hook_types_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_lifecycle_hook_types_errors(), tuple()}.
 describe_lifecycle_hook_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLifecycleHookTypes">>, Input, Options).
 
 %% @doc Gets information about the lifecycle hooks for the specified Auto
 %% Scaling group.
+-spec describe_lifecycle_hooks(aws_client:aws_client(), describe_lifecycle_hooks_type()) ->
+    {ok, describe_lifecycle_hooks_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_lifecycle_hooks_errors(), tuple()}.
 describe_lifecycle_hooks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lifecycle_hooks(Client, Input, []).
+
+-spec describe_lifecycle_hooks(aws_client:aws_client(), describe_lifecycle_hooks_type(), proplists:proplist()) ->
+    {ok, describe_lifecycle_hooks_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_lifecycle_hooks_errors(), tuple()}.
 describe_lifecycle_hooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLifecycleHooks">>, Input, Options).
@@ -772,9 +2894,18 @@ describe_lifecycle_hooks(Client, Input, Options)
 %% using
 %% `AttachLoadBalancerTargetGroups', but not for target groups that
 %% were attached by using `AttachTrafficSources'.
+-spec describe_load_balancer_target_groups(aws_client:aws_client(), describe_load_balancer_target_groups_request()) ->
+    {ok, describe_load_balancer_target_groups_response(), tuple()} |
+    {error, any()} |
+    {error, describe_load_balancer_target_groups_errors(), tuple()}.
 describe_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_target_groups(Client, Input, []).
+
+-spec describe_load_balancer_target_groups(aws_client:aws_client(), describe_load_balancer_target_groups_request(), proplists:proplist()) ->
+    {ok, describe_load_balancer_target_groups_response(), tuple()} |
+    {error, any()} |
+    {error, describe_load_balancer_target_groups_errors(), tuple()}.
 describe_load_balancer_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancerTargetGroups">>, Input, Options).
@@ -835,18 +2966,36 @@ describe_load_balancer_target_groups(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
+-spec describe_load_balancers(aws_client:aws_client(), describe_load_balancers_request()) ->
+    {ok, describe_load_balancers_response(), tuple()} |
+    {error, any()} |
+    {error, describe_load_balancers_errors(), tuple()}.
 describe_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancers(Client, Input, []).
+
+-spec describe_load_balancers(aws_client:aws_client(), describe_load_balancers_request(), proplists:proplist()) ->
+    {ok, describe_load_balancers_response(), tuple()} |
+    {error, any()} |
+    {error, describe_load_balancers_errors(), tuple()}.
 describe_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancers">>, Input, Options).
 
 %% @doc Describes the available CloudWatch metrics for Amazon EC2 Auto
 %% Scaling.
+-spec describe_metric_collection_types(aws_client:aws_client(), #{}) ->
+    {ok, describe_metric_collection_types_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_metric_collection_types_errors(), tuple()}.
 describe_metric_collection_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metric_collection_types(Client, Input, []).
+
+-spec describe_metric_collection_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, describe_metric_collection_types_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_metric_collection_types_errors(), tuple()}.
 describe_metric_collection_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetricCollectionTypes">>, Input, Options).
@@ -854,18 +3003,36 @@ describe_metric_collection_types(Client, Input, Options)
 %% @doc Gets information about the Amazon SNS notifications that are
 %% configured for one or more
 %% Auto Scaling groups.
+-spec describe_notification_configurations(aws_client:aws_client(), describe_notification_configurations_type()) ->
+    {ok, describe_notification_configurations_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_notification_configurations_errors(), tuple()}.
 describe_notification_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notification_configurations(Client, Input, []).
+
+-spec describe_notification_configurations(aws_client:aws_client(), describe_notification_configurations_type(), proplists:proplist()) ->
+    {ok, describe_notification_configurations_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_notification_configurations_errors(), tuple()}.
 describe_notification_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotificationConfigurations">>, Input, Options).
 
 %% @doc Gets information about the scaling policies in the account and
 %% Region.
+-spec describe_policies(aws_client:aws_client(), describe_policies_type()) ->
+    {ok, policies_type(), tuple()} |
+    {error, any()} |
+    {error, describe_policies_errors(), tuple()}.
 describe_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_policies(Client, Input, []).
+
+-spec describe_policies(aws_client:aws_client(), describe_policies_type(), proplists:proplist()) ->
+    {ok, policies_type(), tuple()} |
+    {error, any()} |
+    {error, describe_policies_errors(), tuple()}.
 describe_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePolicies">>, Input, Options).
@@ -890,9 +3057,18 @@ describe_policies(Client, Input, Options)
 %% Troubleshooting Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/CHAP_Troubleshooting.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec describe_scaling_activities(aws_client:aws_client(), describe_scaling_activities_type()) ->
+    {ok, activities_type(), tuple()} |
+    {error, any()} |
+    {error, describe_scaling_activities_errors(), tuple()}.
 describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
+
+-spec describe_scaling_activities(aws_client:aws_client(), describe_scaling_activities_type(), proplists:proplist()) ->
+    {ok, activities_type(), tuple()} |
+    {error, any()} |
+    {error, describe_scaling_activities_errors(), tuple()}.
 describe_scaling_activities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingActivities">>, Input, Options).
@@ -900,9 +3076,18 @@ describe_scaling_activities(Client, Input, Options)
 %% @doc Describes the scaling process types for use with the
 %% `ResumeProcesses'
 %% and `SuspendProcesses' APIs.
+-spec describe_scaling_process_types(aws_client:aws_client(), #{}) ->
+    {ok, processes_type(), tuple()} |
+    {error, any()} |
+    {error, describe_scaling_process_types_errors(), tuple()}.
 describe_scaling_process_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_process_types(Client, Input, []).
+
+-spec describe_scaling_process_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, processes_type(), tuple()} |
+    {error, any()} |
+    {error, describe_scaling_process_types_errors(), tuple()}.
 describe_scaling_process_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingProcessTypes">>, Input, Options).
@@ -914,9 +3099,18 @@ describe_scaling_process_types(Client, Input, Options)
 %% To describe the scaling activities for scheduled actions that have already
 %% run, call
 %% the `DescribeScalingActivities' API.
+-spec describe_scheduled_actions(aws_client:aws_client(), describe_scheduled_actions_type()) ->
+    {ok, scheduled_actions_type(), tuple()} |
+    {error, any()} |
+    {error, describe_scheduled_actions_errors(), tuple()}.
 describe_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_actions(Client, Input, []).
+
+-spec describe_scheduled_actions(aws_client:aws_client(), describe_scheduled_actions_type(), proplists:proplist()) ->
+    {ok, scheduled_actions_type(), tuple()} |
+    {error, any()} |
+    {error, describe_scheduled_actions_errors(), tuple()}.
 describe_scheduled_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledActions">>, Input, Options).
@@ -939,9 +3133,18 @@ describe_scheduled_actions(Client, Input, Options)
 %% instances:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-tagging.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec describe_tags(aws_client:aws_client(), describe_tags_type()) ->
+    {ok, tags_type(), tuple()} |
+    {error, any()} |
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
+
+-spec describe_tags(aws_client:aws_client(), describe_tags_type(), proplists:proplist()) ->
+    {ok, tags_type(), tuple()} |
+    {error, any()} |
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
@@ -954,9 +3157,18 @@ describe_tags(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
+-spec describe_termination_policy_types(aws_client:aws_client(), #{}) ->
+    {ok, describe_termination_policy_types_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_termination_policy_types_errors(), tuple()}.
 describe_termination_policy_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_termination_policy_types(Client, Input, []).
+
+-spec describe_termination_policy_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, describe_termination_policy_types_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_termination_policy_types_errors(), tuple()}.
 describe_termination_policy_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTerminationPolicyTypes">>, Input, Options).
@@ -971,9 +3183,18 @@ describe_termination_policy_types(Client, Input, Options)
 %% If you do not provide a traffic source type, then the results include all
 %% the traffic
 %% sources for the specified Auto Scaling group.
+-spec describe_traffic_sources(aws_client:aws_client(), describe_traffic_sources_request()) ->
+    {ok, describe_traffic_sources_response(), tuple()} |
+    {error, any()} |
+    {error, describe_traffic_sources_errors(), tuple()}.
 describe_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_traffic_sources(Client, Input, []).
+
+-spec describe_traffic_sources(aws_client:aws_client(), describe_traffic_sources_request(), proplists:proplist()) ->
+    {ok, describe_traffic_sources_response(), tuple()} |
+    {error, any()} |
+    {error, describe_traffic_sources_errors(), tuple()}.
 describe_traffic_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrafficSources">>, Input, Options).
@@ -984,9 +3205,18 @@ describe_traffic_sources(Client, Input, Options)
 %% Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec describe_warm_pool(aws_client:aws_client(), describe_warm_pool_type()) ->
+    {ok, describe_warm_pool_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_warm_pool_errors(), tuple()}.
 describe_warm_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_warm_pool(Client, Input, []).
+
+-spec describe_warm_pool(aws_client:aws_client(), describe_warm_pool_type(), proplists:proplist()) ->
+    {ok, describe_warm_pool_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_warm_pool_errors(), tuple()}.
 describe_warm_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWarmPool">>, Input, Options).
@@ -1011,9 +3241,18 @@ describe_warm_pool(Client, Input, Options)
 %% your Auto Scaling group:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec detach_instances(aws_client:aws_client(), detach_instances_query()) ->
+    {ok, detach_instances_answer(), tuple()} |
+    {error, any()} |
+    {error, detach_instances_errors(), tuple()}.
 detach_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_instances(Client, Input, []).
+
+-spec detach_instances(aws_client:aws_client(), detach_instances_query(), proplists:proplist()) ->
+    {ok, detach_instances_answer(), tuple()} |
+    {error, any()} |
+    {error, detach_instances_errors(), tuple()}.
 detach_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachInstances">>, Input, Options).
@@ -1043,9 +3282,18 @@ detach_instances(Client, Input, Options)
 %% using
 %% `AttachLoadBalancerTargetGroups', but not for target groups that
 %% were attached by using `AttachTrafficSources'.
+-spec detach_load_balancer_target_groups(aws_client:aws_client(), detach_load_balancer_target_groups_type()) ->
+    {ok, detach_load_balancer_target_groups_result_type(), tuple()} |
+    {error, any()} |
+    {error, detach_load_balancer_target_groups_errors(), tuple()}.
 detach_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_load_balancer_target_groups(Client, Input, []).
+
+-spec detach_load_balancer_target_groups(aws_client:aws_client(), detach_load_balancer_target_groups_type(), proplists:proplist()) ->
+    {ok, detach_load_balancer_target_groups_result_type(), tuple()} |
+    {error, any()} |
+    {error, detach_load_balancer_target_groups_errors(), tuple()}.
 detach_load_balancer_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachLoadBalancerTargetGroups">>, Input, Options).
@@ -1074,9 +3322,18 @@ detach_load_balancer_target_groups(Client, Input, Options)
 %% deregistered, then you
 %% can no longer describe the load balancer using the
 %% `DescribeLoadBalancers' API call. The instances remain running.
+-spec detach_load_balancers(aws_client:aws_client(), detach_load_balancers_type()) ->
+    {ok, detach_load_balancers_result_type(), tuple()} |
+    {error, any()} |
+    {error, detach_load_balancers_errors(), tuple()}.
 detach_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_load_balancers(Client, Input, []).
+
+-spec detach_load_balancers(aws_client:aws_client(), detach_load_balancers_type(), proplists:proplist()) ->
+    {ok, detach_load_balancers_result_type(), tuple()} |
+    {error, any()} |
+    {error, detach_load_balancers_errors(), tuple()}.
 detach_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachLoadBalancers">>, Input, Options).
@@ -1089,18 +3346,36 @@ detach_load_balancers(Client, Input, Options)
 %% deregistered, then you
 %% can no longer describe the traffic source using the
 %% `DescribeTrafficSources' API call. The instances continue to run.
+-spec detach_traffic_sources(aws_client:aws_client(), detach_traffic_sources_type()) ->
+    {ok, detach_traffic_sources_result_type(), tuple()} |
+    {error, any()} |
+    {error, detach_traffic_sources_errors(), tuple()}.
 detach_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_traffic_sources(Client, Input, []).
+
+-spec detach_traffic_sources(aws_client:aws_client(), detach_traffic_sources_type(), proplists:proplist()) ->
+    {ok, detach_traffic_sources_result_type(), tuple()} |
+    {error, any()} |
+    {error, detach_traffic_sources_errors(), tuple()}.
 detach_traffic_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachTrafficSources">>, Input, Options).
 
 %% @doc Disables group metrics collection for the specified Auto Scaling
 %% group.
+-spec disable_metrics_collection(aws_client:aws_client(), disable_metrics_collection_query()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_metrics_collection_errors(), tuple()}.
 disable_metrics_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_metrics_collection(Client, Input, []).
+
+-spec disable_metrics_collection(aws_client:aws_client(), disable_metrics_collection_query(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disable_metrics_collection_errors(), tuple()}.
 disable_metrics_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableMetricsCollection">>, Input, Options).
@@ -1117,9 +3392,18 @@ disable_metrics_collection(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-cloudwatch-monitoring.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
+-spec enable_metrics_collection(aws_client:aws_client(), enable_metrics_collection_query()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_metrics_collection_errors(), tuple()}.
 enable_metrics_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_metrics_collection(Client, Input, []).
+
+-spec enable_metrics_collection(aws_client:aws_client(), enable_metrics_collection_query(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, enable_metrics_collection_errors(), tuple()}.
 enable_metrics_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableMetricsCollection">>, Input, Options).
@@ -1143,9 +3427,18 @@ enable_metrics_collection(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
+-spec enter_standby(aws_client:aws_client(), enter_standby_query()) ->
+    {ok, enter_standby_answer(), tuple()} |
+    {error, any()} |
+    {error, enter_standby_errors(), tuple()}.
 enter_standby(Client, Input)
   when is_map(Client), is_map(Input) ->
     enter_standby(Client, Input, []).
+
+-spec enter_standby(aws_client:aws_client(), enter_standby_query(), proplists:proplist()) ->
+    {ok, enter_standby_answer(), tuple()} |
+    {error, any()} |
+    {error, enter_standby_errors(), tuple()}.
 enter_standby(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnterStandby">>, Input, Options).
@@ -1154,9 +3447,18 @@ enter_standby(Client, Input, Options)
 %%
 %% This can be useful for testing the design of your
 %% scaling policy.
+-spec execute_policy(aws_client:aws_client(), execute_policy_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, execute_policy_errors(), tuple()}.
 execute_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_policy(Client, Input, []).
+
+-spec execute_policy(aws_client:aws_client(), execute_policy_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, execute_policy_errors(), tuple()}.
 execute_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecutePolicy">>, Input, Options).
@@ -1171,9 +3473,18 @@ execute_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
+-spec exit_standby(aws_client:aws_client(), exit_standby_query()) ->
+    {ok, exit_standby_answer(), tuple()} |
+    {error, any()} |
+    {error, exit_standby_errors(), tuple()}.
 exit_standby(Client, Input)
   when is_map(Client), is_map(Input) ->
     exit_standby(Client, Input, []).
+
+-spec exit_standby(aws_client:aws_client(), exit_standby_query(), proplists:proplist()) ->
+    {ok, exit_standby_answer(), tuple()} |
+    {error, any()} |
+    {error, exit_standby_errors(), tuple()}.
 exit_standby(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExitStandby">>, Input, Options).
@@ -1197,9 +3508,18 @@ exit_standby(Client, Input, Options)
 %% scaling for Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec get_predictive_scaling_forecast(aws_client:aws_client(), get_predictive_scaling_forecast_type()) ->
+    {ok, get_predictive_scaling_forecast_answer(), tuple()} |
+    {error, any()} |
+    {error, get_predictive_scaling_forecast_errors(), tuple()}.
 get_predictive_scaling_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_predictive_scaling_forecast(Client, Input, []).
+
+-spec get_predictive_scaling_forecast(aws_client:aws_client(), get_predictive_scaling_forecast_type(), proplists:proplist()) ->
+    {ok, get_predictive_scaling_forecast_answer(), tuple()} |
+    {error, any()} |
+    {error, get_predictive_scaling_forecast_errors(), tuple()}.
 get_predictive_scaling_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPredictiveScalingForecast">>, Input, Options).
@@ -1255,9 +3575,18 @@ get_predictive_scaling_forecast(Client, Input, Options)
 %% `DescribeLifecycleHooks' API call. If you are no longer using a
 %% lifecycle
 %% hook, you can delete it by calling the `DeleteLifecycleHook' API.
+-spec put_lifecycle_hook(aws_client:aws_client(), put_lifecycle_hook_type()) ->
+    {ok, put_lifecycle_hook_answer(), tuple()} |
+    {error, any()} |
+    {error, put_lifecycle_hook_errors(), tuple()}.
 put_lifecycle_hook(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_hook(Client, Input, []).
+
+-spec put_lifecycle_hook(aws_client:aws_client(), put_lifecycle_hook_type(), proplists:proplist()) ->
+    {ok, put_lifecycle_hook_answer(), tuple()} |
+    {error, any()} |
+    {error, put_lifecycle_hook_errors(), tuple()}.
 put_lifecycle_hook(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLifecycleHook">>, Input, Options).
@@ -1280,9 +3609,18 @@ put_lifecycle_hook(Client, Input, Options)
 %% If you exceed your maximum limit of SNS topics, which is 10 per Auto
 %% Scaling group, the call
 %% fails.
+-spec put_notification_configuration(aws_client:aws_client(), put_notification_configuration_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_notification_configuration_errors(), tuple()}.
 put_notification_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_notification_configuration(Client, Input, []).
+
+-spec put_notification_configuration(aws_client:aws_client(), put_notification_configuration_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_notification_configuration_errors(), tuple()}.
 put_notification_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutNotificationConfiguration">>, Input, Options).
@@ -1311,9 +3649,18 @@ put_notification_configuration(Client, Input, Options)
 %% `DescribePolicies' API call. If you are no longer using a scaling
 %% policy,
 %% you can delete it by calling the `DeletePolicy' API.
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_type()) ->
+    {ok, policy_arn_type(), tuple()} |
+    {error, any()} |
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
+
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_type(), proplists:proplist()) ->
+    {ok, policy_arn_type(), tuple()} |
+    {error, any()} |
+    {error, put_scaling_policy_errors(), tuple()}.
 put_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScalingPolicy">>, Input, Options).
@@ -1334,9 +3681,18 @@ put_scaling_policy(Client, Input, Options)
 %% If you try to schedule your action in the past, Amazon EC2 Auto Scaling
 %% returns an error
 %% message.
+-spec put_scheduled_update_group_action(aws_client:aws_client(), put_scheduled_update_group_action_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_scheduled_update_group_action_errors(), tuple()}.
 put_scheduled_update_group_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scheduled_update_group_action(Client, Input, []).
+
+-spec put_scheduled_update_group_action(aws_client:aws_client(), put_scheduled_update_group_action_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_scheduled_update_group_action_errors(), tuple()}.
 put_scheduled_update_group_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScheduledUpdateGroupAction">>, Input, Options).
@@ -1364,9 +3720,18 @@ put_scheduled_update_group_action(Client, Input, Options)
 %% `DescribeWarmPool' API call. If you are no longer using a warm pool,
 %% you can delete it by calling the
 %% `DeleteWarmPool' API.
+-spec put_warm_pool(aws_client:aws_client(), put_warm_pool_type()) ->
+    {ok, put_warm_pool_answer(), tuple()} |
+    {error, any()} |
+    {error, put_warm_pool_errors(), tuple()}.
 put_warm_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_warm_pool(Client, Input, []).
+
+-spec put_warm_pool(aws_client:aws_client(), put_warm_pool_type(), proplists:proplist()) ->
+    {ok, put_warm_pool_answer(), tuple()} |
+    {error, any()} |
+    {error, put_warm_pool_errors(), tuple()}.
 put_warm_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutWarmPool">>, Input, Options).
@@ -1411,9 +3776,18 @@ put_warm_pool(Client, Input, Options)
 %% hooks:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec record_lifecycle_action_heartbeat(aws_client:aws_client(), record_lifecycle_action_heartbeat_type()) ->
+    {ok, record_lifecycle_action_heartbeat_answer(), tuple()} |
+    {error, any()} |
+    {error, record_lifecycle_action_heartbeat_errors(), tuple()}.
 record_lifecycle_action_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     record_lifecycle_action_heartbeat(Client, Input, []).
+
+-spec record_lifecycle_action_heartbeat(aws_client:aws_client(), record_lifecycle_action_heartbeat_type(), proplists:proplist()) ->
+    {ok, record_lifecycle_action_heartbeat_answer(), tuple()} |
+    {error, any()} |
+    {error, record_lifecycle_action_heartbeat_errors(), tuple()}.
 record_lifecycle_action_heartbeat(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RecordLifecycleActionHeartbeat">>, Input, Options).
@@ -1426,9 +3800,18 @@ record_lifecycle_action_heartbeat(Client, Input, Options)
 %% resuming scaling processes:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec resume_processes(aws_client:aws_client(), scaling_process_query()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resume_processes_errors(), tuple()}.
 resume_processes(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_processes(Client, Input, []).
+
+-spec resume_processes(aws_client:aws_client(), scaling_process_query(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resume_processes_errors(), tuple()}.
 resume_processes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeProcesses">>, Input, Options).
@@ -1465,9 +3848,18 @@ resume_processes(Client, Input, Options)
 %% Auto Scaling immediately
 %% begins replacing instances. You can check the status of this operation
 %% through the `DescribeInstanceRefreshes' API operation.
+-spec rollback_instance_refresh(aws_client:aws_client(), rollback_instance_refresh_type()) ->
+    {ok, rollback_instance_refresh_answer(), tuple()} |
+    {error, any()} |
+    {error, rollback_instance_refresh_errors(), tuple()}.
 rollback_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     rollback_instance_refresh(Client, Input, []).
+
+-spec rollback_instance_refresh(aws_client:aws_client(), rollback_instance_refresh_type(), proplists:proplist()) ->
+    {ok, rollback_instance_refresh_answer(), tuple()} |
+    {error, any()} |
+    {error, rollback_instance_refresh_errors(), tuple()}.
 rollback_instance_refresh(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RollbackInstanceRefresh">>, Input, Options).
@@ -1484,9 +3876,18 @@ rollback_instance_refresh(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-manual-scaling.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
+-spec set_desired_capacity(aws_client:aws_client(), set_desired_capacity_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_desired_capacity_errors(), tuple()}.
 set_desired_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_desired_capacity(Client, Input, []).
+
+-spec set_desired_capacity(aws_client:aws_client(), set_desired_capacity_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_desired_capacity_errors(), tuple()}.
 set_desired_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetDesiredCapacity">>, Input, Options).
@@ -1497,9 +3898,18 @@ set_desired_capacity(Client, Input, Options)
 %% instances:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html in
 %% the Amazon EC2 Auto Scaling User Guide.
+-spec set_instance_health(aws_client:aws_client(), set_instance_health_query()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_instance_health_errors(), tuple()}.
 set_instance_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_instance_health(Client, Input, []).
+
+-spec set_instance_health(aws_client:aws_client(), set_instance_health_query(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_instance_health_errors(), tuple()}.
 set_instance_health(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetInstanceHealth">>, Input, Options).
@@ -1520,9 +3930,18 @@ set_instance_health(Client, Input, Options)
 %% If you exceed your maximum limit of instance IDs, which is 50 per Auto
 %% Scaling group, the call
 %% fails.
+-spec set_instance_protection(aws_client:aws_client(), set_instance_protection_query()) ->
+    {ok, set_instance_protection_answer(), tuple()} |
+    {error, any()} |
+    {error, set_instance_protection_errors(), tuple()}.
 set_instance_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_instance_protection(Client, Input, []).
+
+-spec set_instance_protection(aws_client:aws_client(), set_instance_protection_query(), proplists:proplist()) ->
+    {ok, set_instance_protection_answer(), tuple()} |
+    {error, any()} |
+    {error, set_instance_protection_errors(), tuple()}.
 set_instance_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetInstanceProtection">>, Input, Options).
@@ -1571,9 +3990,18 @@ set_instance_protection(Client, Input, Options)
 %% preferences. Otherwise, to roll back an instance refresh before it
 %% finishes, use the
 %% `RollbackInstanceRefresh' API.
+-spec start_instance_refresh(aws_client:aws_client(), start_instance_refresh_type()) ->
+    {ok, start_instance_refresh_answer(), tuple()} |
+    {error, any()} |
+    {error, start_instance_refresh_errors(), tuple()}.
 start_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instance_refresh(Client, Input, []).
+
+-spec start_instance_refresh(aws_client:aws_client(), start_instance_refresh_type(), proplists:proplist()) ->
+    {ok, start_instance_refresh_answer(), tuple()} |
+    {error, any()} |
+    {error, start_instance_refresh_errors(), tuple()}.
 start_instance_refresh(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartInstanceRefresh">>, Input, Options).
@@ -1592,9 +4020,18 @@ start_instance_refresh(Client, Input, Options)
 %%
 %% To resume processes that have been suspended, call the
 %% `ResumeProcesses' API.
+-spec suspend_processes(aws_client:aws_client(), scaling_process_query()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, suspend_processes_errors(), tuple()}.
 suspend_processes(Client, Input)
   when is_map(Client), is_map(Input) ->
     suspend_processes(Client, Input, []).
+
+-spec suspend_processes(aws_client:aws_client(), scaling_process_query(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, suspend_processes_errors(), tuple()}.
 suspend_processes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SuspendProcesses">>, Input, Options).
@@ -1627,9 +4064,18 @@ suspend_processes(Client, Input, Options)
 %% activities:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage
 %% in the Amazon EC2 Auto Scaling User Guide.
+-spec terminate_instance_in_auto_scaling_group(aws_client:aws_client(), terminate_instance_in_auto_scaling_group_type()) ->
+    {ok, activity_type(), tuple()} |
+    {error, any()} |
+    {error, terminate_instance_in_auto_scaling_group_errors(), tuple()}.
 terminate_instance_in_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_instance_in_auto_scaling_group(Client, Input, []).
+
+-spec terminate_instance_in_auto_scaling_group(aws_client:aws_client(), terminate_instance_in_auto_scaling_group_type(), proplists:proplist()) ->
+    {ok, activity_type(), tuple()} |
+    {error, any()} |
+    {error, terminate_instance_in_auto_scaling_group_errors(), tuple()}.
 terminate_instance_in_auto_scaling_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateInstanceInAutoScalingGroup">>, Input, Options).
@@ -1692,9 +4138,18 @@ terminate_instance_in_auto_scaling_group(Client, Input, Options)
 %% group, call the `DescribePolicies' API. If the group has scaling
 %% policies, you can update them by calling the `PutScalingPolicy'
 %% API.
+-spec update_auto_scaling_group(aws_client:aws_client(), update_auto_scaling_group_type()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_auto_scaling_group_errors(), tuple()}.
 update_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_auto_scaling_group(Client, Input, []).
+
+-spec update_auto_scaling_group(aws_client:aws_client(), update_auto_scaling_group_type(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_auto_scaling_group_errors(), tuple()}.
 update_auto_scaling_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAutoScalingGroup">>, Input, Options).

@@ -78,13 +78,923 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_graph_snapshots_output() :: #{
+%%   <<"graphSnapshots">> => list(graph_snapshot_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_graph_snapshots_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_graph_using_import_task_input() :: #{
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"failOnError">> => [boolean()],
+%%   <<"format">> => list(any()),
+%%   <<"graphName">> := string(),
+%%   <<"importOptions">> => list(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"maxProvisionedMemory">> => integer(),
+%%   <<"minProvisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"roleArn">> := string(),
+%%   <<"source">> := [string()],
+%%   <<"tags">> => map(),
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type create_graph_using_import_task_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_private_graph_endpoint_input() :: #{}
+-type delete_private_graph_endpoint_input() :: #{}.
+
+
+%% Example:
+%% create_private_graph_endpoint_output() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type create_private_graph_endpoint_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_private_graph_endpoint_input() :: #{}
+-type get_private_graph_endpoint_input() :: #{}.
+
+
+%% Example:
+%% delete_graph_snapshot_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"snapshotCreateTime">> => [non_neg_integer()],
+%%   <<"sourceGraphId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_graph_snapshot_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_graph_using_import_task_output() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"importOptions">> => list(),
+%%   <<"roleArn">> => string(),
+%%   <<"source">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type create_graph_using_import_task_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_graph_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type update_graph_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_import_task_output() :: #{
+%%   <<"attemptNumber">> => [integer()],
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"importOptions">> => list(),
+%%   <<"importTaskDetails">> => import_task_details(),
+%%   <<"roleArn">> => string(),
+%%   <<"source">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"taskId">> => string()
+%% }
+-type get_import_task_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_private_graph_endpoint_output() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type delete_private_graph_endpoint_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_import_task_output() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"source">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type cancel_import_task_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type unprocessable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_graphs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_graphs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% graph_snapshot_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"snapshotCreateTime">> => [non_neg_integer()],
+%%   <<"sourceGraphId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type graph_snapshot_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_output() :: #{
+%%   <<"elapsed">> => [integer()],
+%%   <<"id">> => [string()],
+%%   <<"queryString">> => [string()],
+%%   <<"state">> => list(any()),
+%%   <<"waited">> => [integer()]
+%% }
+-type get_query_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queries_output() :: #{
+%%   <<"queries">> => list(query_summary()())
+%% }
+-type list_queries_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_search_configuration() :: #{
+%%   <<"dimension">> => integer()
+%% }
+-type vector_search_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_graph_from_snapshot_input() :: #{
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"graphName">> := string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"tags">> => map()
+%% }
+-type restore_graph_from_snapshot_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% edge_structure() :: #{
+%%   <<"count">> => [float()],
+%%   <<"edgeProperties">> => list([string()]())
+%% }
+-type edge_structure() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_graph_snapshot_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"snapshotCreateTime">> => [non_neg_integer()],
+%%   <<"sourceGraphId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_graph_snapshot_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_private_graph_endpoint_input() :: #{
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"vpcId">> => string(),
+%%   <<"vpcSecurityGroupIds">> => list(string()())
+%% }
+-type create_private_graph_endpoint_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_graph_input() :: #{
+%%   <<"skipSnapshot">> := [boolean()]
+%% }
+-type delete_graph_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_graphs_output() :: #{
+%%   <<"graphs">> => list(graph_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_graphs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_graph_input() :: #{
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"graphName">> := string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"provisionedMemory">> := integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"tags">> => map(),
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type create_graph_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_graph_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type delete_graph_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queries_input() :: #{
+%%   <<"graphIdentifier">> := string(),
+%%   <<"maxResults">> := [integer()],
+%%   <<"state">> => list(any())
+%% }
+-type list_queries_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_import_task_input() :: #{}
+-type cancel_import_task_input() :: #{}.
+
+
+%% Example:
+%% restore_graph_from_snapshot_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type restore_graph_from_snapshot_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% graph_data_summary() :: #{
+%%   <<"edgeLabels">> => list([string()]()),
+%%   <<"edgeProperties">> => list(map()()),
+%%   <<"edgeStructures">> => list(edge_structure()()),
+%%   <<"nodeLabels">> => list([string()]()),
+%%   <<"nodeProperties">> => list(map()()),
+%%   <<"nodeStructures">> => list(node_structure()()),
+%%   <<"numEdgeLabels">> => [float()],
+%%   <<"numEdgeProperties">> => [float()],
+%%   <<"numEdges">> => [float()],
+%%   <<"numNodeLabels">> => [float()],
+%%   <<"numNodeProperties">> => [float()],
+%%   <<"numNodes">> => [float()],
+%%   <<"totalEdgePropertyValues">> => [float()],
+%%   <<"totalNodePropertyValues">> => [float()]
+%% }
+-type graph_data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_graph_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type create_graph_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_task_summary() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"source">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type import_task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_graph_snapshots_input() :: #{
+%%   <<"graphIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_graph_snapshots_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% graph_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"status">> => list(any())
+%% }
+-type graph_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_private_graph_endpoint_output() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type get_private_graph_endpoint_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_summary() :: #{
+%%   <<"elapsed">> => [integer()],
+%%   <<"id">> => [string()],
+%%   <<"queryString">> => [string()],
+%%   <<"state">> => list(any()),
+%%   <<"waited">> => [integer()]
+%% }
+-type query_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_query_input() :: #{
+%%   <<"graphIdentifier">> := string()
+%% }
+-type cancel_query_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_graph_input() :: #{
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()]
+%% }
+-type update_graph_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% neptune_import_options() :: #{
+%%   <<"preserveDefaultVertexLabels">> => [boolean()],
+%%   <<"preserveEdgeIds">> => [boolean()],
+%%   <<"s3ExportKmsKeyId">> => [string()],
+%%   <<"s3ExportPath">> => [string()]
+%% }
+-type neptune_import_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_task_details() :: #{
+%%   <<"dictionaryEntryCount">> => [float()],
+%%   <<"errorCount">> => [integer()],
+%%   <<"errorDetails">> => [string()],
+%%   <<"progressPercentage">> => [integer()],
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"statementCount">> => [float()],
+%%   <<"status">> => [string()],
+%%   <<"timeElapsedSeconds">> => [float()]
+%% }
+-type import_task_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_input() :: #{
+%%   <<"graphIdentifier">> := string()
+%% }
+-type get_query_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_graph_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type get_graph_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_graph_snapshot_input() :: #{}
+-type delete_graph_snapshot_input() :: #{}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_graph_summary_input() :: #{
+%%   <<"graphIdentifier">> := string(),
+%%   <<"mode">> => list(any())
+%% }
+-type get_graph_summary_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_graph_input() :: #{
+%%   <<"skipSnapshot">> := [boolean()]
+%% }
+-type reset_graph_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% execute_query_output() :: #{
+%%   <<"payload">> => binary()
+%% }
+-type execute_query_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_graph_snapshot_input() :: #{}
+-type get_graph_snapshot_input() :: #{}.
+
+
+%% Example:
+%% create_graph_snapshot_input() :: #{
+%%   <<"graphIdentifier">> := string(),
+%%   <<"snapshotName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_graph_snapshot_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_structure() :: #{
+%%   <<"count">> => [float()],
+%%   <<"distinctOutgoingEdgeLabels">> => list([string()]()),
+%%   <<"nodeProperties">> => list([string()]())
+%% }
+-type node_structure() :: #{binary() => any()}.
+
+%% Example:
+%% get_graph_input() :: #{}
+-type get_graph_input() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% list_import_tasks_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tasks">> => list(import_task_summary()())
+%% }
+-type list_import_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_graph_summary_output() :: #{
+%%   <<"graphSummary">> => graph_data_summary(),
+%%   <<"lastStatisticsComputationTime">> => [non_neg_integer()],
+%%   <<"version">> => [string()]
+%% }
+-type get_graph_summary_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_private_graph_endpoints_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_private_graph_endpoints_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_private_graph_endpoints_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"privateGraphEndpoints">> => list(private_graph_endpoint_summary()())
+%% }
+-type list_private_graph_endpoints_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% execute_query_input() :: #{
+%%   <<"explainMode">> => list(any()),
+%%   <<"graphIdentifier">> := string(),
+%%   <<"language">> := list(any()),
+%%   <<"parameters">> => map(),
+%%   <<"planCache">> => list(any()),
+%%   <<"queryString">> := [string()],
+%%   <<"queryTimeoutMilliseconds">> => [integer()]
+%% }
+-type execute_query_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_import_task_input() :: #{}
+-type get_import_task_input() :: #{}.
+
+
+%% Example:
+%% private_graph_endpoint_summary() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type private_graph_endpoint_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_graph_snapshot_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"snapshotCreateTime">> => [non_neg_integer()],
+%%   <<"sourceGraphId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_graph_snapshot_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_graph_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type reset_graph_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_tasks_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_tasks_input() :: #{binary() => any()}.
+
+-type cancel_import_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type cancel_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_graph_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_graph_snapshot_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_graph_using_import_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_private_graph_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_graph_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_graph_snapshot_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_private_graph_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type execute_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    unprocessable_exception().
+
+-type get_graph_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_graph_snapshot_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_graph_summary_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_import_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_private_graph_endpoint_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_graph_snapshots_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_graphs_errors() ::
+    throttling_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_import_tasks_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_private_graph_endpoints_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_queries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type reset_graph_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type restore_graph_from_snapshot_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_graph_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Deletes the specified import task.
+-spec cancel_import_task(aws_client:aws_client(), binary() | list(), cancel_import_task_input()) ->
+    {ok, cancel_import_task_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_import_task_errors(), tuple()}.
 cancel_import_task(Client, TaskIdentifier, Input) ->
     cancel_import_task(Client, TaskIdentifier, Input, []).
+
+-spec cancel_import_task(aws_client:aws_client(), binary() | list(), cancel_import_task_input(), proplists:proplist()) ->
+    {ok, cancel_import_task_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_import_task_errors(), tuple()}.
 cancel_import_task(Client, TaskIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/importtasks/", aws_util:encode_uri(TaskIdentifier), ""],
@@ -108,8 +1018,17 @@ cancel_import_task(Client, TaskIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a specified query.
+-spec cancel_query(aws_client:aws_client(), binary() | list(), cancel_query_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, cancel_query_errors(), tuple()}.
 cancel_query(Client, QueryId, Input) ->
     cancel_query(Client, QueryId, Input, []).
+
+-spec cancel_query(aws_client:aws_client(), binary() | list(), cancel_query_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, cancel_query_errors(), tuple()}.
 cancel_query(Client, QueryId, Input0, Options0) ->
     Method = delete,
     Path = ["/queries/", aws_util:encode_uri(QueryId), ""],
@@ -135,8 +1054,17 @@ cancel_query(Client, QueryId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Neptune Analytics graph.
+-spec create_graph(aws_client:aws_client(), create_graph_input()) ->
+    {ok, create_graph_output(), tuple()} |
+    {error, any()} |
+    {error, create_graph_errors(), tuple()}.
 create_graph(Client, Input) ->
     create_graph(Client, Input, []).
+
+-spec create_graph(aws_client:aws_client(), create_graph_input(), proplists:proplist()) ->
+    {ok, create_graph_output(), tuple()} |
+    {error, any()} |
+    {error, create_graph_errors(), tuple()}.
 create_graph(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graphs"],
@@ -160,8 +1088,17 @@ create_graph(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a snapshot of the specific graph.
+-spec create_graph_snapshot(aws_client:aws_client(), create_graph_snapshot_input()) ->
+    {ok, create_graph_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, create_graph_snapshot_errors(), tuple()}.
 create_graph_snapshot(Client, Input) ->
     create_graph_snapshot(Client, Input, []).
+
+-spec create_graph_snapshot(aws_client:aws_client(), create_graph_snapshot_input(), proplists:proplist()) ->
+    {ok, create_graph_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, create_graph_snapshot_errors(), tuple()}.
 create_graph_snapshot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/snapshots"],
@@ -194,8 +1131,17 @@ create_graph_snapshot(Client, Input0, Options0) ->
 %% or the openCypher
 %% load format:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load-tutorial-format-opencypher.html.
+-spec create_graph_using_import_task(aws_client:aws_client(), create_graph_using_import_task_input()) ->
+    {ok, create_graph_using_import_task_output(), tuple()} |
+    {error, any()} |
+    {error, create_graph_using_import_task_errors(), tuple()}.
 create_graph_using_import_task(Client, Input) ->
     create_graph_using_import_task(Client, Input, []).
+
+-spec create_graph_using_import_task(aws_client:aws_client(), create_graph_using_import_task_input(), proplists:proplist()) ->
+    {ok, create_graph_using_import_task_output(), tuple()} |
+    {error, any()} |
+    {error, create_graph_using_import_task_errors(), tuple()}.
 create_graph_using_import_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/importtasks"],
@@ -224,8 +1170,17 @@ create_graph_using_import_task(Client, Input0, Options0) ->
 %%
 %% You can attach security groups to the private graph endpoint. VPC endpoint
 %% charges apply.
+-spec create_private_graph_endpoint(aws_client:aws_client(), binary() | list(), create_private_graph_endpoint_input()) ->
+    {ok, create_private_graph_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, create_private_graph_endpoint_errors(), tuple()}.
 create_private_graph_endpoint(Client, GraphIdentifier, Input) ->
     create_private_graph_endpoint(Client, GraphIdentifier, Input, []).
+
+-spec create_private_graph_endpoint(aws_client:aws_client(), binary() | list(), create_private_graph_endpoint_input(), proplists:proplist()) ->
+    {ok, create_private_graph_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, create_private_graph_endpoint_errors(), tuple()}.
 create_private_graph_endpoint(Client, GraphIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/endpoints/"],
@@ -251,8 +1206,17 @@ create_private_graph_endpoint(Client, GraphIdentifier, Input0, Options0) ->
 %% @doc Deletes the specified graph.
 %%
 %% Graphs cannot be deleted if delete-protection is enabled.
+-spec delete_graph(aws_client:aws_client(), binary() | list(), delete_graph_input()) ->
+    {ok, delete_graph_output(), tuple()} |
+    {error, any()} |
+    {error, delete_graph_errors(), tuple()}.
 delete_graph(Client, GraphIdentifier, Input) ->
     delete_graph(Client, GraphIdentifier, Input, []).
+
+-spec delete_graph(aws_client:aws_client(), binary() | list(), delete_graph_input(), proplists:proplist()) ->
+    {ok, delete_graph_output(), tuple()} |
+    {error, any()} |
+    {error, delete_graph_errors(), tuple()}.
 delete_graph(Client, GraphIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), ""],
@@ -277,8 +1241,17 @@ delete_graph(Client, GraphIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specifed graph snapshot.
+-spec delete_graph_snapshot(aws_client:aws_client(), binary() | list(), delete_graph_snapshot_input()) ->
+    {ok, delete_graph_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, delete_graph_snapshot_errors(), tuple()}.
 delete_graph_snapshot(Client, SnapshotIdentifier, Input) ->
     delete_graph_snapshot(Client, SnapshotIdentifier, Input, []).
+
+-spec delete_graph_snapshot(aws_client:aws_client(), binary() | list(), delete_graph_snapshot_input(), proplists:proplist()) ->
+    {ok, delete_graph_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, delete_graph_snapshot_errors(), tuple()}.
 delete_graph_snapshot(Client, SnapshotIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotIdentifier), ""],
@@ -302,8 +1275,17 @@ delete_graph_snapshot(Client, SnapshotIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a private graph endpoint.
+-spec delete_private_graph_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), delete_private_graph_endpoint_input()) ->
+    {ok, delete_private_graph_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, delete_private_graph_endpoint_errors(), tuple()}.
 delete_private_graph_endpoint(Client, GraphIdentifier, VpcId, Input) ->
     delete_private_graph_endpoint(Client, GraphIdentifier, VpcId, Input, []).
+
+-spec delete_private_graph_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), delete_private_graph_endpoint_input(), proplists:proplist()) ->
+    {ok, delete_private_graph_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, delete_private_graph_endpoint_errors(), tuple()}.
 delete_private_graph_endpoint(Client, GraphIdentifier, VpcId, Input0, Options0) ->
     Method = delete,
     Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/endpoints/", aws_util:encode_uri(VpcId), ""],
@@ -348,8 +1330,17 @@ delete_private_graph_endpoint(Client, GraphIdentifier, VpcId, Input0, Options0) 
 %% `planCache=enabled'. The plan cache will be reused only for the same
 %% exact query. Slight variations
 %% in the query will not be able to reuse the query plan cache.
+-spec execute_query(aws_client:aws_client(), execute_query_input()) ->
+    {ok, execute_query_output(), tuple()} |
+    {error, any()} |
+    {error, execute_query_errors(), tuple()}.
 execute_query(Client, Input) ->
     execute_query(Client, Input, []).
+
+-spec execute_query(aws_client:aws_client(), execute_query_input(), proplists:proplist()) ->
+    {ok, execute_query_output(), tuple()} |
+    {error, any()} |
+    {error, execute_query_errors(), tuple()}.
 execute_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/queries"],
@@ -375,14 +1366,26 @@ execute_query(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified graph.
+-spec get_graph(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_graph_output(), tuple()} |
+    {error, any()} |
+    {error, get_graph_errors(), tuple()}.
 get_graph(Client, GraphIdentifier)
   when is_map(Client) ->
     get_graph(Client, GraphIdentifier, #{}, #{}).
 
+-spec get_graph(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_graph_output(), tuple()} |
+    {error, any()} |
+    {error, get_graph_errors(), tuple()}.
 get_graph(Client, GraphIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_graph(Client, GraphIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_graph(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_graph_output(), tuple()} |
+    {error, any()} |
+    {error, get_graph_errors(), tuple()}.
 get_graph(Client, GraphIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), ""],
@@ -400,14 +1403,26 @@ get_graph(Client, GraphIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a specified graph snapshot.
+-spec get_graph_snapshot(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_graph_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, get_graph_snapshot_errors(), tuple()}.
 get_graph_snapshot(Client, SnapshotIdentifier)
   when is_map(Client) ->
     get_graph_snapshot(Client, SnapshotIdentifier, #{}, #{}).
 
+-spec get_graph_snapshot(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_graph_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, get_graph_snapshot_errors(), tuple()}.
 get_graph_snapshot(Client, SnapshotIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_graph_snapshot(Client, SnapshotIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_graph_snapshot(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_graph_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, get_graph_snapshot_errors(), tuple()}.
 get_graph_snapshot(Client, SnapshotIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotIdentifier), ""],
@@ -425,14 +1440,26 @@ get_graph_snapshot(Client, SnapshotIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a graph summary for a property graph.
+-spec get_graph_summary(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_graph_summary_output(), tuple()} |
+    {error, any()} |
+    {error, get_graph_summary_errors(), tuple()}.
 get_graph_summary(Client, GraphIdentifier)
   when is_map(Client) ->
     get_graph_summary(Client, GraphIdentifier, #{}, #{}).
 
+-spec get_graph_summary(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_graph_summary_output(), tuple()} |
+    {error, any()} |
+    {error, get_graph_summary_errors(), tuple()}.
 get_graph_summary(Client, GraphIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_graph_summary(Client, GraphIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_graph_summary(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_graph_summary_output(), tuple()} |
+    {error, any()} |
+    {error, get_graph_summary_errors(), tuple()}.
 get_graph_summary(Client, GraphIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/summary"],
@@ -458,14 +1485,26 @@ get_graph_summary(Client, GraphIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a specified import task.
+-spec get_import_task(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_import_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_import_task_errors(), tuple()}.
 get_import_task(Client, TaskIdentifier)
   when is_map(Client) ->
     get_import_task(Client, TaskIdentifier, #{}, #{}).
 
+-spec get_import_task(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_import_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_import_task_errors(), tuple()}.
 get_import_task(Client, TaskIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_task(Client, TaskIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_import_task(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_import_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_import_task_errors(), tuple()}.
 get_import_task(Client, TaskIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/importtasks/", aws_util:encode_uri(TaskIdentifier), ""],
@@ -483,14 +1522,26 @@ get_import_task(Client, TaskIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a specified private endpoint.
+-spec get_private_graph_endpoint(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_private_graph_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, get_private_graph_endpoint_errors(), tuple()}.
 get_private_graph_endpoint(Client, GraphIdentifier, VpcId)
   when is_map(Client) ->
     get_private_graph_endpoint(Client, GraphIdentifier, VpcId, #{}, #{}).
 
+-spec get_private_graph_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_private_graph_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, get_private_graph_endpoint_errors(), tuple()}.
 get_private_graph_endpoint(Client, GraphIdentifier, VpcId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_private_graph_endpoint(Client, GraphIdentifier, VpcId, QueryMap, HeadersMap, []).
 
+-spec get_private_graph_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_private_graph_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, get_private_graph_endpoint_errors(), tuple()}.
 get_private_graph_endpoint(Client, GraphIdentifier, VpcId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/endpoints/", aws_util:encode_uri(VpcId), ""],
@@ -512,14 +1563,26 @@ get_private_graph_endpoint(Client, GraphIdentifier, VpcId, QueryMap, HeadersMap,
 %% When invoking this operation in a Neptune Analytics cluster, the IAM user
 %% or role making the request must have the
 %% `neptune-graph:GetQueryStatus' IAM action attached.
+-spec get_query(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_query_output(), tuple()} |
+    {error, any()} |
+    {error, get_query_errors(), tuple()}.
 get_query(Client, QueryId, GraphIdentifier)
   when is_map(Client) ->
     get_query(Client, QueryId, GraphIdentifier, #{}, #{}).
 
+-spec get_query(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_query_output(), tuple()} |
+    {error, any()} |
+    {error, get_query_errors(), tuple()}.
 get_query(Client, QueryId, GraphIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_query(Client, QueryId, GraphIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_query(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_query_output(), tuple()} |
+    {error, any()} |
+    {error, get_query_errors(), tuple()}.
 get_query(Client, QueryId, GraphIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/queries/", aws_util:encode_uri(QueryId), ""],
@@ -541,14 +1604,26 @@ get_query(Client, QueryId, GraphIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists available snapshots of a specified Neptune Analytics graph.
+-spec list_graph_snapshots(aws_client:aws_client()) ->
+    {ok, list_graph_snapshots_output(), tuple()} |
+    {error, any()} |
+    {error, list_graph_snapshots_errors(), tuple()}.
 list_graph_snapshots(Client)
   when is_map(Client) ->
     list_graph_snapshots(Client, #{}, #{}).
 
+-spec list_graph_snapshots(aws_client:aws_client(), map(), map()) ->
+    {ok, list_graph_snapshots_output(), tuple()} |
+    {error, any()} |
+    {error, list_graph_snapshots_errors(), tuple()}.
 list_graph_snapshots(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_graph_snapshots(Client, QueryMap, HeadersMap, []).
 
+-spec list_graph_snapshots(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_graph_snapshots_output(), tuple()} |
+    {error, any()} |
+    {error, list_graph_snapshots_errors(), tuple()}.
 list_graph_snapshots(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/snapshots"],
@@ -572,14 +1647,26 @@ list_graph_snapshots(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists available Neptune Analytics graphs.
+-spec list_graphs(aws_client:aws_client()) ->
+    {ok, list_graphs_output(), tuple()} |
+    {error, any()} |
+    {error, list_graphs_errors(), tuple()}.
 list_graphs(Client)
   when is_map(Client) ->
     list_graphs(Client, #{}, #{}).
 
+-spec list_graphs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_graphs_output(), tuple()} |
+    {error, any()} |
+    {error, list_graphs_errors(), tuple()}.
 list_graphs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_graphs(Client, QueryMap, HeadersMap, []).
 
+-spec list_graphs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_graphs_output(), tuple()} |
+    {error, any()} |
+    {error, list_graphs_errors(), tuple()}.
 list_graphs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/graphs"],
@@ -602,14 +1689,26 @@ list_graphs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists import tasks.
+-spec list_import_tasks(aws_client:aws_client()) ->
+    {ok, list_import_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_import_tasks_errors(), tuple()}.
 list_import_tasks(Client)
   when is_map(Client) ->
     list_import_tasks(Client, #{}, #{}).
 
+-spec list_import_tasks(aws_client:aws_client(), map(), map()) ->
+    {ok, list_import_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_import_tasks_errors(), tuple()}.
 list_import_tasks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_import_tasks(Client, QueryMap, HeadersMap, []).
 
+-spec list_import_tasks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_import_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_import_tasks_errors(), tuple()}.
 list_import_tasks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/importtasks"],
@@ -632,14 +1731,26 @@ list_import_tasks(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists private endpoints for a specified Neptune Analytics graph.
+-spec list_private_graph_endpoints(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_private_graph_endpoints_output(), tuple()} |
+    {error, any()} |
+    {error, list_private_graph_endpoints_errors(), tuple()}.
 list_private_graph_endpoints(Client, GraphIdentifier)
   when is_map(Client) ->
     list_private_graph_endpoints(Client, GraphIdentifier, #{}, #{}).
 
+-spec list_private_graph_endpoints(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_private_graph_endpoints_output(), tuple()} |
+    {error, any()} |
+    {error, list_private_graph_endpoints_errors(), tuple()}.
 list_private_graph_endpoints(Client, GraphIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_private_graph_endpoints(Client, GraphIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_private_graph_endpoints(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_private_graph_endpoints_output(), tuple()} |
+    {error, any()} |
+    {error, list_private_graph_endpoints_errors(), tuple()}.
 list_private_graph_endpoints(Client, GraphIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/endpoints/"],
@@ -662,14 +1773,26 @@ list_private_graph_endpoints(Client, GraphIdentifier, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists active openCypher queries.
+-spec list_queries(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_queries_output(), tuple()} |
+    {error, any()} |
+    {error, list_queries_errors(), tuple()}.
 list_queries(Client, MaxResults, GraphIdentifier)
   when is_map(Client) ->
     list_queries(Client, MaxResults, GraphIdentifier, #{}, #{}).
 
+-spec list_queries(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_queries_output(), tuple()} |
+    {error, any()} |
+    {error, list_queries_errors(), tuple()}.
 list_queries(Client, MaxResults, GraphIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_queries(Client, MaxResults, GraphIdentifier, QueryMap, HeadersMap, []).
 
+-spec list_queries(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_queries_output(), tuple()} |
+    {error, any()} |
+    {error, list_queries_errors(), tuple()}.
 list_queries(Client, MaxResults, GraphIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/queries"],
@@ -696,14 +1819,26 @@ list_queries(Client, MaxResults, GraphIdentifier, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists tags associated with a specified resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -721,8 +1856,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Empties the data from a specified Neptune Analytics graph.
+-spec reset_graph(aws_client:aws_client(), binary() | list(), reset_graph_input()) ->
+    {ok, reset_graph_output(), tuple()} |
+    {error, any()} |
+    {error, reset_graph_errors(), tuple()}.
 reset_graph(Client, GraphIdentifier, Input) ->
     reset_graph(Client, GraphIdentifier, Input, []).
+
+-spec reset_graph(aws_client:aws_client(), binary() | list(), reset_graph_input(), proplists:proplist()) ->
+    {ok, reset_graph_output(), tuple()} |
+    {error, any()} |
+    {error, reset_graph_errors(), tuple()}.
 reset_graph(Client, GraphIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), ""],
@@ -746,8 +1890,17 @@ reset_graph(Client, GraphIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Restores a graph from a snapshot.
+-spec restore_graph_from_snapshot(aws_client:aws_client(), binary() | list(), restore_graph_from_snapshot_input()) ->
+    {ok, restore_graph_from_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, restore_graph_from_snapshot_errors(), tuple()}.
 restore_graph_from_snapshot(Client, SnapshotIdentifier, Input) ->
     restore_graph_from_snapshot(Client, SnapshotIdentifier, Input, []).
+
+-spec restore_graph_from_snapshot(aws_client:aws_client(), binary() | list(), restore_graph_from_snapshot_input(), proplists:proplist()) ->
+    {ok, restore_graph_from_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, restore_graph_from_snapshot_errors(), tuple()}.
 restore_graph_from_snapshot(Client, SnapshotIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotIdentifier), "/restore"],
@@ -771,8 +1924,17 @@ restore_graph_from_snapshot(Client, SnapshotIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds tags to the specified resource.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -796,8 +1958,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -822,8 +1993,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration of a specified Neptune Analytics graph
+-spec update_graph(aws_client:aws_client(), binary() | list(), update_graph_input()) ->
+    {ok, update_graph_output(), tuple()} |
+    {error, any()} |
+    {error, update_graph_errors(), tuple()}.
 update_graph(Client, GraphIdentifier, Input) ->
     update_graph(Client, GraphIdentifier, Input, []).
+
+-spec update_graph(aws_client:aws_client(), binary() | list(), update_graph_input(), proplists:proplist()) ->
+    {ok, update_graph_output(), tuple()} |
+    {error, any()} |
+    {error, update_graph_errors(), tuple()}.
 update_graph(Client, GraphIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), ""],
@@ -850,7 +2030,7 @@ update_graph(Client, GraphIdentifier, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

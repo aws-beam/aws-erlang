@@ -25,6 +25,190 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% describe_stream_input() :: #{
+%%   <<"ExclusiveStartShardId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"StreamArn">> := string()
+%% }
+-type describe_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stream_output() :: #{
+%%   <<"StreamDescription">> => stream_description()
+%% }
+-type describe_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% expired_iterator_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_iterator_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_records_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"ShardIterator">> := string()
+%% }
+-type get_records_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_records_output() :: #{
+%%   <<"NextShardIterator">> => string(),
+%%   <<"Records">> => list(record()())
+%% }
+-type get_records_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_shard_iterator_input() :: #{
+%%   <<"SequenceNumber">> => string(),
+%%   <<"ShardId">> := string(),
+%%   <<"ShardIteratorType">> := list(any()),
+%%   <<"StreamArn">> := string()
+%% }
+-type get_shard_iterator_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_shard_iterator_output() :: #{
+%%   <<"ShardIterator">> => string()
+%% }
+-type get_shard_iterator_output() :: #{binary() => any()}.
+
+%% Example:
+%% identity() :: #{
+%%   <<"PrincipalId">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type identity() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% key_schema_element() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"KeyType">> => list(any())
+%% }
+-type key_schema_element() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_streams_input() :: #{
+%%   <<"ExclusiveStartStreamArn">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"TableName">> => string()
+%% }
+-type list_streams_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_streams_output() :: #{
+%%   <<"LastEvaluatedStreamArn">> => string(),
+%%   <<"Streams">> => list(stream()())
+%% }
+-type list_streams_output() :: #{binary() => any()}.
+
+%% Example:
+%% record() :: #{
+%%   <<"awsRegion">> => string(),
+%%   <<"dynamodb">> => stream_record(),
+%%   <<"eventID">> => string(),
+%%   <<"eventName">> => list(any()),
+%%   <<"eventSource">> => string(),
+%%   <<"eventVersion">> => string(),
+%%   <<"userIdentity">> => identity()
+%% }
+-type record() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sequence_number_range() :: #{
+%%   <<"EndingSequenceNumber">> => string(),
+%%   <<"StartingSequenceNumber">> => string()
+%% }
+-type sequence_number_range() :: #{binary() => any()}.
+
+%% Example:
+%% shard() :: #{
+%%   <<"ParentShardId">> => string(),
+%%   <<"SequenceNumberRange">> => sequence_number_range(),
+%%   <<"ShardId">> => string()
+%% }
+-type shard() :: #{binary() => any()}.
+
+%% Example:
+%% stream() :: #{
+%%   <<"StreamArn">> => string(),
+%%   <<"StreamLabel">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type stream() :: #{binary() => any()}.
+
+%% Example:
+%% stream_description() :: #{
+%%   <<"CreationRequestDateTime">> => non_neg_integer(),
+%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"LastEvaluatedShardId">> => string(),
+%%   <<"Shards">> => list(shard()()),
+%%   <<"StreamArn">> => string(),
+%%   <<"StreamLabel">> => string(),
+%%   <<"StreamStatus">> => list(any()),
+%%   <<"StreamViewType">> => list(any()),
+%%   <<"TableName">> => string()
+%% }
+-type stream_description() :: #{binary() => any()}.
+
+%% Example:
+%% stream_record() :: #{
+%%   <<"ApproximateCreationDateTime">> => non_neg_integer(),
+%%   <<"Keys">> => map(),
+%%   <<"NewImage">> => map(),
+%%   <<"OldImage">> => map(),
+%%   <<"SequenceNumber">> => string(),
+%%   <<"SizeBytes">> => float(),
+%%   <<"StreamViewType">> => list(any())
+%% }
+-type stream_record() :: #{binary() => any()}.
+
+%% Example:
+%% trimmed_data_access_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type trimmed_data_access_exception() :: #{binary() => any()}.
+
+-type describe_stream_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error().
+
+-type get_records_errors() ::
+    trimmed_data_access_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error() | 
+    expired_iterator_exception().
+
+-type get_shard_iterator_errors() ::
+    trimmed_data_access_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error().
+
+-type list_streams_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -45,9 +229,18 @@
 %% `EndingSequenceNumber'
 %% are present, then that shard is closed and can no longer receive more
 %% data.
+-spec describe_stream(aws_client:aws_client(), describe_stream_input()) ->
+    {ok, describe_stream_output(), tuple()} |
+    {error, any()} |
+    {error, describe_stream_errors(), tuple()}.
 describe_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream(Client, Input, []).
+
+-spec describe_stream(aws_client:aws_client(), describe_stream_input(), proplists:proplist()) ->
+    {ok, describe_stream_output(), tuple()} |
+    {error, any()} |
+    {error, describe_stream_errors(), tuple()}.
 describe_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStream">>, Input, Options).
@@ -68,9 +261,18 @@ describe_stream(Client, Input, Options)
 %% `GetRecords' can retrieve a maximum of 1 MB of data or 1000 stream
 %% records,
 %% whichever comes first.
+-spec get_records(aws_client:aws_client(), get_records_input()) ->
+    {ok, get_records_output(), tuple()} |
+    {error, any()} |
+    {error, get_records_errors(), tuple()}.
 get_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_records(Client, Input, []).
+
+-spec get_records(aws_client:aws_client(), get_records_input(), proplists:proplist()) ->
+    {ok, get_records_output(), tuple()} |
+    {error, any()} |
+    {error, get_records_errors(), tuple()}.
 get_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecords">>, Input, Options).
@@ -84,9 +286,18 @@ get_records(Client, Input, Options)
 %% from the shard.
 %%
 %% A shard iterator expires 15 minutes after it is returned to the requester.
+-spec get_shard_iterator(aws_client:aws_client(), get_shard_iterator_input()) ->
+    {ok, get_shard_iterator_output(), tuple()} |
+    {error, any()} |
+    {error, get_shard_iterator_errors(), tuple()}.
 get_shard_iterator(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_shard_iterator(Client, Input, []).
+
+-spec get_shard_iterator(aws_client:aws_client(), get_shard_iterator_input(), proplists:proplist()) ->
+    {ok, get_shard_iterator_output(), tuple()} |
+    {error, any()} |
+    {error, get_shard_iterator_errors(), tuple()}.
 get_shard_iterator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetShardIterator">>, Input, Options).
@@ -100,9 +311,18 @@ get_shard_iterator(Client, Input, Options)
 %% streams ARNs for that table.
 %%
 %% You can call `ListStreams' at a maximum rate of 5 times per second.
+-spec list_streams(aws_client:aws_client(), list_streams_input()) ->
+    {ok, list_streams_output(), tuple()} |
+    {error, any()} |
+    {error, list_streams_errors(), tuple()}.
 list_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_streams(Client, Input, []).
+
+-spec list_streams(aws_client:aws_client(), list_streams_input(), proplists:proplist()) ->
+    {ok, list_streams_output(), tuple()} |
+    {error, any()} |
+    {error, list_streams_errors(), tuple()}.
 list_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStreams">>, Input, Options).

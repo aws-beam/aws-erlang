@@ -65,6 +65,186 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_human_loop_request() :: #{}
+-type delete_human_loop_request() :: #{}.
+
+%% Example:
+%% delete_human_loop_response() :: #{}
+-type delete_human_loop_response() :: #{}.
+
+%% Example:
+%% describe_human_loop_request() :: #{}
+-type describe_human_loop_request() :: #{}.
+
+
+%% Example:
+%% describe_human_loop_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FlowDefinitionArn">> => string(),
+%%   <<"HumanLoopArn">> => string(),
+%%   <<"HumanLoopName">> => string(),
+%%   <<"HumanLoopOutput">> => human_loop_output(),
+%%   <<"HumanLoopStatus">> => list(any())
+%% }
+-type describe_human_loop_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% human_loop_data_attributes() :: #{
+%%   <<"ContentClassifiers">> => list(list(any())())
+%% }
+-type human_loop_data_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% human_loop_input() :: #{
+%%   <<"InputContent">> => string()
+%% }
+-type human_loop_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% human_loop_output() :: #{
+%%   <<"OutputS3Uri">> => string()
+%% }
+-type human_loop_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% human_loop_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FlowDefinitionArn">> => string(),
+%%   <<"HumanLoopName">> => string(),
+%%   <<"HumanLoopStatus">> => list(any())
+%% }
+-type human_loop_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_human_loops_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"FlowDefinitionArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_human_loops_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_human_loops_response() :: #{
+%%   <<"HumanLoopSummaries">> => list(human_loop_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_human_loops_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_human_loop_request() :: #{
+%%   <<"DataAttributes">> => human_loop_data_attributes(),
+%%   <<"FlowDefinitionArn">> := string(),
+%%   <<"HumanLoopInput">> := human_loop_input(),
+%%   <<"HumanLoopName">> := string()
+%% }
+-type start_human_loop_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_human_loop_response() :: #{
+%%   <<"HumanLoopArn">> => string()
+%% }
+-type start_human_loop_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_human_loop_request() :: #{
+%%   <<"HumanLoopName">> := string()
+%% }
+-type stop_human_loop_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_human_loop_response() :: #{}
+-type stop_human_loop_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+-type delete_human_loop_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type describe_human_loop_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type list_human_loops_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type start_human_loop_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type stop_human_loop_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -73,8 +253,17 @@
 %%
 %% If the human loop was deleted, this operation will return a
 %% `ResourceNotFoundException'.
+-spec delete_human_loop(aws_client:aws_client(), binary() | list(), delete_human_loop_request()) ->
+    {ok, delete_human_loop_response(), tuple()} |
+    {error, any()} |
+    {error, delete_human_loop_errors(), tuple()}.
 delete_human_loop(Client, HumanLoopName, Input) ->
     delete_human_loop(Client, HumanLoopName, Input, []).
+
+-spec delete_human_loop(aws_client:aws_client(), binary() | list(), delete_human_loop_request(), proplists:proplist()) ->
+    {ok, delete_human_loop_response(), tuple()} |
+    {error, any()} |
+    {error, delete_human_loop_errors(), tuple()}.
 delete_human_loop(Client, HumanLoopName, Input0, Options0) ->
     Method = delete,
     Path = ["/human-loops/", aws_util:encode_uri(HumanLoopName), ""],
@@ -101,14 +290,26 @@ delete_human_loop(Client, HumanLoopName, Input0, Options0) ->
 %%
 %% If the human loop was deleted, this
 %% operation will return a `ResourceNotFoundException' error.
+-spec describe_human_loop(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_human_loop_response(), tuple()} |
+    {error, any()} |
+    {error, describe_human_loop_errors(), tuple()}.
 describe_human_loop(Client, HumanLoopName)
   when is_map(Client) ->
     describe_human_loop(Client, HumanLoopName, #{}, #{}).
 
+-spec describe_human_loop(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_human_loop_response(), tuple()} |
+    {error, any()} |
+    {error, describe_human_loop_errors(), tuple()}.
 describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap, []).
 
+-spec describe_human_loop(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_human_loop_response(), tuple()} |
+    {error, any()} |
+    {error, describe_human_loop_errors(), tuple()}.
 describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/human-loops/", aws_util:encode_uri(HumanLoopName), ""],
@@ -129,14 +330,26 @@ describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap, Options0)
 %% parameters.
 %%
 %% If a human loop was deleted, it will not be included.
+-spec list_human_loops(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_human_loops_response(), tuple()} |
+    {error, any()} |
+    {error, list_human_loops_errors(), tuple()}.
 list_human_loops(Client, FlowDefinitionArn)
   when is_map(Client) ->
     list_human_loops(Client, FlowDefinitionArn, #{}, #{}).
 
+-spec list_human_loops(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_human_loops_response(), tuple()} |
+    {error, any()} |
+    {error, list_human_loops_errors(), tuple()}.
 list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap, []).
 
+-spec list_human_loops(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_human_loops_response(), tuple()} |
+    {error, any()} |
+    {error, list_human_loops_errors(), tuple()}.
 list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/human-loops"],
@@ -164,8 +377,17 @@ list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts a human loop, provided that at least one activation condition
 %% is met.
+-spec start_human_loop(aws_client:aws_client(), start_human_loop_request()) ->
+    {ok, start_human_loop_response(), tuple()} |
+    {error, any()} |
+    {error, start_human_loop_errors(), tuple()}.
 start_human_loop(Client, Input) ->
     start_human_loop(Client, Input, []).
+
+-spec start_human_loop(aws_client:aws_client(), start_human_loop_request(), proplists:proplist()) ->
+    {ok, start_human_loop_response(), tuple()} |
+    {error, any()} |
+    {error, start_human_loop_errors(), tuple()}.
 start_human_loop(Client, Input0, Options0) ->
     Method = post,
     Path = ["/human-loops"],
@@ -189,8 +411,17 @@ start_human_loop(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops the specified human loop.
+-spec stop_human_loop(aws_client:aws_client(), stop_human_loop_request()) ->
+    {ok, stop_human_loop_response(), tuple()} |
+    {error, any()} |
+    {error, stop_human_loop_errors(), tuple()}.
 stop_human_loop(Client, Input) ->
     stop_human_loop(Client, Input, []).
+
+-spec stop_human_loop(aws_client:aws_client(), stop_human_loop_request(), proplists:proplist()) ->
+    {ok, stop_human_loop_response(), tuple()} |
+    {error, any()} |
+    {error, stop_human_loop_errors(), tuple()}.
 stop_human_loop(Client, Input0, Options0) ->
     Method = post,
     Path = ["/human-loops/stop"],
@@ -217,7 +448,7 @@ stop_human_loop(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

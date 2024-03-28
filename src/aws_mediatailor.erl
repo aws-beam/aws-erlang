@@ -124,13 +124,1257 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% put_channel_policy_request() :: #{
+%%   <<"Policy">> := string()
+%% }
+-type put_channel_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_program_response() :: #{}
+-type delete_program_response() :: #{}.
+
+
+%% Example:
+%% live_pre_roll_configuration() :: #{
+%%   <<"AdDecisionServerUrl">> => string(),
+%%   <<"MaxDurationSeconds">> => integer()
+%% }
+-type live_pre_roll_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_request() :: #{}
+-type delete_channel_request() :: #{}.
+
+
+%% Example:
+%% response_output_item() :: #{
+%%   <<"DashPlaylistSettings">> => dash_playlist_settings(),
+%%   <<"HlsPlaylistSettings">> => hls_playlist_settings(),
+%%   <<"ManifestName">> => string(),
+%%   <<"PlaybackUrl">> => string(),
+%%   <<"SourceGroup">> => string()
+%% }
+-type response_output_item() :: #{binary() => any()}.
+
+%% Example:
+%% put_channel_policy_response() :: #{}
+-type put_channel_policy_response() :: #{}.
+
+
+%% Example:
+%% vod_source() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type vod_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vod_source_request() :: #{}
+-type describe_vod_source_request() :: #{}.
+
+
+%% Example:
+%% configure_logs_for_playback_configuration_response() :: #{
+%%   <<"PercentEnabled">> := integer(),
+%%   <<"PlaybackConfigurationName">> => string()
+%% }
+-type configure_logs_for_playback_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vod_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type update_vod_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vod_source_request() :: #{}
+-type delete_vod_source_request() :: #{}.
+
+
+%% Example:
+%% describe_vod_source_response() :: #{
+%%   <<"AdBreakOpportunities">> => list(ad_break_opportunity()()),
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type describe_vod_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChannelState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FillerSlate">> => slate_source(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Outputs">> => list(response_output_item()()),
+%%   <<"PlaybackMode">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> => string(),
+%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
+%% }
+-type create_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_logs_for_channel_request() :: #{
+%%   <<"ChannelName">> := string(),
+%%   <<"LogTypes">> := list(list(any())())
+%% }
+-type configure_logs_for_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_playback_configuration_request() :: #{}
+-type delete_playback_configuration_request() :: #{}.
+
+%% Example:
+%% delete_vod_source_response() :: #{}
+-type delete_vod_source_response() :: #{}.
+
+%% Example:
+%% delete_channel_response() :: #{}
+-type delete_channel_response() :: #{}.
+
+
+%% Example:
+%% playback_configuration() :: #{
+%%   <<"AdDecisionServerUrl">> => string(),
+%%   <<"AvailSuppression">> => avail_suppression(),
+%%   <<"Bumper">> => bumper(),
+%%   <<"CdnConfiguration">> => cdn_configuration(),
+%%   <<"ConfigurationAliases">> => map(),
+%%   <<"DashConfiguration">> => dash_configuration(),
+%%   <<"HlsConfiguration">> => hls_configuration(),
+%%   <<"LivePreRollConfiguration">> => live_pre_roll_configuration(),
+%%   <<"LogConfiguration">> => log_configuration(),
+%%   <<"ManifestProcessingRules">> => manifest_processing_rules(),
+%%   <<"Name">> => string(),
+%%   <<"PersonalizationThresholdSeconds">> => integer(),
+%%   <<"PlaybackConfigurationArn">> => string(),
+%%   <<"PlaybackEndpointPrefix">> => string(),
+%%   <<"SessionInitializationEndpointPrefix">> => string(),
+%%   <<"SlateAdUrl">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TranscodeProfileName">> => string(),
+%%   <<"VideoContentSourceUrl">> => string()
+%% }
+-type playback_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_schedule_request() :: #{
+%%   <<"Audience">> => string(),
+%%   <<"DurationMinutes">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_channel_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_alerts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_alerts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prefetch_schedules_response() :: #{
+%%   <<"Items">> => list(prefetch_schedule()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_prefetch_schedules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% prefetch_consumption() :: #{
+%%   <<"AvailMatchingCriteria">> => list(avail_matching_criteria()()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type prefetch_consumption() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_policy_request() :: #{}
+-type delete_channel_policy_request() :: #{}.
+
+
+%% Example:
+%% list_vod_sources_response() :: #{
+%%   <<"Items">> => list(vod_source()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vod_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_logs_for_playback_configuration_request() :: #{
+%%   <<"PercentEnabled">> => integer(),
+%%   <<"PlaybackConfigurationName">> => string()
+%% }
+-type configure_logs_for_playback_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_source_location_response() :: #{
+%%   <<"AccessConfiguration">> => access_configuration(),
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
+%%   <<"HttpConfiguration">> => http_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()()),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_source_location_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_segment_delivery_configuration() :: #{
+%%   <<"BaseUrl">> => string()
+%% }
+-type default_segment_delivery_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_schedule_response() :: #{
+%%   <<"Items">> => list(schedule_entry()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_channel_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ad_break_opportunity() :: #{
+%%   <<"OffsetMillis">> => float()
+%% }
+-type ad_break_opportunity() :: #{binary() => any()}.
+
+%% Example:
+%% get_prefetch_schedule_request() :: #{}
+-type get_prefetch_schedule_request() :: #{}.
+
+
+%% Example:
+%% manifest_processing_rules() :: #{
+%%   <<"AdMarkerPassthrough">> => ad_marker_passthrough()
+%% }
+-type manifest_processing_rules() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_playlist_settings() :: #{
+%%   <<"ManifestWindowSeconds">> => integer(),
+%%   <<"MinBufferTimeSeconds">> => integer(),
+%%   <<"MinUpdatePeriodSeconds">> => integer(),
+%%   <<"SuggestedPresentationDelaySeconds">> => integer()
+%% }
+-type dash_playlist_settings() :: #{binary() => any()}.
+
+%% Example:
+%% stop_channel_request() :: #{}
+-type stop_channel_request() :: #{}.
+
+
+%% Example:
+%% audience_media() :: #{
+%%   <<"AlternateMedia">> => list(alternate_media()()),
+%%   <<"Audience">> => string()
+%% }
+-type audience_media() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_source_location_response() :: #{
+%%   <<"AccessConfiguration">> => access_configuration(),
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
+%%   <<"HttpConfiguration">> => http_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()()),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_source_location_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_playback_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_playback_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_prefetch_schedule_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Consumption">> => prefetch_consumption(),
+%%   <<"Name">> => string(),
+%%   <<"PlaybackConfigurationName">> => string(),
+%%   <<"Retrieval">> => prefetch_retrieval(),
+%%   <<"StreamId">> => string()
+%% }
+-type get_prefetch_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% clip_range() :: #{
+%%   <<"EndOffsetMillis">> => float(),
+%%   <<"StartOffsetMillis">> => float()
+%% }
+-type clip_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_program_response() :: #{
+%%   <<"AdBreaks">> => list(ad_break()()),
+%%   <<"Arn">> => string(),
+%%   <<"AudienceMedia">> => list(audience_media()()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DurationMillis">> => float(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ProgramName">> => string(),
+%%   <<"ScheduledStartTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type create_program_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_live_sources_response() :: #{
+%%   <<"Items">> => list(live_source()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_live_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_source_location_response() :: #{
+%%   <<"AccessConfiguration">> => access_configuration(),
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
+%%   <<"HttpConfiguration">> => http_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()()),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_source_location_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_live_source_request() :: #{
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()())
+%% }
+-type update_live_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_access_token_configuration() :: #{
+%%   <<"HeaderName">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"SecretStringKey">> => string()
+%% }
+-type secrets_manager_access_token_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% stop_channel_response() :: #{}
+-type stop_channel_response() :: #{}.
+
+%% Example:
+%% start_channel_request() :: #{}
+-type start_channel_request() :: #{}.
+
+%% Example:
+%% get_playback_configuration_request() :: #{}
+-type get_playback_configuration_request() :: #{}.
+
+
+%% Example:
+%% http_configuration() :: #{
+%%   <<"BaseUrl">> => string()
+%% }
+-type http_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% cdn_configuration() :: #{
+%%   <<"AdSegmentUrlPrefix">> => string(),
+%%   <<"ContentSegmentUrlPrefix">> => string()
+%% }
+-type cdn_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% avail_suppression() :: #{
+%%   <<"FillPolicy">> => list(any()),
+%%   <<"Mode">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type avail_suppression() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_program_schedule_configuration() :: #{
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"Transition">> => update_program_transition()
+%% }
+-type update_program_schedule_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_package_configuration() :: #{
+%%   <<"Path">> => string(),
+%%   <<"SourceGroup">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type http_package_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_live_source_request() :: #{
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()()),
+%%   <<"Tags">> => map()
+%% }
+-type create_live_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prefetch_schedule_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Consumption">> => prefetch_consumption(),
+%%   <<"Name">> => string(),
+%%   <<"PlaybackConfigurationName">> => string(),
+%%   <<"Retrieval">> => prefetch_retrieval(),
+%%   <<"StreamId">> => string()
+%% }
+-type create_prefetch_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_policy_response() :: #{}
+-type delete_channel_policy_response() :: #{}.
+
+
+%% Example:
+%% describe_channel_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChannelState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FillerSlate">> => slate_source(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LogConfiguration">> := log_configuration_for_channel(),
+%%   <<"Outputs">> => list(response_output_item()()),
+%%   <<"PlaybackMode">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> => string(),
+%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
+%% }
+-type describe_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_configuration_for_channel() :: #{
+%%   <<"LogTypes">> => list(list(any())())
+%% }
+-type log_configuration_for_channel() :: #{binary() => any()}.
+
+%% Example:
+%% describe_channel_request() :: #{}
+-type describe_channel_request() :: #{}.
+
+
+%% Example:
+%% alternate_media() :: #{
+%%   <<"AdBreaks">> => list(ad_break()()),
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"DurationMillis">> => float(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ScheduledStartTimeMillis">> => float(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type alternate_media() :: #{binary() => any()}.
+
+
+%% Example:
+%% live_source() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type live_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_entry() :: #{
+%%   <<"ApproximateDurationSeconds">> => float(),
+%%   <<"ApproximateStartTime">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"ChannelName">> => string(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ProgramName">> => string(),
+%%   <<"ScheduleAdBreaks">> => list(schedule_ad_break()()),
+%%   <<"ScheduleEntryType">> => list(any()),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type schedule_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_request() :: #{
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"FillerSlate">> => slate_source(),
+%%   <<"Outputs">> := list(request_output_item()()),
+%%   <<"PlaybackMode">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> => list(any()),
+%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
+%% }
+-type create_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_source_location_request() :: #{}
+-type describe_source_location_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_channel_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% prefetch_retrieval() :: #{
+%%   <<"DynamicVariables">> => map(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type prefetch_retrieval() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_logs_for_channel_response() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"LogTypes">> => list(list(any())())
+%% }
+-type configure_logs_for_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_response() :: #{
+%%   <<"Items">> => list(channel()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prefetch_schedule_request() :: #{
+%%   <<"Consumption">> := prefetch_consumption(),
+%%   <<"Retrieval">> := prefetch_retrieval(),
+%%   <<"StreamId">> => string()
+%% }
+-type create_prefetch_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_prefetch_schedule_response() :: #{}
+-type delete_prefetch_schedule_response() :: #{}.
+
+
+%% Example:
+%% update_channel_request() :: #{
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"FillerSlate">> => slate_source(),
+%%   <<"Outputs">> := list(request_output_item()()),
+%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
+%% }
+-type update_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_configuration() :: #{
+%%   <<"ManifestEndpointPrefix">> => string(),
+%%   <<"MpdLocation">> => string(),
+%%   <<"OriginManifestType">> => list(any())
+%% }
+-type dash_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_source_location_request() :: #{}
+-type delete_source_location_request() :: #{}.
+
+
+%% Example:
+%% update_source_location_request() :: #{
+%%   <<"AccessConfiguration">> => access_configuration(),
+%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
+%%   <<"HttpConfiguration">> := http_configuration(),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()())
+%% }
+-type update_source_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_source_locations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_source_locations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_shift_configuration() :: #{
+%%   <<"MaxTimeDelaySeconds">> => integer()
+%% }
+-type time_shift_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_program_response() :: #{
+%%   <<"AdBreaks">> => list(ad_break()()),
+%%   <<"Arn">> => string(),
+%%   <<"AudienceMedia">> => list(audience_media()()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DurationMillis">> => [float()],
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ProgramName">> => string(),
+%%   <<"ScheduledStartTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type describe_program_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ad_break() :: #{
+%%   <<"AdBreakMetadata">> => list(key_value_pair()()),
+%%   <<"MessageType">> => list(any()),
+%%   <<"OffsetMillis">> => float(),
+%%   <<"Slate">> => slate_source(),
+%%   <<"SpliceInsertMessage">> => splice_insert_message(),
+%%   <<"TimeSignalMessage">> => time_signal_message()
+%% }
+-type ad_break() :: #{binary() => any()}.
+
+
+%% Example:
+%% slate_source() :: #{
+%%   <<"SourceLocationName">> => string(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type slate_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% ad_marker_passthrough() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type ad_marker_passthrough() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vod_sources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vod_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_program_request() :: #{
+%%   <<"AdBreaks">> => list(ad_break()()),
+%%   <<"AudienceMedia">> => list(audience_media()()),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ScheduleConfiguration">> := schedule_configuration(),
+%%   <<"SourceLocationName">> := string(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type create_program_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_prefetch_schedule_request() :: #{}
+-type delete_prefetch_schedule_request() :: #{}.
+
+
+%% Example:
+%% segmentation_descriptor() :: #{
+%%   <<"SegmentNum">> => [integer()],
+%%   <<"SegmentationEventId">> => [integer()],
+%%   <<"SegmentationTypeId">> => [integer()],
+%%   <<"SegmentationUpid">> => [string()],
+%%   <<"SegmentationUpidType">> => [integer()],
+%%   <<"SegmentsExpected">> => [integer()],
+%%   <<"SubSegmentNum">> => [integer()],
+%%   <<"SubSegmentsExpected">> => [integer()]
+%% }
+-type segmentation_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% transition() :: #{
+%%   <<"DurationMillis">> => float(),
+%%   <<"RelativePosition">> => list(any()),
+%%   <<"RelativeProgram">> => string(),
+%%   <<"ScheduledStartTimeMillis">> => float(),
+%%   <<"Type">> => string()
+%% }
+-type transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_program_request() :: #{
+%%   <<"AdBreaks">> => list(ad_break()()),
+%%   <<"AudienceMedia">> => list(audience_media()()),
+%%   <<"ScheduleConfiguration">> := update_program_schedule_configuration()
+%% }
+-type update_program_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_playback_configuration_response() :: #{
+%%   <<"AdDecisionServerUrl">> => string(),
+%%   <<"AvailSuppression">> => avail_suppression(),
+%%   <<"Bumper">> => bumper(),
+%%   <<"CdnConfiguration">> => cdn_configuration(),
+%%   <<"ConfigurationAliases">> => map(),
+%%   <<"DashConfiguration">> => dash_configuration(),
+%%   <<"HlsConfiguration">> => hls_configuration(),
+%%   <<"LivePreRollConfiguration">> => live_pre_roll_configuration(),
+%%   <<"LogConfiguration">> => log_configuration(),
+%%   <<"ManifestProcessingRules">> => manifest_processing_rules(),
+%%   <<"Name">> => string(),
+%%   <<"PersonalizationThresholdSeconds">> => integer(),
+%%   <<"PlaybackConfigurationArn">> => string(),
+%%   <<"PlaybackEndpointPrefix">> => string(),
+%%   <<"SessionInitializationEndpointPrefix">> => string(),
+%%   <<"SlateAdUrl">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TranscodeProfileName">> => string(),
+%%   <<"VideoContentSourceUrl">> => string()
+%% }
+-type get_playback_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_program_request() :: #{}
+-type describe_program_request() :: #{}.
+
+%% Example:
+%% delete_live_source_response() :: #{}
+-type delete_live_source_response() :: #{}.
+
+
+%% Example:
+%% source_location() :: #{
+%%   <<"AccessConfiguration">> => access_configuration(),
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
+%%   <<"HttpConfiguration">> => http_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()()),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type source_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_signal_message() :: #{
+%%   <<"SegmentationDescriptors">> => list(segmentation_descriptor()())
+%% }
+-type time_signal_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_pair() :: #{
+%%   <<"Key">> => [string()],
+%%   <<"Value">> => [string()]
+%% }
+-type key_value_pair() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% update_live_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_live_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_live_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_live_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_output_item() :: #{
+%%   <<"DashPlaylistSettings">> => dash_playlist_settings(),
+%%   <<"HlsPlaylistSettings">> => hls_playlist_settings(),
+%%   <<"ManifestName">> => string(),
+%%   <<"SourceGroup">> => string()
+%% }
+-type request_output_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_configuration() :: #{
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"Transition">> => transition()
+%% }
+-type schedule_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% alert() :: #{
+%%   <<"AlertCode">> => string(),
+%%   <<"AlertMessage">> => string(),
+%%   <<"Category">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RelatedResourceArns">> => list(string()()),
+%%   <<"ResourceArn">> => string()
+%% }
+-type alert() :: #{binary() => any()}.
+
+%% Example:
+%% delete_program_request() :: #{}
+-type delete_program_request() :: #{}.
+
+%% Example:
+%% delete_playback_configuration_response() :: #{}
+-type delete_playback_configuration_response() :: #{}.
+
+
+%% Example:
+%% channel() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChannelState">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FillerSlate">> => slate_source(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LogConfiguration">> => log_configuration_for_channel(),
+%%   <<"Outputs">> => list(response_output_item()()),
+%%   <<"PlaybackMode">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> => string()
+%% }
+-type channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vod_source_request() :: #{
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()())
+%% }
+-type update_vod_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_channel_response() :: #{}
+-type start_channel_response() :: #{}.
+
+
+%% Example:
+%% put_playback_configuration_request() :: #{
+%%   <<"AdDecisionServerUrl">> => string(),
+%%   <<"AvailSuppression">> => avail_suppression(),
+%%   <<"Bumper">> => bumper(),
+%%   <<"CdnConfiguration">> => cdn_configuration(),
+%%   <<"ConfigurationAliases">> => map(),
+%%   <<"DashConfiguration">> => dash_configuration_for_put(),
+%%   <<"LivePreRollConfiguration">> => live_pre_roll_configuration(),
+%%   <<"ManifestProcessingRules">> => manifest_processing_rules(),
+%%   <<"Name">> := string(),
+%%   <<"PersonalizationThresholdSeconds">> => integer(),
+%%   <<"SlateAdUrl">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TranscodeProfileName">> => string(),
+%%   <<"VideoContentSourceUrl">> => string()
+%% }
+-type put_playback_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_program_response() :: #{
+%%   <<"AdBreaks">> => list(ad_break()()),
+%%   <<"Arn">> => string(),
+%%   <<"AudienceMedia">> => list(audience_media()()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DurationMillis">> => float(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ProgramName">> => string(),
+%%   <<"ScheduledStartTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type update_program_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_alerts_response() :: #{
+%%   <<"Items">> => list(alert()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_alerts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_ad_break() :: #{
+%%   <<"ApproximateDurationSeconds">> => float(),
+%%   <<"ApproximateStartTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type schedule_ad_break() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_configuration() :: #{
+%%   <<"ManifestEndpointPrefix">> => string()
+%% }
+-type hls_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vod_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type create_vod_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prefetch_schedules_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StreamId">> => string()
+%% }
+-type list_prefetch_schedules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% avail_matching_criteria() :: #{
+%%   <<"DynamicVariable">> => string(),
+%%   <<"Operator">> => list(any())
+%% }
+-type avail_matching_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vod_source_request() :: #{
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()()),
+%%   <<"Tags">> => map()
+%% }
+-type create_vod_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChannelState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FillerSlate">> => slate_source(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Outputs">> => list(response_output_item()()),
+%%   <<"PlaybackMode">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> => string(),
+%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
+%% }
+-type update_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_playback_configuration_response() :: #{
+%%   <<"AdDecisionServerUrl">> => string(),
+%%   <<"AvailSuppression">> => avail_suppression(),
+%%   <<"Bumper">> => bumper(),
+%%   <<"CdnConfiguration">> => cdn_configuration(),
+%%   <<"ConfigurationAliases">> => map(),
+%%   <<"DashConfiguration">> => dash_configuration(),
+%%   <<"HlsConfiguration">> => hls_configuration(),
+%%   <<"LivePreRollConfiguration">> => live_pre_roll_configuration(),
+%%   <<"LogConfiguration">> => log_configuration(),
+%%   <<"ManifestProcessingRules">> => manifest_processing_rules(),
+%%   <<"Name">> => string(),
+%%   <<"PersonalizationThresholdSeconds">> => integer(),
+%%   <<"PlaybackConfigurationArn">> => string(),
+%%   <<"PlaybackEndpointPrefix">> => string(),
+%%   <<"SessionInitializationEndpointPrefix">> => string(),
+%%   <<"SlateAdUrl">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TranscodeProfileName">> => string(),
+%%   <<"VideoContentSourceUrl">> => string()
+%% }
+-type put_playback_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_policy_request() :: #{}
+-type get_channel_policy_request() :: #{}.
+
+
+%% Example:
+%% describe_live_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_live_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_delivery_configuration() :: #{
+%%   <<"BaseUrl">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type segment_delivery_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_configuration() :: #{
+%%   <<"AccessType">> => list(any()),
+%%   <<"SecretsManagerAccessTokenConfiguration">> => secrets_manager_access_token_configuration()
+%% }
+-type access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_source_location_request() :: #{
+%%   <<"AccessConfiguration">> => access_configuration(),
+%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
+%%   <<"HttpConfiguration">> := http_configuration(),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()()),
+%%   <<"Tags">> => map()
+%% }
+-type create_source_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_configuration() :: #{
+%%   <<"PercentEnabled">> => integer()
+%% }
+-type log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_source_location_response() :: #{}
+-type delete_source_location_response() :: #{}.
+
+
+%% Example:
+%% list_live_sources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_live_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_program_transition() :: #{
+%%   <<"DurationMillis">> => float(),
+%%   <<"ScheduledStartTimeMillis">> => float()
+%% }
+-type update_program_transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_source_locations_response() :: #{
+%%   <<"Items">> => list(source_location()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_source_locations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bumper() :: #{
+%%   <<"EndUrl">> => string(),
+%%   <<"StartUrl">> => string()
+%% }
+-type bumper() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_configuration_for_put() :: #{
+%%   <<"MpdLocation">> => string(),
+%%   <<"OriginManifestType">> => list(any())
+%% }
+-type dash_configuration_for_put() :: #{binary() => any()}.
+
+%% Example:
+%% delete_live_source_request() :: #{}
+-type delete_live_source_request() :: #{}.
+
+
+%% Example:
+%% prefetch_schedule() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Consumption">> => prefetch_consumption(),
+%%   <<"Name">> => string(),
+%%   <<"PlaybackConfigurationName">> => string(),
+%%   <<"Retrieval">> => prefetch_retrieval(),
+%%   <<"StreamId">> => string()
+%% }
+-type prefetch_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_playback_configurations_response() :: #{
+%%   <<"Items">> => list(playback_configuration()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_playback_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_playlist_settings() :: #{
+%%   <<"AdMarkupType">> => list(list(any())()),
+%%   <<"ManifestWindowSeconds">> => integer()
+%% }
+-type hls_playlist_settings() :: #{binary() => any()}.
+
+%% Example:
+%% describe_live_source_request() :: #{}
+-type describe_live_source_request() :: #{}.
+
+
+%% Example:
+%% splice_insert_message() :: #{
+%%   <<"AvailNum">> => integer(),
+%%   <<"AvailsExpected">> => integer(),
+%%   <<"SpliceEventId">> => integer(),
+%%   <<"UniqueProgramId">> => integer()
+%% }
+-type splice_insert_message() :: #{binary() => any()}.
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Configures Amazon CloudWatch log settings for a channel.
+-spec configure_logs_for_channel(aws_client:aws_client(), configure_logs_for_channel_request()) ->
+    {ok, configure_logs_for_channel_response(), tuple()} |
+    {error, any()}.
 configure_logs_for_channel(Client, Input) ->
     configure_logs_for_channel(Client, Input, []).
+
+-spec configure_logs_for_channel(aws_client:aws_client(), configure_logs_for_channel_request(), proplists:proplist()) ->
+    {ok, configure_logs_for_channel_response(), tuple()} |
+    {error, any()}.
 configure_logs_for_channel(Client, Input0, Options0) ->
     Method = put,
     Path = ["/configureLogs/channel"],
@@ -154,8 +1398,15 @@ configure_logs_for_channel(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon CloudWatch log settings for a playback configuration.
+-spec configure_logs_for_playback_configuration(aws_client:aws_client(), configure_logs_for_playback_configuration_request()) ->
+    {ok, configure_logs_for_playback_configuration_response(), tuple()} |
+    {error, any()}.
 configure_logs_for_playback_configuration(Client, Input) ->
     configure_logs_for_playback_configuration(Client, Input, []).
+
+-spec configure_logs_for_playback_configuration(aws_client:aws_client(), configure_logs_for_playback_configuration_request(), proplists:proplist()) ->
+    {ok, configure_logs_for_playback_configuration_response(), tuple()} |
+    {error, any()}.
 configure_logs_for_playback_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/configureLogs/playbackConfiguration"],
@@ -183,8 +1434,15 @@ configure_logs_for_playback_configuration(Client, Input0, Options0) ->
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_request()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()}.
 create_channel(Client, ChannelName, Input) ->
     create_channel(Client, ChannelName, Input, []).
+
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_request(), proplists:proplist()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()}.
 create_channel(Client, ChannelName, Input0, Options0) ->
     Method = post,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), ""],
@@ -208,8 +1466,15 @@ create_channel(Client, ChannelName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The live source configuration.
+-spec create_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_live_source_request()) ->
+    {ok, create_live_source_response(), tuple()} |
+    {error, any()}.
 create_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
     create_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
+
+-spec create_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_live_source_request(), proplists:proplist()) ->
+    {ok, create_live_source_response(), tuple()} |
+    {error, any()}.
 create_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
     Method = post,
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/liveSource/", aws_util:encode_uri(LiveSourceName), ""],
@@ -239,8 +1504,15 @@ create_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0)
 %% prefetching, see Using ad prefetching:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/prefetching-ads.html in
 %% the MediaTailor User Guide.
+-spec create_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_prefetch_schedule_request()) ->
+    {ok, create_prefetch_schedule_response(), tuple()} |
+    {error, any()}.
 create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input) ->
     create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input, []).
+
+-spec create_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_prefetch_schedule_request(), proplists:proplist()) ->
+    {ok, create_prefetch_schedule_response(), tuple()} |
+    {error, any()}.
 create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Options0) ->
     Method = post,
     Path = ["/prefetchSchedule/", aws_util:encode_uri(PlaybackConfigurationName), "/", aws_util:encode_uri(Name), ""],
@@ -268,8 +1540,15 @@ create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Option
 %% For information about programs, see Working with programs:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-programs.html
 %% in the MediaTailor User Guide.
+-spec create_program(aws_client:aws_client(), binary() | list(), binary() | list(), create_program_request()) ->
+    {ok, create_program_response(), tuple()} |
+    {error, any()}.
 create_program(Client, ChannelName, ProgramName, Input) ->
     create_program(Client, ChannelName, ProgramName, Input, []).
+
+-spec create_program(aws_client:aws_client(), binary() | list(), binary() | list(), create_program_request(), proplists:proplist()) ->
+    {ok, create_program_response(), tuple()} |
+    {error, any()}.
 create_program(Client, ChannelName, ProgramName, Input0, Options0) ->
     Method = post,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/program/", aws_util:encode_uri(ProgramName), ""],
@@ -298,8 +1577,15 @@ create_program(Client, ChannelName, ProgramName, Input0, Options0) ->
 %% source locations, see Working with source locations:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
 %% in the MediaTailor User Guide.
+-spec create_source_location(aws_client:aws_client(), binary() | list(), create_source_location_request()) ->
+    {ok, create_source_location_response(), tuple()} |
+    {error, any()}.
 create_source_location(Client, SourceLocationName, Input) ->
     create_source_location(Client, SourceLocationName, Input, []).
+
+-spec create_source_location(aws_client:aws_client(), binary() | list(), create_source_location_request(), proplists:proplist()) ->
+    {ok, create_source_location_response(), tuple()} |
+    {error, any()}.
 create_source_location(Client, SourceLocationName, Input0, Options0) ->
     Method = post,
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), ""],
@@ -323,8 +1609,15 @@ create_source_location(Client, SourceLocationName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The VOD source configuration parameters.
+-spec create_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_vod_source_request()) ->
+    {ok, create_vod_source_response(), tuple()} |
+    {error, any()}.
 create_vod_source(Client, SourceLocationName, VodSourceName, Input) ->
     create_vod_source(Client, SourceLocationName, VodSourceName, Input, []).
+
+-spec create_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_vod_source_request(), proplists:proplist()) ->
+    {ok, create_vod_source_response(), tuple()} |
+    {error, any()}.
 create_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) ->
     Method = post,
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/vodSource/", aws_util:encode_uri(VodSourceName), ""],
@@ -352,8 +1645,15 @@ create_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) -
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request()) ->
+    {ok, delete_channel_response(), tuple()} |
+    {error, any()}.
 delete_channel(Client, ChannelName, Input) ->
     delete_channel(Client, ChannelName, Input, []).
+
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
+    {ok, delete_channel_response(), tuple()} |
+    {error, any()}.
 delete_channel(Client, ChannelName, Input0, Options0) ->
     Method = delete,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), ""],
@@ -377,8 +1677,15 @@ delete_channel(Client, ChannelName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The channel policy to delete.
+-spec delete_channel_policy(aws_client:aws_client(), binary() | list(), delete_channel_policy_request()) ->
+    {ok, delete_channel_policy_response(), tuple()} |
+    {error, any()}.
 delete_channel_policy(Client, ChannelName, Input) ->
     delete_channel_policy(Client, ChannelName, Input, []).
+
+-spec delete_channel_policy(aws_client:aws_client(), binary() | list(), delete_channel_policy_request(), proplists:proplist()) ->
+    {ok, delete_channel_policy_response(), tuple()} |
+    {error, any()}.
 delete_channel_policy(Client, ChannelName, Input0, Options0) ->
     Method = delete,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/policy"],
@@ -402,8 +1709,15 @@ delete_channel_policy(Client, ChannelName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The live source to delete.
+-spec delete_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_live_source_request()) ->
+    {ok, delete_live_source_response(), tuple()} |
+    {error, any()}.
 delete_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
     delete_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
+
+-spec delete_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_live_source_request(), proplists:proplist()) ->
+    {ok, delete_live_source_response(), tuple()} |
+    {error, any()}.
 delete_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
     Method = delete,
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/liveSource/", aws_util:encode_uri(LiveSourceName), ""],
@@ -431,8 +1745,15 @@ delete_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0)
 %% For information about MediaTailor configurations, see Working with
 %% configurations in AWS Elemental MediaTailor:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
+-spec delete_playback_configuration(aws_client:aws_client(), binary() | list(), delete_playback_configuration_request()) ->
+    {ok, delete_playback_configuration_response(), tuple()} |
+    {error, any()}.
 delete_playback_configuration(Client, Name, Input) ->
     delete_playback_configuration(Client, Name, Input, []).
+
+-spec delete_playback_configuration(aws_client:aws_client(), binary() | list(), delete_playback_configuration_request(), proplists:proplist()) ->
+    {ok, delete_playback_configuration_response(), tuple()} |
+    {error, any()}.
 delete_playback_configuration(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/playbackConfiguration/", aws_util:encode_uri(Name), ""],
@@ -462,8 +1783,15 @@ delete_playback_configuration(Client, Name, Input0, Options0) ->
 %% prefetching, see Using ad prefetching:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/prefetching-ads.html in
 %% the MediaTailor User Guide.
+-spec delete_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_prefetch_schedule_request()) ->
+    {ok, delete_prefetch_schedule_response(), tuple()} |
+    {error, any()}.
 delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input) ->
     delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input, []).
+
+-spec delete_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_prefetch_schedule_request(), proplists:proplist()) ->
+    {ok, delete_prefetch_schedule_response(), tuple()} |
+    {error, any()}.
 delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Options0) ->
     Method = delete,
     Path = ["/prefetchSchedule/", aws_util:encode_uri(PlaybackConfigurationName), "/", aws_util:encode_uri(Name), ""],
@@ -491,8 +1819,15 @@ delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Option
 %% For information about programs, see Working with programs:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-programs.html
 %% in the MediaTailor User Guide.
+-spec delete_program(aws_client:aws_client(), binary() | list(), binary() | list(), delete_program_request()) ->
+    {ok, delete_program_response(), tuple()} |
+    {error, any()}.
 delete_program(Client, ChannelName, ProgramName, Input) ->
     delete_program(Client, ChannelName, ProgramName, Input, []).
+
+-spec delete_program(aws_client:aws_client(), binary() | list(), binary() | list(), delete_program_request(), proplists:proplist()) ->
+    {ok, delete_program_response(), tuple()} |
+    {error, any()}.
 delete_program(Client, ChannelName, ProgramName, Input0, Options0) ->
     Method = delete,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/program/", aws_util:encode_uri(ProgramName), ""],
@@ -521,8 +1856,15 @@ delete_program(Client, ChannelName, ProgramName, Input0, Options0) ->
 %% source locations, see Working with source locations:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
 %% in the MediaTailor User Guide.
+-spec delete_source_location(aws_client:aws_client(), binary() | list(), delete_source_location_request()) ->
+    {ok, delete_source_location_response(), tuple()} |
+    {error, any()}.
 delete_source_location(Client, SourceLocationName, Input) ->
     delete_source_location(Client, SourceLocationName, Input, []).
+
+-spec delete_source_location(aws_client:aws_client(), binary() | list(), delete_source_location_request(), proplists:proplist()) ->
+    {ok, delete_source_location_response(), tuple()} |
+    {error, any()}.
 delete_source_location(Client, SourceLocationName, Input0, Options0) ->
     Method = delete,
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), ""],
@@ -546,8 +1888,15 @@ delete_source_location(Client, SourceLocationName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The video on demand (VOD) source to delete.
+-spec delete_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vod_source_request()) ->
+    {ok, delete_vod_source_response(), tuple()} |
+    {error, any()}.
 delete_vod_source(Client, SourceLocationName, VodSourceName, Input) ->
     delete_vod_source(Client, SourceLocationName, VodSourceName, Input, []).
+
+-spec delete_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vod_source_request(), proplists:proplist()) ->
+    {ok, delete_vod_source_response(), tuple()} |
+    {error, any()}.
 delete_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) ->
     Method = delete,
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/vodSource/", aws_util:encode_uri(VodSourceName), ""],
@@ -575,14 +1924,23 @@ delete_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) -
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
+-spec describe_channel(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_channel_response(), tuple()} |
+    {error, any()}.
 describe_channel(Client, ChannelName)
   when is_map(Client) ->
     describe_channel(Client, ChannelName, #{}, #{}).
 
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_channel_response(), tuple()} |
+    {error, any()}.
 describe_channel(Client, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, ChannelName, QueryMap, HeadersMap, []).
 
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_channel_response(), tuple()} |
+    {error, any()}.
 describe_channel(Client, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channel/", aws_util:encode_uri(ChannelName), ""],
@@ -600,14 +1958,23 @@ describe_channel(Client, ChannelName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The live source to describe.
+-spec describe_live_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_live_source_response(), tuple()} |
+    {error, any()}.
 describe_live_source(Client, LiveSourceName, SourceLocationName)
   when is_map(Client) ->
     describe_live_source(Client, LiveSourceName, SourceLocationName, #{}, #{}).
 
+-spec describe_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_live_source_response(), tuple()} |
+    {error, any()}.
 describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, HeadersMap, []).
 
+-spec describe_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_live_source_response(), tuple()} |
+    {error, any()}.
 describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/liveSource/", aws_util:encode_uri(LiveSourceName), ""],
@@ -629,14 +1996,23 @@ describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, Heade
 %% For information about programs, see Working with programs:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-programs.html
 %% in the MediaTailor User Guide.
+-spec describe_program(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_program_response(), tuple()} |
+    {error, any()}.
 describe_program(Client, ChannelName, ProgramName)
   when is_map(Client) ->
     describe_program(Client, ChannelName, ProgramName, #{}, #{}).
 
+-spec describe_program(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_program_response(), tuple()} |
+    {error, any()}.
 describe_program(Client, ChannelName, ProgramName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_program(Client, ChannelName, ProgramName, QueryMap, HeadersMap, []).
 
+-spec describe_program(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_program_response(), tuple()} |
+    {error, any()}.
 describe_program(Client, ChannelName, ProgramName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/program/", aws_util:encode_uri(ProgramName), ""],
@@ -659,14 +2035,23 @@ describe_program(Client, ChannelName, ProgramName, QueryMap, HeadersMap, Options
 %% source locations, see Working with source locations:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
 %% in the MediaTailor User Guide.
+-spec describe_source_location(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_source_location_response(), tuple()} |
+    {error, any()}.
 describe_source_location(Client, SourceLocationName)
   when is_map(Client) ->
     describe_source_location(Client, SourceLocationName, #{}, #{}).
 
+-spec describe_source_location(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_source_location_response(), tuple()} |
+    {error, any()}.
 describe_source_location(Client, SourceLocationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_source_location(Client, SourceLocationName, QueryMap, HeadersMap, []).
 
+-spec describe_source_location(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_source_location_response(), tuple()} |
+    {error, any()}.
 describe_source_location(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), ""],
@@ -685,14 +2070,23 @@ describe_source_location(Client, SourceLocationName, QueryMap, HeadersMap, Optio
 
 %% @doc Provides details about a specific video on demand (VOD) source in a
 %% specific source location.
+-spec describe_vod_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_vod_source_response(), tuple()} |
+    {error, any()}.
 describe_vod_source(Client, SourceLocationName, VodSourceName)
   when is_map(Client) ->
     describe_vod_source(Client, SourceLocationName, VodSourceName, #{}, #{}).
 
+-spec describe_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_vod_source_response(), tuple()} |
+    {error, any()}.
 describe_vod_source(Client, SourceLocationName, VodSourceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vod_source(Client, SourceLocationName, VodSourceName, QueryMap, HeadersMap, []).
 
+-spec describe_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_vod_source_response(), tuple()} |
+    {error, any()}.
 describe_vod_source(Client, SourceLocationName, VodSourceName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/vodSource/", aws_util:encode_uri(VodSourceName), ""],
@@ -712,14 +2106,23 @@ describe_vod_source(Client, SourceLocationName, VodSourceName, QueryMap, Headers
 %% @doc Returns the channel's IAM policy.
 %%
 %% IAM policies are used to control access to your channel.
+-spec get_channel_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_channel_policy_response(), tuple()} |
+    {error, any()}.
 get_channel_policy(Client, ChannelName)
   when is_map(Client) ->
     get_channel_policy(Client, ChannelName, #{}, #{}).
 
+-spec get_channel_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_channel_policy_response(), tuple()} |
+    {error, any()}.
 get_channel_policy(Client, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_policy(Client, ChannelName, QueryMap, HeadersMap, []).
 
+-spec get_channel_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_channel_policy_response(), tuple()} |
+    {error, any()}.
 get_channel_policy(Client, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/policy"],
@@ -737,14 +2140,23 @@ get_channel_policy(Client, ChannelName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about your channel's schedule.
+-spec get_channel_schedule(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_channel_schedule_response(), tuple()} |
+    {error, any()}.
 get_channel_schedule(Client, ChannelName)
   when is_map(Client) ->
     get_channel_schedule(Client, ChannelName, #{}, #{}).
 
+-spec get_channel_schedule(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_channel_schedule_response(), tuple()} |
+    {error, any()}.
 get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap, []).
 
+-spec get_channel_schedule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_channel_schedule_response(), tuple()} |
+    {error, any()}.
 get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/schedule"],
@@ -773,14 +2185,23 @@ get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap, Options0)
 %% For information about MediaTailor configurations, see Working with
 %% configurations in AWS Elemental MediaTailor:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
+-spec get_playback_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_playback_configuration_response(), tuple()} |
+    {error, any()}.
 get_playback_configuration(Client, Name)
   when is_map(Client) ->
     get_playback_configuration(Client, Name, #{}, #{}).
 
+-spec get_playback_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_playback_configuration_response(), tuple()} |
+    {error, any()}.
 get_playback_configuration(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_playback_configuration(Client, Name, QueryMap, HeadersMap, []).
 
+-spec get_playback_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_playback_configuration_response(), tuple()} |
+    {error, any()}.
 get_playback_configuration(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/playbackConfiguration/", aws_util:encode_uri(Name), ""],
@@ -804,14 +2225,23 @@ get_playback_configuration(Client, Name, QueryMap, HeadersMap, Options0)
 %% prefetching, see Using ad prefetching:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/prefetching-ads.html in
 %% the MediaTailor User Guide.
+-spec get_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_prefetch_schedule_response(), tuple()} |
+    {error, any()}.
 get_prefetch_schedule(Client, Name, PlaybackConfigurationName)
   when is_map(Client) ->
     get_prefetch_schedule(Client, Name, PlaybackConfigurationName, #{}, #{}).
 
+-spec get_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_prefetch_schedule_response(), tuple()} |
+    {error, any()}.
 get_prefetch_schedule(Client, Name, PlaybackConfigurationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_prefetch_schedule(Client, Name, PlaybackConfigurationName, QueryMap, HeadersMap, []).
 
+-spec get_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_prefetch_schedule_response(), tuple()} |
+    {error, any()}.
 get_prefetch_schedule(Client, Name, PlaybackConfigurationName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prefetchSchedule/", aws_util:encode_uri(PlaybackConfigurationName), "/", aws_util:encode_uri(Name), ""],
@@ -830,14 +2260,23 @@ get_prefetch_schedule(Client, Name, PlaybackConfigurationName, QueryMap, Headers
 
 %% @doc Lists the alerts that are associated with a MediaTailor channel
 %% assembly resource.
+-spec list_alerts(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_alerts_response(), tuple()} |
+    {error, any()}.
 list_alerts(Client, ResourceArn)
   when is_map(Client) ->
     list_alerts(Client, ResourceArn, #{}, #{}).
 
+-spec list_alerts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_alerts_response(), tuple()} |
+    {error, any()}.
 list_alerts(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_alerts(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_alerts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_alerts_response(), tuple()} |
+    {error, any()}.
 list_alerts(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/alerts"],
@@ -862,14 +2301,23 @@ list_alerts(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the channels that are associated with the
 %% current AWS account.
+-spec list_channels(aws_client:aws_client()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()}.
 list_channels(Client)
   when is_map(Client) ->
     list_channels(Client, #{}, #{}).
 
+-spec list_channels(aws_client:aws_client(), map(), map()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()}.
 list_channels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, QueryMap, HeadersMap, []).
 
+-spec list_channels(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()}.
 list_channels(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels"],
@@ -894,14 +2342,23 @@ list_channels(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the live sources contained in a source location.
 %%
 %% A source represents a piece of content.
+-spec list_live_sources(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_live_sources_response(), tuple()} |
+    {error, any()}.
 list_live_sources(Client, SourceLocationName)
   when is_map(Client) ->
     list_live_sources(Client, SourceLocationName, #{}, #{}).
 
+-spec list_live_sources(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_live_sources_response(), tuple()} |
+    {error, any()}.
 list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap, []).
 
+-spec list_live_sources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_live_sources_response(), tuple()} |
+    {error, any()}.
 list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/liveSources"],
@@ -928,14 +2385,23 @@ list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
 %% For information about MediaTailor configurations, see Working with
 %% Configurations in AWS Elemental MediaTailor:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
+-spec list_playback_configurations(aws_client:aws_client()) ->
+    {ok, list_playback_configurations_response(), tuple()} |
+    {error, any()}.
 list_playback_configurations(Client)
   when is_map(Client) ->
     list_playback_configurations(Client, #{}, #{}).
 
+-spec list_playback_configurations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_playback_configurations_response(), tuple()} |
+    {error, any()}.
 list_playback_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_playback_configurations(Client, QueryMap, HeadersMap, []).
 
+-spec list_playback_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_playback_configurations_response(), tuple()} |
+    {error, any()}.
 list_playback_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/playbackConfigurations"],
@@ -958,8 +2424,15 @@ list_playback_configurations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the prefetch schedules for a playback configuration.
+-spec list_prefetch_schedules(aws_client:aws_client(), binary() | list(), list_prefetch_schedules_request()) ->
+    {ok, list_prefetch_schedules_response(), tuple()} |
+    {error, any()}.
 list_prefetch_schedules(Client, PlaybackConfigurationName, Input) ->
     list_prefetch_schedules(Client, PlaybackConfigurationName, Input, []).
+
+-spec list_prefetch_schedules(aws_client:aws_client(), binary() | list(), list_prefetch_schedules_request(), proplists:proplist()) ->
+    {ok, list_prefetch_schedules_response(), tuple()} |
+    {error, any()}.
 list_prefetch_schedules(Client, PlaybackConfigurationName, Input0, Options0) ->
     Method = post,
     Path = ["/prefetchSchedule/", aws_util:encode_uri(PlaybackConfigurationName), ""],
@@ -986,14 +2459,23 @@ list_prefetch_schedules(Client, PlaybackConfigurationName, Input0, Options0) ->
 %%
 %% A source location defines the host server URL, and contains a list of
 %% sources.
+-spec list_source_locations(aws_client:aws_client()) ->
+    {ok, list_source_locations_response(), tuple()} |
+    {error, any()}.
 list_source_locations(Client)
   when is_map(Client) ->
     list_source_locations(Client, #{}, #{}).
 
+-spec list_source_locations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_source_locations_response(), tuple()} |
+    {error, any()}.
 list_source_locations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_source_locations(Client, QueryMap, HeadersMap, []).
 
+-spec list_source_locations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_source_locations_response(), tuple()} |
+    {error, any()}.
 list_source_locations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sourceLocations"],
@@ -1021,14 +2503,26 @@ list_source_locations(Client, QueryMap, HeadersMap, Options0)
 %% help with organization, access control, and cost tracking. For more
 %% information, see Tagging AWS Elemental MediaTailor Resources:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1048,14 +2542,23 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Lists the VOD sources contained in a source location.
 %%
 %% A source represents a piece of content.
+-spec list_vod_sources(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_vod_sources_response(), tuple()} |
+    {error, any()}.
 list_vod_sources(Client, SourceLocationName)
   when is_map(Client) ->
     list_vod_sources(Client, SourceLocationName, #{}, #{}).
 
+-spec list_vod_sources(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_vod_sources_response(), tuple()} |
+    {error, any()}.
 list_vod_sources(Client, SourceLocationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vod_sources(Client, SourceLocationName, QueryMap, HeadersMap, []).
 
+-spec list_vod_sources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_vod_sources_response(), tuple()} |
+    {error, any()}.
 list_vod_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/vodSources"],
@@ -1080,8 +2583,15 @@ list_vod_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
 %% @doc Creates an IAM policy for the channel.
 %%
 %% IAM policies are used to control access to your channel.
+-spec put_channel_policy(aws_client:aws_client(), binary() | list(), put_channel_policy_request()) ->
+    {ok, put_channel_policy_response(), tuple()} |
+    {error, any()}.
 put_channel_policy(Client, ChannelName, Input) ->
     put_channel_policy(Client, ChannelName, Input, []).
+
+-spec put_channel_policy(aws_client:aws_client(), binary() | list(), put_channel_policy_request(), proplists:proplist()) ->
+    {ok, put_channel_policy_response(), tuple()} |
+    {error, any()}.
 put_channel_policy(Client, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/policy"],
@@ -1109,8 +2619,15 @@ put_channel_policy(Client, ChannelName, Input0, Options0) ->
 %% For information about MediaTailor configurations, see Working with
 %% configurations in AWS Elemental MediaTailor:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
+-spec put_playback_configuration(aws_client:aws_client(), put_playback_configuration_request()) ->
+    {ok, put_playback_configuration_response(), tuple()} |
+    {error, any()}.
 put_playback_configuration(Client, Input) ->
     put_playback_configuration(Client, Input, []).
+
+-spec put_playback_configuration(aws_client:aws_client(), put_playback_configuration_request(), proplists:proplist()) ->
+    {ok, put_playback_configuration_response(), tuple()} |
+    {error, any()}.
 put_playback_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/playbackConfiguration"],
@@ -1138,8 +2655,15 @@ put_playback_configuration(Client, Input0, Options0) ->
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
+-spec start_channel(aws_client:aws_client(), binary() | list(), start_channel_request()) ->
+    {ok, start_channel_response(), tuple()} |
+    {error, any()}.
 start_channel(Client, ChannelName, Input) ->
     start_channel(Client, ChannelName, Input, []).
+
+-spec start_channel(aws_client:aws_client(), binary() | list(), start_channel_request(), proplists:proplist()) ->
+    {ok, start_channel_response(), tuple()} |
+    {error, any()}.
 start_channel(Client, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/start"],
@@ -1167,8 +2691,15 @@ start_channel(Client, ChannelName, Input0, Options0) ->
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
+-spec stop_channel(aws_client:aws_client(), binary() | list(), stop_channel_request()) ->
+    {ok, stop_channel_response(), tuple()} |
+    {error, any()}.
 stop_channel(Client, ChannelName, Input) ->
     stop_channel(Client, ChannelName, Input, []).
+
+-spec stop_channel(aws_client:aws_client(), binary() | list(), stop_channel_request(), proplists:proplist()) ->
+    {ok, stop_channel_response(), tuple()} |
+    {error, any()}.
 stop_channel(Client, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/stop"],
@@ -1197,8 +2728,17 @@ stop_channel(Client, ChannelName, Input0, Options0) ->
 %% help with organization, access control, and cost tracking. For more
 %% information, see Tagging AWS Elemental MediaTailor Resources:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1222,8 +2762,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The resource to untag.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1252,8 +2801,15 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()}.
 update_channel(Client, ChannelName, Input) ->
     update_channel(Client, ChannelName, Input, []).
+
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request(), proplists:proplist()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()}.
 update_channel(Client, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), ""],
@@ -1277,8 +2833,15 @@ update_channel(Client, ChannelName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a live source's configuration.
+-spec update_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_live_source_request()) ->
+    {ok, update_live_source_response(), tuple()} |
+    {error, any()}.
 update_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
     update_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
+
+-spec update_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_live_source_request(), proplists:proplist()) ->
+    {ok, update_live_source_response(), tuple()} |
+    {error, any()}.
 update_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
     Method = put,
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/liveSource/", aws_util:encode_uri(LiveSourceName), ""],
@@ -1302,8 +2865,15 @@ update_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a program within a channel.
+-spec update_program(aws_client:aws_client(), binary() | list(), binary() | list(), update_program_request()) ->
+    {ok, update_program_response(), tuple()} |
+    {error, any()}.
 update_program(Client, ChannelName, ProgramName, Input) ->
     update_program(Client, ChannelName, ProgramName, Input, []).
+
+-spec update_program(aws_client:aws_client(), binary() | list(), binary() | list(), update_program_request(), proplists:proplist()) ->
+    {ok, update_program_response(), tuple()} |
+    {error, any()}.
 update_program(Client, ChannelName, ProgramName, Input0, Options0) ->
     Method = put,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), "/program/", aws_util:encode_uri(ProgramName), ""],
@@ -1332,8 +2902,15 @@ update_program(Client, ChannelName, ProgramName, Input0, Options0) ->
 %% source locations, see Working with source locations:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
 %% in the MediaTailor User Guide.
+-spec update_source_location(aws_client:aws_client(), binary() | list(), update_source_location_request()) ->
+    {ok, update_source_location_response(), tuple()} |
+    {error, any()}.
 update_source_location(Client, SourceLocationName, Input) ->
     update_source_location(Client, SourceLocationName, Input, []).
+
+-spec update_source_location(aws_client:aws_client(), binary() | list(), update_source_location_request(), proplists:proplist()) ->
+    {ok, update_source_location_response(), tuple()} |
+    {error, any()}.
 update_source_location(Client, SourceLocationName, Input0, Options0) ->
     Method = put,
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), ""],
@@ -1357,8 +2934,15 @@ update_source_location(Client, SourceLocationName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a VOD source's configuration.
+-spec update_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_vod_source_request()) ->
+    {ok, update_vod_source_response(), tuple()} |
+    {error, any()}.
 update_vod_source(Client, SourceLocationName, VodSourceName, Input) ->
     update_vod_source(Client, SourceLocationName, VodSourceName, Input, []).
+
+-spec update_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_vod_source_request(), proplists:proplist()) ->
+    {ok, update_vod_source_response(), tuple()} |
+    {error, any()}.
 update_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) ->
     Method = put,
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/vodSource/", aws_util:encode_uri(VodSourceName), ""],
@@ -1385,7 +2969,7 @@ update_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) -
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

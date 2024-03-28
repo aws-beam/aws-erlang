@@ -657,6 +657,11277 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% docker_settings() :: #{
+%%   <<"EnableDockerAccess">> => list(any()),
+%%   <<"VpcOnlyTrustedAccounts">> => list(string()())
+%% }
+-type docker_settings() :: #{binary() => any()}.
+
+%% Example:
+%% visibility_conditions() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type visibility_conditions() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hub_request() :: #{
+%%   <<"HubName">> := string()
+%% }
+-type describe_hub_request() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_output_data_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type auto_ml_output_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_context_request() :: #{
+%%   <<"ContextName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Properties">> => map(),
+%%   <<"PropertiesToRemove">> => list(string()())
+%% }
+-type update_context_request() :: #{binary() => any()}.
+
+%% Example:
+%% action_summary() :: #{
+%%   <<"ActionArn">> => string(),
+%%   <<"ActionName">> => string(),
+%%   <<"ActionType">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Source">> => action_source(),
+%%   <<"Status">> => list(any())
+%% }
+-type action_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SageMakerImageVersionAliases">> => list(string()())
+%% }
+-type list_aliases_response() :: #{binary() => any()}.
+
+%% Example:
+%% transform_data_source() :: #{
+%%   <<"S3DataSource">> => transform_s3_data_source()
+%% }
+-type transform_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% create_edge_deployment_stage_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"Stages">> := list(deployment_stage()())
+%% }
+-type create_edge_deployment_stage_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_experiments_response() :: #{
+%%   <<"ExperimentSummaries">> => list(experiment_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_experiments_response() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_serverless_update_config() :: #{
+%%   <<"MaxConcurrency">> => integer(),
+%%   <<"ProvisionedConcurrency">> => integer()
+%% }
+-type production_variant_serverless_update_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_artifact_request() :: #{
+%%   <<"ArtifactArn">> := string(),
+%%   <<"ArtifactName">> => string(),
+%%   <<"Properties">> => map(),
+%%   <<"PropertiesToRemove">> => list(string()())
+%% }
+-type update_artifact_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_inference_experiment_response() :: #{
+%%   <<"InferenceExperimentArn">> => string()
+%% }
+-type stop_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% best_objective_not_improving() :: #{
+%%   <<"MaxNumberOfTrainingJobsNotImproving">> => integer()
+%% }
+-type best_objective_not_improving() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_request() :: #{
+%%   <<"ClusterName">> := string()
+%% }
+-type describe_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trial_request() :: #{
+%%   <<"TrialName">> := string()
+%% }
+-type describe_trial_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_request() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"ImageName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type list_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_catalogs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_resource_catalogs_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_quality_job_definition_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"JobDefinitionArn">> => string(),
+%%   <<"JobDefinitionName">> => string(),
+%%   <<"JobResources">> => monitoring_resources(),
+%%   <<"ModelQualityAppSpecification">> => model_quality_app_specification(),
+%%   <<"ModelQualityBaselineConfig">> => model_quality_baseline_config(),
+%%   <<"ModelQualityJobInput">> => model_quality_job_input(),
+%%   <<"ModelQualityJobOutputConfig">> => monitoring_output_config(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition()
+%% }
+-type describe_model_quality_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_scaling_configuration_recommendation_request() :: #{
+%%   <<"EndpointName">> => string(),
+%%   <<"InferenceRecommendationsJobName">> := string(),
+%%   <<"RecommendationId">> => string(),
+%%   <<"ScalingPolicyObjective">> => scaling_policy_objective(),
+%%   <<"TargetCpuUtilizationPerCore">> => integer()
+%% }
+-type get_scaling_configuration_recommendation_request() :: #{binary() => any()}.
+
+%% Example:
+%% model_latency_threshold() :: #{
+%%   <<"Percentile">> => string(),
+%%   <<"ValueInMilliseconds">> => integer()
+%% }
+-type model_latency_threshold() :: #{binary() => any()}.
+
+%% Example:
+%% delete_experiment_response() :: #{
+%%   <<"ExperimentArn">> => string()
+%% }
+-type delete_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% text_generation_job_config() :: #{
+%%   <<"BaseModelName">> => string(),
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"ModelAccessConfig">> => model_access_config(),
+%%   <<"TextGenerationHyperParameters">> => map()
+%% }
+-type text_generation_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_hub_request() :: #{
+%%   <<"HubDescription">> => string(),
+%%   <<"HubDisplayName">> => string(),
+%%   <<"HubName">> := string(),
+%%   <<"HubSearchKeywords">> => list(string()())
+%% }
+-type update_hub_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_apps_response() :: #{
+%%   <<"Apps">> => list(app_details()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_apps_response() :: #{binary() => any()}.
+
+%% Example:
+%% inference_specification() :: #{
+%%   <<"Containers">> => list(model_package_container_definition()()),
+%%   <<"SupportedContentTypes">> => list(string()()),
+%%   <<"SupportedRealtimeInferenceInstanceTypes">> => list(list(any())()),
+%%   <<"SupportedResponseMIMETypes">> => list(string()()),
+%%   <<"SupportedTransformInstanceTypes">> => list(list(any())())
+%% }
+-type inference_specification() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_forecasting_job_config() :: #{
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"FeatureSpecificationS3Uri">> => string(),
+%%   <<"ForecastFrequency">> => string(),
+%%   <<"ForecastHorizon">> => integer(),
+%%   <<"ForecastQuantiles">> => list(string()()),
+%%   <<"HolidayConfig">> => list(holiday_config_attributes()()),
+%%   <<"TimeSeriesConfig">> => time_series_config(),
+%%   <<"Transformations">> => time_series_transformations()
+%% }
+-type time_series_forecasting_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_search_suggestions_request() :: #{
+%%   <<"Resource">> := list(any()),
+%%   <<"SuggestionQuery">> => suggestion_query()
+%% }
+-type get_search_suggestions_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_component_input() :: #{
+%%   <<"EndpointName">> := string(),
+%%   <<"InferenceComponentName">> := string(),
+%%   <<"RuntimeConfig">> := inference_component_runtime_config(),
+%%   <<"Specification">> := inference_component_specification(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VariantName">> := string()
+%% }
+-type create_inference_component_input() :: #{binary() => any()}.
+
+%% Example:
+%% hyperband_strategy_config() :: #{
+%%   <<"MaxResource">> => integer(),
+%%   <<"MinResource">> => integer()
+%% }
+-type hyperband_strategy_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_card_response() :: #{
+%%   <<"ModelCardArn">> => string()
+%% }
+-type update_model_card_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_experiment_request() :: #{
+%%   <<"DataStorageConfig">> => inference_experiment_data_storage_config(),
+%%   <<"Description">> => string(),
+%%   <<"ModelVariants">> => list(model_variant_config()()),
+%%   <<"Name">> := string(),
+%%   <<"Schedule">> => inference_experiment_schedule(),
+%%   <<"ShadowModeConfig">> => shadow_mode_config()
+%% }
+-type update_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% hub_content_dependency() :: #{
+%%   <<"DependencyCopyPath">> => string(),
+%%   <<"DependencyOriginPath">> => string()
+%% }
+-type hub_content_dependency() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_runtime_config_summary() :: #{
+%%   <<"CurrentCopyCount">> => integer(),
+%%   <<"DesiredCopyCount">> => integer()
+%% }
+-type inference_component_runtime_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_space_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"SpaceName">> := string()
+%% }
+-type delete_space_request() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_consumed_resources() :: #{
+%%   <<"RuntimeInSeconds">> => integer()
+%% }
+-type hyper_parameter_tuning_job_consumed_resources() :: #{binary() => any()}.
+
+%% Example:
+%% stop_transform_job_request() :: #{
+%%   <<"TransformJobName">> := string()
+%% }
+-type stop_transform_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_human_task_ui_request() :: #{
+%%   <<"HumanTaskUiName">> := string()
+%% }
+-type delete_human_task_ui_request() :: #{binary() => any()}.
+
+%% Example:
+%% notebook_instance_summary() :: #{
+%%   <<"AdditionalCodeRepositories">> => list(string()()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultCodeRepository">> => string(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NotebookInstanceArn">> => string(),
+%%   <<"NotebookInstanceLifecycleConfigName">> => string(),
+%%   <<"NotebookInstanceName">> => string(),
+%%   <<"NotebookInstanceStatus">> => list(any()),
+%%   <<"Url">> => string()
+%% }
+-type notebook_instance_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoints_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_endpoints_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_component_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"InferenceComponentArn">> => string(),
+%%   <<"InferenceComponentName">> => string(),
+%%   <<"InferenceComponentStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RuntimeConfig">> => inference_component_runtime_config_summary(),
+%%   <<"Specification">> => inference_component_specification_summary(),
+%%   <<"VariantName">> => string()
+%% }
+-type describe_inference_component_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_experiment_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataStorageConfig">> => inference_experiment_data_storage_config(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointMetadata">> => endpoint_metadata(),
+%%   <<"KmsKey">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelVariants">> => list(model_variant_config_summary()()),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Schedule">> => inference_experiment_schedule(),
+%%   <<"ShadowModeConfig">> => shadow_mode_config(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_profile_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"UserProfileName">> := string(),
+%%   <<"UserSettings">> => user_settings()
+%% }
+-type update_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% metric_data() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Value">> => float()
+%% }
+-type metric_data() :: #{binary() => any()}.
+
+%% Example:
+%% list_devices_request() :: #{
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"LatestHeartbeatAfter">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_config_output() :: #{
+%%   <<"AsyncInferenceConfig">> => async_inference_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataCaptureConfig">> => data_capture_config(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"EndpointConfigArn">> => string(),
+%%   <<"EndpointConfigName">> => string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"ExplainerConfig">> => explainer_config(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ProductionVariants">> => list(production_variant()()),
+%%   <<"ShadowProductionVariants">> => list(production_variant()()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type describe_endpoint_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_request() :: #{
+%%   <<"AppNetworkAccessType">> => list(any()),
+%%   <<"AppSecurityGroupManagement">> => list(any()),
+%%   <<"DefaultSpaceSettings">> => default_space_settings(),
+%%   <<"DefaultUserSettings">> => user_settings(),
+%%   <<"DomainId">> := string(),
+%%   <<"DomainSettingsForUpdate">> => domain_settings_for_update(),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type update_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% resolved_attributes() :: #{
+%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"ProblemType">> => list(any())
+%% }
+-type resolved_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserProfiles">> => list(user_profile_details()())
+%% }
+-type list_user_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_limits() :: #{
+%%   <<"MaxNumberOfTrainingJobs">> => integer(),
+%%   <<"MaxParallelTrainingJobs">> => integer(),
+%%   <<"MaxRuntimeInSeconds">> => integer()
+%% }
+-type resource_limits() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% ui_config() :: #{
+%%   <<"HumanTaskUiArn">> => string(),
+%%   <<"UiTemplateS3Uri">> => string()
+%% }
+-type ui_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_processing_job_response() :: #{
+%%   <<"AppSpecification">> => app_specification(),
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Environment">> => map(),
+%%   <<"ExitMessage">> => string(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MonitoringScheduleArn">> => string(),
+%%   <<"NetworkConfig">> => network_config(),
+%%   <<"ProcessingEndTime">> => non_neg_integer(),
+%%   <<"ProcessingInputs">> => list(processing_input()()),
+%%   <<"ProcessingJobArn">> => string(),
+%%   <<"ProcessingJobName">> => string(),
+%%   <<"ProcessingJobStatus">> => list(any()),
+%%   <<"ProcessingOutputConfig">> => processing_output_config(),
+%%   <<"ProcessingResources">> => processing_resources(),
+%%   <<"ProcessingStartTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => processing_stopping_condition(),
+%%   <<"TrainingJobArn">> => string()
+%% }
+-type describe_processing_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% hub_info() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HubArn">> => string(),
+%%   <<"HubDescription">> => string(),
+%%   <<"HubDisplayName">> => string(),
+%%   <<"HubName">> => string(),
+%%   <<"HubSearchKeywords">> => list(string()()),
+%%   <<"HubStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type hub_info() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_stopping_condition() :: #{
+%%   <<"MaxRuntimeInSeconds">> => integer()
+%% }
+-type monitoring_stopping_condition() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_recommendations_job_response() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointPerformances">> => list(endpoint_performance()()),
+%%   <<"FailureReason">> => string(),
+%%   <<"InferenceRecommendations">> => list(inference_recommendation()()),
+%%   <<"InputConfig">> => recommendation_job_input_config(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobDescription">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StoppingConditions">> => recommendation_job_stopping_conditions()
+%% }
+-type describe_inference_recommendations_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_cluster_config() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type monitoring_cluster_config() :: #{binary() => any()}.
+
+%% Example:
+%% integer_parameter_range() :: #{
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ScalingType">> => list(any())
+%% }
+-type integer_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_execution_request() :: #{
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineExecutionArn">> := string(),
+%%   <<"PipelineExecutionDescription">> => string(),
+%%   <<"PipelineExecutionDisplayName">> => string()
+%% }
+-type update_pipeline_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% throughput_config_update() :: #{
+%%   <<"ProvisionedReadCapacityUnits">> => integer(),
+%%   <<"ProvisionedWriteCapacityUnits">> => integer(),
+%%   <<"ThroughputMode">> => list(any())
+%% }
+-type throughput_config_update() :: #{binary() => any()}.
+
+%% Example:
+%% update_app_image_config_response() :: #{
+%%   <<"AppImageConfigArn">> => string()
+%% }
+-type update_app_image_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% model_data_quality() :: #{
+%%   <<"Constraints">> => metrics_source(),
+%%   <<"Statistics">> => metrics_source()
+%% }
+-type model_data_quality() :: #{binary() => any()}.
+
+%% Example:
+%% experiment_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentArn">> => string(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"ExperimentSource">> => experiment_source(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type experiment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pipeline_definition_for_execution_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"PipelineDefinition">> => string()
+%% }
+-type describe_pipeline_definition_for_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_output() :: #{
+%%   <<"FinalActiveLearningModelArn">> => string(),
+%%   <<"OutputDatasetS3Uri">> => string()
+%% }
+-type labeling_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% model_card_export_artifacts() :: #{
+%%   <<"S3ExportArtifacts">> => string()
+%% }
+-type model_card_export_artifacts() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_explainability_job_definitions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_explainability_job_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_image_config_response() :: #{
+%%   <<"AppImageConfigArn">> => string()
+%% }
+-type create_app_image_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% edge_deployment_plan_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"EdgeDeploymentFailed">> => integer(),
+%%   <<"EdgeDeploymentPending">> => integer(),
+%%   <<"EdgeDeploymentPlanArn">> => string(),
+%%   <<"EdgeDeploymentPlanName">> => string(),
+%%   <<"EdgeDeploymentSuccess">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type edge_deployment_plan_summary() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_resolved_attributes() :: #{
+%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
+%%   <<"AutoMLProblemTypeResolvedAttributes">> => list(),
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria()
+%% }
+-type auto_ml_resolved_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% model_variant_config() :: #{
+%%   <<"InfrastructureConfig">> => model_infrastructure_config(),
+%%   <<"ModelName">> => string(),
+%%   <<"VariantName">> => string()
+%% }
+-type model_variant_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_output() :: #{
+%%   <<"ModelArn">> => string()
+%% }
+-type create_model_output() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_source() :: #{
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => string()
+%% }
+-type trial_component_source() :: #{binary() => any()}.
+
+%% Example:
+%% environment_parameter_ranges() :: #{
+%%   <<"CategoricalParameterRanges">> => list(categorical_parameter()())
+%% }
+-type environment_parameter_ranges() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineSummaries">> => list(pipeline_summary()())
+%% }
+-type list_pipelines_response() :: #{binary() => any()}.
+
+%% Example:
+%% model_card_security_config() :: #{
+%%   <<"KmsKeyId">> => string()
+%% }
+-type model_card_security_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_workforces_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Workforces">> => list(workforce()())
+%% }
+-type list_workforces_response() :: #{binary() => any()}.
+
+%% Example:
+%% capture_option() :: #{
+%%   <<"CaptureMode">> => list(any())
+%% }
+-type capture_option() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_component_output() :: #{
+%%   <<"InferenceComponentArn">> => string()
+%% }
+-type update_inference_component_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_image_config_response() :: #{
+%%   <<"AppImageConfigArn">> => string(),
+%%   <<"AppImageConfigName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
+%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type describe_app_image_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_request() :: #{
+%%   <<"AppName">> := string(),
+%%   <<"AppType">> := list(any()),
+%%   <<"DomainId">> := string(),
+%%   <<"ResourceSpec">> => resource_spec(),
+%%   <<"SpaceName">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UserProfileName">> => string()
+%% }
+-type create_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_alert_actions() :: #{
+%%   <<"ModelDashboardIndicator">> => model_dashboard_indicator_action()
+%% }
+-type monitoring_alert_actions() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_response() :: #{
+%%   <<"PipelineArn">> => string()
+%% }
+-type update_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% import_hub_content_response() :: #{
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string()
+%% }
+-type import_hub_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% ui_template() :: #{
+%%   <<"Content">> => string()
+%% }
+-type ui_template() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_nodes_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"InstanceGroupNameContains">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_cluster_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% git_config_for_update() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type git_config_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% create_image_response() :: #{
+%%   <<"ImageArn">> => string()
+%% }
+-type create_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_association_request() :: #{
+%%   <<"AssociationType">> => list(any()),
+%%   <<"DestinationArn">> := string(),
+%%   <<"SourceArn">> := string()
+%% }
+-type add_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_step_metadata() :: #{
+%%   <<"AutoMLJob">> => auto_ml_job_step_metadata(),
+%%   <<"Callback">> => callback_step_metadata(),
+%%   <<"ClarifyCheck">> => clarify_check_step_metadata(),
+%%   <<"Condition">> => condition_step_metadata(),
+%%   <<"EMR">> => emr_step_metadata(),
+%%   <<"Fail">> => fail_step_metadata(),
+%%   <<"Lambda">> => lambda_step_metadata(),
+%%   <<"Model">> => model_step_metadata(),
+%%   <<"ProcessingJob">> => processing_job_step_metadata(),
+%%   <<"QualityCheck">> => quality_check_step_metadata(),
+%%   <<"RegisterModel">> => register_model_step_metadata(),
+%%   <<"TrainingJob">> => training_job_step_metadata(),
+%%   <<"TransformJob">> => transform_job_step_metadata(),
+%%   <<"TuningJob">> => tuning_job_step_meta_data()
+%% }
+-type pipeline_execution_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% bias() :: #{
+%%   <<"PostTrainingReport">> => metrics_source(),
+%%   <<"PreTrainingReport">> => metrics_source(),
+%%   <<"Report">> => metrics_source()
+%% }
+-type bias() :: #{binary() => any()}.
+
+%% Example:
+%% drift_check_model_data_quality() :: #{
+%%   <<"Constraints">> => metrics_source(),
+%%   <<"Statistics">> => metrics_source()
+%% }
+-type drift_check_model_data_quality() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineNamePrefix">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_pipelines_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_package_input() :: #{
+%%   <<"ModelPackageName">> := string()
+%% }
+-type describe_model_package_input() :: #{binary() => any()}.
+
+%% Example:
+%% categorical_parameter_range_specification() :: #{
+%%   <<"Values">> => list(string()())
+%% }
+-type categorical_parameter_range_specification() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hub_content_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DocumentSchemaVersion">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string(),
+%%   <<"HubContentDependencies">> => list(hub_content_dependency()()),
+%%   <<"HubContentDescription">> => string(),
+%%   <<"HubContentDisplayName">> => string(),
+%%   <<"HubContentDocument">> => string(),
+%%   <<"HubContentMarkdown">> => string(),
+%%   <<"HubContentName">> => string(),
+%%   <<"HubContentSearchKeywords">> => list(string()()),
+%%   <<"HubContentStatus">> => list(any()),
+%%   <<"HubContentType">> => list(any()),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"HubName">> => string()
+%% }
+-type describe_hub_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% processing_resources() :: #{
+%%   <<"ClusterConfig">> => processing_cluster_config()
+%% }
+-type processing_resources() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_recommendations_job_request() :: #{
+%%   <<"JobName">> := string()
+%% }
+-type describe_inference_recommendations_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% metadata_properties() :: #{
+%%   <<"CommitId">> => string(),
+%%   <<"GeneratedBy">> => string(),
+%%   <<"ProjectId">> => string(),
+%%   <<"Repository">> => string()
+%% }
+-type metadata_properties() :: #{binary() => any()}.
+
+%% Example:
+%% s3_storage_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ResolvedOutputS3Uri">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type s3_storage_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_human_task_ui_request() :: #{
+%%   <<"HumanTaskUiName">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UiTemplate">> := ui_template()
+%% }
+-type create_human_task_ui_request() :: #{binary() => any()}.
+
+%% Example:
+%% studio_lifecycle_config_details() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"StudioLifecycleConfigAppType">> => list(any()),
+%%   <<"StudioLifecycleConfigArn">> => string(),
+%%   <<"StudioLifecycleConfigName">> => string()
+%% }
+-type studio_lifecycle_config_details() :: #{binary() => any()}.
+
+%% Example:
+%% search_request() :: #{
+%%   <<"CrossAccountFilterOption">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Resource">> := list(any()),
+%%   <<"SearchExpression">> => search_expression(),
+%%   <<"SortBy">> => string(),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"VisibilityConditions">> => list(visibility_conditions()())
+%% }
+-type search_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterName">> => string(),
+%%   <<"ClusterStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"InstanceGroups">> => list(cluster_instance_group_details()()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type describe_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_action_request() :: #{
+%%   <<"ActionName">> := string()
+%% }
+-type delete_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_package_group_output() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ModelPackageGroupArn">> => string(),
+%%   <<"ModelPackageGroupDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageGroupStatus">> => list(any())
+%% }
+-type describe_model_package_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_processing_job_request() :: #{
+%%   <<"ProcessingJobName">> := string()
+%% }
+-type describe_processing_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% blue_green_update_policy() :: #{
+%%   <<"MaximumExecutionTimeoutInSeconds">> => integer(),
+%%   <<"TerminationWaitInSeconds">> => integer(),
+%%   <<"TrafficRoutingConfiguration">> => traffic_routing_config()
+%% }
+-type blue_green_update_policy() :: #{binary() => any()}.
+
+%% Example:
+%% create_studio_lifecycle_config_request() :: #{
+%%   <<"StudioLifecycleConfigAppType">> := list(any()),
+%%   <<"StudioLifecycleConfigContent">> := string(),
+%%   <<"StudioLifecycleConfigName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_studio_lifecycle_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% source_algorithm_specification() :: #{
+%%   <<"SourceAlgorithms">> => list(source_algorithm()())
+%% }
+-type source_algorithm_specification() :: #{binary() => any()}.
+
+%% Example:
+%% network_config() :: #{
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type network_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flow_definition_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FlowDefinitionArn">> => string(),
+%%   <<"FlowDefinitionName">> => string(),
+%%   <<"FlowDefinitionStatus">> => list(any()),
+%%   <<"HumanLoopActivationConfig">> => human_loop_activation_config(),
+%%   <<"HumanLoopConfig">> => human_loop_config(),
+%%   <<"HumanLoopRequestSource">> => human_loop_request_source(),
+%%   <<"OutputConfig">> => flow_definition_output_config(),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_flow_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_studio_lifecycle_config_request() :: #{
+%%   <<"StudioLifecycleConfigName">> := string()
+%% }
+-type delete_studio_lifecycle_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_feature_group_request() :: #{
+%%   <<"FeatureGroupName">> := string()
+%% }
+-type delete_feature_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_software_request() :: #{
+%%   <<"ClusterName">> := string()
+%% }
+-type update_cluster_software_request() :: #{binary() => any()}.
+
+%% Example:
+%% online_store_config_update() :: #{
+%%   <<"TtlDuration">> => ttl_duration()
+%% }
+-type online_store_config_update() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_definition_s3_location() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"ObjectKey">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type pipeline_definition_s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% phase() :: #{
+%%   <<"DurationInSeconds">> => integer(),
+%%   <<"InitialNumberOfUsers">> => integer(),
+%%   <<"SpawnRate">> => integer()
+%% }
+-type phase() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_experiment_response() :: #{
+%%   <<"InferenceExperimentArn">> => string()
+%% }
+-type create_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_input() :: #{
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectName">> := string(),
+%%   <<"ServiceCatalogProvisioningUpdateDetails">> => service_catalog_provisioning_update_details(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type update_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% additional_s3_data_source() :: #{
+%%   <<"CompressionType">> => list(any()),
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type additional_s3_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% model_digests() :: #{
+%%   <<"ArtifactDigest">> => string()
+%% }
+-type model_digests() :: #{binary() => any()}.
+
+%% Example:
+%% get_search_suggestions_response() :: #{
+%%   <<"PropertyNameSuggestions">> => list(property_name_suggestion()())
+%% }
+-type get_search_suggestions_response() :: #{binary() => any()}.
+
+%% Example:
+%% oidc_member_definition() :: #{
+%%   <<"Groups">> => list(string()())
+%% }
+-type oidc_member_definition() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_config() :: #{
+%%   <<"GroupingAttributeNames">> => list(string()()),
+%%   <<"ItemIdentifierAttributeName">> => string(),
+%%   <<"TargetAttributeName">> => string(),
+%%   <<"TimestampAttributeName">> => string()
+%% }
+-type time_series_config() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_dataset_definition() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"ClusterRoleArn">> => string(),
+%%   <<"Database">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"OutputCompression">> => list(any()),
+%%   <<"OutputFormat">> => list(any()),
+%%   <<"OutputS3Uri">> => string(),
+%%   <<"QueryString">> => string()
+%% }
+-type redshift_dataset_definition() :: #{binary() => any()}.
+
+%% Example:
+%% project_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ProjectArn">> => string(),
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectId">> => string(),
+%%   <<"ProjectName">> => string(),
+%%   <<"ProjectStatus">> => list(any())
+%% }
+-type project_summary() :: #{binary() => any()}.
+
+%% Example:
+%% shadow_model_variant_config() :: #{
+%%   <<"SamplingPercentage">> => integer(),
+%%   <<"ShadowModelVariantName">> => string()
+%% }
+-type shadow_model_variant_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_trial_component_request() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InputArtifacts">> => map(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"OutputArtifacts">> => map(),
+%%   <<"Parameters">> => map(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => trial_component_status(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TrialComponentName">> := string()
+%% }
+-type create_trial_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_inference_experiment_request() :: #{
+%%   <<"DesiredModelVariants">> => list(model_variant_config()()),
+%%   <<"DesiredState">> => list(any()),
+%%   <<"ModelVariantActions">> := map(),
+%%   <<"Name">> := string(),
+%%   <<"Reason">> => string()
+%% }
+-type stop_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_experiments_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type list_inference_experiments_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_node_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"NodeId">> := string()
+%% }
+-type describe_cluster_node_request() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_shap_baseline_config() :: #{
+%%   <<"MimeType">> => string(),
+%%   <<"ShapBaseline">> => string(),
+%%   <<"ShapBaselineUri">> => string()
+%% }
+-type clarify_shap_baseline_config() :: #{binary() => any()}.
+
+%% Example:
+%% processing_feature_store_output() :: #{
+%%   <<"FeatureGroupName">> => string()
+%% }
+-type processing_feature_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_lineage_group_policy_response() :: #{
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type get_lineage_group_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_resource_config() :: #{
+%%   <<"AllocationStrategy">> => list(any()),
+%%   <<"InstanceConfigs">> => list(hyper_parameter_tuning_instance_config()()),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type hyper_parameter_tuning_resource_config() :: #{binary() => any()}.
+
+%% Example:
+%% annotation_consolidation_config() :: #{
+%%   <<"AnnotationConsolidationLambdaArn">> => string()
+%% }
+-type annotation_consolidation_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_studio_lifecycle_configs_request() :: #{
+%%   <<"AppTypeEquals">> => list(any()),
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"ModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_studio_lifecycle_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% kernel_gateway_app_settings() :: #{
+%%   <<"CustomImages">> => list(custom_image()()),
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"LifecycleConfigArns">> => list(string()())
+%% }
+-type kernel_gateway_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% delete_context_request() :: #{
+%%   <<"ContextName">> := string()
+%% }
+-type delete_context_request() :: #{binary() => any()}.
+
+%% Example:
+%% kernel_spec() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type kernel_spec() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_ml_job_response() :: #{
+%%   <<"AutoMLJobArn">> => string()
+%% }
+-type create_auto_ml_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% derived_information() :: #{
+%%   <<"DerivedDataInputConfig">> => string()
+%% }
+-type derived_information() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_baseline_config() :: #{
+%%   <<"BaseliningJobName">> => string(),
+%%   <<"ConstraintsResource">> => monitoring_constraints_resource(),
+%%   <<"StatisticsResource">> => monitoring_statistics_resource()
+%% }
+-type data_quality_baseline_config() :: #{binary() => any()}.
+
+%% Example:
+%% shuffle_config() :: #{
+%%   <<"Seed">> => float()
+%% }
+-type shuffle_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_response() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type create_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_instances_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotebookInstances">> => list(notebook_instance_summary()())
+%% }
+-type list_notebook_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_card_export_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelCardExportJobNameContains">> => string(),
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_model_card_export_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% model_card_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelCardArn">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardStatus">> => list(any())
+%% }
+-type model_card_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_card_export_job_response() :: #{
+%%   <<"ModelCardExportJobArn">> => string()
+%% }
+-type create_model_card_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% inference_recommendation() :: #{
+%%   <<"EndpointConfiguration">> => endpoint_output_configuration(),
+%%   <<"InvocationEndTime">> => non_neg_integer(),
+%%   <<"InvocationStartTime">> => non_neg_integer(),
+%%   <<"Metrics">> => recommendation_metrics(),
+%%   <<"ModelConfiguration">> => model_configuration(),
+%%   <<"RecommendationId">> => string()
+%% }
+-type inference_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% create_pipeline_response() :: #{
+%%   <<"PipelineArn">> => string()
+%% }
+-type create_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleName">> := string()
+%% }
+-type start_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% feature_definition() :: #{
+%%   <<"CollectionConfig">> => list(),
+%%   <<"CollectionType">> => list(any()),
+%%   <<"FeatureName">> => string(),
+%%   <<"FeatureType">> => list(any())
+%% }
+-type feature_definition() :: #{binary() => any()}.
+
+%% Example:
+%% property_name_query() :: #{
+%%   <<"PropertyNameHint">> => string()
+%% }
+-type property_name_query() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_component_input() :: #{
+%%   <<"InferenceComponentName">> := string()
+%% }
+-type describe_inference_component_input() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_status() :: #{
+%%   <<"Message">> => string(),
+%%   <<"PrimaryStatus">> => list(any())
+%% }
+-type trial_component_status() :: #{binary() => any()}.
+
+%% Example:
+%% update_app_image_config_request() :: #{
+%%   <<"AppImageConfigName">> := string(),
+%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
+%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config()
+%% }
+-type update_app_image_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% training_image_config() :: #{
+%%   <<"TrainingRepositoryAccessMode">> => list(any()),
+%%   <<"TrainingRepositoryAuthConfig">> => training_repository_auth_config()
+%% }
+-type training_image_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_stage_devices_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"ExcludeDevicesDeployedInOtherStage">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StageName">> := string()
+%% }
+-type list_stage_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% lineage_group_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"LineageGroupName">> => string()
+%% }
+-type lineage_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_experiment_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type describe_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% experiment_source() :: #{
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => string()
+%% }
+-type experiment_source() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_version_response() :: #{
+%%   <<"ImageVersionArn">> => string()
+%% }
+-type update_image_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_hub_contents_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MaxSchemaVersion">> => string(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_hub_contents_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_data_capture_config() :: #{
+%%   <<"DestinationS3Uri">> => string(),
+%%   <<"GenerateInferenceId">> => boolean(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type batch_data_capture_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_schedules_response() :: #{
+%%   <<"MonitoringScheduleSummaries">> => list(monitoring_schedule_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitoring_schedules_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_algorithm_input() :: #{
+%%   <<"AlgorithmName">> := string()
+%% }
+-type delete_algorithm_input() :: #{binary() => any()}.
+
+%% Example:
+%% hub_content_info() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DocumentSchemaVersion">> => string(),
+%%   <<"HubContentArn">> => string(),
+%%   <<"HubContentDescription">> => string(),
+%%   <<"HubContentDisplayName">> => string(),
+%%   <<"HubContentName">> => string(),
+%%   <<"HubContentSearchKeywords">> => list(string()()),
+%%   <<"HubContentStatus">> => list(any()),
+%%   <<"HubContentType">> => list(any()),
+%%   <<"HubContentVersion">> => string()
+%% }
+-type hub_content_info() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_metadata_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchExpression">> => model_metadata_search_expression()
+%% }
+-type list_model_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_security_config() :: #{
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type auto_ml_security_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_metadata_summary() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"Framework">> => string(),
+%%   <<"FrameworkVersion">> => string(),
+%%   <<"Model">> => string(),
+%%   <<"Task">> => string()
+%% }
+-type model_metadata_summary() :: #{binary() => any()}.
+
+%% Example:
+%% throughput_config() :: #{
+%%   <<"ProvisionedReadCapacityUnits">> => integer(),
+%%   <<"ProvisionedWriteCapacityUnits">> => integer(),
+%%   <<"ThroughputMode">> => list(any())
+%% }
+-type throughput_config() :: #{binary() => any()}.
+
+%% Example:
+%% source_ip_config() :: #{
+%%   <<"Cidrs">> => list(string()())
+%% }
+-type source_ip_config() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_summary() :: #{
+%%   <<"PipelineExecutionArn">> => string(),
+%%   <<"PipelineExecutionDescription">> => string(),
+%%   <<"PipelineExecutionDisplayName">> => string(),
+%%   <<"PipelineExecutionFailureReason">> => string(),
+%%   <<"PipelineExecutionStatus">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type pipeline_execution_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_transform_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_transform_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% candidate_generation_config() :: #{
+%%   <<"AlgorithmsConfig">> => list(auto_ml_algorithm_config()())
+%% }
+-type candidate_generation_config() :: #{binary() => any()}.
+
+%% Example:
+%% alarm() :: #{
+%%   <<"AlarmName">> => string()
+%% }
+-type alarm() :: #{binary() => any()}.
+
+%% Example:
+%% algorithm_validation_specification() :: #{
+%%   <<"ValidationProfiles">> => list(algorithm_validation_profile()()),
+%%   <<"ValidationRole">> => string()
+%% }
+-type algorithm_validation_specification() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_container_definition() :: #{
+%%   <<"Environment">> => map(),
+%%   <<"Image">> => string(),
+%%   <<"ModelDataUrl">> => string()
+%% }
+-type auto_ml_container_definition() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_scaling_policy_configuration() :: #{
+%%   <<"MetricSpecification">> => list(),
+%%   <<"TargetValue">> => float()
+%% }
+-type target_tracking_scaling_policy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_response() :: #{
+%%   <<"DomainArn">> => string()
+%% }
+-type update_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% stop_inference_recommendations_job_request() :: #{
+%%   <<"JobName">> := string()
+%% }
+-type stop_inference_recommendations_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_action_response() :: #{
+%%   <<"ActionArn">> => string(),
+%%   <<"ActionName">> => string(),
+%%   <<"ActionType">> => string(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> => action_source(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_models_output() :: #{
+%%   <<"Models">> => list(model_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_models_output() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_policy_objective() :: #{
+%%   <<"MaxInvocationsPerMinute">> => integer(),
+%%   <<"MinInvocationsPerMinute">> => integer()
+%% }
+-type scaling_policy_objective() :: #{binary() => any()}.
+
+%% Example:
+%% model_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string()
+%% }
+-type model_summary() :: #{binary() => any()}.
+
+%% Example:
+%% training_repository_auth_config() :: #{
+%%   <<"TrainingRepositoryCredentialsProviderArn">> => string()
+%% }
+-type training_repository_auth_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_card_versions_response() :: #{
+%%   <<"ModelCardVersionSummaryList">> => list(model_card_version_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_card_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InputArtifacts">> => map(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Metrics">> => list(trial_component_metric_summary()()),
+%%   <<"OutputArtifacts">> => map(),
+%%   <<"Parameters">> => map(),
+%%   <<"Parents">> => list(parent()()),
+%%   <<"RunName">> => string(),
+%%   <<"Source">> => trial_component_source(),
+%%   <<"SourceDetail">> => trial_component_source_detail(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => trial_component_status(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TrialComponentArn">> => string(),
+%%   <<"TrialComponentName">> => string()
+%% }
+-type trial_component() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_config() :: #{
+%%   <<"AutoRollbackConfiguration">> => auto_rollback_config(),
+%%   <<"BlueGreenUpdatePolicy">> => blue_green_update_policy(),
+%%   <<"RollingUpdatePolicy">> => rolling_update_policy()
+%% }
+-type deployment_config() :: #{binary() => any()}.
+
+%% Example:
+%% processing_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExitMessage">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ProcessingEndTime">> => non_neg_integer(),
+%%   <<"ProcessingJobArn">> => string(),
+%%   <<"ProcessingJobName">> => string(),
+%%   <<"ProcessingJobStatus">> => list(any())
+%% }
+-type processing_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% kendra_settings() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type kendra_settings() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_quality_job_definition_response() :: #{
+%%   <<"JobDefinitionArn">> => string()
+%% }
+-type create_data_quality_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_data_attributes() :: #{
+%%   <<"ContentClassifiers">> => list(list(any())())
+%% }
+-type labeling_job_data_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% update_trial_request() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"TrialName">> := string()
+%% }
+-type update_trial_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_metadata_response() :: #{
+%%   <<"ModelMetadataSummaries">> => list(model_metadata_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% inference_recommendations_job() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobDescription">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelPackageVersionArn">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SamplePayloadUrl">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type inference_recommendations_job() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_policy_metric() :: #{
+%%   <<"InvocationsPerInstance">> => integer(),
+%%   <<"ModelLatency">> => integer()
+%% }
+-type scaling_policy_metric() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_image_config_request() :: #{
+%%   <<"AppImageConfigName">> := string()
+%% }
+-type describe_app_image_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_edge_deployment_stage_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"StageName">> := string()
+%% }
+-type delete_edge_deployment_stage_request() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineExecutionArn">> => string(),
+%%   <<"PipelineExecutionDescription">> => string(),
+%%   <<"PipelineExecutionDisplayName">> => string(),
+%%   <<"PipelineExecutionStatus">> => list(any()),
+%%   <<"PipelineExperimentConfig">> => pipeline_experiment_config(),
+%%   <<"PipelineParameters">> => list(parameter()()),
+%%   <<"SelectiveExecutionConfig">> => selective_execution_config()
+%% }
+-type pipeline_execution() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_alert_summary() :: #{
+%%   <<"Actions">> => monitoring_alert_actions(),
+%%   <<"AlertStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatapointsToAlert">> => integer(),
+%%   <<"EvaluationPeriod">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MonitoringAlertName">> => string()
+%% }
+-type monitoring_alert_summary() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastRunTime">> => non_neg_integer(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineDescription">> => string(),
+%%   <<"PipelineDisplayName">> => string(),
+%%   <<"PipelineName">> => string(),
+%%   <<"PipelineStatus">> => list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type pipeline() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_recommendations_job_steps_request() :: #{
+%%   <<"JobName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StepType">> => list(any())
+%% }
+-type list_inference_recommendations_job_steps_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type delete_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_ranges() :: #{
+%%   <<"AutoParameters">> => list(auto_parameter()()),
+%%   <<"CategoricalParameterRanges">> => list(categorical_parameter_range()()),
+%%   <<"ContinuousParameterRanges">> => list(continuous_parameter_range()()),
+%%   <<"IntegerParameterRanges">> => list(integer_parameter_range()())
+%% }
+-type parameter_ranges() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_quality_job_definitions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_quality_job_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_recommendations_jobs_response() :: #{
+%%   <<"InferenceRecommendationsJobs">> => list(inference_recommendations_job()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_recommendations_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_pattern() :: #{
+%%   <<"Phases">> => list(phase()()),
+%%   <<"Stairs">> => stairs(),
+%%   <<"TrafficType">> => list(any())
+%% }
+-type traffic_pattern() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_package_output() :: #{
+%%   <<"ModelPackageArn">> => string()
+%% }
+-type update_model_package_output() :: #{binary() => any()}.
+
+%% Example:
+%% human_task_config() :: #{
+%%   <<"AnnotationConsolidationConfig">> => annotation_consolidation_config(),
+%%   <<"MaxConcurrentTaskCount">> => integer(),
+%%   <<"NumberOfHumanWorkersPerDataObject">> => integer(),
+%%   <<"PreHumanTaskLambdaArn">> => string(),
+%%   <<"PublicWorkforceTaskPrice">> => public_workforce_task_price(),
+%%   <<"TaskAvailabilityLifetimeInSeconds">> => integer(),
+%%   <<"TaskDescription">> => string(),
+%%   <<"TaskKeywords">> => list(string()()),
+%%   <<"TaskTimeLimitInSeconds">> => integer(),
+%%   <<"TaskTitle">> => string(),
+%%   <<"UiConfig">> => ui_config(),
+%%   <<"WorkteamArn">> => string()
+%% }
+-type human_task_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_quality_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type delete_data_quality_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_candidates_for_auto_ml_job_request() :: #{
+%%   <<"AutoMLJobName">> := string(),
+%%   <<"CandidateNameEquals">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_candidates_for_auto_ml_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_instance_output() :: #{
+
+%% }
+-type update_notebook_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_execution_steps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineExecutionSteps">> => list(pipeline_execution_step()())
+%% }
+-type list_pipeline_execution_steps_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_input() :: #{
+%%   <<"EndpointName">> := string()
+%% }
+-type describe_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trial_response() :: #{
+%%   <<"TrialArn">> => string()
+%% }
+-type delete_trial_response() :: #{binary() => any()}.
+
+%% Example:
+%% model_variant_config_summary() :: #{
+%%   <<"InfrastructureConfig">> => model_infrastructure_config(),
+%%   <<"ModelName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VariantName">> => string()
+%% }
+-type model_variant_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_input() :: #{
+%%   <<"DeploymentConfig">> => deployment_config(),
+%%   <<"EndpointConfigName">> := string(),
+%%   <<"EndpointName">> := string(),
+%%   <<"ExcludeRetainedVariantProperties">> => list(variant_property()()),
+%%   <<"RetainAllVariantProperties">> => boolean(),
+%%   <<"RetainDeploymentConfig">> => boolean()
+%% }
+-type update_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_space_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"SpaceName">> := string()
+%% }
+-type describe_space_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_experiment_response() :: #{
+%%   <<"ExperimentArn">> => string()
+%% }
+-type create_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_config_input() :: #{
+%%   <<"EndpointConfigName">> := string()
+%% }
+-type describe_endpoint_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% flow_definition_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FlowDefinitionArn">> => string(),
+%%   <<"FlowDefinitionName">> => string(),
+%%   <<"FlowDefinitionStatus">> => list(any())
+%% }
+-type flow_definition_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_code_repository_input() :: #{
+%%   <<"CodeRepositoryName">> := string(),
+%%   <<"GitConfig">> => git_config_for_update()
+%% }
+-type update_code_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_range() :: #{
+%%   <<"CategoricalParameterRangeSpecification">> => categorical_parameter_range_specification(),
+%%   <<"ContinuousParameterRangeSpecification">> => continuous_parameter_range_specification(),
+%%   <<"IntegerParameterRangeSpecification">> => integer_parameter_range_specification()
+%% }
+-type parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% custom_image() :: #{
+%%   <<"AppImageConfigName">> => string(),
+%%   <<"ImageName">> => string(),
+%%   <<"ImageVersionNumber">> => integer()
+%% }
+-type custom_image() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_instance_lifecycle_config_output() :: #{
+
+%% }
+-type update_notebook_instance_lifecycle_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_job_definitions_response() :: #{
+%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_quality_job_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% explainer_config() :: #{
+%%   <<"ClarifyExplainerConfig">> => clarify_explainer_config()
+%% }
+-type explainer_config() :: #{binary() => any()}.
+
+%% Example:
+%% custom_posix_user_config() :: #{
+%%   <<"Gid">> => float(),
+%%   <<"Uid">> => float()
+%% }
+-type custom_posix_user_config() :: #{binary() => any()}.
+
+%% Example:
+%% training_specification() :: #{
+%%   <<"AdditionalS3DataSource">> => additional_s3_data_source(),
+%%   <<"MetricDefinitions">> => list(metric_definition()()),
+%%   <<"SupportedHyperParameters">> => list(hyper_parameter_specification()()),
+%%   <<"SupportedTrainingInstanceTypes">> => list(list(any())()),
+%%   <<"SupportedTuningJobObjectiveMetrics">> => list(hyper_parameter_tuning_job_objective()()),
+%%   <<"SupportsDistributedTraining">> => boolean(),
+%%   <<"TrainingChannels">> => list(channel_specification()()),
+%%   <<"TrainingImage">> => string(),
+%%   <<"TrainingImageDigest">> => string()
+%% }
+-type training_specification() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_profile_response() :: #{
+%%   <<"UserProfileArn">> => string()
+%% }
+-type update_user_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lineage_group_request() :: #{
+%%   <<"LineageGroupName">> := string()
+%% }
+-type describe_lineage_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_warm_start_config() :: #{
+%%   <<"ParentHyperParameterTuningJobs">> => list(parent_hyper_parameter_tuning_job()()),
+%%   <<"WarmStartType">> => list(any())
+%% }
+-type hyper_parameter_tuning_job_warm_start_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_studio_lifecycle_config_request() :: #{
+%%   <<"StudioLifecycleConfigName">> := string()
+%% }
+-type describe_studio_lifecycle_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% processing_s3_input() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"S3CompressionType">> => list(any()),
+%%   <<"S3DataDistributionType">> => list(any()),
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3InputMode">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type processing_s3_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_trial_component_response() :: #{
+%%   <<"TrialComponentArn">> => string()
+%% }
+-type create_trial_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_input() :: #{
+%%   <<"DeploymentConfig">> => deployment_config(),
+%%   <<"EndpointConfigName">> := string(),
+%%   <<"EndpointName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_step() :: #{
+%%   <<"AttemptCount">> => integer(),
+%%   <<"CacheHitResult">> => cache_hit_result(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Metadata">> => pipeline_execution_step_metadata(),
+%%   <<"SelectiveExecutionResult">> => selective_execution_result(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"StepDescription">> => string(),
+%%   <<"StepDisplayName">> => string(),
+%%   <<"StepName">> => string(),
+%%   <<"StepStatus">> => list(any())
+%% }
+-type pipeline_execution_step() :: #{binary() => any()}.
+
+%% Example:
+%% feature_metadata() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FeatureGroupArn">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"FeatureName">> => string(),
+%%   <<"FeatureType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Parameters">> => list(feature_parameter()())
+%% }
+-type feature_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_node_response() :: #{
+%%   <<"NodeDetails">> => cluster_node_details()
+%% }
+-type describe_cluster_node_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workforce_request() :: #{
+%%   <<"WorkforceName">> := string()
+%% }
+-type delete_workforce_request() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_output_configuration() :: #{
+%%   <<"EndpointName">> => string(),
+%%   <<"InitialInstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"VariantName">> => string()
+%% }
+-type endpoint_output_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_output() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type add_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_objective() :: #{
+%%   <<"MetricName">> => list(any())
+%% }
+-type auto_ml_job_objective() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_model_package_input() :: #{
+%%   <<"ModelPackageArnList">> := list(string()())
+%% }
+-type batch_describe_model_package_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_trial_component_response() :: #{
+%%   <<"TrialComponentArn">> => string()
+%% }
+-type update_trial_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_output() :: #{
+%%   <<"ProjectArn">> => string(),
+%%   <<"ProjectId">> => string()
+%% }
+-type create_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_hub_contents_response() :: #{
+%%   <<"HubContentSummaries">> => list(hub_content_info()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hub_contents_response() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_data_source() :: #{
+%%   <<"S3DataSource">> => labeling_job_s3_data_source(),
+%%   <<"SnsDataSource">> => labeling_job_sns_data_source()
+%% }
+-type labeling_job_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% list_trial_components_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrialComponentSummaries">> => list(trial_component_summary()())
+%% }
+-type list_trial_components_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sagemaker_servicecatalog_portfolio_status_output() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type get_sagemaker_servicecatalog_portfolio_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_components_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointNameEquals">> => string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any()),
+%%   <<"VariantNameEquals">> => string()
+%% }
+-type list_inference_components_input() :: #{binary() => any()}.
+
+%% Example:
+%% capture_content_type_header() :: #{
+%%   <<"CsvContentTypes">> => list(string()()),
+%%   <<"JsonContentTypes">> => list(string()())
+%% }
+-type capture_content_type_header() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_config_input() :: #{
+%%   <<"AsyncInferenceConfig">> => async_inference_config(),
+%%   <<"DataCaptureConfig">> => data_capture_config(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"EndpointConfigName">> := string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"ExplainerConfig">> => explainer_config(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ProductionVariants">> := list(production_variant()()),
+%%   <<"ShadowProductionVariants">> => list(production_variant()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type create_endpoint_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% kernel_gateway_image_config() :: #{
+%%   <<"FileSystemConfig">> => file_system_config(),
+%%   <<"KernelSpecs">> => list(kernel_spec()())
+%% }
+-type kernel_gateway_image_config() :: #{binary() => any()}.
+
+%% Example:
+%% emr_step_metadata() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"LogFilePath">> => string(),
+%%   <<"StepId">> => string(),
+%%   <<"StepName">> => string()
+%% }
+-type emr_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inference_experiment_response() :: #{
+%%   <<"InferenceExperimentArn">> => string()
+%% }
+-type delete_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_config() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"UserPool">> => string()
+%% }
+-type cognito_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_group() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ModelPackageGroupArn">> => string(),
+%%   <<"ModelPackageGroupDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageGroupStatus">> => list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type model_package_group() :: #{binary() => any()}.
+
+%% Example:
+%% create_artifact_response() :: #{
+%%   <<"ArtifactArn">> => string()
+%% }
+-type create_artifact_response() :: #{binary() => any()}.
+
+%% Example:
+%% edge_model_stat() :: #{
+%%   <<"ActiveDeviceCount">> => float(),
+%%   <<"ConnectedDeviceCount">> => float(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelVersion">> => string(),
+%%   <<"OfflineDeviceCount">> => float(),
+%%   <<"SamplingDeviceCount">> => float()
+%% }
+-type edge_model_stat() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_stopping_conditions() :: #{
+%%   <<"MaxHumanLabeledObjectCount">> => integer(),
+%%   <<"MaxPercentageOfInputDatasetLabeled">> => integer()
+%% }
+-type labeling_job_stopping_conditions() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_statistics_resource() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type monitoring_statistics_resource() :: #{binary() => any()}.
+
+%% Example:
+%% input_config() :: #{
+%%   <<"DataInputConfig">> => string(),
+%%   <<"Framework">> => list(any()),
+%%   <<"FrameworkVersion">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type input_config() :: #{binary() => any()}.
+
+%% Example:
+%% space_settings() :: #{
+%%   <<"AppType">> => list(any()),
+%%   <<"CodeEditorAppSettings">> => space_code_editor_app_settings(),
+%%   <<"CustomFileSystems">> => list(list()()),
+%%   <<"JupyterLabAppSettings">> => space_jupyter_lab_app_settings(),
+%%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
+%%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
+%%   <<"SpaceStorageSettings">> => space_storage_settings()
+%% }
+-type space_settings() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_job_request() :: #{
+%%   <<"TrainingJobName">> := string()
+%% }
+-type describe_training_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_component_runtime_config_output() :: #{
+%%   <<"InferenceComponentArn">> => string()
+%% }
+-type update_inference_component_runtime_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_labeling_job_response() :: #{
+%%   <<"LabelingJobArn">> => string()
+%% }
+-type create_labeling_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_strategy_config() :: #{
+%%   <<"HyperbandStrategyConfig">> => hyperband_strategy_config()
+%% }
+-type hyper_parameter_tuning_job_strategy_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_edge_packaging_job_response() :: #{
+%%   <<"CompilationJobName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EdgePackagingJobArn">> => string(),
+%%   <<"EdgePackagingJobName">> => string(),
+%%   <<"EdgePackagingJobStatus">> => list(any()),
+%%   <<"EdgePackagingJobStatusMessage">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelArtifact">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelSignature">> => string(),
+%%   <<"ModelVersion">> => string(),
+%%   <<"OutputConfig">> => edge_output_config(),
+%%   <<"PresetDeploymentOutput">> => edge_preset_deployment_output(),
+%%   <<"ResourceKey">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_edge_packaging_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_catalogs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceCatalogs">> => list(resource_catalog()())
+%% }
+-type list_resource_catalogs_response() :: #{binary() => any()}.
+
+%% Example:
+%% metric_definition() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Regex">> => string()
+%% }
+-type metric_definition() :: #{binary() => any()}.
+
+%% Example:
+%% list_edge_packaging_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelNameContains">> => string(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_edge_packaging_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_devices_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"DeviceNames">> := list(string()())
+%% }
+-type deregister_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% training_job_definition() :: #{
+%%   <<"HyperParameters">> => map(),
+%%   <<"InputDataConfig">> => list(channel()()),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"ResourceConfig">> => resource_config(),
+%%   <<"StoppingCondition">> => stopping_condition(),
+%%   <<"TrainingInputMode">> => list(any())
+%% }
+-type training_job_definition() :: #{binary() => any()}.
+
+%% Example:
+%% trial_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"TrialArn">> => string(),
+%%   <<"TrialName">> => string(),
+%%   <<"TrialSource">> => trial_source()
+%% }
+-type trial_summary() :: #{binary() => any()}.
+
+%% Example:
+%% workforce_vpc_config_response() :: #{
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"Subnets">> => list(string()()),
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type workforce_vpc_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% jupyter_lab_app_image_config() :: #{
+%%   <<"ContainerConfig">> => container_config(),
+%%   <<"FileSystemConfig">> => file_system_config()
+%% }
+-type jupyter_lab_app_image_config() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_network_config() :: #{
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type monitoring_network_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_feature_metadata_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FeatureGroupArn">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"FeatureName">> => string(),
+%%   <<"FeatureType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Parameters">> => list(feature_parameter()())
+%% }
+-type describe_feature_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% model_quality_app_specification() :: #{
+%%   <<"ContainerArguments">> => list(string()()),
+%%   <<"ContainerEntrypoint">> => list(string()()),
+%%   <<"Environment">> => map(),
+%%   <<"ImageUri">> => string(),
+%%   <<"PostAnalyticsProcessorSourceUri">> => string(),
+%%   <<"ProblemType">> => list(any()),
+%%   <<"RecordPreprocessorSourceUri">> => string()
+%% }
+-type model_quality_app_specification() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any()),
+%%   <<"WarmPoolStatusEquals">> => list(any())
+%% }
+-type list_training_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_startup_parameters() :: #{
+%%   <<"ContainerStartupHealthCheckTimeoutInSeconds">> => integer(),
+%%   <<"ModelDataDownloadTimeoutInSeconds">> => integer()
+%% }
+-type inference_component_startup_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% integer_parameter_range_specification() :: #{
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string()
+%% }
+-type integer_parameter_range_specification() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_data_source() :: #{
+%%   <<"S3DataSource">> => auto_ml_s3_data_source()
+%% }
+-type auto_ml_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_partial_failure_reason() :: #{
+%%   <<"PartialFailureMessage">> => string()
+%% }
+-type auto_ml_partial_failure_reason() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_response() :: #{
+%%   <<"AppArn">> => string(),
+%%   <<"AppName">> => string(),
+%%   <<"AppType">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastHealthCheckTimestamp">> => non_neg_integer(),
+%%   <<"LastUserActivityTimestamp">> => non_neg_integer(),
+%%   <<"ResourceSpec">> => resource_spec(),
+%%   <<"SpaceName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserProfileName">> => string()
+%% }
+-type describe_app_response() :: #{binary() => any()}.
+
+%% Example:
+%% algorithm_status_item() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type algorithm_status_item() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type add_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_device_fleet_request() :: #{
+%%   <<"DeviceFleetName">> := string()
+%% }
+-type describe_device_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_sagemaker_servicecatalog_portfolio_output() :: #{
+
+%% }
+-type disable_sagemaker_servicecatalog_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% profiler_config() :: #{
+%%   <<"DisableProfiler">> => boolean(),
+%%   <<"ProfilingIntervalInMilliseconds">> => float(),
+%%   <<"ProfilingParameters">> => map(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type profiler_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_hubs_response() :: #{
+%%   <<"HubSummaries">> => list(hub_info()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hubs_response() :: #{binary() => any()}.
+
+%% Example:
+%% r_studio_server_pro_domain_settings_for_update() :: #{
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"DomainExecutionRoleArn">> => string(),
+%%   <<"RStudioConnectUrl">> => string(),
+%%   <<"RStudioPackageManagerUrl">> => string()
+%% }
+-type r_studio_server_pro_domain_settings_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_parquet_dataset_format() :: #{
+
+%% }
+-type monitoring_parquet_dataset_format() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_metadata() :: #{
+%%   <<"EndpointConfigName">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"EndpointStatus">> => list(any()),
+%%   <<"FailureReason">> => string()
+%% }
+-type endpoint_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inference_experiment_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_input() :: #{
+%%   <<"EndTimeOffset">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"ExcludeFeaturesAttribute">> => string(),
+%%   <<"FeaturesAttribute">> => string(),
+%%   <<"InferenceAttribute">> => string(),
+%%   <<"LocalPath">> => string(),
+%%   <<"ProbabilityAttribute">> => string(),
+%%   <<"ProbabilityThresholdAttribute">> => float(),
+%%   <<"S3DataDistributionType">> => list(any()),
+%%   <<"S3InputMode">> => list(any()),
+%%   <<"StartTimeOffset">> => string()
+%% }
+-type endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_explainability_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type delete_model_explainability_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_catalog_config() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"Database">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type data_catalog_config() :: #{binary() => any()}.
+
+%% Example:
+%% image_config() :: #{
+%%   <<"RepositoryAccessMode">> => list(any()),
+%%   <<"RepositoryAuthConfig">> => repository_auth_config()
+%% }
+-type image_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_alert_history_response() :: #{
+%%   <<"MonitoringAlertHistory">> => list(monitoring_alert_history_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitoring_alert_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% space_details() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OwnershipSettingsSummary">> => ownership_settings_summary(),
+%%   <<"SpaceDisplayName">> => string(),
+%%   <<"SpaceName">> => string(),
+%%   <<"SpaceSettingsSummary">> => space_settings_summary(),
+%%   <<"SpaceSharingSettingsSummary">> => space_sharing_settings_summary(),
+%%   <<"Status">> => list(any())
+%% }
+-type space_details() :: #{binary() => any()}.
+
+%% Example:
+%% describe_feature_metadata_request() :: #{
+%%   <<"FeatureGroupName">> := string(),
+%%   <<"FeatureName">> := string()
+%% }
+-type describe_feature_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_artifact_response() :: #{
+%%   <<"ArtifactArn">> => string()
+%% }
+-type delete_artifact_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_feature_group_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTimeFeatureName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FeatureDefinitions">> => list(feature_definition()()),
+%%   <<"FeatureGroupArn">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"FeatureGroupStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastUpdateStatus">> => last_update_status(),
+%%   <<"NextToken">> => string(),
+%%   <<"OfflineStoreConfig">> => offline_store_config(),
+%%   <<"OfflineStoreStatus">> => offline_store_status(),
+%%   <<"OnlineStoreConfig">> => online_store_config(),
+%%   <<"OnlineStoreTotalSizeBytes">> => float(),
+%%   <<"RecordIdentifierFeatureName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"ThroughputConfig">> => throughput_config_description()
+%% }
+-type describe_feature_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% drift_check_explainability() :: #{
+%%   <<"ConfigFile">> => file_source(),
+%%   <<"Constraints">> => metrics_source()
+%% }
+-type drift_check_explainability() :: #{binary() => any()}.
+
+%% Example:
+%% data_capture_config() :: #{
+%%   <<"CaptureContentTypeHeader">> => capture_content_type_header(),
+%%   <<"CaptureOptions">> => list(capture_option()()),
+%%   <<"DestinationS3Uri">> => string(),
+%%   <<"EnableCapture">> => boolean(),
+%%   <<"InitialSamplingPercentage">> => integer(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type data_capture_config() :: #{binary() => any()}.
+
+%% Example:
+%% import_hub_content_request() :: #{
+%%   <<"DocumentSchemaVersion">> := string(),
+%%   <<"HubContentDescription">> => string(),
+%%   <<"HubContentDisplayName">> => string(),
+%%   <<"HubContentDocument">> := string(),
+%%   <<"HubContentMarkdown">> => string(),
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentSearchKeywords">> => list(string()()),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"HubName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type import_hub_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_card_request() :: #{
+%%   <<"ModelCardName">> := string()
+%% }
+-type delete_model_card_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_cards_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_cards_request() :: #{binary() => any()}.
+
+%% Example:
+%% edge_deployment_status() :: #{
+%%   <<"EdgeDeploymentFailedInStage">> => integer(),
+%%   <<"EdgeDeploymentPendingInStage">> => integer(),
+%%   <<"EdgeDeploymentStageStartTime">> => non_neg_integer(),
+%%   <<"EdgeDeploymentStatusMessage">> => string(),
+%%   <<"EdgeDeploymentSuccessInStage">> => integer(),
+%%   <<"StageStatus">> => list(any())
+%% }
+-type edge_deployment_status() :: #{binary() => any()}.
+
+%% Example:
+%% tuning_job_completion_criteria() :: #{
+%%   <<"BestObjectiveNotImproving">> => best_objective_not_improving(),
+%%   <<"ConvergenceDetected">> => convergence_detected(),
+%%   <<"TargetObjectiveMetricValue">> => float()
+%% }
+-type tuning_job_completion_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% register_model_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type register_model_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% e_f_s_file_system_config() :: #{
+%%   <<"FileSystemId">> => string(),
+%%   <<"FileSystemPath">> => string()
+%% }
+-type e_f_s_file_system_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_scaling_configuration_recommendation_response() :: #{
+%%   <<"DynamicScalingConfiguration">> => dynamic_scaling_configuration(),
+%%   <<"EndpointName">> => string(),
+%%   <<"InferenceRecommendationsJobName">> => string(),
+%%   <<"Metric">> => scaling_policy_metric(),
+%%   <<"RecommendationId">> => string(),
+%%   <<"ScalingPolicyObjective">> => scaling_policy_objective(),
+%%   <<"TargetCpuUtilizationPerCore">> => integer()
+%% }
+-type get_scaling_configuration_recommendation_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_processing_job_request() :: #{
+%%   <<"ProcessingJobName">> := string()
+%% }
+-type stop_processing_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_trial_response() :: #{
+%%   <<"TrialArn">> => string()
+%% }
+-type create_trial_response() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_compiled_output_config() :: #{
+%%   <<"S3OutputUri">> => string()
+%% }
+-type recommendation_job_compiled_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_output() :: #{
+%%   <<"EndpointArn">> => string()
+%% }
+-type create_endpoint_output() :: #{binary() => any()}.
+
+%% Example:
+%% service_catalog_provisioning_update_details() :: #{
+%%   <<"ProvisioningArtifactId">> => string(),
+%%   <<"ProvisioningParameters">> => list(provisioning_parameter()())
+%% }
+-type service_catalog_provisioning_update_details() :: #{binary() => any()}.
+
+%% Example:
+%% repository_auth_config() :: #{
+%%   <<"RepositoryCredentialsProviderArn">> => string()
+%% }
+-type repository_auth_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_output() :: #{
+%%   <<"AsyncInferenceConfig">> => async_inference_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataCaptureConfig">> => data_capture_config_summary(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointConfigName">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"EndpointStatus">> => list(any()),
+%%   <<"ExplainerConfig">> => explainer_config(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastDeploymentConfig">> => deployment_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PendingDeploymentSummary">> => pending_deployment_summary(),
+%%   <<"ProductionVariants">> => list(production_variant_summary()()),
+%%   <<"ShadowProductionVariants">> => list(production_variant_summary()())
+%% }
+-type describe_endpoint_output() :: #{binary() => any()}.
+
+%% Example:
+%% final_auto_ml_job_objective_metric() :: #{
+%%   <<"MetricName">> => list(any()),
+%%   <<"StandardMetricName">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type final_auto_ml_job_objective_metric() :: #{binary() => any()}.
+
+%% Example:
+%% update_training_job_request() :: #{
+%%   <<"ProfilerConfig">> => profiler_config_for_update(),
+%%   <<"ProfilerRuleConfigurations">> => list(profiler_rule_configuration()()),
+%%   <<"RemoteDebugConfig">> => remote_debug_config_for_update(),
+%%   <<"ResourceConfig">> => resource_config_for_update(),
+%%   <<"TrainingJobName">> := string()
+%% }
+-type update_training_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_context_request() :: #{
+%%   <<"ContextName">> := string()
+%% }
+-type describe_context_request() :: #{binary() => any()}.
+
+%% Example:
+%% human_task_ui_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HumanTaskUiArn">> => string(),
+%%   <<"HumanTaskUiName">> => string()
+%% }
+-type human_task_ui_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_presigned_notebook_instance_url_output() :: #{
+%%   <<"AuthorizedUrl">> => string()
+%% }
+-type create_presigned_notebook_instance_url_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_software_response() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type update_cluster_software_response() :: #{binary() => any()}.
+
+%% Example:
+%% model_metrics() :: #{
+%%   <<"Bias">> => bias(),
+%%   <<"Explainability">> => explainability(),
+%%   <<"ModelDataQuality">> => model_data_quality(),
+%%   <<"ModelQuality">> => model_quality()
+%% }
+-type model_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_instance_lifecycle_configs_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotebookInstanceLifecycleConfigs">> => list(notebook_instance_lifecycle_config_summary()())
+%% }
+-type list_notebook_instance_lifecycle_configs_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_compilation_job_response() :: #{
+%%   <<"CompilationEndTime">> => non_neg_integer(),
+%%   <<"CompilationJobArn">> => string(),
+%%   <<"CompilationJobName">> => string(),
+%%   <<"CompilationJobStatus">> => list(any()),
+%%   <<"CompilationStartTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DerivedInformation">> => derived_information(),
+%%   <<"FailureReason">> => string(),
+%%   <<"InferenceImage">> => string(),
+%%   <<"InputConfig">> => input_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelArtifacts">> => model_artifacts(),
+%%   <<"ModelDigests">> => model_digests(),
+%%   <<"ModelPackageVersionArn">> => string(),
+%%   <<"OutputConfig">> => output_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => stopping_condition(),
+%%   <<"VpcConfig">> => neo_vpc_config()
+%% }
+-type describe_compilation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_hyper_parameter_tuning_job_request() :: #{
+%%   <<"HyperParameterTuningJobName">> := string()
+%% }
+-type stop_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_trial_component_response() :: #{
+%%   <<"TrialArn">> => string(),
+%%   <<"TrialComponentArn">> => string()
+%% }
+-type associate_trial_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notebook_instance_input() :: #{
+%%   <<"NotebookInstanceName">> := string()
+%% }
+-type delete_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_labeling_jobs_for_workteam_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"JobReferenceCodeContains">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"WorkteamArn">> := string()
+%% }
+-type list_labeling_jobs_for_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"Subnets">> => list(string()())
+%% }
+-type recommendation_job_vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_workforce_response() :: #{
+%%   <<"WorkforceArn">> => string()
+%% }
+-type create_workforce_response() :: #{binary() => any()}.
+
+%% Example:
+%% flow_definition_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type flow_definition_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"InstanceGroups">> := list(cluster_instance_group_specification()())
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_edge_deployment_plan_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string()
+%% }
+-type delete_edge_deployment_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_code_repositories_output() :: #{
+%%   <<"CodeRepositorySummaryList">> => list(code_repository_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_code_repositories_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_edge_deployment_stage_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"StageName">> := string()
+%% }
+-type stop_edge_deployment_stage_request() :: #{binary() => any()}.
+
+%% Example:
+%% hub_s3_storage_config() :: #{
+%%   <<"S3OutputPath">> => string()
+%% }
+-type hub_s3_storage_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_action_response() :: #{
+%%   <<"ActionArn">> => string()
+%% }
+-type create_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% oidc_config() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"JwksUri">> => string(),
+%%   <<"LogoutEndpoint">> => string(),
+%%   <<"TokenEndpoint">> => string(),
+%%   <<"UserInfoEndpoint">> => string()
+%% }
+-type oidc_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_card_request() :: #{
+%%   <<"Content">> := string(),
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardStatus">> := list(any()),
+%%   <<"SecurityConfig">> => model_card_security_config(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_model_card_request() :: #{binary() => any()}.
+
+%% Example:
+%% algorithm_specification() :: #{
+%%   <<"AlgorithmName">> => string(),
+%%   <<"ContainerArguments">> => list(string()()),
+%%   <<"ContainerEntrypoint">> => list(string()()),
+%%   <<"EnableSageMakerMetricsTimeSeries">> => boolean(),
+%%   <<"MetricDefinitions">> => list(metric_definition()()),
+%%   <<"TrainingImage">> => string(),
+%%   <<"TrainingImageConfig">> => training_image_config(),
+%%   <<"TrainingInputMode">> => list(any())
+%% }
+-type algorithm_specification() :: #{binary() => any()}.
+
+%% Example:
+%% create_image_version_request() :: #{
+%%   <<"Aliases">> => list(string()()),
+%%   <<"BaseImage">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Horovod">> => boolean(),
+%%   <<"ImageName">> := string(),
+%%   <<"JobType">> => list(any()),
+%%   <<"MLFramework">> => string(),
+%%   <<"Processor">> => list(any()),
+%%   <<"ProgrammingLang">> => string(),
+%%   <<"ReleaseNotes">> => string(),
+%%   <<"VendorGuidance">> => list(any())
+%% }
+-type create_image_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_summary() :: #{
+%%   <<"CurrentInstanceCount">> => integer(),
+%%   <<"CurrentServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"CurrentWeight">> => float(),
+%%   <<"DeployedImages">> => list(deployed_image()()),
+%%   <<"DesiredInstanceCount">> => integer(),
+%%   <<"DesiredServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"DesiredWeight">> => float(),
+%%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
+%%   <<"RoutingConfig">> => production_variant_routing_config(),
+%%   <<"VariantName">> => string(),
+%%   <<"VariantStatus">> => list(production_variant_status()())
+%% }
+-type production_variant_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_edge_packaging_job_request() :: #{
+%%   <<"EdgePackagingJobName">> := string()
+%% }
+-type describe_edge_packaging_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_alert_history_summary() :: #{
+%%   <<"AlertStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"MonitoringAlertName">> => string(),
+%%   <<"MonitoringScheduleName">> => string()
+%% }
+-type monitoring_alert_history_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_explainability_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string(),
+%%   <<"JobResources">> := monitoring_resources(),
+%%   <<"ModelExplainabilityAppSpecification">> := model_explainability_app_specification(),
+%%   <<"ModelExplainabilityBaselineConfig">> => model_explainability_baseline_config(),
+%%   <<"ModelExplainabilityJobInput">> := model_explainability_job_input(),
+%%   <<"ModelExplainabilityJobOutputConfig">> := monitoring_output_config(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_model_explainability_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_action_request() :: #{
+%%   <<"ActionName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Properties">> => map(),
+%%   <<"PropertiesToRemove">> => list(string()()),
+%%   <<"Status">> => list(any())
+%% }
+-type update_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_code_repository_output() :: #{
+%%   <<"CodeRepositoryArn">> => string()
+%% }
+-type update_code_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% image_version() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"ImageArn">> => string(),
+%%   <<"ImageVersionArn">> => string(),
+%%   <<"ImageVersionStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Version">> => integer()
+%% }
+-type image_version() :: #{binary() => any()}.
+
+%% Example:
+%% service_catalog_provisioning_details() :: #{
+%%   <<"PathId">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"ProvisioningArtifactId">> => string(),
+%%   <<"ProvisioningParameters">> => list(provisioning_parameter()())
+%% }
+-type service_catalog_provisioning_details() :: #{binary() => any()}.
+
+%% Example:
+%% iam_identity() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"PrincipalId">> => string(),
+%%   <<"SourceIdentity">> => string()
+%% }
+-type iam_identity() :: #{binary() => any()}.
+
+%% Example:
+%% describe_action_request() :: #{
+%%   <<"ActionName">> := string()
+%% }
+-type describe_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% customized_metric_specification() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"Statistic">> => list(any())
+%% }
+-type customized_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% delete_association_request() :: #{
+%%   <<"DestinationArn">> := string(),
+%%   <<"SourceArn">> := string()
+%% }
+-type delete_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_version_response() :: #{
+
+%% }
+-type delete_image_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% app_specification() :: #{
+%%   <<"ContainerArguments">> => list(string()()),
+%%   <<"ContainerEntrypoint">> => list(string()()),
+%%   <<"ImageUri">> => string()
+%% }
+-type app_specification() :: #{binary() => any()}.
+
+%% Example:
+%% edge_preset_deployment_output() :: #{
+%%   <<"Artifact">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type edge_preset_deployment_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_project_output() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ProjectArn">> => string(),
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectId">> => string(),
+%%   <<"ProjectName">> => string(),
+%%   <<"ProjectStatus">> => list(any()),
+%%   <<"ServiceCatalogProvisionedProductDetails">> => service_catalog_provisioned_product_details(),
+%%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details()
+%% }
+-type describe_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% user_profile_details() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserProfileName">> => string()
+%% }
+-type user_profile_details() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_quality_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type describe_data_quality_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% query_lineage_request() :: #{
+%%   <<"Direction">> => list(any()),
+%%   <<"Filters">> => query_filters(),
+%%   <<"IncludeEdges">> => boolean(),
+%%   <<"MaxDepth">> => integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartArns">> => list(string()())
+%% }
+-type query_lineage_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lineage_group_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"LineageGroupName">> => string()
+%% }
+-type describe_lineage_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_configs_output() :: #{
+%%   <<"EndpointConfigs">> => list(endpoint_config_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoint_configs_output() :: #{binary() => any()}.
+
+%% Example:
+%% algorithm_status_details() :: #{
+%%   <<"ImageScanStatuses">> => list(algorithm_status_item()()),
+%%   <<"ValidationStatuses">> => list(algorithm_status_item()())
+%% }
+-type algorithm_status_details() :: #{binary() => any()}.
+
+%% Example:
+%% query_lineage_response() :: #{
+%%   <<"Edges">> => list(edge()()),
+%%   <<"NextToken">> => string(),
+%%   <<"Vertices">> => list(vertex()())
+%% }
+-type query_lineage_response() :: #{binary() => any()}.
+
+%% Example:
+%% async_inference_config() :: #{
+%%   <<"ClientConfig">> => async_inference_client_config(),
+%%   <<"OutputConfig">> => async_inference_output_config()
+%% }
+-type async_inference_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_sagemaker_servicecatalog_portfolio_status_input() :: #{
+
+%% }
+-type get_sagemaker_servicecatalog_portfolio_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% throughput_config_description() :: #{
+%%   <<"ProvisionedReadCapacityUnits">> => integer(),
+%%   <<"ProvisionedWriteCapacityUnits">> => integer(),
+%%   <<"ThroughputMode">> => list(any())
+%% }
+-type throughput_config_description() :: #{binary() => any()}.
+
+%% Example:
+%% instance_metadata_service_configuration() :: #{
+%%   <<"MinimumInstanceMetadataServiceVersion">> => string()
+%% }
+-type instance_metadata_service_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_summary() :: #{
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"AutoMLJobName">> => string(),
+%%   <<"AutoMLJobSecondaryStatus">> => list(any()),
+%%   <<"AutoMLJobStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PartialFailureReasons">> => list(auto_ml_partial_failure_reason()())
+%% }
+-type auto_ml_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% member_definition() :: #{
+%%   <<"CognitoMemberDefinition">> => cognito_member_definition(),
+%%   <<"OidcMemberDefinition">> => oidc_member_definition()
+%% }
+-type member_definition() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_version_request() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"ImageName">> := string(),
+%%   <<"Version">> => integer()
+%% }
+-type delete_image_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% quality_check_step_metadata() :: #{
+%%   <<"BaselineUsedForDriftCheckConstraints">> => string(),
+%%   <<"BaselineUsedForDriftCheckStatistics">> => string(),
+%%   <<"CalculatedBaselineConstraints">> => string(),
+%%   <<"CalculatedBaselineStatistics">> => string(),
+%%   <<"CheckJobArn">> => string(),
+%%   <<"CheckType">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"RegisterNewBaseline">> => boolean(),
+%%   <<"SkipCheck">> => boolean(),
+%%   <<"ViolationReport">> => string()
+%% }
+-type quality_check_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% list_labeling_jobs_response() :: #{
+%%   <<"LabelingJobSummaryList">> => list(labeling_job_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_labeling_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_package_input() :: #{
+%%   <<"ModelPackageName">> := string()
+%% }
+-type delete_model_package_input() :: #{binary() => any()}.
+
+%% Example:
+%% model_package() :: #{
+%%   <<"AdditionalInferenceSpecifications">> => list(additional_inference_specification_definition()()),
+%%   <<"ApprovalDescription">> => string(),
+%%   <<"CertifyForMarketplace">> => boolean(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomerMetadataProperties">> => map(),
+%%   <<"Domain">> => string(),
+%%   <<"DriftCheckBaselines">> => drift_check_baselines(),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelMetrics">> => model_metrics(),
+%%   <<"ModelPackageArn">> => string(),
+%%   <<"ModelPackageDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageName">> => string(),
+%%   <<"ModelPackageStatus">> => list(any()),
+%%   <<"ModelPackageStatusDetails">> => model_package_status_details(),
+%%   <<"ModelPackageVersion">> => integer(),
+%%   <<"SamplePayloadUrl">> => string(),
+%%   <<"SkipModelValidation">> => list(any()),
+%%   <<"SourceAlgorithmSpecification">> => source_algorithm_specification(),
+%%   <<"SourceUri">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Task">> => string(),
+%%   <<"ValidationSpecification">> => model_package_validation_specification()
+%% }
+-type model_package() :: #{binary() => any()}.
+
+%% Example:
+%% processing_stopping_condition() :: #{
+%%   <<"MaxRuntimeInSeconds">> => integer()
+%% }
+-type processing_stopping_condition() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_serverless_config() :: #{
+%%   <<"MaxConcurrency">> => integer(),
+%%   <<"MemorySizeInMB">> => integer(),
+%%   <<"ProvisionedConcurrency">> => integer()
+%% }
+-type production_variant_serverless_config() :: #{binary() => any()}.
+
+%% Example:
+%% training_job_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type training_job_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% neo_vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"Subnets">> => list(string()())
+%% }
+-type neo_vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_human_task_ui_request() :: #{
+%%   <<"HumanTaskUiName">> := string()
+%% }
+-type describe_human_task_ui_request() :: #{binary() => any()}.
+
+%% Example:
+%% model_quality() :: #{
+%%   <<"Constraints">> => metrics_source(),
+%%   <<"Statistics">> => metrics_source()
+%% }
+-type model_quality() :: #{binary() => any()}.
+
+%% Example:
+%% edge_packaging_job_summary() :: #{
+%%   <<"CompilationJobName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EdgePackagingJobArn">> => string(),
+%%   <<"EdgePackagingJobName">> => string(),
+%%   <<"EdgePackagingJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelVersion">> => string()
+%% }
+-type edge_packaging_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_transform_job_request() :: #{
+%%   <<"BatchStrategy">> => list(any()),
+%%   <<"DataCaptureConfig">> => batch_data_capture_config(),
+%%   <<"DataProcessing">> => data_processing(),
+%%   <<"Environment">> => map(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"MaxConcurrentTransforms">> => integer(),
+%%   <<"MaxPayloadInMB">> => integer(),
+%%   <<"ModelClientConfig">> => model_client_config(),
+%%   <<"ModelName">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TransformInput">> := transform_input(),
+%%   <<"TransformJobName">> := string(),
+%%   <<"TransformOutput">> := transform_output(),
+%%   <<"TransformResources">> := transform_resources()
+%% }
+-type create_transform_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% transform_job() :: #{
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"BatchStrategy">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataCaptureConfig">> => batch_data_capture_config(),
+%%   <<"DataProcessing">> => data_processing(),
+%%   <<"Environment">> => map(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"MaxConcurrentTransforms">> => integer(),
+%%   <<"MaxPayloadInMB">> => integer(),
+%%   <<"ModelClientConfig">> => model_client_config(),
+%%   <<"ModelName">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TransformEndTime">> => non_neg_integer(),
+%%   <<"TransformInput">> => transform_input(),
+%%   <<"TransformJobArn">> => string(),
+%%   <<"TransformJobName">> => string(),
+%%   <<"TransformJobStatus">> => list(any()),
+%%   <<"TransformOutput">> => transform_output(),
+%%   <<"TransformResources">> => transform_resources(),
+%%   <<"TransformStartTime">> => non_neg_integer()
+%% }
+-type transform_job() :: #{binary() => any()}.
+
+%% Example:
+%% suggestion_query() :: #{
+%%   <<"PropertyNameQuery">> => property_name_query()
+%% }
+-type suggestion_query() :: #{binary() => any()}.
+
+%% Example:
+%% list_human_task_uis_response() :: #{
+%%   <<"HumanTaskUiSummaries">> => list(human_task_ui_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_human_task_uis_response() :: #{binary() => any()}.
+
+%% Example:
+%% selective_execution_result() :: #{
+%%   <<"SourcePipelineExecutionArn">> => string()
+%% }
+-type selective_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workforce_request() :: #{
+%%   <<"WorkforceName">> := string()
+%% }
+-type describe_workforce_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"RetentionPolicy">> => retention_policy()
+%% }
+-type delete_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_summary() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterName">> => string(),
+%%   <<"ClusterStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer()
+%% }
+-type cluster_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trial_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Source">> => trial_source(),
+%%   <<"TrialArn">> => string(),
+%%   <<"TrialName">> => string()
+%% }
+-type describe_trial_response() :: #{binary() => any()}.
+
+%% Example:
+%% renderable_task() :: #{
+%%   <<"Input">> => string()
+%% }
+-type renderable_task() :: #{binary() => any()}.
+
+%% Example:
+%% app_details() :: #{
+%%   <<"AppName">> => string(),
+%%   <<"AppType">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"ResourceSpec">> => resource_spec(),
+%%   <<"SpaceName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserProfileName">> => string()
+%% }
+-type app_details() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_bias_job_definitions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_bias_job_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_algorithms_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_algorithms_input() :: #{binary() => any()}.
+
+%% Example:
+%% generative_ai_settings() :: #{
+%%   <<"AmazonBedrockRoleArn">> => string()
+%% }
+-type generative_ai_settings() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_input() :: #{
+%%   <<"Containers">> => list(container_definition()()),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"InferenceExecutionConfig">> => inference_execution_config(),
+%%   <<"ModelName">> := string(),
+%%   <<"PrimaryContainer">> => container_definition(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type create_model_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_profile_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"UserProfileName">> := string()
+%% }
+-type describe_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_specification() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsRequired">> => boolean(),
+%%   <<"IsTunable">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Range">> => parameter_range(),
+%%   <<"Type">> => list(any())
+%% }
+-type hyper_parameter_specification() :: #{binary() => any()}.
+
+%% Example:
+%% inference_execution_config() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type inference_execution_config() :: #{binary() => any()}.
+
+%% Example:
+%% start_edge_deployment_stage_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"StageName">> := string()
+%% }
+-type start_edge_deployment_stage_request() :: #{binary() => any()}.
+
+%% Example:
+%% model_dashboard_indicator_action() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type model_dashboard_indicator_action() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_bias_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type describe_model_bias_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% inference_experiment_schedule() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type inference_experiment_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% auto_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ValueHint">> => string()
+%% }
+-type auto_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% transform_s3_data_source() :: #{
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type transform_s3_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_card_response() :: #{
+%%   <<"Content">> => string(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelCardArn">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardProcessingStatus">> => list(any()),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"SecurityConfig">> => model_card_security_config()
+%% }
+-type describe_model_card_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_device_fleet_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"EnableIotRoleAlias">> => boolean(),
+%%   <<"OutputConfig">> := edge_output_config(),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_device_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% output_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type output_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% list_hubs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_hubs_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notebook_instance_output() :: #{
+%%   <<"AcceleratorTypes">> => list(list(any())()),
+%%   <<"AdditionalCodeRepositories">> => list(string()()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultCodeRepository">> => string(),
+%%   <<"DirectInternetAccess">> => list(any()),
+%%   <<"FailureReason">> => string(),
+%%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NetworkInterfaceId">> => string(),
+%%   <<"NotebookInstanceArn">> => string(),
+%%   <<"NotebookInstanceLifecycleConfigName">> => string(),
+%%   <<"NotebookInstanceName">> => string(),
+%%   <<"NotebookInstanceStatus">> => list(any()),
+%%   <<"PlatformIdentifier">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"RootAccess">> => list(any()),
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SubnetId">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type describe_notebook_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_payload_config() :: #{
+%%   <<"SamplePayloadUrl">> => string(),
+%%   <<"SupportedContentTypes">> => list(string()())
+%% }
+-type recommendation_job_payload_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_bias_job_input() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"EndpointInput">> => endpoint_input(),
+%%   <<"GroundTruthS3Input">> => monitoring_ground_truth_s3_input()
+%% }
+-type model_bias_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% compilation_job_summary() :: #{
+%%   <<"CompilationEndTime">> => non_neg_integer(),
+%%   <<"CompilationJobArn">> => string(),
+%%   <<"CompilationJobName">> => string(),
+%%   <<"CompilationJobStatus">> => list(any()),
+%%   <<"CompilationStartTime">> => non_neg_integer(),
+%%   <<"CompilationTargetDevice">> => list(any()),
+%%   <<"CompilationTargetPlatformAccelerator">> => list(any()),
+%%   <<"CompilationTargetPlatformArch">> => list(any()),
+%%   <<"CompilationTargetPlatformOs">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type compilation_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_training_job_definition() :: #{
+%%   <<"AlgorithmSpecification">> => hyper_parameter_algorithm_specification(),
+%%   <<"CheckpointConfig">> => checkpoint_config(),
+%%   <<"DefinitionName">> => string(),
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"EnableManagedSpotTraining">> => boolean(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"Environment">> => map(),
+%%   <<"HyperParameterRanges">> => parameter_ranges(),
+%%   <<"HyperParameterTuningResourceConfig">> => hyper_parameter_tuning_resource_config(),
+%%   <<"InputDataConfig">> => list(channel()()),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"ResourceConfig">> => resource_config(),
+%%   <<"RetryStrategy">> => retry_strategy(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StaticHyperParameters">> => map(),
+%%   <<"StoppingCondition">> => stopping_condition(),
+%%   <<"TuningObjective">> => hyper_parameter_tuning_job_objective(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type hyper_parameter_training_job_definition() :: #{binary() => any()}.
+
+%% Example:
+%% add_association_response() :: #{
+%%   <<"DestinationArn">> => string(),
+%%   <<"SourceArn">> => string()
+%% }
+-type add_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% r_studio_server_pro_app_settings() :: #{
+%%   <<"AccessStatus">> => list(any()),
+%%   <<"UserGroup">> => list(any())
+%% }
+-type r_studio_server_pro_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_resource_config() :: #{
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type labeling_job_resource_config() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_ground_truth_s3_input() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type monitoring_ground_truth_s3_input() :: #{binary() => any()}.
+
+%% Example:
+%% convergence_detected() :: #{
+%%   <<"CompleteOnConvergence">> => list(any())
+%% }
+-type convergence_detected() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_card_request() :: #{
+%%   <<"Content">> => string(),
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardStatus">> => list(any())
+%% }
+-type update_model_card_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_package_group_policy_input() :: #{
+%%   <<"ModelPackageGroupName">> := string()
+%% }
+-type delete_model_package_group_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_recommendations_job_response() :: #{
+%%   <<"JobArn">> => string()
+%% }
+-type create_inference_recommendations_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_context_response() :: #{
+%%   <<"ContextArn">> => string(),
+%%   <<"ContextName">> => string(),
+%%   <<"ContextType">> => string(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> => context_source()
+%% }
+-type describe_context_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hyper_parameter_tuning_job_request() :: #{
+%%   <<"HyperParameterTuningJobName">> := string()
+%% }
+-type delete_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% inference_experiment_data_storage_config() :: #{
+%%   <<"ContentType">> => capture_content_type_header(),
+%%   <<"Destination">> => string(),
+%%   <<"KmsKey">> => string()
+%% }
+-type inference_experiment_data_storage_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_quality_job_definition_request() :: #{
+%%   <<"DataQualityAppSpecification">> := data_quality_app_specification(),
+%%   <<"DataQualityBaselineConfig">> => data_quality_baseline_config(),
+%%   <<"DataQualityJobInput">> := data_quality_job_input(),
+%%   <<"DataQualityJobOutputConfig">> := monitoring_output_config(),
+%%   <<"JobDefinitionName">> := string(),
+%%   <<"JobResources">> := monitoring_resources(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_data_quality_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_executions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MonitoringJobDefinitionName">> => string(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringTypeEquals">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduledTimeAfter">> => non_neg_integer(),
+%%   <<"ScheduledTimeBefore">> => non_neg_integer(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_monitoring_executions_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_quality_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string(),
+%%   <<"JobResources">> := monitoring_resources(),
+%%   <<"ModelQualityAppSpecification">> := model_quality_app_specification(),
+%%   <<"ModelQualityBaselineConfig">> => model_quality_baseline_config(),
+%%   <<"ModelQualityJobInput">> := model_quality_job_input(),
+%%   <<"ModelQualityJobOutputConfig">> := monitoring_output_config(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_model_quality_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_schedules_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MonitoringJobDefinitionName">> => string(),
+%%   <<"MonitoringTypeEquals">> => list(any()),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_monitoring_schedules_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flow_definition_request() :: #{
+%%   <<"FlowDefinitionName">> := string()
+%% }
+-type delete_flow_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_size() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type capacity_size() :: #{binary() => any()}.
+
+%% Example:
+%% list_image_versions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"ImageName">> := string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_image_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"InstanceGroups">> := list(cluster_instance_group_specification()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type create_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_notebook_instance_lifecycle_config_input() :: #{
+%%   <<"NotebookInstanceLifecycleConfigName">> := string(),
+%%   <<"OnCreate">> => list(notebook_instance_lifecycle_hook()()),
+%%   <<"OnStart">> => list(notebook_instance_lifecycle_hook()())
+%% }
+-type create_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_studio_lifecycle_config_response() :: #{
+%%   <<"StudioLifecycleConfigArn">> => string()
+%% }
+-type create_studio_lifecycle_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_candidate_generation_config() :: #{
+%%   <<"AlgorithmsConfig">> => list(auto_ml_algorithm_config()()),
+%%   <<"FeatureSpecificationS3Uri">> => string()
+%% }
+-type auto_ml_candidate_generation_config() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_source() :: #{
+%%   <<"SourceTypes">> => list(artifact_source_type()()),
+%%   <<"SourceUri">> => string()
+%% }
+-type artifact_source() :: #{binary() => any()}.
+
+%% Example:
+%% metric_datum() :: #{
+%%   <<"MetricName">> => list(any()),
+%%   <<"Set">> => list(any()),
+%%   <<"StandardMetricName">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type metric_datum() :: #{binary() => any()}.
+
+%% Example:
+%% direct_deploy_settings() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type direct_deploy_settings() :: #{binary() => any()}.
+
+%% Example:
+%% model_card_version_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelCardArn">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"ModelCardVersion">> => integer()
+%% }
+-type model_card_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pending_deployment_summary() :: #{
+%%   <<"EndpointConfigName">> => string(),
+%%   <<"ProductionVariants">> => list(pending_production_variant_summary()()),
+%%   <<"ShadowProductionVariants">> => list(pending_production_variant_summary()()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type pending_deployment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workteam_response() :: #{
+%%   <<"Success">> => boolean()
+%% }
+-type delete_workteam_response() :: #{binary() => any()}.
+
+%% Example:
+%% processing_output() :: #{
+%%   <<"AppManaged">> => boolean(),
+%%   <<"FeatureStoreOutput">> => processing_feature_store_output(),
+%%   <<"OutputName">> => string(),
+%%   <<"S3Output">> => processing_s3_output()
+%% }
+-type processing_output() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_check_step_metadata() :: #{
+%%   <<"BaselineUsedForDriftCheckConstraints">> => string(),
+%%   <<"CalculatedBaselineConstraints">> => string(),
+%%   <<"CheckJobArn">> => string(),
+%%   <<"CheckType">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"RegisterNewBaseline">> => boolean(),
+%%   <<"SkipCheck">> => boolean(),
+%%   <<"ViolationReport">> => string()
+%% }
+-type clarify_check_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% create_compilation_job_response() :: #{
+%%   <<"CompilationJobArn">> => string()
+%% }
+-type create_compilation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pipeline_execution_request() :: #{
+%%   <<"PipelineExecutionArn">> := string()
+%% }
+-type describe_pipeline_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workteams_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Workteams">> => list(workteam()())
+%% }
+-type list_workteams_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_recommendations_job_steps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Steps">> => list(inference_recommendations_job_step()())
+%% }
+-type list_inference_recommendations_job_steps_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_pipeline_execution_step_failure_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type send_pipeline_execution_step_failure_response() :: #{binary() => any()}.
+
+%% Example:
+%% container_config() :: #{
+%%   <<"ContainerArguments">> => list(string()()),
+%%   <<"ContainerEntrypoint">> => list(string()()),
+%%   <<"ContainerEnvironmentVariables">> => map()
+%% }
+-type container_config() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_candidate_step() :: #{
+%%   <<"CandidateStepArn">> => string(),
+%%   <<"CandidateStepName">> => string(),
+%%   <<"CandidateStepType">> => list(any())
+%% }
+-type auto_ml_candidate_step() :: #{binary() => any()}.
+
+%% Example:
+%% retry_pipeline_execution_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineExecutionArn">> := string()
+%% }
+-type retry_pipeline_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% online_store_security_config() :: #{
+%%   <<"KmsKeyId">> => string()
+%% }
+-type online_store_security_config() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_transformations() :: #{
+%%   <<"Aggregation">> => map(),
+%%   <<"Filling">> => map()
+%% }
+-type time_series_transformations() :: #{binary() => any()}.
+
+%% Example:
+%% describe_artifact_request() :: #{
+%%   <<"ArtifactArn">> := string()
+%% }
+-type describe_artifact_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_instance_input() :: #{
+%%   <<"AcceleratorTypes">> => list(list(any())()),
+%%   <<"AdditionalCodeRepositories">> => list(string()()),
+%%   <<"DefaultCodeRepository">> => string(),
+%%   <<"DisassociateAcceleratorTypes">> => boolean(),
+%%   <<"DisassociateAdditionalCodeRepositories">> => boolean(),
+%%   <<"DisassociateDefaultCodeRepository">> => boolean(),
+%%   <<"DisassociateLifecycleConfig">> => boolean(),
+%%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LifecycleConfigName">> => string(),
+%%   <<"NotebookInstanceName">> := string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"RootAccess">> => list(any()),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type update_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% container_definition() :: #{
+%%   <<"ContainerHostname">> => string(),
+%%   <<"Environment">> => map(),
+%%   <<"Image">> => string(),
+%%   <<"ImageConfig">> => image_config(),
+%%   <<"InferenceSpecificationName">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"ModelDataSource">> => model_data_source(),
+%%   <<"ModelDataUrl">> => string(),
+%%   <<"ModelPackageName">> => string(),
+%%   <<"MultiModelConfig">> => multi_model_config()
+%% }
+-type container_definition() :: #{binary() => any()}.
+
+%% Example:
+%% create_space_response() :: #{
+%%   <<"SpaceArn">> => string()
+%% }
+-type create_space_response() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_candidate() :: #{
+%%   <<"CandidateName">> => string(),
+%%   <<"CandidateProperties">> => candidate_properties(),
+%%   <<"CandidateStatus">> => list(any()),
+%%   <<"CandidateSteps">> => list(auto_ml_candidate_step()()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FinalAutoMLJobObjectiveMetric">> => final_auto_ml_job_objective_metric(),
+%%   <<"InferenceContainerDefinitions">> => map(),
+%%   <<"InferenceContainers">> => list(auto_ml_container_definition()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ObjectiveStatus">> => list(any())
+%% }
+-type auto_ml_candidate() :: #{binary() => any()}.
+
+%% Example:
+%% space_settings_summary() :: #{
+%%   <<"AppType">> => list(any()),
+%%   <<"SpaceStorageSettings">> => space_storage_settings()
+%% }
+-type space_settings_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_explainability_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type describe_model_explainability_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleConfig">> := monitoring_schedule_config(),
+%%   <<"MonitoringScheduleName">> := string()
+%% }
+-type update_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hyper_parameter_tuning_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_hyper_parameter_tuning_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_domain_request() :: #{
+%%   <<"AppNetworkAccessType">> => list(any()),
+%%   <<"AppSecurityGroupManagement">> => list(any()),
+%%   <<"AuthMode">> := list(any()),
+%%   <<"DefaultSpaceSettings">> => default_space_settings(),
+%%   <<"DefaultUserSettings">> := user_settings(),
+%%   <<"DomainName">> := string(),
+%%   <<"DomainSettings">> => domain_settings(),
+%%   <<"HomeEfsFileSystemKmsKeyId">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SubnetIds">> := list(string()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcId">> := string()
+%% }
+-type create_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_algorithm_config() :: #{
+%%   <<"AutoMLAlgorithms">> => list(list(any())())
+%% }
+-type auto_ml_algorithm_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_artifact_request() :: #{
+%%   <<"ArtifactArn">> => string(),
+%%   <<"Source">> => artifact_source()
+%% }
+-type delete_artifact_request() :: #{binary() => any()}.
+
+%% Example:
+%% categorical_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => list(string()())
+%% }
+-type categorical_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_alerts_response() :: #{
+%%   <<"MonitoringAlertSummaries">> => list(monitoring_alert_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitoring_alerts_response() :: #{binary() => any()}.
+
+%% Example:
+%% model_deploy_config() :: #{
+%%   <<"AutoGenerateEndpointName">> => boolean(),
+%%   <<"EndpointName">> => string()
+%% }
+-type model_deploy_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_explainability_job_definition_response() :: #{
+%%   <<"JobDefinitionArn">> => string()
+%% }
+-type create_model_explainability_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_package_group_output() :: #{
+%%   <<"ModelPackageGroupArn">> => string()
+%% }
+-type create_model_package_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_experiment_request() :: #{
+%%   <<"ExperimentName">> := string()
+%% }
+-type delete_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_execution_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type update_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_version_request() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"ImageName">> := string(),
+%%   <<"Version">> => integer()
+%% }
+-type describe_image_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trial_component_request() :: #{
+%%   <<"TrialComponentName">> := string()
+%% }
+-type describe_trial_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_feature_group_response() :: #{
+%%   <<"FeatureGroupArn">> => string()
+%% }
+-type create_feature_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% edge_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PresetDeploymentConfig">> => string(),
+%%   <<"PresetDeploymentType">> => list(any()),
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type edge_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% list_auto_ml_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_auto_ml_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_version_response() :: #{
+%%   <<"BaseImage">> => string(),
+%%   <<"ContainerImage">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Horovod">> => boolean(),
+%%   <<"ImageArn">> => string(),
+%%   <<"ImageVersionArn">> => string(),
+%%   <<"ImageVersionStatus">> => list(any()),
+%%   <<"JobType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MLFramework">> => string(),
+%%   <<"Processor">> => list(any()),
+%%   <<"ProgrammingLang">> => string(),
+%%   <<"ReleaseNotes">> => string(),
+%%   <<"VendorGuidance">> => list(any()),
+%%   <<"Version">> => integer()
+%% }
+-type describe_image_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hub_request() :: #{
+%%   <<"HubName">> := string()
+%% }
+-type delete_hub_request() :: #{binary() => any()}.
+
+%% Example:
+%% last_update_status() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type last_update_status() :: #{binary() => any()}.
+
+%% Example:
+%% project() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ProjectArn">> => string(),
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectId">> => string(),
+%%   <<"ProjectName">> => string(),
+%%   <<"ProjectStatus">> => list(any()),
+%%   <<"ServiceCatalogProvisionedProductDetails">> => service_catalog_provisioned_product_details(),
+%%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type project() :: #{binary() => any()}.
+
+%% Example:
+%% describe_algorithm_output() :: #{
+%%   <<"AlgorithmArn">> => string(),
+%%   <<"AlgorithmDescription">> => string(),
+%%   <<"AlgorithmName">> => string(),
+%%   <<"AlgorithmStatus">> => list(any()),
+%%   <<"AlgorithmStatusDetails">> => algorithm_status_details(),
+%%   <<"CertifyForMarketplace">> => boolean(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"ProductId">> => string(),
+%%   <<"TrainingSpecification">> => training_specification(),
+%%   <<"ValidationSpecification">> => algorithm_validation_specification()
+%% }
+-type describe_algorithm_output() :: #{binary() => any()}.
+
+%% Example:
+%% processing_s3_output() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"S3UploadMode">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type processing_s3_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_feature_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventTimeFeatureName">> := string(),
+%%   <<"FeatureDefinitions">> := list(feature_definition()()),
+%%   <<"FeatureGroupName">> := string(),
+%%   <<"OfflineStoreConfig">> => offline_store_config(),
+%%   <<"OnlineStoreConfig">> => online_store_config(),
+%%   <<"RecordIdentifierFeatureName">> := string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"ThroughputConfig">> => throughput_config()
+%% }
+-type create_feature_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notebook_instance_input() :: #{
+%%   <<"NotebookInstanceName">> := string()
+%% }
+-type describe_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_definition() :: #{
+%%   <<"AthenaDatasetDefinition">> => athena_dataset_definition(),
+%%   <<"DataDistributionType">> => list(any()),
+%%   <<"InputMode">> => list(any()),
+%%   <<"LocalPath">> => string(),
+%%   <<"RedshiftDatasetDefinition">> => redshift_dataset_definition()
+%% }
+-type dataset_definition() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_explainability_job_definitions_response() :: #{
+%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_explainability_job_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_space_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"OwnershipSettings">> => ownership_settings(),
+%%   <<"SpaceDisplayName">> => string(),
+%%   <<"SpaceName">> := string(),
+%%   <<"SpaceSettings">> => space_settings(),
+%%   <<"SpaceSharingSettings">> => space_sharing_settings(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_space_request() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_shap_config() :: #{
+%%   <<"NumberOfSamples">> => integer(),
+%%   <<"Seed">> => integer(),
+%%   <<"ShapBaselineConfig">> => clarify_shap_baseline_config(),
+%%   <<"TextConfig">> => clarify_text_config(),
+%%   <<"UseLogit">> => boolean()
+%% }
+-type clarify_shap_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_trial_components_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SourceArn">> => string(),
+%%   <<"TrialName">> => string()
+%% }
+-type list_trial_components_request() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_search_entity() :: #{
+%%   <<"BestTrainingJob">> => hyper_parameter_training_job_summary(),
+%%   <<"ConsumedResources">> => hyper_parameter_tuning_job_consumed_resources(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HyperParameterTuningEndTime">> => non_neg_integer(),
+%%   <<"HyperParameterTuningJobArn">> => string(),
+%%   <<"HyperParameterTuningJobConfig">> => hyper_parameter_tuning_job_config(),
+%%   <<"HyperParameterTuningJobName">> => string(),
+%%   <<"HyperParameterTuningJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ObjectiveStatusCounters">> => objective_status_counters(),
+%%   <<"OverallBestTrainingJob">> => hyper_parameter_training_job_summary(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TrainingJobDefinition">> => hyper_parameter_training_job_definition(),
+%%   <<"TrainingJobDefinitions">> => list(hyper_parameter_training_job_definition()()),
+%%   <<"TrainingJobStatusCounters">> => training_job_status_counters(),
+%%   <<"TuningJobCompletionDetails">> => hyper_parameter_tuning_job_completion_details(),
+%%   <<"WarmStartConfig">> => hyper_parameter_tuning_job_warm_start_config()
+%% }
+-type hyper_parameter_tuning_job_search_entity() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_card_versions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_card_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_resources() :: #{
+%%   <<"ClusterConfig">> => monitoring_cluster_config()
+%% }
+-type monitoring_resources() :: #{binary() => any()}.
+
+%% Example:
+%% create_image_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ImageName">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_pipeline_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineDefinition">> => string(),
+%%   <<"PipelineDefinitionS3Location">> => pipeline_definition_s3_location(),
+%%   <<"PipelineDescription">> => string(),
+%%   <<"PipelineDisplayName">> => string(),
+%%   <<"PipelineName">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_pipeline_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscribed_workteam_request() :: #{
+%%   <<"WorkteamArn">> := string()
+%% }
+-type describe_subscribed_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% property_name_suggestion() :: #{
+%%   <<"PropertyName">> => string()
+%% }
+-type property_name_suggestion() :: #{binary() => any()}.
+
+%% Example:
+%% source_algorithm() :: #{
+%%   <<"AlgorithmName">> => string(),
+%%   <<"ModelDataSource">> => model_data_source(),
+%%   <<"ModelDataUrl">> => string()
+%% }
+-type source_algorithm() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_model_package_output() :: #{
+%%   <<"BatchDescribeModelPackageErrorMap">> => map(),
+%%   <<"ModelPackageSummaries">> => map()
+%% }
+-type batch_describe_model_package_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_profile_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"UserProfileName">> := string()
+%% }
+-type delete_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_artifact_request() :: #{
+%%   <<"ArtifactName">> => string(),
+%%   <<"ArtifactType">> := string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> := artifact_source(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_artifact_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_quality_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type describe_model_quality_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_request() :: #{
+%%   <<"DeleteProperties">> => list(string()()),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ImageName">> := string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_contexts_request() :: #{
+%%   <<"ContextType">> => string(),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SourceUri">> => string()
+%% }
+-type list_contexts_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_labeling_job_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HumanTaskConfig">> => human_task_config(),
+%%   <<"InputConfig">> => labeling_job_input_config(),
+%%   <<"JobReferenceCode">> => string(),
+%%   <<"LabelAttributeName">> => string(),
+%%   <<"LabelCategoryConfigS3Uri">> => string(),
+%%   <<"LabelCounters">> => label_counters(),
+%%   <<"LabelingJobAlgorithmsConfig">> => labeling_job_algorithms_config(),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"LabelingJobName">> => string(),
+%%   <<"LabelingJobOutput">> => labeling_job_output(),
+%%   <<"LabelingJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OutputConfig">> => labeling_job_output_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingConditions">> => labeling_job_stopping_conditions(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type describe_labeling_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% sharing_settings() :: #{
+%%   <<"NotebookOutputOption">> => list(any()),
+%%   <<"S3KmsKeyId">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type sharing_settings() :: #{binary() => any()}.
+
+%% Example:
+%% describe_device_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"DeviceName">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProjectSummaryList">> => list(project_summary()())
+%% }
+-type list_projects_output() :: #{binary() => any()}.
+
+%% Example:
+%% human_loop_request_source() :: #{
+%%   <<"AwsManagedHumanLoopRequestSource">> => list(any())
+%% }
+-type human_loop_request_source() :: #{binary() => any()}.
+
+%% Example:
+%% list_feature_groups_response() :: #{
+%%   <<"FeatureGroupSummaries">> => list(feature_group_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_feature_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_request() :: #{
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineDefinition">> => string(),
+%%   <<"PipelineDefinitionS3Location">> => pipeline_definition_s3_location(),
+%%   <<"PipelineDescription">> => string(),
+%%   <<"PipelineDisplayName">> => string(),
+%%   <<"PipelineName">> := string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_pipeline_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_studio_lifecycle_config_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"StudioLifecycleConfigAppType">> => list(any()),
+%%   <<"StudioLifecycleConfigArn">> => string(),
+%%   <<"StudioLifecycleConfigContent">> => string(),
+%%   <<"StudioLifecycleConfigName">> => string()
+%% }
+-type describe_studio_lifecycle_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% model_explainability_baseline_config() :: #{
+%%   <<"BaseliningJobName">> => string(),
+%%   <<"ConstraintsResource">> => monitoring_constraints_resource()
+%% }
+-type model_explainability_baseline_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_code_repositories_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_code_repositories_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_images_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_images_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_auto_ml_jobs_response() :: #{
+%%   <<"AutoMLJobSummaries">> => list(auto_ml_job_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_auto_ml_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_human_task_ui_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HumanTaskUiArn">> => string(),
+%%   <<"HumanTaskUiName">> => string(),
+%%   <<"HumanTaskUiStatus">> => list(any()),
+%%   <<"UiTemplate">> => ui_template_info()
+%% }
+-type describe_human_task_ui_response() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_status_item() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type model_package_status_item() :: #{binary() => any()}.
+
+%% Example:
+%% describe_project_input() :: #{
+%%   <<"ProjectName">> := string()
+%% }
+-type describe_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_trial_component_request() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InputArtifacts">> => map(),
+%%   <<"InputArtifactsToRemove">> => list(string()()),
+%%   <<"OutputArtifacts">> => map(),
+%%   <<"OutputArtifactsToRemove">> => list(string()()),
+%%   <<"Parameters">> => map(),
+%%   <<"ParametersToRemove">> => list(string()()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => trial_component_status(),
+%%   <<"TrialComponentName">> := string()
+%% }
+-type update_trial_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_input_config() :: #{
+%%   <<"ContainerConfig">> => recommendation_job_container_config(),
+%%   <<"EndpointConfigurations">> => list(endpoint_input_configuration()()),
+%%   <<"Endpoints">> => list(endpoint_info()()),
+%%   <<"JobDurationInSeconds">> => integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelPackageVersionArn">> => string(),
+%%   <<"ResourceLimit">> => recommendation_job_resource_limit(),
+%%   <<"TrafficPattern">> => traffic_pattern(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => recommendation_job_vpc_config()
+%% }
+-type recommendation_job_input_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_action_request() :: #{
+%%   <<"ActionName">> := string(),
+%%   <<"ActionType">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> := action_source(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_hyper_parameter_tuning_job_response() :: #{
+%%   <<"HyperParameterTuningJobArn">> => string()
+%% }
+-type create_hyper_parameter_tuning_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_weights_and_capacities_output() :: #{
+%%   <<"EndpointArn">> => string()
+%% }
+-type update_endpoint_weights_and_capacities_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_domains_response() :: #{
+%%   <<"Domains">> => list(domain_details()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% offline_store_config() :: #{
+%%   <<"DataCatalogConfig">> => data_catalog_config(),
+%%   <<"DisableGlueTableCreation">> => boolean(),
+%%   <<"S3StorageConfig">> => s3_storage_config(),
+%%   <<"TableFormat">> => list(any())
+%% }
+-type offline_store_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_quality_baseline_config() :: #{
+%%   <<"BaseliningJobName">> => string(),
+%%   <<"ConstraintsResource">> => monitoring_constraints_resource()
+%% }
+-type model_quality_baseline_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"PipelineName">> := string()
+%% }
+-type delete_pipeline_request() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"EndpointStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type endpoint_summary() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_data_split_config() :: #{
+%%   <<"ValidationFraction">> => float()
+%% }
+-type auto_ml_data_split_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_presigned_domain_url_response() :: #{
+%%   <<"AuthorizedUrl">> => string()
+%% }
+-type create_presigned_domain_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_ml_job_request() :: #{
+%%   <<"AutoMLJobName">> := string()
+%% }
+-type describe_auto_ml_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_artifact() :: #{
+%%   <<"MediaType">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type trial_component_artifact() :: #{binary() => any()}.
+
+%% Example:
+%% update_workteam_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"MemberDefinitions">> => list(member_definition()()),
+%%   <<"NotificationConfiguration">> => notification_configuration(),
+%%   <<"WorkteamName">> := string()
+%% }
+-type update_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_devices_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"Devices">> := list(device()())
+%% }
+-type update_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% profiler_rule_configuration() :: #{
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LocalPath">> => string(),
+%%   <<"RuleConfigurationName">> => string(),
+%%   <<"RuleEvaluatorImage">> => string(),
+%%   <<"RuleParameters">> => map(),
+%%   <<"S3OutputPath">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type profiler_rule_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% jupyter_server_app_settings() :: #{
+%%   <<"CodeRepositories">> => list(code_repository()()),
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"LifecycleConfigArns">> => list(string()())
+%% }
+-type jupyter_server_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_app_specification() :: #{
+%%   <<"ContainerArguments">> => list(string()()),
+%%   <<"ContainerEntrypoint">> => list(string()()),
+%%   <<"Environment">> => map(),
+%%   <<"ImageUri">> => string(),
+%%   <<"PostAnalyticsProcessorSourceUri">> => string(),
+%%   <<"RecordPreprocessorSourceUri">> => string()
+%% }
+-type data_quality_app_specification() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_ml_job_response() :: #{
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"AutoMLJobArtifacts">> => auto_ml_job_artifacts(),
+%%   <<"AutoMLJobConfig">> => auto_ml_job_config(),
+%%   <<"AutoMLJobName">> => string(),
+%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
+%%   <<"AutoMLJobSecondaryStatus">> => list(any()),
+%%   <<"AutoMLJobStatus">> => list(any()),
+%%   <<"BestCandidate">> => auto_ml_candidate(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"GenerateCandidateDefinitionsOnly">> => boolean(),
+%%   <<"InputDataConfig">> => list(auto_ml_channel()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelDeployConfig">> => model_deploy_config(),
+%%   <<"ModelDeployResult">> => model_deploy_result(),
+%%   <<"OutputDataConfig">> => auto_ml_output_data_config(),
+%%   <<"PartialFailureReasons">> => list(auto_ml_partial_failure_reason()()),
+%%   <<"ProblemType">> => list(any()),
+%%   <<"ResolvedAttributes">> => resolved_attributes(),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_auto_ml_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_edge_deployment_plan_response() :: #{
+%%   <<"EdgeDeploymentPlanArn">> => string()
+%% }
+-type create_edge_deployment_plan_response() :: #{binary() => any()}.
+
+%% Example:
+%% association_summary() :: #{
+%%   <<"AssociationType">> => list(any()),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DestinationArn">> => string(),
+%%   <<"DestinationName">> => string(),
+%%   <<"DestinationType">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceType">> => string()
+%% }
+-type association_summary() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant() :: #{
+%%   <<"AcceleratorType">> => list(any()),
+%%   <<"ContainerStartupHealthCheckTimeoutInSeconds">> => integer(),
+%%   <<"CoreDumpConfig">> => production_variant_core_dump_config(),
+%%   <<"EnableSSMAccess">> => boolean(),
+%%   <<"InitialInstanceCount">> => integer(),
+%%   <<"InitialVariantWeight">> => float(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
+%%   <<"ModelDataDownloadTimeoutInSeconds">> => integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"RoutingConfig">> => production_variant_routing_config(),
+%%   <<"ServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"VariantName">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type production_variant() :: #{binary() => any()}.
+
+%% Example:
+%% identity_provider_o_auth_setting() :: #{
+%%   <<"DataSourceName">> => list(any()),
+%%   <<"SecretArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type identity_provider_o_auth_setting() :: #{binary() => any()}.
+
+%% Example:
+%% ui_template_info() :: #{
+%%   <<"ContentSha256">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type ui_template_info() :: #{binary() => any()}.
+
+%% Example:
+%% list_associations_response() :: #{
+%%   <<"AssociationSummaries">> => list(association_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% checkpoint_config() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type checkpoint_config() :: #{binary() => any()}.
+
+%% Example:
+%% stopping_condition() :: #{
+%%   <<"MaxPendingTimeInSeconds">> => integer(),
+%%   <<"MaxRuntimeInSeconds">> => integer(),
+%%   <<"MaxWaitTimeInSeconds">> => integer()
+%% }
+-type stopping_condition() :: #{binary() => any()}.
+
+%% Example:
+%% device_deployment_summary() :: #{
+%%   <<"DeployedStageName">> => string(),
+%%   <<"DeploymentStartTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceArn">> => string(),
+%%   <<"DeviceDeploymentStatus">> => list(any()),
+%%   <<"DeviceDeploymentStatusMessage">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"EdgeDeploymentPlanArn">> => string(),
+%%   <<"EdgeDeploymentPlanName">> => string(),
+%%   <<"StageName">> => string()
+%% }
+-type device_deployment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hub_content_request() :: #{
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"HubName">> := string()
+%% }
+-type describe_hub_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_trial_component_request() :: #{
+%%   <<"TrialComponentName">> := string(),
+%%   <<"TrialName">> := string()
+%% }
+-type disassociate_trial_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_pipeline_execution_step_success_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type send_pipeline_execution_step_success_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_processing_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_processing_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% code_repository() :: #{
+%%   <<"RepositoryUrl">> => string()
+%% }
+-type code_repository() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_s3_data_source() :: #{
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type auto_ml_s3_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_configs_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_endpoint_configs_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_edge_deployment_plan_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"EdgeDeploymentFailed">> => integer(),
+%%   <<"EdgeDeploymentPending">> => integer(),
+%%   <<"EdgeDeploymentPlanArn">> => string(),
+%%   <<"EdgeDeploymentPlanName">> => string(),
+%%   <<"EdgeDeploymentSuccess">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelConfigs">> => list(edge_deployment_model_config()()),
+%%   <<"NextToken">> => string(),
+%%   <<"Stages">> => list(deployment_stage_status_summary()())
+%% }
+-type describe_edge_deployment_plan_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_monitoring_schedule_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastMonitoringExecutionSummary">> => monitoring_execution_summary(),
+%%   <<"MonitoringScheduleArn">> => string(),
+%%   <<"MonitoringScheduleConfig">> => monitoring_schedule_config(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringScheduleStatus">> => list(any()),
+%%   <<"MonitoringType">> => list(any())
+%% }
+-type describe_monitoring_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_config_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointConfigArn">> => string(),
+%%   <<"EndpointConfigName">> => string()
+%% }
+-type endpoint_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% training_job_status_counters() :: #{
+%%   <<"Completed">> => integer(),
+%%   <<"InProgress">> => integer(),
+%%   <<"NonRetryableError">> => integer(),
+%%   <<"RetryableError">> => integer(),
+%%   <<"Stopped">> => integer()
+%% }
+-type training_job_status_counters() :: #{binary() => any()}.
+
+%% Example:
+%% update_training_job_response() :: #{
+%%   <<"TrainingJobArn">> => string()
+%% }
+-type update_training_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% variant_property() :: #{
+%%   <<"VariantPropertyType">> => list(any())
+%% }
+-type variant_property() :: #{binary() => any()}.
+
+%% Example:
+%% offline_store_status() :: #{
+%%   <<"BlockedReason">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type offline_store_status() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputPath">> => string(),
+%%   <<"SnsTopicArn">> => string()
+%% }
+-type labeling_job_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% stop_notebook_instance_input() :: #{
+%%   <<"NotebookInstanceName">> := string()
+%% }
+-type stop_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoints_output() :: #{
+%%   <<"Endpoints">> => list(endpoint_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoints_output() :: #{binary() => any()}.
+
+%% Example:
+%% text_generation_resolved_attributes() :: #{
+%%   <<"BaseModelName">> => string()
+%% }
+-type text_generation_resolved_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type parameter() :: #{binary() => any()}.
+
+%% Example:
+%% r_studio_server_pro_domain_settings() :: #{
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"DomainExecutionRoleArn">> => string(),
+%%   <<"RStudioConnectUrl">> => string(),
+%%   <<"RStudioPackageManagerUrl">> => string()
+%% }
+-type r_studio_server_pro_domain_settings() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pipeline_execution_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"PipelineExecutionArn">> := string()
+%% }
+-type stop_pipeline_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"Subnets">> => list(string()())
+%% }
+-type vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% remote_debug_config_for_update() :: #{
+%%   <<"EnableRemoteDebug">> => boolean()
+%% }
+-type remote_debug_config_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_profiles_request() :: #{
+%%   <<"DomainIdEquals">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"UserProfileNameContains">> => string()
+%% }
+-type list_user_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_ml_job_v2_request() :: #{
+%%   <<"AutoMLJobInputDataConfig">> := list(auto_ml_job_channel()()),
+%%   <<"AutoMLJobName">> := string(),
+%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
+%%   <<"AutoMLProblemTypeConfig">> := list(),
+%%   <<"DataSplitConfig">> => auto_ml_data_split_config(),
+%%   <<"ModelDeployConfig">> => model_deploy_config(),
+%%   <<"OutputDataConfig">> := auto_ml_output_data_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"SecurityConfig">> => auto_ml_security_config(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_auto_ml_job_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% algorithm_validation_profile() :: #{
+%%   <<"ProfileName">> => string(),
+%%   <<"TrainingJobDefinition">> => training_job_definition(),
+%%   <<"TransformJobDefinition">> => transform_job_definition()
+%% }
+-type algorithm_validation_profile() :: #{binary() => any()}.
+
+%% Example:
+%% resource_config_for_update() :: #{
+%%   <<"KeepAlivePeriodInSeconds">> => integer()
+%% }
+-type resource_config_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastExecutionTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineDescription">> => string(),
+%%   <<"PipelineDisplayName">> => string(),
+%%   <<"PipelineName">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type pipeline_summary() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_explainer_config() :: #{
+%%   <<"EnableExplanations">> => string(),
+%%   <<"InferenceConfig">> => clarify_inference_config(),
+%%   <<"ShapConfig">> => clarify_shap_config()
+%% }
+-type clarify_explainer_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_package_group_input() :: #{
+%%   <<"ModelPackageGroupName">> := string()
+%% }
+-type describe_model_package_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% u_s_d() :: #{
+%%   <<"Cents">> => integer(),
+%%   <<"Dollars">> => integer(),
+%%   <<"TenthFractionsOfACent">> => integer()
+%% }
+-type u_s_d() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_stage() :: #{
+%%   <<"DeploymentConfig">> => edge_deployment_config(),
+%%   <<"DeviceSelectionConfig">> => device_selection_config(),
+%%   <<"StageName">> => string()
+%% }
+-type deployment_stage() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_container_specification_summary() :: #{
+%%   <<"ArtifactUrl">> => string(),
+%%   <<"DeployedImage">> => deployed_image(),
+%%   <<"Environment">> => map()
+%% }
+-type inference_component_container_specification_summary() :: #{binary() => any()}.
+
+%% Example:
+%% domain_settings_for_update() :: #{
+%%   <<"DockerSettings">> => docker_settings(),
+%%   <<"ExecutionRoleIdentityConfig">> => list(any()),
+%%   <<"RStudioServerProDomainSettingsForUpdate">> => r_studio_server_pro_domain_settings_for_update(),
+%%   <<"SecurityGroupIds">> => list(string()())
+%% }
+-type domain_settings_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pipeline_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastRunTime">> => non_neg_integer(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineDefinition">> => string(),
+%%   <<"PipelineDescription">> => string(),
+%%   <<"PipelineDisplayName">> => string(),
+%%   <<"PipelineName">> => string(),
+%%   <<"PipelineStatus">> => list(any()),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_action_response() :: #{
+%%   <<"ActionArn">> => string()
+%% }
+-type update_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pipeline_definition_for_execution_request() :: #{
+%%   <<"PipelineExecutionArn">> := string()
+%% }
+-type describe_pipeline_definition_for_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrainingJobSummaries">> => list(training_job_summary()())
+%% }
+-type list_training_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_forecasting_settings() :: #{
+%%   <<"AmazonForecastRoleArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type time_series_forecasting_settings() :: #{binary() => any()}.
+
+%% Example:
+%% model_card() :: #{
+%%   <<"Content">> => string(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelCardArn">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"ModelId">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"RiskRating">> => string(),
+%%   <<"SecurityConfig">> => model_card_security_config(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type model_card() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_execution_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MonitoringExecutionStatus">> => list(any()),
+%%   <<"MonitoringJobDefinitionName">> => string(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringType">> => list(any()),
+%%   <<"ProcessingJobArn">> => string(),
+%%   <<"ScheduledTime">> => non_neg_integer()
+%% }
+-type monitoring_execution_summary() :: #{binary() => any()}.
+
+%% Example:
+%% continuous_parameter_range_specification() :: #{
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string()
+%% }
+-type continuous_parameter_range_specification() :: #{binary() => any()}.
+
+%% Example:
+%% workteam() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"MemberDefinitions">> => list(member_definition()()),
+%%   <<"NotificationConfiguration">> => notification_configuration(),
+%%   <<"ProductListingIds">> => list(string()()),
+%%   <<"SubDomain">> => string(),
+%%   <<"WorkforceArn">> => string(),
+%%   <<"WorkteamArn">> => string(),
+%%   <<"WorkteamName">> => string()
+%% }
+-type workteam() :: #{binary() => any()}.
+
+%% Example:
+%% drift_check_bias() :: #{
+%%   <<"ConfigFile">> => file_source(),
+%%   <<"PostTrainingConstraints">> => metrics_source(),
+%%   <<"PreTrainingConstraints">> => metrics_source()
+%% }
+-type drift_check_bias() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hyper_parameter_tuning_job_request() :: #{
+%%   <<"HyperParameterTuningJobName">> := string()
+%% }
+-type describe_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% model_quality_job_input() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"EndpointInput">> => endpoint_input(),
+%%   <<"GroundTruthS3Input">> => monitoring_ground_truth_s3_input()
+%% }
+-type model_quality_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_response() :: #{
+%%   <<"AppNetworkAccessType">> => list(any()),
+%%   <<"AppSecurityGroupManagement">> => list(any()),
+%%   <<"AuthMode">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultSpaceSettings">> => default_space_settings(),
+%%   <<"DefaultUserSettings">> => user_settings(),
+%%   <<"DomainArn">> => string(),
+%%   <<"DomainId">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainSettings">> => domain_settings(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HomeEfsFileSystemId">> => string(),
+%%   <<"HomeEfsFileSystemKmsKeyId">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SecurityGroupIdForDomainBoundary">> => string(),
+%%   <<"SingleSignOnApplicationArn">> => string(),
+%%   <<"SingleSignOnManagedApplicationInstanceId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"Url">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type describe_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% rendering_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type rendering_error() :: #{binary() => any()}.
+
+%% Example:
+%% list_devices_response() :: #{
+%%   <<"DeviceSummaries">> => list(device_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_experiment_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentArn">> => string(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Source">> => experiment_source()
+%% }
+-type describe_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_compilation_jobs_response() :: #{
+%%   <<"CompilationJobSummaries">> => list(compilation_job_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_compilation_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_experiment_config() :: #{
+%%   <<"ExperimentName">> => string(),
+%%   <<"TrialName">> => string()
+%% }
+-type pipeline_experiment_config() :: #{binary() => any()}.
+
+%% Example:
+%% candidate_properties() :: #{
+%%   <<"CandidateArtifactLocations">> => candidate_artifact_locations(),
+%%   <<"CandidateMetrics">> => list(metric_datum()())
+%% }
+-type candidate_properties() :: #{binary() => any()}.
+
+%% Example:
+%% describe_algorithm_input() :: #{
+%%   <<"AlgorithmName">> := string()
+%% }
+-type describe_algorithm_input() :: #{binary() => any()}.
+
+%% Example:
+%% async_inference_notification_config() :: #{
+%%   <<"ErrorTopic">> => string(),
+%%   <<"IncludeInferenceResponseIn">> => list(list(any())()),
+%%   <<"SuccessTopic">> => string()
+%% }
+-type async_inference_notification_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_metadata_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type model_metadata_filter() :: #{binary() => any()}.
+
+%% Example:
+%% start_inference_experiment_response() :: #{
+%%   <<"InferenceExperimentArn">> => string()
+%% }
+-type start_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_resource_limit() :: #{
+%%   <<"MaxNumberOfTests">> => integer(),
+%%   <<"MaxParallelOfTests">> => integer()
+%% }
+-type recommendation_job_resource_limit() :: #{binary() => any()}.
+
+%% Example:
+%% selective_execution_config() :: #{
+%%   <<"SelectedSteps">> => list(selected_step()()),
+%%   <<"SourcePipelineExecutionArn">> => string()
+%% }
+-type selective_execution_config() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_summary() :: #{
+%%   <<"AnnotationConsolidationLambdaArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"InputConfig">> => labeling_job_input_config(),
+%%   <<"LabelCounters">> => label_counters(),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"LabelingJobName">> => string(),
+%%   <<"LabelingJobOutput">> => labeling_job_output(),
+%%   <<"LabelingJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PreHumanTaskLambdaArn">> => string(),
+%%   <<"WorkteamArn">> => string()
+%% }
+-type labeling_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% enable_sagemaker_servicecatalog_portfolio_output() :: #{
+
+%% }
+-type enable_sagemaker_servicecatalog_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_image_versions_response() :: #{
+%%   <<"ImageVersions">> => list(image_version()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_image_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% public_workforce_task_price() :: #{
+%%   <<"AmountInUsd">> => u_s_d()
+%% }
+-type public_workforce_task_price() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_csv_dataset_format() :: #{
+%%   <<"Header">> => boolean()
+%% }
+-type monitoring_csv_dataset_format() :: #{binary() => any()}.
+
+%% Example:
+%% debug_rule_evaluation_status() :: #{
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RuleConfigurationName">> => string(),
+%%   <<"RuleEvaluationJobArn">> => string(),
+%%   <<"RuleEvaluationStatus">> => list(any()),
+%%   <<"StatusDetails">> => string()
+%% }
+-type debug_rule_evaluation_status() :: #{binary() => any()}.
+
+%% Example:
+%% file_system_config() :: #{
+%%   <<"DefaultGid">> => integer(),
+%%   <<"DefaultUid">> => integer(),
+%%   <<"MountPath">> => string()
+%% }
+-type file_system_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_actions_response() :: #{
+%%   <<"ActionSummaries">> => list(action_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_actions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_instances_input() :: #{
+%%   <<"AdditionalCodeRepositoryEquals">> => string(),
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"DefaultCodeRepositoryContains">> => string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"NotebookInstanceLifecycleConfigNameContains">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_notebook_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_training_job_request() :: #{
+%%   <<"AlgorithmSpecification">> := algorithm_specification(),
+%%   <<"CheckpointConfig">> => checkpoint_config(),
+%%   <<"DebugHookConfig">> => debug_hook_config(),
+%%   <<"DebugRuleConfigurations">> => list(debug_rule_configuration()()),
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"EnableManagedSpotTraining">> => boolean(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"Environment">> => map(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"HyperParameters">> => map(),
+%%   <<"InfraCheckConfig">> => infra_check_config(),
+%%   <<"InputDataConfig">> => list(channel()()),
+%%   <<"OutputDataConfig">> := output_data_config(),
+%%   <<"ProfilerConfig">> => profiler_config(),
+%%   <<"ProfilerRuleConfigurations">> => list(profiler_rule_configuration()()),
+%%   <<"RemoteDebugConfig">> => remote_debug_config(),
+%%   <<"ResourceConfig">> := resource_config(),
+%%   <<"RetryStrategy">> => retry_strategy(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> := stopping_condition(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TensorBoardOutputConfig">> => tensor_board_output_config(),
+%%   <<"TrainingJobName">> := string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type create_training_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hub_content_versions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MaxSchemaVersion">> => string(),
+%%   <<"MinVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_hub_content_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_job_definition_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"MonitoringJobDefinitionArn">> => string(),
+%%   <<"MonitoringJobDefinitionName">> => string()
+%% }
+-type monitoring_job_definition_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_image_version_response() :: #{
+%%   <<"ImageVersionArn">> => string()
+%% }
+-type create_image_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% space_storage_settings() :: #{
+%%   <<"EbsStorageSettings">> => ebs_storage_settings()
+%% }
+-type space_storage_settings() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_input() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"EndpointInput">> => endpoint_input()
+%% }
+-type monitoring_input() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_node_summary() :: #{
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceStatus">> => cluster_instance_status_details(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LaunchTime">> => non_neg_integer()
+%% }
+-type cluster_node_summary() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_storage_settings() :: #{
+%%   <<"EbsVolumeSizeInGb">> => integer()
+%% }
+-type ebs_storage_settings() :: #{binary() => any()}.
+
+%% Example:
+%% file_system_data_source() :: #{
+%%   <<"DirectoryPath">> => string(),
+%%   <<"FileSystemAccessMode">> => list(any()),
+%%   <<"FileSystemId">> => string(),
+%%   <<"FileSystemType">> => list(any())
+%% }
+-type file_system_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% list_actions_request() :: #{
+%%   <<"ActionType">> => string(),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SourceUri">> => string()
+%% }
+-type list_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% athena_dataset_definition() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"Database">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"OutputCompression">> => list(any()),
+%%   <<"OutputFormat">> => list(any()),
+%%   <<"OutputS3Uri">> => string(),
+%%   <<"QueryString">> => string(),
+%%   <<"WorkGroup">> => string()
+%% }
+-type athena_dataset_definition() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type instance_group() :: #{binary() => any()}.
+
+%% Example:
+%% profiler_rule_evaluation_status() :: #{
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RuleConfigurationName">> => string(),
+%%   <<"RuleEvaluationJobArn">> => string(),
+%%   <<"RuleEvaluationStatus">> => list(any()),
+%%   <<"StatusDetails">> => string()
+%% }
+-type profiler_rule_evaluation_status() :: #{binary() => any()}.
+
+%% Example:
+%% update_space_response() :: #{
+%%   <<"SpaceArn">> => string()
+%% }
+-type update_space_response() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_runtime_config() :: #{
+%%   <<"CopyCount">> => integer()
+%% }
+-type inference_component_runtime_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_status_details() :: #{
+%%   <<"ImageScanStatuses">> => list(model_package_status_item()()),
+%%   <<"ValidationStatuses">> => list(model_package_status_item()())
+%% }
+-type model_package_status_details() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_response() :: #{
+%%   <<"ClusterSummaries">> => list(cluster_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% human_loop_activation_conditions_config() :: #{
+%%   <<"HumanLoopActivationConditions">> => string()
+%% }
+-type human_loop_activation_conditions_config() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pipeline_execution_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type stop_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% categorical_parameter_range() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type categorical_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% render_ui_template_request() :: #{
+%%   <<"HumanTaskUiArn">> => string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Task">> := renderable_task(),
+%%   <<"UiTemplate">> => ui_template()
+%% }
+-type render_ui_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notebook_instance_lifecycle_config_input() :: #{
+%%   <<"NotebookInstanceLifecycleConfigName">> := string()
+%% }
+-type describe_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_package_input() :: #{
+%%   <<"AdditionalInferenceSpecificationsToAdd">> => list(additional_inference_specification_definition()()),
+%%   <<"ApprovalDescription">> => string(),
+%%   <<"CustomerMetadataProperties">> => map(),
+%%   <<"CustomerMetadataPropertiesToRemove">> => list(string()()),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelPackageArn">> := string(),
+%%   <<"SourceUri">> => string()
+%% }
+-type update_model_package_input() :: #{binary() => any()}.
+
+%% Example:
+%% feature_group_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FeatureGroupArn">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"FeatureGroupStatus">> => list(any()),
+%%   <<"OfflineStoreStatus">> => offline_store_status()
+%% }
+-type feature_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_workteam_response() :: #{
+%%   <<"WorkteamArn">> => string()
+%% }
+-type create_workteam_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_response() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type delete_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_presigned_domain_url_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"ExpiresInSeconds">> => integer(),
+%%   <<"LandingUri">> => string(),
+%%   <<"SessionExpirationDurationInSeconds">> => integer(),
+%%   <<"SpaceName">> => string(),
+%%   <<"UserProfileName">> := string()
+%% }
+-type create_presigned_domain_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% model_configuration() :: #{
+%%   <<"CompilationJobName">> => string(),
+%%   <<"EnvironmentParameters">> => list(environment_parameter()()),
+%%   <<"InferenceSpecificationName">> => string()
+%% }
+-type model_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% search_expression() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"NestedFilters">> => list(nested_filters()()),
+%%   <<"Operator">> => list(any()),
+%%   <<"SubExpressions">> => list(search_expression()())
+%% }
+-type search_expression() :: #{binary() => any()}.
+
+%% Example:
+%% register_devices_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"Devices">> := list(device()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type register_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_json_dataset_format() :: #{
+%%   <<"Line">> => boolean()
+%% }
+-type monitoring_json_dataset_format() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_for_workteam_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"JobReferenceCode">> => string(),
+%%   <<"LabelCounters">> => label_counters_for_workteam(),
+%%   <<"LabelingJobName">> => string(),
+%%   <<"NumberOfHumanWorkersPerDataObject">> => integer(),
+%%   <<"WorkRequesterAccountId">> => string()
+%% }
+-type labeling_job_for_workteam_summary() :: #{binary() => any()}.
+
+%% Example:
+%% vertex() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"LineageType">> => list(any()),
+%%   <<"Type">> => string()
+%% }
+-type vertex() :: #{binary() => any()}.
+
+%% Example:
+%% feature_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type feature_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% list_device_fleets_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_device_fleets_request() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_step_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"OutputParameters">> => list(output_parameter()())
+%% }
+-type lambda_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% experiment_config() :: #{
+%%   <<"ExperimentName">> => string(),
+%%   <<"RunName">> => string(),
+%%   <<"TrialComponentDisplayName">> => string(),
+%%   <<"TrialName">> => string()
+%% }
+-type experiment_config() :: #{binary() => any()}.
+
+%% Example:
+%% ttl_duration() :: #{
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type ttl_duration() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"ImageArn">> => string(),
+%%   <<"ImageName">> => string(),
+%%   <<"ImageStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_experiment_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentName">> := string()
+%% }
+-type update_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% algorithm_summary() :: #{
+%%   <<"AlgorithmArn">> => string(),
+%%   <<"AlgorithmDescription">> => string(),
+%%   <<"AlgorithmName">> => string(),
+%%   <<"AlgorithmStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer()
+%% }
+-type algorithm_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_package_group_input() :: #{
+%%   <<"ModelPackageGroupDescription">> => string(),
+%%   <<"ModelPackageGroupName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_model_package_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_quality_job_definitions_response() :: #{
+%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_quality_job_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_artifact_response() :: #{
+%%   <<"ArtifactArn">> => string(),
+%%   <<"ArtifactName">> => string(),
+%%   <<"ArtifactType">> => string(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> => artifact_source()
+%% }
+-type describe_artifact_response() :: #{binary() => any()}.
+
+%% Example:
+%% inference_recommendations_job_step() :: #{
+%%   <<"InferenceBenchmark">> => recommendation_job_inference_benchmark(),
+%%   <<"JobName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StepType">> => list(any())
+%% }
+-type inference_recommendations_job_step() :: #{binary() => any()}.
+
+%% Example:
+%% infra_check_config() :: #{
+%%   <<"EnableInfraCheck">> => boolean()
+%% }
+-type infra_check_config() :: #{binary() => any()}.
+
+%% Example:
+%% async_inference_client_config() :: #{
+%%   <<"MaxConcurrentInvocationsPerInstance">> => integer()
+%% }
+-type async_inference_client_config() :: #{binary() => any()}.
+
+%% Example:
+%% canvas_app_settings() :: #{
+%%   <<"DirectDeploySettings">> => direct_deploy_settings(),
+%%   <<"GenerativeAiSettings">> => generative_ai_settings(),
+%%   <<"IdentityProviderOAuthSettings">> => list(identity_provider_o_auth_setting()()),
+%%   <<"KendraSettings">> => kendra_settings(),
+%%   <<"ModelRegisterSettings">> => model_register_settings(),
+%%   <<"TimeSeriesForecastingSettings">> => time_series_forecasting_settings(),
+%%   <<"WorkspaceSettings">> => workspace_settings()
+%% }
+-type canvas_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% list_images_response() :: #{
+%%   <<"Images">> => list(image()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_images_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_experiment_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_channel() :: #{
+%%   <<"ChannelType">> => list(any()),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ContentType">> => string(),
+%%   <<"DataSource">> => auto_ml_data_source()
+%% }
+-type auto_ml_job_channel() :: #{binary() => any()}.
+
+%% Example:
+%% agent_version() :: #{
+%%   <<"AgentCount">> => float(),
+%%   <<"Version">> => string()
+%% }
+-type agent_version() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_package_groups_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_package_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_contexts_response() :: #{
+%%   <<"ContextSummaries">> => list(context_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contexts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_app_image_configs_response() :: #{
+%%   <<"AppImageConfigs">> => list(app_image_config_details()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_image_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% warm_pool_status() :: #{
+%%   <<"ResourceRetainedBillableTimeInSeconds">> => integer(),
+%%   <<"ReusedByJob">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type warm_pool_status() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_package_input() :: #{
+%%   <<"AdditionalInferenceSpecifications">> => list(additional_inference_specification_definition()()),
+%%   <<"CertifyForMarketplace">> => boolean(),
+%%   <<"ClientToken">> => string(),
+%%   <<"CustomerMetadataProperties">> => map(),
+%%   <<"Domain">> => string(),
+%%   <<"DriftCheckBaselines">> => drift_check_baselines(),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelMetrics">> => model_metrics(),
+%%   <<"ModelPackageDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageName">> => string(),
+%%   <<"SamplePayloadUrl">> => string(),
+%%   <<"SkipModelValidation">> => list(any()),
+%%   <<"SourceAlgorithmSpecification">> => source_algorithm_specification(),
+%%   <<"SourceUri">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Task">> => string(),
+%%   <<"ValidationSpecification">> => model_package_validation_specification()
+%% }
+-type create_model_package_input() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_container_config() :: #{
+%%   <<"DataInputConfig">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"Framework">> => string(),
+%%   <<"FrameworkVersion">> => string(),
+%%   <<"NearestModelName">> => string(),
+%%   <<"PayloadConfig">> => recommendation_job_payload_config(),
+%%   <<"SupportedEndpointType">> => list(any()),
+%%   <<"SupportedInstanceTypes">> => list(string()()),
+%%   <<"SupportedResponseMIMETypes">> => list(string()()),
+%%   <<"Task">> => string()
+%% }
+-type recommendation_job_container_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_jobs_for_hyper_parameter_tuning_job_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrainingJobSummaries">> => list(hyper_parameter_training_job_summary()())
+%% }
+-type list_training_jobs_for_hyper_parameter_tuning_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% provisioning_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type provisioning_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_status_details() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type cluster_instance_status_details() :: #{binary() => any()}.
+
+%% Example:
+%% create_processing_job_request() :: #{
+%%   <<"AppSpecification">> := app_specification(),
+%%   <<"Environment">> => map(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"NetworkConfig">> => network_config(),
+%%   <<"ProcessingInputs">> => list(processing_input()()),
+%%   <<"ProcessingJobName">> := string(),
+%%   <<"ProcessingOutputConfig">> => processing_output_config(),
+%%   <<"ProcessingResources">> := processing_resources(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> => processing_stopping_condition(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_processing_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"NotificationTopicArn">> => string()
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_input() :: #{
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectName">> := string(),
+%%   <<"ServiceCatalogProvisioningDetails">> := service_catalog_provisioning_details(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_specification_summary() :: #{
+%%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
+%%   <<"Container">> => inference_component_container_specification_summary(),
+%%   <<"ModelName">> => string(),
+%%   <<"StartupParameters">> => inference_component_startup_parameters()
+%% }
+-type inference_component_specification_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workteam_response() :: #{
+%%   <<"Workteam">> => workteam()
+%% }
+-type describe_workteam_response() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataCaptureConfig">> => data_capture_config_summary(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointConfigName">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"EndpointStatus">> => list(any()),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MonitoringSchedules">> => list(monitoring_schedule()()),
+%%   <<"ProductionVariants">> => list(production_variant_summary()()),
+%%   <<"ShadowProductionVariants">> => list(production_variant_summary()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_output_config() :: #{
+%%   <<"CompiledOutputConfig">> => recommendation_job_compiled_output_config(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type recommendation_job_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_register_settings() :: #{
+%%   <<"CrossAccountModelRegisterRoleArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type model_register_settings() :: #{binary() => any()}.
+
+%% Example:
+%% fail_step_metadata() :: #{
+%%   <<"ErrorMessage">> => string()
+%% }
+-type fail_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% describe_edge_deployment_plan_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_edge_deployment_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hub_content_versions_response() :: #{
+%%   <<"HubContentSummaries">> => list(hub_content_info()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hub_content_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_inference_benchmark() :: #{
+%%   <<"EndpointConfiguration">> => endpoint_output_configuration(),
+%%   <<"EndpointMetrics">> => inference_metrics(),
+%%   <<"FailureReason">> => string(),
+%%   <<"InvocationEndTime">> => non_neg_integer(),
+%%   <<"InvocationStartTime">> => non_neg_integer(),
+%%   <<"Metrics">> => recommendation_metrics(),
+%%   <<"ModelConfiguration">> => model_configuration()
+%% }
+-type recommendation_job_inference_benchmark() :: #{binary() => any()}.
+
+%% Example:
+%% model_infrastructure_config() :: #{
+%%   <<"InfrastructureType">> => list(any()),
+%%   <<"RealTimeInferenceConfig">> => real_time_inference_config()
+%% }
+-type model_infrastructure_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_request() :: #{
+%%   <<"ImageName">> := string()
+%% }
+-type delete_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workforce_response() :: #{
+
+%% }
+-type delete_workforce_response() :: #{binary() => any()}.
+
+%% Example:
+%% model_metadata_search_expression() :: #{
+%%   <<"Filters">> => list(model_metadata_filter()())
+%% }
+-type model_metadata_search_expression() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_config() :: #{
+%%   <<"DataAnalysisEndTime">> => string(),
+%%   <<"DataAnalysisStartTime">> => string(),
+%%   <<"ScheduleExpression">> => string()
+%% }
+-type schedule_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_edge_deployment_plans_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"DeviceFleetNameContains">> => string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_edge_deployment_plans_request() :: #{binary() => any()}.
+
+%% Example:
+%% tuning_job_step_meta_data() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type tuning_job_step_meta_data() :: #{binary() => any()}.
+
+%% Example:
+%% list_workforces_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_workforces_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_experiment_response() :: #{
+%%   <<"InferenceExperimentArn">> => string()
+%% }
+-type update_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_simple_summary() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"TrialComponentArn">> => string(),
+%%   <<"TrialComponentName">> => string(),
+%%   <<"TrialComponentSource">> => trial_component_source()
+%% }
+-type trial_component_simple_summary() :: #{binary() => any()}.
+
+%% Example:
+%% send_pipeline_execution_step_failure_request() :: #{
+%%   <<"CallbackToken">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FailureReason">> => string()
+%% }
+-type send_pipeline_execution_step_failure_request() :: #{binary() => any()}.
+
+%% Example:
+%% domain_settings() :: #{
+%%   <<"DockerSettings">> => docker_settings(),
+%%   <<"ExecutionRoleIdentityConfig">> => list(any()),
+%%   <<"RStudioServerProDomainSettings">> => r_studio_server_pro_domain_settings(),
+%%   <<"SecurityGroupIds">> => list(string()())
+%% }
+-type domain_settings() :: #{binary() => any()}.
+
+%% Example:
+%% device_summary() :: #{
+%%   <<"AgentVersion">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceArn">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"IotThingName">> => string(),
+%%   <<"LatestHeartbeat">> => non_neg_integer(),
+%%   <<"Models">> => list(edge_model_summary()()),
+%%   <<"RegistrationTime">> => non_neg_integer()
+%% }
+-type device_summary() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_algorithms_config() :: #{
+%%   <<"InitialActiveLearningModelArn">> => string(),
+%%   <<"LabelingJobAlgorithmSpecificationArn">> => string(),
+%%   <<"LabelingJobResourceConfig">> => labeling_job_resource_config()
+%% }
+-type labeling_job_algorithms_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_response() :: #{
+%%   <<"ImageArn">> => string()
+%% }
+-type update_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleConfig">> := monitoring_schedule_config(),
+%%   <<"MonitoringScheduleName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_domains_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_flow_definition_response() :: #{
+%%   <<"FlowDefinitionArn">> => string()
+%% }
+-type create_flow_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_metrics() :: #{
+%%   <<"CostPerHour">> => float(),
+%%   <<"CostPerInference">> => float(),
+%%   <<"CpuUtilization">> => float(),
+%%   <<"MaxInvocations">> => integer(),
+%%   <<"MemoryUtilization">> => float(),
+%%   <<"ModelLatency">> => integer(),
+%%   <<"ModelSetupTime">> => integer()
+%% }
+-type recommendation_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_package_group_policy_input() :: #{
+%%   <<"ModelPackageGroupName">> := string()
+%% }
+-type get_model_package_group_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_space_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HomeEfsFileSystemUid">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OwnershipSettings">> => ownership_settings(),
+%%   <<"SpaceArn">> => string(),
+%%   <<"SpaceDisplayName">> => string(),
+%%   <<"SpaceName">> => string(),
+%%   <<"SpaceSettings">> => space_settings(),
+%%   <<"SpaceSharingSettings">> => space_sharing_settings(),
+%%   <<"Status">> => list(any()),
+%%   <<"Url">> => string()
+%% }
+-type describe_space_response() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_dataset_format() :: #{
+%%   <<"Csv">> => monitoring_csv_dataset_format(),
+%%   <<"Json">> => monitoring_json_dataset_format(),
+%%   <<"Parquet">> => monitoring_parquet_dataset_format()
+%% }
+-type monitoring_dataset_format() :: #{binary() => any()}.
+
+%% Example:
+%% training_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"TrainingEndTime">> => non_neg_integer(),
+%%   <<"TrainingJobArn">> => string(),
+%%   <<"TrainingJobName">> => string(),
+%%   <<"TrainingJobStatus">> => list(any()),
+%%   <<"WarmPoolStatus">> => warm_pool_status()
+%% }
+-type training_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_job_response() :: #{
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"Environment">> => map(),
+%%   <<"TrainingTimeInSeconds">> => integer(),
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"FinalMetricDataList">> => list(metric_data()()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CheckpointConfig">> => checkpoint_config(),
+%%   <<"TrainingJobArn">> => string(),
+%%   <<"StoppingCondition">> => stopping_condition(),
+%%   <<"TuningJobArn">> => string(),
+%%   <<"DebugHookConfig">> => debug_hook_config(),
+%%   <<"TrainingJobStatus">> => list(any()),
+%%   <<"TrainingEndTime">> => non_neg_integer(),
+%%   <<"ResourceConfig">> => resource_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"VpcConfig">> => vpc_config(),
+%%   <<"DebugRuleConfigurations">> => list(debug_rule_configuration()()),
+%%   <<"WarmPoolStatus">> => warm_pool_status(),
+%%   <<"TensorBoardOutputConfig">> => tensor_board_output_config(),
+%%   <<"RetryStrategy">> => retry_strategy(),
+%%   <<"ModelArtifacts">> => model_artifacts(),
+%%   <<"FailureReason">> => string(),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"InfraCheckConfig">> => infra_check_config(),
+%%   <<"BillableTimeInSeconds">> => integer(),
+%%   <<"SecondaryStatusTransitions">> => list(secondary_status_transition()()),
+%%   <<"ProfilingStatus">> => list(any()),
+%%   <<"SecondaryStatus">> => list(any()),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"TrainingJobName">> => string(),
+%%   <<"ProfilerConfig">> => profiler_config(),
+%%   <<"ProfilerRuleEvaluationStatuses">> => list(profiler_rule_evaluation_status()()),
+%%   <<"EnableManagedSpotTraining">> => boolean(),
+%%   <<"RemoteDebugConfig">> => remote_debug_config(),
+%%   <<"InputDataConfig">> => list(channel()()),
+%%   <<"TrainingStartTime">> => non_neg_integer(),
+%%   <<"AlgorithmSpecification">> => algorithm_specification(),
+%%   <<"HyperParameters">> => map(),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"ProfilerRuleConfigurations">> => list(profiler_rule_configuration()()),
+%%   <<"DebugRuleEvaluationStatuses">> => list(debug_rule_evaluation_status()())
+%% }
+-type describe_training_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% real_time_inference_recommendation() :: #{
+%%   <<"Environment">> => map(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"RecommendationId">> => string()
+%% }
+-type real_time_inference_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_trial_component_response() :: #{
+%%   <<"TrialArn">> => string(),
+%%   <<"TrialComponentArn">> => string()
+%% }
+-type disassociate_trial_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hyper_parameter_tuning_job_response() :: #{
+%%   <<"Autotune">> => autotune(),
+%%   <<"BestTrainingJob">> => hyper_parameter_training_job_summary(),
+%%   <<"ConsumedResources">> => hyper_parameter_tuning_job_consumed_resources(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HyperParameterTuningEndTime">> => non_neg_integer(),
+%%   <<"HyperParameterTuningJobArn">> => string(),
+%%   <<"HyperParameterTuningJobConfig">> => hyper_parameter_tuning_job_config(),
+%%   <<"HyperParameterTuningJobName">> => string(),
+%%   <<"HyperParameterTuningJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ObjectiveStatusCounters">> => objective_status_counters(),
+%%   <<"OverallBestTrainingJob">> => hyper_parameter_training_job_summary(),
+%%   <<"TrainingJobDefinition">> => hyper_parameter_training_job_definition(),
+%%   <<"TrainingJobDefinitions">> => list(hyper_parameter_training_job_definition()()),
+%%   <<"TrainingJobStatusCounters">> => training_job_status_counters(),
+%%   <<"TuningJobCompletionDetails">> => hyper_parameter_tuning_job_completion_details(),
+%%   <<"WarmStartConfig">> => hyper_parameter_tuning_job_warm_start_config()
+%% }
+-type describe_hyper_parameter_tuning_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% additional_inference_specification_definition() :: #{
+%%   <<"Containers">> => list(model_package_container_definition()()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SupportedContentTypes">> => list(string()()),
+%%   <<"SupportedRealtimeInferenceInstanceTypes">> => list(list(any())()),
+%%   <<"SupportedResponseMIMETypes">> => list(string()()),
+%%   <<"SupportedTransformInstanceTypes">> => list(list(any())())
+%% }
+-type additional_inference_specification_definition() :: #{binary() => any()}.
+
+%% Example:
+%% parallelism_configuration() :: #{
+%%   <<"MaxParallelExecutionSteps">> => integer()
+%% }
+-type parallelism_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_bias_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string(),
+%%   <<"JobResources">> := monitoring_resources(),
+%%   <<"ModelBiasAppSpecification">> := model_bias_app_specification(),
+%%   <<"ModelBiasBaselineConfig">> => model_bias_baseline_config(),
+%%   <<"ModelBiasJobInput">> := model_bias_job_input(),
+%%   <<"ModelBiasJobOutputConfig">> := monitoring_output_config(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_model_bias_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_hub_response() :: #{
+%%   <<"HubArn">> => string()
+%% }
+-type update_hub_response() :: #{binary() => any()}.
+
+%% Example:
+%% context_source() :: #{
+%%   <<"SourceId">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"SourceUri">> => string()
+%% }
+-type context_source() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_component_output() :: #{
+%%   <<"InferenceComponentArn">> => string()
+%% }
+-type create_inference_component_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_notebook_instance_input() :: #{
+%%   <<"AcceleratorTypes">> => list(list(any())()),
+%%   <<"AdditionalCodeRepositories">> => list(string()()),
+%%   <<"DefaultCodeRepository">> => string(),
+%%   <<"DirectInternetAccess">> => list(any()),
+%%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
+%%   <<"InstanceType">> := list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LifecycleConfigName">> => string(),
+%%   <<"NotebookInstanceName">> := string(),
+%%   <<"PlatformIdentifier">> => string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"RootAccess">> => list(any()),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type create_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_s3_output() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"S3UploadMode">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type monitoring_s3_output() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_inference_config() :: #{
+%%   <<"ContentTemplate">> => string(),
+%%   <<"FeatureHeaders">> => list(string()()),
+%%   <<"FeatureTypes">> => list(list(any())()),
+%%   <<"FeaturesAttribute">> => string(),
+%%   <<"LabelAttribute">> => string(),
+%%   <<"LabelHeaders">> => list(string()()),
+%%   <<"LabelIndex">> => integer(),
+%%   <<"MaxPayloadInMB">> => integer(),
+%%   <<"MaxRecordCount">> => integer(),
+%%   <<"ProbabilityAttribute">> => string(),
+%%   <<"ProbabilityIndex">> => integer()
+%% }
+-type clarify_inference_config() :: #{binary() => any()}.
+
+%% Example:
+%% pending_production_variant_summary() :: #{
+%%   <<"AcceleratorType">> => list(any()),
+%%   <<"CurrentInstanceCount">> => integer(),
+%%   <<"CurrentServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"CurrentWeight">> => float(),
+%%   <<"DeployedImages">> => list(deployed_image()()),
+%%   <<"DesiredInstanceCount">> => integer(),
+%%   <<"DesiredServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"DesiredWeight">> => float(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
+%%   <<"RoutingConfig">> => production_variant_routing_config(),
+%%   <<"VariantName">> => string(),
+%%   <<"VariantStatus">> => list(production_variant_status()())
+%% }
+-type pending_production_variant_summary() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_routing_config() :: #{
+%%   <<"RoutingStrategy">> => list(any())
+%% }
+-type production_variant_routing_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_associations_request() :: #{
+%%   <<"AssociationType">> => list(any()),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"DestinationArn">> => string(),
+%%   <<"DestinationType">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => string()
+%% }
+-type list_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_executions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineExecutionSummaries">> => list(pipeline_execution_summary()())
+%% }
+-type list_pipeline_executions_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_labeling_job_request() :: #{
+%%   <<"HumanTaskConfig">> := human_task_config(),
+%%   <<"InputConfig">> := labeling_job_input_config(),
+%%   <<"LabelAttributeName">> := string(),
+%%   <<"LabelCategoryConfigS3Uri">> => string(),
+%%   <<"LabelingJobAlgorithmsConfig">> => labeling_job_algorithms_config(),
+%%   <<"LabelingJobName">> := string(),
+%%   <<"OutputConfig">> := labeling_job_output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingConditions">> => labeling_job_stopping_conditions(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_labeling_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_card_export_job_request() :: #{
+%%   <<"ModelCardExportJobArn">> := string()
+%% }
+-type describe_model_card_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_code_repository_input() :: #{
+%%   <<"CodeRepositoryName">> := string()
+%% }
+-type delete_code_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% trial_source() :: #{
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => string()
+%% }
+-type trial_source() :: #{binary() => any()}.
+
+%% Example:
+%% workforce() :: #{
+%%   <<"CognitoConfig">> => cognito_config(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"OidcConfig">> => oidc_config_for_response(),
+%%   <<"SourceIpConfig">> => source_ip_config(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubDomain">> => string(),
+%%   <<"WorkforceArn">> => string(),
+%%   <<"WorkforceName">> => string(),
+%%   <<"WorkforceVpcConfig">> => workforce_vpc_config_response()
+%% }
+-type workforce() :: #{binary() => any()}.
+
+%% Example:
+%% cache_hit_result() :: #{
+%%   <<"SourcePipelineExecutionArn">> => string()
+%% }
+-type cache_hit_result() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_training_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FinalHyperParameterTuningJobObjectiveMetric">> => final_hyper_parameter_tuning_job_objective_metric(),
+%%   <<"ObjectiveStatus">> => list(any()),
+%%   <<"TrainingEndTime">> => non_neg_integer(),
+%%   <<"TrainingJobArn">> => string(),
+%%   <<"TrainingJobDefinitionName">> => string(),
+%%   <<"TrainingJobName">> => string(),
+%%   <<"TrainingJobStatus">> => list(any()),
+%%   <<"TrainingStartTime">> => non_neg_integer(),
+%%   <<"TunedHyperParameters">> => map(),
+%%   <<"TuningJobName">> => string()
+%% }
+-type hyper_parameter_training_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% image_classification_job_config() :: #{
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria()
+%% }
+-type image_classification_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workteam_request() :: #{
+%%   <<"WorkteamName">> := string()
+%% }
+-type delete_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% debug_rule_configuration() :: #{
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LocalPath">> => string(),
+%%   <<"RuleConfigurationName">> => string(),
+%%   <<"RuleEvaluatorImage">> => string(),
+%%   <<"RuleParameters">> => map(),
+%%   <<"S3OutputPath">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type debug_rule_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_card_request() :: #{
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardVersion">> => integer()
+%% }
+-type describe_model_card_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_packages_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageType">> => list(any()),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_packages_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_human_task_ui_response() :: #{
+%%   <<"HumanTaskUiArn">> => string()
+%% }
+-type create_human_task_ui_response() :: #{binary() => any()}.
+
+%% Example:
+%% model_dashboard_model_card() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelCardArn">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"ModelId">> => string(),
+%%   <<"RiskRating">> => string(),
+%%   <<"SecurityConfig">> => model_card_security_config(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type model_dashboard_model_card() :: #{binary() => any()}.
+
+%% Example:
+%% create_trial_request() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentName">> := string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TrialName">> := string()
+%% }
+-type create_trial_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_image_config_request() :: #{
+%%   <<"AppImageConfigName">> := string(),
+%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
+%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_app_image_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% deployed_image() :: #{
+%%   <<"ResolutionTime">> => non_neg_integer(),
+%%   <<"ResolvedImage">> => string(),
+%%   <<"SpecifiedImage">> => string()
+%% }
+-type deployed_image() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"InferenceComponentArn">> => string(),
+%%   <<"InferenceComponentName">> => string(),
+%%   <<"InferenceComponentStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"VariantName">> => string()
+%% }
+-type inference_component_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_request() :: #{
+%%   <<"ClusterName">> := string()
+%% }
+-type delete_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_transform_job_request() :: #{
+%%   <<"TransformJobName">> := string()
+%% }
+-type describe_transform_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_request() :: #{
+%%   <<"AppName">> := string(),
+%%   <<"AppType">> := list(any()),
+%%   <<"DomainId">> := string(),
+%%   <<"SpaceName">> => string(),
+%%   <<"UserProfileName">> => string()
+%% }
+-type delete_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% objective_status_counters() :: #{
+%%   <<"Failed">> => integer(),
+%%   <<"Pending">> => integer(),
+%%   <<"Succeeded">> => integer()
+%% }
+-type objective_status_counters() :: #{binary() => any()}.
+
+%% Example:
+%% parent_hyper_parameter_tuning_job() :: #{
+%%   <<"HyperParameterTuningJobName">> => string()
+%% }
+-type parent_hyper_parameter_tuning_job() :: #{binary() => any()}.
+
+%% Example:
+%% render_ui_template_response() :: #{
+%%   <<"Errors">> => list(rendering_error()()),
+%%   <<"RenderedContent">> => string()
+%% }
+-type render_ui_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_ml_job_v2_response() :: #{
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"AutoMLJobArtifacts">> => auto_ml_job_artifacts(),
+%%   <<"AutoMLJobInputDataConfig">> => list(auto_ml_job_channel()()),
+%%   <<"AutoMLJobName">> => string(),
+%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
+%%   <<"AutoMLJobSecondaryStatus">> => list(any()),
+%%   <<"AutoMLJobStatus">> => list(any()),
+%%   <<"AutoMLProblemTypeConfig">> => list(),
+%%   <<"AutoMLProblemTypeConfigName">> => list(any()),
+%%   <<"BestCandidate">> => auto_ml_candidate(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataSplitConfig">> => auto_ml_data_split_config(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelDeployConfig">> => model_deploy_config(),
+%%   <<"ModelDeployResult">> => model_deploy_result(),
+%%   <<"OutputDataConfig">> => auto_ml_output_data_config(),
+%%   <<"PartialFailureReasons">> => list(auto_ml_partial_failure_reason()()),
+%%   <<"ResolvedAttributes">> => auto_ml_resolved_attributes(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecurityConfig">> => auto_ml_security_config()
+%% }
+-type describe_auto_ml_job_v2_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trial_component_request() :: #{
+%%   <<"TrialComponentName">> := string()
+%% }
+-type delete_trial_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_group_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ModelPackageGroupArn">> => string(),
+%%   <<"ModelPackageGroupDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageGroupStatus">> => list(any())
+%% }
+-type model_package_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_summary() :: #{
+%%   <<"ArtifactArn">> => string(),
+%%   <<"ArtifactName">> => string(),
+%%   <<"ArtifactType">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Source">> => artifact_source()
+%% }
+-type artifact_summary() :: #{binary() => any()}.
+
+%% Example:
+%% image() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"ImageArn">> => string(),
+%%   <<"ImageName">> => string(),
+%%   <<"ImageStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type image() :: #{binary() => any()}.
+
+%% Example:
+%% device_fleet_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeviceFleetArn">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type device_fleet_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_compilation_job_request() :: #{
+%%   <<"CompilationJobName">> := string(),
+%%   <<"InputConfig">> => input_config(),
+%%   <<"ModelPackageVersionArn">> => string(),
+%%   <<"OutputConfig">> := output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> := stopping_condition(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcConfig">> => neo_vpc_config()
+%% }
+-type create_compilation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% label_counters() :: #{
+%%   <<"FailedNonRetryableError">> => integer(),
+%%   <<"HumanLabeled">> => integer(),
+%%   <<"MachineLabeled">> => integer(),
+%%   <<"TotalLabeled">> => integer(),
+%%   <<"Unlabeled">> => integer()
+%% }
+-type label_counters() :: #{binary() => any()}.
+
+%% Example:
+%% drift_check_model_quality() :: #{
+%%   <<"Constraints">> => metrics_source(),
+%%   <<"Statistics">> => metrics_source()
+%% }
+-type drift_check_model_quality() :: #{binary() => any()}.
+
+%% Example:
+%% explainability() :: #{
+%%   <<"Report">> => metrics_source()
+%% }
+-type explainability() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitoring_schedule_response() :: #{
+%%   <<"MonitoringScheduleArn">> => string()
+%% }
+-type update_monitoring_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_experiment_request() :: #{
+%%   <<"ExperimentName">> := string()
+%% }
+-type describe_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_bias_job_definition_response() :: #{
+%%   <<"JobDefinitionArn">> => string()
+%% }
+-type create_model_bias_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_action_response() :: #{
+%%   <<"ActionArn">> => string()
+%% }
+-type delete_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_request() :: #{
+%%   <<"AppName">> := string(),
+%%   <<"AppType">> := list(any()),
+%%   <<"DomainId">> := string(),
+%%   <<"SpaceName">> => string(),
+%%   <<"UserProfileName">> => string()
+%% }
+-type describe_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% collection_configuration() :: #{
+%%   <<"CollectionName">> => string(),
+%%   <<"CollectionParameters">> => map()
+%% }
+-type collection_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% resource_config() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceGroups">> => list(instance_group()()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"KeepAlivePeriodInSeconds">> => integer(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type resource_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_output() :: #{
+%%   <<"ProjectArn">> => string()
+%% }
+-type update_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% real_time_inference_config() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type real_time_inference_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_transform_job_response() :: #{
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"BatchStrategy">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataCaptureConfig">> => batch_data_capture_config(),
+%%   <<"DataProcessing">> => data_processing(),
+%%   <<"Environment">> => map(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"MaxConcurrentTransforms">> => integer(),
+%%   <<"MaxPayloadInMB">> => integer(),
+%%   <<"ModelClientConfig">> => model_client_config(),
+%%   <<"ModelName">> => string(),
+%%   <<"TransformEndTime">> => non_neg_integer(),
+%%   <<"TransformInput">> => transform_input(),
+%%   <<"TransformJobArn">> => string(),
+%%   <<"TransformJobName">> => string(),
+%%   <<"TransformJobStatus">> => list(any()),
+%%   <<"TransformOutput">> => transform_output(),
+%%   <<"TransformResources">> => transform_resources(),
+%%   <<"TransformStartTime">> => non_neg_integer()
+%% }
+-type describe_transform_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workteams_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_workteams_request() :: #{binary() => any()}.
+
+%% Example:
+%% online_store_config() :: #{
+%%   <<"EnableOnlineStore">> => boolean(),
+%%   <<"SecurityConfig">> => online_store_security_config(),
+%%   <<"StorageType">> => list(any()),
+%%   <<"TtlDuration">> => ttl_duration()
+%% }
+-type online_store_config() :: #{binary() => any()}.
+
+%% Example:
+%% processing_job_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type processing_job_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% label_counters_for_workteam() :: #{
+%%   <<"HumanLabeled">> => integer(),
+%%   <<"PendingHuman">> => integer(),
+%%   <<"Total">> => integer()
+%% }
+-type label_counters_for_workteam() :: #{binary() => any()}.
+
+%% Example:
+%% list_artifacts_response() :: #{
+%%   <<"ArtifactSummaries">> => list(artifact_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_artifacts_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hub_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HubArn">> => string(),
+%%   <<"HubDescription">> => string(),
+%%   <<"HubDisplayName">> => string(),
+%%   <<"HubName">> => string(),
+%%   <<"HubSearchKeywords">> => list(string()()),
+%%   <<"HubStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"S3StorageConfig">> => hub_s3_storage_config()
+%% }
+-type describe_hub_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_image_config_request() :: #{
+%%   <<"AppImageConfigName">> := string()
+%% }
+-type delete_app_image_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_feature_group_request() :: #{
+%%   <<"FeatureGroupName">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_feature_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_compilation_job_request() :: #{
+%%   <<"CompilationJobName">> := string()
+%% }
+-type delete_compilation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_capture_config_summary() :: #{
+%%   <<"CaptureStatus">> => list(any()),
+%%   <<"CurrentSamplingPercentage">> => integer(),
+%%   <<"DestinationS3Uri">> => string(),
+%%   <<"EnableCapture">> => boolean(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type data_capture_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_schedule_config() :: #{
+%%   <<"MonitoringJobDefinition">> => monitoring_job_definition(),
+%%   <<"MonitoringJobDefinitionName">> => string(),
+%%   <<"MonitoringType">> => list(any()),
+%%   <<"ScheduleConfig">> => schedule_config()
+%% }
+-type monitoring_schedule_config() :: #{binary() => any()}.
+
+%% Example:
+%% profiler_config_for_update() :: #{
+%%   <<"DisableProfiler">> => boolean(),
+%%   <<"ProfilingIntervalInMilliseconds">> => float(),
+%%   <<"ProfilingParameters">> => map(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type profiler_config_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% rolling_update_policy() :: #{
+%%   <<"MaximumBatchSize">> => capacity_size(),
+%%   <<"MaximumExecutionTimeoutInSeconds">> => integer(),
+%%   <<"RollbackMaximumBatchSize">> => capacity_size(),
+%%   <<"WaitIntervalInSeconds">> => integer()
+%% }
+-type rolling_update_policy() :: #{binary() => any()}.
+
+%% Example:
+%% app_image_config_details() :: #{
+%%   <<"AppImageConfigArn">> => string(),
+%%   <<"AppImageConfigName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
+%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type app_image_config_details() :: #{binary() => any()}.
+
+%% Example:
+%% update_feature_metadata_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FeatureGroupName">> := string(),
+%%   <<"FeatureName">> := string(),
+%%   <<"ParameterAdditions">> => list(feature_parameter()()),
+%%   <<"ParameterRemovals">> => list(string()())
+%% }
+-type update_feature_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_labeling_job_request() :: #{
+%%   <<"LabelingJobName">> := string()
+%% }
+-type describe_labeling_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_request() :: #{
+%%   <<"DomainId">> := string()
+%% }
+-type describe_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_stage_devices_response() :: #{
+%%   <<"DeviceDeploymentSummaries">> => list(device_deployment_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_stage_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_presigned_notebook_instance_url_input() :: #{
+%%   <<"NotebookInstanceName">> := string(),
+%%   <<"SessionExpirationDurationInSeconds">> => integer()
+%% }
+-type create_presigned_notebook_instance_url_input() :: #{binary() => any()}.
+
+%% Example:
+%% model_explainability_job_input() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"EndpointInput">> => endpoint_input()
+%% }
+-type model_explainability_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_space_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"SpaceDisplayName">> => string(),
+%%   <<"SpaceName">> := string(),
+%%   <<"SpaceSettings">> => space_settings()
+%% }
+-type update_space_request() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_source_detail() :: #{
+%%   <<"ProcessingJob">> => processing_job(),
+%%   <<"SourceArn">> => string(),
+%%   <<"TrainingJob">> => training_job(),
+%%   <<"TransformJob">> => transform_job()
+%% }
+-type trial_component_source_detail() :: #{binary() => any()}.
+
+%% Example:
+%% list_candidates_for_auto_ml_job_response() :: #{
+%%   <<"Candidates">> => list(auto_ml_candidate()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_candidates_for_auto_ml_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% predefined_metric_specification() :: #{
+%%   <<"PredefinedMetricType">> => string()
+%% }
+-type predefined_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_input_configuration() :: #{
+%%   <<"EnvironmentParameterRanges">> => environment_parameter_ranges(),
+%%   <<"InferenceSpecificationName">> => string(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ServerlessConfig">> => production_variant_serverless_config()
+%% }
+-type endpoint_input_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_input() :: #{
+%%   <<"ModelName">> := string()
+%% }
+-type delete_model_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleName">> := string()
+%% }
+-type describe_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% action_source() :: #{
+%%   <<"SourceId">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"SourceUri">> => string()
+%% }
+-type action_source() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HyperParameterTuningEndTime">> => non_neg_integer(),
+%%   <<"HyperParameterTuningJobArn">> => string(),
+%%   <<"HyperParameterTuningJobName">> => string(),
+%%   <<"HyperParameterTuningJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ObjectiveStatusCounters">> => objective_status_counters(),
+%%   <<"ResourceLimits">> => resource_limits(),
+%%   <<"Strategy">> => list(any()),
+%%   <<"TrainingJobStatusCounters">> => training_job_status_counters()
+%% }
+-type hyper_parameter_tuning_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% multi_model_config() :: #{
+%%   <<"ModelCacheSetting">> => list(any())
+%% }
+-type multi_model_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_artifacts() :: #{
+%%   <<"S3ModelArtifacts">> => string()
+%% }
+-type model_artifacts() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_profile_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"SingleSignOnUserIdentifier">> => string(),
+%%   <<"SingleSignOnUserValue">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UserProfileName">> := string(),
+%%   <<"UserSettings">> => user_settings()
+%% }
+-type create_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% processing_input() :: #{
+%%   <<"AppManaged">> => boolean(),
+%%   <<"DatasetDefinition">> => dataset_definition(),
+%%   <<"InputName">> => string(),
+%%   <<"S3Input">> => processing_s3_input()
+%% }
+-type processing_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_feature_group_request() :: #{
+%%   <<"FeatureAdditions">> => list(feature_definition()()),
+%%   <<"FeatureGroupName">> := string(),
+%%   <<"OnlineStoreConfig">> => online_store_config_update(),
+%%   <<"ThroughputConfig">> => throughput_config_update()
+%% }
+-type update_feature_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_edge_deployment_plans_response() :: #{
+%%   <<"EdgeDeploymentPlanSummaries">> => list(edge_deployment_plan_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_edge_deployment_plans_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitoring_alert_response() :: #{
+%%   <<"MonitoringAlertName">> => string(),
+%%   <<"MonitoringScheduleArn">> => string()
+%% }
+-type update_monitoring_alert_response() :: #{binary() => any()}.
+
+%% Example:
+%% tensor_board_output_config() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type tensor_board_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_app_specification() :: #{
+%%   <<"ContainerArguments">> => list(string()()),
+%%   <<"ContainerEntrypoint">> => list(string()()),
+%%   <<"ImageUri">> => string(),
+%%   <<"PostAnalyticsProcessorSourceUri">> => string(),
+%%   <<"RecordPreprocessorSourceUri">> => string()
+%% }
+-type monitoring_app_specification() :: #{binary() => any()}.
+
+%% Example:
+%% model_input() :: #{
+%%   <<"DataInputConfig">> => string()
+%% }
+-type model_input() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_job_input() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"EndpointInput">> => endpoint_input()
+%% }
+-type data_quality_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscribed_workteams_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_subscribed_workteams_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_studio_lifecycle_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StudioLifecycleConfigs">> => list(studio_lifecycle_config_details()())
+%% }
+-type list_studio_lifecycle_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_processing() :: #{
+%%   <<"InputFilter">> => string(),
+%%   <<"JoinSource">> => list(any()),
+%%   <<"OutputFilter">> => string()
+%% }
+-type data_processing() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_output() :: #{
+%%   <<"S3Output">> => monitoring_s3_output()
+%% }
+-type monitoring_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_bias_job_definitions_response() :: #{
+%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_bias_job_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% tabular_job_config() :: #{
+%%   <<"CandidateGenerationConfig">> => candidate_generation_config(),
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"FeatureSpecificationS3Uri">> => string(),
+%%   <<"GenerateCandidateDefinitionsOnly">> => boolean(),
+%%   <<"Mode">> => list(any()),
+%%   <<"ProblemType">> => list(any()),
+%%   <<"SampleWeightAttributeName">> => string(),
+%%   <<"TargetAttributeName">> => string()
+%% }
+-type tabular_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscribed_workteam_response() :: #{
+%%   <<"SubscribedWorkteam">> => subscribed_workteam()
+%% }
+-type describe_subscribed_workteam_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_projects_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_transform_input() :: #{
+%%   <<"DataCapturedDestinationS3Uri">> => string(),
+%%   <<"DatasetFormat">> => monitoring_dataset_format(),
+%%   <<"EndTimeOffset">> => string(),
+%%   <<"ExcludeFeaturesAttribute">> => string(),
+%%   <<"FeaturesAttribute">> => string(),
+%%   <<"InferenceAttribute">> => string(),
+%%   <<"LocalPath">> => string(),
+%%   <<"ProbabilityAttribute">> => string(),
+%%   <<"ProbabilityThresholdAttribute">> => float(),
+%%   <<"S3DataDistributionType">> => list(any()),
+%%   <<"S3InputMode">> => list(any()),
+%%   <<"StartTimeOffset">> => string()
+%% }
+-type batch_transform_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_recommendations_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelNameEquals">> => string(),
+%%   <<"ModelPackageVersionArnEquals">> => string(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_inference_recommendations_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_info() :: #{
+%%   <<"EndpointName">> => string()
+%% }
+-type endpoint_info() :: #{binary() => any()}.
+
+%% Example:
+%% enable_sagemaker_servicecatalog_portfolio_input() :: #{
+
+%% }
+-type enable_sagemaker_servicecatalog_portfolio_input() :: #{binary() => any()}.
+
+%% Example:
+%% inference_experiment_summary() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Schedule">> => inference_experiment_schedule(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type inference_experiment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_models_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_models_input() :: #{binary() => any()}.
+
+%% Example:
+%% transform_job_definition() :: #{
+%%   <<"BatchStrategy">> => list(any()),
+%%   <<"Environment">> => map(),
+%%   <<"MaxConcurrentTransforms">> => integer(),
+%%   <<"MaxPayloadInMB">> => integer(),
+%%   <<"TransformInput">> => transform_input(),
+%%   <<"TransformOutput">> => transform_output(),
+%%   <<"TransformResources">> => transform_resources()
+%% }
+-type transform_job_definition() :: #{binary() => any()}.
+
+%% Example:
+%% model_card_export_job_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"LastModifiedAt">> => non_neg_integer(),
+%%   <<"ModelCardExportJobArn">> => string(),
+%%   <<"ModelCardExportJobName">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type model_card_export_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_validation_profile() :: #{
+%%   <<"ProfileName">> => string(),
+%%   <<"TransformJobDefinition">> => transform_job_definition()
+%% }
+-type model_package_validation_profile() :: #{binary() => any()}.
+
+%% Example:
+%% output_config() :: #{
+%%   <<"CompilerOptions">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputLocation">> => string(),
+%%   <<"TargetDevice">> => list(any()),
+%%   <<"TargetPlatform">> => target_platform()
+%% }
+-type output_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trial_request() :: #{
+%%   <<"TrialName">> := string()
+%% }
+-type delete_trial_request() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_objective() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type hyper_parameter_tuning_job_objective() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flow_definition_request() :: #{
+%%   <<"FlowDefinitionName">> := string()
+%% }
+-type describe_flow_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_algorithm_specification() :: #{
+%%   <<"AlgorithmName">> => string(),
+%%   <<"MetricDefinitions">> => list(metric_definition()()),
+%%   <<"TrainingImage">> => string(),
+%%   <<"TrainingInputMode">> => list(any())
+%% }
+-type hyper_parameter_algorithm_specification() :: #{binary() => any()}.
+
+%% Example:
+%% s3_model_data_source() :: #{
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ModelAccessConfig">> => model_access_config(),
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type s3_model_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_routing_config() :: #{
+%%   <<"CanarySize">> => capacity_size(),
+%%   <<"LinearStepSize">> => capacity_size(),
+%%   <<"Type">> => list(any()),
+%%   <<"WaitIntervalInSeconds">> => integer()
+%% }
+-type traffic_routing_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_experiment_request() :: #{
+%%   <<"DataStorageConfig">> => inference_experiment_data_storage_config(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointName">> := string(),
+%%   <<"KmsKey">> => string(),
+%%   <<"ModelVariants">> := list(model_variant_config()()),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Schedule">> => inference_experiment_schedule(),
+%%   <<"ShadowModeConfig">> := shadow_mode_config(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Type">> := list(any())
+%% }
+-type create_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_stopping_conditions() :: #{
+%%   <<"FlatInvocations">> => list(any()),
+%%   <<"MaxInvocations">> => integer(),
+%%   <<"ModelLatencyThresholds">> => list(model_latency_threshold()())
+%% }
+-type recommendation_job_stopping_conditions() :: #{binary() => any()}.
+
+%% Example:
+%% vector_config() :: #{
+%%   <<"Dimension">> => integer()
+%% }
+-type vector_config() :: #{binary() => any()}.
+
+%% Example:
+%% disable_sagemaker_servicecatalog_portfolio_input() :: #{
+
+%% }
+-type disable_sagemaker_servicecatalog_portfolio_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_fleet_report_request() :: #{
+%%   <<"DeviceFleetName">> := string()
+%% }
+-type get_device_fleet_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_input() :: #{
+%%   <<"EndpointName">> := string()
+%% }
+-type delete_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% transform_resources() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"VolumeKmsKeyId">> => string()
+%% }
+-type transform_resources() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_explainability_job_definition_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"JobDefinitionArn">> => string(),
+%%   <<"JobDefinitionName">> => string(),
+%%   <<"JobResources">> => monitoring_resources(),
+%%   <<"ModelExplainabilityAppSpecification">> => model_explainability_app_specification(),
+%%   <<"ModelExplainabilityBaselineConfig">> => model_explainability_baseline_config(),
+%%   <<"ModelExplainabilityJobInput">> => model_explainability_job_input(),
+%%   <<"ModelExplainabilityJobOutputConfig">> => monitoring_output_config(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition()
+%% }
+-type describe_model_explainability_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_quality_job_definition_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataQualityAppSpecification">> => data_quality_app_specification(),
+%%   <<"DataQualityBaselineConfig">> => data_quality_baseline_config(),
+%%   <<"DataQualityJobInput">> => data_quality_job_input(),
+%%   <<"DataQualityJobOutputConfig">> => monitoring_output_config(),
+%%   <<"JobDefinitionArn">> => string(),
+%%   <<"JobDefinitionName">> => string(),
+%%   <<"JobResources">> => monitoring_resources(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition()
+%% }
+-type describe_data_quality_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% edge_model() :: #{
+%%   <<"LatestInference">> => non_neg_integer(),
+%%   <<"LatestSampleTime">> => non_neg_integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelVersion">> => string()
+%% }
+-type edge_model() :: #{binary() => any()}.
+
+%% Example:
+%% stop_training_job_request() :: #{
+%%   <<"TrainingJobName">> := string()
+%% }
+-type stop_training_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workforce_request() :: #{
+%%   <<"OidcConfig">> => oidc_config(),
+%%   <<"SourceIpConfig">> => source_ip_config(),
+%%   <<"WorkforceName">> := string(),
+%%   <<"WorkforceVpcConfig">> => workforce_vpc_config_request()
+%% }
+-type update_workforce_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_components_output() :: #{
+%%   <<"InferenceComponents">> => list(inference_component_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_components_output() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_input_config() :: #{
+%%   <<"DataAttributes">> => labeling_job_data_attributes(),
+%%   <<"DataSource">> => labeling_job_data_source()
+%% }
+-type labeling_job_input_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_artifact_response() :: #{
+%%   <<"ArtifactArn">> => string()
+%% }
+-type update_artifact_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_association_response() :: #{
+%%   <<"DestinationArn">> => string(),
+%%   <<"SourceArn">> => string()
+%% }
+-type delete_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trial_component_response() :: #{
+%%   <<"TrialComponentArn">> => string()
+%% }
+-type delete_trial_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_algorithm_output() :: #{
+%%   <<"AlgorithmArn">> => string()
+%% }
+-type create_algorithm_output() :: #{binary() => any()}.
+
+%% Example:
+%% training_job() :: #{
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"Environment">> => map(),
+%%   <<"TrainingTimeInSeconds">> => integer(),
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"FinalMetricDataList">> => list(metric_data()()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CheckpointConfig">> => checkpoint_config(),
+%%   <<"TrainingJobArn">> => string(),
+%%   <<"StoppingCondition">> => stopping_condition(),
+%%   <<"TuningJobArn">> => string(),
+%%   <<"DebugHookConfig">> => debug_hook_config(),
+%%   <<"TrainingJobStatus">> => list(any()),
+%%   <<"TrainingEndTime">> => non_neg_integer(),
+%%   <<"ResourceConfig">> => resource_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"VpcConfig">> => vpc_config(),
+%%   <<"DebugRuleConfigurations">> => list(debug_rule_configuration()()),
+%%   <<"TensorBoardOutputConfig">> => tensor_board_output_config(),
+%%   <<"RetryStrategy">> => retry_strategy(),
+%%   <<"ModelArtifacts">> => model_artifacts(),
+%%   <<"FailureReason">> => string(),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"BillableTimeInSeconds">> => integer(),
+%%   <<"SecondaryStatusTransitions">> => list(secondary_status_transition()()),
+%%   <<"SecondaryStatus">> => list(any()),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"TrainingJobName">> => string(),
+%%   <<"ProfilerConfig">> => profiler_config(),
+%%   <<"EnableManagedSpotTraining">> => boolean(),
+%%   <<"InputDataConfig">> => list(channel()()),
+%%   <<"TrainingStartTime">> => non_neg_integer(),
+%%   <<"AlgorithmSpecification">> => algorithm_specification(),
+%%   <<"HyperParameters">> => map(),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"DebugRuleEvaluationStatuses">> => list(debug_rule_evaluation_status()())
+%% }
+-type training_job() :: #{binary() => any()}.
+
+%% Example:
+%% create_workteam_request() :: #{
+%%   <<"Description">> := string(),
+%%   <<"MemberDefinitions">> := list(member_definition()()),
+%%   <<"NotificationConfiguration">> => notification_configuration(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"WorkforceName">> => string(),
+%%   <<"WorkteamName">> := string()
+%% }
+-type create_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_lineage_groups_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_lineage_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_pipeline_execution_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineExecutionDescription">> => string(),
+%%   <<"PipelineExecutionDisplayName">> => string(),
+%%   <<"PipelineName">> := string(),
+%%   <<"PipelineParameters">> => list(parameter()()),
+%%   <<"SelectiveExecutionConfig">> => selective_execution_config()
+%% }
+-type start_pipeline_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_spaces_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Spaces">> => list(space_details()())
+%% }
+-type list_spaces_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pipeline_execution_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineExecutionArn">> => string(),
+%%   <<"PipelineExecutionDescription">> => string(),
+%%   <<"PipelineExecutionDisplayName">> => string(),
+%%   <<"PipelineExecutionStatus">> => list(any()),
+%%   <<"PipelineExperimentConfig">> => pipeline_experiment_config(),
+%%   <<"SelectiveExecutionConfig">> => selective_execution_config()
+%% }
+-type describe_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_hyper_parameter_tuning_job_request() :: #{
+%%   <<"Autotune">> => autotune(),
+%%   <<"HyperParameterTuningJobConfig">> := hyper_parameter_tuning_job_config(),
+%%   <<"HyperParameterTuningJobName">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TrainingJobDefinition">> => hyper_parameter_training_job_definition(),
+%%   <<"TrainingJobDefinitions">> => list(hyper_parameter_training_job_definition()()),
+%%   <<"WarmStartConfig">> => hyper_parameter_tuning_job_warm_start_config()
+%% }
+-type create_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_profile_response() :: #{
+%%   <<"UserProfileArn">> => string()
+%% }
+-type create_user_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_ml_job_v2_request() :: #{
+%%   <<"AutoMLJobName">> := string()
+%% }
+-type describe_auto_ml_job_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% target_platform() :: #{
+%%   <<"Accelerator">> => list(any()),
+%%   <<"Arch">> => list(any()),
+%%   <<"Os">> => list(any())
+%% }
+-type target_platform() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_channel() :: #{
+%%   <<"ChannelType">> => list(any()),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ContentType">> => string(),
+%%   <<"DataSource">> => auto_ml_data_source(),
+%%   <<"SampleWeightAttributeName">> => string(),
+%%   <<"TargetAttributeName">> => string()
+%% }
+-type auto_ml_channel() :: #{binary() => any()}.
+
+%% Example:
+%% list_lineage_groups_response() :: #{
+%%   <<"LineageGroupSummaries">> => list(lineage_group_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_lineage_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_artifacts_request() :: #{
+%%   <<"ArtifactType">> => string(),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SourceUri">> => string()
+%% }
+-type list_artifacts_request() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_compute_resource_requirements() :: #{
+%%   <<"MaxMemoryRequiredInMb">> => integer(),
+%%   <<"MinMemoryRequiredInMb">> => integer(),
+%%   <<"NumberOfAcceleratorDevicesRequired">> => float(),
+%%   <<"NumberOfCpuCoresRequired">> => float()
+%% }
+-type inference_component_compute_resource_requirements() :: #{binary() => any()}.
+
+%% Example:
+%% create_edge_deployment_plan_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"ModelConfigs">> := list(edge_deployment_model_config()()),
+%%   <<"Stages">> => list(deployment_stage()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_edge_deployment_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_source_type() :: #{
+%%   <<"SourceIdType">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type artifact_source_type() :: #{binary() => any()}.
+
+%% Example:
+%% model_card_export_output_config() :: #{
+%%   <<"S3OutputPath">> => string()
+%% }
+-type model_card_export_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_bias_job_definition_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"JobDefinitionArn">> => string(),
+%%   <<"JobDefinitionName">> => string(),
+%%   <<"JobResources">> => monitoring_resources(),
+%%   <<"ModelBiasAppSpecification">> => model_bias_app_specification(),
+%%   <<"ModelBiasBaselineConfig">> => model_bias_baseline_config(),
+%%   <<"ModelBiasJobInput">> => model_bias_job_input(),
+%%   <<"ModelBiasJobOutputConfig">> => monitoring_output_config(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition()
+%% }
+-type describe_model_bias_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% r_session_app_settings() :: #{
+%%   <<"CustomImages">> => list(custom_image()()),
+%%   <<"DefaultResourceSpec">> => resource_spec()
+%% }
+-type r_session_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% list_feature_groups_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"FeatureGroupStatusEquals">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"OfflineStoreStatusEquals">> => list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_feature_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% continuous_parameter_range() :: #{
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ScalingType">> => list(any())
+%% }
+-type continuous_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% describe_code_repository_output() :: #{
+%%   <<"CodeRepositoryArn">> => string(),
+%%   <<"CodeRepositoryName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"GitConfig">> => git_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type describe_code_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_config_output() :: #{
+%%   <<"EndpointConfigArn">> => string()
+%% }
+-type create_endpoint_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% model_bias_app_specification() :: #{
+%%   <<"ConfigUri">> => string(),
+%%   <<"Environment">> => map(),
+%%   <<"ImageUri">> => string()
+%% }
+-type model_bias_app_specification() :: #{binary() => any()}.
+
+%% Example:
+%% secondary_status_transition() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type secondary_status_transition() :: #{binary() => any()}.
+
+%% Example:
+%% edge_deployment_model_config() :: #{
+%%   <<"EdgePackagingJobName">> => string(),
+%%   <<"ModelHandle">> => string()
+%% }
+-type edge_deployment_model_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_experiments_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_experiments_request() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_text_config() :: #{
+%%   <<"Granularity">> => list(any()),
+%%   <<"Language">> => list(any())
+%% }
+-type clarify_text_config() :: #{binary() => any()}.
+
+%% Example:
+%% retry_pipeline_execution_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type retry_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% shadow_mode_config() :: #{
+%%   <<"ShadowModelVariants">> => list(shadow_model_variant_config()()),
+%%   <<"SourceModelVariantName">> => string()
+%% }
+-type shadow_mode_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_lineage_group_policy_request() :: #{
+%%   <<"LineageGroupName">> := string()
+%% }
+-type get_lineage_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_ml_job_v2_response() :: #{
+%%   <<"AutoMLJobArn">> => string()
+%% }
+-type create_auto_ml_job_v2_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_workforce_request() :: #{
+%%   <<"CognitoConfig">> => cognito_config(),
+%%   <<"OidcConfig">> => oidc_config(),
+%%   <<"SourceIpConfig">> => source_ip_config(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"WorkforceName">> := string(),
+%%   <<"WorkforceVpcConfig">> => workforce_vpc_config_request()
+%% }
+-type create_workforce_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_labeling_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_labeling_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% context_summary() :: #{
+%%   <<"ContextArn">> => string(),
+%%   <<"ContextName">> => string(),
+%%   <<"ContextType">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Source">> => context_source()
+%% }
+-type context_summary() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_artifacts() :: #{
+%%   <<"CandidateDefinitionNotebookLocation">> => string(),
+%%   <<"DataExplorationNotebookLocation">> => string()
+%% }
+-type auto_ml_job_artifacts() :: #{binary() => any()}.
+
+%% Example:
+%% put_model_package_group_policy_input() :: #{
+%%   <<"ModelPackageGroupName">> := string(),
+%%   <<"ResourcePolicy">> := string()
+%% }
+-type put_model_package_group_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_domain_response() :: #{
+%%   <<"DomainArn">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type create_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_jobs_for_hyper_parameter_tuning_job_request() :: #{
+%%   <<"HyperParameterTuningJobName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_training_jobs_for_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_code_repository_input() :: #{
+%%   <<"CodeRepositoryName">> := string(),
+%%   <<"GitConfig">> := git_config(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_code_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_recommendation() :: #{
+%%   <<"RealTimeInferenceRecommendations">> => list(real_time_inference_recommendation()()),
+%%   <<"RecommendationStatus">> => list(any())
+%% }
+-type deployment_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_component_runtime_config_input() :: #{
+%%   <<"DesiredRuntimeConfig">> := inference_component_runtime_config(),
+%%   <<"InferenceComponentName">> := string()
+%% }
+-type update_inference_component_runtime_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_weights_and_capacities_input() :: #{
+%%   <<"DesiredWeightsAndCapacities">> := list(desired_weight_and_capacity()()),
+%%   <<"EndpointName">> := string()
+%% }
+-type update_endpoint_weights_and_capacities_input() :: #{binary() => any()}.
+
+%% Example:
+%% channel() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ContentType">> => string(),
+%%   <<"DataSource">> => data_source(),
+%%   <<"InputMode">> => list(any()),
+%%   <<"RecordWrapperType">> => list(any()),
+%%   <<"ShuffleConfig">> => shuffle_config()
+%% }
+-type channel() :: #{binary() => any()}.
+
+%% Example:
+%% send_pipeline_execution_step_success_request() :: #{
+%%   <<"CallbackToken">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"OutputParameters">> => list(output_parameter()())
+%% }
+-type send_pipeline_execution_step_success_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_response() :: #{
+
+%% }
+-type delete_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_instance_lifecycle_config_input() :: #{
+%%   <<"NotebookInstanceLifecycleConfigName">> := string(),
+%%   <<"OnCreate">> => list(notebook_instance_lifecycle_hook()()),
+%%   <<"OnStart">> => list(notebook_instance_lifecycle_hook()())
+%% }
+-type update_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_notebook_instance_input() :: #{
+%%   <<"NotebookInstanceName">> := string()
+%% }
+-type start_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_workforce_response() :: #{
+%%   <<"Workforce">> => workforce()
+%% }
+-type update_workforce_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_code_repository_input() :: #{
+%%   <<"CodeRepositoryName">> := string()
+%% }
+-type describe_code_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_model_package_group_policy_output() :: #{
+%%   <<"ModelPackageGroupArn">> => string()
+%% }
+-type put_model_package_group_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_member_definition() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"UserGroup">> => string(),
+%%   <<"UserPool">> => string()
+%% }
+-type cognito_member_definition() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_life_cycle_config() :: #{
+%%   <<"OnCreate">> => string(),
+%%   <<"SourceS3Uri">> => string()
+%% }
+-type cluster_life_cycle_config() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_s3_data_source() :: #{
+%%   <<"ManifestS3Uri">> => string()
+%% }
+-type labeling_job_s3_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% candidate_artifact_locations() :: #{
+%%   <<"BacktestResults">> => string(),
+%%   <<"Explainability">> => string(),
+%%   <<"ModelInsights">> => string()
+%% }
+-type candidate_artifact_locations() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_package_group_policy_output() :: #{
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type get_model_package_group_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flow_definition_response() :: #{
+
+%% }
+-type delete_flow_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% subscribed_workteam() :: #{
+%%   <<"ListingId">> => string(),
+%%   <<"MarketplaceDescription">> => string(),
+%%   <<"MarketplaceTitle">> => string(),
+%%   <<"SellerName">> => string(),
+%%   <<"WorkteamArn">> => string()
+%% }
+-type subscribed_workteam() :: #{binary() => any()}.
+
+%% Example:
+%% create_hub_request() :: #{
+%%   <<"HubDescription">> := string(),
+%%   <<"HubDisplayName">> => string(),
+%%   <<"HubName">> := string(),
+%%   <<"HubSearchKeywords">> => list(string()()),
+%%   <<"S3StorageConfig">> => hub_s3_storage_config(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_hub_request() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_config() :: #{
+%%   <<"CandidateGenerationConfig">> => auto_ml_candidate_generation_config(),
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"DataSplitConfig">> => auto_ml_data_split_config(),
+%%   <<"Mode">> => list(any()),
+%%   <<"SecurityConfig">> => auto_ml_security_config()
+%% }
+-type auto_ml_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% e_f_s_file_system() :: #{
+%%   <<"FileSystemId">> => string()
+%% }
+-type e_f_s_file_system() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_card_export_job_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExportArtifacts">> => model_card_export_artifacts(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedAt">> => non_neg_integer(),
+%%   <<"ModelCardExportJobArn">> => string(),
+%%   <<"ModelCardExportJobName">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"OutputConfig">> => model_card_export_output_config(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_model_card_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% inference_metrics() :: #{
+%%   <<"MaxInvocations">> => integer(),
+%%   <<"ModelLatency">> => integer()
+%% }
+-type inference_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_parameters_for_execution_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineExecutionArn">> := string()
+%% }
+-type list_pipeline_parameters_for_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% callback_step_metadata() :: #{
+%%   <<"CallbackToken">> => string(),
+%%   <<"OutputParameters">> => list(output_parameter()()),
+%%   <<"SqsQueueUrl">> => string()
+%% }
+-type callback_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_container_specification() :: #{
+%%   <<"ArtifactUrl">> => string(),
+%%   <<"Environment">> => map(),
+%%   <<"Image">> => string()
+%% }
+-type inference_component_container_specification() :: #{binary() => any()}.
+
+%% Example:
+%% resource_spec() :: #{
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LifecycleConfigArn">> => string(),
+%%   <<"SageMakerImageArn">> => string(),
+%%   <<"SageMakerImageVersionAlias">> => string(),
+%%   <<"SageMakerImageVersionArn">> => string()
+%% }
+-type resource_spec() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_input() :: #{
+%%   <<"ProjectName">> := string()
+%% }
+-type delete_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_transform_job_response() :: #{
+%%   <<"TransformJobArn">> => string()
+%% }
+-type create_transform_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_processing_job_response() :: #{
+%%   <<"ProcessingJobArn">> => string()
+%% }
+-type create_processing_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% transform_job_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type transform_job_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% model_deploy_result() :: #{
+%%   <<"EndpointName">> => string()
+%% }
+-type model_deploy_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_component_input() :: #{
+%%   <<"InferenceComponentName">> := string(),
+%%   <<"RuntimeConfig">> => inference_component_runtime_config(),
+%%   <<"Specification">> => inference_component_specification()
+%% }
+-type update_inference_component_input() :: #{binary() => any()}.
+
+%% Example:
+%% debug_hook_config() :: #{
+%%   <<"CollectionConfigurations">> => list(collection_configuration()()),
+%%   <<"HookParameters">> => map(),
+%%   <<"LocalPath">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type debug_hook_config() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_performance() :: #{
+%%   <<"EndpointInfo">> => endpoint_info(),
+%%   <<"Metrics">> => inference_metrics()
+%% }
+-type endpoint_performance() :: #{binary() => any()}.
+
+%% Example:
+%% query_filters() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"LineageTypes">> => list(list(any())()),
+%%   <<"ModifiedAfter">> => non_neg_integer(),
+%%   <<"ModifiedBefore">> => non_neg_integer(),
+%%   <<"Properties">> => map(),
+%%   <<"Types">> => list(string()())
+%% }
+-type query_filters() :: #{binary() => any()}.
+
+%% Example:
+%% delete_context_response() :: #{
+%%   <<"ContextArn">> => string()
+%% }
+-type delete_context_response() :: #{binary() => any()}.
+
+%% Example:
+%% retry_strategy() :: #{
+%%   <<"MaximumRetryAttempts">> => integer()
+%% }
+-type retry_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_status() :: #{
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type production_variant_status() :: #{binary() => any()}.
+
+%% Example:
+%% oidc_config_for_response() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"JwksUri">> => string(),
+%%   <<"LogoutEndpoint">> => string(),
+%%   <<"TokenEndpoint">> => string(),
+%%   <<"UserInfoEndpoint">> => string()
+%% }
+-type oidc_config_for_response() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MonitoringOutputs">> => list(monitoring_output()())
+%% }
+-type monitoring_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_alert_history_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MonitoringAlertName">> => string(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_monitoring_alert_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% feature_group() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTimeFeatureName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FeatureDefinitions">> => list(feature_definition()()),
+%%   <<"FeatureGroupArn">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"FeatureGroupStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastUpdateStatus">> => last_update_status(),
+%%   <<"OfflineStoreConfig">> => offline_store_config(),
+%%   <<"OfflineStoreStatus">> => offline_store_status(),
+%%   <<"OnlineStoreConfig">> => online_store_config(),
+%%   <<"RecordIdentifierFeatureName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type feature_group() :: #{binary() => any()}.
+
+%% Example:
+%% model_client_config() :: #{
+%%   <<"InvocationsMaxRetries">> => integer(),
+%%   <<"InvocationsTimeoutInSeconds">> => integer()
+%% }
+-type model_client_config() :: #{binary() => any()}.
+
+%% Example:
+%% output_data_config() :: #{
+%%   <<"CompressionType">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type output_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_output() :: #{
+%%   <<"Containers">> => list(container_definition()()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentRecommendation">> => deployment_recommendation(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"InferenceExecutionConfig">> => inference_execution_config(),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"PrimaryContainer">> => container_definition(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type describe_model_output() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_group_specification() :: #{
+%%   <<"ExecutionRole">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"ThreadsPerCore">> => integer()
+%% }
+-type cluster_instance_group_specification() :: #{binary() => any()}.
+
+%% Example:
+%% edge_model_summary() :: #{
+%%   <<"ModelName">> => string(),
+%%   <<"ModelVersion">> => string()
+%% }
+-type edge_model_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_apps_request() :: #{
+%%   <<"DomainIdEquals">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SpaceNameEquals">> => string(),
+%%   <<"UserProfileNameEquals">> => string()
+%% }
+-type list_apps_request() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_stage_status_summary() :: #{
+%%   <<"DeploymentConfig">> => edge_deployment_config(),
+%%   <<"DeploymentStatus">> => edge_deployment_status(),
+%%   <<"DeviceSelectionConfig">> => device_selection_config(),
+%%   <<"StageName">> => string()
+%% }
+-type deployment_stage_status_summary() :: #{binary() => any()}.
+
+%% Example:
+%% git_config() :: #{
+%%   <<"Branch">> => string(),
+%%   <<"RepositoryUrl">> => string(),
+%%   <<"SecretArn">> => string()
+%% }
+-type git_config() :: #{binary() => any()}.
+
+%% Example:
+%% nested_filters() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"NestedPropertyName">> => string()
+%% }
+-type nested_filters() :: #{binary() => any()}.
+
+%% Example:
+%% search_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(search_record()())
+%% }
+-type search_response() :: #{binary() => any()}.
+
+%% Example:
+%% edge_deployment_config() :: #{
+%%   <<"FailureHandlingPolicy">> => list(any())
+%% }
+-type edge_deployment_config() :: #{binary() => any()}.
+
+%% Example:
+%% device_selection_config() :: #{
+%%   <<"DeviceNameContains">> => string(),
+%%   <<"DeviceNames">> => list(string()()),
+%%   <<"DeviceSubsetType">> => list(any()),
+%%   <<"Percentage">> => integer()
+%% }
+-type device_selection_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_context_request() :: #{
+%%   <<"ContextName">> := string(),
+%%   <<"ContextType">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> := context_source(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_context_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_algorithm_input() :: #{
+%%   <<"AlgorithmDescription">> => string(),
+%%   <<"AlgorithmName">> := string(),
+%%   <<"CertifyForMarketplace">> => boolean(),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TrainingSpecification">> := training_specification(),
+%%   <<"ValidationSpecification">> => algorithm_validation_specification()
+%% }
+-type create_algorithm_input() :: #{binary() => any()}.
+
+%% Example:
+%% stairs() :: #{
+%%   <<"DurationInSeconds">> => integer(),
+%%   <<"NumberOfSteps">> => integer(),
+%%   <<"UsersPerStep">> => integer()
+%% }
+-type stairs() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_model_package_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorResponse">> => string()
+%% }
+-type batch_describe_model_package_error() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_job_definitions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_data_quality_job_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_card_response() :: #{
+%%   <<"ModelCardArn">> => string()
+%% }
+-type create_model_card_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_ml_job_request() :: #{
+%%   <<"AutoMLJobConfig">> => auto_ml_job_config(),
+%%   <<"AutoMLJobName">> := string(),
+%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
+%%   <<"GenerateCandidateDefinitionsOnly">> => boolean(),
+%%   <<"InputDataConfig">> := list(auto_ml_channel()()),
+%%   <<"ModelDeployConfig">> => model_deploy_config(),
+%%   <<"OutputDataConfig">> := auto_ml_output_data_config(),
+%%   <<"ProblemType">> => list(any()),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_auto_ml_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% notebook_instance_lifecycle_config_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NotebookInstanceLifecycleConfigArn">> => string(),
+%%   <<"NotebookInstanceLifecycleConfigName">> => string()
+%% }
+-type notebook_instance_lifecycle_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_card_export_jobs_response() :: #{
+%%   <<"ModelCardExportJobSummaries">> => list(model_card_export_job_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_card_export_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_alerts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MonitoringScheduleName">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitoring_alerts_request() :: #{binary() => any()}.
+
+%% Example:
+%% tabular_resolved_attributes() :: #{
+%%   <<"ProblemType">> => list(any())
+%% }
+-type tabular_resolved_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% space_sharing_settings() :: #{
+%%   <<"SharingType">> => list(any())
+%% }
+-type space_sharing_settings() :: #{binary() => any()}.
+
+%% Example:
+%% ownership_settings_summary() :: #{
+%%   <<"OwnerUserProfileName">> => string()
+%% }
+-type ownership_settings_summary() :: #{binary() => any()}.
+
+%% Example:
+%% default_ebs_storage_settings() :: #{
+%%   <<"DefaultEbsVolumeSizeInGb">> => integer(),
+%%   <<"MaximumEbsVolumeSizeInGb">> => integer()
+%% }
+-type default_ebs_storage_settings() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_nodes_response() :: #{
+%%   <<"ClusterNodeSummaries">> => list(cluster_node_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_inference_experiment_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type start_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_quality_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type delete_model_quality_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_labeling_job_request() :: #{
+%%   <<"LabelingJobName">> := string()
+%% }
+-type stop_labeling_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_package_groups_output() :: #{
+%%   <<"ModelPackageGroupSummaryList">> => list(model_package_group_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_package_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% model_bias_baseline_config() :: #{
+%%   <<"BaseliningJobName">> => string(),
+%%   <<"ConstraintsResource">> => monitoring_constraints_resource()
+%% }
+-type model_bias_baseline_config() :: #{binary() => any()}.
+
+%% Example:
+%% user_context() :: #{
+%%   <<"DomainId">> => string(),
+%%   <<"IamIdentity">> => iam_identity(),
+%%   <<"UserProfileArn">> => string(),
+%%   <<"UserProfileName">> => string()
+%% }
+-type user_context() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_package_group_input() :: #{
+%%   <<"ModelPackageGroupName">> := string()
+%% }
+-type delete_model_package_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% model_dashboard_monitoring_schedule() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastMonitoringExecutionSummary">> => monitoring_execution_summary(),
+%%   <<"MonitoringAlertSummaries">> => list(monitoring_alert_summary()()),
+%%   <<"MonitoringScheduleArn">> => string(),
+%%   <<"MonitoringScheduleConfig">> => monitoring_schedule_config(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringScheduleStatus">> => list(any()),
+%%   <<"MonitoringType">> => list(any())
+%% }
+-type model_dashboard_monitoring_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% stop_compilation_job_request() :: #{
+%%   <<"CompilationJobName">> := string()
+%% }
+-type stop_compilation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_fleet_report_response() :: #{
+%%   <<"AgentVersions">> => list(agent_version()()),
+%%   <<"Description">> => string(),
+%%   <<"DeviceFleetArn">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"DeviceStats">> => device_stats(),
+%%   <<"ModelStats">> => list(edge_model_stat()()),
+%%   <<"OutputConfig">> => edge_output_config(),
+%%   <<"ReportGenerated">> => non_neg_integer()
+%% }
+-type get_device_fleet_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% transform_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"TransformEndTime">> => non_neg_integer(),
+%%   <<"TransformJobArn">> => string(),
+%%   <<"TransformJobName">> => string(),
+%%   <<"TransformJobStatus">> => list(any())
+%% }
+-type transform_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% model_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type model_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_execution_steps_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineExecutionArn">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_pipeline_execution_steps_request() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_job_definition() :: #{
+%%   <<"BaselineConfig">> => monitoring_baseline_config(),
+%%   <<"Environment">> => map(),
+%%   <<"MonitoringAppSpecification">> => monitoring_app_specification(),
+%%   <<"MonitoringInputs">> => list(monitoring_input()()),
+%%   <<"MonitoringOutputConfig">> => monitoring_output_config(),
+%%   <<"MonitoringResources">> => monitoring_resources(),
+%%   <<"NetworkConfig">> => network_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition()
+%% }
+-type monitoring_job_definition() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_package_output() :: #{
+%%   <<"ModelPackageArn">> => string()
+%% }
+-type create_model_package_output() :: #{binary() => any()}.
+
+%% Example:
+%% user_settings() :: #{
+%%   <<"CanvasAppSettings">> => canvas_app_settings(),
+%%   <<"CodeEditorAppSettings">> => code_editor_app_settings(),
+%%   <<"CustomFileSystemConfigs">> => list(list()()),
+%%   <<"CustomPosixUserConfig">> => custom_posix_user_config(),
+%%   <<"DefaultLandingUri">> => string(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"JupyterLabAppSettings">> => jupyter_lab_app_settings(),
+%%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
+%%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
+%%   <<"RSessionAppSettings">> => r_session_app_settings(),
+%%   <<"RStudioServerProAppSettings">> => r_studio_server_pro_app_settings(),
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SharingSettings">> => sharing_settings(),
+%%   <<"SpaceStorageSettings">> => default_space_storage_settings(),
+%%   <<"StudioWebPortal">> => list(any()),
+%%   <<"TensorBoardAppSettings">> => tensor_board_app_settings()
+%% }
+-type user_settings() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workteam_request() :: #{
+%%   <<"WorkteamName">> := string()
+%% }
+-type describe_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_validation_specification() :: #{
+%%   <<"ValidationProfiles">> => list(model_package_validation_profile()()),
+%%   <<"ValidationRole">> => string()
+%% }
+-type model_package_validation_specification() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_output() :: #{
+%%   <<"EndpointArn">> => string()
+%% }
+-type update_endpoint_output() :: #{binary() => any()}.
+
+%% Example:
+%% channel_specification() :: #{
+%%   <<"Description">> => string(),
+%%   <<"IsRequired">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"SupportedCompressionTypes">> => list(list(any())()),
+%%   <<"SupportedContentTypes">> => list(string()()),
+%%   <<"SupportedInputModes">> => list(list(any())())
+%% }
+-type channel_specification() :: #{binary() => any()}.
+
+%% Example:
+%% metrics_source() :: #{
+%%   <<"ContentDigest">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type metrics_source() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_summary() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => trial_component_status(),
+%%   <<"TrialComponentArn">> => string(),
+%%   <<"TrialComponentName">> => string(),
+%%   <<"TrialComponentSource">> => trial_component_source()
+%% }
+-type trial_component_summary() :: #{binary() => any()}.
+
+%% Example:
+%% domain_details() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainArn">> => string(),
+%%   <<"DomainId">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Url">> => string()
+%% }
+-type domain_details() :: #{binary() => any()}.
+
+%% Example:
+%% model_explainability_app_specification() :: #{
+%%   <<"ConfigUri">> => string(),
+%%   <<"Environment">> => map(),
+%%   <<"ImageUri">> => string()
+%% }
+-type model_explainability_app_specification() :: #{binary() => any()}.
+
+%% Example:
+%% list_edge_packaging_jobs_response() :: #{
+%%   <<"EdgePackagingJobSummaries">> => list(edge_packaging_job_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_edge_packaging_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_instance_lifecycle_configs_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_notebook_instance_lifecycle_configs_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_recommendations_job_request() :: #{
+%%   <<"InputConfig">> := recommendation_job_input_config(),
+%%   <<"JobDescription">> => string(),
+%%   <<"JobName">> := string(),
+%%   <<"JobType">> := list(any()),
+%%   <<"OutputConfig">> => recommendation_job_output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingConditions">> => recommendation_job_stopping_conditions(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_inference_recommendations_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% holiday_config_attributes() :: #{
+%%   <<"CountryCode">> => string()
+%% }
+-type holiday_config_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_quality_job_definition_response() :: #{
+%%   <<"JobDefinitionArn">> => string()
+%% }
+-type create_model_quality_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_schedule() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastMonitoringExecutionSummary">> => monitoring_execution_summary(),
+%%   <<"MonitoringScheduleArn">> => string(),
+%%   <<"MonitoringScheduleConfig">> => monitoring_schedule_config(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringScheduleStatus">> => list(any()),
+%%   <<"MonitoringType">> => list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type monitoring_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% delete_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleName">> := string()
+%% }
+-type delete_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_pipeline_execution_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type start_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% model_access_config() :: #{
+%%   <<"AcceptEula">> => boolean()
+%% }
+-type model_access_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_profile_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HomeEfsFileSystemUid">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SingleSignOnUserIdentifier">> => string(),
+%%   <<"SingleSignOnUserValue">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserProfileArn">> => string(),
+%%   <<"UserProfileName">> => string(),
+%%   <<"UserSettings">> => user_settings()
+%% }
+-type describe_user_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% transform_input() :: #{
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ContentType">> => string(),
+%%   <<"DataSource">> => transform_data_source(),
+%%   <<"SplitType">> => list(any())
+%% }
+-type transform_input() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_metric_summary() :: #{
+%%   <<"Avg">> => float(),
+%%   <<"Count">> => integer(),
+%%   <<"Last">> => float(),
+%%   <<"Max">> => float(),
+%%   <<"MetricName">> => string(),
+%%   <<"Min">> => float(),
+%%   <<"SourceArn">> => string(),
+%%   <<"StdDev">> => float(),
+%%   <<"TimeStamp">> => non_neg_integer()
+%% }
+-type trial_component_metric_summary() :: #{binary() => any()}.
+
+%% Example:
+%% device() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"IotThingName">> => string()
+%% }
+-type device() :: #{binary() => any()}.
+
+%% Example:
+%% update_workteam_response() :: #{
+%%   <<"Workteam">> => workteam()
+%% }
+-type update_workteam_response() :: #{binary() => any()}.
+
+%% Example:
+%% desired_weight_and_capacity() :: #{
+%%   <<"DesiredInstanceCount">> => integer(),
+%%   <<"DesiredWeight">> => float(),
+%%   <<"ServerlessUpdateConfig">> => production_variant_serverless_update_config(),
+%%   <<"VariantName">> => string()
+%% }
+-type desired_weight_and_capacity() :: #{binary() => any()}.
+
+%% Example:
+%% parent() :: #{
+%%   <<"ExperimentName">> => string(),
+%%   <<"TrialName">> => string()
+%% }
+-type parent() :: #{binary() => any()}.
+
+%% Example:
+%% text_classification_job_config() :: #{
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"ContentColumn">> => string(),
+%%   <<"TargetLabelColumn">> => string()
+%% }
+-type text_classification_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% final_hyper_parameter_tuning_job_objective_metric() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type final_hyper_parameter_tuning_job_objective_metric() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pipeline_request() :: #{
+%%   <<"PipelineName">> := string()
+%% }
+-type describe_pipeline_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_source() :: #{
+%%   <<"FileSystemDataSource">> => file_system_data_source(),
+%%   <<"S3DataSource">> => s3_data_source()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% create_training_job_response() :: #{
+%%   <<"TrainingJobArn">> => string()
+%% }
+-type create_training_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_bias_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type delete_model_bias_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_cards_response() :: #{
+%%   <<"ModelCardSummaries">> => list(model_card_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_cards_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_context_response() :: #{
+%%   <<"ContextArn">> => string()
+%% }
+-type update_context_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_device_fleet_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceFleetArn">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"IotRoleAlias">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OutputConfig">> => edge_output_config(),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_device_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_trials_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrialSummaries">> => list(trial_summary()())
+%% }
+-type list_trials_response() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_sns_data_source() :: #{
+%%   <<"SnsTopicArn">> => string()
+%% }
+-type labeling_job_sns_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% list_transform_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TransformJobSummaries">> => list(transform_job_summary()())
+%% }
+-type list_transform_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hub_content_request() :: #{
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubContentVersion">> := string(),
+%%   <<"HubName">> := string()
+%% }
+-type delete_hub_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% space_jupyter_lab_app_settings() :: #{
+%%   <<"CodeRepositories">> => list(code_repository()()),
+%%   <<"DefaultResourceSpec">> => resource_spec()
+%% }
+-type space_jupyter_lab_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% list_flow_definitions_response() :: #{
+%%   <<"FlowDefinitionSummaries">> => list(flow_definition_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_flow_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% edge() :: #{
+%%   <<"AssociationType">> => list(any()),
+%%   <<"DestinationArn">> => string(),
+%%   <<"SourceArn">> => string()
+%% }
+-type edge() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_container_definition() :: #{
+%%   <<"AdditionalS3DataSource">> => additional_s3_data_source(),
+%%   <<"ContainerHostname">> => string(),
+%%   <<"Environment">> => map(),
+%%   <<"Framework">> => string(),
+%%   <<"FrameworkVersion">> => string(),
+%%   <<"Image">> => string(),
+%%   <<"ImageDigest">> => string(),
+%%   <<"ModelDataSource">> => model_data_source(),
+%%   <<"ModelDataUrl">> => string(),
+%%   <<"ModelInput">> => model_input(),
+%%   <<"NearestModelName">> => string(),
+%%   <<"ProductId">> => string()
+%% }
+-type model_package_container_definition() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_constraints_resource() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type monitoring_constraints_resource() :: #{binary() => any()}.
+
+%% Example:
+%% experiment() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentArn">> => string(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Source">> => experiment_source(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type experiment() :: #{binary() => any()}.
+
+%% Example:
+%% ownership_settings() :: #{
+%%   <<"OwnerUserProfileName">> => string()
+%% }
+-type ownership_settings() :: #{binary() => any()}.
+
+%% Example:
+%% default_space_settings() :: #{
+%%   <<"ExecutionRole">> => string(),
+%%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
+%%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
+%%   <<"SecurityGroups">> => list(string()())
+%% }
+-type default_space_settings() :: #{binary() => any()}.
+
+%% Example:
+%% stop_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleName">> := string()
+%% }
+-type stop_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_response() :: #{
+%%   <<"AppArn">> => string()
+%% }
+-type create_app_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_card_export_job_request() :: #{
+%%   <<"ModelCardExportJobName">> := string(),
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"OutputConfig">> := model_card_export_output_config()
+%% }
+-type create_model_card_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% selected_step() :: #{
+%%   <<"StepName">> => string()
+%% }
+-type selected_step() :: #{binary() => any()}.
+
+%% Example:
+%% update_trial_response() :: #{
+%%   <<"TrialArn">> => string()
+%% }
+-type update_trial_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_app_image_configs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"ModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_app_image_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitoring_alert_request() :: #{
+%%   <<"DatapointsToAlert">> := integer(),
+%%   <<"EvaluationPeriod">> := integer(),
+%%   <<"MonitoringAlertName">> := string(),
+%%   <<"MonitoringScheduleName">> := string()
+%% }
+-type update_monitoring_alert_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trial_component_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InputArtifacts">> => map(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Metrics">> => list(trial_component_metric_summary()()),
+%%   <<"OutputArtifacts">> => map(),
+%%   <<"Parameters">> => map(),
+%%   <<"Source">> => trial_component_source(),
+%%   <<"Sources">> => list(trial_component_source()()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => trial_component_status(),
+%%   <<"TrialComponentArn">> => string(),
+%%   <<"TrialComponentName">> => string()
+%% }
+-type describe_trial_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_executions_response() :: #{
+%%   <<"MonitoringExecutionSummaries">> => list(monitoring_execution_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitoring_executions_response() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_completion_details() :: #{
+%%   <<"ConvergenceDetectedTime">> => non_neg_integer(),
+%%   <<"NumberOfTrainingJobsObjectiveNotImproving">> => integer()
+%% }
+-type hyper_parameter_tuning_job_completion_details() :: #{binary() => any()}.
+
+%% Example:
+%% model_data_source() :: #{
+%%   <<"S3DataSource">> => s3_model_data_source()
+%% }
+-type model_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_specification() :: #{
+%%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
+%%   <<"Container">> => inference_component_container_specification(),
+%%   <<"ModelName">> => string(),
+%%   <<"StartupParameters">> => inference_component_startup_parameters()
+%% }
+-type inference_component_specification() :: #{binary() => any()}.
+
+%% Example:
+%% auto_rollback_config() :: #{
+%%   <<"Alarms">> => list(alarm()())
+%% }
+-type auto_rollback_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_flow_definitions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_flow_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% drift_check_baselines() :: #{
+%%   <<"Bias">> => drift_check_bias(),
+%%   <<"Explainability">> => drift_check_explainability(),
+%%   <<"ModelDataQuality">> => drift_check_model_data_quality(),
+%%   <<"ModelQuality">> => drift_check_model_quality()
+%% }
+-type drift_check_baselines() :: #{binary() => any()}.
+
+%% Example:
+%% create_notebook_instance_output() :: #{
+%%   <<"NotebookInstanceArn">> => string()
+%% }
+-type create_notebook_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_hyper_parameter_tuning_jobs_response() :: #{
+%%   <<"HyperParameterTuningJobSummaries">> => list(hyper_parameter_tuning_job_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hyper_parameter_tuning_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_schedule_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MonitoringJobDefinitionName">> => string(),
+%%   <<"MonitoringScheduleArn">> => string(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringScheduleStatus">> => list(any()),
+%%   <<"MonitoringType">> => list(any())
+%% }
+-type monitoring_schedule_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_packages_output() :: #{
+%%   <<"ModelPackageSummaryList">> => list(model_package_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_packages_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_catalog() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ResourceCatalogArn">> => string(),
+%%   <<"ResourceCatalogName">> => string()
+%% }
+-type resource_catalog() :: #{binary() => any()}.
+
+%% Example:
+%% processing_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Outputs">> => list(processing_output()())
+%% }
+-type processing_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_managed_instance_scaling() :: #{
+%%   <<"MaxInstanceCount">> => integer(),
+%%   <<"MinInstanceCount">> => integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type production_variant_managed_instance_scaling() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workforce_response() :: #{
+%%   <<"Workforce">> => workforce()
+%% }
+-type describe_workforce_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_record() :: #{
+%%   <<"Endpoint">> => endpoint(),
+%%   <<"Experiment">> => experiment(),
+%%   <<"FeatureGroup">> => feature_group(),
+%%   <<"FeatureMetadata">> => feature_metadata(),
+%%   <<"HyperParameterTuningJob">> => hyper_parameter_tuning_job_search_entity(),
+%%   <<"Model">> => model_dashboard_model(),
+%%   <<"ModelCard">> => model_card(),
+%%   <<"ModelPackage">> => model_package(),
+%%   <<"ModelPackageGroup">> => model_package_group(),
+%%   <<"Pipeline">> => pipeline(),
+%%   <<"PipelineExecution">> => pipeline_execution(),
+%%   <<"Project">> => project(),
+%%   <<"TrainingJob">> => training_job(),
+%%   <<"Trial">> => trial(),
+%%   <<"TrialComponent">> => trial_component()
+%% }
+-type search_record() :: #{binary() => any()}.
+
+%% Example:
+%% trial() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Source">> => trial_source(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TrialArn">> => string(),
+%%   <<"TrialComponentSummaries">> => list(trial_component_simple_summary()()),
+%%   <<"TrialName">> => string()
+%% }
+-type trial() :: #{binary() => any()}.
+
+%% Example:
+%% processing_cluster_config() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type processing_cluster_config() :: #{binary() => any()}.
+
+%% Example:
+%% device_stats() :: #{
+%%   <<"ConnectedDeviceCount">> => float(),
+%%   <<"RegisteredDeviceCount">> => float()
+%% }
+-type device_stats() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_input() :: #{
+%%   <<"ModelName">> := string()
+%% }
+-type describe_model_input() :: #{binary() => any()}.
+
+%% Example:
+%% environment_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string(),
+%%   <<"ValueType">> => string()
+%% }
+-type environment_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% model_dashboard_endpoint() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"EndpointStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type model_dashboard_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% delete_device_fleet_request() :: #{
+%%   <<"DeviceFleetName">> := string()
+%% }
+-type delete_device_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% jupyter_lab_app_settings() :: #{
+%%   <<"CodeRepositories">> => list(code_repository()()),
+%%   <<"CustomImages">> => list(custom_image()()),
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"LifecycleConfigArns">> => list(string()())
+%% }
+-type jupyter_lab_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% update_experiment_response() :: #{
+%%   <<"ExperimentArn">> => string()
+%% }
+-type update_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_algorithms_output() :: #{
+%%   <<"AlgorithmSummaryList">> => list(algorithm_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_algorithms_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notebook_instance_lifecycle_config_input() :: #{
+%%   <<"NotebookInstanceLifecycleConfigName">> := string()
+%% }
+-type delete_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% human_loop_config() :: #{
+%%   <<"HumanTaskUiArn">> => string(),
+%%   <<"PublicWorkforceTaskPrice">> => public_workforce_task_price(),
+%%   <<"TaskAvailabilityLifetimeInSeconds">> => integer(),
+%%   <<"TaskCount">> => integer(),
+%%   <<"TaskDescription">> => string(),
+%%   <<"TaskKeywords">> => list(string()()),
+%%   <<"TaskTimeLimitInSeconds">> => integer(),
+%%   <<"TaskTitle">> => string(),
+%%   <<"WorkteamArn">> => string()
+%% }
+-type human_loop_config() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_baseline_config() :: #{
+%%   <<"BaseliningJobName">> => string(),
+%%   <<"ConstraintsResource">> => monitoring_constraints_resource(),
+%%   <<"StatisticsResource">> => monitoring_statistics_resource()
+%% }
+-type monitoring_baseline_config() :: #{binary() => any()}.
+
+%% Example:
+%% model() :: #{
+%%   <<"Containers">> => list(container_definition()()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentRecommendation">> => deployment_recommendation(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"InferenceExecutionConfig">> => inference_execution_config(),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"PrimaryContainer">> => container_definition(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type model() :: #{binary() => any()}.
+
+%% Example:
+%% list_compilation_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_compilation_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% transform_output() :: #{
+%%   <<"Accept">> => string(),
+%%   <<"AssembleWith">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type transform_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_package_output() :: #{
+%%   <<"AdditionalInferenceSpecifications">> => list(additional_inference_specification_definition()()),
+%%   <<"ApprovalDescription">> => string(),
+%%   <<"CertifyForMarketplace">> => boolean(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomerMetadataProperties">> => map(),
+%%   <<"Domain">> => string(),
+%%   <<"DriftCheckBaselines">> => drift_check_baselines(),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelMetrics">> => model_metrics(),
+%%   <<"ModelPackageArn">> => string(),
+%%   <<"ModelPackageDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageName">> => string(),
+%%   <<"ModelPackageStatus">> => list(any()),
+%%   <<"ModelPackageStatusDetails">> => model_package_status_details(),
+%%   <<"ModelPackageVersion">> => integer(),
+%%   <<"SamplePayloadUrl">> => string(),
+%%   <<"SkipModelValidation">> => list(any()),
+%%   <<"SourceAlgorithmSpecification">> => source_algorithm_specification(),
+%%   <<"SourceUri">> => string(),
+%%   <<"Task">> => string(),
+%%   <<"ValidationSpecification">> => model_package_validation_specification()
+%% }
+-type describe_model_package_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_parameters_for_execution_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineParameters">> => list(parameter()())
+%% }
+-type list_pipeline_parameters_for_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% workspace_settings() :: #{
+%%   <<"S3ArtifactPath">> => string(),
+%%   <<"S3KmsKeyId">> => string()
+%% }
+-type workspace_settings() :: #{binary() => any()}.
+
+%% Example:
+%% space_code_editor_app_settings() :: #{
+%%   <<"DefaultResourceSpec">> => resource_spec()
+%% }
+-type space_code_editor_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% autotune() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type autotune() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_model_package_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelPackageArn">> => string(),
+%%   <<"ModelPackageDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageStatus">> => list(any()),
+%%   <<"ModelPackageVersion">> => integer()
+%% }
+-type batch_describe_model_package_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_processing_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProcessingJobSummaries">> => list(processing_job_summary()())
+%% }
+-type list_processing_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notebook_instance_lifecycle_config_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NotebookInstanceLifecycleConfigArn">> => string(),
+%%   <<"NotebookInstanceLifecycleConfigName">> => string(),
+%%   <<"OnCreate">> => list(notebook_instance_lifecycle_hook()()),
+%%   <<"OnStart">> => list(notebook_instance_lifecycle_hook()())
+%% }
+-type describe_notebook_instance_lifecycle_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_config() :: #{
+%%   <<"HyperParameterTuningJobObjective">> => hyper_parameter_tuning_job_objective(),
+%%   <<"ParameterRanges">> => parameter_ranges(),
+%%   <<"RandomSeed">> => integer(),
+%%   <<"ResourceLimits">> => resource_limits(),
+%%   <<"Strategy">> => list(any()),
+%%   <<"StrategyConfig">> => hyper_parameter_tuning_job_strategy_config(),
+%%   <<"TrainingJobEarlyStoppingType">> => list(any()),
+%%   <<"TuningJobCompletionCriteria">> => tuning_job_completion_criteria()
+%% }
+-type hyper_parameter_tuning_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_context_response() :: #{
+%%   <<"ContextArn">> => string()
+%% }
+-type create_context_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_compilation_job_request() :: #{
+%%   <<"CompilationJobName">> := string()
+%% }
+-type describe_compilation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_completion_criteria() :: #{
+%%   <<"MaxAutoMLJobRuntimeInSeconds">> => integer(),
+%%   <<"MaxCandidates">> => integer(),
+%%   <<"MaxRuntimePerTrainingJobInSeconds">> => integer()
+%% }
+-type auto_ml_job_completion_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% file_source() :: #{
+%%   <<"ContentDigest">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type file_source() :: #{binary() => any()}.
+
+%% Example:
+%% create_device_fleet_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"EnableIotRoleAlias">> => boolean(),
+%%   <<"OutputConfig">> := edge_output_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_device_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inference_component_input() :: #{
+%%   <<"InferenceComponentName">> := string()
+%% }
+-type delete_inference_component_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_version_request() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"AliasesToAdd">> => list(string()()),
+%%   <<"AliasesToDelete">> => list(string()()),
+%%   <<"Horovod">> => boolean(),
+%%   <<"ImageName">> := string(),
+%%   <<"JobType">> => list(any()),
+%%   <<"MLFramework">> => string(),
+%%   <<"Processor">> => list(any()),
+%%   <<"ProgrammingLang">> => string(),
+%%   <<"ReleaseNotes">> => string(),
+%%   <<"VendorGuidance">> => list(any()),
+%%   <<"Version">> => integer()
+%% }
+-type update_image_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_trials_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TrialComponentName">> => string()
+%% }
+-type list_trials_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_group_details() :: #{
+%%   <<"CurrentCount">> => integer(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"TargetCount">> => integer(),
+%%   <<"ThreadsPerCore">> => integer()
+%% }
+-type cluster_instance_group_details() :: #{binary() => any()}.
+
+%% Example:
+%% notebook_instance_lifecycle_hook() :: #{
+%%   <<"Content">> => string()
+%% }
+-type notebook_instance_lifecycle_hook() :: #{binary() => any()}.
+
+%% Example:
+%% condition_step_metadata() :: #{
+%%   <<"Outcome">> => list(any())
+%% }
+-type condition_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% code_editor_app_settings() :: #{
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"LifecycleConfigArns">> => list(string()())
+%% }
+-type code_editor_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_instance_config() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type hyper_parameter_tuning_instance_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_dashboard_model() :: #{
+%%   <<"Endpoints">> => list(model_dashboard_endpoint()()),
+%%   <<"LastBatchTransformJob">> => transform_job(),
+%%   <<"Model">> => model(),
+%%   <<"ModelCard">> => model_dashboard_model_card(),
+%%   <<"MonitoringSchedules">> => list(model_dashboard_monitoring_schedule()())
+%% }
+-type model_dashboard_model() :: #{binary() => any()}.
+
+%% Example:
+%% workforce_vpc_config_request() :: #{
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"Subnets">> => list(string()()),
+%%   <<"VpcId">> => string()
+%% }
+-type workforce_vpc_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_auto_ml_job_request() :: #{
+%%   <<"AutoMLJobName">> := string()
+%% }
+-type stop_auto_ml_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% tensor_board_app_settings() :: #{
+%%   <<"DefaultResourceSpec">> => resource_spec()
+%% }
+-type tensor_board_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% associate_trial_component_request() :: #{
+%%   <<"TrialComponentName">> := string(),
+%%   <<"TrialName">> := string()
+%% }
+-type associate_trial_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_human_task_ui_response() :: #{
+
+%% }
+-type delete_human_task_ui_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_edge_packaging_job_request() :: #{
+%%   <<"EdgePackagingJobName">> := string()
+%% }
+-type stop_edge_packaging_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscribed_workteams_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SubscribedWorkteams">> => list(subscribed_workteam()())
+%% }
+-type list_subscribed_workteams_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_config_input() :: #{
+%%   <<"EndpointConfigName">> := string()
+%% }
+-type delete_endpoint_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_edge_packaging_job_request() :: #{
+%%   <<"CompilationJobName">> := string(),
+%%   <<"EdgePackagingJobName">> := string(),
+%%   <<"ModelName">> := string(),
+%%   <<"ModelVersion">> := string(),
+%%   <<"OutputConfig">> := edge_output_config(),
+%%   <<"ResourceKey">> => string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_edge_packaging_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_monitoring_schedule_response() :: #{
+%%   <<"MonitoringScheduleArn">> => string()
+%% }
+-type create_monitoring_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type auto_ml_job_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% human_loop_activation_config() :: #{
+%%   <<"HumanLoopActivationConditionsConfig">> => human_loop_activation_conditions_config()
+%% }
+-type human_loop_activation_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_request() :: #{
+%%   <<"ImageName">> := string()
+%% }
+-type describe_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_response() :: #{
+%%   <<"PipelineArn">> => string()
+%% }
+-type delete_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_executions_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineName">> := string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_pipeline_executions_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_node_details() :: #{
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceStatus">> => cluster_instance_status_details(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LaunchTime">> => non_neg_integer(),
+%%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"ThreadsPerCore">> => integer()
+%% }
+-type cluster_node_details() :: #{binary() => any()}.
+
+%% Example:
+%% service_catalog_provisioned_product_details() :: #{
+%%   <<"ProvisionedProductId">> => string(),
+%%   <<"ProvisionedProductStatusMessage">> => string()
+%% }
+-type service_catalog_provisioned_product_details() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_experiments_response() :: #{
+%%   <<"InferenceExperiments">> => list(inference_experiment_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_experiments_response() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_core_dump_config() :: #{
+%%   <<"DestinationS3Uri">> => string(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type production_variant_core_dump_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelPackageArn">> => string(),
+%%   <<"ModelPackageDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageName">> => string(),
+%%   <<"ModelPackageStatus">> => list(any()),
+%%   <<"ModelPackageVersion">> => integer()
+%% }
+-type model_package_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_output() :: #{
+
+%% }
+-type delete_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_notebook_instance_lifecycle_config_output() :: #{
+%%   <<"NotebookInstanceLifecycleConfigArn">> => string()
+%% }
+-type create_notebook_instance_lifecycle_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_feature_group_response() :: #{
+%%   <<"FeatureGroupArn">> => string()
+%% }
+-type update_feature_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% code_repository_summary() :: #{
+%%   <<"CodeRepositoryArn">> => string(),
+%%   <<"CodeRepositoryName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"GitConfig">> => git_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type code_repository_summary() :: #{binary() => any()}.
+
+%% Example:
+%% retention_policy() :: #{
+%%   <<"HomeEfsFileSystem">> => list(any())
+%% }
+-type retention_policy() :: #{binary() => any()}.
+
+%% Example:
+%% dynamic_scaling_configuration() :: #{
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer(),
+%%   <<"ScaleInCooldown">> => integer(),
+%%   <<"ScaleOutCooldown">> => integer(),
+%%   <<"ScalingPolicies">> => list(list()())
+%% }
+-type dynamic_scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_spaces_request() :: #{
+%%   <<"DomainIdEquals">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SpaceNameContains">> => string()
+%% }
+-type list_spaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% processing_job() :: #{
+%%   <<"AppSpecification">> => app_specification(),
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Environment">> => map(),
+%%   <<"ExitMessage">> => string(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MonitoringScheduleArn">> => string(),
+%%   <<"NetworkConfig">> => network_config(),
+%%   <<"ProcessingEndTime">> => non_neg_integer(),
+%%   <<"ProcessingInputs">> => list(processing_input()()),
+%%   <<"ProcessingJobArn">> => string(),
+%%   <<"ProcessingJobName">> => string(),
+%%   <<"ProcessingJobStatus">> => list(any()),
+%%   <<"ProcessingOutputConfig">> => processing_output_config(),
+%%   <<"ProcessingResources">> => processing_resources(),
+%%   <<"ProcessingStartTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => processing_stopping_condition(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TrainingJobArn">> => string()
+%% }
+-type processing_job() :: #{binary() => any()}.
+
+%% Example:
+%% list_human_task_uis_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_human_task_uis_request() :: #{binary() => any()}.
+
+%% Example:
+%% space_sharing_settings_summary() :: #{
+%%   <<"SharingType">> => list(any())
+%% }
+-type space_sharing_settings_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_response() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type update_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_flow_definition_request() :: #{
+%%   <<"FlowDefinitionName">> := string(),
+%%   <<"HumanLoopActivationConfig">> => human_loop_activation_config(),
+%%   <<"HumanLoopConfig">> => human_loop_config(),
+%%   <<"HumanLoopRequestSource">> => human_loop_request_source(),
+%%   <<"OutputConfig">> := flow_definition_output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_flow_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_code_repository_output() :: #{
+%%   <<"CodeRepositoryArn">> => string()
+%% }
+-type create_code_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_device_fleets_response() :: #{
+%%   <<"DeviceFleetSummaries">> => list(device_fleet_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_device_fleets_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_device_response() :: #{
+%%   <<"AgentVersion">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceArn">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"IotThingName">> => string(),
+%%   <<"LatestHeartbeat">> => non_neg_integer(),
+%%   <<"MaxModels">> => integer(),
+%%   <<"Models">> => list(edge_model()()),
+%%   <<"NextToken">> => string(),
+%%   <<"RegistrationTime">> => non_neg_integer()
+%% }
+-type describe_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% default_space_storage_settings() :: #{
+%%   <<"DefaultEbsStorageSettings">> => default_ebs_storage_settings()
+%% }
+-type default_space_storage_settings() :: #{binary() => any()}.
+
+%% Example:
+%% s3_data_source() :: #{
+%%   <<"AttributeNames">> => list(string()()),
+%%   <<"InstanceGroupNames">> => list(string()()),
+%%   <<"S3DataDistributionType">> => list(any()),
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type s3_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% list_labeling_jobs_for_workteam_response() :: #{
+%%   <<"LabelingJobSummaryList">> => list(labeling_job_for_workteam_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_labeling_jobs_for_workteam_response() :: #{binary() => any()}.
+
+%% Example:
+%% remote_debug_config() :: #{
+%%   <<"EnableRemoteDebug">> => boolean()
+%% }
+-type remote_debug_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_hub_response() :: #{
+%%   <<"HubArn">> => string()
+%% }
+-type create_hub_response() :: #{binary() => any()}.
+
+%% Example:
+%% async_inference_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"NotificationConfig">> => async_inference_notification_config(),
+%%   <<"S3FailurePath">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type async_inference_output_config() :: #{binary() => any()}.
+
+-type add_association_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type associate_trial_component_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type create_action_errors() ::
+    resource_limit_exceeded().
+
+-type create_app_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_app_image_config_errors() ::
+    resource_in_use().
+
+-type create_artifact_errors() ::
+    resource_limit_exceeded().
+
+-type create_auto_ml_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_auto_ml_job_v2_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_cluster_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_compilation_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_context_errors() ::
+    resource_limit_exceeded().
+
+-type create_data_quality_job_definition_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_device_fleet_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_domain_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_edge_deployment_plan_errors() ::
+    resource_limit_exceeded().
+
+-type create_edge_deployment_stage_errors() ::
+    resource_limit_exceeded().
+
+-type create_edge_packaging_job_errors() ::
+    resource_limit_exceeded().
+
+-type create_endpoint_errors() ::
+    resource_limit_exceeded().
+
+-type create_endpoint_config_errors() ::
+    resource_limit_exceeded().
+
+-type create_experiment_errors() ::
+    resource_limit_exceeded().
+
+-type create_feature_group_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_flow_definition_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_hub_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_human_task_ui_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_hyper_parameter_tuning_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_image_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_image_version_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type create_inference_component_errors() ::
+    resource_limit_exceeded().
+
+-type create_inference_experiment_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_inference_recommendations_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_labeling_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_model_errors() ::
+    resource_limit_exceeded().
+
+-type create_model_bias_job_definition_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_model_card_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception().
+
+-type create_model_card_export_job_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type create_model_explainability_job_definition_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_model_package_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception().
+
+-type create_model_package_group_errors() ::
+    resource_limit_exceeded().
+
+-type create_model_quality_job_definition_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_monitoring_schedule_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_notebook_instance_errors() ::
+    resource_limit_exceeded().
+
+-type create_notebook_instance_lifecycle_config_errors() ::
+    resource_limit_exceeded().
+
+-type create_pipeline_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type create_presigned_domain_url_errors() ::
+    resource_not_found().
+
+-type create_processing_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type create_project_errors() ::
+    resource_limit_exceeded().
+
+-type create_space_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_studio_lifecycle_config_errors() ::
+    resource_in_use().
+
+-type create_training_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type create_transform_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type create_trial_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type create_trial_component_errors() ::
+    resource_limit_exceeded().
+
+-type create_user_profile_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_workteam_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type delete_action_errors() ::
+    resource_not_found().
+
+-type delete_algorithm_errors() ::
+    conflict_exception().
+
+-type delete_app_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_app_image_config_errors() ::
+    resource_not_found().
+
+-type delete_artifact_errors() ::
+    resource_not_found().
+
+-type delete_association_errors() ::
+    resource_not_found().
+
+-type delete_cluster_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_compilation_job_errors() ::
+    resource_not_found().
+
+-type delete_context_errors() ::
+    resource_not_found().
+
+-type delete_data_quality_job_definition_errors() ::
+    resource_not_found().
+
+-type delete_device_fleet_errors() ::
+    resource_in_use().
+
+-type delete_domain_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_edge_deployment_plan_errors() ::
+    resource_in_use().
+
+-type delete_edge_deployment_stage_errors() ::
+    resource_in_use().
+
+-type delete_experiment_errors() ::
+    resource_not_found().
+
+-type delete_feature_group_errors() ::
+    resource_not_found().
+
+-type delete_flow_definition_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_hub_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_hub_content_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_human_task_ui_errors() ::
+    resource_not_found().
+
+-type delete_image_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_image_version_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_inference_experiment_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_model_bias_job_definition_errors() ::
+    resource_not_found().
+
+-type delete_model_card_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_model_explainability_job_definition_errors() ::
+    resource_not_found().
+
+-type delete_model_package_errors() ::
+    conflict_exception().
+
+-type delete_model_package_group_errors() ::
+    conflict_exception().
+
+-type delete_model_quality_job_definition_errors() ::
+    resource_not_found().
+
+-type delete_monitoring_schedule_errors() ::
+    resource_not_found().
+
+-type delete_pipeline_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_project_errors() ::
+    conflict_exception().
+
+-type delete_space_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_studio_lifecycle_config_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_trial_errors() ::
+    resource_not_found().
+
+-type delete_trial_component_errors() ::
+    resource_not_found().
+
+-type delete_user_profile_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_workteam_errors() ::
+    resource_limit_exceeded().
+
+-type describe_action_errors() ::
+    resource_not_found().
+
+-type describe_app_errors() ::
+    resource_not_found().
+
+-type describe_app_image_config_errors() ::
+    resource_not_found().
+
+-type describe_artifact_errors() ::
+    resource_not_found().
+
+-type describe_auto_ml_job_errors() ::
+    resource_not_found().
+
+-type describe_auto_ml_job_v2_errors() ::
+    resource_not_found().
+
+-type describe_cluster_errors() ::
+    resource_not_found().
+
+-type describe_cluster_node_errors() ::
+    resource_not_found().
+
+-type describe_compilation_job_errors() ::
+    resource_not_found().
+
+-type describe_context_errors() ::
+    resource_not_found().
+
+-type describe_data_quality_job_definition_errors() ::
+    resource_not_found().
+
+-type describe_device_errors() ::
+    resource_not_found().
+
+-type describe_device_fleet_errors() ::
+    resource_not_found().
+
+-type describe_domain_errors() ::
+    resource_not_found().
+
+-type describe_edge_deployment_plan_errors() ::
+    resource_not_found().
+
+-type describe_edge_packaging_job_errors() ::
+    resource_not_found().
+
+-type describe_experiment_errors() ::
+    resource_not_found().
+
+-type describe_feature_group_errors() ::
+    resource_not_found().
+
+-type describe_feature_metadata_errors() ::
+    resource_not_found().
+
+-type describe_flow_definition_errors() ::
+    resource_not_found().
+
+-type describe_hub_errors() ::
+    resource_not_found().
+
+-type describe_hub_content_errors() ::
+    resource_not_found().
+
+-type describe_human_task_ui_errors() ::
+    resource_not_found().
+
+-type describe_hyper_parameter_tuning_job_errors() ::
+    resource_not_found().
+
+-type describe_image_errors() ::
+    resource_not_found().
+
+-type describe_image_version_errors() ::
+    resource_not_found().
+
+-type describe_inference_experiment_errors() ::
+    resource_not_found().
+
+-type describe_inference_recommendations_job_errors() ::
+    resource_not_found().
+
+-type describe_labeling_job_errors() ::
+    resource_not_found().
+
+-type describe_lineage_group_errors() ::
+    resource_not_found().
+
+-type describe_model_bias_job_definition_errors() ::
+    resource_not_found().
+
+-type describe_model_card_errors() ::
+    resource_not_found().
+
+-type describe_model_card_export_job_errors() ::
+    resource_not_found().
+
+-type describe_model_explainability_job_definition_errors() ::
+    resource_not_found().
+
+-type describe_model_quality_job_definition_errors() ::
+    resource_not_found().
+
+-type describe_monitoring_schedule_errors() ::
+    resource_not_found().
+
+-type describe_pipeline_errors() ::
+    resource_not_found().
+
+-type describe_pipeline_definition_for_execution_errors() ::
+    resource_not_found().
+
+-type describe_pipeline_execution_errors() ::
+    resource_not_found().
+
+-type describe_processing_job_errors() ::
+    resource_not_found().
+
+-type describe_space_errors() ::
+    resource_not_found().
+
+-type describe_studio_lifecycle_config_errors() ::
+    resource_not_found().
+
+-type describe_training_job_errors() ::
+    resource_not_found().
+
+-type describe_transform_job_errors() ::
+    resource_not_found().
+
+-type describe_trial_errors() ::
+    resource_not_found().
+
+-type describe_trial_component_errors() ::
+    resource_not_found().
+
+-type describe_user_profile_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type disassociate_trial_component_errors() ::
+    resource_not_found().
+
+-type get_lineage_group_policy_errors() ::
+    resource_not_found().
+
+-type get_scaling_configuration_recommendation_errors() ::
+    resource_not_found().
+
+-type import_hub_content_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type list_actions_errors() ::
+    resource_not_found().
+
+-type list_aliases_errors() ::
+    resource_not_found().
+
+-type list_artifacts_errors() ::
+    resource_not_found().
+
+-type list_associations_errors() ::
+    resource_not_found().
+
+-type list_candidates_for_auto_ml_job_errors() ::
+    resource_not_found().
+
+-type list_cluster_nodes_errors() ::
+    resource_not_found().
+
+-type list_contexts_errors() ::
+    resource_not_found().
+
+-type list_hub_content_versions_errors() ::
+    resource_not_found().
+
+-type list_hub_contents_errors() ::
+    resource_not_found().
+
+-type list_image_versions_errors() ::
+    resource_not_found().
+
+-type list_inference_recommendations_job_steps_errors() ::
+    resource_not_found().
+
+-type list_labeling_jobs_for_workteam_errors() ::
+    resource_not_found().
+
+-type list_model_card_versions_errors() ::
+    resource_not_found().
+
+-type list_monitoring_alert_history_errors() ::
+    resource_not_found().
+
+-type list_monitoring_alerts_errors() ::
+    resource_not_found().
+
+-type list_pipeline_execution_steps_errors() ::
+    resource_not_found().
+
+-type list_pipeline_executions_errors() ::
+    resource_not_found().
+
+-type list_pipeline_parameters_for_execution_errors() ::
+    resource_not_found().
+
+-type list_studio_lifecycle_configs_errors() ::
+    resource_in_use().
+
+-type list_training_jobs_for_hyper_parameter_tuning_job_errors() ::
+    resource_not_found().
+
+-type list_trial_components_errors() ::
+    resource_not_found().
+
+-type list_trials_errors() ::
+    resource_not_found().
+
+-type put_model_package_group_policy_errors() ::
+    conflict_exception().
+
+-type query_lineage_errors() ::
+    resource_not_found().
+
+-type register_devices_errors() ::
+    resource_limit_exceeded().
+
+-type render_ui_template_errors() ::
+    resource_not_found().
+
+-type retry_pipeline_execution_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type send_pipeline_execution_step_failure_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type send_pipeline_execution_step_success_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type start_inference_experiment_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type start_monitoring_schedule_errors() ::
+    resource_not_found().
+
+-type start_notebook_instance_errors() ::
+    resource_limit_exceeded().
+
+-type start_pipeline_execution_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type stop_auto_ml_job_errors() ::
+    resource_not_found().
+
+-type stop_compilation_job_errors() ::
+    resource_not_found().
+
+-type stop_hyper_parameter_tuning_job_errors() ::
+    resource_not_found().
+
+-type stop_inference_experiment_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type stop_inference_recommendations_job_errors() ::
+    resource_not_found().
+
+-type stop_labeling_job_errors() ::
+    resource_not_found().
+
+-type stop_monitoring_schedule_errors() ::
+    resource_not_found().
+
+-type stop_pipeline_execution_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type stop_processing_job_errors() ::
+    resource_not_found().
+
+-type stop_training_job_errors() ::
+    resource_not_found().
+
+-type stop_transform_job_errors() ::
+    resource_not_found().
+
+-type update_action_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_app_image_config_errors() ::
+    resource_not_found().
+
+-type update_artifact_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_cluster_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_cluster_software_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_code_repository_errors() ::
+    conflict_exception().
+
+-type update_context_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_device_fleet_errors() ::
+    resource_in_use().
+
+-type update_domain_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type update_endpoint_errors() ::
+    resource_limit_exceeded().
+
+-type update_endpoint_weights_and_capacities_errors() ::
+    resource_limit_exceeded().
+
+-type update_experiment_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_feature_group_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type update_feature_metadata_errors() ::
+    resource_not_found().
+
+-type update_hub_errors() ::
+    resource_not_found().
+
+-type update_image_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type update_image_version_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type update_inference_component_errors() ::
+    resource_limit_exceeded().
+
+-type update_inference_component_runtime_config_errors() ::
+    resource_limit_exceeded().
+
+-type update_inference_experiment_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_model_card_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_model_package_errors() ::
+    conflict_exception().
+
+-type update_monitoring_alert_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type update_monitoring_schedule_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type update_notebook_instance_errors() ::
+    resource_limit_exceeded().
+
+-type update_notebook_instance_lifecycle_config_errors() ::
+    resource_limit_exceeded().
+
+-type update_pipeline_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_pipeline_execution_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_project_errors() ::
+    conflict_exception().
+
+-type update_space_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type update_training_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type update_trial_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_trial_component_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_user_profile_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type update_workforce_errors() ::
+    conflict_exception().
+
+-type update_workteam_errors() ::
+    resource_limit_exceeded().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -671,9 +11942,18 @@
 %% Amazon SageMaker
 %% ML Lineage Tracking:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
+-spec add_association(aws_client:aws_client(), add_association_request()) ->
+    {ok, add_association_response(), tuple()} |
+    {error, any()} |
+    {error, add_association_errors(), tuple()}.
 add_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_association(Client, Input, []).
+
+-spec add_association(aws_client:aws_client(), add_association_request(), proplists:proplist()) ->
+    {ok, add_association_response(), tuple()} |
+    {error, any()} |
+    {error, add_association_errors(), tuple()}.
 add_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddAssociation">>, Input, Options).
@@ -723,9 +12003,16 @@ add_association(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateDomain.html
 %% or CreateUserProfile:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateUserProfile.html.
+-spec add_tags(aws_client:aws_client(), add_tags_input()) ->
+    {ok, add_tags_output(), tuple()} |
+    {error, any()}.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
+
+-spec add_tags(aws_client:aws_client(), add_tags_input(), proplists:proplist()) ->
+    {ok, add_tags_output(), tuple()} |
+    {error, any()}.
 add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
@@ -737,17 +12024,33 @@ add_tags(Client, Input, Options)
 %% DisassociateTrialComponent:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DisassociateTrialComponent.html
 %% API.
+-spec associate_trial_component(aws_client:aws_client(), associate_trial_component_request()) ->
+    {ok, associate_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, associate_trial_component_errors(), tuple()}.
 associate_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_trial_component(Client, Input, []).
+
+-spec associate_trial_component(aws_client:aws_client(), associate_trial_component_request(), proplists:proplist()) ->
+    {ok, associate_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, associate_trial_component_errors(), tuple()}.
 associate_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateTrialComponent">>, Input, Options).
 
 %% @doc This action batch describes a list of versioned model packages
+-spec batch_describe_model_package(aws_client:aws_client(), batch_describe_model_package_input()) ->
+    {ok, batch_describe_model_package_output(), tuple()} |
+    {error, any()}.
 batch_describe_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_describe_model_package(Client, Input, []).
+
+-spec batch_describe_model_package(aws_client:aws_client(), batch_describe_model_package_input(), proplists:proplist()) ->
+    {ok, batch_describe_model_package_output(), tuple()} |
+    {error, any()}.
 batch_describe_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDescribeModelPackage">>, Input, Options).
@@ -762,18 +12065,34 @@ batch_describe_model_package(Client, Input, Options)
 %% Amazon SageMaker
 %% ML Lineage Tracking:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
+-spec create_action(aws_client:aws_client(), create_action_request()) ->
+    {ok, create_action_response(), tuple()} |
+    {error, any()} |
+    {error, create_action_errors(), tuple()}.
 create_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_action(Client, Input, []).
+
+-spec create_action(aws_client:aws_client(), create_action_request(), proplists:proplist()) ->
+    {ok, create_action_response(), tuple()} |
+    {error, any()} |
+    {error, create_action_errors(), tuple()}.
 create_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAction">>, Input, Options).
 
 %% @doc Create a machine learning algorithm that you can use in SageMaker and
 %% list in the Amazon Web Services Marketplace.
+-spec create_algorithm(aws_client:aws_client(), create_algorithm_input()) ->
+    {ok, create_algorithm_output(), tuple()} |
+    {error, any()}.
 create_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_algorithm(Client, Input, []).
+
+-spec create_algorithm(aws_client:aws_client(), create_algorithm_input(), proplists:proplist()) ->
+    {ok, create_algorithm_output(), tuple()} |
+    {error, any()}.
 create_algorithm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlgorithm">>, Input, Options).
@@ -785,9 +12104,18 @@ create_algorithm(Client, Input, Options)
 %% new kernel
 %% configurations are selected by the user. A user may have multiple Apps
 %% active simultaneously.
+-spec create_app(aws_client:aws_client(), create_app_request()) ->
+    {ok, create_app_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
+
+-spec create_app(aws_client:aws_client(), create_app_request(), proplists:proplist()) ->
+    {ok, create_app_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApp">>, Input, Options).
@@ -799,9 +12127,18 @@ create_app(Client, Input, Options)
 %% configuration specifies the Amazon Elastic File System storage volume on
 %% the image, and a list of the
 %% kernels in the image.
+-spec create_app_image_config(aws_client:aws_client(), create_app_image_config_request()) ->
+    {ok, create_app_image_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_image_config_errors(), tuple()}.
 create_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app_image_config(Client, Input, []).
+
+-spec create_app_image_config(aws_client:aws_client(), create_app_image_config_request(), proplists:proplist()) ->
+    {ok, create_app_image_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_app_image_config_errors(), tuple()}.
 create_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAppImageConfig">>, Input, Options).
@@ -815,9 +12152,18 @@ create_app_image_config(Client, Input, Options)
 %% Amazon SageMaker
 %% ML Lineage Tracking:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
+-spec create_artifact(aws_client:aws_client(), create_artifact_request()) ->
+    {ok, create_artifact_response(), tuple()} |
+    {error, any()} |
+    {error, create_artifact_errors(), tuple()}.
 create_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_artifact(Client, Input, []).
+
+-spec create_artifact(aws_client:aws_client(), create_artifact_request(), proplists:proplist()) ->
+    {ok, create_artifact_response(), tuple()} |
+    {error, any()} |
+    {error, create_artifact_errors(), tuple()}.
 create_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateArtifact">>, Input, Options).
@@ -848,9 +12194,18 @@ create_artifact(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJobV2.html
 %% (recommended) or DescribeAutoMLJob:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html.
+-spec create_auto_ml_job(aws_client:aws_client(), create_auto_ml_job_request()) ->
+    {ok, create_auto_ml_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_auto_ml_job_errors(), tuple()}.
 create_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job(Client, Input, []).
+
+-spec create_auto_ml_job(aws_client:aws_client(), create_auto_ml_job_request(), proplists:proplist()) ->
+    {ok, create_auto_ml_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_auto_ml_job_errors(), tuple()}.
 create_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoMLJob">>, Input, Options).
@@ -888,9 +12243,18 @@ create_auto_ml_job(Client, Input, Options)
 %% You can find the best-performing model after you run an AutoML job V2 by
 %% calling DescribeAutoMLJobV2:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJobV2.html.
+-spec create_auto_ml_job_v2(aws_client:aws_client(), create_auto_ml_job_v2_request()) ->
+    {ok, create_auto_ml_job_v2_response(), tuple()} |
+    {error, any()} |
+    {error, create_auto_ml_job_v2_errors(), tuple()}.
 create_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job_v2(Client, Input, []).
+
+-spec create_auto_ml_job_v2(aws_client:aws_client(), create_auto_ml_job_v2_request(), proplists:proplist()) ->
+    {ok, create_auto_ml_job_v2_response(), tuple()} |
+    {error, any()} |
+    {error, create_auto_ml_job_v2_errors(), tuple()}.
 create_auto_ml_job_v2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoMLJobV2">>, Input, Options).
@@ -904,9 +12268,18 @@ create_auto_ml_job_v2(Client, Input, Options)
 %% HyperPod:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod.html in
 %% the Amazon SageMaker Developer Guide.
+-spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
+    {ok, create_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
+
+-spec create_cluster(aws_client:aws_client(), create_cluster_request(), proplists:proplist()) ->
+    {ok, create_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
@@ -925,9 +12298,16 @@ create_cluster(Client, Input, Options)
 %% The repository can be hosted either in Amazon Web Services CodeCommit:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html
 %% or in any other Git repository.
+-spec create_code_repository(aws_client:aws_client(), create_code_repository_input()) ->
+    {ok, create_code_repository_output(), tuple()} |
+    {error, any()}.
 create_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_code_repository(Client, Input, []).
+
+-spec create_code_repository(aws_client:aws_client(), create_code_repository_input(), proplists:proplist()) ->
+    {ok, create_code_repository_output(), tuple()} |
+    {error, any()}.
 create_code_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCodeRepository">>, Input, Options).
@@ -973,9 +12353,18 @@ create_code_repository(Client, Input, Options)
 %% To get information about multiple model compilation
 %% jobs, use ListCompilationJobs:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListCompilationJobs.html.
+-spec create_compilation_job(aws_client:aws_client(), create_compilation_job_request()) ->
+    {ok, create_compilation_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_compilation_job_errors(), tuple()}.
 create_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_compilation_job(Client, Input, []).
+
+-spec create_compilation_job(aws_client:aws_client(), create_compilation_job_request(), proplists:proplist()) ->
+    {ok, create_compilation_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_compilation_job_errors(), tuple()}.
 create_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCompilationJob">>, Input, Options).
@@ -989,9 +12378,18 @@ create_compilation_job(Client, Input, Options)
 %% Amazon SageMaker
 %% ML Lineage Tracking:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
+-spec create_context(aws_client:aws_client(), create_context_request()) ->
+    {ok, create_context_response(), tuple()} |
+    {error, any()} |
+    {error, create_context_errors(), tuple()}.
 create_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_context(Client, Input, []).
+
+-spec create_context(aws_client:aws_client(), create_context_request(), proplists:proplist()) ->
+    {ok, create_context_response(), tuple()} |
+    {error, any()} |
+    {error, create_context_errors(), tuple()}.
 create_context(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContext">>, Input, Options).
@@ -1002,17 +12400,35 @@ create_context(Client, Input, Options)
 %% about model monitor, see Amazon SageMaker Model
 %% Monitor:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html.
+-spec create_data_quality_job_definition(aws_client:aws_client(), create_data_quality_job_definition_request()) ->
+    {ok, create_data_quality_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_quality_job_definition_errors(), tuple()}.
 create_data_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_quality_job_definition(Client, Input, []).
+
+-spec create_data_quality_job_definition(aws_client:aws_client(), create_data_quality_job_definition_request(), proplists:proplist()) ->
+    {ok, create_data_quality_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_quality_job_definition_errors(), tuple()}.
 create_data_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataQualityJobDefinition">>, Input, Options).
 
 %% @doc Creates a device fleet.
+-spec create_device_fleet(aws_client:aws_client(), create_device_fleet_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_device_fleet_errors(), tuple()}.
 create_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_device_fleet(Client, Input, []).
+
+-spec create_device_fleet(aws_client:aws_client(), create_device_fleet_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_device_fleet_errors(), tuple()}.
 create_device_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeviceFleet">>, Input, Options).
@@ -1078,9 +12494,18 @@ create_device_fleet(Client, Input, Options)
 %% For more information, see Connect Amazon SageMaker Studio
 %% Notebooks to Resources in a VPC:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-and-internet-access.html.
+-spec create_domain(aws_client:aws_client(), create_domain_request()) ->
+    {ok, create_domain_response(), tuple()} |
+    {error, any()} |
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
+
+-spec create_domain(aws_client:aws_client(), create_domain_request(), proplists:proplist()) ->
+    {ok, create_domain_response(), tuple()} |
+    {error, any()} |
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomain">>, Input, Options).
@@ -1089,17 +12514,35 @@ create_domain(Client, Input, Options)
 %%
 %% Each stage may have a
 %% different deployment configuration and devices.
+-spec create_edge_deployment_plan(aws_client:aws_client(), create_edge_deployment_plan_request()) ->
+    {ok, create_edge_deployment_plan_response(), tuple()} |
+    {error, any()} |
+    {error, create_edge_deployment_plan_errors(), tuple()}.
 create_edge_deployment_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_edge_deployment_plan(Client, Input, []).
+
+-spec create_edge_deployment_plan(aws_client:aws_client(), create_edge_deployment_plan_request(), proplists:proplist()) ->
+    {ok, create_edge_deployment_plan_response(), tuple()} |
+    {error, any()} |
+    {error, create_edge_deployment_plan_errors(), tuple()}.
 create_edge_deployment_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEdgeDeploymentPlan">>, Input, Options).
 
 %% @doc Creates a new stage in an existing edge deployment plan.
+-spec create_edge_deployment_stage(aws_client:aws_client(), create_edge_deployment_stage_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_edge_deployment_stage_errors(), tuple()}.
 create_edge_deployment_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_edge_deployment_stage(Client, Input, []).
+
+-spec create_edge_deployment_stage(aws_client:aws_client(), create_edge_deployment_stage_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_edge_deployment_stage_errors(), tuple()}.
 create_edge_deployment_stage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEdgeDeploymentStage">>, Input, Options).
@@ -1109,9 +12552,18 @@ create_edge_deployment_stage(Client, Input, Options)
 %% Edge Manager will use the model artifacts from the Amazon Simple Storage
 %% Service bucket that you specify. After the model has been packaged, Amazon
 %% SageMaker saves the resulting artifacts to an S3 bucket that you specify.
+-spec create_edge_packaging_job(aws_client:aws_client(), create_edge_packaging_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_edge_packaging_job_errors(), tuple()}.
 create_edge_packaging_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_edge_packaging_job(Client, Input, []).
+
+-spec create_edge_packaging_job(aws_client:aws_client(), create_edge_packaging_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, create_edge_packaging_job_errors(), tuple()}.
 create_edge_packaging_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEdgePackagingJob">>, Input, Options).
@@ -1226,9 +12678,18 @@ create_edge_packaging_job(Client, Input, Options)
 %% Permissions: Actions, Permissions, and Resources
 %% Reference:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html.
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_input()) ->
+    {ok, create_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, create_endpoint_errors(), tuple()}.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
+
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_input(), proplists:proplist()) ->
+    {ok, create_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, create_endpoint_errors(), tuple()}.
 create_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpoint">>, Input, Options).
@@ -1290,9 +12751,18 @@ create_endpoint(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html
 %% to minimize the potential impact of a DynamoDB
 %% eventually consistent read.
+-spec create_endpoint_config(aws_client:aws_client(), create_endpoint_config_input()) ->
+    {ok, create_endpoint_config_output(), tuple()} |
+    {error, any()} |
+    {error, create_endpoint_config_errors(), tuple()}.
 create_endpoint_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_config(Client, Input, []).
+
+-spec create_endpoint_config(aws_client:aws_client(), create_endpoint_config_input(), proplists:proplist()) ->
+    {ok, create_endpoint_config_output(), tuple()} |
+    {error, any()} |
+    {error, create_endpoint_config_errors(), tuple()}.
 create_endpoint_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpointConfig">>, Input, Options).
@@ -1342,9 +12812,18 @@ create_endpoint_config(Client, Input, Options)
 %% API. To create a trial call the CreateTrial:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrial.html
 %% API.
+-spec create_experiment(aws_client:aws_client(), create_experiment_request()) ->
+    {ok, create_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, create_experiment_errors(), tuple()}.
 create_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_experiment(Client, Input, []).
+
+-spec create_experiment(aws_client:aws_client(), create_experiment_request(), proplists:proplist()) ->
+    {ok, create_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, create_experiment_errors(), tuple()}.
 create_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExperiment">>, Input, Options).
@@ -1372,17 +12851,35 @@ create_experiment(Client, Input, Options)
 %%
 %% You must include at least one of `OnlineStoreConfig' and
 %% `OfflineStoreConfig' to create a `FeatureGroup'.
+-spec create_feature_group(aws_client:aws_client(), create_feature_group_request()) ->
+    {ok, create_feature_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_feature_group_errors(), tuple()}.
 create_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_feature_group(Client, Input, []).
+
+-spec create_feature_group(aws_client:aws_client(), create_feature_group_request(), proplists:proplist()) ->
+    {ok, create_feature_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_feature_group_errors(), tuple()}.
 create_feature_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFeatureGroup">>, Input, Options).
 
 %% @doc Creates a flow definition.
+-spec create_flow_definition(aws_client:aws_client(), create_flow_definition_request()) ->
+    {ok, create_flow_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_flow_definition_errors(), tuple()}.
 create_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_flow_definition(Client, Input, []).
+
+-spec create_flow_definition(aws_client:aws_client(), create_flow_definition_request(), proplists:proplist()) ->
+    {ok, create_flow_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_flow_definition_errors(), tuple()}.
 create_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFlowDefinition">>, Input, Options).
@@ -1390,9 +12887,18 @@ create_flow_definition(Client, Input, Options)
 %% @doc Create a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
+-spec create_hub(aws_client:aws_client(), create_hub_request()) ->
+    {ok, create_hub_response(), tuple()} |
+    {error, any()} |
+    {error, create_hub_errors(), tuple()}.
 create_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hub(Client, Input, []).
+
+-spec create_hub(aws_client:aws_client(), create_hub_request(), proplists:proplist()) ->
+    {ok, create_hub_response(), tuple()} |
+    {error, any()} |
+    {error, create_hub_errors(), tuple()}.
 create_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHub">>, Input, Options).
@@ -1402,9 +12908,18 @@ create_hub(Client, Input, Options)
 %%
 %% Reviewers will see a three-panel interface with an instruction area, the
 %% item to review, and an input area.
+-spec create_human_task_ui(aws_client:aws_client(), create_human_task_ui_request()) ->
+    {ok, create_human_task_ui_response(), tuple()} |
+    {error, any()} |
+    {error, create_human_task_ui_errors(), tuple()}.
 create_human_task_ui(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_human_task_ui(Client, Input, []).
+
+-spec create_human_task_ui(aws_client:aws_client(), create_human_task_ui_request(), proplists:proplist()) ->
+    {ok, create_human_task_ui_response(), tuple()} |
+    {error, any()} |
+    {error, create_human_task_ui_errors(), tuple()}.
 create_human_task_ui(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHumanTaskUi">>, Input, Options).
@@ -1435,9 +12950,18 @@ create_human_task_ui(Client, Input, Options)
 %% credentials are detected, SageMaker will reject your training job request
 %% and return an
 %% exception error.
+-spec create_hyper_parameter_tuning_job(aws_client:aws_client(), create_hyper_parameter_tuning_job_request()) ->
+    {ok, create_hyper_parameter_tuning_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_hyper_parameter_tuning_job_errors(), tuple()}.
 create_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hyper_parameter_tuning_job(Client, Input, []).
+
+-spec create_hyper_parameter_tuning_job(aws_client:aws_client(), create_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
+    {ok, create_hyper_parameter_tuning_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_hyper_parameter_tuning_job_errors(), tuple()}.
 create_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHyperParameterTuningJob">>, Input, Options).
@@ -1449,9 +12973,18 @@ create_hyper_parameter_tuning_job(Client, Input, Options)
 %% information, see
 %% Bring your own SageMaker image:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html.
+-spec create_image(aws_client:aws_client(), create_image_request()) ->
+    {ok, create_image_response(), tuple()} |
+    {error, any()} |
+    {error, create_image_errors(), tuple()}.
 create_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image(Client, Input, []).
+
+-spec create_image(aws_client:aws_client(), create_image_request(), proplists:proplist()) ->
+    {ok, create_image_response(), tuple()} |
+    {error, any()} |
+    {error, create_image_errors(), tuple()}.
 create_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImage">>, Input, Options).
@@ -1461,9 +12994,18 @@ create_image(Client, Input, Options)
 %%
 %% The version
 %% represents the Amazon ECR container image specified by `BaseImage'.
+-spec create_image_version(aws_client:aws_client(), create_image_version_request()) ->
+    {ok, create_image_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_image_version_errors(), tuple()}.
 create_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image_version(Client, Input, []).
+
+-spec create_image_version(aws_client:aws_client(), create_image_version_request(), proplists:proplist()) ->
+    {ok, create_image_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_image_version_errors(), tuple()}.
 create_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImageVersion">>, Input, Options).
@@ -1484,9 +13026,18 @@ create_image_version(Client, Input, Options)
 %% that individual model. After you deploy an inference component, you can
 %% directly invoke the
 %% associated model when you use the InvokeEndpoint API action.
+-spec create_inference_component(aws_client:aws_client(), create_inference_component_input()) ->
+    {ok, create_inference_component_output(), tuple()} |
+    {error, any()} |
+    {error, create_inference_component_errors(), tuple()}.
 create_inference_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_component(Client, Input, []).
+
+-spec create_inference_component(aws_client:aws_client(), create_inference_component_input(), proplists:proplist()) ->
+    {ok, create_inference_component_output(), tuple()} |
+    {error, any()} |
+    {error, create_inference_component_errors(), tuple()}.
 create_inference_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInferenceComponent">>, Input, Options).
@@ -1508,9 +13059,18 @@ create_inference_component(Client, Input, Options)
 %% view metrics that compare your model
 %% variants. For more information, see View, monitor, and edit shadow tests:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests-view-monitor-edit.html.
+-spec create_inference_experiment(aws_client:aws_client(), create_inference_experiment_request()) ->
+    {ok, create_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, create_inference_experiment_errors(), tuple()}.
 create_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_experiment(Client, Input, []).
+
+-spec create_inference_experiment(aws_client:aws_client(), create_inference_experiment_request(), proplists:proplist()) ->
+    {ok, create_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, create_inference_experiment_errors(), tuple()}.
 create_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInferenceExperiment">>, Input, Options).
@@ -1519,9 +13079,18 @@ create_inference_experiment(Client, Input, Options)
 %%
 %% You can create either an instance
 %% recommendation or load test job.
+-spec create_inference_recommendations_job(aws_client:aws_client(), create_inference_recommendations_job_request()) ->
+    {ok, create_inference_recommendations_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_inference_recommendations_job_errors(), tuple()}.
 create_inference_recommendations_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_recommendations_job(Client, Input, []).
+
+-spec create_inference_recommendations_job(aws_client:aws_client(), create_inference_recommendations_job_request(), proplists:proplist()) ->
+    {ok, create_inference_recommendations_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_inference_recommendations_job_errors(), tuple()}.
 create_inference_recommendations_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInferenceRecommendationsJob">>, Input, Options).
@@ -1587,9 +13156,18 @@ create_inference_recommendations_job(Client, Input, Options)
 %% labeling job, see Create a Streaming Labeling
 %% Job:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/sms-streaming-create-job.html.
+-spec create_labeling_job(aws_client:aws_client(), create_labeling_job_request()) ->
+    {ok, create_labeling_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_labeling_job_errors(), tuple()}.
 create_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_labeling_job(Client, Input, []).
+
+-spec create_labeling_job(aws_client:aws_client(), create_labeling_job_request(), proplists:proplist()) ->
+    {ok, create_labeling_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_labeling_job_errors(), tuple()}.
 create_labeling_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLabelingJob">>, Input, Options).
@@ -1626,17 +13204,35 @@ create_labeling_job(Client, Input, Options)
 %% inference code needs. For example, if the inference code access any other
 %% Amazon Web Services resources, you grant necessary permissions via this
 %% role.
+-spec create_model(aws_client:aws_client(), create_model_input()) ->
+    {ok, create_model_output(), tuple()} |
+    {error, any()} |
+    {error, create_model_errors(), tuple()}.
 create_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model(Client, Input, []).
+
+-spec create_model(aws_client:aws_client(), create_model_input(), proplists:proplist()) ->
+    {ok, create_model_output(), tuple()} |
+    {error, any()} |
+    {error, create_model_errors(), tuple()}.
 create_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModel">>, Input, Options).
 
 %% @doc Creates the definition for a model bias job.
+-spec create_model_bias_job_definition(aws_client:aws_client(), create_model_bias_job_definition_request()) ->
+    {ok, create_model_bias_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_bias_job_definition_errors(), tuple()}.
 create_model_bias_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_bias_job_definition(Client, Input, []).
+
+-spec create_model_bias_job_definition(aws_client:aws_client(), create_model_bias_job_definition_request(), proplists:proplist()) ->
+    {ok, create_model_bias_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_bias_job_definition_errors(), tuple()}.
 create_model_bias_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelBiasJobDefinition">>, Input, Options).
@@ -1645,25 +13241,52 @@ create_model_bias_job_definition(Client, Input, Options)
 %%
 %% For information about how to use model cards, see Amazon SageMaker Model
 %% Card: https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html.
+-spec create_model_card(aws_client:aws_client(), create_model_card_request()) ->
+    {ok, create_model_card_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_card_errors(), tuple()}.
 create_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_card(Client, Input, []).
+
+-spec create_model_card(aws_client:aws_client(), create_model_card_request(), proplists:proplist()) ->
+    {ok, create_model_card_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_card_errors(), tuple()}.
 create_model_card(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelCard">>, Input, Options).
 
 %% @doc Creates an Amazon SageMaker Model Card export job.
+-spec create_model_card_export_job(aws_client:aws_client(), create_model_card_export_job_request()) ->
+    {ok, create_model_card_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_card_export_job_errors(), tuple()}.
 create_model_card_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_card_export_job(Client, Input, []).
+
+-spec create_model_card_export_job(aws_client:aws_client(), create_model_card_export_job_request(), proplists:proplist()) ->
+    {ok, create_model_card_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_card_export_job_errors(), tuple()}.
 create_model_card_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelCardExportJob">>, Input, Options).
 
 %% @doc Creates the definition for a model explainability job.
+-spec create_model_explainability_job_definition(aws_client:aws_client(), create_model_explainability_job_definition_request()) ->
+    {ok, create_model_explainability_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_explainability_job_definition_errors(), tuple()}.
 create_model_explainability_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_explainability_job_definition(Client, Input, []).
+
+-spec create_model_explainability_job_definition(aws_client:aws_client(), create_model_explainability_job_definition_request(), proplists:proplist()) ->
+    {ok, create_model_explainability_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_explainability_job_definition_errors(), tuple()}.
 create_model_explainability_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelExplainabilityJobDefinition">>, Input, Options).
@@ -1691,9 +13314,18 @@ create_model_explainability_job_definition(Client, Input, Options)
 %% registry.
 %%
 %% Unversioned - a model package that is not part of a model group.
+-spec create_model_package(aws_client:aws_client(), create_model_package_input()) ->
+    {ok, create_model_package_output(), tuple()} |
+    {error, any()} |
+    {error, create_model_package_errors(), tuple()}.
 create_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_package(Client, Input, []).
+
+-spec create_model_package(aws_client:aws_client(), create_model_package_input(), proplists:proplist()) ->
+    {ok, create_model_package_output(), tuple()} |
+    {error, any()} |
+    {error, create_model_package_errors(), tuple()}.
 create_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelPackage">>, Input, Options).
@@ -1701,9 +13333,18 @@ create_model_package(Client, Input, Options)
 %% @doc Creates a model group.
 %%
 %% A model group contains a group of model versions.
+-spec create_model_package_group(aws_client:aws_client(), create_model_package_group_input()) ->
+    {ok, create_model_package_group_output(), tuple()} |
+    {error, any()} |
+    {error, create_model_package_group_errors(), tuple()}.
 create_model_package_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_package_group(Client, Input, []).
+
+-spec create_model_package_group(aws_client:aws_client(), create_model_package_group_input(), proplists:proplist()) ->
+    {ok, create_model_package_group_output(), tuple()} |
+    {error, any()} |
+    {error, create_model_package_group_errors(), tuple()}.
 create_model_package_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelPackageGroup">>, Input, Options).
@@ -1714,9 +13355,18 @@ create_model_package_group(Client, Input, Options)
 %% about model monitor, see Amazon SageMaker Model
 %% Monitor:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html.
+-spec create_model_quality_job_definition(aws_client:aws_client(), create_model_quality_job_definition_request()) ->
+    {ok, create_model_quality_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_quality_job_definition_errors(), tuple()}.
 create_model_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_quality_job_definition(Client, Input, []).
+
+-spec create_model_quality_job_definition(aws_client:aws_client(), create_model_quality_job_definition_request(), proplists:proplist()) ->
+    {ok, create_model_quality_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_model_quality_job_definition_errors(), tuple()}.
 create_model_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelQualityJobDefinition">>, Input, Options).
@@ -1724,9 +13374,18 @@ create_model_quality_job_definition(Client, Input, Options)
 %% @doc Creates a schedule that regularly starts Amazon SageMaker Processing
 %% Jobs to
 %% monitor the data captured for an Amazon SageMaker Endpoint.
+-spec create_monitoring_schedule(aws_client:aws_client(), create_monitoring_schedule_request()) ->
+    {ok, create_monitoring_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, create_monitoring_schedule_errors(), tuple()}.
 create_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_monitoring_schedule(Client, Input, []).
+
+-spec create_monitoring_schedule(aws_client:aws_client(), create_monitoring_schedule_request(), proplists:proplist()) ->
+    {ok, create_monitoring_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, create_monitoring_schedule_errors(), tuple()}.
 create_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMonitoringSchedule">>, Input, Options).
@@ -1784,9 +13443,18 @@ create_monitoring_schedule(Client, Input, Options)
 %%
 %% For more information, see How It Works:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html.
+-spec create_notebook_instance(aws_client:aws_client(), create_notebook_instance_input()) ->
+    {ok, create_notebook_instance_output(), tuple()} |
+    {error, any()} |
+    {error, create_notebook_instance_errors(), tuple()}.
 create_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_notebook_instance(Client, Input, []).
+
+-spec create_notebook_instance(aws_client:aws_client(), create_notebook_instance_input(), proplists:proplist()) ->
+    {ok, create_notebook_instance_output(), tuple()} |
+    {error, any()} |
+    {error, create_notebook_instance_errors(), tuple()}.
 create_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNotebookInstance">>, Input, Options).
@@ -1818,17 +13486,35 @@ create_notebook_instance(Client, Input, Options)
 %% For information about notebook instance lifestyle configurations, see Step
 %% 2.1: (Optional) Customize a Notebook Instance:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html.
+-spec create_notebook_instance_lifecycle_config(aws_client:aws_client(), create_notebook_instance_lifecycle_config_input()) ->
+    {ok, create_notebook_instance_lifecycle_config_output(), tuple()} |
+    {error, any()} |
+    {error, create_notebook_instance_lifecycle_config_errors(), tuple()}.
 create_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_notebook_instance_lifecycle_config(Client, Input, []).
+
+-spec create_notebook_instance_lifecycle_config(aws_client:aws_client(), create_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
+    {ok, create_notebook_instance_lifecycle_config_output(), tuple()} |
+    {error, any()} |
+    {error, create_notebook_instance_lifecycle_config_errors(), tuple()}.
 create_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNotebookInstanceLifecycleConfig">>, Input, Options).
 
 %% @doc Creates a pipeline using a JSON pipeline definition.
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request()) ->
+    {ok, create_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pipeline(Client, Input, []).
+
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request(), proplists:proplist()) ->
+    {ok, create_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePipeline">>, Input, Options).
@@ -1863,9 +13549,18 @@ create_pipeline(Client, Input, Options)
 %% `ExpiresInSeconds'. If you try to use the URL after the timeout limit
 %% expires, you
 %% are directed to the Amazon Web Services console sign-in page.
+-spec create_presigned_domain_url(aws_client:aws_client(), create_presigned_domain_url_request()) ->
+    {ok, create_presigned_domain_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_presigned_domain_url_errors(), tuple()}.
 create_presigned_domain_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_domain_url(Client, Input, []).
+
+-spec create_presigned_domain_url(aws_client:aws_client(), create_presigned_domain_url_request(), proplists:proplist()) ->
+    {ok, create_presigned_domain_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_presigned_domain_url_errors(), tuple()}.
 create_presigned_domain_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePresignedDomainUrl">>, Input, Options).
@@ -1904,17 +13599,33 @@ create_presigned_domain_url(Client, Input, Options)
 %% is valid only for 5 minutes. If you
 %% try to use the URL after the 5-minute limit expires, you are directed to
 %% the Amazon Web Services console sign-in page.
+-spec create_presigned_notebook_instance_url(aws_client:aws_client(), create_presigned_notebook_instance_url_input()) ->
+    {ok, create_presigned_notebook_instance_url_output(), tuple()} |
+    {error, any()}.
 create_presigned_notebook_instance_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_notebook_instance_url(Client, Input, []).
+
+-spec create_presigned_notebook_instance_url(aws_client:aws_client(), create_presigned_notebook_instance_url_input(), proplists:proplist()) ->
+    {ok, create_presigned_notebook_instance_url_output(), tuple()} |
+    {error, any()}.
 create_presigned_notebook_instance_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePresignedNotebookInstanceUrl">>, Input, Options).
 
 %% @doc Creates a processing job.
+-spec create_processing_job(aws_client:aws_client(), create_processing_job_request()) ->
+    {ok, create_processing_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_processing_job_errors(), tuple()}.
 create_processing_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_processing_job(Client, Input, []).
+
+-spec create_processing_job(aws_client:aws_client(), create_processing_job_request(), proplists:proplist()) ->
+    {ok, create_processing_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_processing_job_errors(), tuple()}.
 create_processing_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProcessingJob">>, Input, Options).
@@ -1922,25 +13633,52 @@ create_processing_job(Client, Input, Options)
 %% @doc Creates a machine learning (ML) project that can contain one or more
 %% templates that set
 %% up an ML pipeline from training to deploying an approved model.
+-spec create_project(aws_client:aws_client(), create_project_input()) ->
+    {ok, create_project_output(), tuple()} |
+    {error, any()} |
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
+
+-spec create_project(aws_client:aws_client(), create_project_input(), proplists:proplist()) ->
+    {ok, create_project_output(), tuple()} |
+    {error, any()} |
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
 
 %% @doc Creates a space used for real time collaboration in a domain.
+-spec create_space(aws_client:aws_client(), create_space_request()) ->
+    {ok, create_space_response(), tuple()} |
+    {error, any()} |
+    {error, create_space_errors(), tuple()}.
 create_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_space(Client, Input, []).
+
+-spec create_space(aws_client:aws_client(), create_space_request(), proplists:proplist()) ->
+    {ok, create_space_response(), tuple()} |
+    {error, any()} |
+    {error, create_space_errors(), tuple()}.
 create_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSpace">>, Input, Options).
 
 %% @doc Creates a new Amazon SageMaker Studio Lifecycle Configuration.
+-spec create_studio_lifecycle_config(aws_client:aws_client(), create_studio_lifecycle_config_request()) ->
+    {ok, create_studio_lifecycle_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_studio_lifecycle_config_errors(), tuple()}.
 create_studio_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio_lifecycle_config(Client, Input, []).
+
+-spec create_studio_lifecycle_config(aws_client:aws_client(), create_studio_lifecycle_config_request(), proplists:proplist()) ->
+    {ok, create_studio_lifecycle_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_studio_lifecycle_config_errors(), tuple()}.
 create_studio_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStudioLifecycleConfig">>, Input, Options).
@@ -2015,9 +13753,18 @@ create_studio_lifecycle_config(Client, Input, Options)
 %%
 %% For more information about SageMaker, see How It Works:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html.
+-spec create_training_job(aws_client:aws_client(), create_training_job_request()) ->
+    {ok, create_training_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_training_job_errors(), tuple()}.
 create_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_training_job(Client, Input, []).
+
+-spec create_training_job(aws_client:aws_client(), create_training_job_request(), proplists:proplist()) ->
+    {ok, create_training_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_training_job_errors(), tuple()}.
 create_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrainingJob">>, Input, Options).
@@ -2055,9 +13802,18 @@ create_training_job(Client, Input, Options)
 %% For more information about how batch transformation works, see Batch
 %% Transform:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html.
+-spec create_transform_job(aws_client:aws_client(), create_transform_job_request()) ->
+    {ok, create_transform_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_transform_job_errors(), tuple()}.
 create_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transform_job(Client, Input, []).
+
+-spec create_transform_job(aws_client:aws_client(), create_transform_job_request(), proplists:proplist()) ->
+    {ok, create_transform_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_transform_job_errors(), tuple()}.
 create_transform_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTransformJob">>, Input, Options).
@@ -2088,9 +13844,18 @@ create_transform_job(Client, Input, Options)
 %% call the CreateTrialComponent:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrialComponent.html
 %% API.
+-spec create_trial(aws_client:aws_client(), create_trial_request()) ->
+    {ok, create_trial_response(), tuple()} |
+    {error, any()} |
+    {error, create_trial_errors(), tuple()}.
 create_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trial(Client, Input, []).
+
+-spec create_trial(aws_client:aws_client(), create_trial_request(), proplists:proplist()) ->
+    {ok, create_trial_response(), tuple()} |
+    {error, any()} |
+    {error, create_trial_errors(), tuple()}.
 create_trial(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrial">>, Input, Options).
@@ -2115,9 +13880,18 @@ create_trial(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html
 %% API to
 %% search for the tags.
+-spec create_trial_component(aws_client:aws_client(), create_trial_component_request()) ->
+    {ok, create_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, create_trial_component_errors(), tuple()}.
 create_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trial_component(Client, Input, []).
+
+-spec create_trial_component(aws_client:aws_client(), create_trial_component_request(), proplists:proplist()) ->
+    {ok, create_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, create_trial_component_errors(), tuple()}.
 create_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrialComponent">>, Input, Options).
@@ -2135,9 +13909,18 @@ create_trial_component(Client, Input, Options)
 %% for an individual
 %% user and has a reference to the user's private Amazon Elastic File
 %% System home directory.
+-spec create_user_profile(aws_client:aws_client(), create_user_profile_request()) ->
+    {ok, create_user_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_user_profile_errors(), tuple()}.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
+
+-spec create_user_profile(aws_client:aws_client(), create_user_profile_request(), proplists:proplist()) ->
+    {ok, create_user_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_user_profile_errors(), tuple()}.
 create_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserProfile">>, Input, Options).
@@ -2177,9 +13960,16 @@ create_user_profile(Client, Input, Options)
 %% For more information, see
 %% Create a Private Workforce (OIDC IdP):
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-create-private-oidc.html.
+-spec create_workforce(aws_client:aws_client(), create_workforce_request()) ->
+    {ok, create_workforce_response(), tuple()} |
+    {error, any()}.
 create_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workforce(Client, Input, []).
+
+-spec create_workforce(aws_client:aws_client(), create_workforce_request(), proplists:proplist()) ->
+    {ok, create_workforce_response(), tuple()} |
+    {error, any()}.
 create_workforce(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkforce">>, Input, Options).
@@ -2192,41 +13982,86 @@ create_workforce(Client, Input, Options)
 %% team.
 %%
 %% You cannot create more than 25 work teams in an account and region.
+-spec create_workteam(aws_client:aws_client(), create_workteam_request()) ->
+    {ok, create_workteam_response(), tuple()} |
+    {error, any()} |
+    {error, create_workteam_errors(), tuple()}.
 create_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workteam(Client, Input, []).
+
+-spec create_workteam(aws_client:aws_client(), create_workteam_request(), proplists:proplist()) ->
+    {ok, create_workteam_response(), tuple()} |
+    {error, any()} |
+    {error, create_workteam_errors(), tuple()}.
 create_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkteam">>, Input, Options).
 
 %% @doc Deletes an action.
+-spec delete_action(aws_client:aws_client(), delete_action_request()) ->
+    {ok, delete_action_response(), tuple()} |
+    {error, any()} |
+    {error, delete_action_errors(), tuple()}.
 delete_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_action(Client, Input, []).
+
+-spec delete_action(aws_client:aws_client(), delete_action_request(), proplists:proplist()) ->
+    {ok, delete_action_response(), tuple()} |
+    {error, any()} |
+    {error, delete_action_errors(), tuple()}.
 delete_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAction">>, Input, Options).
 
 %% @doc Removes the specified algorithm from your account.
+-spec delete_algorithm(aws_client:aws_client(), delete_algorithm_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_algorithm_errors(), tuple()}.
 delete_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_algorithm(Client, Input, []).
+
+-spec delete_algorithm(aws_client:aws_client(), delete_algorithm_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_algorithm_errors(), tuple()}.
 delete_algorithm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlgorithm">>, Input, Options).
 
 %% @doc Used to stop and delete an app.
+-spec delete_app(aws_client:aws_client(), delete_app_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app(Client, Input, []).
+
+-spec delete_app(aws_client:aws_client(), delete_app_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApp">>, Input, Options).
 
 %% @doc Deletes an AppImageConfig.
+-spec delete_app_image_config(aws_client:aws_client(), delete_app_image_config_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_image_config_errors(), tuple()}.
 delete_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_image_config(Client, Input, []).
+
+-spec delete_app_image_config(aws_client:aws_client(), delete_app_image_config_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_app_image_config_errors(), tuple()}.
 delete_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAppImageConfig">>, Input, Options).
@@ -2235,33 +14070,67 @@ delete_app_image_config(Client, Input, Options)
 %%
 %% Either `ArtifactArn' or `Source' must be
 %% specified.
+-spec delete_artifact(aws_client:aws_client(), delete_artifact_request()) ->
+    {ok, delete_artifact_response(), tuple()} |
+    {error, any()} |
+    {error, delete_artifact_errors(), tuple()}.
 delete_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_artifact(Client, Input, []).
+
+-spec delete_artifact(aws_client:aws_client(), delete_artifact_request(), proplists:proplist()) ->
+    {ok, delete_artifact_response(), tuple()} |
+    {error, any()} |
+    {error, delete_artifact_errors(), tuple()}.
 delete_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteArtifact">>, Input, Options).
 
 %% @doc Deletes an association.
+-spec delete_association(aws_client:aws_client(), delete_association_request()) ->
+    {ok, delete_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_association_errors(), tuple()}.
 delete_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_association(Client, Input, []).
+
+-spec delete_association(aws_client:aws_client(), delete_association_request(), proplists:proplist()) ->
+    {ok, delete_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_association_errors(), tuple()}.
 delete_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAssociation">>, Input, Options).
 
 %% @doc Delete a SageMaker HyperPod cluster.
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request()) ->
+    {ok, delete_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
+
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request(), proplists:proplist()) ->
+    {ok, delete_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
 
 %% @doc Deletes the specified Git repository from your account.
+-spec delete_code_repository(aws_client:aws_client(), delete_code_repository_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_code_repository(Client, Input, []).
+
+-spec delete_code_repository(aws_client:aws_client(), delete_code_repository_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_code_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCodeRepository">>, Input, Options).
@@ -2280,33 +14149,69 @@ delete_code_repository(Client, Input, Options)
 %% `FAILED', or `STOPPED'. If the job status is
 %% `STARTING' or `INPROGRESS', stop the job, and then delete it
 %% after its status becomes `STOPPED'.
+-spec delete_compilation_job(aws_client:aws_client(), delete_compilation_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_compilation_job_errors(), tuple()}.
 delete_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_compilation_job(Client, Input, []).
+
+-spec delete_compilation_job(aws_client:aws_client(), delete_compilation_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_compilation_job_errors(), tuple()}.
 delete_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCompilationJob">>, Input, Options).
 
 %% @doc Deletes an context.
+-spec delete_context(aws_client:aws_client(), delete_context_request()) ->
+    {ok, delete_context_response(), tuple()} |
+    {error, any()} |
+    {error, delete_context_errors(), tuple()}.
 delete_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_context(Client, Input, []).
+
+-spec delete_context(aws_client:aws_client(), delete_context_request(), proplists:proplist()) ->
+    {ok, delete_context_response(), tuple()} |
+    {error, any()} |
+    {error, delete_context_errors(), tuple()}.
 delete_context(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContext">>, Input, Options).
 
 %% @doc Deletes a data quality monitoring job definition.
+-spec delete_data_quality_job_definition(aws_client:aws_client(), delete_data_quality_job_definition_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_data_quality_job_definition_errors(), tuple()}.
 delete_data_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_quality_job_definition(Client, Input, []).
+
+-spec delete_data_quality_job_definition(aws_client:aws_client(), delete_data_quality_job_definition_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_data_quality_job_definition_errors(), tuple()}.
 delete_data_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataQualityJobDefinition">>, Input, Options).
 
 %% @doc Deletes a fleet.
+-spec delete_device_fleet(aws_client:aws_client(), delete_device_fleet_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_device_fleet_errors(), tuple()}.
 delete_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_device_fleet(Client, Input, []).
+
+-spec delete_device_fleet(aws_client:aws_client(), delete_device_fleet_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_device_fleet_errors(), tuple()}.
 delete_device_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeviceFleet">>, Input, Options).
@@ -2318,9 +14223,18 @@ delete_device_fleet(Client, Input, Options)
 %% of the members of the
 %% domain will lose access to their EFS volume, including data, notebooks,
 %% and other artifacts.
+-spec delete_domain(aws_client:aws_client(), delete_domain_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
+
+-spec delete_domain(aws_client:aws_client(), delete_domain_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDomain">>, Input, Options).
@@ -2328,9 +14242,18 @@ delete_domain(Client, Input, Options)
 %% @doc Deletes an edge deployment plan if (and only if) all the stages in
 %% the plan are
 %% inactive or there are no stages in the plan.
+-spec delete_edge_deployment_plan(aws_client:aws_client(), delete_edge_deployment_plan_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_edge_deployment_plan_errors(), tuple()}.
 delete_edge_deployment_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_edge_deployment_plan(Client, Input, []).
+
+-spec delete_edge_deployment_plan(aws_client:aws_client(), delete_edge_deployment_plan_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_edge_deployment_plan_errors(), tuple()}.
 delete_edge_deployment_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEdgeDeploymentPlan">>, Input, Options).
@@ -2338,9 +14261,18 @@ delete_edge_deployment_plan(Client, Input, Options)
 %% @doc Delete a stage in an edge deployment plan if (and only if) the stage
 %% is
 %% inactive.
+-spec delete_edge_deployment_stage(aws_client:aws_client(), delete_edge_deployment_stage_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_edge_deployment_stage_errors(), tuple()}.
 delete_edge_deployment_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_edge_deployment_stage(Client, Input, []).
+
+-spec delete_edge_deployment_stage(aws_client:aws_client(), delete_edge_deployment_stage_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_edge_deployment_stage_errors(), tuple()}.
 delete_edge_deployment_stage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEdgeDeploymentStage">>, Input, Options).
@@ -2368,9 +14300,16 @@ delete_edge_deployment_stage(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html#sagemaker-CreateModel-request-ExecutionRoleArn
 %% ''', otherwise SageMaker cannot delete these
 %% resources.
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
+
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpoint">>, Input, Options).
@@ -2391,9 +14330,16 @@ delete_endpoint(Client, Input, Options)
 %% instance type the endpoint is using. The endpoint must be deleted in order
 %% to stop
 %% incurring charges.
+-spec delete_endpoint_config(aws_client:aws_client(), delete_endpoint_config_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_endpoint_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint_config(Client, Input, []).
+
+-spec delete_endpoint_config(aws_client:aws_client(), delete_endpoint_config_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_endpoint_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpointConfig">>, Input, Options).
@@ -2405,9 +14351,18 @@ delete_endpoint_config(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListTrials.html
 %% API to get a list of the trials associated with
 %% the experiment.
+-spec delete_experiment(aws_client:aws_client(), delete_experiment_request()) ->
+    {ok, delete_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_experiment_errors(), tuple()}.
 delete_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_experiment(Client, Input, []).
+
+-spec delete_experiment(aws_client:aws_client(), delete_experiment_request(), proplists:proplist()) ->
+    {ok, delete_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_experiment_errors(), tuple()}.
 delete_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExperiment">>, Input, Options).
@@ -2428,17 +14383,35 @@ delete_experiment(Client, Input, Options)
 %% `OnlineStore'
 %% `FeatureGroup' with the `InMemory'
 %% `StorageType'.
+-spec delete_feature_group(aws_client:aws_client(), delete_feature_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_feature_group_errors(), tuple()}.
 delete_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_feature_group(Client, Input, []).
+
+-spec delete_feature_group(aws_client:aws_client(), delete_feature_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_feature_group_errors(), tuple()}.
 delete_feature_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFeatureGroup">>, Input, Options).
 
 %% @doc Deletes the specified flow definition.
+-spec delete_flow_definition(aws_client:aws_client(), delete_flow_definition_request()) ->
+    {ok, delete_flow_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_flow_definition_errors(), tuple()}.
 delete_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_flow_definition(Client, Input, []).
+
+-spec delete_flow_definition(aws_client:aws_client(), delete_flow_definition_request(), proplists:proplist()) ->
+    {ok, delete_flow_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_flow_definition_errors(), tuple()}.
 delete_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFlowDefinition">>, Input, Options).
@@ -2446,9 +14419,18 @@ delete_flow_definition(Client, Input, Options)
 %% @doc Delete a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
+-spec delete_hub(aws_client:aws_client(), delete_hub_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_hub_errors(), tuple()}.
 delete_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hub(Client, Input, []).
+
+-spec delete_hub(aws_client:aws_client(), delete_hub_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_hub_errors(), tuple()}.
 delete_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHub">>, Input, Options).
@@ -2456,9 +14438,18 @@ delete_hub(Client, Input, Options)
 %% @doc Delete the contents of a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
+-spec delete_hub_content(aws_client:aws_client(), delete_hub_content_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_hub_content_errors(), tuple()}.
 delete_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hub_content(Client, Input, []).
+
+-spec delete_hub_content(aws_client:aws_client(), delete_hub_content_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_hub_content_errors(), tuple()}.
 delete_hub_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHubContent">>, Input, Options).
@@ -2471,9 +14462,18 @@ delete_hub_content(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListHumanTaskUis.html.
 %% When you delete a worker task template, it no longer appears when you call
 %% `ListHumanTaskUis'.
+-spec delete_human_task_ui(aws_client:aws_client(), delete_human_task_ui_request()) ->
+    {ok, delete_human_task_ui_response(), tuple()} |
+    {error, any()} |
+    {error, delete_human_task_ui_errors(), tuple()}.
 delete_human_task_ui(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_human_task_ui(Client, Input, []).
+
+-spec delete_human_task_ui(aws_client:aws_client(), delete_human_task_ui_request(), proplists:proplist()) ->
+    {ok, delete_human_task_ui_response(), tuple()} |
+    {error, any()} |
+    {error, delete_human_task_ui_errors(), tuple()}.
 delete_human_task_ui(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHumanTaskUi">>, Input, Options).
@@ -2485,9 +14485,16 @@ delete_human_task_ui(Client, Input, Options)
 %% you called the
 %% `CreateHyperParameterTuningJob' API. It does not delete training jobs,
 %% artifacts, or the IAM role that you specified when creating the model.
+-spec delete_hyper_parameter_tuning_job(aws_client:aws_client(), delete_hyper_parameter_tuning_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hyper_parameter_tuning_job(Client, Input, []).
+
+-spec delete_hyper_parameter_tuning_job(aws_client:aws_client(), delete_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHyperParameterTuningJob">>, Input, Options).
@@ -2496,9 +14503,18 @@ delete_hyper_parameter_tuning_job(Client, Input, Options)
 %%
 %% The container images aren't
 %% deleted.
+-spec delete_image(aws_client:aws_client(), delete_image_request()) ->
+    {ok, delete_image_response(), tuple()} |
+    {error, any()} |
+    {error, delete_image_errors(), tuple()}.
 delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_image(Client, Input, []).
+
+-spec delete_image(aws_client:aws_client(), delete_image_request(), proplists:proplist()) ->
+    {ok, delete_image_response(), tuple()} |
+    {error, any()} |
+    {error, delete_image_errors(), tuple()}.
 delete_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteImage">>, Input, Options).
@@ -2507,17 +14523,33 @@ delete_image(Client, Input, Options)
 %%
 %% The container image the version represents isn't
 %% deleted.
+-spec delete_image_version(aws_client:aws_client(), delete_image_version_request()) ->
+    {ok, delete_image_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_image_version_errors(), tuple()}.
 delete_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_image_version(Client, Input, []).
+
+-spec delete_image_version(aws_client:aws_client(), delete_image_version_request(), proplists:proplist()) ->
+    {ok, delete_image_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_image_version_errors(), tuple()}.
 delete_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteImageVersion">>, Input, Options).
 
 %% @doc Deletes an inference component.
+-spec delete_inference_component(aws_client:aws_client(), delete_inference_component_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_inference_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inference_component(Client, Input, []).
+
+-spec delete_inference_component(aws_client:aws_client(), delete_inference_component_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_inference_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInferenceComponent">>, Input, Options).
@@ -2527,9 +14559,18 @@ delete_inference_component(Client, Input, Options)
 %% This operation does not delete your endpoint, variants, or any underlying
 %% resources. This operation only
 %% deletes the metadata of your experiment.
+-spec delete_inference_experiment(aws_client:aws_client(), delete_inference_experiment_request()) ->
+    {ok, delete_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_inference_experiment_errors(), tuple()}.
 delete_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inference_experiment(Client, Input, []).
+
+-spec delete_inference_experiment(aws_client:aws_client(), delete_inference_experiment_request(), proplists:proplist()) ->
+    {ok, delete_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_inference_experiment_errors(), tuple()}.
 delete_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInferenceExperiment">>, Input, Options).
@@ -2542,33 +14583,67 @@ delete_inference_experiment(Client, Input, Options)
 %% model artifacts, inference code, or the IAM role that you specified when
 %% creating the
 %% model.
+-spec delete_model(aws_client:aws_client(), delete_model_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model(Client, Input, []).
+
+-spec delete_model(aws_client:aws_client(), delete_model_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModel">>, Input, Options).
 
 %% @doc Deletes an Amazon SageMaker model bias job definition.
+-spec delete_model_bias_job_definition(aws_client:aws_client(), delete_model_bias_job_definition_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_bias_job_definition_errors(), tuple()}.
 delete_model_bias_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_bias_job_definition(Client, Input, []).
+
+-spec delete_model_bias_job_definition(aws_client:aws_client(), delete_model_bias_job_definition_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_bias_job_definition_errors(), tuple()}.
 delete_model_bias_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelBiasJobDefinition">>, Input, Options).
 
 %% @doc Deletes an Amazon SageMaker Model Card.
+-spec delete_model_card(aws_client:aws_client(), delete_model_card_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_card_errors(), tuple()}.
 delete_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_card(Client, Input, []).
+
+-spec delete_model_card(aws_client:aws_client(), delete_model_card_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_card_errors(), tuple()}.
 delete_model_card(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelCard">>, Input, Options).
 
 %% @doc Deletes an Amazon SageMaker model explainability job definition.
+-spec delete_model_explainability_job_definition(aws_client:aws_client(), delete_model_explainability_job_definition_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_explainability_job_definition_errors(), tuple()}.
 delete_model_explainability_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_explainability_job_definition(Client, Input, []).
+
+-spec delete_model_explainability_job_definition(aws_client:aws_client(), delete_model_explainability_job_definition_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_explainability_job_definition_errors(), tuple()}.
 delete_model_explainability_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelExplainabilityJobDefinition">>, Input, Options).
@@ -2579,33 +14654,67 @@ delete_model_explainability_job_definition(Client, Input, Options)
 %% Services Marketplace. Buyers can
 %% subscribe to model packages listed on Amazon Web Services Marketplace to
 %% create models in SageMaker.
+-spec delete_model_package(aws_client:aws_client(), delete_model_package_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_package_errors(), tuple()}.
 delete_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_package(Client, Input, []).
+
+-spec delete_model_package(aws_client:aws_client(), delete_model_package_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_package_errors(), tuple()}.
 delete_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelPackage">>, Input, Options).
 
 %% @doc Deletes the specified model group.
+-spec delete_model_package_group(aws_client:aws_client(), delete_model_package_group_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_package_group_errors(), tuple()}.
 delete_model_package_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_package_group(Client, Input, []).
+
+-spec delete_model_package_group(aws_client:aws_client(), delete_model_package_group_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_package_group_errors(), tuple()}.
 delete_model_package_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelPackageGroup">>, Input, Options).
 
 %% @doc Deletes a model group resource policy.
+-spec delete_model_package_group_policy(aws_client:aws_client(), delete_model_package_group_policy_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_model_package_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_package_group_policy(Client, Input, []).
+
+-spec delete_model_package_group_policy(aws_client:aws_client(), delete_model_package_group_policy_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_model_package_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelPackageGroupPolicy">>, Input, Options).
 
 %% @doc Deletes the secified model quality monitoring job definition.
+-spec delete_model_quality_job_definition(aws_client:aws_client(), delete_model_quality_job_definition_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_quality_job_definition_errors(), tuple()}.
 delete_model_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_quality_job_definition(Client, Input, []).
+
+-spec delete_model_quality_job_definition(aws_client:aws_client(), delete_model_quality_job_definition_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_model_quality_job_definition_errors(), tuple()}.
 delete_model_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelQualityJobDefinition">>, Input, Options).
@@ -2614,9 +14723,18 @@ delete_model_quality_job_definition(Client, Input, Options)
 %%
 %% Also stops the schedule had not already been stopped.
 %% This does not delete the job execution history of the monitoring schedule.
+-spec delete_monitoring_schedule(aws_client:aws_client(), delete_monitoring_schedule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_monitoring_schedule_errors(), tuple()}.
 delete_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_monitoring_schedule(Client, Input, []).
+
+-spec delete_monitoring_schedule(aws_client:aws_client(), delete_monitoring_schedule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_monitoring_schedule_errors(), tuple()}.
 delete_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMonitoringSchedule">>, Input, Options).
@@ -2631,17 +14749,31 @@ delete_monitoring_schedule(Client, Input, Options)
 %% the ML compute instance, and deletes the ML storage volume and the network
 %% interface
 %% associated with the notebook instance.
+-spec delete_notebook_instance(aws_client:aws_client(), delete_notebook_instance_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notebook_instance(Client, Input, []).
+
+-spec delete_notebook_instance(aws_client:aws_client(), delete_notebook_instance_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNotebookInstance">>, Input, Options).
 
 %% @doc Deletes a notebook instance lifecycle configuration.
+-spec delete_notebook_instance_lifecycle_config(aws_client:aws_client(), delete_notebook_instance_lifecycle_config_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notebook_instance_lifecycle_config(Client, Input, []).
+
+-spec delete_notebook_instance_lifecycle_config(aws_client:aws_client(), delete_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNotebookInstanceLifecycleConfig">>, Input, Options).
@@ -2653,25 +14785,52 @@ delete_notebook_instance_lifecycle_config(Client, Input, Options)
 %% `StopPipelineExecution' API. When you delete a pipeline, all instances
 %% of the
 %% pipeline are deleted.
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_request()) ->
+    {ok, delete_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pipeline(Client, Input, []).
+
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_request(), proplists:proplist()) ->
+    {ok, delete_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePipeline">>, Input, Options).
 
 %% @doc Delete the specified project.
+-spec delete_project(aws_client:aws_client(), delete_project_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
+
+-spec delete_project(aws_client:aws_client(), delete_project_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
 
 %% @doc Used to delete a space.
+-spec delete_space(aws_client:aws_client(), delete_space_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_space_errors(), tuple()}.
 delete_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_space(Client, Input, []).
+
+-spec delete_space(aws_client:aws_client(), delete_space_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_space_errors(), tuple()}.
 delete_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSpace">>, Input, Options).
@@ -2681,9 +14840,18 @@ delete_space(Client, Input, Options)
 %% In order to delete the Lifecycle Configuration, there must be no running
 %% apps using the Lifecycle Configuration. You must also remove the Lifecycle
 %% Configuration from UserSettings in all Domains and UserProfiles.
+-spec delete_studio_lifecycle_config(aws_client:aws_client(), delete_studio_lifecycle_config_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_studio_lifecycle_config_errors(), tuple()}.
 delete_studio_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_studio_lifecycle_config(Client, Input, []).
+
+-spec delete_studio_lifecycle_config(aws_client:aws_client(), delete_studio_lifecycle_config_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_studio_lifecycle_config_errors(), tuple()}.
 delete_studio_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStudioLifecycleConfig">>, Input, Options).
@@ -2703,9 +14871,16 @@ delete_studio_lifecycle_config(Client, Input, Options)
 %% deleted tags are not removed from Apps that the SageMaker Domain or User
 %% Profile
 %% launched before you called this API.
+-spec delete_tags(aws_client:aws_client(), delete_tags_input()) ->
+    {ok, delete_tags_output(), tuple()} |
+    {error, any()}.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
+
+-spec delete_tags(aws_client:aws_client(), delete_tags_input(), proplists:proplist()) ->
+    {ok, delete_tags_output(), tuple()} |
+    {error, any()}.
 delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
@@ -2717,9 +14892,18 @@ delete_tags(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrialComponent.html
 %% API to get the list of trial
 %% components.
+-spec delete_trial(aws_client:aws_client(), delete_trial_request()) ->
+    {ok, delete_trial_response(), tuple()} |
+    {error, any()} |
+    {error, delete_trial_errors(), tuple()}.
 delete_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trial(Client, Input, []).
+
+-spec delete_trial(aws_client:aws_client(), delete_trial_request(), proplists:proplist()) ->
+    {ok, delete_trial_response(), tuple()} |
+    {error, any()} |
+    {error, delete_trial_errors(), tuple()}.
 delete_trial(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrial">>, Input, Options).
@@ -2732,9 +14916,18 @@ delete_trial(Client, Input, Options)
 %% trial, call the DisassociateTrialComponent:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DisassociateTrialComponent.html
 %% API.
+-spec delete_trial_component(aws_client:aws_client(), delete_trial_component_request()) ->
+    {ok, delete_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, delete_trial_component_errors(), tuple()}.
 delete_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trial_component(Client, Input, []).
+
+-spec delete_trial_component(aws_client:aws_client(), delete_trial_component_request(), proplists:proplist()) ->
+    {ok, delete_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, delete_trial_component_errors(), tuple()}.
 delete_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrialComponent">>, Input, Options).
@@ -2743,9 +14936,18 @@ delete_trial_component(Client, Input, Options)
 %%
 %% When a user profile is deleted, the user loses access to their EFS
 %% volume, including data, notebooks, and other artifacts.
+-spec delete_user_profile(aws_client:aws_client(), delete_user_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_user_profile_errors(), tuple()}.
 delete_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_profile(Client, Input, []).
+
+-spec delete_user_profile(aws_client:aws_client(), delete_user_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_user_profile_errors(), tuple()}.
 delete_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserProfile">>, Input, Options).
@@ -2765,9 +14967,16 @@ delete_user_profile(Client, Input, Options)
 %% operation to delete all work teams before you delete the workforce.
 %% If you try to delete a workforce that contains one or more work teams,
 %% you will recieve a `ResourceInUse' error.
+-spec delete_workforce(aws_client:aws_client(), delete_workforce_request()) ->
+    {ok, delete_workforce_response(), tuple()} |
+    {error, any()}.
 delete_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workforce(Client, Input, []).
+
+-spec delete_workforce(aws_client:aws_client(), delete_workforce_request(), proplists:proplist()) ->
+    {ok, delete_workforce_response(), tuple()} |
+    {error, any()}.
 delete_workforce(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkforce">>, Input, Options).
@@ -2775,9 +14984,18 @@ delete_workforce(Client, Input, Options)
 %% @doc Deletes an existing work team.
 %%
 %% This operation can't be undone.
+-spec delete_workteam(aws_client:aws_client(), delete_workteam_request()) ->
+    {ok, delete_workteam_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workteam_errors(), tuple()}.
 delete_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workteam(Client, Input, []).
+
+-spec delete_workteam(aws_client:aws_client(), delete_workteam_request(), proplists:proplist()) ->
+    {ok, delete_workteam_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workteam_errors(), tuple()}.
 delete_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkteam">>, Input, Options).
@@ -2785,50 +15003,100 @@ delete_workteam(Client, Input, Options)
 %% @doc Deregisters the specified devices.
 %%
 %% After you deregister a device, you will need to re-register the devices.
+-spec deregister_devices(aws_client:aws_client(), deregister_devices_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 deregister_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_devices(Client, Input, []).
+
+-spec deregister_devices(aws_client:aws_client(), deregister_devices_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 deregister_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterDevices">>, Input, Options).
 
 %% @doc Describes an action.
+-spec describe_action(aws_client:aws_client(), describe_action_request()) ->
+    {ok, describe_action_response(), tuple()} |
+    {error, any()} |
+    {error, describe_action_errors(), tuple()}.
 describe_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_action(Client, Input, []).
+
+-spec describe_action(aws_client:aws_client(), describe_action_request(), proplists:proplist()) ->
+    {ok, describe_action_response(), tuple()} |
+    {error, any()} |
+    {error, describe_action_errors(), tuple()}.
 describe_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAction">>, Input, Options).
 
 %% @doc Returns a description of the specified algorithm that is in your
 %% account.
+-spec describe_algorithm(aws_client:aws_client(), describe_algorithm_input()) ->
+    {ok, describe_algorithm_output(), tuple()} |
+    {error, any()}.
 describe_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_algorithm(Client, Input, []).
+
+-spec describe_algorithm(aws_client:aws_client(), describe_algorithm_input(), proplists:proplist()) ->
+    {ok, describe_algorithm_output(), tuple()} |
+    {error, any()}.
 describe_algorithm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAlgorithm">>, Input, Options).
 
 %% @doc Describes the app.
+-spec describe_app(aws_client:aws_client(), describe_app_request()) ->
+    {ok, describe_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_errors(), tuple()}.
 describe_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_app(Client, Input, []).
+
+-spec describe_app(aws_client:aws_client(), describe_app_request(), proplists:proplist()) ->
+    {ok, describe_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_errors(), tuple()}.
 describe_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApp">>, Input, Options).
 
 %% @doc Describes an AppImageConfig.
+-spec describe_app_image_config(aws_client:aws_client(), describe_app_image_config_request()) ->
+    {ok, describe_app_image_config_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_image_config_errors(), tuple()}.
 describe_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_app_image_config(Client, Input, []).
+
+-spec describe_app_image_config(aws_client:aws_client(), describe_app_image_config_request(), proplists:proplist()) ->
+    {ok, describe_app_image_config_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_image_config_errors(), tuple()}.
 describe_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAppImageConfig">>, Input, Options).
 
 %% @doc Describes an artifact.
+-spec describe_artifact(aws_client:aws_client(), describe_artifact_request()) ->
+    {ok, describe_artifact_response(), tuple()} |
+    {error, any()} |
+    {error, describe_artifact_errors(), tuple()}.
 describe_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_artifact(Client, Input, []).
+
+-spec describe_artifact(aws_client:aws_client(), describe_artifact_request(), proplists:proplist()) ->
+    {ok, describe_artifact_response(), tuple()} |
+    {error, any()} |
+    {error, describe_artifact_errors(), tuple()}.
 describe_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeArtifact">>, Input, Options).
@@ -2841,9 +15109,18 @@ describe_artifact(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJobV2.html
 %% cannot be described by
 %% `DescribeAutoMLJob'.
+-spec describe_auto_ml_job(aws_client:aws_client(), describe_auto_ml_job_request()) ->
+    {ok, describe_auto_ml_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_auto_ml_job_errors(), tuple()}.
 describe_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job(Client, Input, []).
+
+-spec describe_auto_ml_job(aws_client:aws_client(), describe_auto_ml_job_request(), proplists:proplist()) ->
+    {ok, describe_auto_ml_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_auto_ml_job_errors(), tuple()}.
 describe_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoMLJob">>, Input, Options).
@@ -2853,34 +15130,68 @@ describe_auto_ml_job(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJobV2.html
 %% or CreateAutoMLJob:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html.
+-spec describe_auto_ml_job_v2(aws_client:aws_client(), describe_auto_ml_job_v2_request()) ->
+    {ok, describe_auto_ml_job_v2_response(), tuple()} |
+    {error, any()} |
+    {error, describe_auto_ml_job_v2_errors(), tuple()}.
 describe_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job_v2(Client, Input, []).
+
+-spec describe_auto_ml_job_v2(aws_client:aws_client(), describe_auto_ml_job_v2_request(), proplists:proplist()) ->
+    {ok, describe_auto_ml_job_v2_response(), tuple()} |
+    {error, any()} |
+    {error, describe_auto_ml_job_v2_errors(), tuple()}.
 describe_auto_ml_job_v2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoMLJobV2">>, Input, Options).
 
 %% @doc Retrieves information of a SageMaker HyperPod cluster.
+-spec describe_cluster(aws_client:aws_client(), describe_cluster_request()) ->
+    {ok, describe_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_errors(), tuple()}.
 describe_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster(Client, Input, []).
+
+-spec describe_cluster(aws_client:aws_client(), describe_cluster_request(), proplists:proplist()) ->
+    {ok, describe_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_errors(), tuple()}.
 describe_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCluster">>, Input, Options).
 
 %% @doc Retrieves information of an instance (also called a node
 %% interchangeably) of a SageMaker HyperPod cluster.
+-spec describe_cluster_node(aws_client:aws_client(), describe_cluster_node_request()) ->
+    {ok, describe_cluster_node_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_node_errors(), tuple()}.
 describe_cluster_node(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_node(Client, Input, []).
+
+-spec describe_cluster_node(aws_client:aws_client(), describe_cluster_node_request(), proplists:proplist()) ->
+    {ok, describe_cluster_node_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_node_errors(), tuple()}.
 describe_cluster_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterNode">>, Input, Options).
 
 %% @doc Gets details about the specified Git repository.
+-spec describe_code_repository(aws_client:aws_client(), describe_code_repository_input()) ->
+    {ok, describe_code_repository_output(), tuple()} |
+    {error, any()}.
 describe_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_code_repository(Client, Input, []).
+
+-spec describe_code_repository(aws_client:aws_client(), describe_code_repository_input(), proplists:proplist()) ->
+    {ok, describe_code_repository_output(), tuple()} |
+    {error, any()}.
 describe_code_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCodeRepository">>, Input, Options).
@@ -2892,73 +15203,152 @@ describe_code_repository(Client, Input, Options)
 %% To get information about multiple model compilation
 %% jobs, use ListCompilationJobs:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListCompilationJobs.html.
+-spec describe_compilation_job(aws_client:aws_client(), describe_compilation_job_request()) ->
+    {ok, describe_compilation_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_compilation_job_errors(), tuple()}.
 describe_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compilation_job(Client, Input, []).
+
+-spec describe_compilation_job(aws_client:aws_client(), describe_compilation_job_request(), proplists:proplist()) ->
+    {ok, describe_compilation_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_compilation_job_errors(), tuple()}.
 describe_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCompilationJob">>, Input, Options).
 
 %% @doc Describes a context.
+-spec describe_context(aws_client:aws_client(), describe_context_request()) ->
+    {ok, describe_context_response(), tuple()} |
+    {error, any()} |
+    {error, describe_context_errors(), tuple()}.
 describe_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_context(Client, Input, []).
+
+-spec describe_context(aws_client:aws_client(), describe_context_request(), proplists:proplist()) ->
+    {ok, describe_context_response(), tuple()} |
+    {error, any()} |
+    {error, describe_context_errors(), tuple()}.
 describe_context(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContext">>, Input, Options).
 
 %% @doc Gets the details of a data quality monitoring job definition.
+-spec describe_data_quality_job_definition(aws_client:aws_client(), describe_data_quality_job_definition_request()) ->
+    {ok, describe_data_quality_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_quality_job_definition_errors(), tuple()}.
 describe_data_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_quality_job_definition(Client, Input, []).
+
+-spec describe_data_quality_job_definition(aws_client:aws_client(), describe_data_quality_job_definition_request(), proplists:proplist()) ->
+    {ok, describe_data_quality_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_quality_job_definition_errors(), tuple()}.
 describe_data_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataQualityJobDefinition">>, Input, Options).
 
 %% @doc Describes the device.
+-spec describe_device(aws_client:aws_client(), describe_device_request()) ->
+    {ok, describe_device_response(), tuple()} |
+    {error, any()} |
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_device(Client, Input, []).
+
+-spec describe_device(aws_client:aws_client(), describe_device_request(), proplists:proplist()) ->
+    {ok, describe_device_response(), tuple()} |
+    {error, any()} |
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDevice">>, Input, Options).
 
 %% @doc A description of the fleet the device belongs to.
+-spec describe_device_fleet(aws_client:aws_client(), describe_device_fleet_request()) ->
+    {ok, describe_device_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, describe_device_fleet_errors(), tuple()}.
 describe_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_device_fleet(Client, Input, []).
+
+-spec describe_device_fleet(aws_client:aws_client(), describe_device_fleet_request(), proplists:proplist()) ->
+    {ok, describe_device_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, describe_device_fleet_errors(), tuple()}.
 describe_device_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeviceFleet">>, Input, Options).
 
 %% @doc The description of the domain.
+-spec describe_domain(aws_client:aws_client(), describe_domain_request()) ->
+    {ok, describe_domain_response(), tuple()} |
+    {error, any()} |
+    {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain(Client, Input, []).
+
+-spec describe_domain(aws_client:aws_client(), describe_domain_request(), proplists:proplist()) ->
+    {ok, describe_domain_response(), tuple()} |
+    {error, any()} |
+    {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDomain">>, Input, Options).
 
 %% @doc Describes an edge deployment plan with deployment status per stage.
+-spec describe_edge_deployment_plan(aws_client:aws_client(), describe_edge_deployment_plan_request()) ->
+    {ok, describe_edge_deployment_plan_response(), tuple()} |
+    {error, any()} |
+    {error, describe_edge_deployment_plan_errors(), tuple()}.
 describe_edge_deployment_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_edge_deployment_plan(Client, Input, []).
+
+-spec describe_edge_deployment_plan(aws_client:aws_client(), describe_edge_deployment_plan_request(), proplists:proplist()) ->
+    {ok, describe_edge_deployment_plan_response(), tuple()} |
+    {error, any()} |
+    {error, describe_edge_deployment_plan_errors(), tuple()}.
 describe_edge_deployment_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEdgeDeploymentPlan">>, Input, Options).
 
 %% @doc A description of edge packaging jobs.
+-spec describe_edge_packaging_job(aws_client:aws_client(), describe_edge_packaging_job_request()) ->
+    {ok, describe_edge_packaging_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_edge_packaging_job_errors(), tuple()}.
 describe_edge_packaging_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_edge_packaging_job(Client, Input, []).
+
+-spec describe_edge_packaging_job(aws_client:aws_client(), describe_edge_packaging_job_request(), proplists:proplist()) ->
+    {ok, describe_edge_packaging_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_edge_packaging_job_errors(), tuple()}.
 describe_edge_packaging_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEdgePackagingJob">>, Input, Options).
 
 %% @doc Returns the description of an endpoint.
+-spec describe_endpoint(aws_client:aws_client(), describe_endpoint_input()) ->
+    {ok, describe_endpoint_output(), tuple()} |
+    {error, any()}.
 describe_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint(Client, Input, []).
+
+-spec describe_endpoint(aws_client:aws_client(), describe_endpoint_input(), proplists:proplist()) ->
+    {ok, describe_endpoint_output(), tuple()} |
+    {error, any()}.
 describe_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpoint">>, Input, Options).
@@ -2966,17 +15356,33 @@ describe_endpoint(Client, Input, Options)
 %% @doc Returns the description of an endpoint configuration created using
 %% the
 %% `CreateEndpointConfig' API.
+-spec describe_endpoint_config(aws_client:aws_client(), describe_endpoint_config_input()) ->
+    {ok, describe_endpoint_config_output(), tuple()} |
+    {error, any()}.
 describe_endpoint_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint_config(Client, Input, []).
+
+-spec describe_endpoint_config(aws_client:aws_client(), describe_endpoint_config_input(), proplists:proplist()) ->
+    {ok, describe_endpoint_config_output(), tuple()} |
+    {error, any()}.
 describe_endpoint_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpointConfig">>, Input, Options).
 
 %% @doc Provides a list of an experiment's properties.
+-spec describe_experiment(aws_client:aws_client(), describe_experiment_request()) ->
+    {ok, describe_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_experiment_errors(), tuple()}.
 describe_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_experiment(Client, Input, []).
+
+-spec describe_experiment(aws_client:aws_client(), describe_experiment_request(), proplists:proplist()) ->
+    {ok, describe_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_experiment_errors(), tuple()}.
 describe_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExperiment">>, Input, Options).
@@ -2987,25 +15393,52 @@ describe_experiment(Client, Input, Options)
 %% information on the creation time, `FeatureGroup' name, the unique
 %% identifier for
 %% each `FeatureGroup', and more.
+-spec describe_feature_group(aws_client:aws_client(), describe_feature_group_request()) ->
+    {ok, describe_feature_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_feature_group_errors(), tuple()}.
 describe_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_feature_group(Client, Input, []).
+
+-spec describe_feature_group(aws_client:aws_client(), describe_feature_group_request(), proplists:proplist()) ->
+    {ok, describe_feature_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_feature_group_errors(), tuple()}.
 describe_feature_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFeatureGroup">>, Input, Options).
 
 %% @doc Shows the metadata for a feature within a feature group.
+-spec describe_feature_metadata(aws_client:aws_client(), describe_feature_metadata_request()) ->
+    {ok, describe_feature_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, describe_feature_metadata_errors(), tuple()}.
 describe_feature_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_feature_metadata(Client, Input, []).
+
+-spec describe_feature_metadata(aws_client:aws_client(), describe_feature_metadata_request(), proplists:proplist()) ->
+    {ok, describe_feature_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, describe_feature_metadata_errors(), tuple()}.
 describe_feature_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFeatureMetadata">>, Input, Options).
 
 %% @doc Returns information about the specified flow definition.
+-spec describe_flow_definition(aws_client:aws_client(), describe_flow_definition_request()) ->
+    {ok, describe_flow_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_flow_definition_errors(), tuple()}.
 describe_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_flow_definition(Client, Input, []).
+
+-spec describe_flow_definition(aws_client:aws_client(), describe_flow_definition_request(), proplists:proplist()) ->
+    {ok, describe_flow_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_flow_definition_errors(), tuple()}.
 describe_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFlowDefinition">>, Input, Options).
@@ -3013,9 +15446,18 @@ describe_flow_definition(Client, Input, Options)
 %% @doc Describe a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
+-spec describe_hub(aws_client:aws_client(), describe_hub_request()) ->
+    {ok, describe_hub_response(), tuple()} |
+    {error, any()} |
+    {error, describe_hub_errors(), tuple()}.
 describe_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hub(Client, Input, []).
+
+-spec describe_hub(aws_client:aws_client(), describe_hub_request(), proplists:proplist()) ->
+    {ok, describe_hub_response(), tuple()} |
+    {error, any()} |
+    {error, describe_hub_errors(), tuple()}.
 describe_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHub">>, Input, Options).
@@ -3023,18 +15465,36 @@ describe_hub(Client, Input, Options)
 %% @doc Describe the content of a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
+-spec describe_hub_content(aws_client:aws_client(), describe_hub_content_request()) ->
+    {ok, describe_hub_content_response(), tuple()} |
+    {error, any()} |
+    {error, describe_hub_content_errors(), tuple()}.
 describe_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hub_content(Client, Input, []).
+
+-spec describe_hub_content(aws_client:aws_client(), describe_hub_content_request(), proplists:proplist()) ->
+    {ok, describe_hub_content_response(), tuple()} |
+    {error, any()} |
+    {error, describe_hub_content_errors(), tuple()}.
 describe_hub_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHubContent">>, Input, Options).
 
 %% @doc Returns information about the requested human task user interface
 %% (worker task template).
+-spec describe_human_task_ui(aws_client:aws_client(), describe_human_task_ui_request()) ->
+    {ok, describe_human_task_ui_response(), tuple()} |
+    {error, any()} |
+    {error, describe_human_task_ui_errors(), tuple()}.
 describe_human_task_ui(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_human_task_ui(Client, Input, []).
+
+-spec describe_human_task_ui(aws_client:aws_client(), describe_human_task_ui_request(), proplists:proplist()) ->
+    {ok, describe_human_task_ui_response(), tuple()} |
+    {error, any()} |
+    {error, describe_human_task_ui_errors(), tuple()}.
 describe_human_task_ui(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHumanTaskUi">>, Input, Options).
@@ -3046,41 +15506,84 @@ describe_human_task_ui(Client, Input, Options)
 %% These fields can include the name, Amazon Resource Name (ARN), job status
 %% of
 %% your tuning job and more.
+-spec describe_hyper_parameter_tuning_job(aws_client:aws_client(), describe_hyper_parameter_tuning_job_request()) ->
+    {ok, describe_hyper_parameter_tuning_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_hyper_parameter_tuning_job_errors(), tuple()}.
 describe_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hyper_parameter_tuning_job(Client, Input, []).
+
+-spec describe_hyper_parameter_tuning_job(aws_client:aws_client(), describe_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
+    {ok, describe_hyper_parameter_tuning_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_hyper_parameter_tuning_job_errors(), tuple()}.
 describe_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHyperParameterTuningJob">>, Input, Options).
 
 %% @doc Describes a SageMaker image.
+-spec describe_image(aws_client:aws_client(), describe_image_request()) ->
+    {ok, describe_image_response(), tuple()} |
+    {error, any()} |
+    {error, describe_image_errors(), tuple()}.
 describe_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image(Client, Input, []).
+
+-spec describe_image(aws_client:aws_client(), describe_image_request(), proplists:proplist()) ->
+    {ok, describe_image_response(), tuple()} |
+    {error, any()} |
+    {error, describe_image_errors(), tuple()}.
 describe_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImage">>, Input, Options).
 
 %% @doc Describes a version of a SageMaker image.
+-spec describe_image_version(aws_client:aws_client(), describe_image_version_request()) ->
+    {ok, describe_image_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_image_version_errors(), tuple()}.
 describe_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_version(Client, Input, []).
+
+-spec describe_image_version(aws_client:aws_client(), describe_image_version_request(), proplists:proplist()) ->
+    {ok, describe_image_version_response(), tuple()} |
+    {error, any()} |
+    {error, describe_image_version_errors(), tuple()}.
 describe_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageVersion">>, Input, Options).
 
 %% @doc Returns information about an inference component.
+-spec describe_inference_component(aws_client:aws_client(), describe_inference_component_input()) ->
+    {ok, describe_inference_component_output(), tuple()} |
+    {error, any()}.
 describe_inference_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inference_component(Client, Input, []).
+
+-spec describe_inference_component(aws_client:aws_client(), describe_inference_component_input(), proplists:proplist()) ->
+    {ok, describe_inference_component_output(), tuple()} |
+    {error, any()}.
 describe_inference_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInferenceComponent">>, Input, Options).
 
 %% @doc Returns details about an inference experiment.
+-spec describe_inference_experiment(aws_client:aws_client(), describe_inference_experiment_request()) ->
+    {ok, describe_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_inference_experiment_errors(), tuple()}.
 describe_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inference_experiment(Client, Input, []).
+
+-spec describe_inference_experiment(aws_client:aws_client(), describe_inference_experiment_request(), proplists:proplist()) ->
+    {ok, describe_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_inference_experiment_errors(), tuple()}.
 describe_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInferenceExperiment">>, Input, Options).
@@ -3088,17 +15591,35 @@ describe_inference_experiment(Client, Input, Options)
 %% @doc Provides the results of the Inference Recommender job.
 %%
 %% One or more recommendation jobs are returned.
+-spec describe_inference_recommendations_job(aws_client:aws_client(), describe_inference_recommendations_job_request()) ->
+    {ok, describe_inference_recommendations_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_inference_recommendations_job_errors(), tuple()}.
 describe_inference_recommendations_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inference_recommendations_job(Client, Input, []).
+
+-spec describe_inference_recommendations_job(aws_client:aws_client(), describe_inference_recommendations_job_request(), proplists:proplist()) ->
+    {ok, describe_inference_recommendations_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_inference_recommendations_job_errors(), tuple()}.
 describe_inference_recommendations_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInferenceRecommendationsJob">>, Input, Options).
 
 %% @doc Gets information about a labeling job.
+-spec describe_labeling_job(aws_client:aws_client(), describe_labeling_job_request()) ->
+    {ok, describe_labeling_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_labeling_job_errors(), tuple()}.
 describe_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_labeling_job(Client, Input, []).
+
+-spec describe_labeling_job(aws_client:aws_client(), describe_labeling_job_request(), proplists:proplist()) ->
+    {ok, describe_labeling_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_labeling_job_errors(), tuple()}.
 describe_labeling_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLabelingJob">>, Input, Options).
@@ -3109,51 +15630,103 @@ describe_labeling_job(Client, Input, Options)
 %% Cross-Account Lineage Tracking :
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/xaccount-lineage-tracking.html
 %% in the Amazon SageMaker Developer Guide.
+-spec describe_lineage_group(aws_client:aws_client(), describe_lineage_group_request()) ->
+    {ok, describe_lineage_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_lineage_group_errors(), tuple()}.
 describe_lineage_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lineage_group(Client, Input, []).
+
+-spec describe_lineage_group(aws_client:aws_client(), describe_lineage_group_request(), proplists:proplist()) ->
+    {ok, describe_lineage_group_response(), tuple()} |
+    {error, any()} |
+    {error, describe_lineage_group_errors(), tuple()}.
 describe_lineage_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLineageGroup">>, Input, Options).
 
 %% @doc Describes a model that you created using the `CreateModel'
 %% API.
+-spec describe_model(aws_client:aws_client(), describe_model_input()) ->
+    {ok, describe_model_output(), tuple()} |
+    {error, any()}.
 describe_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model(Client, Input, []).
+
+-spec describe_model(aws_client:aws_client(), describe_model_input(), proplists:proplist()) ->
+    {ok, describe_model_output(), tuple()} |
+    {error, any()}.
 describe_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModel">>, Input, Options).
 
 %% @doc Returns a description of a model bias job definition.
+-spec describe_model_bias_job_definition(aws_client:aws_client(), describe_model_bias_job_definition_request()) ->
+    {ok, describe_model_bias_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_model_bias_job_definition_errors(), tuple()}.
 describe_model_bias_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_bias_job_definition(Client, Input, []).
+
+-spec describe_model_bias_job_definition(aws_client:aws_client(), describe_model_bias_job_definition_request(), proplists:proplist()) ->
+    {ok, describe_model_bias_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_model_bias_job_definition_errors(), tuple()}.
 describe_model_bias_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelBiasJobDefinition">>, Input, Options).
 
 %% @doc Describes the content, creation time, and security configuration of
 %% an Amazon SageMaker Model Card.
+-spec describe_model_card(aws_client:aws_client(), describe_model_card_request()) ->
+    {ok, describe_model_card_response(), tuple()} |
+    {error, any()} |
+    {error, describe_model_card_errors(), tuple()}.
 describe_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_card(Client, Input, []).
+
+-spec describe_model_card(aws_client:aws_client(), describe_model_card_request(), proplists:proplist()) ->
+    {ok, describe_model_card_response(), tuple()} |
+    {error, any()} |
+    {error, describe_model_card_errors(), tuple()}.
 describe_model_card(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelCard">>, Input, Options).
 
 %% @doc Describes an Amazon SageMaker Model Card export job.
+-spec describe_model_card_export_job(aws_client:aws_client(), describe_model_card_export_job_request()) ->
+    {ok, describe_model_card_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_model_card_export_job_errors(), tuple()}.
 describe_model_card_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_card_export_job(Client, Input, []).
+
+-spec describe_model_card_export_job(aws_client:aws_client(), describe_model_card_export_job_request(), proplists:proplist()) ->
+    {ok, describe_model_card_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_model_card_export_job_errors(), tuple()}.
 describe_model_card_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelCardExportJob">>, Input, Options).
 
 %% @doc Returns a description of a model explainability job definition.
+-spec describe_model_explainability_job_definition(aws_client:aws_client(), describe_model_explainability_job_definition_request()) ->
+    {ok, describe_model_explainability_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_model_explainability_job_definition_errors(), tuple()}.
 describe_model_explainability_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_explainability_job_definition(Client, Input, []).
+
+-spec describe_model_explainability_job_definition(aws_client:aws_client(), describe_model_explainability_job_definition_request(), proplists:proplist()) ->
+    {ok, describe_model_explainability_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_model_explainability_job_definition_errors(), tuple()}.
 describe_model_explainability_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelExplainabilityJobDefinition">>, Input, Options).
@@ -3165,41 +15738,80 @@ describe_model_explainability_job_definition(Client, Input, Options)
 %% To create models in SageMaker, buyers can subscribe to model packages
 %% listed on Amazon Web Services
 %% Marketplace.
+-spec describe_model_package(aws_client:aws_client(), describe_model_package_input()) ->
+    {ok, describe_model_package_output(), tuple()} |
+    {error, any()}.
 describe_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_package(Client, Input, []).
+
+-spec describe_model_package(aws_client:aws_client(), describe_model_package_input(), proplists:proplist()) ->
+    {ok, describe_model_package_output(), tuple()} |
+    {error, any()}.
 describe_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelPackage">>, Input, Options).
 
 %% @doc Gets a description for the specified model group.
+-spec describe_model_package_group(aws_client:aws_client(), describe_model_package_group_input()) ->
+    {ok, describe_model_package_group_output(), tuple()} |
+    {error, any()}.
 describe_model_package_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_package_group(Client, Input, []).
+
+-spec describe_model_package_group(aws_client:aws_client(), describe_model_package_group_input(), proplists:proplist()) ->
+    {ok, describe_model_package_group_output(), tuple()} |
+    {error, any()}.
 describe_model_package_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelPackageGroup">>, Input, Options).
 
 %% @doc Returns a description of a model quality job definition.
+-spec describe_model_quality_job_definition(aws_client:aws_client(), describe_model_quality_job_definition_request()) ->
+    {ok, describe_model_quality_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_model_quality_job_definition_errors(), tuple()}.
 describe_model_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_quality_job_definition(Client, Input, []).
+
+-spec describe_model_quality_job_definition(aws_client:aws_client(), describe_model_quality_job_definition_request(), proplists:proplist()) ->
+    {ok, describe_model_quality_job_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_model_quality_job_definition_errors(), tuple()}.
 describe_model_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelQualityJobDefinition">>, Input, Options).
 
 %% @doc Describes the schedule for a monitoring job.
+-spec describe_monitoring_schedule(aws_client:aws_client(), describe_monitoring_schedule_request()) ->
+    {ok, describe_monitoring_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_monitoring_schedule_errors(), tuple()}.
 describe_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_monitoring_schedule(Client, Input, []).
+
+-spec describe_monitoring_schedule(aws_client:aws_client(), describe_monitoring_schedule_request(), proplists:proplist()) ->
+    {ok, describe_monitoring_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_monitoring_schedule_errors(), tuple()}.
 describe_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMonitoringSchedule">>, Input, Options).
 
 %% @doc Returns information about a notebook instance.
+-spec describe_notebook_instance(aws_client:aws_client(), describe_notebook_instance_input()) ->
+    {ok, describe_notebook_instance_output(), tuple()} |
+    {error, any()}.
 describe_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notebook_instance(Client, Input, []).
+
+-spec describe_notebook_instance(aws_client:aws_client(), describe_notebook_instance_input(), proplists:proplist()) ->
+    {ok, describe_notebook_instance_output(), tuple()} |
+    {error, any()}.
 describe_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotebookInstance">>, Input, Options).
@@ -3209,65 +15821,133 @@ describe_notebook_instance(Client, Input, Options)
 %% For information about notebook instance lifestyle configurations, see Step
 %% 2.1: (Optional) Customize a Notebook Instance:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html.
+-spec describe_notebook_instance_lifecycle_config(aws_client:aws_client(), describe_notebook_instance_lifecycle_config_input()) ->
+    {ok, describe_notebook_instance_lifecycle_config_output(), tuple()} |
+    {error, any()}.
 describe_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notebook_instance_lifecycle_config(Client, Input, []).
+
+-spec describe_notebook_instance_lifecycle_config(aws_client:aws_client(), describe_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
+    {ok, describe_notebook_instance_lifecycle_config_output(), tuple()} |
+    {error, any()}.
 describe_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotebookInstanceLifecycleConfig">>, Input, Options).
 
 %% @doc Describes the details of a pipeline.
+-spec describe_pipeline(aws_client:aws_client(), describe_pipeline_request()) ->
+    {ok, describe_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_errors(), tuple()}.
 describe_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipeline(Client, Input, []).
+
+-spec describe_pipeline(aws_client:aws_client(), describe_pipeline_request(), proplists:proplist()) ->
+    {ok, describe_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_errors(), tuple()}.
 describe_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePipeline">>, Input, Options).
 
 %% @doc Describes the details of an execution's pipeline definition.
+-spec describe_pipeline_definition_for_execution(aws_client:aws_client(), describe_pipeline_definition_for_execution_request()) ->
+    {ok, describe_pipeline_definition_for_execution_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_definition_for_execution_errors(), tuple()}.
 describe_pipeline_definition_for_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipeline_definition_for_execution(Client, Input, []).
+
+-spec describe_pipeline_definition_for_execution(aws_client:aws_client(), describe_pipeline_definition_for_execution_request(), proplists:proplist()) ->
+    {ok, describe_pipeline_definition_for_execution_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_definition_for_execution_errors(), tuple()}.
 describe_pipeline_definition_for_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePipelineDefinitionForExecution">>, Input, Options).
 
 %% @doc Describes the details of a pipeline execution.
+-spec describe_pipeline_execution(aws_client:aws_client(), describe_pipeline_execution_request()) ->
+    {ok, describe_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_execution_errors(), tuple()}.
 describe_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipeline_execution(Client, Input, []).
+
+-spec describe_pipeline_execution(aws_client:aws_client(), describe_pipeline_execution_request(), proplists:proplist()) ->
+    {ok, describe_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_execution_errors(), tuple()}.
 describe_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePipelineExecution">>, Input, Options).
 
 %% @doc Returns a description of a processing job.
+-spec describe_processing_job(aws_client:aws_client(), describe_processing_job_request()) ->
+    {ok, describe_processing_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_processing_job_errors(), tuple()}.
 describe_processing_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_processing_job(Client, Input, []).
+
+-spec describe_processing_job(aws_client:aws_client(), describe_processing_job_request(), proplists:proplist()) ->
+    {ok, describe_processing_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_processing_job_errors(), tuple()}.
 describe_processing_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProcessingJob">>, Input, Options).
 
 %% @doc Describes the details of a project.
+-spec describe_project(aws_client:aws_client(), describe_project_input()) ->
+    {ok, describe_project_output(), tuple()} |
+    {error, any()}.
 describe_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_project(Client, Input, []).
+
+-spec describe_project(aws_client:aws_client(), describe_project_input(), proplists:proplist()) ->
+    {ok, describe_project_output(), tuple()} |
+    {error, any()}.
 describe_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProject">>, Input, Options).
 
 %% @doc Describes the space.
+-spec describe_space(aws_client:aws_client(), describe_space_request()) ->
+    {ok, describe_space_response(), tuple()} |
+    {error, any()} |
+    {error, describe_space_errors(), tuple()}.
 describe_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_space(Client, Input, []).
+
+-spec describe_space(aws_client:aws_client(), describe_space_request(), proplists:proplist()) ->
+    {ok, describe_space_response(), tuple()} |
+    {error, any()} |
+    {error, describe_space_errors(), tuple()}.
 describe_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSpace">>, Input, Options).
 
 %% @doc Describes the Amazon SageMaker Studio Lifecycle Configuration.
+-spec describe_studio_lifecycle_config(aws_client:aws_client(), describe_studio_lifecycle_config_request()) ->
+    {ok, describe_studio_lifecycle_config_response(), tuple()} |
+    {error, any()} |
+    {error, describe_studio_lifecycle_config_errors(), tuple()}.
 describe_studio_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_studio_lifecycle_config(Client, Input, []).
+
+-spec describe_studio_lifecycle_config(aws_client:aws_client(), describe_studio_lifecycle_config_request(), proplists:proplist()) ->
+    {ok, describe_studio_lifecycle_config_response(), tuple()} |
+    {error, any()} |
+    {error, describe_studio_lifecycle_config_errors(), tuple()}.
 describe_studio_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStudioLifecycleConfig">>, Input, Options).
@@ -3276,9 +15956,16 @@ describe_studio_lifecycle_config(Client, Input, Options)
 %%
 %% It returns details about the
 %% subscription with a vendor in the Amazon Web Services Marketplace.
+-spec describe_subscribed_workteam(aws_client:aws_client(), describe_subscribed_workteam_request()) ->
+    {ok, describe_subscribed_workteam_response(), tuple()} |
+    {error, any()}.
 describe_subscribed_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subscribed_workteam(Client, Input, []).
+
+-spec describe_subscribed_workteam(aws_client:aws_client(), describe_subscribed_workteam_request(), proplists:proplist()) ->
+    {ok, describe_subscribed_workteam_response(), tuple()} |
+    {error, any()}.
 describe_subscribed_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSubscribedWorkteam">>, Input, Options).
@@ -3292,33 +15979,69 @@ describe_subscribed_workteam(Client, Input, Options)
 %% `TrainingStartTime', `TrainingTimeInSeconds',
 %% `TrainingEndTime', and `BillableTimeInSeconds' may not be
 %% present in the response.
+-spec describe_training_job(aws_client:aws_client(), describe_training_job_request()) ->
+    {ok, describe_training_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_training_job_errors(), tuple()}.
 describe_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_training_job(Client, Input, []).
+
+-spec describe_training_job(aws_client:aws_client(), describe_training_job_request(), proplists:proplist()) ->
+    {ok, describe_training_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_training_job_errors(), tuple()}.
 describe_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrainingJob">>, Input, Options).
 
 %% @doc Returns information about a transform job.
+-spec describe_transform_job(aws_client:aws_client(), describe_transform_job_request()) ->
+    {ok, describe_transform_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_transform_job_errors(), tuple()}.
 describe_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transform_job(Client, Input, []).
+
+-spec describe_transform_job(aws_client:aws_client(), describe_transform_job_request(), proplists:proplist()) ->
+    {ok, describe_transform_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_transform_job_errors(), tuple()}.
 describe_transform_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTransformJob">>, Input, Options).
 
 %% @doc Provides a list of a trial's properties.
+-spec describe_trial(aws_client:aws_client(), describe_trial_request()) ->
+    {ok, describe_trial_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trial_errors(), tuple()}.
 describe_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trial(Client, Input, []).
+
+-spec describe_trial(aws_client:aws_client(), describe_trial_request(), proplists:proplist()) ->
+    {ok, describe_trial_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trial_errors(), tuple()}.
 describe_trial(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrial">>, Input, Options).
 
 %% @doc Provides a list of a trials component's properties.
+-spec describe_trial_component(aws_client:aws_client(), describe_trial_component_request()) ->
+    {ok, describe_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trial_component_errors(), tuple()}.
 describe_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trial_component(Client, Input, []).
+
+-spec describe_trial_component(aws_client:aws_client(), describe_trial_component_request(), proplists:proplist()) ->
+    {ok, describe_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, describe_trial_component_errors(), tuple()}.
 describe_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrialComponent">>, Input, Options).
@@ -3326,9 +16049,18 @@ describe_trial_component(Client, Input, Options)
 %% @doc Describes a user profile.
 %%
 %% For more information, see `CreateUserProfile'.
+-spec describe_user_profile(aws_client:aws_client(), describe_user_profile_request()) ->
+    {ok, describe_user_profile_response(), tuple()} |
+    {error, any()} |
+    {error, describe_user_profile_errors(), tuple()}.
 describe_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_profile(Client, Input, []).
+
+-spec describe_user_profile(aws_client:aws_client(), describe_user_profile_request(), proplists:proplist()) ->
+    {ok, describe_user_profile_response(), tuple()} |
+    {error, any()} |
+    {error, describe_user_profile_errors(), tuple()}.
 describe_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserProfile">>, Input, Options).
@@ -3342,9 +16074,16 @@ describe_user_profile(Client, Input, Options)
 %% ranges are the IP addresses that workers can use to access tasks.
 %%
 %% This operation applies only to private workforces.
+-spec describe_workforce(aws_client:aws_client(), describe_workforce_request()) ->
+    {ok, describe_workforce_response(), tuple()} |
+    {error, any()}.
 describe_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workforce(Client, Input, []).
+
+-spec describe_workforce(aws_client:aws_client(), describe_workforce_request(), proplists:proplist()) ->
+    {ok, describe_workforce_response(), tuple()} |
+    {error, any()}.
 describe_workforce(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkforce">>, Input, Options).
@@ -3355,9 +16094,16 @@ describe_workforce(Client, Input, Options)
 %% create date, the last updated date, membership information, and the work
 %% team's Amazon
 %% Resource Name (ARN).
+-spec describe_workteam(aws_client:aws_client(), describe_workteam_request()) ->
+    {ok, describe_workteam_response(), tuple()} |
+    {error, any()}.
 describe_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workteam(Client, Input, []).
+
+-spec describe_workteam(aws_client:aws_client(), describe_workteam_request(), proplists:proplist()) ->
+    {ok, describe_workteam_response(), tuple()} |
+    {error, any()}.
 describe_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkteam">>, Input, Options).
@@ -3366,9 +16112,16 @@ describe_workteam(Client, Input, Options)
 %%
 %% Service Catalog is used to create
 %% SageMaker projects.
+-spec disable_sagemaker_servicecatalog_portfolio(aws_client:aws_client(), disable_sagemaker_servicecatalog_portfolio_input()) ->
+    {ok, disable_sagemaker_servicecatalog_portfolio_output(), tuple()} |
+    {error, any()}.
 disable_sagemaker_servicecatalog_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_sagemaker_servicecatalog_portfolio(Client, Input, []).
+
+-spec disable_sagemaker_servicecatalog_portfolio(aws_client:aws_client(), disable_sagemaker_servicecatalog_portfolio_input(), proplists:proplist()) ->
+    {ok, disable_sagemaker_servicecatalog_portfolio_output(), tuple()} |
+    {error, any()}.
 disable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableSagemakerServicecatalogPortfolio">>, Input, Options).
@@ -3391,9 +16144,18 @@ disable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
 %% parameter.
 %% The list appears in the response under
 %% `Results.TrialComponent.Parents'.
+-spec disassociate_trial_component(aws_client:aws_client(), disassociate_trial_component_request()) ->
+    {ok, disassociate_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_trial_component_errors(), tuple()}.
 disassociate_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_trial_component(Client, Input, []).
+
+-spec disassociate_trial_component(aws_client:aws_client(), disassociate_trial_component_request(), proplists:proplist()) ->
+    {ok, disassociate_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_trial_component_errors(), tuple()}.
 disassociate_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateTrialComponent">>, Input, Options).
@@ -3402,25 +16164,48 @@ disassociate_trial_component(Client, Input, Options)
 %%
 %% Service Catalog is used to create
 %% SageMaker projects.
+-spec enable_sagemaker_servicecatalog_portfolio(aws_client:aws_client(), enable_sagemaker_servicecatalog_portfolio_input()) ->
+    {ok, enable_sagemaker_servicecatalog_portfolio_output(), tuple()} |
+    {error, any()}.
 enable_sagemaker_servicecatalog_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_sagemaker_servicecatalog_portfolio(Client, Input, []).
+
+-spec enable_sagemaker_servicecatalog_portfolio(aws_client:aws_client(), enable_sagemaker_servicecatalog_portfolio_input(), proplists:proplist()) ->
+    {ok, enable_sagemaker_servicecatalog_portfolio_output(), tuple()} |
+    {error, any()}.
 enable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableSagemakerServicecatalogPortfolio">>, Input, Options).
 
 %% @doc Describes a fleet.
+-spec get_device_fleet_report(aws_client:aws_client(), get_device_fleet_report_request()) ->
+    {ok, get_device_fleet_report_response(), tuple()} |
+    {error, any()}.
 get_device_fleet_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device_fleet_report(Client, Input, []).
+
+-spec get_device_fleet_report(aws_client:aws_client(), get_device_fleet_report_request(), proplists:proplist()) ->
+    {ok, get_device_fleet_report_response(), tuple()} |
+    {error, any()}.
 get_device_fleet_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeviceFleetReport">>, Input, Options).
 
 %% @doc The resource policy for the lineage group.
+-spec get_lineage_group_policy(aws_client:aws_client(), get_lineage_group_policy_request()) ->
+    {ok, get_lineage_group_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_lineage_group_policy_errors(), tuple()}.
 get_lineage_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lineage_group_policy(Client, Input, []).
+
+-spec get_lineage_group_policy(aws_client:aws_client(), get_lineage_group_policy_request(), proplists:proplist()) ->
+    {ok, get_lineage_group_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_lineage_group_policy_errors(), tuple()}.
 get_lineage_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLineageGroupPolicy">>, Input, Options).
@@ -3433,9 +16218,16 @@ get_lineage_group_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html
 %% in the Amazon Web Services Identity and
 %% Access Management User Guide..
+-spec get_model_package_group_policy(aws_client:aws_client(), get_model_package_group_policy_input()) ->
+    {ok, get_model_package_group_policy_output(), tuple()} |
+    {error, any()}.
 get_model_package_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_model_package_group_policy(Client, Input, []).
+
+-spec get_model_package_group_policy(aws_client:aws_client(), get_model_package_group_policy_input(), proplists:proplist()) ->
+    {ok, get_model_package_group_policy_output(), tuple()} |
+    {error, any()}.
 get_model_package_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetModelPackageGroupPolicy">>, Input, Options).
@@ -3444,9 +16236,16 @@ get_model_package_group_policy(Client, Input, Options)
 %%
 %% Service Catalog is used to create
 %% SageMaker projects.
+-spec get_sagemaker_servicecatalog_portfolio_status(aws_client:aws_client(), get_sagemaker_servicecatalog_portfolio_status_input()) ->
+    {ok, get_sagemaker_servicecatalog_portfolio_status_output(), tuple()} |
+    {error, any()}.
 get_sagemaker_servicecatalog_portfolio_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sagemaker_servicecatalog_portfolio_status(Client, Input, []).
+
+-spec get_sagemaker_servicecatalog_portfolio_status(aws_client:aws_client(), get_sagemaker_servicecatalog_portfolio_status_input(), proplists:proplist()) ->
+    {ok, get_sagemaker_servicecatalog_portfolio_status_output(), tuple()} |
+    {error, any()}.
 get_sagemaker_servicecatalog_portfolio_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSagemakerServicecatalogPortfolioStatus">>, Input, Options).
@@ -3456,9 +16255,18 @@ get_sagemaker_servicecatalog_portfolio_status(Client, Input, Options)
 %%
 %% Returns recommendations for autoscaling policies
 %% that you can apply to your SageMaker endpoint.
+-spec get_scaling_configuration_recommendation(aws_client:aws_client(), get_scaling_configuration_recommendation_request()) ->
+    {ok, get_scaling_configuration_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_scaling_configuration_recommendation_errors(), tuple()}.
 get_scaling_configuration_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_scaling_configuration_recommendation(Client, Input, []).
+
+-spec get_scaling_configuration_recommendation(aws_client:aws_client(), get_scaling_configuration_recommendation_request(), proplists:proplist()) ->
+    {ok, get_scaling_configuration_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_scaling_configuration_recommendation_errors(), tuple()}.
 get_scaling_configuration_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetScalingConfigurationRecommendation">>, Input, Options).
@@ -3471,9 +16279,16 @@ get_scaling_configuration_recommendation(Client, Input, Options)
 %% `Search'
 %% queries. Provides suggestions for `HyperParameters', `Tags', and
 %% `Metrics'.
+-spec get_search_suggestions(aws_client:aws_client(), get_search_suggestions_request()) ->
+    {ok, get_search_suggestions_response(), tuple()} |
+    {error, any()}.
 get_search_suggestions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_search_suggestions(Client, Input, []).
+
+-spec get_search_suggestions(aws_client:aws_client(), get_search_suggestions_request(), proplists:proplist()) ->
+    {ok, get_search_suggestions_response(), tuple()} |
+    {error, any()}.
 get_search_suggestions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSearchSuggestions">>, Input, Options).
@@ -3481,33 +16296,67 @@ get_search_suggestions(Client, Input, Options)
 %% @doc Import hub content.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
+-spec import_hub_content(aws_client:aws_client(), import_hub_content_request()) ->
+    {ok, import_hub_content_response(), tuple()} |
+    {error, any()} |
+    {error, import_hub_content_errors(), tuple()}.
 import_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_hub_content(Client, Input, []).
+
+-spec import_hub_content(aws_client:aws_client(), import_hub_content_request(), proplists:proplist()) ->
+    {ok, import_hub_content_response(), tuple()} |
+    {error, any()} |
+    {error, import_hub_content_errors(), tuple()}.
 import_hub_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportHubContent">>, Input, Options).
 
 %% @doc Lists the actions in your account and their properties.
+-spec list_actions(aws_client:aws_client(), list_actions_request()) ->
+    {ok, list_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_actions(Client, Input, []).
+
+-spec list_actions(aws_client:aws_client(), list_actions_request(), proplists:proplist()) ->
+    {ok, list_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActions">>, Input, Options).
 
 %% @doc Lists the machine learning algorithms that have been created.
+-spec list_algorithms(aws_client:aws_client(), list_algorithms_input()) ->
+    {ok, list_algorithms_output(), tuple()} |
+    {error, any()}.
 list_algorithms(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_algorithms(Client, Input, []).
+
+-spec list_algorithms(aws_client:aws_client(), list_algorithms_input(), proplists:proplist()) ->
+    {ok, list_algorithms_output(), tuple()} |
+    {error, any()}.
 list_algorithms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAlgorithms">>, Input, Options).
 
 %% @doc Lists the aliases of a specified image or image version.
+-spec list_aliases(aws_client:aws_client(), list_aliases_request()) ->
+    {ok, list_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
+
+-spec list_aliases(aws_client:aws_client(), list_aliases_request(), proplists:proplist()) ->
+    {ok, list_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAliases">>, Input, Options).
@@ -3518,74 +16367,145 @@ list_aliases(Client, Input, Options)
 %% filtered by creation time or modified time, and whether the AppImageConfig
 %% name contains
 %% a specified string.
+-spec list_app_image_configs(aws_client:aws_client(), list_app_image_configs_request()) ->
+    {ok, list_app_image_configs_response(), tuple()} |
+    {error, any()}.
 list_app_image_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_app_image_configs(Client, Input, []).
+
+-spec list_app_image_configs(aws_client:aws_client(), list_app_image_configs_request(), proplists:proplist()) ->
+    {ok, list_app_image_configs_response(), tuple()} |
+    {error, any()}.
 list_app_image_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAppImageConfigs">>, Input, Options).
 
 %% @doc Lists apps.
+-spec list_apps(aws_client:aws_client(), list_apps_request()) ->
+    {ok, list_apps_response(), tuple()} |
+    {error, any()}.
 list_apps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_apps(Client, Input, []).
+
+-spec list_apps(aws_client:aws_client(), list_apps_request(), proplists:proplist()) ->
+    {ok, list_apps_response(), tuple()} |
+    {error, any()}.
 list_apps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApps">>, Input, Options).
 
 %% @doc Lists the artifacts in your account and their properties.
+-spec list_artifacts(aws_client:aws_client(), list_artifacts_request()) ->
+    {ok, list_artifacts_response(), tuple()} |
+    {error, any()} |
+    {error, list_artifacts_errors(), tuple()}.
 list_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_artifacts(Client, Input, []).
+
+-spec list_artifacts(aws_client:aws_client(), list_artifacts_request(), proplists:proplist()) ->
+    {ok, list_artifacts_response(), tuple()} |
+    {error, any()} |
+    {error, list_artifacts_errors(), tuple()}.
 list_artifacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListArtifacts">>, Input, Options).
 
 %% @doc Lists the associations in your account and their properties.
+-spec list_associations(aws_client:aws_client(), list_associations_request()) ->
+    {ok, list_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_associations_errors(), tuple()}.
 list_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associations(Client, Input, []).
+
+-spec list_associations(aws_client:aws_client(), list_associations_request(), proplists:proplist()) ->
+    {ok, list_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_associations_errors(), tuple()}.
 list_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociations">>, Input, Options).
 
 %% @doc Request a list of jobs.
+-spec list_auto_ml_jobs(aws_client:aws_client(), list_auto_ml_jobs_request()) ->
+    {ok, list_auto_ml_jobs_response(), tuple()} |
+    {error, any()}.
 list_auto_ml_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_auto_ml_jobs(Client, Input, []).
+
+-spec list_auto_ml_jobs(aws_client:aws_client(), list_auto_ml_jobs_request(), proplists:proplist()) ->
+    {ok, list_auto_ml_jobs_response(), tuple()} |
+    {error, any()}.
 list_auto_ml_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAutoMLJobs">>, Input, Options).
 
 %% @doc List the candidates created for the job.
+-spec list_candidates_for_auto_ml_job(aws_client:aws_client(), list_candidates_for_auto_ml_job_request()) ->
+    {ok, list_candidates_for_auto_ml_job_response(), tuple()} |
+    {error, any()} |
+    {error, list_candidates_for_auto_ml_job_errors(), tuple()}.
 list_candidates_for_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_candidates_for_auto_ml_job(Client, Input, []).
+
+-spec list_candidates_for_auto_ml_job(aws_client:aws_client(), list_candidates_for_auto_ml_job_request(), proplists:proplist()) ->
+    {ok, list_candidates_for_auto_ml_job_response(), tuple()} |
+    {error, any()} |
+    {error, list_candidates_for_auto_ml_job_errors(), tuple()}.
 list_candidates_for_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCandidatesForAutoMLJob">>, Input, Options).
 
 %% @doc Retrieves the list of instances (also called nodes interchangeably)
 %% in a SageMaker HyperPod cluster.
+-spec list_cluster_nodes(aws_client:aws_client(), list_cluster_nodes_request()) ->
+    {ok, list_cluster_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, list_cluster_nodes_errors(), tuple()}.
 list_cluster_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cluster_nodes(Client, Input, []).
+
+-spec list_cluster_nodes(aws_client:aws_client(), list_cluster_nodes_request(), proplists:proplist()) ->
+    {ok, list_cluster_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, list_cluster_nodes_errors(), tuple()}.
 list_cluster_nodes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusterNodes">>, Input, Options).
 
 %% @doc Retrieves the list of SageMaker HyperPod clusters.
+-spec list_clusters(aws_client:aws_client(), list_clusters_request()) ->
+    {ok, list_clusters_response(), tuple()} |
+    {error, any()}.
 list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
+
+-spec list_clusters(aws_client:aws_client(), list_clusters_request(), proplists:proplist()) ->
+    {ok, list_clusters_response(), tuple()} |
+    {error, any()}.
 list_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusters">>, Input, Options).
 
 %% @doc Gets a list of the Git repositories in your account.
+-spec list_code_repositories(aws_client:aws_client(), list_code_repositories_input()) ->
+    {ok, list_code_repositories_output(), tuple()} |
+    {error, any()}.
 list_code_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_code_repositories(Client, Input, []).
+
+-spec list_code_repositories(aws_client:aws_client(), list_code_repositories_input(), proplists:proplist()) ->
+    {ok, list_code_repositories_output(), tuple()} |
+    {error, any()}.
 list_code_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCodeRepositories">>, Input, Options).
@@ -3597,81 +16517,153 @@ list_code_repositories(Client, Input, Options)
 %% To get information about a particular model
 %% compilation job you have created, use DescribeCompilationJob:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeCompilationJob.html.
+-spec list_compilation_jobs(aws_client:aws_client(), list_compilation_jobs_request()) ->
+    {ok, list_compilation_jobs_response(), tuple()} |
+    {error, any()}.
 list_compilation_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compilation_jobs(Client, Input, []).
+
+-spec list_compilation_jobs(aws_client:aws_client(), list_compilation_jobs_request(), proplists:proplist()) ->
+    {ok, list_compilation_jobs_response(), tuple()} |
+    {error, any()}.
 list_compilation_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCompilationJobs">>, Input, Options).
 
 %% @doc Lists the contexts in your account and their properties.
+-spec list_contexts(aws_client:aws_client(), list_contexts_request()) ->
+    {ok, list_contexts_response(), tuple()} |
+    {error, any()} |
+    {error, list_contexts_errors(), tuple()}.
 list_contexts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_contexts(Client, Input, []).
+
+-spec list_contexts(aws_client:aws_client(), list_contexts_request(), proplists:proplist()) ->
+    {ok, list_contexts_response(), tuple()} |
+    {error, any()} |
+    {error, list_contexts_errors(), tuple()}.
 list_contexts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContexts">>, Input, Options).
 
 %% @doc Lists the data quality job definitions in your account.
+-spec list_data_quality_job_definitions(aws_client:aws_client(), list_data_quality_job_definitions_request()) ->
+    {ok, list_data_quality_job_definitions_response(), tuple()} |
+    {error, any()}.
 list_data_quality_job_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_quality_job_definitions(Client, Input, []).
+
+-spec list_data_quality_job_definitions(aws_client:aws_client(), list_data_quality_job_definitions_request(), proplists:proplist()) ->
+    {ok, list_data_quality_job_definitions_response(), tuple()} |
+    {error, any()}.
 list_data_quality_job_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataQualityJobDefinitions">>, Input, Options).
 
 %% @doc Returns a list of devices in the fleet.
+-spec list_device_fleets(aws_client:aws_client(), list_device_fleets_request()) ->
+    {ok, list_device_fleets_response(), tuple()} |
+    {error, any()}.
 list_device_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_device_fleets(Client, Input, []).
+
+-spec list_device_fleets(aws_client:aws_client(), list_device_fleets_request(), proplists:proplist()) ->
+    {ok, list_device_fleets_response(), tuple()} |
+    {error, any()}.
 list_device_fleets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeviceFleets">>, Input, Options).
 
 %% @doc A list of devices.
+-spec list_devices(aws_client:aws_client(), list_devices_request()) ->
+    {ok, list_devices_response(), tuple()} |
+    {error, any()}.
 list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_devices(Client, Input, []).
+
+-spec list_devices(aws_client:aws_client(), list_devices_request(), proplists:proplist()) ->
+    {ok, list_devices_response(), tuple()} |
+    {error, any()}.
 list_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDevices">>, Input, Options).
 
 %% @doc Lists the domains.
+-spec list_domains(aws_client:aws_client(), list_domains_request()) ->
+    {ok, list_domains_response(), tuple()} |
+    {error, any()}.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
+
+-spec list_domains(aws_client:aws_client(), list_domains_request(), proplists:proplist()) ->
+    {ok, list_domains_response(), tuple()} |
+    {error, any()}.
 list_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDomains">>, Input, Options).
 
 %% @doc Lists all edge deployment plans.
+-spec list_edge_deployment_plans(aws_client:aws_client(), list_edge_deployment_plans_request()) ->
+    {ok, list_edge_deployment_plans_response(), tuple()} |
+    {error, any()}.
 list_edge_deployment_plans(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_edge_deployment_plans(Client, Input, []).
+
+-spec list_edge_deployment_plans(aws_client:aws_client(), list_edge_deployment_plans_request(), proplists:proplist()) ->
+    {ok, list_edge_deployment_plans_response(), tuple()} |
+    {error, any()}.
 list_edge_deployment_plans(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEdgeDeploymentPlans">>, Input, Options).
 
 %% @doc Returns a list of edge packaging jobs.
+-spec list_edge_packaging_jobs(aws_client:aws_client(), list_edge_packaging_jobs_request()) ->
+    {ok, list_edge_packaging_jobs_response(), tuple()} |
+    {error, any()}.
 list_edge_packaging_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_edge_packaging_jobs(Client, Input, []).
+
+-spec list_edge_packaging_jobs(aws_client:aws_client(), list_edge_packaging_jobs_request(), proplists:proplist()) ->
+    {ok, list_edge_packaging_jobs_response(), tuple()} |
+    {error, any()}.
 list_edge_packaging_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEdgePackagingJobs">>, Input, Options).
 
 %% @doc Lists endpoint configurations.
+-spec list_endpoint_configs(aws_client:aws_client(), list_endpoint_configs_input()) ->
+    {ok, list_endpoint_configs_output(), tuple()} |
+    {error, any()}.
 list_endpoint_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoint_configs(Client, Input, []).
+
+-spec list_endpoint_configs(aws_client:aws_client(), list_endpoint_configs_input(), proplists:proplist()) ->
+    {ok, list_endpoint_configs_output(), tuple()} |
+    {error, any()}.
 list_endpoint_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEndpointConfigs">>, Input, Options).
 
 %% @doc Lists endpoints.
+-spec list_endpoints(aws_client:aws_client(), list_endpoints_input()) ->
+    {ok, list_endpoints_output(), tuple()} |
+    {error, any()}.
 list_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoints(Client, Input, []).
+
+-spec list_endpoints(aws_client:aws_client(), list_endpoints_input(), proplists:proplist()) ->
+    {ok, list_endpoints_output(), tuple()} |
+    {error, any()}.
 list_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEndpoints">>, Input, Options).
@@ -3682,25 +16674,46 @@ list_endpoints(Client, Input, Options)
 %% experiments that were created in a specific time range. The list can be
 %% sorted by experiment
 %% name or creation time.
+-spec list_experiments(aws_client:aws_client(), list_experiments_request()) ->
+    {ok, list_experiments_response(), tuple()} |
+    {error, any()}.
 list_experiments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_experiments(Client, Input, []).
+
+-spec list_experiments(aws_client:aws_client(), list_experiments_request(), proplists:proplist()) ->
+    {ok, list_experiments_response(), tuple()} |
+    {error, any()}.
 list_experiments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExperiments">>, Input, Options).
 
 %% @doc List `FeatureGroup's based on given filter and order.
+-spec list_feature_groups(aws_client:aws_client(), list_feature_groups_request()) ->
+    {ok, list_feature_groups_response(), tuple()} |
+    {error, any()}.
 list_feature_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_feature_groups(Client, Input, []).
+
+-spec list_feature_groups(aws_client:aws_client(), list_feature_groups_request(), proplists:proplist()) ->
+    {ok, list_feature_groups_response(), tuple()} |
+    {error, any()}.
 list_feature_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFeatureGroups">>, Input, Options).
 
 %% @doc Returns information about the flow definitions in your account.
+-spec list_flow_definitions(aws_client:aws_client(), list_flow_definitions_request()) ->
+    {ok, list_flow_definitions_response(), tuple()} |
+    {error, any()}.
 list_flow_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_flow_definitions(Client, Input, []).
+
+-spec list_flow_definitions(aws_client:aws_client(), list_flow_definitions_request(), proplists:proplist()) ->
+    {ok, list_flow_definitions_response(), tuple()} |
+    {error, any()}.
 list_flow_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFlowDefinitions">>, Input, Options).
@@ -3708,9 +16721,18 @@ list_flow_definitions(Client, Input, Options)
 %% @doc List hub content versions.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
+-spec list_hub_content_versions(aws_client:aws_client(), list_hub_content_versions_request()) ->
+    {ok, list_hub_content_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_hub_content_versions_errors(), tuple()}.
 list_hub_content_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hub_content_versions(Client, Input, []).
+
+-spec list_hub_content_versions(aws_client:aws_client(), list_hub_content_versions_request(), proplists:proplist()) ->
+    {ok, list_hub_content_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_hub_content_versions_errors(), tuple()}.
 list_hub_content_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHubContentVersions">>, Input, Options).
@@ -3718,9 +16740,18 @@ list_hub_content_versions(Client, Input, Options)
 %% @doc List the contents of a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
+-spec list_hub_contents(aws_client:aws_client(), list_hub_contents_request()) ->
+    {ok, list_hub_contents_response(), tuple()} |
+    {error, any()} |
+    {error, list_hub_contents_errors(), tuple()}.
 list_hub_contents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hub_contents(Client, Input, []).
+
+-spec list_hub_contents(aws_client:aws_client(), list_hub_contents_request(), proplists:proplist()) ->
+    {ok, list_hub_contents_response(), tuple()} |
+    {error, any()} |
+    {error, list_hub_contents_errors(), tuple()}.
 list_hub_contents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHubContents">>, Input, Options).
@@ -3728,18 +16759,32 @@ list_hub_contents(Client, Input, Options)
 %% @doc List all existing hubs.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
+-spec list_hubs(aws_client:aws_client(), list_hubs_request()) ->
+    {ok, list_hubs_response(), tuple()} |
+    {error, any()}.
 list_hubs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hubs(Client, Input, []).
+
+-spec list_hubs(aws_client:aws_client(), list_hubs_request(), proplists:proplist()) ->
+    {ok, list_hubs_response(), tuple()} |
+    {error, any()}.
 list_hubs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHubs">>, Input, Options).
 
 %% @doc Returns information about the human task user interfaces in your
 %% account.
+-spec list_human_task_uis(aws_client:aws_client(), list_human_task_uis_request()) ->
+    {ok, list_human_task_uis_response(), tuple()} |
+    {error, any()}.
 list_human_task_uis(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_human_task_uis(Client, Input, []).
+
+-spec list_human_task_uis(aws_client:aws_client(), list_human_task_uis_request(), proplists:proplist()) ->
+    {ok, list_human_task_uis_response(), tuple()} |
+    {error, any()}.
 list_human_task_uis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHumanTaskUis">>, Input, Options).
@@ -3749,9 +16794,16 @@ list_human_task_uis(Client, Input, Options)
 %% objects that
 %% describe
 %% the hyperparameter tuning jobs launched in your account.
+-spec list_hyper_parameter_tuning_jobs(aws_client:aws_client(), list_hyper_parameter_tuning_jobs_request()) ->
+    {ok, list_hyper_parameter_tuning_jobs_response(), tuple()} |
+    {error, any()}.
 list_hyper_parameter_tuning_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hyper_parameter_tuning_jobs(Client, Input, []).
+
+-spec list_hyper_parameter_tuning_jobs(aws_client:aws_client(), list_hyper_parameter_tuning_jobs_request(), proplists:proplist()) ->
+    {ok, list_hyper_parameter_tuning_jobs_response(), tuple()} |
+    {error, any()}.
 list_hyper_parameter_tuning_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHyperParameterTuningJobs">>, Input, Options).
@@ -3760,9 +16812,18 @@ list_hyper_parameter_tuning_jobs(Client, Input, Options)
 %%
 %% The list can be filtered
 %% by creation time or modified time.
+-spec list_image_versions(aws_client:aws_client(), list_image_versions_request()) ->
+    {ok, list_image_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_image_versions_errors(), tuple()}.
 list_image_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_image_versions(Client, Input, []).
+
+-spec list_image_versions(aws_client:aws_client(), list_image_versions_request(), proplists:proplist()) ->
+    {ok, list_image_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_image_versions_errors(), tuple()}.
 list_image_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImageVersions">>, Input, Options).
@@ -3772,25 +16833,46 @@ list_image_versions(Client, Input, Options)
 %% The list can be filtered by
 %% creation time or modified time, and whether the image name contains a
 %% specified string.
+-spec list_images(aws_client:aws_client(), list_images_request()) ->
+    {ok, list_images_response(), tuple()} |
+    {error, any()}.
 list_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_images(Client, Input, []).
+
+-spec list_images(aws_client:aws_client(), list_images_request(), proplists:proplist()) ->
+    {ok, list_images_response(), tuple()} |
+    {error, any()}.
 list_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImages">>, Input, Options).
 
 %% @doc Lists the inference components in your account and their properties.
+-spec list_inference_components(aws_client:aws_client(), list_inference_components_input()) ->
+    {ok, list_inference_components_output(), tuple()} |
+    {error, any()}.
 list_inference_components(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_components(Client, Input, []).
+
+-spec list_inference_components(aws_client:aws_client(), list_inference_components_input(), proplists:proplist()) ->
+    {ok, list_inference_components_output(), tuple()} |
+    {error, any()}.
 list_inference_components(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceComponents">>, Input, Options).
 
 %% @doc Returns the list of all inference experiments.
+-spec list_inference_experiments(aws_client:aws_client(), list_inference_experiments_request()) ->
+    {ok, list_inference_experiments_response(), tuple()} |
+    {error, any()}.
 list_inference_experiments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_experiments(Client, Input, []).
+
+-spec list_inference_experiments(aws_client:aws_client(), list_inference_experiments_request(), proplists:proplist()) ->
+    {ok, list_inference_experiments_response(), tuple()} |
+    {error, any()}.
 list_inference_experiments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceExperiments">>, Input, Options).
@@ -3799,33 +16881,65 @@ list_inference_experiments(Client, Input, Options)
 %%
 %% The supported subtasks are benchmarks, which evaluate the performance of
 %% your model on different instance types.
+-spec list_inference_recommendations_job_steps(aws_client:aws_client(), list_inference_recommendations_job_steps_request()) ->
+    {ok, list_inference_recommendations_job_steps_response(), tuple()} |
+    {error, any()} |
+    {error, list_inference_recommendations_job_steps_errors(), tuple()}.
 list_inference_recommendations_job_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_recommendations_job_steps(Client, Input, []).
+
+-spec list_inference_recommendations_job_steps(aws_client:aws_client(), list_inference_recommendations_job_steps_request(), proplists:proplist()) ->
+    {ok, list_inference_recommendations_job_steps_response(), tuple()} |
+    {error, any()} |
+    {error, list_inference_recommendations_job_steps_errors(), tuple()}.
 list_inference_recommendations_job_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceRecommendationsJobSteps">>, Input, Options).
 
 %% @doc Lists recommendation jobs that satisfy various filters.
+-spec list_inference_recommendations_jobs(aws_client:aws_client(), list_inference_recommendations_jobs_request()) ->
+    {ok, list_inference_recommendations_jobs_response(), tuple()} |
+    {error, any()}.
 list_inference_recommendations_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_recommendations_jobs(Client, Input, []).
+
+-spec list_inference_recommendations_jobs(aws_client:aws_client(), list_inference_recommendations_jobs_request(), proplists:proplist()) ->
+    {ok, list_inference_recommendations_jobs_response(), tuple()} |
+    {error, any()}.
 list_inference_recommendations_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceRecommendationsJobs">>, Input, Options).
 
 %% @doc Gets a list of labeling jobs.
+-spec list_labeling_jobs(aws_client:aws_client(), list_labeling_jobs_request()) ->
+    {ok, list_labeling_jobs_response(), tuple()} |
+    {error, any()}.
 list_labeling_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_labeling_jobs(Client, Input, []).
+
+-spec list_labeling_jobs(aws_client:aws_client(), list_labeling_jobs_request(), proplists:proplist()) ->
+    {ok, list_labeling_jobs_response(), tuple()} |
+    {error, any()}.
 list_labeling_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLabelingJobs">>, Input, Options).
 
 %% @doc Gets a list of labeling jobs assigned to a specified work team.
+-spec list_labeling_jobs_for_workteam(aws_client:aws_client(), list_labeling_jobs_for_workteam_request()) ->
+    {ok, list_labeling_jobs_for_workteam_response(), tuple()} |
+    {error, any()} |
+    {error, list_labeling_jobs_for_workteam_errors(), tuple()}.
 list_labeling_jobs_for_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_labeling_jobs_for_workteam(Client, Input, []).
+
+-spec list_labeling_jobs_for_workteam(aws_client:aws_client(), list_labeling_jobs_for_workteam_request(), proplists:proplist()) ->
+    {ok, list_labeling_jobs_for_workteam_response(), tuple()} |
+    {error, any()} |
+    {error, list_labeling_jobs_for_workteam_errors(), tuple()}.
 list_labeling_jobs_for_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLabelingJobsForWorkteam">>, Input, Options).
@@ -3837,124 +16951,235 @@ list_labeling_jobs_for_workteam(Client, Input, Options)
 %% Cross-Account Lineage Tracking :
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/xaccount-lineage-tracking.html
 %% in the Amazon SageMaker Developer Guide.
+-spec list_lineage_groups(aws_client:aws_client(), list_lineage_groups_request()) ->
+    {ok, list_lineage_groups_response(), tuple()} |
+    {error, any()}.
 list_lineage_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_lineage_groups(Client, Input, []).
+
+-spec list_lineage_groups(aws_client:aws_client(), list_lineage_groups_request(), proplists:proplist()) ->
+    {ok, list_lineage_groups_response(), tuple()} |
+    {error, any()}.
 list_lineage_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLineageGroups">>, Input, Options).
 
 %% @doc Lists model bias jobs definitions that satisfy various filters.
+-spec list_model_bias_job_definitions(aws_client:aws_client(), list_model_bias_job_definitions_request()) ->
+    {ok, list_model_bias_job_definitions_response(), tuple()} |
+    {error, any()}.
 list_model_bias_job_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_bias_job_definitions(Client, Input, []).
+
+-spec list_model_bias_job_definitions(aws_client:aws_client(), list_model_bias_job_definitions_request(), proplists:proplist()) ->
+    {ok, list_model_bias_job_definitions_response(), tuple()} |
+    {error, any()}.
 list_model_bias_job_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelBiasJobDefinitions">>, Input, Options).
 
 %% @doc List the export jobs for the Amazon SageMaker Model Card.
+-spec list_model_card_export_jobs(aws_client:aws_client(), list_model_card_export_jobs_request()) ->
+    {ok, list_model_card_export_jobs_response(), tuple()} |
+    {error, any()}.
 list_model_card_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_card_export_jobs(Client, Input, []).
+
+-spec list_model_card_export_jobs(aws_client:aws_client(), list_model_card_export_jobs_request(), proplists:proplist()) ->
+    {ok, list_model_card_export_jobs_response(), tuple()} |
+    {error, any()}.
 list_model_card_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelCardExportJobs">>, Input, Options).
 
 %% @doc List existing versions of an Amazon SageMaker Model Card.
+-spec list_model_card_versions(aws_client:aws_client(), list_model_card_versions_request()) ->
+    {ok, list_model_card_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_model_card_versions_errors(), tuple()}.
 list_model_card_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_card_versions(Client, Input, []).
+
+-spec list_model_card_versions(aws_client:aws_client(), list_model_card_versions_request(), proplists:proplist()) ->
+    {ok, list_model_card_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_model_card_versions_errors(), tuple()}.
 list_model_card_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelCardVersions">>, Input, Options).
 
 %% @doc List existing model cards.
+-spec list_model_cards(aws_client:aws_client(), list_model_cards_request()) ->
+    {ok, list_model_cards_response(), tuple()} |
+    {error, any()}.
 list_model_cards(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_cards(Client, Input, []).
+
+-spec list_model_cards(aws_client:aws_client(), list_model_cards_request(), proplists:proplist()) ->
+    {ok, list_model_cards_response(), tuple()} |
+    {error, any()}.
 list_model_cards(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelCards">>, Input, Options).
 
 %% @doc Lists model explainability job definitions that satisfy various
 %% filters.
+-spec list_model_explainability_job_definitions(aws_client:aws_client(), list_model_explainability_job_definitions_request()) ->
+    {ok, list_model_explainability_job_definitions_response(), tuple()} |
+    {error, any()}.
 list_model_explainability_job_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_explainability_job_definitions(Client, Input, []).
+
+-spec list_model_explainability_job_definitions(aws_client:aws_client(), list_model_explainability_job_definitions_request(), proplists:proplist()) ->
+    {ok, list_model_explainability_job_definitions_response(), tuple()} |
+    {error, any()}.
 list_model_explainability_job_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelExplainabilityJobDefinitions">>, Input, Options).
 
 %% @doc Lists the domain, framework, task, and model name of standard
 %% machine learning models found in common model zoos.
+-spec list_model_metadata(aws_client:aws_client(), list_model_metadata_request()) ->
+    {ok, list_model_metadata_response(), tuple()} |
+    {error, any()}.
 list_model_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_metadata(Client, Input, []).
+
+-spec list_model_metadata(aws_client:aws_client(), list_model_metadata_request(), proplists:proplist()) ->
+    {ok, list_model_metadata_response(), tuple()} |
+    {error, any()}.
 list_model_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelMetadata">>, Input, Options).
 
 %% @doc Gets a list of the model groups in your Amazon Web Services account.
+-spec list_model_package_groups(aws_client:aws_client(), list_model_package_groups_input()) ->
+    {ok, list_model_package_groups_output(), tuple()} |
+    {error, any()}.
 list_model_package_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_package_groups(Client, Input, []).
+
+-spec list_model_package_groups(aws_client:aws_client(), list_model_package_groups_input(), proplists:proplist()) ->
+    {ok, list_model_package_groups_output(), tuple()} |
+    {error, any()}.
 list_model_package_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelPackageGroups">>, Input, Options).
 
 %% @doc Lists the model packages that have been created.
+-spec list_model_packages(aws_client:aws_client(), list_model_packages_input()) ->
+    {ok, list_model_packages_output(), tuple()} |
+    {error, any()}.
 list_model_packages(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_packages(Client, Input, []).
+
+-spec list_model_packages(aws_client:aws_client(), list_model_packages_input(), proplists:proplist()) ->
+    {ok, list_model_packages_output(), tuple()} |
+    {error, any()}.
 list_model_packages(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelPackages">>, Input, Options).
 
 %% @doc Gets a list of model quality monitoring job definitions in your
 %% account.
+-spec list_model_quality_job_definitions(aws_client:aws_client(), list_model_quality_job_definitions_request()) ->
+    {ok, list_model_quality_job_definitions_response(), tuple()} |
+    {error, any()}.
 list_model_quality_job_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_quality_job_definitions(Client, Input, []).
+
+-spec list_model_quality_job_definitions(aws_client:aws_client(), list_model_quality_job_definitions_request(), proplists:proplist()) ->
+    {ok, list_model_quality_job_definitions_response(), tuple()} |
+    {error, any()}.
 list_model_quality_job_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelQualityJobDefinitions">>, Input, Options).
 
 %% @doc Lists models created with the `CreateModel' API.
+-spec list_models(aws_client:aws_client(), list_models_input()) ->
+    {ok, list_models_output(), tuple()} |
+    {error, any()}.
 list_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_models(Client, Input, []).
+
+-spec list_models(aws_client:aws_client(), list_models_input(), proplists:proplist()) ->
+    {ok, list_models_output(), tuple()} |
+    {error, any()}.
 list_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModels">>, Input, Options).
 
 %% @doc Gets a list of past alerts in a model monitoring schedule.
+-spec list_monitoring_alert_history(aws_client:aws_client(), list_monitoring_alert_history_request()) ->
+    {ok, list_monitoring_alert_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_monitoring_alert_history_errors(), tuple()}.
 list_monitoring_alert_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitoring_alert_history(Client, Input, []).
+
+-spec list_monitoring_alert_history(aws_client:aws_client(), list_monitoring_alert_history_request(), proplists:proplist()) ->
+    {ok, list_monitoring_alert_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_monitoring_alert_history_errors(), tuple()}.
 list_monitoring_alert_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMonitoringAlertHistory">>, Input, Options).
 
 %% @doc Gets the alerts for a single monitoring schedule.
+-spec list_monitoring_alerts(aws_client:aws_client(), list_monitoring_alerts_request()) ->
+    {ok, list_monitoring_alerts_response(), tuple()} |
+    {error, any()} |
+    {error, list_monitoring_alerts_errors(), tuple()}.
 list_monitoring_alerts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitoring_alerts(Client, Input, []).
+
+-spec list_monitoring_alerts(aws_client:aws_client(), list_monitoring_alerts_request(), proplists:proplist()) ->
+    {ok, list_monitoring_alerts_response(), tuple()} |
+    {error, any()} |
+    {error, list_monitoring_alerts_errors(), tuple()}.
 list_monitoring_alerts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMonitoringAlerts">>, Input, Options).
 
 %% @doc Returns list of all monitoring job executions.
+-spec list_monitoring_executions(aws_client:aws_client(), list_monitoring_executions_request()) ->
+    {ok, list_monitoring_executions_response(), tuple()} |
+    {error, any()}.
 list_monitoring_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitoring_executions(Client, Input, []).
+
+-spec list_monitoring_executions(aws_client:aws_client(), list_monitoring_executions_request(), proplists:proplist()) ->
+    {ok, list_monitoring_executions_response(), tuple()} |
+    {error, any()}.
 list_monitoring_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMonitoringExecutions">>, Input, Options).
 
 %% @doc Returns list of all monitoring schedules.
+-spec list_monitoring_schedules(aws_client:aws_client(), list_monitoring_schedules_request()) ->
+    {ok, list_monitoring_schedules_response(), tuple()} |
+    {error, any()}.
 list_monitoring_schedules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitoring_schedules(Client, Input, []).
+
+-spec list_monitoring_schedules(aws_client:aws_client(), list_monitoring_schedules_request(), proplists:proplist()) ->
+    {ok, list_monitoring_schedules_response(), tuple()} |
+    {error, any()}.
 list_monitoring_schedules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMonitoringSchedules">>, Input, Options).
@@ -3963,9 +17188,16 @@ list_monitoring_schedules(Client, Input, Options)
 %% CreateNotebookInstanceLifecycleConfig:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstanceLifecycleConfig.html
 %% API.
+-spec list_notebook_instance_lifecycle_configs(aws_client:aws_client(), list_notebook_instance_lifecycle_configs_input()) ->
+    {ok, list_notebook_instance_lifecycle_configs_output(), tuple()} |
+    {error, any()}.
 list_notebook_instance_lifecycle_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_instance_lifecycle_configs(Client, Input, []).
+
+-spec list_notebook_instance_lifecycle_configs(aws_client:aws_client(), list_notebook_instance_lifecycle_configs_input(), proplists:proplist()) ->
+    {ok, list_notebook_instance_lifecycle_configs_output(), tuple()} |
+    {error, any()}.
 list_notebook_instance_lifecycle_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookInstanceLifecycleConfigs">>, Input, Options).
@@ -3973,57 +17205,112 @@ list_notebook_instance_lifecycle_configs(Client, Input, Options)
 %% @doc Returns a list of the SageMaker notebook instances in the
 %% requester's account in an
 %% Amazon Web Services Region.
+-spec list_notebook_instances(aws_client:aws_client(), list_notebook_instances_input()) ->
+    {ok, list_notebook_instances_output(), tuple()} |
+    {error, any()}.
 list_notebook_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_instances(Client, Input, []).
+
+-spec list_notebook_instances(aws_client:aws_client(), list_notebook_instances_input(), proplists:proplist()) ->
+    {ok, list_notebook_instances_output(), tuple()} |
+    {error, any()}.
 list_notebook_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookInstances">>, Input, Options).
 
 %% @doc Gets a list of `PipeLineExecutionStep' objects.
+-spec list_pipeline_execution_steps(aws_client:aws_client(), list_pipeline_execution_steps_request()) ->
+    {ok, list_pipeline_execution_steps_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_execution_steps_errors(), tuple()}.
 list_pipeline_execution_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_execution_steps(Client, Input, []).
+
+-spec list_pipeline_execution_steps(aws_client:aws_client(), list_pipeline_execution_steps_request(), proplists:proplist()) ->
+    {ok, list_pipeline_execution_steps_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_execution_steps_errors(), tuple()}.
 list_pipeline_execution_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelineExecutionSteps">>, Input, Options).
 
 %% @doc Gets a list of the pipeline executions.
+-spec list_pipeline_executions(aws_client:aws_client(), list_pipeline_executions_request()) ->
+    {ok, list_pipeline_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_executions_errors(), tuple()}.
 list_pipeline_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_executions(Client, Input, []).
+
+-spec list_pipeline_executions(aws_client:aws_client(), list_pipeline_executions_request(), proplists:proplist()) ->
+    {ok, list_pipeline_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_executions_errors(), tuple()}.
 list_pipeline_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelineExecutions">>, Input, Options).
 
 %% @doc Gets a list of parameters for a pipeline execution.
+-spec list_pipeline_parameters_for_execution(aws_client:aws_client(), list_pipeline_parameters_for_execution_request()) ->
+    {ok, list_pipeline_parameters_for_execution_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_parameters_for_execution_errors(), tuple()}.
 list_pipeline_parameters_for_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_parameters_for_execution(Client, Input, []).
+
+-spec list_pipeline_parameters_for_execution(aws_client:aws_client(), list_pipeline_parameters_for_execution_request(), proplists:proplist()) ->
+    {ok, list_pipeline_parameters_for_execution_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_parameters_for_execution_errors(), tuple()}.
 list_pipeline_parameters_for_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelineParametersForExecution">>, Input, Options).
 
 %% @doc Gets a list of pipelines.
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_request()) ->
+    {ok, list_pipelines_response(), tuple()} |
+    {error, any()}.
 list_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipelines(Client, Input, []).
+
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_request(), proplists:proplist()) ->
+    {ok, list_pipelines_response(), tuple()} |
+    {error, any()}.
 list_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelines">>, Input, Options).
 
 %% @doc Lists processing jobs that satisfy various filters.
+-spec list_processing_jobs(aws_client:aws_client(), list_processing_jobs_request()) ->
+    {ok, list_processing_jobs_response(), tuple()} |
+    {error, any()}.
 list_processing_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_processing_jobs(Client, Input, []).
+
+-spec list_processing_jobs(aws_client:aws_client(), list_processing_jobs_request(), proplists:proplist()) ->
+    {ok, list_processing_jobs_response(), tuple()} |
+    {error, any()}.
 list_processing_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProcessingJobs">>, Input, Options).
 
 %% @doc Gets a list of the projects in an Amazon Web Services account.
+-spec list_projects(aws_client:aws_client(), list_projects_input()) ->
+    {ok, list_projects_output(), tuple()} |
+    {error, any()}.
 list_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_projects(Client, Input, []).
+
+-spec list_projects(aws_client:aws_client(), list_projects_input(), proplists:proplist()) ->
+    {ok, list_projects_output(), tuple()} |
+    {error, any()}.
 list_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjects">>, Input, Options).
@@ -4032,17 +17319,31 @@ list_projects(Client, Input, Options)
 %%
 %% The maximum number of
 %% `ResourceCatalog's viewable is 1000.
+-spec list_resource_catalogs(aws_client:aws_client(), list_resource_catalogs_request()) ->
+    {ok, list_resource_catalogs_response(), tuple()} |
+    {error, any()}.
 list_resource_catalogs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_catalogs(Client, Input, []).
+
+-spec list_resource_catalogs(aws_client:aws_client(), list_resource_catalogs_request(), proplists:proplist()) ->
+    {ok, list_resource_catalogs_response(), tuple()} |
+    {error, any()}.
 list_resource_catalogs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceCatalogs">>, Input, Options).
 
 %% @doc Lists spaces.
+-spec list_spaces(aws_client:aws_client(), list_spaces_request()) ->
+    {ok, list_spaces_response(), tuple()} |
+    {error, any()}.
 list_spaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_spaces(Client, Input, []).
+
+-spec list_spaces(aws_client:aws_client(), list_spaces_request(), proplists:proplist()) ->
+    {ok, list_spaces_response(), tuple()} |
+    {error, any()}.
 list_spaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSpaces">>, Input, Options).
@@ -4050,18 +17351,34 @@ list_spaces(Client, Input, Options)
 %% @doc Lists devices allocated to the stage, containing detailed device
 %% information and
 %% deployment status.
+-spec list_stage_devices(aws_client:aws_client(), list_stage_devices_request()) ->
+    {ok, list_stage_devices_response(), tuple()} |
+    {error, any()}.
 list_stage_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stage_devices(Client, Input, []).
+
+-spec list_stage_devices(aws_client:aws_client(), list_stage_devices_request(), proplists:proplist()) ->
+    {ok, list_stage_devices_response(), tuple()} |
+    {error, any()}.
 list_stage_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStageDevices">>, Input, Options).
 
 %% @doc Lists the Amazon SageMaker Studio Lifecycle Configurations in your
 %% Amazon Web Services Account.
+-spec list_studio_lifecycle_configs(aws_client:aws_client(), list_studio_lifecycle_configs_request()) ->
+    {ok, list_studio_lifecycle_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_studio_lifecycle_configs_errors(), tuple()}.
 list_studio_lifecycle_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_studio_lifecycle_configs(Client, Input, []).
+
+-spec list_studio_lifecycle_configs(aws_client:aws_client(), list_studio_lifecycle_configs_request(), proplists:proplist()) ->
+    {ok, list_studio_lifecycle_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_studio_lifecycle_configs_errors(), tuple()}.
 list_studio_lifecycle_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStudioLifecycleConfigs">>, Input, Options).
@@ -4072,17 +17389,31 @@ list_studio_lifecycle_configs(Client, Input, Options)
 %% The
 %% list may be empty if no work team satisfies the filter specified in the
 %% `NameContains' parameter.
+-spec list_subscribed_workteams(aws_client:aws_client(), list_subscribed_workteams_request()) ->
+    {ok, list_subscribed_workteams_response(), tuple()} |
+    {error, any()}.
 list_subscribed_workteams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscribed_workteams(Client, Input, []).
+
+-spec list_subscribed_workteams(aws_client:aws_client(), list_subscribed_workteams_request(), proplists:proplist()) ->
+    {ok, list_subscribed_workteams_response(), tuple()} |
+    {error, any()}.
 list_subscribed_workteams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSubscribedWorkteams">>, Input, Options).
 
 %% @doc Returns the tags for the specified SageMaker resource.
+-spec list_tags(aws_client:aws_client(), list_tags_input()) ->
+    {ok, list_tags_output(), tuple()} |
+    {error, any()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
+
+-spec list_tags(aws_client:aws_client(), list_tags_input(), proplists:proplist()) ->
+    {ok, list_tags_output(), tuple()} |
+    {error, any()}.
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
@@ -4111,9 +17442,16 @@ list_tags(Client, Input, Options)
 %% ```
 %% aws sagemaker list-training-jobs --max-results 100 --status-equals
 %% InProgress'''
+-spec list_training_jobs(aws_client:aws_client(), list_training_jobs_request()) ->
+    {ok, list_training_jobs_response(), tuple()} |
+    {error, any()}.
 list_training_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_training_jobs(Client, Input, []).
+
+-spec list_training_jobs(aws_client:aws_client(), list_training_jobs_request(), proplists:proplist()) ->
+    {ok, list_training_jobs_response(), tuple()} |
+    {error, any()}.
 list_training_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrainingJobs">>, Input, Options).
@@ -4122,17 +17460,33 @@ list_training_jobs(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TrainingJobSummary.html
 %% objects that describe the training jobs that a
 %% hyperparameter tuning job launched.
+-spec list_training_jobs_for_hyper_parameter_tuning_job(aws_client:aws_client(), list_training_jobs_for_hyper_parameter_tuning_job_request()) ->
+    {ok, list_training_jobs_for_hyper_parameter_tuning_job_response(), tuple()} |
+    {error, any()} |
+    {error, list_training_jobs_for_hyper_parameter_tuning_job_errors(), tuple()}.
 list_training_jobs_for_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_training_jobs_for_hyper_parameter_tuning_job(Client, Input, []).
+
+-spec list_training_jobs_for_hyper_parameter_tuning_job(aws_client:aws_client(), list_training_jobs_for_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
+    {ok, list_training_jobs_for_hyper_parameter_tuning_job_response(), tuple()} |
+    {error, any()} |
+    {error, list_training_jobs_for_hyper_parameter_tuning_job_errors(), tuple()}.
 list_training_jobs_for_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrainingJobsForHyperParameterTuningJob">>, Input, Options).
 
 %% @doc Lists transform jobs.
+-spec list_transform_jobs(aws_client:aws_client(), list_transform_jobs_request()) ->
+    {ok, list_transform_jobs_response(), tuple()} |
+    {error, any()}.
 list_transform_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_transform_jobs(Client, Input, []).
+
+-spec list_transform_jobs(aws_client:aws_client(), list_transform_jobs_request(), proplists:proplist()) ->
+    {ok, list_transform_jobs_response(), tuple()} |
+    {error, any()}.
 list_transform_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTransformJobs">>, Input, Options).
@@ -4149,9 +17503,18 @@ list_transform_jobs(Client, Input, Options)
 %% `SourceArn'
 %%
 %% `TrialName'
+-spec list_trial_components(aws_client:aws_client(), list_trial_components_request()) ->
+    {ok, list_trial_components_response(), tuple()} |
+    {error, any()} |
+    {error, list_trial_components_errors(), tuple()}.
 list_trial_components(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_trial_components(Client, Input, []).
+
+-spec list_trial_components(aws_client:aws_client(), list_trial_components_request(), proplists:proplist()) ->
+    {ok, list_trial_components_response(), tuple()} |
+    {error, any()} |
+    {error, list_trial_components_errors(), tuple()}.
 list_trial_components(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrialComponents">>, Input, Options).
@@ -4166,17 +17529,33 @@ list_trial_components(Client, Input, Options)
 %% trials that were created in a specific time range. The list can be sorted
 %% by trial name or
 %% creation time.
+-spec list_trials(aws_client:aws_client(), list_trials_request()) ->
+    {ok, list_trials_response(), tuple()} |
+    {error, any()} |
+    {error, list_trials_errors(), tuple()}.
 list_trials(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_trials(Client, Input, []).
+
+-spec list_trials(aws_client:aws_client(), list_trials_request(), proplists:proplist()) ->
+    {ok, list_trials_response(), tuple()} |
+    {error, any()} |
+    {error, list_trials_errors(), tuple()}.
 list_trials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrials">>, Input, Options).
 
 %% @doc Lists user profiles.
+-spec list_user_profiles(aws_client:aws_client(), list_user_profiles_request()) ->
+    {ok, list_user_profiles_response(), tuple()} |
+    {error, any()}.
 list_user_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_profiles(Client, Input, []).
+
+-spec list_user_profiles(aws_client:aws_client(), list_user_profiles_request(), proplists:proplist()) ->
+    {ok, list_user_profiles_response(), tuple()} |
+    {error, any()}.
 list_user_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserProfiles">>, Input, Options).
@@ -4186,9 +17565,16 @@ list_user_profiles(Client, Input, Options)
 %%
 %% Note that you can only
 %% have one private workforce per Amazon Web Services Region.
+-spec list_workforces(aws_client:aws_client(), list_workforces_request()) ->
+    {ok, list_workforces_response(), tuple()} |
+    {error, any()}.
 list_workforces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workforces(Client, Input, []).
+
+-spec list_workforces(aws_client:aws_client(), list_workforces_request(), proplists:proplist()) ->
+    {ok, list_workforces_response(), tuple()} |
+    {error, any()}.
 list_workforces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkforces">>, Input, Options).
@@ -4198,9 +17584,16 @@ list_workforces(Client, Input, Options)
 %% The list may be empty if
 %% no work team satisfies the filter specified in the `NameContains'
 %% parameter.
+-spec list_workteams(aws_client:aws_client(), list_workteams_request()) ->
+    {ok, list_workteams_response(), tuple()} |
+    {error, any()}.
 list_workteams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workteams(Client, Input, []).
+
+-spec list_workteams(aws_client:aws_client(), list_workteams_request(), proplists:proplist()) ->
+    {ok, list_workteams_response(), tuple()} |
+    {error, any()}.
 list_workteams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkteams">>, Input, Options).
@@ -4212,9 +17605,18 @@ list_workteams(Client, Input, Options)
 %% policies and resource-based policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html
 %% in the Amazon Web Services Identity and Access Management User Guide..
+-spec put_model_package_group_policy(aws_client:aws_client(), put_model_package_group_policy_input()) ->
+    {ok, put_model_package_group_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_model_package_group_policy_errors(), tuple()}.
 put_model_package_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_model_package_group_policy(Client, Input, []).
+
+-spec put_model_package_group_policy(aws_client:aws_client(), put_model_package_group_policy_input(), proplists:proplist()) ->
+    {ok, put_model_package_group_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_model_package_group_policy_errors(), tuple()}.
 put_model_package_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutModelPackageGroupPolicy">>, Input, Options).
@@ -4226,34 +17628,70 @@ put_model_package_group_policy(Client, Input, Options)
 %% Querying Lineage Entities:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/querying-lineage-entities.html
 %% in the Amazon SageMaker Developer Guide.
+-spec query_lineage(aws_client:aws_client(), query_lineage_request()) ->
+    {ok, query_lineage_response(), tuple()} |
+    {error, any()} |
+    {error, query_lineage_errors(), tuple()}.
 query_lineage(Client, Input)
   when is_map(Client), is_map(Input) ->
     query_lineage(Client, Input, []).
+
+-spec query_lineage(aws_client:aws_client(), query_lineage_request(), proplists:proplist()) ->
+    {ok, query_lineage_response(), tuple()} |
+    {error, any()} |
+    {error, query_lineage_errors(), tuple()}.
 query_lineage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"QueryLineage">>, Input, Options).
 
 %% @doc Register devices.
+-spec register_devices(aws_client:aws_client(), register_devices_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, register_devices_errors(), tuple()}.
 register_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_devices(Client, Input, []).
+
+-spec register_devices(aws_client:aws_client(), register_devices_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, register_devices_errors(), tuple()}.
 register_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDevices">>, Input, Options).
 
 %% @doc Renders the UI template so that you can preview the worker's
 %% experience.
+-spec render_ui_template(aws_client:aws_client(), render_ui_template_request()) ->
+    {ok, render_ui_template_response(), tuple()} |
+    {error, any()} |
+    {error, render_ui_template_errors(), tuple()}.
 render_ui_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     render_ui_template(Client, Input, []).
+
+-spec render_ui_template(aws_client:aws_client(), render_ui_template_request(), proplists:proplist()) ->
+    {ok, render_ui_template_response(), tuple()} |
+    {error, any()} |
+    {error, render_ui_template_errors(), tuple()}.
 render_ui_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RenderUiTemplate">>, Input, Options).
 
 %% @doc Retry the execution of the pipeline.
+-spec retry_pipeline_execution(aws_client:aws_client(), retry_pipeline_execution_request()) ->
+    {ok, retry_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, retry_pipeline_execution_errors(), tuple()}.
 retry_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_pipeline_execution(Client, Input, []).
+
+-spec retry_pipeline_execution(aws_client:aws_client(), retry_pipeline_execution_request(), proplists:proplist()) ->
+    {ok, retry_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, retry_pipeline_execution_errors(), tuple()}.
 retry_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetryPipelineExecution">>, Input, Options).
@@ -4275,9 +17713,16 @@ retry_pipeline_execution(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html
 %% for more
 %% information.
+-spec search(aws_client:aws_client(), search_request()) ->
+    {ok, search_response(), tuple()} |
+    {error, any()}.
 search(Client, Input)
   when is_map(Client), is_map(Input) ->
     search(Client, Input, []).
+
+-spec search(aws_client:aws_client(), search_request(), proplists:proplist()) ->
+    {ok, search_response(), tuple()} |
+    {error, any()}.
 search(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Search">>, Input, Options).
@@ -4289,9 +17734,18 @@ search(Client, Input, Options)
 %% When a callback step is run, the pipeline generates a callback
 %% token and includes the token in a message sent to Amazon Simple Queue
 %% Service (Amazon SQS).
+-spec send_pipeline_execution_step_failure(aws_client:aws_client(), send_pipeline_execution_step_failure_request()) ->
+    {ok, send_pipeline_execution_step_failure_response(), tuple()} |
+    {error, any()} |
+    {error, send_pipeline_execution_step_failure_errors(), tuple()}.
 send_pipeline_execution_step_failure(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_pipeline_execution_step_failure(Client, Input, []).
+
+-spec send_pipeline_execution_step_failure(aws_client:aws_client(), send_pipeline_execution_step_failure_request(), proplists:proplist()) ->
+    {ok, send_pipeline_execution_step_failure_response(), tuple()} |
+    {error, any()} |
+    {error, send_pipeline_execution_step_failure_errors(), tuple()}.
 send_pipeline_execution_step_failure(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendPipelineExecutionStepFailure">>, Input, Options).
@@ -4303,25 +17757,50 @@ send_pipeline_execution_step_failure(Client, Input, Options)
 %% When a callback step is run, the pipeline generates
 %% a callback token and includes the token in a message sent to Amazon Simple
 %% Queue Service (Amazon SQS).
+-spec send_pipeline_execution_step_success(aws_client:aws_client(), send_pipeline_execution_step_success_request()) ->
+    {ok, send_pipeline_execution_step_success_response(), tuple()} |
+    {error, any()} |
+    {error, send_pipeline_execution_step_success_errors(), tuple()}.
 send_pipeline_execution_step_success(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_pipeline_execution_step_success(Client, Input, []).
+
+-spec send_pipeline_execution_step_success(aws_client:aws_client(), send_pipeline_execution_step_success_request(), proplists:proplist()) ->
+    {ok, send_pipeline_execution_step_success_response(), tuple()} |
+    {error, any()} |
+    {error, send_pipeline_execution_step_success_errors(), tuple()}.
 send_pipeline_execution_step_success(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendPipelineExecutionStepSuccess">>, Input, Options).
 
 %% @doc Starts a stage in an edge deployment plan.
+-spec start_edge_deployment_stage(aws_client:aws_client(), start_edge_deployment_stage_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 start_edge_deployment_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_edge_deployment_stage(Client, Input, []).
+
+-spec start_edge_deployment_stage(aws_client:aws_client(), start_edge_deployment_stage_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 start_edge_deployment_stage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEdgeDeploymentStage">>, Input, Options).
 
 %% @doc Starts an inference experiment.
+-spec start_inference_experiment(aws_client:aws_client(), start_inference_experiment_request()) ->
+    {ok, start_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, start_inference_experiment_errors(), tuple()}.
 start_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_inference_experiment(Client, Input, []).
+
+-spec start_inference_experiment(aws_client:aws_client(), start_inference_experiment_request(), proplists:proplist()) ->
+    {ok, start_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, start_inference_experiment_errors(), tuple()}.
 start_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartInferenceExperiment">>, Input, Options).
@@ -4331,9 +17810,18 @@ start_inference_experiment(Client, Input, Options)
 %% By default, when you successfully create a new schedule, the status of a
 %% monitoring
 %% schedule is `scheduled'.
+-spec start_monitoring_schedule(aws_client:aws_client(), start_monitoring_schedule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_monitoring_schedule_errors(), tuple()}.
 start_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_monitoring_schedule(Client, Input, []).
+
+-spec start_monitoring_schedule(aws_client:aws_client(), start_monitoring_schedule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_monitoring_schedule_errors(), tuple()}.
 start_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMonitoringSchedule">>, Input, Options).
@@ -4346,25 +17834,52 @@ start_monitoring_schedule(Client, Input, Options)
 %% notebook instance status to `InService'. A notebook instance's
 %% status must be
 %% `InService' before you can connect to your Jupyter notebook.
+-spec start_notebook_instance(aws_client:aws_client(), start_notebook_instance_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_notebook_instance_errors(), tuple()}.
 start_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_notebook_instance(Client, Input, []).
+
+-spec start_notebook_instance(aws_client:aws_client(), start_notebook_instance_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, start_notebook_instance_errors(), tuple()}.
 start_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartNotebookInstance">>, Input, Options).
 
 %% @doc Starts a pipeline execution.
+-spec start_pipeline_execution(aws_client:aws_client(), start_pipeline_execution_request()) ->
+    {ok, start_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, start_pipeline_execution_errors(), tuple()}.
 start_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_pipeline_execution(Client, Input, []).
+
+-spec start_pipeline_execution(aws_client:aws_client(), start_pipeline_execution_request(), proplists:proplist()) ->
+    {ok, start_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, start_pipeline_execution_errors(), tuple()}.
 start_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPipelineExecution">>, Input, Options).
 
 %% @doc A method for forcing a running job to shut down.
+-spec stop_auto_ml_job(aws_client:aws_client(), stop_auto_ml_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_auto_ml_job_errors(), tuple()}.
 stop_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_auto_ml_job(Client, Input, []).
+
+-spec stop_auto_ml_job(aws_client:aws_client(), stop_auto_ml_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_auto_ml_job_errors(), tuple()}.
 stop_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopAutoMLJob">>, Input, Options).
@@ -4380,25 +17895,48 @@ stop_auto_ml_job(Client, Input, Options)
 %% `CompilationJobStatus' of the job to `Stopping'. After Amazon
 %% SageMaker stops the job, it sets the `CompilationJobStatus' to
 %% `Stopped'.
+-spec stop_compilation_job(aws_client:aws_client(), stop_compilation_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_compilation_job_errors(), tuple()}.
 stop_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_compilation_job(Client, Input, []).
+
+-spec stop_compilation_job(aws_client:aws_client(), stop_compilation_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_compilation_job_errors(), tuple()}.
 stop_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCompilationJob">>, Input, Options).
 
 %% @doc Stops a stage in an edge deployment plan.
+-spec stop_edge_deployment_stage(aws_client:aws_client(), stop_edge_deployment_stage_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 stop_edge_deployment_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_edge_deployment_stage(Client, Input, []).
+
+-spec stop_edge_deployment_stage(aws_client:aws_client(), stop_edge_deployment_stage_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 stop_edge_deployment_stage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopEdgeDeploymentStage">>, Input, Options).
 
 %% @doc Request to stop an edge packaging job.
+-spec stop_edge_packaging_job(aws_client:aws_client(), stop_edge_packaging_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 stop_edge_packaging_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_edge_packaging_job(Client, Input, []).
+
+-spec stop_edge_packaging_job(aws_client:aws_client(), stop_edge_packaging_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 stop_edge_packaging_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopEdgePackagingJob">>, Input, Options).
@@ -4414,25 +17952,52 @@ stop_edge_packaging_job(Client, Input, Options)
 %% tuning job moves to the `Stopped' state, it releases all
 %% reserved
 %% resources for the tuning job.
+-spec stop_hyper_parameter_tuning_job(aws_client:aws_client(), stop_hyper_parameter_tuning_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_hyper_parameter_tuning_job_errors(), tuple()}.
 stop_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_hyper_parameter_tuning_job(Client, Input, []).
+
+-spec stop_hyper_parameter_tuning_job(aws_client:aws_client(), stop_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_hyper_parameter_tuning_job_errors(), tuple()}.
 stop_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopHyperParameterTuningJob">>, Input, Options).
 
 %% @doc Stops an inference experiment.
+-spec stop_inference_experiment(aws_client:aws_client(), stop_inference_experiment_request()) ->
+    {ok, stop_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, stop_inference_experiment_errors(), tuple()}.
 stop_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_inference_experiment(Client, Input, []).
+
+-spec stop_inference_experiment(aws_client:aws_client(), stop_inference_experiment_request(), proplists:proplist()) ->
+    {ok, stop_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, stop_inference_experiment_errors(), tuple()}.
 stop_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopInferenceExperiment">>, Input, Options).
 
 %% @doc Stops an Inference Recommender job.
+-spec stop_inference_recommendations_job(aws_client:aws_client(), stop_inference_recommendations_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_inference_recommendations_job_errors(), tuple()}.
 stop_inference_recommendations_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_inference_recommendations_job(Client, Input, []).
+
+-spec stop_inference_recommendations_job(aws_client:aws_client(), stop_inference_recommendations_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_inference_recommendations_job_errors(), tuple()}.
 stop_inference_recommendations_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopInferenceRecommendationsJob">>, Input, Options).
@@ -4442,17 +18007,35 @@ stop_inference_recommendations_job(Client, Input, Options)
 %% A job that is stopped cannot be restarted. Any results
 %% obtained before the job is stopped are placed in the Amazon S3 output
 %% bucket.
+-spec stop_labeling_job(aws_client:aws_client(), stop_labeling_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_labeling_job_errors(), tuple()}.
 stop_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_labeling_job(Client, Input, []).
+
+-spec stop_labeling_job(aws_client:aws_client(), stop_labeling_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_labeling_job_errors(), tuple()}.
 stop_labeling_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopLabelingJob">>, Input, Options).
 
 %% @doc Stops a previously started monitoring schedule.
+-spec stop_monitoring_schedule(aws_client:aws_client(), stop_monitoring_schedule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_monitoring_schedule_errors(), tuple()}.
 stop_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_monitoring_schedule(Client, Input, []).
+
+-spec stop_monitoring_schedule(aws_client:aws_client(), stop_monitoring_schedule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_monitoring_schedule_errors(), tuple()}.
 stop_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopMonitoringSchedule">>, Input, Options).
@@ -4472,9 +18055,16 @@ stop_monitoring_schedule(Client, Input, Options)
 %% configures
 %% it, and attaches the preserved ML storage volume so you can continue your
 %% work.
+-spec stop_notebook_instance(aws_client:aws_client(), stop_notebook_instance_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 stop_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_notebook_instance(Client, Input, []).
+
+-spec stop_notebook_instance(aws_client:aws_client(), stop_notebook_instance_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 stop_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopNotebookInstance">>, Input, Options).
@@ -4514,17 +18104,35 @@ stop_notebook_instance(Client, Input, Options)
 %% finishes, the pipeline execution status is `Stopped'. If the timeout
 %% is hit
 %% the pipeline execution status is `Failed'.
+-spec stop_pipeline_execution(aws_client:aws_client(), stop_pipeline_execution_request()) ->
+    {ok, stop_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, stop_pipeline_execution_errors(), tuple()}.
 stop_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_pipeline_execution(Client, Input, []).
+
+-spec stop_pipeline_execution(aws_client:aws_client(), stop_pipeline_execution_request(), proplists:proplist()) ->
+    {ok, stop_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, stop_pipeline_execution_errors(), tuple()}.
 stop_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopPipelineExecution">>, Input, Options).
 
 %% @doc Stops a processing job.
+-spec stop_processing_job(aws_client:aws_client(), stop_processing_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_processing_job_errors(), tuple()}.
 stop_processing_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_processing_job(Client, Input, []).
+
+-spec stop_processing_job(aws_client:aws_client(), stop_processing_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_processing_job_errors(), tuple()}.
 stop_processing_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopProcessingJob">>, Input, Options).
@@ -4542,9 +18150,18 @@ stop_processing_job(Client, Input, Options)
 %% the job to `Stopping'. After SageMaker stops the job, it sets the
 %% status to
 %% `Stopped'.
+-spec stop_training_job(aws_client:aws_client(), stop_training_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_training_job_errors(), tuple()}.
 stop_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_training_job(Client, Input, []).
+
+-spec stop_training_job(aws_client:aws_client(), stop_training_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_training_job_errors(), tuple()}.
 stop_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTrainingJob">>, Input, Options).
@@ -4559,41 +18176,86 @@ stop_training_job(Client, Input, Options)
 %% transform job before
 %% it is completed, Amazon SageMaker doesn't store the job's output
 %% in Amazon S3.
+-spec stop_transform_job(aws_client:aws_client(), stop_transform_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_transform_job_errors(), tuple()}.
 stop_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_transform_job(Client, Input, []).
+
+-spec stop_transform_job(aws_client:aws_client(), stop_transform_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_transform_job_errors(), tuple()}.
 stop_transform_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTransformJob">>, Input, Options).
 
 %% @doc Updates an action.
+-spec update_action(aws_client:aws_client(), update_action_request()) ->
+    {ok, update_action_response(), tuple()} |
+    {error, any()} |
+    {error, update_action_errors(), tuple()}.
 update_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_action(Client, Input, []).
+
+-spec update_action(aws_client:aws_client(), update_action_request(), proplists:proplist()) ->
+    {ok, update_action_response(), tuple()} |
+    {error, any()} |
+    {error, update_action_errors(), tuple()}.
 update_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAction">>, Input, Options).
 
 %% @doc Updates the properties of an AppImageConfig.
+-spec update_app_image_config(aws_client:aws_client(), update_app_image_config_request()) ->
+    {ok, update_app_image_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_image_config_errors(), tuple()}.
 update_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_app_image_config(Client, Input, []).
+
+-spec update_app_image_config(aws_client:aws_client(), update_app_image_config_request(), proplists:proplist()) ->
+    {ok, update_app_image_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_image_config_errors(), tuple()}.
 update_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAppImageConfig">>, Input, Options).
 
 %% @doc Updates an artifact.
+-spec update_artifact(aws_client:aws_client(), update_artifact_request()) ->
+    {ok, update_artifact_response(), tuple()} |
+    {error, any()} |
+    {error, update_artifact_errors(), tuple()}.
 update_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_artifact(Client, Input, []).
+
+-spec update_artifact(aws_client:aws_client(), update_artifact_request(), proplists:proplist()) ->
+    {ok, update_artifact_response(), tuple()} |
+    {error, any()} |
+    {error, update_artifact_errors(), tuple()}.
 update_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateArtifact">>, Input, Options).
 
 %% @doc Updates a SageMaker HyperPod cluster.
+-spec update_cluster(aws_client:aws_client(), update_cluster_request()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_errors(), tuple()}.
 update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
+
+-spec update_cluster(aws_client:aws_client(), update_cluster_request(), proplists:proplist()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_errors(), tuple()}.
 update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
@@ -4605,49 +18267,101 @@ update_cluster(Client, Input, Options)
 %% use this API, see Update the SageMaker HyperPod platform software of a
 %% cluster:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software.
+-spec update_cluster_software(aws_client:aws_client(), update_cluster_software_request()) ->
+    {ok, update_cluster_software_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_software_errors(), tuple()}.
 update_cluster_software(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster_software(Client, Input, []).
+
+-spec update_cluster_software(aws_client:aws_client(), update_cluster_software_request(), proplists:proplist()) ->
+    {ok, update_cluster_software_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_software_errors(), tuple()}.
 update_cluster_software(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateClusterSoftware">>, Input, Options).
 
 %% @doc Updates the specified Git repository with the specified values.
+-spec update_code_repository(aws_client:aws_client(), update_code_repository_input()) ->
+    {ok, update_code_repository_output(), tuple()} |
+    {error, any()} |
+    {error, update_code_repository_errors(), tuple()}.
 update_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_code_repository(Client, Input, []).
+
+-spec update_code_repository(aws_client:aws_client(), update_code_repository_input(), proplists:proplist()) ->
+    {ok, update_code_repository_output(), tuple()} |
+    {error, any()} |
+    {error, update_code_repository_errors(), tuple()}.
 update_code_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCodeRepository">>, Input, Options).
 
 %% @doc Updates a context.
+-spec update_context(aws_client:aws_client(), update_context_request()) ->
+    {ok, update_context_response(), tuple()} |
+    {error, any()} |
+    {error, update_context_errors(), tuple()}.
 update_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_context(Client, Input, []).
+
+-spec update_context(aws_client:aws_client(), update_context_request(), proplists:proplist()) ->
+    {ok, update_context_response(), tuple()} |
+    {error, any()} |
+    {error, update_context_errors(), tuple()}.
 update_context(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContext">>, Input, Options).
 
 %% @doc Updates a fleet of devices.
+-spec update_device_fleet(aws_client:aws_client(), update_device_fleet_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_device_fleet_errors(), tuple()}.
 update_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_fleet(Client, Input, []).
+
+-spec update_device_fleet(aws_client:aws_client(), update_device_fleet_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_device_fleet_errors(), tuple()}.
 update_device_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDeviceFleet">>, Input, Options).
 
 %% @doc Updates one or more devices in a fleet.
+-spec update_devices(aws_client:aws_client(), update_devices_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 update_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_devices(Client, Input, []).
+
+-spec update_devices(aws_client:aws_client(), update_devices_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 update_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDevices">>, Input, Options).
 
 %% @doc Updates the default settings for new user profiles in the domain.
+-spec update_domain(aws_client:aws_client(), update_domain_request()) ->
+    {ok, update_domain_response(), tuple()} |
+    {error, any()} |
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain(Client, Input, []).
+
+-spec update_domain(aws_client:aws_client(), update_domain_request(), proplists:proplist()) ->
+    {ok, update_domain_response(), tuple()} |
+    {error, any()} |
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomain">>, Input, Options).
@@ -4682,9 +18396,18 @@ update_domain(Client, Input, Options)
 %% being created or updated you may lose visibility into the instance type
 %% the endpoint
 %% is using. The endpoint must be deleted in order to stop incurring charges.
+-spec update_endpoint(aws_client:aws_client(), update_endpoint_input()) ->
+    {ok, update_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, update_endpoint_errors(), tuple()}.
 update_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint(Client, Input, []).
+
+-spec update_endpoint(aws_client:aws_client(), update_endpoint_input(), proplists:proplist()) ->
+    {ok, update_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, update_endpoint_errors(), tuple()}.
 update_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpoint">>, Input, Options).
@@ -4701,9 +18424,18 @@ update_endpoint(Client, Input, Options)
 %% of an endpoint, use the DescribeEndpoint:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html
 %% API.
+-spec update_endpoint_weights_and_capacities(aws_client:aws_client(), update_endpoint_weights_and_capacities_input()) ->
+    {ok, update_endpoint_weights_and_capacities_output(), tuple()} |
+    {error, any()} |
+    {error, update_endpoint_weights_and_capacities_errors(), tuple()}.
 update_endpoint_weights_and_capacities(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint_weights_and_capacities(Client, Input, []).
+
+-spec update_endpoint_weights_and_capacities(aws_client:aws_client(), update_endpoint_weights_and_capacities_input(), proplists:proplist()) ->
+    {ok, update_endpoint_weights_and_capacities_output(), tuple()} |
+    {error, any()} |
+    {error, update_endpoint_weights_and_capacities_errors(), tuple()}.
 update_endpoint_weights_and_capacities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpointWeightsAndCapacities">>, Input, Options).
@@ -4712,9 +18444,18 @@ update_endpoint_weights_and_capacities(Client, Input, Options)
 %%
 %% Updates the display name of an
 %% experiment.
+-spec update_experiment(aws_client:aws_client(), update_experiment_request()) ->
+    {ok, update_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, update_experiment_errors(), tuple()}.
 update_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_experiment(Client, Input, []).
+
+-spec update_experiment(aws_client:aws_client(), update_experiment_request(), proplists:proplist()) ->
+    {ok, update_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, update_experiment_errors(), tuple()}.
 update_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExperiment">>, Input, Options).
@@ -4741,17 +18482,35 @@ update_experiment(Client, Input, Options)
 %% existing feature group, use the `UpdateFeatureGroup' API and set the
 %% `TtlDuration'
 %% `Unit' and `Value' to `null'.
+-spec update_feature_group(aws_client:aws_client(), update_feature_group_request()) ->
+    {ok, update_feature_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_feature_group_errors(), tuple()}.
 update_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_feature_group(Client, Input, []).
+
+-spec update_feature_group(aws_client:aws_client(), update_feature_group_request(), proplists:proplist()) ->
+    {ok, update_feature_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_feature_group_errors(), tuple()}.
 update_feature_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFeatureGroup">>, Input, Options).
 
 %% @doc Updates the description and parameters of the feature group.
+-spec update_feature_metadata(aws_client:aws_client(), update_feature_metadata_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_feature_metadata_errors(), tuple()}.
 update_feature_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_feature_metadata(Client, Input, []).
+
+-spec update_feature_metadata(aws_client:aws_client(), update_feature_metadata_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_feature_metadata_errors(), tuple()}.
 update_feature_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFeatureMetadata">>, Input, Options).
@@ -4759,9 +18518,18 @@ update_feature_metadata(Client, Input, Options)
 %% @doc Update a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
+-spec update_hub(aws_client:aws_client(), update_hub_request()) ->
+    {ok, update_hub_response(), tuple()} |
+    {error, any()} |
+    {error, update_hub_errors(), tuple()}.
 update_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hub(Client, Input, []).
+
+-spec update_hub(aws_client:aws_client(), update_hub_request(), proplists:proplist()) ->
+    {ok, update_hub_response(), tuple()} |
+    {error, any()} |
+    {error, update_hub_errors(), tuple()}.
 update_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHub">>, Input, Options).
@@ -4774,34 +18542,70 @@ update_hub(Client, Input, Options)
 %% and DeleteTags:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteTags.html
 %% APIs.
+-spec update_image(aws_client:aws_client(), update_image_request()) ->
+    {ok, update_image_response(), tuple()} |
+    {error, any()} |
+    {error, update_image_errors(), tuple()}.
 update_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_image(Client, Input, []).
+
+-spec update_image(aws_client:aws_client(), update_image_request(), proplists:proplist()) ->
+    {ok, update_image_response(), tuple()} |
+    {error, any()} |
+    {error, update_image_errors(), tuple()}.
 update_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateImage">>, Input, Options).
 
 %% @doc Updates the properties of a SageMaker image version.
+-spec update_image_version(aws_client:aws_client(), update_image_version_request()) ->
+    {ok, update_image_version_response(), tuple()} |
+    {error, any()} |
+    {error, update_image_version_errors(), tuple()}.
 update_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_image_version(Client, Input, []).
+
+-spec update_image_version(aws_client:aws_client(), update_image_version_request(), proplists:proplist()) ->
+    {ok, update_image_version_response(), tuple()} |
+    {error, any()} |
+    {error, update_image_version_errors(), tuple()}.
 update_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateImageVersion">>, Input, Options).
 
 %% @doc Updates an inference component.
+-spec update_inference_component(aws_client:aws_client(), update_inference_component_input()) ->
+    {ok, update_inference_component_output(), tuple()} |
+    {error, any()} |
+    {error, update_inference_component_errors(), tuple()}.
 update_inference_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_component(Client, Input, []).
+
+-spec update_inference_component(aws_client:aws_client(), update_inference_component_input(), proplists:proplist()) ->
+    {ok, update_inference_component_output(), tuple()} |
+    {error, any()} |
+    {error, update_inference_component_errors(), tuple()}.
 update_inference_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInferenceComponent">>, Input, Options).
 
 %% @doc Runtime settings for a model that is deployed with an inference
 %% component.
+-spec update_inference_component_runtime_config(aws_client:aws_client(), update_inference_component_runtime_config_input()) ->
+    {ok, update_inference_component_runtime_config_output(), tuple()} |
+    {error, any()} |
+    {error, update_inference_component_runtime_config_errors(), tuple()}.
 update_inference_component_runtime_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_component_runtime_config(Client, Input, []).
+
+-spec update_inference_component_runtime_config(aws_client:aws_client(), update_inference_component_runtime_config_input(), proplists:proplist()) ->
+    {ok, update_inference_component_runtime_config_output(), tuple()} |
+    {error, any()} |
+    {error, update_inference_component_runtime_config_errors(), tuple()}.
 update_inference_component_runtime_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInferenceComponentRuntimeConfig">>, Input, Options).
@@ -4814,9 +18618,18 @@ update_inference_component_runtime_config(Client, Input, Options)
 %% inference experiment,
 %% see DescribeInferenceExperiment:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeInferenceExperiment.html.
+-spec update_inference_experiment(aws_client:aws_client(), update_inference_experiment_request()) ->
+    {ok, update_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, update_inference_experiment_errors(), tuple()}.
 update_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_experiment(Client, Input, []).
+
+-spec update_inference_experiment(aws_client:aws_client(), update_inference_experiment_request(), proplists:proplist()) ->
+    {ok, update_inference_experiment_response(), tuple()} |
+    {error, any()} |
+    {error, update_inference_experiment_errors(), tuple()}.
 update_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInferenceExperiment">>, Input, Options).
@@ -4825,33 +18638,69 @@ update_inference_experiment(Client, Input, Options)
 %%
 %% You cannot update both model card content and model card status in a
 %% single call.
+-spec update_model_card(aws_client:aws_client(), update_model_card_request()) ->
+    {ok, update_model_card_response(), tuple()} |
+    {error, any()} |
+    {error, update_model_card_errors(), tuple()}.
 update_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_card(Client, Input, []).
+
+-spec update_model_card(aws_client:aws_client(), update_model_card_request(), proplists:proplist()) ->
+    {ok, update_model_card_response(), tuple()} |
+    {error, any()} |
+    {error, update_model_card_errors(), tuple()}.
 update_model_card(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModelCard">>, Input, Options).
 
 %% @doc Updates a versioned model.
+-spec update_model_package(aws_client:aws_client(), update_model_package_input()) ->
+    {ok, update_model_package_output(), tuple()} |
+    {error, any()} |
+    {error, update_model_package_errors(), tuple()}.
 update_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_package(Client, Input, []).
+
+-spec update_model_package(aws_client:aws_client(), update_model_package_input(), proplists:proplist()) ->
+    {ok, update_model_package_output(), tuple()} |
+    {error, any()} |
+    {error, update_model_package_errors(), tuple()}.
 update_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModelPackage">>, Input, Options).
 
 %% @doc Update the parameters of a model monitor alert.
+-spec update_monitoring_alert(aws_client:aws_client(), update_monitoring_alert_request()) ->
+    {ok, update_monitoring_alert_response(), tuple()} |
+    {error, any()} |
+    {error, update_monitoring_alert_errors(), tuple()}.
 update_monitoring_alert(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_monitoring_alert(Client, Input, []).
+
+-spec update_monitoring_alert(aws_client:aws_client(), update_monitoring_alert_request(), proplists:proplist()) ->
+    {ok, update_monitoring_alert_response(), tuple()} |
+    {error, any()} |
+    {error, update_monitoring_alert_errors(), tuple()}.
 update_monitoring_alert(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMonitoringAlert">>, Input, Options).
 
 %% @doc Updates a previously created schedule.
+-spec update_monitoring_schedule(aws_client:aws_client(), update_monitoring_schedule_request()) ->
+    {ok, update_monitoring_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, update_monitoring_schedule_errors(), tuple()}.
 update_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_monitoring_schedule(Client, Input, []).
+
+-spec update_monitoring_schedule(aws_client:aws_client(), update_monitoring_schedule_request(), proplists:proplist()) ->
+    {ok, update_monitoring_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, update_monitoring_schedule_errors(), tuple()}.
 update_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMonitoringSchedule">>, Input, Options).
@@ -4862,9 +18711,18 @@ update_monitoring_schedule(Client, Input, Options)
 %% downgrading the ML compute instance used for your notebook instance to
 %% accommodate
 %% changes in your workload requirements.
+-spec update_notebook_instance(aws_client:aws_client(), update_notebook_instance_input()) ->
+    {ok, update_notebook_instance_output(), tuple()} |
+    {error, any()} |
+    {error, update_notebook_instance_errors(), tuple()}.
 update_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notebook_instance(Client, Input, []).
+
+-spec update_notebook_instance(aws_client:aws_client(), update_notebook_instance_input(), proplists:proplist()) ->
+    {ok, update_notebook_instance_output(), tuple()} |
+    {error, any()} |
+    {error, update_notebook_instance_errors(), tuple()}.
 update_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotebookInstance">>, Input, Options).
@@ -4873,25 +18731,52 @@ update_notebook_instance(Client, Input, Options)
 %% CreateNotebookInstanceLifecycleConfig:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstanceLifecycleConfig.html
 %% API.
+-spec update_notebook_instance_lifecycle_config(aws_client:aws_client(), update_notebook_instance_lifecycle_config_input()) ->
+    {ok, update_notebook_instance_lifecycle_config_output(), tuple()} |
+    {error, any()} |
+    {error, update_notebook_instance_lifecycle_config_errors(), tuple()}.
 update_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notebook_instance_lifecycle_config(Client, Input, []).
+
+-spec update_notebook_instance_lifecycle_config(aws_client:aws_client(), update_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
+    {ok, update_notebook_instance_lifecycle_config_output(), tuple()} |
+    {error, any()} |
+    {error, update_notebook_instance_lifecycle_config_errors(), tuple()}.
 update_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotebookInstanceLifecycleConfig">>, Input, Options).
 
 %% @doc Updates a pipeline.
+-spec update_pipeline(aws_client:aws_client(), update_pipeline_request()) ->
+    {ok, update_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pipeline(Client, Input, []).
+
+-spec update_pipeline(aws_client:aws_client(), update_pipeline_request(), proplists:proplist()) ->
+    {ok, update_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePipeline">>, Input, Options).
 
 %% @doc Updates a pipeline execution.
+-spec update_pipeline_execution(aws_client:aws_client(), update_pipeline_execution_request()) ->
+    {ok, update_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_execution_errors(), tuple()}.
 update_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pipeline_execution(Client, Input, []).
+
+-spec update_pipeline_execution(aws_client:aws_client(), update_pipeline_execution_request(), proplists:proplist()) ->
+    {ok, update_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_execution_errors(), tuple()}.
 update_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePipelineExecution">>, Input, Options).
@@ -4905,17 +18790,35 @@ update_pipeline_execution(Client, Input, Options)
 %% or being created, or updated, you may lose resources already created by
 %% the
 %% project.
+-spec update_project(aws_client:aws_client(), update_project_input()) ->
+    {ok, update_project_output(), tuple()} |
+    {error, any()} |
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project(Client, Input, []).
+
+-spec update_project(aws_client:aws_client(), update_project_input(), proplists:proplist()) ->
+    {ok, update_project_output(), tuple()} |
+    {error, any()} |
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProject">>, Input, Options).
 
 %% @doc Updates the settings of a space.
+-spec update_space(aws_client:aws_client(), update_space_request()) ->
+    {ok, update_space_response(), tuple()} |
+    {error, any()} |
+    {error, update_space_errors(), tuple()}.
 update_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_space(Client, Input, []).
+
+-spec update_space(aws_client:aws_client(), update_space_request(), proplists:proplist()) ->
+    {ok, update_space_response(), tuple()} |
+    {error, any()} |
+    {error, update_space_errors(), tuple()}.
 update_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSpace">>, Input, Options).
@@ -4923,33 +18826,69 @@ update_space(Client, Input, Options)
 %% @doc Update a model training job to request a new Debugger profiling
 %% configuration or to
 %% change warm pool retention length.
+-spec update_training_job(aws_client:aws_client(), update_training_job_request()) ->
+    {ok, update_training_job_response(), tuple()} |
+    {error, any()} |
+    {error, update_training_job_errors(), tuple()}.
 update_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_training_job(Client, Input, []).
+
+-spec update_training_job(aws_client:aws_client(), update_training_job_request(), proplists:proplist()) ->
+    {ok, update_training_job_response(), tuple()} |
+    {error, any()} |
+    {error, update_training_job_errors(), tuple()}.
 update_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrainingJob">>, Input, Options).
 
 %% @doc Updates the display name of a trial.
+-spec update_trial(aws_client:aws_client(), update_trial_request()) ->
+    {ok, update_trial_response(), tuple()} |
+    {error, any()} |
+    {error, update_trial_errors(), tuple()}.
 update_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trial(Client, Input, []).
+
+-spec update_trial(aws_client:aws_client(), update_trial_request(), proplists:proplist()) ->
+    {ok, update_trial_response(), tuple()} |
+    {error, any()} |
+    {error, update_trial_errors(), tuple()}.
 update_trial(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrial">>, Input, Options).
 
 %% @doc Updates one or more properties of a trial component.
+-spec update_trial_component(aws_client:aws_client(), update_trial_component_request()) ->
+    {ok, update_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, update_trial_component_errors(), tuple()}.
 update_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trial_component(Client, Input, []).
+
+-spec update_trial_component(aws_client:aws_client(), update_trial_component_request(), proplists:proplist()) ->
+    {ok, update_trial_component_response(), tuple()} |
+    {error, any()} |
+    {error, update_trial_component_errors(), tuple()}.
 update_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrialComponent">>, Input, Options).
 
 %% @doc Updates a user profile.
+-spec update_user_profile(aws_client:aws_client(), update_user_profile_request()) ->
+    {ok, update_user_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_profile_errors(), tuple()}.
 update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_profile(Client, Input, []).
+
+-spec update_user_profile(aws_client:aws_client(), update_user_profile_request(), proplists:proplist()) ->
+    {ok, update_user_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_user_profile_errors(), tuple()}.
 update_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserProfile">>, Input, Options).
@@ -4998,18 +18937,36 @@ update_user_profile(Client, Input, Options)
 %% operation.
 %%
 %% This operation only applies to private workforces.
+-spec update_workforce(aws_client:aws_client(), update_workforce_request()) ->
+    {ok, update_workforce_response(), tuple()} |
+    {error, any()} |
+    {error, update_workforce_errors(), tuple()}.
 update_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workforce(Client, Input, []).
+
+-spec update_workforce(aws_client:aws_client(), update_workforce_request(), proplists:proplist()) ->
+    {ok, update_workforce_response(), tuple()} |
+    {error, any()} |
+    {error, update_workforce_errors(), tuple()}.
 update_workforce(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkforce">>, Input, Options).
 
 %% @doc Updates an existing work team with new member definitions or
 %% description.
+-spec update_workteam(aws_client:aws_client(), update_workteam_request()) ->
+    {ok, update_workteam_response(), tuple()} |
+    {error, any()} |
+    {error, update_workteam_errors(), tuple()}.
 update_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workteam(Client, Input, []).
+
+-spec update_workteam(aws_client:aws_client(), update_workteam_request(), proplists:proplist()) ->
+    {ok, update_workteam_response(), tuple()} |
+    {error, any()} |
+    {error, update_workteam_errors(), tuple()}.
 update_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkteam">>, Input, Options).

@@ -42,14 +42,161 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_home_region_control_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"HomeRegion">> := string(),
+%%   <<"Target">> := target()
+%% }
+-type create_home_region_control_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_home_region_control_result() :: #{
+%%   <<"HomeRegionControl">> => home_region_control()
+%% }
+-type create_home_region_control_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_home_region_control_request() :: #{
+%%   <<"ControlId">> := string()
+%% }
+-type delete_home_region_control_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_home_region_control_result() :: #{
+
+%% }
+-type delete_home_region_control_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_home_region_controls_request() :: #{
+%%   <<"ControlId">> => string(),
+%%   <<"HomeRegion">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Target">> => target()
+%% }
+-type describe_home_region_controls_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_home_region_controls_result() :: #{
+%%   <<"HomeRegionControls">> => list(home_region_control()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_home_region_controls_result() :: #{binary() => any()}.
+
+%% Example:
+%% dry_run_operation() :: #{
+%%   <<"Message">> => string()
+%% }
+-type dry_run_operation() :: #{binary() => any()}.
+
+%% Example:
+%% get_home_region_request() :: #{
+
+%% }
+-type get_home_region_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_home_region_result() :: #{
+%%   <<"HomeRegion">> => string()
+%% }
+-type get_home_region_result() :: #{binary() => any()}.
+
+%% Example:
+%% home_region_control() :: #{
+%%   <<"ControlId">> => string(),
+%%   <<"HomeRegion">> => string(),
+%%   <<"RequestedTime">> => non_neg_integer(),
+%%   <<"Target">> => target()
+%% }
+-type home_region_control() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type target() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RetryAfterSeconds">> => integer()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+-type create_home_region_control_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    dry_run_operation() | 
+    access_denied_exception().
+
+-type delete_home_region_control_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
+-type describe_home_region_controls_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
+-type get_home_region_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc This API sets up the home region for the calling account only.
+-spec create_home_region_control(aws_client:aws_client(), create_home_region_control_request()) ->
+    {ok, create_home_region_control_result(), tuple()} |
+    {error, any()} |
+    {error, create_home_region_control_errors(), tuple()}.
 create_home_region_control(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_home_region_control(Client, Input, []).
+
+-spec create_home_region_control(aws_client:aws_client(), create_home_region_control_request(), proplists:proplist()) ->
+    {ok, create_home_region_control_result(), tuple()} |
+    {error, any()} |
+    {error, create_home_region_control_errors(), tuple()}.
 create_home_region_control(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHomeRegionControl">>, Input, Options).
@@ -59,9 +206,18 @@ create_home_region_control(Client, Input, Options)
 %%
 %% The operation does not delete discovery or migration tracking data in the
 %% home region.
+-spec delete_home_region_control(aws_client:aws_client(), delete_home_region_control_request()) ->
+    {ok, delete_home_region_control_result(), tuple()} |
+    {error, any()} |
+    {error, delete_home_region_control_errors(), tuple()}.
 delete_home_region_control(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_home_region_control(Client, Input, []).
+
+-spec delete_home_region_control(aws_client:aws_client(), delete_home_region_control_request(), proplists:proplist()) ->
+    {ok, delete_home_region_control_result(), tuple()} |
+    {error, any()} |
+    {error, delete_home_region_control_errors(), tuple()}.
 delete_home_region_control(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHomeRegionControl">>, Input, Options).
@@ -69,9 +225,18 @@ delete_home_region_control(Client, Input, Options)
 %% @doc This API permits filtering on the `ControlId' and
 %% `HomeRegion'
 %% fields.
+-spec describe_home_region_controls(aws_client:aws_client(), describe_home_region_controls_request()) ->
+    {ok, describe_home_region_controls_result(), tuple()} |
+    {error, any()} |
+    {error, describe_home_region_controls_errors(), tuple()}.
 describe_home_region_controls(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_home_region_controls(Client, Input, []).
+
+-spec describe_home_region_controls(aws_client:aws_client(), describe_home_region_controls_request(), proplists:proplist()) ->
+    {ok, describe_home_region_controls_result(), tuple()} |
+    {error, any()} |
+    {error, describe_home_region_controls_errors(), tuple()}.
 describe_home_region_controls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHomeRegionControls">>, Input, Options).
@@ -86,9 +251,18 @@ describe_home_region_controls(Client, Input, Options)
 %% other AWS Application Discovery Service and AWS Migration Hub APIs, to
 %% obtain the account's
 %% Migration Hub home region.
+-spec get_home_region(aws_client:aws_client(), get_home_region_request()) ->
+    {ok, get_home_region_result(), tuple()} |
+    {error, any()} |
+    {error, get_home_region_errors(), tuple()}.
 get_home_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_home_region(Client, Input, []).
+
+-spec get_home_region(aws_client:aws_client(), get_home_region_request(), proplists:proplist()) ->
+    {ok, get_home_region_result(), tuple()} |
+    {error, any()} |
+    {error, get_home_region_errors(), tuple()}.
 get_home_region(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHomeRegion">>, Input, Options).

@@ -101,13 +101,1210 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% record_length() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type record_length() :: #{binary() => any()}.
+
+
+%% Example:
+%% alternate_key() :: #{
+%%   <<"allowDuplicates">> => boolean(),
+%%   <<"length">> => integer(),
+%%   <<"name">> => [string()],
+%%   <<"offset">> => integer()
+%% }
+-type alternate_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_batch_job_executions_request() :: #{
+%%   <<"executionIds">> => list(string()()),
+%%   <<"jobName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startedAfter">> => non_neg_integer(),
+%%   <<"startedBefore">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type list_batch_job_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_response() :: #{
+%%   <<"environmentId">> := string()
+%% }
+-type update_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% pending_maintenance() :: #{
+%%   <<"engineVersion">> => [string()],
+%%   <<"schedule">> => maintenance_schedule()
+%% }
+-type pending_maintenance() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_summary() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"applicationVersion">> => integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"deploymentId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type deployment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_batch_job_identifier() :: #{
+%%   <<"fileName">> => [string()],
+%%   <<"folderPath">> => [string()]
+%% }
+-type file_batch_job_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sets_response() :: #{
+%%   <<"dataSets">> => list(data_set_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_set_import_task_response() :: #{
+%%   <<"taskId">> := string()
+%% }
+-type create_data_set_import_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% get_batch_job_execution_request() :: #{}
+-type get_batch_job_execution_request() :: #{}.
+
+%% Example:
+%% delete_application_from_environment_request() :: #{}
+-type delete_application_from_environment_request() :: #{}.
+
+
+%% Example:
+%% data_set() :: #{
+%%   <<"datasetName">> => [string()],
+%%   <<"datasetOrg">> => list(),
+%%   <<"recordLength">> => record_length(),
+%%   <<"relativePath">> => [string()],
+%%   <<"storageType">> => [string()]
+%% }
+-type data_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_response() :: #{
+%%   <<"deployments">> => list(deployment_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vsam_attributes() :: #{
+%%   <<"alternateKeys">> => list(alternate_key()()),
+%%   <<"compressed">> => boolean(),
+%%   <<"encoding">> => [string()],
+%%   <<"format">> => [string()],
+%%   <<"primaryKey">> => primary_key()
+%% }
+-type vsam_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployed_version_summary() :: #{
+%%   <<"applicationVersion">> => integer(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type deployed_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"engineType">> => string(),
+%%   <<"engineVersion">> => string(),
+%%   <<"environmentArn">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"instanceType">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type environment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_request() :: #{}
+-type get_environment_request() :: #{}.
+
+
+%% Example:
+%% create_deployment_request() :: #{
+%%   <<"applicationVersion">> => integer(),
+%%   <<"clientToken">> => [string()],
+%%   <<"environmentId">> => string()
+%% }
+-type create_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% vsam_detail_attributes() :: #{
+%%   <<"alternateKeys">> => list(alternate_key()()),
+%%   <<"cacheAtStartup">> => boolean(),
+%%   <<"compressed">> => boolean(),
+%%   <<"encoding">> => string(),
+%%   <<"primaryKey">> => primary_key(),
+%%   <<"recordFormat">> => string()
+%% }
+-type vsam_detail_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nameFilter">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type list_data_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_set_details_response() :: #{
+%%   <<"blocksize">> => integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"dataSetName">> => string(),
+%%   <<"dataSetOrg">> => list(),
+%%   <<"fileSize">> => [float()],
+%%   <<"lastReferencedTime">> => non_neg_integer(),
+%%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"location">> => string(),
+%%   <<"recordLength">> => integer()
+%% }
+-type get_data_set_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_set_details_request() :: #{}
+-type get_data_set_details_request() :: #{}.
+
+
+%% Example:
+%% application_version_summary() :: #{
+%%   <<"applicationVersion">> => integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type application_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_deployment_response() :: #{
+%%   <<"deploymentId">> := string()
+%% }
+-type create_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_environment_response() :: #{
+%%   <<"actualCapacity">> => integer(),
+%%   <<"creationTime">> := non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"engineType">> := string(),
+%%   <<"engineVersion">> := string(),
+%%   <<"environmentArn">> := string(),
+%%   <<"environmentId">> := string(),
+%%   <<"highAvailabilityConfig">> => high_availability_config(),
+%%   <<"instanceType">> := string(),
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"loadBalancerArn">> => [string()],
+%%   <<"name">> := string(),
+%%   <<"pendingMaintenance">> => pending_maintenance(),
+%%   <<"preferredMaintenanceWindow">> => string(),
+%%   <<"publiclyAccessible">> => boolean(),
+%%   <<"securityGroupIds">> := list(string()()),
+%%   <<"status">> := string(),
+%%   <<"statusReason">> => [string()],
+%%   <<"storageConfigurations">> => list(list()()),
+%%   <<"subnetIds">> := list(string()()),
+%%   <<"tags">> => map(),
+%%   <<"vpcId">> := string()
+%% }
+-type get_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% gdg_detail_attributes() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"rollDisposition">> => string()
+%% }
+-type gdg_detail_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% script_batch_job_identifier() :: #{
+%%   <<"scriptName">> => [string()]
+%% }
+-type script_batch_job_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% engine_versions_summary() :: #{
+%%   <<"engineType">> => [string()],
+%%   <<"engineVersion">> => [string()]
+%% }
+-type engine_versions_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ps_attributes() :: #{
+%%   <<"encoding">> => [string()],
+%%   <<"format">> => [string()]
+%% }
+-type ps_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_batch_job_execution_request() :: #{}
+-type cancel_batch_job_execution_request() :: #{}.
+
+
+%% Example:
+%% high_availability_config() :: #{
+%%   <<"desiredCapacity">> => integer()
+%% }
+-type high_availability_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% script_batch_job_definition() :: #{
+%%   <<"scriptName">> => [string()]
+%% }
+-type script_batch_job_definition() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_version_request() :: #{}
+-type get_application_version_request() :: #{}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_request() :: #{}
+-type get_deployment_request() :: #{}.
+
+
+%% Example:
+%% stop_application_request() :: #{
+%%   <<"forceStop">> => boolean()
+%% }
+-type stop_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"dataSetName">> => string(),
+%%   <<"dataSetOrg">> => string(),
+%%   <<"format">> => string(),
+%%   <<"lastReferencedTime">> => non_neg_integer(),
+%%   <<"lastUpdatedTime">> => non_neg_integer()
+%% }
+-type data_set_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% po_attributes() :: #{
+%%   <<"encoding">> => [string()],
+%%   <<"format">> => [string()],
+%%   <<"memberFileExtensions">> => list(string()())
+%% }
+-type po_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> := map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"definition">> := list(),
+%%   <<"description">> => string(),
+%%   <<"engineType">> := string(),
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"name">> := string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_request() :: #{
+%%   <<"engineType">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"names">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_import_summary() :: #{
+%%   <<"failed">> => integer(),
+%%   <<"inProgress">> => integer(),
+%%   <<"pending">> => integer(),
+%%   <<"succeeded">> => integer(),
+%%   <<"total">> => integer()
+%% }
+-type data_set_import_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_group_summary() :: #{
+%%   <<"logGroupName">> => string(),
+%%   <<"logType">> => string()
+%% }
+-type log_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"applicationArn">> := string(),
+%%   <<"applicationId">> := string(),
+%%   <<"applicationVersion">> := integer()
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_timeout_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type execution_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_set_import_history_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_set_import_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_set_import_task_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"importConfig">> := list()
+%% }
+-type create_data_set_import_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% efs_storage_configuration() :: #{
+%%   <<"fileSystemId">> => string(),
+%%   <<"mountPoint">> => string()
+%% }
+-type efs_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_response() :: #{}
+-type delete_application_response() :: #{}.
+
+%% Example:
+%% start_application_response() :: #{}
+-type start_application_response() :: #{}.
+
+
+%% Example:
+%% create_environment_response() :: #{
+%%   <<"environmentId">> := string()
+%% }
+-type create_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% po_detail_attributes() :: #{
+%%   <<"encoding">> => [string()],
+%%   <<"format">> => [string()]
+%% }
+-type po_detail_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"currentApplicationVersion">> := integer(),
+%%   <<"definition">> => list(),
+%%   <<"description">> => string()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_response() :: #{
+%%   <<"applicationVersion">> := integer()
+%% }
+-type update_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_signed_bluinsights_url_response() :: #{
+%%   <<"signedBiUrl">> => [string()]
+%% }
+-type get_signed_bluinsights_url_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_request() :: #{}
+-type delete_environment_request() :: #{}.
+
+%% Example:
+%% start_application_request() :: #{}
+-type start_application_request() :: #{}.
+
+
+%% Example:
+%% get_application_response() :: #{
+%%   <<"applicationArn">> := string(),
+%%   <<"applicationId">> := string(),
+%%   <<"creationTime">> := non_neg_integer(),
+%%   <<"deployedVersion">> => deployed_version_summary(),
+%%   <<"description">> => string(),
+%%   <<"engineType">> := string(),
+%%   <<"environmentId">> => string(),
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"lastStartTime">> => non_neg_integer(),
+%%   <<"latestVersion">> := application_version_summary(),
+%%   <<"listenerArns">> => list(string()()),
+%%   <<"listenerPorts">> => list(integer()()),
+%%   <<"loadBalancerDnsName">> => string(),
+%%   <<"logGroups">> => list(log_group_summary()()),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> := string(),
+%%   <<"statusReason">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"targetGroupArns">> => list(string()())
+%% }
+-type get_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"environmentId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"names">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_batch_job_identifier() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"identifier">> => list(),
+%%   <<"keyPrefix">> => [string()]
+%% }
+-type s3_batch_job_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% stop_application_response() :: #{}
+-type stop_application_response() :: #{}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_batch_job_definition() :: #{
+%%   <<"fileName">> => [string()],
+%%   <<"folderPath">> => [string()]
+%% }
+-type file_batch_job_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_batch_job_execution_response() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"batchJobIdentifier">> => list(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"executionId">> := string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobType">> => string(),
+%%   <<"jobUser">> => string(),
+%%   <<"returnCode">> => [string()],
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"status">> := string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type get_batch_job_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% list_batch_job_definitions_response() :: #{
+%%   <<"batchJobDefinitions">> => list(list()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_batch_job_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% fsx_storage_configuration() :: #{
+%%   <<"fileSystemId">> => string(),
+%%   <<"mountPoint">> => string()
+%% }
+-type fsx_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% data_set_import_item() :: #{
+%%   <<"dataSet">> => data_set(),
+%%   <<"externalLocation">> => list()
+%% }
+-type data_set_import_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% gdg_attributes() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"rollDisposition">> => [string()]
+%% }
+-type gdg_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployment_response() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"applicationVersion">> := integer(),
+%%   <<"creationTime">> := non_neg_integer(),
+%%   <<"deploymentId">> := string(),
+%%   <<"environmentId">> := string(),
+%%   <<"status">> := string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type get_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => integer(),
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_batch_job_executions_response() :: #{
+%%   <<"batchJobExecutions">> := list(batch_job_execution_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_batch_job_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_application_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_application_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_engine_versions_response() :: #{
+%%   <<"engineVersions">> := list(engine_versions_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_engine_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_response() :: #{
+%%   <<"environments">> => list(environment_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% maintenance_schedule() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type maintenance_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_application_version_response() :: #{
+%%   <<"applicationVersion">> := integer(),
+%%   <<"creationTime">> := non_neg_integer(),
+%%   <<"definitionContent">> := string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"status">> := string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type get_application_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_summary() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"applicationId">> => string(),
+%%   <<"applicationVersion">> => integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"deploymentStatus">> => string(),
+%%   <<"description">> => string(),
+%%   <<"engineType">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"lastStartTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"versionStatus">> => string()
+%% }
+-type application_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"applications">> => list(application_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_application_versions_response() :: #{
+%%   <<"applicationVersions">> => list(application_version_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_application_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"engineType">> := string(),
+%%   <<"engineVersion">> => string(),
+%%   <<"highAvailabilityConfig">> => high_availability_config(),
+%%   <<"instanceType">> := string(),
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"name">> := string(),
+%%   <<"preferredMaintenanceWindow">> => string(),
+%%   <<"publiclyAccessible">> => boolean(),
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"storageConfigurations">> => list(list()()),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"tags">> => map()
+%% }
+-type create_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_batch_job_execution_response() :: #{}
+-type cancel_batch_job_execution_response() :: #{}.
+
+
+%% Example:
+%% update_environment_request() :: #{
+%%   <<"applyDuringMaintenanceWindow">> => boolean(),
+%%   <<"desiredCapacity">> => integer(),
+%%   <<"engineVersion">> => string(),
+%%   <<"forceUpdate">> => boolean(),
+%%   <<"instanceType">> => string(),
+%%   <<"preferredMaintenanceWindow">> => [string()]
+%% }
+-type update_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_batch_job_response() :: #{
+%%   <<"executionId">> := string()
+%% }
+-type start_batch_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_set_import_history_response() :: #{
+%%   <<"dataSetImportTasks">> => list(data_set_import_task()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_set_import_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_from_environment_response() :: #{}
+-type delete_application_from_environment_response() :: #{}.
+
+
+%% Example:
+%% start_batch_job_request() :: #{
+%%   <<"batchJobIdentifier">> := list(),
+%%   <<"jobParams">> => map()
+%% }
+-type start_batch_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_set_import_task_request() :: #{}
+-type get_data_set_import_task_request() :: #{}.
+
+
+%% Example:
+%% list_engine_versions_request() :: #{
+%%   <<"engineType">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_engine_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% primary_key() :: #{
+%%   <<"length">> => integer(),
+%%   <<"name">> => [string()],
+%%   <<"offset">> => integer()
+%% }
+-type primary_key() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
+
+
+%% Example:
+%% ps_detail_attributes() :: #{
+%%   <<"encoding">> => [string()],
+%%   <<"format">> => [string()]
+%% }
+-type ps_detail_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_batch_job_definitions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"prefix">> => [string()]
+%% }
+-type list_batch_job_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_response() :: #{}
+-type delete_environment_response() :: #{}.
+
+
+%% Example:
+%% batch_job_execution_summary() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"batchJobIdentifier">> => list(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"executionId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobType">> => string(),
+%%   <<"returnCode">> => [string()],
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type batch_job_execution_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
+
+%% Example:
+%% get_data_set_import_task_response() :: #{
+%%   <<"status">> := string(),
+%%   <<"summary">> => data_set_import_summary(),
+%%   <<"taskId">> := string()
+%% }
+-type get_data_set_import_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_import_task() :: #{
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => [string()],
+%%   <<"summary">> => data_set_import_summary(),
+%%   <<"taskId">> => string()
+%% }
+-type data_set_import_task() :: #{binary() => any()}.
+
+-type cancel_batch_job_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_data_set_import_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_application_from_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type get_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_application_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_batch_job_execution_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_data_set_details_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    execution_timeout_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_data_set_import_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_signed_bluinsights_url_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_application_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_applications_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_batch_job_definitions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_batch_job_executions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_set_import_history_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_data_sets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    execution_timeout_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type list_deployments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_engine_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_environments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_batch_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_application_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Cancels the running of a specific batch job execution.
+-spec cancel_batch_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_batch_job_execution_request()) ->
+    {ok, cancel_batch_job_execution_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_batch_job_execution_errors(), tuple()}.
 cancel_batch_job_execution(Client, ApplicationId, ExecutionId, Input) ->
     cancel_batch_job_execution(Client, ApplicationId, ExecutionId, Input, []).
+
+-spec cancel_batch_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_batch_job_execution_request(), proplists:proplist()) ->
+    {ok, cancel_batch_job_execution_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_batch_job_execution_errors(), tuple()}.
 cancel_batch_job_execution(Client, ApplicationId, ExecutionId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/batch-job-executions/", aws_util:encode_uri(ExecutionId), "/cancel"],
@@ -134,8 +1331,17 @@ cancel_batch_job_execution(Client, ApplicationId, ExecutionId, Input0, Options0)
 %%
 %% Requires an existing runtime
 %% environment and application definition file.
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
+
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
@@ -159,8 +1365,17 @@ create_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a data set import task for a specific application.
+-spec create_data_set_import_task(aws_client:aws_client(), binary() | list(), create_data_set_import_task_request()) ->
+    {ok, create_data_set_import_task_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_set_import_task_errors(), tuple()}.
 create_data_set_import_task(Client, ApplicationId, Input) ->
     create_data_set_import_task(Client, ApplicationId, Input, []).
+
+-spec create_data_set_import_task(aws_client:aws_client(), binary() | list(), create_data_set_import_task_request(), proplists:proplist()) ->
+    {ok, create_data_set_import_task_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_set_import_task_errors(), tuple()}.
 create_data_set_import_task(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataset-import-task"],
@@ -186,8 +1401,17 @@ create_data_set_import_task(Client, ApplicationId, Input0, Options0) ->
 %% @doc Creates and starts a deployment to deploy an application into a
 %% runtime
 %% environment.
+-spec create_deployment(aws_client:aws_client(), binary() | list(), create_deployment_request()) ->
+    {ok, create_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, ApplicationId, Input) ->
     create_deployment(Client, ApplicationId, Input, []).
+
+-spec create_deployment(aws_client:aws_client(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
+    {ok, create_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/deployments"],
@@ -211,8 +1435,17 @@ create_deployment(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a runtime environment for a given runtime engine.
+-spec create_environment(aws_client:aws_client(), create_environment_request()) ->
+    {ok, create_environment_response(), tuple()} |
+    {error, any()} |
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
+
+-spec create_environment(aws_client:aws_client(), create_environment_request(), proplists:proplist()) ->
+    {ok, create_environment_response(), tuple()} |
+    {error, any()} |
+    {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/environments"],
@@ -238,8 +1471,17 @@ create_environment(Client, Input0, Options0) ->
 %% @doc Deletes a specific application.
 %%
 %% You cannot delete a running application.
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
+
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -271,8 +1513,17 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 %% of the
 %% application with the runtime environment so you can delete the environment
 %% smoothly.
+-spec delete_application_from_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_application_from_environment_request()) ->
+    {ok, delete_application_from_environment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_from_environment_errors(), tuple()}.
 delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input) ->
     delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input, []).
+
+-spec delete_application_from_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_application_from_environment_request(), proplists:proplist()) ->
+    {ok, delete_application_from_environment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_from_environment_errors(), tuple()}.
 delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environment/", aws_util:encode_uri(EnvironmentId), ""],
@@ -301,8 +1552,17 @@ delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input0
 %% applications. If it does, you must delete those applications before you
 %% delete the
 %% environment.
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request()) ->
+    {ok, delete_environment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, EnvironmentId, Input) ->
     delete_environment(Client, EnvironmentId, Input, []).
+
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
+    {ok, delete_environment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -326,14 +1586,26 @@ delete_environment(Client, EnvironmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the details of a specific application.
+-spec get_application(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
 
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -351,14 +1623,26 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details about a specific version of a specific application.
+-spec get_application_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_application_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_version_errors(), tuple()}.
 get_application_version(Client, ApplicationId, ApplicationVersion)
   when is_map(Client) ->
     get_application_version(Client, ApplicationId, ApplicationVersion, #{}, #{}).
 
+-spec get_application_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_application_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_version_errors(), tuple()}.
 get_application_version(Client, ApplicationId, ApplicationVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_version(Client, ApplicationId, ApplicationVersion, QueryMap, HeadersMap, []).
 
+-spec get_application_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_application_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_version_errors(), tuple()}.
 get_application_version(Client, ApplicationId, ApplicationVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions/", aws_util:encode_uri(ApplicationVersion), ""],
@@ -377,14 +1661,26 @@ get_application_version(Client, ApplicationId, ApplicationVersion, QueryMap, Hea
 
 %% @doc Gets the details of a specific batch job execution for a specific
 %% application.
+-spec get_batch_job_execution(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_batch_job_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_batch_job_execution_errors(), tuple()}.
 get_batch_job_execution(Client, ApplicationId, ExecutionId)
   when is_map(Client) ->
     get_batch_job_execution(Client, ApplicationId, ExecutionId, #{}, #{}).
 
+-spec get_batch_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_batch_job_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_batch_job_execution_errors(), tuple()}.
 get_batch_job_execution(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_batch_job_execution(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap, []).
 
+-spec get_batch_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_batch_job_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_batch_job_execution_errors(), tuple()}.
 get_batch_job_execution(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/batch-job-executions/", aws_util:encode_uri(ExecutionId), ""],
@@ -402,14 +1698,26 @@ get_batch_job_execution(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the details of a specific data set.
+-spec get_data_set_details(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_data_set_details_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_set_details_errors(), tuple()}.
 get_data_set_details(Client, ApplicationId, DataSetName)
   when is_map(Client) ->
     get_data_set_details(Client, ApplicationId, DataSetName, #{}, #{}).
 
+-spec get_data_set_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_set_details_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_set_details_errors(), tuple()}.
 get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap, []).
 
+-spec get_data_set_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_set_details_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_set_details_errors(), tuple()}.
 get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/datasets/", aws_util:encode_uri(DataSetName), ""],
@@ -428,14 +1736,26 @@ get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap, O
 
 %% @doc Gets the status of a data set import task initiated with the
 %% `CreateDataSetImportTask' operation.
+-spec get_data_set_import_task(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_data_set_import_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_set_import_task_errors(), tuple()}.
 get_data_set_import_task(Client, ApplicationId, TaskId)
   when is_map(Client) ->
     get_data_set_import_task(Client, ApplicationId, TaskId, #{}, #{}).
 
+-spec get_data_set_import_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_data_set_import_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_set_import_task_errors(), tuple()}.
 get_data_set_import_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_set_import_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap, []).
 
+-spec get_data_set_import_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_set_import_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_set_import_task_errors(), tuple()}.
 get_data_set_import_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataset-import-tasks/", aws_util:encode_uri(TaskId), ""],
@@ -454,14 +1774,26 @@ get_data_set_import_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap, Op
 
 %% @doc Gets details of a specific deployment with a given deployment
 %% identifier.
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, ApplicationId, DeploymentId)
   when is_map(Client) ->
     get_deployment(Client, ApplicationId, DeploymentId, #{}, #{}).
 
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, ApplicationId, DeploymentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, ApplicationId, DeploymentId, QueryMap, HeadersMap, []).
 
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, ApplicationId, DeploymentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
@@ -479,14 +1811,26 @@ get_deployment(Client, ApplicationId, DeploymentId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a specific runtime environment.
+-spec get_environment(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_environment_response(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, EnvironmentId)
   when is_map(Client) ->
     get_environment(Client, EnvironmentId, #{}, #{}).
 
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_environment_response(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, EnvironmentId, QueryMap, HeadersMap, []).
 
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_environment_response(), tuple()} |
+    {error, any()} |
+    {error, get_environment_errors(), tuple()}.
 get_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -505,14 +1849,26 @@ get_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a single sign-on URL that can be used to connect to AWS Blu
 %% Insights.
+-spec get_signed_bluinsights_url(aws_client:aws_client()) ->
+    {ok, get_signed_bluinsights_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_signed_bluinsights_url_errors(), tuple()}.
 get_signed_bluinsights_url(Client)
   when is_map(Client) ->
     get_signed_bluinsights_url(Client, #{}, #{}).
 
+-spec get_signed_bluinsights_url(aws_client:aws_client(), map(), map()) ->
+    {ok, get_signed_bluinsights_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_signed_bluinsights_url_errors(), tuple()}.
 get_signed_bluinsights_url(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_signed_bluinsights_url(Client, QueryMap, HeadersMap, []).
 
+-spec get_signed_bluinsights_url(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_signed_bluinsights_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_signed_bluinsights_url_errors(), tuple()}.
 get_signed_bluinsights_url(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signed-bi-url"],
@@ -531,14 +1887,26 @@ get_signed_bluinsights_url(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of the application versions for a specific
 %% application.
+-spec list_application_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_application_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_application_versions_errors(), tuple()}.
 list_application_versions(Client, ApplicationId)
   when is_map(Client) ->
     list_application_versions(Client, ApplicationId, #{}, #{}).
 
+-spec list_application_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_application_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_application_versions_errors(), tuple()}.
 list_application_versions(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_application_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_application_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_application_versions_errors(), tuple()}.
 list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions"],
@@ -567,14 +1935,26 @@ list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% unique identifier of a specific runtime environment in a query parameter
 %% to see all
 %% applications associated with that environment.
+-spec list_applications(aws_client:aws_client()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
@@ -604,14 +1984,26 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You can use the batch job definitions in the list to start
 %% a batch job.
+-spec list_batch_job_definitions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_batch_job_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_job_definitions_errors(), tuple()}.
 list_batch_job_definitions(Client, ApplicationId)
   when is_map(Client) ->
     list_batch_job_definitions(Client, ApplicationId, #{}, #{}).
 
+-spec list_batch_job_definitions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_batch_job_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_job_definitions_errors(), tuple()}.
 list_batch_job_definitions(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_batch_job_definitions(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_batch_job_definitions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_batch_job_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_job_definitions_errors(), tuple()}.
 list_batch_job_definitions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/batch-job-definitions"],
@@ -637,14 +2029,26 @@ list_batch_job_definitions(Client, ApplicationId, QueryMap, HeadersMap, Options0
 %% @doc Lists historical, current, and scheduled batch job executions for a
 %% specific
 %% application.
+-spec list_batch_job_executions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_batch_job_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_job_executions_errors(), tuple()}.
 list_batch_job_executions(Client, ApplicationId)
   when is_map(Client) ->
     list_batch_job_executions(Client, ApplicationId, #{}, #{}).
 
+-spec list_batch_job_executions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_batch_job_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_job_executions_errors(), tuple()}.
 list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_batch_job_executions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_batch_job_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_job_executions_errors(), tuple()}.
 list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/batch-job-executions"],
@@ -672,14 +2076,26 @@ list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the data set imports for the specified application.
+-spec list_data_set_import_history(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_data_set_import_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_set_import_history_errors(), tuple()}.
 list_data_set_import_history(Client, ApplicationId)
   when is_map(Client) ->
     list_data_set_import_history(Client, ApplicationId, #{}, #{}).
 
+-spec list_data_set_import_history(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_data_set_import_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_set_import_history_errors(), tuple()}.
 list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_data_set_import_history(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_set_import_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_set_import_history_errors(), tuple()}.
 list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dataset-import-tasks"],
@@ -709,14 +2125,26 @@ list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap, Option
 %% data sets. Currently, Amazon Web Services Mainframe Modernization can
 %% import data sets into catalogs using CreateDataSetImportTask:
 %% https://docs.aws.amazon.com/m2/latest/APIReference/API_CreateDataSetImportTask.html.
+-spec list_data_sets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_data_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client, ApplicationId)
   when is_map(Client) ->
     list_data_sets(Client, ApplicationId, #{}, #{}).
 
+-spec list_data_sets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_data_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sets(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_data_sets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_data_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_sets_errors(), tuple()}.
 list_data_sets(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/datasets"],
@@ -746,14 +2174,26 @@ list_data_sets(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% combination of a specific application and a specific version of that
 %% application. Each
 %% deployment is mapped to a particular application version.
+-spec list_deployments(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, ApplicationId)
   when is_map(Client) ->
     list_deployments(Client, ApplicationId, #{}, #{}).
 
+-spec list_deployments(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_deployments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/deployments"],
@@ -776,14 +2216,26 @@ list_deployments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the available engine versions.
+-spec list_engine_versions(aws_client:aws_client()) ->
+    {ok, list_engine_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_engine_versions_errors(), tuple()}.
 list_engine_versions(Client)
   when is_map(Client) ->
     list_engine_versions(Client, #{}, #{}).
 
+-spec list_engine_versions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_engine_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_engine_versions_errors(), tuple()}.
 list_engine_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_engine_versions(Client, QueryMap, HeadersMap, []).
 
+-spec list_engine_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_engine_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_engine_versions_errors(), tuple()}.
 list_engine_versions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/engine-versions"],
@@ -807,14 +2259,26 @@ list_engine_versions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the runtime environments.
+-spec list_environments(aws_client:aws_client()) ->
+    {ok, list_environments_response(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
 
+-spec list_environments(aws_client:aws_client(), map(), map()) ->
+    {ok, list_environments_response(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, QueryMap, HeadersMap, []).
 
+-spec list_environments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_environments_response(), tuple()} |
+    {error, any()} |
+    {error, list_environments_errors(), tuple()}.
 list_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments"],
@@ -839,14 +2303,26 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -864,8 +2340,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts an application that is currently stopped.
+-spec start_application(aws_client:aws_client(), binary() | list(), start_application_request()) ->
+    {ok, start_application_response(), tuple()} |
+    {error, any()} |
+    {error, start_application_errors(), tuple()}.
 start_application(Client, ApplicationId, Input) ->
     start_application(Client, ApplicationId, Input, []).
+
+-spec start_application(aws_client:aws_client(), binary() | list(), start_application_request(), proplists:proplist()) ->
+    {ok, start_application_response(), tuple()} |
+    {error, any()} |
+    {error, start_application_errors(), tuple()}.
 start_application(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/start"],
@@ -893,8 +2378,17 @@ start_application(Client, ApplicationId, Input0, Options0) ->
 %%
 %% The associated application must be running in order to start the batch
 %% job.
+-spec start_batch_job(aws_client:aws_client(), binary() | list(), start_batch_job_request()) ->
+    {ok, start_batch_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_batch_job_errors(), tuple()}.
 start_batch_job(Client, ApplicationId, Input) ->
     start_batch_job(Client, ApplicationId, Input, []).
+
+-spec start_batch_job(aws_client:aws_client(), binary() | list(), start_batch_job_request(), proplists:proplist()) ->
+    {ok, start_batch_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_batch_job_errors(), tuple()}.
 start_batch_job(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/batch-job"],
@@ -918,8 +2412,17 @@ start_batch_job(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a running application.
+-spec stop_application(aws_client:aws_client(), binary() | list(), stop_application_request()) ->
+    {ok, stop_application_response(), tuple()} |
+    {error, any()} |
+    {error, stop_application_errors(), tuple()}.
 stop_application(Client, ApplicationId, Input) ->
     stop_application(Client, ApplicationId, Input, []).
+
+-spec stop_application(aws_client:aws_client(), binary() | list(), stop_application_request(), proplists:proplist()) ->
+    {ok, stop_application_response(), tuple()} |
+    {error, any()} |
+    {error, stop_application_errors(), tuple()}.
 stop_application(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/stop"],
@@ -943,8 +2446,17 @@ stop_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds one or more tags to the specified resource.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -968,8 +2480,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -994,8 +2515,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an application and creates a new version.
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
+
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -1019,8 +2549,17 @@ update_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration details for a specific runtime environment.
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_request()) ->
+    {ok, update_environment_response(), tuple()} |
+    {error, any()} |
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, EnvironmentId, Input) ->
     update_environment(Client, EnvironmentId, Input, []).
+
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_request(), proplists:proplist()) ->
+    {ok, update_environment_response(), tuple()} |
+    {error, any()} |
+    {error, update_environment_errors(), tuple()}.
 update_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = patch,
     Path = ["/environments/", aws_util:encode_uri(EnvironmentId), ""],
@@ -1047,7 +2586,7 @@ update_environment(Client, EnvironmentId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

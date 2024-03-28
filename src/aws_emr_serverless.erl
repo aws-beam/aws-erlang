@@ -66,13 +66,601 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% get_job_run_response() :: #{
+%%   <<"jobRun">> := job_run()
+%% }
+-type get_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_configuration_input() :: #{
+%%   <<"imageUri">> => string()
+%% }
+-type image_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_resource_config() :: #{
+%%   <<"cpu">> => string(),
+%%   <<"disk">> => string(),
+%%   <<"memory">> => string()
+%% }
+-type worker_resource_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_monitoring_configuration() :: #{
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"logUri">> => string()
+%% }
+-type s3_monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_run_request() :: #{}
+-type get_job_run_request() :: #{}.
+
+
+%% Example:
+%% resource_utilization() :: #{
+%%   <<"memoryGBHour">> => [float()],
+%%   <<"storageGBHour">> => [float()],
+%%   <<"vCPUHour">> => [float()]
+%% }
+-type resource_utilization() :: #{binary() => any()}.
+
+
+%% Example:
+%% initial_capacity_config() :: #{
+%%   <<"workerConfiguration">> => worker_resource_config(),
+%%   <<"workerCount">> => float()
+%% }
+-type initial_capacity_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_run() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"billedResourceUtilization">> => resource_utilization(),
+%%   <<"configurationOverrides">> => configuration_overrides(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"executionRole">> => string(),
+%%   <<"executionTimeoutMinutes">> => float(),
+%%   <<"jobDriver">> => list(),
+%%   <<"jobRunId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"state">> => string(),
+%%   <<"stateDetails">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"totalExecutionDurationSeconds">> => [integer()],
+%%   <<"totalResourceUtilization">> => total_resource_utilization(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type job_run() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% job_run_summary() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"executionRole">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"state">> => string(),
+%%   <<"stateDetails">> => string(),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type job_run_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_runs_request() :: #{
+%%   <<"createdAtAfter">> => non_neg_integer(),
+%%   <<"createdAtBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"states">> => list(string()())
+%% }
+-type list_job_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% maximum_allowed_resources() :: #{
+%%   <<"cpu">> => string(),
+%%   <<"disk">> => string(),
+%%   <<"memory">> => string()
+%% }
+-type maximum_allowed_resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration() :: #{
+%%   <<"classification">> => string(),
+%%   <<"configurations">> => list(configuration()()),
+%%   <<"properties">> => map()
+%% }
+-type configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitoring_configuration() :: #{
+%%   <<"cloudWatchLoggingConfiguration">> => cloud_watch_logging_configuration(),
+%%   <<"managedPersistenceMonitoringConfiguration">> => managed_persistence_monitoring_configuration(),
+%%   <<"s3MonitoringConfiguration">> => s3_monitoring_configuration()
+%% }
+-type monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_start_config() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type auto_start_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_stop_config() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"idleTimeoutMinutes">> => [integer()]
+%% }
+-type auto_stop_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_type_specification() :: #{
+%%   <<"imageConfiguration">> => image_configuration()
+%% }
+-type worker_type_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_submit() :: #{
+%%   <<"entryPoint">> => string(),
+%%   <<"entryPointArguments">> => list(string()()),
+%%   <<"sparkSubmitParameters">> => string()
+%% }
+-type spark_submit() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_job_run_response() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"arn">> := string(),
+%%   <<"jobRunId">> := string()
+%% }
+-type start_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_job_run_response() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"jobRunId">> := string()
+%% }
+-type cancel_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dashboard_for_job_run_response() :: #{
+%%   <<"url">> => string()
+%% }
+-type get_dashboard_for_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stop_application_request() :: #{}
+-type stop_application_request() :: #{}.
+
+
+%% Example:
+%% list_job_runs_response() :: #{
+%%   <<"jobRuns">> := list(job_run_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_runs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% application() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"architecture">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"autoStartConfiguration">> => auto_start_config(),
+%%   <<"autoStopConfiguration">> => auto_stop_config(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"imageConfiguration">> => image_configuration(),
+%%   <<"initialCapacity">> => map(),
+%%   <<"maximumCapacity">> => maximum_allowed_resources(),
+%%   <<"monitoringConfiguration">> => monitoring_configuration(),
+%%   <<"name">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"runtimeConfiguration">> => list(configuration()()),
+%%   <<"state">> => string(),
+%%   <<"stateDetails">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"workerTypeSpecifications">> => map()
+%% }
+-type application() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"autoStartConfiguration">> => auto_start_config(),
+%%   <<"autoStopConfiguration">> => auto_stop_config(),
+%%   <<"clientToken">> := string(),
+%%   <<"imageConfiguration">> => image_configuration_input(),
+%%   <<"initialCapacity">> => map(),
+%%   <<"maximumCapacity">> => maximum_allowed_resources(),
+%%   <<"monitoringConfiguration">> => monitoring_configuration(),
+%%   <<"name">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"releaseLabel">> := string(),
+%%   <<"runtimeConfiguration">> => list(configuration()()),
+%%   <<"tags">> => map(),
+%%   <<"type">> := string(),
+%%   <<"workerTypeSpecifications">> => map()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"arn">> := string(),
+%%   <<"name">> => string()
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_response() :: #{}
+-type delete_application_response() :: #{}.
+
+%% Example:
+%% start_application_response() :: #{}
+-type start_application_response() :: #{}.
+
+
+%% Example:
+%% worker_type_specification_input() :: #{
+%%   <<"imageConfiguration">> => image_configuration_input()
+%% }
+-type worker_type_specification_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% hive() :: #{
+%%   <<"initQueryFile">> => string(),
+%%   <<"parameters">> => string(),
+%%   <<"query">> => string()
+%% }
+-type hive() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"autoStartConfiguration">> => auto_start_config(),
+%%   <<"autoStopConfiguration">> => auto_stop_config(),
+%%   <<"clientToken">> := string(),
+%%   <<"imageConfiguration">> => image_configuration_input(),
+%%   <<"initialCapacity">> => map(),
+%%   <<"maximumCapacity">> => maximum_allowed_resources(),
+%%   <<"monitoringConfiguration">> => monitoring_configuration(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"runtimeConfiguration">> => list(configuration()()),
+%%   <<"workerTypeSpecifications">> => map()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_response() :: #{
+%%   <<"application">> := application()
+%% }
+-type update_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_application_request() :: #{}
+-type start_application_request() :: #{}.
+
+
+%% Example:
+%% start_job_run_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"configurationOverrides">> => configuration_overrides(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"executionTimeoutMinutes">> => float(),
+%%   <<"jobDriver">> => list(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type start_job_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_application_response() :: #{
+%%   <<"application">> := application()
+%% }
+-type get_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"states">> => list(string()())
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()())
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% stop_application_response() :: #{}
+-type stop_application_response() :: #{}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% get_dashboard_for_job_run_request() :: #{}
+-type get_dashboard_for_job_run_request() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% total_resource_utilization() :: #{
+%%   <<"memoryGBHour">> => [float()],
+%%   <<"storageGBHour">> => [float()],
+%%   <<"vCPUHour">> => [float()]
+%% }
+-type total_resource_utilization() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_overrides() :: #{
+%%   <<"applicationConfiguration">> => list(configuration()()),
+%%   <<"monitoringConfiguration">> => monitoring_configuration()
+%% }
+-type configuration_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_summary() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"state">> => string(),
+%%   <<"stateDetails">> => string(),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type application_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"applications">> := list(application_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_persistence_monitoring_configuration() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"encryptionKeyArn">> => string()
+%% }
+-type managed_persistence_monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_job_run_request() :: #{}
+-type cancel_job_run_request() :: #{}.
+
+
+%% Example:
+%% image_configuration() :: #{
+%%   <<"imageUri">> => string(),
+%%   <<"resolvedImageDigest">> => string()
+%% }
+-type image_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logging_configuration() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamNamePrefix">> => string(),
+%%   <<"logTypes">> => map()
+%% }
+-type cloud_watch_logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
+-type cancel_job_run_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_dashboard_for_job_run_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_job_run_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_applications_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_job_runs_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type start_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type start_job_run_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Cancels a job run.
+-spec cancel_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_job_run_request()) ->
+    {ok, cancel_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_job_run_errors(), tuple()}.
 cancel_job_run(Client, ApplicationId, JobRunId, Input) ->
     cancel_job_run(Client, ApplicationId, JobRunId, Input, []).
+
+-spec cancel_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_job_run_request(), proplists:proplist()) ->
+    {ok, cancel_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_job_run_errors(), tuple()}.
 cancel_job_run(Client, ApplicationId, JobRunId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/jobruns/", aws_util:encode_uri(JobRunId), ""],
@@ -96,8 +684,17 @@ cancel_job_run(Client, ApplicationId, JobRunId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an application.
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
+
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
@@ -124,8 +721,17 @@ create_application(Client, Input0, Options0) ->
 %%
 %% An application has to be in a stopped or created state in order
 %% to be deleted.
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
+
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -149,14 +755,26 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays detailed information about a specified application.
+-spec get_application(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
 
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_application_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_errors(), tuple()}.
 get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -187,14 +805,26 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% application UI
 %% after that hour elapses, you must invoke the API again to generate a new
 %% URL.
+-spec get_dashboard_for_job_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_dashboard_for_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_dashboard_for_job_run_errors(), tuple()}.
 get_dashboard_for_job_run(Client, ApplicationId, JobRunId)
   when is_map(Client) ->
     get_dashboard_for_job_run(Client, ApplicationId, JobRunId, #{}, #{}).
 
+-spec get_dashboard_for_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_dashboard_for_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_dashboard_for_job_run_errors(), tuple()}.
 get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, []).
 
+-spec get_dashboard_for_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_dashboard_for_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_dashboard_for_job_run_errors(), tuple()}.
 get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/jobruns/", aws_util:encode_uri(JobRunId), "/dashboard"],
@@ -212,14 +842,26 @@ get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays detailed information about a job run.
+-spec get_job_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_job_run_errors(), tuple()}.
 get_job_run(Client, ApplicationId, JobRunId)
   when is_map(Client) ->
     get_job_run(Client, ApplicationId, JobRunId, #{}, #{}).
 
+-spec get_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_job_run_errors(), tuple()}.
 get_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, []).
 
+-spec get_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_job_run_errors(), tuple()}.
 get_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/jobruns/", aws_util:encode_uri(JobRunId), ""],
@@ -237,14 +879,26 @@ get_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists applications based on a set of parameters.
+-spec list_applications(aws_client:aws_client()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
@@ -268,14 +922,26 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists job runs based on a set of parameters.
+-spec list_job_runs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_job_runs_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_runs_errors(), tuple()}.
 list_job_runs(Client, ApplicationId)
   when is_map(Client) ->
     list_job_runs(Client, ApplicationId, #{}, #{}).
 
+-spec list_job_runs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_job_runs_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_runs_errors(), tuple()}.
 list_job_runs(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_runs(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec list_job_runs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_job_runs_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_runs_errors(), tuple()}.
 list_job_runs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/jobruns"],
@@ -301,14 +967,26 @@ list_job_runs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags assigned to the resources.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -327,8 +1005,17 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts a specified application and initializes initial capacity if
 %% configured.
+-spec start_application(aws_client:aws_client(), binary() | list(), start_application_request()) ->
+    {ok, start_application_response(), tuple()} |
+    {error, any()} |
+    {error, start_application_errors(), tuple()}.
 start_application(Client, ApplicationId, Input) ->
     start_application(Client, ApplicationId, Input, []).
+
+-spec start_application(aws_client:aws_client(), binary() | list(), start_application_request(), proplists:proplist()) ->
+    {ok, start_application_response(), tuple()} |
+    {error, any()} |
+    {error, start_application_errors(), tuple()}.
 start_application(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/start"],
@@ -352,8 +1039,17 @@ start_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a job run.
+-spec start_job_run(aws_client:aws_client(), binary() | list(), start_job_run_request()) ->
+    {ok, start_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, start_job_run_errors(), tuple()}.
 start_job_run(Client, ApplicationId, Input) ->
     start_job_run(Client, ApplicationId, Input, []).
+
+-spec start_job_run(aws_client:aws_client(), binary() | list(), start_job_run_request(), proplists:proplist()) ->
+    {ok, start_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, start_job_run_errors(), tuple()}.
 start_job_run(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/jobruns"],
@@ -382,8 +1078,17 @@ start_job_run(Client, ApplicationId, Input0, Options0) ->
 %% All scheduled
 %% and running jobs must be completed or cancelled before stopping an
 %% application.
+-spec stop_application(aws_client:aws_client(), binary() | list(), stop_application_request()) ->
+    {ok, stop_application_response(), tuple()} |
+    {error, any()} |
+    {error, stop_application_errors(), tuple()}.
 stop_application(Client, ApplicationId, Input) ->
     stop_application(Client, ApplicationId, Input, []).
+
+-spec stop_application(aws_client:aws_client(), binary() | list(), stop_application_request(), proplists:proplist()) ->
+    {ok, stop_application_response(), tuple()} |
+    {error, any()} |
+    {error, stop_application_errors(), tuple()}.
 stop_application(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/stop"],
@@ -416,8 +1121,17 @@ stop_application(Client, ApplicationId, Input0, Options0) ->
 %% owner, or environment. When you have many resources of the same type, you
 %% can quickly
 %% identify a specific resource based on the tags you've assigned to it.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -441,8 +1155,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from resources.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -470,8 +1193,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% An application has to be in a stopped or created state
 %% in order to be updated.
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
+
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -498,7 +1230,7 @@ update_application(Client, ApplicationId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.
