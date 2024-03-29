@@ -1168,8 +1168,9 @@ create_graph_using_import_task(Client, Input0, Options0) ->
 %% graph from within
 %% a VPC.
 %%
-%% You can attach security groups to the private graph endpoint. VPC endpoint
-%% charges apply.
+%% You can attach security groups to the private graph endpoint.
+%%
+%% VPC endpoint charges apply.
 -spec create_private_graph_endpoint(aws_client:aws_client(), binary() | list(), create_private_graph_endpoint_input()) ->
     {ok, create_private_graph_endpoint_output(), tuple()} |
     {error, any()} |
@@ -1310,10 +1311,6 @@ delete_private_graph_endpoint(Client, GraphIdentifier, VpcId, Input0, Options0) 
 
 %% @doc Execute an openCypher query.
 %%
-%% Currently, the SDK does not support parameterized queries. If you want to
-%% make a
-%% parameterized query call, you can use an HTTP request.
-%%
 %% When invoking this operation in a Neptune Analytics cluster, the IAM user
 %% or role making the request must have a policy attached
 %% that allows one of the following IAM actions in that cluster, depending on
@@ -1324,12 +1321,6 @@ delete_private_graph_endpoint(Client, GraphIdentifier, VpcId, Input0, Options0) 
 %% neptune-graph:WriteDataViaQuery
 %%
 %% neptune-graph:DeleteDataViaQuery
-%%
-%% Non-parametrized queries are not considered for plan caching. You can
-%% force plan caching with
-%% `planCache=enabled'. The plan cache will be reused only for the same
-%% exact query. Slight variations
-%% in the query will not be able to reuse the query plan cache.
 -spec execute_query(aws_client:aws_client(), execute_query_input()) ->
     {ok, execute_query_output(), tuple()} |
     {error, any()} |

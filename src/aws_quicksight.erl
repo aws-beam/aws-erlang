@@ -1398,7 +1398,9 @@
 %%   <<"Enabled">> => boolean(),
 %%   <<"IpRestrictionRuleMap">> => map(),
 %%   <<"RequestId">> => string(),
-%%   <<"Status">> => integer()
+%%   <<"Status">> => integer(),
+%%   <<"VpcEndpointIdRestrictionRuleMap">> => map(),
+%%   <<"VpcIdRestrictionRuleMap">> => map()
 %% }
 -type describe_ip_restriction_response() :: #{binary() => any()}.
 
@@ -8345,7 +8347,9 @@
 %% Example:
 %% update_ip_restriction_request() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"IpRestrictionRuleMap">> => map()
+%%   <<"IpRestrictionRuleMap">> => map(),
+%%   <<"VpcEndpointIdRestrictionRuleMap">> => map(),
+%%   <<"VpcIdRestrictionRuleMap">> => map()
 %% }
 -type update_ip_restriction_request() :: #{binary() => any()}.
 
@@ -18564,11 +18568,11 @@ update_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
 
 %% @doc Updates the content and status of IP rules.
 %%
-%% To use this operation, you
-%% must
+%% Traffic from a source is allowed when the source satisfies either the
+%% `IpRestrictionRule', `VpcIdRestrictionRule', or
+%% `VpcEndpointIdRestrictionRule'. To use this operation, you must
 %% provide the entire map of rules. You can use the
-%% `DescribeIpRestriction'
-%% operation to get the current rule map.
+%% `DescribeIpRestriction' operation to get the current rule map.
 -spec update_ip_restriction(aws_client:aws_client(), binary() | list(), update_ip_restriction_request()) ->
     {ok, update_ip_restriction_response(), tuple()} |
     {error, any()} |

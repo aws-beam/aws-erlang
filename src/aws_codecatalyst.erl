@@ -245,10 +245,10 @@
 
 %% Example:
 %% create_access_token_response() :: #{
-%%   <<"accessTokenId">> := string(),
-%%   <<"expiresTime">> := non_neg_integer(),
-%%   <<"name">> := string(),
-%%   <<"secret">> := string()
+%%   <<"accessTokenId">> => string(),
+%%   <<"expiresTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"secret">> => string()
 %% }
 -type create_access_token_response() :: #{binary() => any()}.
 
@@ -321,17 +321,17 @@
 %% Example:
 %% get_dev_environment_response() :: #{
 %%   <<"alias">> => [string()],
-%%   <<"creatorId">> := [string()],
-%%   <<"id">> := string(),
+%%   <<"creatorId">> => [string()],
+%%   <<"id">> => string(),
 %%   <<"ides">> => list(ide()()),
-%%   <<"inactivityTimeoutMinutes">> := integer(),
-%%   <<"instanceType">> := string(),
-%%   <<"lastUpdatedTime">> := non_neg_integer(),
-%%   <<"persistentStorage">> := persistent_storage(),
-%%   <<"projectName">> := string(),
-%%   <<"repositories">> := list(dev_environment_repository_summary()()),
-%%   <<"spaceName">> := string(),
-%%   <<"status">> := string(),
+%%   <<"inactivityTimeoutMinutes">> => integer(),
+%%   <<"instanceType">> => string(),
+%%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"persistentStorage">> => persistent_storage(),
+%%   <<"projectName">> => string(),
+%%   <<"repositories">> => list(dev_environment_repository_summary()()),
+%%   <<"spaceName">> => string(),
+%%   <<"status">> => string(),
 %%   <<"statusReason">> => string(),
 %%   <<"vpcConnectionName">> => string()
 %% }
@@ -374,6 +374,8 @@
 %% Example:
 %% get_subscription_response() :: #{
 %%   <<"awsAccountName">> => string(),
+%%   <<"pendingSubscriptionStartTime">> => non_neg_integer(),
+%%   <<"pendingSubscriptionType">> => [string()],
 %%   <<"subscriptionType">> => [string()]
 %% }
 -type get_subscription_response() :: #{binary() => any()}.
@@ -461,12 +463,12 @@
 %% update_dev_environment_response() :: #{
 %%   <<"alias">> => [string()],
 %%   <<"clientToken">> => string(),
-%%   <<"id">> := string(),
+%%   <<"id">> => string(),
 %%   <<"ides">> => list(ide_configuration()()),
 %%   <<"inactivityTimeoutMinutes">> => integer(),
 %%   <<"instanceType">> => string(),
-%%   <<"projectName">> := string(),
-%%   <<"spaceName">> := string()
+%%   <<"projectName">> => string(),
+%%   <<"spaceName">> => string()
 %% }
 -type update_dev_environment_response() :: #{binary() => any()}.
 
@@ -481,10 +483,10 @@
 
 %% Example:
 %% start_dev_environment_response() :: #{
-%%   <<"id">> := string(),
-%%   <<"projectName">> := string(),
-%%   <<"spaceName">> := string(),
-%%   <<"status">> := string()
+%%   <<"id">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"spaceName">> => string(),
+%%   <<"status">> => string()
 %% }
 -type start_dev_environment_response() :: #{binary() => any()}.
 
@@ -505,7 +507,7 @@
 %% create_project_response() :: #{
 %%   <<"description">> => [string()],
 %%   <<"displayName">> => [string()],
-%%   <<"name">> := string(),
+%%   <<"name">> => string(),
 %%   <<"spaceName">> => string()
 %% }
 -type create_project_response() :: #{binary() => any()}.
@@ -594,10 +596,10 @@
 
 %% Example:
 %% stop_dev_environment_response() :: #{
-%%   <<"id">> := string(),
-%%   <<"projectName">> := string(),
-%%   <<"spaceName">> := string(),
-%%   <<"status">> := string()
+%%   <<"id">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"spaceName">> => string(),
+%%   <<"status">> => string()
 %% }
 -type stop_dev_environment_response() :: #{binary() => any()}.
 
@@ -606,7 +608,7 @@
 %% get_project_response() :: #{
 %%   <<"description">> => [string()],
 %%   <<"displayName">> => [string()],
-%%   <<"name">> := [string()],
+%%   <<"name">> => [string()],
 %%   <<"spaceName">> => string()
 %% }
 -type get_project_response() :: #{binary() => any()}.
@@ -685,7 +687,7 @@
 
 %% Example:
 %% list_source_repository_branches_response() :: #{
-%%   <<"items">> := list(list_source_repository_branches_item()()),
+%%   <<"items">> => list(list_source_repository_branches_item()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_source_repository_branches_response() :: #{binary() => any()}.
@@ -748,11 +750,11 @@
 
 %% Example:
 %% start_dev_environment_session_response() :: #{
-%%   <<"accessDetails">> := dev_environment_access_details(),
-%%   <<"id">> := string(),
-%%   <<"projectName">> := string(),
+%%   <<"accessDetails">> => dev_environment_access_details(),
+%%   <<"id">> => string(),
+%%   <<"projectName">> => string(),
 %%   <<"sessionId">> => [string()],
-%%   <<"spaceName">> := string()
+%%   <<"spaceName">> => string()
 %% }
 -type start_dev_environment_session_response() :: #{binary() => any()}.
 
@@ -831,10 +833,10 @@
 
 %% Example:
 %% stop_dev_environment_session_response() :: #{
-%%   <<"id">> := string(),
-%%   <<"projectName">> := string(),
-%%   <<"sessionId">> := [string()],
-%%   <<"spaceName">> := string()
+%%   <<"id">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"sessionId">> => [string()],
+%%   <<"spaceName">> => string()
 %% }
 -type stop_dev_environment_session_response() :: #{binary() => any()}.
 
@@ -863,9 +865,9 @@
 
 %% Example:
 %% create_dev_environment_response() :: #{
-%%   <<"id">> := string(),
-%%   <<"projectName">> := string(),
-%%   <<"spaceName">> := string(),
+%%   <<"id">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"spaceName">> => string(),
 %%   <<"vpcConnectionName">> => string()
 %% }
 -type create_dev_environment_response() :: #{binary() => any()}.
@@ -877,7 +879,7 @@
 
 %% Example:
 %% list_event_logs_response() :: #{
-%%   <<"items">> := list(event_log_entry()()),
+%%   <<"items">> => list(event_log_entry()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_event_logs_response() :: #{binary() => any()}.
@@ -945,7 +947,7 @@
 
 %% Example:
 %% list_dev_environments_response() :: #{
-%%   <<"items">> := list(dev_environment_summary()()),
+%%   <<"items">> => list(dev_environment_summary()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_dev_environments_response() :: #{binary() => any()}.
@@ -955,8 +957,8 @@
 %% get_space_response() :: #{
 %%   <<"description">> => [string()],
 %%   <<"displayName">> => [string()],
-%%   <<"name">> := string(),
-%%   <<"regionName">> := string()
+%%   <<"name">> => string(),
+%%   <<"regionName">> => string()
 %% }
 -type get_space_response() :: #{binary() => any()}.
 
@@ -1002,9 +1004,9 @@
 
 %% Example:
 %% delete_dev_environment_response() :: #{
-%%   <<"id">> := string(),
-%%   <<"projectName">> := string(),
-%%   <<"spaceName">> := string()
+%%   <<"id">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"spaceName">> => string()
 %% }
 -type delete_dev_environment_response() :: #{binary() => any()}.
 
@@ -1115,7 +1117,7 @@
 
 %% Example:
 %% get_source_repository_clone_urls_response() :: #{
-%%   <<"https">> := [string()]
+%%   <<"https">> => [string()]
 %% }
 -type get_source_repository_clone_urls_response() :: #{binary() => any()}.
 

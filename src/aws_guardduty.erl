@@ -1964,6 +1964,7 @@
 
 %% Example:
 %% threat_intelligence_detail() :: #{
+%%   <<"ThreatFileSha256">> => string(),
 %%   <<"ThreatListName">> => string(),
 %%   <<"ThreatNames">> => list(string()())
 %% }
@@ -2271,6 +2272,7 @@
 %% Example:
 %% runtime_context() :: #{
 %%   <<"AddressFamily">> => string(),
+%%   <<"CommandLineExample">> => string(),
 %%   <<"FileSystemType">> => string(),
 %%   <<"Flags">> => list(string()()),
 %%   <<"IanaProtocolNumber">> => integer(),
@@ -2287,9 +2289,13 @@
 %%   <<"ReleaseAgentPath">> => string(),
 %%   <<"RuncBinaryPath">> => string(),
 %%   <<"ScriptPath">> => string(),
+%%   <<"ServiceName">> => string(),
 %%   <<"ShellHistoryFilePath">> => string(),
 %%   <<"SocketPath">> => string(),
-%%   <<"TargetProcess">> => process_details()
+%%   <<"TargetProcess">> => process_details(),
+%%   <<"ThreatFilePath">> => string(),
+%%   <<"ToolCategory">> => string(),
+%%   <<"ToolName">> => string()
 %% }
 -type runtime_context() :: #{binary() => any()}.
 
@@ -3458,14 +3464,8 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
 %% DescribeOrganizationConfiguration:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeOrganizationConfiguration.html.
 %%
-%% If you are adding accounts by invitation, before using InviteMembers:
-%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html,
-%% use
-%% `CreateMembers' after GuardDuty has been enabled in potential member
-%% accounts.
-%%
-%% If you disassociate a member from a GuardDuty
-%% delegated administrator, the member account details
+%% If you disassociate a member account that was added by invitation, the
+%% member account details
 %% obtained from this API, including the associated email addresses, will be
 %% retained.
 %% This is done so that the delegated administrator can invoke the
@@ -3477,6 +3477,12 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
 %% DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
+%%
+%% When the member accounts added through Organizations are later
+%% disassociated, you (administrator)
+%% can't invite them by calling the InviteMembers API. You can create an
+%% association with these
+%% member accounts again only by calling the CreateMembers API.
 -spec create_members(aws_client:aws_client(), binary() | list(), create_members_request()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
@@ -4216,6 +4222,26 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
 %% `ALL', you'll receive an error if you attempt to disassociate a
 %% member account
 %% before removing them from your organization.
+%%
+%% If you disassociate a member account that was added by invitation, the
+%% member account details
+%% obtained from this API, including the associated email addresses, will be
+%% retained.
+%% This is done so that the delegated administrator can invoke the
+%% InviteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
+%% API without the need to invoke the CreateMembers API again. To
+%% remove the details associated with a member account, the delegated
+%% administrator must invoke the
+%% DeleteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
+%% API.
+%%
+%% When the member accounts added through Organizations are later
+%% disassociated, you (administrator)
+%% can't invite them by calling the InviteMembers API. You can create an
+%% association with these
+%% member accounts again only by calling the CreateMembers API.
 -spec disassociate_members(aws_client:aws_client(), binary() | list(), disassociate_members_request()) ->
     {ok, disassociate_members_response(), tuple()} |
     {error, any()} |
@@ -4961,6 +4987,26 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
 %% remove the details associated with a member account, you must also invoke
 %% DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html.
+%%
+%% If you disassociate a member account that was added by invitation, the
+%% member account details
+%% obtained from this API, including the associated email addresses, will be
+%% retained.
+%% This is done so that the delegated administrator can invoke the
+%% InviteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
+%% API without the need to invoke the CreateMembers API again. To
+%% remove the details associated with a member account, the delegated
+%% administrator must invoke the
+%% DeleteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
+%% API.
+%%
+%% When the member accounts added through Organizations are later
+%% disassociated, you (administrator)
+%% can't invite them by calling the InviteMembers API. You can create an
+%% association with these
+%% member accounts again only by calling the CreateMembers API.
 -spec invite_members(aws_client:aws_client(), binary() | list(), invite_members_request()) ->
     {ok, invite_members_response(), tuple()} |
     {error, any()} |
