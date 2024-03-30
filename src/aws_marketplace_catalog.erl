@@ -548,6 +548,13 @@
 
 
 %% Example:
+%% offer_resale_authorization_id_filter() :: #{
+%%   <<"ValueList">> => list(string()())
+%% }
+-type offer_resale_authorization_id_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% resale_authorization_entity_id_filter() :: #{
 %%   <<"ValueList">> => list(string()())
 %% }
@@ -630,6 +637,7 @@
 %%   <<"Name">> => string(),
 %%   <<"ProductId">> => string(),
 %%   <<"ReleaseDate">> => string(),
+%%   <<"ResaleAuthorizationId">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"Targeting">> => list(list(any())())
 %% }
@@ -943,6 +951,7 @@
 %%   <<"Name">> => offer_name_filter(),
 %%   <<"ProductId">> => offer_product_id_filter(),
 %%   <<"ReleaseDate">> => offer_release_date_filter(),
+%%   <<"ResaleAuthorizationId">> => offer_resale_authorization_id_filter(),
 %%   <<"State">> => offer_state_filter(),
 %%   <<"Targeting">> => offer_targeting_filter()
 %% }

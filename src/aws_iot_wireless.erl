@@ -27,6 +27,13 @@
 %% schedule a session to update the firmware of individual devices or an
 %% entire group of
 %% devices in a multicast group.
+%%
+%% To connect to the AWS IoT Wireless Service, use the Service endpoints as
+%% described in
+%% IoT Wireless Service
+%% endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/iot-lorawan.html#iot-wireless_region
+%% in the AWS General Reference.
 -module(aws_iot_wireless).
 
 -export([associate_aws_account_with_partner_account/2,
@@ -120,6 +127,11 @@
          get_log_levels_by_resource_types/1,
          get_log_levels_by_resource_types/3,
          get_log_levels_by_resource_types/4,
+         get_metric_configuration/1,
+         get_metric_configuration/3,
+         get_metric_configuration/4,
+         get_metrics/2,
+         get_metrics/3,
          get_multicast_group/2,
          get_multicast_group/4,
          get_multicast_group/5,
@@ -271,6 +283,8 @@
          update_fuota_task/4,
          update_log_levels_by_resource_types/2,
          update_log_levels_by_resource_types/3,
+         update_metric_configuration/2,
+         update_metric_configuration/3,
          update_multicast_group/3,
          update_multicast_group/4,
          update_network_analyzer_configuration/3,
@@ -307,6 +321,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_destinations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% summary_metric_configuration() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type summary_metric_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -417,6 +438,18 @@
 %%   <<"GatewayEuiEventTopic">> => list(any())
 %% }
 -type lo_ra_w_a_n_connection_status_event_notification_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% summary_metric_query() :: #{
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"MetricName">> => list(any()),
+%%   <<"QueryId">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer()
+%% }
+-type summary_metric_query() :: #{binary() => any()}.
 
 
 %% Example:
@@ -676,6 +709,13 @@
 
 
 %% Example:
+%% update_metric_configuration_request() :: #{
+%%   <<"SummaryMetric">> => summary_metric_configuration()
+%% }
+-type update_metric_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_wireless_gateway_with_certificate_request() :: #{
 %%   <<"IotCertificateId">> := string()
 %% }
@@ -804,6 +844,13 @@
 %%   <<"ResourceType">> := list(any())
 %% }
 -type get_position_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_metric_configuration_response() :: #{
+%%   <<"SummaryMetric">> => summary_metric_configuration()
+%% }
+-type get_metric_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1341,6 +1388,10 @@
 %% associate_wireless_device_with_multicast_group_response() :: #{}
 -type associate_wireless_device_with_multicast_group_response() :: #{}.
 
+%% Example:
+%% get_metric_configuration_request() :: #{}
+-type get_metric_configuration_request() :: #{}.
+
 
 %% Example:
 %% get_wireless_gateway_task_response() :: #{
@@ -1366,6 +1417,13 @@
 %%   <<"PartnerType">> := list(any())
 %% }
 -type disassociate_aws_account_from_partner_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_metrics_request() :: #{
+%%   <<"SummaryMetricQueries">> => list(summary_metric_query()())
+%% }
+-type get_metrics_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_wireless_device_request() :: #{}
@@ -1863,6 +1921,10 @@
 %% }
 -type list_event_configurations_response() :: #{binary() => any()}.
 
+%% Example:
+%% update_metric_configuration_response() :: #{}
+-type update_metric_configuration_response() :: #{}.
+
 
 %% Example:
 %% create_service_profile_request() :: #{
@@ -1939,6 +2001,13 @@
 %%   <<"TaskDefinitions">> => list(update_wireless_gateway_task_entry()())
 %% }
 -type list_wireless_gateway_task_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_metrics_response() :: #{
+%%   <<"SummaryMetricQueryResults">> => list(summary_metric_query_result()())
+%% }
+-type get_metrics_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2502,6 +2571,14 @@
 
 
 %% Example:
+%% dimension() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type dimension() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_multicast_groups_response() :: #{
 %%   <<"MulticastGroupList">> => list(multicast_group()()),
 %%   <<"NextToken">> => string()
@@ -2655,6 +2732,23 @@
 
 
 %% Example:
+%% summary_metric_query_result() :: #{
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"Error">> => string(),
+%%   <<"MetricName">> => list(any()),
+%%   <<"QueryId">> => string(),
+%%   <<"QueryStatus">> => list(any()),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Timestamps">> => list(non_neg_integer()()),
+%%   <<"Unit">> => string(),
+%%   <<"Values">> => list(metric_query_value()())
+%% }
+-type summary_metric_query_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_wireless_device_import_task_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"DestinationName">> := string(),
@@ -2734,6 +2828,18 @@
 %%   <<"MulticastGroupId">> := string()
 %% }
 -type associate_multicast_group_with_fuota_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_query_value() :: #{
+%%   <<"Avg">> => float(),
+%%   <<"Max">> => float(),
+%%   <<"Min">> => float(),
+%%   <<"P90">> => float(),
+%%   <<"Std">> => float(),
+%%   <<"Sum">> => float()
+%% }
+-type metric_query_value() :: #{binary() => any()}.
 
 %% Example:
 %% delete_network_analyzer_configuration_request() :: #{}
@@ -3324,6 +3430,22 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_metric_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_metrics_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type get_multicast_group_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3710,6 +3832,14 @@
     conflict_exception().
 
 -type update_log_levels_by_resource_types_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_metric_configuration_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -5280,6 +5410,77 @@ get_log_levels_by_resource_types(Client, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get the metric configuration status for this account.
+-spec get_metric_configuration(aws_client:aws_client()) ->
+    {ok, get_metric_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_metric_configuration_errors(), tuple()}.
+get_metric_configuration(Client)
+  when is_map(Client) ->
+    get_metric_configuration(Client, #{}, #{}).
+
+-spec get_metric_configuration(aws_client:aws_client(), map(), map()) ->
+    {ok, get_metric_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_metric_configuration_errors(), tuple()}.
+get_metric_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_metric_configuration(Client, QueryMap, HeadersMap, []).
+
+-spec get_metric_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_metric_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_metric_configuration_errors(), tuple()}.
+get_metric_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/metric-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get metrics.
+-spec get_metrics(aws_client:aws_client(), get_metrics_request()) ->
+    {ok, get_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, get_metrics_errors(), tuple()}.
+get_metrics(Client, Input) ->
+    get_metrics(Client, Input, []).
+
+-spec get_metrics(aws_client:aws_client(), get_metrics_request(), proplists:proplist()) ->
+    {ok, get_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, get_metrics_errors(), tuple()}.
+get_metrics(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/metrics"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about a multicast group.
 -spec get_multicast_group(aws_client:aws_client(), binary() | list()) ->
@@ -7526,6 +7727,40 @@ update_log_levels_by_resource_types(Client, Input0, Options0) ->
     Method = post,
     Path = ["/log-levels"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the metric configuration.
+-spec update_metric_configuration(aws_client:aws_client(), update_metric_configuration_request()) ->
+    {ok, update_metric_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_metric_configuration_errors(), tuple()}.
+update_metric_configuration(Client, Input) ->
+    update_metric_configuration(Client, Input, []).
+
+-spec update_metric_configuration(aws_client:aws_client(), update_metric_configuration_request(), proplists:proplist()) ->
+    {ok, update_metric_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_metric_configuration_errors(), tuple()}.
+update_metric_configuration(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/metric-configuration"],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

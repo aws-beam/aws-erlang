@@ -1367,6 +1367,7 @@
 %% describe_app_image_config_response() :: #{
 %%   <<"AppImageConfigArn">> => string(),
 %%   <<"AppImageConfigName">> => string(),
+%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
 %%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
@@ -2032,6 +2033,7 @@
 %% Example:
 %% update_app_image_config_request() :: #{
 %%   <<"AppImageConfigName">> := string(),
+%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
 %%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
 %%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config()
 %% }
@@ -3052,6 +3054,13 @@
 %%   <<"Regex">> => string()
 %% }
 -type metric_definition() :: #{binary() => any()}.
+
+%% Example:
+%% code_editor_app_image_config() :: #{
+%%   <<"ContainerConfig">> => container_config(),
+%%   <<"FileSystemConfig">> => file_system_config()
+%% }
+-type code_editor_app_image_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_edge_packaging_jobs_request() :: #{
@@ -7695,6 +7704,7 @@
 %% Example:
 %% create_app_image_config_request() :: #{
 %%   <<"AppImageConfigName">> := string(),
+%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
 %%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
 %%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
 %%   <<"Tags">> => list(tag()())
@@ -8083,6 +8093,7 @@
 %% app_image_config_details() :: #{
 %%   <<"AppImageConfigArn">> => string(),
 %%   <<"AppImageConfigName">> => string(),
+%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
 %%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
@@ -10799,6 +10810,7 @@
 
 %% Example:
 %% code_editor_app_settings() :: #{
+%%   <<"CustomImages">> => list(custom_image()()),
 %%   <<"DefaultResourceSpec">> => resource_spec(),
 %%   <<"LifecycleConfigArns">> => list(string()())
 %% }

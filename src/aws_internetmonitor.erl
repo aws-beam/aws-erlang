@@ -113,6 +113,7 @@
 
 %% Example:
 %% list_monitors_input() :: #{
+%%   <<"IncludeLinkedAccounts">> => [boolean()],
 %%   <<"MaxResults">> => integer(),
 %%   <<"MonitorStatus">> => [string()],
 %%   <<"NextToken">> => [string()]
@@ -304,9 +305,12 @@
 %% get_query_status_input() :: #{}
 -type get_query_status_input() :: #{}.
 
+
 %% Example:
-%% get_monitor_input() :: #{}
--type get_monitor_input() :: #{}.
+%% get_monitor_input() :: #{
+%%   <<"LinkedAccountId">> => string()
+%% }
+-type get_monitor_input() :: #{binary() => any()}.
 
 %% Example:
 %% stop_query_output() :: #{}
@@ -327,9 +331,12 @@
 %% }
 -type list_health_events_output() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_health_event_input() :: #{}
--type get_health_event_input() :: #{}.
+%% get_health_event_input() :: #{
+%%   <<"LinkedAccountId">> => string()
+%% }
+-type get_health_event_input() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_output() :: #{}
@@ -356,6 +363,7 @@
 %% list_health_events_input() :: #{
 %%   <<"EndTime">> => [non_neg_integer()],
 %%   <<"EventStatus">> => string(),
+%%   <<"LinkedAccountId">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()],
 %%   <<"StartTime">> => [non_neg_integer()]
@@ -504,6 +512,7 @@
 %% start_query_input() :: #{
 %%   <<"EndTime">> := [non_neg_integer()],
 %%   <<"FilterParameters">> => list(filter_parameter()()),
+%%   <<"LinkedAccountId">> => string(),
 %%   <<"QueryType">> := string(),
 %%   <<"StartTime">> := [non_neg_integer()]
 %% }
@@ -767,7 +776,11 @@ get_health_event(Client, EventId, MonitorName, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"LinkedAccountId">>, maps:get(<<"LinkedAccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -809,7 +822,11 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"LinkedAccountId">>, maps:get(<<"LinkedAccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -961,6 +978,7 @@ list_health_events(Client, MonitorName, QueryMap, HeadersMap, Options0)
       [
         {<<"EndTime">>, maps:get(<<"EndTime">>, QueryMap, undefined)},
         {<<"EventStatus">>, maps:get(<<"EventStatus">>, QueryMap, undefined)},
+        {<<"LinkedAccountId">>, maps:get(<<"LinkedAccountId">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
         {<<"StartTime">>, maps:get(<<"StartTime">>, QueryMap, undefined)}
@@ -1006,6 +1024,7 @@ list_monitors(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"IncludeLinkedAccounts">>, maps:get(<<"IncludeLinkedAccounts">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"MonitorStatus">>, maps:get(<<"MonitorStatus">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}

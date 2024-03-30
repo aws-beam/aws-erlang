@@ -69,6 +69,8 @@
          reset_graph/4,
          restore_graph_from_snapshot/3,
          restore_graph_from_snapshot/4,
+         start_import_task/3,
+         start_import_task/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -171,6 +173,17 @@
 %%   <<"vectorSearchConfiguration">> => vector_search_configuration()
 %% }
 -type update_graph_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_task_input() :: #{
+%%   <<"failOnError">> => [boolean()],
+%%   <<"format">> => list(any()),
+%%   <<"importOptions">> => list(),
+%%   <<"roleArn">> := string(),
+%%   <<"source">> := [string()]
+%% }
+-type start_import_task_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -654,6 +667,19 @@
 
 
 %% Example:
+%% start_import_task_output() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"importOptions">> => list(),
+%%   <<"roleArn">> => string(),
+%%   <<"source">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type start_import_task_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_graph_snapshot_input() :: #{
 %%   <<"graphIdentifier">> := string(),
 %%   <<"snapshotName">> := string(),
@@ -957,6 +983,13 @@
     validation_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_import_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1895,6 +1928,43 @@ restore_graph_from_snapshot(Client, SnapshotIdentifier, Input) ->
 restore_graph_from_snapshot(Client, SnapshotIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/snapshots/", aws_util:encode_uri(SnapshotIdentifier), "/restore"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Import data into existing Neptune Analytics graph from Amazon Simple
+%% Storage Service (S3).
+%%
+%% The graph needs to be empty and in the AVAILABLE state.
+-spec start_import_task(aws_client:aws_client(), binary() | list(), start_import_task_input()) ->
+    {ok, start_import_task_output(), tuple()} |
+    {error, any()} |
+    {error, start_import_task_errors(), tuple()}.
+start_import_task(Client, GraphIdentifier, Input) ->
+    start_import_task(Client, GraphIdentifier, Input, []).
+
+-spec start_import_task(aws_client:aws_client(), binary() | list(), start_import_task_input(), proplists:proplist()) ->
+    {ok, start_import_task_output(), tuple()} |
+    {error, any()} |
+    {error, start_import_task_errors(), tuple()}.
+start_import_task(Client, GraphIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/importtasks"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
