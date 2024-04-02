@@ -802,7 +802,8 @@
 %%   <<"resourceType">> => list(any()),
 %%   <<"status">> => string(),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag()()),
+%%   <<"viewerMinimumTlsProtocolVersion">> => string()
 %% }
 -type lightsail_distribution() :: #{binary() => any()}.
 
@@ -1363,11 +1364,13 @@
 %%   <<"bundleId">> := string(),
 %%   <<"cacheBehaviorSettings">> => cache_settings(),
 %%   <<"cacheBehaviors">> => list(cache_behavior_per_path()()),
+%%   <<"certificateName">> => string(),
 %%   <<"defaultCacheBehavior">> := cache_behavior(),
 %%   <<"distributionName">> := string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"origin">> := input_origin(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag()()),
+%%   <<"viewerMinimumTlsProtocolVersion">> => list(any())
 %% }
 -type create_distribution_request() :: #{binary() => any()}.
 
@@ -1973,10 +1976,13 @@
 %% update_distribution_request() :: #{
 %%   <<"cacheBehaviorSettings">> => cache_settings(),
 %%   <<"cacheBehaviors">> => list(cache_behavior_per_path()()),
+%%   <<"certificateName">> => string(),
 %%   <<"defaultCacheBehavior">> => cache_behavior(),
 %%   <<"distributionName">> := string(),
 %%   <<"isEnabled">> => boolean(),
-%%   <<"origin">> => input_origin()
+%%   <<"origin">> => input_origin(),
+%%   <<"useDefaultCertificate">> => boolean(),
+%%   <<"viewerMinimumTlsProtocolVersion">> => list(any())
 %% }
 -type update_distribution_request() :: #{binary() => any()}.
 
@@ -2754,7 +2760,8 @@
 %% input_origin() :: #{
 %%   <<"name">> => string(),
 %%   <<"protocolPolicy">> => list(any()),
-%%   <<"regionName">> => list(any())
+%%   <<"regionName">> => list(any()),
+%%   <<"responseTimeout">> => integer()
 %% }
 -type input_origin() :: #{binary() => any()}.
 
@@ -2894,7 +2901,8 @@
 %%   <<"name">> => string(),
 %%   <<"protocolPolicy">> => list(any()),
 %%   <<"regionName">> => list(any()),
-%%   <<"resourceType">> => list(any())
+%%   <<"resourceType">> => list(any()),
+%%   <<"responseTimeout">> => integer()
 %% }
 -type origin() :: #{binary() => any()}.
 

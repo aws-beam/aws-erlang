@@ -17,6 +17,8 @@
          accept_predictions/5,
          accept_subscription_request/4,
          accept_subscription_request/5,
+         cancel_metadata_generation_run/4,
+         cancel_metadata_generation_run/5,
          cancel_subscription/4,
          cancel_subscription/5,
          create_asset/3,
@@ -131,6 +133,9 @@
          get_listing/3,
          get_listing/5,
          get_listing/6,
+         get_metadata_generation_run/3,
+         get_metadata_generation_run/5,
+         get_metadata_generation_run/6,
          get_project/3,
          get_project/5,
          get_project/6,
@@ -176,6 +181,9 @@
          list_environments/3,
          list_environments/5,
          list_environments/6,
+         list_metadata_generation_runs/2,
+         list_metadata_generation_runs/4,
+         list_metadata_generation_runs/5,
          list_notifications/3,
          list_notifications/5,
          list_notifications/6,
@@ -220,6 +228,8 @@
          search_user_profiles/4,
          start_data_source_run/4,
          start_data_source_run/5,
+         start_metadata_generation_run/3,
+         start_metadata_generation_run/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -281,6 +291,16 @@
 %%   <<"singleSignOn">> => single_sign_on()
 %% }
 -type update_domain_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metadata_generation_runs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type list_metadata_generation_runs_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1126,6 +1146,20 @@
 %% }
 -type list_environments_input() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_metadata_generation_run_output() :: #{}
+-type cancel_metadata_generation_run_output() :: #{}.
+
+
+%% Example:
+%% start_metadata_generation_run_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"target">> := metadata_generation_run_target(),
+%%   <<"type">> := list(any())
+%% }
+-type start_metadata_generation_run_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% asset_item_additional_attributes() :: #{
@@ -1219,6 +1253,20 @@
 %% Example:
 %% get_subscription_request_details_input() :: #{}
 -type get_subscription_request_details_input() :: #{}.
+
+
+%% Example:
+%% get_metadata_generation_run_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"target">> => metadata_generation_run_target(),
+%%   <<"type">> => list(any())
+%% }
+-type get_metadata_generation_run_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1413,6 +1461,19 @@
 %%   <<"revision">> => string()
 %% }
 -type create_form_type_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_metadata_generation_run_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type start_metadata_generation_run_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1618,6 +1679,15 @@
 %%   <<"threshold">> => [float()]
 %% }
 -type accept_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_generation_run_target() :: #{
+%%   <<"identifier">> => [string()],
+%%   <<"revision">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type metadata_generation_run_target() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2387,6 +2457,10 @@
 %% }
 -type sso_user_profile_details() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_metadata_generation_run_input() :: #{}
+-type cancel_metadata_generation_run_input() :: #{}.
+
 
 %% Example:
 %% list_subscription_targets_output() :: #{
@@ -2817,6 +2891,14 @@
 
 
 %% Example:
+%% list_metadata_generation_runs_output() :: #{
+%%   <<"items">> => list(metadata_generation_run_item()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metadata_generation_runs_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_project_input() :: #{
 %%   <<"skipDeletionCheck">> => [boolean()]
 %% }
@@ -2825,6 +2907,7 @@
 
 %% Example:
 %% accept_choice() :: #{
+%%   <<"editedValue">> => string(),
 %%   <<"predictionChoice">> => [integer()],
 %%   <<"predictionTarget">> => [string()]
 %% }
@@ -2837,6 +2920,20 @@
 %%   <<"revision">> => string()
 %% }
 -type listing_revision() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_generation_run_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"target">> => metadata_generation_run_target(),
+%%   <<"type">> => list(any())
+%% }
+-type metadata_generation_run_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3186,6 +3283,10 @@
 -type update_glossary_input() :: #{binary() => any()}.
 
 %% Example:
+%% get_metadata_generation_run_input() :: #{}
+-type get_metadata_generation_run_input() :: #{}.
+
+%% Example:
 %% delete_environment_profile_input() :: #{}
 -type delete_environment_profile_input() :: #{}.
 
@@ -3338,6 +3439,14 @@
     conflict_exception().
 
 -type accept_subscription_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type cancel_metadata_generation_run_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3729,6 +3838,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_metadata_generation_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_project_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3838,6 +3954,13 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_metadata_generation_runs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_notifications_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -3902,7 +4025,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type reject_subscription_request_errors() ::
     throttling_exception() | 
@@ -3951,6 +4075,15 @@
     resource_not_found_exception().
 
 -type start_data_source_run_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_metadata_generation_run_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4120,6 +4253,40 @@ accept_subscription_request(Client, DomainIdentifier, Identifier, Input) ->
 accept_subscription_request(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-requests/", aws_util:encode_uri(Identifier), "/accept"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels the metadata generation run.
+-spec cancel_metadata_generation_run(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_metadata_generation_run_input()) ->
+    {ok, cancel_metadata_generation_run_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_metadata_generation_run_errors(), tuple()}.
+cancel_metadata_generation_run(Client, DomainIdentifier, Identifier, Input) ->
+    cancel_metadata_generation_run(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec cancel_metadata_generation_run(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_metadata_generation_run_input(), proplists:proplist()) ->
+    {ok, cancel_metadata_generation_run_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_metadata_generation_run_errors(), tuple()}.
+cancel_metadata_generation_run(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/metadata-generation-runs/", aws_util:encode_uri(Identifier), "/cancel"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4547,7 +4714,9 @@ create_group_profile(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Publishes a listing (a record of an asset at a given time) or removes
+%% a listing from the
+%% catalog.
 -spec create_listing_change_set(aws_client:aws_client(), binary() | list(), create_listing_change_set_input()) ->
     {ok, create_listing_change_set_output(), tuple()} |
     {error, any()} |
@@ -5128,7 +5297,7 @@ delete_glossary_term(Client, DomainIdentifier, Identifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Deletes a listing (a record of an asset at a given time).
 -spec delete_listing(aws_client:aws_client(), binary() | list(), binary() | list(), delete_listing_input()) ->
     {ok, delete_listing_output(), tuple()} |
     {error, any()} |
@@ -5860,7 +6029,7 @@ get_iam_portal_login_url(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Gets a listing (a record of an asset at a given time).
 -spec get_listing(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_listing_output(), tuple()} |
     {error, any()} |
@@ -5898,6 +6067,43 @@ get_listing(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0
         {<<"listingRevision">>, maps:get(<<"listingRevision">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a metadata generation run in Amazon DataZone.
+-spec get_metadata_generation_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_metadata_generation_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_metadata_generation_run_errors(), tuple()}.
+get_metadata_generation_run(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_metadata_generation_run(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_metadata_generation_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_metadata_generation_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_metadata_generation_run_errors(), tuple()}.
+get_metadata_generation_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_metadata_generation_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_metadata_generation_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_metadata_generation_run_output(), tuple()} |
+    {error, any()} |
+    {error, get_metadata_generation_run_errors(), tuple()}.
+get_metadata_generation_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/metadata-generation-runs/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -6528,6 +6734,50 @@ list_environments(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all metadata generation runs.
+-spec list_metadata_generation_runs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_metadata_generation_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_metadata_generation_runs_errors(), tuple()}.
+list_metadata_generation_runs(Client, DomainIdentifier)
+  when is_map(Client) ->
+    list_metadata_generation_runs(Client, DomainIdentifier, #{}, #{}).
+
+-spec list_metadata_generation_runs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_metadata_generation_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_metadata_generation_runs_errors(), tuple()}.
+list_metadata_generation_runs(Client, DomainIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_metadata_generation_runs(Client, DomainIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_metadata_generation_runs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_metadata_generation_runs_output(), tuple()} |
+    {error, any()} |
+    {error, list_metadata_generation_runs_errors(), tuple()}.
+list_metadata_generation_runs(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/metadata-generation-runs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all Amazon DataZone notifications.
 -spec list_notifications(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_notifications_output(), tuple()} |
@@ -7098,7 +7348,8 @@ search_group_profiles(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches listings in Amazon DataZone.
+%% @doc Searches listings (records of an asset at a given time) in Amazon
+%% DataZone.
 -spec search_listings(aws_client:aws_client(), binary() | list(), search_listings_input()) ->
     {ok, search_listings_output(), tuple()} |
     {error, any()} |
@@ -7215,6 +7466,40 @@ start_data_source_run(Client, DataSourceIdentifier, DomainIdentifier, Input) ->
 start_data_source_run(Client, DataSourceIdentifier, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-sources/", aws_util:encode_uri(DataSourceIdentifier), "/runs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts the metadata generation run.
+-spec start_metadata_generation_run(aws_client:aws_client(), binary() | list(), start_metadata_generation_run_input()) ->
+    {ok, start_metadata_generation_run_output(), tuple()} |
+    {error, any()} |
+    {error, start_metadata_generation_run_errors(), tuple()}.
+start_metadata_generation_run(Client, DomainIdentifier, Input) ->
+    start_metadata_generation_run(Client, DomainIdentifier, Input, []).
+
+-spec start_metadata_generation_run(aws_client:aws_client(), binary() | list(), start_metadata_generation_run_input(), proplists:proplist()) ->
+    {ok, start_metadata_generation_run_output(), tuple()} |
+    {error, any()} |
+    {error, start_metadata_generation_run_errors(), tuple()}.
+start_metadata_generation_run(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/metadata-generation-runs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

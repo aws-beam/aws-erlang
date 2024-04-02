@@ -3246,7 +3246,7 @@ set_termination_protection(Client, Input, Options)
 %%
 %% For more information, see graceful
 %% node replacement:
-%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_UnhealthyNodeReplacement.html
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-node-replacement.html
 %% in the Amazon EMR Management Guide.
 -spec set_unhealthy_node_replacement(aws_client:aws_client(), set_unhealthy_node_replacement_input()) ->
     {ok, undefined, tuple()} |

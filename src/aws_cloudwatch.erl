@@ -593,6 +593,7 @@
 
 %% Example:
 %% single_metric_anomaly_detector() :: #{
+%%   <<"AccountId">> => string(),
 %%   <<"Dimensions">> => list(dimension()()),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
@@ -2039,6 +2040,13 @@ list_tags_for_resource(Client, Input, Options)
 %% You can use the model
 %% to display a band of expected normal values when the metric is graphed.
 %%
+%% If you have enabled unified cross-account observability, and this account
+%% is a monitoring
+%% account, the metric can be in the same account or a source account. You
+%% can specify the account ID
+%% in the object you specify in the `SingleMetricAnomalyDetector'
+%% parameter.
+%%
 %% For more information, see CloudWatch Anomaly Detection:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html.
 -spec put_anomaly_detector(aws_client:aws_client(), put_anomaly_detector_input()) ->
@@ -2082,9 +2090,15 @@ put_anomaly_detector(Client, Input, Options)
 %% metric alarms
 %% are in ALARM state.
 %%
-%% Currently, the only alarm actions that can be taken by composite alarms
-%% are notifying
-%% SNS topics.
+%% Composite alarms can take the following actions:
+%%
+%% Notify Amazon SNS topics.
+%%
+%% Invoke Lambda functions.
+%%
+%% Create OpsItems in Systems Manager Ops Center.
+%%
+%% Create incidents in Systems Manager Incident Manager.
 %%
 %% It is possible to create a loop or cycle of composite alarms, where
 %% composite alarm A depends on composite alarm B, and
@@ -2340,7 +2354,7 @@ put_metric_alarm(Client, Input, Options)
 %% You can publish either individual data points in the `Value' field, or
 %% arrays of values and the number of times each value occurred during the
 %% period by using the
-%% `Values' and `Counts' fields in the `MetricDatum' structure.
+%% `Values' and `Counts' fields in the `MetricData' structure.
 %% Using
 %% the `Values' and `Counts' method enables you to publish up to 150
 %% values per metric
