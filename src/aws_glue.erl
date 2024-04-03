@@ -1438,6 +1438,8 @@
 %% get_unfiltered_table_metadata_response() :: #{
 %%   <<"AuthorizedColumns">> => list(string()()),
 %%   <<"CellFilters">> => list(column_row_filter()()),
+%%   <<"IsMultiDialectView">> => boolean(),
+%%   <<"IsProtected">> => boolean(),
 %%   <<"IsRegisteredWithLakeFormation">> => boolean(),
 %%   <<"Permissions">> => list(list(any())()),
 %%   <<"QueryAuthorizationId">> => string(),
@@ -4471,6 +4473,15 @@
 -type get_resource_policies_response() :: #{binary() => any()}.
 
 %% Example:
+%% view_definition() :: #{
+%%   <<"Definer">> => string(),
+%%   <<"IsProtected">> => boolean(),
+%%   <<"Representations">> => list(view_representation()()),
+%%   <<"SubObjects">> => list(string()())
+%% }
+-type view_definition() :: #{binary() => any()}.
+
+%% Example:
 %% get_crawlers_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -6198,6 +6209,16 @@
 -type delete_schema_input() :: #{binary() => any()}.
 
 %% Example:
+%% view_representation() :: #{
+%%   <<"Dialect">> => list(any()),
+%%   <<"DialectVersion">> => string(),
+%%   <<"IsStale">> => boolean(),
+%%   <<"ViewExpandedText">> => string(),
+%%   <<"ViewOriginalText">> => string()
+%% }
+-type view_representation() :: #{binary() => any()}.
+
+%% Example:
 %% update_job_from_source_control_request() :: #{
 %%   <<"AuthStrategy">> => list(any()),
 %%   <<"AuthToken">> => string(),
@@ -6503,6 +6524,7 @@
 %%   <<"DatabaseName">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"FederatedTable">> => federated_table(),
+%%   <<"IsMultiDialectView">> => boolean(),
 %%   <<"IsRegisteredWithLakeFormation">> => boolean(),
 %%   <<"LastAccessTime">> => non_neg_integer(),
 %%   <<"LastAnalyzedTime">> => non_neg_integer(),
@@ -6516,6 +6538,7 @@
 %%   <<"TargetTable">> => table_identifier(),
 %%   <<"UpdateTime">> => non_neg_integer(),
 %%   <<"VersionId">> => string(),
+%%   <<"ViewDefinition">> => view_definition(),
 %%   <<"ViewExpandedText">> => string(),
 %%   <<"ViewOriginalText">> => string()
 %% }
