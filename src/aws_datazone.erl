@@ -89,6 +89,8 @@
          delete_subscription_request/5,
          delete_subscription_target/5,
          delete_subscription_target/6,
+         delete_time_series_data_points/5,
+         delete_time_series_data_points/6,
          get_asset/3,
          get_asset/5,
          get_asset/6,
@@ -151,6 +153,9 @@
          get_subscription_target/4,
          get_subscription_target/6,
          get_subscription_target/7,
+         get_time_series_data_point/6,
+         get_time_series_data_point/8,
+         get_time_series_data_point/9,
          get_user_profile/3,
          get_user_profile/5,
          get_user_profile/6,
@@ -208,6 +213,11 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_time_series_data_points/5,
+         list_time_series_data_points/7,
+         list_time_series_data_points/8,
+         post_time_series_data_points/5,
+         post_time_series_data_points/6,
          put_environment_blueprint_configuration/4,
          put_environment_blueprint_configuration/5,
          reject_predictions/4,
@@ -373,6 +383,10 @@
 %%   <<"termRelations">> => term_relations()
 %% }
 -type update_glossary_term_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_time_series_data_points_output() :: #{}
+-type delete_time_series_data_points_output() :: #{}.
 
 
 %% Example:
@@ -686,6 +700,14 @@
 
 
 %% Example:
+%% list_time_series_data_points_output() :: #{
+%%   <<"items">> => list(time_series_data_point_summary_form_output()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_time_series_data_points_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_summary() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
@@ -860,6 +882,7 @@
 %%   <<"formsOutput">> => list(form_output()()),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()()),
 %%   <<"listing">> => asset_listing_details(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
@@ -913,6 +936,14 @@
 %%   <<"userId">> => [string()]
 %% }
 -type user_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_time_series_data_points_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"formName">> := string()
+%% }
+-type delete_time_series_data_points_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1012,6 +1043,14 @@
 %%   <<"sort">> => search_sort()
 %% }
 -type search_types_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_time_series_data_points_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"forms">> := list(time_series_data_point_form_input()())
+%% }
+-type post_time_series_data_points_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_data_source_run_input() :: #{}
@@ -1164,6 +1203,7 @@
 %% Example:
 %% asset_item_additional_attributes() :: #{
 %%   <<"formsOutput">> => list(form_output()()),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()()),
 %%   <<"readOnlyFormsOutput">> => list(form_output()())
 %% }
 -type asset_item_additional_attributes() :: #{binary() => any()}.
@@ -1249,6 +1289,17 @@
 %% Example:
 %% delete_subscription_target_input() :: #{}
 -type delete_subscription_target_input() :: #{}.
+
+
+%% Example:
+%% list_time_series_data_points_input() :: #{
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"formName">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()]
+%% }
+-type list_time_series_data_points_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_subscription_request_details_input() :: #{}
@@ -1412,6 +1463,17 @@
 
 
 %% Example:
+%% time_series_data_point_form_input() :: #{
+%%   <<"content">> => [string()],
+%%   <<"formName">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type time_series_data_point_form_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_output() :: #{
 %%   <<"items">> => list(list()()),
 %%   <<"nextToken">> => string(),
@@ -1521,6 +1583,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"forms">> => string(),
 %%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output()()),
 %%   <<"owningProjectId">> => string()
 %% }
 -type asset_listing() :: #{binary() => any()}.
@@ -1733,7 +1796,8 @@
 
 %% Example:
 %% asset_listing_item_additional_attributes() :: #{
-%%   <<"forms">> => string()
+%%   <<"forms">> => string(),
+%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output()())
 %% }
 -type asset_listing_item_additional_attributes() :: #{binary() => any()}.
 
@@ -1957,6 +2021,18 @@
 %% }
 -type list_subscription_targets_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% time_series_data_point_form_output() :: #{
+%%   <<"content">> => [string()],
+%%   <<"formName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type time_series_data_point_form_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_subscription_request_input() :: #{}
 -type delete_subscription_request_input() :: #{}.
@@ -1982,6 +2058,7 @@
 
 %% Example:
 %% glue_run_configuration_input() :: #{
+%%   <<"autoImportDataQualityResult">> => [boolean()],
 %%   <<"dataAccessRole">> => [string()],
 %%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
 %% }
@@ -2247,6 +2324,7 @@
 %%   <<"formsOutput">> => list(form_output()()),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()()),
 %%   <<"listing">> => asset_listing_details(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
@@ -2264,6 +2342,17 @@
 %%   <<"member">> := list()
 %% }
 -type delete_project_membership_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_time_series_data_point_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"entityType">> => list(any()),
+%%   <<"form">> => time_series_data_point_form_output(),
+%%   <<"formName">> => string()
+%% }
+-type get_time_series_data_point_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2960,6 +3049,28 @@
 
 
 %% Example:
+%% time_series_data_point_summary_form_output() :: #{
+%%   <<"contentSummary">> => [string()],
+%%   <<"formName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type time_series_data_point_summary_form_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_time_series_data_points_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"entityType">> => list(any()),
+%%   <<"forms">> => list(time_series_data_point_form_output()())
+%% }
+-type post_time_series_data_points_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_subscription_grant_output() :: #{
 %%   <<"assets">> => list(subscribed_asset()()),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -2979,6 +3090,7 @@
 %% Example:
 %% glue_run_configuration_output() :: #{
 %%   <<"accountId">> => [string()],
+%%   <<"autoImportDataQualityResult">> => [boolean()],
 %%   <<"dataAccessRole">> => [string()],
 %%   <<"region">> => [string()],
 %%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
@@ -3180,6 +3292,7 @@
 %%   <<"formsOutput">> => list(form_output()()),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"id">> => string(),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()()),
 %%   <<"listing">> => asset_listing_details(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
@@ -3221,6 +3334,13 @@
 %%   <<"clientToken">> => [string()]
 %% }
 -type delete_data_source_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_time_series_data_point_input() :: #{
+%%   <<"formName">> := string()
+%% }
+-type get_time_series_data_point_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3729,6 +3849,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_time_series_data_points_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_asset_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3880,6 +4007,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_time_series_data_point_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_user_profile_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -4012,6 +4146,22 @@
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_time_series_data_points_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type post_time_series_data_points_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type put_environment_blueprint_configuration_errors() ::
     validation_exception() | 
@@ -5502,6 +5652,42 @@ delete_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Iden
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified time series form for the specified asset.
+-spec delete_time_series_data_points(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_time_series_data_points_input()) ->
+    {ok, delete_time_series_data_points_output(), tuple()} |
+    {error, any()} |
+    {error, delete_time_series_data_points_errors(), tuple()}.
+delete_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityType, Input) ->
+    delete_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityType, Input, []).
+
+-spec delete_time_series_data_points(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_time_series_data_points_input(), proplists:proplist()) ->
+    {ok, delete_time_series_data_points_output(), tuple()} |
+    {error, any()} |
+    {error, delete_time_series_data_points_errors(), tuple()}.
+delete_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityType, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/time-series-data-points"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>},
+                     {<<"formName">>, <<"formName">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets an Amazon DataZone asset.
 -spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_asset_output(), tuple()} |
@@ -6289,6 +6475,47 @@ get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identif
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the existing data point for the asset.
+-spec get_time_series_data_point(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_time_series_data_point_output(), tuple()} |
+    {error, any()} |
+    {error, get_time_series_data_point_errors(), tuple()}.
+get_time_series_data_point(Client, DomainIdentifier, EntityIdentifier, EntityType, Identifier, FormName)
+  when is_map(Client) ->
+    get_time_series_data_point(Client, DomainIdentifier, EntityIdentifier, EntityType, Identifier, FormName, #{}, #{}).
+
+-spec get_time_series_data_point(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_time_series_data_point_output(), tuple()} |
+    {error, any()} |
+    {error, get_time_series_data_point_errors(), tuple()}.
+get_time_series_data_point(Client, DomainIdentifier, EntityIdentifier, EntityType, Identifier, FormName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_time_series_data_point(Client, DomainIdentifier, EntityIdentifier, EntityType, Identifier, FormName, QueryMap, HeadersMap, []).
+
+-spec get_time_series_data_point(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_time_series_data_point_output(), tuple()} |
+    {error, any()} |
+    {error, get_time_series_data_point_errors(), tuple()}.
+get_time_series_data_point(Client, DomainIdentifier, EntityIdentifier, EntityType, Identifier, FormName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/time-series-data-points/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"formName">>, FormName}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -7139,6 +7366,86 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists time series data points.
+-spec list_time_series_data_points(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_time_series_data_points_output(), tuple()} |
+    {error, any()} |
+    {error, list_time_series_data_points_errors(), tuple()}.
+list_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityType, FormName)
+  when is_map(Client) ->
+    list_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityType, FormName, #{}, #{}).
+
+-spec list_time_series_data_points(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_time_series_data_points_output(), tuple()} |
+    {error, any()} |
+    {error, list_time_series_data_points_errors(), tuple()}.
+list_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityType, FormName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityType, FormName, QueryMap, HeadersMap, []).
+
+-spec list_time_series_data_points(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_time_series_data_points_output(), tuple()} |
+    {error, any()} |
+    {error, list_time_series_data_points_errors(), tuple()}.
+list_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityType, FormName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/time-series-data-points"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"endedAt">>, maps:get(<<"endedAt">>, QueryMap, undefined)},
+        {<<"formName">>, FormName},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"startedAt">>, maps:get(<<"startedAt">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Posts time series data points to Amazon DataZone for the specified
+%% asset.
+-spec post_time_series_data_points(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), post_time_series_data_points_input()) ->
+    {ok, post_time_series_data_points_output(), tuple()} |
+    {error, any()} |
+    {error, post_time_series_data_points_errors(), tuple()}.
+post_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityType, Input) ->
+    post_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityType, Input, []).
+
+-spec post_time_series_data_points(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), post_time_series_data_points_input(), proplists:proplist()) ->
+    {ok, post_time_series_data_points_output(), tuple()} |
+    {error, any()} |
+    {error, post_time_series_data_points_errors(), tuple()}.
+post_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityType, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/time-series-data-points"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Writes the configuration for the specified environment blueprint in
 %% Amazon DataZone.

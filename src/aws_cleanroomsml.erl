@@ -111,6 +111,7 @@
 
 %% Example:
 %% audience_quality_metrics() :: #{
+%%   <<"recallMetric">> => [float()],
 %%   <<"relevanceMetrics">> => list(relevance_metric()())
 %% }
 -type audience_quality_metrics() :: #{binary() => any()}.
@@ -546,7 +547,6 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"kmsKeyArn">> => string(),
-%%   <<"metrics">> => list(audience_model_metric()()),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusDetails">> => status_details(),
@@ -557,15 +557,6 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type get_audience_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% audience_model_metric() :: #{
-%%   <<"forTopKItemPredictions">> => [integer()],
-%%   <<"type">> => list(any()),
-%%   <<"value">> => [float()]
-%% }
--type audience_model_metric() :: #{binary() => any()}.
 
 
 %% Example:
@@ -884,8 +875,7 @@ create_configured_audience_model(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Defines the information necessary to create a training dataset, or
-%% seed audience.
+%% @doc Defines the information necessary to create a training dataset.
 %%
 %% In Clean Rooms ML, the `TrainingDataset' is metadata that points to a
 %% Glue table, which is read only during `AudienceModel' creation.

@@ -1218,6 +1218,7 @@
 %% Example:
 %% output_group_settings() :: #{
 %%   <<"ArchiveGroupSettings">> => archive_group_settings(),
+%%   <<"CmafIngestGroupSettings">> => cmaf_ingest_group_settings(),
 %%   <<"FrameCaptureGroupSettings">> => frame_capture_group_settings(),
 %%   <<"HlsGroupSettings">> => hls_group_settings(),
 %%   <<"MediaPackageGroupSettings">> => media_package_group_settings(),
@@ -1650,12 +1651,14 @@
 
 %% Example:
 %% audio_description() :: #{
+%%   <<"AudioDashRoles">> => list(list(any())()),
 %%   <<"AudioNormalizationSettings">> => audio_normalization_settings(),
 %%   <<"AudioSelectorName">> => string(),
 %%   <<"AudioType">> => list(any()),
 %%   <<"AudioTypeControl">> => list(any()),
 %%   <<"AudioWatermarkingSettings">> => audio_watermark_settings(),
 %%   <<"CodecSettings">> => audio_codec_settings(),
+%%   <<"DvbDashAccessibility">> => list(any()),
 %%   <<"LanguageCode">> => string(),
 %%   <<"LanguageCodeControl">> => list(any()),
 %%   <<"Name">> => string(),
@@ -2282,6 +2285,7 @@
 %% Example:
 %% output_settings() :: #{
 %%   <<"ArchiveOutputSettings">> => archive_output_settings(),
+%%   <<"CmafIngestOutputSettings">> => cmaf_ingest_output_settings(),
 %%   <<"FrameCaptureOutputSettings">> => frame_capture_output_settings(),
 %%   <<"HlsOutputSettings">> => hls_output_settings(),
 %%   <<"MediaPackageOutputSettings">> => media_package_output_settings(),
@@ -2461,6 +2465,13 @@
 %% Example:
 %% arib_destination_settings() :: #{}
 -type arib_destination_settings() :: #{}.
+
+
+%% Example:
+%% cmaf_ingest_output_settings() :: #{
+%%   <<"NameModifier">> => string()
+%% }
+-type cmaf_ingest_output_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2847,6 +2858,18 @@
 
 
 %% Example:
+%% cmaf_ingest_group_settings() :: #{
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"NielsenId3Behavior">> => list(any()),
+%%   <<"Scte35Type">> => list(any()),
+%%   <<"SegmentLength">> => integer(),
+%%   <<"SegmentLengthUnits">> => list(any()),
+%%   <<"SendDelayMs">> => integer()
+%% }
+-type cmaf_ingest_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% input_vpc_request() :: #{
 %%   <<"SecurityGroupIds">> => list(string()()),
 %%   <<"SubnetIds">> => list(string()())
@@ -2996,8 +3019,10 @@
 %% Example:
 %% caption_description() :: #{
 %%   <<"Accessibility">> => list(any()),
+%%   <<"CaptionDashRoles">> => list(list(any())()),
 %%   <<"CaptionSelectorName">> => string(),
 %%   <<"DestinationSettings">> => caption_destination_settings(),
+%%   <<"DvbDashAccessibility">> => list(any()),
 %%   <<"LanguageCode">> => string(),
 %%   <<"LanguageDescription">> => string(),
 %%   <<"Name">> => string()

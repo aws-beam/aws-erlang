@@ -2311,6 +2311,7 @@
 %%   <<"LogicalResourceId">> => string(),
 %%   <<"ModuleInfo">> => module_info(),
 %%   <<"PhysicalResourceId">> => string(),
+%%   <<"PolicyAction">> => list(any()),
 %%   <<"Replacement">> => list(any()),
 %%   <<"ResourceType">> => string(),
 %%   <<"Scope">> => list(list(any())())
@@ -2761,7 +2762,7 @@ activate_organizations_access(Client, Input, Options)
 %% information, see
 %% Configuring extensions at
 %% the account level:
-%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-private.html#registry-set-configuration
 %% in the CloudFormation User Guide.
 -spec activate_type(aws_client:aws_client(), activate_type_input()) ->
     {ok, activate_type_output(), tuple()} |
@@ -2785,7 +2786,7 @@ activate_type(Client, Input, Options)
 %%
 %% For more information, see Configuring extensions at
 %% the account level:
-%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-private.html#registry-set-configuration
 %% in the CloudFormation User Guide.
 -spec batch_describe_type_configurations(aws_client:aws_client(), batch_describe_type_configurations_input()) ->
     {ok, batch_describe_type_configurations_output(), tuple()} |
@@ -4439,7 +4440,7 @@ register_publisher(Client, Input, Options)
 %% configuration properties for the extension. For more information, see
 %% Configuring extensions at
 %% the account level:
-%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-private.html#registry-set-configuration
 %% in the CloudFormation User Guide.
 -spec register_type(aws_client:aws_client(), register_type_input()) ->
     {ok, register_type_output(), tuple()} |
@@ -4522,7 +4523,7 @@ set_stack_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html.
 %% For more information, see Configuring extensions at
 %% the account level:
-%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-private.html#registry-set-configuration
 %% in the CloudFormation User Guide.
 %%
 %% It's strongly recommended that you use dynamic references to restrict

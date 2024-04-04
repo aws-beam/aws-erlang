@@ -228,7 +228,9 @@
 %%   <<"region">> => [string()],
 %%   <<"satelliteArn">> => string(),
 %%   <<"startTime">> => [non_neg_integer()],
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"visibilityEndTime">> => [non_neg_integer()],
+%%   <<"visibilityStartTime">> => [non_neg_integer()]
 %% }
 -type describe_contact_response() :: #{binary() => any()}.
 
@@ -539,7 +541,9 @@
 %%   <<"region">> => [string()],
 %%   <<"satelliteArn">> => string(),
 %%   <<"startTime">> => [non_neg_integer()],
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"visibilityEndTime">> => [non_neg_integer()],
+%%   <<"visibilityStartTime">> => [non_neg_integer()]
 %% }
 -type contact_data() :: #{binary() => any()}.
 

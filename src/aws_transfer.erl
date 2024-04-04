@@ -417,6 +417,7 @@
 %%   <<"As2Config">> => as2_connector_config(),
 %%   <<"ConnectorId">> := string(),
 %%   <<"LoggingRole">> => string(),
+%%   <<"SecurityPolicyName">> => string(),
 %%   <<"SftpConfig">> => sftp_connector_config(),
 %%   <<"Url">> => string()
 %% }
@@ -589,11 +590,14 @@
 %% Example:
 %% described_security_policy() :: #{
 %%   <<"Fips">> => boolean(),
+%%   <<"Protocols">> => list(list(any())()),
 %%   <<"SecurityPolicyName">> => string(),
 %%   <<"SshCiphers">> => list(string()()),
+%%   <<"SshHostKeyAlgorithms">> => list(string()()),
 %%   <<"SshKexs">> => list(string()()),
 %%   <<"SshMacs">> => list(string()()),
-%%   <<"TlsCiphers">> => list(string()())
+%%   <<"TlsCiphers">> => list(string()()),
+%%   <<"Type">> => list(any())
 %% }
 -type described_security_policy() :: #{binary() => any()}.
 
@@ -1137,6 +1141,7 @@
 %%   <<"AccessRole">> := string(),
 %%   <<"As2Config">> => as2_connector_config(),
 %%   <<"LoggingRole">> => string(),
+%%   <<"SecurityPolicyName">> => string(),
 %%   <<"SftpConfig">> => sftp_connector_config(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"Url">> := string()
@@ -1458,6 +1463,7 @@
 %%   <<"As2Config">> => as2_connector_config(),
 %%   <<"ConnectorId">> => string(),
 %%   <<"LoggingRole">> => string(),
+%%   <<"SecurityPolicyName">> => string(),
 %%   <<"ServiceManagedEgressIpAddresses">> => list(string()()),
 %%   <<"SftpConfig">> => sftp_connector_config(),
 %%   <<"Tags">> => list(tag()()),
@@ -2423,15 +2429,17 @@ describe_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProfile">>, Input, Options).
 
-%% @doc Describes the security policy that is attached to your file transfer
-%% protocol-enabled
-%% server.
+%% @doc Describes the security policy that is attached to your server or SFTP
+%% connector.
 %%
 %% The response contains a description of the security policy's
 %% properties. For more
 %% information about security policies, see Working with security
-%% policies:
-%% https://docs.aws.amazon.com/transfer/latest/userguide/security-policies.html.
+%% policies for servers:
+%% https://docs.aws.amazon.com/transfer/latest/userguide/security-policies.html
+%% or Working with security
+%% policies for SFTP connectors:
+%% https://docs.aws.amazon.com/transfer/latest/userguide/security-policies-connectors.html.
 -spec describe_security_policy(aws_client:aws_client(), describe_security_policy_request()) ->
     {ok, describe_security_policy_response(), tuple()} |
     {error, any()} |
@@ -2726,9 +2734,16 @@ list_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProfiles">>, Input, Options).
 
-%% @doc Lists the security policies that are attached to your file transfer
-%% protocol-enabled
-%% servers.
+%% @doc Lists the security policies that are attached to your servers and
+%% SFTP connectors.
+%%
+%% For more information
+%% about security policies, see Working with security
+%% policies for servers:
+%% https://docs.aws.amazon.com/transfer/latest/userguide/security-policies.html
+%% or Working with security
+%% policies for SFTP connectors:
+%% https://docs.aws.amazon.com/transfer/latest/userguide/security-policies-connectors.html.
 -spec list_security_policies(aws_client:aws_client(), list_security_policies_request()) ->
     {ok, list_security_policies_response(), tuple()} |
     {error, any()} |

@@ -115,7 +115,9 @@
          start_db_cluster/2,
          start_db_cluster/3,
          stop_db_cluster/2,
-         stop_db_cluster/3]).
+         stop_db_cluster/3,
+         switchover_global_cluster/2,
+         switchover_global_cluster/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -396,6 +398,12 @@
 %%   <<"DBSubnetGroup">> => db_subnet_group()
 %% }
 -type create_db_subnet_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type switchover_global_cluster_result() :: #{binary() => any()}.
 
 %% Example:
 %% cloudwatch_logs_export_configuration() :: #{
@@ -1033,6 +1041,13 @@
 %%   <<"MaxRecords">> => integer()
 %% }
 -type describe_db_clusters_message() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_global_cluster_message() :: #{
+%%   <<"GlobalClusterIdentifier">> := string(),
+%%   <<"TargetDbClusterIdentifier">> := string()
+%% }
+-type switchover_global_cluster_message() :: #{binary() => any()}.
 
 %% Example:
 %% modify_db_cluster_parameter_group_message() :: #{
@@ -1956,6 +1971,12 @@
     invalid_db_instance_state_fault() | 
     db_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault().
+
+-type switchover_global_cluster_errors() ::
+    global_cluster_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault() | 
+    invalid_global_cluster_state_fault().
 
 %%====================================================================
 %% API
@@ -3135,6 +3156,24 @@ stop_db_cluster(Client, Input)
 stop_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBCluster">>, Input, Options).
+
+%% @doc Switches over the specified secondary Amazon DocumentDB cluster to be
+%% the new primary Amazon DocumentDB cluster in the global database cluster.
+-spec switchover_global_cluster(aws_client:aws_client(), switchover_global_cluster_message()) ->
+    {ok, switchover_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, switchover_global_cluster_errors(), tuple()}.
+switchover_global_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    switchover_global_cluster(Client, Input, []).
+
+-spec switchover_global_cluster(aws_client:aws_client(), switchover_global_cluster_message(), proplists:proplist()) ->
+    {ok, switchover_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, switchover_global_cluster_errors(), tuple()}.
+switchover_global_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SwitchoverGlobalCluster">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
