@@ -26,6 +26,8 @@
          batch_get_collaboration_analysis_template/4,
          batch_get_schema/3,
          batch_get_schema/4,
+         batch_get_schema_analysis_rule/3,
+         batch_get_schema_analysis_rule/4,
          create_analysis_template/3,
          create_analysis_template/4,
          create_collaboration/2,
@@ -615,6 +617,16 @@
 
 
 %% Example:
+%% schema_status_detail() :: #{
+%%   <<"analysisRuleType">> => list(any()),
+%%   <<"configurations">> => list(list(any())()),
+%%   <<"reasons">> => list(schema_status_reason()()),
+%%   <<"status">> => list(any())
+%% }
+-type schema_status_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_configured_table_association_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"roleArn">> => string()
@@ -703,6 +715,14 @@
 %% Example:
 %% delete_member_output() :: #{}
 -type delete_member_output() :: #{}.
+
+
+%% Example:
+%% schema_analysis_rule_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type schema_analysis_rule_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_configured_table_association_output() :: #{}
@@ -841,6 +861,14 @@
 %%   <<"configuredTableAssociation">> := configured_table_association()
 %% }
 -type update_configured_table_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_schema_analysis_rule_output() :: #{
+%%   <<"analysisRules">> => list(analysis_rule()()),
+%%   <<"errors">> => list(batch_get_schema_analysis_rule_error()())
+%% }
+-type batch_get_schema_analysis_rule_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1004,6 +1032,7 @@
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"partitionKeys">> => list(column()()),
+%%   <<"schemaStatusDetails">> => list(schema_status_detail()()),
 %%   <<"type">> => list(any()),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
@@ -1318,6 +1347,14 @@
 
 
 %% Example:
+%% schema_status_reason() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => [string()]
+%% }
+-type schema_status_reason() :: #{binary() => any()}.
+
+
+%% Example:
 %% protected_query_single_member_output() :: #{
 %%   <<"accountId">> => string()
 %% }
@@ -1344,6 +1381,13 @@
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_schema_analysis_rule_input() :: #{
+%%   <<"schemaAnalysisRuleRequests">> := list(schema_analysis_rule_request()())
+%% }
+-type batch_get_schema_analysis_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1385,6 +1429,16 @@
 %%   <<"analysisTemplate">> := analysis_template()
 %% }
 -type get_analysis_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_schema_analysis_rule_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type batch_get_schema_analysis_rule_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1879,6 +1933,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type batch_get_schema_analysis_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type create_analysis_template_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2363,6 +2424,40 @@ batch_get_schema(Client, CollaborationIdentifier, Input) ->
 batch_get_schema(Client, CollaborationIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/batch-schema"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves multiple analysis rule schemas.
+-spec batch_get_schema_analysis_rule(aws_client:aws_client(), binary() | list(), batch_get_schema_analysis_rule_input()) ->
+    {ok, batch_get_schema_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_schema_analysis_rule_errors(), tuple()}.
+batch_get_schema_analysis_rule(Client, CollaborationIdentifier, Input) ->
+    batch_get_schema_analysis_rule(Client, CollaborationIdentifier, Input, []).
+
+-spec batch_get_schema_analysis_rule(aws_client:aws_client(), binary() | list(), batch_get_schema_analysis_rule_input(), proplists:proplist()) ->
+    {ok, batch_get_schema_analysis_rule_output(), tuple()} |
+    {error, any()} |
+    {error, batch_get_schema_analysis_rule_errors(), tuple()}.
+batch_get_schema_analysis_rule(Client, CollaborationIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/batch-schema-analysis-rule"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -35,44 +35,32 @@
 %% ```
 %% Content-Type: '''application/json
 %%
-%% Resources
+%% Key Concepts
 %%
-%% The following resources contain information about your IVS live stream
-%% (see Getting Started with
-%% Amazon IVS:
-%% https://docs.aws.amazon.com/ivs/latest/userguide/getting-started.html):
+%% Channel — Stores configuration data related to your live stream. You first
+%% create a channel and then use the channel’s stream key to start your live
+%% stream.
 %%
-%% Channel — Stores configuration data related to your
-%% live stream. You first create a channel and then use the channel’s stream
-%% key to start
-%% your live stream. See the Channel endpoints for more information.
+%% Stream key — An identifier assigned by Amazon IVS when you create a
+%% channel, which is then used to authorize streaming.
+%% Treat the stream key like a secret, since it allows anyone to stream to
+%% the channel.
 %%
-%% Stream key — An identifier assigned by Amazon IVS
-%% when you create a channel, which is then used to authorize streaming. See
-%% the StreamKey
-%% endpoints for more information.
-%% Treat the stream key like
-%% a secret, since it allows anyone to stream to the
-%% channel.
+%% Playback key pair — Video playback may be restricted using
+%% playback-authorization tokens, which use public-key encryption. A playback
+%% key pair is the public-private pair of keys used to sign and validate the
+%% playback-authorization token.
 %%
-%% Playback key pair — Video playback may be restricted
-%% using playback-authorization tokens, which use public-key encryption. A
-%% playback key pair
-%% is the public-private pair of keys used to sign and validate the
-%% playback-authorization
-%% token. See the PlaybackKeyPair endpoints for more information.
+%% Recording configuration — Stores configuration related to recording a live
+%% stream and where to store the recorded content. Multiple channels can
+%% reference the same recording configuration.
 %%
-%% Recording configuration — Stores configuration
-%% related to recording a live stream and where to store the recorded
-%% content. Multiple
-%% channels can reference the same recording configuration. See the Recording
-%% Configuration
-%% endpoints for more information.
+%% Playback restriction policy — Restricts playback by countries and/or
+%% origin sites.
 %%
-%% Playback restriction policy — Restricts playback by
-%% countries and/or origin sites. See the Playback Restriction Policy
-%% endpoints for more
-%% information.
+%% For more information about your IVS live stream, also see Getting Started
+%% with IVS Low-Latency Streaming:
+%% https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/getting-started.html.
 %%
 %% Tagging
 %%
@@ -239,7 +227,7 @@
 %% pairs
 %% simultaneously.
 %%
-%% RecordingConfiguration Endpoints
+%% Recording Configuration Endpoints
 %%
 %% `CreateRecordingConfiguration' — Creates a new recording
 %% configuration, used to enable recording to Amazon S3.
@@ -285,7 +273,7 @@
 %% per account are
 %% allowed.
 %%
-%% StreamKey Endpoints
+%% Stream Key Endpoints
 %%
 %% `CreateStreamKey' — Creates a stream key, used to initiate a
 %% stream, for the specified channel ARN.
@@ -1038,6 +1026,7 @@
 %%   <<"playbackUrl">> => string(),
 %%   <<"preset">> => list(any()),
 %%   <<"recordingConfigurationArn">> => string(),
+%%   <<"srt">> => srt(),
 %%   <<"tags">> => map(),
 %%   <<"type">> => list(any())
 %% }
@@ -1183,6 +1172,14 @@
 %%   <<"tags">> => map()
 %% }
 -type stream_key_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"passphrase">> => string()
+%% }
+-type srt() :: #{binary() => any()}.
 
 
 %% Example:

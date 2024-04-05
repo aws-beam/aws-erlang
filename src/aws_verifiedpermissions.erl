@@ -293,6 +293,12 @@
 -type policy_item() :: #{binary() => any()}.
 
 %% Example:
+%% cognito_group_configuration_detail() :: #{
+%%   <<"groupEntityType">> => string()
+%% }
+-type cognito_group_configuration_detail() :: #{binary() => any()}.
+
+%% Example:
 %% static_policy_definition_item() :: #{
 %%   <<"description">> => string()
 %% }
@@ -360,6 +366,12 @@
 -type evaluation_error_item() :: #{binary() => any()}.
 
 %% Example:
+%% update_cognito_group_configuration() :: #{
+%%   <<"groupEntityType">> => string()
+%% }
+-type update_cognito_group_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% update_policy_store_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"policyStoreId">> := string(),
@@ -392,6 +404,7 @@
 %% Example:
 %% cognito_user_pool_configuration_item() :: #{
 %%   <<"clientIds">> => list(string()()),
+%%   <<"groupConfiguration">> => cognito_group_configuration_item(),
 %%   <<"issuer">> => string(),
 %%   <<"userPoolArn">> => string()
 %% }
@@ -460,6 +473,12 @@
 -type get_schema_output() :: #{binary() => any()}.
 
 %% Example:
+%% cognito_group_configuration() :: #{
+%%   <<"groupEntityType">> => string()
+%% }
+-type cognito_group_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% delete_policy_store_output() :: #{
 
 %% }
@@ -474,6 +493,7 @@
 %% Example:
 %% cognito_user_pool_configuration_detail() :: #{
 %%   <<"clientIds">> => list(string()()),
+%%   <<"groupConfiguration">> => cognito_group_configuration_detail(),
 %%   <<"issuer">> => string(),
 %%   <<"userPoolArn">> => string()
 %% }
@@ -537,6 +557,7 @@
 %% Example:
 %% cognito_user_pool_configuration() :: #{
 %%   <<"clientIds">> => list(string()()),
+%%   <<"groupConfiguration">> => cognito_group_configuration(),
 %%   <<"userPoolArn">> => string()
 %% }
 -type cognito_user_pool_configuration() :: #{binary() => any()}.
@@ -592,6 +613,7 @@
 %% Example:
 %% update_cognito_user_pool_configuration() :: #{
 %%   <<"clientIds">> => list(string()()),
+%%   <<"groupConfiguration">> => update_cognito_group_configuration(),
 %%   <<"userPoolArn">> => string()
 %% }
 -type update_cognito_user_pool_configuration() :: #{binary() => any()}.
@@ -609,7 +631,8 @@
 %% is_authorized_with_token_output() :: #{
 %%   <<"decision">> => list(any()),
 %%   <<"determiningPolicies">> => list(determining_policy_item()()),
-%%   <<"errors">> => list(evaluation_error_item()())
+%%   <<"errors">> => list(evaluation_error_item()()),
+%%   <<"principal">> => entity_identifier()
 %% }
 -type is_authorized_with_token_output() :: #{binary() => any()}.
 
@@ -621,6 +644,12 @@
 %%   <<"statement">> := string()
 %% }
 -type create_policy_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_group_configuration_item() :: #{
+%%   <<"groupEntityType">> => string()
+%% }
+-type cognito_group_configuration_item() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{

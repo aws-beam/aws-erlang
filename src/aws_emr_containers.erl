@@ -11,7 +11,7 @@
 %% open-source applications.
 %% For more information about Amazon EMR on EKS concepts and tasks, see What
 %% is
-%% shared id=&quot;EMR-EKS&quot;/&gt;:
+%% Amazon EMR on EKS:
 %% https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/emr-eks.html.
 %%
 %% Amazon EMR containers is the API name for Amazon EMR on EKS. The
@@ -386,6 +386,13 @@
 
 
 %% Example:
+%% e_k_s_request_throttled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type e_k_s_request_throttled_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% endpoint() :: #{
 %%   <<"arn">> => string(),
 %%   <<"certificateArn">> => string(),
@@ -661,6 +668,7 @@
 %%   <<"containerProviderType">> => list(any()),
 %%   <<"createdAfter">> => non_neg_integer(),
 %%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"eksAccessEntryIntegrated">> => boolean(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"states">> => list(list(any())())
@@ -684,6 +692,7 @@
 -type create_virtual_cluster_errors() ::
     validation_exception() | 
     internal_server_exception() | 
+    e_k_s_request_throttled_exception() | 
     resource_not_found_exception().
 
 -type delete_job_template_errors() ::
@@ -1487,6 +1496,7 @@ list_virtual_clusters(Client, QueryMap, HeadersMap, Options0)
         {<<"containerProviderType">>, maps:get(<<"containerProviderType">>, QueryMap, undefined)},
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"eksAccessEntryIntegrated">>, maps:get(<<"eksAccessEntryIntegrated">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"states">>, maps:get(<<"states">>, QueryMap, undefined)}
