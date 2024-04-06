@@ -6285,6 +6285,7 @@
 %%   <<"Edition">> := list(any()),
 %%   <<"EmailAddress">> => string(),
 %%   <<"FirstName">> => string(),
+%%   <<"IAMIdentityCenterInstanceArn">> => string(),
 %%   <<"LastName">> => string(),
 %%   <<"NotificationEmail">> := string(),
 %%   <<"ReaderGroup">> => list(string()()),

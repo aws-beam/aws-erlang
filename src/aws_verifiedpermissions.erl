@@ -86,6 +86,8 @@
 
 -export([batch_is_authorized/2,
          batch_is_authorized/3,
+         batch_is_authorized_with_token/2,
+         batch_is_authorized_with_token/3,
          create_identity_source/2,
          create_identity_source/3,
          create_policy/2,
@@ -169,6 +171,14 @@
 %%   <<"policyTemplateId">> => string()
 %% }
 -type create_policy_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_with_token_input_item() :: #{
+%%   <<"action">> => action_identifier(),
+%%   <<"context">> => list(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type batch_is_authorized_with_token_input_item() :: #{binary() => any()}.
 
 %% Example:
 %% update_identity_source_input() :: #{
@@ -278,6 +288,15 @@
 %%   <<"policyStoreId">> => string()
 %% }
 -type update_policy_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_with_token_output_item() :: #{
+%%   <<"decision">> => list(any()),
+%%   <<"determiningPolicies">> => list(determining_policy_item()()),
+%%   <<"errors">> => list(evaluation_error_item()()),
+%%   <<"request">> => batch_is_authorized_with_token_input_item()
+%% }
+-type batch_is_authorized_with_token_output_item() :: #{binary() => any()}.
 
 %% Example:
 %% policy_item() :: #{
@@ -409,6 +428,16 @@
 %%   <<"userPoolArn">> => string()
 %% }
 -type cognito_user_pool_configuration_item() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_with_token_input() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"entities">> => list(),
+%%   <<"identityToken">> => string(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"requests">> := list(batch_is_authorized_with_token_input_item()())
+%% }
+-type batch_is_authorized_with_token_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_policy_template_output() :: #{
@@ -785,6 +814,13 @@
 -type identity_source_filter() :: #{binary() => any()}.
 
 %% Example:
+%% batch_is_authorized_with_token_output() :: #{
+%%   <<"principal">> => entity_identifier(),
+%%   <<"results">> => list(batch_is_authorized_with_token_output_item()())
+%% }
+-type batch_is_authorized_with_token_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_identity_sources_input() :: #{
 %%   <<"filters">> => list(identity_source_filter()()),
 %%   <<"maxResults">> => integer(),
@@ -868,6 +904,9 @@
 -type get_policy_output() :: #{binary() => any()}.
 
 -type batch_is_authorized_errors() ::
+    resource_not_found_exception().
+
+-type batch_is_authorized_with_token_errors() ::
     resource_not_found_exception().
 
 -type create_identity_source_errors() ::
@@ -1004,6 +1043,52 @@ batch_is_authorized(Client, Input)
 batch_is_authorized(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchIsAuthorized">>, Input, Options).
+
+%% @doc Makes a series of decisions about multiple authorization requests for
+%% one token.
+%%
+%% The
+%% principal in this request comes from an external identity source in the
+%% form of an identity or
+%% access token, formatted as a JSON
+%% web token (JWT): https://wikipedia.org/wiki/JSON_Web_Token. The
+%% information in the parameters can also define
+%% additional context that Verified Permissions can include in the
+%% evaluations.
+%%
+%% The request is evaluated against all policies in the specified policy
+%% store that match the
+%% entities that you provide in the entities declaration and in the token.
+%% The result of
+%% the decisions is a series of `Allow' or `Deny' responses, along
+%% with the IDs of the policies that produced each decision.
+%%
+%% The `entities' of a `BatchIsAuthorizedWithToken' API request can
+%% contain up to 100 resources and up to 99 user groups. The `requests'
+%% of a
+%% `BatchIsAuthorizedWithToken' API request can contain up to 30
+%% requests.
+%%
+%% The `BatchIsAuthorizedWithToken' operation doesn't have its own
+%% IAM permission. To authorize this operation for Amazon Web Services
+%% principals, include the
+%% permission `verifiedpermissions:IsAuthorizedWithToken' in their IAM
+%% policies.
+-spec batch_is_authorized_with_token(aws_client:aws_client(), batch_is_authorized_with_token_input()) ->
+    {ok, batch_is_authorized_with_token_output(), tuple()} |
+    {error, any()} |
+    {error, batch_is_authorized_with_token_errors(), tuple()}.
+batch_is_authorized_with_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_is_authorized_with_token(Client, Input, []).
+
+-spec batch_is_authorized_with_token(aws_client:aws_client(), batch_is_authorized_with_token_input(), proplists:proplist()) ->
+    {ok, batch_is_authorized_with_token_output(), tuple()} |
+    {error, any()} |
+    {error, batch_is_authorized_with_token_errors(), tuple()}.
+batch_is_authorized_with_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchIsAuthorizedWithToken">>, Input, Options).
 
 %% @doc Creates a reference to an Amazon Cognito user pool as an external
 %% identity provider (IdP).
@@ -1395,16 +1480,6 @@ is_authorized(Client, Input, Options)
 %% decision is either
 %% `Allow' or `Deny', along with a list of the policies that
 %% resulted in the decision.
-%%
-%% If you specify the `identityToken' parameter, then this operation
-%% derives the principal from that token. You must not also include that
-%% principal in
-%% the `entities' parameter or the operation fails and reports a conflict
-%% between the two entity sources.
-%%
-%% If you provide only an `accessToken', then you can include the entity
-%% as part of the `entities' parameter to provide additional
-%% attributes.
 %%
 %% At this time, Verified Permissions accepts tokens from only Amazon
 %% Cognito.
