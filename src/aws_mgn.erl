@@ -4495,6 +4495,8 @@ update_connector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates multiple LaunchConfigurations by Source Server ID.
+%%
+%% bootMode valid values are `LEGACY_BIOS | UEFI'
 -spec update_launch_configuration(aws_client:aws_client(), update_launch_configuration_request()) ->
     {ok, launch_configuration(), tuple()} |
     {error, any()} |
