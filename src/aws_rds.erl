@@ -859,6 +859,7 @@
 %%   <<"NetworkType">> => string(),
 %%   <<"AllocatedStorage">> => integer(),
 %%   <<"MonitoringInterval">> => integer(),
+%%   <<"CACertificateIdentifier">> => string(),
 %%   <<"CustomIamInstanceProfile">> => string(),
 %%   <<"MaxAllocatedStorage">> => integer(),
 %%   <<"MultiAZ">> => boolean(),
@@ -1162,6 +1163,7 @@
 %%   <<"NetworkType">> => string(),
 %%   <<"AllocatedStorage">> => integer(),
 %%   <<"MonitoringInterval">> => integer(),
+%%   <<"CACertificateIdentifier">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
 %%   <<"MaxAllocatedStorage">> => integer(),
 %%   <<"MultiAZ">> => boolean(),
@@ -3251,6 +3253,7 @@
 %%   <<"AutoMinorVersionUpgrade">> => boolean(),
 %%   <<"NetworkType">> => string(),
 %%   <<"AllocatedStorage">> => integer(),
+%%   <<"CACertificateIdentifier">> => string(),
 %%   <<"CustomIamInstanceProfile">> => string(),
 %%   <<"MaxAllocatedStorage">> => integer(),
 %%   <<"MultiAZ">> => boolean(),
@@ -4279,6 +4282,7 @@
 %%   <<"AutoMinorVersionUpgrade">> => boolean(),
 %%   <<"NetworkType">> => string(),
 %%   <<"AllocatedStorage">> => integer(),
+%%   <<"CACertificateIdentifier">> => string(),
 %%   <<"CustomIamInstanceProfile">> => string(),
 %%   <<"MultiAZ">> => boolean(),
 %%   <<"DeletionProtection">> => boolean()
@@ -5702,6 +5706,7 @@
     instance_quota_exceeded_fault() | 
     db_subnet_group_not_allowed_fault() | 
     db_subnet_group_not_found_fault() | 
+    certificate_not_found_fault() | 
     db_instance_not_found_fault() | 
     network_type_not_supported() | 
     db_subnet_group_does_not_cover_enough_a_zs() | 
@@ -6332,6 +6337,7 @@
     storage_quota_exceeded_fault() | 
     instance_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
+    certificate_not_found_fault() | 
     authorization_not_found_fault() | 
     backup_policy_not_found_fault() | 
     network_type_not_supported() | 
@@ -6355,6 +6361,7 @@
     storage_quota_exceeded_fault() | 
     instance_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
+    certificate_not_found_fault() | 
     authorization_not_found_fault() | 
     backup_policy_not_found_fault() | 
     network_type_not_supported() | 
@@ -6376,6 +6383,7 @@
     instance_quota_exceeded_fault() | 
     point_in_time_restore_not_enabled_fault() | 
     db_subnet_group_not_found_fault() | 
+    certificate_not_found_fault() | 
     db_instance_not_found_fault() | 
     authorization_not_found_fault() | 
     db_instance_automated_backup_not_found_fault() | 

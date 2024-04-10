@@ -1708,6 +1708,7 @@
 %%   <<"LastModifiedBy">> => string(),
 %%   <<"LastModifiedDate">> => string(),
 %%   <<"MessagesPerSecond">> => integer(),
+%%   <<"OrchestrationSendingRoleArn">> => string(),
 %%   <<"Platform">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"Version">> => integer()
@@ -3194,6 +3195,7 @@
 %%   <<"Enabled">> => boolean(),
 %%   <<"FromAddress">> => string(),
 %%   <<"Identity">> => string(),
+%%   <<"OrchestrationSendingRoleArn">> => string(),
 %%   <<"RoleArn">> => string()
 %% }
 -type email_channel_request() :: #{binary() => any()}.
