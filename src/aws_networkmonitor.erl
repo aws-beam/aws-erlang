@@ -19,6 +19,13 @@
 %% These probes then monitor network traffic to help you identify where
 %% network issues might be affecting your traffic.
 %%
+%% Before you begin, ensure the Amazon Web Services CLI is configured in the
+%% Amazon Web Services Account where you will create the Network Monitor
+%% resource. Network
+%% Monitor doesn’t support creation on cross-account resources, but you can
+%% create a
+%% Network Monitor in any subnet belonging to a VPC owned by your Account.
+%%
 %% For more information, see Using Amazon CloudWatch Network Monitor:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/what-is-network-monitor.html
 %% in the Amazon CloudWatch User Guide.
@@ -465,6 +472,27 @@
 %% traffic between your source Amazon Web Services VPC subnets and your
 %% destination IP addresses. Each probe then aggregates and sends metrics to
 %% Amazon CloudWatch.
+%%
+%% You can also create a monitor with probes using this command. For each
+%% probe, you
+%% define the following:
+%%
+%% `source'—The subnet IDs where the probes will be created.
+%%
+%% `destination'— The target destination IP address for the
+%% probe.
+%%
+%% `destinationPort'—Required only if the protocol is
+%% `TCP'.
+%%
+%% `protocol'—The communication protocol between the source and
+%% destination. This will be either `TCP' or `ICMP'.
+%%
+%% `packetSize'—The size of the packets. This must be a number between
+%% `56' and `8500'.
+%%
+%% (Optional) `tags' —Key-value pairs created and assigned to the
+%% probe.
 -spec create_monitor(aws_client:aws_client(), create_monitor_input()) ->
     {ok, create_monitor_output(), tuple()} |
     {error, any()} |
@@ -500,8 +528,13 @@ create_monitor(Client, Input0, Options0) ->
 
 %% @doc Create a probe within a monitor.
 %%
-%% Once you create a probe, and it begins monitoring your network traffic,
-%% you'll incur billing charges for that probe.
+%% Once you create a probe, and it begins monitoring your
+%% network traffic, you'll incur billing charges for that probe. This
+%% action requires the
+%% `monitorName' parameter. Run `ListMonitors' to get a list of
+%% monitor names. Note the name of the `monitorName' you want to create
+%% the
+%% probe for.
 -spec create_probe(aws_client:aws_client(), binary() | list(), create_probe_input()) ->
     {ok, create_probe_output(), tuple()} |
     {error, any()} |
@@ -536,6 +569,9 @@ create_probe(Client, MonitorName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a specified monitor.
+%%
+%% This action requires the `monitorName' parameter. Run
+%% `ListMonitors' to get a list of monitor names.
 -spec delete_monitor(aws_client:aws_client(), binary() | list(), delete_monitor_input()) ->
     {ok, delete_monitor_output(), tuple()} |
     {error, any()} |
@@ -569,10 +605,16 @@ delete_monitor(Client, MonitorName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified monitor.
+%% @doc Deletes the specified probe.
 %%
-%% Once a probe is deleted you'll no longer incur any billing fees for
-%% that probe.
+%% Once a probe is deleted you'll no longer incur any billing
+%% fees for that probe.
+%%
+%% This action requires both the `monitorName' and `probeId'
+%% parameters. Run `ListMonitors' to get a list of monitor names. Run
+%% `GetMonitor' to get a list of probes and probe IDs. You can only
+%% delete a
+%% single probe at a time using this action.
 -spec delete_probe(aws_client:aws_client(), binary() | list(), binary() | list(), delete_probe_input()) ->
     {ok, delete_probe_output(), tuple()} |
     {error, any()} |
@@ -607,6 +649,9 @@ delete_probe(Client, MonitorName, ProbeId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns details about a specific monitor.
+%%
+%% This action requires the `monitorName' parameter. Run
+%% `ListMonitors' to get a list of monitor names.
 -spec get_monitor(aws_client:aws_client(), binary() | list()) ->
     {ok, get_monitor_output(), tuple()} |
     {error, any()} |
@@ -645,7 +690,10 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the details about a probe.
 %%
-%% You'll need both the `monitorName' and `probeId'.
+%% This action requires both the
+%% `monitorName' and `probeId' parameters. Run
+%% `ListMonitors' to get a list of monitor names. Run
+%% `GetMonitor' to get a list of probes and probe IDs.
 -spec get_probe(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_probe_output(), tuple()} |
     {error, any()} |
@@ -833,8 +881,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates the `aggregationPeriod' for a monitor.
 %%
-%% Monitors support an `aggregationPeriod' of either `30' or `60'
-%% seconds.
+%% Monitors support an
+%% `aggregationPeriod' of either `30' or `60' seconds.
+%% This action requires the `monitorName' and `probeId' parameter.
+%% Run `ListMonitors' to get a list of monitor names.
 -spec update_monitor(aws_client:aws_client(), binary() | list(), update_monitor_input()) ->
     {ok, update_monitor_output(), tuple()} |
     {error, any()} |
@@ -873,6 +923,27 @@ update_monitor(Client, MonitorName, Input0, Options0) ->
 %% This action requires both the `monitorName' and `probeId'
 %% parameters. Run `ListMonitors' to get a list of monitor names. Run
 %% `GetMonitor' to get a list of probes and probe IDs.
+%%
+%% You can update the following para create a monitor with probes using this
+%% command. For
+%% each probe, you define the following:
+%%
+%% `state'—The state of the probe.
+%%
+%% `destination'— The target destination IP address for the
+%% probe.
+%%
+%% `destinationPort'—Required only if the protocol is
+%% `TCP'.
+%%
+%% `protocol'—The communication protocol between the source and
+%% destination. This will be either `TCP' or `ICMP'.
+%%
+%% `packetSize'—The size of the packets. This must be a number between
+%% `56' and `8500'.
+%%
+%% (Optional) `tags' —Key-value pairs created and assigned to the
+%% probe.
 -spec update_probe(aws_client:aws_client(), binary() | list(), binary() | list(), update_probe_input()) ->
     {ok, update_probe_output(), tuple()} |
     {error, any()} |

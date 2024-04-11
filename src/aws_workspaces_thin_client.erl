@@ -137,7 +137,6 @@
 %%   <<"pendingSoftwareSetId">> => string(),
 %%   <<"softwareSetUpdateMode">> => list(any()),
 %%   <<"softwareSetUpdateSchedule">> => list(any()),
-%%   <<"tags">> => embedded_tag(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type environment_summary() :: #{binary() => any()}.
@@ -171,14 +170,6 @@
 
 
 %% Example:
-%% internal_service_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => integer()
-%% }
--type internal_service_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% get_environment_response() :: #{
 %%   <<"environment">> => environment()
 %% }
@@ -199,6 +190,7 @@
 %%   <<"releasedAt">> => non_neg_integer(),
 %%   <<"software">> => list(software()()),
 %%   <<"supportedUntil">> => non_neg_integer(),
+%%   <<"tags">> => map(),
 %%   <<"validationStatus">> => list(any()),
 %%   <<"version">> => [string()]
 %% }
@@ -249,7 +241,7 @@
 %%   <<"softwareSetComplianceStatus">> => list(any()),
 %%   <<"softwareSetUpdateMode">> => list(any()),
 %%   <<"softwareSetUpdateSchedule">> => list(any()),
-%%   <<"tags">> => embedded_tag(),
+%%   <<"tags">> => map(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type environment() :: #{binary() => any()}.
@@ -348,7 +340,6 @@
 %%   <<"serialNumber">> => [string()],
 %%   <<"softwareSetUpdateSchedule">> => list(any()),
 %%   <<"status">> => list(any()),
-%%   <<"tags">> => embedded_tag(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type device_summary() :: #{binary() => any()}.
@@ -375,14 +366,6 @@
 %%   <<"softwareSets">> => list(software_set_summary()())
 %% }
 -type list_software_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% embedded_tag() :: #{
-%%   <<"internalId">> => [string()],
-%%   <<"resourceArn">> => [string()]
-%% }
--type embedded_tag() :: #{binary() => any()}.
 
 
 %% Example:
@@ -456,7 +439,7 @@
 %%   <<"softwareSetUpdateSchedule">> => list(any()),
 %%   <<"softwareSetUpdateStatus">> => list(any()),
 %%   <<"status">> => list(any()),
-%%   <<"tags">> => embedded_tag(),
+%%   <<"tags">> => map(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type device() :: #{binary() => any()}.
@@ -591,19 +574,27 @@
     internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
+    throttling_exception() | 
     validation_exception() | 
-    resource_not_found_exception() | 
-    internal_service_exception().
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type tag_resource_errors() ::
+    throttling_exception() | 
     validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    conflict_exception().
 
 -type untag_resource_errors() ::
+    throttling_exception() | 
     validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    conflict_exception().
 
 -type update_device_errors() ::
     throttling_exception() | 

@@ -349,7 +349,8 @@
 %%   <<"name">> => string(),
 %%   <<"schema">> => analysis_schema(),
 %%   <<"source">> => list(),
-%%   <<"updateTime">> => [non_neg_integer()]
+%%   <<"updateTime">> => [non_neg_integer()],
+%%   <<"validations">> => list(analysis_template_validation_status_detail()())
 %% }
 -type collaboration_analysis_template() :: #{binary() => any()}.
 
@@ -457,6 +458,15 @@
 %%   <<"analysisRule">> := configured_table_analysis_rule()
 %% }
 -type update_configured_table_analysis_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_template_validation_status_detail() :: #{
+%%   <<"reasons">> => list(analysis_template_validation_status_reason()()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type analysis_template_validation_status_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1419,7 +1429,8 @@
 %%   <<"name">> => string(),
 %%   <<"schema">> => analysis_schema(),
 %%   <<"source">> => list(),
-%%   <<"updateTime">> => [non_neg_integer()]
+%%   <<"updateTime">> => [non_neg_integer()],
+%%   <<"validations">> => list(analysis_template_validation_status_detail()())
 %% }
 -type analysis_template() :: #{binary() => any()}.
 
@@ -1755,6 +1766,13 @@
 %%   <<"collaborationAnalysisTemplate">> := collaboration_analysis_template()
 %% }
 -type get_collaboration_analysis_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_template_validation_status_reason() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type analysis_template_validation_status_reason() :: #{binary() => any()}.
 
 %% Example:
 %% get_configured_table_input() :: #{}

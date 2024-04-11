@@ -8,26 +8,26 @@
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/abuse-detection.html.
 %%
 %% Because Amazon Q in Connect is built on Amazon Bedrock, users can take
-%% full
-%% advantage of the controls implemented in Amazon Bedrock to enforce safety,
-%% security, and the
-%% responsible use of artificial intelligence (AI).
+%% full advantage of
+%% the controls implemented in Amazon Bedrock to enforce safety, security,
+%% and the responsible use of
+%% artificial intelligence (AI).
 %%
 %% Amazon Q in Connect is a generative AI customer service assistant. It is
-%% an LLM-enhanced evolution
-%% of Amazon Connect Wisdom that delivers real-time recommendations to help
-%% contact center
-%% agents resolve customer issues quickly and accurately.
+%% an LLM-enhanced
+%% evolution of Amazon Connect Wisdom that delivers real-time recommendations
+%% to help contact
+%% center agents resolve customer issues quickly and accurately.
 %%
-%% Amazon Q automatically detects customer intent during calls and chats
-%% using
-%% conversational analytics and natural language understanding (NLU). It then
-%% provides agents
-%% with immediate, real-time generative responses and suggested actions, and
-%% links to relevant
-%% documents and articles. Agents can also query Amazon Q directly using
-%% natural language or
-%% keywords to answer customer requests.
+%% Amazon Q in Connect automatically detects customer intent during calls and
+%% chats using conversational
+%% analytics and natural language understanding (NLU). It then provides
+%% agents with immediate,
+%% real-time generative responses and suggested actions, and links to
+%% relevant documents and
+%% articles. Agents can also query Amazon Q in Connect directly using natural
+%% language or keywords to answer
+%% customer requests.
 %%
 %% Use the Amazon Q in Connect APIs to create an assistant and a knowledge
 %% base, for example, or
@@ -139,7 +139,9 @@
          update_knowledge_base_template_uri/3,
          update_knowledge_base_template_uri/4,
          update_quick_response/4,
-         update_quick_response/5]).
+         update_quick_response/5,
+         update_session/4,
+         update_session/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -273,6 +275,14 @@
 %%   <<"values">> => list(string()())
 %% }
 -type quick_response_filter_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_condition() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -485,6 +495,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
+%%   <<"tagFilter">> => list(),
 %%   <<"tags">> => map()
 %% }
 -type create_session_request() :: #{binary() => any()}.
@@ -732,6 +743,14 @@
 
 
 %% Example:
+%% update_session_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"tagFilter">> => list()
+%% }
+-type update_session_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_sessions_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"sessionSummaries">> := list(session_summary()())
@@ -895,6 +914,7 @@
 %%   <<"name">> => string(),
 %%   <<"sessionArn">> => string(),
 %%   <<"sessionId">> => string(),
+%%   <<"tagFilter">> => list(),
 %%   <<"tags">> => map()
 %% }
 -type session_data() :: #{binary() => any()}.
@@ -1152,6 +1172,13 @@
 
 
 %% Example:
+%% update_session_response() :: #{
+%%   <<"session">> => session_data()
+%% }
+-type update_session_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% notify_recommendations_received_request() :: #{
 %%   <<"recommendationIds">> := list(string()())
 %% }
@@ -1394,6 +1421,7 @@
 
 -type create_session_errors() ::
     validation_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1578,6 +1606,11 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_session_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -1656,12 +1689,11 @@ create_assistant_association(Client, AssistantId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates Amazon Q content.
+%% @doc Creates Amazon Q in Connect content.
 %%
 %% Before to calling this API, use StartContentUpload:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_StartContentUpload.html
-%% to
-%% upload an asset.
+%% to upload an asset.
 -spec create_content(aws_client:aws_client(), binary() | list(), create_content_request()) ->
     {ok, create_content_response(), tuple()} |
     {error, any()} |
@@ -1754,7 +1786,7 @@ create_knowledge_base(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Q quick response.
+%% @doc Creates an Amazon Q in Connect quick response.
 -spec create_quick_response(aws_client:aws_client(), binary() | list(), create_quick_response_request()) ->
     {ok, create_quick_response_response(), tuple()} |
     {error, any()} |
@@ -1791,9 +1823,9 @@ create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Creates a session.
 %%
 %% A session is a contextual container used for generating
-%% recommendations. Amazon Connect creates a new Amazon Q session for each
-%% contact on which
-%% Amazon Q is enabled.
+%% recommendations. Amazon Connect creates a new Amazon Q in Connect session
+%% for each contact on which
+%% Amazon Q in Connect is enabled.
 -spec create_session(aws_client:aws_client(), binary() | list(), create_session_request()) ->
     {ok, create_session_response(), tuple()} |
     {error, any()} |
@@ -2306,9 +2338,18 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves recommendations for the specified session.
+%% @doc
+%% This API will be discontinued starting June 1, 2024.
 %%
-%% To avoid retrieving the same
+%% To receive generative responses
+%% after March 1, 2024, you will need to create a new Assistant in the Amazon
+%% Connect
+%% console and integrate the Amazon Q in Connect JavaScript library
+%% (amazon-q-connectjs) into
+%% your applications.
+%%
+%% Retrieves recommendations for the specified session. To avoid retrieving
+%% the same
 %% recommendations in subsequent calls, use NotifyRecommendationsReceived:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_NotifyRecommendationsReceived.html.
 %% This API supports long-polling behavior with the
@@ -2728,7 +2769,8 @@ notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0
 %% @doc Provides feedback against the specified assistant for the specified
 %% target.
 %%
-%% This API only supports generative targets.
+%% This API only
+%% supports generative targets.
 -spec put_feedback(aws_client:aws_client(), binary() | list(), put_feedback_request()) ->
     {ok, put_feedback_response(), tuple()} |
     {error, any()} |
@@ -2762,9 +2804,18 @@ put_feedback(Client, AssistantId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Performs a manual search against the specified assistant.
+%% @doc
+%% This API will be discontinued starting June 1, 2024.
 %%
-%% To retrieve recommendations for
+%% To receive generative responses
+%% after March 1, 2024, you will need to create a new Assistant in the Amazon
+%% Connect
+%% console and integrate the Amazon Q in Connect JavaScript library
+%% (amazon-q-connectjs) into
+%% your applications.
+%%
+%% Performs a manual search against the specified assistant. To retrieve
+%% recommendations for
 %% an assistant, use GetRecommendations:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_GetRecommendations.html.
 -spec query_assistant(aws_client:aws_client(), binary() | list(), query_assistant_request()) ->
@@ -2873,8 +2924,8 @@ search_content(Client, KnowledgeBaseId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches existing Amazon Q quick responses in an Amazon Q knowledge
-%% base.
+%% @doc Searches existing Amazon Q in Connect quick responses in an Amazon Q
+%% in Connect knowledge base.
 -spec search_quick_responses(aws_client:aws_client(), binary() | list(), search_quick_responses_request()) ->
     {ok, search_quick_responses_response(), tuple()} |
     {error, any()} |
@@ -2953,10 +3004,13 @@ search_sessions(Client, AssistantId, Input0, Options0) ->
 %% required headers. Then
 %% use CreateContent:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_CreateContent.html
-%% to finalize the content creation process or UpdateContent:
+%% to
+%% finalize the content creation process or UpdateContent:
 %% https://docs.aws.amazon.com/amazon-q-connect/latest/APIReference/API_UpdateContent.html
-%% to modify an existing resource. You can only upload content to a
-%% knowledge base of type CUSTOM.
+%% to
+%% modify an existing resource. You can only upload content to a knowledge
+%% base of type
+%% CUSTOM.
 -spec start_content_upload(aws_client:aws_client(), binary() | list(), start_content_upload_request()) ->
     {ok, start_content_upload_response(), tuple()} |
     {error, any()} |
@@ -2990,17 +3044,19 @@ start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Start an asynchronous job to import Amazon Q resources from an
-%% uploaded source file.
+%% @doc Start an asynchronous job to import Amazon Q in Connect resources
+%% from an uploaded source file.
 %%
 %% Before calling this API, use StartContentUpload:
 %% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_StartContentUpload.html
 %% to
 %% upload an asset that contains the resource data.
 %%
-%% For importing Amazon Q quick responses, you need to upload a csv file
-%% including the quick responses. For information about how to format the csv
-%% file for importing quick responses, see Import quick responses:
+%% For importing Amazon Q in Connect quick responses, you need to upload a
+%% csv file including the
+%% quick responses. For information about how to format the csv file for
+%% importing quick
+%% responses, see Import quick responses:
 %% https://docs.aws.amazon.com/console/connect/quick-responses/add-data.
 -spec start_import_job(aws_client:aws_client(), binary() | list(), start_import_job_request()) ->
     {ok, start_import_job_response(), tuple()} |
@@ -3143,8 +3199,8 @@ update_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 %% This is only supported for knowledge bases
 %% of type EXTERNAL. Include a single variable in `${variable}' format;
 %% this
-%% interpolated by Amazon Q using ingested content. For example, if you
-%% ingest a Salesforce
+%% interpolated by Amazon Q in Connect using ingested content. For example,
+%% if you ingest a Salesforce
 %% article, it has an `Id' value, and you can set the template URI to
 %% `https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*${Id}*/view'.
 -spec update_knowledge_base_template_uri(aws_client:aws_client(), binary() | list(), update_knowledge_base_template_uri_request()) ->
@@ -3180,7 +3236,7 @@ update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Amazon Q quick response.
+%% @doc Updates an existing Amazon Q in Connect quick response.
 -spec update_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), update_quick_response_request()) ->
     {ok, update_quick_response_response(), tuple()} |
     {error, any()} |
@@ -3195,6 +3251,45 @@ update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input) ->
 update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a session.
+%%
+%% A session is a contextual container used for generating recommendations.
+%% Amazon Connect updates the existing Amazon Q in Connect session for each
+%% contact on which Amazon Q in Connect
+%% is enabled.
+-spec update_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_session_request()) ->
+    {ok, update_session_response(), tuple()} |
+    {error, any()} |
+    {error, update_session_errors(), tuple()}.
+update_session(Client, AssistantId, SessionId, Input) ->
+    update_session(Client, AssistantId, SessionId, Input, []).
+
+-spec update_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_session_request(), proplists:proplist()) ->
+    {ok, update_session_response(), tuple()} |
+    {error, any()} |
+    {error, update_session_errors(), tuple()}.
+update_session(Client, AssistantId, SessionId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

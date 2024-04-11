@@ -22,7 +22,9 @@
          create_bill_of_materials_import_job/4,
          get_bill_of_materials_import_job/3,
          get_bill_of_materials_import_job/5,
-         get_bill_of_materials_import_job/6]).
+         get_bill_of_materials_import_job/6,
+         send_data_integration_event/3,
+         send_data_integration_event/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -94,6 +96,24 @@
 
 
 %% Example:
+%% send_data_integration_event_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"data">> := string(),
+%%   <<"eventGroupId">> := string(),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"eventType">> := list(any())
+%% }
+-type send_data_integration_event_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_data_integration_event_response() :: #{
+%%   <<"eventId">> => string()
+%% }
+-type send_data_integration_event_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -126,6 +146,15 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type send_data_integration_event_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 %%====================================================================
@@ -210,6 +239,41 @@ get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Send transactional data events with real-time data for analysis or
+%% monitoring.
+-spec send_data_integration_event(aws_client:aws_client(), binary() | list(), send_data_integration_event_request()) ->
+    {ok, send_data_integration_event_response(), tuple()} |
+    {error, any()} |
+    {error, send_data_integration_event_errors(), tuple()}.
+send_data_integration_event(Client, InstanceId, Input) ->
+    send_data_integration_event(Client, InstanceId, Input, []).
+
+-spec send_data_integration_event(aws_client:aws_client(), binary() | list(), send_data_integration_event_request(), proplists:proplist()) ->
+    {ok, send_data_integration_event_response(), tuple()} |
+    {error, any()} |
+    {error, send_data_integration_event_errors(), tuple()}.
+send_data_integration_event(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/api-data/data-integration/instance/", aws_util:encode_uri(InstanceId), "/data-integration-events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions

@@ -1581,6 +1581,7 @@
 
 %% Example:
 %% content_moderation_detection() :: #{
+%%   <<"ContentTypes">> => list(content_type()()),
 %%   <<"DurationMillis">> => float(),
 %%   <<"EndTimestampMillis">> => float(),
 %%   <<"ModerationLabel">> => moderation_label(),

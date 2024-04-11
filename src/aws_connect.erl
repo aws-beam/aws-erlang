@@ -4053,6 +4053,7 @@
 %%   <<"EndAssociatedTasksAction">> => end_associated_tasks_action_definition(),
 %%   <<"EventBridgeAction">> => event_bridge_action_definition(),
 %%   <<"SendNotificationAction">> => send_notification_action_definition(),
+%%   <<"SubmitAutoEvaluationAction">> => submit_auto_evaluation_action_definition(),
 %%   <<"TaskAction">> => task_action_definition(),
 %%   <<"UpdateCaseAction">> => update_case_action_definition()
 %% }
@@ -6345,6 +6346,13 @@
 %%   <<"Errors">> => list(error_result()())
 %% }
 -type batch_disassociate_analytics_data_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% submit_auto_evaluation_action_definition() :: #{
+%%   <<"EvaluationFormId">> => string()
+%% }
+-type submit_auto_evaluation_action_definition() :: #{binary() => any()}.
 
 %% Example:
 %% update_contact_flow_module_content_response() :: #{}
