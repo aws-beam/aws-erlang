@@ -426,6 +426,7 @@
 %% put_anomaly_detector_input() :: #{
 %%   <<"Configuration">> => anomaly_detector_configuration(),
 %%   <<"Dimensions">> => list(dimension()()),
+%%   <<"MetricCharacteristics">> => metric_characteristics(),
 %%   <<"MetricMathAnomalyDetector">> => metric_math_anomaly_detector(),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
@@ -600,6 +601,12 @@
 %%   <<"Stat">> => string()
 %% }
 -type single_metric_anomaly_detector() :: #{binary() => any()}.
+
+%% Example:
+%% metric_characteristics() :: #{
+%%   <<"PeriodicSpikes">> => boolean()
+%% }
+-type metric_characteristics() :: #{binary() => any()}.
 
 %% Example:
 %% describe_anomaly_detectors_output() :: #{
@@ -968,6 +975,7 @@
 %% anomaly_detector() :: #{
 %%   <<"Configuration">> => anomaly_detector_configuration(),
 %%   <<"Dimensions">> => list(dimension()()),
+%%   <<"MetricCharacteristics">> => metric_characteristics(),
 %%   <<"MetricMathAnomalyDetector">> => metric_math_anomaly_detector(),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),

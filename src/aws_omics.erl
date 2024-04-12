@@ -974,6 +974,7 @@
 %% create_sequence_store_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"eTagAlgorithmFamily">> => string(),
 %%   <<"fallbackLocation">> => string(),
 %%   <<"name">> := string(),
 %%   <<"sseConfig">> => sse_config(),
@@ -1166,9 +1167,11 @@
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"eTagAlgorithmFamily">> => string(),
 %%   <<"fallbackLocation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
+%%   <<"s3Access">> => sequence_store_s3_access(),
 %%   <<"sseConfig">> => sse_config()
 %% }
 -type get_sequence_store_response() :: #{binary() => any()}.
@@ -1514,6 +1517,7 @@
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"eTagAlgorithmFamily">> => string(),
 %%   <<"fallbackLocation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
@@ -1604,6 +1608,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_read_set_export_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sequence_store_s3_access() :: #{
+%%   <<"s3AccessPointArn">> => string(),
+%%   <<"s3Uri">> => string()
+%% }
+-type sequence_store_s3_access() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2114,6 +2126,7 @@
 %% file_information() :: #{
 %%   <<"contentLength">> => [float()],
 %%   <<"partSize">> => [float()],
+%%   <<"s3Access">> => read_set_s3_access(),
 %%   <<"totalParts">> => [integer()]
 %% }
 -type file_information() :: #{binary() => any()}.
@@ -2317,6 +2330,13 @@
 
 
 %% Example:
+%% read_set_s3_access() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type read_set_s3_access() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_run_group_request() :: #{
 %%   <<"maxCpus">> => [integer()],
 %%   <<"maxDuration">> => [integer()],
@@ -2355,6 +2375,7 @@
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"eTagAlgorithmFamily">> => string(),
 %%   <<"fallbackLocation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
@@ -3105,8 +3126,7 @@
 %% API
 %%====================================================================
 
-%% @doc
-%% Stops a multipart upload.
+%% @doc Stops a multipart upload.
 -spec abort_multipart_read_set_upload(aws_client:aws_client(), binary() | list(), binary() | list(), abort_multipart_read_set_upload_request()) ->
     {ok, abort_multipart_read_set_upload_response(), tuple()} |
     {error, any()} |
@@ -3311,8 +3331,8 @@ cancel_variant_import_job(Client, JobId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Concludes a multipart upload once you have uploaded all the components.
+%% @doc Concludes a multipart upload once you have uploaded all the
+%% components.
 -spec complete_multipart_read_set_upload(aws_client:aws_client(), binary() | list(), binary() | list(), complete_multipart_read_set_upload_request()) ->
     {ok, complete_multipart_read_set_upload_response(), tuple()} |
     {error, any()} |
@@ -3415,8 +3435,7 @@ create_annotation_store_version(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Begins a multipart read set upload.
+%% @doc Begins a multipart read set upload.
 -spec create_multipart_read_set_upload(aws_client:aws_client(), binary() | list(), create_multipart_read_set_upload_request()) ->
     {ok, create_multipart_read_set_upload_response(), tuple()} |
     {error, any()} |
@@ -4878,11 +4897,10 @@ list_annotation_stores(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists multipart read set uploads and for in progress uploads.
+%% @doc Lists multipart read set uploads and for in progress uploads.
 %%
 %% Once the upload is completed, a read set is created and the upload will no
-%% longer be returned in the respone.
+%% longer be returned in the response.
 -spec list_multipart_read_set_uploads(aws_client:aws_client(), binary() | list(), list_multipart_read_set_uploads_request()) ->
     {ok, list_multipart_read_set_uploads_response(), tuple()} |
     {error, any()} |
@@ -5026,9 +5044,8 @@ list_read_set_import_jobs(Client, SequenceStoreId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This operation will list all parts in a requested multipart upload for a
-%% sequence store.
+%% @doc This operation will list all parts in a requested multipart upload
+%% for a sequence store.
 -spec list_read_set_upload_parts(aws_client:aws_client(), binary() | list(), binary() | list(), list_read_set_upload_parts_request()) ->
     {ok, list_read_set_upload_parts_response(), tuple()} |
     {error, any()} |
@@ -6056,11 +6073,10 @@ update_workflow(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This operation uploads a specific part of a read set.
+%% @doc This operation uploads a specific part of a read set.
 %%
-%% If you upload a new part using a previously used part number, the
-%% previously uploaded part will be overwritten.
+%% If you upload a new part using a previously used part number,
+%% the previously uploaded part will be overwritten.
 -spec upload_read_set_part(aws_client:aws_client(), binary() | list(), binary() | list(), upload_read_set_part_request()) ->
     {ok, upload_read_set_part_response(), tuple()} |
     {error, any()} |

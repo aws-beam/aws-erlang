@@ -9,7 +9,8 @@
 %% who need detailed information about CloudFront API actions, data types,
 %% and errors. For
 %% detailed information about CloudFront features, see the
-%% Amazon CloudFront Developer Guide.
+%% Amazon CloudFront Developer Guide:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html.
 -module(aws_cloudfront).
 
 -export([associate_alias/3,
@@ -4635,6 +4636,7 @@
 
 -type create_key_value_store_errors() ::
     entity_limit_exceeded() | 
+    unsupported_operation() | 
     entity_size_limit_exceeded() | 
     entity_already_exists() | 
     invalid_argument() | 
@@ -4773,6 +4775,7 @@
 -type delete_key_value_store_errors() ::
     cannot_delete_entity_while_in_use() | 
     precondition_failed() | 
+    unsupported_operation() | 
     access_denied() | 
     entity_not_found() | 
     invalid_if_match_version().
@@ -4831,6 +4834,7 @@
     unsupported_operation().
 
 -type describe_key_value_store_errors() ::
+    unsupported_operation() | 
     invalid_argument() | 
     access_denied() | 
     entity_not_found().
@@ -5014,6 +5018,7 @@
     invalid_argument().
 
 -type list_key_value_stores_errors() ::
+    unsupported_operation() | 
     invalid_argument() | 
     access_denied().
 
@@ -5281,6 +5286,7 @@
 
 -type update_key_value_store_errors() ::
     precondition_failed() | 
+    unsupported_operation() | 
     invalid_argument() | 
     access_denied() | 
     entity_not_found() | 
@@ -5978,6 +5984,10 @@ create_function(Client, Input0, Options0) ->
     end.
 
 %% @doc Create a new invalidation.
+%%
+%% For more information, see Invalidating files:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html
+%% in the Amazon CloudFront Developer Guide.
 -spec create_invalidation(aws_client:aws_client(), binary() | list(), create_invalidation_request()) ->
     {ok, create_invalidation_result(), tuple()} |
     {error, any()} |
@@ -6097,10 +6107,10 @@ create_key_group(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Specifies the Key Value Store resource to add to your account.
+%% @doc Specifies the key value store resource to add to your account.
 %%
-%% In your account, the Key Value Store names must be unique. You can also
-%% import Key Value Store data in JSON format from an S3 bucket by providing
+%% In your account, the key value store names must be unique. You can also
+%% import key value store data in JSON format from an S3 bucket by providing
 %% a valid `ImportSource' that you own.
 -spec create_key_value_store(aws_client:aws_client(), create_key_value_store_request()) ->
     {ok, create_key_value_store_result(), tuple()} |
@@ -6962,7 +6972,7 @@ delete_key_group(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Specifies the Key Value Store to delete.
+%% @doc Specifies the key value store to delete.
 -spec delete_key_value_store(aws_client:aws_client(), binary() | list(), delete_key_value_store_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -7403,7 +7413,7 @@ describe_function(Client, Name, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc Specifies the Key Value Store and its configuration.
+%% @doc Specifies the key value store and its configuration.
 -spec describe_key_value_store(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_key_value_store_result(), tuple()} |
     {error, any()} |
@@ -9835,7 +9845,7 @@ list_key_groups(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Specifies the Key Value Stores to list.
+%% @doc Specifies the key value stores to list.
 -spec list_key_value_stores(aws_client:aws_client()) ->
     {ok, list_key_value_stores_result(), tuple()} |
     {error, any()} |
@@ -10996,7 +11006,7 @@ update_key_group(Client, Id, Input0, Options0) ->
         Result
     end.
 
-%% @doc Specifies the Key Value Store to update.
+%% @doc Specifies the key value store to update.
 -spec update_key_value_store(aws_client:aws_client(), binary() | list(), update_key_value_store_request()) ->
     {ok, update_key_value_store_result(), tuple()} |
     {error, any()} |

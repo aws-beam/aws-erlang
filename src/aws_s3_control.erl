@@ -3211,8 +3211,8 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% For information about permissions required to use the Batch Operations,
 %% see Granting permissions for S3 Batch Operations:
-%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
-%% the Amazon S3
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-iam-role-policies.html
+%% in the Amazon S3
 %% User Guide.
 %%
 %% Related actions include:
@@ -3271,17 +3271,17 @@ create_job(Client, Input0, Options0) ->
 %%
 %% Creates a Multi-Region Access Point and associates it with the specified
 %% buckets. For more information
-%% about creating Multi-Region Access Points, see Creating
-%% Multi-Region Access Points:
+%% about creating Multi-Region Access Points, see Creating Multi-Region
+%% Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html
 %% in the Amazon S3 User Guide.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information
-%% about the restrictions around managing Multi-Region Access Points, see
-%% Managing
-%% Multi-Region Access Points:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
+%% about the restrictions around working with Multi-Region Access Points, see
+%% Multi-Region Access Point
+%% restrictions and limitations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html
 %% in the Amazon S3 User Guide.
 %%
 %% This request is asynchronous, meaning that you might receive a response
@@ -4261,10 +4261,10 @@ delete_job_tagging(Client, JobId, Input0, Options0) ->
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information
-%% about the restrictions around managing Multi-Region Access Points, see
-%% Managing
-%% Multi-Region Access Points:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
+%% about the restrictions around working with Multi-Region Access Points, see
+%% Multi-Region Access Point
+%% restrictions and limitations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html
 %% in the Amazon S3 User Guide.
 %%
 %% This request is asynchronous, meaning that you might receive a response
@@ -4586,9 +4586,8 @@ describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 %% Retrieves the status of an asynchronous request to manage a Multi-Region
 %% Access Point. For more information
 %% about managing Multi-Region Access Points and how asynchronous requests
-%% work, see Managing
-%% Multi-Region Access Points:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
+%% work, see Using Multi-Region Access Points:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/MrapOperations.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to `GetMultiRegionAccessPoint':
@@ -5264,8 +5263,7 @@ get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Gets an Amazon S3 on Outposts bucket.
+%% @doc Gets an Amazon S3 on Outposts bucket.
 %%
 %% For more information, see Using Amazon S3 on Outposts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html in
@@ -5831,7 +5829,7 @@ get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %% The IAM role that S3 Access Grants assumes must have the following
 %% permissions specified in the trust policy when registering the location:
 %% `sts:AssumeRole', for directory users or groups `sts:SetContext',
-%% and for IAM users or roles `sts:SourceIdentity'.
+%% and for IAM users or roles `sts:SetSourceIdentity'.
 -spec get_data_access(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_data_access_result(), tuple()} |
     {error, any()}.
@@ -5948,10 +5946,10 @@ get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information
-%% about the restrictions around managing Multi-Region Access Points, see
-%% Managing
-%% Multi-Region Access Points:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
+%% about the restrictions around working with Multi-Region Access Points, see
+%% Multi-Region Access Point
+%% restrictions and limitations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to `GetMultiRegionAccessPoint':
@@ -6012,10 +6010,10 @@ get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Opt
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information
-%% about the restrictions around managing Multi-Region Access Points, see
-%% Managing
-%% Multi-Region Access Points:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
+%% about the restrictions around working with Multi-Region Access Points, see
+%% Multi-Region Access Point
+%% restrictions and limitations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to
@@ -6072,10 +6070,10 @@ get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersM
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information
-%% about the restrictions around managing Multi-Region Access Points, see
-%% Managing
-%% Multi-Region Access Points:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
+%% about the restrictions around working with Multi-Region Access Points, see
+%% Multi-Region Access Point
+%% restrictions and limitations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to
@@ -6143,8 +6141,6 @@ get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, H
 %% `ap-northeast-1'
 %%
 %% `eu-west-1'
-%%
-%% Your Amazon S3 bucket does not need to be in these five Regions.
 -spec get_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_multi_region_access_point_routes_result(), tuple()} |
     {error, any()}.
@@ -6694,13 +6690,12 @@ list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists current S3 Batch Operations jobs as well as the jobs that have
-%% ended within the last 30 days for
-%% the Amazon Web Services account making the request.
+%% ended within the last 90
+%% days for the Amazon Web Services account making the request.
 %%
 %% For more information, see S3 Batch Operations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html in
-%% the
-%% Amazon S3 User Guide.
+%% the Amazon S3 User Guide.
 %%
 %% Permissions
 %%
@@ -6778,10 +6773,10 @@ list_jobs(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information
-%% about the restrictions around managing Multi-Region Access Points, see
-%% Managing
-%% Multi-Region Access Points:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
+%% about the restrictions around working with Multi-Region Access Points, see
+%% Multi-Region Access Point
+%% restrictions and limitations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to `ListMultiRegionAccessPoint':
@@ -7925,10 +7920,10 @@ put_job_tagging(Client, JobId, Input0, Options0) ->
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information
-%% about the restrictions around managing Multi-Region Access Points, see
-%% Managing
-%% Multi-Region Access Points:
-%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html
+%% about the restrictions around working with Multi-Region Access Points, see
+%% Multi-Region Access Point
+%% restrictions and limitations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html
 %% in the Amazon S3 User Guide.
 %%
 %% The following actions are related to
@@ -8162,8 +8157,6 @@ put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
 %% `ap-northeast-1'
 %%
 %% `eu-west-1'
-%%
-%% Your Amazon S3 bucket does not need to be in these five Regions.
 -spec submit_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), submit_multi_region_access_point_routes_request()) ->
     {ok, submit_multi_region_access_point_routes_result(), tuple()} |
     {error, any()}.

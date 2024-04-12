@@ -20,6 +20,14 @@
          claim_device/3,
          create_channel/2,
          create_channel/3,
+         create_cloud_watch_alarm_template/2,
+         create_cloud_watch_alarm_template/3,
+         create_cloud_watch_alarm_template_group/2,
+         create_cloud_watch_alarm_template_group/3,
+         create_event_bridge_rule_template/2,
+         create_event_bridge_rule_template/3,
+         create_event_bridge_rule_template_group/2,
+         create_event_bridge_rule_template_group/3,
          create_input/2,
          create_input/3,
          create_input_security_group/2,
@@ -30,10 +38,20 @@
          create_multiplex_program/4,
          create_partner_input/3,
          create_partner_input/4,
+         create_signal_map/2,
+         create_signal_map/3,
          create_tags/3,
          create_tags/4,
          delete_channel/3,
          delete_channel/4,
+         delete_cloud_watch_alarm_template/3,
+         delete_cloud_watch_alarm_template/4,
+         delete_cloud_watch_alarm_template_group/3,
+         delete_cloud_watch_alarm_template_group/4,
+         delete_event_bridge_rule_template/3,
+         delete_event_bridge_rule_template/4,
+         delete_event_bridge_rule_template_group/3,
+         delete_event_bridge_rule_template_group/4,
          delete_input/3,
          delete_input/4,
          delete_input_security_group/3,
@@ -46,6 +64,8 @@
          delete_reservation/4,
          delete_schedule/3,
          delete_schedule/4,
+         delete_signal_map/3,
+         delete_signal_map/4,
          delete_tags/3,
          delete_tags/4,
          describe_account_configuration/1,
@@ -84,9 +104,36 @@
          describe_thumbnails/4,
          describe_thumbnails/6,
          describe_thumbnails/7,
+         get_cloud_watch_alarm_template/2,
+         get_cloud_watch_alarm_template/4,
+         get_cloud_watch_alarm_template/5,
+         get_cloud_watch_alarm_template_group/2,
+         get_cloud_watch_alarm_template_group/4,
+         get_cloud_watch_alarm_template_group/5,
+         get_event_bridge_rule_template/2,
+         get_event_bridge_rule_template/4,
+         get_event_bridge_rule_template/5,
+         get_event_bridge_rule_template_group/2,
+         get_event_bridge_rule_template_group/4,
+         get_event_bridge_rule_template_group/5,
+         get_signal_map/2,
+         get_signal_map/4,
+         get_signal_map/5,
          list_channels/1,
          list_channels/3,
          list_channels/4,
+         list_cloud_watch_alarm_template_groups/1,
+         list_cloud_watch_alarm_template_groups/3,
+         list_cloud_watch_alarm_template_groups/4,
+         list_cloud_watch_alarm_templates/1,
+         list_cloud_watch_alarm_templates/3,
+         list_cloud_watch_alarm_templates/4,
+         list_event_bridge_rule_template_groups/1,
+         list_event_bridge_rule_template_groups/3,
+         list_event_bridge_rule_template_groups/4,
+         list_event_bridge_rule_templates/1,
+         list_event_bridge_rule_templates/3,
+         list_event_bridge_rule_templates/4,
          list_input_device_transfers/2,
          list_input_device_transfers/4,
          list_input_device_transfers/5,
@@ -111,6 +158,9 @@
          list_reservations/1,
          list_reservations/3,
          list_reservations/4,
+         list_signal_maps/1,
+         list_signal_maps/3,
+         list_signal_maps/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -124,12 +174,18 @@
          restart_channel_pipelines/4,
          start_channel/3,
          start_channel/4,
+         start_delete_monitor_deployment/3,
+         start_delete_monitor_deployment/4,
          start_input_device/3,
          start_input_device/4,
          start_input_device_maintenance_window/3,
          start_input_device_maintenance_window/4,
+         start_monitor_deployment/3,
+         start_monitor_deployment/4,
          start_multiplex/3,
          start_multiplex/4,
+         start_update_signal_map/3,
+         start_update_signal_map/4,
          stop_channel/3,
          stop_channel/4,
          stop_input_device/3,
@@ -144,6 +200,14 @@
          update_channel/4,
          update_channel_class/3,
          update_channel_class/4,
+         update_cloud_watch_alarm_template/3,
+         update_cloud_watch_alarm_template/4,
+         update_cloud_watch_alarm_template_group/3,
+         update_cloud_watch_alarm_template_group/4,
+         update_event_bridge_rule_template/3,
+         update_event_bridge_rule_template/4,
+         update_event_bridge_rule_template_group/3,
+         update_event_bridge_rule_template_group/4,
          update_input/3,
          update_input/4,
          update_input_device/3,
@@ -173,6 +237,10 @@
 %% scte27_destination_settings() :: #{}
 -type scte27_destination_settings() :: #{}.
 
+%% Example:
+%% delete_cloud_watch_alarm_template_group_request() :: #{}
+-type delete_cloud_watch_alarm_template_group_request() :: #{}.
+
 
 %% Example:
 %% archive_s3_settings() :: #{
@@ -199,9 +267,38 @@
 %% }
 -type scte35_time_signal_apos() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_cloud_watch_alarm_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_cloud_watch_alarm_template_group_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_channel_request() :: #{}
 -type delete_channel_request() :: #{}.
+
+
+%% Example:
+%% event_bridge_rule_template_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTargetCount">> => integer(),
+%%   <<"EventType">> => list(any()),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type event_bridge_rule_template_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -225,6 +322,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_input_security_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_bridge_rule_templates_request() :: #{
+%%   <<"GroupIdentifier">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SignalMapIdentifier">> => string()
+%% }
+-type list_event_bridge_rule_templates_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -281,6 +388,18 @@
 %%   <<"Source608ChannelNumber">> => integer()
 %% }
 -type scte20_source_settings() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cloud_watch_alarm_template_request() :: #{}
+-type delete_cloud_watch_alarm_template_request() :: #{}.
+
+
+%% Example:
+%% list_signal_maps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SignalMaps">> => list(signal_map_summary()())
+%% }
+-type list_signal_maps_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_multiplex_program_request() :: #{}
@@ -444,6 +563,10 @@
 %% }
 -type hls_akamai_settings() :: #{binary() => any()}.
 
+%% Example:
+%% get_signal_map_request() :: #{}
+-type get_signal_map_request() :: #{}.
+
 
 %% Example:
 %% audio_only_hls_settings() :: #{
@@ -471,6 +594,24 @@
 %%   <<"ProgramName">> => string()
 %% }
 -type multiplex_program_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_watch_alarm_template_request() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"GroupIdentifier">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"TargetResourceType">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"TreatMissingData">> => list(any())
+%% }
+-type update_cloud_watch_alarm_template_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -524,6 +665,15 @@
 %%   <<"MediaConnectSettings">> => multiplex_media_connect_output_destination_settings()
 %% }
 -type multiplex_output_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitor_deployment() :: #{
+%%   <<"DetailsUri">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type monitor_deployment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -673,6 +823,19 @@
 
 
 %% Example:
+%% get_event_bridge_rule_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_event_bridge_rule_template_group_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% multiplex_program() :: #{
 %%   <<"ChannelId">> => string(),
 %%   <<"MultiplexProgramSettings">> => multiplex_program_settings(),
@@ -751,6 +914,20 @@
 
 
 %% Example:
+%% event_bridge_rule_template_group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TemplateCount">> => integer()
+%% }
+-type event_bridge_rule_template_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% audio_codec_settings() :: #{
 %%   <<"AacSettings">> => aac_settings(),
 %%   <<"Ac3Settings">> => ac3_settings(),
@@ -761,6 +938,29 @@
 %%   <<"WavSettings">> => wav_settings()
 %% }
 -type audio_codec_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_watch_alarm_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetResourceType">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"TreatMissingData">> => list(any())
+%% }
+-type update_cloud_watch_alarm_template_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -799,12 +999,32 @@
 %% }
 -type list_offerings_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_signal_map_request() :: #{}
+-type delete_signal_map_request() :: #{}.
+
 
 %% Example:
 %% update_input_security_group_response() :: #{
 %%   <<"SecurityGroup">> => input_security_group()
 %% }
 -type update_input_security_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_bridge_rule_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()()),
+%%   <<"EventType">> => list(any()),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_bridge_rule_template_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -962,6 +1182,28 @@
 
 
 %% Example:
+%% update_event_bridge_rule_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_event_bridge_rule_template_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_bridge_rule_template_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_bridge_rule_template_group_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% udp_container_settings() :: #{
 %%   <<"M2tsSettings">> => m2ts_settings()
 %% }
@@ -994,6 +1236,29 @@
 
 
 %% Example:
+%% create_cloud_watch_alarm_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetResourceType">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"TreatMissingData">> => list(any())
+%% }
+-type create_cloud_watch_alarm_template_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% input_channel_level() :: #{
 %%   <<"Gain">> => integer(),
 %%   <<"InputChannel">> => integer()
@@ -1018,6 +1283,14 @@
 %% Example:
 %% embedded_plus_scte20_destination_settings() :: #{}
 -type embedded_plus_scte20_destination_settings() :: #{}.
+
+
+%% Example:
+%% list_cloud_watch_alarm_template_groups_response() :: #{
+%%   <<"CloudWatchAlarmTemplateGroups">> => list(cloud_watch_alarm_template_group_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cloud_watch_alarm_template_groups_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1048,6 +1321,13 @@
 %%   <<"MediaconnectSettings">> => input_device_media_connect_configurable_settings()
 %% }
 -type input_device_configurable_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_bridge_rule_template_target() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type event_bridge_rule_template_target() :: #{binary() => any()}.
 
 %% Example:
 %% smpte_tt_destination_settings() :: #{}
@@ -1095,6 +1375,13 @@
 %%   <<"WhitelistRules">> => list(input_whitelist_rule_cidr()())
 %% }
 -type create_input_security_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_monitor_deployment_request() :: #{
+%%   <<"DryRun">> => boolean()
+%% }
+-type start_monitor_deployment_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1323,6 +1610,19 @@
 %%   <<"TimestampOffsetMode">> => list(any())
 %% }
 -type ms_smooth_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cloud_watch_alarm_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_cloud_watch_alarm_template_group_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1589,6 +1889,10 @@
 %% rec601_settings() :: #{}
 -type rec601_settings() :: #{}.
 
+%% Example:
+%% get_cloud_watch_alarm_template_group_request() :: #{}
+-type get_cloud_watch_alarm_template_group_request() :: #{}.
+
 
 %% Example:
 %% batch_stop_request() :: #{
@@ -1596,6 +1900,10 @@
 %%   <<"MultiplexIds">> => list(string()())
 %% }
 -type batch_stop_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_bridge_rule_template_group_request() :: #{}
+-type get_event_bridge_rule_template_group_request() :: #{}.
 
 %% Example:
 %% cancel_input_device_transfer_request() :: #{}
@@ -1768,6 +2076,29 @@
 
 
 %% Example:
+%% get_cloud_watch_alarm_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetResourceType">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"TreatMissingData">> => list(any())
+%% }
+-type get_cloud_watch_alarm_template_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% input_loss_behavior() :: #{
 %%   <<"BlackFrameMsec">> => integer(),
 %%   <<"InputLossImageColor">> => string(),
@@ -1825,6 +2156,30 @@
 
 
 %% Example:
+%% create_signal_map_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryEntryPointArn">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()()),
+%%   <<"FailedMediaResourceMap">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"LastDiscoveredAt">> => non_neg_integer(),
+%%   <<"LastSuccessfulMonitorDeployment">> => successful_monitor_deployment(),
+%%   <<"MediaResourceMap">> => map(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"MonitorChangesPendingDeployment">> => boolean(),
+%%   <<"MonitorDeployment">> => monitor_deployment(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_signal_map_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1836,6 +2191,13 @@
 %%   <<"Timecode">> => string()
 %% }
 -type start_timecode() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_watch_alarm_template_group_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type update_cloud_watch_alarm_template_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_channel_request() :: #{}
@@ -1900,6 +2262,14 @@
 
 
 %% Example:
+%% media_resource_neighbor() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type media_resource_neighbor() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_channel_request() :: #{
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
@@ -1920,10 +2290,38 @@
 
 
 %% Example:
+%% start_delete_monitor_deployment_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryEntryPointArn">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()()),
+%%   <<"FailedMediaResourceMap">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"LastDiscoveredAt">> => non_neg_integer(),
+%%   <<"LastSuccessfulMonitorDeployment">> => successful_monitor_deployment(),
+%%   <<"MediaResourceMap">> => map(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"MonitorChangesPendingDeployment">> => boolean(),
+%%   <<"MonitorDeployment">> => monitor_deployment(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type start_delete_monitor_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% motion_graphics_settings() :: #{
 %%   <<"HtmlMotionGraphicsSettings">> => html_motion_graphics_settings()
 %% }
 -type motion_graphics_settings() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_bridge_rule_template_group_request() :: #{}
+-type delete_event_bridge_rule_template_group_request() :: #{}.
 
 
 %% Example:
@@ -2137,6 +2535,10 @@
 -type ancillary_source_settings() :: #{binary() => any()}.
 
 %% Example:
+%% delete_event_bridge_rule_template_request() :: #{}
+-type delete_event_bridge_rule_template_request() :: #{}.
+
+%% Example:
 %% html_motion_graphics_settings() :: #{}
 -type html_motion_graphics_settings() :: #{}.
 
@@ -2147,6 +2549,10 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_delete_monitor_deployment_request() :: #{}
+-type start_delete_monitor_deployment_request() :: #{}.
 
 
 %% Example:
@@ -2379,6 +2785,34 @@
 
 
 %% Example:
+%% get_signal_map_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryEntryPointArn">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()()),
+%%   <<"FailedMediaResourceMap">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"LastDiscoveredAt">> => non_neg_integer(),
+%%   <<"LastSuccessfulMonitorDeployment">> => successful_monitor_deployment(),
+%%   <<"MediaResourceMap">> => map(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"MonitorChangesPendingDeployment">> => boolean(),
+%%   <<"MonitorDeployment">> => monitor_deployment(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_signal_map_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_watch_alarm_template_request() :: #{}
+-type get_cloud_watch_alarm_template_request() :: #{}.
+
+
+%% Example:
 %% describe_input_device_thumbnail_response() :: #{
 %%   <<"Body">> => binary(),
 %%   <<"ContentLength">> => float(),
@@ -2516,6 +2950,18 @@
 %% }
 -type media_package_group_settings() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_signal_map_request() :: #{
+%%   <<"CloudWatchAlarmTemplateGroupIdentifiers">> => list(string()()),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryEntryPointArn">> := string(),
+%%   <<"EventBridgeRuleTemplateGroupIdentifiers">> => list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_signal_map_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_multiplex_request() :: #{}
 -type delete_multiplex_request() :: #{}.
@@ -2623,10 +3069,34 @@
 
 
 %% Example:
+%% create_event_bridge_rule_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_bridge_rule_template_group_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% failover_condition() :: #{
 %%   <<"FailoverConditionSettings">> => failover_condition_settings()
 %% }
 -type failover_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_bridge_rule_template_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()()),
+%%   <<"EventType">> => list(any()),
+%%   <<"GroupIdentifier">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_event_bridge_rule_template_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2724,6 +3194,14 @@
 %%   <<"Id3">> => string()
 %% }
 -type hls_timed_metadata_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% successful_monitor_deployment() :: #{
+%%   <<"DetailsUri">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type successful_monitor_deployment() :: #{binary() => any()}.
 
 %% Example:
 %% immediate_mode_schedule_action_start_settings() :: #{}
@@ -2842,6 +3320,35 @@
 
 
 %% Example:
+%% update_event_bridge_rule_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()()),
+%%   <<"EventType">> => list(any()),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_event_bridge_rule_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_watch_alarm_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_cloud_watch_alarm_template_group_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% multiplex() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AvailabilityZones">> => list(string()()),
@@ -2889,6 +3396,13 @@
 %% Example:
 %% accept_input_device_transfer_response() :: #{}
 -type accept_input_device_transfer_response() :: #{}.
+
+
+%% Example:
+%% update_event_bridge_rule_template_group_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type update_event_bridge_rule_template_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2970,6 +3484,22 @@
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_cloud_watch_alarm_templates_response() :: #{
+%%   <<"CloudWatchAlarmTemplates">> => list(cloud_watch_alarm_template_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cloud_watch_alarm_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_bridge_rule_template_groups_response() :: #{
+%%   <<"EventBridgeRuleTemplateGroups">> => list(event_bridge_rule_template_group_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_bridge_rule_template_groups_response() :: #{binary() => any()}.
+
 %% Example:
 %% reject_input_device_transfer_response() :: #{}
 -type reject_input_device_transfer_response() :: #{}.
@@ -2990,6 +3520,43 @@
 %%   <<"Multiplex">> => multiplex()
 %% }
 -type create_multiplex_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_bridge_rule_template_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SignalMapIdentifier">> => string()
+%% }
+-type list_event_bridge_rule_template_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_resource() :: #{
+%%   <<"Destinations">> => list(media_resource_neighbor()()),
+%%   <<"Name">> => string(),
+%%   <<"Sources">> => list(media_resource_neighbor()())
+%% }
+-type media_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_watch_alarm_template_request() :: #{
+%%   <<"ComparisonOperator">> := list(any()),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationPeriods">> := integer(),
+%%   <<"GroupIdentifier">> := string(),
+%%   <<"MetricName">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Period">> := integer(),
+%%   <<"Statistic">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetResourceType">> := list(any()),
+%%   <<"Threshold">> := float(),
+%%   <<"TreatMissingData">> := list(any())
+%% }
+-type create_cloud_watch_alarm_template_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3286,9 +3853,21 @@
 %% }
 -type pipeline_detail() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_event_bridge_rule_templates_response() :: #{
+%%   <<"EventBridgeRuleTemplates">> => list(event_bridge_rule_template_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_bridge_rule_templates_response() :: #{binary() => any()}.
+
 %% Example:
 %% rtmp_caption_info_destination_settings() :: #{}
 -type rtmp_caption_info_destination_settings() :: #{}.
+
+%% Example:
+%% get_event_bridge_rule_template_request() :: #{}
+-type get_event_bridge_rule_template_request() :: #{}.
 
 
 %% Example:
@@ -3336,6 +3915,22 @@
 %% Example:
 %% reject_input_device_transfer_request() :: #{}
 -type reject_input_device_transfer_request() :: #{}.
+
+
+%% Example:
+%% get_event_bridge_rule_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()()),
+%%   <<"EventType">> => list(any()),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_event_bridge_rule_template_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3400,6 +3995,30 @@
 
 
 %% Example:
+%% start_monitor_deployment_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryEntryPointArn">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()()),
+%%   <<"FailedMediaResourceMap">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"LastDiscoveredAt">> => non_neg_integer(),
+%%   <<"LastSuccessfulMonitorDeployment">> => successful_monitor_deployment(),
+%%   <<"MediaResourceMap">> => map(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"MonitorChangesPendingDeployment">> => boolean(),
+%%   <<"MonitorDeployment">> => monitor_deployment(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type start_monitor_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_multiplexes_response() :: #{
 %%   <<"Multiplexes">> => list(multiplex_summary()()),
 %%   <<"NextToken">> => string()
@@ -3417,6 +4036,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_multiplexes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cloud_watch_alarm_template_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Scope">> => string(),
+%%   <<"SignalMapIdentifier">> => string()
+%% }
+-type list_cloud_watch_alarm_template_groups_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3527,6 +4156,18 @@
 
 
 %% Example:
+%% create_event_bridge_rule_template_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()()),
+%%   <<"EventType">> := list(any()),
+%%   <<"GroupIdentifier">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_bridge_rule_template_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% video_black_failover_settings() :: #{
 %%   <<"BlackDetectThreshold">> => float(),
 %%   <<"VideoBlackThresholdMsec">> => integer()
@@ -3588,6 +4229,40 @@
 
 
 %% Example:
+%% start_update_signal_map_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryEntryPointArn">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()()),
+%%   <<"FailedMediaResourceMap">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"LastDiscoveredAt">> => non_neg_integer(),
+%%   <<"LastSuccessfulMonitorDeployment">> => successful_monitor_deployment(),
+%%   <<"MediaResourceMap">> => map(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"MonitorChangesPendingDeployment">> => boolean(),
+%%   <<"MonitorDeployment">> => monitor_deployment(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type start_update_signal_map_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_signal_maps_request() :: #{
+%%   <<"CloudWatchAlarmTemplateGroupIdentifier">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIdentifier">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_signal_maps_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% input_device_hd_settings() :: #{
 %%   <<"ActiveInput">> => list(any()),
 %%   <<"ConfiguredInput">> => list(any()),
@@ -3637,9 +4312,46 @@
 %% }
 -type describe_schedule_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% cloud_watch_alarm_template_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetResourceType">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"TreatMissingData">> => list(any())
+%% }
+-type cloud_watch_alarm_template_summary() :: #{binary() => any()}.
+
 %% Example:
 %% stop_input_device_response() :: #{}
 -type stop_input_device_response() :: #{}.
+
+
+%% Example:
+%% cloud_watch_alarm_template_group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TemplateCount">> => integer()
+%% }
+-type cloud_watch_alarm_template_group_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3692,10 +4404,34 @@
 
 
 %% Example:
+%% signal_map_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"MonitorDeploymentStatus">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type signal_map_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% media_package_output_destination_settings() :: #{
 %%   <<"ChannelId">> => string()
 %% }
 -type media_package_output_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_watch_alarm_template_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_cloud_watch_alarm_template_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3709,6 +4445,17 @@
 %% Example:
 %% describe_offering_request() :: #{}
 -type describe_offering_request() :: #{}.
+
+
+%% Example:
+%% list_cloud_watch_alarm_templates_request() :: #{
+%%   <<"GroupIdentifier">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Scope">> => string(),
+%%   <<"SignalMapIdentifier">> => string()
+%% }
+-type list_cloud_watch_alarm_templates_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3878,6 +4625,18 @@
 
 
 %% Example:
+%% start_update_signal_map_request() :: #{
+%%   <<"CloudWatchAlarmTemplateGroupIdentifiers">> => list(string()()),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryEntryPointArn">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIdentifiers">> => list(string()()),
+%%   <<"ForceRediscovery">> => boolean(),
+%%   <<"Name">> => string()
+%% }
+-type start_update_signal_map_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_reservation_response() :: #{
 %%   <<"Reservation">> => reservation()
 %% }
@@ -3980,6 +4739,38 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type create_cloud_watch_alarm_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_cloud_watch_alarm_template_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_event_bridge_rule_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type create_event_bridge_rule_template_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type create_input_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
@@ -4024,6 +4815,14 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type create_signal_map_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type create_tags_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -4039,6 +4838,38 @@
     too_many_requests_exception() | 
     forbidden_exception() | 
     bad_gateway_exception().
+
+-type delete_cloud_watch_alarm_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_cloud_watch_alarm_template_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_event_bridge_rule_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type delete_event_bridge_rule_template_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
 
 -type delete_input_errors() ::
     bad_request_exception() | 
@@ -4097,6 +4928,14 @@
     too_many_requests_exception() | 
     forbidden_exception() | 
     bad_gateway_exception().
+
+-type delete_signal_map_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
 
 -type delete_tags_errors() ::
     bad_request_exception() | 
@@ -4212,6 +5051,41 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type get_cloud_watch_alarm_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_cloud_watch_alarm_template_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_event_bridge_rule_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_event_bridge_rule_template_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_signal_map_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type list_channels_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
@@ -4219,6 +5093,34 @@
     too_many_requests_exception() | 
     forbidden_exception() | 
     bad_gateway_exception().
+
+-type list_cloud_watch_alarm_template_groups_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_cloud_watch_alarm_templates_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_event_bridge_rule_template_groups_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type list_event_bridge_rule_templates_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
 
 -type list_input_device_transfers_errors() ::
     bad_request_exception() | 
@@ -4286,6 +5188,13 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type list_signal_maps_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type list_tags_for_resource_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -4343,6 +5252,14 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type start_delete_monitor_deployment_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type start_input_device_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
@@ -4363,6 +5280,14 @@
     forbidden_exception() | 
     bad_gateway_exception().
 
+-type start_monitor_deployment_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type start_multiplex_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
@@ -4372,6 +5297,14 @@
     too_many_requests_exception() | 
     forbidden_exception() | 
     bad_gateway_exception().
+
+-type start_update_signal_map_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
 
 -type stop_channel_errors() ::
     bad_request_exception() | 
@@ -4442,6 +5375,38 @@
     too_many_requests_exception() | 
     forbidden_exception() | 
     bad_gateway_exception().
+
+-type update_cloud_watch_alarm_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_cloud_watch_alarm_template_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_event_bridge_rule_template_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type update_event_bridge_rule_template_group_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
 
 -type update_input_errors() ::
     bad_request_exception() | 
@@ -4782,6 +5747,148 @@ create_channel(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a cloudwatch alarm template to dynamically generate
+%% cloudwatch metric alarms on targeted resource types.
+-spec create_cloud_watch_alarm_template(aws_client:aws_client(), create_cloud_watch_alarm_template_request()) ->
+    {ok, create_cloud_watch_alarm_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_cloud_watch_alarm_template_errors(), tuple()}.
+create_cloud_watch_alarm_template(Client, Input) ->
+    create_cloud_watch_alarm_template(Client, Input, []).
+
+-spec create_cloud_watch_alarm_template(aws_client:aws_client(), create_cloud_watch_alarm_template_request(), proplists:proplist()) ->
+    {ok, create_cloud_watch_alarm_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_cloud_watch_alarm_template_errors(), tuple()}.
+create_cloud_watch_alarm_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/cloudwatch-alarm-templates"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a cloudwatch alarm template group to group your cloudwatch
+%% alarm templates and to attach to signal maps for dynamically creating
+%% alarms.
+-spec create_cloud_watch_alarm_template_group(aws_client:aws_client(), create_cloud_watch_alarm_template_group_request()) ->
+    {ok, create_cloud_watch_alarm_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_cloud_watch_alarm_template_group_errors(), tuple()}.
+create_cloud_watch_alarm_template_group(Client, Input) ->
+    create_cloud_watch_alarm_template_group(Client, Input, []).
+
+-spec create_cloud_watch_alarm_template_group(aws_client:aws_client(), create_cloud_watch_alarm_template_group_request(), proplists:proplist()) ->
+    {ok, create_cloud_watch_alarm_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_cloud_watch_alarm_template_group_errors(), tuple()}.
+create_cloud_watch_alarm_template_group(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/cloudwatch-alarm-template-groups"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an eventbridge rule template to monitor events and send
+%% notifications to your targeted resources.
+-spec create_event_bridge_rule_template(aws_client:aws_client(), create_event_bridge_rule_template_request()) ->
+    {ok, create_event_bridge_rule_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_event_bridge_rule_template_errors(), tuple()}.
+create_event_bridge_rule_template(Client, Input) ->
+    create_event_bridge_rule_template(Client, Input, []).
+
+-spec create_event_bridge_rule_template(aws_client:aws_client(), create_event_bridge_rule_template_request(), proplists:proplist()) ->
+    {ok, create_event_bridge_rule_template_response(), tuple()} |
+    {error, any()} |
+    {error, create_event_bridge_rule_template_errors(), tuple()}.
+create_event_bridge_rule_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/eventbridge-rule-templates"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an eventbridge rule template group to group your eventbridge
+%% rule templates and to attach to signal maps for dynamically creating
+%% notification rules.
+-spec create_event_bridge_rule_template_group(aws_client:aws_client(), create_event_bridge_rule_template_group_request()) ->
+    {ok, create_event_bridge_rule_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_event_bridge_rule_template_group_errors(), tuple()}.
+create_event_bridge_rule_template_group(Client, Input) ->
+    create_event_bridge_rule_template_group(Client, Input, []).
+
+-spec create_event_bridge_rule_template_group(aws_client:aws_client(), create_event_bridge_rule_template_group_request(), proplists:proplist()) ->
+    {ok, create_event_bridge_rule_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, create_event_bridge_rule_template_group_errors(), tuple()}.
+create_event_bridge_rule_template_group(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/eventbridge-rule-template-groups"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Create an input
 -spec create_input(aws_client:aws_client(), create_input_request()) ->
     {ok, create_input_response(), tuple()} |
@@ -4952,6 +6059,43 @@ create_partner_input(Client, InputId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Initiates the creation of a new signal map.
+%%
+%% Will discover a new mediaResourceMap based on the provided
+%% discoveryEntryPointArn.
+-spec create_signal_map(aws_client:aws_client(), create_signal_map_request()) ->
+    {ok, create_signal_map_response(), tuple()} |
+    {error, any()} |
+    {error, create_signal_map_errors(), tuple()}.
+create_signal_map(Client, Input) ->
+    create_signal_map(Client, Input, []).
+
+-spec create_signal_map(aws_client:aws_client(), create_signal_map_request(), proplists:proplist()) ->
+    {ok, create_signal_map_response(), tuple()} |
+    {error, any()} |
+    {error, create_signal_map_errors(), tuple()}.
+create_signal_map(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/signal-maps"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Create tags for a resource
 -spec create_tags(aws_client:aws_client(), binary() | list(), create_tags_request()) ->
     {ok, undefined, tuple()} |
@@ -5004,6 +6148,148 @@ delete_channel(Client, ChannelId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a cloudwatch alarm template.
+-spec delete_cloud_watch_alarm_template(aws_client:aws_client(), binary() | list(), delete_cloud_watch_alarm_template_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_cloud_watch_alarm_template_errors(), tuple()}.
+delete_cloud_watch_alarm_template(Client, Identifier, Input) ->
+    delete_cloud_watch_alarm_template(Client, Identifier, Input, []).
+
+-spec delete_cloud_watch_alarm_template(aws_client:aws_client(), binary() | list(), delete_cloud_watch_alarm_template_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_cloud_watch_alarm_template_errors(), tuple()}.
+delete_cloud_watch_alarm_template(Client, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prod/cloudwatch-alarm-templates/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a cloudwatch alarm template group.
+%%
+%% You must detach this group from all signal maps and ensure its existing
+%% templates are moved to another group or deleted.
+-spec delete_cloud_watch_alarm_template_group(aws_client:aws_client(), binary() | list(), delete_cloud_watch_alarm_template_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_cloud_watch_alarm_template_group_errors(), tuple()}.
+delete_cloud_watch_alarm_template_group(Client, Identifier, Input) ->
+    delete_cloud_watch_alarm_template_group(Client, Identifier, Input, []).
+
+-spec delete_cloud_watch_alarm_template_group(aws_client:aws_client(), binary() | list(), delete_cloud_watch_alarm_template_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_cloud_watch_alarm_template_group_errors(), tuple()}.
+delete_cloud_watch_alarm_template_group(Client, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prod/cloudwatch-alarm-template-groups/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an eventbridge rule template.
+-spec delete_event_bridge_rule_template(aws_client:aws_client(), binary() | list(), delete_event_bridge_rule_template_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_event_bridge_rule_template_errors(), tuple()}.
+delete_event_bridge_rule_template(Client, Identifier, Input) ->
+    delete_event_bridge_rule_template(Client, Identifier, Input, []).
+
+-spec delete_event_bridge_rule_template(aws_client:aws_client(), binary() | list(), delete_event_bridge_rule_template_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_event_bridge_rule_template_errors(), tuple()}.
+delete_event_bridge_rule_template(Client, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prod/eventbridge-rule-templates/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an eventbridge rule template group.
+%%
+%% You must detach this group from all signal maps and ensure its existing
+%% templates are moved to another group or deleted.
+-spec delete_event_bridge_rule_template_group(aws_client:aws_client(), binary() | list(), delete_event_bridge_rule_template_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_event_bridge_rule_template_group_errors(), tuple()}.
+delete_event_bridge_rule_template_group(Client, Identifier, Input) ->
+    delete_event_bridge_rule_template_group(Client, Identifier, Input, []).
+
+-spec delete_event_bridge_rule_template_group(aws_client:aws_client(), binary() | list(), delete_event_bridge_rule_template_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_event_bridge_rule_template_group_errors(), tuple()}.
+delete_event_bridge_rule_template_group(Client, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prod/eventbridge-rule-template-groups/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -5210,6 +6496,40 @@ delete_schedule(Client, ChannelId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified signal map.
+-spec delete_signal_map(aws_client:aws_client(), binary() | list(), delete_signal_map_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_signal_map_errors(), tuple()}.
+delete_signal_map(Client, Identifier, Input) ->
+    delete_signal_map(Client, Identifier, Input, []).
+
+-spec delete_signal_map(aws_client:aws_client(), binary() | list(), delete_signal_map_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_signal_map_errors(), tuple()}.
+delete_signal_map(Client, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prod/signal-maps/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -5740,6 +7060,191 @@ describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, Head
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the specified cloudwatch alarm template.
+-spec get_cloud_watch_alarm_template(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_cloud_watch_alarm_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_watch_alarm_template_errors(), tuple()}.
+get_cloud_watch_alarm_template(Client, Identifier)
+  when is_map(Client) ->
+    get_cloud_watch_alarm_template(Client, Identifier, #{}, #{}).
+
+-spec get_cloud_watch_alarm_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_cloud_watch_alarm_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_watch_alarm_template_errors(), tuple()}.
+get_cloud_watch_alarm_template(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cloud_watch_alarm_template(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_cloud_watch_alarm_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_cloud_watch_alarm_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_watch_alarm_template_errors(), tuple()}.
+get_cloud_watch_alarm_template(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/cloudwatch-alarm-templates/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the specified cloudwatch alarm template group.
+-spec get_cloud_watch_alarm_template_group(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_cloud_watch_alarm_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_watch_alarm_template_group_errors(), tuple()}.
+get_cloud_watch_alarm_template_group(Client, Identifier)
+  when is_map(Client) ->
+    get_cloud_watch_alarm_template_group(Client, Identifier, #{}, #{}).
+
+-spec get_cloud_watch_alarm_template_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_cloud_watch_alarm_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_watch_alarm_template_group_errors(), tuple()}.
+get_cloud_watch_alarm_template_group(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cloud_watch_alarm_template_group(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_cloud_watch_alarm_template_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_cloud_watch_alarm_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_watch_alarm_template_group_errors(), tuple()}.
+get_cloud_watch_alarm_template_group(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/cloudwatch-alarm-template-groups/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the specified eventbridge rule template.
+-spec get_event_bridge_rule_template(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_event_bridge_rule_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_bridge_rule_template_errors(), tuple()}.
+get_event_bridge_rule_template(Client, Identifier)
+  when is_map(Client) ->
+    get_event_bridge_rule_template(Client, Identifier, #{}, #{}).
+
+-spec get_event_bridge_rule_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_event_bridge_rule_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_bridge_rule_template_errors(), tuple()}.
+get_event_bridge_rule_template(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_event_bridge_rule_template(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_event_bridge_rule_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_event_bridge_rule_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_bridge_rule_template_errors(), tuple()}.
+get_event_bridge_rule_template(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/eventbridge-rule-templates/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the specified eventbridge rule template group.
+-spec get_event_bridge_rule_template_group(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_event_bridge_rule_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_bridge_rule_template_group_errors(), tuple()}.
+get_event_bridge_rule_template_group(Client, Identifier)
+  when is_map(Client) ->
+    get_event_bridge_rule_template_group(Client, Identifier, #{}, #{}).
+
+-spec get_event_bridge_rule_template_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_event_bridge_rule_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_bridge_rule_template_group_errors(), tuple()}.
+get_event_bridge_rule_template_group(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_event_bridge_rule_template_group(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_event_bridge_rule_template_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_event_bridge_rule_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_bridge_rule_template_group_errors(), tuple()}.
+get_event_bridge_rule_template_group(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/eventbridge-rule-template-groups/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the specified signal map.
+-spec get_signal_map(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_signal_map_response(), tuple()} |
+    {error, any()} |
+    {error, get_signal_map_errors(), tuple()}.
+get_signal_map(Client, Identifier)
+  when is_map(Client) ->
+    get_signal_map(Client, Identifier, #{}, #{}).
+
+-spec get_signal_map(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_signal_map_response(), tuple()} |
+    {error, any()} |
+    {error, get_signal_map_errors(), tuple()}.
+get_signal_map(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_signal_map(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_signal_map(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_signal_map_response(), tuple()} |
+    {error, any()} |
+    {error, get_signal_map_errors(), tuple()}.
+get_signal_map(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/signal-maps/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Produces list of channels that have been created
 -spec list_channels(aws_client:aws_client()) ->
     {ok, list_channels_response(), tuple()} |
@@ -5777,6 +7282,182 @@ list_channels(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists cloudwatch alarm template groups.
+-spec list_cloud_watch_alarm_template_groups(aws_client:aws_client()) ->
+    {ok, list_cloud_watch_alarm_template_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_cloud_watch_alarm_template_groups_errors(), tuple()}.
+list_cloud_watch_alarm_template_groups(Client)
+  when is_map(Client) ->
+    list_cloud_watch_alarm_template_groups(Client, #{}, #{}).
+
+-spec list_cloud_watch_alarm_template_groups(aws_client:aws_client(), map(), map()) ->
+    {ok, list_cloud_watch_alarm_template_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_cloud_watch_alarm_template_groups_errors(), tuple()}.
+list_cloud_watch_alarm_template_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_cloud_watch_alarm_template_groups(Client, QueryMap, HeadersMap, []).
+
+-spec list_cloud_watch_alarm_template_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_cloud_watch_alarm_template_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_cloud_watch_alarm_template_groups_errors(), tuple()}.
+list_cloud_watch_alarm_template_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/cloudwatch-alarm-template-groups"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"scope">>, maps:get(<<"scope">>, QueryMap, undefined)},
+        {<<"signalMapIdentifier">>, maps:get(<<"signalMapIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists cloudwatch alarm templates.
+-spec list_cloud_watch_alarm_templates(aws_client:aws_client()) ->
+    {ok, list_cloud_watch_alarm_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_cloud_watch_alarm_templates_errors(), tuple()}.
+list_cloud_watch_alarm_templates(Client)
+  when is_map(Client) ->
+    list_cloud_watch_alarm_templates(Client, #{}, #{}).
+
+-spec list_cloud_watch_alarm_templates(aws_client:aws_client(), map(), map()) ->
+    {ok, list_cloud_watch_alarm_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_cloud_watch_alarm_templates_errors(), tuple()}.
+list_cloud_watch_alarm_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_cloud_watch_alarm_templates(Client, QueryMap, HeadersMap, []).
+
+-spec list_cloud_watch_alarm_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_cloud_watch_alarm_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_cloud_watch_alarm_templates_errors(), tuple()}.
+list_cloud_watch_alarm_templates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/cloudwatch-alarm-templates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"groupIdentifier">>, maps:get(<<"groupIdentifier">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"scope">>, maps:get(<<"scope">>, QueryMap, undefined)},
+        {<<"signalMapIdentifier">>, maps:get(<<"signalMapIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists eventbridge rule template groups.
+-spec list_event_bridge_rule_template_groups(aws_client:aws_client()) ->
+    {ok, list_event_bridge_rule_template_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_bridge_rule_template_groups_errors(), tuple()}.
+list_event_bridge_rule_template_groups(Client)
+  when is_map(Client) ->
+    list_event_bridge_rule_template_groups(Client, #{}, #{}).
+
+-spec list_event_bridge_rule_template_groups(aws_client:aws_client(), map(), map()) ->
+    {ok, list_event_bridge_rule_template_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_bridge_rule_template_groups_errors(), tuple()}.
+list_event_bridge_rule_template_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_event_bridge_rule_template_groups(Client, QueryMap, HeadersMap, []).
+
+-spec list_event_bridge_rule_template_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_event_bridge_rule_template_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_bridge_rule_template_groups_errors(), tuple()}.
+list_event_bridge_rule_template_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/eventbridge-rule-template-groups"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"signalMapIdentifier">>, maps:get(<<"signalMapIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists eventbridge rule templates.
+-spec list_event_bridge_rule_templates(aws_client:aws_client()) ->
+    {ok, list_event_bridge_rule_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_bridge_rule_templates_errors(), tuple()}.
+list_event_bridge_rule_templates(Client)
+  when is_map(Client) ->
+    list_event_bridge_rule_templates(Client, #{}, #{}).
+
+-spec list_event_bridge_rule_templates(aws_client:aws_client(), map(), map()) ->
+    {ok, list_event_bridge_rule_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_bridge_rule_templates_errors(), tuple()}.
+list_event_bridge_rule_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_event_bridge_rule_templates(Client, QueryMap, HeadersMap, []).
+
+-spec list_event_bridge_rule_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_event_bridge_rule_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_bridge_rule_templates_errors(), tuple()}.
+list_event_bridge_rule_templates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/eventbridge-rule-templates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"groupIdentifier">>, maps:get(<<"groupIdentifier">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"signalMapIdentifier">>, maps:get(<<"signalMapIdentifier">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -6140,6 +7821,50 @@ list_reservations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists signal maps.
+-spec list_signal_maps(aws_client:aws_client()) ->
+    {ok, list_signal_maps_response(), tuple()} |
+    {error, any()} |
+    {error, list_signal_maps_errors(), tuple()}.
+list_signal_maps(Client)
+  when is_map(Client) ->
+    list_signal_maps(Client, #{}, #{}).
+
+-spec list_signal_maps(aws_client:aws_client(), map(), map()) ->
+    {ok, list_signal_maps_response(), tuple()} |
+    {error, any()} |
+    {error, list_signal_maps_errors(), tuple()}.
+list_signal_maps(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_signal_maps(Client, QueryMap, HeadersMap, []).
+
+-spec list_signal_maps(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_signal_maps_response(), tuple()} |
+    {error, any()} |
+    {error, list_signal_maps_errors(), tuple()}.
+list_signal_maps(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/signal-maps"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"cloudWatchAlarmTemplateGroupIdentifier">>, maps:get(<<"cloudWatchAlarmTemplateGroupIdentifier">>, QueryMap, undefined)},
+        {<<"eventBridgeRuleTemplateGroupIdentifier">>, maps:get(<<"eventBridgeRuleTemplateGroupIdentifier">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Produces list of tags that have been created for a resource
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -6352,6 +8077,41 @@ start_channel(Client, ChannelId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Initiates a deployment to delete the monitor of the specified signal
+%% map.
+-spec start_delete_monitor_deployment(aws_client:aws_client(), binary() | list(), start_delete_monitor_deployment_request()) ->
+    {ok, start_delete_monitor_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, start_delete_monitor_deployment_errors(), tuple()}.
+start_delete_monitor_deployment(Client, Identifier, Input) ->
+    start_delete_monitor_deployment(Client, Identifier, Input, []).
+
+-spec start_delete_monitor_deployment(aws_client:aws_client(), binary() | list(), start_delete_monitor_deployment_request(), proplists:proplist()) ->
+    {ok, start_delete_monitor_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, start_delete_monitor_deployment_errors(), tuple()}.
+start_delete_monitor_deployment(Client, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prod/signal-maps/", aws_util:encode_uri(Identifier), "/monitor-deployment"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Start an input device that is attached to a MediaConnect flow.
 %%
 %% (There is no need to start a device that is attached to a MediaLive input;
@@ -6432,6 +8192,41 @@ start_input_device_maintenance_window(Client, InputDeviceId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Initiates a deployment to deploy the latest monitor of the specified
+%% signal map.
+-spec start_monitor_deployment(aws_client:aws_client(), binary() | list(), start_monitor_deployment_request()) ->
+    {ok, start_monitor_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, start_monitor_deployment_errors(), tuple()}.
+start_monitor_deployment(Client, Identifier, Input) ->
+    start_monitor_deployment(Client, Identifier, Input, []).
+
+-spec start_monitor_deployment(aws_client:aws_client(), binary() | list(), start_monitor_deployment_request(), proplists:proplist()) ->
+    {ok, start_monitor_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, start_monitor_deployment_errors(), tuple()}.
+start_monitor_deployment(Client, Identifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/signal-maps/", aws_util:encode_uri(Identifier), "/monitor-deployment"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Start (run) the multiplex.
 %%
 %% Starting the multiplex does not start the channels. You must explicitly
@@ -6450,6 +8245,43 @@ start_multiplex(Client, MultiplexId, Input) ->
 start_multiplex(Client, MultiplexId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/start"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates an update for the specified signal map.
+%%
+%% Will discover a new signal map if a changed discoveryEntryPointArn is
+%% provided.
+-spec start_update_signal_map(aws_client:aws_client(), binary() | list(), start_update_signal_map_request()) ->
+    {ok, start_update_signal_map_response(), tuple()} |
+    {error, any()} |
+    {error, start_update_signal_map_errors(), tuple()}.
+start_update_signal_map(Client, Identifier, Input) ->
+    start_update_signal_map(Client, Identifier, Input, []).
+
+-spec start_update_signal_map(aws_client:aws_client(), binary() | list(), start_update_signal_map_request(), proplists:proplist()) ->
+    {ok, start_update_signal_map_response(), tuple()} |
+    {error, any()} |
+    {error, start_update_signal_map_errors(), tuple()}.
+start_update_signal_map(Client, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/prod/signal-maps/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6696,6 +8528,142 @@ update_channel_class(Client, ChannelId, Input) ->
 update_channel_class(Client, ChannelId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/channelClass"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified cloudwatch alarm template.
+-spec update_cloud_watch_alarm_template(aws_client:aws_client(), binary() | list(), update_cloud_watch_alarm_template_request()) ->
+    {ok, update_cloud_watch_alarm_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_watch_alarm_template_errors(), tuple()}.
+update_cloud_watch_alarm_template(Client, Identifier, Input) ->
+    update_cloud_watch_alarm_template(Client, Identifier, Input, []).
+
+-spec update_cloud_watch_alarm_template(aws_client:aws_client(), binary() | list(), update_cloud_watch_alarm_template_request(), proplists:proplist()) ->
+    {ok, update_cloud_watch_alarm_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_watch_alarm_template_errors(), tuple()}.
+update_cloud_watch_alarm_template(Client, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/prod/cloudwatch-alarm-templates/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified cloudwatch alarm template group.
+-spec update_cloud_watch_alarm_template_group(aws_client:aws_client(), binary() | list(), update_cloud_watch_alarm_template_group_request()) ->
+    {ok, update_cloud_watch_alarm_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_watch_alarm_template_group_errors(), tuple()}.
+update_cloud_watch_alarm_template_group(Client, Identifier, Input) ->
+    update_cloud_watch_alarm_template_group(Client, Identifier, Input, []).
+
+-spec update_cloud_watch_alarm_template_group(aws_client:aws_client(), binary() | list(), update_cloud_watch_alarm_template_group_request(), proplists:proplist()) ->
+    {ok, update_cloud_watch_alarm_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_watch_alarm_template_group_errors(), tuple()}.
+update_cloud_watch_alarm_template_group(Client, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/prod/cloudwatch-alarm-template-groups/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified eventbridge rule template.
+-spec update_event_bridge_rule_template(aws_client:aws_client(), binary() | list(), update_event_bridge_rule_template_request()) ->
+    {ok, update_event_bridge_rule_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_event_bridge_rule_template_errors(), tuple()}.
+update_event_bridge_rule_template(Client, Identifier, Input) ->
+    update_event_bridge_rule_template(Client, Identifier, Input, []).
+
+-spec update_event_bridge_rule_template(aws_client:aws_client(), binary() | list(), update_event_bridge_rule_template_request(), proplists:proplist()) ->
+    {ok, update_event_bridge_rule_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_event_bridge_rule_template_errors(), tuple()}.
+update_event_bridge_rule_template(Client, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/prod/eventbridge-rule-templates/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified eventbridge rule template group.
+-spec update_event_bridge_rule_template_group(aws_client:aws_client(), binary() | list(), update_event_bridge_rule_template_group_request()) ->
+    {ok, update_event_bridge_rule_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_event_bridge_rule_template_group_errors(), tuple()}.
+update_event_bridge_rule_template_group(Client, Identifier, Input) ->
+    update_event_bridge_rule_template_group(Client, Identifier, Input, []).
+
+-spec update_event_bridge_rule_template_group(aws_client:aws_client(), binary() | list(), update_event_bridge_rule_template_group_request(), proplists:proplist()) ->
+    {ok, update_event_bridge_rule_template_group_response(), tuple()} |
+    {error, any()} |
+    {error, update_event_bridge_rule_template_group_errors(), tuple()}.
+update_event_bridge_rule_template_group(Client, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/prod/eventbridge-rule-template-groups/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

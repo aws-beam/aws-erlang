@@ -13,7 +13,7 @@
 %% configuring and managing required infrastructure.
 %% At the same time, it also adopts a familiar batch computing software
 %% approach. You can use Batch to efficiently
-%% provision resources d, and work toward eliminating capacity constraints,
+%% provision resources, and work toward eliminating capacity constraints,
 %% reducing your overall compute costs, and
 %% delivering results more quickly.
 %%
@@ -328,6 +328,17 @@
 
 
 %% Example:
+%% attempt_task_container_details() :: #{
+%%   <<"exitCode">> => integer(),
+%%   <<"logStreamName">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"reason">> => string()
+%% }
+-type attempt_task_container_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_scheduling_policies_response() :: #{
 %%   <<"schedulingPolicies">> => list(scheduling_policy_detail()())
 %% }
@@ -417,6 +428,15 @@
 %%   <<"sourceVolume">> => string()
 %% }
 -type mount_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% attempt_ecs_task_details() :: #{
+%%   <<"containerInstanceArn">> => string(),
+%%   <<"containers">> => list(attempt_task_container_details()()),
+%%   <<"taskArn">> => string()
+%% }
+-type attempt_ecs_task_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -575,7 +595,8 @@
 %%   <<"container">> => attempt_container_detail(),
 %%   <<"startedAt">> => float(),
 %%   <<"statusReason">> => string(),
-%%   <<"stoppedAt">> => float()
+%%   <<"stoppedAt">> => float(),
+%%   <<"taskProperties">> => list(attempt_ecs_task_details()())
 %% }
 -type attempt_detail() :: #{binary() => any()}.
 
@@ -1012,6 +1033,7 @@
 %% Example:
 %% eks_attempt_container_detail() :: #{
 %%   <<"exitCode">> => integer(),
+%%   <<"name">> => string(),
 %%   <<"reason">> => string()
 %% }
 -type eks_attempt_container_detail() :: #{binary() => any()}.
