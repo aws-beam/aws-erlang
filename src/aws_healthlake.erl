@@ -174,6 +174,13 @@
 -type list_fhir_export_jobs_response() :: #{binary() => any()}.
 
 %% Example:
+%% error_cause() :: #{
+%%   <<"ErrorCategory">> => list(any()),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type error_cause() :: #{binary() => any()}.
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -234,6 +241,7 @@
 %%   <<"DatastoreName">> => string(),
 %%   <<"DatastoreStatus">> => list(any()),
 %%   <<"DatastoreTypeVersion">> => list(any()),
+%%   <<"ErrorCause">> => error_cause(),
 %%   <<"IdentityProviderConfiguration">> => identity_provider_configuration(),
 %%   <<"PreloadDataConfig">> => preload_data_config(),
 %%   <<"SseConfiguration">> => sse_configuration()

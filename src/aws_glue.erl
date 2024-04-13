@@ -2728,9 +2728,11 @@
 %%   <<"CatalogId">> := string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"Name">> := string(),
+%%   <<"ParentResourceArn">> => string(),
 %%   <<"Permissions">> => list(list(any())()),
 %%   <<"QuerySessionContext">> => query_session_context(),
 %%   <<"Region">> => string(),
+%%   <<"RootResourceArn">> => string(),
 %%   <<"SupportedDialect">> => supported_dialect(),
 %%   <<"SupportedPermissionTypes">> := list(list(any())())
 %% }
@@ -11037,9 +11039,8 @@ get_unfiltered_partitions_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUnfilteredPartitionsMetadata">>, Input, Options).
 
-%% @doc Retrieves table metadata from the Data Catalog that contains
-%% unfiltered
-%% metadata.
+%% @doc Allows a third-party analytical engine to retrieve unfiltered table
+%% metadata from the Data Catalog.
 %%
 %% For IAM authorization, the public IAM action associated with this API is
 %% `glue:GetTable'.

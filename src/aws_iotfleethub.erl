@@ -1,12 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc With Fleet Hub for AWS IoT Device Management you can build
-%% stand-alone web applications for monitoring the health of your device
-%% fleets.
-%%
-%% Fleet Hub for AWS IoT Device Management is in public preview and is
-%% subject to change.
+%% @doc With Fleet Hub for IoT Device Management you can build stand-alone
+%% web applications for monitoring the health of your device fleets.
 -module(aws_iotfleethub).
 
 -export([create_application/2,
@@ -249,10 +245,18 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a Fleet Hub for AWS IoT Device Management web application.
+%% @doc Creates a Fleet Hub for IoT Device Management web application.
 %%
-%% Fleet Hub for AWS IoT Device Management is in public preview and is
-%% subject to change.
+%% When creating a Fleet Hub application, you must create an organization
+%% instance of
+%% IAM Identity Center if you don't already have one. The Fleet Hub
+%% application you create must also be in
+%% the same Amazon Web Services Region of the organization instance of IAM
+%% Identity Center. For more information see Enabling
+%% IAM Identity Center:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/get-set-up-for-idc.html
+%% and Organization instances of IAM Identity Center:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/organization-instances-identity-center.html.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
@@ -286,10 +290,7 @@ create_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Fleet Hub for AWS IoT Device Management web application.
-%%
-%% Fleet Hub for AWS IoT Device Management is in public preview and is
-%% subject to change.
+%% @doc Deletes a Fleet Hub for IoT Device Management web application.
 -spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
@@ -324,11 +325,8 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets information about a Fleet Hub for AWS IoT Device Management web
+%% @doc Gets information about a Fleet Hub for IoT Device Management web
 %% application.
-%%
-%% Fleet Hub for AWS IoT Device Management is in public preview and is
-%% subject to change.
 -spec describe_application(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
@@ -365,11 +363,8 @@ describe_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a list of Fleet Hub for AWS IoT Device Management web
-%% applications for the current account.
-%%
-%% Fleet Hub for AWS IoT Device Management is in public preview and is
-%% subject to change.
+%% @doc Gets a list of Fleet Hub for IoT Device Management web applications
+%% for the current account.
 -spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
@@ -411,9 +406,6 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
-%%
-%% Fleet Hub for AWS IoT Device Management is in public preview and is
-%% subject to change.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -453,9 +445,6 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Adds to or modifies the tags of the specified resource.
 %%
 %% Tags are metadata which can be used to manage a resource.
-%%
-%% Fleet Hub for AWS IoT Device Management is in public preview and is
-%% subject to change.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -490,9 +479,6 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags (metadata) from the resource.
-%%
-%% Fleet Hub for AWS IoT Device Management is in public preview and is
-%% subject to change.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -527,11 +513,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates information about a Fleet Hub for a AWS IoT Device Management
-%% web application.
-%%
-%% Fleet Hub for AWS IoT Device Management is in public preview and is
-%% subject to change.
+%% @doc Updates information about a Fleet Hub for IoT Device Management web
+%% application.
 -spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |

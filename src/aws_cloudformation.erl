@@ -628,8 +628,12 @@
 
 %% Example:
 %% resource_target_definition() :: #{
+%%   <<"AfterValue">> => string(),
 %%   <<"Attribute">> => list(any()),
+%%   <<"AttributeChangeType">> => list(any()),
+%%   <<"BeforeValue">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"Path">> => string(),
 %%   <<"RequiresRecreation">> => list(any())
 %% }
 -type resource_target_definition() :: #{binary() => any()}.
@@ -1794,6 +1798,7 @@
 %% Example:
 %% describe_change_set_input() :: #{
 %%   <<"ChangeSetName">> := string(),
+%%   <<"IncludePropertyValues">> => boolean(),
 %%   <<"NextToken">> => string(),
 %%   <<"StackName">> => string()
 %% }
@@ -2306,6 +2311,8 @@
 %% Example:
 %% resource_change() :: #{
 %%   <<"Action">> => list(any()),
+%%   <<"AfterContext">> => string(),
+%%   <<"BeforeContext">> => string(),
 %%   <<"ChangeSetId">> => string(),
 %%   <<"Details">> => list(resource_change_detail()()),
 %%   <<"LogicalResourceId">> => string(),

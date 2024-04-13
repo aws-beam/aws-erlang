@@ -2554,6 +2554,7 @@
 %%   <<"BackupProgressInMegaBytes">> => float(),
 %%   <<"EnhancedVpcRouting">> => boolean(),
 %%   <<"SnapshotCreateTime">> => non_neg_integer(),
+%%   <<"SnapshotArn">> => string(),
 %%   <<"MaintenanceTrackName">> => string(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"VpcId">> => string(),

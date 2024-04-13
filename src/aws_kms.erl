@@ -184,6 +184,8 @@
          list_grants/3,
          list_key_policies/2,
          list_key_policies/3,
+         list_key_rotations/2,
+         list_key_rotations/3,
          list_keys/2,
          list_keys/3,
          list_resource_tags/2,
@@ -200,6 +202,8 @@
          retire_grant/3,
          revoke_grant/2,
          revoke_grant/3,
+         rotate_key_on_demand/2,
+         rotate_key_on_demand/3,
          schedule_key_deletion/2,
          schedule_key_deletion/3,
          sign/2,
@@ -358,6 +362,12 @@
 %%   <<"message">> => string()
 %% }
 -type xks_proxy_uri_endpoint_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rotate_key_on_demand_response() :: #{
+%%   <<"KeyId">> => string()
+%% }
+-type rotate_key_on_demand_response() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_alias_name_exception() :: #{
@@ -672,6 +682,12 @@
 -type xks_proxy_uri_unreachable_exception() :: #{binary() => any()}.
 
 %% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
 %% list_grants_response() :: #{
 %%   <<"Grants">> => list(grant_list_entry()()),
 %%   <<"NextMarker">> => string(),
@@ -814,8 +830,20 @@
 -type cloud_hsm_cluster_not_related_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_key_rotations_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_key_rotations_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_key_rotation_status_response() :: #{
-%%   <<"KeyRotationEnabled">> => boolean()
+%%   <<"KeyId">> => string(),
+%%   <<"KeyRotationEnabled">> => boolean(),
+%%   <<"NextRotationDate">> => non_neg_integer(),
+%%   <<"OnDemandRotationStartDate">> => non_neg_integer(),
+%%   <<"RotationPeriodInDays">> => integer()
 %% }
 -type get_key_rotation_status_response() :: #{binary() => any()}.
 
@@ -1139,7 +1167,8 @@
 
 %% Example:
 %% enable_key_rotation_request() :: #{
-%%   <<"KeyId">> := string()
+%%   <<"KeyId">> := string(),
+%%   <<"RotationPeriodInDays">> => integer()
 %% }
 -type enable_key_rotation_request() :: #{binary() => any()}.
 
@@ -1259,6 +1288,14 @@
 -type kms_invalid_state_exception() :: #{binary() => any()}.
 
 %% Example:
+%% rotations_list_entry() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"RotationDate">> => non_neg_integer(),
+%%   <<"RotationType">> => list(any())
+%% }
+-type rotations_list_entry() :: #{binary() => any()}.
+
+%% Example:
 %% generate_data_key_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncryptionContext">> => map(),
@@ -1330,6 +1367,20 @@
 %%   <<"Recipient">> => recipient_info()
 %% }
 -type generate_random_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_key_rotations_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Rotations">> => list(rotations_list_entry()()),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_key_rotations_response() :: #{binary() => any()}.
+
+%% Example:
+%% rotate_key_on_demand_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type rotate_key_on_demand_request() :: #{binary() => any()}.
 
 %% Example:
 %% xks_proxy_configuration_type() :: #{
@@ -1635,6 +1686,14 @@
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
+-type list_key_rotations_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    invalid_marker_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    unsupported_operation_exception().
+
 -type list_keys_errors() ::
     kms_internal_exception() | 
     invalid_marker_exception() | 
@@ -1706,6 +1765,17 @@
     dependency_timeout_exception() | 
     dry_run_operation_exception() | 
     invalid_grant_id_exception().
+
+-type rotate_key_on_demand_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    disabled_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
 
 -type schedule_key_deletion_errors() ::
     kms_invalid_state_exception() | 
@@ -3223,6 +3293,10 @@ disable_key(Client, Input, Options)
 %%
 %% `GetKeyRotationStatus'
 %%
+%% `ListKeyRotations'
+%%
+%% `RotateKeyOnDemand'
+%%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
@@ -3363,19 +3437,32 @@ enable_key(Client, Input, Options)
 
 %% @doc Enables automatic rotation
 %% of the key material:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html of
-%% the specified symmetric encryption KMS key.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable
+%% of the specified symmetric encryption KMS key.
 %%
-%% When you enable automatic rotation of a customer managed KMS key:
+%% By default, when you enable automatic rotation of a customer managed KMS
+%% key:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk,
 %% KMS
 %% rotates the key material of the KMS key one year (approximately 365 days)
 %% from the enable date
-%% and every year thereafter. You can monitor rotation of the key material
-%% for your KMS keys in
-%% CloudTrail and Amazon CloudWatch. To disable rotation of the key material
-%% in a customer
-%% managed KMS key, use the `DisableKeyRotation' operation.
+%% and every year thereafter. You can use the optional
+%% `RotationPeriodInDays'
+%% parameter to specify a custom rotation period when you enable key
+%% rotation, or you can use
+%% `RotationPeriodInDays' to modify the rotation period of a key that you
+%% previously
+%% enabled automatic key rotation on.
+%%
+%% You can monitor rotation of the key material
+%% for your KMS keys in CloudTrail and Amazon CloudWatch. To disable rotation
+%% of the key
+%% material in a customer managed KMS key, use the `DisableKeyRotation'
+%% operation. You can use the `GetKeyRotationStatus' operation to
+%% identify any in progress
+%% rotations. You can use the `ListKeyRotations' operation to view the
+%% details of
+%% completed rotations.
 %%
 %% Automatic key rotation is supported only on symmetric encryption KMS keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks.
@@ -3392,7 +3479,7 @@ enable_key(Client, Input, Options)
 %% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate,
 %% set the property on the primary key.
 %%
-%% You cannot enable or disable automatic rotation Amazon Web Services
+%% You cannot enable or disable automatic rotation of Amazon Web Services
 %% managed KMS keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk.
 %% KMS
@@ -3400,7 +3487,7 @@ enable_key(Client, Input, Options)
 %% year. Rotation of Amazon Web Services owned KMS
 %% keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk
-%% varies.
+%% is managed by the Amazon Web Services service that owns the key.
 %%
 %% In May 2022, KMS changed the rotation schedule for Amazon Web Services
 %% managed keys from every three
@@ -3432,6 +3519,14 @@ enable_key(Client, Input, Options)
 %% `DisableKeyRotation'
 %%
 %% `GetKeyRotationStatus'
+%%
+%% `ListKeyRotations'
+%%
+%% `RotateKeyOnDemand'
+%%
+%% You can perform on-demand (`RotateKeyOnDemand') rotation of the
+%% key material in customer managed KMS keys, regardless of whether or not
+%% automatic key rotation is enabled.
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
@@ -4242,19 +4337,15 @@ get_key_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKeyPolicy">>, Input, Options).
 
-%% @doc Gets a Boolean value that indicates whether automatic rotation of the
-%% key material:
+%% @doc Provides detailed information about the rotation status for a KMS
+%% key, including
+%% whether automatic rotation of the key material:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html is
-%% enabled for the specified KMS key.
-%%
-%% When you enable automatic rotation for customer managed KMS keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk,
-%% KMS
-%% rotates the key material of the KMS key one year (approximately 365 days)
-%% from the enable date
-%% and every year thereafter. You can monitor rotation of the key material
-%% for your KMS keys in
-%% CloudTrail and Amazon CloudWatch.
+%% enabled for the specified KMS key, the
+%% rotation period:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotation-period,
+%% and the next scheduled
+%% rotation date.
 %%
 %% Automatic key rotation is supported only on symmetric encryption KMS keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks.
@@ -4281,6 +4372,14 @@ get_key_policy(Client, Input, Options)
 %% managed KMS keys every year. The
 %% key rotation status for Amazon Web Services managed KMS keys is always
 %% `true'.
+%%
+%% You can perform on-demand (`RotateKeyOnDemand') rotation of the
+%% key material in customer managed KMS keys, regardless of whether or not
+%% automatic key rotation is enabled.
+%% You can use GetKeyRotationStatus to identify the date and time that an in
+%% progress on-demand rotation
+%% was initiated. You can use `ListKeyRotations' to view the details of
+%% completed rotations.
 %%
 %% In May 2022, KMS changed the rotation schedule for Amazon Web Services
 %% managed keys from every three
@@ -4322,6 +4421,10 @@ get_key_policy(Client, Input, Options)
 %% `DisableKeyRotation'
 %%
 %% `EnableKeyRotation'
+%%
+%% `ListKeyRotations'
+%%
+%% `RotateKeyOnDemand'
 %%
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
@@ -4890,6 +4993,56 @@ list_key_policies(Client, Input)
 list_key_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListKeyPolicies">>, Input, Options).
+
+%% @doc Returns information about all completed key material rotations for
+%% the specified KMS
+%% key.
+%%
+%% You must specify the KMS key in all requests. You can refine the key
+%% rotations list by
+%% limiting the number of rotations returned.
+%%
+%% For detailed information about automatic and on-demand key rotations, see
+%% Rotating KMS keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html in
+%% the
+%% Key Management Service Developer Guide.
+%%
+%% Cross-account use: No. You cannot perform this operation on a KMS key in a
+%% different Amazon Web Services account.
+%%
+%% Required permissions: kms:ListKeyRotations:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html
+%% (key policy)
+%%
+%% Related operations:
+%%
+%% `EnableKeyRotation'
+%%
+%% `DisableKeyRotation'
+%%
+%% `GetKeyRotationStatus'
+%%
+%% `RotateKeyOnDemand'
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec list_key_rotations(aws_client:aws_client(), list_key_rotations_request()) ->
+    {ok, list_key_rotations_response(), tuple()} |
+    {error, any()} |
+    {error, list_key_rotations_errors(), tuple()}.
+list_key_rotations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_key_rotations(Client, Input, []).
+
+-spec list_key_rotations(aws_client:aws_client(), list_key_rotations_request(), proplists:proplist()) ->
+    {ok, list_key_rotations_response(), tuple()} |
+    {error, any()} |
+    {error, list_key_rotations_errors(), tuple()}.
+list_key_rotations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListKeyRotations">>, Input, Options).
 
 %% @doc Gets a list of all KMS keys in the caller's Amazon Web Services
 %% account and Region.
@@ -5513,6 +5666,103 @@ revoke_grant(Client, Input)
 revoke_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeGrant">>, Input, Options).
+
+%% @doc Immediately initiates rotation of the key material of the specified
+%% symmetric encryption
+%% KMS key.
+%%
+%% You can perform on-demand rotation:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-on-demand
+%% of the key material in customer managed KMS keys,
+%% regardless of whether or not automatic key rotation:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable
+%% is enabled.
+%% On-demand rotations do not change existing automatic rotation schedules.
+%% For example, consider a KMS key that
+%% has automatic key rotation enabled with a rotation period of 730 days. If
+%% the key is scheduled to
+%% automatically rotate on April 14, 2024, and you perform an on-demand
+%% rotation on April 10, 2024, the key will automatically rotate,
+%% as scheduled, on April 14, 2024 and every 730 days thereafter.
+%%
+%% You can perform on-demand key rotation a maximum of 10 times
+%% per KMS key. You can use the KMS console
+%% to view the number of remaining on-demand rotations available for a KMS
+%% key.
+%%
+%% You can use `GetKeyRotationStatus' to identify any in progress
+%% on-demand rotations. You can use `ListKeyRotations' to identify the
+%% date that
+%% completed on-demand rotations were performed. You can monitor rotation of
+%% the key material
+%% for your KMS keys in CloudTrail and Amazon CloudWatch.
+%%
+%% On-demand key rotation is supported only on symmetric encryption KMS keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks.
+%% You cannot perform on-demand rotation of asymmetric KMS keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html,
+%% HMAC KMS keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html,
+%% KMS keys with imported key material:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html,
+%% or KMS keys in a custom key store:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html.
+%% To perform
+%% on-demand rotation of a set of related multi-Region keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate,
+%% invoke the on-demand rotation on the primary key.
+%%
+%% You cannot initiate on-demand rotation of Amazon Web Services managed KMS
+%% keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk.
+%% KMS
+%% always rotates the key material of Amazon Web Services managed keys every
+%% year. Rotation of Amazon Web Services owned KMS
+%% keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk
+%% is managed by the Amazon Web Services service that owns the key.
+%%
+%% The KMS key that you use for this operation must be in a compatible key
+%% state. For
+%% details, see Key states of KMS keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html in
+%% the Key Management Service Developer Guide.
+%%
+%% Cross-account use: No. You cannot perform this operation on a KMS key in a
+%% different Amazon Web Services account.
+%%
+%% Required permissions: kms:RotateKeyOnDemand:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html
+%% (key policy)
+%%
+%% Related operations:
+%%
+%% `EnableKeyRotation'
+%%
+%% `DisableKeyRotation'
+%%
+%% `GetKeyRotationStatus'
+%%
+%% `ListKeyRotations'
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
+-spec rotate_key_on_demand(aws_client:aws_client(), rotate_key_on_demand_request()) ->
+    {ok, rotate_key_on_demand_response(), tuple()} |
+    {error, any()} |
+    {error, rotate_key_on_demand_errors(), tuple()}.
+rotate_key_on_demand(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    rotate_key_on_demand(Client, Input, []).
+
+-spec rotate_key_on_demand(aws_client:aws_client(), rotate_key_on_demand_request(), proplists:proplist()) ->
+    {ok, rotate_key_on_demand_response(), tuple()} |
+    {error, any()} |
+    {error, rotate_key_on_demand_errors(), tuple()}.
+rotate_key_on_demand(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RotateKeyOnDemand">>, Input, Options).
 
 %% @doc Schedules the deletion of a KMS key.
 %%
