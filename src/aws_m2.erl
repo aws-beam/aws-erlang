@@ -66,6 +66,9 @@
          list_batch_job_executions/2,
          list_batch_job_executions/4,
          list_batch_job_executions/5,
+         list_batch_job_restart_points/3,
+         list_batch_job_restart_points/5,
+         list_batch_job_restart_points/6,
          list_data_set_import_history/2,
          list_data_set_import_history/4,
          list_data_set_import_history/5,
@@ -194,6 +197,18 @@
 
 
 %% Example:
+%% job_step() :: #{
+%%   <<"procStepName">> => [string()],
+%%   <<"procStepNumber">> => integer(),
+%%   <<"stepCondCode">> => [string()],
+%%   <<"stepName">> => [string()],
+%%   <<"stepNumber">> => integer(),
+%%   <<"stepRestartable">> => boolean()
+%% }
+-type job_step() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_data_set_import_task_response() :: #{
 %%   <<"taskId">> := string()
 %% }
@@ -210,6 +225,16 @@
 %% Example:
 %% delete_application_from_environment_request() :: #{}
 -type delete_application_from_environment_request() :: #{}.
+
+
+%% Example:
+%% job_step_restart_marker() :: #{
+%%   <<"fromProcStep">> => [string()],
+%%   <<"fromStep">> => [string()],
+%%   <<"toProcStep">> => [string()],
+%%   <<"toStep">> => [string()]
+%% }
+-type job_step_restart_marker() :: #{binary() => any()}.
 
 
 %% Example:
@@ -380,6 +405,14 @@
 
 
 %% Example:
+%% restart_batch_job_identifier() :: #{
+%%   <<"executionId">> => string(),
+%%   <<"jobStepRestartMarker">> => job_step_restart_marker()
+%% }
+-type restart_batch_job_identifier() :: #{binary() => any()}.
+
+
+%% Example:
 %% script_batch_job_identifier() :: #{
 %%   <<"scriptName">> => [string()]
 %% }
@@ -411,6 +444,10 @@
 %%   <<"desiredCapacity">> => integer()
 %% }
 -type high_availability_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_job_restart_points_request() :: #{}
+-type list_batch_job_restart_points_request() :: #{}.
 
 
 %% Example:
@@ -630,6 +667,13 @@
 
 
 %% Example:
+%% list_batch_job_restart_points_response() :: #{
+%%   <<"batchJobSteps">> => list(job_step()())
+%% }
+-type list_batch_job_restart_points_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_signed_bluinsights_url_response() :: #{
 %%   <<"signedBiUrl">> => [string()]
 %% }
@@ -724,6 +768,7 @@
 %%   <<"executionId">> := string(),
 %%   <<"jobId">> => string(),
 %%   <<"jobName">> => string(),
+%%   <<"jobStepRestartMarker">> => job_step_restart_marker(),
 %%   <<"jobType">> => string(),
 %%   <<"jobUser">> => string(),
 %%   <<"returnCode">> => [string()],
@@ -1189,6 +1234,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_batch_job_restart_points_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type list_data_set_import_history_errors() ::
     throttling_exception() | 
@@ -2072,6 +2125,46 @@ list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all the job steps for JCL files to restart a batch job.
+%%
+%% This is only applicable for Micro Focus engine with versions 8.0.6 and
+%% above.
+-spec list_batch_job_restart_points(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_batch_job_restart_points_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_job_restart_points_errors(), tuple()}.
+list_batch_job_restart_points(Client, ApplicationId, ExecutionId)
+  when is_map(Client) ->
+    list_batch_job_restart_points(Client, ApplicationId, ExecutionId, #{}, #{}).
+
+-spec list_batch_job_restart_points(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_batch_job_restart_points_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_job_restart_points_errors(), tuple()}.
+list_batch_job_restart_points(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_batch_job_restart_points(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap, []).
+
+-spec list_batch_job_restart_points(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_batch_job_restart_points_response(), tuple()} |
+    {error, any()} |
+    {error, list_batch_job_restart_points_errors(), tuple()}.
+list_batch_job_restart_points(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/batch-job-executions/", aws_util:encode_uri(ExecutionId), "/steps"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

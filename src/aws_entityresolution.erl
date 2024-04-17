@@ -25,16 +25,24 @@
 %% https://docs.aws.amazon.com/entityresolution/latest/userguide/what-is-service.html.
 -module(aws_entityresolution).
 
--export([create_id_mapping_workflow/2,
+-export([add_policy_statement/4,
+         add_policy_statement/5,
+         create_id_mapping_workflow/2,
          create_id_mapping_workflow/3,
+         create_id_namespace/2,
+         create_id_namespace/3,
          create_matching_workflow/2,
          create_matching_workflow/3,
          create_schema_mapping/2,
          create_schema_mapping/3,
          delete_id_mapping_workflow/3,
          delete_id_mapping_workflow/4,
+         delete_id_namespace/3,
+         delete_id_namespace/4,
          delete_matching_workflow/3,
          delete_matching_workflow/4,
+         delete_policy_statement/4,
+         delete_policy_statement/5,
          delete_schema_mapping/3,
          delete_schema_mapping/4,
          get_id_mapping_job/3,
@@ -43,6 +51,9 @@
          get_id_mapping_workflow/2,
          get_id_mapping_workflow/4,
          get_id_mapping_workflow/5,
+         get_id_namespace/2,
+         get_id_namespace/4,
+         get_id_namespace/5,
          get_match_id/3,
          get_match_id/4,
          get_matching_job/3,
@@ -51,6 +62,9 @@
          get_matching_workflow/2,
          get_matching_workflow/4,
          get_matching_workflow/5,
+         get_policy/2,
+         get_policy/4,
+         get_policy/5,
          get_provider_service/3,
          get_provider_service/5,
          get_provider_service/6,
@@ -63,6 +77,9 @@
          list_id_mapping_workflows/1,
          list_id_mapping_workflows/3,
          list_id_mapping_workflows/4,
+         list_id_namespaces/1,
+         list_id_namespaces/3,
+         list_id_namespaces/4,
          list_matching_jobs/2,
          list_matching_jobs/4,
          list_matching_jobs/5,
@@ -78,6 +95,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_policy/3,
+         put_policy/4,
          start_id_mapping_job/3,
          start_id_mapping_job/4,
          start_matching_job/3,
@@ -88,6 +107,8 @@
          untag_resource/4,
          update_id_mapping_workflow/3,
          update_id_mapping_workflow/4,
+         update_id_namespace/3,
+         update_id_namespace/4,
          update_matching_workflow/3,
          update_matching_workflow/4,
          update_schema_mapping/3,
@@ -137,7 +158,8 @@
 
 %% Example:
 %% get_match_id_output() :: #{
-%%   <<"matchId">> => [string()]
+%%   <<"matchId">> => [string()],
+%%   <<"matchRule">> => [string()]
 %% }
 -type get_match_id_output() :: #{binary() => any()}.
 
@@ -169,11 +191,25 @@
 
 
 %% Example:
+%% add_policy_statement_input() :: #{
+%%   <<"action">> := list(string()()),
+%%   <<"condition">> => string(),
+%%   <<"effect">> := list(any()),
+%%   <<"principal">> := list(string()())
+%% }
+-type add_policy_statement_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_schema_mapping_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"mappedInputFields">> := list(schema_input_attribute()())
 %% }
 -type update_schema_mapping_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_input() :: #{}
+-type get_policy_input() :: #{}.
 
 
 %% Example:
@@ -236,6 +272,23 @@
 
 
 %% Example:
+%% put_policy_input() :: #{
+%%   <<"policy">> := string(),
+%%   <<"token">> => string()
+%% }
+-type put_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_policy_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"policy">> => string(),
+%%   <<"token">> => string()
+%% }
+-type put_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_id_mapping_jobs_input() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string()
@@ -245,6 +298,22 @@
 %% Example:
 %% delete_id_mapping_workflow_input() :: #{}
 -type delete_id_mapping_workflow_input() :: #{}.
+
+
+%% Example:
+%% list_id_namespaces_output() :: #{
+%%   <<"idNamespaceSummaries">> => list(id_namespace_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_namespaces_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_namespace_id_mapping_workflow_properties() :: #{
+%%   <<"idMappingType">> => list(any()),
+%%   <<"providerProperties">> => namespace_provider_properties()
+%% }
+-type id_namespace_id_mapping_workflow_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -312,6 +381,14 @@
 
 
 %% Example:
+%% list_id_namespaces_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_namespaces_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_schema_mapping_output() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
@@ -364,9 +441,35 @@
 %% }
 -type job_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% namespace_provider_properties() :: #{
+%%   <<"providerConfiguration">> => [any()],
+%%   <<"providerServiceArn">> => string()
+%% }
+-type namespace_provider_properties() :: #{binary() => any()}.
+
 %% Example:
 %% get_schema_mapping_input() :: #{}
 -type get_schema_mapping_input() :: #{}.
+
+
+%% Example:
+%% job_output_source() :: #{
+%%   <<"KMSArn">> => string(),
+%%   <<"outputS3Path">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type job_output_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% provider_id_name_space_configuration() :: #{
+%%   <<"description">> => [string()],
+%%   <<"providerSourceConfigurationDefinition">> => [any()],
+%%   <<"providerTargetConfigurationDefinition">> => [any()]
+%% }
+-type provider_id_name_space_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -388,6 +491,10 @@
 %%   <<"intermediateS3Path">> => string()
 %% }
 -type intermediate_source_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_id_namespace_input() :: #{}
+-type delete_id_namespace_input() :: #{}.
 
 
 %% Example:
@@ -412,7 +519,7 @@
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> := id_mapping_techniques(),
 %%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()()),
-%%   <<"outputSourceConfig">> := list(id_mapping_workflow_output_source()()),
+%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()()),
 %%   <<"roleArn">> := string(),
 %%   <<"tags">> => map(),
 %%   <<"workflowName">> := string()
@@ -466,14 +573,28 @@
 %%   <<"errorDetails">> => error_details(),
 %%   <<"jobId">> => string(),
 %%   <<"metrics">> => id_mapping_job_metrics(),
+%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source()()),
 %%   <<"startTime">> => [non_neg_integer()],
 %%   <<"status">> => list(any())
 %% }
 -type get_id_mapping_job_output() :: #{binary() => any()}.
 
+
 %% Example:
-%% start_id_mapping_job_input() :: #{}
--type start_id_mapping_job_input() :: #{}.
+%% provider_schema_attribute() :: #{
+%%   <<"fieldName">> => string(),
+%%   <<"hashing">> => [boolean()],
+%%   <<"subType">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type provider_schema_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_id_mapping_job_input() :: #{
+%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source()())
+%% }
+-type start_id_mapping_job_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -512,12 +633,25 @@
 %% get_id_mapping_workflow_input() :: #{}
 -type get_id_mapping_workflow_input() :: #{}.
 
+%% Example:
+%% get_id_namespace_input() :: #{}
+-type get_id_namespace_input() :: #{}.
+
 
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_policy_statement_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"policy">> => string(),
+%%   <<"token">> => string()
+%% }
+-type delete_policy_statement_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -572,7 +706,7 @@
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> := id_mapping_techniques(),
 %%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()()),
-%%   <<"outputSourceConfig">> := list(id_mapping_workflow_output_source()()),
+%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()()),
 %%   <<"roleArn">> := string()
 %% }
 -type update_id_mapping_workflow_input() :: #{binary() => any()}.
@@ -590,6 +724,22 @@
 
 
 %% Example:
+%% get_id_namespace_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()()),
+%%   <<"idNamespaceArn">> => string(),
+%%   <<"idNamespaceName">> => string(),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()()),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_id_namespace_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_schema_mapping_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"mappedInputFields">> := list(schema_input_attribute()()),
@@ -597,6 +747,19 @@
 %%   <<"tags">> => map()
 %% }
 -type create_schema_mapping_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_id_namespace_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()()),
+%%   <<"idNamespaceName">> := string(),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()()),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any())
+%% }
+-type create_id_namespace_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -615,14 +778,35 @@
 
 
 %% Example:
+%% update_id_namespace_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()()),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()()),
+%%   <<"roleArn">> => string()
+%% }
+-type update_id_namespace_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_input() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
 %% Example:
+%% delete_policy_statement_input() :: #{}
+-type delete_policy_statement_input() :: #{}.
+
+%% Example:
 %% get_matching_job_input() :: #{}
 -type get_matching_job_input() :: #{}.
+
+
+%% Example:
+%% delete_id_namespace_output() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type delete_id_namespace_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -639,10 +823,13 @@
 %% Example:
 %% get_provider_service_output() :: #{
 %%   <<"anonymizedOutput">> => [boolean()],
+%%   <<"providerComponentSchema">> => provider_component_schema(),
 %%   <<"providerConfigurationDefinition">> => [any()],
 %%   <<"providerEndpointConfiguration">> => list(),
 %%   <<"providerEntityOutputDefinition">> => [any()],
+%%   <<"providerIdNameSpaceConfiguration">> => provider_id_name_space_configuration(),
 %%   <<"providerIntermediateDataAccessConfiguration">> => provider_intermediate_data_access_configuration(),
+%%   <<"providerJobConfiguration">> => [any()],
 %%   <<"providerName">> => string(),
 %%   <<"providerServiceArn">> => string(),
 %%   <<"providerServiceDisplayName">> => string(),
@@ -654,6 +841,15 @@
 %% Example:
 %% untag_resource_output() :: #{}
 -type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% add_policy_statement_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"policy">> => string(),
+%%   <<"token">> => string()
+%% }
+-type add_policy_statement_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -700,8 +896,38 @@
 
 
 %% Example:
+%% provider_component_schema() :: #{
+%%   <<"providerSchemaAttributes">> => list(provider_schema_attribute()()),
+%%   <<"schemas">> => list(list([string()]())())
+%% }
+-type provider_component_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_mapping_job_output_source() :: #{
+%%   <<"KMSArn">> => string(),
+%%   <<"outputS3Path">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type id_mapping_job_output_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_namespace_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"idNamespaceArn">> => string(),
+%%   <<"idNamespaceName">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type id_namespace_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_id_mapping_job_output() :: #{
-%%   <<"jobId">> => string()
+%%   <<"jobId">> => string(),
+%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source()())
 %% }
 -type start_id_mapping_job_output() :: #{binary() => any()}.
 
@@ -735,6 +961,14 @@
 
 
 %% Example:
+%% id_namespace_input_source() :: #{
+%%   <<"inputSourceARN">> => [string()],
+%%   <<"schemaName">> => string()
+%% }
+-type id_namespace_input_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% provider_marketplace_configuration() :: #{
 %%   <<"assetId">> => [string()],
 %%   <<"dataSetId">> => [string()],
@@ -750,6 +984,7 @@
 %%   <<"errorDetails">> => error_details(),
 %%   <<"jobId">> => string(),
 %%   <<"metrics">> => job_metrics(),
+%%   <<"outputSourceConfig">> => list(job_output_source()()),
 %%   <<"startTime">> => [non_neg_integer()],
 %%   <<"status">> => list(any())
 %% }
@@ -765,15 +1000,48 @@
 
 
 %% Example:
+%% create_id_namespace_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()()),
+%%   <<"idNamespaceArn">> => string(),
+%%   <<"idNamespaceName">> => string(),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()()),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type create_id_namespace_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_id_namespace_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()()),
+%%   <<"idNamespaceArn">> => string(),
+%%   <<"idNamespaceName">> => string(),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()()),
+%%   <<"roleArn">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_id_namespace_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% id_mapping_workflow_input_source() :: #{
 %%   <<"inputSourceARN">> => [string()],
-%%   <<"schemaName">> => string()
+%%   <<"schemaName">> => string(),
+%%   <<"type">> => list(any())
 %% }
 -type id_mapping_workflow_input_source() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_match_id_input() :: #{
+%%   <<"applyNormalization">> => [boolean()],
 %%   <<"record">> := map()
 %% }
 -type get_match_id_input() :: #{binary() => any()}.
@@ -805,7 +1073,32 @@
 %% }
 -type list_provider_services_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_policy_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"policy">> => string(),
+%%   <<"token">> => string()
+%% }
+-type get_policy_output() :: #{binary() => any()}.
+
+-type add_policy_statement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_id_mapping_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    exceeds_limit_exception().
+
+-type create_id_namespace_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -833,13 +1126,29 @@
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_id_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception().
 
 -type delete_matching_workflow_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_policy_statement_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_schema_mapping_errors() ::
     throttling_exception() | 
@@ -862,6 +1171,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_id_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_match_id_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -877,6 +1193,13 @@
     resource_not_found_exception().
 
 -type get_matching_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_policy_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -905,6 +1228,12 @@
     resource_not_found_exception().
 
 -type list_id_mapping_workflows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_id_namespaces_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -940,6 +1269,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type put_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type start_id_mapping_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -974,6 +1311,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type update_id_namespace_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type update_matching_workflow_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -992,6 +1336,43 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds a policy statement object.
+%%
+%% To retrieve a list of existing policy statements, use
+%% the `GetPolicy' API.
+-spec add_policy_statement(aws_client:aws_client(), binary() | list(), binary() | list(), add_policy_statement_input()) ->
+    {ok, add_policy_statement_output(), tuple()} |
+    {error, any()} |
+    {error, add_policy_statement_errors(), tuple()}.
+add_policy_statement(Client, Arn, StatementId, Input) ->
+    add_policy_statement(Client, Arn, StatementId, Input, []).
+
+-spec add_policy_statement(aws_client:aws_client(), binary() | list(), binary() | list(), add_policy_statement_input(), proplists:proplist()) ->
+    {ok, add_policy_statement_output(), tuple()} |
+    {error, any()} |
+    {error, add_policy_statement_errors(), tuple()}.
+add_policy_statement(Client, Arn, StatementId, Input0, Options0) ->
+    Method = post,
+    Path = ["/policies/", aws_util:encode_uri(Arn), "/", aws_util:encode_uri(StatementId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an `IdMappingWorkflow' object which stores the
 %% configuration of the
@@ -1015,6 +1396,45 @@ create_id_mapping_workflow(Client, Input) ->
 create_id_mapping_workflow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/idmappingworkflows"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an ID namespace object which will help customers provide
+%% metadata explaining
+%% their dataset and how to use it.
+%%
+%% Each ID namespace must have a unique name. To modify an
+%% existing ID namespace, use the `UpdateIdNamespace' API.
+-spec create_id_namespace(aws_client:aws_client(), create_id_namespace_input()) ->
+    {ok, create_id_namespace_output(), tuple()} |
+    {error, any()} |
+    {error, create_id_namespace_errors(), tuple()}.
+create_id_namespace(Client, Input) ->
+    create_id_namespace(Client, Input, []).
+
+-spec create_id_namespace(aws_client:aws_client(), create_id_namespace_input(), proplists:proplist()) ->
+    {ok, create_id_namespace_output(), tuple()} |
+    {error, any()} |
+    {error, create_id_namespace_errors(), tuple()}.
+create_id_namespace(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/idnamespaces"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1152,6 +1572,40 @@ delete_id_mapping_workflow(Client, WorkflowName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the `IdNamespace' with a given name.
+-spec delete_id_namespace(aws_client:aws_client(), binary() | list(), delete_id_namespace_input()) ->
+    {ok, delete_id_namespace_output(), tuple()} |
+    {error, any()} |
+    {error, delete_id_namespace_errors(), tuple()}.
+delete_id_namespace(Client, IdNamespaceName, Input) ->
+    delete_id_namespace(Client, IdNamespaceName, Input, []).
+
+-spec delete_id_namespace(aws_client:aws_client(), binary() | list(), delete_id_namespace_input(), proplists:proplist()) ->
+    {ok, delete_id_namespace_output(), tuple()} |
+    {error, any()} |
+    {error, delete_id_namespace_errors(), tuple()}.
+delete_id_namespace(Client, IdNamespaceName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/idnamespaces/", aws_util:encode_uri(IdNamespaceName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the `MatchingWorkflow' with a given name.
 %%
 %% This operation will succeed
@@ -1170,6 +1624,40 @@ delete_matching_workflow(Client, WorkflowName, Input) ->
 delete_matching_workflow(Client, WorkflowName, Input0, Options0) ->
     Method = delete,
     Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the policy statement.
+-spec delete_policy_statement(aws_client:aws_client(), binary() | list(), binary() | list(), delete_policy_statement_input()) ->
+    {ok, delete_policy_statement_output(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_statement_errors(), tuple()}.
+delete_policy_statement(Client, Arn, StatementId, Input) ->
+    delete_policy_statement(Client, Arn, StatementId, Input, []).
+
+-spec delete_policy_statement(aws_client:aws_client(), binary() | list(), binary() | list(), delete_policy_statement_input(), proplists:proplist()) ->
+    {ok, delete_policy_statement_output(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_statement_errors(), tuple()}.
+delete_policy_statement(Client, Arn, StatementId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/policies/", aws_util:encode_uri(Arn), "/", aws_util:encode_uri(StatementId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1305,6 +1793,43 @@ get_id_mapping_workflow(Client, WorkflowName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the `IdNamespace' with a given name, if it exists.
+-spec get_id_namespace(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_id_namespace_output(), tuple()} |
+    {error, any()} |
+    {error, get_id_namespace_errors(), tuple()}.
+get_id_namespace(Client, IdNamespaceName)
+  when is_map(Client) ->
+    get_id_namespace(Client, IdNamespaceName, #{}, #{}).
+
+-spec get_id_namespace(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_id_namespace_output(), tuple()} |
+    {error, any()} |
+    {error, get_id_namespace_errors(), tuple()}.
+get_id_namespace(Client, IdNamespaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_id_namespace(Client, IdNamespaceName, QueryMap, HeadersMap, []).
+
+-spec get_id_namespace(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_id_namespace_output(), tuple()} |
+    {error, any()} |
+    {error, get_id_namespace_errors(), tuple()}.
+get_id_namespace(Client, IdNamespaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/idnamespaces/", aws_util:encode_uri(IdNamespaceName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the corresponding Match ID of a customer record if the record
 %% has been
 %% processed.
@@ -1404,6 +1929,43 @@ get_matching_workflow(Client, WorkflowName, QueryMap, HeadersMap)
 get_matching_workflow(Client, WorkflowName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the resource-based policy.
+-spec get_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
+get_policy(Client, Arn)
+  when is_map(Client) ->
+    get_policy(Client, Arn, #{}, #{}).
+
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
+get_policy(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy(Client, Arn, QueryMap, HeadersMap, []).
+
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_policy_errors(), tuple()}.
+get_policy(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policies/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1559,6 +2121,48 @@ list_id_mapping_workflows(Client, QueryMap, HeadersMap)
 list_id_mapping_workflows(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/idmappingworkflows"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all ID namespaces.
+-spec list_id_namespaces(aws_client:aws_client()) ->
+    {ok, list_id_namespaces_output(), tuple()} |
+    {error, any()} |
+    {error, list_id_namespaces_errors(), tuple()}.
+list_id_namespaces(Client)
+  when is_map(Client) ->
+    list_id_namespaces(Client, #{}, #{}).
+
+-spec list_id_namespaces(aws_client:aws_client(), map(), map()) ->
+    {ok, list_id_namespaces_output(), tuple()} |
+    {error, any()} |
+    {error, list_id_namespaces_errors(), tuple()}.
+list_id_namespaces(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_id_namespaces(Client, QueryMap, HeadersMap, []).
+
+-spec list_id_namespaces(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_id_namespaces_output(), tuple()} |
+    {error, any()} |
+    {error, list_id_namespaces_errors(), tuple()}.
+list_id_namespaces(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/idnamespaces"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1792,6 +2396,40 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Updates the resource-based policy.
+-spec put_policy(aws_client:aws_client(), binary() | list(), put_policy_input()) ->
+    {ok, put_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_policy_errors(), tuple()}.
+put_policy(Client, Arn, Input) ->
+    put_policy(Client, Arn, Input, []).
+
+-spec put_policy(aws_client:aws_client(), binary() | list(), put_policy_input(), proplists:proplist()) ->
+    {ok, put_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_policy_errors(), tuple()}.
+put_policy(Client, Arn, Input0, Options0) ->
+    Method = put,
+    Path = ["/policies/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts the `IdMappingJob' of a workflow.
 %%
 %% The workflow must have previously
@@ -1979,6 +2617,40 @@ update_id_mapping_workflow(Client, WorkflowName, Input) ->
 update_id_mapping_workflow(Client, WorkflowName, Input0, Options0) ->
     Method = put,
     Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing ID namespace.
+-spec update_id_namespace(aws_client:aws_client(), binary() | list(), update_id_namespace_input()) ->
+    {ok, update_id_namespace_output(), tuple()} |
+    {error, any()} |
+    {error, update_id_namespace_errors(), tuple()}.
+update_id_namespace(Client, IdNamespaceName, Input) ->
+    update_id_namespace(Client, IdNamespaceName, Input, []).
+
+-spec update_id_namespace(aws_client:aws_client(), binary() | list(), update_id_namespace_input(), proplists:proplist()) ->
+    {ok, update_id_namespace_output(), tuple()} |
+    {error, any()} |
+    {error, update_id_namespace_errors(), tuple()}.
+update_id_namespace(Client, IdNamespaceName, Input0, Options0) ->
+    Method = put,
+    Path = ["/idnamespaces/", aws_util:encode_uri(IdNamespaceName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

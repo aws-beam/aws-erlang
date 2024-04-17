@@ -1625,6 +1625,7 @@
 %%   <<"FPort">> => integer(),
 %%   <<"Frequency">> => integer(),
 %%   <<"Gateways">> => list(lo_ra_w_a_n_gateway_metadata()()),
+%%   <<"PublicGateways">> => list(lo_ra_w_a_n_public_gateway_metadata()()),
 %%   <<"Timestamp">> => string()
 %% }
 -type lo_ra_w_a_n_device_metadata() :: #{binary() => any()}.
@@ -2311,6 +2312,18 @@
 %%   <<"WirelessGatewayTaskDefinitionId">> => string()
 %% }
 -type create_wireless_gateway_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_public_gateway_metadata() :: #{
+%%   <<"DlAllowed">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"ProviderNetId">> => string(),
+%%   <<"RfRegion">> => string(),
+%%   <<"Rssi">> => float(),
+%%   <<"Snr">> => float()
+%% }
+-type lo_ra_w_a_n_public_gateway_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_wireless_gateway_from_thing_response() :: #{}
@@ -4428,6 +4441,19 @@ create_wireless_device(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provisions a wireless gateway.
+%%
+%% When provisioning a wireless gateway, you might run into duplication
+%% errors
+%% for the following reasons.
+%%
+%% If you specify a `GatewayEui' value that already exists.
+%%
+%% If you used a `ClientRequestToken' with the same parameters
+%% within the last 10 minutes.
+%%
+%% To avoid this error, make sure that you use unique identifiers and
+%% parameters
+%% for each request within the specified time period.
 -spec create_wireless_gateway(aws_client:aws_client(), create_wireless_gateway_request()) ->
     {ok, create_wireless_gateway_response(), tuple()} |
     {error, any()} |
@@ -4838,6 +4864,18 @@ delete_wireless_device_import_task(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a wireless gateway.
+%%
+%% When deleting a wireless gateway, you might run into duplication errors
+%% for the following reasons.
+%%
+%% If you specify a `GatewayEui' value that already exists.
+%%
+%% If you used a `ClientRequestToken' with the same parameters
+%% within the last 10 minutes.
+%%
+%% To avoid this error, make sure that you use unique identifiers and
+%% parameters
+%% for each request within the specified time period.
 -spec delete_wireless_gateway(aws_client:aws_client(), binary() | list(), delete_wireless_gateway_request()) ->
     {ok, delete_wireless_gateway_response(), tuple()} |
     {error, any()} |
@@ -5411,7 +5449,7 @@ get_log_levels_by_resource_types(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get the metric configuration status for this account.
+%% @doc Get the metric configuration status for this AWS account.
 -spec get_metric_configuration(aws_client:aws_client()) ->
     {ok, get_metric_configuration_response(), tuple()} |
     {error, any()} |
@@ -5448,7 +5486,7 @@ get_metric_configuration(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get metrics.
+%% @doc Get the summary metrics for this AWS account.
 -spec get_metrics(aws_client:aws_client(), get_metrics_request()) ->
     {ok, get_metrics_response(), tuple()} |
     {error, any()} |
@@ -7745,7 +7783,7 @@ update_log_levels_by_resource_types(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update the metric configuration.
+%% @doc Update the summary metric configuration.
 -spec update_metric_configuration(aws_client:aws_client(), update_metric_configuration_request()) ->
     {ok, update_metric_configuration_response(), tuple()} |
     {error, any()} |

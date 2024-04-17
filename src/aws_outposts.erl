@@ -14,7 +14,9 @@
 %% data processing needs.
 -module(aws_outposts).
 
--export([cancel_order/3,
+-export([cancel_capacity_task/4,
+         cancel_capacity_task/5,
+         cancel_order/3,
          cancel_order/4,
          create_order/2,
          create_order/3,
@@ -26,6 +28,9 @@
          delete_outpost/4,
          delete_site/3,
          delete_site/4,
+         get_capacity_task/3,
+         get_capacity_task/5,
+         get_capacity_task/6,
          get_catalog_item/2,
          get_catalog_item/4,
          get_catalog_item/5,
@@ -41,6 +46,9 @@
          get_outpost_instance_types/2,
          get_outpost_instance_types/4,
          get_outpost_instance_types/5,
+         get_outpost_supported_instance_types/3,
+         get_outpost_supported_instance_types/5,
+         get_outpost_supported_instance_types/6,
          get_site/2,
          get_site/4,
          get_site/5,
@@ -50,6 +58,9 @@
          list_assets/2,
          list_assets/4,
          list_assets/5,
+         list_capacity_tasks/1,
+         list_capacity_tasks/3,
+         list_capacity_tasks/4,
          list_catalog_items/1,
          list_catalog_items/3,
          list_catalog_items/4,
@@ -65,6 +76,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         start_capacity_task/3,
+         start_capacity_task/4,
          start_connection/2,
          start_connection/3,
          tag_resource/3,
@@ -86,6 +99,15 @@
 %% Example:
 %% get_connection_request() :: #{}
 -type get_connection_request() :: #{}.
+
+
+%% Example:
+%% get_outpost_supported_instance_types_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrderId">> := string()
+%% }
+-type get_outpost_supported_instance_types_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -144,11 +166,27 @@
 
 
 %% Example:
+%% list_capacity_tasks_output() :: #{
+%%   <<"CapacityTasks">> => list(capacity_task_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_capacity_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_connection_response() :: #{
 %%   <<"ConnectionDetails">> => connection_details(),
 %%   <<"ConnectionId">> => string()
 %% }
 -type get_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_outpost_supported_instance_types_output() :: #{
+%%   <<"InstanceTypes">> => list(instance_type_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_outpost_supported_instance_types_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -305,6 +343,10 @@
 %% }
 -type list_orders_input() :: #{binary() => any()}.
 
+%% Example:
+%% get_capacity_task_input() :: #{}
+-type get_capacity_task_input() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -380,6 +422,14 @@
 
 
 %% Example:
+%% instance_type_capacity() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"InstanceType">> => string()
+%% }
+-type instance_type_capacity() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_outpost_output() :: #{
 %%   <<"Outpost">> => outpost()
 %% }
@@ -416,6 +466,10 @@
 %% }
 -type get_catalog_item_output() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_capacity_task_output() :: #{}
+-type cancel_capacity_task_output() :: #{}.
+
 
 %% Example:
 %% ec2_capacity() :: #{
@@ -427,11 +481,36 @@
 
 
 %% Example:
+%% start_capacity_task_output() :: #{
+%%   <<"CapacityTaskId">> => string(),
+%%   <<"CapacityTaskStatus">> => list(any()),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Failed">> => capacity_task_failure(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"OrderId">> => string(),
+%%   <<"OutpostId">> => string(),
+%%   <<"RequestedInstancePools">> => list(instance_type_capacity()())
+%% }
+-type start_capacity_task_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_sites_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Sites">> => list(site()())
 %% }
 -type list_sites_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_capacity_task_input() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstancePools">> := list(instance_type_capacity()()),
+%%   <<"OrderId">> := string()
+%% }
+-type start_capacity_task_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -451,6 +530,14 @@
 %% Example:
 %% cancel_order_input() :: #{}
 -type cancel_order_input() :: #{}.
+
+
+%% Example:
+%% capacity_task_failure() :: #{
+%%   <<"Reason">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type capacity_task_failure() :: #{binary() => any()}.
 
 
 %% Example:
@@ -564,6 +651,16 @@
 
 
 %% Example:
+%% list_capacity_tasks_input() :: #{
+%%   <<"CapacityTaskStatusFilter">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostIdentifierFilter">> => string()
+%% }
+-type list_capacity_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_outpost_output() :: #{
 %%   <<"Outpost">> => outpost()
 %% }
@@ -664,6 +761,19 @@
 
 
 %% Example:
+%% capacity_task_summary() :: #{
+%%   <<"CapacityTaskId">> => string(),
+%%   <<"CapacityTaskStatus">> => list(any()),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"OrderId">> => string(),
+%%   <<"OutpostId">> => string()
+%% }
+-type capacity_task_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_catalog_items_output() :: #{
 %%   <<"CatalogItems">> => list(catalog_item()()),
 %%   <<"NextToken">> => string()
@@ -691,6 +801,10 @@
 %% }
 -type line_item() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_capacity_task_input() :: #{}
+-type cancel_capacity_task_input() :: #{}.
+
 
 %% Example:
 %% shipment_information() :: #{
@@ -698,6 +812,22 @@
 %%   <<"ShipmentTrackingNumber">> => string()
 %% }
 -type shipment_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_capacity_task_output() :: #{
+%%   <<"CapacityTaskId">> => string(),
+%%   <<"CapacityTaskStatus">> => list(any()),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Failed">> => capacity_task_failure(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"OrderId">> => string(),
+%%   <<"OutpostId">> => string(),
+%%   <<"RequestedInstancePools">> => list(instance_type_capacity()())
+%% }
+-type get_capacity_task_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -711,6 +841,13 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_outpost_input() :: #{binary() => any()}.
+
+-type cancel_capacity_task_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
 
 -type cancel_order_errors() ::
     validation_exception() | 
@@ -756,6 +893,12 @@
     not_found_exception() | 
     conflict_exception().
 
+-type get_capacity_task_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
 -type get_catalog_item_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -784,6 +927,12 @@
     internal_server_exception() | 
     not_found_exception().
 
+-type get_outpost_supported_instance_types_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
 -type get_site_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -797,6 +946,12 @@
     not_found_exception().
 
 -type list_assets_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type list_capacity_tasks_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -827,6 +982,13 @@
     validation_exception() | 
     internal_server_exception() | 
     not_found_exception().
+
+-type start_capacity_task_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
 
 -type start_connection_errors() ::
     validation_exception() | 
@@ -875,6 +1037,40 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Cancels the capacity task.
+-spec cancel_capacity_task(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_capacity_task_input()) ->
+    {ok, cancel_capacity_task_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_capacity_task_errors(), tuple()}.
+cancel_capacity_task(Client, CapacityTaskId, OutpostIdentifier, Input) ->
+    cancel_capacity_task(Client, CapacityTaskId, OutpostIdentifier, Input, []).
+
+-spec cancel_capacity_task(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_capacity_task_input(), proplists:proplist()) ->
+    {ok, cancel_capacity_task_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_capacity_task_errors(), tuple()}.
+cancel_capacity_task(Client, CapacityTaskId, OutpostIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/outposts/", aws_util:encode_uri(OutpostIdentifier), "/capacity/", aws_util:encode_uri(CapacityTaskId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified order for an Outpost.
 -spec cancel_order(aws_client:aws_client(), binary() | list(), cancel_order_input()) ->
@@ -1082,6 +1278,43 @@ delete_site(Client, SiteId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets details of the specified capacity task.
+-spec get_capacity_task(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_capacity_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_capacity_task_errors(), tuple()}.
+get_capacity_task(Client, CapacityTaskId, OutpostIdentifier)
+  when is_map(Client) ->
+    get_capacity_task(Client, CapacityTaskId, OutpostIdentifier, #{}, #{}).
+
+-spec get_capacity_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_capacity_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_capacity_task_errors(), tuple()}.
+get_capacity_task(Client, CapacityTaskId, OutpostIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_capacity_task(Client, CapacityTaskId, OutpostIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_capacity_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_capacity_task_output(), tuple()} |
+    {error, any()} |
+    {error, get_capacity_task_errors(), tuple()}.
+get_capacity_task(Client, CapacityTaskId, OutpostIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/outposts/", aws_util:encode_uri(OutpostIdentifier), "/capacity/", aws_util:encode_uri(CapacityTaskId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about the specified catalog item.
 -spec get_catalog_item(aws_client:aws_client(), binary() | list()) ->
     {ok, get_catalog_item_output(), tuple()} |
@@ -1287,6 +1520,55 @@ get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the instance types that an
+%% Outpost can support in `InstanceTypeCapacity'.
+%%
+%% This will generally include instance types that
+%% are not currently configured and therefore cannot be launched with the
+%% current Outpost
+%% capacity configuration.
+-spec get_outpost_supported_instance_types(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_outpost_supported_instance_types_output(), tuple()} |
+    {error, any()} |
+    {error, get_outpost_supported_instance_types_errors(), tuple()}.
+get_outpost_supported_instance_types(Client, OutpostIdentifier, OrderId)
+  when is_map(Client) ->
+    get_outpost_supported_instance_types(Client, OutpostIdentifier, OrderId, #{}, #{}).
+
+-spec get_outpost_supported_instance_types(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_outpost_supported_instance_types_output(), tuple()} |
+    {error, any()} |
+    {error, get_outpost_supported_instance_types_errors(), tuple()}.
+get_outpost_supported_instance_types(Client, OutpostIdentifier, OrderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_outpost_supported_instance_types(Client, OutpostIdentifier, OrderId, QueryMap, HeadersMap, []).
+
+-spec get_outpost_supported_instance_types(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_outpost_supported_instance_types_output(), tuple()} |
+    {error, any()} |
+    {error, get_outpost_supported_instance_types_errors(), tuple()}.
+get_outpost_supported_instance_types(Client, OutpostIdentifier, OrderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/outposts/", aws_util:encode_uri(OutpostIdentifier), "/supportedInstanceTypes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"OrderId">>, OrderId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about the specified Outpost site.
 -spec get_site(aws_client:aws_client(), binary() | list()) ->
     {ok, get_site_output(), tuple()} |
@@ -1410,6 +1692,56 @@ list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
         {<<"StatusFilter">>, maps:get(<<"StatusFilter">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the capacity tasks for your Amazon Web Services account.
+%%
+%% Use filters to return specific results. If you specify multiple filters,
+%% the results include only the resources that match
+%% all of the specified filters. For a filter where you can specify multiple
+%% values, the results include
+%% items that match any of the values that you specify for the filter.
+-spec list_capacity_tasks(aws_client:aws_client()) ->
+    {ok, list_capacity_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_capacity_tasks_errors(), tuple()}.
+list_capacity_tasks(Client)
+  when is_map(Client) ->
+    list_capacity_tasks(Client, #{}, #{}).
+
+-spec list_capacity_tasks(aws_client:aws_client(), map(), map()) ->
+    {ok, list_capacity_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_capacity_tasks_errors(), tuple()}.
+list_capacity_tasks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_capacity_tasks(Client, QueryMap, HeadersMap, []).
+
+-spec list_capacity_tasks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_capacity_tasks_output(), tuple()} |
+    {error, any()} |
+    {error, list_capacity_tasks_errors(), tuple()}.
+list_capacity_tasks(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/capacity/tasks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"CapacityTaskStatusFilter">>, maps:get(<<"CapacityTaskStatusFilter">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"OutpostIdentifierFilter">>, maps:get(<<"OutpostIdentifierFilter">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1650,6 +1982,42 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Starts the specified capacity task.
+%%
+%% You can have one active capacity task for an order.
+-spec start_capacity_task(aws_client:aws_client(), binary() | list(), start_capacity_task_input()) ->
+    {ok, start_capacity_task_output(), tuple()} |
+    {error, any()} |
+    {error, start_capacity_task_errors(), tuple()}.
+start_capacity_task(Client, OutpostIdentifier, Input) ->
+    start_capacity_task(Client, OutpostIdentifier, Input, []).
+
+-spec start_capacity_task(aws_client:aws_client(), binary() | list(), start_capacity_task_input(), proplists:proplist()) ->
+    {ok, start_capacity_task_output(), tuple()} |
+    {error, any()} |
+    {error, start_capacity_task_errors(), tuple()}.
+start_capacity_task(Client, OutpostIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/outposts/", aws_util:encode_uri(OutpostIdentifier), "/capacity"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
 %%

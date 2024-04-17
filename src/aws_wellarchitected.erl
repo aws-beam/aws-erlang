@@ -65,6 +65,9 @@
          get_consolidated_report/2,
          get_consolidated_report/4,
          get_consolidated_report/5,
+         get_global_settings/1,
+         get_global_settings/3,
+         get_global_settings/4,
          get_lens/2,
          get_lens/4,
          get_lens/5,
@@ -160,6 +163,8 @@
          update_answer/6,
          update_global_settings/2,
          update_global_settings/3,
+         update_integration/3,
+         update_integration/4,
          update_lens_review/4,
          update_lens_review/5,
          update_profile/3,
@@ -280,6 +285,7 @@
 
 %% Example:
 %% lens_review() :: #{
+%%   <<"JiraConfiguration">> => jira_selected_question_configuration(),
 %%   <<"LensAlias">> => string(),
 %%   <<"LensArn">> => string(),
 %%   <<"LensName">> => string(),
@@ -355,6 +361,28 @@
 
 
 %% Example:
+%% workload_jira_configuration_output() :: #{
+%%   <<"IssueManagementStatus">> => list(any()),
+%%   <<"IssueManagementType">> => list(any()),
+%%   <<"JiraProjectKey">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type workload_jira_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_jira_configuration_output() :: #{
+%%   <<"IntegrationStatus">> => list(any()),
+%%   <<"IssueManagementStatus">> => list(any()),
+%%   <<"IssueManagementType">> => list(any()),
+%%   <<"JiraProjectKey">> => string(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Subdomain">> => string()
+%% }
+-type account_jira_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_lens_review_output() :: #{
 %%   <<"LensReview">> => lens_review(),
 %%   <<"MilestoneNumber">> => integer(),
@@ -370,6 +398,13 @@
 %%   <<"WorkloadNamePrefix">> => string()
 %% }
 -type list_workloads_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% jira_selected_question_configuration() :: #{
+%%   <<"SelectedPillars">> => list(selected_pillar()())
+%% }
+-type jira_selected_question_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -501,6 +536,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_lens_shares_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_integration_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"IntegratingService">> := list(any())
+%% }
+-type update_integration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -656,6 +699,7 @@
 
 %% Example:
 %% update_lens_review_input() :: #{
+%%   <<"JiraConfiguration">> => jira_selected_question_configuration(),
 %%   <<"LensNotes">> => string(),
 %%   <<"PillarNotes">> => map()
 %% }
@@ -810,6 +854,15 @@
 
 
 %% Example:
+%% workload_jira_configuration_input() :: #{
+%%   <<"IssueManagementStatus">> => list(any()),
+%%   <<"IssueManagementType">> => list(any()),
+%%   <<"JiraProjectKey">> => string()
+%% }
+-type workload_jira_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_workload_share_input() :: #{
 %%   <<"PermissionType">> := list(any())
 %% }
@@ -855,6 +908,7 @@
 %%   <<"Industry">> => string(),
 %%   <<"IndustryType">> => string(),
 %%   <<"IsReviewOwnerUpdateAcknowledged">> => boolean(),
+%%   <<"JiraConfiguration">> => workload_jira_configuration_output(),
 %%   <<"Lenses">> => list(string()()),
 %%   <<"NonAwsRegions">> => list(string()()),
 %%   <<"Notes">> => string(),
@@ -925,6 +979,7 @@
 %%   <<"HelpfulResourceUrl">> => string(),
 %%   <<"ImprovementPlanUrl">> => string(),
 %%   <<"IsApplicable">> => boolean(),
+%%   <<"JiraConfiguration">> => jira_configuration(),
 %%   <<"Notes">> => string(),
 %%   <<"PillarId">> => string(),
 %%   <<"QuestionDescription">> => string(),
@@ -1323,6 +1378,14 @@
 
 
 %% Example:
+%% selected_pillar() :: #{
+%%   <<"PillarId">> => string(),
+%%   <<"SelectedQuestionIds">> => list(string()())
+%% }
+-type selected_pillar() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_profile_input() :: #{
 %%   <<"ProfileVersion">> => string()
 %% }
@@ -1457,6 +1520,7 @@
 %% Example:
 %% update_global_settings_input() :: #{
 %%   <<"DiscoveryIntegrationStatus">> => list(any()),
+%%   <<"JiraConfiguration">> => account_jira_configuration_input(),
 %%   <<"OrganizationSharingStatus">> => list(any())
 %% }
 -type update_global_settings_input() :: #{binary() => any()}.
@@ -1474,6 +1538,7 @@
 %% improvement_summary() :: #{
 %%   <<"ImprovementPlanUrl">> => string(),
 %%   <<"ImprovementPlans">> => list(choice_improvement_plan()()),
+%%   <<"JiraConfiguration">> => jira_configuration(),
 %%   <<"PillarId">> => string(),
 %%   <<"QuestionId">> => string(),
 %%   <<"QuestionTitle">> => string(),
@@ -1525,6 +1590,16 @@
 
 
 %% Example:
+%% account_jira_configuration_input() :: #{
+%%   <<"IntegrationStatus">> => list(any()),
+%%   <<"IssueManagementStatus">> => list(any()),
+%%   <<"IssueManagementType">> => list(any()),
+%%   <<"JiraProjectKey">> => string()
+%% }
+-type account_jira_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"Fields">> => list(validation_exception_field()()),
 %%   <<"Message">> => string(),
@@ -1565,6 +1640,7 @@
 %%   <<"Environment">> := list(any()),
 %%   <<"Industry">> => string(),
 %%   <<"IndustryType">> => string(),
+%%   <<"JiraConfiguration">> => workload_jira_configuration_input(),
 %%   <<"Lenses">> := list(string()()),
 %%   <<"NonAwsRegions">> => list(string()()),
 %%   <<"Notes">> => string(),
@@ -1626,6 +1702,14 @@
 %%   <<"ShareId">> => string()
 %% }
 -type create_profile_share_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% jira_configuration() :: #{
+%%   <<"JiraIssueUrl">> => string(),
+%%   <<"LastSyncedTime">> => non_neg_integer()
+%% }
+-type jira_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1716,6 +1800,15 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type check_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_global_settings_output() :: #{
+%%   <<"DiscoveryIntegrationStatus">> => list(any()),
+%%   <<"JiraConfiguration">> => account_jira_configuration_output(),
+%%   <<"OrganizationSharingStatus">> => list(any())
+%% }
+-type get_global_settings_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1841,6 +1934,7 @@
 %%   <<"Industry">> => string(),
 %%   <<"IndustryType">> => string(),
 %%   <<"IsReviewOwnerUpdateAcknowledged">> => boolean(),
+%%   <<"JiraConfiguration">> => workload_jira_configuration_input(),
 %%   <<"NonAwsRegions">> => list(string()()),
 %%   <<"Notes">> => string(),
 %%   <<"PillarPriorities">> => list(string()()),
@@ -1929,6 +2023,7 @@
 %%   <<"ChoiceAnswerSummaries">> => list(choice_answer_summary()()),
 %%   <<"Choices">> => list(choice()()),
 %%   <<"IsApplicable">> => boolean(),
+%%   <<"JiraConfiguration">> => jira_configuration(),
 %%   <<"PillarId">> => string(),
 %%   <<"QuestionId">> => string(),
 %%   <<"QuestionTitle">> => string(),
@@ -2187,6 +2282,12 @@
     internal_server_exception() | 
     conflict_exception().
 
+-type get_global_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type get_lens_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2419,6 +2520,14 @@
     internal_server_exception() | 
     conflict_exception().
 
+-type update_integration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_lens_review_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2488,6 +2597,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -2496,6 +2606,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -3576,6 +3687,43 @@ get_consolidated_report(Client, Format, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Global settings for all workloads.
+-spec get_global_settings(aws_client:aws_client()) ->
+    {ok, get_global_settings_output(), tuple()} |
+    {error, any()} |
+    {error, get_global_settings_errors(), tuple()}.
+get_global_settings(Client)
+  when is_map(Client) ->
+    get_global_settings(Client, #{}, #{}).
+
+-spec get_global_settings(aws_client:aws_client(), map(), map()) ->
+    {ok, get_global_settings_output(), tuple()} |
+    {error, any()} |
+    {error, get_global_settings_errors(), tuple()}.
+get_global_settings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_global_settings(Client, QueryMap, HeadersMap, []).
+
+-spec get_global_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_global_settings_output(), tuple()} |
+    {error, any()} |
+    {error, get_global_settings_errors(), tuple()}.
+get_global_settings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/global-settings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Get an existing lens.
 -spec get_lens(aws_client:aws_client(), binary() | list()) ->
     {ok, get_lens_output(), tuple()} |
@@ -4184,7 +4332,7 @@ list_check_summaries(Client, WorkloadId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List lens review improvements.
+%% @doc List the improvements of a particular lens review.
 -spec list_lens_review_improvements(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_lens_review_improvements_output(), tuple()} |
     {error, any()} |
@@ -4971,7 +5119,7 @@ update_answer(Client, LensAlias, QuestionId, WorkloadId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates whether the Amazon Web Services account is opted into
+%% @doc Update whether the Amazon Web Services account is opted into
 %% organization sharing and discovery integration features.
 -spec update_global_settings(aws_client:aws_client(), update_global_settings_input()) ->
     {ok, undefined, tuple()} |
@@ -4987,6 +5135,40 @@ update_global_settings(Client, Input) ->
 update_global_settings(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/global-settings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update integration features.
+-spec update_integration(aws_client:aws_client(), binary() | list(), update_integration_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_integration_errors(), tuple()}.
+update_integration(Client, WorkloadId, Input) ->
+    update_integration(Client, WorkloadId, Input, []).
+
+-spec update_integration(aws_client:aws_client(), binary() | list(), update_integration_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_integration_errors(), tuple()}.
+update_integration(Client, WorkloadId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/updateIntegration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

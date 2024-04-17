@@ -361,7 +361,8 @@
 %% update_lake_formation_identity_center_configuration_request() :: #{
 %%   <<"ApplicationStatus">> => list(any()),
 %%   <<"CatalogId">> => string(),
-%%   <<"ExternalFiltering">> => external_filtering_configuration()
+%%   <<"ExternalFiltering">> => external_filtering_configuration(),
+%%   <<"ShareRecipients">> => list(data_lake_principal()())
 %% }
 -type update_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
 
@@ -374,7 +375,8 @@
 %% create_lake_formation_identity_center_configuration_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"ExternalFiltering">> => external_filtering_configuration(),
-%%   <<"InstanceArn">> => string()
+%%   <<"InstanceArn">> => string(),
+%%   <<"ShareRecipients">> => list(data_lake_principal()())
 %% }
 -type create_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
 
@@ -918,7 +920,9 @@
 %%   <<"ApplicationArn">> => string(),
 %%   <<"CatalogId">> => string(),
 %%   <<"ExternalFiltering">> => external_filtering_configuration(),
-%%   <<"InstanceArn">> => string()
+%%   <<"InstanceArn">> => string(),
+%%   <<"ResourceShare">> => string(),
+%%   <<"ShareRecipients">> => list(data_lake_principal()())
 %% }
 -type describe_lake_formation_identity_center_configuration_response() :: #{binary() => any()}.
 

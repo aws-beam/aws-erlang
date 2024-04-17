@@ -93,6 +93,7 @@
 %% worker_resource_config() :: #{
 %%   <<"cpu">> => string(),
 %%   <<"disk">> => string(),
+%%   <<"diskType">> => string(),
 %%   <<"memory">> => string()
 %% }
 -type worker_resource_config() :: #{binary() => any()}.

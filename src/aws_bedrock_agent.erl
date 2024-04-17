@@ -228,7 +228,7 @@
 %% Example:
 %% create_agent_request() :: #{
 %%   <<"agentName">> := string(),
-%%   <<"agentResourceRoleArn">> := string(),
+%%   <<"agentResourceRoleArn">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"description">> => string(),
@@ -1573,11 +1573,11 @@ associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) 
 %%
 %% Specify the following fields for security purposes.
 %%
-%% `agentResourceRoleArn' – The ARN of the role with permissions to
-%% create an agent.
+%% `agentResourceRoleArn' – The Amazon Resource Name (ARN) of the role
+%% with permissions to invoke API operations on an agent.
 %%
-%% (Optional) `customerEncryptionKeyArn' – The ARN of a KMS key to
-%% encrypt the creation of the agent.
+%% (Optional) `customerEncryptionKeyArn' – The Amazon Resource Name (ARN)
+%% of a KMS key to encrypt the creation of the agent.
 %%
 %% (Optional) `idleSessionTTLinSeconds' – Specify the number of seconds
 %% for which the agent should maintain session information. After this time
@@ -1760,8 +1760,8 @@ create_data_source(Client, KnowledgeBaseId, Input0, Options0) ->
 %%
 %% Provide the `name' and an optional `description'.
 %%
-%% Provide the ARN with permissions to create a knowledge base in the
-%% `roleArn' field.
+%% Provide the Amazon Resource Name (ARN) with permissions to create a
+%% knowledge base in the `roleArn' field.
 %%
 %% Provide the embedding model to use in the `embeddingModelArn' field in
 %% the `knowledgeBaseConfiguration' object.

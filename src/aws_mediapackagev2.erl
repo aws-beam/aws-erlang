@@ -124,6 +124,7 @@
 %% create_origin_endpoint_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ContainerType">> := list(any()),
+%%   <<"DashManifests">> => list(create_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"HlsManifests">> => list(create_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()()),
@@ -163,6 +164,14 @@
 
 
 %% Example:
+%% list_dash_manifest_configuration() :: #{
+%%   <<"ManifestName">> => string(),
+%%   <<"Url">> => [string()]
+%% }
+-type list_dash_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% channel_group_list_configuration() :: #{
 %%   <<"Arn">> => [string()],
 %%   <<"ChannelGroupName">> => [string()],
@@ -193,6 +202,7 @@
 %%   <<"ChannelName">> => string(),
 %%   <<"ContainerType">> => list(any()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DashManifests">> => list(get_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
@@ -219,8 +229,26 @@
 
 
 %% Example:
+%% create_dash_manifest_configuration() :: #{
+%%   <<"DrmSignaling">> => list(any()),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"MinBufferTimeSeconds">> => [integer()],
+%%   <<"MinUpdatePeriodSeconds">> => [integer()],
+%%   <<"PeriodTriggers">> => list(list(any())()),
+%%   <<"ScteDash">> => scte_dash(),
+%%   <<"SegmentTemplateFormat">> => list(any()),
+%%   <<"SuggestedPresentationDelaySeconds">> => [integer()],
+%%   <<"UtcTiming">> => dash_utc_timing()
+%% }
+-type create_dash_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_origin_endpoint_request() :: #{
 %%   <<"ContainerType">> := list(any()),
+%%   <<"DashManifests">> => list(create_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"HlsManifests">> => list(create_hls_manifest_configuration()()),
@@ -240,6 +268,14 @@
 %%   <<"Policy">> := string()
 %% }
 -type put_origin_endpoint_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_utc_timing() :: #{
+%%   <<"TimingMode">> => list(any()),
+%%   <<"TimingSource">> => [string()]
+%% }
+-type dash_utc_timing() :: #{binary() => any()}.
 
 %% Example:
 %% delete_origin_endpoint_response() :: #{}
@@ -443,6 +479,24 @@
 
 
 %% Example:
+%% get_dash_manifest_configuration() :: #{
+%%   <<"DrmSignaling">> => list(any()),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"MinBufferTimeSeconds">> => [integer()],
+%%   <<"MinUpdatePeriodSeconds">> => [integer()],
+%%   <<"PeriodTriggers">> => list(list(any())()),
+%%   <<"ScteDash">> => scte_dash(),
+%%   <<"SegmentTemplateFormat">> => list(any()),
+%%   <<"SuggestedPresentationDelaySeconds">> => [integer()],
+%%   <<"Url">> => [string()],
+%%   <<"UtcTiming">> => dash_utc_timing()
+%% }
+-type get_dash_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_channels_response() :: #{
 %%   <<"Items">> => list(channel_list_configuration()()),
 %%   <<"NextToken">> => [string()]
@@ -489,6 +543,13 @@
 %%   <<"Message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte_dash() :: #{
+%%   <<"AdMarkerDash">> => list(any())
+%% }
+-type scte_dash() :: #{binary() => any()}.
 
 
 %% Example:
@@ -601,6 +662,7 @@
 %%   <<"ChannelName">> => string(),
 %%   <<"ContainerType">> => list(any()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DashManifests">> => list(list_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"HlsManifests">> => list(list_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(list_low_latency_hls_manifest_configuration()()),
@@ -661,6 +723,7 @@
 %%   <<"ChannelName">> => string(),
 %%   <<"ContainerType">> => list(any()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DashManifests">> => list(get_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
@@ -707,6 +770,7 @@
 %%   <<"ChannelName">> => string(),
 %%   <<"ContainerType">> => list(any()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DashManifests">> => list(get_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
