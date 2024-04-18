@@ -4,33 +4,32 @@
 %% @doc
 %% Amazon Q is in preview release and is subject to change.
 %%
-%% This is the Amazon Q (for business use) API Reference.
-%% Amazon Q is a fully managed, generative-AI powered enterprise chat
-%% assistant that
-%% you can deploy within your organization. Amazon Q enhances employee
-%% productivity by
-%% supporting key tasks such as question-answering, knowledge discovery,
-%% writing email
-%% messages, summarizing text, drafting document outlines, and brainstorming
-%% ideas. Users
-%% ask questions of Amazon Q and get answers that are presented in a
-%% conversational
-%% manner. For an introduction to the service, see the
-%% Amazon Q (for business use) Developer
-%% Guide
+%% This is the Amazon Q Business API Reference. Amazon Q Business is a fully
+%% managed, generative-AI powered enterprise chat assistant that you can
+%% deploy within your
+%% organization. Amazon Q Business enhances employee productivity by
+%% supporting key tasks such
+%% as question-answering, knowledge discovery, writing email messages,
+%% summarizing text,
+%% drafting document outlines, and brainstorming ideas. Users ask questions
+%% of
+%% Amazon Q Business and get answers that are presented in a conversational
+%% manner. For an
+%% introduction to the service, see the
+%% Amazon Q Business User Guide
 %% : https://docs.aws.amazon.com/amazonq/latest/business-use-dg/what-is.html.
 %%
-%% For an overview of the Amazon Q APIs, see Overview of Amazon Q API
-%% operations:
+%% For an overview of the Amazon Q Business APIs, see Overview of Amazon Q
+%% Business API operations:
 %% https://docs.aws.amazon.com/amazonq/latest/business-use-dg/api-ref.html#api-overview.
 %%
 %% For information about the IAM access control permissions you need to
-%% use this API, see IAM roles for Amazon Q:
+%% use this API, see IAM roles for Amazon Q Business:
 %% https://docs.aws.amazon.com/amazonq/latest/business-use-dg/iam-roles.html
 %% in the
-%% Amazon Q (for business use) Developer Guide.
+%% Amazon Q Business User Guide.
 %%
-%% You can use the following AWS SDKs to access Amazon Q APIs:
+%% You can use the following AWS SDKs to access Amazon Q Business APIs:
 %%
 %% AWS SDK for C++: https://docs.aws.amazon.com/sdk-for-cpp
 %%
@@ -49,14 +48,14 @@
 %% AWS SDK for Ruby: https://docs.aws.amazon.com/sdk-for-ruby
 %%
 %% The following resources provide additional information about using the
-%% Amazon Q
+%% Amazon Q Business
 %% API:
 %%
 %% Setting up for
-%% Amazon Q:
+%% Amazon Q Business:
 %% https://docs.aws.amazon.com/amazonq/latest/business-use-dg/setting-up.html
 %%
-%% Amazon Q CLI Reference:
+%% Amazon Q Business CLI Reference:
 %% https://awscli.amazonaws.com/v2/documentation/api/latest/reference/qbusiness/index.html
 %%
 %% Amazon Web Services General Reference:
@@ -133,9 +132,9 @@
          list_applications/1,
          list_applications/3,
          list_applications/4,
-         list_conversations/3,
+         list_conversations/2,
+         list_conversations/4,
          list_conversations/5,
-         list_conversations/6,
          list_data_source_sync_jobs/4,
          list_data_source_sync_jobs/6,
          list_data_source_sync_jobs/7,
@@ -151,9 +150,9 @@
          list_indices/2,
          list_indices/4,
          list_indices/5,
-         list_messages/4,
+         list_messages/3,
+         list_messages/5,
          list_messages/6,
-         list_messages/7,
          list_plugins/2,
          list_plugins/4,
          list_plugins/5,
@@ -222,7 +221,7 @@
 %% put_feedback_request() :: #{
 %%   <<"messageCopiedAt">> => non_neg_integer(),
 %%   <<"messageUsefulness">> => message_usefulness_feedback(),
-%%   <<"userId">> := string()
+%%   <<"userId">> => string()
 %% }
 -type put_feedback_request() :: #{binary() => any()}.
 
@@ -377,6 +376,13 @@
 
 
 %% Example:
+%% plugin_configuration() :: #{
+%%   <<"pluginId">> => string()
+%% }
+-type plugin_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% content_blocker_rule() :: #{
 %%   <<"systemMessageOverride">> => string()
 %% }
@@ -455,7 +461,7 @@
 
 %% Example:
 %% delete_conversation_request() :: #{
-%%   <<"userId">> := string()
+%%   <<"userId">> => string()
 %% }
 -type delete_conversation_request() :: #{binary() => any()}.
 
@@ -646,6 +652,7 @@
 %% Example:
 %% create_web_experience_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"roleArn">> => string(),
 %%   <<"samplePromptsControlMode">> => list(any()),
 %%   <<"subtitle">> => string(),
 %%   <<"tags">> => list(tag()()),
@@ -727,6 +734,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"defaultEndpoint">> => string(),
 %%   <<"error">> => error_detail(),
+%%   <<"roleArn">> => string(),
 %%   <<"samplePromptsControlMode">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"subtitle">> => string(),
@@ -767,14 +775,23 @@
 %%   <<"actionExecution">> => action_execution(),
 %%   <<"attachments">> => list(attachment_input()()),
 %%   <<"attributeFilter">> => attribute_filter(),
+%%   <<"chatMode">> => list(any()),
+%%   <<"chatModeConfiguration">> => list(),
 %%   <<"clientToken">> => string(),
 %%   <<"conversationId">> => string(),
 %%   <<"parentMessageId">> => string(),
 %%   <<"userGroups">> => list(string()()),
-%%   <<"userId">> := string(),
+%%   <<"userId">> => string(),
 %%   <<"userMessage">> => string()
 %% }
 -type chat_sync_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% applied_creator_mode_configuration() :: #{
+%%   <<"creatorModeControl">> => list(any())
+%% }
+-type applied_creator_mode_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -864,7 +881,7 @@
 %% list_conversations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"userId">> := string()
+%%   <<"userId">> => string()
 %% }
 -type list_conversations_request() :: #{binary() => any()}.
 
@@ -916,6 +933,7 @@
 %%   <<"description">> => string(),
 %%   <<"displayName">> := string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"identityCenterInstanceArn">> => string(),
 %%   <<"roleArn">> := string(),
 %%   <<"tags">> => list(tag()())
 %% }
@@ -1142,6 +1160,7 @@
 %%   <<"displayName">> => string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"error">> => error_detail(),
+%%   <<"identityCenterApplicationArn">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -1269,6 +1288,7 @@
 %% update_chat_controls_configuration_request() :: #{
 %%   <<"blockedPhrasesConfigurationUpdate">> => blocked_phrases_configuration_update(),
 %%   <<"clientToken">> => string(),
+%%   <<"creatorModeConfiguration">> => creator_mode_configuration(),
 %%   <<"responseScope">> => list(any()),
 %%   <<"topicConfigurationsToCreateOrUpdate">> => list(topic_configuration()()),
 %%   <<"topicConfigurationsToDelete">> => list(topic_configuration()())
@@ -1448,6 +1468,7 @@
 %% Example:
 %% get_chat_controls_configuration_response() :: #{
 %%   <<"blockedPhrases">> => blocked_phrases_configuration(),
+%%   <<"creatorModeConfiguration">> => applied_creator_mode_configuration(),
 %%   <<"nextToken">> => string(),
 %%   <<"responseScope">> => list(any()),
 %%   <<"topicConfigurations">> => list(topic_configuration()())
@@ -1654,6 +1675,13 @@
 
 
 %% Example:
+%% creator_mode_configuration() :: #{
+%%   <<"creatorModeControl">> => list(any())
+%% }
+-type creator_mode_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% attachments_configuration() :: #{
 %%   <<"attachmentsControlMode">> => list(any())
 %% }
@@ -1671,7 +1699,7 @@
 %% list_messages_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"userId">> := string()
+%%   <<"userId">> => string()
 %% }
 -type list_messages_request() :: #{binary() => any()}.
 
@@ -2169,7 +2197,7 @@
 %%====================================================================
 
 %% @doc Asynchronously deletes one or more documents added using the
-%% `BatchPutDocument' API from an Amazon Q index.
+%% `BatchPutDocument' API from an Amazon Q Business index.
 %%
 %% You can see the progress of the deletion, and any error messages related
 %% to the
@@ -2207,17 +2235,18 @@ batch_delete_document(Client, ApplicationId, IndexId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds one or more documents to an Amazon Q index.
+%% @doc Adds one or more documents to an Amazon Q Business index.
 %%
 %% You use this API to:
 %%
 %% ingest your structured and unstructured documents and documents stored in
 %% an
-%% Amazon S3 bucket into an Amazon Q index.
+%% Amazon S3 bucket into an Amazon Q Business index.
 %%
-%% add custom attributes to documents in an Amazon Q index.
+%% add custom attributes to documents in an Amazon Q Business index.
 %%
 %% attach an access control list to the documents added to an Amazon Q
+%% Business
 %% index.
 %%
 %% You can see the progress of the deletion, and any error messages related
@@ -2256,7 +2285,7 @@ batch_put_document(Client, ApplicationId, IndexId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts or continues a non-streaming Amazon Q conversation.
+%% @doc Starts or continues a non-streaming Amazon Q Business conversation.
 -spec chat_sync(aws_client:aws_client(), binary() | list(), chat_sync_input()) ->
     {ok, chat_sync_output(), tuple()} |
     {error, any()} |
@@ -2292,7 +2321,7 @@ chat_sync(Client, ApplicationId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Q application.
+%% @doc Creates an Amazon Q Business application.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
@@ -2326,7 +2355,7 @@ create_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a data source connector for an Amazon Q application.
+%% @doc Creates a data source connector for an Amazon Q Business application.
 %%
 %% `CreateDataSource' is a synchronous operation. The operation returns
 %% 200 if
@@ -2365,7 +2394,7 @@ create_data_source(Client, ApplicationId, IndexId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Q index.
+%% @doc Creates an Amazon Q Business index.
 %%
 %% To determine if index creation has completed, check the `Status' field
 %% returned from a call to `DescribeIndex'. The `Status' field is set
@@ -2413,7 +2442,7 @@ create_index(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Q plugin.
+%% @doc Creates an Amazon Q Business plugin.
 -spec create_plugin(aws_client:aws_client(), binary() | list(), create_plugin_request()) ->
     {ok, create_plugin_response(), tuple()} |
     {error, any()} |
@@ -2447,7 +2476,7 @@ create_plugin(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a retriever to your Amazon Q application.
+%% @doc Adds a retriever to your Amazon Q Business application.
 -spec create_retriever(aws_client:aws_client(), binary() | list(), create_retriever_request()) ->
     {ok, create_retriever_response(), tuple()} |
     {error, any()} |
@@ -2517,7 +2546,7 @@ create_user(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Q web experience.
+%% @doc Creates an Amazon Q Business web experience.
 -spec create_web_experience(aws_client:aws_client(), binary() | list(), create_web_experience_request()) ->
     {ok, create_web_experience_response(), tuple()} |
     {error, any()} |
@@ -2551,7 +2580,7 @@ create_web_experience(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Q application.
+%% @doc Deletes an Amazon Q Business application.
 -spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
@@ -2585,7 +2614,7 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes chat controls configured for an existing Amazon Q
+%% @doc Deletes chat controls configured for an existing Amazon Q Business
 %% application.
 -spec delete_chat_controls_configuration(aws_client:aws_client(), binary() | list(), delete_chat_controls_configuration_request()) ->
     {ok, delete_chat_controls_configuration_response(), tuple()} |
@@ -2620,7 +2649,7 @@ delete_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Q web experience conversation.
+%% @doc Deletes an Amazon Q Business web experience conversation.
 -spec delete_conversation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_conversation_request()) ->
     {ok, delete_conversation_response(), tuple()} |
     {error, any()} |
@@ -2655,7 +2684,7 @@ delete_conversation(Client, ApplicationId, ConversationId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Q data source connector.
+%% @doc Deletes an Amazon Q Business data source connector.
 %%
 %% While the data source is being
 %% deleted, the `Status' field returned by a call to the
@@ -2744,7 +2773,7 @@ delete_group(Client, ApplicationId, GroupName, IndexId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Q index.
+%% @doc Deletes an Amazon Q Business index.
 -spec delete_index(aws_client:aws_client(), binary() | list(), binary() | list(), delete_index_request()) ->
     {ok, delete_index_response(), tuple()} |
     {error, any()} |
@@ -2778,7 +2807,7 @@ delete_index(Client, ApplicationId, IndexId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Q plugin.
+%% @doc Deletes an Amazon Q Business plugin.
 -spec delete_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), delete_plugin_request()) ->
     {ok, delete_plugin_response(), tuple()} |
     {error, any()} |
@@ -2812,7 +2841,7 @@ delete_plugin(Client, ApplicationId, PluginId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the retriever used by an Amazon Q application.
+%% @doc Deletes the retriever used by an Amazon Q Business application.
 -spec delete_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), delete_retriever_request()) ->
     {ok, delete_retriever_response(), tuple()} |
     {error, any()} |
@@ -2880,7 +2909,7 @@ delete_user(Client, ApplicationId, UserId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Q web experience.
+%% @doc Deletes an Amazon Q Business web experience.
 -spec delete_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), delete_web_experience_request()) ->
     {ok, delete_web_experience_response(), tuple()} |
     {error, any()} |
@@ -2914,7 +2943,7 @@ delete_web_experience(Client, ApplicationId, WebExperienceId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets information about an existing Amazon Q application.
+%% @doc Gets information about an existing Amazon Q Business application.
 -spec get_application(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
@@ -2952,7 +2981,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an chat controls configured for an existing
-%% Amazon Q
+%% Amazon Q Business
 %% application.
 -spec get_chat_controls_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_chat_controls_configuration_response(), tuple()} |
@@ -2995,7 +3024,8 @@ get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about an existing Amazon Q data source connector.
+%% @doc Gets information about an existing Amazon Q Business data source
+%% connector.
 -spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
@@ -3073,7 +3103,7 @@ get_group(Client, ApplicationId, GroupName, IndexId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about an existing Amazon Q index.
+%% @doc Gets information about an existing Amazon Q Business index.
 -spec get_index(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_index_response(), tuple()} |
     {error, any()} |
@@ -3110,7 +3140,7 @@ get_index(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about an existing Amazon Q plugin.
+%% @doc Gets information about an existing Amazon Q Business plugin.
 -spec get_plugin(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_plugin_response(), tuple()} |
     {error, any()} |
@@ -3148,6 +3178,7 @@ get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing retriever used by an Amazon Q
+%% Business
 %% application.
 -spec get_retriever(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_retriever_response(), tuple()} |
@@ -3224,7 +3255,7 @@ get_user(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about an existing Amazon Q web experience.
+%% @doc Gets information about an existing Amazon Q Business web experience.
 -spec get_web_experience(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_web_experience_response(), tuple()} |
     {error, any()} |
@@ -3261,7 +3292,7 @@ get_web_experience(Client, ApplicationId, WebExperienceId, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists Amazon Q applications.
+%% @doc Lists Amazon Q Business applications.
 -spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
@@ -3303,28 +3334,28 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists one or more Amazon Q conversations.
--spec list_conversations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+%% @doc Lists one or more Amazon Q Business conversations.
+-spec list_conversations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_conversations_response(), tuple()} |
     {error, any()} |
     {error, list_conversations_errors(), tuple()}.
-list_conversations(Client, ApplicationId, UserId)
+list_conversations(Client, ApplicationId)
   when is_map(Client) ->
-    list_conversations(Client, ApplicationId, UserId, #{}, #{}).
+    list_conversations(Client, ApplicationId, #{}, #{}).
 
--spec list_conversations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_conversations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_conversations_response(), tuple()} |
     {error, any()} |
     {error, list_conversations_errors(), tuple()}.
-list_conversations(Client, ApplicationId, UserId, QueryMap, HeadersMap)
+list_conversations(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_conversations(Client, ApplicationId, UserId, QueryMap, HeadersMap, []).
+    list_conversations(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_conversations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_conversations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_conversations_response(), tuple()} |
     {error, any()} |
     {error, list_conversations_errors(), tuple()}.
-list_conversations(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0)
+list_conversations(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/conversations"],
     SuccessStatusCode = 200,
@@ -3340,13 +3371,13 @@ list_conversations(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"userId">>, UserId}
+        {<<"userId">>, maps:get(<<"userId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get information about an Amazon Q data source connector
+%% @doc Get information about an Amazon Q Business data source connector
 %% synchronization.
 -spec list_data_source_sync_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_data_source_sync_jobs_response(), tuple()} |
@@ -3392,7 +3423,8 @@ list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Amazon Q data source connectors that you have created.
+%% @doc Lists the Amazon Q Business data source connectors that you have
+%% created.
 -spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
@@ -3521,7 +3553,7 @@ list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Amazon Q indices you have created.
+%% @doc Lists the Amazon Q Business indices you have created.
 -spec list_indices(aws_client:aws_client(), binary() | list()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
@@ -3563,28 +3595,29 @@ list_indices(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a list of messages associated with an Amazon Q web experience.
--spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+%% @doc Gets a list of messages associated with an Amazon Q Business web
+%% experience.
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_messages_response(), tuple()} |
     {error, any()} |
     {error, list_messages_errors(), tuple()}.
-list_messages(Client, ApplicationId, ConversationId, UserId)
+list_messages(Client, ApplicationId, ConversationId)
   when is_map(Client) ->
-    list_messages(Client, ApplicationId, ConversationId, UserId, #{}, #{}).
+    list_messages(Client, ApplicationId, ConversationId, #{}, #{}).
 
--spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_messages_response(), tuple()} |
     {error, any()} |
     {error, list_messages_errors(), tuple()}.
-list_messages(Client, ApplicationId, ConversationId, UserId, QueryMap, HeadersMap)
+list_messages(Client, ApplicationId, ConversationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_messages(Client, ApplicationId, ConversationId, UserId, QueryMap, HeadersMap, []).
+    list_messages(Client, ApplicationId, ConversationId, QueryMap, HeadersMap, []).
 
--spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_messages_response(), tuple()} |
     {error, any()} |
     {error, list_messages_errors(), tuple()}.
-list_messages(Client, ApplicationId, ConversationId, UserId, QueryMap, HeadersMap, Options0)
+list_messages(Client, ApplicationId, ConversationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/conversations/", aws_util:encode_uri(ConversationId), ""],
     SuccessStatusCode = 200,
@@ -3600,13 +3633,13 @@ list_messages(Client, ApplicationId, ConversationId, UserId, QueryMap, HeadersMa
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"userId">>, UserId}
+        {<<"userId">>, maps:get(<<"userId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists configured Amazon Q plugins.
+%% @doc Lists configured Amazon Q Business plugins.
 -spec list_plugins(aws_client:aws_client(), binary() | list()) ->
     {ok, list_plugins_response(), tuple()} |
     {error, any()} |
@@ -3648,7 +3681,7 @@ list_plugins(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the retriever used by an Amazon Q application.
+%% @doc Lists the retriever used by an Amazon Q Business application.
 -spec list_retrievers(aws_client:aws_client(), binary() | list()) ->
     {ok, list_retrievers_response(), tuple()} |
     {error, any()} |
@@ -3692,7 +3725,7 @@ list_retrievers(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a list of tags associated with a specified resource.
 %%
-%% Amazon Q applications
+%% Amazon Q Business applications
 %% and data sources can have tags associated with them.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -3730,7 +3763,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists one or more Amazon Q Web Experiences.
+%% @doc Lists one or more Amazon Q Business Web Experiences.
 -spec list_web_experiences(aws_client:aws_client(), binary() | list()) ->
     {ok, list_web_experiences_response(), tuple()} |
     {error, any()} |
@@ -3772,7 +3805,7 @@ list_web_experiences(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Enables your end user to to provide feedback on their Amazon Q
+%% @doc Enables your end user to provide feedback on their Amazon Q Business
 %% generated chat
 %% responses.
 -spec put_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_feedback_request()) ->
@@ -3821,7 +3854,8 @@ put_feedback(Client, ApplicationId, ConversationId, MessageId, Input0, Options0)
 %% users who work
 %% in research and engineering, and therefore belong in the intellectual
 %% property group,
-%% can see top-secret company documents in their Amazon Q chat results.
+%% can see top-secret company documents in their Amazon Q Business chat
+%% results.
 -spec put_group(aws_client:aws_client(), binary() | list(), binary() | list(), put_group_request()) ->
     {ok, put_group_response(), tuple()} |
     {error, any()} |
@@ -3858,7 +3892,7 @@ put_group(Client, ApplicationId, IndexId, Input0, Options0) ->
 %% @doc Starts a data source connector synchronization job.
 %%
 %% If a synchronization job is
-%% already in progress, Amazon Q returns a `ConflictException'.
+%% already in progress, Amazon Q Business returns a `ConflictException'.
 -spec start_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_data_source_sync_job_request()) ->
     {ok, start_data_source_sync_job_response(), tuple()} |
     {error, any()} |
@@ -3892,8 +3926,8 @@ start_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops an Amazon Q data source connector synchronization job already
-%% in
+%% @doc Stops an Amazon Q Business data source connector synchronization job
+%% already in
 %% progress.
 -spec stop_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_data_source_sync_job_request()) ->
     {ok, stop_data_source_sync_job_response(), tuple()} |
@@ -3928,8 +3962,8 @@ stop_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input0, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds the specified tag to the specified Amazon Q application or data
-%% source
+%% @doc Adds the specified tag to the specified Amazon Q Business application
+%% or data source
 %% resource.
 %%
 %% If the tag already exists, the existing value is replaced with the new
@@ -3967,7 +4001,7 @@ tag_resource(Client, ResourceARN, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a tag from an Amazon Q application or a data source.
+%% @doc Removes a tag from an Amazon Q Business application or a data source.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -4002,7 +4036,7 @@ untag_resource(Client, ResourceARN, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Amazon Q application.
+%% @doc Updates an existing Amazon Q Business application.
 -spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
@@ -4037,6 +4071,7 @@ update_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an set of chat controls configured for an existing Amazon Q
+%% Business
 %% application.
 -spec update_chat_controls_configuration(aws_client:aws_client(), binary() | list(), update_chat_controls_configuration_request()) ->
     {ok, update_chat_controls_configuration_response(), tuple()} |
@@ -4071,7 +4106,7 @@ update_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Amazon Q data source connector.
+%% @doc Updates an existing Amazon Q Business data source connector.
 -spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
@@ -4105,7 +4140,7 @@ update_data_source(Client, ApplicationId, DataSourceId, IndexId, Input0, Options
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an Amazon Q index.
+%% @doc Updates an Amazon Q Business index.
 -spec update_index(aws_client:aws_client(), binary() | list(), binary() | list(), update_index_request()) ->
     {ok, update_index_response(), tuple()} |
     {error, any()} |
@@ -4139,7 +4174,7 @@ update_index(Client, ApplicationId, IndexId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an Amazon Q plugin.
+%% @doc Updates an Amazon Q Business plugin.
 -spec update_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), update_plugin_request()) ->
     {ok, update_plugin_response(), tuple()} |
     {error, any()} |
@@ -4173,7 +4208,7 @@ update_plugin(Client, ApplicationId, PluginId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the retriever used for your Amazon Q application.
+%% @doc Updates the retriever used for your Amazon Q Business application.
 -spec update_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), update_retriever_request()) ->
     {ok, update_retriever_response(), tuple()} |
     {error, any()} |
@@ -4241,7 +4276,7 @@ update_user(Client, ApplicationId, UserId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an Amazon Q web experience.
+%% @doc Updates an Amazon Q Business web experience.
 -spec update_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), update_web_experience_request()) ->
     {ok, update_web_experience_response(), tuple()} |
     {error, any()} |
