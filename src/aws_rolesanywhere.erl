@@ -33,6 +33,8 @@
          create_profile/3,
          create_trust_anchor/2,
          create_trust_anchor/3,
+         delete_attribute_mapping/3,
+         delete_attribute_mapping/4,
          delete_crl/3,
          delete_crl/4,
          delete_profile/3,
@@ -80,6 +82,8 @@
          list_trust_anchors/1,
          list_trust_anchors/3,
          list_trust_anchors/4,
+         put_attribute_mapping/3,
+         put_attribute_mapping/4,
          put_notification_settings/2,
          put_notification_settings/3,
          reset_notification_settings/2,
@@ -244,6 +248,13 @@
 
 
 %% Example:
+%% delete_attribute_mapping_response() :: #{
+%%   <<"profile">> => profile_detail()
+%% }
+-type delete_attribute_mapping_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_profile_request() :: #{
 %%   <<"durationSeconds">> => [integer()],
 %%   <<"enabled">> => [boolean()],
@@ -262,6 +273,13 @@
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% mapping_rule() :: #{
+%%   <<"specifier">> => [string()]
+%% }
+-type mapping_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -298,6 +316,14 @@
 
 
 %% Example:
+%% attribute_mapping() :: #{
+%%   <<"certificateField">> => string(),
+%%   <<"mappingRules">> => list(mapping_rule()())
+%% }
+-type attribute_mapping() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag()())
 %% }
@@ -306,6 +332,7 @@
 
 %% Example:
 %% profile_detail() :: #{
+%%   <<"attributeMappings">> => list(attribute_mapping()()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => [string()],
 %%   <<"durationSeconds">> => [integer()],
@@ -321,6 +348,14 @@
 %% }
 -type profile_detail() :: #{binary() => any()}.
 
+
+%% Example:
+%% delete_attribute_mapping_request() :: #{
+%%   <<"certificateField">> := string(),
+%%   <<"specifiers">> => list([string()]())
+%% }
+-type delete_attribute_mapping_request() :: #{binary() => any()}.
+
 %% Example:
 %% scalar_subject_request() :: #{}
 -type scalar_subject_request() :: #{}.
@@ -332,6 +367,13 @@
 %%   <<"sourceType">> => string()
 %% }
 -type source() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_attribute_mapping_response() :: #{
+%%   <<"profile">> => profile_detail()
+%% }
+-type put_attribute_mapping_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -481,6 +523,14 @@
 %% }
 -type notification_setting_detail() :: #{binary() => any()}.
 
+
+%% Example:
+%% put_attribute_mapping_request() :: #{
+%%   <<"certificateField">> := string(),
+%%   <<"mappingRules">> := list(mapping_rule()())
+%% }
+-type put_attribute_mapping_request() :: #{binary() => any()}.
+
 -type create_profile_errors() ::
     validation_exception() | 
     access_denied_exception().
@@ -488,6 +538,11 @@
 -type create_trust_anchor_errors() ::
     validation_exception() | 
     access_denied_exception().
+
+-type delete_attribute_mapping_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
 
 -type delete_crl_errors() ::
     access_denied_exception() | 
@@ -565,6 +620,11 @@
 -type list_trust_anchors_errors() ::
     validation_exception() | 
     access_denied_exception().
+
+-type put_attribute_mapping_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
 
 -type put_notification_settings_errors() ::
     validation_exception() | 
@@ -689,6 +749,43 @@ create_trust_anchor(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete an entry from the attribute mapping rules enforced by a given
+%% profile.
+-spec delete_attribute_mapping(aws_client:aws_client(), binary() | list(), delete_attribute_mapping_request()) ->
+    {ok, delete_attribute_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, delete_attribute_mapping_errors(), tuple()}.
+delete_attribute_mapping(Client, ProfileId, Input) ->
+    delete_attribute_mapping(Client, ProfileId, Input, []).
+
+-spec delete_attribute_mapping(aws_client:aws_client(), binary() | list(), delete_attribute_mapping_request(), proplists:proplist()) ->
+    {ok, delete_attribute_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, delete_attribute_mapping_errors(), tuple()}.
+delete_attribute_mapping(Client, ProfileId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/profiles/", aws_util:encode_uri(ProfileId), "/mappings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"certificateField">>, <<"certificateField">>},
+                     {<<"specifiers">>, <<"specifiers">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a certificate revocation list (CRL).
@@ -1471,6 +1568,44 @@ list_trust_anchors(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Put an entry in the attribute mapping rules that will be enforced by
+%% a given profile.
+%%
+%% A mapping specifies a certificate field and one or more specifiers that
+%% have contextual meanings.
+-spec put_attribute_mapping(aws_client:aws_client(), binary() | list(), put_attribute_mapping_request()) ->
+    {ok, put_attribute_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, put_attribute_mapping_errors(), tuple()}.
+put_attribute_mapping(Client, ProfileId, Input) ->
+    put_attribute_mapping(Client, ProfileId, Input, []).
+
+-spec put_attribute_mapping(aws_client:aws_client(), binary() | list(), put_attribute_mapping_request(), proplists:proplist()) ->
+    {ok, put_attribute_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, put_attribute_mapping_errors(), tuple()}.
+put_attribute_mapping(Client, ProfileId, Input0, Options0) ->
+    Method = put,
+    Path = ["/profiles/", aws_util:encode_uri(ProfileId), "/mappings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attaches a list of notification settings to a trust anchor.
 %%

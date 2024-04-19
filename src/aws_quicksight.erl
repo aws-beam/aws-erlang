@@ -2911,6 +2911,7 @@
 %% top_bottom_filter() :: #{
 %%   <<"AggregationSortConfigurations">> => list(aggregation_sort_configuration()()),
 %%   <<"Column">> => column_identifier(),
+%%   <<"DefaultFilterControlConfiguration">> => default_filter_control_configuration(),
 %%   <<"FilterId">> => string(),
 %%   <<"Limit">> => integer(),
 %%   <<"ParameterName">> => string(),
@@ -3142,6 +3143,7 @@
 %% relative_dates_filter() :: #{
 %%   <<"AnchorDateConfiguration">> => anchor_date_configuration(),
 %%   <<"Column">> => column_identifier(),
+%%   <<"DefaultFilterControlConfiguration">> => default_filter_control_configuration(),
 %%   <<"ExcludePeriodConfiguration">> => exclude_period_configuration(),
 %%   <<"FilterId">> => string(),
 %%   <<"MinimumGranularity">> => list(any()),
@@ -3386,6 +3388,13 @@
 %%   <<"ValueWhenUnset">> => integer_value_when_unset_configuration()
 %% }
 -type integer_parameter_declaration() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_relative_date_time_control_options() :: #{
+%%   <<"DisplayOptions">> => relative_date_time_control_display_options()
+%% }
+-type default_relative_date_time_control_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3779,6 +3788,19 @@
 
 
 %% Example:
+%% default_filter_control_options() :: #{
+%%   <<"DefaultDateTimePickerOptions">> => default_date_time_picker_control_options(),
+%%   <<"DefaultDropdownOptions">> => default_filter_drop_down_control_options(),
+%%   <<"DefaultListOptions">> => default_filter_list_control_options(),
+%%   <<"DefaultRelativeDateTimeOptions">> => default_relative_date_time_control_options(),
+%%   <<"DefaultSliderOptions">> => default_slider_control_options(),
+%%   <<"DefaultTextAreaOptions">> => default_text_area_control_options(),
+%%   <<"DefaultTextFieldOptions">> => default_text_field_control_options()
+%% }
+-type default_filter_control_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% pivot_table_total_options() :: #{
 %%   <<"ColumnSubtotalOptions">> => subtotal_options(),
 %%   <<"ColumnTotalOptions">> => pivot_total_options(),
@@ -4121,6 +4143,7 @@
 %% numeric_range_filter() :: #{
 %%   <<"AggregationFunction">> => aggregation_function(),
 %%   <<"Column">> => column_identifier(),
+%%   <<"DefaultFilterControlConfiguration">> => default_filter_control_configuration(),
 %%   <<"FilterId">> => string(),
 %%   <<"IncludeMaximum">> => boolean(),
 %%   <<"IncludeMinimum">> => boolean(),
@@ -5439,6 +5462,7 @@
 
 %% Example:
 %% filter_control() :: #{
+%%   <<"CrossSheet">> => filter_cross_sheet_control(),
 %%   <<"DateTimePicker">> => filter_date_time_picker_control(),
 %%   <<"Dropdown">> => filter_drop_down_control(),
 %%   <<"List">> => filter_list_control(),
@@ -5551,6 +5575,14 @@
 %%   <<"WordScaling">> => list(any())
 %% }
 -type word_cloud_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_filter_control_configuration() :: #{
+%%   <<"ControlOptions">> => default_filter_control_options(),
+%%   <<"Title">> => string()
+%% }
+-type default_filter_control_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6207,6 +6239,15 @@
 
 
 %% Example:
+%% default_filter_drop_down_control_options() :: #{
+%%   <<"DisplayOptions">> => drop_down_control_display_options(),
+%%   <<"SelectableValues">> => filter_selectable_values(),
+%%   <<"Type">> => list(any())
+%% }
+-type default_filter_drop_down_control_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_account_subscription_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -6523,6 +6564,14 @@
 
 
 %% Example:
+%% asset_bundle_import_job_warning() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type asset_bundle_import_job_warning() :: #{binary() => any()}.
+
+
+%% Example:
 %% range_constant() :: #{
 %%   <<"Maximum">> => string(),
 %%   <<"Minimum">> => string()
@@ -6799,6 +6848,15 @@
 
 
 %% Example:
+%% filter_cross_sheet_control() :: #{
+%%   <<"CascadingControlConfiguration">> => cascading_control_configuration(),
+%%   <<"FilterControlId">> => string(),
+%%   <<"SourceFilterId">> => string()
+%% }
+-type filter_cross_sheet_control() :: #{binary() => any()}.
+
+
+%% Example:
 %% row_alternate_color_options() :: #{
 %%   <<"RowAlternateColors">> => list(string()()),
 %%   <<"Status">> => list(any()),
@@ -6910,6 +6968,15 @@
 %%   <<"SheetVisualScopingConfigurations">> => list(sheet_visual_scoping_configuration()())
 %% }
 -type selected_sheets_filter_scope_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_filter_list_control_options() :: #{
+%%   <<"DisplayOptions">> => list_control_display_options(),
+%%   <<"SelectableValues">> => filter_selectable_values(),
+%%   <<"Type">> => list(any())
+%% }
+-type default_filter_list_control_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7285,8 +7352,17 @@
 
 
 %% Example:
+%% default_date_time_picker_control_options() :: #{
+%%   <<"DisplayOptions">> => date_time_picker_control_display_options(),
+%%   <<"Type">> => list(any())
+%% }
+-type default_date_time_picker_control_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% time_equality_filter() :: #{
 %%   <<"Column">> => column_identifier(),
+%%   <<"DefaultFilterControlConfiguration">> => default_filter_control_configuration(),
 %%   <<"FilterId">> => string(),
 %%   <<"ParameterName">> => string(),
 %%   <<"RollingDate">> => rolling_date_configuration(),
@@ -7337,7 +7413,8 @@
 %%   <<"OverrideValidationStrategy">> => asset_bundle_import_job_override_validation_strategy(),
 %%   <<"RequestId">> => string(),
 %%   <<"RollbackErrors">> => list(asset_bundle_import_job_error()()),
-%%   <<"Status">> => integer()
+%%   <<"Status">> => integer(),
+%%   <<"Warnings">> => list(asset_bundle_import_job_warning()())
 %% }
 -type describe_asset_bundle_import_job_response() :: #{binary() => any()}.
 
@@ -7563,6 +7640,17 @@
 
 
 %% Example:
+%% default_slider_control_options() :: #{
+%%   <<"DisplayOptions">> => slider_control_display_options(),
+%%   <<"MaximumValue">> => float(),
+%%   <<"MinimumValue">> => float(),
+%%   <<"StepSize">> => float(),
+%%   <<"Type">> => list(any())
+%% }
+-type default_slider_control_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% join_key_properties() :: #{
 %%   <<"UniqueKey">> => boolean()
 %% }
@@ -7741,6 +7829,7 @@
 %% category_filter() :: #{
 %%   <<"Column">> => column_identifier(),
 %%   <<"Configuration">> => category_filter_configuration(),
+%%   <<"DefaultFilterControlConfiguration">> => default_filter_control_configuration(),
 %%   <<"FilterId">> => string()
 %% }
 -type category_filter() :: #{binary() => any()}.
@@ -8114,6 +8203,7 @@
 %% Example:
 %% time_range_filter() :: #{
 %%   <<"Column">> => column_identifier(),
+%%   <<"DefaultFilterControlConfiguration">> => default_filter_control_configuration(),
 %%   <<"ExcludePeriodConfiguration">> => exclude_period_configuration(),
 %%   <<"FilterId">> => string(),
 %%   <<"IncludeMaximum">> => boolean(),
@@ -8542,6 +8632,7 @@
 %% numeric_equality_filter() :: #{
 %%   <<"AggregationFunction">> => aggregation_function(),
 %%   <<"Column">> => column_identifier(),
+%%   <<"DefaultFilterControlConfiguration">> => default_filter_control_configuration(),
 %%   <<"FilterId">> => string(),
 %%   <<"MatchOperator">> => list(any()),
 %%   <<"NullOption">> => list(any()),
@@ -8885,6 +8976,13 @@
 %% Example:
 %% describe_ingestion_request() :: #{}
 -type describe_ingestion_request() :: #{}.
+
+
+%% Example:
+%% default_text_field_control_options() :: #{
+%%   <<"DisplayOptions">> => text_field_control_display_options()
+%% }
+-type default_text_field_control_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10578,6 +10676,14 @@
 %% Example:
 %% delete_topic_request() :: #{}
 -type delete_topic_request() :: #{}.
+
+
+%% Example:
+%% default_text_area_control_options() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"DisplayOptions">> => text_area_control_display_options()
+%% }
+-type default_text_area_control_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -17806,19 +17912,89 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts an asynchronous job that generates a dashboard snapshot.
+%% @doc Starts an asynchronous job that generates a snapshot of a
+%% dashboard's output.
 %%
-%% You can request one of the following format configurations per API call.
+%% You can request one or several of the following format configurations in
+%% each API call.
 %%
-%% 1 paginated PDF
+%% 1 Paginated PDF
 %%
-%% 1 Excel workbook
+%% 1 Excel workbook that includes up to 5 table or pivot table visuals
 %%
-%% 5 CSVs
+%% 5 CSVs from table or pivot table visuals
 %%
-%% Poll job descriptions with a `DescribeDashboardSnapshotJob' API call.
-%% Once the job succeeds, use the `DescribeDashboardSnapshotJobResult'
-%% API to obtain the download URIs that the job generates.
+%% The status of a submitted job can be polled with the
+%% `DescribeDashboardSnapshotJob' API. When you call the
+%% `DescribeDashboardSnapshotJob' API, check the `JobStatus' field in
+%% the response. Once the job reaches a `COMPLETED' or `FAILED'
+%% status, use the `DescribeDashboardSnapshotJobResult' API to obtain the
+%% URLs for the generated files. If the job fails, the
+%% `DescribeDashboardSnapshotJobResult' API returns detailed information
+%% about the error that occurred.
+%%
+%% StartDashboardSnapshotJob API throttling
+%%
+%% Amazon QuickSight utilizes API throttling to create a more consistent user
+%% experience within a time span for customers when they call the
+%% `StartDashboardSnapshotJob'. By default, 12 jobs can run
+%% simlutaneously in one Amazon Web Services account and users can submit up
+%% 10 API requests per second before an account is throttled. If an
+%% overwhelming number of API requests are made by the same user in a short
+%% period of time, Amazon QuickSight throttles the API calls to maintin an
+%% optimal experience and reliability for all Amazon QuickSight users.
+%%
+%% Common throttling scenarios
+%%
+%% The following list provides information about the most commin throttling
+%% scenarios that can occur.
+%%
+%% A large number of `SnapshotExport' API jobs are running simultaneously
+%% on an Amazon Web Services account. When a new
+%% `StartDashboardSnapshotJob' is created and there are already 12 jobs
+%% with the `RUNNING' status, the new job request fails and returns a
+%% `LimitExceededException' error. Wait for a current job to comlpete
+%% before you resubmit the new job.
+%%
+%% A large number of API requests are submitted on an Amazon Web Services
+%% account. When a user makes more than 10 API calls to the Amazon QuickSight
+%% API in one second, a `ThrottlingException' is returned.
+%%
+%% If your use case requires a higher throttling limit, contact your account
+%% admin or Amazon Web ServicesSupport: http://aws.amazon.com/contact-us/ to
+%% explore options to tailor a more optimal expereince for your account.
+%%
+%% Best practices to handle throttling
+%%
+%% If your use case projects high levels of API traffic, try to reduce the
+%% degree of frequency and parallelism of API calls as much as you can to
+%% avoid throttling. You can also perform a timing test to calculate an
+%% estimate for the total processing time of your projected load that stays
+%% within the throttling limits of the Amazon QuickSight APIs. For example,
+%% if your projected traffic is 100 snapshot jobs before 12:00 PM per day,
+%% start 12 jobs in parallel and measure the amount of time it takes to
+%% proccess all 12 jobs. Once you obtain the result, multiply the duration by
+%% 9, for example `(12 minutes * 9 = 108 minutes)'. Use the new result to
+%% determine the latest time at which the jobs need to be started to meet
+%% your target deadline.
+%%
+%% The time that it takes to process a job can be impacted by the following
+%% factors:
+%%
+%% The dataset type (Direct Query or SPICE).
+%%
+%% The size of the dataset.
+%%
+%% The complexity of the calculated fields that are used in the dashboard.
+%%
+%% The number of visuals that are on a sheet.
+%%
+%% The types of visuals that are on the sheet.
+%%
+%% The number of formats and snapshots that are requested in the job
+%% configuration.
+%%
+%% The size of the generated snapshots.
 -spec start_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_request()) ->
     {ok, start_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |

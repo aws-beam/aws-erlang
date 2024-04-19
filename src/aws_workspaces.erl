@@ -37,7 +37,9 @@
 %% https://docs.aws.amazon.com/cli/latest/reference/workspaces/index.html.
 -module(aws_workspaces).
 
--export([associate_connection_alias/2,
+-export([accept_account_link_invitation/2,
+         accept_account_link_invitation/3,
+         associate_connection_alias/2,
          associate_connection_alias/3,
          associate_ip_groups/2,
          associate_ip_groups/3,
@@ -47,6 +49,8 @@
          authorize_ip_rules/3,
          copy_workspace_image/2,
          copy_workspace_image/3,
+         create_account_link_invitation/2,
+         create_account_link_invitation/3,
          create_connect_client_add_in/2,
          create_connect_client_add_in/3,
          create_connection_alias/2,
@@ -65,6 +69,8 @@
          create_workspace_image/3,
          create_workspaces/2,
          create_workspaces/3,
+         delete_account_link_invitation/2,
+         delete_account_link_invitation/3,
          delete_client_branding/2,
          delete_client_branding/3,
          delete_connect_client_add_in/2,
@@ -131,10 +137,14 @@
          disassociate_ip_groups/3,
          disassociate_workspace_application/2,
          disassociate_workspace_application/3,
+         get_account_link/2,
+         get_account_link/3,
          import_client_branding/2,
          import_client_branding/3,
          import_workspace_image/2,
          import_workspace_image/3,
+         list_account_links/2,
+         list_account_links/3,
          list_available_management_cidr_ranges/2,
          list_available_management_cidr_ranges/3,
          migrate_workspace/2,
@@ -163,6 +173,8 @@
          rebuild_workspaces/3,
          register_workspace_directory/2,
          register_workspace_directory/3,
+         reject_account_link_invitation/2,
+         reject_account_link_invitation/3,
          restore_workspace/2,
          restore_workspace/3,
          revoke_ip_rules/2,
@@ -230,6 +242,12 @@
 %%   <<"StartWorkspaceRequests">> := list(start_request()())
 %% }
 -type start_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_link_invitation_result() :: #{
+%%   <<"AccountLink">> => account_link()
+%% }
+-type delete_account_link_invitation_result() :: #{binary() => any()}.
 
 %% Example:
 %% restore_workspace_result() :: #{
@@ -420,6 +438,12 @@
 -type rebuild_workspaces_request() :: #{binary() => any()}.
 
 %% Example:
+%% accept_account_link_invitation_result() :: #{
+%%   <<"AccountLink">> => account_link()
+%% }
+-type accept_account_link_invitation_result() :: #{binary() => any()}.
+
+%% Example:
 %% resource_unavailable_exception() :: #{
 %%   <<"ResourceId">> => string(),
 %%   <<"message">> => string()
@@ -603,6 +627,12 @@
 -type list_available_management_cidr_ranges_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_account_link_invitation_result() :: #{
+%%   <<"AccountLink">> => account_link()
+%% }
+-type create_account_link_invitation_result() :: #{binary() => any()}.
+
+%% Example:
 %% client_properties() :: #{
 %%   <<"LogUploadEnabled">> => list(any()),
 %%   <<"ReconnectEnabled">> => list(any())
@@ -620,6 +650,13 @@
 %%   <<"UserVolumeSizeGib">> => integer()
 %% }
 -type workspace_properties() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_link_invitation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"TargetAccountId">> := string()
+%% }
+-type create_account_link_invitation_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_ip_groups_request() :: #{
@@ -641,6 +678,13 @@
 -type unsupported_network_configuration_exception() :: #{binary() => any()}.
 
 %% Example:
+%% delete_account_link_invitation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"LinkId">> := string()
+%% }
+-type delete_account_link_invitation_request() :: #{binary() => any()}.
+
+%% Example:
 %% rebuild_workspaces_result() :: #{
 %%   <<"FailedRequests">> => list(failed_workspace_change_request()())
 %% }
@@ -651,6 +695,14 @@
 %%   <<"WorkspaceBundle">> => workspace_bundle()
 %% }
 -type create_workspace_bundle_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_links_request() :: #{
+%%   <<"LinkStatusFilter">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_links_request() :: #{binary() => any()}.
 
 %% Example:
 %% failed_workspace_change_request() :: #{
@@ -706,6 +758,13 @@
 -type connection_alias_permission() :: #{binary() => any()}.
 
 %% Example:
+%% get_account_link_request() :: #{
+%%   <<"LinkId">> => string(),
+%%   <<"LinkedAccountId">> => string()
+%% }
+-type get_account_link_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_standby_workspaces_request() :: #{
 %%   <<"PrimaryRegion">> := string(),
 %%   <<"StandbyWorkspaces">> := list(standby_workspace()())
@@ -749,11 +808,24 @@
 -type workspaces_ip_group() :: #{binary() => any()}.
 
 %% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"ResourceId">> => string(),
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% accept_account_link_invitation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"LinkId">> := string()
+%% }
+-type accept_account_link_invitation_request() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_workspace_application_result() :: #{
@@ -888,6 +960,15 @@
 -type update_workspace_bundle_request() :: #{binary() => any()}.
 
 %% Example:
+%% account_link() :: #{
+%%   <<"AccountLinkId">> => string(),
+%%   <<"AccountLinkStatus">> => list(any()),
+%%   <<"SourceAccountId">> => string(),
+%%   <<"TargetAccountId">> => string()
+%% }
+-type account_link() :: #{binary() => any()}.
+
+%% Example:
 %% resource_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -913,6 +994,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_connection_alias_permissions_result() :: #{binary() => any()}.
+
+%% Example:
+%% reject_account_link_invitation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"LinkId">> := string()
+%% }
+-type reject_account_link_invitation_request() :: #{binary() => any()}.
 
 %% Example:
 %% deploy_workspace_applications_result() :: #{
@@ -976,6 +1064,12 @@
 -type describe_applications_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_account_link_result() :: #{
+%%   <<"AccountLink">> => account_link()
+%% }
+-type get_account_link_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_application_associations_result() :: #{
 %%   <<"Associations">> => list(application_resource_association()()),
 %%   <<"NextToken">> => string()
@@ -1028,6 +1122,13 @@
 %%   <<"DeviceTypeZeroClient">> => list(any())
 %% }
 -type workspace_access_properties() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_links_result() :: #{
+%%   <<"AccountLinks">> => list(account_link()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_links_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_workspace_directories_request() :: #{
@@ -1228,6 +1329,12 @@
 
 %% }
 -type create_tags_result() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
 %% workspace() :: #{
@@ -1452,6 +1559,12 @@
 -type resource_associated_exception() :: #{binary() => any()}.
 
 %% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
 %% workspace_directory() :: #{
 %%   <<"Alias">> => string(),
 %%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
@@ -1505,6 +1618,7 @@
 
 %% Example:
 %% describe_account_result() :: #{
+%%   <<"DedicatedTenancyAccountType">> => list(any()),
 %%   <<"DedicatedTenancyManagementCidrRange">> => string(),
 %%   <<"DedicatedTenancySupport">> => list(any())
 %% }
@@ -1798,6 +1912,12 @@
 -type client_properties_result() :: #{binary() => any()}.
 
 %% Example:
+%% reject_account_link_invitation_result() :: #{
+%%   <<"AccountLink">> => account_link()
+%% }
+-type reject_account_link_invitation_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_applications_result() :: #{
 %%   <<"Applications">> => list(work_space_application()()),
 %%   <<"NextToken">> => string()
@@ -1862,6 +1982,13 @@
 %% }
 -type migrate_workspace_result() :: #{binary() => any()}.
 
+-type accept_account_link_invitation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type associate_connection_alias_errors() ::
     operation_not_supported_exception() | 
     resource_associated_exception() | 
@@ -1905,6 +2032,12 @@
     resource_limit_exceeded_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception().
+
+-type create_account_link_invitation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
 
 -type create_connect_client_add_in_errors() ::
     resource_already_exists_exception() | 
@@ -1969,6 +2102,13 @@
 -type create_workspaces_errors() ::
     invalid_parameter_values_exception() | 
     resource_limit_exceeded_exception().
+
+-type delete_account_link_invitation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_client_branding_errors() ::
     access_denied_exception() | 
@@ -2139,6 +2279,12 @@
     resource_not_found_exception() | 
     resource_in_use_exception().
 
+-type get_account_link_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type import_client_branding_errors() ::
     access_denied_exception() | 
     invalid_parameter_values_exception() | 
@@ -2152,6 +2298,11 @@
     invalid_parameter_values_exception() | 
     resource_limit_exceeded_exception() | 
     resource_not_found_exception().
+
+-type list_account_links_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_available_management_cidr_ranges_errors() ::
     access_denied_exception() | 
@@ -2235,6 +2386,13 @@
     resource_not_found_exception() | 
     unsupported_network_configuration_exception().
 
+-type reject_account_link_invitation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type restore_workspace_errors() ::
     operation_not_supported_exception() | 
     access_denied_exception() | 
@@ -2285,6 +2443,26 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Accepts the account link invitation.
+%%
+%% There's currently no unlinking capability after you accept the account
+%% linking invitation.
+-spec accept_account_link_invitation(aws_client:aws_client(), accept_account_link_invitation_request()) ->
+    {ok, accept_account_link_invitation_result(), tuple()} |
+    {error, any()} |
+    {error, accept_account_link_invitation_errors(), tuple()}.
+accept_account_link_invitation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    accept_account_link_invitation(Client, Input, []).
+
+-spec accept_account_link_invitation(aws_client:aws_client(), accept_account_link_invitation_request(), proplists:proplist()) ->
+    {ok, accept_account_link_invitation_result(), tuple()} |
+    {error, any()} |
+    {error, accept_account_link_invitation_errors(), tuple()}.
+accept_account_link_invitation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcceptAccountLinkInvitation">>, Input, Options).
 
 %% @doc Associates the specified connection alias with the specified
 %% directory to enable
@@ -2410,6 +2588,23 @@ copy_workspace_image(Client, Input)
 copy_workspace_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyWorkspaceImage">>, Input, Options).
+
+%% @doc Creates the account link invitation.
+-spec create_account_link_invitation(aws_client:aws_client(), create_account_link_invitation_request()) ->
+    {ok, create_account_link_invitation_result(), tuple()} |
+    {error, any()} |
+    {error, create_account_link_invitation_errors(), tuple()}.
+create_account_link_invitation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_account_link_invitation(Client, Input, []).
+
+-spec create_account_link_invitation(aws_client:aws_client(), create_account_link_invitation_request(), proplists:proplist()) ->
+    {ok, create_account_link_invitation_result(), tuple()} |
+    {error, any()} |
+    {error, create_account_link_invitation_errors(), tuple()}.
+create_account_link_invitation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAccountLinkInvitation">>, Input, Options).
 
 %% @doc Creates a client-add-in for Amazon Connect within a directory.
 %%
@@ -2636,6 +2831,23 @@ create_workspaces(Client, Input)
 create_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkspaces">>, Input, Options).
+
+%% @doc Deletes the account link invitation.
+-spec delete_account_link_invitation(aws_client:aws_client(), delete_account_link_invitation_request()) ->
+    {ok, delete_account_link_invitation_result(), tuple()} |
+    {error, any()} |
+    {error, delete_account_link_invitation_errors(), tuple()}.
+delete_account_link_invitation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_account_link_invitation(Client, Input, []).
+
+-spec delete_account_link_invitation(aws_client:aws_client(), delete_account_link_invitation_request(), proplists:proplist()) ->
+    {ok, delete_account_link_invitation_result(), tuple()} |
+    {error, any()} |
+    {error, delete_account_link_invitation_errors(), tuple()}.
+delete_account_link_invitation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAccountLinkInvitation">>, Input, Options).
 
 %% @doc Deletes customized client branding.
 %%
@@ -3329,6 +3541,23 @@ disassociate_workspace_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateWorkspaceApplication">>, Input, Options).
 
+%% @doc Retrieves account link information.
+-spec get_account_link(aws_client:aws_client(), get_account_link_request()) ->
+    {ok, get_account_link_result(), tuple()} |
+    {error, any()} |
+    {error, get_account_link_errors(), tuple()}.
+get_account_link(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_account_link(Client, Input, []).
+
+-spec get_account_link(aws_client:aws_client(), get_account_link_request(), proplists:proplist()) ->
+    {ok, get_account_link_result(), tuple()} |
+    {error, any()} |
+    {error, get_account_link_errors(), tuple()}.
+get_account_link(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAccountLink">>, Input, Options).
+
 %% @doc Imports client branding.
 %%
 %% Client branding allows you to customize your WorkSpace's client
@@ -3397,6 +3626,23 @@ import_workspace_image(Client, Input)
 import_workspace_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportWorkspaceImage">>, Input, Options).
+
+%% @doc Lists all account links.
+-spec list_account_links(aws_client:aws_client(), list_account_links_request()) ->
+    {ok, list_account_links_result(), tuple()} |
+    {error, any()} |
+    {error, list_account_links_errors(), tuple()}.
+list_account_links(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_account_links(Client, Input, []).
+
+-spec list_account_links(aws_client:aws_client(), list_account_links_request(), proplists:proplist()) ->
+    {ok, list_account_links_result(), tuple()} |
+    {error, any()} |
+    {error, list_account_links_errors(), tuple()}.
+list_account_links(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAccountLinks">>, Input, Options).
 
 %% @doc Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
 %% that you can use
@@ -3739,6 +3985,23 @@ register_workspace_directory(Client, Input)
 register_workspace_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterWorkspaceDirectory">>, Input, Options).
+
+%% @doc Rejects the account link invitation.
+-spec reject_account_link_invitation(aws_client:aws_client(), reject_account_link_invitation_request()) ->
+    {ok, reject_account_link_invitation_result(), tuple()} |
+    {error, any()} |
+    {error, reject_account_link_invitation_errors(), tuple()}.
+reject_account_link_invitation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reject_account_link_invitation(Client, Input, []).
+
+-spec reject_account_link_invitation(aws_client:aws_client(), reject_account_link_invitation_request(), proplists:proplist()) ->
+    {ok, reject_account_link_invitation_result(), tuple()} |
+    {error, any()} |
+    {error, reject_account_link_invitation_errors(), tuple()}.
+reject_account_link_invitation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RejectAccountLinkInvitation">>, Input, Options).
 
 %% @doc Restores the specified WorkSpace to its last known healthy state.
 %%

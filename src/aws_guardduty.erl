@@ -332,6 +332,7 @@
 %%   <<"Country">> => country(),
 %%   <<"GeoLocation">> => geo_location(),
 %%   <<"IpAddressV4">> => string(),
+%%   <<"IpAddressV6">> => string(),
 %%   <<"Organization">> => organization()
 %% }
 -type remote_ip_details() :: #{binary() => any()}.
@@ -2181,7 +2182,8 @@
 
 %% Example:
 %% local_ip_details() :: #{
-%%   <<"IpAddressV4">> => string()
+%%   <<"IpAddressV4">> => string(),
+%%   <<"IpAddressV6">> => string()
 %% }
 -type local_ip_details() :: #{binary() => any()}.
 

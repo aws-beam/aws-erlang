@@ -201,7 +201,8 @@
 %% source_cloud_properties() :: #{
 %%   <<"originAccountID">> => string(),
 %%   <<"originAvailabilityZone">> => string(),
-%%   <<"originRegion">> => string()
+%%   <<"originRegion">> => string(),
+%%   <<"sourceOutpostArn">> => string()
 %% }
 -type source_cloud_properties() :: #{binary() => any()}.
 
@@ -824,7 +825,8 @@
 %%   <<"etaDateTime">> => string(),
 %%   <<"lagDuration">> => string(),
 %%   <<"replicatedDisks">> => list(recovery_instance_data_replication_info_replicated_disk()()),
-%%   <<"stagingAvailabilityZone">> => string()
+%%   <<"stagingAvailabilityZone">> => string(),
+%%   <<"stagingOutpostArn">> => string()
 %% }
 -type recovery_instance_data_replication_info() :: #{binary() => any()}.
 
@@ -878,7 +880,8 @@
 %%   <<"etaDateTime">> => string(),
 %%   <<"lagDuration">> => string(),
 %%   <<"replicatedDisks">> => list(data_replication_info_replicated_disk()()),
-%%   <<"stagingAvailabilityZone">> => string()
+%%   <<"stagingAvailabilityZone">> => string(),
+%%   <<"stagingOutpostArn">> => string()
 %% }
 -type data_replication_info() :: #{binary() => any()}.
 
@@ -1243,6 +1246,7 @@
 %%   <<"pointInTimeSnapshotDateTime">> => string(),
 %%   <<"recoveryInstanceID">> => string(),
 %%   <<"recoveryInstanceProperties">> => recovery_instance_properties(),
+%%   <<"sourceOutpostArn">> => string(),
 %%   <<"sourceServerID">> => string(),
 %%   <<"tags">> => map()
 %% }

@@ -208,6 +208,7 @@
 %% monitoring_configuration() :: #{
 %%   <<"cloudWatchLoggingConfiguration">> => cloud_watch_logging_configuration(),
 %%   <<"managedPersistenceMonitoringConfiguration">> => managed_persistence_monitoring_configuration(),
+%%   <<"prometheusMonitoringConfiguration">> => prometheus_monitoring_configuration(),
 %%   <<"s3MonitoringConfiguration">> => s3_monitoring_configuration()
 %% }
 -type monitoring_configuration() :: #{binary() => any()}.
@@ -256,6 +257,13 @@
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% prometheus_monitoring_configuration() :: #{
+%%   <<"remoteWriteUrl">> => string()
+%% }
+-type prometheus_monitoring_configuration() :: #{binary() => any()}.
 
 
 %% Example:
