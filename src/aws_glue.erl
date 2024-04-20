@@ -1444,6 +1444,7 @@
 %%   <<"Permissions">> => list(list(any())()),
 %%   <<"QueryAuthorizationId">> => string(),
 %%   <<"ResourceArn">> => string(),
+%%   <<"RowFilter">> => string(),
 %%   <<"Table">> => table()
 %% }
 -type get_unfiltered_table_metadata_response() :: #{binary() => any()}.

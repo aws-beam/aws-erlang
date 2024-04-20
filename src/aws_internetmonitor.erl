@@ -51,6 +51,9 @@
          get_health_event/3,
          get_health_event/5,
          get_health_event/6,
+         get_internet_event/2,
+         get_internet_event/4,
+         get_internet_event/5,
          get_monitor/2,
          get_monitor/4,
          get_monitor/5,
@@ -63,6 +66,9 @@
          list_health_events/2,
          list_health_events/4,
          list_health_events/5,
+         list_internet_events/1,
+         list_internet_events/3,
+         list_internet_events/4,
          list_monitors/1,
          list_monitors/3,
          list_monitors/4,
@@ -191,6 +197,32 @@
 
 
 %% Example:
+%% client_location() :: #{
+%%   <<"ASName">> => [string()],
+%%   <<"ASNumber">> => [float()],
+%%   <<"City">> => [string()],
+%%   <<"Country">> => [string()],
+%%   <<"Latitude">> => [float()],
+%%   <<"Longitude">> => [float()],
+%%   <<"Metro">> => [string()],
+%%   <<"Subdivision">> => [string()]
+%% }
+-type client_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_internet_events_input() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"EventStatus">> => [string()],
+%%   <<"EventType">> => [string()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type list_internet_events_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -259,6 +291,10 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+%% Example:
+%% get_internet_event_input() :: #{}
+-type get_internet_event_input() :: #{}.
+
 
 %% Example:
 %% internet_measurements_log_delivery() :: #{
@@ -283,6 +319,19 @@
 %%   <<"LogDeliveryStatus">> => string()
 %% }
 -type s3_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_internet_event_output() :: #{
+%%   <<"ClientLocation">> => client_location(),
+%%   <<"EndedAt">> => [non_neg_integer()],
+%%   <<"EventArn">> => string(),
+%%   <<"EventId">> => string(),
+%%   <<"EventStatus">> => string(),
+%%   <<"EventType">> => string(),
+%%   <<"StartedAt">> => [non_neg_integer()]
+%% }
+-type get_internet_event_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -509,6 +558,27 @@
 
 
 %% Example:
+%% list_internet_events_output() :: #{
+%%   <<"InternetEvents">> => list(internet_event_summary()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_internet_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internet_event_summary() :: #{
+%%   <<"ClientLocation">> => client_location(),
+%%   <<"EndedAt">> => [non_neg_integer()],
+%%   <<"EventArn">> => string(),
+%%   <<"EventId">> => string(),
+%%   <<"EventStatus">> => string(),
+%%   <<"EventType">> => string(),
+%%   <<"StartedAt">> => [non_neg_integer()]
+%% }
+-type internet_event_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_query_input() :: #{
 %%   <<"EndTime">> := [non_neg_integer()],
 %%   <<"FilterParameters">> => list(filter_parameter()()),
@@ -560,6 +630,12 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type get_internet_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type get_monitor_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -581,6 +657,12 @@
     internal_server_exception().
 
 -type list_health_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_internet_events_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -732,7 +814,7 @@ delete_monitor(Client, MonitorName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets information the Amazon CloudWatch Internet Monitor has created
+%% @doc Gets information that Amazon CloudWatch Internet Monitor has created
 %% and stored about a health event for a specified monitor.
 %%
 %% This information includes the impacted locations,
@@ -781,6 +863,54 @@ get_health_event(Client, EventId, MonitorName, QueryMap, HeadersMap, Options0)
         {<<"LinkedAccountId">>, maps:get(<<"LinkedAccountId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information that Amazon CloudWatch Internet Monitor has
+%% generated about an internet event.
+%%
+%% Internet Monitor displays information about
+%% recent global health events, called internet events, on a global outages
+%% map that is available to all Amazon Web Services
+%% customers.
+%%
+%% The information returned here includes the impacted location,
+%% when the event started and (if the event is over) ended, the type of event
+%% (`PERFORMANCE' or `AVAILABILITY'),
+%% and the status (`ACTIVE' or `RESOLVED').
+-spec get_internet_event(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_internet_event_output(), tuple()} |
+    {error, any()} |
+    {error, get_internet_event_errors(), tuple()}.
+get_internet_event(Client, EventId)
+  when is_map(Client) ->
+    get_internet_event(Client, EventId, #{}, #{}).
+
+-spec get_internet_event(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_internet_event_output(), tuple()} |
+    {error, any()} |
+    {error, get_internet_event_errors(), tuple()}.
+get_internet_event(Client, EventId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_internet_event(Client, EventId, QueryMap, HeadersMap, []).
+
+-spec get_internet_event(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_internet_event_output(), tuple()} |
+    {error, any()} |
+    {error, get_internet_event_errors(), tuple()}.
+get_internet_event(Client, EventId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20210603/InternetEvents/", aws_util:encode_uri(EventId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -937,7 +1067,7 @@ get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
 %% Monitor.
 %%
 %% Returns information for health events including the event start and end
-%% time and
+%% times, and
 %% the status.
 %%
 %% Health events that have start times during the time frame that is
@@ -980,6 +1110,69 @@ list_health_events(Client, MonitorName, QueryMap, HeadersMap, Options0)
         {<<"EventStatus">>, maps:get(<<"EventStatus">>, QueryMap, undefined)},
         {<<"LinkedAccountId">>, maps:get(<<"LinkedAccountId">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"StartTime">>, maps:get(<<"StartTime">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists internet events that cause performance or availability issues
+%% for client locations.
+%%
+%% Amazon CloudWatch Internet Monitor displays information about
+%% recent global health events, called internet events, on a global outages
+%% map that is available to all Amazon Web Services
+%% customers.
+%%
+%% You can constrain the list of internet events returned by providing a
+%% start time and end time to define a total
+%% time frame for events you want to list. Both start time and end time
+%% specify the time when an event started. End time
+%% is optional. If you don't include it, the default end time is the
+%% current time.
+%%
+%% You can also limit the events returned to a specific status
+%% (`ACTIVE' or `RESOLVED') or type (`PERFORMANCE' or
+%% `AVAILABILITY').
+-spec list_internet_events(aws_client:aws_client()) ->
+    {ok, list_internet_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_internet_events_errors(), tuple()}.
+list_internet_events(Client)
+  when is_map(Client) ->
+    list_internet_events(Client, #{}, #{}).
+
+-spec list_internet_events(aws_client:aws_client(), map(), map()) ->
+    {ok, list_internet_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_internet_events_errors(), tuple()}.
+list_internet_events(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_internet_events(Client, QueryMap, HeadersMap, []).
+
+-spec list_internet_events(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_internet_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_internet_events_errors(), tuple()}.
+list_internet_events(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20210603/InternetEvents"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"EndTime">>, maps:get(<<"EndTime">>, QueryMap, undefined)},
+        {<<"EventStatus">>, maps:get(<<"EventStatus">>, QueryMap, undefined)},
+        {<<"EventType">>, maps:get(<<"EventType">>, QueryMap, undefined)},
+        {<<"InternetEventMaxResults">>, maps:get(<<"InternetEventMaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
         {<<"StartTime">>, maps:get(<<"StartTime">>, QueryMap, undefined)}
       ],
