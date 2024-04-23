@@ -111,6 +111,8 @@
          list_workflows/3,
          send_workflow_step_state/2,
          send_workflow_step_state/3,
+         start_directory_listing/2,
+         start_directory_listing/3,
          start_file_transfer/2,
          start_file_transfer/3,
          start_server/2,
@@ -1320,6 +1322,15 @@
 -type list_users_request() :: #{binary() => any()}.
 
 %% Example:
+%% start_directory_listing_request() :: #{
+%%   <<"ConnectorId">> := string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"OutputDirectoryPath">> := string(),
+%%   <<"RemoteDirectoryPath">> := string()
+%% }
+-type start_directory_listing_request() :: #{binary() => any()}.
+
+%% Example:
 %% listed_certificate() :: #{
 %%   <<"ActiveDate">> => non_neg_integer(),
 %%   <<"Arn">> => string(),
@@ -1410,6 +1421,13 @@
 %%   <<"UserName">> := string()
 %% }
 -type delete_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_directory_listing_response() :: #{
+%%   <<"ListingId">> => string(),
+%%   <<"OutputFileName">> => string()
+%% }
+-type start_directory_listing_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_user_response() :: #{
@@ -1812,6 +1830,13 @@
     throttling_exception() | 
     internal_service_error() | 
     access_denied_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type start_directory_listing_errors() ::
+    throttling_exception() | 
+    internal_service_error() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception().
@@ -2858,6 +2883,74 @@ send_workflow_step_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendWorkflowStepState">>, Input, Options).
 
+%% @doc Retrieves a list of the contents of a directory from a remote SFTP
+%% server.
+%%
+%% You specify the
+%% connector ID, the output path, and the remote directory path. You can also
+%% specify the
+%% optional `MaxItems' value to control the maximum number of items that
+%% are listed
+%% from the remote directory. This API returns a list of all files and
+%% directories in the remote
+%% directory (up to the maximum value), but does not return files or folders
+%% in sub-directories.
+%% That is, it only returns a list of files and directories one-level deep.
+%%
+%% After you receive the listing file, you can provide the files that you
+%% want to transfer to
+%% the `RetrieveFilePaths' parameter of the `StartFileTransfer' API
+%% call.
+%%
+%% The naming convention for the output file is
+%%
+%% ```
+%% connector-ID-listing-ID.json'''. The
+%% output file contains the following information:
+%%
+%% `filePath': the complete path of a remote file, relative to the
+%% directory
+%% of the listing request for your SFTP connector on the remote server.
+%%
+%% `modifiedTimestamp': the last time the file was modified, in UTC time
+%% format. This field is optional. If the remote file attributes don't
+%% contain a timestamp,
+%% it is omitted from the file listing.
+%%
+%% `size': the size of the file, in bytes. This field is optional. If the
+%% remote file attributes don't contain a file size, it is omitted from
+%% the file
+%% listing.
+%%
+%% `path': the complete path of a remote directory, relative to the
+%% directory
+%% of the listing request for your SFTP connector on the remote server.
+%%
+%% `truncated': a flag indicating whether the list output contains all of
+%% the
+%% items contained in the remote directory or not. If your `Truncated'
+%% output
+%% value is true, you can increase the value provided in the optional
+%% `max-items'
+%% input attribute to be able to list more items (up to the maximum allowed
+%% list size of
+%% 10,000 items).
+-spec start_directory_listing(aws_client:aws_client(), start_directory_listing_request()) ->
+    {ok, start_directory_listing_response(), tuple()} |
+    {error, any()} |
+    {error, start_directory_listing_errors(), tuple()}.
+start_directory_listing(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_directory_listing(Client, Input, []).
+
+-spec start_directory_listing(aws_client:aws_client(), start_directory_listing_request(), proplists:proplist()) ->
+    {ok, start_directory_listing_response(), tuple()} |
+    {error, any()} |
+    {error, start_directory_listing_errors(), tuple()}.
+start_directory_listing(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartDirectoryListing">>, Input, Options).
+
 %% @doc Begins a file transfer between local Amazon Web Services storage and
 %% a remote AS2 or SFTP server.
 %%
@@ -2873,7 +2966,7 @@ send_workflow_step_state(Client, Input, Options)
 %%
 %% If you are transferring file from a partner's SFTP server to Amazon
 %% Web Services
-%% storage, you specify one or more `RetreiveFilePaths' to identify the
+%% storage, you specify one or more `RetrieveFilePaths' to identify the
 %% files
 %% you want to transfer, and a `LocalDirectoryPath' to specify the
 %% destination

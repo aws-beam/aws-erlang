@@ -79,6 +79,7 @@
 
 %% Example:
 %% export_tr31_key_block() :: #{
+%%   <<"KeyBlockHeaders">> => key_block_headers(),
 %%   <<"WrappingKeyIdentifier">> => string()
 %% }
 -type export_tr31_key_block() :: #{binary() => any()}.
@@ -426,6 +427,7 @@
 %%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
 %%   <<"ExportToken">> => string(),
 %%   <<"KeyBlockFormat">> => string(),
+%%   <<"KeyBlockHeaders">> => key_block_headers(),
 %%   <<"RandomNonce">> => string(),
 %%   <<"WrappingKeyCertificate">> => string()
 %% }
@@ -553,6 +555,15 @@
 %%   <<"KeyCertificateChain">> => string()
 %% }
 -type get_public_key_certificate_output() :: #{binary() => any()}.
+
+%% Example:
+%% key_block_headers() :: #{
+%%   <<"KeyExportability">> => string(),
+%%   <<"KeyModesOfUse">> => key_modes_of_use(),
+%%   <<"KeyVersion">> => string(),
+%%   <<"OptionalBlocks">> => map()
+%% }
+-type key_block_headers() :: #{binary() => any()}.
 
 -type create_alias_errors() ::
     throttling_exception() | 
@@ -757,23 +768,30 @@
 %% but you can create another alias with the same name in a different Amazon
 %% Web Services Region.
 %%
-%% To change the key that's associated with the alias, call
-%% `UpdateAlias'. To delete the alias, call `DeleteAlias'. These
-%% operations don't affect the underlying key. To get the alias that you
-%% created, call `ListAliases'.
+%% To change the key that's associated with the alias, call UpdateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_UpdateAlias.html.
+%% To delete the alias, call DeleteAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteAlias.html.
+%% These operations don't affect the underlying key. To get the alias
+%% that you created, call ListAliases:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListAliases.html.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% `DeleteAlias'
+%% DeleteAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteAlias.html
 %%
-%% `GetAlias'
+%% GetAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetAlias.html
 %%
-%% `ListAliases'
+%% ListAliases:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListAliases.html
 %%
-%% `UpdateAlias'
+%% UpdateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_UpdateAlias.html
 -spec create_alias(aws_client:aws_client(), create_alias_input()) ->
     {ok, create_alias_output(), tuple()} |
     {error, any()} |
@@ -823,11 +841,14 @@ create_alias(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `DeleteKey'
+%% DeleteKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html
 %%
-%% `GetKey'
+%% GetKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetKey.html
 %%
-%% `ListKeys'
+%% ListKeys:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListKeys.html
 -spec create_key(aws_client:aws_client(), create_key_input()) ->
     {ok, create_key_output(), tuple()} |
     {error, any()} |
@@ -847,23 +868,32 @@ create_key(Client, Input, Options)
 %% @doc Deletes the alias, but doesn't affect the underlying key.
 %%
 %% Each key can have multiple aliases. To get the aliases of all keys, use
-%% the `ListAliases' operation. To change the alias of a key, first use
-%% `DeleteAlias' to delete the current alias and then use
-%% `CreateAlias' to create a new alias. To associate an existing alias
-%% with a different key, call `UpdateAlias'.
+%% the UpdateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_UpdateAlias.html
+%% operation. To change the alias of a key, first use DeleteAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteAlias.html
+%% to delete the current alias and then use CreateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateAlias.html
+%% to create a new alias. To associate an existing alias with a different
+%% key, call UpdateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_UpdateAlias.html.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% `CreateAlias'
+%% CreateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateAlias.html
 %%
-%% `GetAlias'
+%% GetAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetAlias.html
 %%
-%% `ListAliases'
+%% ListAliases:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListAliases.html
 %%
-%% `UpdateAlias'
+%% UpdateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_UpdateAlias.html
 -spec delete_alias(aws_client:aws_client(), delete_alias_input()) ->
     {ok, delete_alias_output(), tuple()} |
     {error, any()} |
@@ -897,19 +927,22 @@ delete_alias(Client, Input, Options)
 %%
 %% You should delete a key only when you are sure that you don't need to
 %% use it anymore and no other parties are utilizing this key. If you
-%% aren't sure, consider deactivating it instead by calling
-%% `StopKeyUsage'.
+%% aren't sure, consider deactivating it instead by calling StopKeyUsage:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StopKeyUsage.html.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% `RestoreKey'
+%% RestoreKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_RestoreKey.html
 %%
-%% `StartKeyUsage'
+%% StartKeyUsage:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StartKeyUsage.html
 %%
-%% `StopKeyUsage'
+%% StopKeyUsage:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StopKeyUsage.html
 -spec delete_key(aws_client:aws_client(), delete_key_input()) ->
     {ok, delete_key_output(), tuple()} |
     {error, any()} |
@@ -961,6 +994,24 @@ delete_key(Client, Input, Options)
 %% within Amazon Web Services Payment Cryptography and has to be re-generated
 %% each time during export.
 %%
+%% For key exchange using TR-31 or TR-34 key blocks, you can also export
+%% optional blocks within the key block header which contain additional
+%% attribute information about the key. The `KeyVersion' within
+%% `KeyBlockHeaders' indicates the version of the key within the key
+%% block. Furthermore, `KeyExportability' within `KeyBlockHeaders'
+%% can be used to further restrict exportability of the key after export from
+%% Amazon Web Services Payment Cryptography.
+%%
+%% The `OptionalBlocks' contain the additional data related to the key.
+%% For information on data type that can be included within optional blocks,
+%% refer to ASC X9.143-2022:
+%% https://webstore.ansi.org/standards/ascx9/ansix91432022.
+%%
+%% Data included in key block headers is signed but transmitted in clear
+%% text. Sensitive or confidential information should not be included in
+%% optional blocks. Refer to ASC X9.143-2022 standard for information on
+%% allowed data type.
+%%
 %% To export initial keys (KEK) or IPEK using TR-34
 %%
 %% Using this operation, you can export initial key using TR-34 asymmetric
@@ -972,24 +1023,27 @@ delete_key(Client, Input, Options)
 %% KRD is the user receiving the key.
 %%
 %% To initiate TR-34 key export, the KRD must obtain an export token by
-%% calling `GetParametersForExport'. This operation also generates a key
-%% pair for the purpose of key export, signs the key and returns back the
-%% signing public key certificate (also known as KDH signing certificate) and
-%% root certificate chain. The KDH uses the private key to sign the the
-%% export payload and the signing public key certificate is provided to KRD
-%% to verify the signature. The KRD can import the root certificate into its
-%% Hardware Security Module (HSM), as required. The export token and the
-%% associated KDH signing certificate expires after 7 days.
+%% calling GetParametersForExport:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetParametersForExport.html.
+%% This operation also generates a key pair for the purpose of key export,
+%% signs the key and returns back the signing public key certificate (also
+%% known as KDH signing certificate) and root certificate chain. The KDH uses
+%% the private key to sign the the export payload and the signing public key
+%% certificate is provided to KRD to verify the signature. The KRD can import
+%% the root certificate into its Hardware Security Module (HSM), as required.
+%% The export token and the associated KDH signing certificate expires after
+%% 7 days.
 %%
 %% Next the KRD generates a key pair for the the purpose of encrypting the
 %% KDH key and provides the public key cerificate (also known as KRD wrapping
 %% certificate) back to KDH. The KRD will also import the root cerificate
-%% chain into Amazon Web Services Payment Cryptography by calling
-%% `ImportKey' for `RootCertificatePublicKey'. The KDH, Amazon Web
-%% Services Payment Cryptography, will use the KRD wrapping cerificate to
-%% encrypt (wrap) the key under export and signs it with signing private key
-%% to generate a TR-34 WrappedKeyBlock. For more information on TR-34 key
-%% export, see section Exporting symmetric keys:
+%% chain into Amazon Web Services Payment Cryptography by calling ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
+%% for `RootCertificatePublicKey'. The KDH, Amazon Web Services Payment
+%% Cryptography, will use the KRD wrapping cerificate to encrypt (wrap) the
+%% key under export and signs it with signing private key to generate a TR-34
+%% WrappedKeyBlock. For more information on TR-34 key export, see section
+%% Exporting symmetric keys:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-export.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%
@@ -1006,8 +1060,8 @@ delete_key(Client, Input, Options)
 %% `CertificateAuthorityPublicKeyIdentifier': The `KeyARN' of the
 %% certificate chain that signed the KRD wrapping key certificate.
 %%
-%% `ExportToken': Obtained from KDH by calling
-%% `GetParametersForImport'.
+%% `ExportToken': Obtained from KDH by calling GetParametersForImport:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetParametersForImport.html.
 %%
 %% `WrappingKeyCertificate': The public key certificate in PEM format
 %% (base64 encoded) of the KRD wrapping key Amazon Web Services Payment
@@ -1026,8 +1080,9 @@ delete_key(Client, Input, Options)
 %% key pair on the receiving HSM and obtain the public key certificate in PEM
 %% format (base64 encoded) for the purpose of wrapping and the root
 %% certifiate chain. Import the root certificate into Amazon Web Services
-%% Payment Cryptography by calling `ImportKey' for
-%% `RootCertificatePublicKey'.
+%% Payment Cryptography by calling ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
+%% for `RootCertificatePublicKey'.
 %%
 %% Next call `ExportKey' and set the following parameters:
 %%
@@ -1050,7 +1105,10 @@ delete_key(Client, Input, Options)
 %% Using this operation, you can export working keys or IPEK using TR-31
 %% symmetric key exchange. In TR-31, you must use an initial key such as KEK
 %% to encrypt or wrap the key under export. To establish a KEK, you can use
-%% `CreateKey' or `ImportKey'.
+%% CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html
+%% or ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
 %%
 %% Set the following parameters:
 %%
@@ -1070,9 +1128,11 @@ delete_key(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `GetParametersForExport'
+%% GetParametersForExport:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetParametersForExport.html
 %%
-%% `ImportKey'
+%% ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 -spec export_key(aws_client:aws_client(), export_key_input()) ->
     {ok, export_key_output(), tuple()} |
     {error, any()} |
@@ -1097,13 +1157,17 @@ export_key(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `CreateAlias'
+%% CreateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateAlias.html
 %%
-%% `DeleteAlias'
+%% DeleteAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteAlias.html
 %%
-%% `ListAliases'
+%% ListAliases:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListAliases.html
 %%
-%% `UpdateAlias'
+%% UpdateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_UpdateAlias.html
 -spec get_alias(aws_client:aws_client(), get_alias_input()) ->
     {ok, get_alias_output(), tuple()} |
     {error, any()} |
@@ -1129,11 +1193,14 @@ get_alias(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `CreateKey'
+%% CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html
 %%
-%% `DeleteKey'
+%% DeleteKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html
 %%
-%% `ListKeys'
+%% ListKeys:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListKeys.html
 -spec get_key(aws_client:aws_client(), get_key_input()) ->
     {ok, get_key_output(), tuple()} |
     {error, any()} |
@@ -1155,18 +1222,21 @@ get_key(Client, Input, Options)
 %%
 %% The signing key certificate signs the wrapped key under export within the
 %% TR-34 key payload. The export token and signing key certificate must be in
-%% place and operational before calling `ExportKey'. The export token
-%% expires in 7 days. You can use the same export token to export multiple
-%% keys from your service account.
+%% place and operational before calling ExportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ExportKey.html.
+%% The export token expires in 7 days. You can use the same export token to
+%% export multiple keys from your service account.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% `ExportKey'
+%% ExportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ExportKey.html
 %%
-%% `GetParametersForImport'
+%% GetParametersForImport:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetParametersForImport.html
 -spec get_parameters_for_export(aws_client:aws_client(), get_parameters_for_export_input()) ->
     {ok, get_parameters_for_export_output(), tuple()} |
     {error, any()} |
@@ -1189,17 +1259,21 @@ get_parameters_for_export(Client, Input, Options)
 %%
 %% The wrapping key certificate wraps the key under import. The import token
 %% and wrapping key certificate must be in place and operational before
-%% calling `ImportKey'. The import token expires in 7 days. You can use
-%% the same import token to import multiple keys into your service account.
+%% calling ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
+%% The import token expires in 7 days. You can use the same import token to
+%% import multiple keys into your service account.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% `GetParametersForExport'
+%% GetParametersForExport:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetParametersForExport.html
 %%
-%% `ImportKey'
+%% ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 -spec get_parameters_for_import(aws_client:aws_client(), get_parameters_for_import_input()) ->
     {ok, get_parameters_for_import_output(), tuple()} |
     {error, any()} |
@@ -1328,13 +1402,14 @@ get_public_key_certificate(Client, Input, Options)
 %% Cryptography who receives the key.
 %%
 %% To initiate TR-34 key import, the KDH must obtain an import token by
-%% calling `GetParametersForImport'. This operation generates an
-%% encryption keypair for the purpose of key import, signs the key and
-%% returns back the wrapping key certificate (also known as KRD wrapping
-%% certificate) and the root certificate chain. The KDH must trust and
-%% install the KRD wrapping certificate on its HSM and use it to encrypt
-%% (wrap) the KDH key during TR-34 WrappedKeyBlock generation. The import
-%% token and associated KRD wrapping certificate expires after 7 days.
+%% calling GetParametersForImport:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetParametersForImport.html.
+%% This operation generates an encryption keypair for the purpose of key
+%% import, signs the key and returns back the wrapping key certificate (also
+%% known as KRD wrapping certificate) and the root certificate chain. The KDH
+%% must trust and install the KRD wrapping certificate on its HSM and use it
+%% to encrypt (wrap) the KDH key during TR-34 WrappedKeyBlock generation. The
+%% import token and associated KRD wrapping certificate expires after 7 days.
 %%
 %% Next the KDH generates a key pair for the purpose of signing the encrypted
 %% KDH key and provides the public certificate of the signing key to Amazon
@@ -1352,8 +1427,8 @@ get_public_key_certificate(Client, Input, Options)
 %% `CertificateAuthorityPublicKeyIdentifier': The `KeyARN' of the
 %% certificate chain that signed the KDH signing key certificate.
 %%
-%% `ImportToken': Obtained from KRD by calling
-%% `GetParametersForImport'.
+%% `ImportToken': Obtained from KRD by calling GetParametersForImport:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetParametersForImport.html.
 %%
 %% `WrappedKeyBlock': The TR-34 wrapped key material from KDH. It
 %% contains the KDH key under import, wrapped with KRD wrapping certificate
@@ -1370,12 +1445,13 @@ get_public_key_certificate(Client, Input, Options)
 %%
 %% Using this operation, you can import initial key using asymmetric RSA wrap
 %% and unwrap key exchange method. To initiate import, call
-%% `GetParametersForImport' with `KeyMaterial' set to
-%% `KEY_CRYPTOGRAM' to generate an import token. This operation also
-%% generates an encryption keypair for the purpose of key import, signs the
-%% key and returns back the wrapping key certificate in PEM format (base64
-%% encoded) and its root certificate chain. The import token and associated
-%% KRD wrapping certificate expires after 7 days.
+%% GetParametersForImport:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetParametersForImport.html
+%% with `KeyMaterial' set to `KEY_CRYPTOGRAM' to generate an import
+%% token. This operation also generates an encryption keypair for the purpose
+%% of key import, signs the key and returns back the wrapping key certificate
+%% in PEM format (base64 encoded) and its root certificate chain. The import
+%% token and associated KRD wrapping certificate expires after 7 days.
 %%
 %% You must trust and install the wrapping certificate and its certificate
 %% chain on the sending HSM and use it to wrap the key under export for
@@ -1388,8 +1464,9 @@ get_public_key_certificate(Client, Input, Options)
 %% Amazon Web Services Payment Cryptography uses TR-31 symmetric key exchange
 %% norm to import working keys. A KEK must be established within Amazon Web
 %% Services Payment Cryptography by using TR-34 key import or by using
-%% `CreateKey'. To initiate a TR-31 key import, set the following
-%% parameters:
+%% CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html.
+%% To initiate a TR-31 key import, set the following parameters:
 %%
 %% `KeyMaterial': Use `Tr31KeyBlock' parameters.
 %%
@@ -1406,9 +1483,11 @@ get_public_key_certificate(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `ExportKey'
+%% ExportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ExportKey.html
 %%
-%% `GetParametersForImport'
+%% GetParametersForImport:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetParametersForImport.html
 -spec import_key(aws_client:aws_client(), import_key_input()) ->
     {ok, import_key_output(), tuple()} |
     {error, any()} |
@@ -1445,13 +1524,17 @@ import_key(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `CreateAlias'
+%% CreateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateAlias.html
 %%
-%% `DeleteAlias'
+%% DeleteAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteAlias.html
 %%
-%% `GetAlias'
+%% GetAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetAlias.html
 %%
-%% `UpdateAlias'
+%% UpdateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_UpdateAlias.html
 -spec list_aliases(aws_client:aws_client(), list_aliases_input()) ->
     {ok, list_aliases_output(), tuple()} |
     {error, any()} |
@@ -1486,11 +1569,14 @@ list_aliases(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `CreateKey'
+%% CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html
 %%
-%% `DeleteKey'
+%% DeleteKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html
 %%
-%% `GetKey'
+%% GetKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetKey.html
 -spec list_keys(aws_client:aws_client(), list_keys_input()) ->
     {ok, list_keys_output(), tuple()} |
     {error, any()} |
@@ -1522,9 +1608,11 @@ list_keys(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `TagResource'
+%% TagResource:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_TagResource.html
 %%
-%% `UntagResource'
+%% UntagResource:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_UntagResource.html
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
@@ -1556,11 +1644,14 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `DeleteKey'
+%% DeleteKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html
 %%
-%% `StartKeyUsage'
+%% StartKeyUsage:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StartKeyUsage.html
 %%
-%% `StopKeyUsage'
+%% StopKeyUsage:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StopKeyUsage.html
 -spec restore_key(aws_client:aws_client(), restore_key_input()) ->
     {ok, restore_key_output(), tuple()} |
     {error, any()} |
@@ -1586,7 +1677,8 @@ restore_key(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `StopKeyUsage'
+%% StopKeyUsage:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StopKeyUsage.html
 -spec start_key_usage(aws_client:aws_client(), start_key_usage_input()) ->
     {ok, start_key_usage_output(), tuple()} |
     {error, any()} |
@@ -1606,17 +1698,22 @@ start_key_usage(Client, Input, Options)
 %% @doc Disables an Amazon Web Services Payment Cryptography key, which makes
 %% it inactive within Amazon Web Services Payment Cryptography.
 %%
-%% You can use this operation instead of `DeleteKey' to deactivate a key.
-%% You can enable the key in the future by calling `StartKeyUsage'.
+%% You can use this operation instead of DeleteKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html
+%% to deactivate a key. You can enable the key in the future by calling
+%% StartKeyUsage:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StartKeyUsage.html.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% `DeleteKey'
+%% DeleteKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html
 %%
-%% `StartKeyUsage'
+%% StartKeyUsage:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StartKeyUsage.html
 -spec stop_key_usage(aws_client:aws_client(), stop_key_usage_input()) ->
     {ok, stop_key_usage_output(), tuple()} |
     {error, any()} |
@@ -1644,16 +1741,19 @@ stop_key_usage(Client, Input, Options)
 %% add a tag, specify a new tag key and a tag value. To edit a tag, specify
 %% an existing tag key and a new tag value. You can also add tags to an
 %% Amazon Web Services Payment Cryptography key when you create it with
-%% `CreateKey'.
+%% CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% `ListTagsForResource'
+%% ListTagsForResource:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListTagsForResource.html
 %%
-%% `UntagResource'
+%% UntagResource:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_UntagResource.html
 -spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
@@ -1680,9 +1780,11 @@ tag_resource(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `ListTagsForResource'
+%% ListTagsForResource:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListTagsForResource.html
 %%
-%% `TagResource'
+%% TagResource:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_TagResource.html
 -spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
@@ -1712,13 +1814,17 @@ untag_resource(Client, Input, Options)
 %%
 %% Related operations:
 %%
-%% `CreateAlias'
+%% CreateAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateAlias.html
 %%
-%% `DeleteAlias'
+%% DeleteAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteAlias.html
 %%
-%% `GetAlias'
+%% GetAlias:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetAlias.html
 %%
-%% `ListAliases'
+%% ListAliases:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListAliases.html
 -spec update_alias(aws_client:aws_client(), update_alias_input()) ->
     {ok, update_alias_output(), tuple()} |
     {error, any()} |

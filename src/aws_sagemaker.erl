@@ -10218,10 +10218,14 @@
 
 %% Example:
 %% default_space_settings() :: #{
+%%   <<"CustomFileSystemConfigs">> => list(list()()),
+%%   <<"CustomPosixUserConfig">> => custom_posix_user_config(),
 %%   <<"ExecutionRole">> => string(),
+%%   <<"JupyterLabAppSettings">> => jupyter_lab_app_settings(),
 %%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
 %%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
-%%   <<"SecurityGroups">> => list(string()())
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SpaceStorageSettings">> => default_space_storage_settings()
 %% }
 -type default_space_settings() :: #{binary() => any()}.
 

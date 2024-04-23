@@ -131,6 +131,7 @@
 %%   <<"actionGroupState">> => list(any()),
 %%   <<"apiSchema">> => list(),
 %%   <<"description">> => string(),
+%%   <<"functionSchema">> => list(),
 %%   <<"parentActionGroupSignature">> => list(any())
 %% }
 -type update_agent_action_group_request() :: #{binary() => any()}.
@@ -286,6 +287,15 @@
 
 
 %% Example:
+%% parameter_detail() :: #{
+%%   <<"description">> => string(),
+%%   <<"required">> => [boolean()],
+%%   <<"type">> => list(any())
+%% }
+-type parameter_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_knowledge_base_response() :: #{
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"status">> => list(any())
@@ -358,6 +368,15 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_bedrock_agent_function() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"parameters">> => map()
+%% }
+-type aws_bedrock_agent_function() :: #{binary() => any()}.
 
 
 %% Example:
@@ -834,6 +853,7 @@
 %%   <<"apiSchema">> => list(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"functionSchema">> => list(),
 %%   <<"parentActionGroupSignature">> => list(any())
 %% }
 -type create_agent_action_group_request() :: #{binary() => any()}.
@@ -894,6 +914,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"functionSchema">> => list(),
 %%   <<"parentActionSignature">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }

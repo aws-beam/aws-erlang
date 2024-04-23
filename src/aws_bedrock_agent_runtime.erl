@@ -17,11 +17,27 @@
 
 
 %% Example:
+%% function_invocation_input() :: #{
+%%   <<"actionGroup">> => [string()],
+%%   <<"function">> => [string()],
+%%   <<"parameters">> => list(function_parameter()())
+%% }
+-type function_invocation_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% rationale() :: #{
 %%   <<"text">> => string(),
 %%   <<"traceId">> => string()
 %% }
 -type rationale() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_request_body() :: #{
+%%   <<"content">> => map()
+%% }
+-type api_request_body() :: #{binary() => any()}.
 
 
 %% Example:
@@ -41,6 +57,15 @@
 %%   <<"resourceName">> => string()
 %% }
 -type bad_gateway_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_parameter() :: #{
+%%   <<"name">> => [string()],
+%%   <<"type">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type function_parameter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -95,6 +120,7 @@
 %% action_group_invocation_input() :: #{
 %%   <<"actionGroupName">> => string(),
 %%   <<"apiPath">> => string(),
+%%   <<"function">> => string(),
 %%   <<"parameters">> => list(parameter()()),
 %%   <<"requestBody">> => request_body(),
 %%   <<"verb">> => string()
@@ -117,6 +143,15 @@
 %%   <<"type">> => list(any())
 %% }
 -type retrieval_result_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_parameter() :: #{
+%%   <<"name">> => [string()],
+%%   <<"type">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type api_parameter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -159,6 +194,13 @@
 
 
 %% Example:
+%% content_body() :: #{
+%%   <<"body">> => [string()]
+%% }
+-type content_body() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_retrieve_and_generate_configuration() :: #{
 %%   <<"generationConfiguration">> => generation_configuration(),
 %%   <<"knowledgeBaseId">> => string(),
@@ -197,6 +239,16 @@
 
 
 %% Example:
+%% function_result() :: #{
+%%   <<"actionGroup">> => [string()],
+%%   <<"function">> => [string()],
+%%   <<"responseBody">> => map(),
+%%   <<"responseState">> => list(any())
+%% }
+-type function_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -232,6 +284,14 @@
 
 
 %% Example:
+%% return_control_payload() :: #{
+%%   <<"invocationId">> => [string()],
+%%   <<"invocationInputs">> => list(list()())
+%% }
+-type return_control_payload() :: #{binary() => any()}.
+
+
+%% Example:
 %% text_response_part() :: #{
 %%   <<"span">> => span(),
 %%   <<"text">> => [string()]
@@ -250,7 +310,9 @@
 
 %% Example:
 %% session_state() :: #{
+%%   <<"invocationId">> => [string()],
 %%   <<"promptSessionAttributes">> => map(),
+%%   <<"returnControlInvocationResults">> => list(list()()),
 %%   <<"sessionAttributes">> => map()
 %% }
 -type session_state() :: #{binary() => any()}.
@@ -274,6 +336,17 @@
 
 
 %% Example:
+%% api_invocation_input() :: #{
+%%   <<"actionGroup">> => [string()],
+%%   <<"apiPath">> => string(),
+%%   <<"httpMethod">> => [string()],
+%%   <<"parameters">> => list(api_parameter()()),
+%%   <<"requestBody">> => api_request_body()
+%% }
+-type api_invocation_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieve_and_generate_input() :: #{
 %%   <<"text">> => [string()]
 %% }
@@ -293,6 +366,18 @@
 %%   <<"text">> => string()
 %% }
 -type final_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_result() :: #{
+%%   <<"actionGroup">> => [string()],
+%%   <<"apiPath">> => string(),
+%%   <<"httpMethod">> => [string()],
+%%   <<"httpStatusCode">> => [integer()],
+%%   <<"responseBody">> => map(),
+%%   <<"responseState">> => list(any())
+%% }
+-type api_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -343,6 +428,7 @@
 %% trace_part() :: #{
 %%   <<"agentAliasId">> => string(),
 %%   <<"agentId">> => string(),
+%%   <<"agentVersion">> => string(),
 %%   <<"sessionId">> => string(),
 %%   <<"trace">> => list()
 %% }
@@ -368,6 +454,13 @@
 %%   <<"promptTemplate">> => prompt_template()
 %% }
 -type generation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_parameters() :: #{
+%%   <<"properties">> => list(parameter()())
+%% }
+-type property_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -425,7 +518,7 @@
 %% invoke_agent_request() :: #{
 %%   <<"enableTrace">> => [boolean()],
 %%   <<"endSession">> => [boolean()],
-%%   <<"inputText">> := string(),
+%%   <<"inputText">> => string(),
 %%   <<"sessionState">> => session_state()
 %% }
 -type invoke_agent_request() :: #{binary() => any()}.
@@ -520,6 +613,8 @@
 
 %% @doc Sends a prompt for the agent to process and respond to.
 %%
+%% Use return control event type for function calling.
+%%
 %% The CLI doesn't support `InvokeAgent'.
 %%
 %% To continue the same conversation with an agent, use the same
@@ -533,8 +628,10 @@
 %%
 %% End a conversation by setting `endSession' to `true'.
 %%
-%% Include attributes for the session or prompt in the `sessionState'
-%% object.
+%% In the `sessionState' object, you can include attributes for the
+%% session or prompt or parameters returned from the action group.
+%%
+%% Use return control event type for function calling.
 %%
 %% The response is returned in the `bytes' field of the `chunk'
 %% object.
