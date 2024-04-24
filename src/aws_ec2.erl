@@ -777,6 +777,8 @@
          disable_image_block_public_access/3,
          disable_image_deprecation/2,
          disable_image_deprecation/3,
+         disable_image_deregistration_protection/2,
+         disable_image_deregistration_protection/3,
          disable_ipam_organization_admin_account/2,
          disable_ipam_organization_admin_account/3,
          disable_serial_console_access/2,
@@ -837,6 +839,8 @@
          enable_image_block_public_access/3,
          enable_image_deprecation/2,
          enable_image_deprecation/3,
+         enable_image_deregistration_protection/2,
+         enable_image_deregistration_protection/3,
          enable_ipam_organization_admin_account/2,
          enable_ipam_organization_admin_account/3,
          enable_reachability_analyzer_organization_sharing/2,
@@ -2485,6 +2489,7 @@
 %% image_attribute() :: #{
 %%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
 %%   <<"BootMode">> => attribute_value(),
+%%   <<"DeregistrationProtection">> => attribute_value(),
 %%   <<"Description">> => attribute_value(),
 %%   <<"ImageId">> => string(),
 %%   <<"ImdsSupport">> => attribute_value(),
@@ -4894,6 +4899,13 @@
 -type delete_local_gateway_route_result() :: #{binary() => any()}.
 
 %% Example:
+%% disable_image_deregistration_protection_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageId">> := string()
+%% }
+-type disable_image_deregistration_protection_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_spot_datafeed_subscription_request() :: #{
 %%   <<"DryRun">> => boolean()
 %% }
@@ -6387,6 +6399,12 @@
 %%   <<"ClientRootCertificateChainArn">> => string()
 %% }
 -type certificate_authentication_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_image_deregistration_protection_result() :: #{
+%%   <<"Return">> => string()
+%% }
+-type disable_image_deregistration_protection_result() :: #{binary() => any()}.
 
 %% Example:
 %% neuron_info() :: #{
@@ -10567,6 +10585,14 @@
 -type pool_cidr_block() :: #{binary() => any()}.
 
 %% Example:
+%% enable_image_deregistration_protection_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageId">> := string(),
+%%   <<"WithCooldown">> => boolean()
+%% }
+-type enable_image_deregistration_protection_request() :: #{binary() => any()}.
+
+%% Example:
 %% modify_ipam_scope_result() :: #{
 %%   <<"IpamScope">> => ipam_scope()
 %% }
@@ -12533,37 +12559,39 @@
 
 %% Example:
 %% image() :: #{
+%%   <<"ImageOwnerAlias">> => string(),
+%%   <<"KernelId">> => string(),
+%%   <<"LastLaunchedTime">> => string(),
+%%   <<"DeprecationTime">> => string(),
 %%   <<"Architecture">> => list(any()),
 %%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
-%%   <<"BootMode">> => list(any()),
-%%   <<"CreationDate">> => string(),
-%%   <<"DeprecationTime">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EnaSupport">> => boolean(),
-%%   <<"Hypervisor">> => list(any()),
-%%   <<"ImageId">> => string(),
-%%   <<"ImageLocation">> => string(),
-%%   <<"ImageOwnerAlias">> => string(),
-%%   <<"ImageType">> => list(any()),
-%%   <<"ImdsSupport">> => list(any()),
-%%   <<"KernelId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"Platform">> => list(any()),
-%%   <<"PlatformDetails">> => string(),
-%%   <<"ProductCodes">> => list(product_code()()),
-%%   <<"Public">> => boolean(),
-%%   <<"RamdiskId">> => string(),
-%%   <<"RootDeviceName">> => string(),
-%%   <<"RootDeviceType">> => list(any()),
-%%   <<"SourceInstanceId">> => string(),
-%%   <<"SriovNetSupport">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => state_reason(),
-%%   <<"Tags">> => list(tag()()),
 %%   <<"TpmSupport">> => list(any()),
+%%   <<"ImageLocation">> => string(),
 %%   <<"UsageOperation">> => string(),
-%%   <<"VirtualizationType">> => list(any())
+%%   <<"DeregistrationProtection">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"VirtualizationType">> => list(any()),
+%%   <<"CreationDate">> => string(),
+%%   <<"Platform">> => list(any()),
+%%   <<"RootDeviceName">> => string(),
+%%   <<"RamdiskId">> => string(),
+%%   <<"ImageType">> => list(any()),
+%%   <<"Hypervisor">> => list(any()),
+%%   <<"Public">> => boolean(),
+%%   <<"SriovNetSupport">> => string(),
+%%   <<"StateReason">> => state_reason(),
+%%   <<"PlatformDetails">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"RootDeviceType">> => list(any()),
+%%   <<"OwnerId">> => string(),
+%%   <<"BootMode">> => list(any()),
+%%   <<"ImageId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ImdsSupport">> => list(any()),
+%%   <<"ProductCodes">> => list(product_code()()),
+%%   <<"SourceInstanceId">> => string(),
+%%   <<"EnaSupport">> => boolean(),
+%%   <<"Description">> => string()
 %% }
 -type image() :: #{binary() => any()}.
 
@@ -14290,6 +14318,12 @@
 %%   <<"NetworkInterfaceId">> := string()
 %% }
 -type delete_network_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_image_deregistration_protection_result() :: #{
+%%   <<"Return">> => string()
+%% }
+-type enable_image_deregistration_protection_result() :: #{binary() => any()}.
 
 %% Example:
 %% request_spot_fleet_response() :: #{
@@ -20078,9 +20112,9 @@ create_default_vpc(Client, Input, Options)
 %% information about
 %% NetBIOS node types, see RFC 2132: http://www.ietf.org/rfc/rfc2132.txt.
 %%
-%% `ipv6-preferred-lease-time' - A value (in seconds, minutes, hours, or
-%% years) for how frequently a running instance with an IPv6 assigned to it
-%% goes through DHCPv6 lease renewal.
+%% `ipv6-address-preferred-lease-time' - A value (in seconds, minutes,
+%% hours, or years) for how frequently a running instance with an IPv6
+%% assigned to it goes through DHCPv6 lease renewal.
 %% Acceptable values are between 140 and 2147483647 seconds (approximately 68
 %% years). If no value is entered, the default lease time is 140 seconds. If
 %% you use long-term addressing for EC2 instances, you can increase the lease
@@ -20499,12 +20533,12 @@ create_key_pair(Client, Input, Options)
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
 %%
-%% If you want to clone an existing launch template as the basis for creating
-%% a new
-%% launch template, you can use the Amazon EC2 console. The API, SDKs, and
-%% CLI do not support
-%% cloning a template. For more information, see Create a launch template
-%% from an existing launch template:
+%% To clone an existing launch template as the basis for a new launch
+%% template, use the
+%% Amazon EC2 console. The API, SDKs, and CLI do not support cloning a
+%% template. For more
+%% information, see Create a launch template from an existing launch
+%% template:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template-from-existing-launch-template
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
@@ -20524,19 +20558,22 @@ create_launch_template(Client, Input, Options)
 
 %% @doc Creates a new version of a launch template.
 %%
-%% You can specify an existing version of
-%% launch template from which to base the new version.
+%% You must specify an existing launch
+%% template, either by name or ID. You can determine whether the new version
+%% inherits
+%% parameters from a source version, and add or overwrite parameters as
+%% needed.
 %%
 %% Launch template versions are numbered in the order in which they are
 %% created. You
-%% cannot specify, change, or replace the numbering of launch template
+%% can't specify, change, or replace the numbering of launch template
 %% versions.
 %%
 %% Launch templates are immutable; after you create a launch template, you
 %% can't modify
 %% it. Instead, you can create a new version of the launch template that
-%% includes any
-%% changes you require.
+%% includes the
+%% changes that you require.
 %%
 %% For more information, see Modify a launch template (manage launch template
 %% versions):
@@ -24588,6 +24625,10 @@ describe_image_attribute(Client, Input, Options)
 %% that the AMI ID
 %% cannot be found.
 %%
+%% We strongly recommend using only paginated requests. Unpaginated requests
+%% are
+%% susceptible to throttling and timeouts.
+%%
 %% The order of the elements in the response, including those within nested
 %% structures, might vary. Applications should not assume the elements appear
 %% in a
@@ -24949,6 +24990,10 @@ describe_instance_types(Client, Input, Options)
 %% instances and
 %% specify only instance IDs that are in an unaffected zone, the call works
 %% normally.
+%%
+%% We strongly recommend using only paginated requests. Unpaginated requests
+%% are
+%% susceptible to throttling and timeouts.
 %%
 %% The order of the elements in the response, including those within nested
 %% structures, might vary. Applications should not assume the elements appear
@@ -25462,6 +25507,10 @@ describe_network_interface_permissions(Client, Input, Options)
 %% you use pagination or one of the following filters: `group-id',
 %% `mac-address', `private-dns-name', `private-ip-address',
 %% `private-dns-name', `subnet-id', or `vpc-id'.
+%%
+%% We strongly recommend using only paginated requests. Unpaginated requests
+%% are
+%% susceptible to throttling and timeouts.
 -spec describe_network_interfaces(aws_client:aws_client(), describe_network_interfaces_request()) ->
     {ok, describe_network_interfaces_result(), tuple()} |
     {error, any()}.
@@ -25966,6 +26015,10 @@ describe_snapshot_tier_status(Client, Input, Options)
 %% For more information about EBS snapshots, see Amazon EBS snapshots:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html in the
 %% Amazon EBS User Guide.
+%%
+%% We strongly recommend using only paginated requests. Unpaginated requests
+%% are
+%% susceptible to throttling and timeouts.
 -spec describe_snapshots(aws_client:aws_client(), describe_snapshots_request()) ->
     {ok, describe_snapshots_result(), tuple()} |
     {error, any()}.
@@ -26215,6 +26268,10 @@ describe_subnets(Client, Input, Options)
 %% For more information about tags, see Tag your Amazon EC2 resources:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
 %% Amazon Elastic Compute Cloud User Guide.
+%%
+%% We strongly recommend using only paginated requests. Unpaginated requests
+%% are
+%% susceptible to throttling and timeouts.
 %%
 %% The order of the elements in the response, including those within nested
 %% structures, might vary. Applications should not assume the elements appear
@@ -26647,6 +26704,10 @@ describe_volume_status(Client, Input, Options)
 %% For more information about EBS volumes, see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html in the
 %% Amazon EBS User Guide.
+%%
+%% We strongly recommend using only paginated requests. Unpaginated requests
+%% are
+%% susceptible to throttling and timeouts.
 %%
 %% The order of the elements in the response, including those within nested
 %% structures, might vary. Applications should not assume the elements appear
@@ -27279,6 +27340,35 @@ disable_image_deprecation(Client, Input)
 disable_image_deprecation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableImageDeprecation">>, Input, Options).
+
+%% @doc Disables deregistration protection for an AMI.
+%%
+%% When deregistration protection is disabled,
+%% the AMI can be deregistered.
+%%
+%% If you chose to include a 24-hour cooldown period when you enabled
+%% deregistration
+%% protection for the AMI, then, when you disable deregistration protection,
+%% you won’t
+%% immediately be able to deregister the AMI.
+%%
+%% For more information, see Protect an
+%% AMI from deregistration:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html#ami-deregistration-protection
+%% in the Amazon EC2 User Guide.
+-spec disable_image_deregistration_protection(aws_client:aws_client(), disable_image_deregistration_protection_request()) ->
+    {ok, disable_image_deregistration_protection_result(), tuple()} |
+    {error, any()}.
+disable_image_deregistration_protection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_image_deregistration_protection(Client, Input, []).
+
+-spec disable_image_deregistration_protection(aws_client:aws_client(), disable_image_deregistration_protection_request(), proplists:proplist()) ->
+    {ok, disable_image_deregistration_protection_result(), tuple()} |
+    {error, any()}.
+disable_image_deregistration_protection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableImageDeregistrationProtection">>, Input, Options).
 
 %% @doc Disable the IPAM account.
 %%
@@ -27959,6 +28049,33 @@ enable_image_deprecation(Client, Input)
 enable_image_deprecation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableImageDeprecation">>, Input, Options).
+
+%% @doc Enables deregistration protection for an AMI.
+%%
+%% When deregistration protection is enabled,
+%% the AMI can't be deregistered.
+%%
+%% To allow the AMI to be deregistered, you must first disable deregistration
+%% protection
+%% using `DisableImageDeregistrationProtection'.
+%%
+%% For more information, see Protect an
+%% AMI from deregistration:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html#ami-deregistration-protection
+%% in the Amazon EC2 User Guide.
+-spec enable_image_deregistration_protection(aws_client:aws_client(), enable_image_deregistration_protection_request()) ->
+    {ok, enable_image_deregistration_protection_result(), tuple()} |
+    {error, any()}.
+enable_image_deregistration_protection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_image_deregistration_protection(Client, Input, []).
+
+-spec enable_image_deregistration_protection(aws_client:aws_client(), enable_image_deregistration_protection_request(), proplists:proplist()) ->
+    {ok, enable_image_deregistration_protection_result(), tuple()} |
+    {error, any()}.
+enable_image_deregistration_protection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableImageDeregistrationProtection">>, Input, Options).
 
 %% @doc Enable an Organizations member account as the IPAM admin account.
 %%

@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Describes the API operations for running inference using Bedrock
-%% models.
+%% @doc Describes the API operations for running inference using Amazon
+%% Bedrock models.
 -module(aws_bedrock_runtime).
 
 -export([invoke_model/3,
@@ -32,7 +32,10 @@
 %% invoke_model_request() :: #{
 %%   <<"accept">> => string(),
 %%   <<"body">> := binary(),
-%%   <<"contentType">> => string()
+%%   <<"contentType">> => string(),
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"trace">> => list(any())
 %% }
 -type invoke_model_request() :: #{binary() => any()}.
 
@@ -49,7 +52,10 @@
 %% invoke_model_with_response_stream_request() :: #{
 %%   <<"accept">> => string(),
 %%   <<"body">> := binary(),
-%%   <<"contentType">> => string()
+%%   <<"contentType">> => string(),
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"trace">> => list(any())
 %% }
 -type invoke_model_with_response_stream_request() :: #{binary() => any()}.
 
@@ -155,17 +161,16 @@
 %% API
 %%====================================================================
 
-%% @doc Invokes the specified Bedrock model to run inference using the input
-%% provided in the request body.
+%% @doc Invokes the specified Amazon Bedrock model to run inference using the
+%% prompt and inference parameters provided in the request body.
 %%
-%% You use InvokeModel to run inference for text models, image models, and
-%% embedding models.
+%% You use model inference to generate text, images, and embeddings.
 %%
-%% For more information, see Run inference:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html
-%% in the Bedrock User Guide.
+%% For example code, see Invoke model code examples in the Amazon Bedrock
+%% User Guide.
 %%
-%% For example requests, see Examples (after the Errors section).
+%% This operation requires permission for the `bedrock:InvokeModel'
+%% action.
 -spec invoke_model(aws_client:aws_client(), binary() | list(), invoke_model_request()) ->
     {ok, invoke_model_response(), tuple()} |
     {error, any()} |
@@ -190,7 +195,10 @@ invoke_model(Client, ModelId, Input0, Options0) ->
 
     HeadersMapping = [
                        {<<"Accept">>, <<"accept">>},
-                       {<<"Content-Type">>, <<"contentType">>}
+                       {<<"Content-Type">>, <<"contentType">>},
+                       {<<"X-Amzn-Bedrock-GuardrailIdentifier">>, <<"guardrailIdentifier">>},
+                       {<<"X-Amzn-Bedrock-GuardrailVersion">>, <<"guardrailVersion">>},
+                       {<<"X-Amzn-Bedrock-Trace">>, <<"trace">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -218,17 +226,22 @@ invoke_model(Client, ModelId, Input0, Options0) ->
         Result
     end.
 
-%% @doc Invoke the specified Bedrock model to run inference using the input
-%% provided.
+%% @doc Invoke the specified Amazon Bedrock model to run inference using the
+%% prompt and inference parameters provided in the request body.
 %%
-%% Return the response in a stream.
+%% The response is returned in a stream.
 %%
-%% For more information, see Run inference:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html
-%% in the Bedrock User Guide.
+%% To see if a model supports streaming, call GetFoundationModel:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetFoundationModel.html
+%% and check the `responseStreamingSupported' field in the response.
 %%
-%% For an example request and response, see Examples (after the Errors
-%% section).
+%% The CLI doesn't support `InvokeModelWithResponseStream'.
+%%
+%% For example code, see Invoke model with streaming code
+%% example in the Amazon Bedrock User Guide.
+%%
+%% This operation requires permissions to perform the
+%% `bedrock:InvokeModelWithResponseStream' action.
 -spec invoke_model_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_model_with_response_stream_request()) ->
     {ok, invoke_model_with_response_stream_response(), tuple()} |
     {error, any()} |
@@ -253,7 +266,10 @@ invoke_model_with_response_stream(Client, ModelId, Input0, Options0) ->
 
     HeadersMapping = [
                        {<<"X-Amzn-Bedrock-Accept">>, <<"accept">>},
-                       {<<"Content-Type">>, <<"contentType">>}
+                       {<<"Content-Type">>, <<"contentType">>},
+                       {<<"X-Amzn-Bedrock-GuardrailIdentifier">>, <<"guardrailIdentifier">>},
+                       {<<"X-Amzn-Bedrock-GuardrailVersion">>, <<"guardrailVersion">>},
+                       {<<"X-Amzn-Bedrock-Trace">>, <<"trace">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 

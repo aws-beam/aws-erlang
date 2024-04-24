@@ -698,6 +698,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"customerManagedKey">> => string(),
 %%   <<"displayName">> => string(),
+%%   <<"instanceType">> => string(),
+%%   <<"maxConcurrentSessions">> => integer(),
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_portal_request() :: #{binary() => any()}.
@@ -989,15 +991,19 @@
 %% Example:
 %% update_portal_request() :: #{
 %%   <<"authenticationType">> => string(),
-%%   <<"displayName">> => string()
+%%   <<"displayName">> => string(),
+%%   <<"instanceType">> => string(),
+%%   <<"maxConcurrentSessions">> => integer()
 %% }
 -type update_portal_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% ip_access_settings() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
 %%   <<"associatedPortalArns">> => list(string()()),
 %%   <<"creationDate">> => non_neg_integer(),
+%%   <<"customerManagedKey">> => string(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"ipAccessSettingsArn">> => string(),
@@ -1068,7 +1074,9 @@
 %%   <<"browserType">> => string(),
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"displayName">> => string(),
+%%   <<"instanceType">> => string(),
 %%   <<"ipAccessSettingsArn">> => string(),
+%%   <<"maxConcurrentSessions">> => integer(),
 %%   <<"networkSettingsArn">> => string(),
 %%   <<"portalArn">> => string(),
 %%   <<"portalEndpoint">> => string(),
@@ -1095,9 +1103,11 @@
 
 %% Example:
 %% user_settings() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
 %%   <<"associatedPortalArns">> => list(string()()),
 %%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
 %%   <<"copyAllowed">> => string(),
+%%   <<"customerManagedKey">> => string(),
 %%   <<"disconnectTimeoutInMinutes">> => integer(),
 %%   <<"downloadAllowed">> => string(),
 %%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
@@ -1159,9 +1169,11 @@
 
 %% Example:
 %% browser_settings() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
 %%   <<"associatedPortalArns">> => list(string()()),
 %%   <<"browserPolicy">> => string(),
-%%   <<"browserSettingsArn">> => string()
+%%   <<"browserSettingsArn">> => string(),
+%%   <<"customerManagedKey">> => string()
 %% }
 -type browser_settings() :: #{binary() => any()}.
 
@@ -1214,12 +1226,16 @@
 
 %% Example:
 %% portal() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
 %%   <<"authenticationType">> => string(),
 %%   <<"browserSettingsArn">> => string(),
 %%   <<"browserType">> => string(),
 %%   <<"creationDate">> => non_neg_integer(),
+%%   <<"customerManagedKey">> => string(),
 %%   <<"displayName">> => string(),
+%%   <<"instanceType">> => string(),
 %%   <<"ipAccessSettingsArn">> => string(),
+%%   <<"maxConcurrentSessions">> => integer(),
 %%   <<"networkSettingsArn">> => string(),
 %%   <<"portalArn">> => string(),
 %%   <<"portalEndpoint">> => string(),
@@ -1643,6 +1659,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 

@@ -170,6 +170,7 @@
 %% Example:
 %% create_data_source_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"dataDeletionPolicy">> => list(any()),
 %%   <<"dataSourceConfiguration">> := data_source_configuration(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
@@ -1005,6 +1006,7 @@
 
 %% Example:
 %% update_data_source_request() :: #{
+%%   <<"dataDeletionPolicy">> => list(any()),
 %%   <<"dataSourceConfiguration">> := data_source_configuration(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
@@ -1134,9 +1136,11 @@
 %% Example:
 %% data_source() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataDeletionPolicy">> => list(any()),
 %%   <<"dataSourceConfiguration">> => data_source_configuration(),
 %%   <<"dataSourceId">> => string(),
 %%   <<"description">> => string(),
+%%   <<"failureReasons">> => list(string()()),
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"name">> => string(),
 %%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
@@ -1212,6 +1216,7 @@
 %% Example:
 %% s3_data_source_configuration() :: #{
 %%   <<"bucketArn">> => string(),
+%%   <<"bucketOwnerAccountId">> => string(),
 %%   <<"inclusionPrefixes">> => list(string()())
 %% }
 -type s3_data_source_configuration() :: #{binary() => any()}.

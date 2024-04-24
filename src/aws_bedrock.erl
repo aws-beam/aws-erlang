@@ -1,16 +1,24 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Describes the API operations for creating and managing Amazon Bedrock
-%% models.
+%% @doc Describes the API operations for creating, managing, fine-turning,
+%% and evaluating Amazon Bedrock models.
 -module(aws_bedrock).
 
--export([create_model_customization_job/2,
+-export([create_evaluation_job/2,
+         create_evaluation_job/3,
+         create_guardrail/2,
+         create_guardrail/3,
+         create_guardrail_version/3,
+         create_guardrail_version/4,
+         create_model_customization_job/2,
          create_model_customization_job/3,
          create_provisioned_model_throughput/2,
          create_provisioned_model_throughput/3,
          delete_custom_model/3,
          delete_custom_model/4,
+         delete_guardrail/3,
+         delete_guardrail/4,
          delete_model_invocation_logging_configuration/2,
          delete_model_invocation_logging_configuration/3,
          delete_provisioned_model_throughput/3,
@@ -18,9 +26,15 @@
          get_custom_model/2,
          get_custom_model/4,
          get_custom_model/5,
+         get_evaluation_job/2,
+         get_evaluation_job/4,
+         get_evaluation_job/5,
          get_foundation_model/2,
          get_foundation_model/4,
          get_foundation_model/5,
+         get_guardrail/2,
+         get_guardrail/4,
+         get_guardrail/5,
          get_model_customization_job/2,
          get_model_customization_job/4,
          get_model_customization_job/5,
@@ -33,9 +47,15 @@
          list_custom_models/1,
          list_custom_models/3,
          list_custom_models/4,
+         list_evaluation_jobs/1,
+         list_evaluation_jobs/3,
+         list_evaluation_jobs/4,
          list_foundation_models/1,
          list_foundation_models/3,
          list_foundation_models/4,
+         list_guardrails/1,
+         list_guardrails/3,
+         list_guardrails/4,
          list_model_customization_jobs/1,
          list_model_customization_jobs/3,
          list_model_customization_jobs/4,
@@ -46,12 +66,16 @@
          list_tags_for_resource/3,
          put_model_invocation_logging_configuration/2,
          put_model_invocation_logging_configuration/3,
+         stop_evaluation_job/3,
+         stop_evaluation_job/4,
          stop_model_customization_job/3,
          stop_model_customization_job/4,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_guardrail/3,
+         update_guardrail/4,
          update_provisioned_model_throughput/3,
          update_provisioned_model_throughput/4]).
 
@@ -95,6 +119,25 @@
 
 
 %% Example:
+%% get_evaluation_job_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyId">> => string(),
+%%   <<"evaluationConfig">> => list(),
+%%   <<"failureMessages">> => list(string()()),
+%%   <<"inferenceConfig">> => list(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobDescription">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobType">> => list(any()),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"outputDataConfig">> => evaluation_output_data_config(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_evaluation_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% foundation_model_summary() :: #{
 %%   <<"customizationsSupported">> => list(list(any())()),
 %%   <<"inferenceTypesSupported">> => list(list(any())()),
@@ -117,9 +160,24 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% delete_guardrail_request() :: #{
+%%   <<"guardrailVersion">> => string()
+%% }
+-type delete_guardrail_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_custom_model_response() :: #{}
 -type delete_custom_model_response() :: #{}.
+
+%% Example:
+%% get_evaluation_job_request() :: #{}
+-type get_evaluation_job_request() :: #{}.
+
+%% Example:
+%% stop_evaluation_job_response() :: #{}
+-type stop_evaluation_job_response() :: #{}.
 
 %% Example:
 %% get_provisioned_model_throughput_request() :: #{}
@@ -131,6 +189,29 @@
 %%   <<"jobArn">> => string()
 %% }
 -type create_model_customization_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_guardrail_response() :: #{
+%%   <<"blockedInputMessaging">> => string(),
+%%   <<"blockedOutputsMessaging">> => string(),
+%%   <<"contentPolicy">> => guardrail_content_policy(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"failureRecommendations">> => list(string()()),
+%%   <<"guardrailArn">> => string(),
+%%   <<"guardrailId">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sensitiveInformationPolicy">> => guardrail_sensitive_information_policy(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()()),
+%%   <<"topicPolicy">> => guardrail_topic_policy(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string(),
+%%   <<"wordPolicy">> => guardrail_word_policy()
+%% }
+-type get_guardrail_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -148,9 +229,101 @@
 %% }
 -type foundation_model_details() :: #{binary() => any()}.
 
+
+%% Example:
+%% guardrail_topic_policy_config() :: #{
+%%   <<"topicsConfig">> => list(guardrail_topic_config()())
+%% }
+-type guardrail_topic_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_guardrail_request() :: #{
+%%   <<"blockedInputMessaging">> := string(),
+%%   <<"blockedOutputsMessaging">> := string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"contentPolicyConfig">> => guardrail_content_policy_config(),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"sensitiveInformationPolicyConfig">> => guardrail_sensitive_information_policy_config(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"topicPolicyConfig">> => guardrail_topic_policy_config(),
+%%   <<"wordPolicyConfig">> => guardrail_word_policy_config()
+%% }
+-type create_guardrail_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type guardrail_summary() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% guardrail_word_policy() :: #{
+%%   <<"managedWordLists">> => list(guardrail_managed_words()()),
+%%   <<"words">> => list(guardrail_word()())
+%% }
+-type guardrail_word_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluation_jobs_request() :: #{
+%%   <<"creationTimeAfter">> => non_neg_integer(),
+%%   <<"creationTimeBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any())
+%% }
+-type list_evaluation_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_evaluation_config() :: #{
+%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()())
+%% }
+-type automated_evaluation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic_config() :: #{
+%%   <<"definition">> => string(),
+%%   <<"examples">> => list(string()()),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_topic_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% human_workflow_config() :: #{
+%%   <<"flowDefinitionArn">> => string(),
+%%   <<"instructions">> => string()
+%% }
+-type human_workflow_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_policy() :: #{
+%%   <<"filters">> => list(guardrail_content_filter()())
+%% }
+-type guardrail_content_policy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -180,6 +353,20 @@
 %%   <<"statusEquals">> => list(any())
 %% }
 -type list_provisioned_model_throughputs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_guardrail_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"guardrailArn">> => string(),
+%%   <<"guardrailId">> => string(),
+%%   <<"version">> => string()
+%% }
+-type create_guardrail_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_evaluation_job_request() :: #{}
+-type stop_evaluation_job_request() :: #{}.
 
 
 %% Example:
@@ -237,6 +424,20 @@
 
 
 %% Example:
+%% guardrail_managed_words_config() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_managed_words_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_word() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type guardrail_word() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_provisioned_model_throughput_response() :: #{
 %%   <<"commitmentDuration">> => list(any()),
 %%   <<"commitmentExpirationTime">> => non_neg_integer(),
@@ -278,6 +479,23 @@
 
 
 %% Example:
+%% guardrail_content_filter_config() :: #{
+%%   <<"inputStrength">> => list(any()),
+%%   <<"outputStrength">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_content_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_guardrails_response() :: #{
+%%   <<"guardrails">> => list(guardrail_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_guardrails_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
@@ -287,6 +505,24 @@
 %% Example:
 %% delete_provisioned_model_throughput_request() :: #{}
 -type delete_provisioned_model_throughput_request() :: #{}.
+
+
+%% Example:
+%% evaluation_dataset_metric_config() :: #{
+%%   <<"dataset">> => evaluation_dataset(),
+%%   <<"metricNames">> => list(string()()),
+%%   <<"taskType">> => list(any())
+%% }
+-type evaluation_dataset_metric_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_filter() :: #{
+%%   <<"inputStrength">> => list(any()),
+%%   <<"outputStrength">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_content_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -340,6 +576,27 @@
 
 
 %% Example:
+%% guardrail_managed_words() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_managed_words() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_policy_config() :: #{
+%%   <<"filtersConfig">> => list(guardrail_content_filter_config()())
+%% }
+-type guardrail_content_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_output_data_config() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type evaluation_output_data_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_provisioned_model_throughput_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"commitmentDuration">> => list(any()),
@@ -360,6 +617,14 @@
 
 
 %% Example:
+%% guardrail_pii_entity() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_pii_entity() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag()())
 %% }
@@ -376,6 +641,21 @@
 %% }
 -type training_metrics() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_guardrail_request() :: #{
+%%   <<"blockedInputMessaging">> := string(),
+%%   <<"blockedOutputsMessaging">> := string(),
+%%   <<"contentPolicyConfig">> => guardrail_content_policy_config(),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"sensitiveInformationPolicyConfig">> => guardrail_sensitive_information_policy_config(),
+%%   <<"topicPolicyConfig">> => guardrail_topic_policy_config(),
+%%   <<"wordPolicyConfig">> => guardrail_word_policy_config()
+%% }
+-type update_guardrail_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_custom_model_request() :: #{}
 -type get_custom_model_request() :: #{}.
@@ -383,6 +663,15 @@
 %% Example:
 %% get_model_customization_job_request() :: #{}
 -type get_model_customization_job_request() :: #{}.
+
+
+%% Example:
+%% human_evaluation_custom_metric() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ratingMethod">> => string()
+%% }
+-type human_evaluation_custom_metric() :: #{binary() => any()}.
 
 %% Example:
 %% get_model_invocation_logging_configuration_request() :: #{}
@@ -400,6 +689,21 @@
 
 
 %% Example:
+%% guardrail_word_config() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type guardrail_word_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_sensitive_information_policy() :: #{
+%%   <<"piiEntities">> => list(guardrail_pii_entity()()),
+%%   <<"regexes">> => list(guardrail_regex()())
+%% }
+-type guardrail_sensitive_information_policy() :: #{binary() => any()}.
+
+
+%% Example:
 %% foundation_model_lifecycle() :: #{
 %%   <<"status">> => list(any())
 %% }
@@ -412,6 +716,10 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+%% Example:
+%% delete_guardrail_response() :: #{}
+-type delete_guardrail_response() :: #{}.
+
 
 %% Example:
 %% validation_data_config() :: #{
@@ -422,6 +730,16 @@
 %% Example:
 %% update_provisioned_model_throughput_response() :: #{}
 -type update_provisioned_model_throughput_response() :: #{}.
+
+
+%% Example:
+%% guardrail_regex_config() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"pattern">> => [string()]
+%% }
+-type guardrail_regex_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -478,14 +796,61 @@
 
 
 %% Example:
+%% create_evaluation_job_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"customerEncryptionKeyId">> => string(),
+%%   <<"evaluationConfig">> := list(),
+%%   <<"inferenceConfig">> := list(),
+%%   <<"jobDescription">> => string(),
+%%   <<"jobName">> := string(),
+%%   <<"jobTags">> => list(tag()()),
+%%   <<"outputDataConfig">> := evaluation_output_data_config(),
+%%   <<"roleArn">> := string()
+%% }
+-type create_evaluation_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_word_policy_config() :: #{
+%%   <<"managedWordListsConfig">> => list(guardrail_managed_words_config()()),
+%%   <<"wordsConfig">> => list(guardrail_word_config()())
+%% }
+-type guardrail_word_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% validator_metric() :: #{
 %%   <<"validationLoss">> => float()
 %% }
 -type validator_metric() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_evaluation_jobs_response() :: #{
+%%   <<"jobSummaries">> => list(evaluation_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_evaluation_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_sensitive_information_policy_config() :: #{
+%%   <<"piiEntitiesConfig">> => list(guardrail_pii_entity_config()()),
+%%   <<"regexesConfig">> => list(guardrail_regex_config()())
+%% }
+-type guardrail_sensitive_information_policy_config() :: #{binary() => any()}.
+
 %% Example:
 %% stop_model_customization_job_request() :: #{}
 -type stop_model_customization_job_request() :: #{}.
+
+
+%% Example:
+%% create_guardrail_version_response() :: #{
+%%   <<"guardrailId">> => string(),
+%%   <<"version">> => string()
+%% }
+-type create_guardrail_version_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_custom_model_request() :: #{}
@@ -504,6 +869,22 @@
 %%   <<"resourceARN">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_pii_entity_config() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_pii_entity_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_dataset() :: #{
+%%   <<"datasetLocation">> => list(),
+%%   <<"name">> => string()
+%% }
+-type evaluation_dataset() :: #{binary() => any()}.
 
 
 %% Example:
@@ -549,6 +930,13 @@
 
 
 %% Example:
+%% guardrail_topic_policy() :: #{
+%%   <<"topics">> => list(guardrail_topic()())
+%% }
+-type guardrail_topic_policy() :: #{binary() => any()}.
+
+
+%% Example:
 %% output_data_config() :: #{
 %%   <<"s3Uri">> => string()
 %% }
@@ -560,6 +948,23 @@
 %%   <<"loggingConfig">> => logging_config()
 %% }
 -type get_model_invocation_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_guardrail_version_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string()
+%% }
+-type create_guardrail_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_guardrails_request() :: #{
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_guardrails_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_model_invocation_logging_configuration_response() :: #{}
@@ -574,10 +979,58 @@
 
 
 %% Example:
+%% guardrail_regex() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"pattern">> => [string()]
+%% }
+-type guardrail_regex() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_evaluation_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type create_evaluation_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_guardrail_response() :: #{
+%%   <<"guardrailArn">> => string(),
+%%   <<"guardrailId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type update_guardrail_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"evaluationTaskTypes">> => list(list(any())()),
+%%   <<"jobArn">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobType">> => list(any()),
+%%   <<"modelIdentifiers">> => list(string()()),
+%%   <<"status">> => list(any())
+%% }
+-type evaluation_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% training_data_config() :: #{
 %%   <<"s3Uri">> => string()
 %% }
 -type training_data_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_bedrock_model() :: #{
+%%   <<"inferenceParams">> => string(),
+%%   <<"modelIdentifier">> => string()
+%% }
+-type evaluation_bedrock_model() :: #{binary() => any()}.
 
 %% Example:
 %% delete_model_invocation_logging_configuration_request() :: #{}
@@ -597,6 +1050,13 @@
 
 
 %% Example:
+%% get_guardrail_request() :: #{
+%%   <<"guardrailVersion">> => string()
+%% }
+-type get_guardrail_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_foundation_model_response() :: #{
 %%   <<"modelDetails">> => foundation_model_details()
 %% }
@@ -609,6 +1069,53 @@
 %%   <<"resourceName">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic() :: #{
+%%   <<"definition">> => string(),
+%%   <<"examples">> => list(string()()),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_topic() :: #{binary() => any()}.
+
+
+%% Example:
+%% human_evaluation_config() :: #{
+%%   <<"customMetrics">> => list(human_evaluation_custom_metric()()),
+%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()()),
+%%   <<"humanWorkflowConfig">> => human_workflow_config()
+%% }
+-type human_evaluation_config() :: #{binary() => any()}.
+
+-type create_evaluation_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_guardrail_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_guardrail_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type create_model_customization_job_errors() ::
     too_many_tags_exception() | 
@@ -637,6 +1144,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_guardrail_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_model_invocation_logging_configuration_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -657,7 +1172,21 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_evaluation_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_foundation_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_guardrail_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -689,11 +1218,24 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_evaluation_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_foundation_models_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_guardrails_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_model_customization_jobs_errors() ::
     throttling_exception() | 
@@ -720,6 +1262,14 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type stop_evaluation_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type stop_model_customization_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -743,6 +1293,15 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type update_guardrail_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_provisioned_model_throughput_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -754,17 +1313,173 @@
 %% API
 %%====================================================================
 
+%% @doc API operation for creating and managing Amazon Bedrock automatic
+%% model evaluation jobs and model evaluation jobs that use human workers.
+%%
+%% To learn more about the requirements for creating a model evaluation job
+%% see, Model evaluations:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html.
+-spec create_evaluation_job(aws_client:aws_client(), create_evaluation_job_request()) ->
+    {ok, create_evaluation_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_evaluation_job_errors(), tuple()}.
+create_evaluation_job(Client, Input) ->
+    create_evaluation_job(Client, Input, []).
+
+-spec create_evaluation_job(aws_client:aws_client(), create_evaluation_job_request(), proplists:proplist()) ->
+    {ok, create_evaluation_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_evaluation_job_errors(), tuple()}.
+create_evaluation_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/evaluation-jobs"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a guardrail to block topics and to filter out harmful
+%% content.
+%%
+%% Specify a `name' and optional `description'.
+%%
+%% Specify messages for when the guardrail successfully blocks a prompt or a
+%% model response in the `blockedInputMessaging' and
+%% `blockedOutputsMessaging' fields.
+%%
+%% Specify topics for the guardrail to deny in the `topicPolicyConfig'
+%% object. Each GuardrailTopicConfig:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailTopicConfig.html
+%% object in the `topicsConfig' list pertains to one topic.
+%%
+%% Give a `name' and `description' so that the guardrail can properly
+%% identify the topic.
+%%
+%% Specify `DENY' in the `type' field.
+%%
+%% (Optional) Provide up to five prompts that you would categorize as
+%% belonging to the topic in the `examples' list.
+%%
+%% Specify filter strengths for the harmful categories defined in Amazon
+%% Bedrock in the `contentPolicyConfig' object. Each
+%% GuardrailContentFilterConfig:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailContentFilterConfig.html
+%% object in the `filtersConfig' list pertains to a harmful category. For
+%% more information, see Content filters:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-filters.
+%% For more information about the fields in a content filter, see
+%% GuardrailContentFilterConfig:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailContentFilterConfig.html.
+%%
+%% Specify the category in the `type' field.
+%%
+%% Specify the strength of the filter for prompts in the `inputStrength'
+%% field and for model responses in the `strength' field of the
+%% GuardrailContentFilterConfig:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailContentFilterConfig.html.
+%%
+%% (Optional) For security, include the ARN of a KMS key in the
+%% `kmsKeyId' field.
+%%
+%% (Optional) Attach any tags to the guardrail in the `tags' object. For
+%% more information, see Tag resources:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.
+-spec create_guardrail(aws_client:aws_client(), create_guardrail_request()) ->
+    {ok, create_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, create_guardrail_errors(), tuple()}.
+create_guardrail(Client, Input) ->
+    create_guardrail(Client, Input, []).
+
+-spec create_guardrail(aws_client:aws_client(), create_guardrail_request(), proplists:proplist()) ->
+    {ok, create_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, create_guardrail_errors(), tuple()}.
+create_guardrail(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/guardrails"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a version of the guardrail.
+%%
+%% Use this API to create a snapshot of the
+%% guardrail when you are satisfied with a configuration, or to compare the
+%% configuration with another version.
+-spec create_guardrail_version(aws_client:aws_client(), binary() | list(), create_guardrail_version_request()) ->
+    {ok, create_guardrail_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_guardrail_version_errors(), tuple()}.
+create_guardrail_version(Client, GuardrailIdentifier, Input) ->
+    create_guardrail_version(Client, GuardrailIdentifier, Input, []).
+
+-spec create_guardrail_version(aws_client:aws_client(), binary() | list(), create_guardrail_version_request(), proplists:proplist()) ->
+    {ok, create_guardrail_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_guardrail_version_errors(), tuple()}.
+create_guardrail_version(Client, GuardrailIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/guardrails/", aws_util:encode_uri(GuardrailIdentifier), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a fine-tuning job to customize a base model.
 %%
 %% You specify the base foundation model and the location of the training
 %% data.
 %% After the model-customization job completes successfully, your custom
-%% model resource will be ready to use. Training data
-%% contains input and output text for each record in a JSONL format.
-%% Optionally, you can specify validation data
-%% in the same format as the training data. Amazon Bedrock returns validation
-%% loss metrics and output generations
-%% after the job completes.
+%% model resource will be ready to use. Amazon Bedrock returns validation
+%% loss metrics and output generations after the job completes.
+%%
+%% For information on the format of training and validation data, see Prepare
+%% the datasets:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-prepare.html.
 %%
 %% Model-customization jobs are asynchronous and the completion time depends
 %% on the base model and the training/validation data size.
@@ -773,7 +1488,7 @@
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Bedrock User Guide.
+%% the Amazon Bedrock User Guide.
 -spec create_model_customization_job(aws_client:aws_client(), create_model_customization_job_request()) ->
     {ok, create_model_customization_job_response(), tuple()} |
     {error, any()} |
@@ -807,12 +1522,14 @@ create_model_customization_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a provisioned throughput with dedicated capacity for a
-%% foundation model or a fine-tuned model.
+%% @doc Creates dedicated throughput for a base or custom model with the
+%% model units and for the duration that you specify.
 %%
-%% For more information, see Provisioned throughput:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
-%% in the Bedrock User Guide.
+%% For pricing details, see Amazon Bedrock Pricing:
+%% http://aws.amazon.com/bedrock/pricing/. For more information, see
+%% Provisioned Throughput:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html
+%% in the Amazon Bedrock User Guide.
 -spec create_provisioned_model_throughput(aws_client:aws_client(), create_provisioned_model_throughput_request()) ->
     {ok, create_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
@@ -850,7 +1567,7 @@ create_provisioned_model_throughput(Client, Input0, Options0) ->
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Bedrock User Guide.
+%% the Amazon Bedrock User Guide.
 -spec delete_custom_model(aws_client:aws_client(), binary() | list(), delete_custom_model_request()) ->
     {ok, delete_custom_model_response(), tuple()} |
     {error, any()} |
@@ -882,6 +1599,49 @@ delete_custom_model(Client, ModelIdentifier, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a guardrail.
+%%
+%% To delete a guardrail, only specify the ARN of the guardrail in the
+%% `guardrailIdentifier' field. If you delete a guardrail, all of its
+%% versions will be deleted.
+%%
+%% To delete a version of a guardrail, specify the ARN of the guardrail in
+%% the `guardrailIdentifier' field and the version in the
+%% `guardrailVersion' field.
+-spec delete_guardrail(aws_client:aws_client(), binary() | list(), delete_guardrail_request()) ->
+    {ok, delete_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, delete_guardrail_errors(), tuple()}.
+delete_guardrail(Client, GuardrailIdentifier, Input) ->
+    delete_guardrail(Client, GuardrailIdentifier, Input, []).
+
+-spec delete_guardrail(aws_client:aws_client(), binary() | list(), delete_guardrail_request(), proplists:proplist()) ->
+    {ok, delete_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, delete_guardrail_errors(), tuple()}.
+delete_guardrail(Client, GuardrailIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/guardrails/", aws_util:encode_uri(GuardrailIdentifier), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"guardrailVersion">>, <<"guardrailVersion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete the invocation logging.
@@ -918,11 +1678,12 @@ delete_model_invocation_logging_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a provisioned throughput.
+%% @doc Deletes a Provisioned Throughput.
 %%
-%% For more information, see Provisioned throughput:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
-%% in the Bedrock User Guide.
+%% You can't delete a Provisioned Throughput before the commitment term
+%% is over. For more information, see Provisioned Throughput:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html
+%% in the Amazon Bedrock User Guide.
 -spec delete_provisioned_model_throughput(aws_client:aws_client(), binary() | list(), delete_provisioned_model_throughput_request()) ->
     {ok, delete_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
@@ -959,7 +1720,7 @@ delete_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0
 %% @doc Get the properties associated with a Amazon Bedrock custom model that
 %% you have created.For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Bedrock User Guide.
+%% the Amazon Bedrock User Guide.
 -spec get_custom_model(aws_client:aws_client(), binary() | list()) ->
     {ok, get_custom_model_response(), tuple()} |
     {error, any()} |
@@ -983,6 +1744,48 @@ get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap)
 get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-models/", aws_util:encode_uri(ModelIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the properties associated with a model evaluation job,
+%% including the
+%% status of the job.
+%%
+%% For more information, see Model evaluations:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/latest/userguide/model-evaluation.html.
+-spec get_evaluation_job(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_evaluation_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_evaluation_job_errors(), tuple()}.
+get_evaluation_job(Client, JobIdentifier)
+  when is_map(Client) ->
+    get_evaluation_job(Client, JobIdentifier, #{}, #{}).
+
+-spec get_evaluation_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_evaluation_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_evaluation_job_errors(), tuple()}.
+get_evaluation_job(Client, JobIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_evaluation_job(Client, JobIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_evaluation_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_evaluation_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_evaluation_job_errors(), tuple()}.
+get_evaluation_job(Client, JobIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/evaluation-jobs/", aws_util:encode_uri(JobIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1033,12 +1836,56 @@ get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets details about a guardrail.
+%%
+%% If you don't specify a version, the response returns details for the
+%% `DRAFT' version.
+-spec get_guardrail(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, get_guardrail_errors(), tuple()}.
+get_guardrail(Client, GuardrailIdentifier)
+  when is_map(Client) ->
+    get_guardrail(Client, GuardrailIdentifier, #{}, #{}).
+
+-spec get_guardrail(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, get_guardrail_errors(), tuple()}.
+get_guardrail(Client, GuardrailIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_guardrail(Client, GuardrailIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_guardrail(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, get_guardrail_errors(), tuple()}.
+get_guardrail(Client, GuardrailIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/guardrails/", aws_util:encode_uri(GuardrailIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"guardrailVersion">>, maps:get(<<"guardrailVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the properties associated with a model-customization job,
 %% including the status of the job.
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Bedrock User Guide.
+%% the Amazon Bedrock User Guide.
 -spec get_model_customization_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_model_customization_job_response(), tuple()} |
     {error, any()} |
@@ -1112,11 +1959,11 @@ get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get details for a provisioned throughput.
+%% @doc Returns details for a Provisioned Throughput.
 %%
-%% For more information, see Provisioned throughput:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
-%% in the Bedrock User Guide.
+%% For more information, see Provisioned Throughput:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html
+%% in the Amazon Bedrock User Guide.
 -spec get_provisioned_model_throughput(aws_client:aws_client(), binary() | list()) ->
     {ok, get_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
@@ -1158,7 +2005,7 @@ get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMa
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Bedrock User Guide.
+%% the Amazon Bedrock User Guide.
 -spec list_custom_models(aws_client:aws_client()) ->
     {ok, list_custom_models_response(), tuple()} |
     {error, any()} |
@@ -1207,11 +2054,60 @@ list_custom_models(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List of Amazon Bedrock foundation models that you can use.
+%% @doc Lists model evaluation jobs.
+-spec list_evaluation_jobs(aws_client:aws_client()) ->
+    {ok, list_evaluation_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_evaluation_jobs_errors(), tuple()}.
+list_evaluation_jobs(Client)
+  when is_map(Client) ->
+    list_evaluation_jobs(Client, #{}, #{}).
+
+-spec list_evaluation_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_evaluation_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_evaluation_jobs_errors(), tuple()}.
+list_evaluation_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_evaluation_jobs(Client, QueryMap, HeadersMap, []).
+
+-spec list_evaluation_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_evaluation_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_evaluation_jobs_errors(), tuple()}.
+list_evaluation_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/evaluation-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"creationTimeAfter">>, maps:get(<<"creationTimeAfter">>, QueryMap, undefined)},
+        {<<"creationTimeBefore">>, maps:get(<<"creationTimeBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"statusEquals">>, maps:get(<<"statusEquals">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists Amazon Bedrock foundation models that you can use.
 %%
-%% For more information, see Foundation models:
+%% You can filter the results with the request parameters. For more
+%% information, see Foundation models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/foundation-models.html
-%% in the Bedrock User Guide.
+%% in the Amazon Bedrock User Guide.
 -spec list_foundation_models(aws_client:aws_client()) ->
     {ok, list_foundation_models_response(), tuple()} |
     {error, any()} |
@@ -1255,6 +2151,58 @@ list_foundation_models(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists details about all the guardrails in an account.
+%%
+%% To list the `DRAFT' version of all your guardrails, don't specify
+%% the `guardrailIdentifier' field. To list all versions of a guardrail,
+%% specify the ARN of the guardrail in the `guardrailIdentifier' field.
+%%
+%% You can set the maximum number of results to return in a response in the
+%% `maxResults' field. If there are more results than the number you set,
+%% the response returns a `nextToken' that you can send in another
+%% `ListGuardrails' request to see the next batch of results.
+-spec list_guardrails(aws_client:aws_client()) ->
+    {ok, list_guardrails_response(), tuple()} |
+    {error, any()} |
+    {error, list_guardrails_errors(), tuple()}.
+list_guardrails(Client)
+  when is_map(Client) ->
+    list_guardrails(Client, #{}, #{}).
+
+-spec list_guardrails(aws_client:aws_client(), map(), map()) ->
+    {ok, list_guardrails_response(), tuple()} |
+    {error, any()} |
+    {error, list_guardrails_errors(), tuple()}.
+list_guardrails(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_guardrails(Client, QueryMap, HeadersMap, []).
+
+-spec list_guardrails(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_guardrails_response(), tuple()} |
+    {error, any()} |
+    {error, list_guardrails_errors(), tuple()}.
+list_guardrails(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/guardrails"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"guardrailIdentifier">>, maps:get(<<"guardrailIdentifier">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of model customization jobs that you have submitted.
 %%
 %% You can filter the jobs to return based on
@@ -1262,7 +2210,7 @@ list_foundation_models(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Bedrock User Guide.
+%% the Amazon Bedrock User Guide.
 -spec list_model_customization_jobs(aws_client:aws_client()) ->
     {ok, list_model_customization_jobs_response(), tuple()} |
     {error, any()} |
@@ -1310,11 +2258,11 @@ list_model_customization_jobs(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List the provisioned capacities.
+%% @doc Lists the Provisioned Throughputs in the account.
 %%
-%% For more information, see Provisioned throughput:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
-%% in the Bedrock User Guide.
+%% For more information, see Provisioned Throughput:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html
+%% in the Amazon Bedrock User Guide.
 -spec list_provisioned_model_throughputs(aws_client:aws_client()) ->
     {ok, list_provisioned_model_throughputs_response(), tuple()} |
     {error, any()} |
@@ -1366,8 +2314,8 @@ list_provisioned_model_throughputs(Client, QueryMap, HeadersMap, Options0)
 %% @doc List the tags associated with the specified resource.
 %%
 %% For more information, see Tagging resources:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
-%% in the Bedrock User Guide.
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html in the
+%% Amazon Bedrock User Guide.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1435,11 +2383,45 @@ put_model_invocation_logging_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Stops an in progress model evaluation job.
+-spec stop_evaluation_job(aws_client:aws_client(), binary() | list(), stop_evaluation_job_request()) ->
+    {ok, stop_evaluation_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_evaluation_job_errors(), tuple()}.
+stop_evaluation_job(Client, JobIdentifier, Input) ->
+    stop_evaluation_job(Client, JobIdentifier, Input, []).
+
+-spec stop_evaluation_job(aws_client:aws_client(), binary() | list(), stop_evaluation_job_request(), proplists:proplist()) ->
+    {ok, stop_evaluation_job_response(), tuple()} |
+    {error, any()} |
+    {error, stop_evaluation_job_errors(), tuple()}.
+stop_evaluation_job(Client, JobIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/evaluation-job/", aws_util:encode_uri(JobIdentifier), "/stop"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Stops an active model customization job.
 %%
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
-%% the Bedrock User Guide.
+%% the Amazon Bedrock User Guide.
 -spec stop_model_customization_job(aws_client:aws_client(), binary() | list(), stop_model_customization_job_request()) ->
     {ok, stop_model_customization_job_response(), tuple()} |
     {error, any()} |
@@ -1476,8 +2458,8 @@ stop_model_customization_job(Client, JobIdentifier, Input0, Options0) ->
 %% @doc Associate tags with a resource.
 %%
 %% For more information, see Tagging resources:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
-%% in the Bedrock User Guide.
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html in the
+%% Amazon Bedrock User Guide.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1514,8 +2496,8 @@ tag_resource(Client, Input0, Options0) ->
 %% @doc Remove one or more tags from a resource.
 %%
 %% For more information, see Tagging resources:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
-%% in the Bedrock User Guide.
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html in the
+%% Amazon Bedrock User Guide.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -1549,11 +2531,89 @@ untag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update a provisioned throughput.
+%% @doc Updates a guardrail with the values you specify.
 %%
-%% For more information, see Provisioned throughput:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
-%% in the Bedrock User Guide.
+%% Specify a `name' and optional `description'.
+%%
+%% Specify messages for when the guardrail successfully blocks a prompt or a
+%% model response in the `blockedInputMessaging' and
+%% `blockedOutputsMessaging' fields.
+%%
+%% Specify topics for the guardrail to deny in the `topicPolicyConfig'
+%% object. Each GuardrailTopicConfig:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailTopicConfig.html
+%% object in the `topicsConfig' list pertains to one topic.
+%%
+%% Give a `name' and `description' so that the guardrail can properly
+%% identify the topic.
+%%
+%% Specify `DENY' in the `type' field.
+%%
+%% (Optional) Provide up to five prompts that you would categorize as
+%% belonging to the topic in the `examples' list.
+%%
+%% Specify filter strengths for the harmful categories defined in Amazon
+%% Bedrock in the `contentPolicyConfig' object. Each
+%% GuardrailContentFilterConfig:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailContentFilterConfig.html
+%% object in the `filtersConfig' list pertains to a harmful category. For
+%% more information, see Content filters:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-filters.
+%% For more information about the fields in a content filter, see
+%% GuardrailContentFilterConfig:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailContentFilterConfig.html.
+%%
+%% Specify the category in the `type' field.
+%%
+%% Specify the strength of the filter for prompts in the `inputStrength'
+%% field and for model responses in the `strength' field of the
+%% GuardrailContentFilterConfig:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailContentFilterConfig.html.
+%%
+%% (Optional) For security, include the ARN of a KMS key in the
+%% `kmsKeyId' field.
+%%
+%% (Optional) Attach any tags to the guardrail in the `tags' object. For
+%% more information, see Tag resources:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.
+-spec update_guardrail(aws_client:aws_client(), binary() | list(), update_guardrail_request()) ->
+    {ok, update_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, update_guardrail_errors(), tuple()}.
+update_guardrail(Client, GuardrailIdentifier, Input) ->
+    update_guardrail(Client, GuardrailIdentifier, Input, []).
+
+-spec update_guardrail(aws_client:aws_client(), binary() | list(), update_guardrail_request(), proplists:proplist()) ->
+    {ok, update_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, update_guardrail_errors(), tuple()}.
+update_guardrail(Client, GuardrailIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/guardrails/", aws_util:encode_uri(GuardrailIdentifier), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the name or associated model for a Provisioned Throughput.
+%%
+%% For more information, see Provisioned Throughput:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html
+%% in the Amazon Bedrock User Guide.
 -spec update_provisioned_model_throughput(aws_client:aws_client(), binary() | list(), update_provisioned_model_throughput_request()) ->
     {ok, update_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |

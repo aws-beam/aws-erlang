@@ -673,9 +673,9 @@ get_resource_metadata(Client, Input, Options)
 %% a time period.
 %%
 %% You can provide
-%% specific dimension groups and dimensions, and provide aggregation and
-%% filtering criteria for
-%% each group.
+%% specific dimension groups and dimensions, and provide filtering criteria
+%% for each group. You must specify an aggregate function for
+%% each metric.
 %%
 %% Each response element returns a maximum of 500 bytes. For larger elements,
 %% such as SQL statements,

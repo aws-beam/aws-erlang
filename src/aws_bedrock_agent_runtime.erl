@@ -41,6 +41,15 @@
 
 
 %% Example:
+%% external_source() :: #{
+%%   <<"byteContent">> => byte_content_doc(),
+%%   <<"s3Location">> => s3_object_doc(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type external_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% inference_configuration() :: #{
 %%   <<"maximumLength">> => integer(),
 %%   <<"stopSequences">> => list([string()]()),
@@ -57,6 +66,13 @@
 %%   <<"resourceName">> => string()
 %% }
 -type bad_gateway_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object_doc() :: #{
+%%   <<"uri">> => string()
+%% }
+-type s3_object_doc() :: #{binary() => any()}.
 
 
 %% Example:
@@ -173,6 +189,7 @@
 
 %% Example:
 %% retrieve_and_generate_configuration() :: #{
+%%   <<"externalSourcesConfiguration">> => external_sources_retrieve_and_generate_configuration(),
 %%   <<"knowledgeBaseConfiguration">> => knowledge_base_retrieve_and_generate_configuration(),
 %%   <<"type">> => list(any())
 %% }
@@ -336,6 +353,15 @@
 
 
 %% Example:
+%% external_sources_retrieve_and_generate_configuration() :: #{
+%%   <<"generationConfiguration">> => external_sources_generation_configuration(),
+%%   <<"modelArn">> => string(),
+%%   <<"sources">> => list(external_source()())
+%% }
+-type external_sources_retrieve_and_generate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% api_invocation_input() :: #{
 %%   <<"actionGroup">> => [string()],
 %%   <<"apiPath">> => string(),
@@ -378,6 +404,22 @@
 %%   <<"responseState">> => list(any())
 %% }
 -type api_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% byte_content_doc() :: #{
+%%   <<"contentType">> => string(),
+%%   <<"data">> => binary(),
+%%   <<"identifier">> => string()
+%% }
+-type byte_content_doc() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_sources_generation_configuration() :: #{
+%%   <<"promptTemplate">> => prompt_template()
+%% }
+-type external_sources_generation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
