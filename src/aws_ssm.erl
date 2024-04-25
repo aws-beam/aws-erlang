@@ -138,6 +138,8 @@
          describe_instance_patch_states_for_patch_group/3,
          describe_instance_patches/2,
          describe_instance_patches/3,
+         describe_instance_properties/2,
+         describe_instance_properties/3,
          describe_inventory_deletions/2,
          describe_inventory_deletions/3,
          describe_maintenance_window_execution_task_invocations/2,
@@ -341,6 +343,12 @@
 
 %% }
 -type send_automation_signal_result() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_instance_property_filter_value() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_instance_property_filter_value() :: #{binary() => any()}.
 
 %% Example:
 %% get_maintenance_window_execution_task_invocation_request() :: #{
@@ -686,6 +694,13 @@
 %%   <<"Value">> := string()
 %% }
 -type put_parameter_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_property_filter() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"valueSet">> => list(string()())
+%% }
+-type instance_property_filter() :: #{binary() => any()}.
 
 %% Example:
 %% maintenance_window_execution() :: #{
@@ -2761,6 +2776,13 @@
 -type get_connection_status_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_instance_properties_result() :: #{
+%%   <<"InstanceProperties">> => list(instance_property()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_properties_result() :: #{binary() => any()}.
+
+%% Example:
 %% parameters_filter() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"Values">> => list(string()())
@@ -3198,6 +3220,15 @@
 -type update_document_metadata_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_instance_properties_request() :: #{
+%%   <<"FiltersWithOperator">> => list(instance_property_string_filter()()),
+%%   <<"InstancePropertyFilterList">> => list(instance_property_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_properties_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_effective_instance_associations_request() :: #{
 %%   <<"InstanceId">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -3440,6 +3471,14 @@
 -type update_maintenance_window_result() :: #{binary() => any()}.
 
 %% Example:
+%% instance_property_string_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type instance_property_string_filter() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_inventory_group_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -3606,6 +3645,37 @@
 
 %% }
 -type invalid_output_location() :: #{binary() => any()}.
+
+%% Example:
+%% instance_property() :: #{
+%%   <<"ActivationId">> => string(),
+%%   <<"AgentVersion">> => string(),
+%%   <<"Architecture">> => string(),
+%%   <<"AssociationOverview">> => instance_aggregated_association_overview(),
+%%   <<"AssociationStatus">> => string(),
+%%   <<"ComputerName">> => string(),
+%%   <<"IPAddress">> => string(),
+%%   <<"IamRole">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceRole">> => string(),
+%%   <<"InstanceState">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"KeyName">> => string(),
+%%   <<"LastAssociationExecutionDate">> => non_neg_integer(),
+%%   <<"LastPingDateTime">> => non_neg_integer(),
+%%   <<"LastSuccessfulAssociationExecutionDate">> => non_neg_integer(),
+%%   <<"LaunchTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PingStatus">> => list(any()),
+%%   <<"PlatformName">> => string(),
+%%   <<"PlatformType">> => list(any()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"RegistrationDate">> => non_neg_integer(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SourceId">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type instance_property() :: #{binary() => any()}.
 
 %% Example:
 %% describe_document_request() :: #{
@@ -5473,6 +5543,15 @@
     invalid_instance_id() | 
     internal_server_error().
 
+-type describe_instance_properties_errors() ::
+    invalid_next_token() | 
+    invalid_filter_key() | 
+    invalid_instance_id() | 
+    internal_server_error() | 
+    invalid_activation_id() | 
+    invalid_document() | 
+    invalid_instance_property_filter_value().
+
 -type describe_inventory_deletions_errors() ::
     invalid_next_token() | 
     internal_server_error() | 
@@ -7119,6 +7198,24 @@ describe_instance_patches(Client, Input)
 describe_instance_patches(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstancePatches">>, Input, Options).
+
+%% @doc An API operation used by the Systems Manager console to display
+%% information about Systems Manager managed nodes.
+-spec describe_instance_properties(aws_client:aws_client(), describe_instance_properties_request()) ->
+    {ok, describe_instance_properties_result(), tuple()} |
+    {error, any()} |
+    {error, describe_instance_properties_errors(), tuple()}.
+describe_instance_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_instance_properties(Client, Input, []).
+
+-spec describe_instance_properties(aws_client:aws_client(), describe_instance_properties_request(), proplists:proplist()) ->
+    {ok, describe_instance_properties_result(), tuple()} |
+    {error, any()} |
+    {error, describe_instance_properties_errors(), tuple()}.
+describe_instance_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInstanceProperties">>, Input, Options).
 
 %% @doc Describes a specific delete inventory operation.
 -spec describe_inventory_deletions(aws_client:aws_client(), describe_inventory_deletions_request()) ->

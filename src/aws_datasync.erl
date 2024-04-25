@@ -203,6 +203,14 @@
 -type fsx_protocol_nfs() :: #{binary() => any()}.
 
 %% Example:
+%% task_schedule_details() :: #{
+%%   <<"DisabledBy">> => list(any()),
+%%   <<"DisabledReason">> => string(),
+%%   <<"StatusUpdateTime">> => non_neg_integer()
+%% }
+-type task_schedule_details() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"Tags">> := list(tag_list_entry()())
@@ -428,7 +436,8 @@
 
 %% Example:
 %% task_schedule() :: #{
-%%   <<"ScheduleExpression">> => string()
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"Status">> => list(any())
 %% }
 -type task_schedule() :: #{binary() => any()}.
 
@@ -847,6 +856,7 @@
 %%   <<"Name">> => string(),
 %%   <<"Options">> => options(),
 %%   <<"Schedule">> => task_schedule(),
+%%   <<"ScheduleDetails">> => task_schedule_details(),
 %%   <<"SourceLocationArn">> => string(),
 %%   <<"SourceNetworkInterfaceArns">> => list(string()()),
 %%   <<"Status">> => list(any()),
@@ -2238,15 +2248,12 @@ create_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationSmb">>, Input, Options).
 
-%% @doc Configures a transfer task, which defines where and how DataSync
-%% moves your
+%% @doc Configures a task, which defines where and how DataSync transfers
+%% your
 %% data.
 %%
-%% A task includes a source location, destination location, and the options
-%% for how and
-%% when you want to transfer your data (such as bandwidth limits, scheduling,
-%% among other
-%% options).
+%% A task includes a source location, destination location, and transfer
+%% options (such as bandwidth limits, scheduling, and more).
 %%
 %% If you're planning to transfer data to or from an Amazon S3 location,
 %% review
@@ -2634,7 +2641,8 @@ describe_storage_system_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStorageSystemResources">>, Input, Options).
 
-%% @doc Provides information about an DataSync transfer task.
+%% @doc Provides information about a task, which defines where and how
+%% DataSync transfers your data.
 -spec describe_task(aws_client:aws_client(), describe_task_request()) ->
     {ok, describe_task_response(), tuple()} |
     {error, any()} |
@@ -3150,7 +3158,8 @@ update_storage_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStorageSystem">>, Input, Options).
 
-%% @doc Updates the configuration of an DataSync transfer task.
+%% @doc Updates the configuration of a task, which defines where and how
+%% DataSync transfers your data.
 -spec update_task(aws_client:aws_client(), update_task_request()) ->
     {ok, update_task_response(), tuple()} |
     {error, any()} |

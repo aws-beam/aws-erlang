@@ -5697,6 +5697,7 @@
 
 %% Example:
 %% modify_network_interface_attribute_request() :: #{
+%%   <<"AssociatePublicIpAddress">> => boolean(),
 %%   <<"Attachment">> => network_interface_attachment_changes(),
 %%   <<"ConnectionTrackingSpecification">> => connection_tracking_specification_request(),
 %%   <<"Description">> => attribute_value(),
@@ -7632,6 +7633,7 @@
 
 %% Example:
 %% describe_network_interface_attribute_result() :: #{
+%%   <<"AssociatePublicIpAddress">> => boolean(),
 %%   <<"Attachment">> => network_interface_attachment(),
 %%   <<"Description">> => attribute_value(),
 %%   <<"Groups">> => list(group_identifier()()),

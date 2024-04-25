@@ -27,6 +27,8 @@
 
 -export([add_policy_statement/4,
          add_policy_statement/5,
+         batch_delete_unique_id/3,
+         batch_delete_unique_id/4,
          create_id_mapping_workflow/2,
          create_id_mapping_workflow/3,
          create_id_namespace/2,
@@ -181,6 +183,13 @@
 %%   <<"schemaName">> => string()
 %% }
 -type update_schema_mapping_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% deleted_unique_id() :: #{
+%%   <<"uniqueId">> => string()
+%% }
+-type deleted_unique_id() :: #{binary() => any()}.
 
 
 %% Example:
@@ -449,6 +458,16 @@
 %% }
 -type namespace_provider_properties() :: #{binary() => any()}.
 
+
+%% Example:
+%% batch_delete_unique_id_output() :: #{
+%%   <<"deleted">> => list(deleted_unique_id()()),
+%%   <<"disconnectedUniqueIds">> => list(string()()),
+%%   <<"errors">> => list(delete_unique_id_error()()),
+%%   <<"status">> => list(any())
+%% }
+-type batch_delete_unique_id_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_schema_mapping_input() :: #{}
 -type get_schema_mapping_input() :: #{}.
@@ -470,6 +489,14 @@
 %%   <<"providerTargetConfigurationDefinition">> => [any()]
 %% }
 -type provider_id_name_space_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_unique_id_input() :: #{
+%%   <<"inputSource">> => [string()],
+%%   <<"uniqueIds">> := list(string()())
+%% }
+-type batch_delete_unique_id_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -768,6 +795,14 @@
 %%   <<"requiredBucketActions">> => list([string()]())
 %% }
 -type provider_intermediate_data_access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_unique_id_error() :: #{
+%%   <<"errorType">> => list(any()),
+%%   <<"uniqueId">> => string()
+%% }
+-type delete_unique_id_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1090,6 +1125,11 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type batch_delete_unique_id_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type create_id_mapping_workflow_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1365,6 +1405,43 @@ add_policy_statement(Client, Arn, StatementId, Input0, Options0) ->
 
     Headers = [],
     Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes multiple unique IDs in a matching workflow.
+-spec batch_delete_unique_id(aws_client:aws_client(), binary() | list(), batch_delete_unique_id_input()) ->
+    {ok, batch_delete_unique_id_output(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_unique_id_errors(), tuple()}.
+batch_delete_unique_id(Client, WorkflowName, Input) ->
+    batch_delete_unique_id(Client, WorkflowName, Input, []).
+
+-spec batch_delete_unique_id(aws_client:aws_client(), binary() | list(), batch_delete_unique_id_input(), proplists:proplist()) ->
+    {ok, batch_delete_unique_id_output(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_unique_id_errors(), tuple()}.
+batch_delete_unique_id(Client, WorkflowName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), "/uniqueids"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"inputSource">>, <<"inputSource">>},
+                       {<<"uniqueIds">>, <<"uniqueIds">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,

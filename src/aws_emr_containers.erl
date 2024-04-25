@@ -39,6 +39,8 @@
          create_job_template/3,
          create_managed_endpoint/3,
          create_managed_endpoint/4,
+         create_security_configuration/2,
+         create_security_configuration/3,
          create_virtual_cluster/2,
          create_virtual_cluster/3,
          delete_job_template/3,
@@ -56,6 +58,9 @@
          describe_managed_endpoint/3,
          describe_managed_endpoint/5,
          describe_managed_endpoint/6,
+         describe_security_configuration/2,
+         describe_security_configuration/4,
+         describe_security_configuration/5,
          describe_virtual_cluster/2,
          describe_virtual_cluster/4,
          describe_virtual_cluster/5,
@@ -70,6 +75,9 @@
          list_managed_endpoints/2,
          list_managed_endpoints/4,
          list_managed_endpoints/5,
+         list_security_configurations/1,
+         list_security_configurations/3,
+         list_security_configurations/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -85,6 +93,13 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"inTransitEncryptionConfiguration">> => in_transit_encryption_configuration()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -116,6 +131,16 @@
 %%   <<"id">> => string()
 %% }
 -type delete_job_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_configurations_request() :: #{
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_security_configurations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -171,6 +196,16 @@
 %%   <<"states">> => list(list(any())())
 %% }
 -type list_job_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_security_configuration_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"name">> := string(),
+%%   <<"securityConfigurationData">> := security_configuration_data(),
+%%   <<"tags">> => map()
+%% }
+-type create_security_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -240,12 +275,21 @@
 
 
 %% Example:
+%% secure_namespace_info() :: #{
+%%   <<"clusterId">> => string(),
+%%   <<"namespace">> => string()
+%% }
+-type secure_namespace_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% virtual_cluster() :: #{
 %%   <<"arn">> => string(),
 %%   <<"containerProvider">> => container_provider(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
+%%   <<"securityConfigurationId">> => string(),
 %%   <<"state">> => list(any()),
 %%   <<"tags">> => map()
 %% }
@@ -377,6 +421,15 @@
 
 
 %% Example:
+%% create_security_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type create_security_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% container_provider() :: #{
 %%   <<"id">> => string(),
 %%   <<"info">> => list(),
@@ -469,6 +522,7 @@
 %%   <<"clientToken">> := string(),
 %%   <<"containerProvider">> := container_provider(),
 %%   <<"name">> := string(),
+%%   <<"securityConfigurationId">> => string(),
 %%   <<"tags">> => map()
 %% }
 -type create_virtual_cluster_request() :: #{binary() => any()}.
@@ -501,6 +555,22 @@
 
 
 %% Example:
+%% in_transit_encryption_configuration() :: #{
+%%   <<"tlsCertificateConfiguration">> => t_l_s_certificate_configuration()
+%% }
+-type in_transit_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% t_l_s_certificate_configuration() :: #{
+%%   <<"certificateProviderType">> => list(any()),
+%%   <<"privateCertificateSecretArn">> => string(),
+%%   <<"publicCertificateSecretArn">> => string()
+%% }
+-type t_l_s_certificate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_job_template_request() :: #{
 %%   <<"clientToken">> := string(),
 %%   <<"jobTemplateData">> := job_template_data(),
@@ -517,6 +587,26 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% security_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"securityConfigurationData">> => security_configuration_data(),
+%%   <<"tags">> => map()
+%% }
+-type security_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_security_configuration_response() :: #{
+%%   <<"securityConfiguration">> => security_configuration()
+%% }
+-type describe_security_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -560,6 +650,13 @@
 %%   <<"types">> => list(string()())
 %% }
 -type list_managed_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_configuration_data() :: #{
+%%   <<"authorizationConfiguration">> => authorization_configuration()
+%% }
+-type security_configuration_data() :: #{binary() => any()}.
 
 
 %% Example:
@@ -608,6 +705,14 @@
 
 
 %% Example:
+%% list_security_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"securityConfigurations">> => list(security_configuration()())
+%% }
+-type list_security_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_virtual_cluster_response() :: #{
 %%   <<"virtualCluster">> => virtual_cluster()
 %% }
@@ -624,6 +729,10 @@
 %% Example:
 %% cancel_job_run_request() :: #{}
 -type cancel_job_run_request() :: #{}.
+
+%% Example:
+%% describe_security_configuration_request() :: #{}
+-type describe_security_configuration_request() :: #{}.
 
 
 %% Example:
@@ -642,6 +751,14 @@
 
 
 %% Example:
+%% authorization_configuration() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"lakeFormationConfiguration">> => lake_formation_configuration()
+%% }
+-type authorization_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_virtual_clusters_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"virtualClusters">> => list(virtual_cluster()())
@@ -651,6 +768,15 @@
 %% Example:
 %% delete_virtual_cluster_request() :: #{}
 -type delete_virtual_cluster_request() :: #{}.
+
+
+%% Example:
+%% lake_formation_configuration() :: #{
+%%   <<"authorizedSessionTagValue">> => string(),
+%%   <<"queryEngineRoleArn">> => string(),
+%%   <<"secureNamespaceInfo">> => secure_namespace_info()
+%% }
+-type lake_formation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -689,6 +815,10 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type create_security_configuration_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
 -type create_virtual_cluster_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -722,6 +852,11 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type describe_security_configuration_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type describe_virtual_cluster_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -742,6 +877,10 @@
     internal_server_exception().
 
 -type list_managed_endpoints_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_security_configurations_errors() ::
     validation_exception() | 
     internal_server_exception().
 
@@ -870,6 +1009,47 @@ create_managed_endpoint(Client, VirtualClusterId, Input) ->
 create_managed_endpoint(Client, VirtualClusterId, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/endpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a security configuration.
+%%
+%% Security configurations in Amazon EMR on EKS are
+%% templates for different security setups. You can use security
+%% configurations to configure
+%% the Lake Formation integration setup. You can also create a security
+%% configuration
+%% to re-use a security setup each time you create a virtual cluster.
+-spec create_security_configuration(aws_client:aws_client(), create_security_configuration_request()) ->
+    {ok, create_security_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_security_configuration_errors(), tuple()}.
+create_security_configuration(Client, Input) ->
+    create_security_configuration(Client, Input, []).
+
+-spec create_security_configuration(aws_client:aws_client(), create_security_configuration_request(), proplists:proplist()) ->
+    {ok, create_security_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_security_configuration_errors(), tuple()}.
+create_security_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/securityconfigurations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1178,6 +1358,53 @@ describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Displays detailed information about a specified security
+%% configuration.
+%%
+%% Security
+%% configurations in Amazon EMR on EKS are templates for different security
+%% setups. You
+%% can use security configurations to configure the Lake Formation
+%% integration setup.
+%% You can also create a security configuration to re-use a security setup
+%% each time you
+%% create a virtual cluster.
+-spec describe_security_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_security_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_security_configuration_errors(), tuple()}.
+describe_security_configuration(Client, Id)
+  when is_map(Client) ->
+    describe_security_configuration(Client, Id, #{}, #{}).
+
+-spec describe_security_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_security_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_security_configuration_errors(), tuple()}.
+describe_security_configuration(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_security_configuration(Client, Id, QueryMap, HeadersMap, []).
+
+-spec describe_security_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_security_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_security_configuration_errors(), tuple()}.
+describe_security_configuration(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/securityconfigurations/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Displays detailed information about a specified virtual cluster.
 %%
 %% Virtual cluster is a
@@ -1405,6 +1632,59 @@ list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"states">>, maps:get(<<"states">>, QueryMap, undefined)},
         {<<"types">>, maps:get(<<"types">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists security configurations based on a set of parameters.
+%%
+%% Security configurations in
+%% Amazon EMR on EKS are templates for different security setups. You can use
+%% security
+%% configurations to configure the Lake Formation integration setup. You can
+%% also
+%% create a security configuration to re-use a security setup each time you
+%% create a virtual
+%% cluster.
+-spec list_security_configurations(aws_client:aws_client()) ->
+    {ok, list_security_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_security_configurations_errors(), tuple()}.
+list_security_configurations(Client)
+  when is_map(Client) ->
+    list_security_configurations(Client, #{}, #{}).
+
+-spec list_security_configurations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_security_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_security_configurations_errors(), tuple()}.
+list_security_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_security_configurations(Client, QueryMap, HeadersMap, []).
+
+-spec list_security_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_security_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_security_configurations_errors(), tuple()}.
+list_security_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/securityconfigurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
