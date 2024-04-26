@@ -109,7 +109,9 @@
          update_state_machine/2,
          update_state_machine/3,
          update_state_machine_alias/2,
-         update_state_machine_alias/3]).
+         update_state_machine_alias/3,
+         validate_state_machine_definition/2,
+         validate_state_machine_definition/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -932,6 +934,13 @@
 -type map_run_execution_counts() :: #{binary() => any()}.
 
 %% Example:
+%% validate_state_machine_definition_output() :: #{
+%%   <<"diagnostics">> => list(validate_state_machine_definition_diagnostic()()),
+%%   <<"result">> => list(any())
+%% }
+-type validate_state_machine_definition_output() :: #{binary() => any()}.
+
+%% Example:
 %% update_state_machine_input() :: #{
 %%   <<"definition">> => string(),
 %%   <<"loggingConfiguration">> => logging_configuration(),
@@ -1096,6 +1105,13 @@
 -type start_sync_execution_input() :: #{binary() => any()}.
 
 %% Example:
+%% validate_state_machine_definition_input() :: #{
+%%   <<"definition">> := string(),
+%%   <<"type">> => list(any())
+%% }
+-type validate_state_machine_definition_input() :: #{binary() => any()}.
+
+%% Example:
 %% send_task_success_input() :: #{
 %%   <<"output">> := string(),
 %%   <<"taskToken">> := string()
@@ -1234,6 +1250,15 @@
 %%   <<"stateMachineVersionArn">> := string()
 %% }
 -type delete_state_machine_version_input() :: #{binary() => any()}.
+
+%% Example:
+%% validate_state_machine_definition_diagnostic() :: #{
+%%   <<"code">> => string(),
+%%   <<"location">> => string(),
+%%   <<"message">> => string(),
+%%   <<"severity">> => list(any())
+%% }
+-type validate_state_machine_definition_diagnostic() :: #{binary() => any()}.
 
 %% Example:
 %% list_activities_output() :: #{
@@ -1480,6 +1505,7 @@
 
 -type redrive_execution_errors() ::
     invalid_arn() | 
+    validation_exception() | 
     execution_limit_exceeded() | 
     execution_not_redrivable() | 
     execution_does_not_exist().
@@ -1561,6 +1587,9 @@
     validation_exception() | 
     conflict_exception() | 
     resource_not_found().
+
+-type validate_state_machine_definition_errors() ::
+    validation_exception().
 
 %%====================================================================
 %% API
@@ -2923,6 +2952,45 @@ update_state_machine_alias(Client, Input)
 update_state_machine_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStateMachineAlias">>, Input, Options).
+
+%% @doc Validates the syntax of a state machine definition.
+%%
+%% You can validate that a state machine definition is correct without
+%% creating a state machine resource. Step Functions will implicitly perform
+%% the same
+%% syntax check when you invoke `CreateStateMachine' and
+%% `UpdateStateMachine'. State machine definitions are specified using a
+%% JSON-based, structured language. For more information on Amazon States
+%% Language see Amazon States Language:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html
+%% (ASL).
+%%
+%% Suggested uses for `ValidateStateMachineDefinition':
+%%
+%% Integrate automated checks into your code review or Continuous Integration
+%% (CI) process to validate state machine definitions before starting
+%% deployments.
+%%
+%% Run the validation from a Git pre-commit hook to check your state machine
+%% definitions before committing them to your source repository.
+%%
+%% Errors found in the state machine definition will be returned in the
+%% response as a list of diagnostic elements, rather than raise an exception.
+-spec validate_state_machine_definition(aws_client:aws_client(), validate_state_machine_definition_input()) ->
+    {ok, validate_state_machine_definition_output(), tuple()} |
+    {error, any()} |
+    {error, validate_state_machine_definition_errors(), tuple()}.
+validate_state_machine_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    validate_state_machine_definition(Client, Input, []).
+
+-spec validate_state_machine_definition(aws_client:aws_client(), validate_state_machine_definition_input(), proplists:proplist()) ->
+    {ok, validate_state_machine_definition_output(), tuple()} |
+    {error, any()} |
+    {error, validate_state_machine_definition_errors(), tuple()}.
+validate_state_machine_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ValidateStateMachineDefinition">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

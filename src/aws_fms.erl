@@ -131,6 +131,18 @@
 -type route_has_out_of_scope_endpoint_violation() :: #{binary() => any()}.
 
 %% Example:
+%% network_acl_entry() :: #{
+%%   <<"CidrBlock">> => string(),
+%%   <<"Egress">> => boolean(),
+%%   <<"IcmpTypeCode">> => network_acl_icmp_type_code(),
+%%   <<"Ipv6CidrBlock">> => string(),
+%%   <<"PortRange">> => network_acl_port_range(),
+%%   <<"Protocol">> => string(),
+%%   <<"RuleAction">> => list(any())
+%% }
+-type network_acl_entry() :: #{binary() => any()}.
+
+%% Example:
 %% get_protection_status_response() :: #{
 %%   <<"AdminAccountId">> => string(),
 %%   <<"Data">> => string(),
@@ -138,6 +150,15 @@
 %%   <<"ServiceType">> => list(any())
 %% }
 -type get_protection_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% network_acl_entry_set() :: #{
+%%   <<"FirstEntries">> => list(network_acl_entry()()),
+%%   <<"ForceRemediateForFirstEntries">> => boolean(),
+%%   <<"ForceRemediateForLastEntries">> => boolean(),
+%%   <<"LastEntries">> => list(network_acl_entry()())
+%% }
+-type network_acl_entry_set() :: #{binary() => any()}.
 
 %% Example:
 %% list_member_accounts_request() :: #{
@@ -253,6 +274,16 @@
 
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_network_acl_entries_violation() :: #{
+%%   <<"CurrentAssociatedNetworkAcl">> => string(),
+%%   <<"EntryViolations">> => list(entry_violation()()),
+%%   <<"Subnet">> => string(),
+%%   <<"SubnetAvailabilityZone">> => string(),
+%%   <<"Vpc">> => string()
+%% }
+-type invalid_network_acl_entries_violation() :: #{binary() => any()}.
 
 %% Example:
 %% security_group_remediation_action() :: #{
@@ -387,6 +418,13 @@
 %%   <<"VpcEndpointId">> => action_target()
 %% }
 -type ec2_create_route_action() :: #{binary() => any()}.
+
+%% Example:
+%% network_acl_icmp_type_code() :: #{
+%%   <<"Code">> => integer(),
+%%   <<"Type">> => integer()
+%% }
+-type network_acl_icmp_type_code() :: #{binary() => any()}.
 
 %% Example:
 %% get_violation_details_request() :: #{
@@ -550,6 +588,15 @@
 -type put_protocols_list_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_network_acl_entries_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FMSCanRemediate">> => boolean(),
+%%   <<"NetworkAclEntriesToBeDeleted">> => list(entry_description()()),
+%%   <<"NetworkAclId">> => action_target()
+%% }
+-type delete_network_acl_entries_action() :: #{binary() => any()}.
+
+%% Example:
 %% associate_third_party_firewall_request() :: #{
 %%   <<"ThirdPartyFirewall">> := list(any())
 %% }
@@ -557,6 +604,9 @@
 
 %% Example:
 %% remediation_action() :: #{
+%%   <<"CreateNetworkAclAction">> => create_network_acl_action(),
+%%   <<"CreateNetworkAclEntriesAction">> => create_network_acl_entries_action(),
+%%   <<"DeleteNetworkAclEntriesAction">> => delete_network_acl_entries_action(),
 %%   <<"Description">> => string(),
 %%   <<"EC2AssociateRouteTableAction">> => ec2_associate_route_table_action(),
 %%   <<"EC2CopyRouteTableAction">> => ec2_copy_route_table_action(),
@@ -565,7 +615,8 @@
 %%   <<"EC2DeleteRouteAction">> => ec2_delete_route_action(),
 %%   <<"EC2ReplaceRouteAction">> => ec2_replace_route_action(),
 %%   <<"EC2ReplaceRouteTableAssociationAction">> => ec2_replace_route_table_association_action(),
-%%   <<"FMSPolicyUpdateFirewallCreationConfigAction">> => f_m_s_policy_update_firewall_creation_config_action()
+%%   <<"FMSPolicyUpdateFirewallCreationConfigAction">> => f_m_s_policy_update_firewall_creation_config_action(),
+%%   <<"ReplaceNetworkAclAssociationAction">> => replace_network_acl_association_action()
 %% }
 -type remediation_action() :: #{binary() => any()}.
 
@@ -617,6 +668,15 @@
 -type network_firewall_internet_traffic_not_inspected_violation() :: #{binary() => any()}.
 
 %% Example:
+%% replace_network_acl_association_action() :: #{
+%%   <<"AssociationId">> => action_target(),
+%%   <<"Description">> => string(),
+%%   <<"FMSCanRemediate">> => boolean(),
+%%   <<"NetworkAclId">> => action_target()
+%% }
+-type replace_network_acl_association_action() :: #{binary() => any()}.
+
+%% Example:
 %% apps_list_data_summary() :: #{
 %%   <<"AppsList">> => list(app()()),
 %%   <<"ListArn">> => string(),
@@ -641,6 +701,7 @@
 %%   <<"DnsRuleGroupPriorityConflictViolation">> => dns_rule_group_priority_conflict_violation(),
 %%   <<"FirewallSubnetIsOutOfScopeViolation">> => firewall_subnet_is_out_of_scope_violation(),
 %%   <<"FirewallSubnetMissingVPCEndpointViolation">> => firewall_subnet_missing_vpcendpoint_violation(),
+%%   <<"InvalidNetworkAclEntriesViolation">> => invalid_network_acl_entries_violation(),
 %%   <<"NetworkFirewallBlackHoleRouteDetectedViolation">> => network_firewall_black_hole_route_detected_violation(),
 %%   <<"NetworkFirewallInternetTrafficNotInspectedViolation">> => network_firewall_internet_traffic_not_inspected_violation(),
 %%   <<"NetworkFirewallInvalidRouteConfigurationViolation">> => network_firewall_invalid_route_configuration_violation(),
@@ -681,6 +742,14 @@
 %%   <<"RemediationAction">> => remediation_action()
 %% }
 -type remediation_action_with_order() :: #{binary() => any()}.
+
+%% Example:
+%% entry_description() :: #{
+%%   <<"EntryDetail">> => network_acl_entry(),
+%%   <<"EntryRuleNumber">> => integer(),
+%%   <<"EntryType">> => list(any())
+%% }
+-type entry_description() :: #{binary() => any()}.
 
 %% Example:
 %% dns_rule_group_priority_conflict_violation() :: #{
@@ -734,6 +803,17 @@
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
+%% Example:
+%% entry_violation() :: #{
+%%   <<"ActualEvaluationOrder">> => string(),
+%%   <<"EntriesWithConflicts">> => list(entry_description()()),
+%%   <<"EntryAtExpectedEvaluationOrder">> => entry_description(),
+%%   <<"EntryViolationReasons">> => list(list(any())()),
+%%   <<"ExpectedEntry">> => entry_description(),
+%%   <<"ExpectedEvaluationOrder">> => string()
+%% }
+-type entry_violation() :: #{binary() => any()}.
 
 %% Example:
 %% partial_match() :: #{
@@ -820,6 +900,15 @@
 -type organizational_unit_scope() :: #{binary() => any()}.
 
 %% Example:
+%% create_network_acl_entries_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FMSCanRemediate">> => boolean(),
+%%   <<"NetworkAclEntriesToBeCreated">> => list(entry_description()()),
+%%   <<"NetworkAclId">> => action_target()
+%% }
+-type create_network_acl_entries_action() :: #{binary() => any()}.
+
+%% Example:
 %% list_compliance_status_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -861,6 +950,14 @@
 %%   <<"ResourceId">> => string()
 %% }
 -type action_target() :: #{binary() => any()}.
+
+%% Example:
+%% create_network_acl_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FMSCanRemediate">> => boolean(),
+%%   <<"Vpc">> => action_target()
+%% }
+-type create_network_acl_action() :: #{binary() => any()}.
 
 %% Example:
 %% possible_remediation_actions() :: #{
@@ -960,6 +1057,7 @@
 
 %% Example:
 %% policy_option() :: #{
+%%   <<"NetworkAclCommonPolicy">> => network_acl_common_policy(),
 %%   <<"NetworkFirewallPolicy">> => network_firewall_policy(),
 %%   <<"ThirdPartyFirewallPolicy">> => third_party_firewall_policy()
 %% }
@@ -1042,6 +1140,13 @@
 %%   <<"ResourceSetArn">> => string()
 %% }
 -type put_resource_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% network_acl_port_range() :: #{
+%%   <<"From">> => integer(),
+%%   <<"To">> => integer()
+%% }
+-type network_acl_port_range() :: #{binary() => any()}.
 
 %% Example:
 %% resource_set() :: #{
@@ -1224,6 +1329,12 @@
 %%   <<"Message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% network_acl_common_policy() :: #{
+%%   <<"NetworkAclEntrySet">> => network_acl_entry_set()
+%% }
+-type network_acl_common_policy() :: #{binary() => any()}.
 
 %% Example:
 %% get_admin_account_request() :: #{
@@ -1879,7 +1990,7 @@ get_admin_account(Client, Input, Options)
 %% @doc Returns information about the specified account's administrative
 %% scope.
 %%
-%% The admistrative scope defines the resources that an Firewall Manager
+%% The administrative scope defines the resources that an Firewall Manager
 %% administrator can manage.
 -spec get_admin_scope(aws_client:aws_client(), get_admin_scope_request()) ->
     {ok, get_admin_scope_response(), tuple()} |
@@ -1922,27 +2033,8 @@ get_apps_list(Client, Input, Options)
 %% include resources that are in and out of compliance with the specified
 %% policy.
 %%
-%% Resources are
-%% considered noncompliant for WAF and Shield Advanced policies if the
-%% specified policy has
-%% not been applied to them.
-%%
-%% Resources are considered noncompliant for security group policies if
-%% they are in scope of the policy, they violate one or more of the policy
-%% rules, and remediation
-%% is disabled or not possible.
-%%
-%% Resources are considered noncompliant for Network Firewall policies
-%% if a firewall is missing in the VPC, if the firewall endpoint isn't
-%% set up in an expected Availability Zone and subnet,
-%% if a subnet created by the Firewall Manager doesn't have the expected
-%% route table,
-%% and for modifications to a firewall policy that violate the Firewall
-%% Manager policy's rules.
-%%
-%% Resources are considered noncompliant for DNS Firewall policies
-%% if a DNS Firewall rule group is missing from the rule group associations
-%% for the VPC.
+%% The reasons for resources being considered compliant depend on the
+%% Firewall Manager policy type.
 -spec get_compliance_detail(aws_client:aws_client(), get_compliance_detail_request()) ->
     {ok, get_compliance_detail_response(), tuple()} |
     {error, any()} |
@@ -2408,6 +2500,9 @@ put_notification_channel(Client, Input, Options)
 %%
 %% Firewall Manager provides the following types of policies:
 %%
+%% WAF policy - This policy applies WAF web ACL
+%% protections to specified accounts and resources.
+%%
 %% Shield Advanced policy - This policy applies Shield Advanced
 %% protection to specified accounts and resources.
 %%
@@ -2416,6 +2511,12 @@ put_notification_channel(Client, Input, Options)
 %% in
 %% Organizations and lets you enforce a baseline set of rules across your
 %% organization.
+%%
+%% Network ACL policy - This type of policy gives you
+%% control over the network ACLs that are in use throughout your organization
+%% in
+%% Organizations and lets you enforce a baseline set of first and last
+%% network ACL rules across your organization.
 %%
 %% Network Firewall policy - This policy applies
 %% Network Firewall protection to your organization's VPCs.
