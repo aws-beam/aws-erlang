@@ -3563,6 +3563,7 @@
     invalid_password_exception() | 
     invalid_sms_role_trust_relationship_exception() | 
     code_delivery_failure_exception() | 
+    limit_exceeded_exception() | 
     username_exists_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
@@ -5216,7 +5217,8 @@ create_group(Client, Input, Options)
     request(Client, <<"CreateGroup">>, Input, Options).
 
 %% @doc Adds a configuration and trust relationship between a third-party
-%% identity provider (IdP) and a user pool.
+%% identity provider
+%% (IdP) and a user pool.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For

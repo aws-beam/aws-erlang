@@ -77,6 +77,7 @@
 %%   <<"Id">> => [string()],
 %%   <<"Label">> => [string()],
 %%   <<"LabelTemplate">> => [string()],
+%%   <<"LinkConfiguration">> => link_configuration(),
 %%   <<"ResourceTypes">> => list([string()]()),
 %%   <<"SinkArn">> => [string()],
 %%   <<"Tags">> => map()
@@ -89,6 +90,20 @@
 %%   <<"Identifier">> := string()
 %% }
 -type delete_link_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_configuration() :: #{
+%%   <<"Filter">> => string()
+%% }
+-type metric_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_group_configuration() :: #{
+%%   <<"Filter">> => string()
+%% }
+-type log_group_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -170,6 +185,7 @@
 %% Example:
 %% create_link_input() :: #{
 %%   <<"LabelTemplate">> := string(),
+%%   <<"LinkConfiguration">> => link_configuration(),
 %%   <<"ResourceTypes">> := list(list(any())()),
 %%   <<"SinkIdentifier">> := string(),
 %%   <<"Tags">> => map()
@@ -221,6 +237,7 @@
 %% Example:
 %% update_link_input() :: #{
 %%   <<"Identifier">> := string(),
+%%   <<"LinkConfiguration">> => link_configuration(),
 %%   <<"ResourceTypes">> := list(list(any())())
 %% }
 -type update_link_input() :: #{binary() => any()}.
@@ -256,11 +273,20 @@
 %%   <<"Id">> => [string()],
 %%   <<"Label">> => [string()],
 %%   <<"LabelTemplate">> => [string()],
+%%   <<"LinkConfiguration">> => link_configuration(),
 %%   <<"ResourceTypes">> => list([string()]()),
 %%   <<"SinkArn">> => [string()],
 %%   <<"Tags">> => map()
 %% }
 -type create_link_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_configuration() :: #{
+%%   <<"LogGroupConfiguration">> => log_group_configuration(),
+%%   <<"MetricConfiguration">> => metric_configuration()
+%% }
+-type link_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_output() :: #{}
@@ -368,6 +394,7 @@
 %%   <<"Id">> => [string()],
 %%   <<"Label">> => [string()],
 %%   <<"LabelTemplate">> => string(),
+%%   <<"LinkConfiguration">> => link_configuration(),
 %%   <<"ResourceTypes">> => list([string()]()),
 %%   <<"SinkArn">> => [string()],
 %%   <<"Tags">> => map()
@@ -482,6 +509,12 @@
 %% @doc Creates a link between a source account and a sink that you have
 %% created in a monitoring account.
 %%
+%% After the link is created,
+%% data is sent from the source account to the monitoring account. When you
+%% create a link, you can optionally specify filters
+%% that specify which metric namespaces and which log groups are shared from
+%% the source account to the monitoring account.
+%%
 %% Before you create a link, you must create a sink in the monitoring account
 %% and create a
 %% sink policy in that account. The sink policy must permit the source
@@ -547,8 +580,8 @@ create_link(Client, Input0, Options0) ->
 %% For more information, see PutSinkPolicy:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_PutSinkPolicy.html.
 %%
-%% Each account can contain one sink. If you delete a sink, you can then
-%% create a new one in that account.
+%% Each account can contain one sink per Region. If you delete a sink, you
+%% can then create a new one in that Region.
 -spec create_sink(aws_client:aws_client(), create_sink_input()) ->
     {ok, create_sink_output(), tuple()} |
     {error, any()} |
@@ -1091,6 +1124,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% You can't change the sink or change the monitoring account with this
 %% operation.
+%%
+%% When you update a link, you can optionally specify filters
+%% that specify which metric namespaces and which log groups are shared from
+%% the source account to the monitoring account.
 %%
 %% To update the list of tags associated with the sink, use
 %% TagResource:

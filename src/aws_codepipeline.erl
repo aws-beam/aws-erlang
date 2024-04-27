@@ -232,6 +232,8 @@
          register_webhook_with_third_party/3,
          retry_stage_execution/2,
          retry_stage_execution/3,
+         rollback_stage/2,
+         rollback_stage/3,
          start_pipeline_execution/2,
          start_pipeline_execution/3,
          stop_pipeline_execution/2,
@@ -253,6 +255,12 @@
 %%   <<"actionType">> => action_type_declaration()
 %% }
 -type get_action_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% unable_to_rollback_stage_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unable_to_rollback_stage_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_blocker_declaration_exception() :: #{
@@ -465,11 +473,14 @@
 %% Example:
 %% pipeline_execution_summary() :: #{
 %%   <<"executionMode">> => list(any()),
+%%   <<"executionType">> => list(any()),
 %%   <<"lastUpdateTime">> => non_neg_integer(),
 %%   <<"pipelineExecutionId">> => string(),
+%%   <<"rollbackMetadata">> => pipeline_rollback_metadata(),
 %%   <<"sourceRevisions">> => list(source_revision()()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
+%%   <<"statusSummary">> => string(),
 %%   <<"stopTrigger">> => stop_execution_trigger(),
 %%   <<"trigger">> => execution_trigger()
 %% }
@@ -498,9 +509,11 @@
 %% pipeline_execution() :: #{
 %%   <<"artifactRevisions">> => list(artifact_revision()()),
 %%   <<"executionMode">> => list(any()),
+%%   <<"executionType">> => list(any()),
 %%   <<"pipelineExecutionId">> => string(),
 %%   <<"pipelineName">> => string(),
 %%   <<"pipelineVersion">> => integer(),
+%%   <<"rollbackMetadata">> => pipeline_rollback_metadata(),
 %%   <<"status">> => list(any()),
 %%   <<"statusSummary">> => string(),
 %%   <<"trigger">> => execution_trigger(),
@@ -542,6 +555,12 @@
 %%   <<"pipeline">> => pipeline_declaration()
 %% }
 -type get_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% failure_conditions() :: #{
+%%   <<"result">> => list(any())
+%% }
+-type failure_conditions() :: #{binary() => any()}.
 
 %% Example:
 %% action_revision() :: #{
@@ -631,6 +650,12 @@
 -type list_webhooks_input() :: #{binary() => any()}.
 
 %% Example:
+%% pipeline_rollback_metadata() :: #{
+%%   <<"rollbackTargetPipelineExecutionId">> => string()
+%% }
+-type pipeline_rollback_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_arn_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -641,6 +666,12 @@
 %%   <<"pipeline">> := pipeline_declaration()
 %% }
 -type update_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_filter() :: #{
+%%   <<"succeededInStage">> => succeeded_in_stage_filter()
+%% }
+-type pipeline_execution_filter() :: #{binary() => any()}.
 
 %% Example:
 %% execution_trigger() :: #{
@@ -835,6 +866,12 @@
 %%   <<"minimumCount">> => integer()
 %% }
 -type action_type_artifact_details() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_stage_output() :: #{
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type rollback_stage_output() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_approval_token_exception() :: #{
@@ -1102,6 +1139,12 @@
 -type untag_resource_input() :: #{binary() => any()}.
 
 %% Example:
+%% succeeded_in_stage_filter() :: #{
+%%   <<"stageName">> => string()
+%% }
+-type succeeded_in_stage_filter() :: #{binary() => any()}.
+
+%% Example:
 %% pipeline_metadata() :: #{
 %%   <<"created">> => non_neg_integer(),
 %%   <<"pipelineArn">> => string(),
@@ -1235,6 +1278,12 @@
 -type untag_resource_output() :: #{binary() => any()}.
 
 %% Example:
+%% pipeline_execution_outdated_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_execution_outdated_exception() :: #{binary() => any()}.
+
+%% Example:
 %% poll_for_third_party_jobs_output() :: #{
 %%   <<"jobs">> => list(third_party_job()())
 %% }
@@ -1278,6 +1327,14 @@
 %%   <<"message">> => string()
 %% }
 -type pipeline_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_stage_input() :: #{
+%%   <<"pipelineName">> := string(),
+%%   <<"stageName">> := string(),
+%%   <<"targetPipelineExecutionId">> := string()
+%% }
+-type rollback_stage_input() :: #{binary() => any()}.
 
 %% Example:
 %% deregister_webhook_with_third_party_output() :: #{
@@ -1353,7 +1410,8 @@
 %% stage_declaration() :: #{
 %%   <<"actions">> => list(action_declaration()()),
 %%   <<"blockers">> => list(blocker_declaration()()),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"onFailure">> => failure_conditions()
 %% }
 -type stage_declaration() :: #{binary() => any()}.
 
@@ -1379,7 +1437,8 @@
 %% Example:
 %% stage_execution() :: #{
 %%   <<"pipelineExecutionId">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
 -type stage_execution() :: #{binary() => any()}.
 
@@ -1643,6 +1702,7 @@
 
 %% Example:
 %% list_pipeline_executions_input() :: #{
+%%   <<"filter">> => pipeline_execution_filter(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"pipelineName">> := string()
@@ -1843,6 +1903,15 @@
     conflict_exception() | 
     not_latest_pipeline_execution_exception() | 
     stage_not_found_exception().
+
+-type rollback_stage_errors() ::
+    pipeline_not_found_exception() | 
+    pipeline_execution_outdated_exception() | 
+    validation_exception() | 
+    pipeline_execution_not_found_exception() | 
+    conflict_exception() | 
+    stage_not_found_exception() | 
+    unable_to_rollback_stage_exception().
 
 -type start_pipeline_execution_errors() ::
     pipeline_not_found_exception() | 
@@ -2616,6 +2685,23 @@ retry_stage_execution(Client, Input)
 retry_stage_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetryStageExecution">>, Input, Options).
+
+%% @doc Rolls back a stage execution.
+-spec rollback_stage(aws_client:aws_client(), rollback_stage_input()) ->
+    {ok, rollback_stage_output(), tuple()} |
+    {error, any()} |
+    {error, rollback_stage_errors(), tuple()}.
+rollback_stage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    rollback_stage(Client, Input, []).
+
+-spec rollback_stage(aws_client:aws_client(), rollback_stage_input(), proplists:proplist()) ->
+    {ok, rollback_stage_output(), tuple()} |
+    {error, any()} |
+    {error, rollback_stage_errors(), tuple()}.
+rollback_stage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RollbackStage">>, Input, Options).
 
 %% @doc Starts the specified pipeline.
 %%

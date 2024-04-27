@@ -2867,6 +2867,7 @@
 %%   <<"SupportsBabelfish">> => boolean(),
 %%   <<"Engine">> => string(),
 %%   <<"SupportedCACertificateIdentifiers">> => list(string()()),
+%%   <<"SupportsLimitlessDatabase">> => boolean(),
 %%   <<"DatabaseInstallationFilesS3BucketName">> => string(),
 %%   <<"SupportsLogExportsToCloudwatchLogs">> => boolean(),
 %%   <<"CreateTime">> => non_neg_integer(),
@@ -4536,6 +4537,7 @@
 %%   <<"SupportsBabelfish">> => boolean(),
 %%   <<"SupportsGlobalDatabases">> => boolean(),
 %%   <<"SupportsIntegrations">> => boolean(),
+%%   <<"SupportsLimitlessDatabase">> => boolean(),
 %%   <<"SupportsLocalWriteForwarding">> => boolean(),
 %%   <<"SupportsParallelQuery">> => boolean()
 %% }
