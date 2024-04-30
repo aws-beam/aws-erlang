@@ -128,6 +128,7 @@
 
 %% Example:
 %% call_analytics_job_summary() :: #{
+%%   <<"CallAnalyticsJobDetails">> => call_analytics_job_details(),
 %%   <<"CallAnalyticsJobName">> => string(),
 %%   <<"CallAnalyticsJobStatus">> => list(any()),
 %%   <<"CompletionTime">> => non_neg_integer(),
@@ -391,6 +392,7 @@
 
 %% Example:
 %% call_analytics_job() :: #{
+%%   <<"CallAnalyticsJobDetails">> => call_analytics_job_details(),
 %%   <<"CallAnalyticsJobName">> => string(),
 %%   <<"CallAnalyticsJobStatus">> => list(any()),
 %%   <<"ChannelDefinitions">> => list(channel_definition()()),
@@ -437,6 +439,12 @@
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% call_analytics_job_details() :: #{
+%%   <<"Skipped">> => list(call_analytics_skipped_feature()())
+%% }
+-type call_analytics_job_details() :: #{binary() => any()}.
 
 %% Example:
 %% list_medical_scribe_jobs_response() :: #{
@@ -672,6 +680,14 @@
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% call_analytics_skipped_feature() :: #{
+%%   <<"Feature">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"ReasonCode">> => list(any())
+%% }
+-type call_analytics_skipped_feature() :: #{binary() => any()}.
 
 %% Example:
 %% list_medical_vocabularies_response() :: #{

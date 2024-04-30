@@ -304,7 +304,8 @@
 
 %% Example:
 %% update_configuration_request() :: #{
-%%   <<"ecrConfiguration">> := ecr_configuration()
+%%   <<"ec2Configuration">> => ec2_configuration(),
+%%   <<"ecrConfiguration">> => ecr_configuration()
 %% }
 -type update_configuration_request() :: #{binary() => any()}.
 
@@ -494,6 +495,13 @@
 
 
 %% Example:
+%% ec2_configuration() :: #{
+%%   <<"scanMode">> => string()
+%% }
+-type ec2_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_state() :: #{
 %%   <<"ec2">> => state(),
 %%   <<"ecr">> => state(),
@@ -501,6 +509,13 @@
 %%   <<"lambdaCode">> => state()
 %% }
 -type resource_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_configuration_state() :: #{
+%%   <<"scanModeState">> => ec2_scan_mode_state()
+%% }
+-type ec2_configuration_state() :: #{binary() => any()}.
 
 
 %% Example:
@@ -926,6 +941,7 @@
 
 %% Example:
 %% get_configuration_response() :: #{
+%%   <<"ec2Configuration">> => ec2_configuration_state(),
 %%   <<"ecrConfiguration">> => ecr_configuration_state()
 %% }
 -type get_configuration_response() :: #{binary() => any()}.
@@ -1422,6 +1438,7 @@
 %%   <<"resourceId">> => string(),
 %%   <<"resourceMetadata">> => resource_scan_metadata(),
 %%   <<"resourceType">> => string(),
+%%   <<"scanMode">> => string(),
 %%   <<"scanStatus">> => scan_status(),
 %%   <<"scanType">> => string()
 %% }
@@ -2015,6 +2032,7 @@
 %%   <<"lastScannedAt">> => list(coverage_date_filter()()),
 %%   <<"resourceId">> => list(coverage_string_filter()()),
 %%   <<"resourceType">> => list(coverage_string_filter()()),
+%%   <<"scanMode">> => list(coverage_string_filter()()),
 %%   <<"scanStatusCode">> => list(coverage_string_filter()()),
 %%   <<"scanStatusReason">> => list(coverage_string_filter()()),
 %%   <<"scanType">> => list(coverage_string_filter()())
@@ -2418,6 +2436,14 @@
 %%   <<"vpcConfig">> => lambda_vpc_config()
 %% }
 -type aws_lambda_function_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_scan_mode_state() :: #{
+%%   <<"scanMode">> => string(),
+%%   <<"scanModeStatus">> => string()
+%% }
+-type ec2_scan_mode_state() :: #{binary() => any()}.
 
 
 %% Example:

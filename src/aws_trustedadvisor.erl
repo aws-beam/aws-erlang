@@ -4,7 +4,9 @@
 %% @doc TrustedAdvisor Public API
 -module(aws_trustedadvisor).
 
--export([get_organization_recommendation/2,
+-export([batch_update_recommendation_resource_exclusion/2,
+         batch_update_recommendation_resource_exclusion/3,
+         get_organization_recommendation/2,
          get_organization_recommendation/4,
          get_organization_recommendation/5,
          get_recommendation/2,
@@ -35,6 +37,14 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% recommendation_resource_exclusion() :: #{
+%%   <<"arn">> => string(),
+%%   <<"isExcluded">> => [boolean()]
+%% }
+-type recommendation_resource_exclusion() :: #{binary() => any()}.
 
 
 %% Example:
@@ -91,6 +101,13 @@
 %%   <<"updateReasonCode">> => list(any())
 %% }
 -type update_recommendation_lifecycle_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_recommendation_resource_exclusion_request() :: #{
+%%   <<"recommendationResourceExclusions">> := list(recommendation_resource_exclusion()())
+%% }
+-type batch_update_recommendation_resource_exclusion_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -206,6 +223,13 @@
 
 
 %% Example:
+%% batch_update_recommendation_resource_exclusion_response() :: #{
+%%   <<"batchUpdateRecommendationResourceExclusionErrors">> => list(update_recommendation_resource_exclusion_error()())
+%% }
+-type batch_update_recommendation_resource_exclusion_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -214,6 +238,7 @@
 
 %% Example:
 %% list_recommendation_resources_request() :: #{
+%%   <<"exclusionStatus">> => list(any()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
 %%   <<"regionCode">> => [string()],
@@ -263,6 +288,7 @@
 %% Example:
 %% list_organization_recommendation_resources_request() :: #{
 %%   <<"affectedAccountId">> => string(),
+%%   <<"exclusionStatus">> => list(any()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
 %%   <<"regionCode">> => [string()],
@@ -322,10 +348,20 @@
 
 
 %% Example:
+%% update_recommendation_resource_exclusion_error() :: #{
+%%   <<"arn">> => string(),
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()]
+%% }
+-type update_recommendation_resource_exclusion_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% organization_recommendation_resource_summary() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"awsResourceId">> => [string()],
+%%   <<"exclusionStatus">> => list(any()),
 %%   <<"id">> => [string()],
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"metadata">> => map(),
@@ -390,6 +426,7 @@
 %% recommendation_resource_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"awsResourceId">> => [string()],
+%%   <<"exclusionStatus">> => list(any()),
 %%   <<"id">> => [string()],
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"metadata">> => map(),
@@ -414,6 +451,13 @@
 %%   <<"type">> => list(any())
 %% }
 -type list_recommendations_request() :: #{binary() => any()}.
+
+-type batch_update_recommendation_resource_exclusion_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
 
 -type get_organization_recommendation_errors() ::
     throttling_exception() | 
@@ -487,6 +531,41 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Update one or more exclusion status for a list of recommendation
+%% resources
+-spec batch_update_recommendation_resource_exclusion(aws_client:aws_client(), batch_update_recommendation_resource_exclusion_request()) ->
+    {ok, batch_update_recommendation_resource_exclusion_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_recommendation_resource_exclusion_errors(), tuple()}.
+batch_update_recommendation_resource_exclusion(Client, Input) ->
+    batch_update_recommendation_resource_exclusion(Client, Input, []).
+
+-spec batch_update_recommendation_resource_exclusion(aws_client:aws_client(), batch_update_recommendation_resource_exclusion_request(), proplists:proplist()) ->
+    {ok, batch_update_recommendation_resource_exclusion_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_recommendation_resource_exclusion_errors(), tuple()}.
+batch_update_recommendation_resource_exclusion(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/batch-update-recommendation-resource-exclusion"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get a specific recommendation within an AWS Organizations
 %% organization.
@@ -698,6 +777,7 @@ list_organization_recommendation_resources(Client, OrganizationRecommendationIde
     Query0_ =
       [
         {<<"affectedAccountId">>, maps:get(<<"affectedAccountId">>, QueryMap, undefined)},
+        {<<"exclusionStatus">>, maps:get(<<"exclusionStatus">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"regionCode">>, maps:get(<<"regionCode">>, QueryMap, undefined)},
@@ -795,6 +875,7 @@ list_recommendation_resources(Client, RecommendationIdentifier, QueryMap, Header
 
     Query0_ =
       [
+        {<<"exclusionStatus">>, maps:get(<<"exclusionStatus">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"regionCode">>, maps:get(<<"regionCode">>, QueryMap, undefined)},
@@ -854,7 +935,7 @@ list_recommendations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Update the lifecyle of a Recommendation within an Organization.
+%% @doc Update the lifecycle of a Recommendation within an Organization.
 %%
 %% This API only supports prioritized
 %% recommendations.

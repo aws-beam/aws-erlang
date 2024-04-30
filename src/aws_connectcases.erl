@@ -31,6 +31,12 @@
          create_template/4,
          delete_domain/3,
          delete_domain/4,
+         delete_field/4,
+         delete_field/5,
+         delete_layout/4,
+         delete_layout/5,
+         delete_template/4,
+         delete_template/5,
          get_case/4,
          get_case/5,
          get_case_audit_events/4,
@@ -214,7 +220,10 @@
 
 %% Example:
 %% get_template_response() :: #{
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"deleted">> => boolean(),
 %%   <<"description">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
 %%   <<"layoutConfiguration">> => layout_configuration(),
 %%   <<"name">> := string(),
 %%   <<"requiredFields">> => list(required_field()()),
@@ -231,6 +240,10 @@
 %%   <<"options">> := list(field_option()())
 %% }
 -type batch_put_field_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_field_request() :: #{}
+-type delete_field_request() :: #{}.
 
 
 %% Example:
@@ -320,6 +333,10 @@
 %% }
 -type required_field() :: #{binary() => any()}.
 
+%% Example:
+%% delete_layout_response() :: #{}
+-type delete_layout_response() :: #{}.
+
 
 %% Example:
 %% search_cases_response_item() :: #{
@@ -354,6 +371,10 @@
 %% Example:
 %% empty_field_value() :: #{}
 -type empty_field_value() :: #{}.
+
+%% Example:
+%% delete_template_request() :: #{}
+-type delete_template_request() :: #{}.
 
 %% Example:
 %% get_case_event_configuration_request() :: #{}
@@ -613,6 +634,10 @@
 -type event_bridge_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% delete_field_response() :: #{}
+-type delete_field_response() :: #{}.
+
+%% Example:
 %% get_layout_request() :: #{}
 -type get_layout_request() :: #{}.
 
@@ -714,6 +739,9 @@
 %% Example:
 %% get_layout_response() :: #{
 %%   <<"content">> := list(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"deleted">> => boolean(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
 %%   <<"layoutArn">> := string(),
 %%   <<"layoutId">> := string(),
 %%   <<"name">> := string(),
@@ -752,12 +780,20 @@
 %% update_layout_response() :: #{}
 -type update_layout_response() :: #{}.
 
+%% Example:
+%% delete_template_response() :: #{}
+-type delete_template_response() :: #{}.
+
 
 %% Example:
 %% field_identifier() :: #{
 %%   <<"id">> => string()
 %% }
 -type field_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% delete_layout_request() :: #{}
+-type delete_layout_request() :: #{}.
 
 
 %% Example:
@@ -788,9 +824,12 @@
 
 %% Example:
 %% get_field_response() :: #{
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"deleted">> => boolean(),
 %%   <<"description">> => string(),
 %%   <<"fieldArn">> => string(),
 %%   <<"fieldId">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"namespace">> => string(),
 %%   <<"tags">> => map(),
@@ -931,6 +970,31 @@
     conflict_exception().
 
 -type delete_domain_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_field_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_layout_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_template_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1471,6 +1535,178 @@ delete_domain(Client, DomainId, Input) ->
 delete_domain(Client, DomainId, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a field from a cases template.
+%%
+%% You can delete up to 100 fields per domain.
+%%
+%% After a field is deleted:
+%%
+%% You can still retrieve the field by calling `BatchGetField'.
+%%
+%% You cannot update a deleted field by calling `UpdateField'; it throws
+%% a
+%% `ValidationException'.
+%%
+%% Deleted fields are not included in the `ListFields' response.
+%%
+%% Calling `CreateCase' with a deleted field throws a
+%% `ValidationException' denoting
+%% which field IDs in the request have been deleted.
+%%
+%% Calling `GetCase' with a deleted field ID returns the deleted
+%% field's value if one
+%% exists.
+%%
+%% Calling `UpdateCase' with a deleted field ID throws a
+%% `ValidationException' if the
+%% case does not already contain a value for the deleted field. Otherwise it
+%% succeeds,
+%% allowing you to update or remove (using `emptyValue: {}') the
+%% field's value from the
+%% case.
+%%
+%% `GetTemplate' does not return field IDs for deleted fields.
+%%
+%% `GetLayout' does not return field IDs for deleted fields.
+%%
+%% Calling `SearchCases' with the deleted field ID as a filter returns
+%% any cases that
+%% have a value for the deleted field that matches the filter criteria.
+%%
+%% Calling `SearchCases' with a `searchTerm' value that matches a
+%% deleted field's value on a
+%% case returns the case in the response.
+%%
+%% Calling `BatchPutFieldOptions' with a deleted field ID throw a
+%% `ValidationException'.
+%%
+%% Calling `GetCaseEventConfiguration' does not return field IDs for
+%% deleted fields.
+-spec delete_field(aws_client:aws_client(), binary() | list(), binary() | list(), delete_field_request()) ->
+    {ok, delete_field_response(), tuple()} |
+    {error, any()} |
+    {error, delete_field_errors(), tuple()}.
+delete_field(Client, DomainId, FieldId, Input) ->
+    delete_field(Client, DomainId, FieldId, Input, []).
+
+-spec delete_field(aws_client:aws_client(), binary() | list(), binary() | list(), delete_field_request(), proplists:proplist()) ->
+    {ok, delete_field_response(), tuple()} |
+    {error, any()} |
+    {error, delete_field_errors(), tuple()}.
+delete_field(Client, DomainId, FieldId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields/", aws_util:encode_uri(FieldId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a layout from a cases template.
+%%
+%% You can delete up to 100 layouts per domain.
+%%
+%% After a layout is deleted:
+%%
+%% You can still retrieve the layout by calling `GetLayout'.
+%%
+%% You cannot update a deleted layout by calling `UpdateLayout'; it
+%% throws a
+%% `ValidationException'.
+%%
+%% Deleted layouts are not included in the `ListLayouts' response.
+-spec delete_layout(aws_client:aws_client(), binary() | list(), binary() | list(), delete_layout_request()) ->
+    {ok, delete_layout_response(), tuple()} |
+    {error, any()} |
+    {error, delete_layout_errors(), tuple()}.
+delete_layout(Client, DomainId, LayoutId, Input) ->
+    delete_layout(Client, DomainId, LayoutId, Input, []).
+
+-spec delete_layout(aws_client:aws_client(), binary() | list(), binary() | list(), delete_layout_request(), proplists:proplist()) ->
+    {ok, delete_layout_response(), tuple()} |
+    {error, any()} |
+    {error, delete_layout_errors(), tuple()}.
+delete_layout(Client, DomainId, LayoutId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts/", aws_util:encode_uri(LayoutId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a cases template.
+%%
+%% You can delete up to 100 templates per domain.
+%%
+%% After a cases template is deleted:
+%%
+%% You can still retrieve the template by calling `GetTemplate'.
+%%
+%% You cannot update the template.
+%%
+%% You cannot create a case by using the deleted template.
+%%
+%% Deleted templates are not included in the `ListTemplates' response.
+-spec delete_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_template_request()) ->
+    {ok, delete_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_template_errors(), tuple()}.
+delete_template(Client, DomainId, TemplateId, Input) ->
+    delete_template(Client, DomainId, TemplateId, Input, []).
+
+-spec delete_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_template_request(), proplists:proplist()) ->
+    {ok, delete_template_response(), tuple()} |
+    {error, any()} |
+    {error, delete_template_errors(), tuple()}.
+delete_template(Client, DomainId, TemplateId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

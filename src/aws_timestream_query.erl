@@ -10,6 +10,8 @@
          create_scheduled_query/3,
          delete_scheduled_query/2,
          delete_scheduled_query/3,
+         describe_account_settings/2,
+         describe_account_settings/3,
          describe_endpoints/2,
          describe_endpoints/3,
          describe_scheduled_query/2,
@@ -28,6 +30,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_account_settings/2,
+         update_account_settings/3,
          update_scheduled_query/2,
          update_scheduled_query/3]).
 
@@ -40,6 +44,12 @@
 %%   <<"Tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_settings_request() :: #{
+
+%% }
+-type describe_account_settings_request() :: #{binary() => any()}.
 
 %% Example:
 %% scheduled_query_description() :: #{
@@ -104,6 +114,13 @@
 %%   <<"TargetMultiMeasureAttributeName">> => string()
 %% }
 -type multi_measure_attribute_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_settings_response() :: #{
+%%   <<"MaxQueryTCU">> => integer(),
+%%   <<"QueryPricingModel">> => list(any())
+%% }
+-type update_account_settings_response() :: #{binary() => any()}.
 
 %% Example:
 %% parameter_mapping() :: #{
@@ -282,6 +299,13 @@
 -type prepare_query_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_account_settings_request() :: #{
+%%   <<"MaxQueryTCU">> => integer(),
+%%   <<"QueryPricingModel">> => list(any())
+%% }
+-type update_account_settings_request() :: #{binary() => any()}.
+
+%% Example:
 %% execute_scheduled_query_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"InvocationTime">> := non_neg_integer(),
@@ -405,6 +429,13 @@
 -type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
+%% describe_account_settings_response() :: #{
+%%   <<"MaxQueryTCU">> => integer(),
+%%   <<"QueryPricingModel">> => list(any())
+%% }
+-type describe_account_settings_response() :: #{binary() => any()}.
+
+%% Example:
 %% type() :: #{
 %%   <<"ArrayColumnInfo">> => column_info(),
 %%   <<"RowColumnInfo">> => list(column_info()()),
@@ -490,6 +521,7 @@
 %% Example:
 %% execution_stats() :: #{
 %%   <<"BytesMetered">> => float(),
+%%   <<"CumulativeBytesScanned">> => float(),
 %%   <<"DataWrites">> => float(),
 %%   <<"ExecutionTimeInMillis">> => float(),
 %%   <<"QueryResultRows">> => float(),
@@ -519,6 +551,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_account_settings_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     invalid_endpoint_exception().
 
 -type describe_endpoints_errors() ::
@@ -582,6 +620,13 @@
     throttling_exception() | 
     validation_exception() | 
     resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type update_account_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     invalid_endpoint_exception().
 
 -type update_scheduled_query_errors() ::
@@ -666,6 +711,28 @@ delete_scheduled_query(Client, Input)
 delete_scheduled_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScheduledQuery">>, Input, Options).
+
+%% @doc Describes the settings for your account that include the query
+%% pricing model and the configured maximum TCUs the service can use for your
+%% query workload.
+%%
+%% You're charged only for the duration of compute units used for your
+%% workloads.
+-spec describe_account_settings(aws_client:aws_client(), describe_account_settings_request()) ->
+    {ok, describe_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, describe_account_settings_errors(), tuple()}.
+describe_account_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_account_settings(Client, Input, []).
+
+-spec describe_account_settings(aws_client:aws_client(), describe_account_settings_request(), proplists:proplist()) ->
+    {ok, describe_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, describe_account_settings_errors(), tuple()}.
+describe_account_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAccountSettings">>, Input, Options).
 
 %% @doc DescribeEndpoints returns a list of available endpoints to make
 %% Timestream
@@ -891,6 +958,30 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Transitions your account to use TCUs for query pricing and modifies
+%% the maximum query compute units that you've configured.
+%%
+%% If you reduce the value of `MaxQueryTCU' to a desired configuration,
+%% the new value can take up to 24 hours to be effective.
+%%
+%% After you've transitioned your account to use TCUs for query pricing,
+%% you can't transition to using bytes scanned for query pricing.
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_request()) ->
+    {ok, update_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
+update_account_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_account_settings(Client, Input, []).
+
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_request(), proplists:proplist()) ->
+    {ok, update_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
+update_account_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAccountSettings">>, Input, Options).
 
 %% @doc Update a scheduled query.
 -spec update_scheduled_query(aws_client:aws_client(), update_scheduled_query_request()) ->
