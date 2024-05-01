@@ -1413,6 +1413,7 @@
 %%   <<"Created">> => boolean(),
 %%   <<"Deleted">> => boolean(),
 %%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
+%%   <<"DomainEndpointV2HostedZoneId">> => string(),
 %%   <<"DomainId">> => string(),
 %%   <<"DomainName">> => string(),
 %%   <<"DomainProcessingStatus">> => list(any()),

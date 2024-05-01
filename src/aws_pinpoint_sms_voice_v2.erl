@@ -14,17 +14,18 @@
 %% SMS and
 %% Voice, version 2 API provides programmatic access to options that are
 %% unique to the SMS
-%% and voice channels and supplements the resources provided by the Amazon
-%% Pinpoint
-%% API.
+%% and voice channels. Amazon Pinpoint SMS and Voice, version 2 resources
+%% such as phone numbers, sender IDs, and opt-out lists can be used by the
+%% Amazon Pinpoint API.
 %%
-%% If you're new to Amazon Pinpoint, it's also helpful to review the
-%% Amazon Pinpoint Developer Guide:
-%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html.
+%% If you're new to Amazon Pinpoint SMS, it's also helpful to review
+%% the
+%% Amazon Pinpoint SMS User Guide:
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-service.html.
 %% The Amazon Pinpoint
 %% Developer Guide provides tutorials, code samples, and procedures that
-%% demonstrate how to use Amazon Pinpoint features programmatically and how
-%% to integrate
+%% demonstrate how to use Amazon Pinpoint SMS features programmatically and
+%% how to integrate
 %% Amazon Pinpoint functionality into mobile apps and other types of
 %% applications.
 %% The guide also provides key information, such as Amazon Pinpoint
@@ -69,6 +70,8 @@
 
 -export([associate_origination_identity/2,
          associate_origination_identity/3,
+         associate_protect_configuration/2,
+         associate_protect_configuration/3,
          create_configuration_set/2,
          create_configuration_set/3,
          create_event_destination/2,
@@ -77,6 +80,8 @@
          create_opt_out_list/3,
          create_pool/2,
          create_pool/3,
+         create_protect_configuration/2,
+         create_protect_configuration/3,
          create_registration/2,
          create_registration/3,
          create_registration_association/2,
@@ -87,6 +92,8 @@
          create_registration_version/3,
          create_verified_destination_number/2,
          create_verified_destination_number/3,
+         delete_account_default_protect_configuration/2,
+         delete_account_default_protect_configuration/3,
          delete_configuration_set/2,
          delete_configuration_set/3,
          delete_default_message_type/2,
@@ -97,12 +104,16 @@
          delete_event_destination/3,
          delete_keyword/2,
          delete_keyword/3,
+         delete_media_message_spend_limit_override/2,
+         delete_media_message_spend_limit_override/3,
          delete_opt_out_list/2,
          delete_opt_out_list/3,
          delete_opted_out_number/2,
          delete_opted_out_number/3,
          delete_pool/2,
          delete_pool/3,
+         delete_protect_configuration/2,
+         delete_protect_configuration/3,
          delete_registration/2,
          delete_registration/3,
          delete_registration_attachment/2,
@@ -131,6 +142,8 @@
          describe_phone_numbers/3,
          describe_pools/2,
          describe_pools/3,
+         describe_protect_configurations/2,
+         describe_protect_configurations/3,
          describe_registration_attachments/2,
          describe_registration_attachments/3,
          describe_registration_field_definitions/2,
@@ -153,8 +166,12 @@
          describe_verified_destination_numbers/3,
          disassociate_origination_identity/2,
          disassociate_origination_identity/3,
+         disassociate_protect_configuration/2,
+         disassociate_protect_configuration/3,
          discard_registration_version/2,
          discard_registration_version/3,
+         get_protect_configuration_country_rule_set/2,
+         get_protect_configuration_country_rule_set/3,
          list_pool_origination_identities/2,
          list_pool_origination_identities/3,
          list_registration_associations/2,
@@ -177,14 +194,20 @@
          request_sender_id/3,
          send_destination_number_verification_code/2,
          send_destination_number_verification_code/3,
+         send_media_message/2,
+         send_media_message/3,
          send_text_message/2,
          send_text_message/3,
          send_voice_message/2,
          send_voice_message/3,
+         set_account_default_protect_configuration/2,
+         set_account_default_protect_configuration/3,
          set_default_message_type/2,
          set_default_message_type/3,
          set_default_sender_id/2,
          set_default_sender_id/3,
+         set_media_message_spend_limit_override/2,
+         set_media_message_spend_limit_override/3,
          set_text_message_spend_limit_override/2,
          set_text_message_spend_limit_override/3,
          set_voice_message_spend_limit_override/2,
@@ -201,6 +224,10 @@
          update_phone_number/3,
          update_pool/2,
          update_pool/3,
+         update_protect_configuration/2,
+         update_protect_configuration/3,
+         update_protect_configuration_country_rule_set/2,
+         update_protect_configuration_country_rule_set/3,
          update_sender_id/2,
          update_sender_id/3,
          verify_destination_number/2,
@@ -522,6 +549,13 @@
 -type registration_type_display_hints() :: #{binary() => any()}.
 
 %% Example:
+%% update_protect_configuration_request() :: #{
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"ProtectConfigurationId">> := string()
+%% }
+-type update_protect_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% registration_association_filter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(string()())
@@ -536,6 +570,15 @@
 -type kinesis_firehose_destination() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_protect_configuration_result() :: #{
+%%   <<"ConfigurationSetArn">> => [string()],
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"ProtectConfigurationArn">> => string(),
+%%   <<"ProtectConfigurationId">> => string()
+%% }
+-type disassociate_protect_configuration_result() :: #{binary() => any()}.
+
+%% Example:
 %% registration_denied_reason_information() :: #{
 %%   <<"DocumentationLink">> => [string()],
 %%   <<"DocumentationTitle">> => [string()],
@@ -544,6 +587,12 @@
 %%   <<"ShortDescription">> => [string()]
 %% }
 -type registration_denied_reason_information() :: #{binary() => any()}.
+
+%% Example:
+%% protect_configuration_country_rule_set_information() :: #{
+%%   <<"ProtectStatus">> => string()
+%% }
+-type protect_configuration_country_rule_set_information() :: #{binary() => any()}.
 
 %% Example:
 %% registration_association_metadata() :: #{
@@ -636,11 +685,26 @@
 -type release_phone_number_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_protect_configuration_request() :: #{
+%%   <<"ProtectConfigurationId">> := string()
+%% }
+-type delete_protect_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_event_destination_request() :: #{
 %%   <<"ConfigurationSetName">> := string(),
 %%   <<"EventDestinationName">> := string()
 %% }
 -type delete_event_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_protect_configuration_result() :: #{
+%%   <<"ConfigurationSetArn">> => [string()],
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"ProtectConfigurationArn">> => string(),
+%%   <<"ProtectConfigurationId">> => string()
+%% }
+-type associate_protect_configuration_result() :: #{binary() => any()}.
 
 %% Example:
 %% configuration_set_information() :: #{
@@ -649,7 +713,8 @@
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
 %%   <<"DefaultMessageType">> => string(),
 %%   <<"DefaultSenderId">> => string(),
-%%   <<"EventDestinations">> => list(event_destination()())
+%%   <<"EventDestinations">> => list(event_destination()()),
+%%   <<"ProtectConfigurationId">> => string()
 %% }
 -type configuration_set_information() :: #{binary() => any()}.
 
@@ -774,6 +839,12 @@
 -type verify_destination_number_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_media_message_spend_limit_override_request() :: #{
+
+%% }
+-type delete_media_message_spend_limit_override_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_configuration_set_request() :: #{
 %%   <<"ConfigurationSetName">> := string()
 %% }
@@ -862,6 +933,15 @@
 -type describe_registrations_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_protect_configurations_request() :: #{
+%%   <<"Filters">> => list(protect_configuration_filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProtectConfigurationIds">> => list(string()())
+%% }
+-type describe_protect_configurations_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_event_destination_request() :: #{
 %%   <<"CloudWatchLogsDestination">> => cloud_watch_logs_destination(),
 %%   <<"ConfigurationSetName">> := string(),
@@ -872,6 +952,15 @@
 %%   <<"SnsDestination">> => sns_destination()
 %% }
 -type update_event_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_protect_configuration_country_rule_set_result() :: #{
+%%   <<"CountryRuleSet">> => map(),
+%%   <<"NumberCapability">> => string(),
+%%   <<"ProtectConfigurationArn">> => string(),
+%%   <<"ProtectConfigurationId">> => string()
+%% }
+-type update_protect_configuration_country_rule_set_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_verified_destination_numbers_result() :: #{
@@ -895,6 +984,14 @@
 %%   <<"MonthlyLimit">> => float()
 %% }
 -type set_voice_message_spend_limit_override_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_protect_configuration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_protect_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% conflict_exception() :: #{
@@ -924,6 +1021,13 @@
 %%   <<"TextValidation">> => text_validation()
 %% }
 -type registration_field_definition() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_default_protect_configuration_result() :: #{
+%%   <<"DefaultProtectConfigurationArn">> => string(),
+%%   <<"DefaultProtectConfigurationId">> => string()
+%% }
+-type delete_account_default_protect_configuration_result() :: #{binary() => any()}.
 
 %% Example:
 %% registration_type_definition() :: #{
@@ -982,6 +1086,14 @@
 -type delete_opt_out_list_result() :: #{binary() => any()}.
 
 %% Example:
+%% update_protect_configuration_country_rule_set_request() :: #{
+%%   <<"CountryRuleSetUpdates">> := map(),
+%%   <<"NumberCapability">> := string(),
+%%   <<"ProtectConfigurationId">> := string()
+%% }
+-type update_protect_configuration_country_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_registration_result() :: #{
 %%   <<"AdditionalAttributes">> => map(),
 %%   <<"ApprovedVersionNumber">> => float(),
@@ -1009,6 +1121,13 @@
 %%   <<"EventDestination">> => event_destination()
 %% }
 -type delete_event_destination_result() :: #{binary() => any()}.
+
+%% Example:
+%% protect_configuration_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type protect_configuration_filter() :: #{binary() => any()}.
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -1092,6 +1211,12 @@
 -type registration_information() :: #{binary() => any()}.
 
 %% Example:
+%% send_media_message_result() :: #{
+%%   <<"MessageId">> => [string()]
+%% }
+-type send_media_message_result() :: #{binary() => any()}.
+
+%% Example:
 %% select_option_description() :: #{
 %%   <<"Description">> => [string()],
 %%   <<"Option">> => [string()],
@@ -1150,6 +1275,17 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type request_phone_number_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_protect_configuration_result() :: #{
+%%   <<"AccountDefault">> => [boolean()],
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"ProtectConfigurationArn">> => string(),
+%%   <<"ProtectConfigurationId">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_protect_configuration_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_registration_field_values_result() :: #{
@@ -1328,10 +1464,18 @@
 %%   <<"MessageBody">> => string(),
 %%   <<"MessageBodyTextType">> => string(),
 %%   <<"OriginationIdentity">> := string(),
+%%   <<"ProtectConfigurationId">> => string(),
 %%   <<"TimeToLive">> => integer(),
 %%   <<"VoiceId">> => string()
 %% }
 -type send_voice_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_account_default_protect_configuration_result() :: #{
+%%   <<"DefaultProtectConfigurationArn">> => string(),
+%%   <<"DefaultProtectConfigurationId">> => string()
+%% }
+-type set_account_default_protect_configuration_result() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -1384,6 +1528,13 @@
 -type supported_association() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_protect_configuration_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"ProtectConfigurationId">> := string()
+%% }
+-type disassociate_protect_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% send_text_message_result() :: #{
 %%   <<"MessageId">> => [string()]
 %% }
@@ -1422,6 +1573,13 @@
 %%   <<"SectionPaths">> => list(string()())
 %% }
 -type describe_registration_section_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_protect_configuration_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"ProtectConfigurationId">> := string()
+%% }
+-type associate_protect_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% sender_id_and_country() :: #{
@@ -1463,6 +1621,7 @@
 %%   <<"MessageBody">> => string(),
 %%   <<"MessageType">> => string(),
 %%   <<"OriginationIdentity">> => string(),
+%%   <<"ProtectConfigurationId">> => string(),
 %%   <<"TimeToLive">> => integer()
 %% }
 -type send_text_message_request() :: #{binary() => any()}.
@@ -1473,6 +1632,15 @@
 %%   <<"SenderIds">> => list(sender_id_information()())
 %% }
 -type describe_sender_ids_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_protect_configuration_country_rule_set_result() :: #{
+%%   <<"CountryRuleSet">> => map(),
+%%   <<"NumberCapability">> => string(),
+%%   <<"ProtectConfigurationArn">> => string(),
+%%   <<"ProtectConfigurationId">> => string()
+%% }
+-type get_protect_configuration_country_rule_set_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_account_attributes_result() :: #{
@@ -1594,6 +1762,16 @@
 -type associate_origination_identity_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_protect_configuration_result() :: #{
+%%   <<"AccountDefault">> => [boolean()],
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"ProtectConfigurationArn">> => string(),
+%%   <<"ProtectConfigurationId">> => string()
+%% }
+-type update_protect_configuration_result() :: #{binary() => any()}.
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
@@ -1650,6 +1828,19 @@
 -type describe_opted_out_numbers_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_protect_configurations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProtectConfigurations">> => list(protect_configuration_information()())
+%% }
+-type describe_protect_configurations_result() :: #{binary() => any()}.
+
+%% Example:
+%% set_account_default_protect_configuration_request() :: #{
+%%   <<"ProtectConfigurationId">> := string()
+%% }
+-type set_account_default_protect_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_registration_request() :: #{
 %%   <<"RegistrationId">> := string()
 %% }
@@ -1700,6 +1891,12 @@
 -type create_configuration_set_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_account_default_protect_configuration_request() :: #{
+
+%% }
+-type delete_account_default_protect_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_configuration_sets_result() :: #{
 %%   <<"ConfigurationSets">> => list(configuration_set_information()()),
 %%   <<"NextToken">> => string()
@@ -1723,6 +1920,12 @@
 %%   <<"RegistrationAttachmentId">> => [string()]
 %% }
 -type delete_registration_attachment_result() :: #{binary() => any()}.
+
+%% Example:
+%% set_media_message_spend_limit_override_result() :: #{
+%%   <<"MonthlyLimit">> => float()
+%% }
+-type set_media_message_spend_limit_override_result() :: #{binary() => any()}.
 
 %% Example:
 %% put_keyword_request() :: #{
@@ -1777,12 +1980,29 @@
 -type registration_field_value_information() :: #{binary() => any()}.
 
 %% Example:
+%% protect_configuration_information() :: #{
+%%   <<"AccountDefault">> => [boolean()],
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"ProtectConfigurationArn">> => string(),
+%%   <<"ProtectConfigurationId">> => string()
+%% }
+-type protect_configuration_information() :: #{binary() => any()}.
+
+%% Example:
 %% set_default_sender_id_result() :: #{
 %%   <<"ConfigurationSetArn">> => [string()],
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"SenderId">> => string()
 %% }
 -type set_default_sender_id_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_protect_configuration_country_rule_set_request() :: #{
+%%   <<"NumberCapability">> := string(),
+%%   <<"ProtectConfigurationId">> := string()
+%% }
+-type get_protect_configuration_country_rule_set_request() :: #{binary() => any()}.
 
 %% Example:
 %% registration_version_information() :: #{
@@ -1792,6 +2012,12 @@
 %%   <<"VersionNumber">> => float()
 %% }
 -type registration_version_information() :: #{binary() => any()}.
+
+%% Example:
+%% delete_media_message_spend_limit_override_result() :: #{
+%%   <<"MonthlyLimit">> => float()
+%% }
+-type delete_media_message_spend_limit_override_result() :: #{binary() => any()}.
 
 %% Example:
 %% registration_version_filter() :: #{
@@ -1859,6 +2085,12 @@
 %%   <<"MonthlyLimit">> => float()
 %% }
 -type delete_text_message_spend_limit_override_result() :: #{binary() => any()}.
+
+%% Example:
+%% set_media_message_spend_limit_override_request() :: #{
+%%   <<"MonthlyLimit">> := float()
+%% }
+-type set_media_message_spend_limit_override_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_opted_out_number_request() :: #{
@@ -1947,6 +2179,31 @@
 -type opt_out_list_information() :: #{binary() => any()}.
 
 %% Example:
+%% send_media_message_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"Context">> => map(),
+%%   <<"DestinationPhoneNumber">> := string(),
+%%   <<"DryRun">> => [boolean()],
+%%   <<"MaxPrice">> => string(),
+%%   <<"MediaUrls">> => list(string()()),
+%%   <<"MessageBody">> => string(),
+%%   <<"OriginationIdentity">> := string(),
+%%   <<"ProtectConfigurationId">> => string(),
+%%   <<"TimeToLive">> => integer()
+%% }
+-type send_media_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_protect_configuration_result() :: #{
+%%   <<"AccountDefault">> => [boolean()],
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"ProtectConfigurationArn">> => string(),
+%%   <<"ProtectConfigurationId">> => string()
+%% }
+-type delete_protect_configuration_result() :: #{binary() => any()}.
+
+%% Example:
 %% delete_keyword_result() :: #{
 %%   <<"Keyword">> => string(),
 %%   <<"KeywordAction">> => string(),
@@ -1962,6 +2219,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_protect_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1998,6 +2263,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type create_protect_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
 
 -type create_registration_errors() ::
     throttling_exception() | 
@@ -2041,6 +2313,13 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type delete_account_default_protect_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_configuration_set_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2077,6 +2356,12 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_media_message_spend_limit_override_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type delete_opt_out_list_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2094,6 +2379,14 @@
     conflict_exception().
 
 -type delete_pool_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_protect_configuration_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2199,6 +2492,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type describe_protect_configurations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type describe_registration_attachments_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2273,6 +2573,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type disassociate_protect_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type discard_registration_version_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2280,6 +2588,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type get_protect_configuration_country_rule_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_pool_origination_identities_errors() ::
     throttling_exception() | 
@@ -2368,6 +2683,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type send_media_message_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type send_text_message_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2386,6 +2710,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type set_account_default_protect_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type set_default_message_type_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2399,6 +2730,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type set_media_message_spend_limit_override_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type set_text_message_spend_limit_override_errors() ::
     throttling_exception() | 
@@ -2459,6 +2796,20 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_protect_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_protect_configuration_country_rule_set_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type update_sender_id_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2503,6 +2854,29 @@ associate_origination_identity(Client, Input)
 associate_origination_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateOriginationIdentity">>, Input, Options).
+
+%% @doc Associate a protect configuration with a configuration set.
+%%
+%% This replaces the
+%% configuration sets current protect configuration. A configuration set can
+%% only be associated with one protect configuration at a time. A protect
+%% configuration can
+%% be associated with multiple configuration sets.
+-spec associate_protect_configuration(aws_client:aws_client(), associate_protect_configuration_request()) ->
+    {ok, associate_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, associate_protect_configuration_errors(), tuple()}.
+associate_protect_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_protect_configuration(Client, Input, []).
+
+-spec associate_protect_configuration(aws_client:aws_client(), associate_protect_configuration_request(), proplists:proplist()) ->
+    {ok, associate_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, associate_protect_configuration_errors(), tuple()}.
+associate_protect_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateProtectConfiguration">>, Input, Options).
 
 %% @doc Creates a new configuration set.
 %%
@@ -2633,6 +3007,29 @@ create_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePool">>, Input, Options).
 
+%% @doc Create a new protect configuration.
+%%
+%% By default all country rule sets for each capability are set to
+%% `ALLOW'. Update the country rule sets using
+%% `UpdateProtectConfigurationCountryRuleSet'. A protect configurations
+%% name is stored as a Tag with the key set to `Name' and value as the
+%% name of the protect configuration.
+-spec create_protect_configuration(aws_client:aws_client(), create_protect_configuration_request()) ->
+    {ok, create_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, create_protect_configuration_errors(), tuple()}.
+create_protect_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_protect_configuration(Client, Input, []).
+
+-spec create_protect_configuration(aws_client:aws_client(), create_protect_configuration_request(), proplists:proplist()) ->
+    {ok, create_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, create_protect_configuration_errors(), tuple()}.
+create_protect_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateProtectConfiguration">>, Input, Options).
+
 %% @doc Creates a new registration based on the RegistrationType field.
 -spec create_registration(aws_client:aws_client(), create_registration_request()) ->
     {ok, create_registration_result(), tuple()} |
@@ -2730,6 +3127,23 @@ create_verified_destination_number(Client, Input)
 create_verified_destination_number(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVerifiedDestinationNumber">>, Input, Options).
+
+%% @doc Removes the current account default protect configuration.
+-spec delete_account_default_protect_configuration(aws_client:aws_client(), delete_account_default_protect_configuration_request()) ->
+    {ok, delete_account_default_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_account_default_protect_configuration_errors(), tuple()}.
+delete_account_default_protect_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_account_default_protect_configuration(Client, Input, []).
+
+-spec delete_account_default_protect_configuration(aws_client:aws_client(), delete_account_default_protect_configuration_request(), proplists:proplist()) ->
+    {ok, delete_account_default_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_account_default_protect_configuration_errors(), tuple()}.
+delete_account_default_protect_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAccountDefaultProtectConfiguration">>, Input, Options).
 
 %% @doc Deletes an existing configuration set.
 %%
@@ -2857,6 +3271,32 @@ delete_keyword(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteKeyword">>, Input, Options).
 
+%% @doc Deletes an account-level monthly spending limit override for sending
+%% multimedia messages (MMS).
+%%
+%% Deleting a spend limit override will set the `EnforcedLimit' to equal
+%% the
+%% `MaxLimit', which is controlled by Amazon Web Services. For more
+%% information on spend limits (quotas) see Quotas for Server Migration
+%% Service:
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html
+%% in the Server Migration Service User Guide.
+-spec delete_media_message_spend_limit_override(aws_client:aws_client(), delete_media_message_spend_limit_override_request()) ->
+    {ok, delete_media_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, delete_media_message_spend_limit_override_errors(), tuple()}.
+delete_media_message_spend_limit_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_media_message_spend_limit_override(Client, Input, []).
+
+-spec delete_media_message_spend_limit_override(aws_client:aws_client(), delete_media_message_spend_limit_override_request(), proplists:proplist()) ->
+    {ok, delete_media_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, delete_media_message_spend_limit_override_errors(), tuple()}.
+delete_media_message_spend_limit_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMediaMessageSpendLimitOverride">>, Input, Options).
+
 %% @doc Deletes an existing opt-out list.
 %%
 %% All opted out phone numbers in the opt-out list are
@@ -2935,6 +3375,27 @@ delete_pool(Client, Input)
 delete_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePool">>, Input, Options).
+
+%% @doc Permanently delete the protect configuration.
+%%
+%% The protect configuration must have deletion protection disabled and must
+%% not be associated as the account default protect configuration or
+%% associated with a configuration set.
+-spec delete_protect_configuration(aws_client:aws_client(), delete_protect_configuration_request()) ->
+    {ok, delete_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_protect_configuration_errors(), tuple()}.
+delete_protect_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_protect_configuration(Client, Input, []).
+
+-spec delete_protect_configuration(aws_client:aws_client(), delete_protect_configuration_request(), proplists:proplist()) ->
+    {ok, delete_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_protect_configuration_errors(), tuple()}.
+delete_protect_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProtectConfiguration">>, Input, Options).
 
 %% @doc Permanently delete an existing registration from your account.
 -spec delete_registration(aws_client:aws_client(), delete_registration_request()) ->
@@ -3305,6 +3766,25 @@ describe_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePools">>, Input, Options).
 
+%% @doc Retrieves the protect configurations that match any of filters.
+%%
+%% If a filter isn’t provided then all protect configurations are returned.
+-spec describe_protect_configurations(aws_client:aws_client(), describe_protect_configurations_request()) ->
+    {ok, describe_protect_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, describe_protect_configurations_errors(), tuple()}.
+describe_protect_configurations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_protect_configurations(Client, Input, []).
+
+-spec describe_protect_configurations(aws_client:aws_client(), describe_protect_configurations_request(), proplists:proplist()) ->
+    {ok, describe_protect_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, describe_protect_configurations_errors(), tuple()}.
+describe_protect_configurations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeProtectConfigurations">>, Input, Options).
+
 %% @doc Retrieves the specified registration attachments or all registration
 %% attachments associated with your Amazon Web Services account.
 -spec describe_registration_attachments(aws_client:aws_client(), describe_registration_attachments_request()) ->
@@ -3531,6 +4011,23 @@ disassociate_origination_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateOriginationIdentity">>, Input, Options).
 
+%% @doc Disassociate a protect configuration from a configuration set.
+-spec disassociate_protect_configuration(aws_client:aws_client(), disassociate_protect_configuration_request()) ->
+    {ok, disassociate_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_protect_configuration_errors(), tuple()}.
+disassociate_protect_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_protect_configuration(Client, Input, []).
+
+-spec disassociate_protect_configuration(aws_client:aws_client(), disassociate_protect_configuration_request(), proplists:proplist()) ->
+    {ok, disassociate_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_protect_configuration_errors(), tuple()}.
+disassociate_protect_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateProtectConfiguration">>, Input, Options).
+
 %% @doc Discard the current version of the registration.
 -spec discard_registration_version(aws_client:aws_client(), discard_registration_version_request()) ->
     {ok, discard_registration_version_result(), tuple()} |
@@ -3547,6 +4044,24 @@ discard_registration_version(Client, Input)
 discard_registration_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscardRegistrationVersion">>, Input, Options).
+
+%% @doc Retrieve the CountryRuleSet for the specified NumberCapability from a
+%% protect configuration.
+-spec get_protect_configuration_country_rule_set(aws_client:aws_client(), get_protect_configuration_country_rule_set_request()) ->
+    {ok, get_protect_configuration_country_rule_set_result(), tuple()} |
+    {error, any()} |
+    {error, get_protect_configuration_country_rule_set_errors(), tuple()}.
+get_protect_configuration_country_rule_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_protect_configuration_country_rule_set(Client, Input, []).
+
+-spec get_protect_configuration_country_rule_set(aws_client:aws_client(), get_protect_configuration_country_rule_set_request(), proplists:proplist()) ->
+    {ok, get_protect_configuration_country_rule_set_result(), tuple()} |
+    {error, any()} |
+    {error, get_protect_configuration_country_rule_set_errors(), tuple()}.
+get_protect_configuration_country_rule_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetProtectConfigurationCountryRuleSet">>, Input, Options).
 
 %% @doc Lists all associated origination identities in your pool.
 %%
@@ -3778,6 +4293,24 @@ send_destination_number_verification_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendDestinationNumberVerificationCode">>, Input, Options).
 
+%% @doc Creates a new multimedia message (MMS) and sends it to a
+%% recipient's phone number.
+-spec send_media_message(aws_client:aws_client(), send_media_message_request()) ->
+    {ok, send_media_message_result(), tuple()} |
+    {error, any()} |
+    {error, send_media_message_errors(), tuple()}.
+send_media_message(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_media_message(Client, Input, []).
+
+-spec send_media_message(aws_client:aws_client(), send_media_message_request(), proplists:proplist()) ->
+    {ok, send_media_message_result(), tuple()} |
+    {error, any()} |
+    {error, send_media_message_errors(), tuple()}.
+send_media_message(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendMediaMessage">>, Input, Options).
+
 %% @doc Creates a new text message and sends it to a recipient's phone
 %% number.
 %%
@@ -3828,6 +4361,27 @@ send_voice_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendVoiceMessage">>, Input, Options).
 
+%% @doc Set a protect configuration as your account default.
+%%
+%% You can only have one account
+%% default protect configuration at a time. The current account default
+%% protect configuration is replaced with the provided protect configuration.
+-spec set_account_default_protect_configuration(aws_client:aws_client(), set_account_default_protect_configuration_request()) ->
+    {ok, set_account_default_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, set_account_default_protect_configuration_errors(), tuple()}.
+set_account_default_protect_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_account_default_protect_configuration(Client, Input, []).
+
+-spec set_account_default_protect_configuration(aws_client:aws_client(), set_account_default_protect_configuration_request(), proplists:proplist()) ->
+    {ok, set_account_default_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, set_account_default_protect_configuration_errors(), tuple()}.
+set_account_default_protect_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetAccountDefaultProtectConfiguration">>, Input, Options).
+
 %% @doc Sets the default message type on a configuration set.
 %%
 %% Choose the category of SMS messages that you plan to send from this
@@ -3877,6 +4431,29 @@ set_default_sender_id(Client, Input)
 set_default_sender_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetDefaultSenderId">>, Input, Options).
+
+%% @doc Sets an account level monthly spend limit override for sending MMS
+%% messages.
+%%
+%% The
+%% requested spend limit must be less than or equal to the `MaxLimit',
+%% which is
+%% set by Amazon Web Services.
+-spec set_media_message_spend_limit_override(aws_client:aws_client(), set_media_message_spend_limit_override_request()) ->
+    {ok, set_media_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, set_media_message_spend_limit_override_errors(), tuple()}.
+set_media_message_spend_limit_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_media_message_spend_limit_override(Client, Input, []).
+
+-spec set_media_message_spend_limit_override(aws_client:aws_client(), set_media_message_spend_limit_override_request(), proplists:proplist()) ->
+    {ok, set_media_message_spend_limit_override_result(), tuple()} |
+    {error, any()} |
+    {error, set_media_message_spend_limit_override_errors(), tuple()}.
+set_media_message_spend_limit_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetMediaMessageSpendLimitOverride">>, Input, Options).
 
 %% @doc Sets an account level monthly spend limit override for sending text
 %% messages.
@@ -4069,6 +4646,44 @@ update_pool(Client, Input)
 update_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePool">>, Input, Options).
+
+%% @doc Update the setting for an existing protect configuration.
+-spec update_protect_configuration(aws_client:aws_client(), update_protect_configuration_request()) ->
+    {ok, update_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, update_protect_configuration_errors(), tuple()}.
+update_protect_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_protect_configuration(Client, Input, []).
+
+-spec update_protect_configuration(aws_client:aws_client(), update_protect_configuration_request(), proplists:proplist()) ->
+    {ok, update_protect_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, update_protect_configuration_errors(), tuple()}.
+update_protect_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProtectConfiguration">>, Input, Options).
+
+%% @doc Update a country rule set to `ALLOW' or `BLOCK' messages to
+%% be sent to the specified destination counties.
+%%
+%% You can update one or multiple countries at a time. The updates are only
+%% applied to the specified NumberCapability type.
+-spec update_protect_configuration_country_rule_set(aws_client:aws_client(), update_protect_configuration_country_rule_set_request()) ->
+    {ok, update_protect_configuration_country_rule_set_result(), tuple()} |
+    {error, any()} |
+    {error, update_protect_configuration_country_rule_set_errors(), tuple()}.
+update_protect_configuration_country_rule_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_protect_configuration_country_rule_set(Client, Input, []).
+
+-spec update_protect_configuration_country_rule_set(aws_client:aws_client(), update_protect_configuration_country_rule_set_request(), proplists:proplist()) ->
+    {ok, update_protect_configuration_country_rule_set_result(), tuple()} |
+    {error, any()} |
+    {error, update_protect_configuration_country_rule_set_errors(), tuple()}.
+update_protect_configuration_country_rule_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProtectConfigurationCountryRuleSet">>, Input, Options).
 
 %% @doc Updates the configuration of an existing sender ID.
 -spec update_sender_id(aws_client:aws_client(), update_sender_id_request()) ->

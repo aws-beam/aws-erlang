@@ -265,7 +265,8 @@
 
 %% Example:
 %% stateful_engine_options() :: #{
-%%   <<"RuleOrder">> => list(any())
+%%   <<"RuleOrder">> => list(any()),
+%%   <<"StreamExceptionPolicy">> => list(any())
 %% }
 -type stateful_engine_options() :: #{binary() => any()}.
 

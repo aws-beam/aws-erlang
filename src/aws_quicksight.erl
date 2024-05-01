@@ -407,6 +407,8 @@
          update_refresh_schedule/5,
          update_role_custom_permission/5,
          update_role_custom_permission/6,
+         update_s_p_i_c_e_capacity_configuration/3,
+         update_s_p_i_c_e_capacity_configuration/4,
          update_template/4,
          update_template/5,
          update_template_alias/5,
@@ -762,6 +764,13 @@
 %%   <<"FieldId">> => string()
 %% }
 -type field_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_s_p_i_c_e_capacity_configuration_request() :: #{
+%%   <<"PurchaseMode">> := list(any())
+%% }
+-type update_s_p_i_c_e_capacity_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1528,6 +1537,7 @@
 
 %% Example:
 %% gauge_chart_configuration() :: #{
+%%   <<"ColorConfiguration">> => gauge_chart_color_configuration(),
 %%   <<"DataLabels">> => data_label_options(),
 %%   <<"FieldWells">> => gauge_chart_field_wells(),
 %%   <<"GaugeChartOptions">> => gauge_chart_options(),
@@ -2431,6 +2441,14 @@
 %%   <<"LineChartAggregatedFieldWells">> => line_chart_aggregated_field_wells()
 %% }
 -type line_chart_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% gauge_chart_color_configuration() :: #{
+%%   <<"BackgroundColor">> => string(),
+%%   <<"ForegroundColor">> => string()
+%% }
+-type gauge_chart_color_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6319,17 +6337,20 @@
 %%   <<"AccountName">> := string(),
 %%   <<"ActiveDirectoryName">> => string(),
 %%   <<"AdminGroup">> => list(string()()),
+%%   <<"AdminProGroup">> => list(string()()),
 %%   <<"AuthenticationMethod">> := list(any()),
 %%   <<"AuthorGroup">> => list(string()()),
+%%   <<"AuthorProGroup">> => list(string()()),
 %%   <<"ContactNumber">> => string(),
 %%   <<"DirectoryId">> => string(),
-%%   <<"Edition">> := list(any()),
+%%   <<"Edition">> => list(any()),
 %%   <<"EmailAddress">> => string(),
 %%   <<"FirstName">> => string(),
 %%   <<"IAMIdentityCenterInstanceArn">> => string(),
 %%   <<"LastName">> => string(),
 %%   <<"NotificationEmail">> := string(),
 %%   <<"ReaderGroup">> => list(string()()),
+%%   <<"ReaderProGroup">> => list(string()()),
 %%   <<"Realm">> => string()
 %% }
 -type create_account_subscription_request() :: #{binary() => any()}.
@@ -6904,6 +6925,13 @@
 
 
 %% Example:
+%% registered_user_generative_qn_a_embedding_configuration() :: #{
+%%   <<"InitialTopicId">> => string()
+%% }
+-type registered_user_generative_qn_a_embedding_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% column_tooltip_item() :: #{
 %%   <<"Aggregation">> => aggregation_function(),
 %%   <<"Column">> => column_identifier(),
@@ -7294,6 +7322,7 @@
 %% registered_user_embedding_experience_configuration() :: #{
 %%   <<"Dashboard">> => registered_user_dashboard_embedding_configuration(),
 %%   <<"DashboardVisual">> => registered_user_dashboard_visual_embedding_configuration(),
+%%   <<"GenerativeQnA">> => registered_user_generative_qn_a_embedding_configuration(),
 %%   <<"QSearchBar">> => registered_user_q_search_bar_embedding_configuration(),
 %%   <<"QuickSightConsole">> => registered_user_quick_sight_console_embedding_configuration()
 %% }
@@ -8025,7 +8054,8 @@
 %% topic_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"TopicId">> => string()
+%%   <<"TopicId">> => string(),
+%%   <<"UserExperienceVersion">> => list(any())
 %% }
 -type topic_summary() :: #{binary() => any()}.
 
@@ -8198,6 +8228,14 @@
 %%   <<"VpcConnectionProperties">> => vpc_connection_properties()
 %% }
 -type update_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_s_p_i_c_e_capacity_configuration_response() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_s_p_i_c_e_capacity_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8989,6 +9027,7 @@
 %% anonymous_user_embedding_experience_configuration() :: #{
 %%   <<"Dashboard">> => anonymous_user_dashboard_embedding_configuration(),
 %%   <<"DashboardVisual">> => anonymous_user_dashboard_visual_embedding_configuration(),
+%%   <<"GenerativeQnA">> => anonymous_user_generative_qn_a_embedding_configuration(),
 %%   <<"QSearchBar">> => anonymous_user_q_search_bar_embedding_configuration()
 %% }
 -type anonymous_user_embedding_experience_configuration() :: #{binary() => any()}.
@@ -10613,6 +10652,13 @@
 
 
 %% Example:
+%% anonymous_user_generative_qn_a_embedding_configuration() :: #{
+%%   <<"InitialTopicId">> => string()
+%% }
+-type anonymous_user_generative_qn_a_embedding_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% custom_values_configuration() :: #{
 %%   <<"CustomValues">> => custom_parameter_values(),
 %%   <<"IncludeNullValue">> => boolean()
@@ -12138,6 +12184,13 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_s_p_i_c_e_capacity_configuration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception().
 
 -type update_template_errors() ::
@@ -18882,6 +18935,41 @@ update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input) ->
 update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the SPICE capacity configuration for a Amazon QuickSight
+%% account.
+-spec update_s_p_i_c_e_capacity_configuration(aws_client:aws_client(), binary() | list(), update_s_p_i_c_e_capacity_configuration_request()) ->
+    {ok, update_s_p_i_c_e_capacity_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_s_p_i_c_e_capacity_configuration_errors(), tuple()}.
+update_s_p_i_c_e_capacity_configuration(Client, AwsAccountId, Input) ->
+    update_s_p_i_c_e_capacity_configuration(Client, AwsAccountId, Input, []).
+
+-spec update_s_p_i_c_e_capacity_configuration(aws_client:aws_client(), binary() | list(), update_s_p_i_c_e_capacity_configuration_request(), proplists:proplist()) ->
+    {ok, update_s_p_i_c_e_capacity_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_s_p_i_c_e_capacity_configuration_errors(), tuple()}.
+update_s_p_i_c_e_capacity_configuration(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/spice-capacity-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

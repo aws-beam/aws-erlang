@@ -639,6 +639,7 @@
 %%   <<"ownerId">> => [string()],
 %%   <<"principalSubscriber">> => [string()],
 %%   <<"resourceArn">> => [string()],
+%%   <<"resourceId">> => [string()],
 %%   <<"shareId">> => [string()],
 %%   <<"shareName">> => string(),
 %%   <<"status">> => string(),
@@ -779,6 +780,7 @@
 %%   <<"status">> => string(),
 %%   <<"stopTime">> => non_neg_integer(),
 %%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
 %%   <<"workflowId">> => string()
 %% }
 -type run_list_item() :: #{binary() => any()}.
@@ -925,7 +927,8 @@
 %% Example:
 %% get_workflow_request() :: #{
 %%   <<"export">> => list(string()()),
-%%   <<"type">> => string()
+%%   <<"type">> => string(),
+%%   <<"workflowOwnerId">> => string()
 %% }
 -type get_workflow_request() :: #{binary() => any()}.
 
@@ -1507,7 +1510,8 @@
 %% Example:
 %% filter() :: #{
 %%   <<"resourceArns">> => list([string()]()),
-%%   <<"status">> => list(string()())
+%%   <<"status">> => list(string()()),
+%%   <<"type">> => list(string()())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -2023,8 +2027,10 @@
 %%   <<"runGroupId">> => string(),
 %%   <<"runId">> => string(),
 %%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"workflowId">> => string(),
+%%   <<"workflowOwnerId">> => string(),
 %%   <<"workflowType">> => string()
 %% }
 -type start_run_request() :: #{binary() => any()}.
@@ -2194,9 +2200,11 @@
 %%   <<"statusMessage">> => string(),
 %%   <<"stopTime">> => non_neg_integer(),
 %%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"uuid">> => string(),
 %%   <<"workflowId">> => string(),
+%%   <<"workflowOwnerId">> => string(),
 %%   <<"workflowType">> => string()
 %% }
 -type get_run_response() :: #{binary() => any()}.
@@ -3160,8 +3168,7 @@ abort_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input0, Optio
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Accepts a share for an analytics store.
+%% @doc Accept a resource share request.
 -spec accept_share(aws_client:aws_client(), binary() | list(), accept_share_request()) ->
     {ok, accept_share_response(), tuple()} |
     {error, any()} |
@@ -3571,12 +3578,19 @@ create_sequence_store(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Creates a share offer that can be accepted outside the account by a
-%% subscriber.
+%% @doc Creates a cross-account shared resource.
 %%
-%% The share is created by the owner and accepted by the principal
-%% subscriber.
+%% The resource owner makes an offer to share the resource
+%% with the principal subscriber (an AWS user with a different account than
+%% the resource owner).
+%%
+%% The following resources support cross-account sharing:
+%%
+%% Healthomics variant stores
+%%
+%% Healthomics annotation stores
+%%
+%% Private workflows
 -spec create_share(aws_client:aws_client(), create_share_request()) ->
     {ok, create_share_response(), tuple()} |
     {error, any()} |
@@ -3919,8 +3933,11 @@ delete_sequence_store(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Deletes a share of an analytics store.
+%% @doc Deletes a resource share.
+%%
+%% If you are the resource owner, the subscriber will no longer have
+%% access to the shared resource. If you are the subscriber, this operation
+%% deletes your access to the share.
 -spec delete_share(aws_client:aws_client(), binary() | list(), delete_share_request()) ->
     {ok, delete_share_response(), tuple()} |
     {error, any()} |
@@ -4483,6 +4500,9 @@ get_reference_store(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a workflow run.
+%%
+%% If a workflow is shared with you, you cannot export information about the
+%% run.
 -spec get_run(aws_client:aws_client(), binary() | list()) ->
     {ok, get_run_response(), tuple()} |
     {error, any()} |
@@ -4634,8 +4654,7 @@ get_sequence_store(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Retrieves the metadata for a share.
+%% @doc Retrieves the metadata for the specified resource share.
 -spec get_share(aws_client:aws_client(), binary() | list()) ->
     {ok, get_share_response(), tuple()} |
     {error, any()} |
@@ -4747,6 +4766,8 @@ get_variant_store(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a workflow.
+%%
+%% If a workflow is shared with you, you cannot export the workflow.
 -spec get_workflow(aws_client:aws_client(), binary() | list()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
@@ -4782,7 +4803,8 @@ get_workflow(Client, Id, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"export">>, maps:get(<<"export">>, QueryMap, undefined)},
-        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)},
+        {<<"workflowOwnerId">>, maps:get(<<"workflowOwnerId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -5392,8 +5414,10 @@ list_sequence_stores(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists all shares associated with an account.
+%% @doc Retrieves the resource shares associated with an account.
+%%
+%% Use the filter parameter to
+%% retrieve a specific subset of the shares.
 -spec list_shares(aws_client:aws_client(), list_shares_request()) ->
     {ok, list_shares_response(), tuple()} |
     {error, any()} |
@@ -5760,12 +5784,24 @@ start_reference_import_job(Client, ReferenceStoreId, Input0, Options0) ->
 %% To duplicate a run, specify the run's ID and a role ARN. The
 %% remaining parameters are copied from the previous run.
 %%
+%% StartRun will not support re-run for a workflow that is shared with you.
+%%
 %% The total number of runs in your account is subject to a quota per Region.
 %% To avoid
 %% needing to delete runs manually, you can set the retention mode to
 %% `REMOVE'.
 %% Runs with this setting are deleted automatically when the run quoata is
 %% exceeded.
+%%
+%% By default, the run uses STATIC storage. For STATIC storage, set the
+%% `storageCapacity' field.
+%% You can set the storage type to DYNAMIC. You do not set
+%% `storageCapacity',
+%% because HealthOmics dynamically scales the storage up or down as required.
+%% For more information about static and dynamic storage, see Running
+%% workflows:
+%% https://docs.aws.amazon.com/omics/latest/dev/Using-workflows.html
+%% in the AWS HealthOmics User Guide.
 -spec start_run(aws_client:aws_client(), start_run_request()) ->
     {ok, start_run_response(), tuple()} |
     {error, any()} |

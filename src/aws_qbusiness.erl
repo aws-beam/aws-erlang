@@ -1,10 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% Amazon Q is in preview release and is subject to change.
+%% @doc This is the Amazon Q Business API Reference.
 %%
-%% This is the Amazon Q Business API Reference. Amazon Q Business is a fully
+%% Amazon Q Business is a fully
 %% managed, generative-AI powered enterprise chat assistant that you can
 %% deploy within your
 %% organization. Amazon Q Business enhances employee productivity by
@@ -66,6 +65,8 @@
          batch_delete_document/5,
          batch_put_document/4,
          batch_put_document/5,
+         chat/3,
+         chat/4,
          chat_sync/3,
          chat_sync/4,
          create_application/2,
@@ -249,6 +250,13 @@
 
 
 %% Example:
+%% auth_challenge_response_event() :: #{
+%%   <<"responseMap">> => map()
+%% }
+-type auth_challenge_response_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_source_vpc_configuration() :: #{
 %%   <<"securityGroupIds">> => list(string()()),
 %%   <<"subnetIds">> => list(string()())
@@ -293,6 +301,7 @@
 
 %% Example:
 %% plugin() :: #{
+%%   <<"buildStatus">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"displayName">> => string(),
 %%   <<"pluginId">> => string(),
@@ -333,6 +342,29 @@
 %%   <<"vpcConfiguration">> => data_source_vpc_configuration()
 %% }
 -type create_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_review_event() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"payload">> => map(),
+%%   <<"payloadFieldNameSeparator">> => string(),
+%%   <<"pluginId">> => string(),
+%%   <<"pluginType">> => list(any()),
+%%   <<"systemMessageId">> => string(),
+%%   <<"userMessageId">> => string()
+%% }
+-type action_review_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_output_event() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"systemMessage">> => string(),
+%%   <<"systemMessageId">> => string(),
+%%   <<"userMessageId">> => string()
+%% }
+-type text_output_event() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{}
@@ -390,6 +422,16 @@
 
 
 %% Example:
+%% failed_attachment_event() :: #{
+%%   <<"attachment">> => attachment_output(),
+%%   <<"conversationId">> => string(),
+%%   <<"systemMessageId">> => string(),
+%%   <<"userMessageId">> => string()
+%% }
+-type failed_attachment_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% principal_user() :: #{
 %%   <<"access">> => list(any()),
 %%   <<"id">> => string(),
@@ -403,6 +445,13 @@
 %%   <<"documentId">> => string()
 %% }
 -type delete_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_challenge_request_event() :: #{
+%%   <<"authorizationUrl">> => string()
+%% }
+-type auth_challenge_request_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -446,6 +495,7 @@
 
 %% Example:
 %% create_plugin_response() :: #{
+%%   <<"buildStatus">> => list(any()),
 %%   <<"pluginArn">> => string(),
 %%   <<"pluginId">> => string()
 %% }
@@ -476,6 +526,10 @@
 %%   <<"type">> := list(any())
 %% }
 -type create_retriever_request() :: #{binary() => any()}.
+
+%% Example:
+%% no_auth_configuration() :: #{}
+-type no_auth_configuration() :: #{}.
 
 %% Example:
 %% delete_web_experience_response() :: #{}
@@ -531,6 +585,13 @@
 
 
 %% Example:
+%% text_input_event() :: #{
+%%   <<"userMessage">> => string()
+%% }
+-type text_input_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_alias() :: #{
 %%   <<"dataSourceId">> => string(),
 %%   <<"indexId">> => string(),
@@ -580,8 +641,9 @@
 %% create_plugin_request() :: #{
 %%   <<"authConfiguration">> := list(),
 %%   <<"clientToken">> => string(),
+%%   <<"customPluginConfiguration">> => custom_plugin_configuration(),
 %%   <<"displayName">> := string(),
-%%   <<"serverUrl">> := string(),
+%%   <<"serverUrl">> => string(),
 %%   <<"tags">> => list(tag()()),
 %%   <<"type">> := list(any())
 %% }
@@ -589,8 +651,20 @@
 
 
 %% Example:
+%% metadata_event() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"finalTextMessage">> => string(),
+%%   <<"sourceAttributions">> => list(source_attribution()()),
+%%   <<"systemMessageId">> => string(),
+%%   <<"userMessageId">> => string()
+%% }
+-type metadata_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% chat_sync_output() :: #{
 %%   <<"actionReview">> => action_review(),
+%%   <<"authChallengeRequest">> => auth_challenge_request(),
 %%   <<"conversationId">> => string(),
 %%   <<"failedAttachments">> => list(attachment_output()()),
 %%   <<"sourceAttributions">> => list(source_attribution()()),
@@ -775,6 +849,7 @@
 %%   <<"actionExecution">> => action_execution(),
 %%   <<"attachments">> => list(attachment_input()()),
 %%   <<"attributeFilter">> => attribute_filter(),
+%%   <<"authChallengeResponse">> => auth_challenge_response(),
 %%   <<"chatMode">> => list(any()),
 %%   <<"chatModeConfiguration">> => list(),
 %%   <<"clientToken">> => string(),
@@ -840,8 +915,18 @@
 
 
 %% Example:
+%% custom_plugin_configuration() :: #{
+%%   <<"apiSchema">> => list(),
+%%   <<"apiSchemaType">> => list(any()),
+%%   <<"description">> => string()
+%% }
+-type custom_plugin_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_web_experience_request() :: #{
 %%   <<"authenticationConfiguration">> => list(),
+%%   <<"roleArn">> => string(),
 %%   <<"samplePromptsControlMode">> => list(any()),
 %%   <<"subtitle">> => string(),
 %%   <<"title">> => string(),
@@ -934,7 +1019,7 @@
 %%   <<"displayName">> := string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"identityCenterInstanceArn">> => string(),
-%%   <<"roleArn">> := string(),
+%%   <<"roleArn">> => string(),
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_application_request() :: #{binary() => any()}.
@@ -943,7 +1028,8 @@
 %% Example:
 %% text_segment() :: #{
 %%   <<"beginOffset">> => integer(),
-%%   <<"endOffset">> => integer()
+%%   <<"endOffset">> => integer(),
+%%   <<"snippetExcerpt">> => snippet_excerpt()
 %% }
 -type text_segment() :: #{binary() => any()}.
 
@@ -952,7 +1038,9 @@
 %% get_plugin_response() :: #{
 %%   <<"applicationId">> => string(),
 %%   <<"authConfiguration">> => list(),
+%%   <<"buildStatus">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customPluginConfiguration">> => custom_plugin_configuration(),
 %%   <<"displayName">> => string(),
 %%   <<"pluginArn">> => string(),
 %%   <<"pluginId">> => string(),
@@ -1014,6 +1102,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_documents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_output() :: #{
+%%   <<"outputStream">> => list()
+%% }
+-type chat_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1103,10 +1198,20 @@
 
 
 %% Example:
+%% action_execution_event() :: #{
+%%   <<"payload">> => map(),
+%%   <<"payloadFieldNameSeparator">> => string(),
+%%   <<"pluginId">> => string()
+%% }
+-type action_execution_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_application_request() :: #{
 %%   <<"attachmentsConfiguration">> => attachments_configuration(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
+%%   <<"identityCenterInstanceArn">> => string(),
 %%   <<"roleArn">> => string()
 %% }
 -type update_application_request() :: #{binary() => any()}.
@@ -1182,6 +1287,13 @@
 %% }
 -type action_execution_payload_field() :: #{binary() => any()}.
 
+
+%% Example:
+%% auth_challenge_request() :: #{
+%%   <<"authorizationUrl">> => string()
+%% }
+-type auth_challenge_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_chat_controls_configuration_request() :: #{}
 -type delete_chat_controls_configuration_request() :: #{}.
@@ -1208,7 +1320,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag()()),
+%%   <<"type">> => list(any())
 %% }
 -type create_index_request() :: #{binary() => any()}.
 
@@ -1216,6 +1329,7 @@
 %% Example:
 %% update_plugin_request() :: #{
 %%   <<"authConfiguration">> => list(),
+%%   <<"customPluginConfiguration">> => custom_plugin_configuration(),
 %%   <<"displayName">> => string(),
 %%   <<"serverUrl">> => string(),
 %%   <<"state">> => list(any())
@@ -1253,6 +1367,22 @@
 
 
 %% Example:
+%% configuration_event() :: #{
+%%   <<"attributeFilter">> => attribute_filter(),
+%%   <<"chatMode">> => list(any()),
+%%   <<"chatModeConfiguration">> => list()
+%% }
+-type configuration_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_challenge_response() :: #{
+%%   <<"responseMap">> => map()
+%% }
+-type auth_challenge_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3() :: #{
 %%   <<"bucket">> => string(),
 %%   <<"key">> => string()
@@ -1285,6 +1415,18 @@
 
 
 %% Example:
+%% chat_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"conversationId">> => string(),
+%%   <<"inputStream">> => list(),
+%%   <<"parentMessageId">> => string(),
+%%   <<"userGroups">> => list(string()()),
+%%   <<"userId">> => string()
+%% }
+-type chat_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_chat_controls_configuration_request() :: #{
 %%   <<"blockedPhrasesConfigurationUpdate">> => blocked_phrases_configuration_update(),
 %%   <<"clientToken">> => string(),
@@ -1311,7 +1453,9 @@
 
 %% Example:
 %% action_review_payload_field() :: #{
+%%   <<"allowedFormat">> => string(),
 %%   <<"allowedValues">> => list(action_review_payload_field_allowed_value()()),
+%%   <<"displayDescription">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"displayOrder">> => integer(),
 %%   <<"required">> => [boolean()],
@@ -1482,6 +1626,13 @@
 %% }
 -type group_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% attachment_input_event() :: #{
+%%   <<"attachment">> => attachment_input()
+%% }
+-type attachment_input_event() :: #{binary() => any()}.
+
 %% Example:
 %% delete_plugin_request() :: #{}
 -type delete_plugin_request() :: #{}.
@@ -1493,6 +1644,13 @@
 %%   <<"indexId">> => string()
 %% }
 -type create_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% snippet_excerpt() :: #{
+%%   <<"text">> => string()
+%% }
+-type snippet_excerpt() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1663,6 +1821,10 @@
 %% stop_data_source_sync_job_response() :: #{}
 -type stop_data_source_sync_job_response() :: #{}.
 
+%% Example:
+%% end_of_input_event() :: #{}
+-type end_of_input_event() :: #{}.
+
 
 %% Example:
 %% saml_configuration() :: #{
@@ -1740,6 +1902,7 @@
 %%   <<"indexId">> => string(),
 %%   <<"indexStatistics">> => index_statistics(),
 %%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type get_index_response() :: #{binary() => any()}.
@@ -1774,6 +1937,15 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type chat_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    license_not_found_exception().
 
 -type chat_sync_errors() ::
     throttling_exception() | 
@@ -2285,6 +2457,45 @@ batch_put_document(Client, ApplicationId, IndexId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts or continues a streaming Amazon Q Business conversation.
+-spec chat(aws_client:aws_client(), binary() | list(), chat_input()) ->
+    {ok, chat_output(), tuple()} |
+    {error, any()} |
+    {error, chat_errors(), tuple()}.
+chat(Client, ApplicationId, Input) ->
+    chat(Client, ApplicationId, Input, []).
+
+-spec chat(aws_client:aws_client(), binary() | list(), chat_input(), proplists:proplist()) ->
+    {ok, chat_output(), tuple()} |
+    {error, any()} |
+    {error, chat_errors(), tuple()}.
+chat(Client, ApplicationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/conversations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>},
+                     {<<"conversationId">>, <<"conversationId">>},
+                     {<<"parentMessageId">>, <<"parentMessageId">>},
+                     {<<"userGroups">>, <<"userGroups">>},
+                     {<<"userId">>, <<"userId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts or continues a non-streaming Amazon Q Business conversation.
 -spec chat_sync(aws_client:aws_client(), binary() | list(), chat_sync_input()) ->
     {ok, chat_sync_output(), tuple()} |
@@ -2322,6 +2533,16 @@ chat_sync(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q Business application.
+%%
+%% There are new tiers for Amazon Q Business. Not all features in Amazon Q
+%% Business Pro are
+%% also available in Amazon Q Business Lite. For information on what's
+%% included in
+%% Amazon Q Business Lite and what's included in
+%% Amazon Q Business Pro, see Amazon Q Business tiers:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html#tiers.
+%% You must use the Amazon Q Business console to assign subscription tiers to
+%% users.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |

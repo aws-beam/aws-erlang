@@ -4588,6 +4588,12 @@
 -type inference_experiment_data_storage_config() :: #{binary() => any()}.
 
 %% Example:
+%% session_chaining_config() :: #{
+%%   <<"EnableSessionTagChaining">> => boolean()
+%% }
+-type session_chaining_config() :: #{binary() => any()}.
+
+%% Example:
 %% create_data_quality_job_definition_request() :: #{
 %%   <<"DataQualityAppSpecification">> := data_quality_app_specification(),
 %%   <<"DataQualityBaselineConfig">> => data_quality_baseline_config(),
@@ -6442,6 +6448,7 @@
 %%   <<"ResourceConfig">> := resource_config(),
 %%   <<"RetryStrategy">> => retry_strategy(),
 %%   <<"RoleArn">> := string(),
+%%   <<"SessionChainingConfig">> => session_chaining_config(),
 %%   <<"StoppingCondition">> := stopping_condition(),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"TensorBoardOutputConfig">> => tensor_board_output_config(),
