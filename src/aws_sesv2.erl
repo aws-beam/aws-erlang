@@ -132,9 +132,8 @@
          list_contact_lists/1,
          list_contact_lists/3,
          list_contact_lists/4,
-         list_contacts/2,
+         list_contacts/3,
          list_contacts/4,
-         list_contacts/5,
          list_custom_verification_email_templates/1,
          list_custom_verification_email_templates/3,
          list_custom_verification_email_templates/4,
@@ -155,9 +154,8 @@
          list_email_templates/4,
          list_export_jobs/2,
          list_export_jobs/3,
-         list_import_jobs/1,
+         list_import_jobs/2,
          list_import_jobs/3,
-         list_import_jobs/4,
          list_recommendations/2,
          list_recommendations/3,
          list_suppressed_destinations/1,
@@ -4877,46 +4875,38 @@ list_contact_lists(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the contacts present in a specific contact list.
--spec list_contacts(aws_client:aws_client(), binary() | list()) ->
+-spec list_contacts(aws_client:aws_client(), binary() | list(), list_contacts_request()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
     {error, list_contacts_errors(), tuple()}.
-list_contacts(Client, ContactListName)
-  when is_map(Client) ->
-    list_contacts(Client, ContactListName, #{}, #{}).
+list_contacts(Client, ContactListName, Input) ->
+    list_contacts(Client, ContactListName, Input, []).
 
--spec list_contacts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+-spec list_contacts(aws_client:aws_client(), binary() | list(), list_contacts_request(), proplists:proplist()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
     {error, list_contacts_errors(), tuple()}.
-list_contacts(Client, ContactListName, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_contacts(Client, ContactListName, QueryMap, HeadersMap, []).
-
--spec list_contacts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
-    {ok, list_contacts_response(), tuple()} |
-    {error, any()} |
-    {error, list_contacts_errors(), tuple()}.
-list_contacts(Client, ContactListName, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts"],
+list_contacts(Client, ContactListName, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts/list"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
                | Options2],
 
     Headers = [],
+    Input1 = Input0,
 
-    Query0_ =
-      [
-        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
-        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the existing custom verification email templates for your
 %% account in the current
@@ -5242,46 +5232,38 @@ list_export_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all of the import jobs.
--spec list_import_jobs(aws_client:aws_client()) ->
+-spec list_import_jobs(aws_client:aws_client(), list_import_jobs_request()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_import_jobs_errors(), tuple()}.
-list_import_jobs(Client)
-  when is_map(Client) ->
-    list_import_jobs(Client, #{}, #{}).
+list_import_jobs(Client, Input) ->
+    list_import_jobs(Client, Input, []).
 
--spec list_import_jobs(aws_client:aws_client(), map(), map()) ->
+-spec list_import_jobs(aws_client:aws_client(), list_import_jobs_request(), proplists:proplist()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_import_jobs_errors(), tuple()}.
-list_import_jobs(Client, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_import_jobs(Client, QueryMap, HeadersMap, []).
-
--spec list_import_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
-    {ok, list_import_jobs_response(), tuple()} |
-    {error, any()} |
-    {error, list_import_jobs_errors(), tuple()}.
-list_import_jobs(Client, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v2/email/import-jobs"],
+list_import_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/import-jobs/list"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
                | Options2],
 
     Headers = [],
+    Input1 = Input0,
 
-    Query0_ =
-      [
-        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
-        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the recommendations present in your Amazon SES account in the
 %% current Amazon Web Services Region.

@@ -23207,8 +23207,11 @@ delete_transit_gateway_route(Client, Input, Options)
 
 %% @doc Deletes the specified transit gateway route table.
 %%
-%% You must disassociate the route table from any
-%% transit gateway route tables before you can delete it.
+%% If there are any route tables associated with
+%% the transit gateway route table, you must first run
+%% `DisassociateRouteTable' before you can delete the transit gateway
+%% route table. This removes any route tables associated with the transit
+%% gateway route table.
 -spec delete_transit_gateway_route_table(aws_client:aws_client(), delete_transit_gateway_route_table_request()) ->
     {ok, delete_transit_gateway_route_table_result(), tuple()} |
     {error, any()}.

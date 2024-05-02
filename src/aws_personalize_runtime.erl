@@ -99,6 +99,7 @@
 %%   <<"itemId">> => string(),
 %%   <<"metadata">> => map(),
 %%   <<"promotionName">> => string(),
+%%   <<"reason">> => list(string()()),
 %%   <<"score">> => float()
 %% }
 -type predicted_item() :: #{binary() => any()}.

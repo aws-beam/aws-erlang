@@ -270,6 +270,15 @@
 
 
 %% Example:
+%% mongo_db_atlas_field_mapping() :: #{
+%%   <<"metadataField">> => string(),
+%%   <<"textField">> => string(),
+%%   <<"vectorField">> => string()
+%% }
+-type mongo_db_atlas_field_mapping() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_agent_knowledge_base_response() :: #{
 %%   <<"agentKnowledgeBase">> => agent_knowledge_base()
 %% }
@@ -619,6 +628,7 @@
 
 %% Example:
 %% storage_configuration() :: #{
+%%   <<"mongoDbAtlasConfiguration">> => mongo_db_atlas_configuration(),
 %%   <<"opensearchServerlessConfiguration">> => open_search_serverless_configuration(),
 %%   <<"pineconeConfiguration">> => pinecone_configuration(),
 %%   <<"rdsConfiguration">> => rds_configuration(),
@@ -1207,6 +1217,19 @@
 %%   <<"agentVersion">> => string()
 %% }
 -type delete_agent_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% mongo_db_atlas_configuration() :: #{
+%%   <<"collectionName">> => string(),
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"databaseName">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"endpointServiceName">> => string(),
+%%   <<"fieldMapping">> => mongo_db_atlas_field_mapping(),
+%%   <<"vectorIndexName">> => string()
+%% }
+-type mongo_db_atlas_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_agent_alias_request() :: #{}
