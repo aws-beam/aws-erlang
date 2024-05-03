@@ -200,6 +200,13 @@
 -type get_usage_limit_response() :: #{binary() => any()}.
 
 %% Example:
+%% scheduled_action_association() :: #{
+%%   <<"namespaceName">> => string(),
+%%   <<"scheduledActionName">> => string()
+%% }
+-type scheduled_action_association() :: #{binary() => any()}.
+
+%% Example:
 %% get_table_restore_status_request() :: #{
 %%   <<"tableRestoreRequestId">> := [string()]
 %% }
@@ -639,7 +646,7 @@
 %% Example:
 %% list_scheduled_actions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"scheduledActions">> => list(string()())
+%%   <<"scheduledActions">> => list(scheduled_action_association()())
 %% }
 -type list_scheduled_actions_response() :: #{binary() => any()}.
 

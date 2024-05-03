@@ -166,6 +166,7 @@
 %%   <<"LatestStreamArn">> => string(),
 %%   <<"LatestStreamLabel">> => string(),
 %%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_description()()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput_description(),
 %%   <<"Replicas">> => list(replica_description()()),
 %%   <<"RestoreSummary">> => restore_summary(),
@@ -337,6 +338,7 @@
 %% create_replication_group_member_action() :: #{
 %%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index()()),
 %%   <<"KMSMasterKeyId">> => string(),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
 %%   <<"RegionName">> => string(),
 %%   <<"TableClassOverride">> => list(any())
@@ -363,6 +365,13 @@
 %%   <<"RevisionId">> => string()
 %% }
 -type get_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% on_demand_throughput() :: #{
+%%   <<"MaxReadRequestUnits">> => float(),
+%%   <<"MaxWriteRequestUnits">> => float()
+%% }
+-type on_demand_throughput() :: #{binary() => any()}.
 
 %% Example:
 %% point_in_time_recovery_unavailable_exception() :: #{
@@ -512,6 +521,7 @@
 %%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index()()),
 %%   <<"KeySchema">> := list(key_schema_element()()),
 %%   <<"LocalSecondaryIndexes">> => list(local_secondary_index()()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
 %%   <<"ResourcePolicy">> => string(),
 %%   <<"SSESpecification">> => sse_specification(),
@@ -562,6 +572,7 @@
 %%   <<"BillingMode">> => list(any()),
 %%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index()()),
 %%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
 %%   <<"SSESpecification">> => sse_specification(),
 %%   <<"TableName">> => string()
@@ -699,6 +710,12 @@
 %%   <<"Message">> => string()
 %% }
 -type transaction_canceled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% on_demand_throughput_override() :: #{
+%%   <<"MaxReadRequestUnits">> => float()
+%% }
+-type on_demand_throughput_override() :: #{binary() => any()}.
 
 %% Example:
 %% update_table_replica_auto_scaling_output() :: #{
@@ -880,6 +897,7 @@
 %% Example:
 %% replica_global_secondary_index() :: #{
 %%   <<"IndexName">> => string(),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override()
 %% }
 -type replica_global_secondary_index() :: #{binary() => any()}.
@@ -909,6 +927,7 @@
 %%   <<"BillingMode">> => list(any()),
 %%   <<"ItemCount">> => float(),
 %%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
 %%   <<"TableArn">> => string(),
 %%   <<"TableCreationDateTime">> => non_neg_integer(),
@@ -1013,6 +1032,7 @@
 %% create_global_secondary_index_action() :: #{
 %%   <<"IndexName">> => string(),
 %%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"Projection">> => projection(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput()
 %% }
@@ -1150,6 +1170,7 @@
 %% update_replication_group_member_action() :: #{
 %%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index()()),
 %%   <<"KMSMasterKeyId">> => string(),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
 %%   <<"RegionName">> => string(),
 %%   <<"TableClassOverride">> => list(any())
@@ -1515,6 +1536,7 @@
 %%   <<"IndexStatus">> => list(any()),
 %%   <<"ItemCount">> => float(),
 %%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"Projection">> => projection(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput_description()
 %% }
@@ -1524,6 +1546,7 @@
 %% global_secondary_index_info() :: #{
 %%   <<"IndexName">> => string(),
 %%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"Projection">> => projection(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput()
 %% }
@@ -1554,6 +1577,7 @@
 %% Example:
 %% replica_global_secondary_index_description() :: #{
 %%   <<"IndexName">> => string(),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override()
 %% }
 -type replica_global_secondary_index_description() :: #{binary() => any()}.
@@ -1673,6 +1697,7 @@
 %% global_secondary_index() :: #{
 %%   <<"IndexName">> => string(),
 %%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"Projection">> => projection(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput()
 %% }
@@ -1683,6 +1708,7 @@
 %%   <<"BillingModeOverride">> => list(any()),
 %%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()()),
 %%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()()),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput(),
 %%   <<"RestoreDateTime">> => non_neg_integer(),
 %%   <<"SSESpecificationOverride">> => sse_specification(),
@@ -1705,6 +1731,7 @@
 %%   <<"BillingModeOverride">> => list(any()),
 %%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()()),
 %%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()()),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput(),
 %%   <<"SSESpecificationOverride">> => sse_specification(),
 %%   <<"TargetTableName">> := string()
@@ -1758,6 +1785,7 @@
 %% replica_description() :: #{
 %%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_description()()),
 %%   <<"KMSMasterKeyId">> => string(),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
 %%   <<"RegionName">> => string(),
 %%   <<"ReplicaInaccessibleDateTime">> => non_neg_integer(),
@@ -1834,6 +1862,7 @@
 %% Example:
 %% update_global_secondary_index_action() :: #{
 %%   <<"IndexName">> => string(),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput()
 %% }
 -type update_global_secondary_index_action() :: #{binary() => any()}.
@@ -1997,6 +2026,7 @@
 %%   <<"BillingMode">> => list(any()),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
 %%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_update()()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
 %%   <<"ReplicaUpdates">> => list(replication_group_update()()),
 %%   <<"SSESpecification">> => sse_specification(),
@@ -3679,12 +3709,12 @@ get_item(Client, Input, Options)
 %% request.
 %%
 %% After a `GetResourcePolicy' request returns a policy created using the
-%% `PutResourcePolicy' request, you can assume the policy will start
-%% getting applied in the authorization of requests to the resource. Because
-%% this process is eventually consistent, it will take some time to apply the
-%% policy to all requests to a resource. Policies that you attach while
-%% creating a table using the `CreateTable' request will always be
-%% applied to all requests for that table.
+%% `PutResourcePolicy' request, the policy will be applied in the
+%% authorization of requests to the resource. Because this process is
+%% eventually consistent, it will take some time to apply the policy to all
+%% requests to a resource. Policies that you attach while creating a table
+%% using the `CreateTable' request will always be applied to all requests
+%% for that table.
 -spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input()) ->
     {ok, get_resource_policy_output(), tuple()} |
     {error, any()} |
@@ -3951,7 +3981,7 @@ put_item(Client, Input, Options)
 %%
 %% `PutResourcePolicy' is an idempotent operation; running it multiple
 %% times on the same resource using the same policy document will return the
-%% same revision ID. If you specify an `ExpectedRevisionId' which
+%% same revision ID. If you specify an `ExpectedRevisionId' that
 %% doesn't match the current policy's `RevisionId', the
 %% `PolicyNotFoundException' will be returned.
 %%

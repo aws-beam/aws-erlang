@@ -12,6 +12,8 @@
          create_batch_segment_job/3,
          create_campaign/2,
          create_campaign/3,
+         create_data_deletion_job/2,
+         create_data_deletion_job/3,
          create_dataset/2,
          create_dataset/3,
          create_dataset_export_job/2,
@@ -60,6 +62,8 @@
          describe_batch_segment_job/3,
          describe_campaign/2,
          describe_campaign/3,
+         describe_data_deletion_job/2,
+         describe_data_deletion_job/3,
          describe_dataset/2,
          describe_dataset/3,
          describe_dataset_export_job/2,
@@ -94,6 +98,8 @@
          list_batch_segment_jobs/3,
          list_campaigns/2,
          list_campaigns/3,
+         list_data_deletion_jobs/2,
+         list_data_deletion_jobs/3,
          list_dataset_export_jobs/2,
          list_dataset_export_jobs/3,
          list_dataset_groups/2,
@@ -151,6 +157,21 @@
 %%   <<"integerHyperParameterRanges">> => list(integer_hyper_parameter_range()())
 %% }
 -type hyper_parameter_ranges() :: #{binary() => any()}.
+
+%% Example:
+%% data_deletion_job() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"dataDeletionJobArn">> => string(),
+%%   <<"dataSource">> => data_source(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"numDeleted">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type data_deletion_job() :: #{binary() => any()}.
 
 %% Example:
 %% create_event_tracker_request() :: #{
@@ -251,6 +272,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_batch_inference_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_deletion_jobs_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_deletion_jobs_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_schema_request() :: #{
@@ -395,6 +424,12 @@
 %%   <<"schemaArn">> := string()
 %% }
 -type delete_schema_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_deletion_job_response() :: #{
+%%   <<"dataDeletionJobArn">> => string()
+%% }
+-type create_data_deletion_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% metric_attribution_summary() :: #{
@@ -606,6 +641,19 @@
 %%   <<"syncWithLatestSolutionVersion">> => boolean()
 %% }
 -type campaign_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_deletion_job_response() :: #{
+%%   <<"dataDeletionJob">> => data_deletion_job()
+%% }
+-type describe_data_deletion_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_deletion_jobs_response() :: #{
+%%   <<"dataDeletionJobs">> => list(data_deletion_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_deletion_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_event_trackers_request() :: #{
@@ -1184,6 +1232,16 @@
 -type h_p_o_objective() :: #{binary() => any()}.
 
 %% Example:
+%% create_data_deletion_job_request() :: #{
+%%   <<"dataSource">> := data_source(),
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"jobName">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_data_deletion_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_recommender_response() :: #{
 %%   <<"recommenderArn">> => string()
 %% }
@@ -1261,6 +1319,18 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type create_batch_segment_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_deletion_job_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"dataDeletionJobArn">> => string(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type data_deletion_job_summary() :: #{binary() => any()}.
 
 %% Example:
 %% list_dataset_import_jobs_response() :: #{
@@ -1622,6 +1692,12 @@
 -type data_source() :: #{binary() => any()}.
 
 %% Example:
+%% describe_data_deletion_job_request() :: #{
+%%   <<"dataDeletionJobArn">> := string()
+%% }
+-type describe_data_deletion_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% dataset_export_job_output() :: #{
 %%   <<"s3DataDestination">> => s3_data_config()
 %% }
@@ -1794,6 +1870,14 @@
     resource_not_found_exception() | 
     resource_in_use_exception().
 
+-type create_data_deletion_job_errors() ::
+    too_many_tags_exception() | 
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
 -type create_dataset_errors() ::
     too_many_tags_exception() | 
     resource_already_exists_exception() | 
@@ -1936,6 +2020,10 @@
     invalid_input_exception() | 
     resource_not_found_exception().
 
+-type describe_data_deletion_job_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
 -type describe_dataset_errors() ::
     invalid_input_exception() | 
     resource_not_found_exception().
@@ -2002,6 +2090,10 @@
     invalid_next_token_exception().
 
 -type list_campaigns_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type list_data_deletion_jobs_errors() ::
     invalid_input_exception() | 
     invalid_next_token_exception().
 
@@ -2276,6 +2368,77 @@ create_campaign(Client, Input)
 create_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCampaign">>, Input, Options).
+
+%% @doc Creates a batch job that deletes all
+%% references to specific users from an Amazon Personalize dataset group in
+%% batches.
+%%
+%% You specify the users to delete in a CSV file of userIds in
+%% an Amazon S3 bucket. After a job completes, Amazon Personalize no longer
+%% trains
+%% on the users’ data and no longer considers the users when generating user
+%% segments.
+%% For more information about creating a data deletion job, see Deleting
+%% users:
+%% https://docs.aws.amazon.com/personalize/latest/dg/delete-records.html.
+%%
+%% Your input file must be a CSV file with a single USER_ID column that lists
+%% the users IDs. For more information
+%% about preparing the CSV file, see Preparing your data deletion file and
+%% uploading it to Amazon S3:
+%% https://docs.aws.amazon.com/personalize/latest/dg/prepare-deletion-input-file.html.
+%%
+%% To give Amazon Personalize permission to access your input CSV file of
+%% userIds, you must specify an IAM service role that has permission to
+%% read from the data source. This role
+%% needs `GetObject' and `ListBucket' permissions for the bucket and
+%% its content.
+%% These permissions are the same as importing data. For information on
+%% granting access to your Amazon S3
+%% bucket, see Giving
+%% Amazon Personalize Access to Amazon S3 Resources:
+%% https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html.
+%%
+%% After you create a job, it can take up to a day to delete all references
+%% to the users from datasets and models. Until the job completes,
+%% Amazon Personalize continues to use the data when training. And if you use
+%% a User Segmentation recipe, the users might appear in user segments.
+%%
+%% Status
+%%
+%% A data deletion job can have one of the following statuses:
+%%
+%% PENDING &gt; IN_PROGRESS &gt; COMPLETED -or- FAILED
+%%
+%% To get the status of the data deletion job, call DescribeDataDeletionJob:
+%% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeDataDeletionJob.html
+%% API operation and specify the Amazon Resource Name
+%% (ARN) of the job. If the status is FAILED, the response
+%% includes a `failureReason' key, which describes why the job
+%% failed.
+%%
+%% == Related APIs ==
+%%
+%% ListDataDeletionJobs:
+%% https://docs.aws.amazon.com/personalize/latest/dg/API_ListDataDeletionJobs.html
+%%
+%% DescribeDataDeletionJob:
+%% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeDataDeletionJob.html
+-spec create_data_deletion_job(aws_client:aws_client(), create_data_deletion_job_request()) ->
+    {ok, create_data_deletion_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_deletion_job_errors(), tuple()}.
+create_data_deletion_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_data_deletion_job(Client, Input, []).
+
+-spec create_data_deletion_job(aws_client:aws_client(), create_data_deletion_job_request(), proplists:proplist()) ->
+    {ok, create_data_deletion_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_deletion_job_errors(), tuple()}.
+create_data_deletion_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDataDeletionJob">>, Input, Options).
 
 %% @doc Creates an empty dataset and adds it to the specified dataset group.
 %%
@@ -3236,6 +3399,25 @@ describe_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCampaign">>, Input, Options).
 
+%% @doc Describes the data deletion job created by CreateDataDeletionJob:
+%% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataDeletionJob.html,
+%% including the job status.
+-spec describe_data_deletion_job(aws_client:aws_client(), describe_data_deletion_job_request()) ->
+    {ok, describe_data_deletion_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_deletion_job_errors(), tuple()}.
+describe_data_deletion_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_data_deletion_job(Client, Input, []).
+
+-spec describe_data_deletion_job(aws_client:aws_client(), describe_data_deletion_job_request(), proplists:proplist()) ->
+    {ok, describe_data_deletion_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_data_deletion_job_errors(), tuple()}.
+describe_data_deletion_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDataDeletionJob">>, Input, Options).
+
 %% @doc Describes the given dataset.
 %%
 %% For more information on datasets, see
@@ -3602,6 +3784,33 @@ list_campaigns(Client, Input)
 list_campaigns(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCampaigns">>, Input, Options).
+
+%% @doc Returns a list of data deletion jobs for a dataset group ordered by
+%% creation time,
+%% with the most recent first.
+%%
+%% When
+%% a dataset group is not specified, all the data deletion jobs associated
+%% with
+%% the account are listed. The response provides the properties for each
+%% job, including the Amazon Resource Name (ARN). For more
+%% information on data deletion jobs, see Deleting users:
+%% https://docs.aws.amazon.com/personalize/latest/dg/delete-records.html.
+-spec list_data_deletion_jobs(aws_client:aws_client(), list_data_deletion_jobs_request()) ->
+    {ok, list_data_deletion_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_deletion_jobs_errors(), tuple()}.
+list_data_deletion_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_data_deletion_jobs(Client, Input, []).
+
+-spec list_data_deletion_jobs(aws_client:aws_client(), list_data_deletion_jobs_request(), proplists:proplist()) ->
+    {ok, list_data_deletion_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_deletion_jobs_errors(), tuple()}.
+list_data_deletion_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDataDeletionJobs">>, Input, Options).
 
 %% @doc Returns a list of dataset export jobs that use the given dataset.
 %%

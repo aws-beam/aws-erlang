@@ -897,6 +897,8 @@
          get_image_block_public_access_state/3,
          get_instance_metadata_defaults/2,
          get_instance_metadata_defaults/3,
+         get_instance_tpm_ek_pub/2,
+         get_instance_tpm_ek_pub/3,
          get_instance_types_from_instance_requirements/2,
          get_instance_types_from_instance_requirements/3,
          get_instance_uefi_data/2,
@@ -7724,6 +7726,15 @@
 %%   <<"Username">> => string()
 %% }
 -type terminate_client_vpn_connections_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_tpm_ek_pub_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceId">> := string(),
+%%   <<"KeyFormat">> := list(any()),
+%%   <<"KeyType">> := list(any())
+%% }
+-type get_instance_tpm_ek_pub_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_replace_root_volume_tasks_request() :: #{
@@ -17799,6 +17810,15 @@
 %%   <<"FpgaImageId">> := string()
 %% }
 -type describe_fpga_image_attribute_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_tpm_ek_pub_result() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"KeyFormat">> => list(any()),
+%%   <<"KeyType">> => list(any()),
+%%   <<"KeyValue">> => string()
+%% }
+-type get_instance_tpm_ek_pub_result() :: #{binary() => any()}.
 
 %% Example:
 %% dns_options() :: #{
@@ -28711,6 +28731,22 @@ get_instance_metadata_defaults(Client, Input)
 get_instance_metadata_defaults(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceMetadataDefaults">>, Input, Options).
+
+%% @doc Gets the public endorsement key associated with the Nitro Trusted
+%% Platform Module (NitroTPM) for the specified instance.
+-spec get_instance_tpm_ek_pub(aws_client:aws_client(), get_instance_tpm_ek_pub_request()) ->
+    {ok, get_instance_tpm_ek_pub_result(), tuple()} |
+    {error, any()}.
+get_instance_tpm_ek_pub(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_instance_tpm_ek_pub(Client, Input, []).
+
+-spec get_instance_tpm_ek_pub(aws_client:aws_client(), get_instance_tpm_ek_pub_request(), proplists:proplist()) ->
+    {ok, get_instance_tpm_ek_pub_result(), tuple()} |
+    {error, any()}.
+get_instance_tpm_ek_pub(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetInstanceTpmEkPub">>, Input, Options).
 
 %% @doc Returns a list of instance types with the specified instance
 %% attributes.
