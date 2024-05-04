@@ -2236,6 +2236,7 @@
 %% bulk_email_entry() :: #{
 %%   <<"Destination">> := destination(),
 %%   <<"ReplacementEmailContent">> => replacement_email_content(),
+%%   <<"ReplacementHeaders">> => list(message_header()()),
 %%   <<"ReplacementTags">> => list(message_tag()())
 %% }
 -type bulk_email_entry() :: #{binary() => any()}.

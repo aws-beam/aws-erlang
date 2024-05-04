@@ -253,6 +253,13 @@
 %% }
 -type create_case_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% file_filter() :: #{
+%%   <<"fileArn">> => string()
+%% }
+-type file_filter() :: #{binary() => any()}.
+
 %% Example:
 %% comment_filter() :: #{}
 -type comment_filter() :: #{}.
@@ -790,6 +797,13 @@
 %%   <<"id">> => string()
 %% }
 -type field_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_content() :: #{
+%%   <<"fileArn">> => string()
+%% }
+-type file_content() :: #{binary() => any()}.
 
 %% Example:
 %% delete_layout_request() :: #{}

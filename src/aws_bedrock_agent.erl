@@ -809,7 +809,8 @@
 
 %% Example:
 %% agent_alias_routing_configuration_list_item() :: #{
-%%   <<"agentVersion">> => string()
+%%   <<"agentVersion">> => string(),
+%%   <<"provisionedThroughput">> => string()
 %% }
 -type agent_alias_routing_configuration_list_item() :: #{binary() => any()}.
 
@@ -835,6 +836,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"failureReasons">> => list(string()()),
 %%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }

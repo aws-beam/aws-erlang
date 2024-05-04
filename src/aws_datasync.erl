@@ -3097,14 +3097,9 @@ update_location_nfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationNfs">>, Input, Options).
 
-%% @doc Updates some parameters of an existing object storage location that
-%% DataSync
-%% accesses for a transfer.
-%%
-%% For information about creating a self-managed object storage
-%% location, see Creating a location for object
-%% storage:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html.
+%% @doc Updates some parameters of an existing DataSync location for an
+%% object
+%% storage system.
 -spec update_location_object_storage(aws_client:aws_client(), update_location_object_storage_request()) ->
     {ok, update_location_object_storage_response(), tuple()} |
     {error, any()} |

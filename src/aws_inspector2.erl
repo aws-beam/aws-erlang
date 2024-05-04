@@ -1905,6 +1905,7 @@
 
 %% Example:
 %% get_cis_scan_report_request() :: #{
+%%   <<"reportFormat">> => list(any()),
 %%   <<"scanArn">> := string(),
 %%   <<"targetAccounts">> => list(string()())
 %% }
@@ -2757,7 +2758,8 @@
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_cis_scan_result_details_errors() ::
     throttling_exception() | 

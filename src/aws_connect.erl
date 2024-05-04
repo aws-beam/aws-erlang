@@ -61,12 +61,16 @@
          batch_associate_analytics_data_set/4,
          batch_disassociate_analytics_data_set/3,
          batch_disassociate_analytics_data_set/4,
+         batch_get_attached_file_metadata/3,
+         batch_get_attached_file_metadata/4,
          batch_get_flow_association/3,
          batch_get_flow_association/4,
          batch_put_contact/3,
          batch_put_contact/4,
          claim_phone_number/2,
          claim_phone_number/3,
+         complete_attached_file_upload/4,
+         complete_attached_file_upload/5,
          create_agent_status/3,
          create_agent_status/4,
          create_contact_flow/3,
@@ -117,6 +121,8 @@
          create_vocabulary/4,
          deactivate_evaluation_form/4,
          deactivate_evaluation_form/5,
+         delete_attached_file/4,
+         delete_attached_file/5,
          delete_contact_evaluation/4,
          delete_contact_evaluation/5,
          delete_contact_flow/4,
@@ -261,6 +267,9 @@
          disassociate_user_proficiencies/5,
          dismiss_user_contact/4,
          dismiss_user_contact/5,
+         get_attached_file/4,
+         get_attached_file/6,
+         get_attached_file/7,
          get_contact_attributes/3,
          get_contact_attributes/5,
          get_contact_attributes/6,
@@ -458,6 +467,8 @@
          search_vocabularies/4,
          send_chat_integration_event/2,
          send_chat_integration_event/3,
+         start_attached_file_upload/3,
+         start_attached_file_upload/4,
          start_chat_contact/2,
          start_chat_contact/3,
          start_contact_evaluation/3,
@@ -595,6 +606,13 @@
 %%   <<"StorageConfig">> := instance_storage_config()
 %% }
 -type associate_instance_storage_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_attached_file_request() :: #{
+%%   <<"AssociatedResourceArn">> := string()
+%% }
+-type delete_attached_file_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1180,6 +1198,15 @@
 
 
 %% Example:
+%% upload_url_metadata() :: #{
+%%   <<"HeadersToInclude">> => map(),
+%%   <<"Url">> => string(),
+%%   <<"UrlExpiry">> => string()
+%% }
+-type upload_url_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% real_time_contact_analysis_transcript_item_with_content() :: #{
 %%   <<"CharacterOffsets">> => real_time_contact_analysis_character_interval(),
 %%   <<"Content">> => string(),
@@ -1306,6 +1333,22 @@
 %%   <<"MeetingId">> => string()
 %% }
 -type meeting() :: #{binary() => any()}.
+
+
+%% Example:
+%% attached_file() :: #{
+%%   <<"AssociatedResourceArn">> => string(),
+%%   <<"CreatedBy">> => list(),
+%%   <<"CreationTime">> => string(),
+%%   <<"FileArn">> => string(),
+%%   <<"FileId">> => string(),
+%%   <<"FileName">> => string(),
+%%   <<"FileSizeInBytes">> => float(),
+%%   <<"FileStatus">> => list(any()),
+%%   <<"FileUseCaseType">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type attached_file() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1481,6 +1524,10 @@
 %% }
 -type describe_queue_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_attached_file_response() :: #{}
+-type delete_attached_file_response() :: #{}.
+
 
 %% Example:
 %% hours_of_operation() :: #{
@@ -1654,6 +1701,15 @@
 %%   <<"Username">> => string()
 %% }
 -type user_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% attached_file_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"FileId">> => string()
+%% }
+-type attached_file_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1992,6 +2048,14 @@
 %% }
 -type transcript() :: #{binary() => any()}.
 
+
+%% Example:
+%% download_url_metadata() :: #{
+%%   <<"Url">> => string(),
+%%   <<"UrlExpiry">> => string()
+%% }
+-type download_url_metadata() :: #{binary() => any()}.
+
 %% Example:
 %% suspend_contact_recording_response() :: #{}
 -type suspend_contact_recording_response() :: #{}.
@@ -2006,6 +2070,10 @@
 %%   <<"QuickConnectIds">> := list(string()())
 %% }
 -type disassociate_queue_quick_connects_request() :: #{binary() => any()}.
+
+%% Example:
+%% complete_attached_file_upload_response() :: #{}
+-type complete_attached_file_upload_response() :: #{}.
 
 
 %% Example:
@@ -2245,6 +2313,22 @@
 %%   <<"MetricInterval">> => metric_interval()
 %% }
 -type metric_result_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_attached_file_metadata_response() :: #{
+%%   <<"Errors">> => list(attached_file_error()()),
+%%   <<"Files">> => list(attached_file()())
+%% }
+-type batch_get_attached_file_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_attached_file_request() :: #{
+%%   <<"AssociatedResourceArn">> := string(),
+%%   <<"UrlExpiryInSeconds">> => integer()
+%% }
+-type get_attached_file_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2826,7 +2910,8 @@
 
 %% Example:
 %% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
@@ -2955,6 +3040,14 @@
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
 -type security_profiles_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_attached_file_metadata_request() :: #{
+%%   <<"AssociatedResourceArn">> := string(),
+%%   <<"FileIds">> := list(string()())
+%% }
+-type batch_get_attached_file_metadata_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3183,6 +3276,23 @@
 %% Example:
 %% describe_view_request() :: #{}
 -type describe_view_request() :: #{}.
+
+
+%% Example:
+%% get_attached_file_response() :: #{
+%%   <<"AssociatedResourceArn">> => string(),
+%%   <<"CreatedBy">> => list(),
+%%   <<"CreationTime">> => string(),
+%%   <<"DownloadUrlMetadata">> => download_url_metadata(),
+%%   <<"FileArn">> => string(),
+%%   <<"FileId">> => string(),
+%%   <<"FileName">> => string(),
+%%   <<"FileSizeInBytes">> => float(),
+%%   <<"FileStatus">> => list(any()),
+%%   <<"FileUseCaseType">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_attached_file_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5244,6 +5354,18 @@
 %% }
 -type analytics_data_association_result() :: #{binary() => any()}.
 
+
+%% Example:
+%% start_attached_file_upload_response() :: #{
+%%   <<"CreatedBy">> => list(),
+%%   <<"CreationTime">> => string(),
+%%   <<"FileArn">> => string(),
+%%   <<"FileId">> => string(),
+%%   <<"FileStatus">> => list(any()),
+%%   <<"UploadUrlMetadata">> => upload_url_metadata()
+%% }
+-type start_attached_file_upload_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_view_response() :: #{}
 -type delete_view_response() :: #{}.
@@ -5444,6 +5566,13 @@
 %% Example:
 %% get_traffic_distribution_request() :: #{}
 -type get_traffic_distribution_request() :: #{}.
+
+
+%% Example:
+%% complete_attached_file_upload_request() :: #{
+%%   <<"AssociatedResourceArn">> := string()
+%% }
+-type complete_attached_file_upload_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5670,6 +5799,20 @@
 %%   <<"StartTime">> => hours_of_operation_time_slice()
 %% }
 -type hours_of_operation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_attached_file_upload_request() :: #{
+%%   <<"AssociatedResourceArn">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"CreatedBy">> => list(),
+%%   <<"FileName">> := string(),
+%%   <<"FileSizeInBytes">> := float(),
+%%   <<"FileUseCaseType">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UrlExpiryInSeconds">> => integer()
+%% }
+-type start_attached_file_upload_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6611,6 +6754,13 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type batch_get_attached_file_metadata_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type batch_get_flow_association_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -6632,6 +6782,13 @@
     idempotency_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type complete_attached_file_upload_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
 
@@ -6851,6 +7008,13 @@
     resource_conflict_exception() | 
     throttling_exception() | 
     invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type delete_attached_file_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
 
@@ -7279,6 +7443,13 @@
 -type dismiss_user_contact_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type get_attached_file_errors() ::
+    throttling_exception() | 
     access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -7812,6 +7983,14 @@
     access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    internal_service_exception().
+
+-type start_attached_file_upload_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type start_chat_contact_errors() ::
@@ -8942,6 +9121,46 @@ batch_disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Allows you to retrieve metadata about multiple attached files on an
+%% associated resource.
+%%
+%% Each attached file provided in the input list must be associated with the
+%% input
+%% AssociatedResourceArn.
+-spec batch_get_attached_file_metadata(aws_client:aws_client(), binary() | list(), batch_get_attached_file_metadata_request()) ->
+    {ok, batch_get_attached_file_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_attached_file_metadata_errors(), tuple()}.
+batch_get_attached_file_metadata(Client, InstanceId, Input) ->
+    batch_get_attached_file_metadata(Client, InstanceId, Input, []).
+
+-spec batch_get_attached_file_metadata(aws_client:aws_client(), binary() | list(), batch_get_attached_file_metadata_request(), proplists:proplist()) ->
+    {ok, batch_get_attached_file_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_attached_file_metadata_errors(), tuple()}.
+batch_get_attached_file_metadata(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/attached-files/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"associatedResourceArn">>, <<"AssociatedResourceArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieve the flow associations for the given resources.
 -spec batch_get_flow_association(aws_client:aws_client(), binary() | list(), batch_get_flow_association_request()) ->
     {ok, batch_get_flow_association_response(), tuple()} |
@@ -9106,6 +9325,43 @@ claim_phone_number(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Allows you to confirm that the attached file has been uploaded using
+%% the pre-signed URL
+%% provided in the StartAttachedFileUpload API.
+-spec complete_attached_file_upload(aws_client:aws_client(), binary() | list(), binary() | list(), complete_attached_file_upload_request()) ->
+    {ok, complete_attached_file_upload_response(), tuple()} |
+    {error, any()} |
+    {error, complete_attached_file_upload_errors(), tuple()}.
+complete_attached_file_upload(Client, FileId, InstanceId, Input) ->
+    complete_attached_file_upload(Client, FileId, InstanceId, Input, []).
+
+-spec complete_attached_file_upload(aws_client:aws_client(), binary() | list(), binary() | list(), complete_attached_file_upload_request(), proplists:proplist()) ->
+    {ok, complete_attached_file_upload_response(), tuple()} |
+    {error, any()} |
+    {error, complete_attached_file_upload_errors(), tuple()}.
+complete_attached_file_upload(Client, FileId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/attached-files/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(FileId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"associatedResourceArn">>, <<"AssociatedResourceArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API is in preview release for Amazon Connect and is subject to
@@ -10107,6 +10363,44 @@ deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an attached file along with the underlying S3 Object.
+%%
+%% The attached file is permanently deleted if S3 bucket
+%% versioning is not enabled.
+-spec delete_attached_file(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attached_file_request()) ->
+    {ok, delete_attached_file_response(), tuple()} |
+    {error, any()} |
+    {error, delete_attached_file_errors(), tuple()}.
+delete_attached_file(Client, FileId, InstanceId, Input) ->
+    delete_attached_file(Client, FileId, InstanceId, Input, []).
+
+-spec delete_attached_file(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attached_file_request(), proplists:proplist()) ->
+    {ok, delete_attached_file_response(), tuple()} |
+    {error, any()} |
+    {error, delete_attached_file_errors(), tuple()}.
+delete_attached_file(Client, FileId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/attached-files/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(FileId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"associatedResourceArn">>, <<"AssociatedResourceArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a contact evaluation in the specified Amazon Connect
@@ -12462,6 +12756,53 @@ dismiss_user_contact(Client, InstanceId, UserId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides a pre-signed URL for download of an approved attached file.
+%%
+%% This API also returns
+%% metadata about the attached file. It will only return a downloadURL if the
+%% status of the attached
+%% file is `APPROVED'.
+-spec get_attached_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_attached_file_response(), tuple()} |
+    {error, any()} |
+    {error, get_attached_file_errors(), tuple()}.
+get_attached_file(Client, FileId, InstanceId, AssociatedResourceArn)
+  when is_map(Client) ->
+    get_attached_file(Client, FileId, InstanceId, AssociatedResourceArn, #{}, #{}).
+
+-spec get_attached_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_attached_file_response(), tuple()} |
+    {error, any()} |
+    {error, get_attached_file_errors(), tuple()}.
+get_attached_file(Client, FileId, InstanceId, AssociatedResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_attached_file(Client, FileId, InstanceId, AssociatedResourceArn, QueryMap, HeadersMap, []).
+
+-spec get_attached_file(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_attached_file_response(), tuple()} |
+    {error, any()} |
+    {error, get_attached_file_errors(), tuple()}.
+get_attached_file(Client, FileId, InstanceId, AssociatedResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/attached-files/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(FileId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"associatedResourceArn">>, AssociatedResourceArn},
+        {<<"urlExpiryInSeconds">>, maps:get(<<"urlExpiryInSeconds">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the contact attributes for the specified contact.
 -spec get_contact_attributes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -15750,6 +16091,46 @@ send_chat_integration_event(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides a pre-signed Amazon S3 URL in response for uploading your
+%% content.
+%%
+%% You may only use this API to upload attachments to a Connect
+%% Case:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html.
+-spec start_attached_file_upload(aws_client:aws_client(), binary() | list(), start_attached_file_upload_request()) ->
+    {ok, start_attached_file_upload_response(), tuple()} |
+    {error, any()} |
+    {error, start_attached_file_upload_errors(), tuple()}.
+start_attached_file_upload(Client, InstanceId, Input) ->
+    start_attached_file_upload(Client, InstanceId, Input, []).
+
+-spec start_attached_file_upload(aws_client:aws_client(), binary() | list(), start_attached_file_upload_request(), proplists:proplist()) ->
+    {ok, start_attached_file_upload_response(), tuple()} |
+    {error, any()} |
+    {error, start_attached_file_upload_errors(), tuple()}.
+start_attached_file_upload(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/attached-files/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"associatedResourceArn">>, <<"AssociatedResourceArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Initiates a flow to start a new chat for the customer.
