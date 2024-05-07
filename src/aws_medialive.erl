@@ -1731,7 +1731,8 @@
 
 %% Example:
 %% avail_configuration() :: #{
-%%   <<"AvailSettings">> => avail_settings()
+%%   <<"AvailSettings">> => avail_settings(),
+%%   <<"Scte35SegmentationScope">> => list(any())
 %% }
 -type avail_configuration() :: #{binary() => any()}.
 
