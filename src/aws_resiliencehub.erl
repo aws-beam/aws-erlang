@@ -66,6 +66,8 @@
          list_alarm_recommendations/3,
          list_app_assessment_compliance_drifts/2,
          list_app_assessment_compliance_drifts/3,
+         list_app_assessment_resource_drifts/2,
+         list_app_assessment_resource_drifts/3,
          list_app_assessments/1,
          list_app_assessments/3,
          list_app_assessments/4,
@@ -86,9 +88,9 @@
          list_apps/1,
          list_apps/3,
          list_apps/4,
-         list_recommendation_templates/2,
+         list_recommendation_templates/1,
+         list_recommendation_templates/3,
          list_recommendation_templates/4,
-         list_recommendation_templates/5,
          list_resiliency_policies/1,
          list_resiliency_policies/3,
          list_resiliency_policies/4,
@@ -768,6 +770,14 @@
 
 
 %% Example:
+%% resource_identifier() :: #{
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_identifier() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_resiliency_policy_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"dataLocationConstraint">> => string(),
@@ -1062,6 +1072,17 @@
 
 
 %% Example:
+%% resource_drift() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appVersion">> => string(),
+%%   <<"diffType">> => string(),
+%%   <<"referenceId">> => string(),
+%%   <<"resourceIdentifier">> => resource_identifier()
+%% }
+-type resource_drift() :: #{binary() => any()}.
+
+
+%% Example:
 %% app_assessment_summary() :: #{
 %%   <<"appArn">> => string(),
 %%   <<"appVersion">> => string(),
@@ -1096,6 +1117,14 @@
 %%   <<"forceDelete">> => boolean()
 %% }
 -type delete_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_assessment_resource_drifts_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceDrifts">> => list(resource_drift()())
+%% }
+-type list_app_assessment_resource_drifts_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1318,7 +1347,7 @@
 
 %% Example:
 %% list_recommendation_templates_request() :: #{
-%%   <<"assessmentArn">> := string(),
+%%   <<"assessmentArn">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"nextToken">> => string(),
@@ -1542,6 +1571,15 @@
 %%   <<"recommendationTemplateArn">> := string()
 %% }
 -type delete_recommendation_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_assessment_resource_drifts_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_assessment_resource_drifts_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1861,6 +1899,12 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_app_assessment_resource_drifts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_app_assessments_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2158,14 +2202,14 @@ batch_update_recommendation_status(Client, Input0, Options0) ->
 %% An Resilience Hub application is a
 %% collection of Amazon Web Services resources structured to prevent and
 %% recover Amazon Web Services application disruptions. To describe a
-%% Resilience Hub application, you provide an
-%% application name, resources from one or more CloudFormation stacks,
-%% Resource Groups, Terraform state files, AppRegistry applications, and an
-%% appropriate
+%% Resilience Hub application,
+%% you provide an application name, resources from one or more CloudFormation
+%% stacks, Resource Groups, Terraform state files, AppRegistry applications,
+%% and an appropriate
 %% resiliency policy. In addition, you can also add resources that are
 %% located on Amazon Elastic Kubernetes Service (Amazon EKS) clusters as
-%% optional resources. For more information
-%% about the number of resources supported per application, see Service
+%% optional resources. For more information about the number of resources
+%% supported per application, see Service
 %% quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/resiliencehub.html#limits_resiliencehub.
 %%
@@ -3091,6 +3135,41 @@ list_app_assessment_compliance_drifts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Indicates the list of resource drifts that were detected while
+%% running an assessment.
+-spec list_app_assessment_resource_drifts(aws_client:aws_client(), list_app_assessment_resource_drifts_request()) ->
+    {ok, list_app_assessment_resource_drifts_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_assessment_resource_drifts_errors(), tuple()}.
+list_app_assessment_resource_drifts(Client, Input) ->
+    list_app_assessment_resource_drifts(Client, Input, []).
+
+-spec list_app_assessment_resource_drifts(aws_client:aws_client(), list_app_assessment_resource_drifts_request(), proplists:proplist()) ->
+    {ok, list_app_assessment_resource_drifts_response(), tuple()} |
+    {error, any()} |
+    {error, list_app_assessment_resource_drifts_errors(), tuple()}.
+list_app_assessment_resource_drifts(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-app-assessment-resource-drifts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the assessments for an Resilience Hub application.
 %%
 %% You can use request parameters to
@@ -3452,27 +3531,27 @@ list_apps(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the recommendation templates for the Resilience Hub
 %% applications.
--spec list_recommendation_templates(aws_client:aws_client(), binary() | list()) ->
+-spec list_recommendation_templates(aws_client:aws_client()) ->
     {ok, list_recommendation_templates_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_templates_errors(), tuple()}.
-list_recommendation_templates(Client, AssessmentArn)
+list_recommendation_templates(Client)
   when is_map(Client) ->
-    list_recommendation_templates(Client, AssessmentArn, #{}, #{}).
+    list_recommendation_templates(Client, #{}, #{}).
 
--spec list_recommendation_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
+-spec list_recommendation_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_recommendation_templates_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_templates_errors(), tuple()}.
-list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap)
+list_recommendation_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, []).
+    list_recommendation_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_recommendation_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_recommendation_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_recommendation_templates_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_templates_errors(), tuple()}.
-list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, Options0)
+list_recommendation_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-recommendation-templates"],
     SuccessStatusCode = 200,
@@ -3486,7 +3565,7 @@ list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, Optio
 
     Query0_ =
       [
-        {<<"assessmentArn">>, AssessmentArn},
+        {<<"assessmentArn">>, maps:get(<<"assessmentArn">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},

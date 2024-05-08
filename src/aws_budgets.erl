@@ -86,6 +86,12 @@
          describe_subscribers_for_notification/3,
          execute_budget_action/2,
          execute_budget_action/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_budget/2,
          update_budget/3,
          update_budget_action/2,
@@ -105,6 +111,13 @@
 %%   <<"BudgetName">> := string()
 %% }
 -type delete_budget_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"ResourceTags">> := list(resource_tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_budgets_response() :: #{
@@ -162,6 +175,12 @@
 -type create_budget_response() :: #{binary() => any()}.
 
 %% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_subscriber_response() :: #{
 
 %% }
@@ -179,6 +198,13 @@
 
 %% }
 -type create_subscriber_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"ResourceTagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_budget_action_request() :: #{
@@ -322,6 +348,12 @@
 -type action_history() :: #{binary() => any()}.
 
 %% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
 %% ssm_action_definition() :: #{
 %%   <<"ActionSubType">> => list(any()),
 %%   <<"InstanceIds">> => list(string()()),
@@ -371,6 +403,12 @@
 -type update_budget_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"ResourceTags">> => list(resource_tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
 %% auto_adjust_data() :: #{
 %%   <<"AutoAdjustType">> => list(any()),
 %%   <<"HistoricalOptions">> => historical_options(),
@@ -402,6 +440,7 @@
 %%   <<"Definition">> := definition(),
 %%   <<"ExecutionRoleArn">> := string(),
 %%   <<"NotificationType">> := list(any()),
+%%   <<"ResourceTags">> => list(resource_tag()()),
 %%   <<"Subscribers">> := list(subscriber()())
 %% }
 -type create_budget_action_request() :: #{binary() => any()}.
@@ -438,6 +477,13 @@
 %%   <<"OldNotification">> := notification()
 %% }
 -type update_notification_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type resource_tag() :: #{binary() => any()}.
 
 %% Example:
 %% describe_budget_actions_for_account_response() :: #{
@@ -490,6 +536,12 @@
 -type invalid_parameter_exception() :: #{binary() => any()}.
 
 %% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
 %% historical_options() :: #{
 %%   <<"BudgetAdjustmentPeriod">> => integer(),
 %%   <<"LookBackAvailablePeriods">> => integer()
@@ -500,7 +552,8 @@
 %% create_budget_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"Budget">> := budget(),
-%%   <<"NotificationsWithSubscribers">> => list(notification_with_subscribers()())
+%%   <<"NotificationsWithSubscribers">> => list(notification_with_subscribers()()),
+%%   <<"ResourceTags">> => list(resource_tag()())
 %% }
 -type create_budget_request() :: #{binary() => any()}.
 
@@ -518,6 +571,12 @@
 
 %% }
 -type delete_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_budget_response() :: #{
@@ -719,7 +778,8 @@
     duplicate_record_exception() | 
     throttling_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception().
+    access_denied_exception() | 
+    service_quota_exceeded_exception().
 
 -type create_budget_action_errors() ::
     internal_error_exception() | 
@@ -728,7 +788,8 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    service_quota_exceeded_exception().
 
 -type create_notification_errors() ::
     internal_error_exception() | 
@@ -863,6 +924,28 @@
     internal_error_exception() | 
     throttling_exception() | 
     resource_locked_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_error_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    not_found_exception().
+
+-type tag_resource_errors() ::
+    internal_error_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    not_found_exception() | 
+    service_quota_exceeded_exception().
+
+-type untag_resource_errors() ::
+    internal_error_exception() | 
+    throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
     not_found_exception().
@@ -1157,8 +1240,7 @@ describe_budget_actions_for_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetActionsForBudget">>, Input, Options).
 
-%% @doc
-%% Lists the budget names and notifications that are associated with an
+%% @doc Lists the budget names and notifications that are associated with an
 %% account.
 -spec describe_budget_notifications_for_account(aws_client:aws_client(), describe_budget_notifications_for_account_request()) ->
     {ok, describe_budget_notifications_for_account_response(), tuple()} |
@@ -1269,6 +1351,57 @@ execute_budget_action(Client, Input)
 execute_budget_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteBudgetAction">>, Input, Options).
+
+%% @doc Lists tags associated with a budget or budget action resource.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Creates tags for a budget or budget action resource.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Deletes tags associated with a budget or budget action resource.
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates a budget.
 %%
