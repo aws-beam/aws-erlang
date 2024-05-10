@@ -300,8 +300,10 @@
 
 %% Example:
 %% policy_item() :: #{
+%%   <<"actions">> => list(action_identifier()()),
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"definition">> => list(),
+%%   <<"effect">> => list(any()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"policyId">> => string(),
 %%   <<"policyStoreId">> => string(),
@@ -754,7 +756,9 @@
 
 %% Example:
 %% create_policy_output() :: #{
+%%   <<"actions">> => list(action_identifier()()),
 %%   <<"createdDate">> => non_neg_integer(),
+%%   <<"effect">> => list(any()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"policyId">> => string(),
 %%   <<"policyStoreId">> => string(),
@@ -840,7 +844,9 @@
 
 %% Example:
 %% update_policy_output() :: #{
+%%   <<"actions">> => list(action_identifier()()),
 %%   <<"createdDate">> => non_neg_integer(),
+%%   <<"effect">> => list(any()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"policyId">> => string(),
 %%   <<"policyStoreId">> => string(),
@@ -892,8 +898,10 @@
 
 %% Example:
 %% get_policy_output() :: #{
+%%   <<"actions">> => list(action_identifier()()),
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"definition">> => list(),
+%%   <<"effect">> => list(any()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"policyId">> => string(),
 %%   <<"policyStoreId">> => string(),

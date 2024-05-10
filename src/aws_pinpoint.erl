@@ -663,6 +663,7 @@
 %% Example:
 %% email_template_request() :: #{
 %%   <<"DefaultSubstitutions">> => string(),
+%%   <<"Headers">> => list(message_header()()),
 %%   <<"HtmlPart">> => string(),
 %%   <<"RecommenderId">> => string(),
 %%   <<"Subject">> => string(),
@@ -2007,6 +2008,14 @@
 
 
 %% Example:
+%% message_header() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type message_header() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_campaign_response() :: #{
 %%   <<"CampaignResponse">> => campaign_response()
 %% }
@@ -2981,6 +2990,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreationDate">> => string(),
 %%   <<"DefaultSubstitutions">> => string(),
+%%   <<"Headers">> => list(message_header()()),
 %%   <<"HtmlPart">> => string(),
 %%   <<"LastModifiedDate">> => string(),
 %%   <<"RecommenderId">> => string(),
@@ -3400,6 +3410,7 @@
 %% campaign_email_message() :: #{
 %%   <<"Body">> => string(),
 %%   <<"FromAddress">> => string(),
+%%   <<"Headers">> => list(message_header()()),
 %%   <<"HtmlBody">> => string(),
 %%   <<"Title">> => string()
 %% }
@@ -3678,6 +3689,7 @@
 
 %% Example:
 %% simple_email() :: #{
+%%   <<"Headers">> => list(message_header()()),
 %%   <<"HtmlPart">> => simple_email_part(),
 %%   <<"Subject">> => simple_email_part(),
 %%   <<"TextPart">> => simple_email_part()

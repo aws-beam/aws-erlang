@@ -41,6 +41,16 @@
 
 
 %% Example:
+%% text_inference_config() :: #{
+%%   <<"maxTokens">> => integer(),
+%%   <<"stopSequences">> => list([string()]()),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type text_inference_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% external_source() :: #{
 %%   <<"byteContent">> => byte_content_doc(),
 %%   <<"s3Location">> => s3_object_doc(),
@@ -103,6 +113,7 @@
 %% Example:
 %% retrieve_and_generate_response() :: #{
 %%   <<"citations">> => list(citation()()),
+%%   <<"guardrailAction">> => list(any()),
 %%   <<"output">> => retrieve_and_generate_output(),
 %%   <<"sessionId">> => string()
 %% }
@@ -417,6 +428,9 @@
 
 %% Example:
 %% external_sources_generation_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
+%%   <<"inferenceConfig">> => inference_config(),
 %%   <<"promptTemplate">> => prompt_template()
 %% }
 -type external_sources_generation_configuration() :: #{binary() => any()}.
@@ -492,7 +506,17 @@
 
 
 %% Example:
+%% inference_config() :: #{
+%%   <<"textInferenceConfig">> => text_inference_config()
+%% }
+-type inference_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% generation_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
+%%   <<"inferenceConfig">> => inference_config(),
 %%   <<"promptTemplate">> => prompt_template()
 %% }
 -type generation_configuration() :: #{binary() => any()}.
@@ -538,6 +562,14 @@
 %%   <<"text">> => string()
 %% }
 -type action_group_invocation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_configuration() :: #{
+%%   <<"guardrailId">> => [string()],
+%%   <<"guardrailVersion">> => [string()]
+%% }
+-type guardrail_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -653,11 +685,11 @@
 %% API
 %%====================================================================
 
-%% @doc Sends a prompt for the agent to process and respond to.
-%%
-%% Use return control event type for function calling.
-%%
+%% @doc
 %% The CLI doesn't support `InvokeAgent'.
+%%
+%% Sends a prompt for the agent to process and respond to. Note the following
+%% fields for the request:
 %%
 %% To continue the same conversation with an agent, use the same
 %% `sessionId' value in the request.
@@ -671,9 +703,8 @@
 %% End a conversation by setting `endSession' to `true'.
 %%
 %% In the `sessionState' object, you can include attributes for the
-%% session or prompt or parameters returned from the action group.
-%%
-%% Use return control event type for function calling.
+%% session or prompt or, if you configured an action group to return control,
+%% results from invocation of the action group.
 %%
 %% The response is returned in the `bytes' field of the `chunk'
 %% object.
@@ -682,6 +713,10 @@
 %%
 %% If you set `enableTrace' to `true' in the request, you can trace
 %% the agent's steps and reasoning process that led it to the response.
+%%
+%% If the action predicted was configured to return control, the response
+%% returns parameters for the action, elicited from the user, in the
+%% `returnControl' field.
 %%
 %% Errors are also surfaced in the response.
 -spec invoke_agent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), invoke_agent_request()) ->

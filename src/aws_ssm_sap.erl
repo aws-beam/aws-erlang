@@ -29,6 +29,8 @@
          list_components/3,
          list_databases/2,
          list_databases/3,
+         list_operation_events/2,
+         list_operation_events/3,
          list_operations/2,
          list_operations/3,
          list_tags_for_resource/2,
@@ -38,8 +40,12 @@
          put_resource_permission/3,
          register_application/2,
          register_application/3,
+         start_application/2,
+         start_application/3,
          start_application_refresh/2,
          start_application_refresh/3,
+         stop_application/2,
+         stop_application/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -84,6 +90,13 @@
 
 
 %% Example:
+%% start_application_output() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type start_application_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -105,6 +118,13 @@
 %%   <<"Status">> => list(any())
 %% }
 -type database() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_application_output() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type stop_application_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -175,6 +195,14 @@
 
 
 %% Example:
+%% list_operation_events_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OperationEvents">> => list(operation_event()())
+%% }
+-type list_operation_events_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% component_summary() :: #{
 %%   <<"ApplicationId">> => string(),
 %%   <<"Arn">> => string(),
@@ -205,6 +233,15 @@
 
 
 %% Example:
+%% stop_application_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"IncludeEc2InstanceShutdown">> => [boolean()],
+%%   <<"StopConnectedEntity">> => list(any())
+%% }
+-type stop_application_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_databases_input() :: #{
 %%   <<"ApplicationId">> => string(),
 %%   <<"ComponentId">> => string(),
@@ -212,6 +249,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_databases_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_operation_events_input() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OperationId">> := string()
+%% }
+-type list_operation_events_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -387,6 +434,17 @@
 
 
 %% Example:
+%% operation_event() :: #{
+%%   <<"Description">> => [string()],
+%%   <<"Resource">> => resource(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()],
+%%   <<"Timestamp">> => [non_neg_integer()]
+%% }
+-type operation_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Operator">> => list(any()),
@@ -405,6 +463,13 @@
 %%   <<"OsVersion">> => [string()]
 %% }
 -type host() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_application_input() :: #{
+%%   <<"ApplicationId">> := string()
+%% }
+-type start_application_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -552,6 +617,14 @@
 %% }
 -type register_application_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% resource() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
 -type delete_resource_permission_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -600,6 +673,10 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_operation_events_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
 -type list_operations_errors() ::
     validation_exception() | 
     internal_server_exception().
@@ -620,12 +697,24 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type start_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type start_application_refresh_errors() ::
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
     unauthorized_exception().
+
+-type stop_application_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
@@ -1001,6 +1090,45 @@ list_databases(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a list of operations events.
+%%
+%% Available parameters include `OperationID', as well as optional
+%% parameters
+%% `MaxResults', `NextToken', and
+%% `Filters'.
+-spec list_operation_events(aws_client:aws_client(), list_operation_events_input()) ->
+    {ok, list_operation_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_operation_events_errors(), tuple()}.
+list_operation_events(Client, Input) ->
+    list_operation_events(Client, Input, []).
+
+-spec list_operation_events(aws_client:aws_client(), list_operation_events_input(), proplists:proplist()) ->
+    {ok, list_operation_events_output(), tuple()} |
+    {error, any()} |
+    {error, list_operation_events_errors(), tuple()}.
+list_operation_events(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-operation-events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the operations performed by AWS Systems Manager for SAP.
 -spec list_operations(aws_client:aws_client(), list_operations_input()) ->
     {ok, list_operations_output(), tuple()} |
@@ -1157,6 +1285,42 @@ register_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Request is an operation which starts an application.
+%%
+%% Parameter `ApplicationId' is required.
+-spec start_application(aws_client:aws_client(), start_application_input()) ->
+    {ok, start_application_output(), tuple()} |
+    {error, any()} |
+    {error, start_application_errors(), tuple()}.
+start_application(Client, Input) ->
+    start_application(Client, Input, []).
+
+-spec start_application(aws_client:aws_client(), start_application_input(), proplists:proplist()) ->
+    {ok, start_application_output(), tuple()} |
+    {error, any()} |
+    {error, start_application_errors(), tuple()}.
+start_application(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/start-application"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Refreshes a registered application.
 -spec start_application_refresh(aws_client:aws_client(), start_application_refresh_input()) ->
     {ok, start_application_refresh_output(), tuple()} |
@@ -1172,6 +1336,44 @@ start_application_refresh(Client, Input) ->
 start_application_refresh(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-application-refresh"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Request is an operation to stop an application.
+%%
+%% Parameter `ApplicationId' is required.
+%% Parameters `StopConnectedEntity' and
+%% `IncludeEc2InstanceShutdown' are optional.
+-spec stop_application(aws_client:aws_client(), stop_application_input()) ->
+    {ok, stop_application_output(), tuple()} |
+    {error, any()} |
+    {error, stop_application_errors(), tuple()}.
+stop_application(Client, Input) ->
+    stop_application(Client, Input, []).
+
+-spec stop_application(aws_client:aws_client(), stop_application_input(), proplists:proplist()) ->
+    {ok, stop_application_output(), tuple()} |
+    {error, any()} |
+    {error, stop_application_errors(), tuple()}.
+stop_application(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/stop-application"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
