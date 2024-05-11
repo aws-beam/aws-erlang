@@ -92,6 +92,7 @@
 %%   <<"clientId">> := string(),
 %%   <<"clientSecret">> := string(),
 %%   <<"code">> => string(),
+%%   <<"codeVerifier">> => string(),
 %%   <<"deviceCode">> => string(),
 %%   <<"grantType">> := string(),
 %%   <<"redirectUri">> => string(),
@@ -117,6 +118,7 @@
 %%   <<"assertion">> => string(),
 %%   <<"clientId">> := string(),
 %%   <<"code">> => string(),
+%%   <<"codeVerifier">> => string(),
 %%   <<"grantType">> := string(),
 %%   <<"redirectUri">> => string(),
 %%   <<"refreshToken">> => string(),
@@ -182,6 +184,14 @@
 
 
 %% Example:
+%% invalid_redirect_uri_exception() :: #{
+%%   <<"error">> => string(),
+%%   <<"error_description">> => string()
+%% }
+-type invalid_redirect_uri_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_request_exception() :: #{
 %%   <<"error">> => string(),
 %%   <<"error_description">> => string()
@@ -211,6 +221,10 @@
 %% register_client_request() :: #{
 %%   <<"clientName">> := string(),
 %%   <<"clientType">> := string(),
+%%   <<"entitledApplicationArn">> => string(),
+%%   <<"grantTypes">> => list(string()()),
+%%   <<"issuerUrl">> => string(),
+%%   <<"redirectUris">> => list(string()()),
 %%   <<"scopes">> => list(string()())
 %% }
 -type register_client_request() :: #{binary() => any()}.
@@ -300,8 +314,10 @@
     access_denied_exception().
 
 -type register_client_errors() ::
+    unsupported_grant_type_exception() | 
     invalid_scope_exception() | 
     invalid_request_exception() | 
+    invalid_redirect_uri_exception() | 
     invalid_client_metadata_exception() | 
     internal_server_exception().
 
@@ -362,8 +378,8 @@ create_token(Client, Input0, Options0) ->
 %% authenticated using IAM entities.
 %%
 %% The access token can be used to fetch short-term credentials
-%% for the assigned AWS accounts or to access application APIs using
-%% `bearer'
+%% for the assigned Amazon Web Services accounts or to access application
+%% APIs using `bearer'
 %% authentication.
 -spec create_token_with_iam(aws_client:aws_client(), create_token_with_iam_request()) ->
     {ok, create_token_with_iam_response(), tuple()} |

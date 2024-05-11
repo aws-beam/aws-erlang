@@ -175,9 +175,13 @@
 %% }
 -type list_component_versions_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_component_version_artifact_request() :: #{}
--type get_component_version_artifact_request() :: #{}.
+%% get_component_version_artifact_request() :: #{
+%%   <<"iotEndpointType">> => list(any()),
+%%   <<"s3EndpointType">> => list(any())
+%% }
+-type get_component_version_artifact_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1380,26 +1384,11 @@ cancel_deployment(Client, DeploymentId, Input0, Options0) ->
 %% use this operation to
 %% migrate Lambda functions from IoT Greengrass V1 to IoT Greengrass V2.
 %%
-%% This function only accepts Lambda functions that use the following
-%% runtimes:
-%%
-%% Python 2.7 – `python2.7'
-%%
-%% Python 3.7 – `python3.7'
-%%
-%% Python 3.8 – `python3.8'
-%%
-%% Python 3.9 – `python3.9'
-%%
-%% Java 8 – `java8'
-%%
-%% Java 11 – `java11'
-%%
-%% Node.js 10 – `nodejs10.x'
-%%
-%% Node.js 12 – `nodejs12.x'
-%%
-%% Node.js 14 – `nodejs14.x'
+%% This function accepts Lambda functions in all supported versions of
+%% Python, Node.js,
+%% and Java runtimes. IoT Greengrass doesn't apply any additional
+%% restrictions on deprecated Lambda
+%% runtime versions.
 %%
 %% To create a component from a Lambda function, specify `lambdaFunction'
 %% when
@@ -1783,9 +1772,17 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, 
                {receive_body_as_binary, ReceiveBodyAsBinary}
                | Options2],
 
-    Headers = [],
+    Headers0 =
+      [
+        {<<"x-amz-iot-endpoint-type">>, maps:get(<<"x-amz-iot-endpoint-type">>, HeadersMap, undefined)}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"s3EndpointType">>, maps:get(<<"s3EndpointType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
