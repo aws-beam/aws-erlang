@@ -1739,6 +1739,14 @@
 %% You can use this operation to change the priority of
 %% listener rules. This can be useful when bulk updating or swapping rule
 %% priority.
+%%
+%% Required permissions:
+%% `vpc-lattice:UpdateRule'
+%%
+%% For more information, see How Amazon VPC Lattice works with
+%% IAM:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/security_iam_service-with-iam.html
+%% in the Amazon VPC Lattice User Guide.
 -spec batch_update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), batch_update_rule_request()) ->
     {ok, batch_update_rule_response(), tuple()} |
     {error, any()} |
@@ -1777,7 +1785,7 @@ batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options
 %%
 %% The service network owner
 %% can use the access logs to audit the services in the network. The service
-%% network owner will only
+%% network owner can only
 %% see access logs from clients and services that are associated with their
 %% service network. Access
 %% log entries represent traffic originated from VPCs associated with that
@@ -1988,6 +1996,10 @@ create_service_network(Client, Input0, Options0) ->
 
 %% @doc Associates a service with a service network.
 %%
+%% For more information, see Manage service associations:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-service-associations
+%% in the Amazon VPC Lattice User Guide.
+%%
 %% You can't use this operation if the service and service network are
 %% already associated or if
 %% there is a disassociation or deletion in progress. If the association
@@ -2051,11 +2063,13 @@ create_service_network_service_association(Client, Input0, Options0) ->
 %% network account
 %% and the VPC owner account.
 %%
-%% Once a security group is added to the VPC association it cannot be
-%% removed. You can add or
-%% update the security groups being used for the VPC association once a
-%% security group is attached.
-%% To remove all security groups you must reassociate the VPC.
+%% If you add a security group to the service network and VPC association,
+%% the association must
+%% continue to always have at least one security group. You can add or edit
+%% security groups at any
+%% time. However, to remove all security groups, you must first delete the
+%% association and recreate
+%% it without security groups.
 -spec create_service_network_vpc_association(aws_client:aws_client(), create_service_network_vpc_association_request()) ->
     {ok, create_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
@@ -2168,13 +2182,12 @@ delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, 
 
 %% @doc Deletes the specified auth policy.
 %%
-%% If an auth is set to `Amazon Web Services_IAM'
-%% and the auth policy is deleted, all requests will be denied by default. If
-%% you are trying to
-%% remove the auth policy completely, you must set the auth_type to
-%% `NONE'. If auth is
-%% enabled on the resource, but no auth policy is set, all requests will be
-%% denied.
+%% If an auth is set to `AWS_IAM' and the auth
+%% policy is deleted, all requests are denied. If you are trying to remove
+%% the auth
+%% policy completely, you must set the auth type to `NONE'. If auth is
+%% enabled on the
+%% resource, but no auth policy is set, all requests are denied.
 -spec delete_auth_policy(aws_client:aws_client(), binary() | list(), delete_auth_policy_request()) ->
     {ok, delete_auth_policy_response(), tuple()} |
     {error, any()} |
@@ -2415,7 +2428,7 @@ delete_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 %% service network.
 %%
 %% This
-%% request will fail if an association is still in progress.
+%% operation fails if an association is still in progress.
 -spec delete_service_network_service_association(aws_client:aws_client(), binary() | list(), delete_service_network_service_association_request()) ->
     {ok, delete_service_network_service_association_response(), tuple()} |
     {error, any()} |
@@ -2674,8 +2687,7 @@ get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap
 %% @doc Retrieves information about the resource policy.
 %%
 %% The resource policy is an IAM policy
-%% created by AWS RAM on behalf of the resource owner when they share a
-%% resource.
+%% created on behalf of the resource owner when they share a resource.
 -spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -3083,9 +3095,9 @@ list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, 
 %% service network is associated with a VPC or when a service is associated
 %% with a service network.
 %% If the association is for a resource that is shared with another account,
-%% the association will
-%% include the local account ID as the prefix in the ARN for each account the
-%% resource is shared
+%% the association
+%% includes the local account ID as the prefix in the ARN for each account
+%% the resource is shared
 %% with.
 -spec list_service_network_service_associations(aws_client:aws_client()) ->
     {ok, list_service_network_service_associations_response(), tuple()} |
@@ -3393,6 +3405,13 @@ list_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates or updates the auth policy.
+%%
+%% The policy string in JSON must not contain newlines or
+%% blank lines.
+%%
+%% For more information, see Auth policies:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/auth-policies.html
+%% in the Amazon VPC Lattice User Guide.
 -spec put_auth_policy(aws_client:aws_client(), binary() | list(), put_auth_policy_request()) ->
     {ok, put_auth_policy_response(), tuple()} |
     {error, any()} |
@@ -3747,8 +3766,13 @@ update_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 
 %% @doc Updates the service network and VPC association.
 %%
-%% Once you add a security group, it cannot be
-%% removed.
+%% If you add a security group to the service
+%% network and VPC association, the association must continue to always have
+%% at least one security
+%% group. You can add or edit security groups at any time. However, to remove
+%% all security groups,
+%% you must first delete the association and recreate it without security
+%% groups.
 -spec update_service_network_vpc_association(aws_client:aws_client(), binary() | list(), update_service_network_vpc_association_request()) ->
     {ok, update_service_network_vpc_association_response(), tuple()} |
     {error, any()} |

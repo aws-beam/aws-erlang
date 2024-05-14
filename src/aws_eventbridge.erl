@@ -2,24 +2,23 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon EventBridge helps you to respond to state changes in your
-%% Amazon Web Services resources.
+%% Amazon Web Services
+%% resources.
 %%
-%% When your
-%% resources change state, they automatically send events to an event stream.
-%% You can create
-%% rules that match selected events in the stream and route them to targets
-%% to take action. You
-%% can also use rules to take action on a predetermined schedule. For
-%% example, you can configure
-%% rules to:
+%% When your resources change state, they automatically send events to an
+%% event
+%% stream. You can create rules that match selected events in the stream and
+%% route them to
+%% targets to take action. You can also use rules to take action on a
+%% predetermined schedule. For
+%% example, you can configure rules to:
 %%
 %% Automatically invoke an Lambda function to update DNS entries when an
-%% event
-%% notifies you that Amazon EC2 instance enters the running state.
+%% event notifies you that Amazon EC2 instance enters the running state.
 %%
-%% Direct specific API records from CloudTrail to an Amazon Kinesis data
-%% stream for
-%% detailed analysis of potential security or availability risks.
+%% Direct specific API records from CloudTrail to an Amazon Kinesis
+%% data stream for detailed analysis of potential security or availability
+%% risks.
 %%
 %% Periodically invoke a built-in target to create a snapshot of an Amazon
 %% EBS
@@ -141,7 +140,9 @@
          update_connection/2,
          update_connection/3,
          update_endpoint/2,
-         update_endpoint/3]).
+         update_endpoint/3,
+         update_event_bus/2,
+         update_event_bus/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -179,7 +180,10 @@
 
 %% Example:
 %% create_event_bus_request() :: #{
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"Description">> => string(),
 %%   <<"EventSourceName">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"Tags">> => list(tag()())
 %% }
@@ -459,7 +463,10 @@
 
 %% Example:
 %% create_event_bus_response() :: #{
-%%   <<"EventBusArn">> => string()
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"Description">> => string(),
+%%   <<"EventBusArn">> => string(),
+%%   <<"KmsKeyIdentifier">> => string()
 %% }
 -type create_event_bus_response() :: #{binary() => any()}.
 
@@ -1193,6 +1200,11 @@
 %% Example:
 %% describe_event_bus_response() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Policy">> => string()
 %% }
@@ -1227,6 +1239,15 @@
 %%   <<"LastModifiedTime">> => non_neg_integer()
 %% }
 -type update_api_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_event_bus_request() :: #{
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_event_bus_request() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_replay_response() :: #{
@@ -1533,6 +1554,9 @@
 %% Example:
 %% event_bus() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Policy">> => string()
 %% }
@@ -1587,6 +1611,16 @@
 %%   <<"RuleNames">> => list(string()())
 %% }
 -type list_rule_names_by_target_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_event_bus_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_event_bus_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_partner_event_source_request() :: #{
@@ -1915,6 +1949,12 @@
     internal_exception() | 
     resource_not_found_exception().
 
+-type update_event_bus_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    operation_disabled_exception() | 
+    resource_not_found_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -1961,11 +2001,13 @@ cancel_replay(Client, Input, Options)
 %% for events.
 %%
 %% API destinations do not support private destinations, such as interface
-%% VPC endpoints.
+%% VPC
+%% endpoints.
 %%
 %% For more information, see API destinations:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-destinations.html
-%% in the EventBridge User Guide.
+%% in the
+%% EventBridge User Guide.
 -spec create_api_destination(aws_client:aws_client(), create_api_destination_request()) ->
     {ok, create_api_destination_response(), tuple()} |
     {error, any()} |
@@ -1992,6 +2034,37 @@ create_api_destination(Client, Input, Options)
 %% archive, all events are sent to the archive except replayed events.
 %% Replayed events are not
 %% sent to an archive.
+%%
+%% Archives and schema discovery are not supported for event buses encrypted
+%% using a
+%% customer managed key. EventBridge returns an error if:
+%%
+%% You call
+%% ```
+%% CreateArchive:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateArchive.html
+%% ''' on an event bus set to use a customer managed key for
+%% encryption.
+%%
+%% You call
+%% ```
+%% CreateDiscoverer:
+%% https://docs.aws.amazon.com/eventbridge/latest/schema-reference/v1-discoverers.html#CreateDiscoverer
+%% ''' on an event bus set to use a customer managed key for
+%% encryption.
+%%
+%% You call
+%% ```
+%% UpdatedEventBus:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdatedEventBus.html
+%% ''' to set a customer managed key on an event bus with an
+%% archives or schema discovery enabled.
+%%
+%% To enable archives or schema discovery on an event bus, choose to
+%% use an Amazon Web Services owned key. For more information, see Data
+%% encryption in EventBridge:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-encryption.html
+%% in the Amazon EventBridge User Guide.
 -spec create_archive(aws_client:aws_client(), create_archive_request()) ->
     {ok, create_archive_response(), tuple()} |
     {error, any()} |
@@ -2030,14 +2103,16 @@ create_connection(Client, Input, Options)
 
 %% @doc Creates a global endpoint.
 %%
-%% Global endpoints improve your application's availability by making it
-%% regional-fault tolerant. To do this, you define a primary and secondary
-%% Region
-%% with event buses in each Region. You also create a Amazon Route 53 health
-%% check that will tell EventBridge to route events to the secondary Region
-%% when an &quot;unhealthy&quot; state
-%% is encountered and events will be routed back to the primary Region when
-%% the health check reports a &quot;healthy&quot; state.
+%% Global endpoints improve your application's availability by
+%% making it regional-fault tolerant. To do this, you define a primary and
+%% secondary Region with
+%% event buses in each Region. You also create a Amazon Route 53 health check
+%% that will
+%% tell EventBridge to route events to the secondary Region when an
+%% &quot;unhealthy&quot; state is
+%% encountered and events will be routed back to the primary Region when the
+%% health check reports
+%% a &quot;healthy&quot; state.
 -spec create_endpoint(aws_client:aws_client(), create_endpoint_request()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
@@ -2082,20 +2157,22 @@ create_event_bus(Client, Input, Options)
 %% Amazon Web Services customers.
 %%
 %% Each partner event source can be used by one Amazon Web Services account
-%% to create a matching partner
-%% event bus in that Amazon Web Services account. A SaaS partner must create
-%% one partner event source for each
-%% Amazon Web Services account that wants to receive those event types.
+%% to create a
+%% matching partner event bus in that Amazon Web Services account. A SaaS
+%% partner must create one
+%% partner event source for each Amazon Web Services account that wants to
+%% receive those event
+%% types.
 %%
 %% A partner event source creates events based on resources within the SaaS
 %% partner's service
 %% or application.
 %%
 %% An Amazon Web Services account that creates a partner event bus that
-%% matches the partner event source can
-%% use that event bus to receive events from the partner, and then process
-%% them using Amazon Web Services Events
-%% rules and targets.
+%% matches the partner
+%% event source can use that event bus to receive events from the partner,
+%% and then process them
+%% using Amazon Web Services Events rules and targets.
 %%
 %% Partner event source names follow this format:
 %%
@@ -2108,17 +2185,18 @@ create_event_bus(Client, Input, Options)
 %% event_namespace is determined by the partner, and is a way for
 %% the partner to categorize their events.
 %%
-%% event_name is determined by the partner, and should uniquely identify
-%% an event-generating resource within the partner system.
+%% event_name is determined by the partner, and should uniquely
+%% identify an event-generating resource within the partner system.
 %%
-%% The event_name must be unique across all Amazon Web Services customers.
-%% This is because the event source is a shared resource
-%% between the partner and customer accounts, and each partner event source
-%% unique in the partner account.
+%% The event_name must be unique across all Amazon Web Services
+%% customers. This is because the event source is a shared resource between
+%% the partner and
+%% customer accounts, and each partner event source unique in the partner
+%% account.
 %%
-%% The combination of
-%% event_namespace and event_name should help Amazon Web Services
-%% customers decide whether to create an event bus to receive these events.
+%% The combination of event_namespace and
+%% event_name should help Amazon Web Services customers decide whether to
+%% create an event bus to receive these events.
 -spec create_partner_event_source(aws_client:aws_client(), create_partner_event_source_request()) ->
     {ok, create_partner_event_source_response(), tuple()} |
     {error, any()} |
@@ -2237,10 +2315,14 @@ delete_connection(Client, Input, Options)
 
 %% @doc Delete an existing global endpoint.
 %%
-%% For more information about global endpoints, see Making applications
-%% Regional-fault tolerant with global endpoints and event replication:
+%% For more information about global endpoints, see
+%% Making applications Regional-fault tolerant with global endpoints and
+%% event
+%% replication:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html
-%% in the Amazon EventBridge User Guide.
+%% in the
+%% Amazon EventBridge User Guide
+%% .
 -spec delete_endpoint(aws_client:aws_client(), delete_endpoint_request()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
@@ -2320,12 +2402,14 @@ delete_partner_event_source(Client, Input, Options)
 %% returned.
 %%
 %% Managed rules are rules created and managed by another Amazon Web Services
-%% service on your behalf. These
-%% rules are created by those other Amazon Web Services services to support
-%% functionality in those services. You
-%% can delete these rules using the `Force' option, but you should do so
-%% only if you
-%% are sure the other service is not still using that rule.
+%% service on your
+%% behalf. These rules are created by those other Amazon Web Services
+%% services to support
+%% functionality in those services. You can delete these rules using the
+%% `Force'
+%% option, but you should do so only if you are sure the other service is not
+%% still using that
+%% rule.
 -spec delete_rule(aws_client:aws_client(), delete_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2395,10 +2479,14 @@ describe_connection(Client, Input, Options)
 
 %% @doc Get the information about an existing global endpoint.
 %%
-%% For more information about global endpoints, see Making applications
+%% For more information about global
+%% endpoints, see Making applications
 %% Regional-fault tolerant with global endpoints and event replication:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html
-%% in the Amazon EventBridge User Guide.
+%% in the
+%%
+%% Amazon EventBridge User Guide
+%% .
 -spec describe_endpoint(aws_client:aws_client(), describe_endpoint_request()) ->
     {ok, describe_endpoint_response(), tuple()} |
     {error, any()} |
@@ -2417,12 +2505,11 @@ describe_endpoint(Client, Input, Options)
 
 %% @doc Displays details about an event bus in your account.
 %%
-%% This can include the external Amazon Web Services
-%% accounts that are permitted to write events to your default event bus, and
-%% the associated
-%% policy. For custom event buses and partner event buses, it displays the
-%% name, ARN, policy,
-%% state, and creation time.
+%% This can include the external Amazon Web Services accounts that are
+%% permitted to write events to your default event bus, and the
+%% associated policy. For custom event buses and partner event buses, it
+%% displays the name, ARN,
+%% policy, state, and creation time.
 %%
 %% To enable your account to receive events from other accounts on its
 %% default event bus,
@@ -2473,8 +2560,8 @@ describe_event_source(Client, Input, Options)
 %% Amazon Web Services customers do not use this operation. Instead, Amazon
 %% Web Services customers can use DescribeEventSource:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeEventSource.html
-%% to see details about a partner event source that is
-%% shared with them.
+%% to see details about a partner event source that is shared with
+%% them.
 -spec describe_partner_event_source(aws_client:aws_client(), describe_partner_event_source_request()) ->
     {ok, describe_partner_event_source_response(), tuple()} |
     {error, any()} |
@@ -2649,10 +2736,14 @@ list_connections(Client, Input, Options)
 
 %% @doc List the global endpoints associated with this account.
 %%
-%% For more information about global endpoints, see Making applications
+%% For more information about global
+%% endpoints, see Making applications
 %% Regional-fault tolerant with global endpoints and event replication:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html
-%% in the Amazon EventBridge User Guide.
+%% in the
+%%
+%% Amazon EventBridge User Guide
+%% .
 -spec list_endpoints(aws_client:aws_client(), list_endpoints_request()) ->
     {ok, list_endpoints_response(), tuple()} |
     {error, any()} |
@@ -2689,8 +2780,8 @@ list_event_buses(Client, Input, Options)
     request(Client, <<"ListEventBuses">>, Input, Options).
 
 %% @doc You can use this to see all the partner event sources that have been
-%% shared with your Amazon Web Services
-%% account.
+%% shared with your
+%% Amazon Web Services account.
 %%
 %% For more information about partner event sources, see CreateEventBus:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateEventBus.html.
@@ -2711,11 +2802,10 @@ list_event_sources(Client, Input, Options)
     request(Client, <<"ListEventSources">>, Input, Options).
 
 %% @doc An SaaS partner can use this operation to display the Amazon Web
-%% Services account ID that a particular
-%% partner event source name is associated with.
+%% Services account ID that a
+%% particular partner event source name is associated with.
 %%
-%% This operation is not used by Amazon Web Services
-%% customers.
+%% This operation is not used by Amazon Web Services customers.
 -spec list_partner_event_source_accounts(aws_client:aws_client(), list_partner_event_source_accounts_request()) ->
     {ok, list_partner_event_source_accounts_response(), tuple()} |
     {error, any()} |
@@ -2797,8 +2887,8 @@ list_rule_names_by_target(Client, Input, Options)
 
 %% @doc Lists your Amazon EventBridge rules.
 %%
-%% You can either list all the rules or you can provide
-%% a prefix to match to the rule names.
+%% You can either list all the rules or you can
+%% provide a prefix to match to the rule names.
 %%
 %% The maximum number of results per page for requests is 100.
 %%
@@ -2865,16 +2955,19 @@ list_targets_by_rule(Client, Input, Options)
 %% to rules.
 %%
 %% The maximum size for a PutEvents event entry is 256 KB. Entry size is
-%% calculated including the event and any necessary characters and keys of
-%% the JSON representation of the event.
-%% To learn more, see
-%% Calculating PutEvents event entry size:
+%% calculated including
+%% the event and any necessary characters and keys of the JSON representation
+%% of the event. To
+%% learn more, see Calculating PutEvents event entry
+%% size:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-putevent-size.html
-%% in the Amazon EventBridge User Guide
+%% in the
+%% Amazon EventBridge User Guide
 %%
-%% PutEvents accepts the data in JSON format. For the JSON number
-%% (integer) data type, the constraints are: a minimum value of
-%% -9,223,372,036,854,775,808 and a maximum value of
+%% PutEvents accepts the data in JSON format. For the JSON number (integer)
+%% data type, the
+%% constraints are: a minimum value of -9,223,372,036,854,775,808 and a
+%% maximum value of
 %% 9,223,372,036,854,775,807.
 %%
 %% PutEvents will only process nested JSON up to 1100 levels deep.
@@ -2897,11 +2990,11 @@ put_events(Client, Input, Options)
 %% @doc This is used by SaaS partners to write events to a customer's
 %% partner event bus.
 %%
-%% Amazon Web Services
-%% customers do not use this operation.
+%% Amazon Web Services customers do not use this operation.
 %%
-%% For information on calculating event batch size, see
-%% Calculating EventBridge PutEvents event entry size:
+%% For information on calculating event batch size, see Calculating
+%% EventBridge PutEvents event
+%% entry size:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-putevent-size.html
 %% in the EventBridge User Guide.
 -spec put_partner_events(aws_client:aws_client(), put_partner_events_request()) ->
@@ -2921,13 +3014,12 @@ put_partner_events(Client, Input, Options)
     request(Client, <<"PutPartnerEvents">>, Input, Options).
 
 %% @doc Running `PutPermission' permits the specified Amazon Web Services
-%% account or Amazon Web Services organization
-%% to put events to the specified event bus.
+%% account or
+%% Amazon Web Services organization to put events to the specified event
+%% bus.
 %%
-%% Amazon EventBridge (CloudWatch
-%% Events) rules in your account are triggered by these events arriving to an
-%% event bus in your
-%% account.
+%% Amazon EventBridge (CloudWatch Events) rules in your account are
+%% triggered by these events arriving to an event bus in your account.
 %%
 %% For another account to send events to your account, that external account
 %% must have an
@@ -2938,10 +3030,11 @@ put_partner_events(Client, Input, Options)
 %% `PutPermission' once for each of these accounts. Or, if all the
 %% accounts are
 %% members of the same Amazon Web Services organization, you can run
-%% `PutPermission' once specifying
-%% `Principal' as &quot;*&quot; and specifying the Amazon Web Services
-%% organization ID in
-%% `Condition', to grant permissions to all accounts in that
+%% `PutPermission'
+%% once specifying `Principal' as &quot;*&quot; and specifying the Amazon
+%% Web Services
+%% organization ID in `Condition', to grant permissions to all accounts
+%% in that
 %% organization.
 %%
 %% If you grant permissions using an organization, then accounts in that
@@ -2952,8 +3045,7 @@ put_partner_events(Client, Input, Options)
 %% Sending and
 %% Receiving Events Between Amazon Web Services Accounts:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html
-%% in the Amazon EventBridge User
-%% Guide.
+%% in the Amazon EventBridge User Guide.
 %%
 %% The permission policy on the event bus cannot exceed 10 KB in size.
 -spec put_permission(aws_client:aws_client(), put_permission_request()) ->
@@ -2979,14 +3071,13 @@ put_permission(Client, Input, Options)
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DisableRule.html.
 %%
 %% A single rule watches for events from a single event bus. Events generated
-%% by Amazon Web Services services
-%% go to your account's default event bus. Events generated by SaaS
-%% partner services or
-%% applications go to the matching partner event bus. If you have custom
-%% applications or
-%% services, you can specify whether their events go to your default event
-%% bus or a custom event
-%% bus that you have created. For more information, see CreateEventBus:
+%% by Amazon Web Services services go to your account's default event
+%% bus. Events generated by SaaS partner
+%% services or applications go to the matching partner event bus. If you have
+%% custom applications
+%% or services, you can specify whether their events go to your default event
+%% bus or a custom
+%% event bus that you have created. For more information, see CreateEventBus:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateEventBus.html.
 %%
 %% If you are updating an existing rule, the rule is replaced with what you
@@ -3030,12 +3121,12 @@ put_permission(Client, Input, Options)
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UntagResource.html.
 %%
 %% Most services in Amazon Web Services treat : or / as the same character in
-%% Amazon Resource Names (ARNs).
-%% However, EventBridge uses an exact match in event patterns and rules. Be
-%% sure to use the
-%% correct ARN characters when creating event patterns so that they match the
-%% ARN syntax in the
-%% event you want to match.
+%% Amazon Resource
+%% Names (ARNs). However, EventBridge uses an exact match in event patterns
+%% and rules. Be sure to
+%% use the correct ARN characters when creating event patterns so that they
+%% match the ARN syntax
+%% in the event you want to match.
 %%
 %% In EventBridge, it is possible to create rules that lead to infinite
 %% loops, where a rule
@@ -3089,7 +3180,9 @@ put_rule(Client, Input, Options)
 %% For a list of services you can configure as targets for events, see
 %% EventBridge targets:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html
-%% in the Amazon EventBridge User Guide.
+%% in the
+%% Amazon EventBridge User Guide
+%% .
 %%
 %% Creating rules with built-in targets is supported only in the Amazon Web
 %% Services Management Console. The
@@ -3101,53 +3194,53 @@ put_rule(Client, Input, Options)
 %%
 %% `Amazon EC2 StopInstances API call'
 %%
-%% ```
-%% Amazon EC2 TerminateInstances API call'''
+%% `Amazon EC2 TerminateInstances API call'
 %%
 %% For some target types, `PutTargets' provides target-specific
 %% parameters. If the
 %% target is a Kinesis data stream, you can optionally specify which shard
-%% the event goes to by
-%% using the `KinesisParameters' argument. To invoke a command on
-%% multiple EC2
-%% instances with one rule, you can use the `RunCommandParameters' field.
+%% the event
+%% goes to by using the `KinesisParameters' argument. To invoke a command
+%% on multiple
+%% EC2 instances with one rule, you can use the `RunCommandParameters'
+%% field.
 %%
 %% To be able to make API calls against the resources that you own, Amazon
 %% EventBridge
 %% needs the appropriate permissions:
 %%
-%% For Lambda and Amazon SNS
-%% resources, EventBridge relies on resource-based policies.
+%% For Lambda and Amazon SNS resources, EventBridge relies
+%% on resource-based policies.
 %%
-%% For EC2 instances, Kinesis Data Streams,
-%% Step Functions state machines and API Gateway APIs, EventBridge relies on
-%% IAM roles that you specify in the `RoleARN' argument in
-%% `PutTargets'.
+%% For EC2 instances, Kinesis Data Streams, Step Functions state machines and
+%% API Gateway APIs, EventBridge relies on IAM roles that you specify in the
+%% `RoleARN' argument in `PutTargets'.
 %%
 %% For more information, see Authentication
 %% and Access Control:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html
-%% in the Amazon EventBridge User Guide.
+%% in the
+%% Amazon EventBridge User Guide
+%% .
 %%
 %% If another Amazon Web Services account is in the same region and has
-%% granted you permission (using
-%% `PutPermission'), you can send events to that account. Set that
-%% account's event
-%% bus as a target of the rules in your account. To send the matched events
-%% to the other account,
-%% specify that account's event bus as the `Arn' value when you run
+%% granted you permission
+%% (using `PutPermission'), you can send events to that account. Set that
+%% account's
+%% event bus as a target of the rules in your account. To send the matched
+%% events to the other
+%% account, specify that account's event bus as the `Arn' value when
+%% you run
 %% `PutTargets'. If your account sends events to another account, your
 %% account is
 %% charged for each sent event. Each event sent to another account is charged
 %% as a custom event.
 %% The account receiving the event is not charged. For more information, see
-%% Amazon EventBridge
-%% Pricing: http://aws.amazon.com/eventbridge/pricing/.
+%% Amazon EventBridge Pricing: http://aws.amazon.com/eventbridge/pricing/.
 %%
 %% `Input', `InputPath', and `InputTransformer' are not
 %% available with `PutTarget' if the target is an event bus of a
-%% different Amazon Web Services
-%% account.
+%% different Amazon Web Services account.
 %%
 %% If you are setting the event bus of another account as the target, and
 %% that account
@@ -3157,12 +3250,13 @@ put_rule(Client, Input, Options)
 %% `Target' structure. For more information, see Sending and
 %% Receiving Events Between Amazon Web Services Accounts:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html
-%% in the Amazon EventBridge User
-%% Guide.
+%% in the Amazon EventBridge User Guide.
 %%
-%% If you have an IAM role on a cross-account event bus target,
-%% a `PutTargets' call without a role on the same target (same `Id'
-%% and `Arn') will not remove the role.
+%% If you have an IAM role on a cross-account event bus target, a
+%% `PutTargets'
+%% call without a role on the same target (same `Id' and `Arn') will
+%% not
+%% remove the role.
 %%
 %% For more information about enabling cross-account events, see
 %% PutPermission:
@@ -3226,13 +3320,13 @@ put_targets(Client, Input, Options)
     request(Client, <<"PutTargets">>, Input, Options).
 
 %% @doc Revokes the permission of another Amazon Web Services account to be
-%% able to put events to the specified
-%% event bus.
+%% able to put events to
+%% the specified event bus.
 %%
-%% Specify the account to revoke by the `StatementId' value that you
-%% associated with the account when you granted it permission with
-%% `PutPermission'.
-%% You can find the `StatementId' by using DescribeEventBus:
+%% Specify the account to revoke by the `StatementId' value
+%% that you associated with the account when you granted it permission with
+%% `PutPermission'. You can find the `StatementId' by using
+%% DescribeEventBus:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeEventBus.html.
 -spec remove_permission(aws_client:aws_client(), remove_permission_request()) ->
     {ok, undefined, tuple()} |
@@ -3256,8 +3350,9 @@ remove_permission(Client, Input, Options)
 %% targets are no longer be invoked.
 %%
 %% A successful execution of `RemoveTargets' doesn't guarantee all
-%% targets are removed from the rule, it means that the target(s) listed in
-%% the request are removed.
+%% targets are
+%% removed from the rule, it means that the target(s) listed in the request
+%% are removed.
 %%
 %% When you remove a target, when the associated rule triggers, removed
 %% targets might
@@ -3332,8 +3427,8 @@ start_replay(Client, Input, Options)
 %% values. In EventBridge, rules and event buses can be tagged.
 %%
 %% Tags don't have any semantic meaning to Amazon Web Services and are
-%% interpreted strictly as strings of
-%% characters.
+%% interpreted strictly as
+%% strings of characters.
 %%
 %% You can use the `TagResource' action with a resource that already has
 %% tags. If
@@ -3363,12 +3458,12 @@ tag_resource(Client, Input, Options)
 %% @doc Tests whether the specified event pattern matches the provided event.
 %%
 %% Most services in Amazon Web Services treat : or / as the same character in
-%% Amazon Resource Names (ARNs).
-%% However, EventBridge uses an exact match in event patterns and rules. Be
-%% sure to use the
-%% correct ARN characters when creating event patterns so that they match the
-%% ARN syntax in the
-%% event you want to match.
+%% Amazon Resource
+%% Names (ARNs). However, EventBridge uses an exact match in event patterns
+%% and rules. Be
+%% sure to use the correct ARN characters when creating event patterns so
+%% that they match the ARN
+%% syntax in the event you want to match.
 -spec test_event_pattern(aws_client:aws_client(), test_event_pattern_request()) ->
     {ok, test_event_pattern_response(), tuple()} |
     {error, any()} |
@@ -3458,10 +3553,14 @@ update_connection(Client, Input, Options)
 
 %% @doc Update an existing endpoint.
 %%
-%% For more information about global endpoints, see Making applications
-%% Regional-fault tolerant with global endpoints and event replication:
+%% For more information about global endpoints, see Making
+%% applications Regional-fault tolerant with global endpoints and event
+%% replication:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html
-%% in the Amazon EventBridge User Guide.
+%% in
+%% the
+%% Amazon EventBridge User Guide
+%% .
 -spec update_endpoint(aws_client:aws_client(), update_endpoint_request()) ->
     {ok, update_endpoint_response(), tuple()} |
     {error, any()} |
@@ -3477,6 +3576,23 @@ update_endpoint(Client, Input)
 update_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpoint">>, Input, Options).
+
+%% @doc Updates the specified event bus.
+-spec update_event_bus(aws_client:aws_client(), update_event_bus_request()) ->
+    {ok, update_event_bus_response(), tuple()} |
+    {error, any()} |
+    {error, update_event_bus_errors(), tuple()}.
+update_event_bus(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_event_bus(Client, Input, []).
+
+-spec update_event_bus(aws_client:aws_client(), update_event_bus_request(), proplists:proplist()) ->
+    {ok, update_event_bus_response(), tuple()} |
+    {error, any()} |
+    {error, update_event_bus_errors(), tuple()}.
+update_event_bus(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateEventBus">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
