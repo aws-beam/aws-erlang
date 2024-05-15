@@ -3481,7 +3481,7 @@ complete_multipart_upload(Client, Bucket, Key, Input) ->
     {error, any()}.
 complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
-    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?x-id=CompleteMultipartUpload"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
 
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
@@ -4289,7 +4289,7 @@ create_multipart_upload(Client, Bucket, Key, Input) ->
     {error, any()}.
 create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
-    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?uploads&x-id=CreateMultipartUpload"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?uploads"],
 
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
@@ -5795,7 +5795,7 @@ delete_objects(Client, Bucket, Input) ->
     {error, any()}.
 delete_objects(Client, Bucket, Input0, Options0) ->
     Method = post,
-    Path = ["/", aws_util:encode_uri(Bucket), "?delete&x-id=DeleteObjects"],
+    Path = ["/", aws_util:encode_uri(Bucket), "?delete"],
 
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
@@ -13027,7 +13027,7 @@ restore_object(Client, Bucket, Key, Input) ->
     {error, restore_object_errors(), tuple()}.
 restore_object(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
-    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?restore&x-id=RestoreObject"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?restore"],
 
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
@@ -13213,7 +13213,7 @@ select_object_content(Client, Bucket, Key, Input) ->
     {error, any()}.
 select_object_content(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
-    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?select&select-type=2&x-id=SelectObjectContent"],
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?select&select-type=2"],
 
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
@@ -13828,7 +13828,7 @@ write_get_object_response(Client, Input) ->
     {error, any()}.
 write_get_object_response(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/WriteGetObjectResponse?x-id=WriteGetObjectResponse"],
+    Path = ["/WriteGetObjectResponse"],
     Bucket = undefined,
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, true),

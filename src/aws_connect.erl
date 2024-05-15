@@ -443,6 +443,10 @@
          resume_contact_recording/3,
          search_available_phone_numbers/2,
          search_available_phone_numbers/3,
+         search_contact_flow_modules/2,
+         search_contact_flow_modules/3,
+         search_contact_flows/2,
+         search_contact_flows/3,
          search_contacts/2,
          search_contacts/3,
          search_hours_of_operations/2,
@@ -909,6 +913,17 @@
 
 
 %% Example:
+%% search_contact_flow_modules_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => contact_flow_module_search_criteria(),
+%%   <<"SearchFilter">> => contact_flow_module_search_filter()
+%% }
+-type search_contact_flow_modules_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_phone_numbers_summary() :: #{
 %%   <<"InstanceId">> => string(),
 %%   <<"PhoneNumber">> => string(),
@@ -932,6 +947,18 @@
 %% Example:
 %% describe_user_hierarchy_group_request() :: #{}
 -type describe_user_hierarchy_group_request() :: #{}.
+
+
+%% Example:
+%% contact_flow_search_criteria() :: #{
+%%   <<"AndConditions">> => list(contact_flow_search_criteria()()),
+%%   <<"OrConditions">> => list(contact_flow_search_criteria()()),
+%%   <<"StateCondition">> => list(any()),
+%%   <<"StatusCondition">> => list(any()),
+%%   <<"StringCondition">> => string_condition(),
+%%   <<"TypeCondition">> => list(any())
+%% }
+-type contact_flow_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1004,6 +1031,13 @@
 %%   <<"EvaluationFormVersion">> => integer()
 %% }
 -type deactivate_evaluation_form_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type contact_flow_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1182,6 +1216,7 @@
 %%   <<"Content">> := string(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"Type">> := list(any())
 %% }
@@ -1478,6 +1513,15 @@
 %% }
 -type credentials() :: #{binary() => any()}.
 
+
+%% Example:
+%% search_contact_flow_modules_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"ContactFlowModules">> => list(contact_flow_module()()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_contact_flow_modules_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_vocabulary_request() :: #{}
 -type describe_vocabulary_request() :: #{}.
@@ -1739,6 +1783,15 @@
 %%   <<"Message">> => string()
 %% }
 -type contact_flow_not_published_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_module_search_criteria() :: #{
+%%   <<"AndConditions">> => list(contact_flow_module_search_criteria()()),
+%%   <<"OrConditions">> => list(contact_flow_module_search_criteria()()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type contact_flow_module_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2401,6 +2454,7 @@
 %% contact_flow_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"ContactFlowState">> => list(any()),
+%%   <<"ContactFlowStatus">> => list(any()),
 %%   <<"ContactFlowType">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string()
@@ -4310,6 +4364,13 @@
 
 
 %% Example:
+%% contact_flow_module_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type contact_flow_module_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_routing_profile_queues_response() :: #{
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
@@ -5038,6 +5099,7 @@
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"State">> => list(any()),
+%%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"Type">> => list(any())
 %% }
@@ -5339,6 +5401,17 @@
 %% Example:
 %% assign_contact_category_action_definition() :: #{}
 -type assign_contact_category_action_definition() :: #{}.
+
+
+%% Example:
+%% search_contact_flows_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => contact_flow_search_criteria(),
+%%   <<"SearchFilter">> => contact_flow_search_filter()
+%% }
+-type search_contact_flows_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_prompt_file_request() :: #{}
@@ -5779,6 +5852,15 @@
 %%   <<"Tags">> => map()
 %% }
 -type quick_connect() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contact_flows_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"ContactFlows">> => list(contact_flow()()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_contact_flows_response() :: #{binary() => any()}.
 
 %% Example:
 %% pause_contact_response() :: #{}
@@ -7899,6 +7981,20 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
+    internal_service_exception().
+
+-type search_contact_flow_modules_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_contact_flows_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     internal_service_exception().
 
 -type search_contacts_errors() ::
@@ -11367,6 +11463,20 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
 %% You can also create and update flows using the Amazon Connect
 %% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
+%%
+%% Use the `$SAVED' alias in the request to describe the `SAVED'
+%% content
+%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. Once a
+%% contact flow is
+%% published, `$SAVED' needs to be supplied to view saved content that
+%% has not been
+%% published.
+%%
+%% In the response, Status indicates the flow status as either
+%% `SAVED' or `PUBLISHED'. The `PUBLISHED' status will initiate
+%% validation on the content. `SAVED' does not initiate validation of the
+%% content.
+%% `SAVED' | `PUBLISHED'
 -spec describe_contact_flow(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_flow_response(), tuple()} |
     {error, any()} |
@@ -11404,6 +11514,14 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the specified flow module.
+%%
+%% Use the `$SAVED' alias in the request to describe the `SAVED'
+%% content
+%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. Once a
+%% contact flow is
+%% published, `$SAVED' needs to be supplied to view saved content that
+%% has not been
+%% published.
 -spec describe_contact_flow_module(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_flow_module_response(), tuple()} |
     {error, any()} |
@@ -15650,6 +15768,77 @@ search_available_phone_numbers(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches the flow modules in an Amazon Connect instance, with
+%% optional filtering.
+-spec search_contact_flow_modules(aws_client:aws_client(), search_contact_flow_modules_request()) ->
+    {ok, search_contact_flow_modules_response(), tuple()} |
+    {error, any()} |
+    {error, search_contact_flow_modules_errors(), tuple()}.
+search_contact_flow_modules(Client, Input) ->
+    search_contact_flow_modules(Client, Input, []).
+
+-spec search_contact_flow_modules(aws_client:aws_client(), search_contact_flow_modules_request(), proplists:proplist()) ->
+    {ok, search_contact_flow_modules_response(), tuple()} |
+    {error, any()} |
+    {error, search_contact_flow_modules_errors(), tuple()}.
+search_contact_flow_modules(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-contact-flow-modules"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches the contact flows in an Amazon Connect instance, with
+%% optional
+%% filtering.
+-spec search_contact_flows(aws_client:aws_client(), search_contact_flows_request()) ->
+    {ok, search_contact_flows_response(), tuple()} |
+    {error, any()} |
+    {error, search_contact_flows_errors(), tuple()}.
+search_contact_flows(Client, Input) ->
+    search_contact_flows(Client, Input, []).
+
+-spec search_contact_flows(aws_client:aws_client(), search_contact_flows_request(), proplists:proplist()) ->
+    {ok, search_contact_flows_response(), tuple()} |
+    {error, any()} |
+    {error, search_contact_flows_errors(), tuple()}.
+search_contact_flows(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-contact-flows"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches contacts in an Amazon Connect instance.
 -spec search_contacts(aws_client:aws_client(), search_contacts_request()) ->
     {ok, search_contacts_response(), tuple()} |
@@ -17164,6 +17353,14 @@ update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 %% You can also create and update flows using the Amazon Connect
 %% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
+%%
+%% Use the `$SAVED' alias in the request to describe the `SAVED'
+%% content
+%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. Once a
+%% contact flow is
+%% published, `$SAVED' needs to be supplied to view saved content that
+%% has not been
+%% published.
 -spec update_contact_flow_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_content_request()) ->
     {ok, update_contact_flow_content_response(), tuple()} |
     {error, any()} |
@@ -17233,6 +17430,14 @@ update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input0, Options0
 
 %% @doc Updates specified flow module for the specified Amazon Connect
 %% instance.
+%%
+%% Use the `$SAVED' alias in the request to describe the `SAVED'
+%% content
+%% of a Flow. For example, `arn:aws:.../contact-flow/{id}:$SAVED'. Once a
+%% contact flow is
+%% published, `$SAVED' needs to be supplied to view saved content that
+%% has not been
+%% published.
 -spec update_contact_flow_module_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_module_content_request()) ->
     {ok, update_contact_flow_module_content_response(), tuple()} |
     {error, any()} |
