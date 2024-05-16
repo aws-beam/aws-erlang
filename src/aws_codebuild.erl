@@ -1035,9 +1035,11 @@
 %%   <<"baseCapacity">> => integer(),
 %%   <<"computeType">> => list(any()),
 %%   <<"environmentType">> => list(any()),
+%%   <<"fleetServiceRole">> => string(),
 %%   <<"overflowBehavior">> => list(any()),
 %%   <<"scalingConfiguration">> => scaling_configuration_input(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag()()),
+%%   <<"vpcConfig">> => vpc_config()
 %% }
 -type update_fleet_input() :: #{binary() => any()}.
 
@@ -1046,10 +1048,12 @@
 %%   <<"baseCapacity">> := integer(),
 %%   <<"computeType">> := list(any()),
 %%   <<"environmentType">> := list(any()),
+%%   <<"fleetServiceRole">> => string(),
 %%   <<"name">> := string(),
 %%   <<"overflowBehavior">> => list(any()),
 %%   <<"scalingConfiguration">> => scaling_configuration_input(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag()()),
+%%   <<"vpcConfig">> => vpc_config()
 %% }
 -type create_fleet_input() :: #{binary() => any()}.
 
@@ -1485,13 +1489,15 @@
 %%   <<"computeType">> => list(any()),
 %%   <<"created">> => non_neg_integer(),
 %%   <<"environmentType">> => list(any()),
+%%   <<"fleetServiceRole">> => string(),
 %%   <<"id">> => string(),
 %%   <<"lastModified">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"overflowBehavior">> => list(any()),
 %%   <<"scalingConfiguration">> => scaling_configuration_output(),
 %%   <<"status">> => fleet_status(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag()()),
+%%   <<"vpcConfig">> => vpc_config()
 %% }
 -type fleet() :: #{binary() => any()}.
 

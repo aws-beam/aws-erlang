@@ -204,6 +204,7 @@
 %% start_d_i_c_o_m_import_job_request() :: #{
 %%   <<"clientToken">> := string(),
 %%   <<"dataAccessRoleArn">> := string(),
+%%   <<"inputOwnerAccountId">> => string(),
 %%   <<"inputS3Uri">> := string(),
 %%   <<"jobName">> => string(),
 %%   <<"outputS3Uri">> := string()
@@ -1377,14 +1378,15 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Search image sets based on defined input attributes.
 %%
-%% `SearchImageSets' accepts a single search
-%% query parameter and returns a paginated response of all image sets that
-%% have the
-%% matching criteria. All range queries must be input as `(lowerBound,
-%% upperBound)'.
+%% `SearchImageSets' accepts a single search query parameter and returns
+%% a paginated
+%% response of all image sets that have the matching criteria. All date range
+%% queries must be input
+%% as `(lowerBound, upperBound)'.
 %%
-%% `SearchImageSets' uses the `updatedAt' field for sorting
-%% in decreasing order from latest to oldest.
+%% By default, `SearchImageSets' uses the `updatedAt' field for
+%% sorting
+%% in descending order from newest to oldest.
 -spec search_image_sets(aws_client:aws_client(), binary() | list(), search_image_sets_request()) ->
     {ok, search_image_sets_response(), tuple()} |
     {error, any()} |
