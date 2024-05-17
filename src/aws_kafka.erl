@@ -1605,6 +1605,7 @@
 
 %% Example:
 %% mutable_cluster_info() :: #{
+%%   <<"BrokerCountUpdateInfo">> => broker_count_update_info(),
 %%   <<"BrokerEBSVolumeInfo">> => list(broker_ebs_volume_info()()),
 %%   <<"ClientAuthentication">> => client_authentication(),
 %%   <<"ConfigurationInfo">> => configuration_info(),
@@ -1753,6 +1754,14 @@
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type cluster_operation_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% broker_count_update_info() :: #{
+%%   <<"CreatedBrokerIds">> => list(float()()),
+%%   <<"DeletedBrokerIds">> => list(float()())
+%% }
+-type broker_count_update_info() :: #{binary() => any()}.
 
 
 %% Example:

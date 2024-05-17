@@ -189,6 +189,9 @@
          describe_ip_restriction/2,
          describe_ip_restriction/4,
          describe_ip_restriction/5,
+         describe_key_registration/2,
+         describe_key_registration/4,
+         describe_key_registration/5,
          describe_namespace/3,
          describe_namespace/5,
          describe_namespace/6,
@@ -401,6 +404,8 @@
          update_identity_propagation_config/5,
          update_ip_restriction/3,
          update_ip_restriction/4,
+         update_key_registration/3,
+         update_key_registration/4,
          update_public_sharing_settings/3,
          update_public_sharing_settings/4,
          update_refresh_schedule/4,
@@ -2782,6 +2787,13 @@
 
 
 %% Example:
+%% update_key_registration_request() :: #{
+%%   <<"KeyRegistration">> := list(registered_customer_managed_key()())
+%% }
+-type update_key_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% reference_line_static_data_configuration() :: #{
 %%   <<"Value">> => float()
 %% }
@@ -3291,6 +3303,16 @@
 
 
 %% Example:
+%% describe_key_registration_response() :: #{
+%%   <<"AwsAccountId">> => string(),
+%%   <<"KeyRegistration">> => list(registered_customer_managed_key()()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_key_registration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% word_cloud_chart_configuration() :: #{
 %%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
 %%   <<"FieldWells">> => word_cloud_field_wells(),
@@ -3710,6 +3732,14 @@
 %%   <<"Port">> => integer()
 %% }
 -type maria_db_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_customer_managed_key() :: #{
+%%   <<"DefaultKey">> => boolean(),
+%%   <<"KeyArn">> => string()
+%% }
+-type registered_customer_managed_key() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5289,6 +5319,13 @@
 
 
 %% Example:
+%% describe_key_registration_request() :: #{
+%%   <<"DefaultKeyOnly">> => boolean()
+%% }
+-type describe_key_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_set_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"ColumnLevelPermissionRulesApplied">> => boolean(),
@@ -5867,6 +5904,15 @@
 %%   <<"ValueType">> => list(any())
 %% }
 -type date_time_dataset_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_key_registration_response() :: #{
+%%   <<"FailedKeyRegistration">> => list(failed_key_registration_entry()()),
+%%   <<"RequestId">> => string(),
+%%   <<"SuccessfulKeyRegistration">> => list(successful_key_registration_entry()())
+%% }
+-type update_key_registration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7847,6 +7893,16 @@
 
 
 %% Example:
+%% failed_key_registration_entry() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"SenderFault">> => boolean(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type failed_key_registration_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% calculated_measure_field() :: #{
 %%   <<"Expression">> => string(),
 %%   <<"FieldId">> => string()
@@ -8160,6 +8216,14 @@
 %%   <<"ToggleButtonsVisibility">> => list(any())
 %% }
 -type pivot_table_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% successful_key_registration_entry() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type successful_key_registration_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11452,6 +11516,12 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type describe_key_registration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception().
+
 -type describe_namespace_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -12158,6 +12228,12 @@
     access_denied_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_key_registration_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
     internal_failure_exception().
 
 -type update_public_sharing_settings_errors() ::
@@ -15343,6 +15419,48 @@ describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes all customer managed key registrations in a Amazon
+%% QuickSight account.
+-spec describe_key_registration(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_key_registration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_key_registration_errors(), tuple()}.
+describe_key_registration(Client, AwsAccountId)
+  when is_map(Client) ->
+    describe_key_registration(Client, AwsAccountId, #{}, #{}).
+
+-spec describe_key_registration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_key_registration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_key_registration_errors(), tuple()}.
+describe_key_registration(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_key_registration(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_key_registration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_key_registration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_key_registration_errors(), tuple()}.
+describe_key_registration(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/key-registration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"default-key-only">>, maps:get(<<"default-key-only">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -18817,6 +18935,40 @@ update_ip_restriction(Client, AwsAccountId, Input) ->
 update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/ip-restriction"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a customer managed key in a Amazon QuickSight account.
+-spec update_key_registration(aws_client:aws_client(), binary() | list(), update_key_registration_request()) ->
+    {ok, update_key_registration_response(), tuple()} |
+    {error, any()} |
+    {error, update_key_registration_errors(), tuple()}.
+update_key_registration(Client, AwsAccountId, Input) ->
+    update_key_registration(Client, AwsAccountId, Input, []).
+
+-spec update_key_registration(aws_client:aws_client(), binary() | list(), update_key_registration_request(), proplists:proplist()) ->
+    {ok, update_key_registration_response(), tuple()} |
+    {error, any()} |
+    {error, update_key_registration_errors(), tuple()}.
+update_key_registration(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/key-registration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

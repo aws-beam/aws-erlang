@@ -1868,6 +1868,12 @@
 -type hyper_parameter_tuning_resource_config() :: #{binary() => any()}.
 
 %% Example:
+%% s3_presign() :: #{
+%%   <<"IamPolicyConstraints">> => iam_policy_constraints()
+%% }
+-type s3_presign() :: #{binary() => any()}.
+
+%% Example:
 %% annotation_consolidation_config() :: #{
 %%   <<"AnnotationConsolidationLambdaArn">> => string()
 %% }
@@ -5650,6 +5656,7 @@
 %%   <<"Description">> => string(),
 %%   <<"MemberDefinitions">> => list(member_definition()()),
 %%   <<"NotificationConfiguration">> => notification_configuration(),
+%%   <<"WorkerAccessConfiguration">> => worker_access_configuration(),
 %%   <<"WorkteamName">> := string()
 %% }
 -type update_workteam_request() :: #{binary() => any()}.
@@ -6197,6 +6204,7 @@
 %%   <<"NotificationConfiguration">> => notification_configuration(),
 %%   <<"ProductListingIds">> => list(string()()),
 %%   <<"SubDomain">> => string(),
+%%   <<"WorkerAccessConfiguration">> => worker_access_configuration(),
 %%   <<"WorkforceArn">> => string(),
 %%   <<"WorkteamArn">> => string(),
 %%   <<"WorkteamName">> => string()
@@ -8671,6 +8679,13 @@
 -type update_artifact_response() :: #{binary() => any()}.
 
 %% Example:
+%% iam_policy_constraints() :: #{
+%%   <<"SourceIp">> => list(any()),
+%%   <<"VpcSourceIp">> => list(any())
+%% }
+-type iam_policy_constraints() :: #{binary() => any()}.
+
+%% Example:
 %% delete_association_response() :: #{
 %%   <<"DestinationArn">> => string(),
 %%   <<"SourceArn">> => string()
@@ -8738,6 +8753,7 @@
 %%   <<"MemberDefinitions">> := list(member_definition()()),
 %%   <<"NotificationConfiguration">> => notification_configuration(),
 %%   <<"Tags">> => list(tag()()),
+%%   <<"WorkerAccessConfiguration">> => worker_access_configuration(),
 %%   <<"WorkforceName">> => string(),
 %%   <<"WorkteamName">> := string()
 %% }
@@ -9569,6 +9585,12 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_context_request() :: #{binary() => any()}.
+
+%% Example:
+%% worker_access_configuration() :: #{
+%%   <<"S3Presign">> => s3_presign()
+%% }
+-type worker_access_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% create_algorithm_input() :: #{
@@ -13672,7 +13694,8 @@ create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
 
-%% @doc Creates a space used for real time collaboration in a domain.
+%% @doc Creates a private space or a space used for real time collaboration
+%% in a domain.
 -spec create_space(aws_client:aws_client(), create_space_request()) ->
     {ok, create_space_response(), tuple()} |
     {error, any()} |

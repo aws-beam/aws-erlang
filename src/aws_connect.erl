@@ -9851,7 +9851,7 @@ create_predefined_attribute(Client, InstanceId, Input0, Options0) ->
 %% For more information about prompts, such as supported file types and
 %% maximum length, see Create prompts:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html in the
-%% Amazon Connect Administrator's
+%% Amazon Connect Administrator
 %% Guide.
 -spec create_prompt(aws_client:aws_client(), binary() | list(), create_prompt_request()) ->
     {ok, create_prompt_response(), tuple()} |
@@ -13198,7 +13198,7 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 %% `GetMetricDataV2' and `GetMetricData', see Historical metrics
 %% definitions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html
-%% in the Amazon Connect Administrator's Guide.
+%% in the Amazon Connect Administrator Guide.
 -spec get_metric_data_v2(aws_client:aws_client(), get_metric_data_v2_request()) ->
     {ok, get_metric_data_v2_response(), tuple()} |
     {error, any()} |
