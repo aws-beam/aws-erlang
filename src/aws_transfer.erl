@@ -622,6 +622,12 @@
 -type update_host_key_response() :: #{binary() => any()}.
 
 %% Example:
+%% cfn_user_properties() :: #{
+%%   <<"SshPublicKeys">> => list(string()())
+%% }
+-type cfn_user_properties() :: #{binary() => any()}.
+
+%% Example:
 %% custom_step_details() :: #{
 %%   <<"Name">> => string(),
 %%   <<"SourceFileLocation">> => string(),

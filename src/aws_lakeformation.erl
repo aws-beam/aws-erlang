@@ -48,6 +48,8 @@
          extend_transaction/3,
          get_data_cells_filter/2,
          get_data_cells_filter/3,
+         get_data_lake_principal/2,
+         get_data_lake_principal/3,
          get_data_lake_settings/2,
          get_data_lake_settings/3,
          get_effective_permissions_for_path/2,
@@ -137,6 +139,10 @@
 %%   <<"Resource">> := resource()
 %% }
 -type grant_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_lake_principal_request() :: #{}
+-type get_data_lake_principal_request() :: #{}.
 
 
 %% Example:
@@ -1420,6 +1426,13 @@
 
 
 %% Example:
+%% get_data_lake_principal_response() :: #{
+%%   <<"Identity">> => string()
+%% }
+-type get_data_lake_principal_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_data_cells_filter_response() :: #{
 %%   <<"DataCellsFilter">> => data_cells_filter()
 %% }
@@ -1667,6 +1680,11 @@
     internal_service_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
+
+-type get_data_lake_principal_errors() ::
+    access_denied_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
 
 -type get_data_lake_settings_errors() ::
     invalid_input_exception() | 
@@ -2641,6 +2659,40 @@ get_data_cells_filter(Client, Input) ->
 get_data_cells_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetDataCellsFilter"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the identity of the invoking principal.
+-spec get_data_lake_principal(aws_client:aws_client(), get_data_lake_principal_request()) ->
+    {ok, get_data_lake_principal_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_principal_errors(), tuple()}.
+get_data_lake_principal(Client, Input) ->
+    get_data_lake_principal(Client, Input, []).
+
+-spec get_data_lake_principal(aws_client:aws_client(), get_data_lake_principal_request(), proplists:proplist()) ->
+    {ok, get_data_lake_principal_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_lake_principal_errors(), tuple()}.
+get_data_lake_principal(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetDataLakePrincipal"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
