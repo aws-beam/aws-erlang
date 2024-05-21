@@ -235,6 +235,7 @@
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"description">> => string(),
 %%   <<"foundationModel">> => string(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
@@ -375,6 +376,7 @@
 %%   <<"agentVersion">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent_version_summary() :: #{binary() => any()}.
@@ -680,6 +682,7 @@
 %%   <<"description">> => string(),
 %%   <<"failureReasons">> => list(string()()),
 %%   <<"foundationModel">> => string(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
 %%   <<"preparedAt">> => non_neg_integer(),
@@ -797,6 +800,7 @@
 %%   <<"description">> => string(),
 %%   <<"failureReasons">> => list(string()()),
 %%   <<"foundationModel">> => string(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
@@ -970,6 +974,7 @@
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"description">> => string(),
 %%   <<"foundationModel">> := string(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration()
@@ -1086,6 +1091,7 @@
 %%   <<"agentName">> => string(),
 %%   <<"agentStatus">> => list(any()),
 %%   <<"description">> => string(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"latestAgentVersion">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
@@ -1124,6 +1130,14 @@
 %%   <<"agentVersion">> => agent_version()
 %% }
 -type get_agent_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_configuration() :: #{
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string()
+%% }
+-type guardrail_configuration() :: #{binary() => any()}.
 
 
 %% Example:

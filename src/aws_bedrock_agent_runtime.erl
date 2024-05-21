@@ -41,6 +41,13 @@
 
 
 %% Example:
+%% guardrail_content_policy_assessment() :: #{
+%%   <<"filters">> => list(guardrail_content_filter()())
+%% }
+-type guardrail_content_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
 %% text_inference_config() :: #{
 %%   <<"maxTokens">> => integer(),
 %%   <<"stopSequences">> => list([string()]()),
@@ -144,6 +151,15 @@
 
 
 %% Example:
+%% guardrail_managed_word() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"match">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_managed_word() :: #{binary() => any()}.
+
+
+%% Example:
 %% action_group_invocation_input() :: #{
 %%   <<"actionGroupName">> => string(),
 %%   <<"apiPath">> => string(),
@@ -222,6 +238,14 @@
 
 
 %% Example:
+%% guardrail_custom_word() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"match">> => [string()]
+%% }
+-type guardrail_custom_word() :: #{binary() => any()}.
+
+
+%% Example:
 %% content_body() :: #{
 %%   <<"body">> => [string()]
 %% }
@@ -248,6 +272,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type observation() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_word_policy_assessment() :: #{
+%%   <<"customWords">> => list(guardrail_custom_word()()),
+%%   <<"managedWordLists">> => list(guardrail_managed_word()())
+%% }
+-type guardrail_word_policy_assessment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -298,10 +330,27 @@
 
 
 %% Example:
+%% guardrail_sensitive_information_policy_assessment() :: #{
+%%   <<"piiEntities">> => list(guardrail_pii_entity_filter()()),
+%%   <<"regexes">> => list(guardrail_regex_filter()())
+%% }
+-type guardrail_sensitive_information_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_retrieval_configuration() :: #{
 %%   <<"vectorSearchConfiguration">> => knowledge_base_vector_search_configuration()
 %% }
 -type knowledge_base_retrieval_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"confidence">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_content_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -437,6 +486,16 @@
 
 
 %% Example:
+%% guardrail_trace() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"inputAssessments">> => list(guardrail_assessment()()),
+%%   <<"outputAssessments">> => list(guardrail_assessment()()),
+%%   <<"traceId">> => string()
+%% }
+-type guardrail_trace() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_vector_search_configuration() :: #{
 %%   <<"filter">> => list(),
 %%   <<"numberOfResults">> => [integer()],
@@ -458,6 +517,16 @@
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_assessment() :: #{
+%%   <<"contentPolicy">> => guardrail_content_policy_assessment(),
+%%   <<"sensitiveInformationPolicy">> => guardrail_sensitive_information_policy_assessment(),
+%%   <<"topicPolicy">> => guardrail_topic_policy_assessment(),
+%%   <<"wordPolicy">> => guardrail_word_policy_assessment()
+%% }
+-type guardrail_assessment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -510,6 +579,13 @@
 %%   <<"textInferenceConfig">> => text_inference_config()
 %% }
 -type inference_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic_policy_assessment() :: #{
+%%   <<"topics">> => list(guardrail_topic()())
+%% }
+-type guardrail_topic_policy_assessment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -573,6 +649,16 @@
 
 
 %% Example:
+%% guardrail_regex_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"match">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"regex">> => [string()]
+%% }
+-type guardrail_regex_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_lookup_output() :: #{
 %%   <<"retrievedReferences">> => list(retrieved_reference()())
 %% }
@@ -624,6 +710,15 @@
 
 
 %% Example:
+%% guardrail_pii_entity_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"match">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_pii_entity_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieve_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"retrievalResults">> => list(knowledge_base_retrieval_result()())
@@ -647,6 +742,15 @@
 %%   <<"score">> => [float()]
 %% }
 -type knowledge_base_retrieval_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_topic() :: #{binary() => any()}.
 
 -type invoke_agent_errors() ::
     throttling_exception() | 

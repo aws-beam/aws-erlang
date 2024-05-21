@@ -1,11 +1,32 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc These interfaces allow you to apply the Amazon Web Services library
-%% of pre-defined
-%% controls to your organizational units, programmatically.
+%% @doc Amazon Web Services Control Tower offers application programming
+%% interface (API) operations that support programmatic interaction with
+%% these types of resources:
 %%
-%% In Amazon Web Services Control Tower, the terms &quot;control&quot; and
+%% controls
+%% : https://docs.aws.amazon.com/controltower/latest/userguide/controls.html
+%%
+%% landing zones
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html
+%%
+%% baselines
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/types-of-baselines.html
+%%
+%% For more information about these types of resources, see the
+%% Amazon Web Services Control Tower User Guide
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html.
+%%
+%% About control APIs
+%%
+%% These interfaces allow you to apply the Amazon Web Services library of
+%% pre-defined
+%% controls to your organizational units, programmatically. In Amazon Web
+%% Services Control Tower, the terms &quot;control&quot; and
 %% &quot;guardrail&quot; are synonyms.
 %%
 %% To call these APIs, you'll need to know:
@@ -31,6 +52,8 @@
 %% find the `controlIdentifier' for each Region and control in the Tables
 %% of control metadata:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-metadata-tables.html
+%% or the Control availability by Region tables:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-region-tables.html
 %% in the Amazon Web Services Control Tower User Guide.
 %%
 %% A quick-reference list of control identifers for the Amazon Web Services
@@ -62,16 +85,60 @@
 %%
 %% `arn:${Partition}:organizations::${MasterAccountId}:ou/o-${OrganizationId}/ou-${OrganizationalUnitId}'
 %%
+%% About landing zone APIs
+%%
+%% You can configure and launch an Amazon Web Services Control Tower landing
+%% zone with APIs. For an introduction and steps, see Getting started with
+%% Amazon Web Services Control Tower using APIs:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-apis.html.
+%%
+%% For an overview of landing zone API operations, see Amazon Web Services
+%% Control Tower supports landing zone APIs:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/2023-all.html#landing-zone-apis.
+%% The individual API operations for landing zones are detailed in this
+%% document, the API reference manual:
+%% https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html,
+%% in the &quot;Actions&quot; section.
+%%
+%% About baseline APIs
+%%
+%% You can apply the `AWSControlTowerBaseline' baseline to an
+%% organizational unit (OU) as a way to register the OU with Amazon Web
+%% Services Control Tower, programmatically. For a general overview of this
+%% capability, see Amazon Web Services Control Tower supports APIs for OU
+%% registration and configuration with baselines:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/2024-all.html#baseline-apis.
+%%
+%% You can call the baseline API operations to view the baselines that Amazon
+%% Web Services Control Tower enables for your landing zone, on your behalf,
+%% when setting up the landing zone. These baselines are read-only baselines.
+%%
+%% The individual API operations for baselines are detailed in this document,
+%% the API reference manual:
+%% https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html,
+%% in the &quot;Actions&quot; section. For usage examples, see Baseline API
+%% input and output examples with CLI:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
+%%
 %% == Details and examples ==
 %%
 %% Control API input and output examples with CLI:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html
 %%
+%% Baseline API input and output examples with CLI:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html
+%%
 %% Enable controls with CloudFormation:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/enable-controls.html
 %%
-%% Control metadata tables:
+%% Launch a landing zone with CloudFormation:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/lz-apis-cfn-setup.html
+%%
+%% Control metadata tables (large page):
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-metadata-tables.html
+%%
+%% Control availability by Region tables (large page):
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-region-tables.html
 %%
 %% List of identifiers for legacy controls:
 %% https://docs.aws.amazon.com/controltower/latest/userguide/control-identifiers.html
@@ -137,6 +204,8 @@
          get_landing_zone_operation/3,
          list_baselines/2,
          list_baselines/3,
+         list_control_operations/2,
+         list_control_operations/3,
          list_enabled_baselines/2,
          list_enabled_baselines/3,
          list_enabled_controls/2,
@@ -167,7 +236,7 @@
 
 %% Example:
 %% list_enabled_controls_output() :: #{
-%%   <<"enabledControls">> := list(enabled_control_summary()()),
+%%   <<"enabledControls">> => list(enabled_control_summary()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_enabled_controls_output() :: #{binary() => any()}.
@@ -183,7 +252,7 @@
 
 %% Example:
 %% disable_control_output() :: #{
-%%   <<"operationIdentifier">> := string()
+%%   <<"operationIdentifier">> => string()
 %% }
 -type disable_control_output() :: #{binary() => any()}.
 
@@ -214,6 +283,15 @@
 
 
 %% Example:
+%% enabled_control_filter() :: #{
+%%   <<"controlIdentifiers">> => list(string()()),
+%%   <<"driftStatuses">> => list(list(any())()),
+%%   <<"statuses">> => list(list(any())())
+%% }
+-type enabled_control_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% enable_control_input() :: #{
 %%   <<"controlIdentifier">> := string(),
 %%   <<"parameters">> => list(enabled_control_parameter()()),
@@ -239,9 +317,10 @@
 
 %% Example:
 %% list_enabled_controls_input() :: #{
+%%   <<"filter">> => enabled_control_filter(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => [string()],
-%%   <<"targetIdentifier">> := string()
+%%   <<"targetIdentifier">> => string()
 %% }
 -type list_enabled_controls_input() :: #{binary() => any()}.
 
@@ -252,6 +331,14 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_landing_zones_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_operations_output() :: #{
+%%   <<"controlOperations">> => list(control_operation_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_control_operations_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -476,7 +563,7 @@
 %% Example:
 %% enable_control_output() :: #{
 %%   <<"arn">> => string(),
-%%   <<"operationIdentifier">> := string()
+%%   <<"operationIdentifier">> => string()
 %% }
 -type enable_control_output() :: #{binary() => any()}.
 
@@ -553,11 +640,15 @@
 
 %% Example:
 %% control_operation() :: #{
+%%   <<"controlIdentifier">> => string(),
+%%   <<"enabledControlIdentifier">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
-%%   <<"operationType">> => string(),
+%%   <<"operationIdentifier">> => string(),
+%%   <<"operationType">> => list(any()),
 %%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => [string()]
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"targetIdentifier">> => string()
 %% }
 -type control_operation() :: #{binary() => any()}.
 
@@ -578,6 +669,15 @@
 
 
 %% Example:
+%% list_control_operations_input() :: #{
+%%   <<"filter">> => control_operation_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_control_operations_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"quotaCode">> => [string()],
@@ -594,6 +694,17 @@
 %%   <<"parameters">> => list(enabled_baseline_parameter()())
 %% }
 -type update_enabled_baseline_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_operation_filter() :: #{
+%%   <<"controlIdentifiers">> => list(string()()),
+%%   <<"controlOperationTypes">> => list(list(any())()),
+%%   <<"enabledControlIdentifiers">> => list(string()()),
+%%   <<"statuses">> => list(list(any())()),
+%%   <<"targetIdentifiers">> => list(string()())
+%% }
+-type control_operation_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -661,7 +772,7 @@
 
 %% Example:
 %% get_control_operation_output() :: #{
-%%   <<"controlOperation">> := control_operation()
+%%   <<"controlOperation">> => control_operation()
 %% }
 -type get_control_operation_output() :: #{binary() => any()}.
 
@@ -757,6 +868,21 @@
 %%   <<"operationIdentifier">> => string()
 %% }
 -type disable_baseline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_operation_summary() :: #{
+%%   <<"controlIdentifier">> => string(),
+%%   <<"enabledControlIdentifier">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"operationIdentifier">> => string(),
+%%   <<"operationType">> => list(any()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"targetIdentifier">> => string()
+%% }
+-type control_operation_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -866,6 +992,12 @@
     resource_not_found_exception().
 
 -type list_baselines_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_control_operations_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1033,7 +1165,10 @@ delete_landing_zone(Client, Input0, Options0) ->
 %%
 %% This API starts an asynchronous operation to remove all resources deployed
 %% as part of the baseline enablement. The resource will vary depending on
-%% the enabled baseline.
+%% the enabled baseline. For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec disable_baseline(aws_client:aws_client(), disable_baseline_input()) ->
     {ok, disable_baseline_output(), tuple()} |
     {error, any()} |
@@ -1113,7 +1248,10 @@ disable_control(Client, Input0, Options0) ->
 %% @doc Enable (apply) a `Baseline' to a Target.
 %%
 %% This API starts an asynchronous operation to deploy resources specified by
-%% the `Baseline' to the specified Target.
+%% the `Baseline' to the specified Target. For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec enable_baseline(aws_client:aws_client(), enable_baseline_input()) ->
     {ok, enable_baseline_output(), tuple()} |
     {error, any()} |
@@ -1192,6 +1330,11 @@ enable_control(Client, Input0, Options0) ->
 
 %% @doc Retrieve details about an existing `Baseline' resource by
 %% specifying its identifier.
+%%
+%% For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec get_baseline(aws_client:aws_client(), get_baseline_input()) ->
     {ok, get_baseline_output(), tuple()} |
     {error, any()} |
@@ -1230,7 +1373,11 @@ get_baseline(Client, Input0, Options0) ->
 %% `DisableBaseline', `UpdateEnabledBaseline',
 %% `ResetEnabledBaseline'.
 %%
-%% A status message is displayed in case of operation failure.
+%% A status message is displayed in case of operation failure. For usage
+%% examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec get_baseline_operation(aws_client:aws_client(), get_baseline_operation_input()) ->
     {ok, get_baseline_operation_output(), tuple()} |
     {error, any()} |
@@ -1418,7 +1565,7 @@ get_landing_zone(Client, Input0, Options0) ->
 %% @doc Returns the status of the specified landing zone operation.
 %%
 %% Details for an operation are available for
-%% 60 days.
+%% 90 days.
 -spec get_landing_zone_operation(aws_client:aws_client(), get_landing_zone_operation_input()) ->
     {ok, get_landing_zone_operation_output(), tuple()} |
     {error, any()} |
@@ -1453,6 +1600,11 @@ get_landing_zone_operation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a summary list of all available baselines.
+%%
+%% For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec list_baselines(aws_client:aws_client(), list_baselines_input()) ->
     {ok, list_baselines_output(), tuple()} |
     {error, any()} |
@@ -1486,11 +1638,49 @@ list_baselines(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Provides a list of operations in progress or queued.
+-spec list_control_operations(aws_client:aws_client(), list_control_operations_input()) ->
+    {ok, list_control_operations_output(), tuple()} |
+    {error, any()} |
+    {error, list_control_operations_errors(), tuple()}.
+list_control_operations(Client, Input) ->
+    list_control_operations(Client, Input, []).
+
+-spec list_control_operations(aws_client:aws_client(), list_control_operations_input(), proplists:proplist()) ->
+    {ok, list_control_operations_output(), tuple()} |
+    {error, any()} |
+    {error, list_control_operations_errors(), tuple()}.
+list_control_operations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-control-operations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of summaries describing `EnabledBaseline'
 %% resources.
 %%
 %% You can filter the list by the corresponding `Baseline' or
-%% `Target' of the `EnabledBaseline' resources.
+%% `Target' of the `EnabledBaseline' resources. For usage examples,
+%% see
+%% the Amazon Web Services Control Tower User Guide
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec list_enabled_baselines(aws_client:aws_client(), list_enabled_baselines_input()) ->
     {ok, list_enabled_baselines_output(), tuple()} |
     {error, any()} |
@@ -1651,7 +1841,10 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Re-enables an `EnabledBaseline' resource.
 %%
 %% For example, this API can re-apply the existing `Baseline' after a new
-%% member account is moved to the target OU.
+%% member account is moved to the target OU. For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec reset_enabled_baseline(aws_client:aws_client(), reset_enabled_baseline_input()) ->
     {ok, reset_enabled_baseline_output(), tuple()} |
     {error, any()} |
@@ -1803,6 +1996,11 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates an `EnabledBaseline' resource's applied parameters or
 %% version.
+%%
+%% For usage examples, see
+%% the Amazon Web Services Control Tower User Guide
+%% :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html.
 -spec update_enabled_baseline(aws_client:aws_client(), update_enabled_baseline_input()) ->
     {ok, update_enabled_baseline_output(), tuple()} |
     {error, any()} |

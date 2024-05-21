@@ -117,6 +117,7 @@
 %% pipeline() :: #{
 %%   <<"BufferOptions">> => buffer_options(),
 %%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Destinations">> => list(pipeline_destination()()),
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
 %%   <<"IngestEndpointUrls">> => list(string()()),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
@@ -140,6 +141,13 @@
 %%   <<"Pipeline">> => pipeline()
 %% }
 -type start_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disabled_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type disabled_operation_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -237,9 +245,12 @@
 %% }
 -type update_pipeline_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_pipeline_blueprint_request() :: #{}
--type get_pipeline_blueprint_request() :: #{}.
+%% get_pipeline_blueprint_request() :: #{
+%%   <<"Format">> => string()
+%% }
+-type get_pipeline_blueprint_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_pipeline_request() :: #{}
@@ -248,7 +259,8 @@
 
 %% Example:
 %% get_pipeline_blueprint_response() :: #{
-%%   <<"Blueprint">> => pipeline_blueprint()
+%%   <<"Blueprint">> => pipeline_blueprint(),
+%%   <<"Format">> => string()
 %% }
 -type get_pipeline_blueprint_response() :: #{binary() => any()}.
 
@@ -260,6 +272,7 @@
 %% Example:
 %% pipeline_summary() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Destinations">> => list(pipeline_destination()()),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"MaxUnits">> => integer(),
 %%   <<"MinUnits">> => integer(),
@@ -298,7 +311,11 @@
 %% Example:
 %% pipeline_blueprint() :: #{
 %%   <<"BlueprintName">> => string(),
-%%   <<"PipelineConfigurationBody">> => string()
+%%   <<"DisplayDescription">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"PipelineConfigurationBody">> => string(),
+%%   <<"Service">> => string(),
+%%   <<"UseCase">> => string()
 %% }
 -type pipeline_blueprint() :: #{binary() => any()}.
 
@@ -313,7 +330,11 @@
 
 %% Example:
 %% pipeline_blueprint_summary() :: #{
-%%   <<"BlueprintName">> => string()
+%%   <<"BlueprintName">> => string(),
+%%   <<"DisplayDescription">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Service">> => string(),
+%%   <<"UseCase">> => string()
 %% }
 -type pipeline_blueprint_summary() :: #{binary() => any()}.
 
@@ -384,6 +405,14 @@
 
 
 %% Example:
+%% pipeline_destination() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"ServiceName">> => string()
+%% }
+-type pipeline_destination() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -400,7 +429,8 @@
 %% Example:
 %% vpc_options() :: #{
 %%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"VpcAttachmentOptions">> => vpc_attachment_options()
 %% }
 -type vpc_options() :: #{binary() => any()}.
 
@@ -417,6 +447,14 @@
 %%   <<"message">> => string()
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_attachment_options() :: #{
+%%   <<"AttachToVpc">> => boolean(),
+%%   <<"CidrBlock">> => string()
+%% }
+-type vpc_attachment_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -442,89 +480,103 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    disabled_operation_exception().
 
 -type delete_pipeline_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    disabled_operation_exception().
 
 -type get_pipeline_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    disabled_operation_exception().
 
 -type get_pipeline_blueprint_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    disabled_operation_exception().
 
 -type get_pipeline_change_progress_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    disabled_operation_exception().
 
 -type list_pipeline_blueprints_errors() ::
     invalid_pagination_token_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    internal_exception().
+    internal_exception() | 
+    disabled_operation_exception().
 
 -type list_pipelines_errors() ::
     invalid_pagination_token_exception() | 
     validation_exception() | 
     access_denied_exception() | 
-    internal_exception().
+    internal_exception() | 
+    disabled_operation_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    disabled_operation_exception().
 
 -type start_pipeline_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    disabled_operation_exception().
 
 -type stop_pipeline_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    disabled_operation_exception().
 
 -type tag_resource_errors() ::
     limit_exceeded_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    disabled_operation_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    disabled_operation_exception().
 
 -type update_pipeline_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    disabled_operation_exception().
 
 -type validate_pipeline_errors() ::
     validation_exception() | 
     access_denied_exception() | 
-    internal_exception().
+    internal_exception() | 
+    disabled_operation_exception().
 
 %%====================================================================
 %% API
@@ -682,7 +734,11 @@ get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"format">>, maps:get(<<"format">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
