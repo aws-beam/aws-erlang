@@ -84,6 +84,7 @@
 
 %% Example:
 %% list_available_resource_dimensions_request() :: #{
+%%   <<"AuthorizedActions">> => list(list(any())()),
 %%   <<"Identifier">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"Metrics">> := list(string()()),

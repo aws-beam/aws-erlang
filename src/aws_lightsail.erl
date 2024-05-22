@@ -1163,6 +1163,7 @@
 
 %% Example:
 %% set_ip_address_type_request() :: #{
+%%   <<"acceptBundleUpdate">> => boolean(),
 %%   <<"ipAddressType">> := list(any()),
 %%   <<"resourceName">> := string(),
 %%   <<"resourceType">> := list(any())
@@ -5835,7 +5836,8 @@ create_disk(Client, Input, Options)
 %%
 %% The resulting
 %% disk can be attached to an Amazon Lightsail instance in the same
-%% Availability Zone (`us-east-2a').
+%% Availability Zone
+%% (`us-east-2a').
 %%
 %% The `create disk from snapshot' operation supports tag-based access
 %% control via
@@ -8351,7 +8353,8 @@ get_relational_databases(Client, Input, Options)
     request(Client, <<"GetRelationalDatabases">>, Input, Options).
 
 %% @doc Returns detailed information for five of the most recent
-%% `SetupInstanceHttps' requests that were ran on the target instance.
+%% `SetupInstanceHttps'
+%% requests that were ran on the target instance.
 -spec get_setup_history(aws_client:aws_client(), get_setup_history_request()) ->
     {ok, get_setup_history_result(), tuple()} |
     {error, any()} |
@@ -8760,7 +8763,8 @@ set_resource_access_for_bucket(Client, Input, Options)
 %% instance.
 %%
 %% If you provide more than one domain name in the request, at least one name
-%% must be less than or equal to 63 characters in length.
+%% must be less
+%% than or equal to 63 characters in length.
 -spec setup_instance_https(aws_client:aws_client(), setup_instance_https_request()) ->
     {ok, setup_instance_https_result(), tuple()} |
     {error, any()} |

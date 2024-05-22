@@ -362,7 +362,7 @@
 %% Example:
 %% list_realtime_log_configs_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_realtime_log_configs_request() :: #{binary() => any()}.
 
@@ -683,7 +683,7 @@
 %% Example:
 %% list_origin_request_policies_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()],
+%%   <<"MaxItems">> => integer(),
 %%   <<"Type">> => list(any())
 %% }
 -type list_origin_request_policies_request() :: #{binary() => any()}.
@@ -853,7 +853,7 @@
 %% Example:
 %% list_invalidations_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_invalidations_request() :: #{binary() => any()}.
 
@@ -885,7 +885,7 @@
 %% Example:
 %% list_distributions_by_cache_policy_id_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_distributions_by_cache_policy_id_request() :: #{binary() => any()}.
 
@@ -1047,7 +1047,7 @@
 %% Example:
 %% list_cloud_front_origin_access_identities_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_cloud_front_origin_access_identities_request() :: #{binary() => any()}.
 
@@ -1399,7 +1399,7 @@
 %% Example:
 %% list_distributions_by_key_group_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_distributions_by_key_group_request() :: #{binary() => any()}.
 
@@ -1582,7 +1582,7 @@
 %% Example:
 %% list_public_keys_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_public_keys_request() :: #{binary() => any()}.
 
@@ -1598,7 +1598,7 @@
 %% Example:
 %% list_key_value_stores_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()],
+%%   <<"MaxItems">> => integer(),
 %%   <<"Status">> => string()
 %% }
 -type list_key_value_stores_request() :: #{binary() => any()}.
@@ -1934,7 +1934,7 @@
 %% Example:
 %% list_key_groups_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_key_groups_request() :: #{binary() => any()}.
 
@@ -2071,7 +2071,7 @@
 %% Example:
 %% list_response_headers_policies_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()],
+%%   <<"MaxItems">> => integer(),
 %%   <<"Type">> => list(any())
 %% }
 -type list_response_headers_policies_request() :: #{binary() => any()}.
@@ -2385,7 +2385,7 @@
 %% Example:
 %% list_streaming_distributions_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_streaming_distributions_request() :: #{binary() => any()}.
 
@@ -2545,7 +2545,7 @@
 %% Example:
 %% list_field_level_encryption_profiles_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_field_level_encryption_profiles_request() :: #{binary() => any()}.
 
@@ -2665,7 +2665,7 @@
 %% Example:
 %% list_field_level_encryption_configs_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_field_level_encryption_configs_request() :: #{binary() => any()}.
 
@@ -2757,7 +2757,7 @@
 %% Example:
 %% list_functions_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()],
+%%   <<"MaxItems">> => integer(),
 %%   <<"Stage">> => list(any())
 %% }
 -type list_functions_request() :: #{binary() => any()}.
@@ -3018,7 +3018,7 @@
 %% Example:
 %% list_distributions_by_web_acl_id_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_distributions_by_web_acl_id_request() :: #{binary() => any()}.
 
@@ -3077,7 +3077,7 @@
 %% Example:
 %% list_distributions_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_distributions_request() :: #{binary() => any()}.
 
@@ -3176,7 +3176,7 @@
 %% Example:
 %% list_distributions_by_realtime_log_config_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()],
+%%   <<"MaxItems">> => integer(),
 %%   <<"RealtimeLogConfigArn">> => string(),
 %%   <<"RealtimeLogConfigName">> => string()
 %% }
@@ -3281,7 +3281,7 @@
 %% Example:
 %% list_distributions_by_origin_request_policy_id_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_distributions_by_origin_request_policy_id_request() :: #{binary() => any()}.
 
@@ -3407,7 +3407,7 @@
 %% Example:
 %% list_cache_policies_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()],
+%%   <<"MaxItems">> => integer(),
 %%   <<"Type">> => list(any())
 %% }
 -type list_cache_policies_request() :: #{binary() => any()}.
@@ -3720,7 +3720,7 @@
 %% Example:
 %% list_origin_access_controls_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_origin_access_controls_request() :: #{binary() => any()}.
 
@@ -3822,7 +3822,7 @@
 %% Example:
 %% list_continuous_deployment_policies_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_continuous_deployment_policies_request() :: #{binary() => any()}.
 
@@ -3986,7 +3986,7 @@
 %% Example:
 %% list_distributions_by_response_headers_policy_id_request() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
+%%   <<"MaxItems">> => integer()
 %% }
 -type list_distributions_by_response_headers_policy_id_request() :: #{binary() => any()}.
 
