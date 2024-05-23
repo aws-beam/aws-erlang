@@ -946,6 +946,7 @@
 %%   <<"Capabilities">> => list(list(any())()),
 %%   <<"ChangeSetId">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeletionMode">> => list(any()),
 %%   <<"DeletionTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DetailedStatus">> => list(any()),
@@ -2435,6 +2436,7 @@
 %% Example:
 %% delete_stack_input() :: #{
 %%   <<"ClientRequestToken">> => string(),
+%%   <<"DeletionMode">> => list(any()),
 %%   <<"RetainResources">> => list(string()()),
 %%   <<"RoleARN">> => string(),
 %%   <<"StackName">> := string()

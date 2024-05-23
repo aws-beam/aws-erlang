@@ -1395,7 +1395,8 @@
 %% data_source_details() :: #{
 %%   <<"DataSourceType">> => list(),
 %%   <<"Description">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
 %% }
 -type data_source_details() :: #{binary() => any()}.
 
@@ -1774,7 +1775,8 @@
 %% Example:
 %% update_data_source_request() :: #{
 %%   <<"DataSourceType">> := list(),
-%%   <<"Description">> => string()
+%%   <<"Description">> => string(),
+%%   <<"Status">> => list(any())
 %% }
 -type update_data_source_request() :: #{binary() => any()}.
 
@@ -2113,7 +2115,8 @@
 %% get_data_source_response() :: #{
 %%   <<"DataSourceType">> => list(),
 %%   <<"Description">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
 %% }
 -type get_data_source_response() :: #{binary() => any()}.
 

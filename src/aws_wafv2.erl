@@ -776,6 +776,8 @@
 %% Example:
 %% logging_configuration() :: #{
 %%   <<"LogDestinationConfigs">> => list(string()()),
+%%   <<"LogScope">> => list(any()),
+%%   <<"LogType">> => list(any()),
 %%   <<"LoggingFilter">> => logging_filter(),
 %%   <<"ManagedByFirewallManager">> => boolean(),
 %%   <<"RedactedFields">> => list(field_to_match()()),
@@ -1333,6 +1335,8 @@
 
 %% Example:
 %% get_logging_configuration_request() :: #{
+%%   <<"LogScope">> => list(any()),
+%%   <<"LogType">> => list(any()),
 %%   <<"ResourceArn">> := string()
 %% }
 -type get_logging_configuration_request() :: #{binary() => any()}.
@@ -1726,6 +1730,7 @@
 %% Example:
 %% list_logging_configurations_request() :: #{
 %%   <<"Limit">> => integer(),
+%%   <<"LogScope">> => list(any()),
 %%   <<"NextMarker">> => string(),
 %%   <<"Scope">> := list(any())
 %% }
@@ -1833,6 +1838,8 @@
 
 %% Example:
 %% delete_logging_configuration_request() :: #{
+%%   <<"LogScope">> => list(any()),
+%%   <<"LogType">> => list(any()),
 %%   <<"ResourceArn">> := string()
 %% }
 -type delete_logging_configuration_request() :: #{binary() => any()}.

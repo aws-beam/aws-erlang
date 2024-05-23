@@ -4484,8 +4484,8 @@ get_key_rotation_status(Client, Input, Options)
 %% your key
 %% material.
 %%
-%% The public key (or &quot;wrapping key&quot;) of an RSA key pair that KMS
-%% generates.
+%% The public key (or &quot;wrapping key&quot;) of an asymmetric key pair
+%% that KMS generates.
 %%
 %% You will use this public key to encrypt (&quot;wrap&quot;) your key
 %% material while it's in

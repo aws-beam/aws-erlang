@@ -42,6 +42,12 @@
          list_microsoft_teams_configured_teams/3,
          list_microsoft_teams_user_identities/2,
          list_microsoft_teams_user_identities/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_account_preferences/2,
          update_account_preferences/3,
          update_chime_webhook_configuration/2,
@@ -64,6 +70,7 @@
 %%   <<"IamRoleArn">> := string(),
 %%   <<"LoggingLevel">> => string(),
 %%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"Tags">> => list(tag()()),
 %%   <<"TeamId">> := string(),
 %%   <<"TeamName">> => string(),
 %%   <<"TenantId">> := string(),
@@ -94,6 +101,14 @@
 %% }
 -type delete_teams_configured_team_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_slack_channel_configuration_result() :: #{}
 -type delete_slack_channel_configuration_result() :: #{}.
@@ -110,6 +125,10 @@
 %% Example:
 %% delete_slack_workspace_authorization_result() :: #{}
 -type delete_slack_workspace_authorization_result() :: #{}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -187,6 +206,14 @@
 %% Example:
 %% delete_teams_configured_team_result() :: #{}
 -type delete_teams_configured_team_result() :: #{}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -296,6 +323,14 @@
 %% }
 -type delete_teams_configured_team_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% tag() :: #{
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
 %% Example:
 %% get_account_preferences_request() :: #{}
 -type get_account_preferences_request() :: #{}.
@@ -345,6 +380,13 @@
 
 
 %% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_teams_channel_configuration_result() :: #{
 %%   <<"ChannelConfiguration">> => teams_channel_configuration()
 %% }
@@ -357,6 +399,13 @@
 %%   <<"UserId">> := string()
 %% }
 -type delete_microsoft_teams_user_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -417,6 +466,7 @@
 %%   <<"IamRoleArn">> := string(),
 %%   <<"LoggingLevel">> => string(),
 %%   <<"SnsTopicArns">> := list(string()()),
+%%   <<"Tags">> => list(tag()()),
 %%   <<"WebhookDescription">> := string(),
 %%   <<"WebhookUrl">> := string()
 %% }
@@ -448,6 +498,7 @@
 %%   <<"SlackChannelName">> => string(),
 %%   <<"SlackTeamId">> := string(),
 %%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"Tags">> => list(tag()()),
 %%   <<"UserAuthorizationRequired">> => boolean()
 %% }
 -type create_slack_channel_configuration_request() :: #{binary() => any()}.
@@ -531,6 +582,17 @@
 %% }
 -type delete_slack_workspace_authorization_request() :: #{binary() => any()}.
 
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% internal_service_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_slack_user_identities_exception() :: #{
@@ -551,9 +613,17 @@
 %%   <<"SlackTeamId">> => string(),
 %%   <<"SlackTeamName">> => string(),
 %%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"Tags">> => list(tag()()),
 %%   <<"UserAuthorizationRequired">> => boolean()
 %% }
 -type slack_channel_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -578,6 +648,7 @@
 %%   <<"IamRoleArn">> => string(),
 %%   <<"LoggingLevel">> => string(),
 %%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"Tags">> => list(tag()()),
 %%   <<"WebhookDescription">> => string()
 %% }
 -type chime_webhook_configuration() :: #{binary() => any()}.
@@ -649,6 +720,7 @@
 %%   <<"IamRoleArn">> => string(),
 %%   <<"LoggingLevel">> => string(),
 %%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"Tags">> => list(tag()()),
 %%   <<"TeamId">> => string(),
 %%   <<"TeamName">> => string(),
 %%   <<"TenantId">> => string(),
@@ -700,6 +772,13 @@
 %%   <<"Message">> => string()
 %% }
 -type describe_slack_channel_configurations_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -809,6 +888,22 @@
     invalid_parameter_exception() | 
     list_microsoft_teams_user_identities_exception() | 
     invalid_request_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    internal_service_error() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type update_account_preferences_errors() ::
     invalid_parameter_exception() | 
@@ -1473,6 +1568,108 @@ list_microsoft_teams_user_identities(Client, Input) ->
 list_microsoft_teams_user_identities(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-ms-teams-user-identities"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the list of tags applied to a configuration.
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input) ->
+    list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-tags-for-resource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Applies the supplied tags to a configuration.
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input) ->
+    tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/tag-resource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the supplied tags from a configuration
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input) ->
+    untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/untag-resource"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
