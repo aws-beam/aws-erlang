@@ -1,54 +1,55 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS OpsWorks
+%% @doc OpsWorks
 %%
-%% Welcome to the AWS OpsWorks Stacks API Reference.
+%% Welcome to the OpsWorks Stacks API Reference.
 %%
-%% This guide provides descriptions, syntax, and
-%% usage examples for AWS OpsWorks Stacks actions and data types, including
+%% This guide provides descriptions, syntax,
+%% and
+%% usage examples for OpsWorks Stacks actions and data types, including
 %% common parameters and error
 %% codes.
 %%
-%% AWS OpsWorks Stacks is an application management service that provides an
+%% OpsWorks Stacks is an application management service that provides an
 %% integrated experience for
-%% overseeing the complete application lifecycle. For information about this
-%% product, go to the
-%% AWS OpsWorks: http://aws.amazon.com/opsworks/ details page.
+%% managing the complete application lifecycle. For information about
+%% OpsWorks, see the
+%% OpsWorks: http://aws.amazon.com/opsworks/ information page.
 %%
 %% SDKs and CLI
 %%
-%% The most common way to use the AWS OpsWorks Stacks API is by using the AWS
-%% Command Line Interface (CLI) or by using one of the AWS SDKs to implement
-%% applications in your preferred language. For more information, see:
+%% Use the OpsWorks Stacks API by using the Command Line Interface (CLI) or
+%% by using one of the
+%% Amazon Web Services SDKs to implement applications in your preferred
+%% language. For more information, see:
 %%
-%% AWS CLI:
+%% CLI:
 %% https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
 %%
-%% AWS SDK for Java:
+%% SDK for Java:
 %% https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html
 %%
-%% AWS SDK for
-%% .NET:
-%% https://docs.aws.amazon.com/sdkfornet/latest/apidocs/html/N_Amazon_OpsWorks.htm
+%% SDK for .NET:
+%% https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/OpsWorks/NOpsWorks.html
 %%
-%% AWS
-%% SDK for PHP 2:
-%% https://docs.aws.amazon.com/aws-sdk-php-2/latest/class-Aws.OpsWorks.OpsWorksClient.html
+%% SDK for PHP:
+%% https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.OpsWorks.OpsWorksClient.html
 %%
-%% AWS SDK for Ruby: http://docs.aws.amazon.com/sdkforruby/api/
+%% SDK for Ruby: http://docs.aws.amazon.com/sdkforruby/api/
 %%
-%% AWS SDK for Node.js: http://aws.amazon.com/documentation/sdkforjavascript/
+%% Amazon Web Services SDK for Node.js:
+%% http://aws.amazon.com/documentation/sdkforjavascript/
 %%
-%% AWS SDK for
-%% Python(Boto): http://docs.pythonboto.org/en/latest/ref/opsworks.html
+%% SDK for Python (Boto):
+%% http://docs.pythonboto.org/en/latest/ref/opsworks.html
 %%
 %% Endpoints
 %%
-%% AWS OpsWorks Stacks supports the following endpoints, all HTTPS. You must
-%% connect to one of the following endpoints. Stacks
-%% can only be accessed or managed within the endpoint in which they are
-%% created.
+%% OpsWorks Stacks supports the following endpoints, all HTTPS. You must
+%% connect to one of the following endpoints.
+%% Stacks can only be accessed or managed within the endpoint in which they
+%% are created.
 %%
 %% opsworks.us-east-1.amazonaws.com
 %%
@@ -58,8 +59,8 @@
 %%
 %% opsworks.us-west-2.amazonaws.com
 %%
-%% opsworks.ca-central-1.amazonaws.com (API only; not available in the AWS
-%% console)
+%% opsworks.ca-central-1.amazonaws.com (API only; not available in the Amazon
+%% Web Services Management Console)
 %%
 %% opsworks.eu-west-1.amazonaws.com
 %%
@@ -92,7 +93,8 @@
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html.
 %%
 %% You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We recommend
-%% migrating your existing Linux stacks to Chef 12 as soon as possible.
+%% migrating your existing Linux stacks
+%% to Chef 12 as soon as possible.
 -module(aws_opsworks).
 
 -export([assign_instance/2,
@@ -1952,10 +1954,10 @@
 %%
 %% You can assign registered Amazon EC2 instances only to custom layers.
 %%
-%% You cannot use this action with instances that were created with AWS
-%% OpsWorks Stacks.
+%% You cannot use this action with instances that were created with OpsWorks
+%% Stacks.
 %%
-%% Required Permissions: To use this action, an AWS Identity and Access
+%% Required Permissions: To use this action, an Identity and Access
 %% Management
 %% (IAM) user must have a Manage permissions
 %% level for the stack or an attached policy that explicitly grants
@@ -2023,8 +2025,8 @@ assign_volume(Client, Input, Options)
 %% Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
-%% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions
+%% Required Permissions: To use this action, an IAM user must have a
+%% Manage permissions
 %% level for the stack, or an attached policy that explicitly grants
 %% permissions. For more
 %% information on user permissions, see Managing User
@@ -2049,8 +2051,8 @@ associate_elastic_ip(Client, Input, Options)
 %% @doc Attaches an Elastic Load Balancing load balancer to a specified
 %% layer.
 %%
-%% AWS OpsWorks Stacks does not support
-%% Application Load Balancer. You can only use Classic Load Balancer with AWS
+%% OpsWorks Stacks does not support
+%% Application Load Balancer. You can only use Classic Load Balancer with
 %% OpsWorks Stacks.
 %% For more information, see Elastic Load
 %% Balancing:
@@ -2058,8 +2060,7 @@ associate_elastic_ip(Client, Input, Options)
 %%
 %% You must create the Elastic Load Balancing instance separately, by using
 %% the Elastic Load Balancing console, API, or CLI. For
-%% more information, see Elastic
-%% Load Balancing Developer Guide:
+%% more information, see the Elastic Load Balancing Developer Guide:
 %% https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/Welcome.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
@@ -2209,8 +2210,8 @@ create_instance(Client, Input, Options)
 %% Create a Layer:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html.
 %%
-%% You should use CreateLayer for noncustom layer types such as PHP App
-%% Server only if the stack
+%% You should use CreateLayer for noncustom layer types such as
+%% PHP App Server only if the stack
 %% does not have an existing layer of that type. A stack can have at most one
 %% instance of each
 %% noncustom layer; if you attempt to create a second instance, CreateLayer
@@ -2219,8 +2220,8 @@ create_instance(Client, Input, Options)
 %% CreateLayer as
 %% many times as you like for that layer type.
 %%
-%% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions
+%% Required Permissions: To use this action, an IAM user must
+%% have a Manage permissions
 %% level for the stack, or an attached policy that explicitly grants
 %% permissions. For more
 %% information on user permissions, see Managing User
@@ -2296,8 +2297,8 @@ create_user_profile(Client, Input, Options)
 
 %% @doc Deletes a specified app.
 %%
-%% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions
+%% Required Permissions: To use this action, an IAM user must have a
+%% Manage permissions
 %% level for the stack, or an attached policy that explicitly grants
 %% permissions. For more
 %% information on user permissions, see Managing User
@@ -2322,7 +2323,8 @@ delete_app(Client, Input, Options)
 %% @doc Deletes a specified instance, which terminates the associated Amazon
 %% EC2 instance.
 %%
-%% You must stop an instance before you can delete it.
+%% You must stop an instance before
+%% you can delete it.
 %%
 %% For more information, see Deleting
 %% Instances:
@@ -2358,8 +2360,8 @@ delete_instance(Client, Input, Options)
 %% Delete a Layer:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html.
 %%
-%% Required Permissions: To use this action, an IAM user must have a Manage
-%% permissions
+%% Required Permissions: To use this action, an IAM user must have a
+%% Manage permissions
 %% level for the stack, or an attached policy that explicitly grants
 %% permissions. For more
 %% information on user permissions, see Managing User
@@ -2414,7 +2416,8 @@ delete_stack(Client, Input, Options)
 %% @doc Deletes a user profile.
 %%
 %% Required Permissions: To use this action, an IAM user must have an
-%% attached policy
+%% attached
+%% policy
 %% that explicitly grants permissions. For more information about user
 %% permissions, see Managing User
 %% Permissions:
@@ -2466,8 +2469,9 @@ deregister_ecs_cluster(Client, Input, Options)
 
 %% @doc Deregisters a specified Elastic IP address.
 %%
-%% The address can then be registered by another
-%% stack. For more information, see Resource Management:
+%% The address can be registered by another
+%% stack after it is deregistered. For more information, see Resource
+%% Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
@@ -2493,12 +2497,12 @@ deregister_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterElasticIp">>, Input, Options).
 
-%% @doc Deregister a registered Amazon EC2 or on-premises instance.
+%% @doc Deregister an instance from OpsWorks Stacks.
 %%
-%% This action removes the
-%% instance from the stack and returns it to your control. This action cannot
-%% be used with
-%% instances that were created with AWS OpsWorks Stacks.
+%% The instance can be a registered instance (Amazon EC2 or on-premises) or
+%% an instance created with OpsWorks.
+%% This action removes the instance from the stack and returns it to your
+%% control.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
 %% permissions
@@ -2578,7 +2582,7 @@ deregister_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterVolume">>, Input, Options).
 
-%% @doc Describes the available AWS OpsWorks Stacks agent versions.
+%% @doc Describes the available OpsWorks Stacks agent versions.
 %%
 %% You must specify a stack ID or a
 %% configuration manager. `DescribeAgentVersions' returns a list of
@@ -2605,7 +2609,8 @@ describe_agent_versions(Client, Input, Options)
 %% This call accepts only one resource-identifying parameter.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
-%% Deploy, or
+%% Deploy,
+%% or
 %% Manage permissions level for the stack, or an attached policy that
 %% explicitly grants
 %% permissions. For more information about user permissions, see Managing
@@ -2689,8 +2694,8 @@ describe_deployments(Client, Input, Options)
 %% If you specify only a stack ID,
 %% you can use the `MaxResults' and `NextToken' parameters to
 %% paginate the
-%% response. However, AWS OpsWorks Stacks currently supports only one cluster
-%% per layer, so the result
+%% response. However, OpsWorks Stacks currently supports only one cluster per
+%% layer, so the result
 %% set has a maximum of one element.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
@@ -2883,7 +2888,7 @@ describe_my_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMyUserProfile">>, Input, Options).
 
-%% @doc Describes the operating systems that are supported by AWS OpsWorks
+%% @doc Describes the operating systems that are supported by OpsWorks
 %% Stacks.
 -spec describe_operating_systems(aws_client:aws_client(), #{}) ->
     {ok, describe_operating_systems_response(), tuple()} |
@@ -2980,7 +2985,7 @@ describe_rds_db_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRdsDbInstances">>, Input, Options).
 
-%% @doc Describes AWS OpsWorks Stacks service errors.
+%% @doc Describes OpsWorks Stacks service errors.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
 %% Deploy, or
@@ -3381,24 +3386,25 @@ register_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterElasticIp">>, Input, Options).
 
-%% @doc Registers instances that were created outside of AWS OpsWorks Stacks
-%% with a specified stack.
+%% @doc Registers instances that were created outside of OpsWorks Stacks with
+%% a specified stack.
 %%
 %% We do not recommend using this action to register instances. The complete
 %% registration
-%% operation includes two tasks: installing the AWS OpsWorks Stacks agent on
-%% the instance, and registering
+%% operation includes two tasks: installing the OpsWorks Stacks agent on the
+%% instance, and registering
 %% the instance with the stack. `RegisterInstance' handles only the
 %% second step. You
-%% should instead use the AWS CLI `register' command, which performs the
+%% should instead use the CLI `register' command, which performs the
 %% entire
 %% registration operation. For more information,
 %% see
-%% Registering an Instance with an AWS OpsWorks Stacks Stack:
+%% Registering an Instance with an OpsWorks Stacks Stack:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html.
 %%
 %% Registered instances have the same requirements as instances that are
-%% created by using the `CreateInstance' API.
+%% created by using the `CreateInstance'
+%% API.
 %% For example, registered instances must be running a supported Linux-based
 %% operating system, and they must have a supported instance
 %% type. For more information about requirements for instances that you want
@@ -3494,9 +3500,10 @@ register_volume(Client, Input, Options)
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html.
 %%
 %% To use load-based auto scaling, you must create a set of load-based auto
-%% scaling instances. Load-based auto scaling operates only on the instances
-%% from that set, so you must ensure that you have created enough instances
-%% to handle the maximum anticipated load.
+%% scaling instances.
+%% Load-based auto scaling operates only on the instances from that set, so
+%% you must ensure that you have created enough
+%% instances to handle the maximum anticipated load.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
 %% permissions
@@ -3523,7 +3530,8 @@ set_load_based_auto_scaling(Client, Input, Options)
 
 %% @doc Specifies a user's permissions.
 %%
-%% For more information, see Security and
+%% For more information, see
+%% Security and
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html.
 %%
@@ -3692,12 +3700,13 @@ stop_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopStack">>, Input, Options).
 
-%% @doc Apply cost-allocation tags to a specified stack or layer in AWS
-%% OpsWorks Stacks.
+%% @doc Apply cost-allocation tags to a specified stack or layer in OpsWorks
+%% Stacks.
 %%
-%% For more information about how tagging works, see Tags:
+%% For more information about how
+%% tagging works, see Tags:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html in the
-%% AWS OpsWorks User Guide.
+%% OpsWorks User Guide.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3721,7 +3730,7 @@ tag_resource(Client, Input, Options)
 %% assigned to
 %% another layer as needed. You cannot use this action with instances that
 %% were created
-%% with AWS OpsWorks Stacks.
+%% with OpsWorks Stacks.
 %%
 %% Required Permissions: To use this action, an IAM user must
 %% have a Manage permissions level for the stack or an attached policy that
@@ -3997,7 +4006,8 @@ update_user_profile(Client, Input, Options)
 
 %% @doc Updates an Amazon EBS volume's name or mount point.
 %%
-%% For more information, see Resource Management:
+%% For more information, see
+%% Resource Management:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage

@@ -326,6 +326,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"imageConfiguration">> => image_configuration(),
 %%   <<"initialCapacity">> => map(),
+%%   <<"interactiveConfiguration">> => interactive_configuration(),
 %%   <<"maximumCapacity">> => maximum_allowed_resources(),
 %%   <<"monitoringConfiguration">> => monitoring_configuration(),
 %%   <<"name">> => string(),
@@ -357,6 +358,7 @@
 %%   <<"clientToken">> := string(),
 %%   <<"imageConfiguration">> => image_configuration_input(),
 %%   <<"initialCapacity">> => map(),
+%%   <<"interactiveConfiguration">> => interactive_configuration(),
 %%   <<"maximumCapacity">> => maximum_allowed_resources(),
 %%   <<"monitoringConfiguration">> => monitoring_configuration(),
 %%   <<"name">> => string(),
@@ -377,6 +379,14 @@
 %%   <<"name">> => string()
 %% }
 -type create_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% interactive_configuration() :: #{
+%%   <<"livyEndpointEnabled">> => [boolean()],
+%%   <<"studioEnabled">> => [boolean()]
+%% }
+-type interactive_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_application_response() :: #{}
@@ -411,6 +421,7 @@
 %%   <<"clientToken">> := string(),
 %%   <<"imageConfiguration">> => image_configuration_input(),
 %%   <<"initialCapacity">> => map(),
+%%   <<"interactiveConfiguration">> => interactive_configuration(),
 %%   <<"maximumCapacity">> => maximum_allowed_resources(),
 %%   <<"monitoringConfiguration">> => monitoring_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
