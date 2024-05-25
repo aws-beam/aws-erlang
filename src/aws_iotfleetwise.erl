@@ -276,6 +276,8 @@
 
 %% Example:
 %% list_vehicles_request() :: #{
+%%   <<"attributeNames">> => list(string()()),
+%%   <<"attributeValues">> => list(string()()),
 %%   <<"maxResults">> => integer(),
 %%   <<"modelManifestArn">> => string(),
 %%   <<"nextToken">> => string()

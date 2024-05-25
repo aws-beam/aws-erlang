@@ -2802,6 +2802,11 @@ batch_get_item(Client, Input, Options)
 %% Any individual item in a batch exceeds 400 KB.
 %%
 %% The total request size exceeds 16 MB.
+%%
+%% Any individual items with keys exceeding the key length limits. For a
+%% partition key, the limit is 2048 bytes and for a sort key, the limit is
+%% 1024
+%% bytes.
 -spec batch_write_item(aws_client:aws_client(), batch_write_item_input()) ->
     {ok, batch_write_item_output(), tuple()} |
     {error, any()} |
@@ -2879,13 +2884,8 @@ create_backup(Client, Input, Options)
 %% in the
 %% provided Regions.
 %%
-%% This operation only applies to Version
-%% 2017.11.29 (Legacy):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
-%% of global tables. We recommend using
-%% Version 2019.11.21 (Current):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
-%% when creating new global tables, as it provides greater flexibility,
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version), as it provides greater flexibility,
 %% higher efficiency and consumes less write capacity than
 %% 2017.11.29 (Legacy). To determine which version you are using, see
 %% Determining the version:
@@ -3100,9 +3100,8 @@ delete_resource_policy(Client, Input, Options)
 %% returns a `ResourceNotFoundException'. If table is already in the
 %% `DELETING' state, no error is returned.
 %%
-%% This operation only applies to Version 2019.11.21 (Current):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
-%% of global tables.
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version).
 %%
 %% DynamoDB might continue to accept data read and write operations, such as
 %% `GetItem' and `PutItem', on a table in the
@@ -3247,13 +3246,8 @@ describe_export(Client, Input, Options)
 
 %% @doc Returns information about the specified global table.
 %%
-%% This operation only applies to Version
-%% 2017.11.29 (Legacy):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
-%% of global tables. We recommend using
-%% Version 2019.11.21 (Current):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
-%% when creating new global tables, as it provides greater flexibility,
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version), as it provides greater flexibility,
 %% higher efficiency and consumes less write capacity than
 %% 2017.11.29 (Legacy). To determine which version you are using, see
 %% Determining the version:
@@ -3281,13 +3275,8 @@ describe_global_table(Client, Input, Options)
 
 %% @doc Describes Region-specific settings for a global table.
 %%
-%% This operation only applies to Version
-%% 2017.11.29 (Legacy):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
-%% of global tables. We recommend using
-%% Version 2019.11.21 (Current):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
-%% when creating new global tables, as it provides greater flexibility,
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version), as it provides greater flexibility,
 %% higher efficiency and consumes less write capacity than
 %% 2017.11.29 (Legacy). To determine which version you are using, see
 %% Determining the version:
@@ -3449,9 +3438,8 @@ describe_limits(Client, Input, Options)
 %% the table, when
 %% it was created, the primary key schema, and any indexes on the table.
 %%
-%% This operation only applies to Version 2019.11.21 (Current):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
-%% of global tables.
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version).
 %%
 %% If you issue a `DescribeTable' request immediately after a
 %% `CreateTable' request, DynamoDB might return a
@@ -3479,9 +3467,8 @@ describe_table(Client, Input, Options)
 %% @doc Describes auto scaling settings across replicas of the global table
 %% at once.
 %%
-%% This operation only applies to Version 2019.11.21 (Current):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
-%% of global tables.
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version).
 -spec describe_table_replica_auto_scaling(aws_client:aws_client(), describe_table_replica_auto_scaling_input()) ->
     {ok, describe_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
@@ -3821,13 +3808,8 @@ list_exports(Client, Input, Options)
 
 %% @doc Lists all global tables that have a replica in the specified Region.
 %%
-%% This operation only applies to Version
-%% 2017.11.29 (Legacy):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
-%% of global tables. We recommend using
-%% Version 2019.11.21 (Current):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
-%% when creating new global tables, as it provides greater flexibility,
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version), as it provides greater flexibility,
 %% higher efficiency and consumes less write capacity than
 %% 2017.11.29 (Legacy). To determine which version you are using, see
 %% Determining the version:
@@ -4552,13 +4534,8 @@ update_contributor_insights(Client, Input, Options)
 %% Streams enabled,
 %% and have the same provisioned and maximum write capacity units.
 %%
-%% This operation only applies to Version
-%% 2017.11.29 (Legacy):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
-%% of global tables. We recommend using
-%% Version 2019.11.21 (Current):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
-%% when creating new global tables, as it provides greater flexibility,
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version), as it provides greater flexibility,
 %% higher efficiency and consumes less write capacity than
 %% 2017.11.29 (Legacy). To determine which version you are using, see
 %% Determining the version:
@@ -4569,12 +4546,11 @@ update_contributor_insights(Client, Input, Options)
 %% Updating global tables:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
 %%
-%% This operation only applies to Version
-%% 2017.11.29:
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
-%% of global tables. If you are using global tables Version
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version). If you are using global tables
+%% Version
 %% 2019.11.21:
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html
 %% you can use UpdateTable:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_UpdateTable.html
 %% instead.
@@ -4614,13 +4590,8 @@ update_global_table(Client, Input, Options)
 
 %% @doc Updates settings for a global table.
 %%
-%% This operation only applies to Version
-%% 2017.11.29 (Legacy):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
-%% of global tables. We recommend using
-%% Version 2019.11.21 (Current):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
-%% when creating new global tables, as it provides greater flexibility,
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version), as it provides greater flexibility,
 %% higher efficiency and consumes less write capacity than
 %% 2017.11.29 (Legacy). To determine which version you are using, see
 %% Determining the version:
@@ -4697,9 +4668,8 @@ update_kinesis_streaming_destination(Client, Input, Options)
 %% indexes, or DynamoDB
 %% Streams settings for a given table.
 %%
-%% This operation only applies to Version 2019.11.21 (Current):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
-%% of global tables.
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version).
 %%
 %% You can only perform one of the following operations at once:
 %%
@@ -4735,9 +4705,8 @@ update_table(Client, Input, Options)
 
 %% @doc Updates auto scaling settings on your global tables at once.
 %%
-%% This operation only applies to Version 2019.11.21 (Current):
-%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
-%% of global tables.
+%% For global tables, this operation only applies to global tables using
+%% Version 2019.11.21 (Current version).
 -spec update_table_replica_auto_scaling(aws_client:aws_client(), update_table_replica_auto_scaling_input()) ->
     {ok, update_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
