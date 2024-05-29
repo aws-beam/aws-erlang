@@ -714,6 +714,7 @@
 %% node_info() :: #{
 %%   <<"AddedToClusterTime">> => string(),
 %%   <<"BrokerNodeInfo">> => broker_node_info(),
+%%   <<"ControllerNodeInfo">> => controller_node_info(),
 %%   <<"InstanceType">> => string(),
 %%   <<"NodeARN">> => string(),
 %%   <<"NodeType">> => list(any()),
@@ -854,6 +855,13 @@
 %%   <<"ZoneIds">> => list(string()())
 %% }
 -type broker_node_group_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% controller_node_info() :: #{
+%%   <<"Endpoints">> => list(string()())
+%% }
+-type controller_node_info() :: #{binary() => any()}.
 
 
 %% Example:

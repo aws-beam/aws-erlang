@@ -11472,6 +11472,7 @@
 %% Example:
 %% create_customer_gateway_request() :: #{
 %%   <<"BgpAsn">> => integer(),
+%%   <<"BgpAsnExtended">> => float(),
 %%   <<"CertificateArn">> => string(),
 %%   <<"DeviceName">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -16682,6 +16683,7 @@
 %% Example:
 %% customer_gateway() :: #{
 %%   <<"BgpAsn">> => string(),
+%%   <<"BgpAsnExtended">> => string(),
 %%   <<"CertificateArn">> => string(),
 %%   <<"CustomerGatewayId">> => string(),
 %%   <<"DeviceName">> => string(),

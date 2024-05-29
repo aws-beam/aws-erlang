@@ -36,6 +36,10 @@
          count_pending_activity_tasks/3,
          count_pending_decision_tasks/2,
          count_pending_decision_tasks/3,
+         delete_activity_type/2,
+         delete_activity_type/3,
+         delete_workflow_type/2,
+         delete_workflow_type/3,
          deprecate_activity_type/2,
          deprecate_activity_type/3,
          deprecate_domain/2,
@@ -455,6 +459,12 @@
 %%   <<"timerId">> => string()
 %% }
 -type start_timer_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% type_not_deprecated_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type type_not_deprecated_fault() :: #{binary() => any()}.
 
 %% Example:
 %% workflow_type_configuration() :: #{
@@ -1434,6 +1444,13 @@
 -type domain_deprecated_fault() :: #{binary() => any()}.
 
 %% Example:
+%% delete_workflow_type_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"workflowType">> := workflow_type()
+%% }
+-type delete_workflow_type_input() :: #{binary() => any()}.
+
+%% Example:
 %% describe_workflow_type_input() :: #{
 %%   <<"domain">> := string(),
 %%   <<"workflowType">> := workflow_type()
@@ -1469,6 +1486,13 @@
 %% }
 -type child_workflow_execution_started_event_attributes() :: #{binary() => any()}.
 
+%% Example:
+%% delete_activity_type_input() :: #{
+%%   <<"activityType">> := activity_type(),
+%%   <<"domain">> := string()
+%% }
+-type delete_activity_type_input() :: #{binary() => any()}.
+
 -type count_closed_workflow_executions_errors() ::
     operation_not_permitted_fault() | 
     unknown_resource_fault().
@@ -1484,6 +1508,16 @@
 -type count_pending_decision_tasks_errors() ::
     operation_not_permitted_fault() | 
     unknown_resource_fault().
+
+-type delete_activity_type_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault() | 
+    type_not_deprecated_fault().
+
+-type delete_workflow_type_errors() ::
+    operation_not_permitted_fault() | 
+    unknown_resource_fault() | 
+    type_not_deprecated_fault().
 
 -type deprecate_activity_type_errors() ::
     operation_not_permitted_fault() | 
@@ -1862,16 +1896,122 @@ count_pending_decision_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CountPendingDecisionTasks">>, Input, Options).
 
+%% @doc Deletes the specified activity type.
+%%
+%% Note: Prior to deletion, activity types must first be deprecated.
+%%
+%% After an activity type has been deleted, you cannot schedule new
+%% activities of that type. Activities that started before the type was
+%% deleted will continue to run.
+%%
+%% Access Control
+%%
+%% You can use IAM policies to control this action's access to Amazon SWF
+%% resources as follows:
+%%
+%% Use a `Resource' element with the domain name to limit the action to
+%% only specified domains.
+%%
+%% Use an `Action' element to allow or deny permission to call this
+%% action.
+%%
+%% Constrain the following parameters by using a `Condition' element with
+%% the appropriate keys.
+%%
+%% `activityType.name': String constraint. The key is
+%% `swf:activityType.name'.
+%%
+%% `activityType.version': String constraint. The key is
+%% `swf:activityType.version'.
+%%
+%% If the caller doesn't have sufficient permissions to invoke the
+%% action, or the
+%% parameter values fall outside the specified constraints, the action fails.
+%% The associated
+%% event attribute's `cause' parameter is set to
+%% `OPERATION_NOT_PERMITTED'.
+%% For details and example IAM policies, see Using IAM to Manage Access to
+%% Amazon SWF
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
+-spec delete_activity_type(aws_client:aws_client(), delete_activity_type_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_activity_type_errors(), tuple()}.
+delete_activity_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_activity_type(Client, Input, []).
+
+-spec delete_activity_type(aws_client:aws_client(), delete_activity_type_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_activity_type_errors(), tuple()}.
+delete_activity_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteActivityType">>, Input, Options).
+
+%% @doc Deletes the specified workflow type.
+%%
+%% Note: Prior to deletion, workflow types must first be deprecated.
+%%
+%% After a workflow type has been deleted, you cannot create new executions
+%% of that type. Executions that
+%% started before the type was deleted will continue to run.
+%%
+%% Access Control
+%%
+%% You can use IAM policies to control this action's access to Amazon SWF
+%% resources as follows:
+%%
+%% Use a `Resource' element with the domain name to limit the action to
+%% only specified domains.
+%%
+%% Use an `Action' element to allow or deny permission to call this
+%% action.
+%%
+%% Constrain the following parameters by using a `Condition' element with
+%% the appropriate keys.
+%%
+%% `workflowType.name': String constraint. The key is
+%% `swf:workflowType.name'.
+%%
+%% `workflowType.version': String constraint. The key is
+%% `swf:workflowType.version'.
+%%
+%% If the caller doesn't have sufficient permissions to invoke the
+%% action, or the
+%% parameter values fall outside the specified constraints, the action fails.
+%% The associated
+%% event attribute's `cause' parameter is set to
+%% `OPERATION_NOT_PERMITTED'.
+%% For details and example IAM policies, see Using IAM to Manage Access to
+%% Amazon SWF
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
+-spec delete_workflow_type(aws_client:aws_client(), delete_workflow_type_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_workflow_type_errors(), tuple()}.
+delete_workflow_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_workflow_type(Client, Input, []).
+
+-spec delete_workflow_type(aws_client:aws_client(), delete_workflow_type_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_workflow_type_errors(), tuple()}.
+delete_workflow_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWorkflowType">>, Input, Options).
+
 %% @doc Deprecates the specified activity type.
 %%
 %% After an activity type has
 %% been deprecated, you cannot create new tasks of that activity type. Tasks
 %% of this type that
 %% were scheduled before the type was deprecated continue to run.
-%%
-%% This operation is eventually consistent. The results are best effort and
-%% may not
-%% exactly reflect recent updates and changes.
 %%
 %% Access Control
 %%
