@@ -953,6 +953,7 @@
 %%   <<"branchFilter">> => string(),
 %%   <<"buildType">> => list(any()),
 %%   <<"filterGroups">> => list(list(webhook_filter()())()),
+%%   <<"manualCreation">> => boolean(),
 %%   <<"projectName">> := string()
 %% }
 -type create_webhook_input() :: #{binary() => any()}.
@@ -1459,6 +1460,7 @@
 %%   <<"buildType">> => list(any()),
 %%   <<"filterGroups">> => list(list(webhook_filter()())()),
 %%   <<"lastModifiedSecret">> => non_neg_integer(),
+%%   <<"manualCreation">> => boolean(),
 %%   <<"payloadUrl">> => string(),
 %%   <<"secret">> => string(),
 %%   <<"url">> => string()

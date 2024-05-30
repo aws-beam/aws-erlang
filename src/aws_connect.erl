@@ -993,6 +993,16 @@
 
 
 %% Example:
+%% attribute_condition() :: #{
+%%   <<"ComparisonOperator">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ProficiencyLevel">> => float(),
+%%   <<"Value">> => string()
+%% }
+-type attribute_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% prompt_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -1325,6 +1335,15 @@
 %%   <<"Status">> => list(any())
 %% }
 -type evaluation_form_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_criteria() :: #{
+%%   <<"ActivationTimestamp">> => non_neg_integer(),
+%%   <<"Index">> => integer(),
+%%   <<"Steps">> => list(step()())
+%% }
+-type routing_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1821,6 +1840,13 @@
 
 
 %% Example:
+%% customer_quality_metrics() :: #{
+%%   <<"Audio">> => audio_quality_metrics_info()
+%% }
+-type customer_quality_metrics() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_routing_profiles_request() :: #{
 %%   <<"InstanceId">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -1926,6 +1952,13 @@
 %%   <<"LexV2Bot">> => lex_v2_bot()
 %% }
 -type lex_bot_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_hierarchy_group() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type agent_hierarchy_group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2608,6 +2641,14 @@
 %% }
 -type associate_traffic_distribution_group_user_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% customer() :: #{
+%%   <<"Capabilities">> => participant_capabilities(),
+%%   <<"DeviceInfo">> => device_info()
+%% }
+-type customer() :: #{binary() => any()}.
+
 %% Example:
 %% delete_contact_flow_response() :: #{}
 -type delete_contact_flow_response() :: #{}.
@@ -2905,7 +2946,10 @@
 %% Example:
 %% agent_info() :: #{
 %%   <<"AgentPauseDurationInSeconds">> => integer(),
+%%   <<"Capabilities">> => participant_capabilities(),
 %%   <<"ConnectedToAgentTimestamp">> => non_neg_integer(),
+%%   <<"DeviceInfo">> => device_info(),
+%%   <<"HierarchyGroups">> => hierarchy_groups(),
 %%   <<"Id">> => string()
 %% }
 -type agent_info() :: #{binary() => any()}.
@@ -3499,6 +3543,13 @@
 
 
 %% Example:
+%% agent_quality_metrics() :: #{
+%%   <<"Audio">> => audio_quality_metrics_info()
+%% }
+-type agent_quality_metrics() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_contact_streaming_response() :: #{
 %%   <<"StreamingId">> => string()
 %% }
@@ -3862,6 +3913,15 @@
 
 
 %% Example:
+%% device_info() :: #{
+%%   <<"OperatingSystem">> => string(),
+%%   <<"PlatformName">> => string(),
+%%   <<"PlatformVersion">> => string()
+%% }
+-type device_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% hierarchy_path() :: #{
 %%   <<"LevelFive">> => hierarchy_group_summary(),
 %%   <<"LevelFour">> => hierarchy_group_summary(),
@@ -3996,9 +4056,15 @@
 %% Example:
 %% contact() :: #{
 %%   <<"AgentInfo">> => agent_info(),
+%%   <<"AnsweringMachineDetectionStatus">> => list(any()),
 %%   <<"Arn">> => string(),
+%%   <<"Campaign">> => campaign(),
 %%   <<"Channel">> => list(any()),
+%%   <<"ConnectedToSystemTimestamp">> => non_neg_integer(),
+%%   <<"Customer">> => customer(),
+%%   <<"CustomerVoiceActivity">> => customer_voice_activity(),
 %%   <<"Description">> => string(),
+%%   <<"DisconnectDetails">> => disconnect_details(),
 %%   <<"DisconnectTimestamp">> => non_neg_integer(),
 %%   <<"Id">> => string(),
 %%   <<"InitialContactId">> => string(),
@@ -4009,11 +4075,14 @@
 %%   <<"LastUpdateTimestamp">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"PreviousContactId">> => string(),
+%%   <<"QualityMetrics">> => quality_metrics(),
 %%   <<"QueueInfo">> => queue_info(),
 %%   <<"QueuePriority">> => float(),
 %%   <<"QueueTimeAdjustmentSeconds">> => integer(),
 %%   <<"RelatedContactId">> => string(),
+%%   <<"RoutingCriteria">> => routing_criteria(),
 %%   <<"ScheduledTimestamp">> => non_neg_integer(),
+%%   <<"SegmentAttributes">> => map(),
 %%   <<"Tags">> => map(),
 %%   <<"TotalPauseCount">> => integer(),
 %%   <<"TotalPauseDurationInSeconds">> => integer(),
@@ -4441,6 +4510,14 @@
 
 
 %% Example:
+%% quality_metrics() :: #{
+%%   <<"Agent">> => agent_quality_metrics(),
+%%   <<"Customer">> => customer_quality_metrics()
+%% }
+-type quality_metrics() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_user_hierarchy_structure_request() :: #{
 %%   <<"HierarchyStructure">> := hierarchy_structure_update()
 %% }
@@ -4498,6 +4575,14 @@
 %% Example:
 %% associate_traffic_distribution_group_user_response() :: #{}
 -type associate_traffic_distribution_group_user_response() :: #{}.
+
+
+%% Example:
+%% customer_voice_activity() :: #{
+%%   <<"GreetingEndTimestamp">> => non_neg_integer(),
+%%   <<"GreetingStartTimestamp">> => non_neg_integer()
+%% }
+-type customer_voice_activity() :: #{binary() => any()}.
 
 %% Example:
 %% update_contact_routing_data_response() :: #{}
@@ -4658,6 +4743,17 @@
 %%   <<"SupportedMessagingContentTypes">> => list(string()())
 %% }
 -type new_session_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_groups() :: #{
+%%   <<"Level1">> => agent_hierarchy_group(),
+%%   <<"Level2">> => agent_hierarchy_group(),
+%%   <<"Level3">> => agent_hierarchy_group(),
+%%   <<"Level4">> => agent_hierarchy_group(),
+%%   <<"Level5">> => agent_hierarchy_group()
+%% }
+-type hierarchy_groups() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4847,6 +4943,14 @@
 %%   <<"HierarchyGroup">> => hierarchy_group()
 %% }
 -type describe_user_hierarchy_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_quality_metrics_info() :: #{
+%%   <<"PotentialQualityIssues">> => list(string()()),
+%%   <<"QualityScore">> => float()
+%% }
+-type audio_quality_metrics_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5306,6 +5410,15 @@
 
 
 %% Example:
+%% expression() :: #{
+%%   <<"AndExpression">> => list(expression()()),
+%%   <<"AttributeCondition">> => attribute_condition(),
+%%   <<"OrExpression">> => list(expression()())
+%% }
+-type expression() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_search_summary() :: #{
 %%   <<"AgentInfo">> => contact_search_summary_agent_info(),
 %%   <<"Arn">> => string(),
@@ -5657,6 +5770,13 @@
 
 
 %% Example:
+%% disconnect_details() :: #{
+%%   <<"PotentialDisconnectIssue">> => string()
+%% }
+-type disconnect_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_status_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -5939,6 +6059,15 @@
 %%   <<"TargetAccountId">> => string()
 %% }
 -type batch_associate_analytics_data_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% step() :: #{
+%%   <<"Expiry">> => expiry(),
+%%   <<"Expression">> => expression(),
+%%   <<"Status">> => list(any())
+%% }
+-type step() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6527,6 +6656,14 @@
 %%   <<"Time">> => list()
 %% }
 -type real_time_contact_analysis_segment_attachments() :: #{binary() => any()}.
+
+
+%% Example:
+%% expiry() :: #{
+%%   <<"DurationInSeconds">> => integer(),
+%%   <<"ExpiryTimestamp">> => non_neg_integer()
+%% }
+-type expiry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9365,26 +9502,24 @@ batch_put_contact(Client, InstanceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ClaimPhoneNumber.html
 %% operation.
 %%
-%% If you plan to claim and release numbers frequently during a 30 day
-%% period,
+%% If you plan to claim and release numbers frequently,
 %% contact us for a service quota exception. Otherwise, it is possible you
 %% will be blocked from
-%% claiming and releasing any more numbers until 30 days past the oldest
-%% number
+%% claiming and releasing any more numbers until up to 180 days past the
+%% oldest number
 %% released has expired.
 %%
 %% By default you can claim and release up to 200% of your maximum number of
 %% active
-%% phone numbers during any 30 day period. If you claim and release phone
-%% numbers using
-%% the UI or API during a rolling 30 day cycle that exceeds 200% of your
+%% phone numbers. If you claim and release phone numbers using
+%% the UI or API during a rolling 180 day cycle that exceeds 200% of your
 %% phone number
 %% service level quota, you will be blocked from claiming any more numbers
-%% until 30
+%% until 180
 %% days past the oldest number released has expired.
 %%
 %% For example, if you already have 99 claimed numbers and a service level
-%% quota of 99 phone numbers, and in any 30
+%% quota of 99 phone numbers, and in any 180
 %% day period you release 99, claim 99, and then release 99, you will have
 %% exceeded the
 %% 200% limit. At that point you are blocked from claiming any more numbers
@@ -15542,31 +15677,29 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 %% Amazon Connect admin website.
 %%
 %% After releasing a phone number, the phone number enters into a cooldown
-%% period of 30 days.
-%% It cannot be searched for or claimed again until the period has ended. If
-%% you accidentally
-%% release a phone number, contact Amazon Web Services Support.
+%% period for up to
+%% 180 days. It cannot be searched for or claimed again until the period has
+%% ended. If you
+%% accidentally release a phone number, contact Amazon Web Services Support.
 %%
-%% If you plan to claim and release numbers frequently during a 30 day
-%% period,
+%% If you plan to claim and release numbers frequently,
 %% contact us for a service quota exception. Otherwise, it is possible you
 %% will be blocked from
-%% claiming and releasing any more numbers until 30 days past the oldest
-%% number
+%% claiming and releasing any more numbers until up to 180 days past the
+%% oldest number
 %% released has expired.
 %%
 %% By default you can claim and release up to 200% of your maximum number of
 %% active
-%% phone numbers during any 30 day period. If you claim and release phone
-%% numbers using
-%% the UI or API during a rolling 30 day cycle that exceeds 200% of your
+%% phone numbers. If you claim and release phone numbers using
+%% the UI or API during a rolling 180 day cycle that exceeds 200% of your
 %% phone number
 %% service level quota, you will be blocked from claiming any more numbers
-%% until 30
+%% until 180
 %% days past the oldest number released has expired.
 %%
 %% For example, if you already have 99 claimed numbers and a service level
-%% quota of 99 phone numbers, and in any 30
+%% quota of 99 phone numbers, and in any 180
 %% day period you release 99, claim 99, and then release 99, you will have
 %% exceeded the
 %% 200% limit. At that point you are blocked from claiming any more numbers
@@ -16733,6 +16866,10 @@ start_web_r_t_c_contact(Client, Input0, Options0) ->
 %%
 %% QUEUE_TRANSFER
 %%
+%% EXTERNAL_OUTBOUND
+%%
+%% MONITOR
+%%
 %% Chat and task contacts can be terminated in any state, regardless of
 %% initiation
 %% method.
@@ -17543,11 +17680,9 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Updates routing priority and age on the contact (QueuePriority and
+%% @doc Updates routing priority and age on the contact (QueuePriority and
 %% QueueTimeAdjustmentInSeconds).
+%%
 %% These properties can be used to change a customer's position in the
 %% queue. For example, you can
 %% move a contact to the back of the queue by setting a lower routing
@@ -17564,6 +17699,10 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
 %% flow
 %% block:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/change-routing-priority.html.
+%%
+%% Either QueuePriority or QueueTimeAdjustmentInSeconds should be provided
+%% within the request body, but not
+%% both.
 -spec update_contact_routing_data(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_routing_data_request()) ->
     {ok, update_contact_routing_data_response(), tuple()} |
     {error, any()} |
