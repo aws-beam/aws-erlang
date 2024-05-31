@@ -594,6 +594,13 @@
 
 
 %% Example:
+%% embedding_model_configuration() :: #{
+%%   <<"bedrockEmbeddingModelConfiguration">> => bedrock_embedding_model_configuration()
+%% }
+-type embedding_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_ingestion_job_response() :: #{
 %%   <<"ingestionJob">> => ingestion_job()
 %% }
@@ -1214,7 +1221,8 @@
 
 %% Example:
 %% vector_knowledge_base_configuration() :: #{
-%%   <<"embeddingModelArn">> => string()
+%%   <<"embeddingModelArn">> => string(),
+%%   <<"embeddingModelConfiguration">> => embedding_model_configuration()
 %% }
 -type vector_knowledge_base_configuration() :: #{binary() => any()}.
 
@@ -1250,6 +1258,13 @@
 %% Example:
 %% get_agent_alias_request() :: #{}
 -type get_agent_alias_request() :: #{}.
+
+
+%% Example:
+%% bedrock_embedding_model_configuration() :: #{
+%%   <<"dimensions">> => integer()
+%% }
+-type bedrock_embedding_model_configuration() :: #{binary() => any()}.
 
 
 %% Example:

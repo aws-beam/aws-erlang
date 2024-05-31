@@ -6136,6 +6136,7 @@
 %% Example:
 %% routing_profile() :: #{
 %%   <<"AgentAvailabilityTimer">> => list(any()),
+%%   <<"AssociatedQueueIds">> => list(string()()),
 %%   <<"DefaultOutboundQueueId">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"InstanceId">> => string(),

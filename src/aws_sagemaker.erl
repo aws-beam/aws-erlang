@@ -871,6 +871,7 @@
 
 %% Example:
 %% time_series_forecasting_job_config() :: #{
+%%   <<"CandidateGenerationConfig">> => candidate_generation_config(),
 %%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
 %%   <<"FeatureSpecificationS3Uri">> => string(),
 %%   <<"ForecastFrequency">> => string(),
@@ -4081,6 +4082,7 @@
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"MetadataProperties">> => metadata_properties(),
 %%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelCard">> => model_package_model_card(),
 %%   <<"ModelMetrics">> => model_metrics(),
 %%   <<"ModelPackageArn">> => string(),
 %%   <<"ModelPackageDescription">> => string(),
@@ -4090,6 +4092,7 @@
 %%   <<"ModelPackageStatusDetails">> => model_package_status_details(),
 %%   <<"ModelPackageVersion">> => integer(),
 %%   <<"SamplePayloadUrl">> => string(),
+%%   <<"SecurityConfig">> => model_package_security_config(),
 %%   <<"SkipModelValidation">> => list(any()),
 %%   <<"SourceAlgorithmSpecification">> => source_algorithm_specification(),
 %%   <<"SourceUri">> => string(),
@@ -6005,6 +6008,13 @@
 -type vpc_config() :: #{binary() => any()}.
 
 %% Example:
+%% model_package_model_card() :: #{
+%%   <<"ModelCardContent">> => string(),
+%%   <<"ModelCardStatus">> => list(any())
+%% }
+-type model_package_model_card() :: #{binary() => any()}.
+
+%% Example:
 %% remote_debug_config_for_update() :: #{
 %%   <<"EnableRemoteDebug">> => boolean()
 %% }
@@ -6646,6 +6656,7 @@
 %%   <<"CustomerMetadataPropertiesToRemove">> => list(string()()),
 %%   <<"InferenceSpecification">> => inference_specification(),
 %%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelCard">> => model_package_model_card(),
 %%   <<"ModelPackageArn">> := string(),
 %%   <<"SourceUri">> => string()
 %% }
@@ -6959,11 +6970,13 @@
 %%   <<"InferenceSpecification">> => inference_specification(),
 %%   <<"MetadataProperties">> => metadata_properties(),
 %%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelCard">> => model_package_model_card(),
 %%   <<"ModelMetrics">> => model_metrics(),
 %%   <<"ModelPackageDescription">> => string(),
 %%   <<"ModelPackageGroupName">> => string(),
 %%   <<"ModelPackageName">> => string(),
 %%   <<"SamplePayloadUrl">> => string(),
+%%   <<"SecurityConfig">> => model_package_security_config(),
 %%   <<"SkipModelValidation">> => list(any()),
 %%   <<"SourceAlgorithmSpecification">> => source_algorithm_specification(),
 %%   <<"SourceUri">> => string(),
@@ -8311,6 +8324,12 @@
 %%   <<"DataInputConfig">> => string()
 %% }
 -type model_input() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_security_config() :: #{
+%%   <<"KmsKeyId">> => string()
+%% }
+-type model_package_security_config() :: #{binary() => any()}.
 
 %% Example:
 %% data_quality_job_input() :: #{
@@ -10648,6 +10667,7 @@
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"MetadataProperties">> => metadata_properties(),
 %%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelCard">> => model_package_model_card(),
 %%   <<"ModelMetrics">> => model_metrics(),
 %%   <<"ModelPackageArn">> => string(),
 %%   <<"ModelPackageDescription">> => string(),
@@ -10657,6 +10677,7 @@
 %%   <<"ModelPackageStatusDetails">> => model_package_status_details(),
 %%   <<"ModelPackageVersion">> => integer(),
 %%   <<"SamplePayloadUrl">> => string(),
+%%   <<"SecurityConfig">> => model_package_security_config(),
 %%   <<"SkipModelValidation">> => list(any()),
 %%   <<"SourceAlgorithmSpecification">> => source_algorithm_specification(),
 %%   <<"SourceUri">> => string(),
@@ -15780,6 +15801,12 @@ describe_model_explainability_job_definition(Client, Input, Options)
 %% @doc Returns a description of the specified model package, which is used
 %% to create SageMaker
 %% models or list them on Amazon Web Services Marketplace.
+%%
+%% If you provided a KMS Key ID when you created your model package,
+%% you will see the KMS
+%% Decrypt:
+%% https://docs.aws.amazon.com/kms/latest/APIReference/API_Decrypt.html API
+%% call in your CloudTrail logs when you use this API.
 %%
 %% To create models in SageMaker, buyers can subscribe to model packages
 %% listed on Amazon Web Services

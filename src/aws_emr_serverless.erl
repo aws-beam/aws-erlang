@@ -45,6 +45,9 @@
          list_applications/1,
          list_applications/3,
          list_applications/4,
+         list_job_run_attempts/3,
+         list_job_run_attempts/5,
+         list_job_run_attempts/6,
          list_job_runs/2,
          list_job_runs/4,
          list_job_runs/5,
@@ -106,9 +109,12 @@
 %% }
 -type s3_monitoring_configuration() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_job_run_request() :: #{}
--type get_job_run_request() :: #{}.
+%% get_job_run_request() :: #{
+%%   <<"attempt">> => integer()
+%% }
+-type get_job_run_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -118,6 +124,22 @@
 %%   <<"vCPUHour">> => [float()]
 %% }
 -type resource_utilization() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_run_attempts_response() :: #{
+%%   <<"jobRunAttempts">> => list(job_run_attempt_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_run_attempts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_run_attempts_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_run_attempts_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -132,6 +154,9 @@
 %% job_run() :: #{
 %%   <<"applicationId">> => string(),
 %%   <<"arn">> => string(),
+%%   <<"attempt">> => integer(),
+%%   <<"attemptCreatedAt">> => non_neg_integer(),
+%%   <<"attemptUpdatedAt">> => non_neg_integer(),
 %%   <<"billedResourceUtilization">> => resource_utilization(),
 %%   <<"configurationOverrides">> => configuration_overrides(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -140,9 +165,11 @@
 %%   <<"executionTimeoutMinutes">> => float(),
 %%   <<"jobDriver">> => list(),
 %%   <<"jobRunId">> => string(),
+%%   <<"mode">> => string(),
 %%   <<"name">> => string(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"releaseLabel">> => string(),
+%%   <<"retryPolicy">> => retry_policy(),
 %%   <<"state">> => string(),
 %%   <<"stateDetails">> => string(),
 %%   <<"tags">> => map(),
@@ -161,10 +188,14 @@
 %% job_run_summary() :: #{
 %%   <<"applicationId">> => string(),
 %%   <<"arn">> => string(),
+%%   <<"attempt">> => integer(),
+%%   <<"attemptCreatedAt">> => non_neg_integer(),
+%%   <<"attemptUpdatedAt">> => non_neg_integer(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"executionRole">> => string(),
 %%   <<"id">> => string(),
+%%   <<"mode">> => string(),
 %%   <<"name">> => string(),
 %%   <<"releaseLabel">> => string(),
 %%   <<"state">> => string(),
@@ -180,6 +211,7 @@
 %%   <<"createdAtAfter">> => non_neg_integer(),
 %%   <<"createdAtBefore">> => non_neg_integer(),
 %%   <<"maxResults">> => [integer()],
+%%   <<"mode">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"states">> => list(string()())
 %% }
@@ -202,6 +234,27 @@
 %%   <<"properties">> => map()
 %% }
 -type configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_run_attempt_summary() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"attempt">> => integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"executionRole">> => string(),
+%%   <<"id">> => string(),
+%%   <<"jobCreatedAt">> => non_neg_integer(),
+%%   <<"mode">> => string(),
+%%   <<"name">> => string(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"state">> => string(),
+%%   <<"stateDetails">> => string(),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type job_run_attempt_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -457,7 +510,9 @@
 %%   <<"executionRoleArn">> := string(),
 %%   <<"executionTimeoutMinutes">> => float(),
 %%   <<"jobDriver">> => list(),
+%%   <<"mode">> => string(),
 %%   <<"name">> => string(),
+%%   <<"retryPolicy">> => retry_policy(),
 %%   <<"tags">> => map()
 %% }
 -type start_job_run_request() :: #{binary() => any()}.
@@ -494,9 +549,12 @@
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
 
+
 %% Example:
-%% get_dashboard_for_job_run_request() :: #{}
--type get_dashboard_for_job_run_request() :: #{}.
+%% get_dashboard_for_job_run_request() :: #{
+%%   <<"attempt">> => integer()
+%% }
+-type get_dashboard_for_job_run_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -581,6 +639,14 @@
 %% }
 -type cloud_watch_logging_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% retry_policy() :: #{
+%%   <<"maxAttempts">> => integer(),
+%%   <<"maxFailedAttemptsPerHour">> => [integer()]
+%% }
+-type retry_policy() :: #{binary() => any()}.
+
 %% Example:
 %% get_application_request() :: #{}
 -type get_application_request() :: #{}.
@@ -623,6 +689,11 @@
 -type list_applications_errors() ::
     validation_exception() | 
     internal_server_exception().
+
+-type list_job_run_attempts_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_job_runs_errors() ::
     validation_exception() | 
@@ -857,7 +928,11 @@ get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap,
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"attempt">>, maps:get(<<"attempt">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -894,7 +969,11 @@ get_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"attempt">>, maps:get(<<"attempt">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -941,6 +1020,48 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all attempt of a job run.
+-spec list_job_run_attempts(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_job_run_attempts_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_run_attempts_errors(), tuple()}.
+list_job_run_attempts(Client, ApplicationId, JobRunId)
+  when is_map(Client) ->
+    list_job_run_attempts(Client, ApplicationId, JobRunId, #{}, #{}).
+
+-spec list_job_run_attempts(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_job_run_attempts_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_run_attempts_errors(), tuple()}.
+list_job_run_attempts(Client, ApplicationId, JobRunId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_job_run_attempts(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, []).
+
+-spec list_job_run_attempts(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_job_run_attempts_response(), tuple()} |
+    {error, any()} |
+    {error, list_job_run_attempts_errors(), tuple()}.
+list_job_run_attempts(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/jobruns/", aws_util:encode_uri(JobRunId), "/attempts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists job runs based on a set of parameters.
 -spec list_job_runs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_job_runs_response(), tuple()} |
@@ -979,6 +1100,7 @@ list_job_runs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
         {<<"createdAtAfter">>, maps:get(<<"createdAtAfter">>, QueryMap, undefined)},
         {<<"createdAtBefore">>, maps:get(<<"createdAtBefore">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"mode">>, maps:get(<<"mode">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"states">>, maps:get(<<"states">>, QueryMap, undefined)}
       ],

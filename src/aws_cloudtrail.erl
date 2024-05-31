@@ -139,6 +139,13 @@
 
 
 %% Example:
+%% partition_key() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type partition_key() :: #{binary() => any()}.
+
+%% Example:
 %% get_trail_request() :: #{
 %%   <<"Name">> := string()
 %% }
@@ -948,6 +955,7 @@
 %%   <<"MultiRegionEnabled">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"OrganizationEnabled">> => boolean(),
+%%   <<"PartitionKeys">> => list(partition_key()()),
 %%   <<"RetentionPeriod">> => integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"TerminationProtectionEnabled">> => boolean(),
@@ -3149,7 +3157,7 @@ lookup_events(Client, Input, Options)
 %% event selector
 %% enables logging of the Insights event types you want configured for your
 %% trail. For more information about logging Insights events, see Logging
-%% Insights events for trails:
+%% Insights events:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html
 %% in the CloudTrail User Guide.
 %% By default, trails created without specific event selectors are configured
@@ -3405,8 +3413,9 @@ start_event_data_store_ingestion(Client, Input, Options)
 %% prefix, you
 %% must include the prefix in the `S3LocationUri'. For more
 %% considerations about
-%% importing trail events, see Considerations:
-%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-copy-trail-to-lake.html#cloudtrail-trail-copy-considerations.
+%% importing trail events, see Considerations for copying trail events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-copy-trail-to-lake.html#cloudtrail-trail-copy-considerations
+%% in the CloudTrail User Guide.
 %%
 %% When you start a new import, the `Destinations' and
 %% `ImportSource' parameters are required. Before starting a new import,

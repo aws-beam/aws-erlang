@@ -6571,9 +6571,11 @@ add_source_identifier_to_subscription(Client, Input, Options)
 %% associated with Amazon RDS resources, or used in a Condition statement in
 %% an IAM policy for Amazon RDS.
 %%
-%% For an overview on tagging Amazon RDS resources,
+%% For an overview on tagging your relational database resources,
 %% see Tagging Amazon RDS Resources:
-%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html.
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html
+%% or Tagging Amazon Aurora and Amazon RDS Resources:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Tagging.html.
 -spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

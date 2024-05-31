@@ -5,7 +5,11 @@
 %% Bedrock models.
 -module(aws_bedrock_runtime).
 
--export([invoke_model/3,
+-export([converse/3,
+         converse/4,
+         converse_stream/3,
+         converse_stream/4,
+         invoke_model/3,
          invoke_model/4,
          invoke_model_with_response_stream/3,
          invoke_model_with_response_stream/4]).
@@ -15,17 +19,108 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
+%% specific_tool_choice() :: #{
+%%   <<"name">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type specific_tool_choice() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_exception() :: #{
+%% model_not_ready_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type model_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_block_stop_event() :: #{
+%%   <<"contentBlockIndex">> => integer()
+%% }
+-type content_block_stop_event() :: #{binary() => any()}.
+
+%% Example:
+%% any_tool_choice() :: #{}
+-type any_tool_choice() :: #{}.
+
+
+%% Example:
+%% inference_configuration() :: #{
+%%   <<"maxTokens">> => [integer()],
+%%   <<"stopSequences">> => list(string()()),
+%%   <<"temperature">> => [float()],
+%%   <<"topP">> => [float()]
+%% }
+-type inference_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% auto_tool_choice() :: #{}
+-type auto_tool_choice() :: #{}.
+
+
+%% Example:
+%% converse_request() :: #{
+%%   <<"additionalModelRequestFields">> => [any()],
+%%   <<"additionalModelResponseFieldPaths">> => list([string()]()),
+%%   <<"inferenceConfig">> => inference_configuration(),
+%%   <<"messages">> := list(message()()),
+%%   <<"system">> => list(list()()),
+%%   <<"toolConfig">> => tool_configuration()
+%% }
+-type converse_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% payload_part() :: #{
+%%   <<"bytes">> => binary()
+%% }
+-type payload_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_stop_event() :: #{
+%%   <<"additionalModelResponseFields">> => [any()],
+%%   <<"stopReason">> => list(any())
+%% }
+-type message_stop_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_model_with_response_stream_response() :: #{
+%%   <<"body">> => list(),
+%%   <<"contentType">> => string()
+%% }
+-type invoke_model_with_response_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_block() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
+%% }
+-type image_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_block_start_event() :: #{
+%%   <<"contentBlockIndex">> => integer(),
+%%   <<"start">> => list()
+%% }
+-type content_block_start_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_block_delta_event() :: #{
+%%   <<"contentBlockIndex">> => integer(),
+%%   <<"delta">> => list()
+%% }
+-type content_block_delta_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_start_event() :: #{
+%%   <<"role">> => list(any())
+%% }
+-type message_start_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -41,11 +136,10 @@
 
 
 %% Example:
-%% invoke_model_response() :: #{
-%%   <<"body">> => binary(),
-%%   <<"contentType">> => string()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type invoke_model_response() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -61,11 +155,71 @@
 
 
 %% Example:
-%% invoke_model_with_response_stream_response() :: #{
-%%   <<"body">> => list(),
+%% converse_stream_metrics() :: #{
+%%   <<"latencyMs">> => [float()]
+%% }
+-type converse_stream_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_use_block_start() :: #{
+%%   <<"name">> => string(),
+%%   <<"toolUseId">> => string()
+%% }
+-type tool_use_block_start() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_model_response() :: #{
+%%   <<"body">> => binary(),
 %%   <<"contentType">> => string()
 %% }
--type invoke_model_with_response_stream_response() :: #{binary() => any()}.
+-type invoke_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_specification() :: #{
+%%   <<"description">> => string(),
+%%   <<"inputSchema">> => list(),
+%%   <<"name">> => string()
+%% }
+-type tool_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% converse_stream_response() :: #{
+%%   <<"stream">> => list()
+%% }
+-type converse_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% converse_stream_metadata_event() :: #{
+%%   <<"metrics">> => converse_stream_metrics(),
+%%   <<"usage">> => token_usage()
+%% }
+-type converse_stream_metadata_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% converse_metrics() :: #{
+%%   <<"latencyMs">> => [float()]
+%% }
+-type converse_metrics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -78,10 +232,57 @@
 
 
 %% Example:
-%% model_not_ready_exception() :: #{
+%% tool_configuration() :: #{
+%%   <<"toolChoice">> => list(),
+%%   <<"tools">> => list(list()())
+%% }
+-type tool_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% converse_stream_request() :: #{
+%%   <<"additionalModelRequestFields">> => [any()],
+%%   <<"additionalModelResponseFieldPaths">> => list([string()]()),
+%%   <<"inferenceConfig">> => inference_configuration(),
+%%   <<"messages">> := list(message()()),
+%%   <<"system">> => list(list()()),
+%%   <<"toolConfig">> => tool_configuration()
+%% }
+-type converse_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_result_block() :: #{
+%%   <<"content">> => list(list()()),
+%%   <<"status">> => list(any()),
+%%   <<"toolUseId">> => string()
+%% }
+-type tool_result_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type model_not_ready_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_use_block() :: #{
+%%   <<"input">> => [any()],
+%%   <<"name">> => string(),
+%%   <<"toolUseId">> => string()
+%% }
+-type tool_use_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_usage() :: #{
+%%   <<"inputTokens">> => [integer()],
+%%   <<"outputTokens">> => [integer()],
+%%   <<"totalTokens">> => [integer()]
+%% }
+-type token_usage() :: #{binary() => any()}.
 
 
 %% Example:
@@ -101,24 +302,10 @@
 
 
 %% Example:
-%% payload_part() :: #{
-%%   <<"bytes">> => binary()
-%% }
--type payload_part() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
+%% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -129,37 +316,178 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
+%% tool_use_block_delta() :: #{
+%%   <<"input">> => [string()]
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type tool_use_block_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% message() :: #{
+%%   <<"content">> => list(list()()),
+%%   <<"role">> => list(any())
+%% }
+-type message() :: #{binary() => any()}.
+
+
+%% Example:
+%% converse_response() :: #{
+%%   <<"additionalModelResponseFields">> => [any()],
+%%   <<"metrics">> => converse_metrics(),
+%%   <<"output">> => list(),
+%%   <<"stopReason">> => list(any()),
+%%   <<"usage">> => token_usage()
+%% }
+-type converse_response() :: #{binary() => any()}.
+
+-type converse_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    model_timeout_exception() | 
+    access_denied_exception() | 
+    model_error_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    model_not_ready_exception().
+
+-type converse_stream_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    model_timeout_exception() | 
+    access_denied_exception() | 
+    model_error_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    model_not_ready_exception().
 
 -type invoke_model_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
     model_timeout_exception() | 
-    model_not_ready_exception() | 
+    access_denied_exception() | 
     model_error_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    model_not_ready_exception().
 
 -type invoke_model_with_response_stream_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
     model_timeout_exception() | 
     model_stream_error_exception() | 
-    model_not_ready_exception() | 
+    access_denied_exception() | 
     model_error_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    model_not_ready_exception().
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Sends messages to the specified Amazon Bedrock model.
+%%
+%% `Converse' provides
+%% a consistent interface that works with all models that
+%% support messages. This allows you to write code once and use it with
+%% different models.
+%% Should a model have unique inference parameters, you can also pass those
+%% unique parameters
+%% to the model. For more information, see Run inference:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html
+%% in the Bedrock User Guide.
+%%
+%% This operation requires permission for the `bedrock:InvokeModel'
+%% action.
+-spec converse(aws_client:aws_client(), binary() | list(), converse_request()) ->
+    {ok, converse_response(), tuple()} |
+    {error, any()} |
+    {error, converse_errors(), tuple()}.
+converse(Client, ModelId, Input) ->
+    converse(Client, ModelId, Input, []).
+
+-spec converse(aws_client:aws_client(), binary() | list(), converse_request(), proplists:proplist()) ->
+    {ok, converse_response(), tuple()} |
+    {error, any()} |
+    {error, converse_errors(), tuple()}.
+converse(Client, ModelId, Input0, Options0) ->
+    Method = post,
+    Path = ["/model/", aws_util:encode_uri(ModelId), "/converse"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sends messages to the specified Amazon Bedrock model and returns
+%% the response in a stream.
+%%
+%% `ConverseStream' provides a consistent API
+%% that works with all Amazon Bedrock models that support messages.
+%% This allows you to write code once and use it with different models.
+%% Should a
+%% model have unique inference parameters, you can also pass those unique
+%% parameters to the
+%% model. For more information, see Run inference:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html
+%% in the Bedrock User Guide.
+%%
+%% To find out if a model supports streaming, call GetFoundationModel:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetFoundationModel.html
+%% and check the `responseStreamingSupported' field in the response.
+%%
+%% For example code, see Invoke model with streaming code
+%% example in the Amazon Bedrock User Guide.
+%%
+%% This operation requires permission for the
+%% `bedrock:InvokeModelWithResponseStream' action.
+-spec converse_stream(aws_client:aws_client(), binary() | list(), converse_stream_request()) ->
+    {ok, converse_stream_response(), tuple()} |
+    {error, any()} |
+    {error, converse_stream_errors(), tuple()}.
+converse_stream(Client, ModelId, Input) ->
+    converse_stream(Client, ModelId, Input, []).
+
+-spec converse_stream(aws_client:aws_client(), binary() | list(), converse_stream_request(), proplists:proplist()) ->
+    {ok, converse_stream_response(), tuple()} |
+    {error, any()} |
+    {error, converse_stream_errors(), tuple()}.
+converse_stream(Client, ModelId, Input0, Options0) ->
+    Method = post,
+    Path = ["/model/", aws_util:encode_uri(ModelId), "/converse-stream"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Invokes the specified Amazon Bedrock model to run inference using the
 %% prompt and inference parameters provided in the request body.
