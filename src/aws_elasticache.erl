@@ -4952,7 +4952,7 @@ start_migration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMigration">>, Input, Options).
 
-%% @doc Represents the input of a `TestFailover' operation which test
+%% @doc Represents the input of a `TestFailover' operation which tests
 %% automatic
 %% failover on a specified node group (called shard in the console) in a
 %% replication group
@@ -4969,7 +4969,7 @@ start_migration(Client, Input, Options)
 %%
 %% == Note the following ==
 %%
-%% A customer can use this operation to test automatic failover on up to 5
+%% A customer can use this operation to test automatic failover on up to 15
 %% shards
 %% (called node groups in the ElastiCache API and Amazon CLI) in any rolling
 %% 24-hour period.

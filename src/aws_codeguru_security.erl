@@ -2,8 +2,7 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc
-%% Amazon CodeGuru Security is in preview release and is subject to
-%% change.
+%% Amazon CodeGuru Security is in preview release and is subject to change.
 %%
 %% This section provides documentation for the Amazon CodeGuru Security API
 %% operations.
@@ -132,6 +131,7 @@
 %% get_scan_response() :: #{
 %%   <<"analysisType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"errorMessage">> => string(),
 %%   <<"numberOfRevisions">> => [float()],
 %%   <<"runId">> => string(),
 %%   <<"scanName">> => string(),
@@ -535,6 +535,7 @@
 
 -type get_scan_errors() ::
     throttling_exception() | 
+    validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
@@ -586,7 +587,7 @@
 %% API
 %%====================================================================
 
-%% @doc Returns a list of all requested findings.
+%% @doc Returns a list of requested findings from standard scans.
 -spec batch_get_findings(aws_client:aws_client(), batch_get_findings_request()) ->
     {ok, batch_get_findings_response(), tuple()} |
     {error, any()} |
@@ -620,7 +621,7 @@ batch_get_findings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use to create a scan using code uploaded to an S3 bucket.
+%% @doc Use to create a scan using code uploaded to an Amazon S3 bucket.
 -spec create_scan(aws_client:aws_client(), create_scan_request()) ->
     {ok, create_scan_response(), tuple()} |
     {error, any()} |
@@ -654,10 +655,11 @@ create_scan(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Generates a pre-signed URL and request headers used to upload a code
-%% resource.
+%% @doc Generates a pre-signed URL, request headers used to upload a code
+%% resource, and code
+%% artifact identifier for the uploaded resource.
 %%
-%% You can upload your code resource to the URL and add the request headers
+%% You can upload your code resource to the URL with the request headers
 %% using any HTTP
 %% client.
 -spec create_upload_url(aws_client:aws_client(), create_upload_url_request()) ->
@@ -693,7 +695,7 @@ create_upload_url(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use to get account level configuration.
+%% @doc Use to get the encryption configuration for an account.
 -spec get_account_configuration(aws_client:aws_client()) ->
     {ok, get_account_configuration_response(), tuple()} |
     {error, any()} |
@@ -773,7 +775,7 @@ get_findings(Client, ScanName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns top level metrics about an account from a specified date,
+%% @doc Returns a summary of metrics for an account from a specified date,
 %% including number of open
 %% findings, the categories with most findings, the scans with most open
 %% findings, and scans with
@@ -905,9 +907,9 @@ list_findings_metrics(Client, EndDate, StartDate, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of all the standard scans in an account.
+%% @doc Returns a list of all scans in an account.
 %%
-%% Does not return express
+%% Does not return `EXPRESS'
 %% scans.
 -spec list_scans(aws_client:aws_client()) ->
     {ok, list_scans_response(), tuple()} |
@@ -1056,7 +1058,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use to update account-level configuration with an encryption key.
+%% @doc Use to update the encryption configuration for an account.
 -spec update_account_configuration(aws_client:aws_client(), update_account_configuration_request()) ->
     {ok, update_account_configuration_response(), tuple()} |
     {error, any()} |

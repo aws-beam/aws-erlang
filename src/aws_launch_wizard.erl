@@ -18,198 +18,26 @@
          get_deployment/3,
          get_workload/2,
          get_workload/3,
+         get_workload_deployment_pattern/2,
+         get_workload_deployment_pattern/3,
          list_deployment_events/2,
          list_deployment_events/3,
          list_deployments/2,
          list_deployments/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          list_workload_deployment_patterns/2,
          list_workload_deployment_patterns/3,
          list_workloads/2,
-         list_workloads/3]).
+         list_workloads/3,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
-
-
-%% Example:
-%% create_deployment_input() :: #{
-%%   <<"deploymentPatternName">> := string(),
-%%   <<"dryRun">> => [boolean()],
-%%   <<"name">> := string(),
-%%   <<"specifications">> := map(),
-%%   <<"workloadName">> := string()
-%% }
--type create_deployment_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_deployment_output() :: #{
-%%   <<"deploymentId">> => string()
-%% }
--type create_deployment_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_deployment_input() :: #{
-%%   <<"deploymentId">> := string()
-%% }
--type delete_deployment_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_deployment_output() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()]
-%% }
--type delete_deployment_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_data() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"deletedAt">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"patternName">> => string(),
-%%   <<"resourceGroup">> => [string()],
-%%   <<"specifications">> => map(),
-%%   <<"status">> => list(any()),
-%%   <<"workloadName">> => string()
-%% }
--type deployment_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_data_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"patternName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"workloadName">> => string()
-%% }
--type deployment_data_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_event_data_summary() :: #{
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"timestamp">> => [non_neg_integer()]
-%% }
--type deployment_event_data_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list([string()]())
-%% }
--type deployment_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_deployment_input() :: #{
-%%   <<"deploymentId">> := string()
-%% }
--type get_deployment_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_deployment_output() :: #{
-%%   <<"deployment">> => deployment_data()
-%% }
--type get_deployment_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_input() :: #{
-%%   <<"workloadName">> := string()
-%% }
--type get_workload_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_output() :: #{
-%%   <<"workload">> => workload_data()
-%% }
--type get_workload_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployment_events_input() :: #{
-%%   <<"deploymentId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployment_events_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployment_events_output() :: #{
-%%   <<"deploymentEvents">> => list(deployment_event_data_summary()()),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployment_events_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployments_input() :: #{
-%%   <<"filters">> => list(deployment_filter()()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployments_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployments_output() :: #{
-%%   <<"deployments">> => list(deployment_data_summary()()),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployments_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workload_deployment_patterns_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"workloadName">> := string()
-%% }
--type list_workload_deployment_patterns_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workload_deployment_patterns_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workloadDeploymentPatterns">> => list(workload_deployment_pattern_data_summary()())
-%% }
--type list_workload_deployment_patterns_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workloads_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_workloads_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workloads_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workloads">> => list(workload_data_summary()())
-%% }
--type list_workloads_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -220,17 +48,10 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
+%% get_workload_output() :: #{
+%%   <<"workload">> => workload_data()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
+-type get_workload_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -247,11 +68,126 @@
 
 
 %% Example:
+%% list_workloads_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_workloads_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% workload_data_summary() :: #{
 %%   <<"displayName">> => [string()],
 %%   <<"workloadName">> => string()
 %% }
 -type workload_data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployment_output() :: #{
+%%   <<"deployment">> => deployment_data()
+%% }
+-type get_deployment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_deployment_input() :: #{
+%%   <<"deploymentPatternName">> := string(),
+%%   <<"dryRun">> => [boolean()],
+%%   <<"name">> := string(),
+%%   <<"specifications">> := map(),
+%%   <<"tags">> => map(),
+%%   <<"workloadName">> := string()
+%% }
+-type create_deployment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployment_input() :: #{
+%%   <<"deploymentId">> := string()
+%% }
+-type get_deployment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list([string()]())
+%% }
+-type deployment_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_input() :: #{
+%%   <<"workloadName">> := string()
+%% }
+-type get_workload_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_event_data_summary() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type deployment_event_data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_events_output() :: #{
+%%   <<"deploymentEvents">> => list(deployment_event_data_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workload_deployment_patterns_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workloadDeploymentPatterns">> => list(workload_deployment_pattern_data_summary()())
+%% }
+-type list_workload_deployment_patterns_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_deployment_input() :: #{
+%%   <<"deploymentId">> := string()
+%% }
+-type delete_deployment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -266,44 +202,223 @@
 %% }
 -type workload_deployment_pattern_data_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_data_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"patternName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"workloadName">> => string()
+%% }
+-type deployment_data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_deployment_output() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type delete_deployment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workloads_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workloads">> => list(workload_data_summary()())
+%% }
+-type list_workloads_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_workload_deployment_patterns_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workloadName">> := string()
+%% }
+-type list_workload_deployment_patterns_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% deployment_specifications_field() :: #{
+%%   <<"allowedValues">> => list(string()()),
+%%   <<"conditionals">> => list(deployment_conditional_field()()),
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"required">> => [string()]
+%% }
+-type deployment_specifications_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_deployment_pattern_input() :: #{
+%%   <<"deploymentPatternName">> := string(),
+%%   <<"workloadName">> := string()
+%% }
+-type get_workload_deployment_pattern_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_events_input() :: #{
+%%   <<"deploymentId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_events_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_conditional_field() :: #{
+%%   <<"comparator">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type deployment_conditional_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_output() :: #{
+%%   <<"deployments">> => list(deployment_data_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployments_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_deployment_output() :: #{
+%%   <<"deploymentId">> => string()
+%% }
+-type create_deployment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_input() :: #{
+%%   <<"filters">> => list(deployment_filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployments_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_data() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"deletedAt">> => [non_neg_integer()],
+%%   <<"deploymentArn">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"patternName">> => string(),
+%%   <<"resourceGroup">> => [string()],
+%%   <<"specifications">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"workloadName">> => string()
+%% }
+-type deployment_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_deployment_pattern_data() :: #{
+%%   <<"deploymentPatternName">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"specifications">> => list(deployment_specifications_field()()),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"workloadName">> => string(),
+%%   <<"workloadVersionName">> => string()
+%% }
+-type workload_deployment_pattern_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_deployment_pattern_output() :: #{
+%%   <<"workloadDeploymentPattern">> => workload_deployment_pattern_data()
+%% }
+-type get_workload_deployment_pattern_output() :: #{binary() => any()}.
+
 -type create_deployment_errors() ::
     validation_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
-    resource_limit_exception() | 
-    internal_server_exception().
+    resource_limit_exception().
 
 -type delete_deployment_errors() ::
     validation_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
-    internal_server_exception().
+    resource_limit_exception().
 
 -type get_deployment_errors() ::
     validation_exception() | 
-    resource_not_found_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_workload_errors() ::
     validation_exception() | 
-    resource_not_found_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_workload_deployment_pattern_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_deployment_events_errors() ::
     validation_exception() | 
-    resource_not_found_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_deployments_errors() ::
     validation_exception() | 
     internal_server_exception().
 
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_workload_deployment_patterns_errors() ::
     validation_exception() | 
-    resource_not_found_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_workloads_errors() ::
     validation_exception() | 
     internal_server_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -450,6 +565,50 @@ get_workload(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns details for a given workload and deployment pattern,
+%% including the available
+%% specifications.
+%%
+%% You can use the ListWorkloads:
+%% https://docs.aws.amazon.com/launchwizard/latest/APIReference/API_ListWorkloads.html
+%% operation to discover the available workload names and the
+%% ListWorkloadDeploymentPatterns:
+%% https://docs.aws.amazon.com/launchwizard/latest/APIReference/API_ListWorkloadDeploymentPatterns.html
+%% operation to discover the available deployment
+%% pattern names of a given workload.
+-spec get_workload_deployment_pattern(aws_client:aws_client(), get_workload_deployment_pattern_input()) ->
+    {ok, get_workload_deployment_pattern_output(), tuple()} |
+    {error, any()} |
+    {error, get_workload_deployment_pattern_errors(), tuple()}.
+get_workload_deployment_pattern(Client, Input) ->
+    get_workload_deployment_pattern(Client, Input, []).
+
+-spec get_workload_deployment_pattern(aws_client:aws_client(), get_workload_deployment_pattern_input(), proplists:proplist()) ->
+    {ok, get_workload_deployment_pattern_output(), tuple()} |
+    {error, any()} |
+    {error, get_workload_deployment_pattern_errors(), tuple()}.
+get_workload_deployment_pattern(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/getWorkloadDeploymentPattern"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the events of a deployment.
 -spec list_deployment_events(aws_client:aws_client(), list_deployment_events_input()) ->
     {ok, list_deployment_events_output(), tuple()} |
@@ -518,7 +677,48 @@ list_deployments(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the workload deployment patterns.
+%% @doc Lists the tags associated with a specified resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the workload deployment patterns for a given workload name.
+%%
+%% You can use the ListWorkloads:
+%% https://docs.aws.amazon.com/launchwizard/latest/APIReference/API_ListWorkloads.html
+%% operation to discover the available workload names.
 -spec list_workload_deployment_patterns(aws_client:aws_client(), list_workload_deployment_patterns_input()) ->
     {ok, list_workload_deployment_patterns_output(), tuple()} |
     {error, any()} |
@@ -552,7 +752,12 @@ list_workload_deployment_patterns(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the workloads.
+%% @doc Lists the available workload names.
+%%
+%% You can use the ListWorkloadDeploymentPatterns:
+%% https://docs.aws.amazon.com/launchwizard/latest/APIReference/API_ListWorkloadDeploymentPatterns.html
+%% operation to discover the available deployment patterns for a given
+%% workload.
 -spec list_workloads(aws_client:aws_client(), list_workloads_input()) ->
     {ok, list_workloads_output(), tuple()} |
     {error, any()} |
@@ -584,6 +789,75 @@ list_workloads(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds the specified tags to the given resource.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the specified tags from the given resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
