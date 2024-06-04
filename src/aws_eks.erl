@@ -404,6 +404,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"namespace">> => string(),
+%%   <<"ownerArn">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"serviceAccount">> => string(),
 %%   <<"tags">> => map()
@@ -432,7 +433,8 @@
 %% describe_addon_configuration_response() :: #{
 %%   <<"addonName">> => string(),
 %%   <<"addonVersion">> => string(),
-%%   <<"configurationSchema">> => string()
+%%   <<"configurationSchema">> => string(),
+%%   <<"podIdentityConfiguration">> => list(addon_pod_identity_configuration()())
 %% }
 -type describe_addon_configuration_response() :: #{binary() => any()}.
 
@@ -470,6 +472,14 @@
 %% Example:
 %% disassociate_access_policy_request() :: #{}
 -type disassociate_access_policy_request() :: #{}.
+
+
+%% Example:
+%% addon_pod_identity_configuration() :: #{
+%%   <<"recommendedManagedPolicies">> => list(string()()),
+%%   <<"serviceAccount">> => string()
+%% }
+-type addon_pod_identity_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -549,6 +559,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_insights_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% addon_pod_identity_associations() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"serviceAccount">> => string()
+%% }
+-type addon_pod_identity_associations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -647,6 +665,7 @@
 %%   <<"marketplaceInformation">> => marketplace_information(),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"owner">> => string(),
+%%   <<"podIdentityAssociations">> => list(string()()),
 %%   <<"publisher">> => string(),
 %%   <<"serviceAccountRoleArn">> => string(),
 %%   <<"status">> => list(any()),
@@ -790,6 +809,7 @@
 %%   <<"addonVersion">> => string(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"configurationValues">> => string(),
+%%   <<"podIdentityAssociations">> => list(addon_pod_identity_associations()()),
 %%   <<"resolveConflicts">> => list(any()),
 %%   <<"serviceAccountRoleArn">> => string()
 %% }
@@ -964,6 +984,7 @@
 %%   <<"addonVersion">> => string(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"configurationValues">> => string(),
+%%   <<"podIdentityAssociations">> => list(addon_pod_identity_associations()()),
 %%   <<"resolveConflicts">> => list(any()),
 %%   <<"serviceAccountRoleArn">> => string(),
 %%   <<"tags">> => map()
@@ -1033,6 +1054,7 @@
 %%   <<"associationId">> => string(),
 %%   <<"clusterName">> => string(),
 %%   <<"namespace">> => string(),
+%%   <<"ownerArn">> => string(),
 %%   <<"serviceAccount">> => string()
 %% }
 -type pod_identity_association_summary() :: #{binary() => any()}.
@@ -1804,7 +1826,8 @@
 %%   <<"addonVersion">> => string(),
 %%   <<"architecture">> => list(string()()),
 %%   <<"compatibilities">> => list(compatibility()()),
-%%   <<"requiresConfiguration">> => boolean()
+%%   <<"requiresConfiguration">> => boolean(),
+%%   <<"requiresIamPermissions">> => boolean()
 %% }
 -type addon_version_info() :: #{binary() => any()}.
 
@@ -2471,13 +2494,13 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% Amazon EKS cluster, you must configure your Kubernetes tooling to
 %% communicate
 %% with the API server and launch nodes into your cluster. For more
-%% information, see Managing Cluster
-%% Authentication:
-%% https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html and
-%% Launching Amazon EKS nodes:
+%% information, see Allowing users to
+%% access your cluster:
+%% https://docs.aws.amazon.com/eks/latest/userguide/cluster-auth.html and
+%% Launching
+%% Amazon EKS nodes:
 %% https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html in
-%% the
-%% Amazon EKS User Guide.
+%% the Amazon EKS User Guide.
 -spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
@@ -2641,8 +2664,7 @@ create_fargate_profile(Client, ClusterName, Input0, Options0) ->
 %% for the respective minor Kubernetes version of the cluster, unless you
 %% deploy a custom AMI
 %% using a launch template. For more information about using launch
-%% templates, see Launch
-%% template support:
+%% templates, see Customizing managed nodes with launch templates:
 %% https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html.
 %%
 %% An Amazon EKS managed node group is an Amazon EC2
@@ -3988,8 +4010,10 @@ list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, Option
 %% @doc Returns a list of all insights checked for against the specified
 %% cluster.
 %%
-%% You can filter which insights are returned by category, associated
-%% Kubernetes version, and status.
+%% You can
+%% filter which insights are returned by category, associated Kubernetes
+%% version, and
+%% status.
 -spec list_insights(aws_client:aws_client(), binary() | list(), list_insights_request()) ->
     {ok, list_insights_response(), tuple()} |
     {error, any()} |

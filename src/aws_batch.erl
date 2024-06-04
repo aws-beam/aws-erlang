@@ -52,6 +52,8 @@
          describe_jobs/3,
          describe_scheduling_policies/2,
          describe_scheduling_policies/3,
+         get_job_queue_snapshot/2,
+         get_job_queue_snapshot/3,
          list_jobs/2,
          list_jobs/3,
          list_scheduling_policies/2,
@@ -220,6 +222,13 @@
 %%   <<"updatePolicy">> => update_policy()
 %% }
 -type update_compute_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_queue_snapshot_request() :: #{
+%%   <<"jobQueue">> := string()
+%% }
+-type get_job_queue_snapshot_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -786,6 +795,14 @@
 
 
 %% Example:
+%% front_of_queue_job_summary() :: #{
+%%   <<"earliestTimeAtPosition">> => float(),
+%%   <<"jobArn">> => string()
+%% }
+-type front_of_queue_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% container_summary() :: #{
 %%   <<"exitCode">> => integer(),
 %%   <<"reason">> => string()
@@ -826,6 +843,13 @@
 %%   <<"secretName">> => string()
 %% }
 -type eks_secret() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_queue_snapshot_response() :: #{
+%%   <<"frontOfQueue">> => front_of_queue_detail()
+%% }
+-type get_job_queue_snapshot_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -913,6 +937,14 @@
 %%   <<"vcpus">> => integer()
 %% }
 -type container_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% front_of_queue_detail() :: #{
+%%   <<"jobs">> => list(front_of_queue_job_summary()()),
+%%   <<"lastUpdatedAt">> => float()
+%% }
+-type front_of_queue_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1524,6 +1556,10 @@
     client_exception().
 
 -type describe_scheduling_policies_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type get_job_queue_snapshot_errors() ::
     server_exception() | 
     client_exception().
 
@@ -2205,6 +2241,41 @@ describe_scheduling_policies(Client, Input) ->
 describe_scheduling_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describeschedulingpolicies"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides a list of the first 100 `RUNNABLE' jobs associated to a
+%% single job queue.
+-spec get_job_queue_snapshot(aws_client:aws_client(), get_job_queue_snapshot_request()) ->
+    {ok, get_job_queue_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, get_job_queue_snapshot_errors(), tuple()}.
+get_job_queue_snapshot(Client, Input) ->
+    get_job_queue_snapshot(Client, Input, []).
+
+-spec get_job_queue_snapshot(aws_client:aws_client(), get_job_queue_snapshot_request(), proplists:proplist()) ->
+    {ok, get_job_queue_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, get_job_queue_snapshot_errors(), tuple()}.
+get_job_queue_snapshot(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/getjobqueuesnapshot"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
