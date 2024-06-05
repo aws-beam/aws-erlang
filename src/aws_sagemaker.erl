@@ -10443,6 +10443,13 @@
 -type monitoring_schedule_summary() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_instance_placement() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string()
+%% }
+-type cluster_instance_placement() :: #{binary() => any()}.
+
+%% Example:
 %% list_model_packages_output() :: #{
 %%   <<"ModelPackageSummaryList">> => list(model_package_summary()()),
 %%   <<"NextToken">> => string()
@@ -11003,6 +11010,9 @@
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"Placement">> => cluster_instance_placement(),
+%%   <<"PrivateDnsHostname">> => string(),
+%%   <<"PrivatePrimaryIp">> => string(),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
 -type cluster_node_details() :: #{binary() => any()}.
@@ -15230,7 +15240,7 @@ describe_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCluster">>, Input, Options).
 
-%% @doc Retrieves information of an instance (also called a node
+%% @doc Retrieves information of a node (also called a instance
 %% interchangeably) of a SageMaker HyperPod cluster.
 -spec describe_cluster_node(aws_client:aws_client(), describe_cluster_node_request()) ->
     {ok, describe_cluster_node_response(), tuple()} |

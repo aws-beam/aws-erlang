@@ -3,14 +3,16 @@
 
 %% @doc Amazon EventBridge Pipes connects event sources to targets.
 %%
-%% Pipes reduces the need for specialized knowledge and integration code when
-%% developing
-%% event driven architectures. This helps ensures consistency across your
-%% company’s applications. With Pipes, the target can be any available
-%% EventBridge target.
-%% To set up a pipe, you select the event source, add optional event
-%% filtering, define optional enrichment, and select the target for the event
-%% data.
+%% Pipes reduces the need
+%% for specialized knowledge and integration code when developing event
+%% driven architectures.
+%% This helps ensures consistency across your company’s applications. With
+%% Pipes, the target
+%% can be any available EventBridge target. To set up a pipe, you select the
+%% event
+%% source, add optional event filtering, define optional enrichment, and
+%% select the target for
+%% the event data.
 -module(aws_pipes).
 
 -export([create_pipe/3,
@@ -210,6 +212,15 @@
 
 
 %% Example:
+%% multi_measure_attribute_mapping() :: #{
+%%   <<"MeasureValue">> => string(),
+%%   <<"MeasureValueType">> => string(),
+%%   <<"MultiMeasureAttributeName">> => string()
+%% }
+-type multi_measure_attribute_mapping() :: #{binary() => any()}.
+
+
+%% Example:
 %% pipe_target_state_machine_parameters() :: #{
 %%   <<"InvocationType">> => string()
 %% }
@@ -332,7 +343,8 @@
 %%   <<"RedshiftDataParameters">> => pipe_target_redshift_data_parameters(),
 %%   <<"SageMakerPipelineParameters">> => pipe_target_sage_maker_pipeline_parameters(),
 %%   <<"SqsQueueParameters">> => pipe_target_sqs_queue_parameters(),
-%%   <<"StepFunctionStateMachineParameters">> => pipe_target_state_machine_parameters()
+%%   <<"StepFunctionStateMachineParameters">> => pipe_target_state_machine_parameters(),
+%%   <<"TimestreamParameters">> => pipe_target_timestream_parameters()
 %% }
 -type pipe_target_parameters() :: #{binary() => any()}.
 
@@ -358,6 +370,15 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% single_measure_mapping() :: #{
+%%   <<"MeasureName">> => string(),
+%%   <<"MeasureValue">> => string(),
+%%   <<"MeasureValueType">> => string()
+%% }
+-type single_measure_mapping() :: #{binary() => any()}.
 
 
 %% Example:
@@ -479,6 +500,14 @@
 %%   <<"TargetParameters">> => pipe_target_parameters()
 %% }
 -type create_pipe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_measure_mapping() :: #{
+%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()()),
+%%   <<"MultiMeasureName">> => string()
+%% }
+-type multi_measure_mapping() :: #{binary() => any()}.
 
 
 %% Example:
@@ -629,6 +658,20 @@
 %%   <<"Name">> => string()
 %% }
 -type create_pipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipe_target_timestream_parameters() :: #{
+%%   <<"DimensionMappings">> => list(dimension_mapping()()),
+%%   <<"EpochTimeUnit">> => string(),
+%%   <<"MultiMeasureMappings">> => list(multi_measure_mapping()()),
+%%   <<"SingleMeasureMappings">> => list(single_measure_mapping()()),
+%%   <<"TimeFieldType">> => string(),
+%%   <<"TimeValue">> => string(),
+%%   <<"TimestampFormat">> => string(),
+%%   <<"VersionValue">> => string()
+%% }
+-type pipe_target_timestream_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -805,6 +848,15 @@
 
 
 %% Example:
+%% dimension_mapping() :: #{
+%%   <<"DimensionName">> => string(),
+%%   <<"DimensionValue">> => string(),
+%%   <<"DimensionValueType">> => string()
+%% }
+-type dimension_mapping() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_pipe_source_sqs_queue_parameters() :: #{
 %%   <<"BatchSize">> => integer(),
 %%   <<"MaximumBatchingWindowInSeconds">> => integer()
@@ -970,8 +1022,8 @@
 
 %% @doc Create a pipe.
 %%
-%% Amazon EventBridge Pipes connect event sources to targets and reduces the
-%% need for specialized knowledge and integration code.
+%% Amazon EventBridge Pipes connect event sources to targets and reduces
+%% the need for specialized knowledge and integration code.
 -spec create_pipe(aws_client:aws_client(), binary() | list(), create_pipe_request()) ->
     {ok, create_pipe_response(), tuple()} |
     {error, any()} |
@@ -1242,24 +1294,24 @@ stop_pipe(Client, Name, Input0, Options0) ->
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified pipe.
 %%
-%% Tags can
-%% help you organize and categorize your resources. You can also use them to
-%% scope user
-%% permissions by granting a user permission to access or change only
-%% resources with certain tag
+%% Tags can help you
+%% organize and categorize your resources. You can also use them to scope
+%% user permissions by
+%% granting a user permission to access or change only resources with certain
+%% tag
 %% values.
 %%
 %% Tags don't have any semantic meaning to Amazon Web Services and are
-%% interpreted strictly as strings of
-%% characters.
+%% interpreted strictly
+%% as strings of characters.
 %%
 %% You can use the `TagResource' action with a pipe that already has
 %% tags. If
 %% you specify a new tag key, this tag is appended to the list of tags
 %% associated with the
 %% pipe. If you specify a tag key that is already associated with the pipe,
-%% the new tag
-%% value that you specify replaces the previous value for that tag.
+%% the new tag value
+%% that you specify replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a pipe.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
@@ -1332,18 +1384,21 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Update an existing pipe.
 %%
-%% When you call `UpdatePipe', EventBridge only the updates fields you
-%% have specified in the request; the rest remain unchanged.
-%% The exception to this is if you modify any Amazon Web Services-service
-%% specific fields in the `SourceParameters', `EnrichmentParameters',
-%% or
+%% When you call `UpdatePipe', EventBridge only the
+%% updates fields you have specified in the request; the rest remain
+%% unchanged. The exception
+%% to this is if you modify any Amazon Web Services-service specific fields
+%% in the
+%% `SourceParameters', `EnrichmentParameters', or
 %% `TargetParameters' objects. For example,
 %% `DynamoDBStreamParameters' or `EventBridgeEventBusParameters'.
 %% EventBridge updates the fields in these objects atomically as one and
-%% overrides existing values.
-%% This is by design, and means that if you don't specify an optional
-%% field in one of these `Parameters' objects, EventBridge sets that
-%% field to its system-default value during the update.
+%% overrides existing
+%% values. This is by design, and means that if you don't specify an
+%% optional field in one of
+%% these `Parameters' objects, EventBridge sets that field to its
+%% system-default
+%% value during the update.
 %%
 %% For more information about pipes, see
 %% Amazon EventBridge Pipes:
