@@ -267,6 +267,7 @@
 %%   <<"AcceleratorArn">> := string(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"IpAddressType">> => list(any()),
+%%   <<"IpAddresses">> => list(string()()),
 %%   <<"Name">> => string()
 %% }
 -type update_accelerator_request() :: #{binary() => any()}.
@@ -927,6 +928,7 @@
 %%   <<"AcceleratorArn">> := string(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"IpAddressType">> => list(any()),
+%%   <<"IpAddresses">> => list(string()()),
 %%   <<"Name">> => string()
 %% }
 -type update_custom_routing_accelerator_request() :: #{binary() => any()}.

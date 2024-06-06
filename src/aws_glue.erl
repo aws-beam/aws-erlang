@@ -1452,6 +1452,14 @@
 -type get_unfiltered_table_metadata_response() :: #{binary() => any()}.
 
 %% Example:
+%% authentication_configuration_input() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"OAuth2Properties">> => o_auth2_properties_input(),
+%%   <<"SecretArn">> => string()
+%% }
+-type authentication_configuration_input() :: #{binary() => any()}.
+
+%% Example:
 %% task_run_filter_criteria() :: #{
 %%   <<"StartedAfter">> => non_neg_integer(),
 %%   <<"StartedBefore">> => non_neg_integer(),
@@ -1533,6 +1541,13 @@
 %%   <<"startTimestamp">> => non_neg_integer()
 %% }
 -type table_optimizer_run() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_code_properties() :: #{
+%%   <<"AuthorizationCode">> => string(),
+%%   <<"RedirectUri">> => string()
+%% }
+-type authorization_code_properties() :: #{binary() => any()}.
 
 %% Example:
 %% event_batching_condition() :: #{
@@ -2768,6 +2783,13 @@
 -type delete_user_defined_function_request() :: #{binary() => any()}.
 
 %% Example:
+%% o_auth2_client_application() :: #{
+%%   <<"AWSManagedClientApplicationReference">> => string(),
+%%   <<"UserManagedClientApplicationClientId">> => string()
+%% }
+-type o_auth2_client_application() :: #{binary() => any()}.
+
+%% Example:
 %% aws_glue_node() :: #{
 %%   <<"CrawlerDetails">> => crawler_node_details(),
 %%   <<"JobDetails">> => job_node_details(),
@@ -3496,15 +3518,19 @@
 
 %% Example:
 %% connection() :: #{
+%%   <<"AuthenticationConfiguration">> => authentication_configuration(),
 %%   <<"ConnectionProperties">> => map(),
 %%   <<"ConnectionType">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
+%%   <<"LastConnectionValidationTime">> => non_neg_integer(),
 %%   <<"LastUpdatedBy">> => string(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"MatchCriteria">> => list(string()()),
 %%   <<"Name">> => string(),
-%%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements()
+%%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
 %% }
 -type connection() :: #{binary() => any()}.
 
@@ -4724,12 +4750,14 @@
 
 %% Example:
 %% connection_input() :: #{
+%%   <<"AuthenticationConfiguration">> => authentication_configuration_input(),
 %%   <<"ConnectionProperties">> => map(),
 %%   <<"ConnectionType">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"MatchCriteria">> => list(string()()),
 %%   <<"Name">> => string(),
-%%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements()
+%%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements(),
+%%   <<"ValidateCredentials">> => boolean()
 %% }
 -type connection_input() :: #{binary() => any()}.
 
@@ -5996,7 +6024,7 @@
 
 %% Example:
 %% create_connection_response() :: #{
-
+%%   <<"CreateConnectionStatus">> => list(any())
 %% }
 -type create_connection_response() :: #{binary() => any()}.
 
@@ -6013,6 +6041,15 @@
 
 %% }
 -type update_database_response() :: #{binary() => any()}.
+
+%% Example:
+%% o_auth2_properties() :: #{
+%%   <<"OAuth2ClientApplication">> => o_auth2_client_application(),
+%%   <<"OAuth2GrantType">> => list(any()),
+%%   <<"TokenUrl">> => string(),
+%%   <<"TokenUrlParametersMap">> => map()
+%% }
+-type o_auth2_properties() :: #{binary() => any()}.
 
 %% Example:
 %% list_dev_endpoints_response() :: #{
@@ -6251,6 +6288,24 @@
 %%   <<"FunctionName">> := string()
 %% }
 -type update_user_defined_function_request() :: #{binary() => any()}.
+
+%% Example:
+%% o_auth2_properties_input() :: #{
+%%   <<"AuthorizationCodeProperties">> => authorization_code_properties(),
+%%   <<"OAuth2ClientApplication">> => o_auth2_client_application(),
+%%   <<"OAuth2GrantType">> => list(any()),
+%%   <<"TokenUrl">> => string(),
+%%   <<"TokenUrlParametersMap">> => map()
+%% }
+-type o_auth2_properties_input() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_configuration() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"OAuth2Properties">> => o_auth2_properties(),
+%%   <<"SecretArn">> => string()
+%% }
+-type authentication_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% update_classifier_request() :: #{
