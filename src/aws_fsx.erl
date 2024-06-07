@@ -185,6 +185,13 @@
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_file_system_lustre_metadata_configuration() :: #{
+%%   <<"Iops">> => integer(),
+%%   <<"Mode">> => list(any())
+%% }
+-type create_file_system_lustre_metadata_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% open_z_f_s_user_or_group_quota() :: #{
 %%   <<"Id">> => integer(),
 %%   <<"StorageCapacityQuotaGiB">> => integer(),
@@ -984,6 +991,7 @@
 %%   <<"ImportPath">> => string(),
 %%   <<"ImportedFileChunkSize">> => integer(),
 %%   <<"LogConfiguration">> => lustre_log_create_configuration(),
+%%   <<"MetadataConfiguration">> => create_file_system_lustre_metadata_configuration(),
 %%   <<"PerUnitStorageThroughput">> => integer(),
 %%   <<"RootSquashConfiguration">> => lustre_root_squash_configuration(),
 %%   <<"WeeklyMaintenanceStartTime">> => string()
@@ -1060,6 +1068,7 @@
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
 %%   <<"DataCompressionType">> => list(any()),
 %%   <<"LogConfiguration">> => lustre_log_create_configuration(),
+%%   <<"MetadataConfiguration">> => update_file_system_lustre_metadata_configuration(),
 %%   <<"PerUnitStorageThroughput">> => integer(),
 %%   <<"RootSquashConfiguration">> => lustre_root_squash_configuration(),
 %%   <<"WeeklyMaintenanceStartTime">> => string()
@@ -1199,6 +1208,7 @@
 %%   <<"DeploymentType">> => list(any()),
 %%   <<"DriveCacheType">> => list(any()),
 %%   <<"LogConfiguration">> => lustre_log_configuration(),
+%%   <<"MetadataConfiguration">> => file_system_lustre_metadata_configuration(),
 %%   <<"MountName">> => string(),
 %%   <<"PerUnitStorageThroughput">> => integer(),
 %%   <<"RootSquashConfiguration">> => lustre_root_squash_configuration(),
@@ -1848,6 +1858,13 @@
 -type create_backup_request() :: #{binary() => any()}.
 
 %% Example:
+%% file_system_lustre_metadata_configuration() :: #{
+%%   <<"Iops">> => integer(),
+%%   <<"Mode">> => list(any())
+%% }
+-type file_system_lustre_metadata_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% delete_file_system_windows_response() :: #{
 %%   <<"FinalBackupId">> => string(),
 %%   <<"FinalBackupTags">> => list(tag()())
@@ -2006,6 +2023,13 @@
 %%   <<"StorageVirtualMachineIds">> => list(string()())
 %% }
 -type describe_storage_virtual_machines_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_system_lustre_metadata_configuration() :: #{
+%%   <<"Iops">> => integer(),
+%%   <<"Mode">> => list(any())
+%% }
+-type update_file_system_lustre_metadata_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_file_system_request() :: #{
@@ -3087,7 +3111,7 @@ delete_file_cache(Client, Input, Options)
 %% To delete an Amazon FSx for NetApp ONTAP file system, first delete all the
 %% volumes and storage virtual machines (SVMs) on the file system. Then
 %% provide a
-%% `FileSystemId' value to the `DeleFileSystem' operation.
+%% `FileSystemId' value to the `DeleteFileSystem' operation.
 %%
 %% By default, when you delete an Amazon FSx for Windows File Server file
 %% system,
@@ -3100,7 +3124,7 @@ delete_file_cache(Client, Input, Options)
 %% https://docs.aws.amazon.com/fsx/latest/LustreGuide/unmounting-fs.html
 %% it from every connected Amazon EC2 instance, then provide a
 %% `FileSystemId'
-%% value to the `DeleFileSystem' operation. By default, Amazon FSx will
+%% value to the `DeleteFileSystem' operation. By default, Amazon FSx will
 %% not
 %% take a final backup when the `DeleteFileSystem' operation is invoked.
 %% On file systems
@@ -3832,6 +3856,8 @@ update_file_cache(Client, Input, Options)
 %% `LogConfiguration'
 %%
 %% `LustreRootSquashConfiguration'
+%%
+%% `MetadataConfiguration'
 %%
 %% `PerUnitStorageThroughput'
 %%

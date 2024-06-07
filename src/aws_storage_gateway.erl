@@ -450,8 +450,9 @@
 %%   <<"DayOfMonth">> => integer(),
 %%   <<"DayOfWeek">> => integer(),
 %%   <<"GatewayARN">> := string(),
-%%   <<"HourOfDay">> := integer(),
-%%   <<"MinuteOfHour">> := integer()
+%%   <<"HourOfDay">> => integer(),
+%%   <<"MinuteOfHour">> => integer(),
+%%   <<"SoftwareUpdatePreferences">> => software_update_preferences()
 %% }
 -type update_maintenance_start_time_input() :: #{binary() => any()}.
 
@@ -472,6 +473,7 @@
 %%   <<"GatewayARN">> => string(),
 %%   <<"HourOfDay">> => integer(),
 %%   <<"MinuteOfHour">> => integer(),
+%%   <<"SoftwareUpdatePreferences">> => software_update_preferences(),
 %%   <<"Timezone">> => string()
 %% }
 -type describe_maintenance_start_time_output() :: #{binary() => any()}.
@@ -1496,6 +1498,12 @@
 %%   <<"GatewayARN">> => string()
 %% }
 -type disable_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% software_update_preferences() :: #{
+%%   <<"AutomaticUpdatePolicy">> => list(any())
+%% }
+-type software_update_preferences() :: #{binary() => any()}.
 
 %% Example:
 %% describe_stored_iscsi_volumes_input() :: #{
@@ -3508,11 +3516,13 @@ describe_gateway_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGatewayInformation">>, Input, Options).
 
-%% @doc Returns your gateway's weekly maintenance start time including
-%% the day and time of
-%% the week.
+%% @doc Returns your gateway's maintenance window schedule information,
+%% with values for
+%% monthly or weekly cadence, specific day and time to begin maintenance, and
+%% which types of
+%% updates to apply.
 %%
-%% Note that values are in terms of the gateway's time zone.
+%% Time values returned are for the gateway's time zone.
 -spec describe_maintenance_start_time(aws_client:aws_client(), describe_maintenance_start_time_input()) ->
     {ok, describe_maintenance_start_time_output(), tuple()} |
     {error, any()} |
@@ -4749,11 +4759,11 @@ update_file_system_association(Client, Input, Options)
     request(Client, <<"UpdateFileSystemAssociation">>, Input, Options).
 
 %% @doc Updates a gateway's metadata, which includes the gateway's
-%% name and time zone.
+%% name, time zone,
+%% and metadata cache size.
 %%
-%% To specify which gateway to update, use the Amazon Resource Name (ARN) of
-%% the gateway in
-%% your request.
+%% To specify which gateway to update, use the Amazon Resource Name
+%% (ARN) of the gateway in your request.
 %%
 %% For gateways activated after September 2, 2015, the gateway's ARN
 %% contains the
@@ -4814,11 +4824,32 @@ update_gateway_software_now(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGatewaySoftwareNow">>, Input, Options).
 
-%% @doc Updates a gateway's weekly maintenance start time information,
-%% including day and
-%% time of the week.
+%% @doc Updates a gateway's maintenance window schedule, with settings
+%% for monthly or
+%% weekly cadence, specific day and time to begin maintenance, and which
+%% types of updates to
+%% apply.
 %%
-%% The maintenance time is the time in your gateway's time zone.
+%% Time configuration uses the gateway's time zone. You can pass values
+%% for a complete
+%% maintenance schedule, or update policy, or both. Previous values will
+%% persist for whichever
+%% setting you choose not to modify. If an incomplete or invalid maintenance
+%% schedule is
+%% passed, the entire request will be rejected with an error and no changes
+%% will occur.
+%%
+%% A complete maintenance schedule must include values for both
+%% `MinuteOfHour' and `HourOfDay', and either
+%% `DayOfMonth'
+%% or
+%% `DayOfWeek'.
+%%
+%% We recommend keeping maintenance updates turned on, except in specific use
+%% cases
+%% where the brief disruptions caused by updating the gateway could
+%% critically impact your
+%% deployment.
 -spec update_maintenance_start_time(aws_client:aws_client(), update_maintenance_start_time_input()) ->
     {ok, update_maintenance_start_time_output(), tuple()} |
     {error, any()} |
@@ -4953,14 +4984,20 @@ update_smb_local_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBLocalGroups">>, Input, Options).
 
-%% @doc Updates the SMB security strategy on a file gateway.
+%% @doc Updates the SMB security strategy level for an Amazon S3 file
+%% gateway.
 %%
-%% This action is only supported in
-%% file gateways.
+%% This
+%% action is only supported for Amazon S3 file gateways.
 %%
-%% This API is called Security level in the User Guide.
+%% For information about configuring this setting using the Amazon Web
+%% Services console,
+%% see Setting a security level for your gateway:
+%% https://docs.aws.amazon.com/filegateway/latest/files3/security-strategy.html
+%% in the Amazon S3
+%% File Gateway User Guide.
 %%
-%% A higher security level can affect performance of the gateway.
+%% A higher security strategy level can affect performance of the gateway.
 -spec update_smb_security_strategy(aws_client:aws_client(), update_smb_security_strategy_input()) ->
     {ok, update_smb_security_strategy_output(), tuple()} |
     {error, any()} |

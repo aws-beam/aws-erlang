@@ -1309,19 +1309,19 @@ confirm_subscription(Client, Input, Options)
 %% `PlatformPrincipal' and `PlatformCredential' are received from
 %% the notification service.
 %%
-%% For `ADM', `PlatformPrincipal' is `client id'
+%% For ADM, `PlatformPrincipal' is `client id'
 %% and `PlatformCredential' is `client secret'.
 %%
-%% For `Baidu', `PlatformPrincipal' is `API key'
-%% and `PlatformCredential' is `secret key'.
-%%
-%% For `APNS' and `APNS_SANDBOX' using certificate
+%% For APNS and `APNS_SANDBOX' using certificate
 %% credentials, `PlatformPrincipal' is `SSL certificate' and
 %% `PlatformCredential' is `private key'.
 %%
-%% For `APNS' and `APNS_SANDBOX' using token credentials,
+%% For APNS and `APNS_SANDBOX' using token credentials,
 %% `PlatformPrincipal' is `signing key ID' and
 %% `PlatformCredential' is `signing key'.
+%%
+%% For Baidu, `PlatformPrincipal' is `API key'
+%% and `PlatformCredential' is `secret key'.
 %%
 %% For GCM (Firebase Cloud Messaging) using key credentials, there is no
 %% `PlatformPrincipal'. The `PlatformCredential' is
@@ -1336,13 +1336,13 @@ confirm_subscription(Client, Input, Options)
 %% ```
 %% SERVICE_JSON=`jq @json &lt;&lt;&lt; cat service.json`'''.
 %%
-%% For `MPNS', `PlatformPrincipal' is
+%% For MPNS, `PlatformPrincipal' is
 %% ```
 %% TLS certificate''' and `PlatformCredential' is
 %% ```
 %% private key'''.
 %%
-%% For `WNS', `PlatformPrincipal' is
+%% For WNS, `PlatformPrincipal' is
 %% ```
 %% Package Security Identifier''' and `PlatformCredential' is
 %% ```

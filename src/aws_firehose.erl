@@ -6,9 +6,10 @@
 %% Amazon Data Firehose was previously known as Amazon Kinesis Data Firehose.
 %%
 %% Amazon Data Firehose is a fully managed service that delivers real-time
-%% streaming data to destinations such as Amazon Simple Storage Service
-%% (Amazon S3), Amazon
-%% OpenSearch Service, Amazon Redshift, Splunk, and various other supportd
+%% streaming
+%% data to destinations such as Amazon Simple Storage Service (Amazon S3),
+%% Amazon OpenSearch
+%% Service, Amazon Redshift, Splunk, and various other supported
 %% destinations.
 -module(aws_firehose).
 
@@ -169,6 +170,7 @@
 %%   <<"S3BackupMode">> => list(any()),
 %%   <<"S3Update">> => s3_destination_update(),
 %%   <<"Schema">> => string(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration(),
 %%   <<"SnowflakeRoleConfiguration">> => snowflake_role_configuration(),
 %%   <<"Table">> => string(),
 %%   <<"User">> => string()
@@ -264,7 +266,8 @@
 %%   <<"RetryOptions">> => http_endpoint_retry_options(),
 %%   <<"RoleARN">> => string(),
 %%   <<"S3BackupMode">> => list(any()),
-%%   <<"S3DestinationDescription">> => s3_destination_description()
+%%   <<"S3DestinationDescription">> => s3_destination_description(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration()
 %% }
 -type http_endpoint_destination_description() :: #{binary() => any()}.
 
@@ -356,7 +359,8 @@
 %%   <<"RetryOptions">> => http_endpoint_retry_options(),
 %%   <<"RoleARN">> => string(),
 %%   <<"S3BackupMode">> => list(any()),
-%%   <<"S3Configuration">> => s3_destination_configuration()
+%%   <<"S3Configuration">> => s3_destination_configuration(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration()
 %% }
 -type http_endpoint_destination_configuration() :: #{binary() => any()}.
 
@@ -389,6 +393,7 @@
 %%   <<"S3BackupMode">> => list(any()),
 %%   <<"S3DestinationDescription">> => s3_destination_description(),
 %%   <<"Schema">> => string(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration(),
 %%   <<"SnowflakeRoleConfiguration">> => snowflake_role_configuration(),
 %%   <<"SnowflakeVpcConfiguration">> => snowflake_vpc_configuration(),
 %%   <<"Table">> => string(),
@@ -491,6 +496,7 @@
 %%   <<"S3BackupMode">> => list(any()),
 %%   <<"S3Configuration">> => s3_destination_configuration(),
 %%   <<"Schema">> => string(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration(),
 %%   <<"SnowflakeRoleConfiguration">> => snowflake_role_configuration(),
 %%   <<"SnowflakeVpcConfiguration">> => snowflake_vpc_configuration(),
 %%   <<"Table">> => string(),
@@ -528,7 +534,8 @@
 %%   <<"ProcessingConfiguration">> => processing_configuration(),
 %%   <<"RetryOptions">> => splunk_retry_options(),
 %%   <<"S3BackupMode">> => list(any()),
-%%   <<"S3Update">> => s3_destination_update()
+%%   <<"S3Update">> => s3_destination_update(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration()
 %% }
 -type splunk_destination_update() :: #{binary() => any()}.
 
@@ -609,6 +616,7 @@
 %%   <<"S3BackupMode">> => list(any()),
 %%   <<"S3BackupUpdate">> => s3_destination_update(),
 %%   <<"S3Update">> => s3_destination_update(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration(),
 %%   <<"Username">> => string()
 %% }
 -type redshift_destination_update() :: #{binary() => any()}.
@@ -676,7 +684,8 @@
 %%   <<"ProcessingConfiguration">> => processing_configuration(),
 %%   <<"RetryOptions">> => splunk_retry_options(),
 %%   <<"S3BackupMode">> => list(any()),
-%%   <<"S3Configuration">> => s3_destination_configuration()
+%%   <<"S3Configuration">> => s3_destination_configuration(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration()
 %% }
 -type splunk_destination_configuration() :: #{binary() => any()}.
 
@@ -850,6 +859,14 @@
 -type orc_ser_de() :: #{binary() => any()}.
 
 %% Example:
+%% secrets_manager_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"RoleARN">> => string(),
+%%   <<"SecretARN">> => string()
+%% }
+-type secrets_manager_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% stop_delivery_stream_encryption_output() :: #{
 
 %% }
@@ -919,6 +936,7 @@
 %%   <<"S3BackupDescription">> => s3_destination_description(),
 %%   <<"S3BackupMode">> => list(any()),
 %%   <<"S3DestinationDescription">> => s3_destination_description(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration(),
 %%   <<"Username">> => string()
 %% }
 -type redshift_destination_description() :: #{binary() => any()}.
@@ -935,6 +953,7 @@
 %%   <<"S3BackupConfiguration">> => s3_destination_configuration(),
 %%   <<"S3BackupMode">> => list(any()),
 %%   <<"S3Configuration">> => s3_destination_configuration(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration(),
 %%   <<"Username">> => string()
 %% }
 -type redshift_destination_configuration() :: #{binary() => any()}.
@@ -1123,7 +1142,8 @@
 %%   <<"ProcessingConfiguration">> => processing_configuration(),
 %%   <<"RetryOptions">> => splunk_retry_options(),
 %%   <<"S3BackupMode">> => list(any()),
-%%   <<"S3DestinationDescription">> => s3_destination_description()
+%%   <<"S3DestinationDescription">> => s3_destination_description(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration()
 %% }
 -type splunk_destination_description() :: #{binary() => any()}.
 
@@ -1144,7 +1164,8 @@
 %%   <<"RetryOptions">> => http_endpoint_retry_options(),
 %%   <<"RoleARN">> => string(),
 %%   <<"S3BackupMode">> => list(any()),
-%%   <<"S3Update">> => s3_destination_update()
+%%   <<"S3Update">> => s3_destination_update(),
+%%   <<"SecretsManagerConfiguration">> => secrets_manager_configuration()
 %% }
 -type http_endpoint_destination_update() :: #{binary() => any()}.
 
@@ -1689,7 +1710,7 @@ put_record_batch(Client, Input, Options)
 %% manage the
 %% grant.
 %%
-%% For the KMS grant creation to be successful, Firehose APIs
+%% For the KMS grant creation to be successful, the Firehose API operations
 %% `StartDeliveryStreamEncryption' and `CreateDeliveryStream' should
 %% not be called with session credentials that are more than 6 hours old.
 %%

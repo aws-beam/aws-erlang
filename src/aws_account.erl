@@ -4,7 +4,9 @@
 %% @doc Operations for Amazon Web Services Account Management
 -module(aws_account).
 
--export([delete_alternate_contact/2,
+-export([accept_primary_email_update/2,
+         accept_primary_email_update/3,
+         delete_alternate_contact/2,
          delete_alternate_contact/3,
          disable_region/2,
          disable_region/3,
@@ -14,6 +16,8 @@
          get_alternate_contact/3,
          get_contact_information/2,
          get_contact_information/3,
+         get_primary_email/2,
+         get_primary_email/3,
          get_region_opt_status/2,
          get_region_opt_status/3,
          list_regions/2,
@@ -21,10 +25,28 @@
          put_alternate_contact/2,
          put_alternate_contact/3,
          put_contact_information/2,
-         put_contact_information/3]).
+         put_contact_information/3,
+         start_primary_email_update/2,
+         start_primary_email_update/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% accept_primary_email_update_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Otp">> := string(),
+%%   <<"PrimaryEmail">> := string()
+%% }
+-type accept_primary_email_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% accept_primary_email_update_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type accept_primary_email_update_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -124,6 +146,20 @@
 
 
 %% Example:
+%% get_primary_email_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_primary_email_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_primary_email_response() :: #{
+%%   <<"PrimaryEmail">> => string()
+%% }
+-type get_primary_email_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_region_opt_status_request() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"RegionName">> := string()
@@ -200,6 +236,21 @@
 
 
 %% Example:
+%% start_primary_email_update_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"PrimaryEmail">> := string()
+%% }
+-type start_primary_email_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_primary_email_update_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type start_primary_email_update_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -221,6 +272,14 @@
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+-type accept_primary_email_update_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_alternate_contact_errors() ::
     validation_exception() | 
@@ -257,6 +316,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_primary_email_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_region_opt_status_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
@@ -281,9 +347,54 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type start_primary_email_update_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Accepts the request that originated from
+%% `StartPrimaryEmailUpdate' to update the primary email address (also
+%% known
+%% as the root user email address) for the specified account.
+-spec accept_primary_email_update(aws_client:aws_client(), accept_primary_email_update_request()) ->
+    {ok, accept_primary_email_update_response(), tuple()} |
+    {error, any()} |
+    {error, accept_primary_email_update_errors(), tuple()}.
+accept_primary_email_update(Client, Input) ->
+    accept_primary_email_update(Client, Input, []).
+
+-spec accept_primary_email_update(aws_client:aws_client(), accept_primary_email_update_request(), proplists:proplist()) ->
+    {ok, accept_primary_email_update_response(), tuple()} |
+    {error, any()} |
+    {error, accept_primary_email_update_errors(), tuple()}.
+accept_primary_email_update(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/acceptPrimaryEmailUpdate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified alternate contact from an Amazon Web Services
 %% account.
@@ -333,6 +444,10 @@ delete_alternate_contact(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables (opts-out) a particular Region for an account.
+%%
+%% The act of disabling a Region will remove all IAM access to any resources
+%% that
+%% reside in that Region.
 -spec disable_region(aws_client:aws_client(), disable_region_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -468,6 +583,40 @@ get_contact_information(Client, Input) ->
 get_contact_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getContactInformation"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the primary email address for the specified account.
+-spec get_primary_email(aws_client:aws_client(), get_primary_email_request()) ->
+    {ok, get_primary_email_response(), tuple()} |
+    {error, any()} |
+    {error, get_primary_email_errors(), tuple()}.
+get_primary_email(Client, Input) ->
+    get_primary_email(Client, Input, []).
+
+-spec get_primary_email(aws_client:aws_client(), get_primary_email_request(), proplists:proplist()) ->
+    {ok, get_primary_email_response(), tuple()} |
+    {error, any()} |
+    {error, get_primary_email_errors(), tuple()}.
+get_primary_email(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/getPrimaryEmail"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -628,6 +777,42 @@ put_contact_information(Client, Input) ->
 put_contact_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/putContactInformation"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts the process to update the primary email address for the
+%% specified
+%% account.
+-spec start_primary_email_update(aws_client:aws_client(), start_primary_email_update_request()) ->
+    {ok, start_primary_email_update_response(), tuple()} |
+    {error, any()} |
+    {error, start_primary_email_update_errors(), tuple()}.
+start_primary_email_update(Client, Input) ->
+    start_primary_email_update(Client, Input, []).
+
+-spec start_primary_email_update(aws_client:aws_client(), start_primary_email_update_request(), proplists:proplist()) ->
+    {ok, start_primary_email_update_response(), tuple()} |
+    {error, any()} |
+    {error, start_primary_email_update_errors(), tuple()}.
+start_primary_email_update(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/startPrimaryEmailUpdate"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

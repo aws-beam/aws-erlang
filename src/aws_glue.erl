@@ -671,6 +671,15 @@
 -type job_bookmarks_encryption() :: #{binary() => any()}.
 
 %% Example:
+%% view_definition_input() :: #{
+%%   <<"Definer">> => string(),
+%%   <<"IsProtected">> => boolean(),
+%%   <<"Representations">> => list(view_representation_input()()),
+%%   <<"SubObjects">> => list(string()())
+%% }
+-type view_definition_input() :: #{binary() => any()}.
+
+%% Example:
 %% encryption_configuration() :: #{
 %%   <<"CloudWatchEncryption">> => cloud_watch_encryption(),
 %%   <<"JobBookmarksEncryption">> => job_bookmarks_encryption(),
@@ -1026,10 +1035,12 @@
 %% update_table_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
+%%   <<"Force">> => boolean(),
 %%   <<"SkipArchive">> => boolean(),
 %%   <<"TableInput">> := table_input(),
 %%   <<"TransactionId">> => string(),
-%%   <<"VersionId">> => string()
+%%   <<"VersionId">> => string(),
+%%   <<"ViewUpdateAction">> => list(any())
 %% }
 -type update_table_request() :: #{binary() => any()}.
 
@@ -5250,6 +5261,7 @@
 %%   <<"StorageDescriptor">> => storage_descriptor(),
 %%   <<"TableType">> => string(),
 %%   <<"TargetTable">> => table_identifier(),
+%%   <<"ViewDefinition">> => view_definition_input(),
 %%   <<"ViewExpandedText">> => string(),
 %%   <<"ViewOriginalText">> => string()
 %% }
@@ -6261,6 +6273,7 @@
 %%   <<"Dialect">> => list(any()),
 %%   <<"DialectVersion">> => string(),
 %%   <<"IsStale">> => boolean(),
+%%   <<"ValidationConnection">> => string(),
 %%   <<"ViewExpandedText">> => string(),
 %%   <<"ViewOriginalText">> => string()
 %% }
@@ -6770,6 +6783,16 @@
 
 %% }
 -type delete_security_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% view_representation_input() :: #{
+%%   <<"Dialect">> => list(any()),
+%%   <<"DialectVersion">> => string(),
+%%   <<"ValidationConnection">> => string(),
+%%   <<"ViewExpandedText">> => string(),
+%%   <<"ViewOriginalText">> => string()
+%% }
+-type view_representation_input() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_table_optimizer_response() :: #{

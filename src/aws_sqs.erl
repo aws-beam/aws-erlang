@@ -1604,14 +1604,16 @@ remove_permission(Client, Input, Options)
 %% @doc Delivers a message to the specified queue.
 %%
 %% A message can include only XML, JSON, and unformatted text. The following
-%% Unicode characters are allowed:
+%% Unicode characters are allowed. For more information, see the W3C
+%% specification for characters: http://www.w3.org/TR/REC-xml/#charsets.
 %%
 %% `#x9' | `#xA' | `#xD' | `#x20' to `#xD7FF' |
 %% `#xE000' to `#xFFFD' | `#x10000' to `#x10FFFF'
 %%
-%% Any characters not included in this list will be rejected. For more
-%% information, see the W3C specification for characters:
-%% http://www.w3.org/TR/REC-xml/#charsets.
+%% Amazon SQS does not throw an exception or completely reject the message if
+%% it contains invalid characters. Instead, it replaces those invalid
+%% characters with `U+FFFD' before storing the message in the queue, as
+%% long as the message body contains at least one valid character.
 -spec send_message(aws_client:aws_client(), send_message_request()) ->
     {ok, send_message_result(), tuple()} |
     {error, any()} |
@@ -1653,14 +1655,16 @@ send_message(Client, Input, Options)
 %% bytes).
 %%
 %% A message can include only XML, JSON, and unformatted text. The following
-%% Unicode characters are allowed:
+%% Unicode characters are allowed. For more information, see the W3C
+%% specification for characters: http://www.w3.org/TR/REC-xml/#charsets.
 %%
 %% `#x9' | `#xA' | `#xD' | `#x20' to `#xD7FF' |
 %% `#xE000' to `#xFFFD' | `#x10000' to `#x10FFFF'
 %%
-%% Any characters not included in this list will be rejected. For more
-%% information, see the W3C specification for characters:
-%% http://www.w3.org/TR/REC-xml/#charsets.
+%% Amazon SQS does not throw an exception or completely reject the message if
+%% it contains invalid characters. Instead, it replaces those invalid
+%% characters with `U+FFFD' before storing the message in the queue, as
+%% long as the message body contains at least one valid character.
 %%
 %% If you don't specify the `DelaySeconds' parameter for an entry,
 %% Amazon SQS uses
@@ -1683,16 +1687,15 @@ send_message_batch(Client, Input, Options)
 
 %% @doc Sets the value of one or more queue attributes, like a policy.
 %%
-%% When you change a queue's attributes,
-%% the change can take up to 60 seconds for most of the attributes to
-%% propagate throughout
-%% the Amazon SQS system. Changes made to the `MessageRetentionPeriod'
-%% attribute can
-%% take up to 15 minutes and will impact existing messages in the queue
-%% potentially causing
-%% them to be expired and deleted if the `MessageRetentionPeriod' is
-%% reduced
-%% below the age of existing messages.
+%% When you change a
+%% queue's attributes, the change can take up to 60 seconds for most of
+%% the attributes to
+%% propagate throughout the Amazon SQS system. Changes made to the
+%% `MessageRetentionPeriod' attribute can take up to 15 minutes and will
+%% impact existing messages in the queue potentially causing them to be
+%% expired and deleted
+%% if the `MessageRetentionPeriod' is reduced below the age of existing
+%% messages.
 %%
 %% In the future, new attributes might be added. If you write code that calls
 %% this action, we recommend that you structure your code so that it can

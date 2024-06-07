@@ -67,6 +67,8 @@
          describe_tracker/5,
          disassociate_tracker_consumer/4,
          disassociate_tracker_consumer/5,
+         forecast_geofence_events/3,
+         forecast_geofence_events/4,
          get_device_position/3,
          get_device_position/5,
          get_device_position/6,
@@ -134,7 +136,9 @@
          update_route_calculator/3,
          update_route_calculator/4,
          update_tracker/3,
-         update_tracker/4]).
+         update_tracker/4,
+         verify_device_position/3,
+         verify_device_position/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -228,6 +232,19 @@
 %%   <<"GeofenceId">> => string()
 %% }
 -type batch_put_geofence_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% forecasted_event() :: #{
+%%   <<"EventId">> => string(),
+%%   <<"EventType">> => string(),
+%%   <<"ForecastedBreachTime">> => non_neg_integer(),
+%%   <<"GeofenceId">> => string(),
+%%   <<"GeofenceProperties">> => map(),
+%%   <<"IsDeviceInGeofence">> => [boolean()],
+%%   <<"NearestDistance">> => float()
+%% }
+-type forecasted_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -650,6 +667,14 @@
 
 
 %% Example:
+%% lte_local_id() :: #{
+%%   <<"Earfcn">> => integer(),
+%%   <<"Pci">> => integer()
+%% }
+-type lte_local_id() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_geofence_response_entry() :: #{
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"GeofenceId">> => string(),
@@ -705,6 +730,27 @@
 %%   <<"CreateTime">> := non_neg_integer()
 %% }
 -type create_geofence_collection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% wi_fi_access_point() :: #{
+%%   <<"MacAddress">> => [string()],
+%%   <<"Rss">> => [integer()]
+%% }
+-type wi_fi_access_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_state() :: #{
+%%   <<"Accuracy">> => positional_accuracy(),
+%%   <<"CellSignals">> => cell_signals(),
+%%   <<"DeviceId">> => string(),
+%%   <<"Ipv4Address">> => [string()],
+%%   <<"Position">> => list([float()]()),
+%%   <<"SampleTime">> => non_neg_integer(),
+%%   <<"WiFiAccessPoints">> => list(wi_fi_access_point()())
+%% }
+-type device_state() :: #{binary() => any()}.
 
 %% Example:
 %% describe_tracker_request() :: #{}
@@ -804,11 +850,27 @@
 
 
 %% Example:
+%% forecast_geofence_events_device_state() :: #{
+%%   <<"Position">> => list([float()]()),
+%%   <<"Speed">> => [float()]
+%% }
+-type forecast_geofence_events_device_state() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"Message">> => [string()],
 %%   <<"Name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_device_position_request() :: #{
+%%   <<"DeviceState">> := device_state(),
+%%   <<"DistanceUnit">> => string()
+%% }
+-type verify_device_position_request() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_tracker_consumer_request() :: #{}
@@ -949,6 +1011,18 @@
 %%   <<"MapName">> := string()
 %% }
 -type create_map_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% forecast_geofence_events_request() :: #{
+%%   <<"DeviceState">> := forecast_geofence_events_device_state(),
+%%   <<"DistanceUnit">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"SpeedUnit">> => string(),
+%%   <<"TimeHorizonMinutes">> => [float()]
+%% }
+-type forecast_geofence_events_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1241,6 +1315,29 @@
 
 
 %% Example:
+%% lte_cell_details() :: #{
+%%   <<"CellId">> => integer(),
+%%   <<"LocalId">> => lte_local_id(),
+%%   <<"Mcc">> => [integer()],
+%%   <<"Mnc">> => [integer()],
+%%   <<"NetworkMeasurements">> => list(lte_network_measurements()()),
+%%   <<"NrCapable">> => [boolean()],
+%%   <<"Rsrp">> => integer(),
+%%   <<"Rsrq">> => float(),
+%%   <<"Tac">> => [integer()],
+%%   <<"TimingAdvance">> => [integer()]
+%% }
+-type lte_cell_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% cell_signals() :: #{
+%%   <<"LteCellDetails">> => list(lte_cell_details()())
+%% }
+-type cell_signals() :: #{binary() => any()}.
+
+
+%% Example:
 %% calculate_route_matrix_summary() :: #{
 %%   <<"DataSource">> => [string()],
 %%   <<"DistanceUnit">> => string(),
@@ -1278,6 +1375,17 @@
 %%   <<"RouteBBox">> => list([float()]())
 %% }
 -type calculate_route_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% lte_network_measurements() :: #{
+%%   <<"CellId">> => integer(),
+%%   <<"Earfcn">> => integer(),
+%%   <<"Pci">> => integer(),
+%%   <<"Rsrp">> => integer(),
+%%   <<"Rsrq">> => float()
+%% }
+-type lte_network_measurements() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1370,6 +1478,17 @@
 %% }
 -type list_trackers_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% verify_device_position_response() :: #{
+%%   <<"DeviceId">> => string(),
+%%   <<"DistanceUnit">> => string(),
+%%   <<"InferredState">> => inferred_state(),
+%%   <<"ReceivedTime">> => non_neg_integer(),
+%%   <<"SampleTime">> => non_neg_integer()
+%% }
+-type verify_device_position_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_place_index_request() :: #{}
 -type delete_place_index_request() :: #{}.
@@ -1406,6 +1525,7 @@
 %% Example:
 %% geofence_geometry() :: #{
 %%   <<"Circle">> => circle(),
+%%   <<"Geobuf">> => binary(),
 %%   <<"Polygon">> => list(list(list([float()]())())())
 %% }
 -type geofence_geometry() :: #{binary() => any()}.
@@ -1440,6 +1560,16 @@
 %%   <<"Error">> => route_matrix_entry_error()
 %% }
 -type route_matrix_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% inferred_state() :: #{
+%%   <<"Accuracy">> => positional_accuracy(),
+%%   <<"DeviationDistance">> => [float()],
+%%   <<"Position">> => list([float()]()),
+%%   <<"ProxyDetected">> => [boolean()]
+%% }
+-type inferred_state() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1616,6 +1746,16 @@
 %%   <<"UpdateTime">> => non_neg_integer()
 %% }
 -type list_trackers_response_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% forecast_geofence_events_response() :: #{
+%%   <<"DistanceUnit">> => string(),
+%%   <<"ForecastedEvents">> => list(forecasted_event()()),
+%%   <<"NextToken">> => string(),
+%%   <<"SpeedUnit">> => string()
+%% }
+-type forecast_geofence_events_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1828,6 +1968,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type forecast_geofence_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_device_position_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2026,6 +2173,13 @@
     resource_not_found_exception().
 
 -type update_tracker_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type verify_device_position_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3248,6 +3402,55 @@ disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Evaluates device positions against
+%% geofence geometries from a given geofence collection.
+%%
+%% The event forecasts three states for which
+%% a device can be in relative to a geofence:
+%%
+%% `ENTER': If a device is outside of a geofence, but would breach the
+%% fence if the device is moving at its current speed within time horizon
+%% window.
+%%
+%% `EXIT': If a device is inside of a geofence, but would breach the
+%% fence if the device is moving at its current speed within time horizon
+%% window.
+%%
+%% `IDLE': If a device is inside of a geofence, and the device is not
+%% moving.
+-spec forecast_geofence_events(aws_client:aws_client(), binary() | list(), forecast_geofence_events_request()) ->
+    {ok, forecast_geofence_events_response(), tuple()} |
+    {error, any()} |
+    {error, forecast_geofence_events_errors(), tuple()}.
+forecast_geofence_events(Client, CollectionName, Input) ->
+    forecast_geofence_events(Client, CollectionName, Input, []).
+
+-spec forecast_geofence_events(aws_client:aws_client(), binary() | list(), forecast_geofence_events_request(), proplists:proplist()) ->
+    {ok, forecast_geofence_events_response(), tuple()} |
+    {error, any()} |
+    {error, forecast_geofence_events_errors(), tuple()}.
+forecast_geofence_events(Client, CollectionName, Input0, Options0) ->
+    Method = post,
+    Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/forecast-geofence-events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves a device's most recent position according to its sample
 %% time.
 %%
@@ -3327,6 +3530,9 @@ get_device_position_history(Client, DeviceId, TrackerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the geofence details from a geofence collection.
+%%
+%% The returned geometry will always match the geometry format used when the
+%% geofence was created.
 -spec get_geofence(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_geofence_response(), tuple()} |
     {error, any()} |
@@ -4464,6 +4670,42 @@ update_tracker(Client, TrackerName, Input) ->
 update_tracker(Client, TrackerName, Input0, Options0) ->
     Method = patch,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Verifies the integrity of the device's position by determining if
+%% it was reported behind a proxy, and by comparing it to an inferred
+%% position estimated based on the device's state.
+-spec verify_device_position(aws_client:aws_client(), binary() | list(), verify_device_position_request()) ->
+    {ok, verify_device_position_response(), tuple()} |
+    {error, any()} |
+    {error, verify_device_position_errors(), tuple()}.
+verify_device_position(Client, TrackerName, Input) ->
+    verify_device_position(Client, TrackerName, Input, []).
+
+-spec verify_device_position(aws_client:aws_client(), binary() | list(), verify_device_position_request(), proplists:proplist()) ->
+    {ok, verify_device_position_response(), tuple()} |
+    {error, any()} |
+    {error, verify_device_position_errors(), tuple()}.
+verify_device_position(Client, TrackerName, Input0, Options0) ->
+    Method = post,
+    Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/positions/verify"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
