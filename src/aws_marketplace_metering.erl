@@ -521,7 +521,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"metering.marketplace">>},
+    Client1 = Client#{service => <<"aws-marketplace">>},
     Host = build_host(<<"metering.marketplace">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

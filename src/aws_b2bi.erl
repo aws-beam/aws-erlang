@@ -114,7 +114,7 @@
 
 %% Example:
 %% create_partnership_request() :: #{
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> := list(string()()),
 %%   <<"clientToken">> => [string()],
 %%   <<"email">> := string(),
 %%   <<"name">> := string(),
@@ -749,6 +749,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_capabilities_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_partnerships_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -756,17 +762,30 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_profiles_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_transformers_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type start_transformer_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type tag_resource_errors() ::
     throttling_exception() | 
@@ -1111,14 +1130,16 @@ get_transformer_job(Client, Input, Options)
 %% incoming EDI documents into JSON or XML outputs.
 -spec list_capabilities(aws_client:aws_client(), list_capabilities_request()) ->
     {ok, list_capabilities_response(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, list_capabilities_errors(), tuple()}.
 list_capabilities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_capabilities(Client, Input, []).
 
 -spec list_capabilities(aws_client:aws_client(), list_capabilities_request(), proplists:proplist()) ->
     {ok, list_capabilities_response(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, list_capabilities_errors(), tuple()}.
 list_capabilities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCapabilities">>, Input, Options).
@@ -1152,14 +1173,16 @@ list_partnerships(Client, Input, Options)
 %% a private network.
 -spec list_profiles(aws_client:aws_client(), list_profiles_request()) ->
     {ok, list_profiles_response(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, list_profiles_errors(), tuple()}.
 list_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_profiles(Client, Input, []).
 
 -spec list_profiles(aws_client:aws_client(), list_profiles_request(), proplists:proplist()) ->
     {ok, list_profiles_response(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, list_profiles_errors(), tuple()}.
 list_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProfiles">>, Input, Options).
@@ -1192,14 +1215,16 @@ list_tags_for_resource(Client, Input, Options)
 %% information to the output file.
 -spec list_transformers(aws_client:aws_client(), list_transformers_request()) ->
     {ok, list_transformers_response(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, list_transformers_errors(), tuple()}.
 list_transformers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_transformers(Client, Input, []).
 
 -spec list_transformers(aws_client:aws_client(), list_transformers_request(), proplists:proplist()) ->
     {ok, list_transformers_response(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, list_transformers_errors(), tuple()}.
 list_transformers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTransformers">>, Input, Options).

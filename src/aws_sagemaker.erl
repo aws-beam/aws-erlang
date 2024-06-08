@@ -5754,6 +5754,7 @@
 %%   <<"ContainerStartupHealthCheckTimeoutInSeconds">> => integer(),
 %%   <<"CoreDumpConfig">> => production_variant_core_dump_config(),
 %%   <<"EnableSSMAccess">> => boolean(),
+%%   <<"InferenceAmiVersion">> => list(any()),
 %%   <<"InitialInstanceCount">> => integer(),
 %%   <<"InitialVariantWeight">> => float(),
 %%   <<"InstanceType">> => list(any()),

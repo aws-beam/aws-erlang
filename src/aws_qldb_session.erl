@@ -285,7 +285,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"session.qldb">>},
+    Client1 = Client#{service => <<"qldb">>},
     Host = build_host(<<"session.qldb">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

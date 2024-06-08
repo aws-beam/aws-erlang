@@ -1375,7 +1375,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"ingest.timestream">>},
+    Client1 = Client#{service => <<"timestream">>},
     Host = build_host(<<"ingest.timestream">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

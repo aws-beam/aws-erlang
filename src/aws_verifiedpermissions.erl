@@ -205,6 +205,13 @@
 -type delete_policy_template_input() :: #{binary() => any()}.
 
 %% Example:
+%% open_id_connect_identity_token_configuration() :: #{
+%%   <<"clientIds">> => list(string()()),
+%%   <<"principalIdClaim">> => string()
+%% }
+-type open_id_connect_identity_token_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% list_policy_templates_output() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"policyTemplates">> => list(policy_template_item()())
@@ -238,6 +245,20 @@
 %%   <<"resource">> => entity_identifier()
 %% }
 -type template_linked_policy_definition() :: #{binary() => any()}.
+
+%% Example:
+%% open_id_connect_access_token_configuration() :: #{
+%%   <<"audiences">> => list(string()()),
+%%   <<"principalIdClaim">> => string()
+%% }
+-type open_id_connect_access_token_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% open_id_connect_access_token_configuration_detail() :: #{
+%%   <<"audiences">> => list(string()()),
+%%   <<"principalIdClaim">> => string()
+%% }
+-type open_id_connect_access_token_configuration_detail() :: #{binary() => any()}.
 
 %% Example:
 %% create_policy_store_input() :: #{
@@ -326,6 +347,15 @@
 -type static_policy_definition_item() :: #{binary() => any()}.
 
 %% Example:
+%% open_id_connect_configuration_detail() :: #{
+%%   <<"entityIdPrefix">> => string(),
+%%   <<"groupConfiguration">> => open_id_connect_group_configuration_detail(),
+%%   <<"issuer">> => string(),
+%%   <<"tokenSelection">> => list()
+%% }
+-type open_id_connect_configuration_detail() :: #{binary() => any()}.
+
+%% Example:
 %% create_policy_store_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdDate">> => non_neg_integer(),
@@ -379,6 +409,13 @@
 %%   <<"policyStoreId">> => string()
 %% }
 -type put_schema_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_open_id_connect_group_configuration() :: #{
+%%   <<"groupClaim">> => string(),
+%%   <<"groupEntityType">> => string()
+%% }
+-type update_open_id_connect_group_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% evaluation_error_item() :: #{
@@ -442,6 +479,15 @@
 -type batch_is_authorized_with_token_input() :: #{binary() => any()}.
 
 %% Example:
+%% open_id_connect_configuration() :: #{
+%%   <<"entityIdPrefix">> => string(),
+%%   <<"groupConfiguration">> => open_id_connect_group_configuration(),
+%%   <<"issuer">> => string(),
+%%   <<"tokenSelection">> => list()
+%% }
+-type open_id_connect_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% update_policy_template_output() :: #{
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
@@ -485,6 +531,15 @@
 %%   <<"serviceCode">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_open_id_connect_configuration() :: #{
+%%   <<"entityIdPrefix">> => string(),
+%%   <<"groupConfiguration">> => update_open_id_connect_group_configuration(),
+%%   <<"issuer">> => string(),
+%%   <<"tokenSelection">> => list()
+%% }
+-type update_open_id_connect_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_policy_input() :: #{
@@ -551,6 +606,15 @@
 -type put_schema_input() :: #{binary() => any()}.
 
 %% Example:
+%% open_id_connect_configuration_item() :: #{
+%%   <<"entityIdPrefix">> => string(),
+%%   <<"groupConfiguration">> => open_id_connect_group_configuration_item(),
+%%   <<"issuer">> => string(),
+%%   <<"tokenSelection">> => list()
+%% }
+-type open_id_connect_configuration_item() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"path">> => [string()]
@@ -584,6 +648,20 @@
 %%   <<"policyStoreId">> := string()
 %% }
 -type delete_identity_source_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_open_id_connect_identity_token_configuration() :: #{
+%%   <<"clientIds">> => list(string()()),
+%%   <<"principalIdClaim">> => string()
+%% }
+-type update_open_id_connect_identity_token_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% open_id_connect_group_configuration_item() :: #{
+%%   <<"groupClaim">> => string(),
+%%   <<"groupEntityType">> => string()
+%% }
+-type open_id_connect_group_configuration_item() :: #{binary() => any()}.
 
 %% Example:
 %% cognito_user_pool_configuration() :: #{
@@ -737,6 +815,13 @@
 -type resource_conflict() :: #{binary() => any()}.
 
 %% Example:
+%% open_id_connect_access_token_configuration_item() :: #{
+%%   <<"audiences">> => list(string()()),
+%%   <<"principalIdClaim">> => string()
+%% }
+-type open_id_connect_access_token_configuration_item() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()()),
 %%   <<"message">> => [string()]
@@ -792,12 +877,26 @@
 -type get_policy_template_input() :: #{binary() => any()}.
 
 %% Example:
+%% update_open_id_connect_access_token_configuration() :: #{
+%%   <<"audiences">> => list(string()()),
+%%   <<"principalIdClaim">> => string()
+%% }
+-type update_open_id_connect_access_token_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"quotaCode">> => [string()],
 %%   <<"serviceCode">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% open_id_connect_group_configuration_detail() :: #{
+%%   <<"groupClaim">> => string(),
+%%   <<"groupEntityType">> => string()
+%% }
+-type open_id_connect_group_configuration_detail() :: #{binary() => any()}.
 
 %% Example:
 %% identity_source_item() :: #{
@@ -810,6 +909,13 @@
 %%   <<"principalEntityType">> => string()
 %% }
 -type identity_source_item() :: #{binary() => any()}.
+
+%% Example:
+%% open_id_connect_group_configuration() :: #{
+%%   <<"groupClaim">> => string(),
+%%   <<"groupEntityType">> => string()
+%% }
+-type open_id_connect_group_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% identity_source_filter() :: #{
@@ -885,6 +991,13 @@
 -type list_policy_stores_output() :: #{binary() => any()}.
 
 %% Example:
+%% open_id_connect_identity_token_configuration_item() :: #{
+%%   <<"clientIds">> => list(string()()),
+%%   <<"principalIdClaim">> => string()
+%% }
+-type open_id_connect_identity_token_configuration_item() :: #{binary() => any()}.
+
+%% Example:
 %% get_identity_source_output() :: #{
 %%   <<"configuration">> => list(),
 %%   <<"createdDate">> => non_neg_integer(),
@@ -895,6 +1008,13 @@
 %%   <<"principalEntityType">> => string()
 %% }
 -type get_identity_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% open_id_connect_identity_token_configuration_detail() :: #{
+%%   <<"clientIds">> => list(string()()),
+%%   <<"principalIdClaim">> => string()
+%% }
+-type open_id_connect_identity_token_configuration_detail() :: #{binary() => any()}.
 
 %% Example:
 %% get_policy_output() :: #{
@@ -1098,43 +1218,48 @@ batch_is_authorized_with_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchIsAuthorizedWithToken">>, Input, Options).
 
-%% @doc Creates a reference to an Amazon Cognito user pool as an external
-%% identity provider (IdP).
+%% @doc Adds an identity source to a policy store–an Amazon Cognito user pool
+%% or OpenID Connect
+%% (OIDC) identity provider (IdP).
 %%
 %% After you create an identity source, you can use the identities provided
 %% by the IdP as proxies
 %% for the principal in authorization queries that use the
 %% IsAuthorizedWithToken:
 %% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_IsAuthorizedWithToken.html
-%% operation. These identities take the form of tokens that contain claims
-%% about the user,
-%% such as IDs, attributes and group memberships. Amazon Cognito provides
-%% both identity tokens and
-%% access tokens, and Verified Permissions can use either or both. Any
-%% combination of identity and access
-%% tokens results in the same Cedar principal. Verified Permissions
-%% automatically translates the
-%% information about the identities into the standard Cedar attributes that
-%% can be
-%% evaluated by your policies. Because the Amazon Cognito identity and access
-%% tokens can contain
-%% different information, the tokens you choose to use determine which
-%% principal attributes
-%% are available to access when evaluating Cedar policies.
+%% or
+%% BatchIsAuthorizedWithToken:
+%% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_BatchIsAuthorizedWithToken.html
+%% API operations. These identities take the form
+%% of tokens that contain claims about the user, such as IDs, attributes and
+%% group
+%% memberships. Identity sources provide identity (ID) tokens and access
+%% tokens. Verified Permissions
+%% derives information about your user and session from token claims. Access
+%% tokens provide
+%% action `context' to your policies, and ID tokens provide principal
+%% `Attributes'.
 %%
-%% If you delete a Amazon Cognito user pool or user, tokens from that deleted
-%% pool or that deleted user continue to be usable until they expire.
+%% Tokens from an identity source user continue to be usable until they
+%% expire.
+%% Token revocation and resource deletion have no effect on the validity of a
+%% token in your policy store
 %%
-%% To reference a user from this identity source in your Cedar policies, use
-%% the following
-%% syntax.
+%% To reference a user from this identity source in your Cedar policies,
+%% refer to the
+%% following syntax examples.
 %%
-%% IdentityType::&quot;&lt;CognitoUserPoolIdentifier&gt;|&lt;CognitoClientId&gt;
+%% Amazon Cognito user pool:
+%% ```
+%% Namespace::[Entity type]::[User pool ID]|[user principal
+%% attribute]''', for example
+%% `MyCorp::User::us-east-1_EXAMPLE|a1b2c3d4-5678-90ab-cdef-EXAMPLE11111'.
 %%
-%% Where `IdentityType' is the string that you provide to the
-%% `PrincipalEntityType' parameter for this operation. The
-%% `CognitoUserPoolId' and `CognitoClientId' are defined by
-%% the Amazon Cognito user pool.
+%% OpenID Connect (OIDC) provider:
+%% ```
+%% Namespace::[Entity type]::[principalIdClaim]|[user principal
+%% attribute]''', for example
+%% `MyCorp::User::MyOIDCProvider|a1b2c3d4-5678-90ab-cdef-EXAMPLE22222'.
 %%
 %% Verified Permissions is
 %% eventually consistent: https://wikipedia.org/wiki/Eventual_consistency
@@ -1496,8 +1621,10 @@ is_authorized(Client, Input, Options)
 %% by checking its expiration
 %% date and its signature.
 %%
-%% If you delete a Amazon Cognito user pool or user, tokens from that deleted
-%% pool or that deleted user continue to be usable until they expire.
+%% Tokens from an identity source user continue to be usable until they
+%% expire.
+%% Token revocation and resource deletion have no effect on the validity of a
+%% token in your policy store
 -spec is_authorized_with_token(aws_client:aws_client(), is_authorized_with_token_input()) ->
     {ok, is_authorized_with_token_output(), tuple()} |
     {error, any()} |
@@ -1618,7 +1745,7 @@ put_schema(Client, Input, Options)
     request(Client, <<"PutSchema">>, Input, Options).
 
 %% @doc Updates the specified identity source to use a new identity provider
-%% (IdP) source, or to change
+%% (IdP), or to change
 %% the mapping of identities from the IdP to a different principal entity
 %% type.
 %%

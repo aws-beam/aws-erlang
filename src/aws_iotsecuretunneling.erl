@@ -421,7 +421,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"tunneling.iot">>},
+    Client1 = Client#{service => <<"IoTSecuredTunneling">>},
     Host = build_host(<<"api.tunneling.iot">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

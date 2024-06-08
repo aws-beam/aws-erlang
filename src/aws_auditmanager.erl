@@ -524,6 +524,7 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"lastUpdatedBy">> => string(),
 %%   <<"name">> => string(),
+%%   <<"state">> => list(any()),
 %%   <<"tags">> => map(),
 %%   <<"testingInformation">> => string(),
 %%   <<"type">> => list(any())
@@ -1006,6 +1007,7 @@
 
 %% Example:
 %% list_controls_request() :: #{
+%%   <<"controlCatalogId">> => string(),
 %%   <<"controlType">> := list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1799,6 +1801,7 @@
     resource_not_found_exception().
 
 -type create_assessment_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -2066,6 +2069,7 @@
     resource_not_found_exception().
 
 -type update_assessment_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -3572,15 +3576,24 @@ get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a list of all of the Amazon Web Services that you can choose to
-%% include in
-%% your assessment.
+%% @doc Gets a list of the Amazon Web Services from which Audit Manager can
+%% collect
+%% evidence.
 %%
-%% When you create an assessment:
-%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html,
-%% specify which of these services you want to include to
-%% narrow the assessment's scope:
-%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html.
+%% Audit Manager defines which Amazon Web Services are in scope for an
+%% assessment. Audit Manager infers this scope by examining the assessment’s
+%% controls and
+%% their data sources, and then mapping this information to one or more of
+%% the corresponding
+%% Amazon Web Services that are in this list.
+%%
+%% For information about why it's no longer possible to specify services
+%% in scope manually, see
+%% I can't edit the services in scope for my assessment:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/evidence-collection-issues.html#unable-to-edit-services
+%% in
+%% the Troubleshooting section of the Audit Manager user
+%% guide.
 -spec get_services_in_scope(aws_client:aws_client()) ->
     {ok, get_services_in_scope_response(), tuple()} |
     {error, any()} |
@@ -3885,6 +3898,17 @@ list_assessments(Client, QueryMap, HeadersMap, Options0)
 %% your active
 %% assessments.
 %%
+%% Audit Manager supports the control domains that are provided by Amazon Web
+%% Services
+%% Control Catalog. For information about how to find a list of available
+%% control domains, see
+%%
+%% `ListDomains'
+%% :
+%% https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html
+%% in the Amazon Web Services Control
+%% Catalog API Reference.
+%%
 %% A control domain is listed only if at least one of the controls within
 %% that domain
 %% collected evidence on the `lastUpdated' date of
@@ -3934,6 +3958,17 @@ list_control_domain_insights(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists analytics data for control domains within a specified active
 %% assessment.
+%%
+%% Audit Manager supports the control domains that are provided by Amazon Web
+%% Services
+%% Control Catalog. For information about how to find a list of available
+%% control domains, see
+%%
+%% `ListDomains'
+%% :
+%% https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html
+%% in the Amazon Web Services Control
+%% Catalog API Reference.
 %%
 %% A control domain is listed only if at least one of the controls within
 %% that domain
@@ -4071,6 +4106,7 @@ list_controls(Client, ControlType, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"controlCatalogId">>, maps:get(<<"controlCatalogId">>, QueryMap, undefined)},
         {<<"controlType">>, ControlType},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
@@ -4080,7 +4116,8 @@ list_controls(Client, ControlType, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of keywords that are pre-mapped to the specified
-%% control data source.
+%% control data
+%% source.
 -spec list_keywords_for_data_source(aws_client:aws_client(), binary() | list()) ->
     {ok, list_keywords_for_data_source_response(), tuple()} |
     {error, any()} |
