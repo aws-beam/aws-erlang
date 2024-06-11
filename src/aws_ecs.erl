@@ -190,6 +190,7 @@
 %%   <<"computedDesiredCount">> => integer(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"externalId">> => string(),
+%%   <<"fargateEphemeralStorage">> => deployment_ephemeral_storage(),
 %%   <<"id">> => string(),
 %%   <<"launchType">> => list(any()),
 %%   <<"loadBalancers">> => list(load_balancer()()),
@@ -249,6 +250,7 @@
 %%   <<"group">> => string(),
 %%   <<"startedBy">> => string(),
 %%   <<"inferenceAccelerators">> => list(inference_accelerator()()),
+%%   <<"fargateEphemeralStorage">> => task_ephemeral_storage(),
 %%   <<"startedAt">> => non_neg_integer()
 %% }
 -type task() :: #{binary() => any()}.
@@ -360,6 +362,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"desiredCount">> => integer(),
 %%   <<"failedTasks">> => integer(),
+%%   <<"fargateEphemeralStorage">> => deployment_ephemeral_storage(),
 %%   <<"id">> => string(),
 %%   <<"launchType">> => list(any()),
 %%   <<"networkConfiguration">> => network_configuration(),
@@ -730,7 +733,8 @@
 
 %% Example:
 %% cluster_configuration() :: #{
-%%   <<"executeCommandConfiguration">> => execute_command_configuration()
+%%   <<"executeCommandConfiguration">> => execute_command_configuration(),
+%%   <<"managedStorageConfiguration">> => managed_storage_configuration()
 %% }
 -type cluster_configuration() :: #{binary() => any()}.
 
@@ -922,6 +926,13 @@
 %%   <<"name">> => string()
 %% }
 -type container_definition() :: #{binary() => any()}.
+
+%% Example:
+%% managed_storage_configuration() :: #{
+%%   <<"fargateEphemeralStorageKmsKeyId">> => string(),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type managed_storage_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_task_protection_request() :: #{
@@ -1831,6 +1842,13 @@
 -type list_tasks_request() :: #{binary() => any()}.
 
 %% Example:
+%% task_ephemeral_storage() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"sizeInGiB">> => integer()
+%% }
+-type task_ephemeral_storage() :: #{binary() => any()}.
+
+%% Example:
 %% describe_capacity_providers_response() :: #{
 %%   <<"capacityProviders">> => list(capacity_provider()()),
 %%   <<"failures">> => list(failure()()),
@@ -2152,6 +2170,12 @@
 %%   <<"containerInstance">> => container_instance()
 %% }
 -type deregister_container_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_ephemeral_storage() :: #{
+%%   <<"kmsKeyId">> => string()
+%% }
+-type deployment_ephemeral_storage() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_service_connect_defaults_request() :: #{
@@ -3978,6 +4002,13 @@ start_task(Client, Input, Options)
 %% container handles the `SIGTERM' value gracefully and exits within 30
 %% seconds
 %% from receiving it, no `SIGKILL' value is sent.
+%%
+%% For Windows containers, POSIX signals do not work and runtime stops the
+%% container by sending
+%% a `CTRL_SHUTDOWN_EVENT'. For more information, see Unable to react to
+%% graceful shutdown
+%% of (Windows) container #25982: https://github.com/moby/moby/issues/25982
+%% on GitHub.
 %%
 %% The default 30-second timeout can be configured on the Amazon ECS
 %% container agent with
