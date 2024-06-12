@@ -3719,12 +3719,14 @@
 
 %% Example:
 %% oidc_config() :: #{
+%%   <<"AuthenticationRequestExtraParams">> => map(),
 %%   <<"AuthorizationEndpoint">> => string(),
 %%   <<"ClientId">> => string(),
 %%   <<"ClientSecret">> => string(),
 %%   <<"Issuer">> => string(),
 %%   <<"JwksUri">> => string(),
 %%   <<"LogoutEndpoint">> => string(),
+%%   <<"Scope">> => string(),
 %%   <<"TokenEndpoint">> => string(),
 %%   <<"UserInfoEndpoint">> => string()
 %% }
@@ -6930,6 +6932,7 @@
 %% list_model_package_groups_input() :: #{
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
 %%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"CrossAccountFilterOption">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NameContains">> => string(),
 %%   <<"NextToken">> => string(),
@@ -9437,11 +9440,13 @@
 
 %% Example:
 %% oidc_config_for_response() :: #{
+%%   <<"AuthenticationRequestExtraParams">> => map(),
 %%   <<"AuthorizationEndpoint">> => string(),
 %%   <<"ClientId">> => string(),
 %%   <<"Issuer">> => string(),
 %%   <<"JwksUri">> => string(),
 %%   <<"LogoutEndpoint">> => string(),
+%%   <<"Scope">> => string(),
 %%   <<"TokenEndpoint">> => string(),
 %%   <<"UserInfoEndpoint">> => string()
 %% }

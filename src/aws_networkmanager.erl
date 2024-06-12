@@ -315,6 +315,14 @@
 
 
 %% Example:
+%% edge_override() :: #{
+%%   <<"EdgeSets">> => list(list(string()())()),
+%%   <<"UseEdge">> => string()
+%% }
+-type edge_override() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_device_response() :: #{
 %%   <<"Device">> => device()
 %% }
@@ -394,6 +402,14 @@
 %% Example:
 %% get_transit_gateway_peering_request() :: #{}
 -type get_transit_gateway_peering_request() :: #{}.
+
+
+%% Example:
+%% service_insertion_segments() :: #{
+%%   <<"SendTo">> => list(string()()),
+%%   <<"SendVia">> => list(string()())
+%% }
+-type service_insertion_segments() :: #{binary() => any()}.
 
 
 %% Example:
@@ -614,6 +630,16 @@
 
 
 %% Example:
+%% service_insertion_action() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Mode">> => list(any()),
+%%   <<"Via">> => via(),
+%%   <<"WhenSentTo">> => when_sent_to()
+%% }
+-type service_insertion_action() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_site_to_site_vpn_attachment_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
@@ -635,6 +661,15 @@
 
 
 %% Example:
+%% proposed_network_function_group_change() :: #{
+%%   <<"AttachmentPolicyRuleNumber">> => integer(),
+%%   <<"NetworkFunctionGroupName">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type proposed_network_function_group_change() :: #{binary() => any()}.
+
+
+%% Example:
 %% attachment() :: #{
 %%   <<"AttachmentId">> => string(),
 %%   <<"AttachmentPolicyRuleNumber">> => integer(),
@@ -643,7 +678,9 @@
 %%   <<"CoreNetworkId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"EdgeLocation">> => string(),
+%%   <<"NetworkFunctionGroupName">> => string(),
 %%   <<"OwnerAccountId">> => string(),
+%%   <<"ProposedNetworkFunctionGroupChange">> => proposed_network_function_group_change(),
 %%   <<"ProposedSegmentChange">> => proposed_segment_change(),
 %%   <<"ResourceArn">> => string(),
 %%   <<"SegmentName">> => string(),
@@ -659,6 +696,15 @@
 %%   <<"Site">> => site()
 %% }
 -type delete_site_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% core_network_network_function_group_identifier() :: #{
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"EdgeLocation">> => string(),
+%%   <<"NetworkFunctionGroupName">> => string()
+%% }
+-type core_network_network_function_group_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -703,6 +749,7 @@
 %% network_route_destination() :: #{
 %%   <<"CoreNetworkAttachmentId">> => string(),
 %%   <<"EdgeLocation">> => string(),
+%%   <<"NetworkFunctionGroupName">> => string(),
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceType">> => string(),
 %%   <<"SegmentName">> => string(),
@@ -964,6 +1011,13 @@
 
 
 %% Example:
+%% when_sent_to() :: #{
+%%   <<"WhenSentToSegmentsList">> => list(string()())
+%% }
+-type when_sent_to() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_transit_gateway_peering_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
@@ -996,7 +1050,9 @@
 %%   <<"DestinationIdentifier">> => string(),
 %%   <<"EdgeLocations">> => list(string()()),
 %%   <<"InsideCidrBlocks">> => list(string()()),
+%%   <<"NetworkFunctionGroupName">> => string(),
 %%   <<"SegmentName">> => string(),
+%%   <<"ServiceInsertionActions">> => list(service_insertion_action()()),
 %%   <<"SharedSegments">> => list(string()())
 %% }
 -type core_network_change_values() :: #{binary() => any()}.
@@ -1279,6 +1335,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Edges">> => list(core_network_edge()()),
 %%   <<"GlobalNetworkId">> => string(),
+%%   <<"NetworkFunctionGroups">> => list(core_network_network_function_group()()),
 %%   <<"Segments">> => list(core_network_segment()()),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => list(tag()())
@@ -1490,6 +1547,13 @@
 
 
 %% Example:
+%% network_function_group() :: #{
+%%   <<"Name">> => string()
+%% }
+-type network_function_group() :: #{binary() => any()}.
+
+
+%% Example:
 %% core_network_policy() :: #{
 %%   <<"Alias">> => list(any()),
 %%   <<"ChangeSetState">> => list(any()),
@@ -1603,6 +1667,7 @@
 %%   <<"AttachmentId">> => string(),
 %%   <<"Cidr">> => string(),
 %%   <<"EdgeLocation">> => string(),
+%%   <<"NetworkFunctionGroupName">> => string(),
 %%   <<"SegmentName">> => string()
 %% }
 -type core_network_change_event_values() :: #{binary() => any()}.
@@ -1797,6 +1862,15 @@
 
 
 %% Example:
+%% core_network_network_function_group() :: #{
+%%   <<"EdgeLocations">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"Segments">> => service_insertion_segments()
+%% }
+-type core_network_network_function_group() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_customer_gateway_associations_request() :: #{
 %%   <<"CustomerGatewayArns">> => list(string()()),
 %%   <<"MaxResults">> => integer(),
@@ -1851,6 +1925,7 @@
 
 %% Example:
 %% route_table_identifier() :: #{
+%%   <<"CoreNetworkNetworkFunctionGroup">> => core_network_network_function_group_identifier(),
 %%   <<"CoreNetworkSegmentEdge">> => core_network_segment_edge_identifier(),
 %%   <<"TransitGatewayRouteTableArn">> => string()
 %% }
@@ -2192,6 +2267,14 @@
 %%   <<"SLRDeploymentStatus">> => string()
 %% }
 -type organization_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% via() :: #{
+%%   <<"NetworkFunctionGroups">> => list(network_function_group()()),
+%%   <<"WithEdgeOverrides">> => list(edge_override()())
+%% }
+-type via() :: #{binary() => any()}.
 
 
 %% Example:

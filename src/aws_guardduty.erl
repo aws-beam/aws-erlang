@@ -53,6 +53,8 @@
          create_filter/4,
          create_ip_set/3,
          create_ip_set/4,
+         create_malware_protection_plan/2,
+         create_malware_protection_plan/3,
          create_members/3,
          create_members/4,
          create_publishing_destination/3,
@@ -71,6 +73,8 @@
          delete_invitations/3,
          delete_ip_set/4,
          delete_ip_set/5,
+         delete_malware_protection_plan/3,
+         delete_malware_protection_plan/4,
          delete_members/3,
          delete_members/4,
          delete_publishing_destination/4,
@@ -116,6 +120,9 @@
          get_ip_set/3,
          get_ip_set/5,
          get_ip_set/6,
+         get_malware_protection_plan/2,
+         get_malware_protection_plan/4,
+         get_malware_protection_plan/5,
          get_malware_scan_settings/2,
          get_malware_scan_settings/4,
          get_malware_scan_settings/5,
@@ -154,6 +161,9 @@
          list_ip_sets/2,
          list_ip_sets/4,
          list_ip_sets/5,
+         list_malware_protection_plans/1,
+         list_malware_protection_plans/3,
+         list_malware_protection_plans/4,
          list_members/2,
          list_members/4,
          list_members/5,
@@ -189,6 +199,8 @@
          update_findings_feedback/4,
          update_ip_set/4,
          update_ip_set/5,
+         update_malware_protection_plan/3,
+         update_malware_protection_plan/4,
          update_malware_scan_settings/3,
          update_malware_scan_settings/4,
          update_member_detectors/3,
@@ -314,6 +326,13 @@
 
 
 %% Example:
+%% malware_protection_plan_tagging_action() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type malware_protection_plan_tagging_action() :: #{binary() => any()}.
+
+
+%% Example:
 %% container() :: #{
 %%   <<"ContainerRuntime">> => string(),
 %%   <<"Id">> => string(),
@@ -388,6 +407,20 @@
 
 
 %% Example:
+%% get_malware_protection_plan_response() :: #{
+%%   <<"Actions">> => malware_protection_plan_actions(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ProtectedResource">> => create_protected_resource(),
+%%   <<"Role">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReasons">> => list(malware_protection_plan_status_reason()()),
+%%   <<"Tags">> => map()
+%% }
+-type get_malware_protection_plan_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_organization_configuration_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -403,6 +436,7 @@
 %%   <<"Name">> => string(),
 %%   <<"Owner">> => owner(),
 %%   <<"PublicAccess">> => public_access(),
+%%   <<"S3ObjectDetails">> => list(s3_object_detail()()),
 %%   <<"Tags">> => list(tag()()),
 %%   <<"Type">> => string()
 %% }
@@ -587,6 +621,13 @@
 
 
 %% Example:
+%% create_malware_protection_plan_response() :: #{
+%%   <<"MalwareProtectionPlanId">> => string()
+%% }
+-type create_malware_protection_plan_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% account_level_permissions() :: #{
 %%   <<"BlockPublicAccess">> => block_public_access()
 %% }
@@ -698,6 +739,13 @@
 %%   <<"EbsVolumes">> => boolean()
 %% }
 -type scan_ec2_instance_with_findings() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_protected_resource() :: #{
+%%   <<"S3Bucket">> => update_s3_bucket_resource()
+%% }
+-type update_protected_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -890,6 +938,7 @@
 %%   <<"EventLastSeen">> => string(),
 %%   <<"Evidence">> => evidence(),
 %%   <<"FeatureName">> => string(),
+%%   <<"MalwareScanDetails">> => malware_scan_details(),
 %%   <<"ResourceRole">> => string(),
 %%   <<"RuntimeDetails">> => runtime_details(),
 %%   <<"ServiceName">> => string(),
@@ -1184,6 +1233,10 @@
 %% }
 -type organization_feature_configuration() :: #{binary() => any()}.
 
+%% Example:
+%% delete_malware_protection_plan_request() :: #{}
+-type delete_malware_protection_plan_request() :: #{}.
+
 
 %% Example:
 %% create_detector_response() :: #{
@@ -1215,6 +1268,14 @@
 %%   <<"Type">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1405,6 +1466,10 @@
 %% }
 -type bucket_policy() :: #{binary() => any()}.
 
+%% Example:
+%% get_malware_protection_plan_request() :: #{}
+-type get_malware_protection_plan_request() :: #{}.
+
 
 %% Example:
 %% flow_logs_configuration_result() :: #{
@@ -1466,6 +1531,17 @@
 %%   <<"Volumes">> => list(volume()())
 %% }
 -type ecs_task_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_malware_protection_plan_request() :: #{
+%%   <<"Actions">> => malware_protection_plan_actions(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ProtectedResource">> := create_protected_resource(),
+%%   <<"Role">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_malware_protection_plan_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1558,6 +1634,13 @@
 
 
 %% Example:
+%% list_malware_protection_plans_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_malware_protection_plans_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
@@ -1611,6 +1694,15 @@
 %%   <<"GuardDutyFindingId">> => string()
 %% }
 -type trigger_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_malware_protection_plan_request() :: #{
+%%   <<"Actions">> => malware_protection_plan_actions(),
+%%   <<"ProtectedResource">> => update_protected_resource(),
+%%   <<"Role">> => string()
+%% }
+-type update_malware_protection_plan_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_filter_response() :: #{}
@@ -1714,6 +1806,13 @@
 %%   <<"ProductType">> => string()
 %% }
 -type product_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_scan_details() :: #{
+%%   <<"Threats">> => list(threat()())
+%% }
+-type malware_scan_details() :: #{binary() => any()}.
 
 %% Example:
 %% accept_invitation_response() :: #{}
@@ -1892,6 +1991,13 @@
 
 
 %% Example:
+%% malware_protection_plan_actions() :: #{
+%%   <<"Tagging">> => malware_protection_plan_tagging_action()
+%% }
+-type malware_protection_plan_actions() :: #{binary() => any()}.
+
+
+%% Example:
 %% anomaly() :: #{
 %%   <<"Profiles">> => map(),
 %%   <<"Unusual">> => anomaly_unusual()
@@ -1995,6 +2101,13 @@
 
 
 %% Example:
+%% malware_protection_plan_summary() :: #{
+%%   <<"MalwareProtectionPlanId">> => string()
+%% }
+-type malware_protection_plan_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_member_detectors_request() :: #{
 %%   <<"AccountIds">> := list(string()()),
 %%   <<"DataSources">> => data_source_configurations(),
@@ -2044,6 +2157,15 @@
 
 
 %% Example:
+%% threat() :: #{
+%%   <<"ItemPaths">> => list(item_path()()),
+%%   <<"Name">> => string(),
+%%   <<"Source">> => string()
+%% }
+-type threat() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_ip_set_request() :: #{
 %%   <<"Activate">> := boolean(),
 %%   <<"ClientToken">> => string(),
@@ -2061,6 +2183,13 @@
 %%   <<"Name">> => string()
 %% }
 -type volume() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_protected_resource() :: #{
+%%   <<"S3Bucket">> => create_s3_bucket_resource()
+%% }
+-type create_protected_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2084,6 +2213,14 @@
 
 
 %% Example:
+%% list_malware_protection_plans_response() :: #{
+%%   <<"MalwareProtectionPlans">> => list(malware_protection_plan_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_malware_protection_plans_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_ip_set_response() :: #{
 %%   <<"Format">> => list(any()),
 %%   <<"Location">> => string(),
@@ -2099,6 +2236,14 @@
 %%   <<"CityName">> => string()
 %% }
 -type city() :: #{binary() => any()}.
+
+
+%% Example:
+%% item_path() :: #{
+%%   <<"Hash">> => string(),
+%%   <<"NestedItemPath">> => string()
+%% }
+-type item_path() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2135,6 +2280,14 @@
 %%   <<"ManagementType">> => list(any())
 %% }
 -type fargate_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_protection_plan_status_reason() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type malware_protection_plan_status_reason() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2403,6 +2556,14 @@
 %%   <<"FindingIds">> := list(string()())
 %% }
 -type update_findings_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_s3_bucket_resource() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"ObjectPrefixes">> => list(string()())
+%% }
+-type create_s3_bucket_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2798,6 +2959,17 @@
 
 
 %% Example:
+%% s3_object_detail() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Hash">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"ObjectArn">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type s3_object_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_key_details() :: #{
 %%   <<"AccessKeyId">> => string(),
 %%   <<"PrincipalId">> => string(),
@@ -2863,6 +3035,13 @@
 %% }
 -type list_filters_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_s3_bucket_resource() :: #{
+%%   <<"ObjectPrefixes">> => list(string()())
+%% }
+-type update_s3_bucket_resource() :: #{binary() => any()}.
+
 %% Example:
 %% delete_detector_request() :: #{}
 -type delete_detector_request() :: #{}.
@@ -2925,6 +3104,12 @@
     bad_request_exception() | 
     internal_server_error_exception().
 
+-type create_malware_protection_plan_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception() | 
+    conflict_exception().
+
 -type create_members_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
@@ -2960,6 +3145,12 @@
 -type delete_ip_set_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
+
+-type delete_malware_protection_plan_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
 
 -type delete_members_errors() ::
     bad_request_exception() | 
@@ -3037,6 +3228,12 @@
     bad_request_exception() | 
     internal_server_error_exception().
 
+-type get_malware_protection_plan_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type get_malware_scan_settings_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
@@ -3096,6 +3293,11 @@
 -type list_ip_sets_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
+
+-type list_malware_protection_plans_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_members_errors() ::
     bad_request_exception() | 
@@ -3160,6 +3362,12 @@
 -type update_ip_set_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
+
+-type update_malware_protection_plan_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
 
 -type update_malware_scan_settings_errors() ::
     bad_request_exception() | 
@@ -3422,6 +3630,46 @@ create_ip_set(Client, DetectorId, Input) ->
 create_ip_set(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new Malware Protection plan for the protected resource.
+%%
+%% When you create a Malware Protection plan, the Amazon Web Services service
+%% terms for GuardDuty Malware
+%% Protection apply. For more information, see Amazon Web Services service
+%% terms for GuardDuty Malware Protection:
+%% http://aws.amazon.com/service-terms/#87._Amazon_GuardDuty.
+-spec create_malware_protection_plan(aws_client:aws_client(), create_malware_protection_plan_request()) ->
+    {ok, create_malware_protection_plan_response(), tuple()} |
+    {error, any()} |
+    {error, create_malware_protection_plan_errors(), tuple()}.
+create_malware_protection_plan(Client, Input) ->
+    create_malware_protection_plan(Client, Input, []).
+
+-spec create_malware_protection_plan(aws_client:aws_client(), create_malware_protection_plan_request(), proplists:proplist()) ->
+    {ok, create_malware_protection_plan_response(), tuple()} |
+    {error, any()} |
+    {error, create_malware_protection_plan_errors(), tuple()}.
+create_malware_protection_plan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/malware-protection-plan"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3793,6 +4041,45 @@ delete_ip_set(Client, DetectorId, IpSetId, Input) ->
 delete_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the Malware Protection plan ID associated with the Malware
+%% Protection plan resource.
+%%
+%% Use this API only when you no longer want to protect the resource
+%% associated with this
+%% Malware Protection plan ID.
+-spec delete_malware_protection_plan(aws_client:aws_client(), binary() | list(), delete_malware_protection_plan_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_malware_protection_plan_errors(), tuple()}.
+delete_malware_protection_plan(Client, MalwareProtectionPlanId, Input) ->
+    delete_malware_protection_plan(Client, MalwareProtectionPlanId, Input, []).
+
+-spec delete_malware_protection_plan(aws_client:aws_client(), binary() | list(), delete_malware_protection_plan_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_malware_protection_plan_errors(), tuple()}.
+delete_malware_protection_plan(Client, MalwareProtectionPlanId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/malware-protection-plan/", aws_util:encode_uri(MalwareProtectionPlanId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4630,6 +4917,45 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the Malware Protection plan details associated with a
+%% Malware Protection
+%% plan ID.
+-spec get_malware_protection_plan(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_malware_protection_plan_response(), tuple()} |
+    {error, any()} |
+    {error, get_malware_protection_plan_errors(), tuple()}.
+get_malware_protection_plan(Client, MalwareProtectionPlanId)
+  when is_map(Client) ->
+    get_malware_protection_plan(Client, MalwareProtectionPlanId, #{}, #{}).
+
+-spec get_malware_protection_plan(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_malware_protection_plan_response(), tuple()} |
+    {error, any()} |
+    {error, get_malware_protection_plan_errors(), tuple()}.
+get_malware_protection_plan(Client, MalwareProtectionPlanId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_malware_protection_plan(Client, MalwareProtectionPlanId, QueryMap, HeadersMap, []).
+
+-spec get_malware_protection_plan(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_malware_protection_plan_response(), tuple()} |
+    {error, any()} |
+    {error, get_malware_protection_plan_errors(), tuple()}.
+get_malware_protection_plan(Client, MalwareProtectionPlanId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/malware-protection-plan/", aws_util:encode_uri(MalwareProtectionPlanId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the details of the malware scan settings.
 %%
 %% There might be regional differences because some data sources might not be
@@ -5300,6 +5626,48 @@ list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the Malware Protection plan IDs associated with the protected
+%% resources in your Amazon Web Services account.
+-spec list_malware_protection_plans(aws_client:aws_client()) ->
+    {ok, list_malware_protection_plans_response(), tuple()} |
+    {error, any()} |
+    {error, list_malware_protection_plans_errors(), tuple()}.
+list_malware_protection_plans(Client)
+  when is_map(Client) ->
+    list_malware_protection_plans(Client, #{}, #{}).
+
+-spec list_malware_protection_plans(aws_client:aws_client(), map(), map()) ->
+    {ok, list_malware_protection_plans_response(), tuple()} |
+    {error, any()} |
+    {error, list_malware_protection_plans_errors(), tuple()}.
+list_malware_protection_plans(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_malware_protection_plans(Client, QueryMap, HeadersMap, []).
+
+-spec list_malware_protection_plans(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_malware_protection_plans_response(), tuple()} |
+    {error, any()} |
+    {error, list_malware_protection_plans_errors(), tuple()}.
+list_malware_protection_plans(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/malware-protection-plan"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists details about all member accounts for the current GuardDuty
 %% administrator
 %% account.
@@ -5887,6 +6255,40 @@ update_ip_set(Client, DetectorId, IpSetId, Input) ->
 update_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing Malware Protection plan resource.
+-spec update_malware_protection_plan(aws_client:aws_client(), binary() | list(), update_malware_protection_plan_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_malware_protection_plan_errors(), tuple()}.
+update_malware_protection_plan(Client, MalwareProtectionPlanId, Input) ->
+    update_malware_protection_plan(Client, MalwareProtectionPlanId, Input, []).
+
+-spec update_malware_protection_plan(aws_client:aws_client(), binary() | list(), update_malware_protection_plan_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_malware_protection_plan_errors(), tuple()}.
+update_malware_protection_plan(Client, MalwareProtectionPlanId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/malware-protection-plan/", aws_util:encode_uri(MalwareProtectionPlanId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

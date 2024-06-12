@@ -56,6 +56,8 @@
          check_access_not_granted/3,
          check_no_new_access/2,
          check_no_new_access/3,
+         check_no_public_access/2,
+         check_no_public_access/3,
          create_access_preview/2,
          create_access_preview/3,
          create_analyzer/2,
@@ -66,6 +68,8 @@
          delete_analyzer/4,
          delete_archive_rule/4,
          delete_archive_rule/5,
+         generate_finding_recommendation/3,
+         generate_finding_recommendation/4,
          get_access_preview/3,
          get_access_preview/5,
          get_access_preview/6,
@@ -81,6 +85,9 @@
          get_finding/3,
          get_finding/5,
          get_finding/6,
+         get_finding_recommendation/3,
+         get_finding_recommendation/5,
+         get_finding_recommendation/6,
          get_finding_v2/3,
          get_finding_v2/5,
          get_finding_v2/6,
@@ -179,6 +186,15 @@
 
 
 %% Example:
+%% check_no_public_access_response() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reasons">> => list(reason_summary()()),
+%%   <<"result">> => string()
+%% }
+-type check_no_public_access_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_archive_rule_request() :: #{
 %%   <<"clientToken">> => [string()]
 %% }
@@ -271,6 +287,20 @@
 %%   <<"permission">> => string()
 %% }
 -type s3_bucket_acl_grant_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_recommendation_response() :: #{
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"error">> => recommendation_error(),
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationType">> => string(),
+%%   <<"recommendedSteps">> => list(list()()),
+%%   <<"resourceArn">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type get_finding_recommendation_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -550,6 +580,14 @@
 
 
 %% Example:
+%% check_no_public_access_request() :: #{
+%%   <<"policyDocument">> := string(),
+%%   <<"resourceType">> := string()
+%% }
+-type check_no_public_access_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"resourceId">> => [string()],
@@ -685,6 +723,14 @@
 
 
 %% Example:
+%% recommendation_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type recommendation_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% location() :: #{
 %%   <<"path">> => list(list()()),
 %%   <<"span">> => span()
@@ -718,6 +764,22 @@
 %%   <<"policyGenerations">> := list(policy_generation()())
 %% }
 -type list_policy_generations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_recommendation_request() :: #{
+%%   <<"analyzerArn">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type get_finding_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_finding_recommendation_request() :: #{
+%%   <<"analyzerArn">> := string()
+%% }
+-type generate_finding_recommendation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -891,6 +953,16 @@
 
 
 %% Example:
+%% unused_permissions_recommended_step() :: #{
+%%   <<"existingPolicyId">> => [string()],
+%%   <<"policyUpdatedAt">> => non_neg_integer(),
+%%   <<"recommendedAction">> => string(),
+%%   <<"recommendedPolicy">> => [string()]
+%% }
+-type unused_permissions_recommended_step() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_parameter_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -984,7 +1056,8 @@
 
 %% Example:
 %% access() :: #{
-%%   <<"actions">> => list(string()())
+%%   <<"actions">> => list(string()()),
+%%   <<"resources">> => list(string()())
 %% }
 -type access() :: #{binary() => any()}.
 
@@ -1280,6 +1353,14 @@
     unprocessable_entity_exception() | 
     internal_server_exception().
 
+-type check_no_public_access_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    unprocessable_entity_exception() | 
+    internal_server_exception().
+
 -type create_access_preview_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1320,6 +1401,12 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type generate_finding_recommendation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type get_access_preview_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1349,6 +1436,13 @@
     resource_not_found_exception().
 
 -type get_finding_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_finding_recommendation_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1631,6 +1725,42 @@ check_no_new_access(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Checks whether a resource policy can grant public access to the
+%% specified resource
+%% type.
+-spec check_no_public_access(aws_client:aws_client(), check_no_public_access_request()) ->
+    {ok, check_no_public_access_response(), tuple()} |
+    {error, any()} |
+    {error, check_no_public_access_errors(), tuple()}.
+check_no_public_access(Client, Input) ->
+    check_no_public_access(Client, Input, []).
+
+-spec check_no_public_access(aws_client:aws_client(), check_no_public_access_request(), proplists:proplist()) ->
+    {ok, check_no_public_access_response(), tuple()} |
+    {error, any()} |
+    {error, check_no_public_access_errors(), tuple()}.
+check_no_public_access(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/policy/check-no-public-access"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an access preview that allows you to preview IAM Access
 %% Analyzer findings for your
 %% resource before deploying resource permissions.
@@ -1814,6 +1944,41 @@ delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a recommendation for an unused permissions finding.
+-spec generate_finding_recommendation(aws_client:aws_client(), binary() | list(), generate_finding_recommendation_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, generate_finding_recommendation_errors(), tuple()}.
+generate_finding_recommendation(Client, Id, Input) ->
+    generate_finding_recommendation(Client, Id, Input, []).
+
+-spec generate_finding_recommendation(aws_client:aws_client(), binary() | list(), generate_finding_recommendation_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, generate_finding_recommendation_errors(), tuple()}.
+generate_finding_recommendation(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/recommendation/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"analyzerArn">>, <<"analyzerArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -2022,6 +2187,50 @@ get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"analyzerArn">>, AnalyzerArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a finding recommendation for the
+%% specified analyzer.
+-spec get_finding_recommendation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_finding_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_finding_recommendation_errors(), tuple()}.
+get_finding_recommendation(Client, Id, AnalyzerArn)
+  when is_map(Client) ->
+    get_finding_recommendation(Client, Id, AnalyzerArn, #{}, #{}).
+
+-spec get_finding_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_finding_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_finding_recommendation_errors(), tuple()}.
+get_finding_recommendation(Client, Id, AnalyzerArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_finding_recommendation(Client, Id, AnalyzerArn, QueryMap, HeadersMap, []).
+
+-spec get_finding_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_finding_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_finding_recommendation_errors(), tuple()}.
+get_finding_recommendation(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/recommendation/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"analyzerArn">>, AnalyzerArn},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
