@@ -410,6 +410,7 @@
 %% Example:
 %% put_secret_value_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
+%%   <<"RotationToken">> => string(),
 %%   <<"SecretBinary">> => binary(),
 %%   <<"SecretId">> := string(),
 %%   <<"SecretString">> => string(),
@@ -1439,8 +1440,9 @@ put_resource_policy(Client, Input, Options)
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters except
-%% `SecretBinary' or `SecretString' because it might be logged. For
-%% more information, see Logging Secrets Manager events with CloudTrail:
+%% `SecretBinary', `SecretString', or `RotationToken' because it
+%% might be logged. For more information, see Logging Secrets Manager events
+%% with CloudTrail:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions:

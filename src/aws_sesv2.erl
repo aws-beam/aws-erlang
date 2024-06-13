@@ -807,6 +807,7 @@
 %% event_destination_definition() :: #{
 %%   <<"CloudWatchDestination">> => cloud_watch_destination(),
 %%   <<"Enabled">> => boolean(),
+%%   <<"EventBridgeDestination">> => event_bridge_destination(),
 %%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
 %%   <<"MatchingEventTypes">> => list(list(any())()),
 %%   <<"PinpointDestination">> => pinpoint_destination(),
@@ -1131,6 +1132,7 @@
 %% event_destination() :: #{
 %%   <<"CloudWatchDestination">> => cloud_watch_destination(),
 %%   <<"Enabled">> => boolean(),
+%%   <<"EventBridgeDestination">> => event_bridge_destination(),
 %%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
 %%   <<"MatchingEventTypes">> => list(list(any())()),
 %%   <<"Name">> => string(),
@@ -1585,6 +1587,13 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type create_dedicated_ip_pool_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_bridge_destination() :: #{
+%%   <<"EventBusArn">> => string()
+%% }
+-type event_bridge_destination() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3017,11 +3026,9 @@ create_configuration_set(Client, Input0, Options0) ->
 %% Events include message sends,
 %% deliveries, opens, clicks, bounces, and complaints. Event
 %% destinations are places that you can send information about these events
-%% to. For example, you can send event data to Amazon SNS to receive
-%% notifications when you
-%% receive bounces or complaints, or you can use Amazon Kinesis Data Firehose
-%% to stream data to Amazon S3 for long-term
-%% storage.
+%% to. For example, you can send event data to Amazon EventBridge and
+%% associate a rule to send the event
+%% to the specified target.
 %%
 %% A single configuration set can include more than one event destination.
 -spec create_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), create_configuration_set_event_destination_request()) ->
@@ -3549,10 +3556,8 @@ delete_configuration_set(Client, ConfigurationSetName, Input0, Options0) ->
 %% Events include message sends, deliveries, opens, clicks, bounces,
 %% and complaints. Event destinations are places that you can send
 %% information about these events to. For example, you can send event data to
-%% Amazon SNS to
-%% receive notifications when you receive bounces or complaints, or you can
-%% use Amazon Kinesis Data Firehose to
-%% stream data to Amazon S3 for long-term storage.
+%% Amazon EventBridge and
+%% associate a rule to send the event to the specified target.
 -spec delete_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request()) ->
     {ok, delete_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
@@ -4027,10 +4032,8 @@ get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, Option
 %% Events include message sends, deliveries, opens, clicks, bounces,
 %% and complaints. Event destinations are places that you can send
 %% information about these events to. For example, you can send event data to
-%% Amazon SNS to
-%% receive notifications when you receive bounces or complaints, or you can
-%% use Amazon Kinesis Data Firehose to
-%% stream data to Amazon S3 for long-term storage.
+%% Amazon EventBridge and
+%% associate a rule to send the event to the specified target.
 -spec get_configuration_set_event_destinations(aws_client:aws_client(), binary() | list()) ->
     {ok, get_configuration_set_event_destinations_response(), tuple()} |
     {error, any()} |
@@ -6460,10 +6463,8 @@ untag_resource(Client, Input0, Options0) ->
 %% Events include message sends, deliveries, opens, clicks, bounces,
 %% and complaints. Event destinations are places that you can send
 %% information about these events to. For example, you can send event data to
-%% Amazon SNS to
-%% receive notifications when you receive bounces or complaints, or you can
-%% use Amazon Kinesis Data Firehose to
-%% stream data to Amazon S3 for long-term storage.
+%% Amazon EventBridge and
+%% associate a rule to send the event to the specified target.
 -spec update_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request()) ->
     {ok, update_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |

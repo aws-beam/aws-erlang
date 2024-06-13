@@ -677,6 +677,8 @@
          describe_subnets/3,
          describe_tags/2,
          describe_tags/3,
+         describe_traffic_mirror_filter_rules/2,
+         describe_traffic_mirror_filter_rules/3,
          describe_traffic_mirror_filters/2,
          describe_traffic_mirror_filters/3,
          describe_traffic_mirror_sessions/2,
@@ -2854,6 +2856,13 @@
 %%   <<"TransitGatewayConnectPeer">> => transit_gateway_connect_peer()
 %% }
 -type create_transit_gateway_connect_peer_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_traffic_mirror_filter_rules_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrafficMirrorFilterRules">> => list(traffic_mirror_filter_rule()())
+%% }
+-type describe_traffic_mirror_filter_rules_result() :: #{binary() => any()}.
 
 %% Example:
 %% accept_vpc_peering_connection_result() :: #{
@@ -5948,6 +5957,7 @@
 %%   <<"RuleNumber">> => integer(),
 %%   <<"SourceCidrBlock">> => string(),
 %%   <<"SourcePortRange">> => traffic_mirror_port_range(),
+%%   <<"Tags">> => list(tag()()),
 %%   <<"TrafficDirection">> => list(any()),
 %%   <<"TrafficMirrorFilterId">> => string(),
 %%   <<"TrafficMirrorFilterRuleId">> => string()
@@ -7603,6 +7613,7 @@
 %%   <<"RuleNumber">> := integer(),
 %%   <<"SourceCidrBlock">> := string(),
 %%   <<"SourcePortRange">> => traffic_mirror_port_range_request(),
+%%   <<"TagSpecifications">> => list(tag_specification()()),
 %%   <<"TrafficDirection">> := list(any()),
 %%   <<"TrafficMirrorFilterId">> := string()
 %% }
@@ -15403,6 +15414,17 @@
 -type disable_image_deprecation_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_traffic_mirror_filter_rules_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TrafficMirrorFilterId">> => string(),
+%%   <<"TrafficMirrorFilterRuleIds">> => list(string()())
+%% }
+-type describe_traffic_mirror_filter_rules_request() :: #{binary() => any()}.
+
+%% Example:
 %% inference_device_info() :: #{
 %%   <<"Count">> => integer(),
 %%   <<"Manufacturer">> => string(),
@@ -21445,9 +21467,9 @@ create_tags(Client, Input, Options)
 %% By default, no traffic is mirrored. To mirror traffic, use
 %% CreateTrafficMirrorFilterRule:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilterRule.htm
-%% to add Traffic Mirror rules to the filter. The rules you
-%% add define what traffic gets mirrored. You can also use
-%% ModifyTrafficMirrorFilterNetworkServices:
+%% to add Traffic Mirror rules to the filter. The rules you add define what
+%% traffic gets mirrored.
+%% You can also use ModifyTrafficMirrorFilterNetworkServices:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTrafficMirrorFilterNetworkServices.html
 %% to mirror supported network services.
 -spec create_traffic_mirror_filter(aws_client:aws_client(), create_traffic_mirror_filter_request()) ->
@@ -26318,6 +26340,22 @@ describe_tags(Client, Input)
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
+
+%% @doc Describe traffic mirror filters that determine the traffic that is
+%% mirrored.
+-spec describe_traffic_mirror_filter_rules(aws_client:aws_client(), describe_traffic_mirror_filter_rules_request()) ->
+    {ok, describe_traffic_mirror_filter_rules_result(), tuple()} |
+    {error, any()}.
+describe_traffic_mirror_filter_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_traffic_mirror_filter_rules(Client, Input, []).
+
+-spec describe_traffic_mirror_filter_rules(aws_client:aws_client(), describe_traffic_mirror_filter_rules_request(), proplists:proplist()) ->
+    {ok, describe_traffic_mirror_filter_rules_result(), tuple()} |
+    {error, any()}.
+describe_traffic_mirror_filter_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTrafficMirrorFilterRules">>, Input, Options).
 
 %% @doc Describes one or more Traffic Mirror filters.
 -spec describe_traffic_mirror_filters(aws_client:aws_client(), describe_traffic_mirror_filters_request()) ->

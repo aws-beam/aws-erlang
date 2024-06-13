@@ -131,6 +131,7 @@
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => pipeline_status_reason(),
 %%   <<"Tags">> => list(tag()()),
+%%   <<"VpcEndpointService">> => string(),
 %%   <<"VpcEndpoints">> => list(vpc_endpoint()())
 %% }
 -type pipeline() :: #{binary() => any()}.
@@ -430,7 +431,8 @@
 %% vpc_options() :: #{
 %%   <<"SecurityGroupIds">> => list(string()()),
 %%   <<"SubnetIds">> => list(string()()),
-%%   <<"VpcAttachmentOptions">> => vpc_attachment_options()
+%%   <<"VpcAttachmentOptions">> => vpc_attachment_options(),
+%%   <<"VpcEndpointManagement">> => list(any())
 %% }
 -type vpc_options() :: #{binary() => any()}.
 
