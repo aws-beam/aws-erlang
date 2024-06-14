@@ -126,6 +126,7 @@
 %%   <<"ContainerType">> := list(any()),
 %%   <<"DashManifests">> => list(create_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
+%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
 %%   <<"HlsManifests">> => list(create_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()()),
 %%   <<"OriginEndpointName">> := string(),
@@ -143,6 +144,7 @@
 %%   <<"ChannelName">> => [string()],
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
+%%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()]
 %% }
 -type channel_list_configuration() :: #{binary() => any()}.
@@ -157,6 +159,7 @@
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
 %%   <<"Tags">> => map()
 %% }
@@ -205,6 +208,7 @@
 %%   <<"DashManifests">> => list(get_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
+%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
 %%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
@@ -251,6 +255,7 @@
 %%   <<"DashManifests">> => list(create_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
+%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
 %%   <<"HlsManifests">> => list(create_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()()),
 %%   <<"Segment">> => segment(),
@@ -351,6 +356,13 @@
 %% delete_channel_group_request() :: #{}
 -type delete_channel_group_request() :: #{}.
 
+
+%% Example:
+%% force_endpoint_error_configuration() :: #{
+%%   <<"EndpointErrorConditions">> => list(list(any())())
+%% }
+-type force_endpoint_error_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% put_origin_endpoint_policy_response() :: #{}
 -type put_origin_endpoint_policy_response() :: #{}.
@@ -447,6 +459,7 @@
 %%   <<"ChannelName">> := string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"InputType">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type create_channel_request() :: #{binary() => any()}.
@@ -630,6 +643,7 @@
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
 %%   <<"Tags">> => map()
 %% }
@@ -649,6 +663,7 @@
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
 %%   <<"Tags">> => map()
 %% }
@@ -664,6 +679,7 @@
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"DashManifests">> => list(list_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
+%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
 %%   <<"HlsManifests">> => list(list_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(list_low_latency_hls_manifest_configuration()()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
@@ -726,6 +742,7 @@
 %%   <<"DashManifests">> => list(get_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
+%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
 %%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
@@ -773,6 +790,7 @@
 %%   <<"DashManifests">> => list(get_dash_manifest_configuration()()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
+%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
 %%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
 %%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],

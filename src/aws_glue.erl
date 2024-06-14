@@ -5522,6 +5522,7 @@
 %% Example:
 %% data_quality_evaluation_run_additional_run_options() :: #{
 %%   <<"CloudWatchMetricsEnabled">> => boolean(),
+%%   <<"CompositeRuleEvaluationMethod">> => list(any()),
 %%   <<"ResultsS3Prefix">> => string()
 %% }
 -type data_quality_evaluation_run_additional_run_options() :: #{binary() => any()}.
