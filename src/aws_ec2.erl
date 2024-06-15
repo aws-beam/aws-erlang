@@ -18398,7 +18398,7 @@
 %%
 %% For more information, see Accept a transferred Elastic IP address:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#using-instance-addressing-eips-transfer-accept
-%% in the Amazon Virtual Private Cloud User Guide.
+%% in the Amazon VPC User Guide.
 -spec accept_address_transfer(aws_client:aws_client(), accept_address_transfer_request()) ->
     {ok, accept_address_transfer_result(), tuple()} |
     {error, any()}.
@@ -18574,7 +18574,7 @@ advertise_byoip_cidr(Client, Input, Options)
 %% IP addresses (BYOIP). For more information, see Bring Your Own IP
 %% Addresses (BYOIP):
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EC2 User Guide.
 %%
 %% If you release an Elastic IP address, you might be able to recover it. You
 %% cannot recover
@@ -18585,7 +18585,7 @@ advertise_byoip_cidr(Client, Input, Options)
 %%
 %% For more information, see Elastic IP Addresses:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% in the Amazon EC2 User Guide.
 %%
 %% You can allocate a carrier IP address which is a public IP address from a
 %% telecommunication carrier,
@@ -18681,10 +18681,7 @@ apply_security_groups_to_client_vpn_target_network(Client, Input, Options)
 %% CIDR block range.
 %% You can assign as many IPv6 addresses to a network interface as you can
 %% assign private
-%% IPv4 addresses, and the limit varies per instance type. For information,
-%% see IP Addresses Per Network Interface Per Instance Type:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% IPv4 addresses, and the limit varies per instance type.
 %%
 %% You must specify either the IPv6 addresses or the IPv6 address count in
 %% the request.
@@ -18694,9 +18691,9 @@ apply_security_groups_to_client_vpn_target_network(Client, Input, Options)
 %% either the IPV6 Prefix Delegation prefixes, or the IPv6 Prefix Delegation
 %% count. For
 %% information, see
-%% Assigning prefixes to Amazon EC2 network interfaces:
+%% Assigning prefixes to network interfaces:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% the Amazon EC2 User Guide.
 -spec assign_ipv6_addresses(aws_client:aws_client(), assign_ipv6_addresses_request()) ->
     {ok, assign_ipv6_addresses_result(), tuple()} |
     {error, any()}.
@@ -18720,12 +18717,9 @@ assign_ipv6_addresses(Client, Input, Options)
 %% subnet's CIDR block range.
 %% The number of secondary IP addresses that you can assign to an instance
 %% varies by instance type.
-%% For information about instance types, see Instance Types:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html in
-%% the Amazon Elastic Compute Cloud User Guide. For more information about
-%% Elastic IP addresses, see Elastic IP Addresses:
+%% For more information about Elastic IP addresses, see Elastic IP Addresses:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% in the Amazon EC2 User Guide.
 %%
 %% When you move a secondary private IP address to another network interface,
 %% any Elastic IP address
@@ -18745,9 +18739,9 @@ assign_ipv6_addresses(Client, Input, Options)
 %% either the IPv4 Prefix Delegation prefixes, or the IPv4 Prefix Delegation
 %% count. For
 %% information, see
-%% Assigning prefixes to Amazon EC2 network interfaces:
+%% Assigning prefixes to network interfaces:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% the Amazon EC2 User Guide.
 -spec assign_private_ip_addresses(aws_client:aws_client(), assign_private_ip_addresses_request()) ->
     {ok, assign_private_ip_addresses_result(), tuple()} |
     {error, any()}.
@@ -18762,7 +18756,7 @@ assign_private_ip_addresses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssignPrivateIpAddresses">>, Input, Options).
 
-%% @doc Assigns one or more private IPv4 addresses to a private NAT gateway.
+%% @doc Assigns private IPv4 addresses to a private NAT gateway.
 %%
 %% For more information, see
 %% Work with NAT gateways:
@@ -18862,7 +18856,7 @@ associate_client_vpn_target_network(Client, Input, Options)
 %% instance renews its DHCP lease. You can explicitly renew the lease using
 %% the operating system on the instance.
 %%
-%% For more information, see DHCP options sets:
+%% For more information, see DHCP option sets:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html
 %% in the Amazon VPC User Guide.
 -spec associate_dhcp_options(aws_client:aws_client(), associate_dhcp_options_request()) ->
@@ -19016,8 +19010,8 @@ associate_ipam_resource_discovery(Client, Input, Options)
 %% in the Amazon VPC User Guide.
 %%
 %% By default, you can associate up to 2 Elastic IP addresses per public NAT
-%% gateway. You can increase the limit by requesting a quota adjustment. For
-%% more information, see Elastic IP address quotas:
+%% gateway. You can increase the limit by requesting a quota adjustment.
+%% For more information, see Elastic IP address quotas:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html#vpc-limits-eips
 %% in the Amazon VPC User Guide.
 %%
@@ -19150,12 +19144,12 @@ associate_transit_gateway_route_table(Client, Input, Options)
 
 %% @doc Associates a branch network interface with a trunk network interface.
 %%
-%% Before you create the association, run the create-network-interface:
+%% Before you create the association, use CreateNetworkInterface:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html
-%% command and set
-%% `--interface-type' to `trunk'. You must also create a network
-%% interface for each branch network interface that you want to associate
-%% with the trunk network interface.
+%% command and set the interface type
+%% to `trunk'. You must also create a network interface for
+%% each branch network interface that you want to associate with the trunk
+%% network interface.
 -spec associate_trunk_interface(aws_client:aws_client(), associate_trunk_interface_request()) ->
     {ok, associate_trunk_interface_result(), tuple()} |
     {error, any()}.
@@ -19647,8 +19641,8 @@ cancel_import_task(Client, Input, Options)
 %% @doc Cancels the specified Reserved Instance listing in the Reserved
 %% Instance Marketplace.
 %%
-%% For more information, see
-%% Reserved Instance Marketplace:
+%% For more information, see Sell in the Reserved Instance
+%% Marketplace:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
 %% in the Amazon EC2 User Guide.
 -spec cancel_reserved_instances_listing(aws_client:aws_client(), cancel_reserved_instances_listing_request()) ->
@@ -19822,9 +19816,8 @@ copy_image(Client, Input, Options)
 %% Copies of unencrypted snapshots remain unencrypted, unless you enable
 %% encryption for the
 %% snapshot copy operation. By default, encrypted snapshot copies use the
-%% default Key Management Service (KMS)
-%% KMS key; however, you can specify a different KMS key. To copy an
-%% encrypted
+%% default KMS key;
+%% however, you can specify a different KMS key. To copy an encrypted
 %% snapshot that has been shared from another account, you must have
 %% permissions for the KMS key
 %% used to encrypt the snapshot.
@@ -19909,10 +19902,11 @@ create_capacity_reservation(Client, Input, Options)
 
 %% @doc Creates a Capacity Reservation Fleet.
 %%
-%% For more information, see Create a Capacity
-%% Reservation Fleet:
+%% For more information, see Create a
+%% Capacity Reservation Fleet:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet
-%% in the Amazon EC2 User Guide.
+%% in the
+%% Amazon EC2 User Guide.
 -spec create_capacity_reservation_fleet(aws_client:aws_client(), create_capacity_reservation_fleet_request()) ->
     {ok, create_capacity_reservation_fleet_result(), tuple()} |
     {error, any()}.
@@ -20117,7 +20111,7 @@ create_default_vpc(Client, Input, Options)
 %%
 %% The following are the individual DHCP options you can specify. For more
 %% information, see
-%% DHCP options sets:
+%% DHCP option sets:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html
 %% in the Amazon VPC User Guide.
 %%
@@ -20157,7 +20151,7 @@ create_default_vpc(Client, Input, Options)
 %% recommend that
 %% you specify 2. Broadcast and multicast are not supported. For more
 %% information about
-%% NetBIOS node types, see RFC 2132: http://www.ietf.org/rfc/rfc2132.txt.
+%% NetBIOS node types, see RFC 2132: https://www.ietf.org/rfc/rfc2132.txt.
 %%
 %% `ipv6-address-preferred-lease-time' - A value (in seconds, minutes,
 %% hours, or years) for how frequently a running instance with an IPv6
@@ -20240,7 +20234,7 @@ create_fleet(Client, Input, Options)
 %% see
 %% Flow log records:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records
-%% in the Amazon Virtual Private Cloud User Guide.
+%% in the Amazon VPC User Guide.
 %%
 %% When publishing to CloudWatch Logs, flow log records are published to a
 %% log group, and each network
@@ -20251,8 +20245,8 @@ create_fleet(Client, Input, Options)
 %% bucket.
 %%
 %% For more information, see VPC Flow Logs:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html in the
-%% Amazon Virtual Private Cloud User Guide.
+%% https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
+%% in the Amazon VPC User Guide.
 -spec create_flow_logs(aws_client:aws_client(), create_flow_logs_request()) ->
     {ok, create_flow_logs_result(), tuple()} |
     {error, any()}.
@@ -20328,8 +20322,7 @@ create_image(Client, Input, Options)
 %% address using EC2
 %% Instance Connect Endpoint:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect-Endpoint.html
-%% in the Amazon EC2 User
-%% Guide.
+%% in the Amazon EC2 User Guide.
 -spec create_instance_connect_endpoint(aws_client:aws_client(), create_instance_connect_endpoint_request()) ->
     {ok, create_instance_connect_endpoint_result(), tuple()} |
     {error, any()}.
@@ -20578,7 +20571,7 @@ create_key_pair(Client, Input, Options)
 %% an instance from a launch template:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html
 %% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EC2 User Guide.
 %%
 %% To clone an existing launch template as the basis for a new launch
 %% template, use the
@@ -20588,7 +20581,7 @@ create_key_pair(Client, Input, Options)
 %% template:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template-from-existing-launch-template
 %% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EC2 User Guide.
 -spec create_launch_template(aws_client:aws_client(), create_launch_template_request()) ->
     {ok, create_launch_template_result(), tuple()} |
     {error, any()}.
@@ -20626,7 +20619,7 @@ create_launch_template(Client, Input, Options)
 %% versions):
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#manage-launch-template-versions
 %% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EC2 User Guide.
 -spec create_launch_template_version(aws_client:aws_client(), create_launch_template_version_request()) ->
     {ok, create_launch_template_version_result(), tuple()} |
     {error, any()}.
@@ -20885,15 +20878,12 @@ create_network_insights_path(Client, Input, Options)
 %%
 %% The number of IP addresses you can assign to a network interface varies by
 %% instance
-%% type. For more information, see IP Addresses Per ENI Per
-%% Instance Type:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI
-%% in the Amazon Virtual Private Cloud User Guide.
+%% type.
 %%
 %% For more information about network interfaces, see Elastic network
 %% interfaces:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% in the Amazon EC2 User Guide.
 -spec create_network_interface(aws_client:aws_client(), create_network_interface_request()) ->
     {ok, create_network_interface_result(), tuple()} |
     {error, any()}.
@@ -20992,7 +20982,7 @@ create_public_ipv4_pool(Client, Input, Options)
 %%
 %% For more information, see Replace a root volume:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replace-root.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% the Amazon EC2 User Guide.
 -spec create_replace_root_volume_task(aws_client:aws_client(), create_replace_root_volume_task_request()) ->
     {ok, create_replace_root_volume_task_result(), tuple()} |
     {error, any()}.
@@ -21038,10 +21028,10 @@ create_replace_root_volume_task(Client, Input, Options)
 %% the
 %% `DescribeReservedInstancesListings' operation.
 %%
-%% For more information, see Reserved Instance Marketplace:
+%% For more information, see Sell in the Reserved Instance
+%% Marketplace:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
-%% in the
-%% Amazon EC2 User Guide.
+%% in the Amazon EC2 User Guide.
 -spec create_reserved_instances_listing(aws_client:aws_client(), create_reserved_instances_listing_request()) ->
     {ok, create_reserved_instances_listing_result(), tuple()} |
     {error, any()}.
@@ -21249,9 +21239,9 @@ create_security_group(Client, Input, Options)
 %% your Amazon EC2
 %% resources:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EC2 User Guide.
 %%
-%% For more information, see Amazon Elastic Block Store:
+%% For more information, see Amazon EBS:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html and
 %% Amazon EBS encryption:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html in
@@ -21312,7 +21302,7 @@ create_snapshots(Client, Input, Options)
 %% information, see
 %% Spot Instance data feed:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html
-%% in the Amazon EC2 User Guide for Linux Instances.
+%% in the Amazon EC2 User Guide.
 -spec create_spot_datafeed_subscription(aws_client:aws_client(), create_spot_datafeed_subscription_request()) ->
     {ok, create_spot_datafeed_subscription_result(), tuple()} |
     {error, any()}.
@@ -21409,10 +21399,10 @@ create_subnet(Client, Input, Options)
 %%
 %% For more information, see Subnet CIDR reservations:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html
-%% in the Amazon Virtual Private Cloud User Guide and Assign prefixes
+%% in the Amazon VPC User Guide and Assign prefixes
 %% to network interfaces:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% the Amazon EC2 User Guide.
 -spec create_subnet_cidr_reservation(aws_client:aws_client(), create_subnet_cidr_reservation_request()) ->
     {ok, create_subnet_cidr_reservation_result(), tuple()} |
     {error, any()}.
@@ -21635,7 +21625,7 @@ create_transit_gateway_connect(Client, Input, Options)
 %%
 %% For more information, see Connect peers:
 %% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html#tgw-connect-peer
-%% in the Transit Gateways Guide.
+%% in the Amazon Web Services Transit Gateways Guide.
 -spec create_transit_gateway_connect_peer(aws_client:aws_client(), create_transit_gateway_connect_peer_request()) ->
     {ok, create_transit_gateway_connect_peer_result(), tuple()} |
     {error, any()}.
@@ -21892,7 +21882,7 @@ create_verified_access_trust_provider(Client, Input, Options)
 %% your Amazon EC2
 %% resources:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EC2 User Guide.
 %%
 %% For more information, see Create an Amazon EBS volume:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-creating-volume.html
@@ -21988,9 +21978,9 @@ create_vpc_endpoint(Client, Input, Options)
 %% A connection notification notifies you of specific endpoint events. You
 %% must
 %% create an SNS topic to receive notifications. For more information, see
-%% Create a Topic: https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html
-%% in
-%% the Amazon Simple Notification Service Developer Guide.
+%% Creating an Amazon SNS topic:
+%% https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html in
+%% the Amazon SNS Developer Guide.
 %%
 %% You can create a connection notification for interface endpoints only.
 -spec create_vpc_endpoint_connection_notification(aws_client:aws_client(), create_vpc_endpoint_connection_notification_request()) ->
@@ -22054,9 +22044,9 @@ create_vpc_endpoint_service_configuration(Client, Input, Options)
 %%
 %% Limitations and rules apply to a VPC peering connection. For more
 %% information, see
-%% the limitations:
+%% the VPC peering limitations:
 %% https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html#vpc-peering-limitations
-%% section in the VPC Peering Guide.
+%% in the VPC Peering Guide.
 %%
 %% The owner of the accepter VPC must accept the peering request to activate
 %% the peering
@@ -22593,8 +22583,8 @@ delete_launch_template(Client, Input, Options)
 %%
 %% For more information, see Delete a launch template version:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-launch-template-versions.html#delete-launch-template-version
-%% in the EC2 User
-%% Guide.
+%% in the
+%% Amazon EC2 User Guide.
 -spec delete_launch_template_versions(aws_client:aws_client(), delete_launch_template_versions_request()) ->
     {ok, delete_launch_template_versions_result(), tuple()} |
     {error, any()}.
@@ -23793,7 +23783,7 @@ describe_account_attributes(Client, Input, Options)
 %%
 %% For more information, see Transfer Elastic IP addresses:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro
-%% in the Amazon Virtual Private Cloud User Guide.
+%% in the Amazon VPC User Guide.
 %%
 %% When you transfer an Elastic IP address, there is a two-step handshake
 %% between the source and transfer Amazon Web Services accounts. When the
@@ -23903,7 +23893,7 @@ describe_aggregate_id_format(Client, Input, Options)
 %% Zones, see
 %% Regions and zones:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% in the Amazon EC2 User Guide.
 %%
 %% The order of the elements in the response, including those within nested
 %% structures, might vary. Applications should not assume the elements appear
@@ -24054,8 +24044,7 @@ describe_carrier_gateways(Client, Input, Options)
 %% @doc
 %% This action is deprecated.
 %%
-%% Describes one or more of your linked EC2-Classic instances. This request
-%% only returns
+%% Describes your linked EC2-Classic instances. This request only returns
 %% information about EC2-Classic instances linked to a VPC through
 %% ClassicLink. You cannot
 %% use this request to return information about other instances.
@@ -24212,9 +24201,14 @@ describe_customer_gateways(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomerGateways">>, Input, Options).
 
-%% @doc Describes one or more of your DHCP options sets.
+%% @doc Describes your DHCP option sets.
 %%
-%% For more information, see DHCP options sets:
+%% The default is to describe all your DHCP option sets.
+%% Alternatively, you can specify specific DHCP option set IDs or filter the
+%% results to
+%% include only the DHCP option sets that match specific criteria.
+%%
+%% For more information, see DHCP option sets:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html in
 %% the
 %% Amazon VPC User Guide.
@@ -24232,7 +24226,13 @@ describe_dhcp_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDhcpOptions">>, Input, Options).
 
-%% @doc Describes one or more of your egress-only internet gateways.
+%% @doc Describes your egress-only internet gateways.
+%%
+%% The default is to describe all your egress-only internet gateways.
+%% Alternatively, you can specify specific egress-only internet gateway IDs
+%% or filter the results to
+%% include only the egress-only internet gateways that match specific
+%% criteria.
 -spec describe_egress_only_internet_gateways(aws_client:aws_client(), describe_egress_only_internet_gateways_request()) ->
     {ok, describe_egress_only_internet_gateways_result(), tuple()} |
     {error, any()}.
@@ -24250,15 +24250,10 @@ describe_egress_only_internet_gateways(Client, Input, Options)
 %% @doc
 %% Amazon Elastic Graphics reached end of life on January 8, 2024.
 %%
-%% For
-%% workloads that require graphics acceleration, we recommend that you use
-%% Amazon EC2 G4ad,
-%% G4dn, or G5 instances.
+%% For workloads that require graphics acceleration,
+%% we recommend that you use Amazon EC2 G4, G5, or G6 instances.
 %%
 %% Describes the Elastic Graphics accelerator associated with your instances.
-%% For more information
-%% about Elastic Graphics, see Amazon Elastic Graphics:
-%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html.
 -spec describe_elastic_gpus(aws_client:aws_client(), describe_elastic_gpus_request()) ->
     {ok, describe_elastic_gpus_result(), tuple()} |
     {error, any()}.
@@ -24976,8 +24971,10 @@ describe_instance_topology(Client, Input, Options)
 
 %% @doc Lists the instance types that are offered for the specified location.
 %%
-%% If no location is specified, the default
-%% is to list the instance types that are offered in the current Region.
+%% If no location is
+%% specified, the default is to list the instance types that are offered in
+%% the current
+%% Region.
 -spec describe_instance_type_offerings(aws_client:aws_client(), describe_instance_type_offerings_request()) ->
     {ok, describe_instance_type_offerings_result(), tuple()} |
     {error, any()}.
@@ -24994,8 +24991,8 @@ describe_instance_type_offerings(Client, Input, Options)
 
 %% @doc Describes the specified instance types.
 %%
-%% By default, all instance types for the current Region are described.
-%% Alternatively, you can filter the results.
+%% By default, all instance types for the current
+%% Region are described. Alternatively, you can filter the results.
 -spec describe_instance_types(aws_client:aws_client(), describe_instance_types_request()) ->
     {ok, describe_instance_types_result(), tuple()} |
     {error, any()}.
@@ -25063,7 +25060,12 @@ describe_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstances">>, Input, Options).
 
-%% @doc Describes one or more of your internet gateways.
+%% @doc Describes your internet gateways.
+%%
+%% The default is to describe all your internet gateways.
+%% Alternatively, you can specify specific internet gateway IDs or filter the
+%% results to
+%% include only the internet gateways that match specific criteria.
 -spec describe_internet_gateways(aws_client:aws_client(), describe_internet_gateways_request()) ->
     {ok, describe_internet_gateways_result(), tuple()} |
     {error, any()}.
@@ -25423,7 +25425,12 @@ describe_moving_addresses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMovingAddresses">>, Input, Options).
 
-%% @doc Describes one or more of your NAT gateways.
+%% @doc Describes your NAT gateways.
+%%
+%% The default is to describe all your NAT gateways.
+%% Alternatively, you can specify specific NAT gateway IDs or filter the
+%% results to
+%% include only the NAT gateways that match specific criteria.
 -spec describe_nat_gateways(aws_client:aws_client(), describe_nat_gateways_request()) ->
     {ok, describe_nat_gateways_result(), tuple()} |
     {error, any()}.
@@ -25438,7 +25445,12 @@ describe_nat_gateways(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNatGateways">>, Input, Options).
 
-%% @doc Describes one or more of your network ACLs.
+%% @doc Describes your network ACLs.
+%%
+%% The default is to describe all your network ACLs.
+%% Alternatively, you can specify specific network ACL IDs or filter the
+%% results to
+%% include only the network ACLs that match specific criteria.
 %%
 %% For more information, see Network ACLs:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html in
@@ -25672,14 +25684,15 @@ describe_public_ipv4_pools(Client, Input, Options)
 %% @doc Describes the Regions that are enabled for your account, or all
 %% Regions.
 %%
-%% For a list of the Regions supported by Amazon EC2, see
-%% Amazon Elastic Compute Cloud endpoints and quotas:
-%% https://docs.aws.amazon.com/general/latest/gr/ec2-service.html.
+%% For a list of the Regions supported by Amazon EC2, see Amazon EC2 service
+%% endpoints:
+%% https://docs.aws.amazon.com/ec2/latest/devguide/ec2-endpoints.html.
 %%
 %% For information about enabling and disabling Regions for your account, see
-%% Managing Amazon Web Services Regions:
-%% https://docs.aws.amazon.com/general/latest/gr/rande-manage.html in the
-%% Amazon Web Services General Reference.
+%% Specify which Amazon Web Services Regions
+%% your account can use:
+%% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html
+%% in the Amazon Web Services Account Management Reference Guide.
 %%
 %% The order of the elements in the response, including those within nested
 %% structures,
@@ -25704,7 +25717,7 @@ describe_regions(Client, Input, Options)
 %% For more information, see
 %% Replace a root volume:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replace-root.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% the Amazon EC2 User Guide.
 -spec describe_replace_root_volume_tasks(aws_client:aws_client(), describe_replace_root_volume_tasks_request()) ->
     {ok, describe_replace_root_volume_tasks_result(), tuple()} |
     {error, any()}.
@@ -25765,7 +25778,8 @@ describe_reserved_instances(Client, Input, Options)
 %% Instance listings to you until your demand is met. You are charged based
 %% on the total price of all of the listings that you purchase.
 %%
-%% For more information, see Reserved Instance Marketplace:
+%% For more information, see Sell in the Reserved Instance
+%% Marketplace:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
 %% in the Amazon EC2 User Guide.
 %%
@@ -25793,9 +25807,10 @@ describe_reserved_instances_listings(Client, Input, Options)
 %% Instances modification requests is returned. If a modification ID is
 %% specified, only information about the specific modification is returned.
 %%
-%% For more information, see Modifying Reserved Instances:
+%% For more information, see Modify Reserved Instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html in
-%% the Amazon EC2 User Guide.
+%% the
+%% Amazon EC2 User Guide.
 %%
 %% The order of the elements in the response, including those within nested
 %% structures, might vary. Applications should not assume the elements appear
@@ -25827,7 +25842,8 @@ describe_reserved_instances_modifications(Client, Input, Options)
 %% Instance Marketplace, they will be excluded from these results. This is to
 %% ensure that you do not purchase your own Reserved Instances.
 %%
-%% For more information, see Reserved Instance Marketplace:
+%% For more information, see Sell in the Reserved Instance
+%% Marketplace:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
 %% in the Amazon EC2 User Guide.
 %%
@@ -25849,7 +25865,12 @@ describe_reserved_instances_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedInstancesOfferings">>, Input, Options).
 
-%% @doc Describes one or more of your route tables.
+%% @doc Describes your route tables.
+%%
+%% The default is to describe all your route tables.
+%% Alternatively, you can specify specific route table IDs or filter the
+%% results to
+%% include only the route tables that match specific criteria.
 %%
 %% Each subnet in your VPC must be associated with a route table. If a subnet
 %% is not explicitly associated with any route table, it is implicitly
@@ -26088,7 +26109,7 @@ describe_snapshots(Client, Input, Options)
 %% For more information, see Spot
 %% Instance data feed:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html
-%% in the Amazon EC2 User Guide for Linux Instances.
+%% in the Amazon EC2 User Guide.
 -spec describe_spot_datafeed_subscription(aws_client:aws_client(), describe_spot_datafeed_subscription_request()) ->
     {ok, describe_spot_datafeed_subscription_result(), tuple()} |
     {error, any()}.
@@ -26211,7 +26232,7 @@ describe_spot_instance_requests(Client, Input, Options)
 %% For more information, see Spot Instance pricing history:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html
 %% in the
-%% Amazon EC2 User Guide for Linux Instances.
+%% Amazon EC2 User Guide.
 %%
 %% When you specify a start and end time, the operation returns the prices of
 %% the
@@ -26293,7 +26314,12 @@ describe_store_image_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStoreImageTasks">>, Input, Options).
 
-%% @doc Describes one or more of your subnets.
+%% @doc Describes your subnets.
+%%
+%% The default is to describe all your subnets.
+%% Alternatively, you can specify specific subnet IDs or filter the results
+%% to
+%% include only the subnets that match specific criteria.
 %%
 %% For more information, see Subnets:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html in
@@ -26802,12 +26828,7 @@ describe_volumes(Client, Input, Options)
 %% most
 %% recent modification request.
 %%
-%% You can also use CloudWatch Events to check the status of a modification
-%% to an EBS
-%% volume. For information about CloudWatch Events, see the Amazon CloudWatch
-%% Events User Guide:
-%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/. For more
-%% information, see
+%% For more information, see
 %% Monitor the progress of volume modifications:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/monitoring-volume-modifications.html
 %% in the Amazon EBS User Guide.
@@ -26980,6 +27001,11 @@ describe_vpc_endpoint_services(Client, Input, Options)
     request(Client, <<"DescribeVpcEndpointServices">>, Input, Options).
 
 %% @doc Describes your VPC endpoints.
+%%
+%% The default is to describe all your VPC endpoints.
+%% Alternatively, you can specify specific VPC endpoint IDs or filter the
+%% results to
+%% include only the VPC endpoints that match specific criteria.
 -spec describe_vpc_endpoints(aws_client:aws_client(), describe_vpc_endpoints_request()) ->
     {ok, describe_vpc_endpoints_result(), tuple()} |
     {error, any()}.
@@ -26994,7 +27020,12 @@ describe_vpc_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcEndpoints">>, Input, Options).
 
-%% @doc Describes one or more of your VPC peering connections.
+%% @doc Describes your VPC peering connections.
+%%
+%% The default is to describe all your VPC peering connections.
+%% Alternatively, you can specify specific VPC peering connection IDs or
+%% filter the results to
+%% include only the VPC peering connections that match specific criteria.
 -spec describe_vpc_peering_connections(aws_client:aws_client(), describe_vpc_peering_connections_request()) ->
     {ok, describe_vpc_peering_connections_result(), tuple()} |
     {error, any()}.
@@ -27009,7 +27040,11 @@ describe_vpc_peering_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcPeeringConnections">>, Input, Options).
 
-%% @doc Describes one or more of your VPCs.
+%% @doc Describes your VPCs.
+%%
+%% The default is to describe all your VPCs.
+%% Alternatively, you can specify specific VPC IDs or filter the results to
+%% include only the VPCs that match specific criteria.
 -spec describe_vpcs(aws_client:aws_client(), describe_vpcs_request()) ->
     {ok, describe_vpcs_result(), tuple()} |
     {error, any()}.
@@ -27213,7 +27248,7 @@ detach_vpn_gateway(Client, Input, Options)
 %%
 %% For more information, see Transfer Elastic IP addresses:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro
-%% in the Amazon Virtual Private Cloud User Guide.
+%% in the Amazon VPC User Guide.
 -spec disable_address_transfer(aws_client:aws_client(), disable_address_transfer_request()) ->
     {ok, disable_address_transfer_result(), tuple()} |
     {error, any()}.
@@ -27907,7 +27942,7 @@ disassociate_vpc_cidr_block(Client, Input, Options)
 %%
 %% For more information, see Transfer Elastic IP addresses:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro
-%% in the Amazon Virtual Private Cloud User Guide.
+%% in the Amazon VPC User Guide.
 -spec enable_address_transfer(aws_client:aws_client(), enable_address_transfer_request()) ->
     {ok, enable_address_transfer_result(), tuple()} |
     {error, any()}.
@@ -28416,10 +28451,10 @@ export_image(Client, Input, Options)
 %%
 %% The routes are saved to the specified bucket in a JSON file. For more
 %% information, see
-%% Export Route Tables
+%% Export route tables
 %% to Amazon S3:
 %% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html#tgw-export-route-tables
-%% in Transit Gateways.
+%% in the Amazon Web Services Transit Gateways Guide.
 -spec export_transit_gateway_routes(aws_client:aws_client(), export_transit_gateway_routes_request()) ->
     {ok, export_transit_gateway_routes_result(), tuple()} |
     {error, any()}.
@@ -28956,7 +28991,7 @@ get_ipam_discovered_resource_cidrs(Client, Input, Options)
 %% or ReleaseIpamPoolAllocation:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReleaseIpamPoolAllocation.html,
 %% note that all EC2 API actions follow an eventual consistency:
-%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/query-api-troubleshooting.html#eventual-consistency
+%% https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html
 %% model.
 -spec get_ipam_pool_allocations(aws_client:aws_client(), get_ipam_pool_allocations_request()) ->
     {ok, get_ipam_pool_allocations_result(), tuple()} |
@@ -29104,10 +29139,9 @@ get_network_insights_access_scope_content(Client, Input, Options)
 %% `EC2Launch' scripts (Windows Server 2016 and later). This usually only
 %% happens the first time an instance is launched. For more information, see
 %% EC2Config:
-%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UsingConfig_WinAMI.html
 %% and EC2Launch:
-%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html in
-%% the
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2launch.html in the
 %% Amazon EC2 User Guide.
 %%
 %% For the `EC2Config' service, the password is not generated for
@@ -29736,14 +29770,8 @@ modify_address_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyAddressAttribute">>, Input, Options).
 
-%% @doc Changes the opt-in status of the Local Zone and Wavelength Zone group
-%% for your
+%% @doc Changes the opt-in status of the specified zone group for your
 %% account.
-%%
-%% Use
-%% DescribeAvailabilityZones:
-%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html
-%% to view the value for `GroupName'.
 -spec modify_availability_zone_group(aws_client:aws_client(), modify_availability_zone_group_request()) ->
     {ok, modify_availability_zone_group_result(), tuple()} |
     {error, any()}.
@@ -30583,10 +30611,10 @@ modify_private_dns_name_options(Client, Input, Options)
 %% The Reserved Instances to be modified must be identical,
 %% except for Availability Zone, network platform, and instance type.
 %%
-%% For more information, see Modifying Reserved
-%% Instances:
+%% For more information, see Modify Reserved Instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html in
-%% the Amazon EC2 User Guide.
+%% the
+%% Amazon EC2 User Guide.
 -spec modify_reserved_instances(aws_client:aws_client(), modify_reserved_instances_request()) ->
     {ok, modify_reserved_instances_result(), tuple()} |
     {error, any()}.
@@ -31010,15 +31038,9 @@ modify_verified_access_trust_provider(Client, Input, Options)
 %% information, see Extend the file system:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/recognize-expanded-volume-linux.html.
 %%
-%% You can use CloudWatch Events to check the status of a modification to an
-%% EBS volume. For
-%% information about CloudWatch Events, see the Amazon CloudWatch Events User
-%% Guide: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/. You
-%% can also track the status of a
-%% modification using `DescribeVolumesModifications'. For information
-%% about tracking status changes using either method, see Monitor the
-%% progress of volume modifications:
-%% https://docs.aws.amazon.com/ebs/latest/userguide/monitoring-volume-modifications.html.
+%% For more information, see Monitor the progress of volume modifications:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/monitoring-volume-modifications.html
+%% in the Amazon EBS User Guide.
 %%
 %% With previous-generation instance types, resizing an EBS volume might
 %% require detaching and
@@ -31481,7 +31503,7 @@ move_byoip_cidr_to_ipam(Client, Input, Options)
 %% range.
 %% For more information, see Bring your own IP addresses (BYOIP):
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EC2 User Guide.
 %%
 %% Provisioning an address range is an asynchronous operation, so the call
 %% returns immediately,
@@ -31626,10 +31648,11 @@ purchase_host_reservation(Client, Input, Options)
 %% If you do not specify a
 %% purchase time, the default is the current time.
 %%
-%% For more information, see Reserved Instances:
+%% For more information, see Reserved
+%% Instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html
-%% and
-%% Reserved Instance Marketplace:
+%% and Sell in the Reserved Instance
+%% Marketplace:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
 %% in the Amazon EC2 User Guide.
 -spec purchase_reserved_instances_offering(aws_client:aws_client(), purchase_reserved_instances_offering_request()) ->
@@ -31821,12 +31844,12 @@ register_instance_event_notification_attributes(Client, Input, Options)
 %% multicast group.
 %%
 %% A member is a network interface associated
-%% with a supported EC2 instance that receives multicast traffic. For
-%% information about
-%% supported instances, see Multicast
-%% Consideration:
-%% https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits
-%% in Amazon VPC Transit Gateways.
+%% with a supported EC2 instance that receives multicast traffic. For more
+%% information, see
+%% Multicast
+%% on transit gateways:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-multicast-overview.html in
+%% the Amazon Web Services Transit Gateways Guide.
 %%
 %% After you add the members, use SearchTransitGatewayMulticastGroups:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html
@@ -31851,11 +31874,11 @@ register_transit_gateway_multicast_group_members(Client, Input, Options)
 %%
 %% A multicast source is a network interface attached to a supported instance
 %% that sends
-%% multicast traffic. For information about supported instances, see
+%% multicast traffic. For more information about supported instances, see
 %% Multicast
-%% Considerations:
-%% https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits
-%% in Amazon VPC Transit Gateways.
+%% on transit gateways:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-multicast-overview.html in
+%% the Amazon Web Services Transit Gateways Guide.
 %%
 %% After you add the source, use SearchTransitGatewayMulticastGroups:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html
@@ -32049,7 +32072,7 @@ release_hosts(Client, Input, Options)
 %% Amazon VPC IPAM User Guide.
 %%
 %% All EC2 API actions follow an eventual consistency:
-%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/query-api-troubleshooting.html#eventual-consistency
+%% https://docs.aws.amazon.com/ec2/latest/devguide/eventual-consistency.html
 %% model.
 -spec release_ipam_pool_allocation(aws_client:aws_client(), release_ipam_pool_allocation_request()) ->
     {ok, release_ipam_pool_allocation_result(), tuple()} |
@@ -32305,9 +32328,9 @@ request_spot_fleet(Client, Input, Options)
 
 %% @doc Creates a Spot Instance request.
 %%
-%% For more information, see Spot Instance requests:
+%% For more information, see Work with Spot Instance:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html in
-%% the Amazon EC2 User Guide for Linux Instances.
+%% the Amazon EC2 User Guide.
 %%
 %% We strongly discourage using the RequestSpotInstances API because it is a
 %% legacy
@@ -32317,7 +32340,7 @@ request_spot_fleet(Client, Input, Options)
 %% is the best Spot request method to use?:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-best-practices.html#which-spot-request-method-to-use
 %% in the
-%% Amazon EC2 User Guide for Linux Instances.
+%% Amazon EC2 User Guide.
 -spec request_spot_instances(aws_client:aws_client(), request_spot_instances_request()) ->
     {ok, request_spot_instances_result(), tuple()} |
     {error, any()}.
@@ -32421,7 +32444,7 @@ reset_image_attribute(Client, Input, Options)
 %% is
 %% enabled. This value must be `false' for a NAT instance to perform NAT.
 %% For
-%% more information, see NAT Instances:
+%% more information, see NAT instances:
 %% https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html
 %% in the
 %% Amazon VPC User Guide.
@@ -32709,8 +32732,8 @@ revoke_security_group_ingress(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html.
 %%
 %% If you don't specify a security group ID, we use the default security
-%% group.
-%% For more information, see Security
+%% group
+%% for the VPC. For more information, see Security
 %% groups:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html.
 %%
@@ -32729,6 +32752,11 @@ revoke_security_group_ingress(Client, Input, Options)
 %% example, create five separate launch requests for 100 instances each
 %% instead of one
 %% launch request for 500 instances.
+%%
+%% `RunInstances' is subject to both request rate limiting and resource
+%% rate
+%% limiting. For more information, see Request throttling:
+%% https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-throttling.html.
 %%
 %% An instance is ready for you to use when it's in the `running'
 %% state. You
@@ -32774,13 +32802,12 @@ run_instances(Client, Input, Options)
 %% obtain an identifier using `PurchaseScheduledInstances'.
 %%
 %% You must launch a Scheduled Instance during its scheduled time period. You
-%% can't stop or reboot a Scheduled Instance,
-%% but you can terminate it as needed. If you terminate a Scheduled Instance
-%% before the current scheduled time period ends,
-%% you can launch it again after a few minutes. For more information, see
-%% Scheduled Instances:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html
-%% in the Amazon EC2 User Guide.
+%% can't stop or
+%% reboot a Scheduled Instance, but you can terminate it as needed. If you
+%% terminate a
+%% Scheduled Instance before the current scheduled time period ends, you can
+%% launch it again
+%% after a few minutes.
 -spec run_scheduled_instances(aws_client:aws_client(), run_scheduled_instances_request()) ->
     {ok, run_scheduled_instances_result(), tuple()} |
     {error, any()}.
@@ -32868,10 +32895,7 @@ search_transit_gateway_routes(Client, Input, Options)
 %% when a kernel panic or stop error occurs, see Send a diagnostic interrupt
 %% (for advanced users):
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/diagnostic-interrupt.html
-%% (Linux instances) or Send a diagnostic
-%% interrupt (for advanced users):
-%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/diagnostic-interrupt.html
-%% (Windows instances).
+%% in the Amazon EC2 User Guide.
 -spec send_diagnostic_interrupt(aws_client:aws_client(), send_diagnostic_interrupt_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -32919,9 +32943,10 @@ send_diagnostic_interrupt(Client, Input, Options)
 %% `standard', or
 %% change its tenancy to `default' or `dedicated'.
 %%
-%% For more information, see Stop and start your instance:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html
-%% in the Amazon EC2 User Guide.
+%% For more information, see Stop and start Amazon EC2
+%% instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html in the
+%% Amazon EC2 User Guide.
 -spec start_instances(aws_client:aws_client(), start_instances_request()) ->
     {ok, start_instances_result(), tuple()} |
     {error, any()}.
@@ -32995,18 +33020,20 @@ start_vpc_endpoint_service_private_dns_verification(Client, Input, Options)
 %% @doc Stops an Amazon EBS-backed instance.
 %%
 %% For more information, see Stop and start
-%% your instance:
+%% Amazon EC2 instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html in the
-%% Amazon EC2 User Guide.
+%% Amazon EC2 User
+%% Guide.
 %%
 %% You can use the Stop action to hibernate an instance if the instance is
-%% enabled for
-%% hibernation:
+%% enabled
+%% for hibernation:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enabling-hibernation.html
 %% and it meets the hibernation
 %% prerequisites:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hibernating-prerequisites.html.
-%% For more information, see Hibernate your instance:
+%% For more information, see Hibernate your Amazon EC2
+%% instance:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html in the
 %% Amazon EC2 User Guide.
 %%

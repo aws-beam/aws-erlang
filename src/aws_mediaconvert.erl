@@ -60,6 +60,9 @@
          list_tags_for_resource/5,
          put_policy/2,
          put_policy/3,
+         search_jobs/1,
+         search_jobs/3,
+         search_jobs/4,
          tag_resource/2,
          tag_resource/3,
          untag_resource/3,
@@ -989,6 +992,18 @@
 
 
 %% Example:
+%% search_jobs_request() :: #{
+%%   <<"InputFile">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Order">> => list(any()),
+%%   <<"Queue">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type search_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% hls_settings() :: #{
 %%   <<"AudioGroupId">> => string(),
 %%   <<"AudioOnlyContainer">> => list(any()),
@@ -1418,6 +1433,14 @@
 %%   <<"Profile">> => list(any())
 %% }
 -type dolby_vision() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_jobs_response() :: #{
+%%   <<"Jobs">> => list(job()()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2979,6 +3002,14 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type search_jobs_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type tag_resource_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -3378,8 +3409,11 @@ delete_queue(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Send an request with an empty body to the regional API endpoint to
-%% get your account API endpoint.
+%% @doc Send a request with an empty body to the regional API endpoint to get
+%% your account API endpoint.
+%%
+%% Note that DescribeEndpoints is no longer required. We recommend that you
+%% send your requests directly to the regional endpoint instead.
 -spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
@@ -3904,6 +3938,57 @@ put_policy(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieve a JSON array that includes job details for up to twenty of
+%% your most recent jobs.
+%%
+%% Optionally filter results further according to input file, queue, or
+%% status. To retrieve the twenty next most recent jobs, use the nextToken
+%% string returned with the array.
+-spec search_jobs(aws_client:aws_client()) ->
+    {ok, search_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, search_jobs_errors(), tuple()}.
+search_jobs(Client)
+  when is_map(Client) ->
+    search_jobs(Client, #{}, #{}).
+
+-spec search_jobs(aws_client:aws_client(), map(), map()) ->
+    {ok, search_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, search_jobs_errors(), tuple()}.
+search_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    search_jobs(Client, QueryMap, HeadersMap, []).
+
+-spec search_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, search_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, search_jobs_errors(), tuple()}.
+search_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2017-08-29/search"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"inputFile">>, maps:get(<<"inputFile">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"order">>, maps:get(<<"order">>, QueryMap, undefined)},
+        {<<"queue">>, maps:get(<<"queue">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Add tags to a MediaConvert queue, preset, or job template.
 %%

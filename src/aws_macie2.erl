@@ -8,6 +8,8 @@
          accept_invitation/3,
          batch_get_custom_data_identifiers/2,
          batch_get_custom_data_identifiers/3,
+         batch_update_automated_discovery_accounts/2,
+         batch_update_automated_discovery_accounts/3,
          create_allow_list/2,
          create_allow_list/3,
          create_classification_job/2,
@@ -121,6 +123,9 @@
          list_allow_lists/1,
          list_allow_lists/3,
          list_allow_lists/4,
+         list_automated_discovery_accounts/1,
+         list_automated_discovery_accounts/3,
+         list_automated_discovery_accounts/4,
          list_classification_jobs/2,
          list_classification_jobs/3,
          list_classification_scopes/1,
@@ -624,6 +629,7 @@
 %% bucket_metadata() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"allowsUnencryptedObjectUploads">> => list(any()),
+%%   <<"automatedDiscoveryMonitoringStatus">> => list(any()),
 %%   <<"bucketArn">> => string(),
 %%   <<"bucketCreatedAt">> => non_neg_integer(),
 %%   <<"bucketName">> => string(),
@@ -741,6 +747,13 @@
 
 
 %% Example:
+%% batch_update_automated_discovery_accounts_request() :: #{
+%%   <<"accounts">> => list(automated_discovery_account_update()())
+%% }
+-type batch_update_automated_discovery_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% sensitivity_inspection_template_excludes() :: #{
 %%   <<"managedDataIdentifierIds">> => list(string()())
 %% }
@@ -821,6 +834,14 @@
 
 
 %% Example:
+%% automated_discovery_account_update() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type automated_discovery_account_update() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_findings_request() :: #{
 %%   <<"findingIds">> := list(string()()),
 %%   <<"sortCriteria">> => sort_criteria()
@@ -869,6 +890,7 @@
 
 %% Example:
 %% get_automated_discovery_configuration_response() :: #{
+%%   <<"autoEnableOrganizationMembers">> => list(any()),
 %%   <<"classificationScopeId">> => string(),
 %%   <<"disabledAt">> => non_neg_integer(),
 %%   <<"firstEnabledAt">> => non_neg_integer(),
@@ -1105,6 +1127,14 @@
 %% }
 -type test_custom_data_identifier_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_automated_discovery_accounts_response() :: #{
+%%   <<"items">> => list(automated_discovery_account()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_discovery_accounts_response() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_from_administrator_account_response() :: #{}
 -type disassociate_from_administrator_account_response() :: #{}.
@@ -1127,6 +1157,15 @@
 %%   <<"userPausedDetails">> => user_paused_details()
 %% }
 -type job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_discovery_accounts_request() :: #{
+%%   <<"accountIds">> => list(string()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_discovery_accounts_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_sensitivity_inspection_template_response() :: #{}
@@ -1475,6 +1514,14 @@
 
 
 %% Example:
+%% automated_discovery_account_update_error() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"errorCode">> => list(any())
+%% }
+-type automated_discovery_account_update_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_managed_data_identifiers_response() :: #{
 %%   <<"items">> => list(managed_data_identifier_summary()()),
 %%   <<"nextToken">> => string()
@@ -1759,6 +1806,7 @@
 
 %% Example:
 %% update_automated_discovery_configuration_request() :: #{
+%%   <<"autoEnableOrganizationMembers">> => list(any()),
 %%   <<"status">> := list(any())
 %% }
 -type update_automated_discovery_configuration_request() :: #{binary() => any()}.
@@ -2362,6 +2410,13 @@
 
 
 %% Example:
+%% batch_update_automated_discovery_accounts_response() :: #{
+%%   <<"errors">> => list(automated_discovery_account_update_error()())
+%% }
+-type batch_update_automated_discovery_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_classification_scopes_response() :: #{
 %%   <<"classificationScopes">> => list(classification_scope_summary()()),
 %%   <<"nextToken">> => string()
@@ -2455,6 +2510,7 @@
 %% Example:
 %% matching_bucket() :: #{
 %%   <<"accountId">> => string(),
+%%   <<"automatedDiscoveryMonitoringStatus">> => list(any()),
 %%   <<"bucketName">> => string(),
 %%   <<"classifiableObjectCount">> => float(),
 %%   <<"classifiableSizeInBytes">> => float(),
@@ -2641,6 +2697,14 @@
 
 
 %% Example:
+%% automated_discovery_account() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type automated_discovery_account() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_classification_job_request() :: #{
 %%   <<"jobStatus">> := list(any())
 %% }
@@ -2719,6 +2783,13 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    conflict_exception().
+
+-type batch_update_automated_discovery_accounts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_allow_list_errors() ::
@@ -3113,6 +3184,13 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_automated_discovery_accounts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_classification_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3388,6 +3466,41 @@ batch_get_custom_data_identifiers(Client, Input) ->
 batch_get_custom_data_identifiers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/custom-data-identifiers/get"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Changes the status of automated sensitive data discovery for one or
+%% more accounts.
+-spec batch_update_automated_discovery_accounts(aws_client:aws_client(), batch_update_automated_discovery_accounts_request()) ->
+    {ok, batch_update_automated_discovery_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_automated_discovery_accounts_errors(), tuple()}.
+batch_update_automated_discovery_accounts(Client, Input) ->
+    batch_update_automated_discovery_accounts(Client, Input, []).
+
+-spec batch_update_automated_discovery_accounts(aws_client:aws_client(), batch_update_automated_discovery_accounts_request(), proplists:proplist()) ->
+    {ok, batch_update_automated_discovery_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_automated_discovery_accounts_errors(), tuple()}.
+batch_update_automated_discovery_accounts(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/automated-discovery/accounts"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4290,7 +4403,7 @@ get_allow_list(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the configuration settings and status of automated
-%% sensitive data discovery for an account.
+%% sensitive data discovery for an organization or standalone account.
 -spec get_automated_discovery_configuration(aws_client:aws_client()) ->
     {ok, get_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |
@@ -5084,6 +5197,50 @@ list_allow_lists(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the status of automated sensitive data discovery for one or
+%% more accounts.
+-spec list_automated_discovery_accounts(aws_client:aws_client()) ->
+    {ok, list_automated_discovery_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_discovery_accounts_errors(), tuple()}.
+list_automated_discovery_accounts(Client)
+  when is_map(Client) ->
+    list_automated_discovery_accounts(Client, #{}, #{}).
+
+-spec list_automated_discovery_accounts(aws_client:aws_client(), map(), map()) ->
+    {ok, list_automated_discovery_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_discovery_accounts_errors(), tuple()}.
+list_automated_discovery_accounts(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_automated_discovery_accounts(Client, QueryMap, HeadersMap, []).
+
+-spec list_automated_discovery_accounts(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_automated_discovery_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_discovery_accounts_errors(), tuple()}.
+list_automated_discovery_accounts(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-discovery/accounts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"accountIds">>, maps:get(<<"accountIds">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a subset of information about one or more classification
 %% jobs.
 -spec list_classification_jobs(aws_client:aws_client(), list_classification_jobs_request()) ->
@@ -5274,8 +5431,8 @@ list_findings_filters(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about the Amazon Macie membership invitations
-%% that were received by an account.
+%% @doc Retrieves information about Amazon Macie membership invitations that
+%% were received by an account.
 -spec list_invitations(aws_client:aws_client()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
@@ -5437,8 +5594,8 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about objects that were selected from an S3
-%% bucket for automated sensitive data discovery.
+%% @doc Retrieves information about objects that Amazon Macie selected from
+%% an S3 bucket for automated sensitive data discovery.
 -spec list_resource_profile_artifacts(aws_client:aws_client(), binary() | list()) ->
     {ok, list_resource_profile_artifacts_response(), tuple()} |
     {error, any()} |
@@ -5602,7 +5759,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates or updates the configuration settings for storing data
+%% @doc Adds or updates the configuration settings for storing data
 %% classification results.
 -spec put_classification_export_configuration(aws_client:aws_client(), put_classification_export_configuration_request()) ->
     {ok, put_classification_export_configuration_response(), tuple()} |
@@ -5740,7 +5897,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Tests a custom data identifier.
+%% @doc Tests criteria for a custom data identifier.
 -spec test_custom_data_identifier(aws_client:aws_client(), test_custom_data_identifier_request()) ->
     {ok, test_custom_data_identifier_response(), tuple()} |
     {error, any()} |
@@ -5842,8 +5999,8 @@ update_allow_list(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables or disables automated sensitive data discovery for an
-%% account.
+%% @doc Changes the configuration settings and status of automated sensitive
+%% data discovery for an organization or standalone account.
 -spec update_automated_discovery_configuration(aws_client:aws_client(), update_automated_discovery_configuration_request()) ->
     {ok, update_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |

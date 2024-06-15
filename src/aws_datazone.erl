@@ -17,6 +17,8 @@
          accept_predictions/5,
          accept_subscription_request/4,
          accept_subscription_request/5,
+         associate_environment_role/5,
+         associate_environment_role/6,
          cancel_metadata_generation_run/4,
          cancel_metadata_generation_run/5,
          cancel_subscription/4,
@@ -33,6 +35,8 @@
          create_domain/3,
          create_environment/3,
          create_environment/4,
+         create_environment_action/4,
+         create_environment_action/5,
          create_environment_profile/3,
          create_environment_profile/4,
          create_form_type/3,
@@ -67,6 +71,8 @@
          delete_domain/4,
          delete_environment/4,
          delete_environment/5,
+         delete_environment_action/5,
+         delete_environment_action/6,
          delete_environment_blueprint_configuration/4,
          delete_environment_blueprint_configuration/5,
          delete_environment_profile/4,
@@ -91,6 +97,8 @@
          delete_subscription_target/6,
          delete_time_series_data_points/5,
          delete_time_series_data_points/6,
+         disassociate_environment_role/5,
+         disassociate_environment_role/6,
          get_asset/3,
          get_asset/5,
          get_asset/6,
@@ -109,6 +117,9 @@
          get_environment/3,
          get_environment/5,
          get_environment/6,
+         get_environment_action/4,
+         get_environment_action/6,
+         get_environment_action/7,
          get_environment_blueprint/3,
          get_environment_blueprint/5,
          get_environment_blueprint/6,
@@ -174,6 +185,9 @@
          list_domains/1,
          list_domains/3,
          list_domains/4,
+         list_environment_actions/3,
+         list_environment_actions/5,
+         list_environment_actions/6,
          list_environment_blueprint_configurations/2,
          list_environment_blueprint_configurations/4,
          list_environment_blueprint_configurations/5,
@@ -250,6 +264,8 @@
          update_domain/4,
          update_environment/4,
          update_environment/5,
+         update_environment_action/5,
+         update_environment_action/6,
          update_environment_profile/4,
          update_environment_profile/5,
          update_glossary/4,
@@ -362,6 +378,23 @@
 %%   <<"enabled">> => [boolean()]
 %% }
 -type business_name_generation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_action_input() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> := [string()],
+%%   <<"parameters">> := list()
+%% }
+-type create_environment_action_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_actions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_actions_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -531,6 +564,10 @@
 %% get_domain_input() :: #{}
 -type get_domain_input() :: #{}.
 
+%% Example:
+%% get_environment_action_input() :: #{}
+-type get_environment_action_input() :: #{}.
+
 
 %% Example:
 %% unauthorized_exception() :: #{
@@ -639,6 +676,18 @@
 
 
 %% Example:
+%% create_environment_action_output() :: #{
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => list()
+%% }
+-type create_environment_action_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_listing_change_set_output() :: #{
 %%   <<"listingId">> => string(),
 %%   <<"listingRevision">> => string(),
@@ -660,6 +709,9 @@
 %% Example:
 %% create_environment_input() :: #{
 %%   <<"description">> => [string()],
+%%   <<"environmentAccountIdentifier">> => [string()],
+%%   <<"environmentAccountRegion">> => [string()],
+%%   <<"environmentBlueprintIdentifier">> => [string()],
 %%   <<"environmentProfileIdentifier">> := string(),
 %%   <<"glossaryTerms">> => list(string()()),
 %%   <<"name">> := [string()],
@@ -984,6 +1036,13 @@
 
 
 %% Example:
+%% redshift_self_grant_status_output() :: #{
+%%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail()())
+%% }
+-type redshift_self_grant_status_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_project_output() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => string(),
@@ -1044,6 +1103,10 @@
 %% }
 -type search_types_input() :: #{binary() => any()}.
 
+%% Example:
+%% disassociate_environment_role_input() :: #{}
+-type disassociate_environment_role_input() :: #{}.
+
 
 %% Example:
 %% post_time_series_data_points_input() :: #{
@@ -1094,6 +1157,7 @@
 %%   <<"publishOnImport">> => [boolean()],
 %%   <<"recommendation">> => recommendation_configuration(),
 %%   <<"schedule">> => schedule_configuration(),
+%%   <<"selfGrantStatus">> => list(),
 %%   <<"status">> => list(any()),
 %%   <<"type">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -1186,8 +1250,20 @@
 -type list_environments_input() :: #{binary() => any()}.
 
 %% Example:
+%% associate_environment_role_input() :: #{}
+-type associate_environment_role_input() :: #{}.
+
+%% Example:
 %% cancel_metadata_generation_run_output() :: #{}
 -type cancel_metadata_generation_run_output() :: #{}.
+
+
+%% Example:
+%% list_environment_actions_output() :: #{
+%%   <<"items">> => list(environment_action_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_actions_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1221,6 +1297,15 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type environment_blueprint_configuration_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_action_input() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => list()
+%% }
+-type update_environment_action_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1561,6 +1646,7 @@
 %%   <<"name">> => string(),
 %%   <<"publishOnImport">> => [boolean()],
 %%   <<"recommendation">> => recommendation_configuration(),
+%%   <<"retainPermissionsOnRevokeFailure">> => [boolean()],
 %%   <<"schedule">> => schedule_configuration()
 %% }
 -type update_data_source_input() :: #{binary() => any()}.
@@ -1770,7 +1856,9 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"publishOnImport">> => [boolean()],
+%%   <<"retainPermissionsOnRevokeFailure">> => [boolean()],
 %%   <<"schedule">> => schedule_configuration(),
+%%   <<"selfGrantStatus">> => list(),
 %%   <<"status">> => list(any()),
 %%   <<"type">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -1862,6 +1950,18 @@
 
 
 %% Example:
+%% get_environment_action_output() :: #{
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => list()
+%% }
+-type get_environment_action_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% reject_subscription_request_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -1929,6 +2029,18 @@
 %%   <<"businessNameGeneration">> => business_name_generation_configuration()
 %% }
 -type prediction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_action_summary() :: #{
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => list()
+%% }
+-type environment_action_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2386,7 +2498,9 @@
 %%   <<"projectId">> => string(),
 %%   <<"publishOnImport">> => [boolean()],
 %%   <<"recommendation">> => recommendation_configuration(),
+%%   <<"retainPermissionsOnRevokeFailure">> => [boolean()],
 %%   <<"schedule">> => schedule_configuration(),
+%%   <<"selfGrantStatus">> => list(),
 %%   <<"status">> => list(any()),
 %%   <<"type">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -2421,6 +2535,13 @@
 %%   <<"userParameters">> => list(custom_parameter()())
 %% }
 -type get_environment_blueprint_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_console_link_parameters() :: #{
+%%   <<"uri">> => [string()]
+%% }
+-type aws_console_link_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2468,6 +2589,18 @@
 %%   <<"termRelations">> => term_relations()
 %% }
 -type update_glossary_term_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_action_output() :: #{
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => list()
+%% }
+-type update_environment_action_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2796,6 +2929,16 @@
 
 
 %% Example:
+%% self_grant_status_detail() :: #{
+%%   <<"databaseName">> => [string()],
+%%   <<"failureCause">> => [string()],
+%%   <<"schemaName">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type self_grant_status_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_listing_change_set_input() :: #{
 %%   <<"action">> := list(any()),
 %%   <<"clientToken">> => string(),
@@ -2883,6 +3026,10 @@
 %%   <<"timezone">> => list(any())
 %% }
 -type schedule_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% associate_environment_role_output() :: #{}
+-type associate_environment_role_output() :: #{}.
 
 %% Example:
 %% get_glossary_input() :: #{}
@@ -3131,6 +3278,10 @@
 %% }
 -type deployment_properties() :: #{binary() => any()}.
 
+%% Example:
+%% disassociate_environment_role_output() :: #{}
+-type disassociate_environment_role_output() :: #{}.
+
 
 %% Example:
 %% get_subscription_output() :: #{
@@ -3176,6 +3327,10 @@
 %%   <<"groupId">> => [string()]
 %% }
 -type group_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_action_input() :: #{}
+-type delete_environment_action_input() :: #{}.
 
 
 %% Example:
@@ -3267,6 +3422,13 @@
 %% }
 -type list_domains_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% glue_self_grant_status_output() :: #{
+%%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail()())
+%% }
+-type glue_self_grant_status_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_environment_blueprint_input() :: #{}
 -type get_environment_blueprint_input() :: #{}.
@@ -3331,7 +3493,8 @@
 
 %% Example:
 %% delete_data_source_input() :: #{
-%%   <<"clientToken">> => [string()]
+%%   <<"clientToken">> => [string()],
+%%   <<"retainPermissionsOnRevokeFailure">> => [boolean()]
 %% }
 -type delete_data_source_input() :: #{binary() => any()}.
 
@@ -3566,6 +3729,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type associate_environment_role_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type cancel_metadata_generation_run_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3626,6 +3797,14 @@
     conflict_exception().
 
 -type create_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_environment_action_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3766,6 +3945,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type delete_environment_action_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_environment_blueprint_configuration_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -3856,6 +4043,14 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type disassociate_environment_role_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type get_asset_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3897,6 +4092,13 @@
     resource_not_found_exception().
 
 -type get_environment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_environment_action_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4062,6 +4264,12 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type list_environment_actions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_environment_blueprint_configurations_errors() ::
     validation_exception() | 
@@ -4277,6 +4485,14 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type update_environment_action_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_environment_profile_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4403,6 +4619,40 @@ accept_subscription_request(Client, DomainIdentifier, Identifier, Input) ->
 accept_subscription_request(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscription-requests/", aws_util:encode_uri(Identifier), "/accept"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates the environment role in Amazon DataZone.
+-spec associate_environment_role(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), associate_environment_role_input()) ->
+    {ok, associate_environment_role_output(), tuple()} |
+    {error, any()} |
+    {error, associate_environment_role_errors(), tuple()}.
+associate_environment_role(Client, DomainIdentifier, EnvironmentIdentifier, EnvironmentRoleArn, Input) ->
+    associate_environment_role(Client, DomainIdentifier, EnvironmentIdentifier, EnvironmentRoleArn, Input, []).
+
+-spec associate_environment_role(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), associate_environment_role_input(), proplists:proplist()) ->
+    {ok, associate_environment_role_output(), tuple()} |
+    {error, any()} |
+    {error, associate_environment_role_errors(), tuple()}.
+associate_environment_role(Client, DomainIdentifier, EnvironmentIdentifier, EnvironmentRoleArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/roles/", aws_util:encode_uri(EnvironmentRoleArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4675,6 +4925,42 @@ create_environment(Client, DomainIdentifier, Input) ->
 create_environment(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an action for the environment, for example, creates a console
+%% link for an
+%% analytics tool that is available in this environment.
+-spec create_environment_action(aws_client:aws_client(), binary() | list(), binary() | list(), create_environment_action_input()) ->
+    {ok, create_environment_action_output(), tuple()} |
+    {error, any()} |
+    {error, create_environment_action_errors(), tuple()}.
+create_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Input) ->
+    create_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Input, []).
+
+-spec create_environment_action(aws_client:aws_client(), binary() | list(), binary() | list(), create_environment_action_input(), proplists:proplist()) ->
+    {ok, create_environment_action_output(), tuple()} |
+    {error, any()} |
+    {error, create_environment_action_errors(), tuple()}.
+create_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/actions"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5202,7 +5488,8 @@ delete_data_source(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
-                     {<<"clientToken">>, <<"clientToken">>}
+                     {<<"clientToken">>, <<"clientToken">>},
+                     {<<"retainPermissionsOnRevokeFailure">>, <<"retainPermissionsOnRevokeFailure">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -5258,6 +5545,42 @@ delete_environment(Client, DomainIdentifier, Identifier, Input) ->
 delete_environment(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an action for the environment, for example, deletes a console
+%% link for an
+%% analytics tool that is available in this environment.
+-spec delete_environment_action(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_environment_action_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_environment_action_errors(), tuple()}.
+delete_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input) ->
+    delete_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input, []).
+
+-spec delete_environment_action(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_environment_action_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_environment_action_errors(), tuple()}.
+delete_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/actions/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5688,6 +6011,40 @@ delete_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, Entit
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disassociates the environment role in Amazon DataZone.
+-spec disassociate_environment_role(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_environment_role_input()) ->
+    {ok, disassociate_environment_role_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_environment_role_errors(), tuple()}.
+disassociate_environment_role(Client, DomainIdentifier, EnvironmentIdentifier, EnvironmentRoleArn, Input) ->
+    disassociate_environment_role(Client, DomainIdentifier, EnvironmentIdentifier, EnvironmentRoleArn, Input, []).
+
+-spec disassociate_environment_role(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_environment_role_input(), proplists:proplist()) ->
+    {ok, disassociate_environment_role_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_environment_role_errors(), tuple()}.
+disassociate_environment_role(Client, DomainIdentifier, EnvironmentIdentifier, EnvironmentRoleArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/roles/", aws_util:encode_uri(EnvironmentRoleArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets an Amazon DataZone asset.
 -spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_asset_output(), tuple()} |
@@ -5905,6 +6262,43 @@ get_environment(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
 get_environment(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the specified environment action.
+-spec get_environment_action(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_environment_action_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_action_errors(), tuple()}.
+get_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Identifier)
+  when is_map(Client) ->
+    get_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, #{}, #{}).
+
+-spec get_environment_action(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_environment_action_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_action_errors(), tuple()}.
+get_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_environment_action(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_environment_action_output(), tuple()} |
+    {error, any()} |
+    {error, get_environment_action_errors(), tuple()}.
+get_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/actions/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6773,6 +7167,48 @@ list_domains(Client, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists existing environment actions.
+-spec list_environment_actions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_environment_actions_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_actions_errors(), tuple()}.
+list_environment_actions(Client, DomainIdentifier, EnvironmentIdentifier)
+  when is_map(Client) ->
+    list_environment_actions(Client, DomainIdentifier, EnvironmentIdentifier, #{}, #{}).
+
+-spec list_environment_actions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_environment_actions_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_actions_errors(), tuple()}.
+list_environment_actions(Client, DomainIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_environment_actions(Client, DomainIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_environment_actions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_environment_actions_output(), tuple()} |
+    {error, any()} |
+    {error, list_environment_actions_errors(), tuple()}.
+list_environment_actions(Client, DomainIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/actions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7979,6 +8415,40 @@ update_environment(Client, DomainIdentifier, Identifier, Input) ->
 update_environment(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an environment action.
+-spec update_environment_action(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_environment_action_input()) ->
+    {ok, update_environment_action_output(), tuple()} |
+    {error, any()} |
+    {error, update_environment_action_errors(), tuple()}.
+update_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input) ->
+    update_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input, []).
+
+-spec update_environment_action(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_environment_action_input(), proplists:proplist()) ->
+    {ok, update_environment_action_output(), tuple()} |
+    {error, any()} |
+    {error, update_environment_action_errors(), tuple()}.
+update_environment_action(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/actions/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
