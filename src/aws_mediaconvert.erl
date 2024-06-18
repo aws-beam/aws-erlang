@@ -548,7 +548,11 @@
 
 %% Example:
 %% input_video_generator() :: #{
-%%   <<"Duration">> => integer()
+%%   <<"Channels">> => integer(),
+%%   <<"Duration">> => integer(),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"SampleRate">> => integer()
 %% }
 -type input_video_generator() :: #{binary() => any()}.
 
@@ -900,6 +904,7 @@
 %%   <<"BaseUrl">> => string(),
 %%   <<"ClientCache">> => list(any()),
 %%   <<"CodecSpecification">> => list(any()),
+%%   <<"DashIFrameTrickPlayNameModifier">> => string(),
 %%   <<"DashManifestStyle">> => list(any()),
 %%   <<"Destination">> => string(),
 %%   <<"DestinationSettings">> => destination_settings(),
@@ -2550,6 +2555,7 @@
 %%   <<"AdditionalManifests">> => list(dash_additional_manifest()()),
 %%   <<"AudioChannelConfigSchemeIdUri">> => list(any()),
 %%   <<"BaseUrl">> => string(),
+%%   <<"DashIFrameTrickPlayNameModifier">> => string(),
 %%   <<"DashManifestStyle">> => list(any()),
 %%   <<"Destination">> => string(),
 %%   <<"DestinationSettings">> => destination_settings(),

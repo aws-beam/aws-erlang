@@ -90,6 +90,8 @@
          create_table_optimizer/3,
          create_trigger/2,
          create_trigger/3,
+         create_usage_profile/2,
+         create_usage_profile/3,
          create_user_defined_function/2,
          create_user_defined_function/3,
          create_workflow/2,
@@ -142,6 +144,8 @@
          delete_table_version/3,
          delete_trigger/2,
          delete_trigger/3,
+         delete_usage_profile/2,
+         delete_usage_profile/3,
          delete_user_defined_function/2,
          delete_user_defined_function/3,
          delete_workflow/2,
@@ -270,6 +274,8 @@
          get_unfiltered_partitions_metadata/3,
          get_unfiltered_table_metadata/2,
          get_unfiltered_table_metadata/3,
+         get_usage_profile/2,
+         get_usage_profile/3,
          get_user_defined_function/2,
          get_user_defined_function/3,
          get_user_defined_functions/2,
@@ -322,6 +328,8 @@
          list_table_optimizer_runs/3,
          list_triggers/2,
          list_triggers/3,
+         list_usage_profiles/2,
+         list_usage_profiles/3,
          list_workflows/2,
          list_workflows/3,
          put_data_catalog_encryption_settings/2,
@@ -428,6 +436,8 @@
          update_table_optimizer/3,
          update_trigger/2,
          update_trigger/3,
+         update_usage_profile/2,
+         update_usage_profile/3,
          update_user_defined_function/2,
          update_user_defined_function/3,
          update_workflow/2,
@@ -823,6 +833,14 @@
 
 %% }
 -type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_usage_profile_request() :: #{
+%%   <<"Configuration">> := profile_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type update_usage_profile_request() :: #{binary() => any()}.
 
 %% Example:
 %% check_schema_version_validity_input() :: #{
@@ -1235,6 +1253,15 @@
 -type create_table_optimizer_response() :: #{binary() => any()}.
 
 %% Example:
+%% usage_profile_definition() :: #{
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type usage_profile_definition() :: #{binary() => any()}.
+
+%% Example:
 %% amazon_redshift_advanced_option() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -1325,6 +1352,7 @@
 %%   <<"NumberOfWorkers">> => integer(),
 %%   <<"PredecessorRuns">> => list(predecessor()()),
 %%   <<"PreviousRunId">> => string(),
+%%   <<"ProfileName">> => string(),
 %%   <<"SecurityConfiguration">> => string(),
 %%   <<"StartedOn">> => non_neg_integer(),
 %%   <<"Timeout">> => integer(),
@@ -1506,6 +1534,13 @@
 %%   <<"Status">> => list(any())
 %% }
 -type data_quality_rule_recommendation_run_description() :: #{binary() => any()}.
+
+%% Example:
+%% list_usage_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Profiles">> => list(usage_profile_definition()())
+%% }
+-type list_usage_profiles_response() :: #{binary() => any()}.
 
 %% Example:
 %% athena_connector_source() :: #{
@@ -2786,6 +2821,16 @@
 -type get_column_statistics_task_runs_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_usage_profile_response() :: #{
+%%   <<"Configuration">> => profile_configuration(),
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type get_usage_profile_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_user_defined_function_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
@@ -2833,6 +2878,12 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_custom_entity_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_usage_profile_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_usage_profile_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_unfiltered_partition_metadata_request() :: #{
@@ -2908,6 +2959,12 @@
 %%   <<"Classifier">> => classifier()
 %% }
 -type get_classifier_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_usage_profile_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_usage_profile_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_session_request() :: #{
@@ -3126,6 +3183,12 @@
 -type list_sessions_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_usage_profile_response() :: #{
+
+%% }
+-type delete_usage_profile_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_partition_response() :: #{
 %%   <<"Partition">> => partition()
 %% }
@@ -3198,6 +3261,15 @@
 %%   <<"Message">> => string()
 %% }
 -type column_statistics_task_not_running_exception() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_object() :: #{
+%%   <<"AllowedValues">> => list(string()()),
+%%   <<"DefaultValue">> => string(),
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string()
+%% }
+-type configuration_object() :: #{binary() => any()}.
 
 %% Example:
 %% partition_value_list() :: #{
@@ -4456,6 +4528,7 @@
 %%   <<"IdleTimeout">> => integer(),
 %%   <<"MaxCapacity">> => float(),
 %%   <<"NumberOfWorkers">> => integer(),
+%%   <<"ProfileName">> => string(),
 %%   <<"Progress">> => float(),
 %%   <<"Role">> => string(),
 %%   <<"SecurityConfiguration">> => string(),
@@ -4616,6 +4689,12 @@
 %%   <<"TableName">> := string()
 %% }
 -type create_partition_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_profile_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_usage_profile_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_classifier_response() :: #{
@@ -5031,6 +5110,13 @@
 %%   <<"Errors">> => list(column_statistics_error()())
 %% }
 -type update_column_statistics_for_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% profile_configuration() :: #{
+%%   <<"JobConfiguration">> => map(),
+%%   <<"SessionConfiguration">> => map()
+%% }
+-type profile_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_classifiers_request() :: #{
@@ -5656,6 +5742,7 @@
 %%   <<"NonOverridableArguments">> => map(),
 %%   <<"NotificationProperty">> => notification_property(),
 %%   <<"NumberOfWorkers">> => integer(),
+%%   <<"ProfileName">> => string(),
 %%   <<"Role">> => string(),
 %%   <<"SecurityConfiguration">> => string(),
 %%   <<"SourceControlDetails">> => source_control_details(),
@@ -5678,6 +5765,12 @@
 %%   <<"Name">> => string()
 %% }
 -type connector_data_target() :: #{binary() => any()}.
+
+%% Example:
+%% delete_usage_profile_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_usage_profile_request() :: #{binary() => any()}.
 
 %% Example:
 %% s3_catalog_source() :: #{
@@ -5940,6 +6033,13 @@
 %%   <<"Table">> => string()
 %% }
 -type dynamo_db_catalog_source() :: #{binary() => any()}.
+
+%% Example:
+%% list_usage_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_usage_profiles_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_blueprints_response() :: #{
@@ -6432,6 +6532,12 @@
 -type snowflake_target() :: #{binary() => any()}.
 
 %% Example:
+%% operation_not_supported_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
 %% edge() :: #{
 %%   <<"DestinationId">> => string(),
 %%   <<"SourceId">> => string()
@@ -6463,6 +6569,15 @@
 %%   <<"Type">> := list(any())
 %% }
 -type list_table_optimizer_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_usage_profile_request() :: #{
+%%   <<"Configuration">> := profile_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_usage_profile_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_connection_request() :: #{
@@ -7482,6 +7597,14 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type create_usage_profile_errors() ::
+    operation_not_supported_exception() | 
+    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
 -type create_user_defined_function_errors() ::
     glue_encryption_exception() | 
     invalid_input_exception() | 
@@ -7644,6 +7767,12 @@
 
 -type delete_trigger_errors() ::
     concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
+
+-type delete_usage_profile_errors() ::
+    operation_not_supported_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception().
@@ -8048,6 +8177,13 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type get_usage_profile_errors() ::
+    operation_not_supported_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type get_user_defined_function_errors() ::
     glue_encryption_exception() | 
     invalid_input_exception() | 
@@ -8192,6 +8328,12 @@
     internal_service_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
+
+-type list_usage_profiles_errors() ::
+    operation_not_supported_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception().
 
 -type list_workflows_errors() ::
     invalid_input_exception() | 
@@ -8560,6 +8702,14 @@
     entity_not_found_exception().
 
 -type update_trigger_errors() ::
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type update_usage_profile_errors() ::
+    operation_not_supported_exception() | 
     concurrent_modification_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -9420,6 +9570,23 @@ create_trigger(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrigger">>, Input, Options).
 
+%% @doc Creates an Glue usage profile.
+-spec create_usage_profile(aws_client:aws_client(), create_usage_profile_request()) ->
+    {ok, create_usage_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_usage_profile_errors(), tuple()}.
+create_usage_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_usage_profile(Client, Input, []).
+
+-spec create_usage_profile(aws_client:aws_client(), create_usage_profile_request(), proplists:proplist()) ->
+    {ok, create_usage_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_usage_profile_errors(), tuple()}.
+create_usage_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateUsageProfile">>, Input, Options).
+
 %% @doc Creates a new function definition in the Data Catalog.
 -spec create_user_defined_function(aws_client:aws_client(), create_user_defined_function_request()) ->
     {ok, create_user_defined_function_response(), tuple()} |
@@ -9945,6 +10112,23 @@ delete_trigger(Client, Input)
 delete_trigger(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrigger">>, Input, Options).
+
+%% @doc Deletes the Glue specified usage profile.
+-spec delete_usage_profile(aws_client:aws_client(), delete_usage_profile_request()) ->
+    {ok, delete_usage_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_usage_profile_errors(), tuple()}.
+delete_usage_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_usage_profile(Client, Input, []).
+
+-spec delete_usage_profile(aws_client:aws_client(), delete_usage_profile_request(), proplists:proplist()) ->
+    {ok, delete_usage_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_usage_profile_errors(), tuple()}.
+delete_usage_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteUsageProfile">>, Input, Options).
 
 %% @doc Deletes an existing function definition from the Data Catalog.
 -spec delete_user_defined_function(aws_client:aws_client(), delete_user_defined_function_request()) ->
@@ -10492,6 +10676,8 @@ get_job_bookmark(Client, Input, Options)
     request(Client, <<"GetJobBookmark">>, Input, Options).
 
 %% @doc Retrieves the metadata for a given job run.
+%%
+%% Job run history is accessible for 90 days for your workflow and job run.
 -spec get_job_run(aws_client:aws_client(), get_job_run_request()) ->
     {ok, get_job_run_response(), tuple()} |
     {error, any()} |
@@ -11148,6 +11334,23 @@ get_unfiltered_table_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUnfilteredTableMetadata">>, Input, Options).
 
+%% @doc Retrieves information about the specified Glue usage profile.
+-spec get_usage_profile(aws_client:aws_client(), get_usage_profile_request()) ->
+    {ok, get_usage_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_usage_profile_errors(), tuple()}.
+get_usage_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_usage_profile(Client, Input, []).
+
+-spec get_usage_profile(aws_client:aws_client(), get_usage_profile_request(), proplists:proplist()) ->
+    {ok, get_usage_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_usage_profile_errors(), tuple()}.
+get_usage_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetUsageProfile">>, Input, Options).
+
 %% @doc Retrieves a specified function definition from the Data Catalog.
 -spec get_user_defined_function(aws_client:aws_client(), get_user_defined_function_request()) ->
     {ok, get_user_defined_function_response(), tuple()} |
@@ -11200,6 +11403,8 @@ get_workflow(Client, Input, Options)
     request(Client, <<"GetWorkflow">>, Input, Options).
 
 %% @doc Retrieves the metadata for a given workflow run.
+%%
+%% Job run history is accessible for 90 days for your workflow and job run.
 -spec get_workflow_run(aws_client:aws_client(), get_workflow_run_request()) ->
     {ok, get_workflow_run_response(), tuple()} |
     {error, any()} |
@@ -11670,6 +11875,23 @@ list_triggers(Client, Input)
 list_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTriggers">>, Input, Options).
+
+%% @doc List all the Glue usage profiles.
+-spec list_usage_profiles(aws_client:aws_client(), list_usage_profiles_request()) ->
+    {ok, list_usage_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_usage_profiles_errors(), tuple()}.
+list_usage_profiles(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_usage_profiles(Client, Input, []).
+
+-spec list_usage_profiles(aws_client:aws_client(), list_usage_profiles_request(), proplists:proplist()) ->
+    {ok, list_usage_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_usage_profiles_errors(), tuple()}.
+list_usage_profiles(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListUsageProfiles">>, Input, Options).
 
 %% @doc Lists names of workflows created in the account.
 -spec list_workflows(aws_client:aws_client(), list_workflows_request()) ->
@@ -12798,6 +13020,23 @@ update_trigger(Client, Input)
 update_trigger(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrigger">>, Input, Options).
+
+%% @doc Update an Glue usage profile.
+-spec update_usage_profile(aws_client:aws_client(), update_usage_profile_request()) ->
+    {ok, update_usage_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_usage_profile_errors(), tuple()}.
+update_usage_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_usage_profile(Client, Input, []).
+
+-spec update_usage_profile(aws_client:aws_client(), update_usage_profile_request(), proplists:proplist()) ->
+    {ok, update_usage_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_usage_profile_errors(), tuple()}.
+update_usage_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateUsageProfile">>, Input, Options).
 
 %% @doc Updates an existing function definition in the Data Catalog.
 -spec update_user_defined_function(aws_client:aws_client(), update_user_defined_function_request()) ->

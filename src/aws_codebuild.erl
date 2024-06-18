@@ -954,7 +954,8 @@
 %%   <<"buildType">> => list(any()),
 %%   <<"filterGroups">> => list(list(webhook_filter()())()),
 %%   <<"manualCreation">> => boolean(),
-%%   <<"projectName">> := string()
+%%   <<"projectName">> := string(),
+%%   <<"scopeConfiguration">> => scope_configuration()
 %% }
 -type create_webhook_input() :: #{binary() => any()}.
 
@@ -1095,6 +1096,14 @@
 
 %% }
 -type delete_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% scope_configuration() :: #{
+%%   <<"domain">> => string(),
+%%   <<"name">> => string(),
+%%   <<"scope">> => list(any())
+%% }
+-type scope_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% code_coverage() :: #{
@@ -1462,6 +1471,7 @@
 %%   <<"lastModifiedSecret">> => non_neg_integer(),
 %%   <<"manualCreation">> => boolean(),
 %%   <<"payloadUrl">> => string(),
+%%   <<"scopeConfiguration">> => scope_configuration(),
 %%   <<"secret">> => string(),
 %%   <<"url">> => string()
 %% }
