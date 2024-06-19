@@ -84,6 +84,8 @@
          create_inference_recommendations_job/3,
          create_labeling_job/2,
          create_labeling_job/3,
+         create_mlflow_tracking_server/2,
+         create_mlflow_tracking_server/3,
          create_model/2,
          create_model/3,
          create_model_bias_job_definition/2,
@@ -110,6 +112,8 @@
          create_pipeline/3,
          create_presigned_domain_url/2,
          create_presigned_domain_url/3,
+         create_presigned_mlflow_tracking_server_url/2,
+         create_presigned_mlflow_tracking_server_url/3,
          create_presigned_notebook_instance_url/2,
          create_presigned_notebook_instance_url/3,
          create_processing_job/2,
@@ -190,6 +194,8 @@
          delete_inference_component/3,
          delete_inference_experiment/2,
          delete_inference_experiment/3,
+         delete_mlflow_tracking_server/2,
+         delete_mlflow_tracking_server/3,
          delete_model/2,
          delete_model/3,
          delete_model_bias_job_definition/2,
@@ -304,6 +310,8 @@
          describe_labeling_job/3,
          describe_lineage_group/2,
          describe_lineage_group/3,
+         describe_mlflow_tracking_server/2,
+         describe_mlflow_tracking_server/3,
          describe_model/2,
          describe_model/3,
          describe_model_bias_job_definition/2,
@@ -454,6 +462,8 @@
          list_labeling_jobs_for_workteam/3,
          list_lineage_groups/2,
          list_lineage_groups/3,
+         list_mlflow_tracking_servers/2,
+         list_mlflow_tracking_servers/3,
          list_model_bias_job_definitions/2,
          list_model_bias_job_definitions/3,
          list_model_card_export_jobs/2,
@@ -546,6 +556,8 @@
          start_edge_deployment_stage/3,
          start_inference_experiment/2,
          start_inference_experiment/3,
+         start_mlflow_tracking_server/2,
+         start_mlflow_tracking_server/3,
          start_monitoring_schedule/2,
          start_monitoring_schedule/3,
          start_notebook_instance/2,
@@ -568,6 +580,8 @@
          stop_inference_recommendations_job/3,
          stop_labeling_job/2,
          stop_labeling_job/3,
+         stop_mlflow_tracking_server/2,
+         stop_mlflow_tracking_server/3,
          stop_monitoring_schedule/2,
          stop_monitoring_schedule/3,
          stop_notebook_instance/2,
@@ -622,6 +636,8 @@
          update_inference_component_runtime_config/3,
          update_inference_experiment/2,
          update_inference_experiment/3,
+         update_mlflow_tracking_server/2,
+         update_mlflow_tracking_server/3,
          update_model_card/2,
          update_model_card/3,
          update_model_package/2,
@@ -1168,6 +1184,12 @@
 -type monitoring_stopping_condition() :: #{binary() => any()}.
 
 %% Example:
+%% create_presigned_mlflow_tracking_server_url_response() :: #{
+%%   <<"AuthorizedUrl">> => string()
+%% }
+-type create_presigned_mlflow_tracking_server_url_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_inference_recommendations_job_response() :: #{
 %%   <<"CompletionTime">> => non_neg_integer(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -1226,6 +1248,14 @@
 %%   <<"AppImageConfigArn">> => string()
 %% }
 -type update_app_image_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_presigned_mlflow_tracking_server_url_request() :: #{
+%%   <<"ExpiresInSeconds">> => integer(),
+%%   <<"SessionExpirationDurationInSeconds">> => integer(),
+%%   <<"TrackingServerName">> := string()
+%% }
+-type create_presigned_mlflow_tracking_server_url_request() :: #{binary() => any()}.
 
 %% Example:
 %% model_data_quality() :: #{
@@ -1736,6 +1766,12 @@
 -type model_digests() :: #{binary() => any()}.
 
 %% Example:
+%% start_mlflow_tracking_server_request() :: #{
+%%   <<"TrackingServerName">> := string()
+%% }
+-type start_mlflow_tracking_server_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_search_suggestions_response() :: #{
 %%   <<"PropertyNameSuggestions">> => list(property_name_suggestion()())
 %% }
@@ -2052,6 +2088,12 @@
 %%   <<"TrainingRepositoryAuthConfig">> => training_repository_auth_config()
 %% }
 -type training_image_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mlflow_tracking_server_response() :: #{
+%%   <<"TrackingServerArn">> => string()
+%% }
+-type delete_mlflow_tracking_server_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_stage_devices_request() :: #{
@@ -4034,6 +4076,13 @@
 -type member_definition() :: #{binary() => any()}.
 
 %% Example:
+%% list_mlflow_tracking_servers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrackingServerSummaries">> => list(tracking_server_summary()())
+%% }
+-type list_mlflow_tracking_servers_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_image_version_request() :: #{
 %%   <<"Alias">> => string(),
 %%   <<"ImageName">> := string(),
@@ -5024,6 +5073,12 @@
 -type model_deploy_config() :: #{binary() => any()}.
 
 %% Example:
+%% stop_mlflow_tracking_server_request() :: #{
+%%   <<"TrackingServerName">> := string()
+%% }
+-type stop_mlflow_tracking_server_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_model_explainability_job_definition_response() :: #{
 %%   <<"JobDefinitionArn">> => string()
 %% }
@@ -5846,6 +5901,16 @@
 -type send_pipeline_execution_step_success_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_mlflow_tracking_server_request() :: #{
+%%   <<"ArtifactStoreUri">> => string(),
+%%   <<"AutomaticModelRegistration">> => boolean(),
+%%   <<"TrackingServerName">> := string(),
+%%   <<"TrackingServerSize">> => list(any()),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type update_mlflow_tracking_server_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_processing_jobs_request() :: #{
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
 %%   <<"CreationTimeBefore">> => non_neg_integer(),
@@ -5945,6 +6010,19 @@
 %%   <<"VariantPropertyType">> => list(any())
 %% }
 -type variant_property() :: #{binary() => any()}.
+
+%% Example:
+%% list_mlflow_tracking_servers_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TrackingServerStatus">> => list(any())
+%% }
+-type list_mlflow_tracking_servers_request() :: #{binary() => any()}.
 
 %% Example:
 %% offline_store_status() :: #{
@@ -7073,6 +7151,12 @@
 -type describe_workteam_response() :: #{binary() => any()}.
 
 %% Example:
+%% start_mlflow_tracking_server_response() :: #{
+%%   <<"TrackingServerArn">> => string()
+%% }
+-type start_mlflow_tracking_server_response() :: #{binary() => any()}.
+
+%% Example:
 %% endpoint() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DataCaptureConfig">> => data_capture_config_summary(),
@@ -7978,6 +8062,26 @@
 -type update_project_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_mlflow_tracking_server_response() :: #{
+%%   <<"ArtifactStoreUri">> => string(),
+%%   <<"AutomaticModelRegistration">> => boolean(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"IsActive">> => list(any()),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"TrackingServerArn">> => string(),
+%%   <<"TrackingServerName">> => string(),
+%%   <<"TrackingServerSize">> => list(any()),
+%%   <<"TrackingServerStatus">> => list(any()),
+%%   <<"TrackingServerUrl">> => string(),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type describe_mlflow_tracking_server_response() :: #{binary() => any()}.
+
+%% Example:
 %% real_time_inference_config() :: #{
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceType">> => list(any())
@@ -8794,6 +8898,19 @@
 -type list_lineage_groups_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_mlflow_tracking_server_request() :: #{
+%%   <<"ArtifactStoreUri">> := string(),
+%%   <<"AutomaticModelRegistration">> => boolean(),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TrackingServerName">> := string(),
+%%   <<"TrackingServerSize">> => list(any()),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type create_mlflow_tracking_server_request() :: #{binary() => any()}.
+
+%% Example:
 %% start_pipeline_execution_request() :: #{
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"ParallelismConfiguration">> => parallelism_configuration(),
@@ -8879,6 +8996,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_lineage_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_mlflow_tracking_server_response() :: #{
+%%   <<"TrackingServerArn">> => string()
+%% }
+-type update_mlflow_tracking_server_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_artifacts_request() :: #{
@@ -9053,6 +9176,12 @@
 %%   <<"AutoMLJobArn">> => string()
 %% }
 -type create_auto_ml_job_v2_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_mlflow_tracking_server_response() :: #{
+%%   <<"TrackingServerArn">> => string()
+%% }
+-type create_mlflow_tracking_server_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_workforce_request() :: #{
@@ -9254,6 +9383,12 @@
 -type get_model_package_group_policy_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_mlflow_tracking_server_request() :: #{
+%%   <<"TrackingServerName">> := string()
+%% }
+-type describe_mlflow_tracking_server_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_flow_definition_response() :: #{
 
 %% }
@@ -9317,6 +9452,12 @@
 %%   <<"ModelLatency">> => integer()
 %% }
 -type inference_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% stop_mlflow_tracking_server_response() :: #{
+%%   <<"TrackingServerArn">> => string()
+%% }
+-type stop_mlflow_tracking_server_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_pipeline_parameters_for_execution_request() :: #{
@@ -9529,6 +9670,7 @@
 %%   <<"ExecutionRole">> => string(),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceStorageConfigs">> => list(list()()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"ThreadsPerCore">> => integer()
@@ -9803,6 +9945,18 @@
 %%   <<"CompilationJobName">> := string()
 %% }
 -type stop_compilation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% tracking_server_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"IsActive">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"TrackingServerArn">> => string(),
+%%   <<"TrackingServerName">> => string(),
+%%   <<"TrackingServerStatus">> => list(any())
+%% }
+-type tracking_server_summary() :: #{binary() => any()}.
 
 %% Example:
 %% get_device_fleet_report_response() :: #{
@@ -10856,6 +11010,7 @@
 %%   <<"CurrentCount">> => integer(),
 %%   <<"ExecutionRole">> => string(),
 %%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceStorageConfigs">> => list(list()()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
 %%   <<"TargetCount">> => integer(),
@@ -11013,6 +11168,7 @@
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceStatus">> => cluster_instance_status_details(),
+%%   <<"InstanceStorageConfigs">> => list(list()()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
@@ -11070,6 +11226,12 @@
 -type create_notebook_instance_lifecycle_config_output() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_ebs_volume_config() :: #{
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type cluster_ebs_volume_config() :: #{binary() => any()}.
+
+%% Example:
 %% update_feature_group_response() :: #{
 %%   <<"FeatureGroupArn">> => string()
 %% }
@@ -11084,6 +11246,12 @@
 %%   <<"LastModifiedTime">> => non_neg_integer()
 %% }
 -type code_repository_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mlflow_tracking_server_request() :: #{
+%%   <<"TrackingServerName">> := string()
+%% }
+-type delete_mlflow_tracking_server_request() :: #{binary() => any()}.
 
 %% Example:
 %% retention_policy() :: #{
@@ -11360,6 +11528,9 @@
     resource_limit_exceeded() | 
     resource_in_use().
 
+-type create_mlflow_tracking_server_errors() ::
+    resource_limit_exceeded().
+
 -type create_model_errors() ::
     resource_limit_exceeded().
 
@@ -11407,6 +11578,9 @@
     resource_not_found().
 
 -type create_presigned_domain_url_errors() ::
+    resource_not_found().
+
+-type create_presigned_mlflow_tracking_server_url_errors() ::
     resource_not_found().
 
 -type create_processing_job_errors() ::
@@ -11525,6 +11699,9 @@
 
 -type delete_inference_experiment_errors() ::
     conflict_exception() | 
+    resource_not_found().
+
+-type delete_mlflow_tracking_server_errors() ::
     resource_not_found().
 
 -type delete_model_bias_job_definition_errors() ::
@@ -11665,6 +11842,9 @@
     resource_not_found().
 
 -type describe_lineage_group_errors() ::
+    resource_not_found().
+
+-type describe_mlflow_tracking_server_errors() ::
     resource_not_found().
 
 -type describe_model_bias_job_definition_errors() ::
@@ -11830,6 +12010,10 @@
     conflict_exception() | 
     resource_not_found().
 
+-type start_mlflow_tracking_server_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
 -type start_monitoring_schedule_errors() ::
     resource_not_found().
 
@@ -11858,6 +12042,10 @@
     resource_not_found().
 
 -type stop_labeling_job_errors() ::
+    resource_not_found().
+
+-type stop_mlflow_tracking_server_errors() ::
+    conflict_exception() | 
     resource_not_found().
 
 -type stop_monitoring_schedule_errors() ::
@@ -11946,6 +12134,11 @@
     resource_limit_exceeded().
 
 -type update_inference_experiment_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_mlflow_tracking_server_errors() ::
+    resource_limit_exceeded() | 
     conflict_exception() | 
     resource_not_found().
 
@@ -12349,7 +12542,8 @@ create_auto_ml_job_v2(Client, Input, Options)
 %% models (LLMs) and diffusion models. To learn more, see Amazon SageMaker
 %% HyperPod:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod.html in
-%% the Amazon SageMaker Developer Guide.
+%% the
+%% Amazon SageMaker Developer Guide.
 -spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
@@ -13254,6 +13448,29 @@ create_labeling_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLabelingJob">>, Input, Options).
 
+%% @doc Creates an MLflow Tracking Server using a general purpose Amazon S3
+%% bucket as the artifact
+%% store.
+%%
+%% For more information, see Create an MLflow Tracking
+%% Server:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow-create-tracking-server.html.
+-spec create_mlflow_tracking_server(aws_client:aws_client(), create_mlflow_tracking_server_request()) ->
+    {ok, create_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, create_mlflow_tracking_server_errors(), tuple()}.
+create_mlflow_tracking_server(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_mlflow_tracking_server(Client, Input, []).
+
+-spec create_mlflow_tracking_server(aws_client:aws_client(), create_mlflow_tracking_server_request(), proplists:proplist()) ->
+    {ok, create_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, create_mlflow_tracking_server_errors(), tuple()}.
+create_mlflow_tracking_server(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateMlflowTrackingServer">>, Input, Options).
+
 %% @doc Creates a model in SageMaker.
 %%
 %% In the request, you name the model and describe a primary
@@ -13646,6 +13863,28 @@ create_presigned_domain_url(Client, Input)
 create_presigned_domain_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePresignedDomainUrl">>, Input, Options).
+
+%% @doc Returns a presigned URL that you can use to connect to the MLflow UI
+%% attached to your
+%% tracking server.
+%%
+%% For more information, see Launch the MLflow UI using a presigned URL:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow-launch-ui.html.
+-spec create_presigned_mlflow_tracking_server_url(aws_client:aws_client(), create_presigned_mlflow_tracking_server_url_request()) ->
+    {ok, create_presigned_mlflow_tracking_server_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_presigned_mlflow_tracking_server_url_errors(), tuple()}.
+create_presigned_mlflow_tracking_server_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_presigned_mlflow_tracking_server_url(Client, Input, []).
+
+-spec create_presigned_mlflow_tracking_server_url(aws_client:aws_client(), create_presigned_mlflow_tracking_server_url_request(), proplists:proplist()) ->
+    {ok, create_presigned_mlflow_tracking_server_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_presigned_mlflow_tracking_server_url_errors(), tuple()}.
+create_presigned_mlflow_tracking_server_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePresignedMlflowTrackingServerUrl">>, Input, Options).
 
 %% @doc Returns a URL that you can use to connect to the Jupyter server from
 %% a notebook
@@ -14658,6 +14897,26 @@ delete_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInferenceExperiment">>, Input, Options).
 
+%% @doc Deletes an MLflow Tracking Server.
+%%
+%% For more information, see Clean up MLflow resources:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow-cleanup.html.html.
+-spec delete_mlflow_tracking_server(aws_client:aws_client(), delete_mlflow_tracking_server_request()) ->
+    {ok, delete_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, delete_mlflow_tracking_server_errors(), tuple()}.
+delete_mlflow_tracking_server(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_mlflow_tracking_server(Client, Input, []).
+
+-spec delete_mlflow_tracking_server(aws_client:aws_client(), delete_mlflow_tracking_server_request(), proplists:proplist()) ->
+    {ok, delete_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, delete_mlflow_tracking_server_errors(), tuple()}.
+delete_mlflow_tracking_server(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMlflowTrackingServer">>, Input, Options).
+
 %% @doc Deletes a model.
 %%
 %% The `DeleteModel' API deletes only the model entry that
@@ -15049,7 +15308,7 @@ delete_user_profile(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteWorkteam.html
 %% operation to delete all work teams before you delete the workforce.
 %% If you try to delete a workforce that contains one or more work teams,
-%% you will recieve a `ResourceInUse' error.
+%% you will receive a `ResourceInUse' error.
 -spec delete_workforce(aws_client:aws_client(), delete_workforce_request()) ->
     {ok, delete_workforce_response(), tuple()} |
     {error, any()}.
@@ -15729,6 +15988,23 @@ describe_lineage_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLineageGroup">>, Input, Options).
 
+%% @doc Returns information about an MLflow Tracking Server.
+-spec describe_mlflow_tracking_server(aws_client:aws_client(), describe_mlflow_tracking_server_request()) ->
+    {ok, describe_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, describe_mlflow_tracking_server_errors(), tuple()}.
+describe_mlflow_tracking_server(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_mlflow_tracking_server(Client, Input, []).
+
+-spec describe_mlflow_tracking_server(aws_client:aws_client(), describe_mlflow_tracking_server_request(), proplists:proplist()) ->
+    {ok, describe_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, describe_mlflow_tracking_server_errors(), tuple()}.
+describe_mlflow_tracking_server(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMlflowTrackingServer">>, Input, Options).
+
 %% @doc Describes a model that you created using the `CreateModel'
 %% API.
 -spec describe_model(aws_client:aws_client(), describe_model_input()) ->
@@ -16180,7 +16456,7 @@ describe_workforce(Client, Input, Options)
 %% @doc Gets information about a specific work team.
 %%
 %% You can see information such as the
-%% create date, the last updated date, membership information, and the work
+%% creation date, the last updated date, membership information, and the work
 %% team's Amazon
 %% Resource Name (ARN).
 -spec describe_workteam(aws_client:aws_client(), describe_workteam_request()) ->
@@ -17054,6 +17330,21 @@ list_lineage_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLineageGroups">>, Input, Options).
 
+%% @doc Lists all MLflow Tracking Servers.
+-spec list_mlflow_tracking_servers(aws_client:aws_client(), list_mlflow_tracking_servers_request()) ->
+    {ok, list_mlflow_tracking_servers_response(), tuple()} |
+    {error, any()}.
+list_mlflow_tracking_servers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_mlflow_tracking_servers(Client, Input, []).
+
+-spec list_mlflow_tracking_servers(aws_client:aws_client(), list_mlflow_tracking_servers_request(), proplists:proplist()) ->
+    {ok, list_mlflow_tracking_servers_response(), tuple()} |
+    {error, any()}.
+list_mlflow_tracking_servers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMlflowTrackingServers">>, Input, Options).
+
 %% @doc Lists model bias jobs definitions that satisfy various filters.
 -spec list_model_bias_job_definitions(aws_client:aws_client(), list_model_bias_job_definitions_request()) ->
     {ok, list_model_bias_job_definitions_response(), tuple()} |
@@ -17894,6 +18185,23 @@ start_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartInferenceExperiment">>, Input, Options).
 
+%% @doc Programmatically start an MLflow Tracking Server.
+-spec start_mlflow_tracking_server(aws_client:aws_client(), start_mlflow_tracking_server_request()) ->
+    {ok, start_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, start_mlflow_tracking_server_errors(), tuple()}.
+start_mlflow_tracking_server(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_mlflow_tracking_server(Client, Input, []).
+
+-spec start_mlflow_tracking_server(aws_client:aws_client(), start_mlflow_tracking_server_request(), proplists:proplist()) ->
+    {ok, start_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, start_mlflow_tracking_server_errors(), tuple()}.
+start_mlflow_tracking_server(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMlflowTrackingServer">>, Input, Options).
+
 %% @doc Starts a previously stopped monitoring schedule.
 %%
 %% By default, when you successfully create a new schedule, the status of a
@@ -18111,6 +18419,23 @@ stop_labeling_job(Client, Input)
 stop_labeling_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopLabelingJob">>, Input, Options).
+
+%% @doc Programmatically stop an MLflow Tracking Server.
+-spec stop_mlflow_tracking_server(aws_client:aws_client(), stop_mlflow_tracking_server_request()) ->
+    {ok, stop_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, stop_mlflow_tracking_server_errors(), tuple()}.
+stop_mlflow_tracking_server(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_mlflow_tracking_server(Client, Input, []).
+
+-spec stop_mlflow_tracking_server(aws_client:aws_client(), stop_mlflow_tracking_server_request(), proplists:proplist()) ->
+    {ok, stop_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, stop_mlflow_tracking_server_errors(), tuple()}.
+stop_mlflow_tracking_server(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopMlflowTrackingServer">>, Input, Options).
 
 %% @doc Stops a previously started monitoring schedule.
 -spec stop_monitoring_schedule(aws_client:aws_client(), stop_monitoring_schedule_request()) ->
@@ -18722,6 +19047,23 @@ update_inference_experiment(Client, Input)
 update_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInferenceExperiment">>, Input, Options).
+
+%% @doc Updates properties of an existing MLflow Tracking Server.
+-spec update_mlflow_tracking_server(aws_client:aws_client(), update_mlflow_tracking_server_request()) ->
+    {ok, update_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, update_mlflow_tracking_server_errors(), tuple()}.
+update_mlflow_tracking_server(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_mlflow_tracking_server(Client, Input, []).
+
+-spec update_mlflow_tracking_server(aws_client:aws_client(), update_mlflow_tracking_server_request(), proplists:proplist()) ->
+    {ok, update_mlflow_tracking_server_response(), tuple()} |
+    {error, any()} |
+    {error, update_mlflow_tracking_server_errors(), tuple()}.
+update_mlflow_tracking_server(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateMlflowTrackingServer">>, Input, Options).
 
 %% @doc Update an Amazon SageMaker Model Card.
 %%

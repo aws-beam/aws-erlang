@@ -641,6 +641,15 @@
 
 
 %% Example:
+%% fargate_profile_issue() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string(),
+%%   <<"resourceIds">> => list(string()())
+%% }
+-type fargate_profile_issue() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_addon_versions_request() :: #{
 %%   <<"addonName">> => string(),
 %%   <<"kubernetesVersion">> => string(),
@@ -976,6 +985,13 @@
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% fargate_profile_health() :: #{
+%%   <<"issues">> => list(fargate_profile_issue()())
+%% }
+-type fargate_profile_health() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1521,6 +1537,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"fargateProfileArn">> => string(),
 %%   <<"fargateProfileName">> => string(),
+%%   <<"health">> => fargate_profile_health(),
 %%   <<"podExecutionRoleArn">> => string(),
 %%   <<"selectors">> => list(fargate_profile_selector()()),
 %%   <<"status">> => list(any()),

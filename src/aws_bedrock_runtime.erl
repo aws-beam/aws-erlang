@@ -26,6 +26,13 @@
 
 
 %% Example:
+%% guardrail_content_policy_assessment() :: #{
+%%   <<"filters">> => list(guardrail_content_filter()())
+%% }
+-type guardrail_content_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
 %% model_not_ready_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -61,12 +68,22 @@
 %% converse_request() :: #{
 %%   <<"additionalModelRequestFields">> => [any()],
 %%   <<"additionalModelResponseFieldPaths">> => list([string()]()),
+%%   <<"guardrailConfig">> => guardrail_configuration(),
 %%   <<"inferenceConfig">> => inference_configuration(),
 %%   <<"messages">> := list(message()()),
 %%   <<"system">> => list(list()()),
 %%   <<"toolConfig">> => tool_configuration()
 %% }
 -type converse_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_trace_assessment() :: #{
+%%   <<"inputAssessment">> => map(),
+%%   <<"modelOutput">> => list(string()()),
+%%   <<"outputAssessments">> => map()
+%% }
+-type guardrail_trace_assessment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -82,6 +99,15 @@
 %%   <<"stopReason">> => list(any())
 %% }
 -type message_stop_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_managed_word() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"match">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_managed_word() :: #{binary() => any()}.
 
 
 %% Example:
@@ -117,10 +143,26 @@
 
 
 %% Example:
+%% guardrail_custom_word() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"match">> => [string()]
+%% }
+-type guardrail_custom_word() :: #{binary() => any()}.
+
+
+%% Example:
 %% message_start_event() :: #{
 %%   <<"role">> => list(any())
 %% }
 -type message_start_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_word_policy_assessment() :: #{
+%%   <<"customWords">> => list(guardrail_custom_word()()),
+%%   <<"managedWordLists">> => list(guardrail_managed_word()())
+%% }
+-type guardrail_word_policy_assessment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -155,6 +197,14 @@
 
 
 %% Example:
+%% guardrail_sensitive_information_policy_assessment() :: #{
+%%   <<"piiEntities">> => list(guardrail_pii_entity_filter()()),
+%%   <<"regexes">> => list(guardrail_regex_filter()())
+%% }
+-type guardrail_sensitive_information_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
 %% converse_stream_metrics() :: #{
 %%   <<"latencyMs">> => [float()]
 %% }
@@ -178,10 +228,26 @@
 
 
 %% Example:
+%% guardrail_content_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"confidence">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_content_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% converse_trace() :: #{
+%%   <<"guardrail">> => guardrail_trace_assessment()
+%% }
+-type converse_trace() :: #{binary() => any()}.
 
 
 %% Example:
@@ -203,9 +269,20 @@
 %% Example:
 %% converse_stream_metadata_event() :: #{
 %%   <<"metrics">> => converse_stream_metrics(),
+%%   <<"trace">> => converse_stream_trace(),
 %%   <<"usage">> => token_usage()
 %% }
 -type converse_stream_metadata_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_stream_configuration() :: #{
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"streamProcessingMode">> => list(any()),
+%%   <<"trace">> => list(any())
+%% }
+-type guardrail_stream_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -213,6 +290,16 @@
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_assessment() :: #{
+%%   <<"contentPolicy">> => guardrail_content_policy_assessment(),
+%%   <<"sensitiveInformationPolicy">> => guardrail_sensitive_information_policy_assessment(),
+%%   <<"topicPolicy">> => guardrail_topic_policy_assessment(),
+%%   <<"wordPolicy">> => guardrail_word_policy_assessment()
+%% }
+-type guardrail_assessment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -243,6 +330,7 @@
 %% converse_stream_request() :: #{
 %%   <<"additionalModelRequestFields">> => [any()],
 %%   <<"additionalModelResponseFieldPaths">> => list([string()]()),
+%%   <<"guardrailConfig">> => guardrail_stream_configuration(),
 %%   <<"inferenceConfig">> => inference_configuration(),
 %%   <<"messages">> := list(message()()),
 %%   <<"system">> => list(list()()),
@@ -286,6 +374,13 @@
 
 
 %% Example:
+%% guardrail_topic_policy_assessment() :: #{
+%%   <<"topics">> => list(guardrail_topic()())
+%% }
+-type guardrail_topic_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
 %% model_stream_error_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"originalMessage">> => string(),
@@ -316,10 +411,61 @@
 
 
 %% Example:
+%% guardrail_configuration() :: #{
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"trace">> => list(any())
+%% }
+-type guardrail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_regex_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"match">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"regex">> => [string()]
+%% }
+-type guardrail_regex_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_pii_entity_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"match">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_pii_entity_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_converse_text_block() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type guardrail_converse_text_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% converse_stream_trace() :: #{
+%%   <<"guardrail">> => guardrail_trace_assessment()
+%% }
+-type converse_stream_trace() :: #{binary() => any()}.
+
+
+%% Example:
 %% tool_use_block_delta() :: #{
 %%   <<"input">> => [string()]
 %% }
 -type tool_use_block_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_topic() :: #{binary() => any()}.
 
 
 %% Example:
@@ -336,6 +482,7 @@
 %%   <<"metrics">> => converse_metrics(),
 %%   <<"output">> => list(),
 %%   <<"stopReason">> => list(any()),
+%%   <<"trace">> => converse_trace(),
 %%   <<"usage">> => token_usage()
 %% }
 -type converse_response() :: #{binary() => any()}.
@@ -395,9 +542,17 @@
 %% different models.
 %% Should a model have unique inference parameters, you can also pass those
 %% unique parameters
-%% to the model. For more information, see Run inference:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html
-%% in the Bedrock User Guide.
+%% to the model.
+%%
+%% For information about the Converse API, see Use the Converse API in the
+%% Amazon Bedrock User Guide.
+%% To use a guardrail, see Use a guardrail with the Converse API in the
+%% Amazon Bedrock User Guide.
+%% To use a tool with a model, see Tool use (Function calling) in the Amazon
+%% Bedrock User Guide
+%%
+%% For example code, see Converse API examples in the Amazon Bedrock User
+%% Guide.
 %%
 %% This operation requires permission for the `bedrock:InvokeModel'
 %% action.
@@ -443,16 +598,21 @@ converse(Client, ModelId, Input0, Options0) ->
 %% Should a
 %% model have unique inference parameters, you can also pass those unique
 %% parameters to the
-%% model. For more information, see Run inference:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html
-%% in the Bedrock User Guide.
+%% model.
 %%
 %% To find out if a model supports streaming, call GetFoundationModel:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetFoundationModel.html
 %% and check the `responseStreamingSupported' field in the response.
 %%
-%% For example code, see Invoke model with streaming code
-%% example in the Amazon Bedrock User Guide.
+%% For information about the Converse API, see Use the Converse API in the
+%% Amazon Bedrock User Guide.
+%% To use a guardrail, see Use a guardrail with the Converse API in the
+%% Amazon Bedrock User Guide.
+%% To use a tool with a model, see Tool use (Function calling) in the Amazon
+%% Bedrock User Guide
+%%
+%% For example code, see Conversation streaming example in the Amazon Bedrock
+%% User Guide.
 %%
 %% This operation requires permission for the
 %% `bedrock:InvokeModelWithResponseStream' action.
