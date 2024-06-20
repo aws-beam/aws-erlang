@@ -174,6 +174,7 @@
 
 %% Example:
 %% report_summary() :: #{
+%%   <<"acceptanceType">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"category">> => string(),
 %%   <<"companyName">> => string(),

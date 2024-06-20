@@ -785,6 +785,16 @@
 %% }
 -type list_scheduled_actions_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% j_w_t_options_input() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"PublicKey">> => string(),
+%%   <<"RolesKey">> => string(),
+%%   <<"SubjectKey">> => string()
+%% }
+-type j_w_t_options_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_domain_request() :: #{}
 -type delete_domain_request() :: #{}.
@@ -974,6 +984,7 @@
 %%   <<"AnonymousAuthEnabled">> => boolean(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"InternalUserDatabaseEnabled">> => boolean(),
+%%   <<"JWTOptions">> => j_w_t_options_output(),
 %%   <<"SAMLOptions">> => saml_options_output()
 %% }
 -type advanced_security_options() :: #{binary() => any()}.
@@ -1385,6 +1396,7 @@
 %%   <<"AnonymousAuthEnabled">> => boolean(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"InternalUserDatabaseEnabled">> => boolean(),
+%%   <<"JWTOptions">> => j_w_t_options_input(),
 %%   <<"MasterUserOptions">> => master_user_options(),
 %%   <<"SAMLOptions">> => saml_options_input()
 %% }
@@ -1753,6 +1765,16 @@
 %%   <<"RetrieveAZs">> => boolean()
 %% }
 -type list_instance_type_details_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% j_w_t_options_output() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"PublicKey">> => string(),
+%%   <<"RolesKey">> => string(),
+%%   <<"SubjectKey">> => string()
+%% }
+-type j_w_t_options_output() :: #{binary() => any()}.
 
 
 %% Example:
