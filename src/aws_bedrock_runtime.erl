@@ -33,6 +33,15 @@
 
 
 %% Example:
+%% document_block() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"source">> => list()
+%% }
+-type document_block() :: #{binary() => any()}.
+
+
+%% Example:
 %% model_not_ready_exception() :: #{
 %%   <<"message">> => string()
 %% }

@@ -238,6 +238,7 @@
 %% Example:
 %% update_stage_request() :: #{
 %%   <<"arn">> := string(),
+%%   <<"autoParticipantRecordingConfiguration">> => auto_participant_recording_configuration(),
 %%   <<"name">> => string()
 %% }
 -type update_stage_request() :: #{binary() => any()}.
@@ -254,6 +255,7 @@
 %% stage() :: #{
 %%   <<"activeSessionId">> => string(),
 %%   <<"arn">> => string(),
+%%   <<"autoParticipantRecordingConfiguration">> => auto_participant_recording_configuration(),
 %%   <<"name">> => string(),
 %%   <<"tags">> => map()
 %% }
@@ -322,6 +324,9 @@
 %%   <<"osVersion">> => string(),
 %%   <<"participantId">> => string(),
 %%   <<"published">> => boolean(),
+%%   <<"recordingS3BucketName">> => string(),
+%%   <<"recordingS3Prefix">> => string(),
+%%   <<"recordingState">> => string(),
 %%   <<"sdkVersion">> => string(),
 %%   <<"state">> => string(),
 %%   <<"userId">> => string()
@@ -400,6 +405,7 @@
 %%   <<"firstJoinTime">> => non_neg_integer(),
 %%   <<"participantId">> => string(),
 %%   <<"published">> => boolean(),
+%%   <<"recordingState">> => string(),
 %%   <<"state">> => string(),
 %%   <<"userId">> => string()
 %% }
@@ -578,6 +584,7 @@
 %% Example:
 %% list_participants_request() :: #{
 %%   <<"filterByPublished">> => boolean(),
+%%   <<"filterByRecordingState">> => string(),
 %%   <<"filterByState">> => string(),
 %%   <<"filterByUserId">> => string(),
 %%   <<"maxResults">> => integer(),
@@ -609,6 +616,14 @@
 %%   <<"storageConfiguration">> => storage_configuration()
 %% }
 -type create_storage_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_participant_recording_configuration() :: #{
+%%   <<"mediaTypes">> => list(string()()),
+%%   <<"storageConfigurationArn">> => string()
+%% }
+-type auto_participant_recording_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -696,6 +711,7 @@
 
 %% Example:
 %% create_stage_request() :: #{
+%%   <<"autoParticipantRecordingConfiguration">> => auto_participant_recording_configuration(),
 %%   <<"name">> => string(),
 %%   <<"participantTokenConfigurations">> => list(participant_token_configuration()()),
 %%   <<"tags">> => map()

@@ -68,6 +68,8 @@
          create_flow_definition/3,
          create_hub/2,
          create_hub/3,
+         create_hub_content_reference/2,
+         create_hub_content_reference/3,
          create_human_task_ui/2,
          create_human_task_ui/3,
          create_hyper_parameter_tuning_job/2,
@@ -182,6 +184,8 @@
          delete_hub/3,
          delete_hub_content/2,
          delete_hub_content/3,
+         delete_hub_content_reference/2,
+         delete_hub_content_reference/3,
          delete_human_task_ui/2,
          delete_human_task_ui/3,
          delete_hyper_parameter_tuning_job/2,
@@ -1551,7 +1555,10 @@
 %%   <<"HubContentStatus">> => list(any()),
 %%   <<"HubContentType">> => list(any()),
 %%   <<"HubContentVersion">> => string(),
-%%   <<"HubName">> => string()
+%%   <<"HubName">> => string(),
+%%   <<"ReferenceMinVersion">> => string(),
+%%   <<"SageMakerPublicHubContentArn">> => string(),
+%%   <<"SupportStatus">> => list(any())
 %% }
 -type describe_hub_content_response() :: #{binary() => any()}.
 
@@ -2181,7 +2188,10 @@
 %%   <<"HubContentSearchKeywords">> => list(string()()),
 %%   <<"HubContentStatus">> => list(any()),
 %%   <<"HubContentType">> => list(any()),
-%%   <<"HubContentVersion">> => string()
+%%   <<"HubContentVersion">> => string(),
+%%   <<"OriginalCreationTime">> => non_neg_integer(),
+%%   <<"SageMakerPublicHubContentArn">> => string(),
+%%   <<"SupportStatus">> => list(any())
 %% }
 -type hub_content_info() :: #{binary() => any()}.
 
@@ -4648,6 +4658,12 @@
 -type inference_experiment_data_storage_config() :: #{binary() => any()}.
 
 %% Example:
+%% inference_hub_access_config() :: #{
+%%   <<"HubContentArn">> => string()
+%% }
+-type inference_hub_access_config() :: #{binary() => any()}.
+
+%% Example:
 %% session_chaining_config() :: #{
 %%   <<"EnableSessionTagChaining">> => boolean()
 %% }
@@ -6025,6 +6041,13 @@
 -type list_mlflow_tracking_servers_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_hub_content_reference_response() :: #{
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string()
+%% }
+-type create_hub_content_reference_response() :: #{binary() => any()}.
+
+%% Example:
 %% offline_store_status() :: #{
 %%   <<"BlockedReason">> => string(),
 %%   <<"Status">> => list(any())
@@ -6899,6 +6922,14 @@
 %%   <<"ExperimentName">> := string()
 %% }
 -type update_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hub_content_reference_request() :: #{
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubName">> := string()
+%% }
+-type delete_hub_content_reference_request() :: #{binary() => any()}.
 
 %% Example:
 %% algorithm_summary() :: #{
@@ -8658,6 +8689,7 @@
 %% Example:
 %% s3_model_data_source() :: #{
 %%   <<"CompressionType">> => list(any()),
+%%   <<"HubAccessConfig">> => inference_hub_access_config(),
 %%   <<"ModelAccessConfig">> => model_access_config(),
 %%   <<"S3DataType">> => list(any()),
 %%   <<"S3Uri">> => string()
@@ -9683,6 +9715,16 @@
 %%   <<"ModelVersion">> => string()
 %% }
 -type edge_model_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_hub_content_reference_request() :: #{
+%%   <<"HubContentName">> => string(),
+%%   <<"HubName">> := string(),
+%%   <<"MinVersion">> => string(),
+%%   <<"SageMakerPublicHubContentArn">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_hub_content_reference_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_apps_request() :: #{
@@ -11496,6 +11538,11 @@
     resource_limit_exceeded() | 
     resource_in_use().
 
+-type create_hub_content_reference_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
 -type create_human_task_ui_errors() ::
     resource_limit_exceeded() | 
     resource_in_use().
@@ -11684,6 +11731,9 @@
 
 -type delete_hub_content_errors() ::
     resource_in_use() | 
+    resource_not_found().
+
+-type delete_hub_content_reference_errors() ::
     resource_not_found().
 
 -type delete_human_task_ui_errors() ::
@@ -13161,8 +13211,6 @@ create_flow_definition(Client, Input, Options)
     request(Client, <<"CreateFlowDefinition">>, Input, Options).
 
 %% @doc Create a hub.
-%%
-%% Hub APIs are only callable through SageMaker Studio.
 -spec create_hub(aws_client:aws_client(), create_hub_request()) ->
     {ok, create_hub_response(), tuple()} |
     {error, any()} |
@@ -13178,6 +13226,24 @@ create_hub(Client, Input)
 create_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHub">>, Input, Options).
+
+%% @doc Create a hub content reference in order to add a model in the
+%% JumpStart public hub to a private hub.
+-spec create_hub_content_reference(aws_client:aws_client(), create_hub_content_reference_request()) ->
+    {ok, create_hub_content_reference_response(), tuple()} |
+    {error, any()} |
+    {error, create_hub_content_reference_errors(), tuple()}.
+create_hub_content_reference(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_hub_content_reference(Client, Input, []).
+
+-spec create_hub_content_reference(aws_client:aws_client(), create_hub_content_reference_request(), proplists:proplist()) ->
+    {ok, create_hub_content_reference_response(), tuple()} |
+    {error, any()} |
+    {error, create_hub_content_reference_errors(), tuple()}.
+create_hub_content_reference(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateHubContentReference">>, Input, Options).
 
 %% @doc Defines the settings you will use for the human review workflow user
 %% interface.
@@ -14739,8 +14805,6 @@ delete_flow_definition(Client, Input, Options)
     request(Client, <<"DeleteFlowDefinition">>, Input, Options).
 
 %% @doc Delete a hub.
-%%
-%% Hub APIs are only callable through SageMaker Studio.
 -spec delete_hub(aws_client:aws_client(), delete_hub_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -14758,8 +14822,6 @@ delete_hub(Client, Input, Options)
     request(Client, <<"DeleteHub">>, Input, Options).
 
 %% @doc Delete the contents of a hub.
-%%
-%% Hub APIs are only callable through SageMaker Studio.
 -spec delete_hub_content(aws_client:aws_client(), delete_hub_content_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -14775,6 +14837,24 @@ delete_hub_content(Client, Input)
 delete_hub_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHubContent">>, Input, Options).
+
+%% @doc Delete a hub content reference in order to remove a model from a
+%% private hub.
+-spec delete_hub_content_reference(aws_client:aws_client(), delete_hub_content_reference_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_hub_content_reference_errors(), tuple()}.
+delete_hub_content_reference(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_hub_content_reference(Client, Input, []).
+
+-spec delete_hub_content_reference(aws_client:aws_client(), delete_hub_content_reference_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_hub_content_reference_errors(), tuple()}.
+delete_hub_content_reference(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteHubContentReference">>, Input, Options).
 
 %% @doc Use this operation to delete a human task user interface (worker task
 %% template).
@@ -15785,9 +15865,7 @@ describe_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFlowDefinition">>, Input, Options).
 
-%% @doc Describe a hub.
-%%
-%% Hub APIs are only callable through SageMaker Studio.
+%% @doc Describes a hub.
 -spec describe_hub(aws_client:aws_client(), describe_hub_request()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
@@ -15805,8 +15883,6 @@ describe_hub(Client, Input, Options)
     request(Client, <<"DescribeHub">>, Input, Options).
 
 %% @doc Describe the content of a hub.
-%%
-%% Hub APIs are only callable through SageMaker Studio.
 -spec describe_hub_content(aws_client:aws_client(), describe_hub_content_request()) ->
     {ok, describe_hub_content_response(), tuple()} |
     {error, any()} |
@@ -16659,8 +16735,6 @@ get_search_suggestions(Client, Input, Options)
     request(Client, <<"GetSearchSuggestions">>, Input, Options).
 
 %% @doc Import hub content.
-%%
-%% Hub APIs are only callable through SageMaker Studio.
 -spec import_hub_content(aws_client:aws_client(), import_hub_content_request()) ->
     {ok, import_hub_content_response(), tuple()} |
     {error, any()} |
@@ -17084,8 +17158,6 @@ list_flow_definitions(Client, Input, Options)
     request(Client, <<"ListFlowDefinitions">>, Input, Options).
 
 %% @doc List hub content versions.
-%%
-%% Hub APIs are only callable through SageMaker Studio.
 -spec list_hub_content_versions(aws_client:aws_client(), list_hub_content_versions_request()) ->
     {ok, list_hub_content_versions_response(), tuple()} |
     {error, any()} |
@@ -17103,8 +17175,6 @@ list_hub_content_versions(Client, Input, Options)
     request(Client, <<"ListHubContentVersions">>, Input, Options).
 
 %% @doc List the contents of a hub.
-%%
-%% Hub APIs are only callable through SageMaker Studio.
 -spec list_hub_contents(aws_client:aws_client(), list_hub_contents_request()) ->
     {ok, list_hub_contents_response(), tuple()} |
     {error, any()} |
@@ -17122,8 +17192,6 @@ list_hub_contents(Client, Input, Options)
     request(Client, <<"ListHubContents">>, Input, Options).
 
 %% @doc List all existing hubs.
-%%
-%% Hub APIs are only callable through SageMaker Studio.
 -spec list_hubs(aws_client:aws_client(), list_hubs_request()) ->
     {ok, list_hubs_response(), tuple()} |
     {error, any()}.
@@ -18930,8 +18998,6 @@ update_feature_metadata(Client, Input, Options)
     request(Client, <<"UpdateFeatureMetadata">>, Input, Options).
 
 %% @doc Update a hub.
-%%
-%% Hub APIs are only callable through SageMaker Studio.
 -spec update_hub(aws_client:aws_client(), update_hub_request()) ->
     {ok, update_hub_response(), tuple()} |
     {error, any()} |

@@ -68,6 +68,15 @@
 -type resource_cost_calculation() :: #{binary() => any()}.
 
 %% Example:
+%% rds_db_instance_storage_configuration() :: #{
+%%   <<"allocatedStorageInGb">> => [float()],
+%%   <<"iops">> => [float()],
+%%   <<"storageThroughput">> => [float()],
+%%   <<"storageType">> => [string()]
+%% }
+-type rds_db_instance_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% rds_reserved_instances_configuration() :: #{
 %%   <<"accountScope">> => [string()],
 %%   <<"currentGeneration">> => [string()],
@@ -444,6 +453,12 @@
 -type ec2_auto_scaling_group_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% rds_db_instance_configuration() :: #{
+%%   <<"instance">> => db_instance_configuration()
+%% }
+-type rds_db_instance_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -461,6 +476,12 @@
 %%   <<"instance">> => instance_configuration()
 %% }
 -type ec2_instance_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_configuration() :: #{
+%%   <<"dbInstanceClass">> => [string()]
+%% }
+-type db_instance_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -522,6 +543,13 @@
 %%   <<"term">> => [string()]
 %% }
 -type ec2_instance_savings_plans_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% rds_db_instance() :: #{
+%%   <<"configuration">> => rds_db_instance_configuration(),
+%%   <<"costCalculation">> => resource_cost_calculation()
+%% }
+-type rds_db_instance() :: #{binary() => any()}.
 
 %% Example:
 %% list_recommendation_summaries_request() :: #{
@@ -591,6 +619,13 @@
 %%   <<"tags">> => list(tag()())
 %% }
 -type get_recommendation_response() :: #{binary() => any()}.
+
+%% Example:
+%% rds_db_instance_storage() :: #{
+%%   <<"configuration">> => rds_db_instance_storage_configuration(),
+%%   <<"costCalculation">> => resource_cost_calculation()
+%% }
+-type rds_db_instance_storage() :: #{binary() => any()}.
 
 %% Example:
 %% list_recommendations_request() :: #{

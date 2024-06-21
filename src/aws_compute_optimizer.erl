@@ -42,6 +42,8 @@
          export_lambda_function_recommendations/3,
          export_license_recommendations/2,
          export_license_recommendations/3,
+         export_rds_database_recommendations/2,
+         export_rds_database_recommendations/3,
          get_auto_scaling_group_recommendations/2,
          get_auto_scaling_group_recommendations/3,
          get_e_c_s_service_recommendation_projected_metrics/2,
@@ -64,6 +66,10 @@
          get_lambda_function_recommendations/3,
          get_license_recommendations/2,
          get_license_recommendations/3,
+         get_rds_database_recommendation_projected_metrics/2,
+         get_rds_database_recommendation_projected_metrics/3,
+         get_rds_database_recommendations/2,
+         get_rds_database_recommendations/3,
          get_recommendation_preferences/2,
          get_recommendation_preferences/3,
          get_recommendation_summaries/2,
@@ -114,6 +120,29 @@
 
 %% }
 -type get_enrollment_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% rds_db_recommendation() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"currentDBInstanceClass">> => string(),
+%%   <<"currentStorageConfiguration">> => db_storage_configuration(),
+%%   <<"effectiveRecommendationPreferences">> => rds_effective_recommendation_preferences(),
+%%   <<"engine">> => string(),
+%%   <<"engineVersion">> => string(),
+%%   <<"idle">> => list(any()),
+%%   <<"instanceFinding">> => list(any()),
+%%   <<"instanceFindingReasonCodes">> => list(list(any())()),
+%%   <<"instanceRecommendationOptions">> => list(rds_db_instance_recommendation_option()()),
+%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
+%%   <<"lookbackPeriodInDays">> => float(),
+%%   <<"resourceArn">> => string(),
+%%   <<"storageFinding">> => list(any()),
+%%   <<"storageFindingReasonCodes">> => list(list(any())()),
+%%   <<"storageRecommendationOptions">> => list(rds_db_storage_recommendation_option()()),
+%%   <<"tags">> => list(tag()()),
+%%   <<"utilizationMetrics">> => list(rds_db_utilization_metric()())
+%% }
+-type rds_db_recommendation() :: #{binary() => any()}.
 
 %% Example:
 %% license_configuration() :: #{
@@ -230,6 +259,16 @@
 -type lambda_function_recommendation() :: #{binary() => any()}.
 
 %% Example:
+%% db_storage_configuration() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"iops">> => integer(),
+%%   <<"maxAllocatedStorage">> => integer(),
+%%   <<"storageThroughput">> => integer(),
+%%   <<"storageType">> => string()
+%% }
+-type db_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% get_enrollment_statuses_for_organization_request() :: #{
 %%   <<"filters">> => list(enrollment_filter()()),
 %%   <<"maxResults">> => integer(),
@@ -280,6 +319,13 @@
 -type e_c_s_service_recommendation_option() :: #{binary() => any()}.
 
 %% Example:
+%% rds_storage_estimated_monthly_savings() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type rds_storage_estimated_monthly_savings() :: #{binary() => any()}.
+
+%% Example:
 %% customizable_metric_parameters() :: #{
 %%   <<"headroom">> => list(any()),
 %%   <<"threshold">> => list(any())
@@ -312,6 +358,15 @@
 %%   <<"value">> => float()
 %% }
 -type e_c_s_estimated_monthly_savings() :: #{binary() => any()}.
+
+%% Example:
+%% rds_effective_recommendation_preferences() :: #{
+%%   <<"cpuVendorArchitectures">> => list(list(any())()),
+%%   <<"enhancedInfrastructureMetrics">> => list(any()),
+%%   <<"lookBackPeriod">> => list(any()),
+%%   <<"savingsEstimationMode">> => rds_savings_estimation_mode()
+%% }
+-type rds_effective_recommendation_preferences() :: #{binary() => any()}.
 
 %% Example:
 %% describe_recommendation_export_jobs_response() :: #{
@@ -401,6 +456,14 @@
 -type job_filter() :: #{binary() => any()}.
 
 %% Example:
+%% rds_database_projected_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"timestamps">> => list(non_neg_integer()()),
+%%   <<"values">> => list(float()())
+%% }
+-type rds_database_projected_metric() :: #{binary() => any()}.
+
+%% Example:
 %% export_lambda_function_recommendations_request() :: #{
 %%   <<"accountIds">> => list(string()()),
 %%   <<"fieldsToExport">> => list(list(any())()),
@@ -419,6 +482,12 @@
 -type get_enrollment_statuses_for_organization_response() :: #{binary() => any()}.
 
 %% Example:
+%% rds_savings_estimation_mode() :: #{
+%%   <<"source">> => list(any())
+%% }
+-type rds_savings_estimation_mode() :: #{binary() => any()}.
+
+%% Example:
 %% lambda_effective_recommendation_preferences() :: #{
 %%   <<"savingsEstimationMode">> => lambda_savings_estimation_mode()
 %% }
@@ -434,6 +503,13 @@
 %%   <<"s3DestinationConfig">> := s3_destination_config()
 %% }
 -type export_e_c_s_service_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% rds_instance_estimated_monthly_savings() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type rds_instance_estimated_monthly_savings() :: #{binary() => any()}.
 
 %% Example:
 %% get_ec2_instance_recommendations_response() :: #{
@@ -490,6 +566,14 @@
 -type export_ebs_volume_recommendations_response() :: #{binary() => any()}.
 
 %% Example:
+%% rds_db_utilization_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type rds_db_utilization_metric() :: #{binary() => any()}.
+
+%% Example:
 %% put_recommendation_preferences_request() :: #{
 %%   <<"enhancedInfrastructureMetrics">> => list(any()),
 %%   <<"externalMetricsPreference">> => external_metrics_preference(),
@@ -502,6 +586,17 @@
 %%   <<"utilizationPreferences">> => list(utilization_preference()())
 %% }
 -type put_recommendation_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rds_database_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()()),
+%%   <<"filters">> => list(rds_db_recommendation_filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationPreferences">> => recommendation_preferences(),
+%%   <<"resourceArns">> => list(string()())
+%% }
+-type get_rds_database_recommendations_request() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_parameter_value_exception() :: #{
@@ -669,6 +764,13 @@
 -type container_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% export_rds_database_recommendations_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"s3Destination">> => s3_destination()
+%% }
+-type export_rds_database_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
 %% filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"values">> => list(string()())
@@ -795,6 +897,15 @@
 -type recommendation_source() :: #{binary() => any()}.
 
 %% Example:
+%% rds_db_storage_recommendation_option() :: #{
+%%   <<"rank">> => integer(),
+%%   <<"savingsOpportunity">> => savings_opportunity(),
+%%   <<"savingsOpportunityAfterDiscounts">> => rds_storage_savings_opportunity_after_discounts(),
+%%   <<"storageConfiguration">> => db_storage_configuration()
+%% }
+-type rds_db_storage_recommendation_option() :: #{binary() => any()}.
+
+%% Example:
 %% get_auto_scaling_group_recommendations_request() :: #{
 %%   <<"accountIds">> => list(string()()),
 %%   <<"autoScalingGroupArns">> => list(string()()),
@@ -890,6 +1001,14 @@
 -type e_c_s_service_recommended_option_projected_metric() :: #{binary() => any()}.
 
 %% Example:
+%% rds_database_recommended_option_projected_metric() :: #{
+%%   <<"projectedMetrics">> => list(rds_database_projected_metric()()),
+%%   <<"rank">> => integer(),
+%%   <<"recommendedDBInstanceClass">> => string()
+%% }
+-type rds_database_recommended_option_projected_metric() :: #{binary() => any()}.
+
+%% Example:
 %% ebs_estimated_monthly_savings() :: #{
 %%   <<"currency">> => list(any()),
 %%   <<"value">> => float()
@@ -920,6 +1039,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type get_auto_scaling_group_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% rds_instance_savings_opportunity_after_discounts() :: #{
+%%   <<"estimatedMonthlySavings">> => rds_instance_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type rds_instance_savings_opportunity_after_discounts() :: #{binary() => any()}.
 
 %% Example:
 %% e_c_s_savings_estimation_mode() :: #{
@@ -997,6 +1123,13 @@
 %%   <<"values">> => list(float()())
 %% }
 -type projected_metric() :: #{binary() => any()}.
+
+%% Example:
+%% rds_storage_savings_opportunity_after_discounts() :: #{
+%%   <<"estimatedMonthlySavings">> => rds_storage_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type rds_storage_savings_opportunity_after_discounts() :: #{binary() => any()}.
 
 %% Example:
 %% export_license_recommendations_response() :: #{
@@ -1118,12 +1251,42 @@
 -type inferred_workload_saving() :: #{binary() => any()}.
 
 %% Example:
+%% rds_db_instance_recommendation_option() :: #{
+%%   <<"dbInstanceClass">> => string(),
+%%   <<"performanceRisk">> => float(),
+%%   <<"projectedUtilizationMetrics">> => list(rds_db_utilization_metric()()),
+%%   <<"rank">> => integer(),
+%%   <<"savingsOpportunity">> => savings_opportunity(),
+%%   <<"savingsOpportunityAfterDiscounts">> => rds_instance_savings_opportunity_after_discounts()
+%% }
+-type rds_db_instance_recommendation_option() :: #{binary() => any()}.
+
+%% Example:
 %% lambda_function_utilization_metric() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"statistic">> => list(any()),
 %%   <<"value">> => float()
 %% }
 -type lambda_function_utilization_metric() :: #{binary() => any()}.
+
+%% Example:
+%% rds_db_recommendation_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string()())
+%% }
+-type rds_db_recommendation_filter() :: #{binary() => any()}.
+
+%% Example:
+%% export_rds_database_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()()),
+%%   <<"fieldsToExport">> => list(list(any())()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"filters">> => list(rds_db_recommendation_filter()()),
+%%   <<"includeMemberAccounts">> => boolean(),
+%%   <<"recommendationPreferences">> => recommendation_preferences(),
+%%   <<"s3DestinationConfig">> := s3_destination_config()
+%% }
+-type export_rds_database_recommendations_request() :: #{binary() => any()}.
 
 %% Example:
 %% ebs_filter() :: #{
@@ -1200,6 +1363,12 @@
 -type summary() :: #{binary() => any()}.
 
 %% Example:
+%% get_rds_database_recommendation_projected_metrics_response() :: #{
+%%   <<"recommendedOptionProjectedMetrics">> => list(rds_database_recommended_option_projected_metric()())
+%% }
+-type get_rds_database_recommendation_projected_metrics_response() :: #{binary() => any()}.
+
+%% Example:
 %% export_ec2_instance_recommendations_request() :: #{
 %%   <<"accountIds">> => list(string()()),
 %%   <<"fieldsToExport">> => list(list(any())()),
@@ -1210,6 +1379,17 @@
 %%   <<"s3DestinationConfig">> := s3_destination_config()
 %% }
 -type export_ec2_instance_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rds_database_recommendation_projected_metrics_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"period">> := integer(),
+%%   <<"recommendationPreferences">> => recommendation_preferences(),
+%%   <<"resourceArn">> := string(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"stat">> := list(any())
+%% }
+-type get_rds_database_recommendation_projected_metrics_request() :: #{binary() => any()}.
 
 %% Example:
 %% preferred_resource() :: #{
@@ -1228,6 +1408,14 @@
 %%   <<"taskDefinitionArn">> => string()
 %% }
 -type service_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_rds_database_recommendations_response() :: #{
+%%   <<"errors">> => list(get_recommendation_error()()),
+%%   <<"nextToken">> => string(),
+%%   <<"rdsDBRecommendations">> => list(rds_db_recommendation()())
+%% }
+-type get_rds_database_recommendations_response() :: #{binary() => any()}.
 
 %% Example:
 %% gpu_info() :: #{
@@ -1306,6 +1494,16 @@
     missing_authentication_token().
 
 -type export_license_recommendations_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    missing_authentication_token().
+
+-type export_rds_database_recommendations_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -1412,6 +1610,26 @@
     missing_authentication_token().
 
 -type get_license_recommendations_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type get_rds_database_recommendation_projected_metrics_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    opt_in_required_exception() | 
+    resource_not_found_exception() | 
+    missing_authentication_token().
+
+-type get_rds_database_recommendations_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -1690,6 +1908,38 @@ export_license_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportLicenseRecommendations">>, Input, Options).
 
+%% @doc
+%% Export optimization recommendations for your Amazon Relational Database
+%% Service (Amazon RDS).
+%%
+%% Recommendations are exported in a comma-separated values (CSV) file, and
+%% its metadata
+%% in a JavaScript Object Notation (JSON) file, to an existing Amazon Simple
+%% Storage Service (Amazon S3) bucket that you specify. For more information,
+%% see Exporting
+%% Recommendations:
+%% https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html
+%% in the Compute Optimizer User
+%% Guide.
+%%
+%% You can have only one Amazon RDS export job in progress per Amazon Web
+%% Services Region.
+-spec export_rds_database_recommendations(aws_client:aws_client(), export_rds_database_recommendations_request()) ->
+    {ok, export_rds_database_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, export_rds_database_recommendations_errors(), tuple()}.
+export_rds_database_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    export_rds_database_recommendations(Client, Input, []).
+
+-spec export_rds_database_recommendations(aws_client:aws_client(), export_rds_database_recommendations_request(), proplists:proplist()) ->
+    {ok, export_rds_database_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, export_rds_database_recommendations_errors(), tuple()}.
+export_rds_database_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExportRDSDatabaseRecommendations">>, Input, Options).
+
 %% @doc Returns Auto Scaling group recommendations.
 %%
 %% Compute Optimizer generates recommendations for Amazon EC2 Auto Scaling
@@ -1961,6 +2211,50 @@ get_license_recommendations(Client, Input)
 get_license_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLicenseRecommendations">>, Input, Options).
+
+%% @doc
+%% Returns the projected metrics of Amazon RDS recommendations.
+-spec get_rds_database_recommendation_projected_metrics(aws_client:aws_client(), get_rds_database_recommendation_projected_metrics_request()) ->
+    {ok, get_rds_database_recommendation_projected_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, get_rds_database_recommendation_projected_metrics_errors(), tuple()}.
+get_rds_database_recommendation_projected_metrics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_rds_database_recommendation_projected_metrics(Client, Input, []).
+
+-spec get_rds_database_recommendation_projected_metrics(aws_client:aws_client(), get_rds_database_recommendation_projected_metrics_request(), proplists:proplist()) ->
+    {ok, get_rds_database_recommendation_projected_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, get_rds_database_recommendation_projected_metrics_errors(), tuple()}.
+get_rds_database_recommendation_projected_metrics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRDSDatabaseRecommendationProjectedMetrics">>, Input, Options).
+
+%% @doc
+%% Returns Amazon RDS recommendations.
+%%
+%% Compute Optimizer generates recommendations for Amazon RDS that
+%% meet a specific set of requirements. For more
+%% information, see the Supported resources and
+%% requirements:
+%% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
+%% in the Compute Optimizer User
+%% Guide.
+-spec get_rds_database_recommendations(aws_client:aws_client(), get_rds_database_recommendations_request()) ->
+    {ok, get_rds_database_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_rds_database_recommendations_errors(), tuple()}.
+get_rds_database_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_rds_database_recommendations(Client, Input, []).
+
+-spec get_rds_database_recommendations(aws_client:aws_client(), get_rds_database_recommendations_request(), proplists:proplist()) ->
+    {ok, get_rds_database_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, get_rds_database_recommendations_errors(), tuple()}.
+get_rds_database_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRDSDatabaseRecommendations">>, Input, Options).
 
 %% @doc Returns existing recommendation preferences, such as enhanced
 %% infrastructure
