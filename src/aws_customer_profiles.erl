@@ -4,17 +4,19 @@
 %% @doc Amazon Connect Customer Profiles
 %%
 %% Amazon Connect Customer Profiles is a unified customer profile for your
-%% contact center that has
-%% pre-built connectors powered by AppFlow that make it easy to combine
-%% customer information
-%% from third party applications, such as Salesforce (CRM), ServiceNow
-%% (ITSM), and your
-%% enterprise resource planning (ERP), with contact history from your Amazon
-%% Connect contact center.
+%% contact
+%% center that has pre-built connectors powered by AppFlow that make it easy
+%% to combine
+%% customer information from third party applications, such as Salesforce
+%% (CRM), ServiceNow
+%% (ITSM), and your enterprise resource planning (ERP), with contact history
+%% from your Amazon Connect contact center.
 %%
-%% If you're new to Amazon Connect, you might find it helpful to review
-%% the Amazon Connect Administrator Guide:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/.
+%% For more information about the Amazon Connect Customer Profiles feature,
+%% see Use Customer
+%% Profiles:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/customer-profiles.html
+%% in the Amazon Connect Administrator's Guide.
 -module(aws_customer_profiles).
 
 -export([add_profile_key/3,
@@ -189,6 +191,8 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"MaxAvailableProfileObjectCount">> => integer(),
+%%   <<"MaxProfileObjectCount">> => integer(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"Tags">> => map()
 %% }
@@ -234,6 +238,8 @@
 %%   <<"Fields">> => map(),
 %%   <<"Keys">> => map(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"MaxAvailableProfileObjectCount">> => integer(),
+%%   <<"MaxProfileObjectCount">> => integer(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"SourceLastUpdatedTimestampFormat">> => string(),
 %%   <<"Tags">> => map(),
@@ -387,6 +393,8 @@
 %%   <<"Fields">> => map(),
 %%   <<"Keys">> => map(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"MaxAvailableProfileObjectCount">> => integer(),
+%%   <<"MaxProfileObjectCount">> => integer(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"SourceLastUpdatedTimestampFormat">> => string(),
 %%   <<"Tags">> => map(),
@@ -1447,6 +1455,7 @@
 %%   <<"ExpirationDays">> => integer(),
 %%   <<"Fields">> => map(),
 %%   <<"Keys">> => map(),
+%%   <<"MaxProfileObjectCount">> => integer(),
 %%   <<"SourceLastUpdatedTimestampFormat">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"TemplateId">> => string()
@@ -2204,12 +2213,11 @@ add_profile_key(Client, DomainName, Input0, Options0) ->
 %% can be retrieved
 %% for a profile using the GetCalculatedAttributeForProfile:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetCalculatedAttributeForProfile.html
-%% API.
-%% Defining a calculated attribute makes it available for all profiles within
-%% a domain. Each
-%% calculated attribute can only reference one `ObjectType' and at most,
-%% two fields
-%% from that `ObjectType'.
+%% API. Defining a calculated attribute makes it
+%% available for all profiles within a domain. Each calculated attribute can
+%% only reference
+%% one `ObjectType' and at most, two fields from that
+%% `ObjectType'.
 -spec create_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list(), create_calculated_attribute_definition_request()) ->
     {ok, create_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
@@ -2251,8 +2259,8 @@ create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
 %% domains, and each domain can have multiple third-party integrations.
 %%
 %% Each Amazon Connect instance can be associated with only one domain.
-%% Multiple Amazon Connect instances can
-%% be associated with one domain.
+%% Multiple
+%% Amazon Connect instances can be associated with one domain.
 %%
 %% Use this API or UpdateDomain:
 %% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateDomain.html
@@ -2267,6 +2275,17 @@ create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
 %% https://docs.aws.amazon.com/connect/latest/adminguide/cross-service-confused-deputy-prevention.html
 %% for sample policies that you should
 %% apply.
+%%
+%% It is not possible to associate a Customer Profiles domain with an Amazon
+%% Connect Instance directly from
+%% the API. If you would like to create a domain and associate a Customer
+%% Profiles domain, use the Amazon Connect
+%% admin website. For more information, see Enable Customer Profiles:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/enable-customer-profiles.html#enable-customer-profiles-step1.
+%%
+%% Each Amazon Connect instance can be associated with only one domain.
+%% Multiple Amazon Connect instances
+%% can be associated with one domain.
 -spec create_domain(aws_client:aws_client(), binary() | list(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
@@ -2301,12 +2320,13 @@ create_domain(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an event stream, which is a subscription to real-time events,
-%% such as when profiles are created and
-%% updated through Amazon Connect Customer Profiles.
+%% such as when
+%% profiles are created and updated through Amazon Connect Customer Profiles.
 %%
 %% Each event stream can be associated with only one Kinesis Data Stream
-%% destination in the same region and
-%% Amazon Web Services account as the customer profiles domain
+%% destination in the
+%% same region and Amazon Web Services account as the customer profiles
+%% domain
 -spec create_event_stream(aws_client:aws_client(), binary() | list(), binary() | list(), create_event_stream_request()) ->
     {ok, create_event_stream_response(), tuple()} |
     {error, any()} |
@@ -2340,12 +2360,11 @@ create_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Creates an integration workflow.
+%% @doc Creates an integration workflow.
 %%
-%% An integration workflow is an async process which ingests historic data
-%% and sets up an integration for ongoing updates. The supported Amazon
-%% AppFlow sources are Salesforce, ServiceNow, and Marketo.
+%% An integration workflow is an async process which
+%% ingests historic data and sets up an integration for ongoing updates. The
+%% supported Amazon AppFlow sources are Salesforce, ServiceNow, and Marketo.
 -spec create_integration_workflow(aws_client:aws_client(), binary() | list(), create_integration_workflow_request()) ->
     {ok, create_integration_workflow_response(), tuple()} |
     {error, any()} |
@@ -2419,11 +2438,11 @@ create_profile(Client, DomainName, Input0, Options0) ->
 
 %% @doc Deletes an existing calculated attribute definition.
 %%
-%% Note that deleting a default calculated attribute
-%% is possible, however once deleted, you will be unable to undo that action
-%% and will need to recreate it on
-%% your own using the CreateCalculatedAttributeDefinition API if you want it
-%% back.
+%% Note that deleting a default
+%% calculated attribute is possible, however once deleted, you will be unable
+%% to undo that
+%% action and will need to recreate it on your own using the
+%% CreateCalculatedAttributeDefinition API if you want it back.
 -spec delete_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list(), delete_calculated_attribute_definition_request()) ->
     {ok, delete_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
@@ -2708,7 +2727,8 @@ delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0)
 
 %% @doc Deletes the specified workflow and all its corresponding resources.
 %%
-%% This is an async process.
+%% This is an async
+%% process.
 -spec delete_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workflow_request()) ->
     {ok, delete_workflow_response(), tuple()} |
     {error, any()} |
@@ -2833,7 +2853,8 @@ get_auto_merging_preview(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides more information on a calculated attribute definition for
-%% Customer Profiles.
+%% Customer
+%% Profiles.
 -spec get_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
@@ -3233,12 +3254,12 @@ get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a set of profiles that belong to the same matching group
-%% using the `matchId' or
-%% `profileId'.
+%% using the
+%% `matchId' or `profileId'.
 %%
-%% You can also specify the type of matching that you want for finding
-%% similar profiles using
-%% either `RULE_BASED_MATCHING' or `ML_BASED_MATCHING'.
+%% You can also specify the type of
+%% matching that you want for finding similar profiles using either
+%% `RULE_BASED_MATCHING' or `ML_BASED_MATCHING'.
 -spec get_similar_profiles(aws_client:aws_client(), binary() | list(), get_similar_profiles_request()) ->
     {ok, get_similar_profiles_response(), tuple()} |
     {error, any()} |
@@ -4094,13 +4115,13 @@ put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
 %% (e.g., _fullName, _phone, _email, _account, etc.) and/or custom-defined
 %% search keys.
 %%
-%% A search key
-%% is a data type pair that consists of a `KeyName' and `Values'
-%% list.
+%% A
+%% search key is a data type pair that consists of a `KeyName' and
+%% `Values' list.
 %%
 %% This operation supports searching for profiles with a minimum of 1
-%% key-value(s) pair and up to
-%% 5 key-value(s) pairs using either `AND' or `OR' logic.
+%% key-value(s) pair and
+%% up to 5 key-value(s) pairs using either `AND' or `OR' logic.
 -spec search_profiles(aws_client:aws_client(), binary() | list(), search_profiles_request()) ->
     {ok, search_profiles_response(), tuple()} |
     {error, any()} |
@@ -4236,10 +4257,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates an existing calculated attribute definition.
 %%
-%% When updating the Conditions, note that increasing
-%% the date range of a calculated attribute will not trigger inclusion of
-%% historical data greater than the
-%% current date range.
+%% When updating the Conditions, note
+%% that increasing the date range of a calculated attribute will not trigger
+%% inclusion of
+%% historical data greater than the current date range.
 -spec update_calculated_attribute_definition(aws_client:aws_client(), binary() | list(), binary() | list(), update_calculated_attribute_definition_request()) ->
     {ok, update_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |

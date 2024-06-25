@@ -1,15 +1,15 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc WorkSpaces Web is a low cost, fully managed WorkSpace built
-%% specifically to facilitate
+%% @doc Amazon WorkSpaces Secure Browser is a low cost, fully managed
+%% WorkSpace built specifically to facilitate
 %% secure, web-based workloads.
 %%
-%% WorkSpaces Web makes it easy for customers to safely provide
+%% WorkSpaces Secure Browser makes it easy for customers to safely provide
 %% their employees with access to internal websites and SaaS web applications
 %% without the
 %% administrative burden of appliances or specialized client software.
-%% WorkSpaces Web provides
+%% WorkSpaces Secure Browser provides
 %% simple policy tools tailored for user interactions, while offloading
 %% common tasks like
 %% capacity management, scaling, and maintaining browser images.
@@ -486,6 +486,7 @@
 %% user_settings_summary() :: #{
 %%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
 %%   <<"copyAllowed">> => string(),
+%%   <<"deepLinkAllowed">> => string(),
 %%   <<"disconnectTimeoutInMinutes">> => integer(),
 %%   <<"downloadAllowed">> => string(),
 %%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
@@ -830,6 +831,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
 %%   <<"copyAllowed">> => string(),
+%%   <<"deepLinkAllowed">> => string(),
 %%   <<"disconnectTimeoutInMinutes">> => integer(),
 %%   <<"downloadAllowed">> => string(),
 %%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
@@ -928,7 +930,8 @@
 %%   <<"identityProviderDetails">> := map(),
 %%   <<"identityProviderName">> := string(),
 %%   <<"identityProviderType">> := string(),
-%%   <<"portalArn">> := string()
+%%   <<"portalArn">> := string(),
+%%   <<"tags">> => list(tag()())
 %% }
 -type create_identity_provider_request() :: #{binary() => any()}.
 
@@ -973,6 +976,7 @@
 %%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
 %%   <<"copyAllowed">> := string(),
 %%   <<"customerManagedKey">> => string(),
+%%   <<"deepLinkAllowed">> => string(),
 %%   <<"disconnectTimeoutInMinutes">> => integer(),
 %%   <<"downloadAllowed">> := string(),
 %%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
@@ -1108,6 +1112,7 @@
 %%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
 %%   <<"copyAllowed">> => string(),
 %%   <<"customerManagedKey">> => string(),
+%%   <<"deepLinkAllowed">> => string(),
 %%   <<"disconnectTimeoutInMinutes">> => integer(),
 %%   <<"downloadAllowed">> => string(),
 %%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
@@ -1296,7 +1301,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type associate_user_access_logging_settings_errors() ::
     throttling_exception() | 
@@ -1442,42 +1448,48 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type disassociate_ip_access_settings_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type disassociate_network_settings_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type disassociate_trust_store_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type disassociate_user_access_logging_settings_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type disassociate_user_settings_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_browser_settings_errors() ::
     throttling_exception() | 

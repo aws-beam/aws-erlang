@@ -1019,6 +1019,7 @@
 %%   <<"displayName">> := string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"qAppsConfiguration">> => q_apps_configuration(),
 %%   <<"roleArn">> => string(),
 %%   <<"tags">> => list(tag()())
 %% }
@@ -1212,6 +1213,7 @@
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"qAppsConfiguration">> => q_apps_configuration(),
 %%   <<"roleArn">> => string()
 %% }
 -type update_application_request() :: #{binary() => any()}.
@@ -1266,6 +1268,7 @@
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"error">> => error_detail(),
 %%   <<"identityCenterApplicationArn">> => string(),
+%%   <<"qAppsConfiguration">> => q_apps_configuration(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -1683,6 +1686,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% q_apps_configuration() :: #{
+%%   <<"qAppsControlMode">> => list(any())
+%% }
+-type q_apps_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2540,7 +2550,7 @@ chat_sync(Client, ApplicationId, Input0, Options0) ->
 %% included in
 %% Amazon Q Business Lite and what's included in
 %% Amazon Q Business Pro, see Amazon Q Business tiers:
-%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html#tiers.
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/tiers.html#user-sub-tiers.
 %% You must use the Amazon Q Business console to assign subscription tiers to
 %% users.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
