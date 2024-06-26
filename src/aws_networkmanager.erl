@@ -670,6 +670,17 @@
 
 
 %% Example:
+%% peering_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"MissingPermissionsContext">> => permissions_error_context(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type peering_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% attachment() :: #{
 %%   <<"AttachmentId">> => string(),
 %%   <<"AttachmentPolicyRuleNumber">> => integer(),
@@ -678,6 +689,7 @@
 %%   <<"CoreNetworkId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"EdgeLocation">> => string(),
+%%   <<"LastModificationErrors">> => list(attachment_error()()),
 %%   <<"NetworkFunctionGroupName">> => string(),
 %%   <<"OwnerAccountId">> => string(),
 %%   <<"ProposedNetworkFunctionGroupChange">> => proposed_network_function_group_change(),
@@ -837,6 +849,13 @@
 
 
 %% Example:
+%% permissions_error_context() :: #{
+%%   <<"MissingPermission">> => string()
+%% }
+-type permissions_error_context() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_network_routes_response() :: #{
 %%   <<"CoreNetworkSegmentEdge">> => core_network_segment_edge_identifier(),
 %%   <<"NetworkRoutes">> => list(network_route()()),
@@ -977,6 +996,16 @@
 %%   <<"TransportAttachmentId">> := string()
 %% }
 -type create_connect_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_peer_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type connect_peer_error() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_connect_peer_request() :: #{}
@@ -1273,6 +1302,7 @@
 %%   <<"CoreNetworkId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"EdgeLocation">> => string(),
+%%   <<"LastModificationErrors">> => list(peering_error()()),
 %%   <<"OwnerAccountId">> => string(),
 %%   <<"PeeringId">> => string(),
 %%   <<"PeeringType">> => list(any()),
@@ -1307,6 +1337,16 @@
 %%   <<"State">> => list(any())
 %% }
 -type customer_gateway_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% attachment_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type attachment_error() :: #{binary() => any()}.
 
 %% Example:
 %% delete_site_request() :: #{}
@@ -2002,6 +2042,7 @@
 %%   <<"CoreNetworkId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"EdgeLocation">> => string(),
+%%   <<"LastModificationErrors">> => list(connect_peer_error()()),
 %%   <<"State">> => list(any()),
 %%   <<"SubnetArn">> => string(),
 %%   <<"Tags">> => list(tag()())

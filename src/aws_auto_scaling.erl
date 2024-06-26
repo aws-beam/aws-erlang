@@ -9,8 +9,8 @@
 %% checks.
 %%
 %% For more information, see the Amazon EC2 Auto Scaling User Guide:
-%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ and the Amazon EC2
-%% Auto Scaling API Reference:
+%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html
+%% and the Amazon EC2 Auto Scaling API Reference:
 %% https://docs.aws.amazon.com/autoscaling/ec2/APIReference/Welcome.html.
 -module(aws_auto_scaling).
 
@@ -2038,9 +2038,9 @@
 %% attached to your Auto Scaling
 %% group, the instances are also registered with the target groups.
 %%
-%% For more information, see Attach EC2 instances to
-%% your Auto Scaling group:
-%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html
+%% For more information, see Detach
+%% or attach instances:
+%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-detach-attach-instances.html
 %% in the Amazon EC2 Auto Scaling User Guide.
 -spec attach_instances(aws_client:aws_client(), attach_instances_query()) ->
     {ok, undefined, tuple()} |
@@ -2378,7 +2378,7 @@ create_auto_scaling_group(Client, Input, Options)
 %%
 %% For more information, see Launch
 %% configurations:
-%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html
+%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html
 %% in the Amazon EC2 Auto Scaling User Guide.
 %%
 %% Amazon EC2 Auto Scaling configures instances launched as part of an Auto
@@ -2546,7 +2546,7 @@ delete_notification_configuration(Client, Input, Options)
 %% longer has an
 %% associated action.
 %%
-%% For more information, see Deleting a scaling
+%% For more information, see Delete a scaling
 %% policy:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/deleting-scaling-policy.html
 %% in the Amazon EC2 Auto Scaling User Guide.
@@ -3042,7 +3042,7 @@ describe_policies(Client, Input, Options)
 %%
 %% When scaling events occur, you see a record of the scaling activity in the
 %% scaling
-%% activities. For more information, see Verifying a scaling
+%% activities. For more information, see Verify a scaling
 %% activity for an Auto Scaling group:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-verify-scaling-activity.html
 %% in the Amazon EC2 Auto Scaling User Guide.
@@ -3152,8 +3152,8 @@ describe_tags(Client, Input, Options)
 %% @doc Describes the termination policies supported by Amazon EC2 Auto
 %% Scaling.
 %%
-%% For more information, see Work with
-%% Amazon EC2 Auto Scaling termination policies:
+%% For more information, see Configure
+%% termination policies for Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
@@ -3237,9 +3237,9 @@ describe_warm_pool(Client, Input, Options)
 %% to the Auto Scaling
 %% group, the instances are deregistered from the target groups.
 %%
-%% For more information, see Detach EC2 instances from
-%% your Auto Scaling group:
-%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html
+%% For more information, see Detach
+%% or attach instances:
+%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-detach-attach-instances.html
 %% in the Amazon EC2 Auto Scaling User Guide.
 -spec detach_instances(aws_client:aws_client(), detach_instances_query()) ->
     {ok, detach_instances_answer(), tuple()} |
@@ -3600,9 +3600,9 @@ put_lifecycle_hook(Client, Input, Options)
 %%
 %% This configuration overwrites any existing configuration.
 %%
-%% For more information, see Getting Amazon SNS
-%% notifications when your Auto Scaling group scales:
-%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html
+%% For more information, see Amazon SNS
+%% notification options for Amazon EC2 Auto Scaling:
+%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-sns-notifications.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
 %%
@@ -3669,7 +3669,7 @@ put_scaling_policy(Client, Input, Options)
 %% group.
 %%
 %% For more information, see Scheduled scaling:
-%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html
+%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
 %%
@@ -3704,22 +3704,21 @@ put_scheduled_update_group_action(Client, Input, Options)
 %% Whenever your
 %% application needs to scale out, the Auto Scaling group can draw on the
 %% warm pool to meet its new
-%% desired capacity. For more information and example configurations, see
-%% Warm pools for
-%% Amazon EC2 Auto Scaling:
-%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html
-%% in the Amazon EC2 Auto Scaling User Guide.
+%% desired capacity.
 %%
 %% This operation must be called from the Region in which the Auto Scaling
-%% group was created.
-%% This operation cannot be called on an Auto Scaling group that has a mixed
-%% instances policy or a
-%% launch template or launch configuration that requests Spot Instances.
+%% group was
+%% created.
 %%
 %% You can view the instances in the warm pool using the
 %% `DescribeWarmPool' API call. If you are no longer using a warm pool,
 %% you can delete it by calling the
 %% `DeleteWarmPool' API.
+%%
+%% For more information, see Warm pools for
+%% Amazon EC2 Auto Scaling:
+%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html
+%% in the Amazon EC2 Auto Scaling User Guide.
 -spec put_warm_pool(aws_client:aws_client(), put_warm_pool_type()) ->
     {ok, put_warm_pool_answer(), tuple()} |
     {error, any()} |
@@ -3796,8 +3795,8 @@ record_lifecycle_action_heartbeat(Client, Input, Options)
 %% suspended process, for
 %% the specified Auto Scaling group.
 %%
-%% For more information, see Suspending and
-%% resuming scaling processes:
+%% For more information, see Suspend and resume
+%% Amazon EC2 Auto Scaling processes:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html
 %% in the Amazon EC2 Auto Scaling User Guide.
 -spec resume_processes(aws_client:aws_client(), scaling_process_query()) ->
@@ -3872,10 +3871,10 @@ rollback_instance_refresh(Client, Input, Options)
 %% uses its termination
 %% policy to determine which instances to terminate.
 %%
-%% For more information, see Manual scaling:
-%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-manual-scaling.html
-%% in the
-%% Amazon EC2 Auto Scaling User Guide.
+%% For more information, see Manual
+%% scaling:
+%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-manually.html
+%% in the Amazon EC2 Auto Scaling User Guide.
 -spec set_desired_capacity(aws_client:aws_client(), set_desired_capacity_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3894,10 +3893,11 @@ set_desired_capacity(Client, Input, Options)
 
 %% @doc Sets the health status of the specified instance.
 %%
-%% For more information, see Health checks for Auto Scaling
-%% instances:
-%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html in
-%% the Amazon EC2 Auto Scaling User Guide.
+%% For more information, see Health checks
+%% for instances in an Auto Scaling group:
+%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html
+%% in the
+%% Amazon EC2 Auto Scaling User Guide.
 -spec set_instance_health(aws_client:aws_client(), set_instance_health_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3919,9 +3919,7 @@ set_instance_health(Client, Input, Options)
 %% This operation
 %% cannot be called on instances in a warm pool.
 %%
-%% For more information about preventing instances that are part of an Auto
-%% Scaling group from
-%% terminating on scale in, see Using
+%% For more information, see Use
 %% instance scale-in protection:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-protection.html
 %% in the
@@ -4013,8 +4011,8 @@ start_instance_refresh(Client, Input, Options)
 %% If you suspend either the `Launch' or `Terminate' process types,
 %% it can prevent other process types from functioning properly. For more
 %% information, see
-%% Suspending and
-%% resuming scaling processes:
+%% Suspend and resume
+%% Amazon EC2 Auto Scaling processes:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html
 %% in the Amazon EC2 Auto Scaling User Guide.
 %%
@@ -4060,9 +4058,9 @@ suspend_processes(Client, Input, Options)
 %% unbalanced between
 %% Availability Zones. Amazon EC2 Auto Scaling tries to rebalance the group,
 %% and rebalancing might
-%% terminate instances in other zones. For more information, see Rebalancing
-%% activities:
-%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage
+%% terminate instances in other zones. For more information, see Manual
+%% scaling:
+%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-manually.html
 %% in the Amazon EC2 Auto Scaling User Guide.
 -spec terminate_instance_in_auto_scaling_group(aws_client:aws_client(), terminate_instance_in_auto_scaling_group_type()) ->
     {ok, activity_type(), tuple()} |
