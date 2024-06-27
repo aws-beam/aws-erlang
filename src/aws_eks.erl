@@ -748,6 +748,7 @@
 %% Example:
 %% create_cluster_request() :: #{
 %%   <<"accessConfig">> => create_access_config_request(),
+%%   <<"bootstrapSelfManagedAddons">> => boolean(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"encryptionConfig">> => list(encryption_config()()),
 %%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),

@@ -47,12 +47,16 @@
          delete_application_vpc_configuration/3,
          describe_application/2,
          describe_application/3,
+         describe_application_operation/2,
+         describe_application_operation/3,
          describe_application_snapshot/2,
          describe_application_snapshot/3,
          describe_application_version/2,
          describe_application_version/3,
          discover_input_schema/2,
          discover_input_schema/3,
+         list_application_operations/2,
+         list_application_operations/3,
          list_application_snapshots/2,
          list_application_snapshots/3,
          list_application_versions/2,
@@ -97,6 +101,7 @@
 %% add_application_vpc_configuration_response() :: #{
 %%   <<"ApplicationARN">> => string(),
 %%   <<"ApplicationVersionId">> => float(),
+%%   <<"OperationId">> => string(),
 %%   <<"VpcConfigurationDescription">> => vpc_configuration_description()
 %% }
 -type add_application_vpc_configuration_response() :: #{binary() => any()}.
@@ -141,6 +146,7 @@
 %%   <<"ApplicationMode">> => list(any()),
 %%   <<"ApplicationName">> => string(),
 %%   <<"ApplicationStatus">> => list(any()),
+%%   <<"ApplicationVersionCreateTimestamp">> => non_neg_integer(),
 %%   <<"ApplicationVersionId">> => float(),
 %%   <<"ApplicationVersionRolledBackFrom">> => float(),
 %%   <<"ApplicationVersionRolledBackTo">> => float(),
@@ -260,7 +266,8 @@
 %% add_application_cloud_watch_logging_option_response() :: #{
 %%   <<"ApplicationARN">> => string(),
 %%   <<"ApplicationVersionId">> => float(),
-%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()())
+%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()()),
+%%   <<"OperationId">> => string()
 %% }
 -type add_application_cloud_watch_logging_option_response() :: #{binary() => any()}.
 
@@ -311,6 +318,13 @@
 %%   <<"S3ContentLocationDescription">> => s3_content_location()
 %% }
 -type custom_artifact_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_operation_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"OperationId">> := string()
+%% }
+-type describe_application_operation_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_application_version_response() :: #{
@@ -408,6 +422,18 @@
 -type code_content_description() :: #{binary() => any()}.
 
 %% Example:
+%% application_system_rollback_configuration() :: #{
+%%   <<"RollbackEnabled">> => boolean()
+%% }
+-type application_system_rollback_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_operation_response() :: #{
+%%   <<"ApplicationOperationInfoDetails">> => application_operation_info_details()
+%% }
+-type describe_application_operation_response() :: #{binary() => any()}.
+
+%% Example:
 %% application_version_summary() :: #{
 %%   <<"ApplicationStatus">> => list(any()),
 %%   <<"ApplicationVersionId">> => float()
@@ -459,6 +485,12 @@
 %%   <<"MetricsLevel">> => list(any())
 %% }
 -type monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% error_info() :: #{
+%%   <<"ErrorString">> => string()
+%% }
+-type error_info() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -665,6 +697,7 @@
 %% application_configuration() :: #{
 %%   <<"ApplicationCodeConfiguration">> => application_code_configuration(),
 %%   <<"ApplicationSnapshotConfiguration">> => application_snapshot_configuration(),
+%%   <<"ApplicationSystemRollbackConfiguration">> => application_system_rollback_configuration(),
 %%   <<"EnvironmentProperties">> => environment_properties(),
 %%   <<"FlinkApplicationConfiguration">> => flink_application_configuration(),
 %%   <<"SqlApplicationConfiguration">> => sql_application_configuration(),
@@ -697,7 +730,8 @@
 
 %% Example:
 %% rollback_application_response() :: #{
-%%   <<"ApplicationDetail">> => application_detail()
+%%   <<"ApplicationDetail">> => application_detail(),
+%%   <<"OperationId">> => string()
 %% }
 -type rollback_application_response() :: #{binary() => any()}.
 
@@ -707,6 +741,17 @@
 %%   <<"RecordRowDelimiter">> => string()
 %% }
 -type csv_mapping_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% application_operation_info_details() :: #{
+%%   <<"ApplicationVersionChangeDetails">> => application_version_change_details(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Operation">> => string(),
+%%   <<"OperationFailureDetails">> => operation_failure_details(),
+%%   <<"OperationStatus">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type application_operation_info_details() :: #{binary() => any()}.
 
 %% Example:
 %% output_update() :: #{
@@ -737,7 +782,8 @@
 %% delete_application_cloud_watch_logging_option_response() :: #{
 %%   <<"ApplicationARN">> => string(),
 %%   <<"ApplicationVersionId">> => float(),
-%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()())
+%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()()),
+%%   <<"OperationId">> => string()
 %% }
 -type delete_application_cloud_watch_logging_option_response() :: #{binary() => any()}.
 
@@ -770,7 +816,8 @@
 %% Example:
 %% delete_application_vpc_configuration_response() :: #{
 %%   <<"ApplicationARN">> => string(),
-%%   <<"ApplicationVersionId">> => float()
+%%   <<"ApplicationVersionId">> => float(),
+%%   <<"OperationId">> => string()
 %% }
 -type delete_application_vpc_configuration_response() :: #{binary() => any()}.
 
@@ -825,6 +872,16 @@
 -type describe_application_snapshot_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_application_operations_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"OperationStatus">> => list(any())
+%% }
+-type list_application_operations_request() :: #{binary() => any()}.
+
+%% Example:
 %% add_application_input_request() :: #{
 %%   <<"ApplicationName">> := string(),
 %%   <<"CurrentApplicationVersionId">> := float(),
@@ -839,8 +896,14 @@
 -type delete_application_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_application_response() :: #{
+%% application_system_rollback_configuration_update() :: #{
+%%   <<"RollbackEnabledUpdate">> => boolean()
+%% }
+-type application_system_rollback_configuration_update() :: #{binary() => any()}.
 
+%% Example:
+%% start_application_response() :: #{
+%%   <<"OperationId">> => string()
 %% }
 -type start_application_response() :: #{binary() => any()}.
 
@@ -869,6 +932,13 @@
 -type s3_content_location_update() :: #{binary() => any()}.
 
 %% Example:
+%% list_application_operations_response() :: #{
+%%   <<"ApplicationOperationInfoList">> => list(application_operation_info()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_operations_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_application_version_request() :: #{
 %%   <<"ApplicationName">> := string(),
 %%   <<"ApplicationVersionId">> := float()
@@ -890,7 +960,8 @@
 
 %% Example:
 %% update_application_response() :: #{
-%%   <<"ApplicationDetail">> => application_detail()
+%%   <<"ApplicationDetail">> => application_detail(),
+%%   <<"OperationId">> => string()
 %% }
 -type update_application_response() :: #{binary() => any()}.
 
@@ -1012,7 +1083,7 @@
 
 %% Example:
 %% stop_application_response() :: #{
-
+%%   <<"OperationId">> => string()
 %% }
 -type stop_application_response() :: #{binary() => any()}.
 
@@ -1088,6 +1159,13 @@
 -type delete_application_snapshot_response() :: #{binary() => any()}.
 
 %% Example:
+%% operation_failure_details() :: #{
+%%   <<"ErrorInfo">> => error_info(),
+%%   <<"RollbackOperationId">> => string()
+%% }
+-type operation_failure_details() :: #{binary() => any()}.
+
+%% Example:
 %% application_maintenance_configuration_description() :: #{
 %%   <<"ApplicationMaintenanceWindowEndTime">> => string(),
 %%   <<"ApplicationMaintenanceWindowStartTime">> => string()
@@ -1111,6 +1189,12 @@
 %%   <<"ResourceARN">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% application_system_rollback_configuration_description() :: #{
+%%   <<"RollbackEnabled">> => boolean()
+%% }
+-type application_system_rollback_configuration_description() :: #{binary() => any()}.
 
 %% Example:
 %% checkpoint_configuration_description() :: #{
@@ -1195,6 +1279,13 @@
 -type s3_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% application_version_change_details() :: #{
+%%   <<"ApplicationVersionUpdatedFrom">> => float(),
+%%   <<"ApplicationVersionUpdatedTo">> => float()
+%% }
+-type application_version_change_details() :: #{binary() => any()}.
+
+%% Example:
 %% application_summary() :: #{
 %%   <<"ApplicationARN">> => string(),
 %%   <<"ApplicationMode">> => list(any()),
@@ -1213,9 +1304,20 @@
 -type kinesis_streams_output_description() :: #{binary() => any()}.
 
 %% Example:
+%% application_operation_info() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Operation">> => string(),
+%%   <<"OperationId">> => string(),
+%%   <<"OperationStatus">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type application_operation_info() :: #{binary() => any()}.
+
+%% Example:
 %% application_configuration_description() :: #{
 %%   <<"ApplicationCodeConfigurationDescription">> => application_code_configuration_description(),
 %%   <<"ApplicationSnapshotConfigurationDescription">> => application_snapshot_configuration_description(),
+%%   <<"ApplicationSystemRollbackConfigurationDescription">> => application_system_rollback_configuration_description(),
 %%   <<"EnvironmentPropertyDescriptions">> => environment_property_descriptions(),
 %%   <<"FlinkApplicationConfigurationDescription">> => flink_application_configuration_description(),
 %%   <<"RunConfigurationDescription">> => run_configuration_description(),
@@ -1465,6 +1567,7 @@
 %% application_configuration_update() :: #{
 %%   <<"ApplicationCodeConfigurationUpdate">> => application_code_configuration_update(),
 %%   <<"ApplicationSnapshotConfigurationUpdate">> => application_snapshot_configuration_update(),
+%%   <<"ApplicationSystemRollbackConfigurationUpdate">> => application_system_rollback_configuration_update(),
 %%   <<"EnvironmentPropertyUpdates">> => environment_property_updates(),
 %%   <<"FlinkApplicationConfigurationUpdate">> => flink_application_configuration_update(),
 %%   <<"SqlApplicationConfigurationUpdate">> => sql_application_configuration_update(),
@@ -1657,6 +1760,11 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type describe_application_operation_errors() ::
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception().
+
 -type describe_application_snapshot_errors() ::
     invalid_argument_exception() | 
     resource_not_found_exception() | 
@@ -1673,6 +1781,11 @@
     invalid_request_exception() | 
     unable_to_detect_schema_exception() | 
     resource_provisioned_throughput_exceeded_exception() | 
+    unsupported_operation_exception().
+
+-type list_application_operations_errors() ::
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
     unsupported_operation_exception().
 
 -type list_application_snapshots_errors() ::
@@ -2152,6 +2265,24 @@ describe_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplication">>, Input, Options).
 
+%% @doc Returns information about a specific operation performed on a Managed
+%% Service for Apache Flink application
+-spec describe_application_operation(aws_client:aws_client(), describe_application_operation_request()) ->
+    {ok, describe_application_operation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_application_operation_errors(), tuple()}.
+describe_application_operation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_application_operation(Client, Input, []).
+
+-spec describe_application_operation(aws_client:aws_client(), describe_application_operation_request(), proplists:proplist()) ->
+    {ok, describe_application_operation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_application_operation_errors(), tuple()}.
+describe_application_operation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeApplicationOperation">>, Input, Options).
+
 %% @doc Returns information about a snapshot of application state data.
 -spec describe_application_snapshot(aws_client:aws_client(), describe_application_snapshot_request()) ->
     {ok, describe_application_snapshot_response(), tuple()} |
@@ -2222,6 +2353,24 @@ discover_input_schema(Client, Input)
 discover_input_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverInputSchema">>, Input, Options).
+
+%% @doc Lists information about operations performed on a Managed Service for
+%% Apache Flink application
+-spec list_application_operations(aws_client:aws_client(), list_application_operations_request()) ->
+    {ok, list_application_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_application_operations_errors(), tuple()}.
+list_application_operations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_application_operations(Client, Input, []).
+
+-spec list_application_operations(aws_client:aws_client(), list_application_operations_request(), proplists:proplist()) ->
+    {ok, list_application_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_application_operations_errors(), tuple()}.
+list_application_operations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListApplicationOperations">>, Input, Options).
 
 %% @doc Lists information about the current application snapshots.
 -spec list_application_snapshots(aws_client:aws_client(), list_application_snapshots_request()) ->
@@ -2315,19 +2464,17 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Reverts the application to the previous running version.
 %%
-%% You can
-%% roll back an application if you suspect it is stuck in a transient status.
+%% You can roll back an
+%% application if you suspect it is stuck in a transient status or in the
+%% running status.
 %%
-%% You can roll back an application only if it is in the `UPDATING'
-%% or `AUTOSCALING' status.
+%% You can roll back an application only if it is in the `UPDATING',
+%% `AUTOSCALING', or `RUNNING' statuses.
 %%
 %% When you rollback an application, it loads state data from the last
 %% successful snapshot.
 %% If the application has no snapshots, Managed Service for Apache Flink
 %% rejects the rollback request.
-%%
-%% This action is not supported for Managed Service for Apache Flink for SQL
-%% applications.
 -spec rollback_application(aws_client:aws_client(), rollback_application_request()) ->
     {ok, rollback_application_response(), tuple()} |
     {error, any()} |

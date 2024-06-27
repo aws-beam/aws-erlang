@@ -1,25 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% Introduction
-%%
-%% The Amazon Interactive Video Service (IVS) real-time API is REST
+%% @doc The Amazon Interactive Video Service (IVS) real-time API is REST
 %% compatible, using a standard HTTP
 %% API and an AWS EventBridge event stream for responses.
 %%
 %% JSON is used for both requests and responses,
 %% including errors.
 %%
-%% Terminology:
+%% Key Concepts
 %%
-%% A stage is a virtual space where participants can exchange video in real
+%% Stage — A virtual space where participants can exchange video in real
 %% time.
 %%
-%% A participant token is a token that authenticates a participant when they
+%% Participant token — A token that authenticates a participant when they
 %% join a stage.
 %%
-%% A participant object represents participants (people) in the stage and
+%% Participant object — Represents participants (people) in the stage and
 %% contains information about them. When a token is created, it includes a
 %% participant ID;
 %% when a participant uses that token to join a stage, the participant is
@@ -27,22 +24,19 @@
 %% that participant ID. There is a 1:1 mapping between participant tokens and
 %% participants.
 %%
-%% Server-side composition: The composition process composites participants
+%% For server-side composition:
+%%
+%% Composition process — Composites participants
 %% of a stage into a single video and forwards it to a set of outputs (e.g.,
 %% IVS channels).
 %% Composition endpoints support this process.
 %%
-%% Server-side composition: A composition controls the look of the outputs,
+%% Composition — Controls the look of the outputs,
 %% including how participants are positioned in the video.
 %%
-%% Resources
-%%
-%% The following resources contain information about your IVS live stream
-%% (see Getting Started with Amazon IVS Real-Time Streaming:
-%% https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started.html):
-%%
-%% Stage — A stage is a virtual space where participants can exchange video
-%% in real time.
+%% For more information about your IVS live stream, also see Getting Started
+%% with Amazon IVS Real-Time Streaming:
+%% https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started.html.
 %%
 %% Tagging
 %%
@@ -69,100 +63,6 @@
 %% `ListTagsForResource'. The following resource supports tagging: Stage.
 %%
 %% At most 50 tags can be applied to a resource.
-%%
-%% Stages Endpoints
-%%
-%% `CreateParticipantToken' — Creates an additional token for a specified
-%% stage. This can be done after stage creation or when tokens expire.
-%%
-%% `CreateStage' — Creates a new stage (and optionally participant
-%% tokens).
-%%
-%% `DeleteStage' — Shuts down and deletes the specified stage
-%% (disconnecting all participants).
-%%
-%% `DisconnectParticipant' — Disconnects a specified participant and
-%% revokes the participant permanently from a specified stage.
-%%
-%% `GetParticipant' — Gets information about the specified
-%% participant token.
-%%
-%% `GetStage' — Gets information for the specified stage.
-%%
-%% `GetStageSession' — Gets information for the specified stage
-%% session.
-%%
-%% `ListParticipantEvents' — Lists events for a specified
-%% participant that occurred during a specified stage session.
-%%
-%% `ListParticipants' — Lists all participants in a specified stage
-%% session.
-%%
-%% `ListStages' — Gets summary information about all stages in your
-%% account, in the AWS region where the API request is processed.
-%%
-%% `ListStageSessions' — Gets all sessions for a specified stage.
-%%
-%% `UpdateStage' — Updates a stage’s configuration.
-%%
-%% Composition Endpoints
-%%
-%% `GetComposition' — Gets information about the specified
-%% Composition resource.
-%%
-%% `ListCompositions' — Gets summary information about all
-%% Compositions in your account, in the AWS region where the API request is
-%% processed.
-%%
-%% `StartComposition' — Starts a Composition from a stage based on
-%% the configuration provided in the request.
-%%
-%% `StopComposition' — Stops and deletes a Composition resource.
-%% Any broadcast from the Composition resource is stopped.
-%%
-%% EncoderConfiguration Endpoints
-%%
-%% `CreateEncoderConfiguration' — Creates an EncoderConfiguration object.
-%%
-%% `DeleteEncoderConfiguration' — Deletes an EncoderConfiguration
-%% resource. Ensures that no Compositions are using this template; otherwise,
-%% returns an
-%% error.
-%%
-%% `GetEncoderConfiguration' — Gets information about the specified
-%% EncoderConfiguration resource.
-%%
-%% `ListEncoderConfigurations' — Gets summary information about all
-%% EncoderConfigurations in your account, in the AWS region where the API
-%% request is
-%% processed.
-%%
-%% StorageConfiguration Endpoints
-%%
-%% `CreateStorageConfiguration' — Creates a new storage configuration,
-%% used to enable
-%% recording to Amazon S3.
-%%
-%% `DeleteStorageConfiguration' — Deletes the storage configuration for
-%% the specified ARN.
-%%
-%% `GetStorageConfiguration' — Gets the storage configuration for the
-%% specified ARN.
-%%
-%% `ListStorageConfigurations' — Gets summary information about all
-%% storage configurations in your
-%% account, in the AWS region where the API request is processed.
-%%
-%% Tags Endpoints
-%%
-%% `ListTagsForResource' — Gets information about AWS tags for the
-%% specified ARN.
-%%
-%% `TagResource' — Adds or updates tags for the AWS resource with
-%% the specified ARN.
-%%
-%% `UntagResource' — Removes tags from the resource with the
-%% specified ARN.
 -module(aws_ivs_realtime).
 
 -export([create_encoder_configuration/2,
@@ -175,6 +75,8 @@
          create_storage_configuration/3,
          delete_encoder_configuration/2,
          delete_encoder_configuration/3,
+         delete_public_key/2,
+         delete_public_key/3,
          delete_stage/2,
          delete_stage/3,
          delete_storage_configuration/2,
@@ -187,12 +89,16 @@
          get_encoder_configuration/3,
          get_participant/2,
          get_participant/3,
+         get_public_key/2,
+         get_public_key/3,
          get_stage/2,
          get_stage/3,
          get_stage_session/2,
          get_stage_session/3,
          get_storage_configuration/2,
          get_storage_configuration/3,
+         import_public_key/2,
+         import_public_key/3,
          list_compositions/2,
          list_compositions/3,
          list_encoder_configurations/2,
@@ -201,6 +107,8 @@
          list_participant_events/3,
          list_participants/2,
          list_participants/3,
+         list_public_keys/2,
+         list_public_keys/3,
          list_stage_sessions/2,
          list_stage_sessions/3,
          list_stages/2,
@@ -256,6 +164,7 @@
 %%   <<"activeSessionId">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"autoParticipantRecordingConfiguration">> => auto_participant_recording_configuration(),
+%%   <<"endpoints">> => stage_endpoints(),
 %%   <<"name">> => string(),
 %%   <<"tags">> => map()
 %% }
@@ -377,6 +286,14 @@
 
 
 %% Example:
+%% list_public_keys_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"publicKeys">> => list(public_key_summary()())
+%% }
+-type list_public_keys_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_encoder_configuration_request() :: #{
 %%   <<"arn">> := string()
 %% }
@@ -414,6 +331,14 @@
 %% Example:
 %% disconnect_participant_response() :: #{}
 -type disconnect_participant_response() :: #{}.
+
+
+%% Example:
+%% stage_endpoints() :: #{
+%%   <<"events">> => string(),
+%%   <<"whip">> => string()
+%% }
+-type stage_endpoints() :: #{binary() => any()}.
 
 
 %% Example:
@@ -466,6 +391,13 @@
 
 
 %% Example:
+%% import_public_key_response() :: #{
+%%   <<"publicKey">> => public_key()
+%% }
+-type import_public_key_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_encoder_configurations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -478,6 +410,14 @@
 %%   <<"arn">> := string()
 %% }
 -type get_stage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_public_keys_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_public_keys_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -542,6 +482,13 @@
 %%   <<"storageConfigurations">> => list(storage_configuration_summary()())
 %% }
 -type list_storage_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_public_key_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_public_key_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -688,6 +635,17 @@
 
 
 %% Example:
+%% public_key() :: #{
+%%   <<"arn">> => string(),
+%%   <<"fingerprint">> => string(),
+%%   <<"name">> => string(),
+%%   <<"publicKeyMaterial">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type public_key() :: #{binary() => any()}.
+
+
+%% Example:
 %% encoder_configuration_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"name">> => string(),
@@ -745,6 +703,19 @@
 
 
 %% Example:
+%% import_public_key_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"publicKeyMaterial">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type import_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_public_key_response() :: #{}
+-type delete_public_key_response() :: #{}.
+
+
+%% Example:
 %% list_stages_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"stages">> := list(stage_summary()())
@@ -772,12 +743,26 @@
 
 
 %% Example:
+%% get_public_key_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_public_key_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_participant_request() :: #{
 %%   <<"participantId">> := string(),
 %%   <<"sessionId">> := string(),
 %%   <<"stageArn">> := string()
 %% }
 -type get_participant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_key_response() :: #{
+%%   <<"publicKey">> => public_key()
+%% }
+-type get_public_key_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -878,6 +863,15 @@
 %%   <<"arn">> := string()
 %% }
 -type get_encoder_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type public_key_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1016,6 +1010,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_public_key_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_stage_errors() ::
     pending_verification() | 
     validation_exception() | 
@@ -1058,6 +1059,11 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type get_public_key_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type get_stage_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1074,6 +1080,13 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    conflict_exception().
+
+-type import_public_key_errors() ::
+    pending_verification() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type list_compositions_errors() ::
@@ -1095,6 +1108,10 @@
     access_denied_exception().
 
 -type list_participants_errors() ::
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_public_keys_errors() ::
     validation_exception() | 
     access_denied_exception().
 
@@ -1345,6 +1362,44 @@ delete_encoder_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified public key used to sign stage participant
+%% tokens.
+%%
+%% This invalidates future participant tokens generated using the key pair’s
+%% private key.
+-spec delete_public_key(aws_client:aws_client(), delete_public_key_request()) ->
+    {ok, delete_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, delete_public_key_errors(), tuple()}.
+delete_public_key(Client, Input) ->
+    delete_public_key(Client, Input, []).
+
+-spec delete_public_key(aws_client:aws_client(), delete_public_key_request(), proplists:proplist()) ->
+    {ok, delete_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, delete_public_key_errors(), tuple()}.
+delete_public_key(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeletePublicKey"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Shuts down and deletes the specified stage (disconnecting all
 %% participants).
 -spec delete_stage(aws_client:aws_client(), delete_stage_request()) ->
@@ -1559,6 +1614,40 @@ get_participant(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets information for the specified public key.
+-spec get_public_key(aws_client:aws_client(), get_public_key_request()) ->
+    {ok, get_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_errors(), tuple()}.
+get_public_key(Client, Input) ->
+    get_public_key(Client, Input, []).
+
+-spec get_public_key(aws_client:aws_client(), get_public_key_request(), proplists:proplist()) ->
+    {ok, get_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, get_public_key_errors(), tuple()}.
+get_public_key(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetPublicKey"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets information for the specified stage.
 -spec get_stage(aws_client:aws_client(), get_stage_request()) ->
     {ok, get_stage_response(), tuple()} |
@@ -1642,6 +1731,40 @@ get_storage_configuration(Client, Input) ->
 get_storage_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStorageConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Import a public key to be used for signing stage participant tokens.
+-spec import_public_key(aws_client:aws_client(), import_public_key_request()) ->
+    {ok, import_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, import_public_key_errors(), tuple()}.
+import_public_key(Client, Input) ->
+    import_public_key(Client, Input, []).
+
+-spec import_public_key(aws_client:aws_client(), import_public_key_request(), proplists:proplist()) ->
+    {ok, import_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, import_public_key_errors(), tuple()}.
+import_public_key(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ImportPublicKey"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1784,6 +1907,41 @@ list_participants(Client, Input) ->
 list_participants(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListParticipants"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets summary information about all public keys in your account, in
+%% the AWS region where the API request is processed.
+-spec list_public_keys(aws_client:aws_client(), list_public_keys_request()) ->
+    {ok, list_public_keys_response(), tuple()} |
+    {error, any()} |
+    {error, list_public_keys_errors(), tuple()}.
+list_public_keys(Client, Input) ->
+    list_public_keys(Client, Input, []).
+
+-spec list_public_keys(aws_client:aws_client(), list_public_keys_request(), proplists:proplist()) ->
+    {ok, list_public_keys_response(), tuple()} |
+    {error, any()} |
+    {error, list_public_keys_errors(), tuple()}.
+list_public_keys(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListPublicKeys"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
