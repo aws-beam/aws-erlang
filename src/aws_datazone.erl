@@ -143,6 +143,9 @@
          get_group_profile/6,
          get_iam_portal_login_url/3,
          get_iam_portal_login_url/4,
+         get_lineage_node/3,
+         get_lineage_node/5,
+         get_lineage_node/6,
          get_listing/3,
          get_listing/5,
          get_listing/6,
@@ -200,6 +203,9 @@
          list_environments/3,
          list_environments/5,
          list_environments/6,
+         list_lineage_node_history/3,
+         list_lineage_node_history/5,
+         list_lineage_node_history/6,
          list_metadata_generation_runs/2,
          list_metadata_generation_runs/4,
          list_metadata_generation_runs/5,
@@ -230,6 +236,8 @@
          list_time_series_data_points/5,
          list_time_series_data_points/7,
          list_time_series_data_points/8,
+         post_lineage_event/3,
+         post_lineage_event/4,
          post_time_series_data_points/5,
          post_time_series_data_points/6,
          put_environment_blueprint_configuration/4,
@@ -638,6 +646,13 @@
 %% Example:
 %% get_data_source_input() :: #{}
 -type get_data_source_input() :: #{}.
+
+
+%% Example:
+%% get_lineage_node_input() :: #{
+%%   <<"eventTimestamp">> => [non_neg_integer()]
+%% }
+-type get_lineage_node_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1084,6 +1099,18 @@
 
 
 %% Example:
+%% list_lineage_node_history_input() :: #{
+%%   <<"direction">> => list(any()),
+%%   <<"eventTimestampGTE">> => [non_neg_integer()],
+%%   <<"eventTimestampLTE">> => [non_neg_integer()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_lineage_node_history_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% revoke_subscription_input() :: #{
 %%   <<"retainPermissions">> => [boolean()]
 %% }
@@ -1392,6 +1419,21 @@
 
 
 %% Example:
+%% lineage_node_type_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"formsOutput">> => map(),
+%%   <<"name">> => [string()],
+%%   <<"revision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type lineage_node_type_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_metadata_generation_run_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -1528,6 +1570,14 @@
 %%   <<"userParameters">> => list(custom_parameter()())
 %% }
 -type create_environment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_lineage_event_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"event">> := binary()
+%% }
+-type post_lineage_event_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2133,6 +2183,10 @@
 %% }
 -type list_subscription_targets_input() :: #{binary() => any()}.
 
+%% Example:
+%% post_lineage_event_output() :: #{}
+-type post_lineage_event_output() :: #{}.
+
 
 %% Example:
 %% time_series_data_point_form_output() :: #{
@@ -2195,6 +2249,24 @@
 %% Example:
 %% delete_glossary_input() :: #{}
 -type delete_glossary_input() :: #{}.
+
+
+%% Example:
+%% lineage_node_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"sourceIdentifier">> => [string()],
+%%   <<"typeName">> => [string()],
+%%   <<"typeRevision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type lineage_node_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2800,6 +2872,14 @@
 %% }
 -type data_product_item() :: #{binary() => any()}.
 
+
+%% Example:
+%% lineage_node_reference() :: #{
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"id">> => string()
+%% }
+-type lineage_node_reference() :: #{binary() => any()}.
+
 %% Example:
 %% delete_glossary_term_input() :: #{}
 -type delete_glossary_term_input() :: #{}.
@@ -2811,6 +2891,14 @@
 %%   <<"groupIdentifier">> := string()
 %% }
 -type create_group_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lineage_node_history_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"nodes">> => list(lineage_node_summary()())
+%% }
+-type list_lineage_node_history_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3366,6 +3454,27 @@
 %% Example:
 %% delete_listing_input() :: #{}
 -type delete_listing_input() :: #{}.
+
+
+%% Example:
+%% get_lineage_node_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"downstreamNodes">> => list(lineage_node_reference()()),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"formsOutput">> => list(form_output()()),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"sourceIdentifier">> => [string()],
+%%   <<"typeName">> => [string()],
+%%   <<"typeRevision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"upstreamNodes">> => list(lineage_node_reference()())
+%% }
+-type get_lineage_node_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4160,6 +4269,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type get_lineage_node_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_listing_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4296,6 +4412,13 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_lineage_node_history_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_metadata_generation_runs_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -4361,6 +4484,15 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type post_lineage_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type post_time_series_data_points_errors() ::
     throttling_exception() | 
@@ -6609,6 +6741,47 @@ get_iam_portal_login_url(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets the data lineage node.
+-spec get_lineage_node(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_lineage_node_output(), tuple()} |
+    {error, any()} |
+    {error, get_lineage_node_errors(), tuple()}.
+get_lineage_node(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_lineage_node(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_lineage_node(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_lineage_node_output(), tuple()} |
+    {error, any()} |
+    {error, get_lineage_node_errors(), tuple()}.
+get_lineage_node(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_lineage_node(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_lineage_node(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_lineage_node_output(), tuple()} |
+    {error, any()} |
+    {error, get_lineage_node_errors(), tuple()}.
+get_lineage_node(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/lineage/nodes/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"timestamp">>, maps:get(<<"timestamp">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a listing (a record of an asset at a given time).
 -spec get_listing(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_listing_output(), tuple()} |
@@ -7397,6 +7570,52 @@ list_environments(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the history of the specified data lineage node.
+-spec list_lineage_node_history(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_lineage_node_history_output(), tuple()} |
+    {error, any()} |
+    {error, list_lineage_node_history_errors(), tuple()}.
+list_lineage_node_history(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    list_lineage_node_history(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec list_lineage_node_history(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_lineage_node_history_output(), tuple()} |
+    {error, any()} |
+    {error, list_lineage_node_history_errors(), tuple()}.
+list_lineage_node_history(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_lineage_node_history(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec list_lineage_node_history(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_lineage_node_history_output(), tuple()} |
+    {error, any()} |
+    {error, list_lineage_node_history_errors(), tuple()}.
+list_lineage_node_history(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/lineage/nodes/", aws_util:encode_uri(Identifier), "/history"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"direction">>, maps:get(<<"direction">>, QueryMap, undefined)},
+        {<<"timestampGTE">>, maps:get(<<"timestampGTE">>, QueryMap, undefined)},
+        {<<"timestampLTE">>, maps:get(<<"timestampLTE">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all metadata generation runs.
 -spec list_metadata_generation_runs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_metadata_generation_runs_output(), tuple()} |
@@ -7847,6 +8066,41 @@ list_time_series_data_points(Client, DomainIdentifier, EntityIdentifier, EntityT
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Posts a data lineage event.
+-spec post_lineage_event(aws_client:aws_client(), binary() | list(), post_lineage_event_input()) ->
+    {ok, post_lineage_event_output(), tuple()} |
+    {error, any()} |
+    {error, post_lineage_event_errors(), tuple()}.
+post_lineage_event(Client, DomainIdentifier, Input) ->
+    post_lineage_event(Client, DomainIdentifier, Input, []).
+
+-spec post_lineage_event(aws_client:aws_client(), binary() | list(), post_lineage_event_input(), proplists:proplist()) ->
+    {ok, post_lineage_event_output(), tuple()} |
+    {error, any()} |
+    {error, post_lineage_event_errors(), tuple()}.
+post_lineage_event(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/lineage/events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Posts time series data points to Amazon DataZone for the specified
 %% asset.

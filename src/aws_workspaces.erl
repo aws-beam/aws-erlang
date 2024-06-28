@@ -69,6 +69,8 @@
          create_workspace_image/3,
          create_workspaces/2,
          create_workspaces/3,
+         create_workspaces_pool/2,
+         create_workspaces_pool/3,
          delete_account_link_invitation/2,
          delete_account_link_invitation/3,
          delete_client_branding/2,
@@ -131,6 +133,10 @@
          describe_workspaces/3,
          describe_workspaces_connection_status/2,
          describe_workspaces_connection_status/3,
+         describe_workspaces_pool_sessions/2,
+         describe_workspaces_pool_sessions/3,
+         describe_workspaces_pools/2,
+         describe_workspaces_pools/3,
          disassociate_connection_alias/2,
          disassociate_connection_alias/3,
          disassociate_ip_groups/2,
@@ -159,6 +165,8 @@
          modify_saml_properties/3,
          modify_selfservice_permissions/2,
          modify_selfservice_permissions/3,
+         modify_streaming_properties/2,
+         modify_streaming_properties/3,
          modify_workspace_access_properties/2,
          modify_workspace_access_properties/3,
          modify_workspace_creation_properties/2,
@@ -181,10 +189,18 @@
          revoke_ip_rules/3,
          start_workspaces/2,
          start_workspaces/3,
+         start_workspaces_pool/2,
+         start_workspaces_pool/3,
          stop_workspaces/2,
          stop_workspaces/3,
+         stop_workspaces_pool/2,
+         stop_workspaces_pool/3,
          terminate_workspaces/2,
          terminate_workspaces/3,
+         terminate_workspaces_pool/2,
+         terminate_workspaces_pool/3,
+         terminate_workspaces_pool_session/2,
+         terminate_workspaces_pool_session/3,
          update_connect_client_add_in/2,
          update_connect_client_add_in/3,
          update_connection_alias_permission/2,
@@ -194,7 +210,9 @@
          update_workspace_bundle/2,
          update_workspace_bundle/3,
          update_workspace_image_permission/2,
-         update_workspace_image_permission/3]).
+         update_workspace_image_permission/3,
+         update_workspaces_pool/2,
+         update_workspaces_pool/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -278,7 +296,8 @@
 
 %% Example:
 %% register_workspace_directory_result() :: #{
-
+%%   <<"DirectoryId">> => string(),
+%%   <<"State">> => list(any())
 %% }
 -type register_workspace_directory_result() :: #{binary() => any()}.
 
@@ -438,6 +457,13 @@
 -type rebuild_workspaces_request() :: #{binary() => any()}.
 
 %% Example:
+%% network_access_configuration() :: #{
+%%   <<"EniId">> => string(),
+%%   <<"EniPrivateIpAddress">> => string()
+%% }
+-type network_access_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% accept_account_link_invitation_result() :: #{
 %%   <<"AccountLink">> => account_link()
 %% }
@@ -548,6 +574,12 @@
 -type operating_system() :: #{binary() => any()}.
 
 %% Example:
+%% start_workspaces_pool_request() :: #{
+%%   <<"PoolId">> := string()
+%% }
+-type start_workspaces_pool_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_application_associations_request() :: #{
 %%   <<"ApplicationId">> := string(),
 %%   <<"AssociatedResourceTypes">> := list(list(any())()),
@@ -600,6 +632,12 @@
 
 %% }
 -type modify_workspace_creation_properties_result() :: #{binary() => any()}.
+
+%% Example:
+%% capacity() :: #{
+%%   <<"DesiredUserSessions">> => integer()
+%% }
+-type capacity() :: #{binary() => any()}.
 
 %% Example:
 %% describe_client_branding_result() :: #{
@@ -672,6 +710,12 @@
 -type describe_account_modifications_request() :: #{binary() => any()}.
 
 %% Example:
+%% terminate_workspaces_pool_result() :: #{
+
+%% }
+-type terminate_workspaces_pool_result() :: #{binary() => any()}.
+
+%% Example:
 %% unsupported_network_configuration_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -705,6 +749,12 @@
 -type list_account_links_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_workspaces_pool_result() :: #{
+%%   <<"WorkspacesPool">> => workspaces_pool()
+%% }
+-type update_workspaces_pool_result() :: #{binary() => any()}.
+
+%% Example:
 %% failed_workspace_change_request() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"ErrorMessage">> => string(),
@@ -724,6 +774,13 @@
 
 %% }
 -type modify_certificate_based_auth_properties_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspaces_pool_sessions_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Sessions">> => list(workspaces_pool_session()())
+%% }
+-type describe_workspaces_pool_sessions_result() :: #{binary() => any()}.
 
 %% Example:
 %% associate_ip_groups_result() :: #{
@@ -756,6 +813,13 @@
 %%   <<"SharedAccountId">> => string()
 %% }
 -type connection_alias_permission() :: #{binary() => any()}.
+
+%% Example:
+%% modify_streaming_properties_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"StreamingProperties">> => streaming_properties()
+%% }
+-type modify_streaming_properties_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_account_link_request() :: #{
@@ -840,10 +904,25 @@
 -type root_storage() :: #{binary() => any()}.
 
 %% Example:
+%% timeout_settings() :: #{
+%%   <<"DisconnectTimeoutInSeconds">> => integer(),
+%%   <<"IdleDisconnectTimeoutInSeconds">> => integer(),
+%%   <<"MaxUserDurationInSeconds">> => integer()
+%% }
+-type timeout_settings() :: #{binary() => any()}.
+
+%% Example:
 %% delete_ip_group_request() :: #{
 %%   <<"GroupId">> := string()
 %% }
 -type delete_ip_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% workspaces_pool_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type workspaces_pool_error() :: #{binary() => any()}.
 
 %% Example:
 %% default_workspace_creation_properties() :: #{
@@ -852,6 +931,7 @@
 %%   <<"EnableInternetAccess">> => boolean(),
 %%   <<"EnableMaintenanceMode">> => boolean(),
 %%   <<"EnableWorkDocs">> => boolean(),
+%%   <<"InstanceIamRoleArn">> => string(),
 %%   <<"UserEnabledAsLocalAdministrator">> => boolean()
 %% }
 -type default_workspace_creation_properties() :: #{binary() => any()}.
@@ -902,6 +982,12 @@
 %%   <<"ImageId">> => string()
 %% }
 -type import_workspace_image_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_workspaces_pool_result() :: #{
+%%   <<"WorkspacesPool">> => workspaces_pool()
+%% }
+-type create_workspaces_pool_result() :: #{binary() => any()}.
 
 %% Example:
 %% terminate_workspaces_request() :: #{
@@ -996,6 +1082,14 @@
 -type describe_connection_alias_permissions_result() :: #{binary() => any()}.
 
 %% Example:
+%% user_setting() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"MaximumLength">> => integer(),
+%%   <<"Permission">> => list(any())
+%% }
+-type user_setting() :: #{binary() => any()}.
+
+%% Example:
 %% reject_account_link_invitation_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"LinkId">> := string()
@@ -1028,6 +1122,13 @@
 -type modify_workspace_creation_properties_request() :: #{binary() => any()}.
 
 %% Example:
+%% storage_connector() :: #{
+%%   <<"ConnectorType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type storage_connector() :: #{binary() => any()}.
+
+%% Example:
 %% image_permission() :: #{
 %%   <<"SharedAccountId">> => string()
 %% }
@@ -1040,6 +1141,7 @@
 %%   <<"EnableInternetAccess">> => boolean(),
 %%   <<"EnableMaintenanceMode">> => boolean(),
 %%   <<"EnableWorkDocs">> => boolean(),
+%%   <<"InstanceIamRoleArn">> => string(),
 %%   <<"UserEnabledAsLocalAdministrator">> => boolean()
 %% }
 -type workspace_creation_properties() :: #{binary() => any()}.
@@ -1068,6 +1170,12 @@
 %%   <<"AccountLink">> => account_link()
 %% }
 -type get_account_link_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_workspaces_pool_result() :: #{
+
+%% }
+-type start_workspaces_pool_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_application_associations_result() :: #{
@@ -1134,7 +1242,8 @@
 %% describe_workspace_directories_request() :: #{
 %%   <<"DirectoryIds">> => list(string()()),
 %%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspaceDirectoryNames">> => list(string()())
 %% }
 -type describe_workspace_directories_request() :: #{binary() => any()}.
 
@@ -1266,11 +1375,26 @@
 -type application_resource_association() :: #{binary() => any()}.
 
 %% Example:
+%% describe_workspaces_pool_sessions_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PoolId">> := string(),
+%%   <<"UserId">> => string()
+%% }
+-type describe_workspaces_pool_sessions_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_client_branding_request() :: #{
 %%   <<"Platforms">> := list(list(any())()),
 %%   <<"ResourceId">> := string()
 %% }
 -type delete_client_branding_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_streaming_properties_result() :: #{
+
+%% }
+-type modify_streaming_properties_result() :: #{binary() => any()}.
 
 %% Example:
 %% data_replication_settings() :: #{
@@ -1308,6 +1432,13 @@
 %%   <<"SupportLink">> => string()
 %% }
 -type default_client_branding_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% active_directory_config() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"ServiceAccountSecretArn">> => string()
+%% }
+-type active_directory_config() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_workspace_application_request() :: #{
@@ -1383,6 +1514,12 @@
 -type describe_client_properties_result() :: #{binary() => any()}.
 
 %% Example:
+%% terminate_workspaces_pool_request() :: #{
+%%   <<"PoolId">> := string()
+%% }
+-type terminate_workspaces_pool_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_connection_alias_permission_request() :: #{
 %%   <<"AliasId">> := string(),
 %%   <<"ConnectionAliasPermission">> := connection_alias_permission()
@@ -1434,6 +1571,14 @@
 -type snapshot() :: #{binary() => any()}.
 
 %% Example:
+%% describe_workspaces_pools_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type describe_workspaces_pools_filter() :: #{binary() => any()}.
+
+%% Example:
 %% import_client_branding_result() :: #{
 %%   <<"DeviceTypeAndroid">> => default_client_branding_attributes(),
 %%   <<"DeviceTypeIos">> => ios_client_branding_attributes(),
@@ -1470,12 +1615,17 @@
 
 %% Example:
 %% register_workspace_directory_request() :: #{
-%%   <<"DirectoryId">> := string(),
+%%   <<"ActiveDirectoryConfig">> => active_directory_config(),
+%%   <<"DirectoryId">> => string(),
 %%   <<"EnableSelfService">> => boolean(),
-%%   <<"EnableWorkDocs">> := boolean(),
+%%   <<"EnableWorkDocs">> => boolean(),
 %%   <<"SubnetIds">> => list(string()()),
 %%   <<"Tags">> => list(tag()()),
-%%   <<"Tenancy">> => list(any())
+%%   <<"Tenancy">> => list(any()),
+%%   <<"UserIdentityType">> => list(any()),
+%%   <<"WorkspaceDirectoryDescription">> => string(),
+%%   <<"WorkspaceDirectoryName">> => string(),
+%%   <<"WorkspaceType">> => list(any())
 %% }
 -type register_workspace_directory_request() :: #{binary() => any()}.
 
@@ -1515,6 +1665,13 @@
 -type create_workspace_image_request() :: #{binary() => any()}.
 
 %% Example:
+%% application_settings_request() :: #{
+%%   <<"SettingsGroup">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type application_settings_request() :: #{binary() => any()}.
+
+%% Example:
 %% copy_workspace_image_result() :: #{
 %%   <<"ImageId">> => string()
 %% }
@@ -1541,6 +1698,15 @@
 -type migrate_workspace_request() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_status() :: #{
+%%   <<"ActiveUserSessions">> => integer(),
+%%   <<"ActualUserSessions">> => integer(),
+%%   <<"AvailableUserSessions">> => integer(),
+%%   <<"DesiredUserSessions">> => integer()
+%% }
+-type capacity_status() :: #{binary() => any()}.
+
+%% Example:
 %% associate_workspace_application_result() :: #{
 %%   <<"Association">> => workspace_resource_association()
 %% }
@@ -1565,7 +1731,26 @@
 -type validation_exception() :: #{binary() => any()}.
 
 %% Example:
+%% update_workspaces_pool_request() :: #{
+%%   <<"ApplicationSettings">> => application_settings_request(),
+%%   <<"BundleId">> => string(),
+%%   <<"Capacity">> => capacity(),
+%%   <<"Description">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"PoolId">> := string(),
+%%   <<"TimeoutSettings">> => timeout_settings()
+%% }
+-type update_workspaces_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_workspaces_pool_session_result() :: #{
+
+%% }
+-type terminate_workspaces_pool_session_result() :: #{binary() => any()}.
+
+%% Example:
 %% workspace_directory() :: #{
+%%   <<"ActiveDirectoryConfig">> => active_directory_config(),
 %%   <<"Alias">> => string(),
 %%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
 %%   <<"CustomerUserName">> => string(),
@@ -1573,16 +1758,22 @@
 %%   <<"DirectoryName">> => string(),
 %%   <<"DirectoryType">> => list(any()),
 %%   <<"DnsIpAddresses">> => list(string()()),
+%%   <<"ErrorMessage">> => string(),
 %%   <<"IamRoleId">> => string(),
 %%   <<"RegistrationCode">> => string(),
 %%   <<"SamlProperties">> => saml_properties(),
 %%   <<"SelfservicePermissions">> => selfservice_permissions(),
 %%   <<"State">> => list(any()),
+%%   <<"StreamingProperties">> => streaming_properties(),
 %%   <<"SubnetIds">> => list(string()()),
 %%   <<"Tenancy">> => list(any()),
+%%   <<"UserIdentityType">> => list(any()),
 %%   <<"WorkspaceAccessProperties">> => workspace_access_properties(),
 %%   <<"WorkspaceCreationProperties">> => default_workspace_creation_properties(),
+%%   <<"WorkspaceDirectoryDescription">> => string(),
+%%   <<"WorkspaceDirectoryName">> => string(),
 %%   <<"WorkspaceSecurityGroupId">> => string(),
+%%   <<"WorkspaceType">> => list(any()),
 %%   <<"ipGroupIds">> => list(string()())
 %% }
 -type workspace_directory() :: #{binary() => any()}.
@@ -1673,6 +1864,31 @@
 -type update_connect_client_add_in_request() :: #{binary() => any()}.
 
 %% Example:
+%% workspaces_pool() :: #{
+%%   <<"ApplicationSettings">> => application_settings_response(),
+%%   <<"BundleId">> => string(),
+%%   <<"CapacityStatus">> => capacity_status(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"Errors">> => list(workspaces_pool_error()()),
+%%   <<"PoolArn">> => string(),
+%%   <<"PoolId">> => string(),
+%%   <<"PoolName">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"TimeoutSettings">> => timeout_settings()
+%% }
+-type workspaces_pool() :: #{binary() => any()}.
+
+%% Example:
+%% streaming_properties() :: #{
+%%   <<"StorageConnectors">> => list(storage_connector()()),
+%%   <<"StreamingExperiencePreferredProtocol">> => list(any()),
+%%   <<"UserSettings">> => list(user_setting()())
+%% }
+-type streaming_properties() :: #{binary() => any()}.
+
+%% Example:
 %% incompatible_applications_exception() :: #{
 
 %% }
@@ -1683,6 +1899,19 @@
 %%   <<"WorkspaceId">> => string()
 %% }
 -type terminate_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_workspaces_pool_request() :: #{
+%%   <<"ApplicationSettings">> => application_settings_request(),
+%%   <<"BundleId">> := string(),
+%%   <<"Capacity">> := capacity(),
+%%   <<"Description">> := string(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"PoolName">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TimeoutSettings">> => timeout_settings()
+%% }
+-type create_workspaces_pool_request() :: #{binary() => any()}.
 
 %% Example:
 %% compute_not_compatible_exception() :: #{
@@ -1785,10 +2014,30 @@
 -type application_not_supported_exception() :: #{binary() => any()}.
 
 %% Example:
+%% stop_workspaces_pool_result() :: #{
+
+%% }
+-type stop_workspaces_pool_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_tags_request() :: #{
 %%   <<"ResourceId">> := string()
 %% }
 -type describe_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% workspaces_pool_session() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"InstanceId">> => string(),
+%%   <<"NetworkAccessConfiguration">> => network_access_configuration(),
+%%   <<"PoolId">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"UserId">> => string()
+%% }
+-type workspaces_pool_session() :: #{binary() => any()}.
 
 %% Example:
 %% reboot_workspaces_result() :: #{
@@ -1848,6 +2097,13 @@
 -type authorize_ip_rules_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_workspaces_pools_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspacesPools">> => list(workspaces_pool()())
+%% }
+-type describe_workspaces_pools_result() :: #{binary() => any()}.
+
+%% Example:
 %% connection_alias() :: #{
 %%   <<"AliasId">> => string(),
 %%   <<"Associations">> => list(connection_alias_association()()),
@@ -1856,6 +2112,12 @@
 %%   <<"State">> => list(any())
 %% }
 -type connection_alias() :: #{binary() => any()}.
+
+%% Example:
+%% stop_workspaces_pool_request() :: #{
+%%   <<"PoolId">> := string()
+%% }
+-type stop_workspaces_pool_request() :: #{binary() => any()}.
 
 %% Example:
 %% workspace_request() :: #{
@@ -1885,11 +2147,25 @@
 -type delete_connection_alias_request() :: #{binary() => any()}.
 
 %% Example:
+%% terminate_workspaces_pool_session_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type terminate_workspaces_pool_session_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_connect_client_add_ins_result() :: #{
 %%   <<"AddIns">> => list(connect_client_add_in()()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_connect_client_add_ins_result() :: #{binary() => any()}.
+
+%% Example:
+%% application_settings_response() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"SettingsGroup">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type application_settings_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_workspace_directories_result() :: #{
@@ -1949,6 +2225,15 @@
 %%   <<"ResourceId">> := string()
 %% }
 -type describe_connect_client_add_ins_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspaces_pools_request() :: #{
+%%   <<"Filters">> => list(describe_workspaces_pools_filter()()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PoolIds">> => list(string()())
+%% }
+-type describe_workspaces_pools_request() :: #{binary() => any()}.
 
 %% Example:
 %% import_client_branding_request() :: #{
@@ -2102,6 +2387,14 @@
 -type create_workspaces_errors() ::
     invalid_parameter_values_exception() | 
     resource_limit_exceeded_exception().
+
+-type create_workspaces_pool_errors() ::
+    operation_not_supported_exception() | 
+    resource_already_exists_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
 
 -type delete_account_link_invitation_errors() ::
     validation_exception() | 
@@ -2259,6 +2552,16 @@
 -type describe_workspaces_connection_status_errors() ::
     invalid_parameter_values_exception().
 
+-type describe_workspaces_pool_sessions_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type describe_workspaces_pools_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
 -type disassociate_connection_alias_errors() ::
     operation_not_supported_exception() | 
     access_denied_exception() | 
@@ -2267,6 +2570,7 @@
     resource_not_found_exception().
 
 -type disassociate_ip_groups_errors() ::
+    operation_not_supported_exception() | 
     access_denied_exception() | 
     invalid_parameter_values_exception() | 
     invalid_resource_state_exception() | 
@@ -2330,6 +2634,7 @@
     resource_not_found_exception().
 
 -type modify_client_properties_errors() ::
+    operation_not_supported_exception() | 
     access_denied_exception() | 
     invalid_parameter_values_exception() | 
     resource_not_found_exception().
@@ -2341,6 +2646,13 @@
     resource_not_found_exception().
 
 -type modify_selfservice_permissions_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_not_found_exception().
+
+-type modify_streaming_properties_errors() ::
+    operation_not_supported_exception() | 
     access_denied_exception() | 
     invalid_parameter_values_exception() | 
     resource_not_found_exception().
@@ -2378,6 +2690,7 @@
 
 -type register_workspace_directory_errors() ::
     operation_not_supported_exception() | 
+    resource_already_exists_exception() | 
     access_denied_exception() | 
     workspaces_default_role_not_found_exception() | 
     invalid_parameter_values_exception() | 
@@ -2403,6 +2716,36 @@
     access_denied_exception() | 
     invalid_parameter_values_exception() | 
     invalid_resource_state_exception() | 
+    resource_not_found_exception().
+
+-type start_workspaces_pool_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_limit_exceeded_exception() | 
+    operation_in_progress_exception() | 
+    resource_not_found_exception().
+
+-type stop_workspaces_pool_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    operation_in_progress_exception() | 
+    resource_not_found_exception().
+
+-type terminate_workspaces_pool_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    operation_in_progress_exception() | 
+    resource_not_found_exception().
+
+-type terminate_workspaces_pool_session_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    operation_in_progress_exception() | 
     resource_not_found_exception().
 
 -type update_connect_client_add_in_errors() ::
@@ -2439,6 +2782,15 @@
     invalid_parameter_values_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception().
+
+-type update_workspaces_pool_errors() ::
+    operation_not_supported_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_resource_state_exception() | 
+    resource_limit_exceeded_exception() | 
+    operation_in_progress_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -2831,6 +3183,23 @@ create_workspaces(Client, Input)
 create_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkspaces">>, Input, Options).
+
+%% @doc Creates a pool of WorkSpaces.
+-spec create_workspaces_pool(aws_client:aws_client(), create_workspaces_pool_request()) ->
+    {ok, create_workspaces_pool_result(), tuple()} |
+    {error, any()} |
+    {error, create_workspaces_pool_errors(), tuple()}.
+create_workspaces_pool(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_workspaces_pool(Client, Input, []).
+
+-spec create_workspaces_pool(aws_client:aws_client(), create_workspaces_pool_request(), proplists:proplist()) ->
+    {ok, create_workspaces_pool_result(), tuple()} |
+    {error, any()} |
+    {error, create_workspaces_pool_errors(), tuple()}.
+create_workspaces_pool(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateWorkspacesPool">>, Input, Options).
 
 %% @doc Deletes the account link invitation.
 -spec delete_account_link_invitation(aws_client:aws_client(), delete_account_link_invitation_request()) ->
@@ -3476,6 +3845,41 @@ describe_workspaces_connection_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspacesConnectionStatus">>, Input, Options).
 
+%% @doc Retrieves a list that describes the streaming sessions for a
+%% specified WorkSpaces pool.
+-spec describe_workspaces_pool_sessions(aws_client:aws_client(), describe_workspaces_pool_sessions_request()) ->
+    {ok, describe_workspaces_pool_sessions_result(), tuple()} |
+    {error, any()} |
+    {error, describe_workspaces_pool_sessions_errors(), tuple()}.
+describe_workspaces_pool_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_workspaces_pool_sessions(Client, Input, []).
+
+-spec describe_workspaces_pool_sessions(aws_client:aws_client(), describe_workspaces_pool_sessions_request(), proplists:proplist()) ->
+    {ok, describe_workspaces_pool_sessions_result(), tuple()} |
+    {error, any()} |
+    {error, describe_workspaces_pool_sessions_errors(), tuple()}.
+describe_workspaces_pool_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWorkspacesPoolSessions">>, Input, Options).
+
+%% @doc Describes the specified WorkSpaces pool.
+-spec describe_workspaces_pools(aws_client:aws_client(), describe_workspaces_pools_request()) ->
+    {ok, describe_workspaces_pools_result(), tuple()} |
+    {error, any()} |
+    {error, describe_workspaces_pools_errors(), tuple()}.
+describe_workspaces_pools(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_workspaces_pools(Client, Input, []).
+
+-spec describe_workspaces_pools(aws_client:aws_client(), describe_workspaces_pools_request(), proplists:proplist()) ->
+    {ok, describe_workspaces_pools_result(), tuple()} |
+    {error, any()} |
+    {error, describe_workspaces_pools_errors(), tuple()}.
+describe_workspaces_pools(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWorkspacesPools">>, Input, Options).
+
 %% @doc Disassociates a connection alias from a directory.
 %%
 %% Disassociating a connection alias
@@ -3811,6 +4215,23 @@ modify_selfservice_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifySelfservicePermissions">>, Input, Options).
 
+%% @doc Modifies the specified streaming properties.
+-spec modify_streaming_properties(aws_client:aws_client(), modify_streaming_properties_request()) ->
+    {ok, modify_streaming_properties_result(), tuple()} |
+    {error, any()} |
+    {error, modify_streaming_properties_errors(), tuple()}.
+modify_streaming_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_streaming_properties(Client, Input, []).
+
+-spec modify_streaming_properties(aws_client:aws_client(), modify_streaming_properties_request(), proplists:proplist()) ->
+    {ok, modify_streaming_properties_result(), tuple()} |
+    {error, any()} |
+    {error, modify_streaming_properties_errors(), tuple()}.
+modify_streaming_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyStreamingProperties">>, Input, Options).
+
 %% @doc Specifies which devices and operating systems users can use to access
 %% their WorkSpaces.
 %%
@@ -4069,6 +4490,26 @@ start_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartWorkspaces">>, Input, Options).
 
+%% @doc Starts the specified WorkSpaces pool.
+%%
+%% You cannot start a WorkSpace pool unless it has a running mode of
+%% `AutoStop' and a state of `STOPPED'.
+-spec start_workspaces_pool(aws_client:aws_client(), start_workspaces_pool_request()) ->
+    {ok, start_workspaces_pool_result(), tuple()} |
+    {error, any()} |
+    {error, start_workspaces_pool_errors(), tuple()}.
+start_workspaces_pool(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_workspaces_pool(Client, Input, []).
+
+-spec start_workspaces_pool(aws_client:aws_client(), start_workspaces_pool_request(), proplists:proplist()) ->
+    {ok, start_workspaces_pool_result(), tuple()} |
+    {error, any()} |
+    {error, start_workspaces_pool_errors(), tuple()}.
+start_workspaces_pool(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartWorkspacesPool">>, Input, Options).
+
 %% @doc Stops the specified WorkSpaces.
 %%
 %% You cannot stop a WorkSpace unless it has a running mode of `AutoStop'
@@ -4088,6 +4529,28 @@ stop_workspaces(Client, Input)
 stop_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopWorkspaces">>, Input, Options).
+
+%% @doc Stops the specifiedWorkSpaces pool.
+%%
+%% You cannot stop a WorkSpace pool unless it has a running mode of
+%% `AutoStop'
+%% and a state of `AVAILABLE', `IMPAIRED', `UNHEALTHY', or
+%% `ERROR'.
+-spec stop_workspaces_pool(aws_client:aws_client(), stop_workspaces_pool_request()) ->
+    {ok, stop_workspaces_pool_result(), tuple()} |
+    {error, any()} |
+    {error, stop_workspaces_pool_errors(), tuple()}.
+stop_workspaces_pool(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_workspaces_pool(Client, Input, []).
+
+-spec stop_workspaces_pool(aws_client:aws_client(), stop_workspaces_pool_request(), proplists:proplist()) ->
+    {ok, stop_workspaces_pool_result(), tuple()} |
+    {error, any()} |
+    {error, stop_workspaces_pool_errors(), tuple()}.
+stop_workspaces_pool(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopWorkspacesPool">>, Input, Options).
 
 %% @doc Terminates the specified WorkSpaces.
 %%
@@ -4143,6 +4606,40 @@ terminate_workspaces(Client, Input)
 terminate_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateWorkspaces">>, Input, Options).
+
+%% @doc Terminates the specified WorkSpaces pool.
+-spec terminate_workspaces_pool(aws_client:aws_client(), terminate_workspaces_pool_request()) ->
+    {ok, terminate_workspaces_pool_result(), tuple()} |
+    {error, any()} |
+    {error, terminate_workspaces_pool_errors(), tuple()}.
+terminate_workspaces_pool(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    terminate_workspaces_pool(Client, Input, []).
+
+-spec terminate_workspaces_pool(aws_client:aws_client(), terminate_workspaces_pool_request(), proplists:proplist()) ->
+    {ok, terminate_workspaces_pool_result(), tuple()} |
+    {error, any()} |
+    {error, terminate_workspaces_pool_errors(), tuple()}.
+terminate_workspaces_pool(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TerminateWorkspacesPool">>, Input, Options).
+
+%% @doc Terminates the WorkSpaces pool session.
+-spec terminate_workspaces_pool_session(aws_client:aws_client(), terminate_workspaces_pool_session_request()) ->
+    {ok, terminate_workspaces_pool_session_result(), tuple()} |
+    {error, any()} |
+    {error, terminate_workspaces_pool_session_errors(), tuple()}.
+terminate_workspaces_pool_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    terminate_workspaces_pool_session(Client, Input, []).
+
+-spec terminate_workspaces_pool_session(aws_client:aws_client(), terminate_workspaces_pool_session_request(), proplists:proplist()) ->
+    {ok, terminate_workspaces_pool_session_result(), tuple()} |
+    {error, any()} |
+    {error, terminate_workspaces_pool_session_errors(), tuple()}.
+terminate_workspaces_pool_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TerminateWorkspacesPoolSession">>, Input, Options).
 
 %% @doc Updates a Amazon Connect client add-in.
 %%
@@ -4301,6 +4798,23 @@ update_workspace_image_permission(Client, Input)
 update_workspace_image_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkspaceImagePermission">>, Input, Options).
+
+%% @doc Updates the specified WorkSpaces pool.
+-spec update_workspaces_pool(aws_client:aws_client(), update_workspaces_pool_request()) ->
+    {ok, update_workspaces_pool_result(), tuple()} |
+    {error, any()} |
+    {error, update_workspaces_pool_errors(), tuple()}.
+update_workspaces_pool(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_workspaces_pool(Client, Input, []).
+
+-spec update_workspaces_pool(aws_client:aws_client(), update_workspaces_pool_request(), proplists:proplist()) ->
+    {ok, update_workspaces_pool_result(), tuple()} |
+    {error, any()} |
+    {error, update_workspaces_pool_errors(), tuple()}.
+update_workspaces_pool(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateWorkspacesPool">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

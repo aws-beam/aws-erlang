@@ -2219,6 +2219,14 @@
 
 
 %% Example:
+%% body_section_repeat_dimension_configuration() :: #{
+%%   <<"DynamicCategoryDimensionConfiguration">> => body_section_dynamic_category_dimension_configuration(),
+%%   <<"DynamicNumericDimensionConfiguration">> => body_section_dynamic_numeric_dimension_configuration()
+%% }
+-type body_section_repeat_dimension_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% free_form_section_layout_configuration() :: #{
 %%   <<"Elements">> => list(free_form_layout_element()())
 %% }
@@ -3902,6 +3910,15 @@
 
 
 %% Example:
+%% body_section_dynamic_numeric_dimension_configuration() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"Limit">> => integer(),
+%%   <<"SortByMetrics">> => list(column_sort()())
+%% }
+-type body_section_dynamic_numeric_dimension_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% link_sharing_configuration() :: #{
 %%   <<"Permissions">> => list(resource_permission()())
 %% }
@@ -4110,6 +4127,16 @@
 
 
 %% Example:
+%% nested_filter() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"FilterId">> => string(),
+%%   <<"IncludeInnerSet">> => boolean(),
+%%   <<"InnerFilter">> => inner_filter()
+%% }
+-type nested_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_folder_membership_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -4180,6 +4207,13 @@
 
 
 %% Example:
+%% body_section_repeat_page_break_configuration() :: #{
+%%   <<"After">> => section_after_page_break()
+%% }
+-type body_section_repeat_page_break_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% registered_user_dashboard_embedding_configuration() :: #{
 %%   <<"FeatureConfigurations">> => registered_user_dashboard_feature_configurations(),
 %%   <<"InitialDashboardId">> => string()
@@ -4235,6 +4269,15 @@
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
 %% }
 -type asset_bundle_resource_link_sharing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% category_inner_filter() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"Configuration">> => category_filter_configuration(),
+%%   <<"DefaultFilterControlConfiguration">> => default_filter_control_configuration()
+%% }
+-type category_inner_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5047,6 +5090,15 @@
 %%   <<"NumericAxisOptions">> => numeric_axis_options()
 %% }
 -type axis_data_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% body_section_repeat_configuration() :: #{
+%%   <<"DimensionConfigurations">> => list(body_section_repeat_dimension_configuration()()),
+%%   <<"NonRepeatingVisuals">> => list(string()()),
+%%   <<"PageBreakConfiguration">> => body_section_repeat_page_break_configuration()
+%% }
+-type body_section_repeat_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6075,6 +6127,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"CategoryFilter">> => category_filter(),
+%%   <<"NestedFilter">> => nested_filter(),
 %%   <<"NumericEqualityFilter">> => numeric_equality_filter(),
 %%   <<"NumericRangeFilter">> => numeric_range_filter(),
 %%   <<"RelativeDatesFilter">> => relative_dates_filter(),
@@ -6219,6 +6272,13 @@
 %%   <<"RequestId">> => string()
 %% }
 -type concurrent_updating_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% inner_filter() :: #{
+%%   <<"CategoryInnerFilter">> => category_inner_filter()
+%% }
+-type inner_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9948,6 +10008,7 @@
 %% body_section_configuration() :: #{
 %%   <<"Content">> => body_section_content(),
 %%   <<"PageBreakConfiguration">> => section_page_break_configuration(),
+%%   <<"RepeatConfiguration">> => body_section_repeat_configuration(),
 %%   <<"SectionId">> => string(),
 %%   <<"Style">> => section_style()
 %% }
@@ -10043,6 +10104,15 @@
 %%   <<"StyleConfiguration">> => reference_line_style_configuration()
 %% }
 -type reference_line() :: #{binary() => any()}.
+
+
+%% Example:
+%% body_section_dynamic_category_dimension_configuration() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"Limit">> => integer(),
+%%   <<"SortByMetrics">> => list(column_sort()())
+%% }
+-type body_section_dynamic_category_dimension_configuration() :: #{binary() => any()}.
 
 
 %% Example:

@@ -46,6 +46,8 @@
          create_assistant_association/4,
          create_content/3,
          create_content/4,
+         create_content_association/4,
+         create_content_association/5,
          create_knowledge_base/2,
          create_knowledge_base/3,
          create_quick_response/3,
@@ -58,6 +60,8 @@
          delete_assistant_association/5,
          delete_content/4,
          delete_content/5,
+         delete_content_association/5,
+         delete_content_association/6,
          delete_import_job/4,
          delete_import_job/5,
          delete_knowledge_base/3,
@@ -73,6 +77,9 @@
          get_content/3,
          get_content/5,
          get_content/6,
+         get_content_association/4,
+         get_content_association/6,
+         get_content_association/7,
          get_content_summary/3,
          get_content_summary/5,
          get_content_summary/6,
@@ -97,6 +104,9 @@
          list_assistants/1,
          list_assistants/3,
          list_assistants/4,
+         list_content_associations/3,
+         list_content_associations/5,
+         list_content_associations/6,
          list_contents/2,
          list_contents/4,
          list_contents/5,
@@ -242,6 +252,10 @@
 %% }
 -type quick_response_search_expression() :: #{binary() => any()}.
 
+%% Example:
+%% get_content_association_request() :: #{}
+-type get_content_association_request() :: #{}.
+
 
 %% Example:
 %% highlight() :: #{
@@ -286,11 +300,33 @@
 
 
 %% Example:
+%% content_association_data() :: #{
+%%   <<"associationData">> => list(),
+%%   <<"associationType">> => string(),
+%%   <<"contentArn">> => string(),
+%%   <<"contentAssociationArn">> => string(),
+%%   <<"contentAssociationId">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type content_association_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% external_source_configuration() :: #{
 %%   <<"configuration">> => list(),
 %%   <<"source">> => string()
 %% }
 -type external_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_content_association_response() :: #{
+%%   <<"contentAssociation">> => content_association_data()
+%% }
+-type create_content_association_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -437,6 +473,21 @@
 
 
 %% Example:
+%% content_association_summary() :: #{
+%%   <<"associationData">> => list(),
+%%   <<"associationType">> => string(),
+%%   <<"contentArn">> => string(),
+%%   <<"contentAssociationArn">> => string(),
+%%   <<"contentAssociationId">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type content_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% connect_configuration() :: #{
 %%   <<"instanceId">> => string()
 %% }
@@ -488,6 +539,14 @@
 %% Example:
 %% delete_assistant_request() :: #{}
 -type delete_assistant_request() :: #{}.
+
+
+%% Example:
+%% list_content_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_content_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -560,6 +619,16 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_knowledge_bases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_content_association_request() :: #{
+%%   <<"association">> := list(),
+%%   <<"associationType">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_content_association_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -648,6 +717,13 @@
 %%   <<"plainText">> => list()
 %% }
 -type quick_response_contents() :: #{binary() => any()}.
+
+
+%% Example:
+%% amazon_connect_guide_association_data() :: #{
+%%   <<"flowId">> => string()
+%% }
+-type amazon_connect_guide_association_data() :: #{binary() => any()}.
 
 %% Example:
 %% delete_import_job_request() :: #{}
@@ -937,6 +1013,10 @@
 -type list_import_jobs_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_content_association_response() :: #{}
+-type delete_content_association_response() :: #{}.
+
+%% Example:
 %% remove_knowledge_base_template_uri_request() :: #{}
 -type remove_knowledge_base_template_uri_request() :: #{}.
 
@@ -1074,6 +1154,13 @@
 %% }
 -type rendering_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_content_association_response() :: #{
+%%   <<"contentAssociation">> => content_association_data()
+%% }
+-type get_content_association_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_content_request() :: #{}
 -type delete_content_request() :: #{}.
@@ -1126,6 +1213,13 @@
 %%   <<"urlExpiry">> => [non_neg_integer()]
 %% }
 -type content_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1346,6 +1440,14 @@
 %% }
 -type precondition_failed_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_content_associations_response() :: #{
+%%   <<"contentAssociationSummaries">> => list(content_association_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_content_associations_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_assistant_association_response() :: #{}
 -type delete_assistant_association_response() :: #{}.
@@ -1366,6 +1468,10 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_assistants_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_content_association_request() :: #{}
+-type delete_content_association_request() :: #{}.
 
 
 %% Example:
@@ -1406,6 +1512,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_content_association_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_knowledge_base_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1440,6 +1554,11 @@
     access_denied_exception() | 
     resource_not_found_exception().
 
+-type delete_content_association_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type delete_import_job_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1468,6 +1587,11 @@
     resource_not_found_exception().
 
 -type get_content_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_content_association_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     resource_not_found_exception().
@@ -1510,6 +1634,11 @@
 -type list_assistants_errors() ::
     validation_exception() | 
     access_denied_exception().
+
+-type list_content_associations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
 
 -type list_contents_errors() ::
     validation_exception() | 
@@ -1708,6 +1837,68 @@ create_content(Client, KnowledgeBaseId, Input) ->
 create_content(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an association between a content resource in a knowledge base
+%% and step-by-step
+%% guides:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/step-by-step-guided-experiences.html.
+%%
+%% Step-by-step guides offer instructions to agents for resolving common
+%% customer issues. You create a content association to integrate Amazon Q in
+%% Connect and step-by-step
+%% guides.
+%%
+%% After you integrate Amazon Q and step-by-step guides, when Amazon Q
+%% provides a
+%% recommendation to an agent based on the intent that it's detected, it
+%% also provides them with
+%% the option to start the step-by-step guide that you have associated with
+%% the content.
+%%
+%% Note the following limitations:
+%%
+%% You can create only one content association for each
+%% content resource in a knowledge base.
+%%
+%% You can associate a step-by-step guide with multiple content resources.
+%%
+%% For more information, see Integrate Amazon Q in Connect with
+%% step-by-step guides:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
+%% in the Amazon Connect Administrator
+%% Guide.
+-spec create_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), create_content_association_request()) ->
+    {ok, create_content_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_content_association_errors(), tuple()}.
+create_content_association(Client, ContentId, KnowledgeBaseId, Input) ->
+    create_content_association(Client, ContentId, KnowledgeBaseId, Input, []).
+
+-spec create_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), create_content_association_request(), proplists:proplist()) ->
+    {ok, create_content_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_content_association_errors(), tuple()}.
+create_content_association(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), "/associations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1961,6 +2152,47 @@ delete_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the content association.
+%%
+%% For more information about content associations--what they are and when
+%% they are used--see
+%% Integrate Amazon Q in Connect with step-by-step guides:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
+%% in the Amazon Connect
+%% Administrator Guide.
+-spec delete_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_content_association_request()) ->
+    {ok, delete_content_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_content_association_errors(), tuple()}.
+delete_content_association(Client, ContentAssociationId, ContentId, KnowledgeBaseId, Input) ->
+    delete_content_association(Client, ContentAssociationId, ContentId, KnowledgeBaseId, Input, []).
+
+-spec delete_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_content_association_request(), proplists:proplist()) ->
+    {ok, delete_content_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_content_association_errors(), tuple()}.
+delete_content_association(Client, ContentAssociationId, ContentId, KnowledgeBaseId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), "/associations/", aws_util:encode_uri(ContentAssociationId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the quick response import job.
 -spec delete_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), delete_import_job_request()) ->
     {ok, delete_import_job_response(), tuple()} |
@@ -2177,6 +2409,50 @@ get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap)
 get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the content association.
+%%
+%% For more information about content associations--what they are and when
+%% they are used--see
+%% Integrate Amazon Q in Connect with step-by-step guides:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
+%% in the Amazon Connect
+%% Administrator Guide.
+-spec get_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_content_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_content_association_errors(), tuple()}.
+get_content_association(Client, ContentAssociationId, ContentId, KnowledgeBaseId)
+  when is_map(Client) ->
+    get_content_association(Client, ContentAssociationId, ContentId, KnowledgeBaseId, #{}, #{}).
+
+-spec get_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_content_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_content_association_errors(), tuple()}.
+get_content_association(Client, ContentAssociationId, ContentId, KnowledgeBaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_content_association(Client, ContentAssociationId, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, []).
+
+-spec get_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_content_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_content_association_errors(), tuple()}.
+get_content_association(Client, ContentAssociationId, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), "/associations/", aws_util:encode_uri(ContentAssociationId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2502,6 +2778,55 @@ list_assistants(Client, QueryMap, HeadersMap)
 list_assistants(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assistants"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the content associations.
+%%
+%% For more information about content associations--what they are and when
+%% they are used--see
+%% Integrate Amazon Q in Connect with step-by-step guides:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
+%% in the Amazon Connect
+%% Administrator Guide.
+-spec list_content_associations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_content_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_content_associations_errors(), tuple()}.
+list_content_associations(Client, ContentId, KnowledgeBaseId)
+  when is_map(Client) ->
+    list_content_associations(Client, ContentId, KnowledgeBaseId, #{}, #{}).
+
+-spec list_content_associations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_content_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_content_associations_errors(), tuple()}.
+list_content_associations(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_content_associations(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, []).
+
+-spec list_content_associations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_content_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_content_associations_errors(), tuple()}.
+list_content_associations(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/contents/", aws_util:encode_uri(ContentId), "/associations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3272,10 +3597,10 @@ update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0
 
 %% @doc Updates a session.
 %%
-%% A session is a contextual container used for generating recommendations.
-%% Amazon Connect updates the existing Amazon Q in Connect session for each
-%% contact on which Amazon Q in Connect
-%% is enabled.
+%% A session is a contextual container used for generating
+%% recommendations. Amazon Connect updates the existing Amazon Q in Connect
+%% session for each contact on
+%% which Amazon Q in Connect is enabled.
 -spec update_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_session_request()) ->
     {ok, update_session_response(), tuple()} |
     {error, any()} |

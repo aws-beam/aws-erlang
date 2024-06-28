@@ -10774,8 +10774,6 @@ start_db_instance_automated_backups_replication(Client, Input, Options)
 %%
 %% You can't export snapshot data from Db2 or RDS Custom DB instances.
 %%
-%% You can't export cluster data from Multi-AZ DB clusters.
-%%
 %% For more information on exporting DB snapshot data, see
 %% Exporting DB snapshot
 %% data to Amazon S3:

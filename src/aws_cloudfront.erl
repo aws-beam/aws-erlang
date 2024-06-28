@@ -10194,6 +10194,10 @@ list_streaming_distributions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List tags for a CloudFront resource.
+%%
+%% For more information, see Tagging a distribution:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/tagging.html
+%% in the Amazon CloudFront Developer Guide.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
@@ -10287,6 +10291,10 @@ publish_function(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Add tags to a CloudFront resource.
+%%
+%% For more information, see Tagging a distribution:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/tagging.html
+%% in the Amazon CloudFront Developer Guide.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -10377,6 +10385,10 @@ test_function(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove tags from a CloudFront resource.
+%%
+%% For more information, see Tagging a distribution:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/tagging.html
+%% in the Amazon CloudFront Developer Guide.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

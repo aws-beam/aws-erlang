@@ -169,7 +169,7 @@
 %% Example:
 %% create_broker_request() :: #{
 %%   <<"AuthenticationStrategy">> => list(any()),
-%%   <<"AutoMinorVersionUpgrade">> := boolean(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
 %%   <<"BrokerName">> := string(),
 %%   <<"Configuration">> => configuration_id(),
 %%   <<"CreatorRequestId">> => string(),
@@ -178,7 +178,7 @@
 %%   <<"DeploymentMode">> := list(any()),
 %%   <<"EncryptionOptions">> => encryption_options(),
 %%   <<"EngineType">> := list(any()),
-%%   <<"EngineVersion">> := string(),
+%%   <<"EngineVersion">> => string(),
 %%   <<"HostInstanceType">> := string(),
 %%   <<"LdapServerMetadata">> => ldap_server_metadata_input(),
 %%   <<"Logs">> => logs(),
@@ -403,7 +403,7 @@
 %% create_configuration_request() :: #{
 %%   <<"AuthenticationStrategy">> => list(any()),
 %%   <<"EngineType">> := list(any()),
-%%   <<"EngineVersion">> := string(),
+%%   <<"EngineVersion">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"Tags">> => map()
 %% }
