@@ -3846,7 +3846,7 @@ describe_workspaces_connection_status(Client, Input, Options)
     request(Client, <<"DescribeWorkspacesConnectionStatus">>, Input, Options).
 
 %% @doc Retrieves a list that describes the streaming sessions for a
-%% specified WorkSpaces pool.
+%% specified pool.
 -spec describe_workspaces_pool_sessions(aws_client:aws_client(), describe_workspaces_pool_sessions_request()) ->
     {ok, describe_workspaces_pool_sessions_result(), tuple()} |
     {error, any()} |
@@ -3863,7 +3863,7 @@ describe_workspaces_pool_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspacesPoolSessions">>, Input, Options).
 
-%% @doc Describes the specified WorkSpaces pool.
+%% @doc Describes the specified WorkSpaces Pools.
 -spec describe_workspaces_pools(aws_client:aws_client(), describe_workspaces_pools_request()) ->
     {ok, describe_workspaces_pools_result(), tuple()} |
     {error, any()} |
@@ -4490,9 +4490,9 @@ start_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartWorkspaces">>, Input, Options).
 
-%% @doc Starts the specified WorkSpaces pool.
+%% @doc Starts the specified pool.
 %%
-%% You cannot start a WorkSpace pool unless it has a running mode of
+%% You cannot start a pool unless it has a running mode of
 %% `AutoStop' and a state of `STOPPED'.
 -spec start_workspaces_pool(aws_client:aws_client(), start_workspaces_pool_request()) ->
     {ok, start_workspaces_pool_result(), tuple()} |
@@ -4530,7 +4530,7 @@ stop_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopWorkspaces">>, Input, Options).
 
-%% @doc Stops the specifiedWorkSpaces pool.
+%% @doc Stops the specified pool.
 %%
 %% You cannot stop a WorkSpace pool unless it has a running mode of
 %% `AutoStop'
@@ -4607,7 +4607,7 @@ terminate_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateWorkspaces">>, Input, Options).
 
-%% @doc Terminates the specified WorkSpaces pool.
+%% @doc Terminates the specified pool.
 -spec terminate_workspaces_pool(aws_client:aws_client(), terminate_workspaces_pool_request()) ->
     {ok, terminate_workspaces_pool_result(), tuple()} |
     {error, any()} |
@@ -4624,7 +4624,7 @@ terminate_workspaces_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateWorkspacesPool">>, Input, Options).
 
-%% @doc Terminates the WorkSpaces pool session.
+%% @doc Terminates the pool session.
 -spec terminate_workspaces_pool_session(aws_client:aws_client(), terminate_workspaces_pool_session_request()) ->
     {ok, terminate_workspaces_pool_session_result(), tuple()} |
     {error, any()} |
@@ -4799,7 +4799,7 @@ update_workspace_image_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkspaceImagePermission">>, Input, Options).
 
-%% @doc Updates the specified WorkSpaces pool.
+%% @doc Updates the specified pool.
 -spec update_workspaces_pool(aws_client:aws_client(), update_workspaces_pool_request()) ->
     {ok, update_workspaces_pool_result(), tuple()} |
     {error, any()} |

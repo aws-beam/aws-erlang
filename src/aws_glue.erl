@@ -6255,6 +6255,7 @@
 
 %% Example:
 %% get_databases_request() :: #{
+%%   <<"AttributesToGet">> => list(list(any())()),
 %%   <<"CatalogId">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),

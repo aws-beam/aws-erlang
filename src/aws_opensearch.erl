@@ -425,14 +425,6 @@
 
 
 %% Example:
-%% natural_language_query_generation_options_output() :: #{
-%%   <<"CurrentState">> => list(any()),
-%%   <<"DesiredState">> => list(any())
-%% }
--type natural_language_query_generation_options_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% snapshot_options_status() :: #{
 %%   <<"Options">> => snapshot_options(),
 %%   <<"Status">> => option_status()
@@ -528,7 +520,6 @@
 
 %% Example:
 %% domain_config() :: #{
-%%   <<"AIMLOptions">> => a_i_ml_options_status(),
 %%   <<"AccessPolicies">> => access_policies_status(),
 %%   <<"AdvancedOptions">> => advanced_options_status(),
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_status(),
@@ -861,13 +852,6 @@
 
 
 %% Example:
-%% a_i_ml_options_output() :: #{
-%%   <<"NaturalLanguageQueryGenerationOptions">> => natural_language_query_generation_options_output()
-%% }
--type a_i_ml_options_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% update_scheduled_action_request() :: #{
 %%   <<"ActionID">> := string(),
 %%   <<"ActionType">> := list(any()),
@@ -935,7 +919,6 @@
 
 %% Example:
 %% create_domain_request() :: #{
-%%   <<"AIMLOptions">> => a_i_ml_options_input(),
 %%   <<"AccessPolicies">> => string(),
 %%   <<"AdvancedOptions">> => map(),
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
@@ -1056,14 +1039,6 @@
 
 
 %% Example:
-%% a_i_ml_options_status() :: #{
-%%   <<"Options">> => a_i_ml_options_output(),
-%%   <<"Status">> => option_status()
-%% }
--type a_i_ml_options_status() :: #{binary() => any()}.
-
-
-%% Example:
 %% update_domain_config_response() :: #{
 %%   <<"DomainConfig">> => domain_config(),
 %%   <<"DryRunProgressStatus">> => dry_run_progress_status(),
@@ -1083,7 +1058,6 @@
 
 %% Example:
 %% update_domain_config_request() :: #{
-%%   <<"AIMLOptions">> => a_i_ml_options_input(),
 %%   <<"AccessPolicies">> => string(),
 %%   <<"AdvancedOptions">> => map(),
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
@@ -1441,39 +1415,38 @@
 
 %% Example:
 %% domain_status() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"AutoTuneOptions">> => auto_tune_options_output(),
-%%   <<"CognitoOptions">> => cognito_options(),
-%%   <<"Processing">> => boolean(),
-%%   <<"UpgradeProcessing">> => boolean(),
-%%   <<"OffPeakWindowOptions">> => off_peak_window_options(),
-%%   <<"SnapshotOptions">> => snapshot_options(),
-%%   <<"LogPublishingOptions">> => map(),
 %%   <<"ARN">> => string(),
-%%   <<"DomainId">> => string(),
-%%   <<"EndpointV2">> => string(),
-%%   <<"ModifyingProperties">> => list(modifying_properties()()),
-%%   <<"Created">> => boolean(),
-%%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"AdvancedOptions">> => map(),
-%%   <<"ServiceSoftwareOptions">> => service_software_options(),
-%%   <<"IPAddressType">> => list(any()),
-%%   <<"Endpoints">> => map(),
-%%   <<"DomainEndpointV2HostedZoneId">> => string(),
-%%   <<"SoftwareUpdateOptions">> => software_update_options(),
-%%   <<"VPCOptions">> => vpc_derived_info(),
-%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
 %%   <<"AccessPolicies">> => string(),
-%%   <<"EBSOptions">> => ebs_options(),
-%%   <<"Endpoint">> => string(),
+%%   <<"AdvancedOptions">> => map(),
+%%   <<"AdvancedSecurityOptions">> => advanced_security_options(),
+%%   <<"AutoTuneOptions">> => auto_tune_options_output(),
 %%   <<"ChangeProgressDetails">> => change_progress_details(),
 %%   <<"ClusterConfig">> => cluster_config(),
-%%   <<"AdvancedSecurityOptions">> => advanced_security_options(),
-%%   <<"DomainProcessingStatus">> => list(any()),
+%%   <<"CognitoOptions">> => cognito_options(),
+%%   <<"Created">> => boolean(),
 %%   <<"Deleted">> => boolean(),
-%%   <<"AIMLOptions">> => a_i_ml_options_output(),
-%%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options()
+%%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
+%%   <<"DomainEndpointV2HostedZoneId">> => string(),
+%%   <<"DomainId">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainProcessingStatus">> => list(any()),
+%%   <<"EBSOptions">> => ebs_options(),
+%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"Endpoint">> => string(),
+%%   <<"EndpointV2">> => string(),
+%%   <<"Endpoints">> => map(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IPAddressType">> => list(any()),
+%%   <<"LogPublishingOptions">> => map(),
+%%   <<"ModifyingProperties">> => list(modifying_properties()()),
+%%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options(),
+%%   <<"OffPeakWindowOptions">> => off_peak_window_options(),
+%%   <<"Processing">> => boolean(),
+%%   <<"ServiceSoftwareOptions">> => service_software_options(),
+%%   <<"SnapshotOptions">> => snapshot_options(),
+%%   <<"SoftwareUpdateOptions">> => software_update_options(),
+%%   <<"UpgradeProcessing">> => boolean(),
+%%   <<"VPCOptions">> => vpc_derived_info()
 %% }
 -type domain_status() :: #{binary() => any()}.
 
@@ -1667,13 +1640,6 @@
 
 
 %% Example:
-%% natural_language_query_generation_options_input() :: #{
-%%   <<"DesiredState">> => list(any())
-%% }
--type natural_language_query_generation_options_input() :: #{binary() => any()}.
-
-
-%% Example:
 %% domain_nodes_status() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"InstanceType">> => list(any()),
@@ -1835,13 +1801,6 @@
 %%   <<"Status">> => list(any())
 %% }
 -type update_data_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_ml_options_input() :: #{
-%%   <<"NaturalLanguageQueryGenerationOptions">> => natural_language_query_generation_options_input()
-%% }
--type a_i_ml_options_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_upgrade_status_request() :: #{}

@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc For more information about AWS CloudHSM, see AWS CloudHSM:
-%% http://aws.amazon.com/cloudhsm/ and the AWS
+%% @doc For more information about CloudHSM, see CloudHSM:
+%% http://aws.amazon.com/cloudhsm/ and the
 %% CloudHSM User Guide:
 %% https://docs.aws.amazon.com/cloudhsm/latest/userguide/.
 -module(aws_cloudhsm_v2).
@@ -19,10 +19,14 @@
          delete_cluster/3,
          delete_hsm/2,
          delete_hsm/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          describe_backups/2,
          describe_backups/3,
          describe_clusters/2,
          describe_clusters/3,
+         get_resource_policy/2,
+         get_resource_policy/3,
          initialize_cluster/2,
          initialize_cluster/3,
          list_tags/2,
@@ -31,6 +35,8 @@
          modify_backup_attributes/3,
          modify_cluster/2,
          modify_cluster/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          restore_backup/2,
          restore_backup/3,
          tag_resource/2,
@@ -64,6 +70,13 @@
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_resource_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_response() :: #{
 
 %% }
@@ -93,6 +106,12 @@
 %%   <<"TagList">> => list(tag()())
 %% }
 -type list_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% cloud_hsm_access_denied_exception() :: #{
@@ -163,6 +182,7 @@
 %%   <<"Filters">> => map(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
+%%   <<"Shared">> => boolean(),
 %%   <<"SortAscending">> => boolean()
 %% }
 -type describe_backups_request() :: #{binary() => any()}.
@@ -218,6 +238,12 @@
 -type copy_backup_to_region_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_cluster_response() :: #{
 %%   <<"Cluster">> => cluster()
 %% }
@@ -232,6 +258,7 @@
 
 %% Example:
 %% backup() :: #{
+%%   <<"BackupArn">> => string(),
 %%   <<"BackupId">> => string(),
 %%   <<"BackupState">> => list(any()),
 %%   <<"ClusterId">> => string(),
@@ -272,6 +299,13 @@
 %%   <<"Message">> => string()
 %% }
 -type cloud_hsm_invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% hsm() :: #{
@@ -322,12 +356,25 @@
 -type certificates() :: #{binary() => any()}.
 
 %% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% initialize_cluster_request() :: #{
 %%   <<"ClusterId">> := string(),
 %%   <<"SignedCert">> := string(),
 %%   <<"TrustAnchor">> := string()
 %% }
 -type initialize_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_backups_response() :: #{
@@ -416,6 +463,13 @@
     cloud_hsm_access_denied_exception() | 
     cloud_hsm_resource_not_found_exception().
 
+-type delete_resource_policy_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
 -type describe_backups_errors() ::
     cloud_hsm_tag_exception() | 
     cloud_hsm_service_exception() | 
@@ -430,6 +484,13 @@
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
     cloud_hsm_access_denied_exception().
+
+-type get_resource_policy_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
 
 -type initialize_cluster_errors() ::
     cloud_hsm_service_exception() | 
@@ -454,6 +515,13 @@
     cloud_hsm_resource_not_found_exception().
 
 -type modify_cluster_errors() ::
+    cloud_hsm_service_exception() | 
+    cloud_hsm_invalid_request_exception() | 
+    cloud_hsm_internal_failure_exception() | 
+    cloud_hsm_access_denied_exception() | 
+    cloud_hsm_resource_not_found_exception().
+
+-type put_resource_policy_errors() ::
     cloud_hsm_service_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
@@ -487,7 +555,10 @@
 %% API
 %%====================================================================
 
-%% @doc Copy an AWS CloudHSM cluster backup to a different region.
+%% @doc Copy an CloudHSM cluster backup to a different region.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% backup in a different Amazon Web Services account.
 -spec copy_backup_to_region(aws_client:aws_client(), copy_backup_to_region_request()) ->
     {ok, copy_backup_to_region_response(), tuple()} |
     {error, any()} |
@@ -504,7 +575,11 @@ copy_backup_to_region(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyBackupToRegion">>, Input, Options).
 
-%% @doc Creates a new AWS CloudHSM cluster.
+%% @doc Creates a new CloudHSM cluster.
+%%
+%% Cross-account use: Yes. To perform this operation with an CloudHSM backup
+%% in a different AWS account, specify the full backup
+%% ARN in the value of the SourceBackupId parameter.
 -spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
@@ -521,9 +596,12 @@ create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
 
-%% @doc Creates a new hardware security module (HSM) in the specified AWS
+%% @doc Creates a new hardware security module (HSM) in the specified
 %% CloudHSM
 %% cluster.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% cluster in a different Amazon Web Service account.
 -spec create_hsm(aws_client:aws_client(), create_hsm_request()) ->
     {ok, create_hsm_response(), tuple()} |
     {error, any()} |
@@ -540,12 +618,15 @@ create_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHsm">>, Input, Options).
 
-%% @doc Deletes a specified AWS CloudHSM backup.
+%% @doc Deletes a specified CloudHSM backup.
 %%
 %% A backup can be restored up to 7 days
 %% after the DeleteBackup request is made. For more information on restoring
 %% a backup, see
 %% `RestoreBackup'.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% backup in a different Amazon Web Services account.
 -spec delete_backup(aws_client:aws_client(), delete_backup_request()) ->
     {ok, delete_backup_response(), tuple()} |
     {error, any()} |
@@ -562,11 +643,14 @@ delete_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBackup">>, Input, Options).
 
-%% @doc Deletes the specified AWS CloudHSM cluster.
+%% @doc Deletes the specified CloudHSM cluster.
 %%
 %% Before you can delete a cluster, you must
 %% delete all HSMs in the cluster. To see if the cluster contains any HSMs,
 %% use `DescribeClusters'. To delete an HSM, use `DeleteHsm'.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% cluster in a different Amazon Web Services account.
 -spec delete_cluster(aws_client:aws_client(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
@@ -590,6 +674,9 @@ delete_cluster(Client, Input, Options)
 %% HSM's ENI. You need to
 %% specify only one of these values. To find these values, use
 %% `DescribeClusters'.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% hsm in a different Amazon Web Services account.
 -spec delete_hsm(aws_client:aws_client(), delete_hsm_request()) ->
     {ok, delete_hsm_response(), tuple()} |
     {error, any()} |
@@ -606,7 +693,36 @@ delete_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHsm">>, Input, Options).
 
-%% @doc Gets information about backups of AWS CloudHSM clusters.
+%% @doc Deletes an CloudHSM resource policy.
+%%
+%% Deleting a resource policy will result in the resource being unshared and
+%% removed from
+%% any RAM resource shares. Deleting the resource policy attached to a backup
+%% will not impact any clusters created from that
+%% backup.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% resource in a different Amazon Web Services account.
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcePolicy">>, Input, Options).
+
+%% @doc Gets information about backups of CloudHSM clusters.
+%%
+%% Lists either the backups you own or the backups shared with you when the
+%% Shared parameter is true.
 %%
 %% This is a paginated operation, which means that each response might
 %% contain only a
@@ -617,6 +733,9 @@ delete_hsm(Client, Input, Options)
 %% request to get more backups. When you receive a response with no
 %% `NextToken' (or an
 %% empty or null value), that means there are no more backups to get.
+%%
+%% Cross-account use: Yes. Customers can describe backups in other Amazon Web
+%% Services accounts that are shared with them.
 -spec describe_backups(aws_client:aws_client(), describe_backups_request()) ->
     {ok, describe_backups_response(), tuple()} |
     {error, any()} |
@@ -633,7 +752,7 @@ describe_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBackups">>, Input, Options).
 
-%% @doc Gets information about AWS CloudHSM clusters.
+%% @doc Gets information about CloudHSM clusters.
 %%
 %% This is a paginated operation, which means that each response might
 %% contain only a
@@ -644,6 +763,9 @@ describe_backups(Client, Input, Options)
 %% request to get more clusters. When you receive a response with no
 %% `NextToken' (or
 %% an empty or null value), that means there are no more clusters to get.
+%%
+%% Cross-account use: No. You cannot perform this operation on CloudHSM
+%% clusters in a different Amazon Web Services account.
 -spec describe_clusters(aws_client:aws_client(), describe_clusters_request()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
@@ -660,7 +782,27 @@ describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
 
-%% @doc Claims an AWS CloudHSM cluster by submitting the cluster certificate
+%% @doc Retrieves the resource policy document attached to a given resource.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% resource in a different Amazon Web Services account.
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_policy(Client, Input, []).
+
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourcePolicy">>, Input, Options).
+
+%% @doc Claims an CloudHSM cluster by submitting the cluster certificate
 %% issued by your
 %% issuing certificate authority (CA) and the CA's root certificate.
 %%
@@ -668,6 +810,9 @@ describe_clusters(Client, Input, Options)
 %% cluster, you must sign the cluster's certificate signing request (CSR)
 %% with your issuing CA.
 %% To get the cluster's CSR, use `DescribeClusters'.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% cluster in a different Amazon Web Services account.
 -spec initialize_cluster(aws_client:aws_client(), initialize_cluster_request()) ->
     {ok, initialize_cluster_response(), tuple()} |
     {error, any()} |
@@ -684,7 +829,7 @@ initialize_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitializeCluster">>, Input, Options).
 
-%% @doc Gets a list of tags for the specified AWS CloudHSM cluster.
+%% @doc Gets a list of tags for the specified CloudHSM cluster.
 %%
 %% This is a paginated operation, which means that each response might
 %% contain only a
@@ -695,6 +840,9 @@ initialize_cluster(Client, Input, Options)
 %% get more tags. When you receive a response with no `NextToken' (or an
 %% empty or null
 %% value), that means there are no more tags to get.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% resource in a different Amazon Web Services account.
 -spec list_tags(aws_client:aws_client(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
@@ -711,7 +859,10 @@ list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
 
-%% @doc Modifies attributes for AWS CloudHSM backup.
+%% @doc Modifies attributes for CloudHSM backup.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% backup in a different Amazon Web Services account.
 -spec modify_backup_attributes(aws_client:aws_client(), modify_backup_attributes_request()) ->
     {ok, modify_backup_attributes_response(), tuple()} |
     {error, any()} |
@@ -728,7 +879,10 @@ modify_backup_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyBackupAttributes">>, Input, Options).
 
-%% @doc Modifies AWS CloudHSM cluster.
+%% @doc Modifies CloudHSM cluster.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% cluster in a different Amazon Web Services account.
 -spec modify_cluster(aws_client:aws_client(), modify_cluster_request()) ->
     {ok, modify_cluster_response(), tuple()} |
     {error, any()} |
@@ -745,11 +899,60 @@ modify_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCluster">>, Input, Options).
 
-%% @doc Restores a specified AWS CloudHSM backup that is in the
+%% @doc Creates or updates an CloudHSM resource policy.
+%%
+%% A resource policy helps you to define the IAM entity
+%% (for example, an Amazon Web Services account) that can manage your
+%% CloudHSM resources. The following resources support
+%% CloudHSM resource policies:
+%%
+%% Backup - The resource policy allows you to describe the backup and restore
+%% a cluster from the backup in another Amazon Web Services account.
+%%
+%% In order to share a backup, it must be in a 'READY' state and you
+%% must own it.
+%%
+%% While you can share a backup using the CloudHSM PutResourcePolicy
+%% operation, we recommend using Resource Access Manager
+%% (RAM) instead. Using RAM provides multiple benefits as it creates the
+%% policy for you, allows multiple resources to be shared at
+%% one time, and increases the discoverability of shared resources. If you
+%% use PutResourcePolicy and want consumers to be able to
+%% describe the backups you share with them, you must promote the backup to a
+%% standard RAM
+%% Resource Share using the RAM PromoteResourceShareCreatedFromPolicy API
+%% operation.
+%%
+%% For more information, see Working with shared backups:
+%% https://docs.aws.amazon.com/cloudhsm/latest/userguide/sharing.html in the
+%% CloudHSM User Guide
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% resource in a different Amazon Web Services account.
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourcePolicy">>, Input, Options).
+
+%% @doc Restores a specified CloudHSM backup that is in the
 %% `PENDING_DELETION' state.
 %%
-%% For mor information on deleting a backup, see
+%% For more information on deleting a backup, see
 %% `DeleteBackup'.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% backup in a different Amazon Web Services account.
 -spec restore_backup(aws_client:aws_client(), restore_backup_request()) ->
     {ok, restore_backup_response(), tuple()} |
     {error, any()} |
@@ -766,8 +969,11 @@ restore_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreBackup">>, Input, Options).
 
-%% @doc Adds or overwrites one or more tags for the specified AWS CloudHSM
+%% @doc Adds or overwrites one or more tags for the specified CloudHSM
 %% cluster.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% resource in a different Amazon Web Services account.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -784,8 +990,11 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes the specified tag or tags from the specified AWS CloudHSM
+%% @doc Removes the specified tag or tags from the specified CloudHSM
 %% cluster.
+%%
+%% Cross-account use: No. You cannot perform this operation on an CloudHSM
+%% resource in a different Amazon Web Services account.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |

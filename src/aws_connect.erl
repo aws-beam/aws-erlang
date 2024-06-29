@@ -995,6 +995,7 @@
 %% Example:
 %% attribute_condition() :: #{
 %%   <<"ComparisonOperator">> => string(),
+%%   <<"MatchCriteria">> => match_criteria(),
 %%   <<"Name">> => string(),
 %%   <<"ProficiencyLevel">> => float(),
 %%   <<"Value">> => string()
@@ -3673,6 +3674,13 @@
 
 
 %% Example:
+%% match_criteria() :: #{
+%%   <<"AgentsCriteria">> => agents_criteria()
+%% }
+-type match_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% problem_detail() :: #{
 %%   <<"message">> => string()
 %% }
@@ -3768,6 +3776,13 @@
 %%   <<"Tags">> => map()
 %% }
 -type security_profile_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% agents_criteria() :: #{
+%%   <<"AgentIds">> => list(string()())
+%% }
+-type agents_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -13492,6 +13507,36 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
 %%
 %% You can call this API only in the same Amazon Web Services Region
 %% where the Amazon Connect instance was created.
+%%
+%% Call the DescribePhoneNumber:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
+%% API
+%% to verify the status of a previous `ImportPhoneNumber' operation.
+%%
+%% If you plan to claim or import numbers and then release numbers
+%% frequently, contact us for a
+%% service quota exception. Otherwise, it is possible you will be blocked
+%% from claiming and
+%% releasing any more numbers until up to 180 days past the oldest number
+%% released has expired.
+%%
+%% By default you can claim or import and then release up to 200% of your
+%% maximum number of
+%% active phone numbers. If you claim or import and then release phone
+%% numbers using the UI or API
+%% during a rolling 180 day cycle that exceeds 200% of your phone number
+%% service level quota, you
+%% will be blocked from claiming or importing any more numbers until 180 days
+%% past the oldest number
+%% released has expired.
+%%
+%% For example, if you already have 99 claimed or imported numbers and a
+%% service level quota of
+%% 99 phone numbers, and in any 180 day period you release 99, claim 99, and
+%% then release 99, you
+%% will have exceeded the 200% limit. At that point you are blocked from
+%% claiming any more numbers
+%% until you open an Amazon Web Services Support ticket.
 -spec import_phone_number(aws_client:aws_client(), import_phone_number_request()) ->
     {ok, import_phone_number_response(), tuple()} |
     {error, any()} |
@@ -16488,10 +16533,15 @@ start_attached_file_upload(Client, InstanceId, Input0, Options0) ->
 %% For more information,
 %% contact Amazon Web Services Support.
 %%
-%% For more information about chat, see Chat:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/chat.html in the
-%% Amazon Connect
-%% Administrator Guide.
+%% For more information about chat, see the following topics in the Amazon
+%% Connect
+%% Administrator Guide:
+%%
+%% Concepts: Web and mobile messaging capabilities in Amazon Connect:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/web-and-mobile-chat.html
+%%
+%% Amazon Connect Chat security best practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat
 -spec start_chat_contact(aws_client:aws_client(), start_chat_contact_request()) ->
     {ok, start_chat_contact_response(), tuple()} |
     {error, any()} |
@@ -16635,6 +16685,16 @@ start_contact_recording(Client, Input0, Options0) ->
 %% streaming:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-message-streaming.html
 %% in the Amazon Connect Administrator Guide.
+%%
+%% For more information about chat, see the following topics in the Amazon
+%% Connect
+%% Administrator Guide:
+%%
+%% Concepts: Web and mobile messaging capabilities in Amazon Connect:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/web-and-mobile-chat.html
+%%
+%% Amazon Connect Chat security best practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat
 -spec start_contact_streaming(aws_client:aws_client(), start_contact_streaming_request()) ->
     {ok, start_contact_streaming_response(), tuple()} |
     {error, any()} |

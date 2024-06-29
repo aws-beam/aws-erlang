@@ -967,6 +967,7 @@
 %%   <<"CustomAmiId">> => string(),
 %%   <<"EbsConfiguration">> => ebs_configuration(),
 %%   <<"InstanceType">> => string(),
+%%   <<"Priority">> => float(),
 %%   <<"WeightedCapacity">> => integer()
 %% }
 -type instance_type_config() :: #{binary() => any()}.
@@ -1842,6 +1843,7 @@
 %%   <<"EbsBlockDevices">> => list(ebs_block_device()()),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"InstanceType">> => string(),
+%%   <<"Priority">> => float(),
 %%   <<"WeightedCapacity">> => integer()
 %% }
 -type instance_type_specification() :: #{binary() => any()}.
