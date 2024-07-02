@@ -1,8 +1,18 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Connect is a cloud-based contact center solution that you use
-%% to set up and
+%% @doc
+%%
+%% Amazon Connect
+%% actions:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html
+%%
+%% Amazon Connect
+%% data types:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Service.html
+%%
+%% Amazon Connect is a cloud-based contact center solution that you use to
+%% set up and
 %% manage a customer contact center and provide reliable customer engagement
 %% at any scale.
 %%
@@ -170,6 +180,9 @@
          describe_agent_status/3,
          describe_agent_status/5,
          describe_agent_status/6,
+         describe_authentication_profile/3,
+         describe_authentication_profile/5,
+         describe_authentication_profile/6,
          describe_contact/3,
          describe_contact/5,
          describe_contact/6,
@@ -307,6 +320,9 @@
          list_approved_origins/2,
          list_approved_origins/4,
          list_approved_origins/5,
+         list_authentication_profiles/2,
+         list_authentication_profiles/4,
+         list_authentication_profiles/5,
          list_bots/3,
          list_bots/5,
          list_bots/6,
@@ -509,6 +525,8 @@
          untag_resource/4,
          update_agent_status/4,
          update_agent_status/5,
+         update_authentication_profile/4,
+         update_authentication_profile/5,
          update_contact/4,
          update_contact/5,
          update_contact_attributes/2,
@@ -1994,6 +2012,24 @@
 
 
 %% Example:
+%% authentication_profile() :: #{
+%%   <<"AllowedIps">> => list(string()()),
+%%   <<"Arn">> => string(),
+%%   <<"BlockedIps">> => list(string()()),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaxSessionDuration">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"PeriodicSessionDuration">> => integer()
+%% }
+-type authentication_profile() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_note() :: #{
 %%   <<"Value">> => string()
 %% }
@@ -2483,6 +2519,10 @@
 %% delete_rule_request() :: #{}
 -type delete_rule_request() :: #{}.
 
+%% Example:
+%% describe_authentication_profile_request() :: #{}
+-type describe_authentication_profile_request() :: #{}.
+
 
 %% Example:
 %% contact_flow_summary() :: #{
@@ -2768,6 +2808,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_security_keys_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% authentication_profile_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type authentication_profile_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3171,6 +3223,14 @@
 %%   <<"EncryptionConfig">> => encryption_config()
 %% }
 -type s3_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_authentication_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_authentication_profiles_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5785,6 +5845,13 @@
 
 
 %% Example:
+%% describe_authentication_profile_response() :: #{
+%%   <<"AuthenticationProfile">> => authentication_profile()
+%% }
+-type describe_authentication_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% disconnect_details() :: #{
 %%   <<"PotentialDisconnectIssue">> => string()
 %% }
@@ -6424,6 +6491,17 @@
 %% }
 -type real_time_contact_analysis_issue_detected() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_authentication_profile_request() :: #{
+%%   <<"AllowedIps">> => list(string()()),
+%%   <<"BlockedIps">> => list(string()()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PeriodicSessionDuration">> => integer()
+%% }
+-type update_authentication_profile_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_quick_connect_request() :: #{}
 -type describe_quick_connect_request() :: #{}.
@@ -6600,6 +6678,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_current_metric_data_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_authentication_profiles_response() :: #{
+%%   <<"AuthenticationProfileSummaryList">> => list(authentication_profile_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_authentication_profiles_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7423,6 +7509,13 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type describe_authentication_profile_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type describe_contact_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -7783,6 +7876,13 @@
     internal_service_exception().
 
 -type list_approved_origins_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type list_authentication_profiles_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
@@ -8364,6 +8464,13 @@
 -type update_agent_status_errors() ::
     duplicate_resource_exception() | 
     limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type update_authentication_profile_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
     invalid_request_exception() | 
@@ -11527,6 +11634,49 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
+%% To
+%% request access to this API, contact Amazon Web Services Support.
+%%
+%% Describes the target authentication profile.
+-spec describe_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_authentication_profile_response(), tuple()} |
+    {error, any()} |
+    {error, describe_authentication_profile_errors(), tuple()}.
+describe_authentication_profile(Client, AuthenticationProfileId, InstanceId)
+  when is_map(Client) ->
+    describe_authentication_profile(Client, AuthenticationProfileId, InstanceId, #{}, #{}).
+
+-spec describe_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_authentication_profile_response(), tuple()} |
+    {error, any()} |
+    {error, describe_authentication_profile_errors(), tuple()}.
+describe_authentication_profile(Client, AuthenticationProfileId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_authentication_profile(Client, AuthenticationProfileId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec describe_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_authentication_profile_response(), tuple()} |
+    {error, any()} |
+    {error, describe_authentication_profile_errors(), tuple()}.
+describe_authentication_profile(Client, AuthenticationProfileId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/authentication-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AuthenticationProfileId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
 %% Describes the specified contact.
 %%
 %% Contact information remains available in Amazon Connect for 24 months, and
@@ -13692,6 +13842,55 @@ list_approved_origins(Client, InstanceId, QueryMap, HeadersMap)
 list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origins"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% To
+%% request access to this API, contact Amazon Web Services Support.
+%%
+%% Provides summary information about the authentication profiles in a
+%% specified Amazon Connect instance.
+-spec list_authentication_profiles(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_authentication_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_authentication_profiles_errors(), tuple()}.
+list_authentication_profiles(Client, InstanceId)
+  when is_map(Client) ->
+    list_authentication_profiles(Client, InstanceId, #{}, #{}).
+
+-spec list_authentication_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_authentication_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_authentication_profiles_errors(), tuple()}.
+list_authentication_profiles(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_authentication_profiles(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_authentication_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_authentication_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_authentication_profiles_errors(), tuple()}.
+list_authentication_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/authentication-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -16464,8 +16663,7 @@ send_chat_integration_event(Client, Input0, Options0) ->
 %% @doc Provides a pre-signed Amazon S3 URL in response for uploading your
 %% content.
 %%
-%% You may only use this API to upload attachments to a Connect
-%% Case:
+%% You may only use this API to upload attachments to an Amazon Connect Case:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html.
 -spec start_attached_file_upload(aws_client:aws_client(), binary() | list(), start_attached_file_upload_request()) ->
     {ok, start_attached_file_upload_response(), tuple()} |
@@ -17383,6 +17581,46 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input) ->
 update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AgentStatusId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% To
+%% request access to this API, contact Amazon Web Services Support.
+%%
+%% Updates the selected authentication profile.
+-spec update_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_authentication_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_authentication_profile_errors(), tuple()}.
+update_authentication_profile(Client, AuthenticationProfileId, InstanceId, Input) ->
+    update_authentication_profile(Client, AuthenticationProfileId, InstanceId, Input, []).
+
+-spec update_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_authentication_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_authentication_profile_errors(), tuple()}.
+update_authentication_profile(Client, AuthenticationProfileId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/authentication-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AuthenticationProfileId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
