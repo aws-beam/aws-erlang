@@ -2781,6 +2781,12 @@
 %%   <<"PartNumber">> => integer(),
 %%   <<"Range">> => string(),
 %%   <<"RequestPayer">> => list(any()),
+%%   <<"ResponseCacheControl">> => string(),
+%%   <<"ResponseContentDisposition">> => string(),
+%%   <<"ResponseContentEncoding">> => string(),
+%%   <<"ResponseContentLanguage">> => string(),
+%%   <<"ResponseContentType">> => string(),
+%%   <<"ResponseExpires">> => non_neg_integer(),
 %%   <<"SSECustomerAlgorithm">> => string(),
 %%   <<"SSECustomerKey">> => string(),
 %%   <<"SSECustomerKeyMD5">> => string(),
@@ -3652,11 +3658,10 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% Response and special errors
 %%
 %% When the request is an HTTP 1.1 request, the response is chunk encoded.
-%% When the request is not an HTTP 1.1 request, the response would not
-%% contain the `Content-Length'.
-%% You always need to read the entire response body to check if the copy
-%% succeeds.
-%% to keep the connection alive while we copy the data.
+%% When
+%% the request is not an HTTP 1.1 request, the response would not contain the
+%% `Content-Length'. You always need to read the entire response body
+%% to check if the copy succeeds.
 %%
 %% If the copy is successful, you receive a response with information about
 %% the copied
@@ -5727,7 +5732,7 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% `s3:DeleteObject' permission.
 %%
 %% `s3:DeleteObjectVersion'
-%% - To delete a specific version of an object from a versiong-enabled
+%% - To delete a specific version of an object from a versioning-enabled
 %% bucket, you must specify the `s3:DeleteObjectVersion' permission.
 %%
 %% Directory bucket permissions - To grant access to this API operation on a
@@ -8763,6 +8768,12 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"partNumber">>, <<"PartNumber">>},
+                     {<<"response-cache-control">>, <<"ResponseCacheControl">>},
+                     {<<"response-content-disposition">>, <<"ResponseContentDisposition">>},
+                     {<<"response-content-encoding">>, <<"ResponseContentEncoding">>},
+                     {<<"response-content-language">>, <<"ResponseContentLanguage">>},
+                     {<<"response-content-type">>, <<"ResponseContentType">>},
+                     {<<"response-expires">>, <<"ResponseExpires">>},
                      {<<"versionId">>, <<"VersionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
@@ -13581,9 +13592,9 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% For information about permissions required to use the multipart upload
 %% API, see
-%% Multipart Upload and Permissions:
-%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
-%% the
+%% Multipart upload API and permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpuAndPermissions
+%% in the
 %% Amazon S3 User Guide.
 %%
 %% Directory bucket permissions -
@@ -13595,12 +13606,11 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% directory bucket, you must have the
 %% `s3express:CreateSession'
 %% permission in
-%% the `Action' element of a policy to read the object
-%% .
-%% By default, the session is in the `ReadWrite' mode. If you want to
-%% restrict the access, you can explicitly set the
-%% `s3express:SessionMode' condition key to `ReadOnly' on the copy
-%% source bucket.
+%% the `Action' element of a policy to read the object. By
+%% default, the session is in the `ReadWrite' mode. If you
+%% want to restrict the access, you can explicitly set the
+%% `s3express:SessionMode' condition key to
+%% `ReadOnly' on the copy source bucket.
 %%
 %% If the copy destination is a directory bucket, you must have the
 %%
