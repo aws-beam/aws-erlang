@@ -1558,7 +1558,8 @@ accept_direct_connect_gateway_association_proposal(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptDirectConnectGatewayAssociationProposal">>, Input, Options).
 
-%% @doc Deprecated.
+%% @doc
+%% Deprecated.
 %%
 %% Use `AllocateHostedConnection' instead.
 %%
@@ -2151,14 +2152,15 @@ create_interconnect(Client, Input, Options)
 %% single
 %% interface.
 %%
-%% All connections in a LAG must use the same bandwidth (either 1Gbps or
-%% 10Gbps) and must terminate at the same Direct Connect endpoint.
+%% All connections in a LAG must use the same bandwidth (either 1Gbps,
+%% 10Gbps, 100Gbps,
+%% or 400Gbps) and must terminate at the same Direct Connect endpoint.
 %%
-%% You can have up to 10 dedicated connections per LAG. Regardless of this
-%% limit, if you
+%% You can have up to 10 dedicated connections per location. Regardless of
+%% this limit, if you
 %% request more connections for the LAG than Direct Connect can allocate on a
 %% single endpoint, no LAG is
-%% created.
+%% created..
 %%
 %% You can specify an existing physical dedicated connection or interconnect
 %% to include in
@@ -2204,7 +2206,7 @@ create_lag(Client, Input, Options)
 %% the private virtual interface
 %% to a VGW only provides access to a single VPC within the same Region.
 %%
-%% Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause an
+%% Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause an
 %% update to
 %% the underlying physical connection if it wasn't updated to support
 %% jumbo frames. Updating
@@ -2460,7 +2462,8 @@ delete_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVirtualInterface">>, Input, Options).
 
-%% @doc Deprecated.
+%% @doc
+%% Deprecated.
 %%
 %% Use `DescribeLoa' instead.
 %%
@@ -2507,7 +2510,8 @@ describe_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnections">>, Input, Options).
 
-%% @doc Deprecated.
+%% @doc
+%% Deprecated.
 %%
 %% Use `DescribeHostedConnections' instead.
 %%
@@ -2680,7 +2684,8 @@ describe_hosted_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHostedConnections">>, Input, Options).
 
-%% @doc Deprecated.
+%% @doc
+%% Deprecated.
 %%
 %% Use `DescribeLoa' instead.
 %%
@@ -2828,7 +2833,14 @@ describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
 
-%% @doc Lists the virtual private gateways owned by the Amazon Web Services
+%% @doc
+%% Deprecated.
+%%
+%% Use `DescribeVpnGateways' instead. See DescribeVPNGateways:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnGateways.html
+%% in the Amazon Elastic Compute Cloud API Reference.
+%%
+%% Lists the virtual private gateways owned by the Amazon Web Services
 %% account.
 %%
 %% You can create one or more Direct Connect private virtual interfaces
@@ -3137,7 +3149,7 @@ update_lag(Client, Input, Options)
 %% @doc Updates the specified attributes of the specified virtual private
 %% interface.
 %%
-%% Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause an
+%% Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause an
 %% update to
 %% the underlying physical connection if it wasn't updated to support
 %% jumbo frames. Updating

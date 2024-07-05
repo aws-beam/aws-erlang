@@ -2109,8 +2109,7 @@ close_account(Client, Input, Options)
 %% When you create an account in an organization using the Organizations
 %% console,
 %% API, or CLI commands, the information required for the account to operate
-%% as a standalone account, such as a payment method and signing the end user
-%% license agreement (EULA) is not automatically
+%% as a standalone account, such as a payment method is not automatically
 %% collected. If you must remove an account from your organization later, you
 %% can do so only after you provide the missing information. For more
 %% information, see Considerations before removing an account from an

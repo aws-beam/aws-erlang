@@ -2226,7 +2226,8 @@
 %% create_dataset_request() :: #{
 %%   <<"DatasetSource">> => dataset_source(),
 %%   <<"DatasetType">> := list(any()),
-%%   <<"ProjectArn">> := string()
+%%   <<"ProjectArn">> := string(),
+%%   <<"Tags">> => map()
 %% }
 -type create_dataset_request() :: #{binary() => any()}.
 
@@ -2325,7 +2326,8 @@
 %% create_project_request() :: #{
 %%   <<"AutoUpdate">> => list(any()),
 %%   <<"Feature">> => list(any()),
-%%   <<"ProjectName">> := string()
+%%   <<"ProjectName">> := string(),
+%%   <<"Tags">> => map()
 %% }
 -type create_project_request() :: #{binary() => any()}.
 
@@ -5442,6 +5444,10 @@ get_face_search(Client, Input, Options)
 %% populate the `NextToken' request parameter with the token value
 %% returned from the
 %% previous call to `GetLabelDetection'.
+%%
+%% If you are retrieving results while using the Amazon Simple Notification
+%% Service, note that you will receive an
+%% &quot;ERROR&quot; notification if the job encounters an issue.
 -spec get_label_detection(aws_client:aws_client(), get_label_detection_request()) ->
     {ok, get_label_detection_response(), tuple()} |
     {error, any()} |
