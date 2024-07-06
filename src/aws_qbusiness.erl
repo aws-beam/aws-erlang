@@ -28,24 +28,6 @@
 %% in the
 %% Amazon Q Business User Guide.
 %%
-%% You can use the following AWS SDKs to access Amazon Q Business APIs:
-%%
-%% AWS SDK for C++: https://docs.aws.amazon.com/sdk-for-cpp
-%%
-%% AWS SDK for Go: https://docs.aws.amazon.com/sdk-for-go
-%%
-%% AWS SDK for Java: https://docs.aws.amazon.com/sdk-for-java
-%%
-%% AWS SDK for
-%% JavaScript: https://docs.aws.amazon.com/sdk-for-javascript
-%%
-%% AWS SDK for .NET: https://docs.aws.amazon.com/sdk-for-net
-%%
-%% AWS SDK for Python
-%% (Boto3): https://docs.aws.amazon.com/pythonsdk
-%%
-%% AWS SDK for Ruby: https://docs.aws.amazon.com/sdk-for-ruby
-%%
 %% The following resources provide additional information about using the
 %% Amazon Q Business
 %% API:
@@ -988,6 +970,13 @@
 
 
 %% Example:
+%% personalization_configuration() :: #{
+%%   <<"personalizationControlMode">> => list(any())
+%% }
+-type personalization_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% attachment_input() :: #{
 %%   <<"data">> => binary(),
 %%   <<"name">> => string()
@@ -1019,6 +1008,7 @@
 %%   <<"displayName">> := string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"personalizationConfiguration">> => personalization_configuration(),
 %%   <<"qAppsConfiguration">> => q_apps_configuration(),
 %%   <<"roleArn">> => string(),
 %%   <<"tags">> => list(tag()())
@@ -1213,6 +1203,7 @@
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"personalizationConfiguration">> => personalization_configuration(),
 %%   <<"qAppsConfiguration">> => q_apps_configuration(),
 %%   <<"roleArn">> => string()
 %% }
@@ -1268,6 +1259,7 @@
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"error">> => error_detail(),
 %%   <<"identityCenterApplicationArn">> => string(),
+%%   <<"personalizationConfiguration">> => personalization_configuration(),
 %%   <<"qAppsConfiguration">> => q_apps_configuration(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
@@ -2548,11 +2540,11 @@ chat_sync(Client, ApplicationId, Input0, Options0) ->
 %% Business Pro are
 %% also available in Amazon Q Business Lite. For information on what's
 %% included in
-%% Amazon Q Business Lite and what's included in
-%% Amazon Q Business Pro, see Amazon Q Business tiers:
+%% Amazon Q Business Lite and what's included in Amazon Q Business Pro,
+%% see Amazon Q Business tiers:
 %% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/tiers.html#user-sub-tiers.
-%% You must use the Amazon Q Business console to assign subscription tiers to
-%% users.
+%% You must use the Amazon Q Business console to assign
+%% subscription tiers to users.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
