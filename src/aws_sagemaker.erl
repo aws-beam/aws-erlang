@@ -110,6 +110,8 @@
          create_notebook_instance/3,
          create_notebook_instance_lifecycle_config/2,
          create_notebook_instance_lifecycle_config/3,
+         create_optimization_job/2,
+         create_optimization_job/3,
          create_pipeline/2,
          create_pipeline/3,
          create_presigned_domain_url/2,
@@ -222,6 +224,8 @@
          delete_notebook_instance/3,
          delete_notebook_instance_lifecycle_config/2,
          delete_notebook_instance_lifecycle_config/3,
+         delete_optimization_job/2,
+         delete_optimization_job/3,
          delete_pipeline/2,
          delete_pipeline/3,
          delete_project/2,
@@ -338,6 +342,8 @@
          describe_notebook_instance/3,
          describe_notebook_instance_lifecycle_config/2,
          describe_notebook_instance_lifecycle_config/3,
+         describe_optimization_job/2,
+         describe_optimization_job/3,
          describe_pipeline/2,
          describe_pipeline/3,
          describe_pipeline_definition_for_execution/2,
@@ -500,6 +506,8 @@
          list_notebook_instance_lifecycle_configs/3,
          list_notebook_instances/2,
          list_notebook_instances/3,
+         list_optimization_jobs/2,
+         list_optimization_jobs/3,
          list_pipeline_execution_steps/2,
          list_pipeline_execution_steps/3,
          list_pipeline_executions/2,
@@ -590,6 +598,8 @@
          stop_monitoring_schedule/3,
          stop_notebook_instance/2,
          stop_notebook_instance/3,
+         stop_optimization_job/2,
+         stop_optimization_job/3,
          stop_pipeline_execution/2,
          stop_pipeline_execution/3,
          stop_processing_job/2,
@@ -1584,6 +1594,22 @@
 -type metadata_properties() :: #{binary() => any()}.
 
 %% Example:
+%% list_optimization_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"OptimizationContains">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_optimization_jobs_request() :: #{binary() => any()}.
+
+%% Example:
 %% s3_storage_config() :: #{
 %%   <<"KmsKeyId">> => string(),
 %%   <<"ResolvedOutputS3Uri">> => string(),
@@ -1757,6 +1783,12 @@
 %%   <<"Tags">> => list(tag()())
 %% }
 -type update_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_job_model_source() :: #{
+%%   <<"S3">> => optimization_job_model_source_s3()
+%% }
+-type optimization_job_model_source() :: #{binary() => any()}.
 
 %% Example:
 %% additional_s3_data_source() :: #{
@@ -2088,6 +2120,13 @@
 %%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config()
 %% }
 -type update_app_image_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"Subnets">> => list(string()())
+%% }
+-type optimization_vpc_config() :: #{binary() => any()}.
 
 %% Example:
 %% training_image_config() :: #{
@@ -2632,6 +2671,13 @@
 
 %% }
 -type update_notebook_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_job_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type optimization_job_output_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_pipeline_execution_steps_response() :: #{
@@ -4834,6 +4880,21 @@
 -type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
+%% create_optimization_job_request() :: #{
+%%   <<"DeploymentInstanceType">> := list(any()),
+%%   <<"ModelSource">> := optimization_job_model_source(),
+%%   <<"OptimizationConfigs">> := list(list()()),
+%%   <<"OptimizationEnvironment">> => map(),
+%%   <<"OptimizationJobName">> := string(),
+%%   <<"OutputConfig">> := optimization_job_output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> := stopping_condition(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcConfig">> => optimization_vpc_config()
+%% }
+-type create_optimization_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% pending_deployment_summary() :: #{
 %%   <<"EndpointConfigName">> => string(),
 %%   <<"ProductionVariants">> => list(pending_production_variant_summary()()),
@@ -4966,6 +5027,7 @@
 
 %% Example:
 %% container_definition() :: #{
+%%   <<"AdditionalModelDataSources">> => list(additional_model_data_source()()),
 %%   <<"ContainerHostname">> => string(),
 %%   <<"Environment">> => map(),
 %%   <<"Image">> => string(),
@@ -5721,6 +5783,12 @@
 -type describe_auto_ml_job_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_optimization_job_request() :: #{
+%%   <<"OptimizationJobName">> := string()
+%% }
+-type describe_optimization_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% trial_component_artifact() :: #{
 %%   <<"MediaType">> => string(),
 %%   <<"Value">> => string()
@@ -6069,6 +6137,28 @@
 -type stop_notebook_instance_input() :: #{binary() => any()}.
 
 %% Example:
+%% describe_optimization_job_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentInstanceType">> => list(any()),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelSource">> => optimization_job_model_source(),
+%%   <<"OptimizationConfigs">> => list(list()()),
+%%   <<"OptimizationEndTime">> => non_neg_integer(),
+%%   <<"OptimizationEnvironment">> => map(),
+%%   <<"OptimizationJobArn">> => string(),
+%%   <<"OptimizationJobName">> => string(),
+%%   <<"OptimizationJobStatus">> => list(any()),
+%%   <<"OptimizationOutput">> => optimization_output(),
+%%   <<"OptimizationStartTime">> => non_neg_integer(),
+%%   <<"OutputConfig">> => optimization_job_output_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => stopping_condition(),
+%%   <<"VpcConfig">> => optimization_vpc_config()
+%% }
+-type describe_optimization_job_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_endpoints_output() :: #{
 %%   <<"Endpoints">> => list(endpoint_summary()()),
 %%   <<"NextToken">> => string()
@@ -6217,6 +6307,7 @@
 
 %% Example:
 %% domain_settings_for_update() :: #{
+%%   <<"AmazonQSettings">> => amazon_q_settings(),
 %%   <<"DockerSettings">> => docker_settings(),
 %%   <<"ExecutionRoleIdentityConfig">> => list(any()),
 %%   <<"RStudioServerProDomainSettingsForUpdate">> => r_studio_server_pro_domain_settings_for_update(),
@@ -6443,6 +6534,13 @@
 %%   <<"Value">> => string()
 %% }
 -type model_metadata_filter() :: #{binary() => any()}.
+
+%% Example:
+%% additional_model_data_source() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"S3DataSource">> => s3_model_data_source()
+%% }
+-type additional_model_data_source() :: #{binary() => any()}.
 
 %% Example:
 %% start_inference_experiment_response() :: #{
@@ -6681,6 +6779,12 @@
 %%   <<"InstanceType">> => list(any())
 %% }
 -type instance_group() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_output() :: #{
+%%   <<"RecommendedInferenceImage">> => string()
+%% }
+-type optimization_output() :: #{binary() => any()}.
 
 %% Example:
 %% profiler_rule_evaluation_status() :: #{
@@ -7353,6 +7457,7 @@
 
 %% Example:
 %% domain_settings() :: #{
+%%   <<"AmazonQSettings">> => amazon_q_settings(),
 %%   <<"DockerSettings">> => docker_settings(),
 %%   <<"ExecutionRoleIdentityConfig">> => list(any()),
 %%   <<"RStudioServerProDomainSettings">> => r_studio_server_pro_domain_settings(),
@@ -7859,6 +7964,13 @@
 -type create_app_image_config_request() :: #{binary() => any()}.
 
 %% Example:
+%% optimization_job_model_source_s3() :: #{
+%%   <<"ModelAccessConfig">> => optimization_model_access_config(),
+%%   <<"S3Uri">> => string()
+%% }
+-type optimization_job_model_source_s3() :: #{binary() => any()}.
+
+%% Example:
 %% deployed_image() :: #{
 %%   <<"ResolutionTime">> => non_neg_integer(),
 %%   <<"ResolvedImage">> => string(),
@@ -8087,6 +8199,13 @@
 -type resource_config() :: #{binary() => any()}.
 
 %% Example:
+%% amazon_q_settings() :: #{
+%%   <<"QProfileArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type amazon_q_settings() :: #{binary() => any()}.
+
+%% Example:
 %% update_project_output() :: #{
 %%   <<"ProjectArn">> => string()
 %% }
@@ -8144,6 +8263,12 @@
 %%   <<"TransformStartTime">> => non_neg_integer()
 %% }
 -type describe_transform_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_model_access_config() :: #{
+%%   <<"AcceptEula">> => boolean()
+%% }
+-type optimization_model_access_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_workteams_request() :: #{
@@ -8267,6 +8392,13 @@
 %%   <<"LastModifiedTime">> => non_neg_integer()
 %% }
 -type app_image_config_details() :: #{binary() => any()}.
+
+%% Example:
+%% model_compilation_config() :: #{
+%%   <<"Image">> => string(),
+%%   <<"OverrideEnvironment">> => map()
+%% }
+-type model_compilation_config() :: #{binary() => any()}.
 
 %% Example:
 %% update_feature_metadata_request() :: #{
@@ -9739,6 +9871,12 @@
 -type list_apps_request() :: #{binary() => any()}.
 
 %% Example:
+%% stop_optimization_job_request() :: #{
+%%   <<"OptimizationJobName">> := string()
+%% }
+-type stop_optimization_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% deployment_stage_status_summary() :: #{
 %%   <<"DeploymentConfig">> => edge_deployment_config(),
 %%   <<"DeploymentStatus">> => edge_deployment_status(),
@@ -10183,6 +10321,12 @@
 %%   <<"SortOrder">> => list(any())
 %% }
 -type list_notebook_instance_lifecycle_configs_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_optimization_job_response() :: #{
+%%   <<"OptimizationJobArn">> => string()
+%% }
+-type create_optimization_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_inference_recommendations_job_request() :: #{
@@ -11075,6 +11219,13 @@
 -type notebook_instance_lifecycle_hook() :: #{binary() => any()}.
 
 %% Example:
+%% model_quantization_config() :: #{
+%%   <<"Image">> => string(),
+%%   <<"OverrideEnvironment">> => map()
+%% }
+-type model_quantization_config() :: #{binary() => any()}.
+
+%% Example:
 %% condition_step_metadata() :: #{
 %%   <<"Outcome">> => list(any())
 %% }
@@ -11159,6 +11310,20 @@
 -type delete_endpoint_config_input() :: #{binary() => any()}.
 
 %% Example:
+%% optimization_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentInstanceType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OptimizationEndTime">> => non_neg_integer(),
+%%   <<"OptimizationJobArn">> => string(),
+%%   <<"OptimizationJobName">> => string(),
+%%   <<"OptimizationJobStatus">> => list(any()),
+%%   <<"OptimizationStartTime">> => non_neg_integer(),
+%%   <<"OptimizationTypes">> => list(string()())
+%% }
+-type optimization_job_summary() :: #{binary() => any()}.
+
+%% Example:
 %% create_edge_packaging_job_request() :: #{
 %%   <<"CompilationJobName">> := string(),
 %%   <<"EdgePackagingJobName">> := string(),
@@ -11176,6 +11341,12 @@
 %%   <<"MonitoringScheduleArn">> => string()
 %% }
 -type create_monitoring_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_optimization_job_request() :: #{
+%%   <<"OptimizationJobName">> := string()
+%% }
+-type delete_optimization_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% auto_ml_job_step_metadata() :: #{
@@ -11249,6 +11420,13 @@
 %%   <<"KmsKeyId">> => string()
 %% }
 -type production_variant_core_dump_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_optimization_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OptimizationJobSummaries">> => list(optimization_job_summary()())
+%% }
+-type list_optimization_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% model_package_summary() :: #{
@@ -11627,6 +11805,10 @@
 -type create_notebook_instance_lifecycle_config_errors() ::
     resource_limit_exceeded().
 
+-type create_optimization_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
 -type create_pipeline_errors() ::
     resource_limit_exceeded() | 
     conflict_exception() | 
@@ -11784,6 +11966,9 @@
 -type delete_monitoring_schedule_errors() ::
     resource_not_found().
 
+-type delete_optimization_job_errors() ::
+    resource_not_found().
+
 -type delete_pipeline_errors() ::
     conflict_exception() | 
     resource_not_found().
@@ -11921,6 +12106,9 @@
     resource_not_found().
 
 -type describe_monitoring_schedule_errors() ::
+    resource_not_found().
+
+-type describe_optimization_job_errors() ::
     resource_not_found().
 
 -type describe_pipeline_errors() ::
@@ -12107,6 +12295,9 @@
     resource_not_found().
 
 -type stop_monitoring_schedule_errors() ::
+    resource_not_found().
+
+-type stop_optimization_job_errors() ::
     resource_not_found().
 
 -type stop_pipeline_execution_errors() ::
@@ -12436,7 +12627,8 @@ create_algorithm(Client, Input, Options)
 %% invoked by Amazon SageMaker upon access to the associated Domain, and when
 %% new kernel
 %% configurations are selected by the user. A user may have multiple Apps
-%% active simultaneously.
+%% active
+%% simultaneously.
 -spec create_app(aws_client:aws_client(), create_app_request()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
@@ -12769,13 +12961,12 @@ create_device_fleet(Client, Input, Options)
 
 %% @doc Creates a `Domain'.
 %%
-%% A domain consists of an associated Amazon Elastic File System volume, a
-%% list
-%% of authorized users, and a variety of security, application, policy, and
-%% Amazon Virtual Private Cloud (VPC)
-%% configurations. Users within a domain can share notebook files and other
-%% artifacts with each
-%% other.
+%% A domain consists of an associated Amazon Elastic File System
+%% volume, a list of authorized users, and a variety of security,
+%% application, policy, and
+%% Amazon Virtual Private Cloud (VPC) configurations. Users within a domain
+%% can share notebook files
+%% and other artifacts with each other.
 %%
 %% EFS storage
 %%
@@ -12786,24 +12977,25 @@ create_device_fleet(Client, Input, Options)
 %% repositories, and data files.
 %%
 %% SageMaker uses the Amazon Web Services Key Management Service (Amazon Web
-%% Services KMS) to
-%% encrypt the EFS volume attached to the domain with an Amazon Web Services
-%% managed key by
-%% default. For more control, you can specify a customer managed key. For
-%% more information, see
-%% Protect Data
+%% Services
+%% KMS) to encrypt the EFS volume attached to the domain with an Amazon Web
+%% Services managed key
+%% by default. For more control, you can specify a customer managed key. For
+%% more information,
+%% see Protect Data
 %% at Rest Using Encryption:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html.
 %%
 %% VPC configuration
 %%
 %% All traffic between the domain and the Amazon EFS volume is through the
-%% specified VPC and
-%% subnets. For other traffic, you can specify the `AppNetworkAccessType'
-%% parameter.
-%% `AppNetworkAccessType' corresponds to the network access type that you
-%% choose
-%% when you onboard to the domain. The following options are available:
+%% specified
+%% VPC and subnets. For other traffic, you can specify the
+%% `AppNetworkAccessType'
+%% parameter. `AppNetworkAccessType' corresponds to the network access
+%% type that you
+%% choose when you onboard to the domain. The following options are
+%% available:
 %%
 %% `PublicInternetOnly' - Non-EFS traffic goes through a VPC managed by
 %% Amazon SageMaker, which allows internet access. This is the default value.
@@ -12815,18 +13007,19 @@ create_device_fleet(Client, Input, Options)
 %% gateway.
 %%
 %% When internet access is disabled, you won't be able to run a Amazon
-%% SageMaker Studio notebook
-%% or to train or host models unless your VPC has an interface endpoint to
-%% the SageMaker API and
-%% runtime or a NAT gateway and your security groups allow outbound
-%% connections.
+%% SageMaker
+%% Studio notebook or to train or host models unless your VPC has an
+%% interface endpoint to
+%% the SageMaker API and runtime or a NAT gateway and your security groups
+%% allow
+%% outbound connections.
 %%
 %% NFS traffic over TCP on port 2049 needs to be allowed in both inbound and
 %% outbound rules
 %% in order to launch a Amazon SageMaker Studio app successfully.
 %%
-%% For more information, see Connect Amazon SageMaker Studio
-%% Notebooks to Resources in a VPC:
+%% For more information, see Connect Amazon SageMaker Studio Notebooks to
+%% Resources in a VPC:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-and-internet-access.html.
 -spec create_domain(aws_client:aws_client(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
@@ -13875,6 +14068,36 @@ create_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNotebookInstanceLifecycleConfig">>, Input, Options).
 
+%% @doc Creates a job that optimizes a model for inference performance.
+%%
+%% To create the job, you
+%% provide the location of a source model, and you provide the settings for
+%% the optimization
+%% techniques that you want the job to apply. When the job completes
+%% successfully, SageMaker
+%% uploads the new optimized model to the output destination that you
+%% specify.
+%%
+%% For more information about how to use this action, and about the supported
+%% optimization
+%% techniques, see Optimize model inference with Amazon SageMaker:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/model-optimize.html.
+-spec create_optimization_job(aws_client:aws_client(), create_optimization_job_request()) ->
+    {ok, create_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_optimization_job_errors(), tuple()}.
+create_optimization_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_optimization_job(Client, Input, []).
+
+-spec create_optimization_job(aws_client:aws_client(), create_optimization_job_request(), proplists:proplist()) ->
+    {ok, create_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_optimization_job_errors(), tuple()}.
+create_optimization_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateOptimizationJob">>, Input, Options).
+
 %% @doc Creates a pipeline using a JSON pipeline definition.
 -spec create_pipeline(aws_client:aws_client(), create_pipeline_request()) ->
     {ok, create_pipeline_response(), tuple()} |
@@ -13894,34 +14117,34 @@ create_pipeline(Client, Input, Options)
 
 %% @doc Creates a URL for a specified UserProfile in a Domain.
 %%
-%% When accessed in a web browser,
-%% the user will be automatically signed in to the domain, and granted access
-%% to all of
-%% the Apps and files associated with the Domain's Amazon Elastic File
-%% System volume.
-%% This operation can only be called when the authentication mode equals IAM.
+%% When accessed in a web browser, the
+%% user will be automatically signed in to the domain, and granted access to
+%% all of the Apps and
+%% files associated with the Domain's Amazon Elastic File System volume.
+%% This operation can only be
+%% called when the authentication mode equals IAM.
 %%
 %% The IAM role or user passed to this API defines the permissions to access
-%% the app. Once
-%% the presigned URL is created, no additional permission is required to
-%% access this URL. IAM
-%% authorization policies for this API are also enforced for every HTTP
-%% request and WebSocket
-%% frame that attempts to connect to the app.
+%% the app. Once the presigned URL is created, no additional permission is
+%% required to access
+%% this URL. IAM authorization policies for this API are also enforced for
+%% every
+%% HTTP request and WebSocket frame that attempts to connect to the app.
 %%
-%% You can restrict access to this API and to the
-%% URL that it returns to a list of IP addresses, Amazon VPCs or Amazon VPC
-%% Endpoints that you specify. For more
-%% information, see Connect to Amazon SageMaker Studio Through an Interface
-%% VPC Endpoint:
+%% You can restrict access to this API and to the URL that it returns to a
+%% list of IP
+%% addresses, Amazon VPCs or Amazon VPC Endpoints that you specify. For more
+%% information, see Connect to Amazon SageMaker
+%% Studio Through an Interface VPC Endpoint:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-interface-endpoint.html
 %% .
 %%
 %% The URL that you get from a call to `CreatePresignedDomainUrl' has a
-%% default timeout of 5 minutes. You can configure this value using
-%% `ExpiresInSeconds'. If you try to use the URL after the timeout limit
-%% expires, you
-%% are directed to the Amazon Web Services console sign-in page.
+%% default
+%% timeout of 5 minutes. You can configure this value using
+%% `ExpiresInSeconds'. If
+%% you try to use the URL after the timeout limit expires, you are directed
+%% to the Amazon Web Services console sign-in page.
 -spec create_presigned_domain_url(aws_client:aws_client(), create_presigned_domain_url_request()) ->
     {ok, create_presigned_domain_url_response(), tuple()} |
     {error, any()} |
@@ -14300,11 +14523,12 @@ create_trial_component(Client, Input, Options)
 %% user-oriented features. This entity is created when a user onboards to a
 %% domain. If an
 %% administrator invites a person by email or imports them from IAM Identity
-%% Center, a user profile is
-%% automatically created. A user profile is the primary holder of settings
-%% for an individual
-%% user and has a reference to the user's private Amazon Elastic File
-%% System home directory.
+%% Center, a user
+%% profile is automatically created. A user profile is the primary holder of
+%% settings for an
+%% individual user and has a reference to the user's private Amazon
+%% Elastic File System home
+%% directory.
 -spec create_user_profile(aws_client:aws_client(), create_user_profile_request()) ->
     {ok, create_user_profile_response(), tuple()} |
     {error, any()} |
@@ -15208,6 +15432,23 @@ delete_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNotebookInstanceLifecycleConfig">>, Input, Options).
 
+%% @doc Deletes an optimization job.
+-spec delete_optimization_job(aws_client:aws_client(), delete_optimization_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_optimization_job_errors(), tuple()}.
+delete_optimization_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_optimization_job(Client, Input, []).
+
+-spec delete_optimization_job(aws_client:aws_client(), delete_optimization_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_optimization_job_errors(), tuple()}.
+delete_optimization_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteOptimizationJob">>, Input, Options).
+
 %% @doc Deletes a pipeline if there are no running instances of the pipeline.
 %%
 %% To delete a
@@ -15267,9 +15508,12 @@ delete_space(Client, Input, Options)
 
 %% @doc Deletes the Amazon SageMaker Studio Lifecycle Configuration.
 %%
-%% In order to delete the Lifecycle Configuration, there must be no running
-%% apps using the Lifecycle Configuration. You must also remove the Lifecycle
-%% Configuration from UserSettings in all Domains and UserProfiles.
+%% In order to delete the
+%% Lifecycle Configuration, there must be no running apps using the Lifecycle
+%% Configuration. You
+%% must also remove the Lifecycle Configuration from UserSettings in all
+%% Domains and
+%% UserProfiles.
 -spec delete_studio_lifecycle_config(aws_client:aws_client(), delete_studio_lifecycle_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -16283,6 +16527,23 @@ describe_notebook_instance_lifecycle_config(Client, Input)
 describe_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotebookInstanceLifecycleConfig">>, Input, Options).
+
+%% @doc Provides the properties of the specified optimization job.
+-spec describe_optimization_job(aws_client:aws_client(), describe_optimization_job_request()) ->
+    {ok, describe_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_optimization_job_errors(), tuple()}.
+describe_optimization_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_optimization_job(Client, Input, []).
+
+-spec describe_optimization_job(aws_client:aws_client(), describe_optimization_job_request(), proplists:proplist()) ->
+    {ok, describe_optimization_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_optimization_job_errors(), tuple()}.
+describe_optimization_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeOptimizationJob">>, Input, Options).
 
 %% @doc Describes the details of a pipeline.
 -spec describe_pipeline(aws_client:aws_client(), describe_pipeline_request()) ->
@@ -17675,6 +17936,21 @@ list_notebook_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookInstances">>, Input, Options).
 
+%% @doc Lists the optimization jobs in your account and their properties.
+-spec list_optimization_jobs(aws_client:aws_client(), list_optimization_jobs_request()) ->
+    {ok, list_optimization_jobs_response(), tuple()} |
+    {error, any()}.
+list_optimization_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_optimization_jobs(Client, Input, []).
+
+-spec list_optimization_jobs(aws_client:aws_client(), list_optimization_jobs_request(), proplists:proplist()) ->
+    {ok, list_optimization_jobs_response(), tuple()} |
+    {error, any()}.
+list_optimization_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOptimizationJobs">>, Input, Options).
+
 %% @doc Gets a list of `PipeLineExecutionStep' objects.
 -spec list_pipeline_execution_steps(aws_client:aws_client(), list_pipeline_execution_steps_request()) ->
     {ok, list_pipeline_execution_steps_response(), tuple()} |
@@ -17822,7 +18098,8 @@ list_stage_devices(Client, Input, Options)
     request(Client, <<"ListStageDevices">>, Input, Options).
 
 %% @doc Lists the Amazon SageMaker Studio Lifecycle Configurations in your
-%% Amazon Web Services Account.
+%% Amazon Web Services
+%% Account.
 -spec list_studio_lifecycle_configs(aws_client:aws_client(), list_studio_lifecycle_configs_request()) ->
     {ok, list_studio_lifecycle_configs_response(), tuple()} |
     {error, any()} |
@@ -18558,6 +18835,23 @@ stop_notebook_instance(Client, Input)
 stop_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopNotebookInstance">>, Input, Options).
+
+%% @doc Ends a running inference optimization job.
+-spec stop_optimization_job(aws_client:aws_client(), stop_optimization_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_optimization_job_errors(), tuple()}.
+stop_optimization_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_optimization_job(Client, Input, []).
+
+-spec stop_optimization_job(aws_client:aws_client(), stop_optimization_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, stop_optimization_job_errors(), tuple()}.
+stop_optimization_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopOptimizationJob">>, Input, Options).
 
 %% @doc Stops a pipeline execution.
 %%

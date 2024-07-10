@@ -653,6 +653,7 @@
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
 %%   <<"FsxAdminPassword">> => string(),
+%%   <<"HAPairs">> => integer(),
 %%   <<"RemoveRouteTableIds">> => list(string()()),
 %%   <<"ThroughputCapacity">> => integer(),
 %%   <<"ThroughputCapacityPerHAPair">> => integer(),
