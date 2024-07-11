@@ -3811,6 +3811,13 @@
 -type metadata_info() :: #{binary() => any()}.
 
 %% Example:
+%% recipe_action() :: #{
+%%   <<"Operation">> => string(),
+%%   <<"Parameters">> => map()
+%% }
+-type recipe_action() :: #{binary() => any()}.
+
+%% Example:
 %% find_matches_task_run_properties() :: #{
 %%   <<"JobId">> => string(),
 %%   <<"JobName">> => string(),
@@ -3935,7 +3942,8 @@
 %% recipe() :: #{
 %%   <<"Inputs">> => list(string()()),
 %%   <<"Name">> => string(),
-%%   <<"RecipeReference">> => recipe_reference()
+%%   <<"RecipeReference">> => recipe_reference(),
+%%   <<"RecipeSteps">> => list(recipe_step()())
 %% }
 -type recipe() :: #{binary() => any()}.
 
@@ -5220,6 +5228,13 @@
 -type update_source_control_from_job_request() :: #{binary() => any()}.
 
 %% Example:
+%% recipe_step() :: #{
+%%   <<"Action">> => recipe_action(),
+%%   <<"ConditionExpressions">> => list(condition_expression()())
+%% }
+-type recipe_step() :: #{binary() => any()}.
+
+%% Example:
 %% get_database_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"Name">> := string()
@@ -5917,6 +5932,14 @@
 %%   <<"Message">> => string()
 %% }
 -type crawler_not_running_exception() :: #{binary() => any()}.
+
+%% Example:
+%% condition_expression() :: #{
+%%   <<"Condition">> => string(),
+%%   <<"TargetColumn">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type condition_expression() :: #{binary() => any()}.
 
 %% Example:
 %% resume_workflow_run_response() :: #{

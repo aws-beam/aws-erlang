@@ -2104,8 +2104,10 @@
 
 %% Example:
 %% ipam_discovered_resource_cidr() :: #{
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"IpUsage">> => float(),
 %%   <<"IpamResourceDiscoveryId">> => string(),
+%%   <<"NetworkInterfaceAttachmentStatus">> => list(any()),
 %%   <<"ResourceCidr">> => string(),
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceOwnerId">> => string(),
@@ -2479,6 +2481,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpamPoolId">> := string(),
 %%   <<"NetmaskLength">> := integer(),
+%%   <<"NetworkBorderGroup">> => string(),
 %%   <<"PoolId">> := string()
 %% }
 -type provision_public_ipv4_pool_cidr_request() :: #{binary() => any()}.
@@ -3127,6 +3130,7 @@
 
 %% Example:
 %% ipam_resource_cidr() :: #{
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"ComplianceStatus">> => list(any()),
 %%   <<"IpUsage">> => float(),
 %%   <<"IpamId">> => string(),
@@ -9705,6 +9709,7 @@
 %% Example:
 %% delete_public_ipv4_pool_request() :: #{
 %%   <<"DryRun">> => boolean(),
+%%   <<"NetworkBorderGroup">> => string(),
 %%   <<"PoolId">> := string()
 %% }
 -type delete_public_ipv4_pool_request() :: #{binary() => any()}.
@@ -16497,6 +16502,7 @@
 %% Example:
 %% create_public_ipv4_pool_request() :: #{
 %%   <<"DryRun">> => boolean(),
+%%   <<"NetworkBorderGroup">> => string(),
 %%   <<"TagSpecifications">> => list(tag_specification()())
 %% }
 -type create_public_ipv4_pool_request() :: #{binary() => any()}.

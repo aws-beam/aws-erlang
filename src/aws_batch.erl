@@ -301,6 +301,7 @@
 %% node_property_override() :: #{
 %%   <<"containerOverrides">> => container_overrides(),
 %%   <<"ecsPropertiesOverride">> => ecs_properties_override(),
+%%   <<"eksPropertiesOverride">> => eks_properties_override(),
 %%   <<"instanceTypes">> => list(string()()),
 %%   <<"targetNodes">> => string()
 %% }
@@ -827,6 +828,7 @@
 %% Example:
 %% eks_attempt_detail() :: #{
 %%   <<"containers">> => list(eks_attempt_container_detail()()),
+%%   <<"eksClusterArn">> => string(),
 %%   <<"initContainers">> => list(eks_attempt_container_detail()()),
 %%   <<"nodeName">> => string(),
 %%   <<"podName">> => string(),
@@ -1056,6 +1058,7 @@
 %% node_range_property() :: #{
 %%   <<"container">> => container_properties(),
 %%   <<"ecsProperties">> => ecs_properties(),
+%%   <<"eksProperties">> => eks_properties(),
 %%   <<"instanceTypes">> => list(string()()),
 %%   <<"targetNodes">> => string()
 %% }

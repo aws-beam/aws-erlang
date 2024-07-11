@@ -15,8 +15,18 @@
          create_agent_alias/4,
          create_data_source/3,
          create_data_source/4,
+         create_flow/2,
+         create_flow/3,
+         create_flow_alias/3,
+         create_flow_alias/4,
+         create_flow_version/3,
+         create_flow_version/4,
          create_knowledge_base/2,
          create_knowledge_base/3,
+         create_prompt/2,
+         create_prompt/3,
+         create_prompt_version/3,
+         create_prompt_version/4,
          delete_agent/3,
          delete_agent/4,
          delete_agent_action_group/5,
@@ -27,8 +37,16 @@
          delete_agent_version/5,
          delete_data_source/4,
          delete_data_source/5,
+         delete_flow/3,
+         delete_flow/4,
+         delete_flow_alias/4,
+         delete_flow_alias/5,
+         delete_flow_version/4,
+         delete_flow_version/5,
          delete_knowledge_base/3,
          delete_knowledge_base/4,
+         delete_prompt/3,
+         delete_prompt/4,
          disassociate_agent_knowledge_base/5,
          disassociate_agent_knowledge_base/6,
          get_agent/2,
@@ -49,12 +67,24 @@
          get_data_source/3,
          get_data_source/5,
          get_data_source/6,
+         get_flow/2,
+         get_flow/4,
+         get_flow/5,
+         get_flow_alias/3,
+         get_flow_alias/5,
+         get_flow_alias/6,
+         get_flow_version/3,
+         get_flow_version/5,
+         get_flow_version/6,
          get_ingestion_job/4,
          get_ingestion_job/6,
          get_ingestion_job/7,
          get_knowledge_base/2,
          get_knowledge_base/4,
          get_knowledge_base/5,
+         get_prompt/2,
+         get_prompt/4,
+         get_prompt/5,
          list_agent_action_groups/4,
          list_agent_action_groups/5,
          list_agent_aliases/3,
@@ -67,15 +97,29 @@
          list_agents/3,
          list_data_sources/3,
          list_data_sources/4,
+         list_flow_aliases/2,
+         list_flow_aliases/4,
+         list_flow_aliases/5,
+         list_flow_versions/2,
+         list_flow_versions/4,
+         list_flow_versions/5,
+         list_flows/1,
+         list_flows/3,
+         list_flows/4,
          list_ingestion_jobs/4,
          list_ingestion_jobs/5,
          list_knowledge_bases/2,
          list_knowledge_bases/3,
+         list_prompts/1,
+         list_prompts/3,
+         list_prompts/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
          prepare_agent/3,
          prepare_agent/4,
+         prepare_flow/3,
+         prepare_flow/4,
          start_ingestion_job/4,
          start_ingestion_job/5,
          tag_resource/3,
@@ -92,8 +136,14 @@
          update_agent_knowledge_base/6,
          update_data_source/4,
          update_data_source/5,
+         update_flow/3,
+         update_flow/4,
+         update_flow_alias/4,
+         update_flow_alias/5,
          update_knowledge_base/3,
-         update_knowledge_base/4]).
+         update_knowledge_base/4,
+         update_prompt/3,
+         update_prompt/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -112,6 +162,24 @@
 
 
 %% Example:
+%% update_flow_request() :: #{
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"name">> := string()
+%% }
+-type update_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_flow_node_s3_configuration() :: #{
+%%   <<"bucketName">> => string()
+%% }
+-type storage_flow_node_s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% ingestion_job_statistics() :: #{
 %%   <<"numberOfDocumentsDeleted">> => [float()],
 %%   <<"numberOfDocumentsFailed">> => [float()],
@@ -122,6 +190,15 @@
 %%   <<"numberOfNewDocumentsIndexed">> => [float()]
 %% }
 -type ingestion_job_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_flow_alias_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item()())
+%% }
+-type update_flow_alias_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -145,10 +222,95 @@
 
 
 %% Example:
+%% share_point_data_source_configuration() :: #{
+%%   <<"crawlerConfiguration">> => share_point_crawler_configuration(),
+%%   <<"sourceConfiguration">> => share_point_source_configuration()
+%% }
+-type share_point_data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_prompt_template_configuration() :: #{
+%%   <<"inputVariables">> => list(prompt_input_variable()()),
+%%   <<"text">> => string()
+%% }
+-type text_prompt_template_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_flow_alias_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"flowId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_flow_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_configuration() :: #{
+%%   <<"enabledMemoryTypes">> => list(list(any())()),
+%%   <<"storageDays">> => integer()
+%% }
+-type memory_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_agent_alias_response() :: #{
 %%   <<"agentAlias">> => agent_alias()
 %% }
 -type get_agent_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prompt_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"variants">> => list(prompt_variant()()),
+%%   <<"version">> => string()
+%% }
+-type create_prompt_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_condition() :: #{
+%%   <<"expression">> => string(),
+%%   <<"name">> => string()
+%% }
+-type flow_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_flow_node_inline_configuration() :: #{
+%%   <<"inferenceConfiguration">> => list(),
+%%   <<"modelId">> => string(),
+%%   <<"templateConfiguration">> => list(),
+%%   <<"templateType">> => list(any())
+%% }
+-type prompt_flow_node_inline_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type prompt_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -157,6 +319,26 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_agents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_flow_node_configuration() :: #{
+%%   <<"serviceConfiguration">> => list()
+%% }
+-type storage_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_flow_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -182,14 +364,32 @@
 
 %% Example:
 %% data_source_configuration() :: #{
+%%   <<"confluenceConfiguration">> => confluence_data_source_configuration(),
 %%   <<"s3Configuration">> => s3_data_source_configuration(),
-%%   <<"type">> => list(any())
+%%   <<"salesforceConfiguration">> => salesforce_data_source_configuration(),
+%%   <<"sharePointConfiguration">> => share_point_data_source_configuration(),
+%%   <<"type">> => list(any()),
+%%   <<"webConfiguration">> => web_data_source_configuration()
 %% }
 -type data_source_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% pattern_object_filter_configuration() :: #{
+%%   <<"filters">> => list(pattern_object_filter()())
+%% }
+-type pattern_object_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_source_configuration() :: #{
+%%   <<"urlConfiguration">> => url_configuration()
+%% }
+-type web_source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -228,6 +428,22 @@
 
 
 %% Example:
+%% transformation() :: #{
+%%   <<"stepToApply">> => list(any()),
+%%   <<"transformationFunction">> => transformation_function()
+%% }
+-type transformation() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_transformation_configuration() :: #{
+%%   <<"intermediateStorage">> => intermediate_storage(),
+%%   <<"transformations">> => list(transformation()())
+%% }
+-type custom_transformation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_agent_request() :: #{
 %%   <<"agentName">> := string(),
 %%   <<"agentResourceRoleArn">> => string(),
@@ -238,10 +454,53 @@
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
+%%   <<"memoryConfiguration">> => memory_configuration(),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
 %%   <<"tags">> => map()
 %% }
 -type create_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_flow_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"validations">> => list(flow_validation()()),
+%%   <<"version">> => string()
+%% }
+-type get_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_data_connection_configuration() :: #{
+%%   <<"sourceOutput">> => string(),
+%%   <<"targetInput">> => string()
+%% }
+-type flow_data_connection_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% salesforce_data_source_configuration() :: #{
+%%   <<"crawlerConfiguration">> => salesforce_crawler_configuration(),
+%%   <<"sourceConfiguration">> => salesforce_source_configuration()
+%% }
+-type salesforce_data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prompts_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"promptSummaries">> => list(prompt_summary()())
+%% }
+-type list_prompts_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -287,6 +546,24 @@
 
 
 %% Example:
+%% flow_node() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"inputs">> => list(flow_node_input()()),
+%%   <<"name">> => string(),
+%%   <<"outputs">> => list(flow_node_output()()),
+%%   <<"type">> => list(any())
+%% }
+-type flow_node() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_flow_request() :: #{
+%%   <<"skipResourceInUseCheck">> => [boolean()]
+%% }
+-type delete_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_knowledge_base_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"knowledgeBaseConfiguration">> := knowledge_base_configuration(),
@@ -298,12 +575,44 @@
 
 
 %% Example:
+%% flow_validation() :: #{
+%%   <<"message">> => string(),
+%%   <<"severity">> => list(any())
+%% }
+-type flow_validation() :: #{binary() => any()}.
+
+
+%% Example:
 %% parameter_detail() :: #{
 %%   <<"description">> => string(),
 %%   <<"required">> => [boolean()],
 %%   <<"type">> => list(any())
 %% }
 -type parameter_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_definition() :: #{
+%%   <<"connections">> => list(flow_connection()()),
+%%   <<"nodes">> => list(flow_node()())
+%% }
+-type flow_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_flow_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type get_flow_version_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -324,6 +633,39 @@
 
 
 %% Example:
+%% list_flow_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_prompt_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"variants">> => list(prompt_variant()()),
+%%   <<"version">> => string()
+%% }
+-type update_prompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_node_input() :: #{
+%%   <<"expression">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type flow_node_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% prepare_agent_response() :: #{
 %%   <<"agentId">> => string(),
 %%   <<"agentStatus">> => list(any()),
@@ -332,12 +674,40 @@
 %% }
 -type prepare_agent_response() :: #{binary() => any()}.
 
+%% Example:
+%% iterator_flow_node_configuration() :: #{}
+-type iterator_flow_node_configuration() :: #{}.
+
+
+%% Example:
+%% prompt_input_variable() :: #{
+%%   <<"name">> => string()
+%% }
+-type prompt_input_variable() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_data_source_response() :: #{
 %%   <<"dataSource">> => data_source()
 %% }
 -type update_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type create_flow_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -352,6 +722,13 @@
 
 
 %% Example:
+%% delete_flow_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type delete_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_knowledge_base_response() :: #{
 %%   <<"knowledgeBase">> => knowledge_base()
 %% }
@@ -363,6 +740,22 @@
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% parsing_configuration() :: #{
+%%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_configuration(),
+%%   <<"parsingStrategy">> => list(any())
+%% }
+-type parsing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flow_aliases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_aliases_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_agent_knowledge_base_request() :: #{}
@@ -380,6 +773,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% share_point_crawler_configuration() :: #{
+%%   <<"filterConfiguration">> => crawl_filter_configuration()
+%% }
+-type share_point_crawler_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -403,10 +803,40 @@
 
 
 %% Example:
+%% knowledge_base_flow_node_configuration() :: #{
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"modelId">> => string()
+%% }
+-type knowledge_base_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_alias_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"flowId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type create_flow_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_agent_version_request() :: #{
 %%   <<"skipResourceInUseCheck">> => [boolean()]
 %% }
 -type delete_agent_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_prompt_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"version">> => string()
+%% }
+-type delete_prompt_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -415,6 +845,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% salesforce_source_configuration() :: #{
+%%   <<"authType">> => list(any()),
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"hostUrl">> => string()
+%% }
+-type salesforce_source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -433,10 +872,59 @@
 
 
 %% Example:
+%% delete_prompt_request() :: #{
+%%   <<"promptVersion">> => string()
+%% }
+-type delete_prompt_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchical_chunking_configuration() :: #{
+%%   <<"levelConfigurations">> => list(hierarchical_chunking_level_configuration()()),
+%%   <<"overlapTokens">> => [integer()]
+%% }
+-type hierarchical_chunking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_connection() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"name">> => string(),
+%%   <<"source">> => string(),
+%%   <<"target">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type flow_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_prompt_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"variants">> => list(prompt_variant()()),
+%%   <<"version">> => string()
+%% }
+-type get_prompt_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_agent_action_group_response() :: #{
 %%   <<"agentActionGroup">> => agent_action_group()
 %% }
 -type get_agent_action_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% transformation_function() :: #{
+%%   <<"transformationLambdaConfiguration">> => transformation_lambda_configuration()
+%% }
+-type transformation_function() :: #{binary() => any()}.
 
 %% Example:
 %% delete_agent_action_group_response() :: #{}
@@ -458,6 +946,14 @@
 %% }
 -type delete_agent_alias_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_flows_response() :: #{
+%%   <<"flowSummaries">> => list(flow_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flows_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_agent_version_request() :: #{}
 -type get_agent_version_request() :: #{}.
@@ -476,6 +972,21 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_flow_node_configuration() :: #{
+%%   <<"serviceConfiguration">> => list()
+%% }
+-type retrieval_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_flow_version_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"version">> => string()
+%% }
+-type delete_flow_version_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -524,6 +1035,25 @@
 %% }
 -type knowledge_base() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_flow_versions_response() :: #{
+%%   <<"flowVersionSummaries">> => list(flow_version_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_alias_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item()()),
+%%   <<"tags">> => map()
+%% }
+-type create_flow_alias_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_ingestion_job_request() :: #{}
 -type get_ingestion_job_request() :: #{}.
@@ -553,6 +1083,19 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_knowledge_bases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prompt_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"variants">> => list(prompt_variant()())
+%% }
+-type create_prompt_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -594,10 +1137,54 @@
 
 
 %% Example:
+%% pattern_object_filter() :: #{
+%%   <<"exclusionFilters">> => list(string()()),
+%%   <<"inclusionFilters">> => list(string()()),
+%%   <<"objectType">> => string()
+%% }
+-type pattern_object_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_node_output() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type flow_node_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% embedding_model_configuration() :: #{
 %%   <<"bedrockEmbeddingModelConfiguration">> => bedrock_embedding_model_configuration()
 %% }
 -type embedding_model_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_flow_version_request() :: #{}
+-type get_flow_version_request() :: #{}.
+
+
+%% Example:
+%% create_prompt_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"variants">> => list(prompt_variant()()),
+%%   <<"version">> => string()
+%% }
+-type create_prompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% seed_url() :: #{
+%%   <<"url">> => string()
+%% }
+-type seed_url() :: #{binary() => any()}.
 
 
 %% Example:
@@ -606,9 +1193,34 @@
 %% }
 -type get_ingestion_job_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% flow_version_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type flow_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% transformation_lambda_configuration() :: #{
+%%   <<"lambdaArn">> => string()
+%% }
+-type transformation_lambda_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_data_source_request() :: #{}
 -type get_data_source_request() :: #{}.
+
+
+%% Example:
+%% url_configuration() :: #{
+%%   <<"seedUrls">> => list(seed_url()())
+%% }
+-type url_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -619,10 +1231,59 @@
 
 
 %% Example:
+%% agent_flow_node_configuration() :: #{
+%%   <<"agentAliasArn">> => string()
+%% }
+-type agent_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_crawler_limits() :: #{
+%%   <<"rateLimit">> => [integer()]
+%% }
+-type web_crawler_limits() :: #{binary() => any()}.
+
+%% Example:
+%% input_flow_node_configuration() :: #{}
+-type input_flow_node_configuration() :: #{}.
+
+
+%% Example:
+%% intermediate_storage() :: #{
+%%   <<"s3Location">> => s3_location()
+%% }
+-type intermediate_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_flow_alias_response() :: #{
+%%   <<"flowId">> => string(),
+%%   <<"id">> => string()
+%% }
+-type delete_flow_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_foundation_model_configuration() :: #{
+%%   <<"modelArn">> => string(),
+%%   <<"parsingPrompt">> => parsing_prompt()
+%% }
+-type bedrock_foundation_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_agent_alias_response() :: #{
 %%   <<"agentAlias">> => agent_alias()
 %% }
 -type update_agent_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% prepare_flow_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type prepare_flow_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -668,9 +1329,19 @@
 
 
 %% Example:
+%% confluence_data_source_configuration() :: #{
+%%   <<"crawlerConfiguration">> => confluence_crawler_configuration(),
+%%   <<"sourceConfiguration">> => confluence_source_configuration()
+%% }
+-type confluence_data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% chunking_configuration() :: #{
 %%   <<"chunkingStrategy">> => list(any()),
-%%   <<"fixedSizeChunkingConfiguration">> => fixed_size_chunking_configuration()
+%%   <<"fixedSizeChunkingConfiguration">> => fixed_size_chunking_configuration(),
+%%   <<"hierarchicalChunkingConfiguration">> => hierarchical_chunking_configuration(),
+%%   <<"semanticChunkingConfiguration">> => semantic_chunking_configuration()
 %% }
 -type chunking_configuration() :: #{binary() => any()}.
 
@@ -692,6 +1363,7 @@
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
+%%   <<"memoryConfiguration">> => memory_configuration(),
 %%   <<"preparedAt">> => non_neg_integer(),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
 %%   <<"recommendedActions">> => list(string()()),
@@ -705,6 +1377,20 @@
 %%   <<"skipResourceInUseCheck">> => [boolean()]
 %% }
 -type delete_agent_action_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_flow_alias_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"flowId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_flow_alias_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -744,9 +1430,24 @@
 %% }
 -type agent_alias_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% parsing_prompt() :: #{
+%%   <<"parsingPromptText">> => string()
+%% }
+-type parsing_prompt() :: #{binary() => any()}.
+
 %% Example:
 %% delete_knowledge_base_request() :: #{}
 -type delete_knowledge_base_request() :: #{}.
+
+
+%% Example:
+%% create_flow_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string()
+%% }
+-type create_flow_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -755,6 +1456,10 @@
 %%   <<"name">> => string()
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flow_alias_request() :: #{}
+-type delete_flow_alias_request() :: #{}.
 
 %% Example:
 %% get_agent_action_group_request() :: #{}
@@ -767,6 +1472,13 @@
 %%   <<"agentStatus">> => list(any())
 %% }
 -type delete_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% salesforce_crawler_configuration() :: #{
+%%   <<"filterConfiguration">> => crawl_filter_configuration()
+%% }
+-type salesforce_crawler_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -783,9 +1495,55 @@
 %% }
 -type update_agent_action_group_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% flow_alias_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"flowId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type flow_alias_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"uri">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flows_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% confluence_source_configuration() :: #{
+%%   <<"authType">> => list(any()),
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"hostType">> => list(any()),
+%%   <<"hostUrl">> => string()
+%% }
+-type confluence_source_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_agent_knowledge_base_request() :: #{}
 -type disassociate_agent_knowledge_base_request() :: #{}.
+
+
+%% Example:
+%% get_prompt_request() :: #{
+%%   <<"promptVersion">> => string()
+%% }
+-type get_prompt_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -810,6 +1568,7 @@
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
+%%   <<"memoryConfiguration">> => memory_configuration(),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
 %%   <<"recommendedActions">> => list(string()()),
 %%   <<"updatedAt">> => non_neg_integer(),
@@ -824,6 +1583,15 @@
 %%   <<"provisionedThroughput">> => string()
 %% }
 -type agent_alias_routing_configuration_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_chunking_configuration() :: #{
+%%   <<"breakpointPercentileThreshold">> => [integer()],
+%%   <<"bufferSize">> => [integer()],
+%%   <<"maxTokens">> => [integer()]
+%% }
+-type semantic_chunking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -863,6 +1631,37 @@
 
 
 %% Example:
+%% list_prompts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"promptIdentifier">> => string()
+%% }
+-type list_prompts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% share_point_source_configuration() :: #{
+%%   <<"authType">> => list(any()),
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"domain">> => string(),
+%%   <<"hostType">> => list(any()),
+%%   <<"siteUrls">> => list(string()()),
+%%   <<"tenantId">> => string()
+%% }
+-type share_point_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_crawler_configuration() :: #{
+%%   <<"crawlerLimits">> => web_crawler_limits(),
+%%   <<"exclusionFilters">> => list(string()()),
+%%   <<"inclusionFilters">> => list(string()()),
+%%   <<"scope">> => list(any())
+%% }
+-type web_crawler_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -892,6 +1691,14 @@
 
 
 %% Example:
+%% crawl_filter_configuration() :: #{
+%%   <<"patternObjectFilter">> => pattern_object_filter_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type crawl_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_data_source_response() :: #{
 %%   <<"dataSource">> => data_source()
 %% }
@@ -905,6 +1712,20 @@
 %%   <<"values">> => list(string()())
 %% }
 -type ingestion_job_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type flow_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -927,6 +1748,17 @@
 
 
 %% Example:
+%% update_prompt_request() :: #{
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"variants">> => list(prompt_variant()())
+%% }
+-type update_prompt_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_action_group() :: #{
 %%   <<"actionGroupExecutor">> => list(),
 %%   <<"actionGroupId">> => string(),
@@ -943,6 +1775,34 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent_action_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% lex_flow_node_configuration() :: #{
+%%   <<"botAliasArn">> => string(),
+%%   <<"localeId">> => string()
+%% }
+-type lex_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_model_inference_configuration() :: #{
+%%   <<"maxTokens">> => integer(),
+%%   <<"stopSequences">> => list([string()]()),
+%%   <<"temperature">> => float(),
+%%   <<"topK">> => integer(),
+%%   <<"topP">> => float()
+%% }
+-type prompt_model_inference_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prompt_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_prompt_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -973,6 +1833,10 @@
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
 
+%% Example:
+%% get_flow_alias_request() :: #{}
+-type get_flow_alias_request() :: #{}.
+
 
 %% Example:
 %% update_agent_request() :: #{
@@ -984,6 +1848,7 @@
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
+%%   <<"memoryConfiguration">> => memory_configuration(),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration()
 %% }
 -type update_agent_request() :: #{binary() => any()}.
@@ -994,6 +1859,29 @@
 %%   <<"skipResourceInUseCheck">> => [boolean()]
 %% }
 -type delete_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition_flow_node_configuration() :: #{
+%%   <<"conditions">> => list(flow_condition()())
+%% }
+-type condition_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type create_flow_version_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_agent_alias_request() :: #{}
@@ -1056,6 +1944,10 @@
 %% }
 -type redis_enterprise_cloud_field_mapping() :: #{binary() => any()}.
 
+%% Example:
+%% output_flow_node_configuration() :: #{}
+-type output_flow_node_configuration() :: #{}.
+
 
 %% Example:
 %% ingestion_job_sort_by() :: #{
@@ -1073,10 +1965,25 @@
 
 
 %% Example:
+%% list_flow_aliases_response() :: #{
+%%   <<"flowAliasSummaries">> => list(flow_alias_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_aliases_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_agent_response() :: #{
 %%   <<"agent">> => agent()
 %% }
 -type get_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchical_chunking_level_configuration() :: #{
+%%   <<"maxTokens">> => [integer()]
+%% }
+-type hierarchical_chunking_level_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1093,6 +2000,17 @@
 
 
 %% Example:
+%% lambda_function_flow_node_configuration() :: #{
+%%   <<"lambdaArn">> => string()
+%% }
+-type lambda_function_flow_node_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% collector_flow_node_configuration() :: #{}
+-type collector_flow_node_configuration() :: #{}.
+
+
+%% Example:
 %% agent_summary() :: #{
 %%   <<"agentId">> => string(),
 %%   <<"agentName">> => string(),
@@ -1103,6 +2021,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% confluence_crawler_configuration() :: #{
+%%   <<"filterConfiguration">> => crawl_filter_configuration()
+%% }
+-type confluence_crawler_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1120,6 +2045,17 @@
 -type get_knowledge_base_response() :: #{binary() => any()}.
 
 %% Example:
+%% prepare_flow_request() :: #{}
+-type prepare_flow_request() :: #{}.
+
+
+%% Example:
+%% flow_conditional_connection_configuration() :: #{
+%%   <<"condition">> => string()
+%% }
+-type flow_conditional_connection_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_agent_knowledge_base_response() :: #{}
 -type disassociate_agent_knowledge_base_response() :: #{}.
 
@@ -1130,6 +2066,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_data_source_configuration() :: #{
+%%   <<"crawlerConfiguration">> => web_crawler_configuration(),
+%%   <<"sourceConfiguration">> => web_source_configuration()
+%% }
+-type web_data_source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1156,6 +2100,41 @@
 %% Example:
 %% get_agent_request() :: #{}
 -type get_agent_request() :: #{}.
+
+
+%% Example:
+%% flow_alias_routing_configuration_list_item() :: #{
+%%   <<"flowVersion">> => string()
+%% }
+-type flow_alias_routing_configuration_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_flow_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type update_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_flow_node_resource_configuration() :: #{
+%%   <<"promptArn">> => string()
+%% }
+-type prompt_flow_node_resource_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_flow_request() :: #{}
+-type get_flow_request() :: #{}.
 
 
 %% Example:
@@ -1214,7 +2193,9 @@
 
 %% Example:
 %% vector_ingestion_configuration() :: #{
-%%   <<"chunkingConfiguration">> => chunking_configuration()
+%%   <<"chunkingConfiguration">> => chunking_configuration(),
+%%   <<"customTransformationConfiguration">> => custom_transformation_configuration(),
+%%   <<"parsingConfiguration">> => parsing_configuration()
 %% }
 -type vector_ingestion_configuration() :: #{binary() => any()}.
 
@@ -1232,6 +2213,13 @@
 %%   <<"dataSource">> => data_source()
 %% }
 -type get_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_flow_node_s3_configuration() :: #{
+%%   <<"bucketName">> => string()
+%% }
+-type retrieval_flow_node_s3_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1268,6 +2256,13 @@
 
 
 %% Example:
+%% prompt_flow_node_configuration() :: #{
+%%   <<"sourceConfiguration">> => list()
+%% }
+-type prompt_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_data_source_configuration() :: #{
 %%   <<"bucketArn">> => string(),
 %%   <<"bucketOwnerAccountId">> => string(),
@@ -1287,6 +2282,13 @@
 
 
 %% Example:
+%% delete_flow_version_request() :: #{
+%%   <<"skipResourceInUseCheck">> => [boolean()]
+%% }
+-type delete_flow_version_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% prompt_configuration() :: #{
 %%   <<"basePromptTemplate">> => string(),
 %%   <<"inferenceConfiguration">> => inference_configuration(),
@@ -1296,6 +2298,17 @@
 %%   <<"promptType">> => list(any())
 %% }
 -type prompt_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_variant() :: #{
+%%   <<"inferenceConfiguration">> => list(),
+%%   <<"modelId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"templateConfiguration">> => list(),
+%%   <<"templateType">> => list(any())
+%% }
+-type prompt_variant() :: #{binary() => any()}.
 
 -type associate_agent_knowledge_base_errors() ::
     throttling_exception() | 
@@ -1341,12 +2354,55 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_flow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_flow_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_flow_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_knowledge_base_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_prompt_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_prompt_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type delete_agent_errors() ::
@@ -1388,7 +2444,39 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_flow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_flow_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_flow_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_knowledge_base_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_prompt_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1446,6 +2534,27 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_flow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_flow_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_flow_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_ingestion_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1454,6 +2563,13 @@
     resource_not_found_exception().
 
 -type get_knowledge_base_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_prompt_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1501,6 +2617,26 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type list_flow_aliases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_flow_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_flows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
 -type list_ingestion_jobs_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1514,6 +2650,13 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_prompts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1522,6 +2665,15 @@
     resource_not_found_exception().
 
 -type prepare_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type prepare_flow_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1597,11 +2749,38 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_flow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_flow_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type update_knowledge_base_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_prompt_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1663,9 +2842,14 @@ associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) 
 %% for which the agent should maintain session information. After this time
 %% expires, the subsequent `InvokeAgent' request begins a new session.
 %%
+%% To enable your agent to retain conversational context across multiple
+%% sessions, include a `memoryConfiguration' object.
+%% For more information, see Configure memory:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/agents-configure-memory.html.
+%%
 %% To override the default prompt behavior for agent orchestration and to use
-%% advanced prompts, include a `promptOverrideConfiguration' object. For
-%% more information, see Advanced prompts:
+%% advanced prompts, include a `promptOverrideConfiguration' object.
+%% For more information, see Advanced prompts:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html.
 %%
 %% If you agent fails to be created, the response returns a list of
@@ -1711,9 +2895,16 @@ create_agent(Client, Input0, Options0) ->
 %% calling them.
 %%
 %% To allow your agent to request the user for additional information when
-%% trying to complete a task, add an action group with the
-%% `parentActionGroupSignature' field set to `AMAZON.UserInput'. You
-%% must leave the `description', `apiSchema', and
+%% trying to complete a task,
+%% add an action group with the `parentActionGroupSignature' field set to
+%% `AMAZON.UserInput'.
+%%
+%% To allow your agent to generate, run, and troubleshoot code when trying to
+%% complete a task,
+%% add an action group with the `parentActionGroupSignature' field set to
+%% `AMAZON.CodeInterpreter'.
+%%
+%% You must leave the `description', `apiSchema', and
 %% `actionGroupExecutor' fields blank for this action group. During
 %% orchestration, if your agent determines that it needs to invoke an API in
 %% an action group, but doesn't have enough information to complete the
@@ -1788,10 +2979,10 @@ create_agent_alias(Client, AgentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sets up a data source to be added to a knowledge base.
+%% @doc Creates a data source connector for a knowledge base.
 %%
 %% You can't change the `chunkingConfiguration' after you create the
-%% data source.
+%% data source connector.
 -spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_request()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
@@ -1807,6 +2998,125 @@ create_data_source(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = put,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a prompt flow that you can use to send an input through
+%% various steps to yield an output.
+%%
+%% Configure nodes, each of which corresponds to a step of the flow, and
+%% create connections between the nodes to create paths to different outputs.
+%% For more information, see How it works:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-how-it-works.html
+%% and Create a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-create.html in
+%% the Amazon Bedrock User Guide.
+-spec create_flow(aws_client:aws_client(), create_flow_request()) ->
+    {ok, create_flow_response(), tuple()} |
+    {error, any()} |
+    {error, create_flow_errors(), tuple()}.
+create_flow(Client, Input) ->
+    create_flow(Client, Input, []).
+
+-spec create_flow(aws_client:aws_client(), create_flow_request(), proplists:proplist()) ->
+    {ok, create_flow_response(), tuple()} |
+    {error, any()} |
+    {error, create_flow_errors(), tuple()}.
+create_flow(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/flows/"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an alias of a flow for deployment.
+%%
+%% For more information, see Deploy a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html in
+%% the Amazon Bedrock User Guide.
+-spec create_flow_alias(aws_client:aws_client(), binary() | list(), create_flow_alias_request()) ->
+    {ok, create_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, create_flow_alias_errors(), tuple()}.
+create_flow_alias(Client, FlowIdentifier, Input) ->
+    create_flow_alias(Client, FlowIdentifier, Input, []).
+
+-spec create_flow_alias(aws_client:aws_client(), binary() | list(), create_flow_alias_request(), proplists:proplist()) ->
+    {ok, create_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, create_flow_alias_errors(), tuple()}.
+create_flow_alias(Client, FlowIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a version of the flow that you can deploy.
+%%
+%% For more information, see Deploy a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html in
+%% the Amazon Bedrock User Guide.
+-spec create_flow_version(aws_client:aws_client(), binary() | list(), create_flow_version_request()) ->
+    {ok, create_flow_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_flow_version_errors(), tuple()}.
+create_flow_version(Client, FlowIdentifier, Input) ->
+    create_flow_version(Client, FlowIdentifier, Input, []).
+
+-spec create_flow_version(aws_client:aws_client(), binary() | list(), create_flow_version_request(), proplists:proplist()) ->
+    {ok, create_flow_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_flow_version_errors(), tuple()}.
+create_flow_version(Client, FlowIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/versions"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1881,6 +3191,88 @@ create_knowledge_base(Client, Input0, Options0) ->
     Method = put,
     Path = ["/knowledgebases/"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a prompt in your prompt library that you can add to a flow.
+%%
+%% For more information, see Prompt management in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management.html,
+%% Create a prompt using Prompt management:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-create.html
+%% and Prompt flows in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows.html in the
+%% Amazon Bedrock User Guide.
+-spec create_prompt(aws_client:aws_client(), create_prompt_request()) ->
+    {ok, create_prompt_response(), tuple()} |
+    {error, any()} |
+    {error, create_prompt_errors(), tuple()}.
+create_prompt(Client, Input) ->
+    create_prompt(Client, Input, []).
+
+-spec create_prompt(aws_client:aws_client(), create_prompt_request(), proplists:proplist()) ->
+    {ok, create_prompt_response(), tuple()} |
+    {error, any()} |
+    {error, create_prompt_errors(), tuple()}.
+create_prompt(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prompts/"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a static snapshot of your prompt that can be deployed to
+%% production.
+%%
+%% For more information, see Deploy prompts using Prompt management by
+%% creating versions:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-deploy.html
+%% in the Amazon Bedrock User Guide.
+-spec create_prompt_version(aws_client:aws_client(), binary() | list(), create_prompt_version_request()) ->
+    {ok, create_prompt_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_prompt_version_errors(), tuple()}.
+create_prompt_version(Client, PromptIdentifier, Input) ->
+    create_prompt_version(Client, PromptIdentifier, Input, []).
+
+-spec create_prompt_version(aws_client:aws_client(), binary() | list(), create_prompt_version_request(), proplists:proplist()) ->
+    {ok, create_prompt_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_prompt_version_errors(), tuple()}.
+create_prompt_version(Client, PromptIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/prompts/", aws_util:encode_uri(PromptIdentifier), "/versions"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2072,6 +3464,110 @@ delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a flow.
+-spec delete_flow(aws_client:aws_client(), binary() | list(), delete_flow_request()) ->
+    {ok, delete_flow_response(), tuple()} |
+    {error, any()} |
+    {error, delete_flow_errors(), tuple()}.
+delete_flow(Client, FlowIdentifier, Input) ->
+    delete_flow(Client, FlowIdentifier, Input, []).
+
+-spec delete_flow(aws_client:aws_client(), binary() | list(), delete_flow_request(), proplists:proplist()) ->
+    {ok, delete_flow_response(), tuple()} |
+    {error, any()} |
+    {error, delete_flow_errors(), tuple()}.
+delete_flow(Client, FlowIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"skipResourceInUseCheck">>, <<"skipResourceInUseCheck">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an alias of a flow.
+-spec delete_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), delete_flow_alias_request()) ->
+    {ok, delete_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, delete_flow_alias_errors(), tuple()}.
+delete_flow_alias(Client, AliasIdentifier, FlowIdentifier, Input) ->
+    delete_flow_alias(Client, AliasIdentifier, FlowIdentifier, Input, []).
+
+-spec delete_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), delete_flow_alias_request(), proplists:proplist()) ->
+    {ok, delete_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, delete_flow_alias_errors(), tuple()}.
+delete_flow_alias(Client, AliasIdentifier, FlowIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases/", aws_util:encode_uri(AliasIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a version of a flow.
+-spec delete_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_flow_version_request()) ->
+    {ok, delete_flow_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_flow_version_errors(), tuple()}.
+delete_flow_version(Client, FlowIdentifier, FlowVersion, Input) ->
+    delete_flow_version(Client, FlowIdentifier, FlowVersion, Input, []).
+
+-spec delete_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_flow_version_request(), proplists:proplist()) ->
+    {ok, delete_flow_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_flow_version_errors(), tuple()}.
+delete_flow_version(Client, FlowIdentifier, FlowVersion, Input0, Options0) ->
+    Method = delete,
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/versions/", aws_util:encode_uri(FlowVersion), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"skipResourceInUseCheck">>, <<"skipResourceInUseCheck">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a knowledge base.
 %%
 %% Before deleting a knowledge base, you should disassociate the knowledge
@@ -2110,6 +3606,47 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a prompt or a prompt version from the Prompt management tool.
+%%
+%% For more information, see Delete prompts from the Prompt management tool:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-manage.html#prompt-management-delete.html
+%% and Delete a version of a prompt from the Prompt management tool:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-deploy.html#prompt-management-versions-delete.html
+%% in the Amazon Bedrock User Guide.
+-spec delete_prompt(aws_client:aws_client(), binary() | list(), delete_prompt_request()) ->
+    {ok, delete_prompt_response(), tuple()} |
+    {error, any()} |
+    {error, delete_prompt_errors(), tuple()}.
+delete_prompt(Client, PromptIdentifier, Input) ->
+    delete_prompt(Client, PromptIdentifier, Input, []).
+
+-spec delete_prompt(aws_client:aws_client(), binary() | list(), delete_prompt_request(), proplists:proplist()) ->
+    {ok, delete_prompt_response(), tuple()} |
+    {error, any()} |
+    {error, delete_prompt_errors(), tuple()}.
+delete_prompt(Client, PromptIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prompts/", aws_util:encode_uri(PromptIdentifier), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"promptVersion">>, <<"promptVersion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a knowledge base from an agent.
@@ -2368,6 +3905,129 @@ get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a flow.
+%%
+%% For more information, see Manage a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-manage.html in
+%% the Amazon Bedrock User Guide.
+-spec get_flow(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_flow_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_errors(), tuple()}.
+get_flow(Client, FlowIdentifier)
+  when is_map(Client) ->
+    get_flow(Client, FlowIdentifier, #{}, #{}).
+
+-spec get_flow(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_flow_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_errors(), tuple()}.
+get_flow(Client, FlowIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_flow(Client, FlowIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_flow(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_flow_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_errors(), tuple()}.
+get_flow(Client, FlowIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a flow.
+%%
+%% For more information, see Deploy a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html in
+%% the Amazon Bedrock User Guide.
+-spec get_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_alias_errors(), tuple()}.
+get_flow_alias(Client, AliasIdentifier, FlowIdentifier)
+  when is_map(Client) ->
+    get_flow_alias(Client, AliasIdentifier, FlowIdentifier, #{}, #{}).
+
+-spec get_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_alias_errors(), tuple()}.
+get_flow_alias(Client, AliasIdentifier, FlowIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_flow_alias(Client, AliasIdentifier, FlowIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_alias_errors(), tuple()}.
+get_flow_alias(Client, AliasIdentifier, FlowIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases/", aws_util:encode_uri(AliasIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a version of a flow.
+%%
+%% For more information, see Deploy a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html in
+%% the Amazon Bedrock User Guide.
+-spec get_flow_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_flow_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_version_errors(), tuple()}.
+get_flow_version(Client, FlowIdentifier, FlowVersion)
+  when is_map(Client) ->
+    get_flow_version(Client, FlowIdentifier, FlowVersion, #{}, #{}).
+
+-spec get_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_flow_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_version_errors(), tuple()}.
+get_flow_version(Client, FlowIdentifier, FlowVersion, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_flow_version(Client, FlowIdentifier, FlowVersion, QueryMap, HeadersMap, []).
+
+-spec get_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_flow_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_flow_version_errors(), tuple()}.
+get_flow_version(Client, FlowIdentifier, FlowVersion, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/versions/", aws_util:encode_uri(FlowVersion), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about a ingestion job, in which a data source is
 %% added to a knowledge base.
 -spec get_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
@@ -2440,6 +4100,54 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a prompt or a version of it.
+%%
+%% For more information, see View information about prompts using Prompt
+%% management:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-manage.html#prompt-management-view.html
+%% and View information about a version of your prompt:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-deploy.html#prompt-management-versions-view.html
+%% in the Amazon Bedrock User Guide.
+-spec get_prompt(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_prompt_response(), tuple()} |
+    {error, any()} |
+    {error, get_prompt_errors(), tuple()}.
+get_prompt(Client, PromptIdentifier)
+  when is_map(Client) ->
+    get_prompt(Client, PromptIdentifier, #{}, #{}).
+
+-spec get_prompt(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_prompt_response(), tuple()} |
+    {error, any()} |
+    {error, get_prompt_errors(), tuple()}.
+get_prompt(Client, PromptIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_prompt(Client, PromptIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_prompt(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_prompt_response(), tuple()} |
+    {error, any()} |
+    {error, get_prompt_errors(), tuple()}.
+get_prompt(Client, PromptIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prompts/", aws_util:encode_uri(PromptIdentifier), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"promptVersion">>, maps:get(<<"promptVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -2650,6 +4358,140 @@ list_data_sources(Client, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a list of aliases for a flow.
+-spec list_flow_aliases(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_flow_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_aliases_errors(), tuple()}.
+list_flow_aliases(Client, FlowIdentifier)
+  when is_map(Client) ->
+    list_flow_aliases(Client, FlowIdentifier, #{}, #{}).
+
+-spec list_flow_aliases(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_flow_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_aliases_errors(), tuple()}.
+list_flow_aliases(Client, FlowIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_flow_aliases(Client, FlowIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_flow_aliases(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_flow_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_aliases_errors(), tuple()}.
+list_flow_aliases(Client, FlowIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of information about each flow.
+%%
+%% For more information, see Deploy a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html in
+%% the Amazon Bedrock User Guide.
+-spec list_flow_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_flow_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_versions_errors(), tuple()}.
+list_flow_versions(Client, FlowIdentifier)
+  when is_map(Client) ->
+    list_flow_versions(Client, FlowIdentifier, #{}, #{}).
+
+-spec list_flow_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_flow_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_versions_errors(), tuple()}.
+list_flow_versions(Client, FlowIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_flow_versions(Client, FlowIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_flow_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_flow_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_flow_versions_errors(), tuple()}.
+list_flow_versions(Client, FlowIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of flows and information about each flow.
+%%
+%% For more information, see Manage a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-manage.html in
+%% the Amazon Bedrock User Guide.
+-spec list_flows(aws_client:aws_client()) ->
+    {ok, list_flows_response(), tuple()} |
+    {error, any()} |
+    {error, list_flows_errors(), tuple()}.
+list_flows(Client)
+  when is_map(Client) ->
+    list_flows(Client, #{}, #{}).
+
+-spec list_flows(aws_client:aws_client(), map(), map()) ->
+    {ok, list_flows_response(), tuple()} |
+    {error, any()} |
+    {error, list_flows_errors(), tuple()}.
+list_flows(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_flows(Client, QueryMap, HeadersMap, []).
+
+-spec list_flows(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_flows_response(), tuple()} |
+    {error, any()} |
+    {error, list_flows_errors(), tuple()}.
+list_flows(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flows/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the ingestion jobs for a data source and information about each
 %% of them.
 -spec list_ingestion_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), list_ingestion_jobs_request()) ->
@@ -2720,6 +4562,55 @@ list_knowledge_bases(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a list of prompts from the Prompt management tool and
+%% information about each prompt.
+%%
+%% For more information, see View information about prompts using Prompt
+%% management:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-manage.html#prompt-management-view.html
+%% in the Amazon Bedrock User Guide.
+-spec list_prompts(aws_client:aws_client()) ->
+    {ok, list_prompts_response(), tuple()} |
+    {error, any()} |
+    {error, list_prompts_errors(), tuple()}.
+list_prompts(Client)
+  when is_map(Client) ->
+    list_prompts(Client, #{}, #{}).
+
+-spec list_prompts(aws_client:aws_client(), map(), map()) ->
+    {ok, list_prompts_response(), tuple()} |
+    {error, any()} |
+    {error, list_prompts_errors(), tuple()}.
+list_prompts(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_prompts(Client, QueryMap, HeadersMap, []).
+
+-spec list_prompts(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_prompts_response(), tuple()} |
+    {error, any()} |
+    {error, list_prompts_errors(), tuple()}.
+list_prompts(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prompts/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"promptIdentifier">>, maps:get(<<"promptIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List all the tags for the resource you specify.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -2773,6 +4664,44 @@ prepare_agent(Client, AgentId, Input) ->
 prepare_agent(Client, AgentId, Input0, Options0) ->
     Method = post,
     Path = ["/agents/", aws_util:encode_uri(AgentId), "/"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Prepares the `DRAFT' version of a flow so that it can be invoked.
+%%
+%% For more information, see Test a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html in
+%% the Amazon Bedrock User Guide.
+-spec prepare_flow(aws_client:aws_client(), binary() | list(), prepare_flow_request()) ->
+    {ok, prepare_flow_response(), tuple()} |
+    {error, any()} |
+    {error, prepare_flow_errors(), tuple()}.
+prepare_flow(Client, FlowIdentifier, Input) ->
+    prepare_flow(Client, FlowIdentifier, Input, []).
+
+-spec prepare_flow(aws_client:aws_client(), binary() | list(), prepare_flow_request(), proplists:proplist()) ->
+    {ok, prepare_flow_response(), tuple()} |
+    {error, any()} |
+    {error, prepare_flow_errors(), tuple()}.
+prepare_flow(Client, FlowIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3037,10 +4966,10 @@ update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Inpu
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates configurations for a data source.
+%% @doc Updates the configurations for a data source connector.
 %%
 %% You can't change the `chunkingConfiguration' after you create the
-%% data source. Specify the existing `chunkingConfiguration'.
+%% data source connector. Specify the existing `chunkingConfiguration'.
 -spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
@@ -3055,6 +4984,86 @@ update_data_source(Client, DataSourceId, KnowledgeBaseId, Input) ->
 update_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
     Method = put,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Modifies a flow.
+%%
+%% Include both fields that you want to keep and fields that you want to
+%% change. For more information, see How it works:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-how-it-works.html
+%% and Create a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-create.html in
+%% the Amazon Bedrock User Guide.
+-spec update_flow(aws_client:aws_client(), binary() | list(), update_flow_request()) ->
+    {ok, update_flow_response(), tuple()} |
+    {error, any()} |
+    {error, update_flow_errors(), tuple()}.
+update_flow(Client, FlowIdentifier, Input) ->
+    update_flow(Client, FlowIdentifier, Input, []).
+
+-spec update_flow(aws_client:aws_client(), binary() | list(), update_flow_request(), proplists:proplist()) ->
+    {ok, update_flow_response(), tuple()} |
+    {error, any()} |
+    {error, update_flow_errors(), tuple()}.
+update_flow(Client, FlowIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Modifies the alias of a flow.
+%%
+%% Include both fields that you want to keep and ones that you want to
+%% change. For more information, see Deploy a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html in
+%% the Amazon Bedrock User Guide.
+-spec update_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_alias_request()) ->
+    {ok, update_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, update_flow_alias_errors(), tuple()}.
+update_flow_alias(Client, AliasIdentifier, FlowIdentifier, Input) ->
+    update_flow_alias(Client, AliasIdentifier, FlowIdentifier, Input, []).
+
+-spec update_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_alias_request(), proplists:proplist()) ->
+    {ok, update_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, update_flow_alias_errors(), tuple()}.
+update_flow_alias(Client, AliasIdentifier, FlowIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases/", aws_util:encode_uri(AliasIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3109,6 +5118,47 @@ update_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = put,
     Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), ""],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Modifies a prompt in your prompt library.
+%%
+%% Include both fields that you want to keep and fields that you want to
+%% replace. For more information, see Prompt management in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management.html
+%% and Edit prompts in your prompt library:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-manage.html#prompt-management-edit
+%% in the Amazon Bedrock User Guide.
+-spec update_prompt(aws_client:aws_client(), binary() | list(), update_prompt_request()) ->
+    {ok, update_prompt_response(), tuple()} |
+    {error, any()} |
+    {error, update_prompt_errors(), tuple()}.
+update_prompt(Client, PromptIdentifier, Input) ->
+    update_prompt(Client, PromptIdentifier, Input, []).
+
+-spec update_prompt(aws_client:aws_client(), binary() | list(), update_prompt_request(), proplists:proplist()) ->
+    {ok, update_prompt_response(), tuple()} |
+    {error, any()} |
+    {error, update_prompt_errors(), tuple()}.
+update_prompt(Client, PromptIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/prompts/", aws_util:encode_uri(PromptIdentifier), "/"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

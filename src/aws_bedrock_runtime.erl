@@ -5,7 +5,9 @@
 %% Bedrock models.
 -module(aws_bedrock_runtime).
 
--export([converse/3,
+-export([apply_guardrail/4,
+         apply_guardrail/5,
+         converse/3,
          converse/4,
          converse_stream/3,
          converse_stream/4,
@@ -42,6 +44,16 @@
 
 
 %% Example:
+%% apply_guardrail_response() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"assessments">> => list(guardrail_assessment()()),
+%%   <<"outputs">> => list(guardrail_output_content()()),
+%%   <<"usage">> => guardrail_usage()
+%% }
+-type apply_guardrail_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% model_not_ready_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -71,6 +83,14 @@
 %% Example:
 %% auto_tool_choice() :: #{}
 -type auto_tool_choice() :: #{}.
+
+
+%% Example:
+%% apply_guardrail_request() :: #{
+%%   <<"content">> := list(list()()),
+%%   <<"source">> := list(any())
+%% }
+-type apply_guardrail_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -125,6 +145,14 @@
 %%   <<"contentType">> => string()
 %% }
 -type invoke_model_with_response_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_text_block() :: #{
+%%   <<"qualifiers">> => list(list(any())()),
+%%   <<"text">> => [string()]
+%% }
+-type guardrail_text_block() :: #{binary() => any()}.
 
 
 %% Example:
@@ -260,6 +288,16 @@
 
 
 %% Example:
+%% guardrail_contextual_grounding_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"score">> => [float()],
+%%   <<"threshold">> => [float()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_contextual_grounding_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% tool_specification() :: #{
 %%   <<"description">> => string(),
 %%   <<"inputSchema">> => list(),
@@ -273,6 +311,13 @@
 %%   <<"stream">> => list()
 %% }
 -type converse_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_policy_assessment() :: #{
+%%   <<"filters">> => list(guardrail_contextual_grounding_filter()())
+%% }
+-type guardrail_contextual_grounding_policy_assessment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -304,6 +349,7 @@
 %% Example:
 %% guardrail_assessment() :: #{
 %%   <<"contentPolicy">> => guardrail_content_policy_assessment(),
+%%   <<"contextualGroundingPolicy">> => guardrail_contextual_grounding_policy_assessment(),
 %%   <<"sensitiveInformationPolicy">> => guardrail_sensitive_information_policy_assessment(),
 %%   <<"topicPolicy">> => guardrail_topic_policy_assessment(),
 %%   <<"wordPolicy">> => guardrail_word_policy_assessment()
@@ -390,6 +436,18 @@
 
 
 %% Example:
+%% guardrail_usage() :: #{
+%%   <<"contentPolicyUnits">> => integer(),
+%%   <<"contextualGroundingPolicyUnits">> => integer(),
+%%   <<"sensitiveInformationPolicyFreeUnits">> => integer(),
+%%   <<"sensitiveInformationPolicyUnits">> => integer(),
+%%   <<"topicPolicyUnits">> => integer(),
+%%   <<"wordPolicyUnits">> => integer()
+%% }
+-type guardrail_usage() :: #{binary() => any()}.
+
+
+%% Example:
 %% model_stream_error_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"originalMessage">> => string(),
@@ -439,6 +497,13 @@
 
 
 %% Example:
+%% guardrail_output_content() :: #{
+%%   <<"text">> => string()
+%% }
+-type guardrail_output_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_pii_entity_filter() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"match">> => [string()],
@@ -449,6 +514,7 @@
 
 %% Example:
 %% guardrail_converse_text_block() :: #{
+%%   <<"qualifiers">> => list(list(any())()),
 %%   <<"text">> => [string()]
 %% }
 -type guardrail_converse_text_block() :: #{binary() => any()}.
@@ -496,6 +562,14 @@
 %% }
 -type converse_response() :: #{binary() => any()}.
 
+-type apply_guardrail_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
 -type converse_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -542,6 +616,40 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc The action to apply a guardrail.
+-spec apply_guardrail(aws_client:aws_client(), binary() | list(), binary() | list(), apply_guardrail_request()) ->
+    {ok, apply_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, apply_guardrail_errors(), tuple()}.
+apply_guardrail(Client, GuardrailIdentifier, GuardrailVersion, Input) ->
+    apply_guardrail(Client, GuardrailIdentifier, GuardrailVersion, Input, []).
+
+-spec apply_guardrail(aws_client:aws_client(), binary() | list(), binary() | list(), apply_guardrail_request(), proplists:proplist()) ->
+    {ok, apply_guardrail_response(), tuple()} |
+    {error, any()} |
+    {error, apply_guardrail_errors(), tuple()}.
+apply_guardrail(Client, GuardrailIdentifier, GuardrailVersion, Input0, Options0) ->
+    Method = post,
+    Path = ["/guardrail/", aws_util:encode_uri(GuardrailIdentifier), "/version/", aws_util:encode_uri(GuardrailVersion), "/apply"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sends messages to the specified Amazon Bedrock model.
 %%

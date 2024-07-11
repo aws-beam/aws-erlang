@@ -196,6 +196,7 @@
 %%   <<"blockedInputMessaging">> => string(),
 %%   <<"blockedOutputsMessaging">> => string(),
 %%   <<"contentPolicy">> => guardrail_content_policy(),
+%%   <<"contextualGroundingPolicy">> => guardrail_contextual_grounding_policy(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"failureRecommendations">> => list(string()()),
@@ -243,6 +244,7 @@
 %%   <<"blockedOutputsMessaging">> := string(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"contentPolicyConfig">> => guardrail_content_policy_config(),
+%%   <<"contextualGroundingPolicyConfig">> => guardrail_contextual_grounding_policy_config(),
 %%   <<"description">> => string(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"name">> := string(),
@@ -324,6 +326,14 @@
 %%   <<"filters">> => list(guardrail_content_filter()())
 %% }
 -type guardrail_content_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_filter_config() :: #{
+%%   <<"threshold">> => [float()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_contextual_grounding_filter_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -568,6 +578,14 @@
 
 
 %% Example:
+%% guardrail_contextual_grounding_filter() :: #{
+%%   <<"threshold">> => [float()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_contextual_grounding_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_provisioned_model_throughput_request() :: #{
 %%   <<"desiredModelId">> => string(),
 %%   <<"desiredProvisionedModelName">> => string()
@@ -647,6 +665,7 @@
 %%   <<"blockedInputMessaging">> := string(),
 %%   <<"blockedOutputsMessaging">> := string(),
 %%   <<"contentPolicyConfig">> => guardrail_content_policy_config(),
+%%   <<"contextualGroundingPolicyConfig">> => guardrail_contextual_grounding_policy_config(),
 %%   <<"description">> => string(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"name">> := string(),
@@ -708,6 +727,13 @@
 %%   <<"status">> => list(any())
 %% }
 -type foundation_model_lifecycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_policy_config() :: #{
+%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config()())
+%% }
+-type guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1082,6 +1108,13 @@
 
 
 %% Example:
+%% guardrail_contextual_grounding_policy() :: #{
+%%   <<"filters">> => list(guardrail_contextual_grounding_filter()())
+%% }
+-type guardrail_contextual_grounding_policy() :: #{binary() => any()}.
+
+
+%% Example:
 %% human_evaluation_config() :: #{
 %%   <<"customMetrics">> => list(human_evaluation_custom_metric()()),
 %%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()()),
@@ -1352,52 +1385,40 @@ create_evaluation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a guardrail to block topics and to filter out harmful
-%% content.
+%% @doc Creates a guardrail to block topics and to implement safeguards for
+%% your generative AI applications.
 %%
-%% Specify a `name' and optional `description'.
+%% You can configure the following policies in a guardrail to avoid
+%% undesirable and harmful content, filter
+%% out denied topics and words, and remove sensitive information for privacy
+%% protection.
 %%
-%% Specify messages for when the guardrail successfully blocks a prompt or a
-%% model response in the `blockedInputMessaging' and
-%% `blockedOutputsMessaging' fields.
+%% Content filters - Adjust filter strengths
+%% to block input prompts or model responses containing harmful content.
 %%
-%% Specify topics for the guardrail to deny in the `topicPolicyConfig'
-%% object. Each GuardrailTopicConfig:
-%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailTopicConfig.html
-%% object in the `topicsConfig' list pertains to one topic.
+%% Denied topics - Define a set of topics that
+%% are undesirable in the context of your application. These topics will be
+%% blocked if
+%% detected in user queries or model responses.
 %%
-%% Give a `name' and `description' so that the guardrail can properly
-%% identify the topic.
+%% Word filters - Configure filters to block
+%% undesirable words, phrases, and profanity. Such words can include
+%% offensive terms,
+%% competitor names etc.
 %%
-%% Specify `DENY' in the `type' field.
+%% Sensitive information filters - Block or
+%% mask sensitive information such as personally identifiable information
+%% (PII) or custom
+%% regex in user inputs and model responses.
 %%
-%% (Optional) Provide up to five prompts that you would categorize as
-%% belonging to the topic in the `examples' list.
+%% In addition to the above policies, you can also configure the messages to
+%% be returned to
+%% the user if a user input or model response is in violation of the policies
+%% defined in the guardrail.
 %%
-%% Specify filter strengths for the harmful categories defined in Amazon
-%% Bedrock in the `contentPolicyConfig' object. Each
-%% GuardrailContentFilterConfig:
-%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailContentFilterConfig.html
-%% object in the `filtersConfig' list pertains to a harmful category. For
-%% more information, see Content filters:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-filters.
-%% For more information about the fields in a content filter, see
-%% GuardrailContentFilterConfig:
-%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailContentFilterConfig.html.
-%%
-%% Specify the category in the `type' field.
-%%
-%% Specify the strength of the filter for prompts in the `inputStrength'
-%% field and for model responses in the `strength' field of the
-%% GuardrailContentFilterConfig:
-%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailContentFilterConfig.html.
-%%
-%% (Optional) For security, include the ARN of a KMS key in the
-%% `kmsKeyId' field.
-%%
-%% (Optional) Attach any tags to the guardrail in the `tags' object. For
-%% more information, see Tag resources:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.
+%% For more information, see Guardrails for Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html in
+%% the Amazon Bedrock User Guide.
 -spec create_guardrail(aws_client:aws_client(), create_guardrail_request()) ->
     {ok, create_guardrail_response(), tuple()} |
     {error, any()} |
@@ -2558,7 +2579,7 @@ untag_resource(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailContentFilterConfig.html
 %% object in the `filtersConfig' list pertains to a harmful category. For
 %% more information, see Content filters:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-filters.
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-content-filters.
 %% For more information about the fields in a content filter, see
 %% GuardrailContentFilterConfig:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GuardrailContentFilterConfig.html.
@@ -2572,10 +2593,6 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% (Optional) For security, include the ARN of a KMS key in the
 %% `kmsKeyId' field.
-%%
-%% (Optional) Attach any tags to the guardrail in the `tags' object. For
-%% more information, see Tag resources:
-%% https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.
 -spec update_guardrail(aws_client:aws_client(), binary() | list(), update_guardrail_request()) ->
     {ok, update_guardrail_response(), tuple()} |
     {error, any()} |

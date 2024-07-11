@@ -5,8 +5,15 @@
 %% bases.
 -module(aws_bedrock_agent_runtime).
 
--export([invoke_agent/5,
+-export([delete_agent_memory/4,
+         delete_agent_memory/5,
+         get_agent_memory/5,
+         get_agent_memory/7,
+         get_agent_memory/8,
+         invoke_agent/5,
          invoke_agent/6,
+         invoke_flow/4,
+         invoke_flow/5,
          retrieve/3,
          retrieve/4,
          retrieve_and_generate/2,
@@ -23,6 +30,21 @@
 %%   <<"parameters">> => list(function_parameter()())
 %% }
 -type function_invocation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_part() :: #{
+%%   <<"files">> => list(output_file()())
+%% }
+-type file_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_configuration() :: #{
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration()
+%% }
+-type knowledge_base_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -58,6 +80,16 @@
 
 
 %% Example:
+%% code_interpreter_invocation_output() :: #{
+%%   <<"executionError">> => [string()],
+%%   <<"executionOutput">> => [string()],
+%%   <<"executionTimeout">> => [boolean()],
+%%   <<"files">> => list([string()]())
+%% }
+-type code_interpreter_invocation_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% external_source() :: #{
 %%   <<"byteContent">> => byte_content_doc(),
 %%   <<"s3Location">> => s3_object_doc(),
@@ -83,6 +115,15 @@
 %%   <<"resourceName">> => string()
 %% }
 -type bad_gateway_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_file() :: #{
+%%   <<"name">> => [string()],
+%%   <<"source">> => file_source(),
+%%   <<"useCase">> => list(any())
+%% }
+-type input_file() :: #{binary() => any()}.
 
 
 %% Example:
@@ -126,6 +167,10 @@
 %% }
 -type retrieve_and_generate_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_agent_memory_response() :: #{}
+-type delete_agent_memory_response() :: #{}.
+
 
 %% Example:
 %% knowledge_base_query() :: #{
@@ -163,7 +208,9 @@
 %% action_group_invocation_input() :: #{
 %%   <<"actionGroupName">> => string(),
 %%   <<"apiPath">> => string(),
+%%   <<"executionType">> => list(any()),
 %%   <<"function">> => string(),
+%%   <<"invocationId">> => [string()],
 %%   <<"parameters">> => list(parameter()()),
 %%   <<"requestBody">> => request_body(),
 %%   <<"verb">> => string()
@@ -182,8 +229,12 @@
 
 %% Example:
 %% retrieval_result_location() :: #{
+%%   <<"confluenceLocation">> => retrieval_result_confluence_location(),
 %%   <<"s3Location">> => retrieval_result_s3_location(),
-%%   <<"type">> => list(any())
+%%   <<"salesforceLocation">> => retrieval_result_salesforce_location(),
+%%   <<"sharePointLocation">> => retrieval_result_share_point_location(),
+%%   <<"type">> => list(any()),
+%%   <<"webLocation">> => retrieval_result_web_location()
 %% }
 -type retrieval_result_location() :: #{binary() => any()}.
 
@@ -231,6 +282,13 @@
 
 
 %% Example:
+%% invoke_flow_response() :: #{
+%%   <<"responseStream">> => list()
+%% }
+-type invoke_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieval_result_content() :: #{
 %%   <<"text">> => [string()]
 %% }
@@ -257,6 +315,7 @@
 %%   <<"generationConfiguration">> => generation_configuration(),
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"modelArn">> => string(),
+%%   <<"orchestrationConfiguration">> => orchestration_configuration(),
 %%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration()
 %% }
 -type knowledge_base_retrieve_and_generate_configuration() :: #{binary() => any()}.
@@ -265,6 +324,7 @@
 %% Example:
 %% observation() :: #{
 %%   <<"actionGroupInvocationOutput">> => action_group_invocation_output(),
+%%   <<"codeInterpreterInvocationOutput">> => code_interpreter_invocation_output(),
 %%   <<"finalResponse">> => final_response(),
 %%   <<"knowledgeBaseLookupOutput">> => knowledge_base_lookup_output(),
 %%   <<"repromptResponse">> => reprompt_response(),
@@ -323,6 +383,13 @@
 
 
 %% Example:
+%% query_transformation_configuration() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type query_transformation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% post_processing_parsed_response() :: #{
 %%   <<"text">> => string()
 %% }
@@ -354,6 +421,13 @@
 
 
 %% Example:
+%% flow_completion_event() :: #{
+%%   <<"completionReason">> => list(any())
+%% }
+-type flow_completion_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -380,6 +454,7 @@
 %% invoke_agent_response() :: #{
 %%   <<"completion">> => list(),
 %%   <<"contentType">> => string(),
+%%   <<"memoryId">> => string(),
 %%   <<"sessionId">> => string()
 %% }
 -type invoke_agent_response() :: #{binary() => any()}.
@@ -387,7 +462,9 @@
 
 %% Example:
 %% session_state() :: #{
+%%   <<"files">> => list(input_file()()),
 %%   <<"invocationId">> => [string()],
+%%   <<"knowledgeBaseConfigurations">> => list(knowledge_base_configuration()()),
 %%   <<"promptSessionAttributes">> => map(),
 %%   <<"returnControlInvocationResults">> => list(list()()),
 %%   <<"sessionAttributes">> => map()
@@ -437,6 +514,13 @@
 %%   <<"text">> => [string()]
 %% }
 -type retrieve_and_generate_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_result_confluence_location() :: #{
+%%   <<"url">> => [string()]
+%% }
+-type retrieval_result_confluence_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -513,6 +597,22 @@
 
 
 %% Example:
+%% retrieval_result_salesforce_location() :: #{
+%%   <<"url">> => [string()]
+%% }
+-type retrieval_result_salesforce_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_file() :: #{
+%%   <<"bytes">> => binary(),
+%%   <<"name">> => [string()],
+%%   <<"type">> => string()
+%% }
+-type output_file() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -561,6 +661,20 @@
 
 
 %% Example:
+%% retrieval_result_share_point_location() :: #{
+%%   <<"url">> => [string()]
+%% }
+-type retrieval_result_share_point_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% orchestration_configuration() :: #{
+%%   <<"queryTransformationConfiguration">> => query_transformation_configuration()
+%% }
+-type orchestration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% prompt_template() :: #{
 %%   <<"textPromptTemplate">> => string()
 %% }
@@ -606,6 +720,15 @@
 
 
 %% Example:
+%% flow_input() :: #{
+%%   <<"content">> => list(),
+%%   <<"nodeName">> => string(),
+%%   <<"nodeOutputName">> => string()
+%% }
+-type flow_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% generated_response_part() :: #{
 %%   <<"textResponsePart">> => text_response_part()
 %% }
@@ -613,10 +736,29 @@
 
 
 %% Example:
+%% memory_session_summary() :: #{
+%%   <<"memoryId">> => string(),
+%%   <<"sessionExpiryTime">> => non_neg_integer(),
+%%   <<"sessionId">> => string(),
+%%   <<"sessionStartTime">> => non_neg_integer(),
+%%   <<"summaryText">> => string()
+%% }
+-type memory_session_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_agent_memory_response() :: #{
+%%   <<"memoryContents">> => list(list()()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_agent_memory_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -631,6 +773,15 @@
 %%   <<"text">> => [string()]
 %% }
 -type retrieve_and_generate_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_output_event() :: #{
+%%   <<"content">> => list(),
+%%   <<"nodeName">> => string(),
+%%   <<"nodeType">> => list(any())
+%% }
+-type flow_output_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -659,10 +810,32 @@
 
 
 %% Example:
+%% retrieval_result_web_location() :: #{
+%%   <<"url">> => [string()]
+%% }
+-type retrieval_result_web_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_memory_request() :: #{
+%%   <<"memoryId">> => string()
+%% }
+-type delete_agent_memory_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_lookup_output() :: #{
 %%   <<"retrievedReferences">> => list(retrieved_reference()())
 %% }
 -type knowledge_base_lookup_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% byte_content_file() :: #{
+%%   <<"data">> => binary(),
+%%   <<"mediaType">> => string()
+%% }
+-type byte_content_file() :: #{binary() => any()}.
 
 
 %% Example:
@@ -679,6 +852,7 @@
 %%   <<"enableTrace">> => [boolean()],
 %%   <<"endSession">> => [boolean()],
 %%   <<"inputText">> => string(),
+%%   <<"memoryId">> => string(),
 %%   <<"sessionState">> => session_state()
 %% }
 -type invoke_agent_request() :: #{binary() => any()}.
@@ -687,6 +861,7 @@
 %% Example:
 %% invocation_input() :: #{
 %%   <<"actionGroupInvocationInput">> => action_group_invocation_input(),
+%%   <<"codeInterpreterInvocationInput">> => code_interpreter_invocation_input(),
 %%   <<"invocationType">> => list(any()),
 %%   <<"knowledgeBaseLookupInput">> => knowledge_base_lookup_input(),
 %%   <<"traceId">> => string()
@@ -699,6 +874,23 @@
 %%   <<"content">> => map()
 %% }
 -type request_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_agent_memory_request() :: #{
+%%   <<"maxItems">> => integer(),
+%%   <<"memoryId">> := string(),
+%%   <<"memoryType">> := list(any()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_agent_memory_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object_file() :: #{
+%%   <<"uri">> => string()
+%% }
+-type s3_object_file() :: #{binary() => any()}.
 
 
 %% Example:
@@ -719,6 +911,22 @@
 
 
 %% Example:
+%% invoke_flow_request() :: #{
+%%   <<"inputs">> := list(flow_input()())
+%% }
+-type invoke_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_source() :: #{
+%%   <<"byteContent">> => byte_content_file(),
+%%   <<"s3Location">> => s3_object_file(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type file_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieve_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"retrievalResults">> => list(knowledge_base_retrieval_result()())
@@ -732,6 +940,14 @@
 %%   <<"text">> => string()
 %% }
 -type knowledge_base_lookup_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_interpreter_invocation_input() :: #{
+%%   <<"code">> => [string()],
+%%   <<"files">> => list([string()]())
+%% }
+-type code_interpreter_invocation_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -752,7 +968,40 @@
 %% }
 -type guardrail_topic() :: #{binary() => any()}.
 
+-type delete_agent_memory_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type get_agent_memory_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
 -type invoke_agent_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    dependency_failed_exception() | 
+    bad_gateway_exception().
+
+-type invoke_flow_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -789,8 +1038,88 @@
 %% API
 %%====================================================================
 
+%% @doc Deletes memory from the specified memory identifier.
+-spec delete_agent_memory(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_memory_request()) ->
+    {ok, delete_agent_memory_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_memory_errors(), tuple()}.
+delete_agent_memory(Client, AgentAliasId, AgentId, Input) ->
+    delete_agent_memory(Client, AgentAliasId, AgentId, Input, []).
+
+-spec delete_agent_memory(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_memory_request(), proplists:proplist()) ->
+    {ok, delete_agent_memory_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_memory_errors(), tuple()}.
+delete_agent_memory(Client, AgentAliasId, AgentId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentAliases/", aws_util:encode_uri(AgentAliasId), "/memories"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"memoryId">>, <<"memoryId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the sessions stored in the memory of the agent.
+-spec get_agent_memory(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_agent_memory_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_memory_errors(), tuple()}.
+get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType)
+  when is_map(Client) ->
+    get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, #{}, #{}).
+
+-spec get_agent_memory(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_agent_memory_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_memory_errors(), tuple()}.
+get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, QueryMap, HeadersMap, []).
+
+-spec get_agent_memory(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_memory_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_memory_errors(), tuple()}.
+get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/agents/", aws_util:encode_uri(AgentId), "/agentAliases/", aws_util:encode_uri(AgentAliasId), "/memories"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxItems">>, maps:get(<<"maxItems">>, QueryMap, undefined)},
+        {<<"memoryId">>, MemoryId},
+        {<<"memoryType">>, MemoryType},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc
-%% The CLI doesn't support `InvokeAgent'.
+%% The CLI doesn't support streaming operations in Amazon Bedrock,
+%% including `InvokeAgent'.
 %%
 %% Sends a prompt for the agent to process and respond to. Note the following
 %% fields for the request:
@@ -859,6 +1188,7 @@ invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
         ResponseHeadersParams =
           [
             {<<"x-amzn-bedrock-agent-content-type">>, <<"contentType">>},
+            {<<"x-amz-bedrock-agent-memory-id">>, <<"memoryId">>},
             {<<"x-amz-bedrock-agent-session-id">>, <<"sessionId">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
@@ -872,6 +1202,46 @@ invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
       Result ->
         Result
     end.
+
+%% @doc Invokes an alias of a flow to run the inputs that you specify and
+%% return the output of each node as a stream.
+%%
+%% If there's an error, the error is returned. For more information, see
+%% Test a flow in Amazon Bedrock:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html in
+%% the Amazon Bedrock User Guide.
+-spec invoke_flow(aws_client:aws_client(), binary() | list(), binary() | list(), invoke_flow_request()) ->
+    {ok, invoke_flow_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_flow_errors(), tuple()}.
+invoke_flow(Client, FlowAliasIdentifier, FlowIdentifier, Input) ->
+    invoke_flow(Client, FlowAliasIdentifier, FlowIdentifier, Input, []).
+
+-spec invoke_flow(aws_client:aws_client(), binary() | list(), binary() | list(), invoke_flow_request(), proplists:proplist()) ->
+    {ok, invoke_flow_response(), tuple()} |
+    {error, any()} |
+    {error, invoke_flow_errors(), tuple()}.
+invoke_flow(Client, FlowAliasIdentifier, FlowIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/flows/", aws_util:encode_uri(FlowIdentifier), "/aliases/", aws_util:encode_uri(FlowAliasIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Queries a knowledge base and retrieves information from it.
 -spec retrieve(aws_client:aws_client(), binary() | list(), retrieve_request()) ->
